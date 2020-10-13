@@ -6,7 +6,7 @@ setup(
     description="BO4E implementation for Python3",
     url="https://github.com/Hochfrequenz/BO4E-python",
     author="Hochfrequenz Unternehmensberatung GmbH",
-    author_email='notsetyeat@asdasd.invalid',
+    author_email="notsetyeat@asdasd.invalid",
     license="MIT",
-    packages=["bo4e"]
+    packages=["bo4e"],
 )

@@ -20,6 +20,7 @@ class Geschaeftsobjekt(_GeschaeftsobjektDefaultBase, _GeschaeftsobjektBase):
     """
     base class for all business objects
     """
+
     # why all the boilerplate?
     # https://bugs.python.org/issue39300
     # https://stackoverflow.com/a/53085935/10009545

@@ -5,6 +5,7 @@ class Sparte(str, Enum):
     """
     Unterscheidungsmöglichkeiten für die Sparte.
     """
+
     STROM = "STROM"
     GAS = "GAS"
     FERNWAERME = "FERNWAERME"

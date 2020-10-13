@@ -13,7 +13,9 @@ class Marktrolle(str, Enum):
     BKV = "BKV"  # Bilanzkreisverantwortlicher,
     BIKO = "BKV"  # Bilanzkoordinator / Marktgebietsverantwortlicher
     UENB = "UENB"  # Übertragungsnetzbetreiber
-    KUNDE_NN_SELBST = "KUNDE-NN-SELBST"  # Kunden, die Netznutzungsentgelte selbst zahlen
+    KUNDE_NN_SELBST = (
+        "KUNDE-NN-SELBST"  # Kunden, die Netznutzungsentgelte selbst zahlen
+    )
     MGV = "MGV"  # Marktgebietsverantwortlicher
     EIV = "EIV"  # Einsatzverantwortlicher
     RB = "RB"  # Registerbetreiber
