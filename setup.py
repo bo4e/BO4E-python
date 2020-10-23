@@ -1,12 +1,21 @@
+import sys
+
+min_version = (3, 8)
+
+if sys.version_info < min_version:
+    error = f"""
+bo4e needs Python {min_version} or above.
+You are using Python {sys.version_info}
+""".format(
+        ".".join(str(n) for n in min_version),
+        ".".join(str(n) for n in sys.version_info[:3]),
+    )
+    sys.exit(error)
+
+
 from setuptools import setup
 
-setup(
-    name="BO4E",
-    version="0.0.1",
-    description="BO4E implementation for Python3",
-    url="https://github.com/Hochfrequenz/BO4E-python",
-    author="Hochfrequenz Unternehmensberatung GmbH",
-    author_email="notsetyeat@asdasd.invalid",
-    license="MIT",
-    packages=["bo4e"],
-)
+# Get the version from versioneer
+import versioneer
+
+setup(name="bo4e", version=versioneer.get_version(), cmdclass=versioneer.get_cmdclass())
