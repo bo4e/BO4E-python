@@ -1,4 +1,5 @@
 import sys
+import versioneer
 
 from setuptools import setup
 
