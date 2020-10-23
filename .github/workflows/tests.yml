@@ -2,13 +2,13 @@ name: Tests
 
 on: [push]
 jobs:
-  unittests:
+  tests:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         python-version: [3.8]
         os: [ubuntu-latest]
-        tox: py38
+        tox: [py38]
     steps:
       - uses: actions/checkout@v2
       - name: Set up Python ${{ matrix.python-version }}
