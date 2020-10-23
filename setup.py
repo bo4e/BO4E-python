@@ -1,4 +1,8 @@
 import sys
+import versioneer
+
+from setuptools import setup
+
 
 min_version = (3, 8)
 
@@ -12,10 +16,5 @@ You are using Python {sys.version_info}
     )
     sys.exit(error)
 
-
-from setuptools import setup
-
-# Get the version from versioneer
-import versioneer
 
 setup(name="bo4e", version=versioneer.get_version(), cmdclass=versioneer.get_cmdclass())
