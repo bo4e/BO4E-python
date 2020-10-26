@@ -91,7 +91,7 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"bo4e-python"
+project = u"bo4e"
 copyright = u"2020, Hochfrequenz GmbH"
 
 # The version info for the project you're documenting, acts as replacement for
@@ -259,7 +259,7 @@ latex_documents = [
     (
         "index",
         "user_guide.tex",
-        u"bo4e-python Documentation",
+        u"bo4e Documentation",
         u"Kevin Krechan",
         "manual",
     ),
