@@ -17,4 +17,4 @@ You are using Python {sys.version_info}
     sys.exit(error)
 
 
-setup(name="bo4e", version=versioneer.get_version(), cmdclass=versioneer.get_cmdclass())
+setup(name="bo4e", version="develop")
