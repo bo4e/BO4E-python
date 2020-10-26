@@ -1,8 +1,8 @@
 =============
-bo4e-python
+bo4e
 =============
 
-This is the documentation of **bo4e-python**.
+This is the documentation of **bo4e**.
 
 .. note::
 

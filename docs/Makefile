@@ -8,7 +8,7 @@ PAPER         =
 BUILDDIR      = ../build/sphinx/
 AUTODOCDIR    = api
 AUTODOCBUILD  = sphinx-apidoc
-PROJECT       = bo4e-python
+PROJECT       = bo4e
 MODULEDIR     = ../src/bo4e
 
 # User-friendly check for sphinx-build
