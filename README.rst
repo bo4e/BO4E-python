@@ -1,7 +1,7 @@
 =============
 BO4E
 =============
-
+.. image:: https://img.shields.io/pypi/v/bo4e   :alt: PyPI
 
 Python Library that Implements the `BO4E Standard`_.
 Requires Python >=3.8. See also our `DOTNET implementation`_.
