@@ -3,14 +3,8 @@ BO4E
 =============
 
 
-Python  Library that Implements the BO4E Standard.
+Python Library that Implements the `BO4E Standard`_.
 Requires Python >=3.8. See also our `DOTNET implementation`_.
-
-Description
-===========
-
-A longer description of your project goes here...
-
 
 Contributing
 ============
@@ -27,6 +21,7 @@ According to `Kununu ratings`_ Hochfrequenz is among the most attractive employe
 Applications of talented developers are welcome at any time! Please consider visiting our `career page`_ that also contains job openings.
 
 
+.. _`BO4E Standard`: https://www.bo4e.de/dokumentation
 .. _`DOTNET implementation`: https://github.com/Hochfrequenz/BO4E-dotnet
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
