@@ -2,5 +2,4 @@
 -r tests.in
 pip-tools
 black
-versioneer
 tox
