@@ -1,3 +1,4 @@
+from abc import ABC
 from dataclasses import dataclass
 
 from dataclasses_json import dataclass_json, LetterCase
@@ -16,7 +17,7 @@ class _GeschaeftsobjektDefaultBase:
 
 @dataclass_json(letter_case=LetterCase.CAMEL)
 @dataclass
-class Geschaeftsobjekt(_GeschaeftsobjektDefaultBase, _GeschaeftsobjektBase):
+class Geschaeftsobjekt(ABC, _GeschaeftsobjektDefaultBase, _GeschaeftsobjektBase):
     """
     base class for all business objects
     """

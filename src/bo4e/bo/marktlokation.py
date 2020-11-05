@@ -1,4 +1,3 @@
-from abc import ABC
 from dataclasses import dataclass
 
 from dataclasses_json import LetterCase, dataclass_json
@@ -34,9 +33,7 @@ class _MarktlokationBase(_GeschaeftsobjektBase):
 
 @dataclass_json(letter_case=LetterCase.CAMEL)
 @dataclass(eq=True)
-class Marktlokation(
-    ABC, Geschaeftsobjekt, _MarktlokationDefaultBase, _MarktlokationBase
-):
+class Marktlokation(Geschaeftsobjekt, _MarktlokationDefaultBase, _MarktlokationBase):
     """
     Objekt zur Aufnahme der Informationen zu einer Marktlokation
     """
