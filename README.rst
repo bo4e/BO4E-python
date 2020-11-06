@@ -26,7 +26,7 @@ Please provide unit tests if you contribute logic beyond bare bare business obje
 
 To enhance this BO4E implementation and contribute to this project check out the `develop branch`_, install `tox`_ and set the virtual environment created by the command
 ::
-   tox -r dev 
+   tox -e dev 
    
 The created venv should be located somewhere around .tox/dev/Scripts.
 
