@@ -24,7 +24,11 @@ Contributions are welcome.
 Feel free to open a Pull Request against the develop branch of this repository.
 Please provide unit tests if you contribute logic beyond bare bare business object definitions.
 
-
+To enhance this BO4E implementation and contribute to this project check out the `develop branch`_, install `tox`_ and set the virtual environment created by the command
+::
+   tox -r dev 
+   
+The created venv should be located somewhere around .tox/dev/Scripts.
 
 Hochfrequenz
 ============
@@ -38,3 +42,5 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
+.. _`develop branch`: https://github.com/Hochfrequenz/BO4E-python/tree/develop
+.. _`tox`: https://pypi.org/project/tox/
