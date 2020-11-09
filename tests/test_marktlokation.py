@@ -1,11 +1,9 @@
-import unittest
-
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
 from bo4e.enum.sparte import Sparte
 
 
-class MaLoTest(unittest.TestCase):
+class TestMaLo:
     def test_serializable(self):
         malo = Marktlokation(
             marktlokations_id="54321012345",
@@ -14,23 +12,19 @@ class MaLoTest(unittest.TestCase):
                 postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"
             ),
         )
-        self.assertEqual(
-            malo.versionstruktur, 1, "versionstruktur was not automatically set"
-        )
-        self.assertEqual(
-            malo.bo_typ, "MARKTLOKATION", "boTyp was not automatically set"
-        )
+        assert malo.versionstruktur == 1, "versionstruktur was not automatically set"
+        assert malo.bo_typ == "MARKTLOKATION", "boTyp was not automatically set"
+
         json_string = malo.to_json()
-        self.assertTrue(
-            "boTyp" in json_string, "No camel case serialization"
-        )  # camel case serialization
-        self.assertTrue(
-            "marktlokationsId" in json_string, "No camel case serialization"
-        )  # camel case serialization
+
+        assert (
+            "boTyp" in json_string
+        ), "No camel case serialization"  # camel case serialization
+        assert (
+            "marktlokationsId" in json_string
+        ), "No camel case serialization"  # camel case serialization
+
         deserialized_malo: Marktlokation = Marktlokation.from_json(json_string)
-        self.assertEqual(malo.marktlokations_id, deserialized_malo.marktlokations_id)
-        self.assertFalse(malo.marktlokations_id is deserialized_malo.marktlokations_id)
 
-
-if __name__ == "__main__":
-    unittest.main()
+        assert malo.marktlokations_id == deserialized_malo.marktlokations_id
+        assert malo.marktlokations_id is not deserialized_malo.marktlokations_id
