@@ -5,7 +5,7 @@ from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
 
 
-@attr.s(auto_attribs=True)
+@attr.s(auto_attribs=True, kw_only=True, frozen=True)
 class Adresse(COM, jsons.JsonSerializable):
     """
     Enthält eine Adresse, die für die meisten Zwecke verwendbar ist.
