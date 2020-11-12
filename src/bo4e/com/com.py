@@ -1,12 +1,8 @@
-from abc import ABC
-from dataclasses import dataclass
-
-from dataclasses_json import LetterCase, dataclass_json
+import attr
 
 
-@dataclass_json(letter_case=LetterCase.CAMEL)
-@dataclass
-class COM(ABC):
+@attr.s(auto_attribs=True, kw_only=True, frozen=True)
+class COM:
     """
     abstract base class for all components
     """
