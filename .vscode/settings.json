@@ -6,5 +6,6 @@
     "pythonTestExplorer.testFramework": "pytest",
     "python.testing.pytestArgs": [
         "tests"
-    ]
+    ],
+    "python.linting.flake8Enabled": true
 }
