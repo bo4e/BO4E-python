@@ -24,21 +24,21 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
     sparte: Sparte
     energierichtung: Energierichtung
     bilanzierungsmethode: Bilanzierungsmethode
-    verbrauchsart: Verbrauchsart = attr.ib(init=False)
-    unterbrechbar: bool = attr.ib(init=False)
+    verbrauchsart: Verbrauchsart = attr.ib(default=None)
+    unterbrechbar: bool = attr.ib(default=None)
     netzebene: Netzebene
-    netzbetreibercodenr: str = attr.ib(init=False)
-    gebietstyp: Gebietstyp = attr.ib(init=False)
-    netzgebietsnr: str = attr.ib(init=False)
-    bilanzierungsgebiet: str = attr.ib(init=False)
-    grundversorgercodenr: str = attr.ib(init=False)
-    gasqualitaet: Gasqualitaet = attr.ib(init=False)
-    endkunde: Geschaeftspartner = attr.ib(init=False)
-    zugehoerige_messlokation: str = attr.ib(init=False)
+    netzbetreibercodenr: str = attr.ib(default=None)
+    gebietstyp: Gebietstyp = attr.ib(default=None)
+    netzgebietsnr: str = attr.ib(default=None)
+    bilanzierungsgebiet: str = attr.ib(default=None)
+    grundversorgercodenr: str = attr.ib(default=None)
+    gasqualitaet: Gasqualitaet = attr.ib(default=None)
+    endkunde: Geschaeftspartner = attr.ib(default=None)
+    zugehoerige_messlokation: str = attr.ib(default=None)
 
     lokationsadresse: Adresse = attr.ib(default=None)
-    # TODO: Geoadresse Komponente einfügen
-    geoadresse: str = attr.ib(default=None)
+    geoadresse: Geokoordinaten = attr.ib(default=None)
+    katasterinformation: Katasteradresse = attr.ib(default=None)
     # TODO: Katasterinformation Komponente einfügen
     katasterinformation: str = attr.ib(default=None)
 
