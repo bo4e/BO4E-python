@@ -15,19 +15,19 @@ class Geschaeftspartner(Geschaeftsobjekt, jsons.JsonSerializable):
     Objekt zur Aufnahme der Information zu einem Geschaeftspartner
     """
 
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
-
-    anrede: Anrede
+    anrede: Anrede = attr.ib(default=None)
     name1: str
-    name2: str
-    name3: str
+    name2: str = attr.ib(default=None)
+    name3: str = attr.ib(default=None)
     gewerbekennzeichnung: bool
-    hrnummer: str
-    amtsgericht: str
-    kontaktweg: Kontaktart
-    umsatzsteuerId: str
-    glaeubigerId: str
-    eMailAdresse: str
-    website: str
+    hrnummer: str = attr.ib(default=None)
+    amtsgericht: str = attr.ib(default=None)
+    kontaktweg: Kontaktart = attr.ib(default=None)
+    umsatzsteuerId: str = attr.ib(default=None)
+    glaeubigerId: str = attr.ib(default=None)
+    eMailAdresse: str = attr.ib(default=None)
+    website: str = attr.ib(default=None)
     geschaeftspartnerrolle: Geschaeftspartnerrolle
     partneradresse: Adresse
+
+    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
