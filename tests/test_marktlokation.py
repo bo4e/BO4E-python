@@ -1,3 +1,4 @@
+import pytest
 import jsons
 
 from bo4e.bo.marktlokation import Marktlokation
@@ -18,6 +19,7 @@ class TestMaLo:
             ),
             energierichtung=Energierichtung.EINSP,
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+            unterbrechbar=True,  # optional attribute
             netzebene=Netzebene.NSP,
         )
         assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
@@ -42,3 +44,25 @@ class TestMaLo:
 
         assert malo.marktlokations_id == deserialized_malo.marktlokations_id
         assert malo.marktlokations_id is not deserialized_malo.marktlokations_id
+
+    def test_address_validation(self):
+        with pytest.raises(ValueError) as excinfo:
+
+            malo = Marktlokation(
+                marktlokations_id="54321012345",
+                sparte=Sparte.GAS,
+                lokationsadresse=Adresse(
+                    postleitzahl="04177",
+                    ort="Leipzig",
+                    hausnummer="1",
+                    strasse="Jahnalle",
+                ),
+                energierichtung=Energierichtung.EINSP,
+                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                unterbrechbar=True,  # optional attribute
+                netzebene=Netzebene.NSP,
+                geoadresse="test",
+                katasterinformation="test",
+            )
+
+        assert "No or more than one address information is given." == str(excinfo.value)
