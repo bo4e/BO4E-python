@@ -3,4 +3,5 @@
 -r tests.in
 black
 pip-tools
+flake8
 tox
