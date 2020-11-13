@@ -20,6 +20,22 @@ bo4e.com.com module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.geokoordinaten module
+------------------------------
+
+.. automodule:: bo4e.com.geokoordinaten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.katasteradresse module
+-------------------------------
+
+.. automodule:: bo4e.com.katasteradresse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
