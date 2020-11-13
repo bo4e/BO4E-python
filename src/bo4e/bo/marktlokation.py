@@ -4,6 +4,8 @@ import jsons
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
+from bo4e.com.geokoordinaten import Geokoordinaten
+from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
@@ -39,12 +41,9 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
     lokationsadresse: Adresse = attr.ib(default=None)
     geoadresse: Geokoordinaten = attr.ib(default=None)
     katasterinformation: Katasteradresse = attr.ib(default=None)
-    # TODO: Katasterinformation Komponente einfügen
-    katasterinformation: str = attr.ib(default=None)
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
 
-    # TODO: Add test for address validation, only one of them may be given
     @lokationsadresse.validator
     @geoadresse.validator
     @katasterinformation.validator
