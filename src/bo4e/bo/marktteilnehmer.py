@@ -13,9 +13,13 @@ class Marktteilehmer(Geschaeftspartner, jsons.JsonSerializable):
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
     """
 
+    # required attributes
     marktrolle: Marktrolle
     rollencodenummer: str
     rollencodetyp: Rollencodetyp
-    makoadresse: str = attr.ib(init=False)
 
+    # optional attributes
+    makoadresse: str = attr.ib(default=None)
+
+    # required attributes with default value
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
