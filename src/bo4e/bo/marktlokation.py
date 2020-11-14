@@ -69,7 +69,7 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
             raise ValueError("The marktlokations_id must not be empty.")
         if not _malo_id_pattern.match(value):
             raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
-        expected_checksum = Marktlokation._get_checksum(value);
+        expected_checksum = Marktlokation._get_checksum(value)
         actual_checksum = value[10:11]
         if expected_checksum != actual_checksum:
             raise ValueError(
