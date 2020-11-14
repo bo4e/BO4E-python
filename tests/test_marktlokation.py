@@ -79,6 +79,8 @@ class TestMaLo:
             ("   ", False),
             ("  asdasdasd ", False),
             ("keine malo id", False),
+            (None, False),
+            ("", False),
         ],
     )
     def test_id_validation(self, malo_id_valid: Tuple[str, bool]):

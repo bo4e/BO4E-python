@@ -26,7 +26,18 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
     Objekt zur Aufnahme der Informationen zu einer Marktlokation
     """
 
-    marktlokations_id: str = attr.ib(default=None)
+    def _validate_marktlokations_id(self, marklokations_id_attribute, value):
+        if not value:
+            raise ValueError("The marktlokations_id must not be empty.")
+        if not _malo_id_pattern.match(value):
+            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
+        expected_checksum = Marktlokation._get_checksum(value)
+        actual_checksum = value[10:11]
+        if expected_checksum != actual_checksum:
+            raise ValueError(
+                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected.")
+
+    marktlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
     sparte: Sparte
     energierichtung: Energierichtung
     bilanzierungsmethode: Bilanzierungsmethode
@@ -63,18 +74,6 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
         if amount_of_given_address_infos != 1:
             raise ValueError("No or more than one address information is given.")
 
-    @marktlokations_id.validator
-    def validate_marktlokations_id(self, marklokations_id_attribute, value):
-        if not value:
-            raise ValueError("The marktlokations_id must not be empty.")
-        if not _malo_id_pattern.match(value):
-            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
-        expected_checksum = Marktlokation._get_checksum(value)
-        actual_checksum = value[10:11]
-        if expected_checksum != actual_checksum:
-            raise ValueError(
-                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected.")
-
     @staticmethod
     def _get_checksum(malo_id: str) -> str:
         """
@@ -90,7 +89,8 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
         """
         odd_checksum: int = 0
         even_checksum: int = 0
-        # start counting at 1 to be consistent with the above description of "even" and "odd" but stop at tenth digit.
+        # start counting at 1 to be consistent with the above description
+        # of "even" and "odd" but stop at tenth digit.
         for i in range(1, 11):
             s = malo_id[i - 1:i]
             if i % 2 == 0:
