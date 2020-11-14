@@ -32,10 +32,10 @@ class TestMaLo:
         )
 
         assert (
-            "boTyp" in json_string
+                "boTyp" in json_string
         ), "No camel case serialization"  # camel case serialization
         assert (
-            "marktlokationsId" in json_string
+                "marktlokationsId" in json_string
         ), "No camel case serialization"  # camel case serialization
 
         deserialized_malo: Marktlokation = Marktlokation.loads(
@@ -47,7 +47,6 @@ class TestMaLo:
 
     def test_address_validation(self):
         with pytest.raises(ValueError) as excinfo:
-
             malo = Marktlokation(
                 marktlokations_id="54321012345",
                 sparte=Sparte.GAS,
@@ -66,3 +65,17 @@ class TestMaLo:
             )
 
         assert "No or more than one address information is given." == str(excinfo.value)
+
+    def test_id_validation(self):
+        with pytest.raises(ValueError):
+            _ = Marktlokation(
+                marktlokations_id="asdasdasdas",
+                sparte=Sparte.GAS,
+                lokationsadresse=Adresse(
+                    postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"
+                ),
+                energierichtung=Energierichtung.EINSP,
+                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                unterbrechbar=True,  # optional attribute
+                netzebene=Netzebene.NSP,
+            )
