@@ -19,34 +19,33 @@ test_data = [
 ]
 
 
-class TestAdress:
+class TestAddress:
     @pytest.mark.datafiles(
         "./tests/test_data/test_data_adresse_only_required_fields.json",
         "./tests/test_data/test_data_adresse_only_required_fields_landescode_AT.json",
     )
     @pytest.mark.parametrize("test_address_data, expected", test_data)
     def test_serialization(self, test_address_data, expected, datafiles):
-
         with open(
             datafiles / test_address_data,
             encoding="utf-8",
         ) as json_file:
-            adress_test_data = json.load(json_file)
+            address_test_data = json.load(json_file)
 
-        if "landescode" not in adress_test_data.keys():
+        if "landescode" not in address_test_data:
             a = Adresse(
-                postleitzahl=adress_test_data["postleitzahl"],
-                ort=adress_test_data["ort"],
-                strasse=adress_test_data["strasse"],
-                hausnummer=adress_test_data["hausnummer"],
+                postleitzahl=address_test_data["postleitzahl"],
+                ort=address_test_data["ort"],
+                strasse=address_test_data["strasse"],
+                hausnummer=address_test_data["hausnummer"],
             )
         else:
             a = Adresse(
-                postleitzahl=adress_test_data["postleitzahl"],
-                ort=adress_test_data["ort"],
-                strasse=adress_test_data["strasse"],
-                hausnummer=adress_test_data["hausnummer"],
-                landescode=adress_test_data["landescode"],
+                postleitzahl=address_test_data["postleitzahl"],
+                ort=address_test_data["ort"],
+                strasse=address_test_data["strasse"],
+                hausnummer=address_test_data["hausnummer"],
+                landescode=address_test_data["landescode"],
             )
 
         address_json = a.dumps(

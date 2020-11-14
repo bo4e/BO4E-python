@@ -1,3 +1,5 @@
+from typing import Tuple
+
 import pytest
 import jsons
 
@@ -12,7 +14,7 @@ from bo4e.enum.netzebene import Netzebene
 class TestMaLo:
     def test_serialization(self):
         malo = Marktlokation(
-            marktlokations_id="54321012345",
+            marktlokations_id="51238696781",
             sparte=Sparte.GAS,
             lokationsadresse=Adresse(
                 postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"
@@ -30,7 +32,6 @@ class TestMaLo:
             key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
             jdkwargs={"ensure_ascii": False},
         )
-
         assert (
             "boTyp" in json_string
         ), "No camel case serialization"  # camel case serialization
@@ -47,9 +48,8 @@ class TestMaLo:
 
     def test_address_validation(self):
         with pytest.raises(ValueError) as excinfo:
-
             malo = Marktlokation(
-                marktlokations_id="54321012345",
+                marktlokations_id="51238696781",
                 sparte=Sparte.GAS,
                 lokationsadresse=Adresse(
                     postleitzahl="04177",
@@ -66,3 +66,39 @@ class TestMaLo:
             )
 
         assert "No or more than one address information is given." == str(excinfo.value)
+
+    @pytest.mark.parametrize(
+        "malo_id_valid",
+        [
+            ("51238696781", True),
+            ("41373559241", True),
+            ("56789012345", True),
+            ("52935155442", True),
+            ("12345678910", False),
+            ("asdasd", False),
+            ("   ", False),
+            ("  asdasdasd ", False),
+            ("keine malo id", False),
+            (None, False),
+            ("", False),
+        ],
+    )
+    def test_id_validation(self, malo_id_valid: Tuple[str, bool]):
+        def _instantiate_malo(malo_id: str):
+            _ = Marktlokation(
+                marktlokations_id=malo_id,
+                sparte=Sparte.GAS,
+                lokationsadresse=Adresse(
+                    postleitzahl="82031", ort="Grünwald", hausnummer="27A", strasse="Nördliche Münchner Straße"
+                ),
+                energierichtung=Energierichtung.EINSP,
+                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                unterbrechbar=True,
+                netzebene=Netzebene.NSP,
+            )
+
+        if not malo_id_valid[1]:
+            with pytest.raises(ValueError):
+                _instantiate_malo(malo_id_valid[0])
+        else:
+            _instantiate_malo(malo_id_valid[0])

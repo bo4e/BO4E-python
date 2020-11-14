@@ -12,17 +12,17 @@ class TestMarktteilnehmer:
         mt = Marktteilehmer(
             # required attributes of Marktteilnehmer only
             marktrolle=Marktrolle.DIENSTLEISTER,
-            rollencodenummer="271828",
+            rollencodenummer="9903916000000",
             rollencodetyp=Rollencodetyp.BDEW,
             # required attributes inherited from Geschaeftspartner
-            name1="Elon",
+            name1="Netze BW GmbH",
             gewerbekennzeichnung=True,
             geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
             partneradresse=Adresse(
-                strasse="Milkyway",
-                hausnummer="42",
-                postleitzahl="16181",
-                ort="Andromeda-Nebel",
+                strasse="Schelmenwasenstraße",
+                hausnummer="15",
+                postleitzahl="70567",
+                ort="Stuttgart"
             ),
         )
 
@@ -42,9 +42,9 @@ class TestMarktteilnehmer:
             "marktrolle" in json_string
         ), "No camel case serialization"  # camel case serialization
 
-        deserialized_malo: Marktteilehmer = Marktteilehmer.loads(
+        deserialized_mt: Marktteilehmer = Marktteilehmer.loads(
             json_string, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
         )
 
-        assert mt.marktrolle == deserialized_malo.marktrolle
-        assert mt.marktrolle is not deserialized_malo.marktrolle
+        assert mt.marktrolle == deserialized_mt.marktrolle
+        assert mt.marktrolle is not deserialized_mt.marktrolle

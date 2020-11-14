@@ -1,5 +1,6 @@
 import attr
 import jsons
+from attr.validators import matches_re
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
@@ -15,7 +16,7 @@ class Marktteilehmer(Geschaeftspartner, jsons.JsonSerializable):
 
     # required attributes
     marktrolle: Marktrolle
-    rollencodenummer: str
+    rollencodenummer: str = attr.ib(validator=matches_re(r"^\d{13}$"))
     rollencodetyp: Rollencodetyp
 
     # optional attributes
