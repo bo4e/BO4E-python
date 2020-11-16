@@ -22,9 +22,9 @@ class TestGeschaeftspartner:
 
         gp = Geschaeftspartner(
             anrede=Anrede.FRAU,
-            name1="Helga",
-            name2="von",
-            name3="Sinnen",
+            name1="von Sinnen",
+            name2="Helga",
+            name3=None,
             gewerbekennzeichnung=True,
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht München",
