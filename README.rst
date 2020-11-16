@@ -44,7 +44,7 @@ Release workflow
 
 There is a github action which gets triggered by a release event.
 It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file.
-After checking the package with `twize check` it will finally upload the new package release.
+After checking the package with `twine check` it will finally upload the new package release.
 
 Hochfrequenz
 ============
