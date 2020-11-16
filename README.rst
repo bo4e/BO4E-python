@@ -35,7 +35,7 @@ Release workflow
 ================
 * Check with tox all tests and lintings: `tox`
 * Check with tox if the packaging works fine: `tox -e test_packaging`
-* Merge all your changes you would like to have in the release into the master branch.
+* Merge all your changes you would like to have in the release into the master branch
 * Check that all github actions for tests and linting do pass.
 * Go to `BO4E-python`_ and click on *Create a new release* in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
