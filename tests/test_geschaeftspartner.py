@@ -11,7 +11,7 @@ from bo4e.enum.kontaktart import Kontaktart
 
 class TestGeschaeftspartner:
     @pytest.mark.datafiles(
-        "./tests/test_data/test_data_adresse_only_required_fields.json"
+        "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json"
     )
     def test_serializable(self, datafiles):
 

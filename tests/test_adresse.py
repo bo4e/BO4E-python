@@ -21,8 +21,8 @@ test_data = [
 
 class TestAddress:
     @pytest.mark.datafiles(
-        "./tests/test_data/test_data_adresse_only_required_fields.json",
-        "./tests/test_data/test_data_adresse_only_required_fields_landescode_AT.json",
+        "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
+        "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields_landescode_AT.json",
     )
     @pytest.mark.parametrize("test_address_data, expected", test_data)
     def test_serialization(self, test_address_data, expected, datafiles):
@@ -64,7 +64,9 @@ class TestAddress:
         a: Adresse = Adresse.loads(json_string)
         assert a.landescode == Landescode("Austria")
 
-    @pytest.mark.datafiles("./tests/test_data/test_data_adresse_missing_plz.json")
+    @pytest.mark.datafiles(
+        "./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json"
+    )
     def test_missing_required_attribute(self, datafiles):
         """
         Test for getting an error message if a required attribute is missing
