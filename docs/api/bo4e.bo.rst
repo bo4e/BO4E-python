@@ -12,10 +12,26 @@ bo4e.bo.geschaeftsobjekt module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.geschaeftspartner module
+--------------------------------
+
+.. automodule:: bo4e.bo.geschaeftspartner
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.marktlokation module
 ----------------------------
 
 .. automodule:: bo4e.bo.marktlokation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.marktteilnehmer module
+------------------------------
+
+.. automodule:: bo4e.bo.marktteilnehmer
    :members:
    :undoc-members:
    :show-inheritance:

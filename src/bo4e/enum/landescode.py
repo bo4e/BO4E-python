@@ -19,13 +19,11 @@ class Landescode:
             raise ValueError(f"'{value}' is not a valid ISO alpha2 country code.")
 
     @staticmethod
-    def json_encoder(value) -> str:
-        if not value:
-            return "DE"  # default
+    def json_encoder(value: str, **kwargs) -> str:
         return Landescode(value)._country.alpha2
 
     @staticmethod
-    def json_decoder(value: str):
+    def json_decoder(value: str, Landescode, **kwargs):
         return Landescode(value)
 
     def __eq__(self, other):
