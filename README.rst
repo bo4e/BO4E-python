@@ -39,7 +39,7 @@ Release workflow
 * Check that all github actions for tests and linting do pass.
 * Go to `BO4E-python`_ and click on *Create a new release* in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
-* Add a describtion to the release.
+* Add a describtion to the release
 * Publish the release
 
 There is a github action which gets triggered by a release event.
