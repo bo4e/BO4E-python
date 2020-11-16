@@ -31,6 +31,21 @@ To enhance this BO4E implementation and contribute to this project check out the
    
 The created venv should be located somewhere around .tox/dev/Scripts.
 
+Release workflow
+================
+* Check with tox all tests and lintings: `tox`
+* Check with tox if the packaging works fine: `tox -e test_packaging`
+* Merge all your changes you would like to have in the release into the master branch.
+* Check that all github actions for tests and linting do pass.
+* Go to `BO4E-python`_ and click on *Create a new release* in the right sidebar
+* Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
+* Add a describtion to the release.
+* Publish the release
+
+There is a github action which gets triggered by a release event.
+It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file.
+After checking the package with `twize check` it will finally upload the new package release.
+
 Hochfrequenz
 ============
 `Hochfrequenz Unternehmensberatung GmbH`_ is a Grünwald (near Munich) based consulting company with offices in Berlin and Bremen.
@@ -45,3 +60,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
 .. _`develop branch`: https://github.com/Hochfrequenz/BO4E-python/tree/develop
 .. _`tox`: https://pypi.org/project/tox/
+.. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
