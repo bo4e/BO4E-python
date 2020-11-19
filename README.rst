@@ -25,7 +25,8 @@ Feel free to open a Pull Request against the develop branch of this repository.
 Please provide unit tests if you contribute logic beyond bare bare business object definitions.
 
 To enhance this BO4E implementation and contribute to this project check out the `develop branch`_, install `tox`_ and set the virtual environment created by the command
-.. code-block:: shell
+
+.. code-block:: Shell
 
    tox -e dev 
    
