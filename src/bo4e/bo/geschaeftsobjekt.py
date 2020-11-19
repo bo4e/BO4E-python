@@ -1,13 +1,14 @@
 from typing import List, Optional
 
 import attr
+import jsons
 
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
 
 
 @attr.s(auto_attribs=True, kw_only=True)
-class Geschaeftsobjekt:
+class Geschaeftsobjekt(jsons.JsonSerializable):
     """
     base class for all business objects
     """
