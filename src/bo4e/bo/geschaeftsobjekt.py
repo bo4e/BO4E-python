@@ -1,5 +1,8 @@
+from typing import List, Optional
+
 import attr
 
+from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
 
 
@@ -10,4 +13,5 @@ class Geschaeftsobjekt:
     """
 
     bo_typ: BoTyp
+    externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(default=None)
     versionstruktur: int = attr.ib(default=2)
