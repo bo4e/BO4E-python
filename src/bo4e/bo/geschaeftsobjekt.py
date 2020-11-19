@@ -12,6 +12,8 @@ class Geschaeftsobjekt:
     base class for all business objects
     """
 
-    bo_typ: BoTyp
-    externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(default=None)
     versionstruktur: int = attr.ib(default=2)
+    bo_typ: BoTyp
+    externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
+        default=None, validator=attr.validators.instance_of((type(None), List))
+    )
