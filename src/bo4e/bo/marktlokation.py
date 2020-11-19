@@ -20,7 +20,7 @@ from bo4e.enum.gasqualitaet import Gasqualitaet
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 
 
-@attr.s(auto_attribs=True, kw_only=True, frozen=True)
+@attr.s(auto_attribs=True, kw_only=True)
 class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
     """
     Objekt zur Aufnahme der Informationen zu einer Marktlokation
