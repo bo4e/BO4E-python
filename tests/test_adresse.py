@@ -1,6 +1,6 @@
-import pytest
 import json
 import jsons
+import pytest
 
 from bo4e.com.adresse import Adresse
 from bo4e.enum.landescode import Landescode
