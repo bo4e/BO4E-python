@@ -30,12 +30,15 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
         if not value:
             raise ValueError("The marktlokations_id must not be empty.")
         if not _malo_id_pattern.match(value):
-            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
+            raise ValueError(
+                f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}"
+            )
         expected_checksum = Marktlokation._get_checksum(value)
         actual_checksum = value[10:11]
         if expected_checksum != actual_checksum:
             raise ValueError(
-                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected.")
+                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
+            )
 
     marktlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
     sparte: Sparte
@@ -92,7 +95,7 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
         # start counting at 1 to be consistent with the above description
         # of "even" and "odd" but stop at tenth digit.
         for i in range(1, 11):
-            s = malo_id[i - 1:i]
+            s = malo_id[i - 1 : i]
             if i % 2 == 0:
                 even_checksum += 2 * int(s)
             else:
