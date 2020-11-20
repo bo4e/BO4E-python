@@ -48,7 +48,7 @@ class TestMaLo:
 
     def test_address_validation(self):
         with pytest.raises(ValueError) as excinfo:
-            malo = Marktlokation(
+            _ = Marktlokation(
                 marktlokations_id="51238696781",
                 sparte=Sparte.GAS,
                 lokationsadresse=Adresse(
@@ -89,7 +89,10 @@ class TestMaLo:
                 marktlokations_id=malo_id,
                 sparte=Sparte.GAS,
                 lokationsadresse=Adresse(
-                    postleitzahl="82031", ort="Grünwald", hausnummer="27A", strasse="Nördliche Münchner Straße"
+                    postleitzahl="82031",
+                    ort="Grünwald",
+                    hausnummer="27A",
+                    strasse="Nördliche Münchner Straße",
                 ),
                 energierichtung=Energierichtung.EINSP,
                 bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
