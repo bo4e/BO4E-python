@@ -78,7 +78,7 @@ class TestAddress:
 
         with pytest.raises(TypeError) as excinfo:
 
-            a = Adresse(
+            _ = Adresse(
                 ort=adress_test_data["ort"],
                 strasse=adress_test_data["strasse"],
                 hausnummer=adress_test_data["hausnummer"],

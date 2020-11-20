@@ -52,7 +52,7 @@ class TestGeschaeftsobjet:
 
     def test_no_list_in_externen_referenzen(self):
         with pytest.raises(TypeError) as excinfo:
-            go = Geschaeftsobjekt(
+            _ = Geschaeftsobjekt(
                 bo_typ=BoTyp.ENERGIEMENGE,
                 externe_referenzen=ExterneReferenz(
                     ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"

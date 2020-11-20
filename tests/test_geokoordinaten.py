@@ -30,6 +30,6 @@ class TestGeokoordinaten:
     def test_wrong_datatype(self):
         with pytest.raises(TypeError) as excinfo:
 
-            geo = Geokoordinaten(breitengrad="54,23", laengengrad=-23.2)
+            _ = Geokoordinaten(breitengrad="54,23", laengengrad=-23.2)
 
         assert "breitengrad" in str(excinfo.value)
