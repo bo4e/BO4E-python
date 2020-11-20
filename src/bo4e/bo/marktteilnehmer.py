@@ -9,7 +9,7 @@ from bo4e.enum.rollencodetyp import Rollencodetyp
 
 
 @attr.s(auto_attribs=True, kw_only=True, frozen=True)
-class Marktteilehmer(Geschaeftspartner, jsons.JsonSerializable):
+class Marktteilnehmer(Geschaeftspartner, jsons.JsonSerializable):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
     """
