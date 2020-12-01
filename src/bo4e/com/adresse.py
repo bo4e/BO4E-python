@@ -21,8 +21,4 @@ class Adresse(COM, jsons.JsonSerializable):
     postfach: str = attr.ib(init=False)
     adresszusatz: str = attr.ib(init=False)
     co_ergaenzung: str = attr.ib(init=False)
-    landescode: Landescode = attr.ib(default="DE")
-
-    # define de-/serialization for class Landescode
-    jsons.set_serializer(Landescode.json_encoder, Landescode)
-    jsons.set_deserializer(Landescode.json_decoder, Landescode)
+    landescode: Landescode = attr.ib(default=Landescode.DE)
