@@ -50,7 +50,7 @@ class TestAddress:
             jdkwargs={"ensure_ascii": False},
         )
 
-        assert "AT" in address_json
+        assert json.loads(address_json)["landescode"] == "AT"
 
     def test_deserialization(self):
         json_string = r"""{"strasse":"Getreidegasse",
