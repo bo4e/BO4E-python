@@ -5,55 +5,52 @@ import pytest
 from bo4e.com.adresse import Adresse
 from bo4e.enum.landescode import Landescode
 
-test_data = [
-    pytest.param(
-        "test_data_adresse_only_required_fields.json",
-        "DE",
-        id="Test default DE",
-    ),
-    pytest.param(
-        "test_data_adresse_only_required_fields_landescode_AT.json",
-        "AT",
-        id="Test different landescode",
-    ),
-]
-
 
 class TestAddress:
-    @pytest.mark.datafiles(
-        "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
-        "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields_landescode_AT.json",
-    )
-    @pytest.mark.parametrize("test_address_data, expected", test_data)
-    def test_serialization(self, test_address_data, expected, datafiles):
+    def test_serialization_only_required_fields(self):
         with open(
-            datafiles / test_address_data,
+            "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
             encoding="utf-8",
         ) as json_file:
             address_test_data = json.load(json_file)
 
-        if "landescode" not in address_test_data:
-            a = Adresse(
-                postleitzahl=address_test_data["postleitzahl"],
-                ort=address_test_data["ort"],
-                strasse=address_test_data["strasse"],
-                hausnummer=address_test_data["hausnummer"],
-            )
-        else:
-            a = Adresse(
-                postleitzahl=address_test_data["postleitzahl"],
-                ort=address_test_data["ort"],
-                strasse=address_test_data["strasse"],
-                hausnummer=address_test_data["hausnummer"],
-                landescode=address_test_data["landescode"],
-            )
+        a = Adresse(
+            postleitzahl=address_test_data["postleitzahl"],
+            ort=address_test_data["ort"],
+            strasse=address_test_data["strasse"],
+            hausnummer=address_test_data["hausnummer"],
+        )
 
         address_json = a.dumps(
             strip_nulls=True,
             key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
             jdkwargs={"ensure_ascii": False},
         )
-        assert expected in address_json, f"Landescode does not contain '{expected}'"
+
+        assert "DE" in address_json
+
+    def test_serialization_only_required_fields_landescode_AT(self):
+        with open(
+            "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
+            encoding="utf-8",
+        ) as json_file:
+            address_test_data = json.load(json_file)
+
+        a = Adresse(
+            postleitzahl=address_test_data["postleitzahl"],
+            ort=address_test_data["ort"],
+            strasse=address_test_data["strasse"],
+            hausnummer=address_test_data["hausnummer"],
+            landescode=Landescode.AT,
+        )
+
+        address_json = a.dumps(
+            strip_nulls=True,
+            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
+            jdkwargs={"ensure_ascii": False},
+        )
+
+        assert json.loads(address_json)["landescode"] == "AT"
 
     def test_deserialization(self):
         json_string = r"""{"strasse":"Getreidegasse",
@@ -62,7 +59,7 @@ class TestAddress:
                  "postleitzahl":"5020",
                  "landescode":"AT"}"""
         a: Adresse = Adresse.loads(json_string)
-        assert a.landescode == Landescode("Austria")
+        assert a.landescode is Landescode.AT
 
     @pytest.mark.datafiles(
         "./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json"
