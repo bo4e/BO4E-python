@@ -9,7 +9,7 @@ from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.botyp import BoTyp
 
 
-@attr.s(auto_attribs=True, kw_only=True, frozen=True)
+@attr.s(auto_attribs=True, kw_only=True)
 class Geschaeftspartner(Geschaeftsobjekt, jsons.JsonSerializable):
     """
     Objekt zur Aufnahme der Information zu einem Geschaeftspartner

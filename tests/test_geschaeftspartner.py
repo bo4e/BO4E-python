@@ -18,7 +18,7 @@ class TestGeschaeftspartner:
         with open(
             datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8"
         ) as json_file:
-            adress_test_data = json.load(json_file)
+            address_test_data = json.load(json_file)
 
         gp = Geschaeftspartner(
             anrede=Anrede.FRAU,
@@ -35,10 +35,10 @@ class TestGeschaeftspartner:
             website="bo4e.de",
             geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
             partneradresse=Adresse(
-                postleitzahl=adress_test_data["postleitzahl"],
-                ort=adress_test_data["ort"],
-                strasse=adress_test_data["strasse"],
-                hausnummer=adress_test_data["hausnummer"],
+                postleitzahl=address_test_data["postleitzahl"],
+                ort=address_test_data["ort"],
+                strasse=address_test_data["strasse"],
+                hausnummer=address_test_data["hausnummer"],
             ),
         )
 

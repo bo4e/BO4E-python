@@ -5,7 +5,7 @@ import jsons
 from bo4e.com.com import COM
 
 
-@attr.s(auto_attribs=True, kw_only=True, frozen=True)
+@attr.s(auto_attribs=True, kw_only=True)
 class Geokoordinaten(COM, jsons.JsonSerializable):
     """
     Diese Komponente liefert die Geokoordinaten für einen Ort.
