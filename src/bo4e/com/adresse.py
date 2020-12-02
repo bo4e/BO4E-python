@@ -18,7 +18,7 @@ class Adresse(COM, jsons.JsonSerializable):
     ort: str
 
     # optional attributes
-    postfach: str = attr.ib(init=False)
-    adresszusatz: str = attr.ib(init=False)
-    co_ergaenzung: str = attr.ib(init=False)
+    postfach: str = attr.ib(default=None)
+    adresszusatz: str = attr.ib(default=None)
+    co_ergaenzung: str = attr.ib(default=None)
     landescode: Landescode = attr.ib(default=Landescode.DE)
