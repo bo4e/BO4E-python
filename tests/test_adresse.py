@@ -27,7 +27,16 @@ class TestAddress:
             jdkwargs={"ensure_ascii": False},
         )
 
-        assert "DE" in address_json
+        assert "Nördliche Münchner Straße" in address_json
+        assert "27A" in address_json
+        assert "82031" in address_json
+
+        deserialized_address = Adresse.loads(address_json)
+
+        assert isinstance(deserialized_address, Adresse)
+        assert deserialized_address.strasse == "Nördliche Münchner Straße"
+        assert deserialized_address.hausnummer == "27A"
+        assert deserialized_address.postleitzahl == "82031"
 
     def test_serialization_only_required_fields_landescode_AT(self):
         with open(
