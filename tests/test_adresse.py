@@ -38,7 +38,7 @@ class TestAddress:
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
         assert deserialized_address.hausnummer == "27A"
         assert deserialized_address.postleitzahl == "82031"
-        assert deserialized_address.landescode == "DE"
+        assert deserialized_address.landescode == Landescode.DE
 
     def test_serialization_only_required_fields_landescode_AT(self):
         with open(
