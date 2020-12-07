@@ -75,12 +75,14 @@ class TestAddress:
 
         assert "10 64 38" in address_json
         assert "82031" in address_json
+        assert "DE" in address_json
 
         deserialized_address = Adresse.loads(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
         assert deserialized_address.postleitzahl == "82031"
+        assert deserialized_address.landescode == "DE"
 
     def test_serialization_only_required_fields_landescode_AT(self):
         with open(
