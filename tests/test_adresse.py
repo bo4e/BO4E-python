@@ -80,14 +80,14 @@ class TestAddress:
         with open(
             datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8"
         ) as json_file:
-            adress_test_data = json.load(json_file)
+            address_test_data = json.load(json_file)
 
         with pytest.raises(TypeError) as excinfo:
 
             _ = Adresse(
-                ort=adress_test_data["ort"],
-                strasse=adress_test_data["strasse"],
-                hausnummer=adress_test_data["hausnummer"],
+                ort=address_test_data["ort"],
+                strasse=address_test_data["strasse"],
+                hausnummer=address_test_data["hausnummer"],
             )
 
         assert "postleitzahl" in str(excinfo.value)
