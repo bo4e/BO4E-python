@@ -27,7 +27,18 @@ class TestAddress:
             jdkwargs={"ensure_ascii": False},
         )
 
+        assert "Nördliche Münchner Straße" in address_json
+        assert "27A" in address_json
+        assert "82031" in address_json
         assert "DE" in address_json
+
+        deserialized_address = Adresse.loads(address_json)
+
+        assert isinstance(deserialized_address, Adresse)
+        assert deserialized_address.strasse == "Nördliche Münchner Straße"
+        assert deserialized_address.hausnummer == "27A"
+        assert deserialized_address.postleitzahl == "82031"
+        assert deserialized_address.landescode == Landescode.DE
 
     def test_serialization_only_required_fields_postfach(self):
         address_test_data = {
@@ -99,14 +110,14 @@ class TestAddress:
         with open(
             datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8"
         ) as json_file:
-            adress_test_data = json.load(json_file)
+            address_test_data = json.load(json_file)
 
         with pytest.raises(TypeError) as excinfo:
 
             _ = Adresse(
-                ort=adress_test_data["ort"],
-                strasse=adress_test_data["strasse"],
-                hausnummer=adress_test_data["hausnummer"],
+                ort=address_test_data["ort"],
+                strasse=address_test_data["strasse"],
+                hausnummer=address_test_data["hausnummer"],
             )
 
         assert "postleitzahl" in str(excinfo.value)
