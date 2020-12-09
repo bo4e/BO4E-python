@@ -9,14 +9,13 @@ from bo4e.enum.landescode import Landescode
 
 
 def strasse_xor_postfach(instance, attribute, value):
-    if (
-        instance.strasse is None or instance.hausnummer is None
-    ) and instance.postfach is None:
-        raise ValueError("Either strasse and hausnummer or postfach are required.")
-    elif (
-        instance.strasse is not None or instance.hausnummer is not None
-    ) and instance.postfach is not None:
-        raise ValueError("Only strasse and hausnummer or postfach are required.")
+    if instance.strasse or instance.hausnummer:
+        if instance.postfach:
+            raise ValueError("Enter either strasse and hausnummer OR postfach.")
+        elif not instance.strasse:
+            raise ValueError("Missing strasse to hausnummer.")
+        elif not instance.hausnummer:
+            raise ValueError("Missing hausnummer to strasse.")
 
 
 @attr.s(auto_attribs=True, kw_only=True)
@@ -26,13 +25,13 @@ class Adresse(COM):
     """
 
     # required attributes
-    strasse: str
-    hausnummer: str
-    postleitzahl: str
-    ort: str
+    postleitzahl: str = attr.ib(validator=attr.validators.instance_of(str))
+    ort: str = attr.ib(validator=attr.validators.instance_of(str))
 
     # optional attributes
-    postfach: str = attr.ib(default=None)
+    strasse: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    hausnummer: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    postfach: str = attr.ib(default=None, validator=strasse_xor_postfach)
     adresszusatz: str = attr.ib(default=None)
     co_ergaenzung: str = attr.ib(default=None)
     landescode: Landescode = attr.ib(default=Landescode.DE)
