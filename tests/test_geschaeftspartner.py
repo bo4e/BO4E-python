@@ -5,6 +5,7 @@ import jsons
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
+from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 
@@ -43,7 +44,7 @@ class TestGeschaeftspartner:
         )
 
         # test default value for bo_typ in Geschaeftspartner
-        assert gp.bo_typ == "GESCHAEFTSPARTNER"
+        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
 
         gp_json = gp.dumps(
             strip_nulls=True,
