@@ -2,7 +2,7 @@ import json
 import jsons
 import pytest
 
-from bo4e.com.adresse import Adresse
+from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.landescode import Landescode
 
 
@@ -25,18 +25,15 @@ class TestAddress:
             hausnummer=address_test_data["hausnummer"],
         )
 
-        address_json = a.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = AdresseSchema()
+        address_json = schema.dumps(a, ensure_ascii=False)
 
         assert "Nördliche Münchner Straße" in address_json
         assert "27A" in address_json
         assert "82031" in address_json
         assert "DE" in address_json
 
-        deserialized_address = Adresse.loads(address_json)
+        deserialized_address = schema.loads(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
@@ -58,16 +55,13 @@ class TestAddress:
             postfach=address_test_data["postfach"],
         )
 
-        address_json = a.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = AdresseSchema()
+        address_json = schema.dumps(a, ensure_ascii=False)
 
         assert "10 64 38" in address_json
         assert "82031" in address_json
 
-        deserialized_address = Adresse.loads(address_json)
+        deserialized_address = schema.loads(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
@@ -85,16 +79,19 @@ class TestAddress:
             ort=address_test_data["ort"],
         )
 
-        address_json = a.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        # address_json = a.dumps(
+        #     strip_nulls=True,
+        #     key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
+        #     jdkwargs={"ensure_ascii": False},
+        # )
+
+        schema = AdresseSchema()
+        address_json = schema.dumps(a, ensure_ascii=False)
 
         assert "Grünwald" in address_json
         assert "82031" in address_json
 
-        deserialized_address = Adresse.loads(address_json)
+        deserialized_address = schema.loads(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.ort == "Grünwald"
@@ -115,13 +112,11 @@ class TestAddress:
             landescode=Landescode.AT,
         )
 
-        address_json = a.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = AdresseSchema()
+        address_json = schema.dumps(a, ensure_ascii=False)
+        deserialized_address = schema.loads(address_json)
 
-        assert json.loads(address_json)["landescode"] == "AT"
+        assert deserialized_address.landescode == Landescode.AT
 
     def test_deserialization(self):
         json_string = r"""{"strasse":"Getreidegasse",
@@ -129,7 +124,9 @@ class TestAddress:
                  "ort":"Salzburg",
                  "postleitzahl":"5020",
                  "landescode":"AT"}"""
-        a: Adresse = Adresse.loads(json_string)
+
+        schema = AdresseSchema()
+        a: Adresse = schema.loads(json_string)
         assert a.landescode is Landescode.AT
 
     @pytest.mark.datafiles(
