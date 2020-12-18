@@ -54,17 +54,14 @@ class TestAddress:
             postfach=address_test_data["postfach"],
         )
 
-        address_json = a.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = AdresseSchema()
+        address_json = schema.dumps(a, ensure_ascii=False)
 
         assert "10 64 38" in address_json
         assert "82031" in address_json
         assert "DE" in address_json
 
-        deserialized_address = Adresse.loads(address_json)
+        deserialized_address = schema.loads(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
@@ -83,16 +80,19 @@ class TestAddress:
             ort=address_test_data["ort"],
         )
 
-        address_json = a.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        # address_json = a.dumps(
+        #     strip_nulls=True,
+        #     key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
+        #     jdkwargs={"ensure_ascii": False},
+        # )
+
+        schema = AdresseSchema()
+        address_json = schema.dumps(a, ensure_ascii=False)
 
         assert "Grünwald" in address_json
         assert "82031" in address_json
 
-        deserialized_address = Adresse.loads(address_json)
+        deserialized_address = schema.loads(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.ort == "Grünwald"
