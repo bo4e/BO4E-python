@@ -1,3 +1,4 @@
 attrs
-jsons
+marshmallow
+marshmallow-enum
 iso3166
