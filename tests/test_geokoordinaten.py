@@ -1,8 +1,7 @@
 import pytest
-import jsons
 from decimal import Decimal
 
-from bo4e.com.geokoordinaten import Geokoordinaten
+from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 
 
 class TestGeokoordinaten:
@@ -12,19 +11,17 @@ class TestGeokoordinaten:
             laengengrad=Decimal(13.404866218566895),
         )
 
-        json_string = geo.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = GeokoordinatenSchema()
+
+        json_string = schema.dumps(geo, ensure_ascii=False)
 
         assert "breitengrad" in json_string
         assert str(geo.breitengrad) in json_string
 
-        deserialized_geo: Geokoordinaten = Geokoordinaten.loads(
-            json_string, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        deserialized_geo: Geokoordinaten = schema.loads(json_string)
 
+        assert isinstance(deserialized_geo.breitengrad, Decimal)
+        assert isinstance(deserialized_geo.laengengrad, Decimal)
         assert geo.breitengrad == deserialized_geo.breitengrad
 
     def test_wrong_datatype(self):
