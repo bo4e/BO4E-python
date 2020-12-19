@@ -3,6 +3,7 @@ import attr
 from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField
 
+from bo4e.cases import JavaScriptMixin
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
 
@@ -36,7 +37,7 @@ class Adresse(COM):
     landescode: Landescode = attr.ib(default=Landescode.DE)
 
 
-class AdresseSchema(Schema):
+class AdresseSchema(Schema, JavaScriptMixin):
     # required attributes
     postleitzahl = fields.Str(missing=None)
     ort = fields.Str(missing=None)
