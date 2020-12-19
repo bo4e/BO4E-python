@@ -1,5 +1,4 @@
 import json
-import jsons
 import pytest
 
 from bo4e.com.adresse import Adresse, AdresseSchema
