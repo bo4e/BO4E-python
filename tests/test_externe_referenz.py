@@ -2,7 +2,7 @@ import jsons
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
-from bo4e.com.externereferenz import ExterneReferenz
+from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 
 
@@ -10,17 +10,13 @@ class TestExterneReferenz:
     def test_serialization(self):
         er = ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")
 
-        er_json = er.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = ExterneReferenzSchema()
+
+        er_json = schema.dumps(er, ensure_ascii=False)
 
         assert "exRefName" in er_json
 
-        deserialized_er: ExterneReferenz = ExterneReferenz.loads(
-            er_json, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        deserialized_er: ExterneReferenz = schema.loads(er_json)
         assert isinstance(deserialized_er, ExterneReferenz)
         assert deserialized_er == er
 
