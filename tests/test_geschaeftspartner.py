@@ -53,3 +53,10 @@ class TestGeschaeftspartner:
         )
 
         assert "Helga" in gp_json
+
+        gp_deserialised = Geschaeftspartner.loads(
+            gp_json, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
+        )
+
+        assert gp.bo_typ == gp_deserialised.bo_typ
+        assert type(gp_deserialised.partneradresse) == Adresse
