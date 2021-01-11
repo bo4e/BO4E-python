@@ -78,12 +78,6 @@ class TestAddress:
             ort=address_test_data["ort"],
         )
 
-        # address_json = a.dumps(
-        #     strip_nulls=True,
-        #     key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-        #     jdkwargs={"ensure_ascii": False},
-        # )
-
         schema = AdresseSchema()
         address_json = schema.dumps(a, ensure_ascii=False)
 
