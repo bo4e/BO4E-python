@@ -26,5 +26,5 @@ class GeokoordinatenSchema(Schema, JavaScriptMixin):
     laengengrad = fields.Decimal(as_string=True)
 
     @post_load
-    def make_geokoordinaten(self, data, **kwargs) -> Geokoordinaten:
+    def deserialise(self, data, **kwargs) -> Geokoordinaten:
         return Geokoordinaten(**data)

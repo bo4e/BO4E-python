@@ -21,5 +21,5 @@ class ExterneReferenzSchema(Schema, JavaScriptMixin):
     ex_ref_wert = fields.Str()
 
     @post_load
-    def make_externe_referenz(self, data, **kwargs) -> ExterneReferenz:
+    def deserialise(self, data, **kwargs) -> ExterneReferenz:
         return ExterneReferenz(**data)

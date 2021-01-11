@@ -51,5 +51,5 @@ class AdresseSchema(Schema, JavaScriptMixin):
     landescode = EnumField(Landescode)
 
     @post_load
-    def make_adresse(self, data, **kwargs) -> Adresse:
+    def deserialise(self, data, **kwargs) -> Adresse:
         return Adresse(**data)

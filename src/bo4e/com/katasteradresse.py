@@ -21,5 +21,5 @@ class KatasteradresseSchema(Schema, JavaScriptMixin):
     flurstueck = fields.Str()
 
     @post_load
-    def make_katasteradresse(self, data, **kwargs) -> Katasteradresse:
+    def deserialise(self, data, **kwargs) -> Katasteradresse:
         return Katasteradresse(**data)
