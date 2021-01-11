@@ -1,13 +1,15 @@
 import re
 
 import attr
-import jsons
+from marshmallow import Schema, fields, post_load
+from marshmallow_enum import EnumField
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.cases import JavaScriptMixin
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.katasteradresse import Katasteradresse
+from bo4e.com.adresse import Adresse, AdresseSchema
+from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
+from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
@@ -21,7 +23,7 @@ _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 
 
 @attr.s(auto_attribs=True, kw_only=True)
-class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
+class Marktlokation(Geschaeftsobjekt):
     """
     Objekt zur Aufnahme der Informationen zu einer Marktlokation
     """
@@ -102,3 +104,31 @@ class Marktlokation(Geschaeftsobjekt, jsons.JsonSerializable):
                 odd_checksum += int(s)
         result: int = (10 - ((even_checksum + odd_checksum) % 10)) % 10
         return str(result)
+
+
+class MarktlokationSchema(GeschaeftsobjektSchema, JavaScriptMixin):
+    marktlokations_id = fields.Str(missing=None)
+    sparte = EnumField(Sparte)
+    energierichtung = EnumField(Energierichtung)
+    bilanzierungsmethode = EnumField(Bilanzierungsmethode)
+    verbrauchsart = EnumField(Verbrauchsart, missing=None)
+    unterbrechbar = fields.Bool()
+    netzebene = EnumField(Netzebene)
+    netzbetreibercodenr = fields.Str(missing=None)
+    gebietstyp = EnumField(Gebietstyp, missing=None)
+    netzgebietsnr = fields.Str(missing=None)
+    bilanzierungsgebiet = fields.Str(missing=None)
+    grundversorgercodenr = fields.Str(missing=None)
+    gasqualitaet = EnumField(Gasqualitaet, missing=None)
+    endkunde = fields.Str(missing=None)
+    zugehoerige_messlokation = fields.Str(missing=None)
+
+    lokationsadresse = fields.Nested(AdresseSchema, missing=None)
+    geoadresse = fields.Nested(GeokoordinatenSchema, missing=None)
+    katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)
+
+    bo_typ = EnumField(BoTyp)
+
+    @post_load
+    def make_marktlokation(self, data, **kwargs) -> Marktlokation:
+        return Marktlokation(**data)
