@@ -27,9 +27,9 @@ class Geschaeftspartner(Geschaeftsobjekt):
     hrnummer: str = attr.ib(default=None)
     amtsgericht: str = attr.ib(default=None)
     kontaktweg: Kontaktart = attr.ib(default=None)
-    umsatzsteuerId: str = attr.ib(default=None)
-    glaeubigerId: str = attr.ib(default=None)
-    eMailAdresse: str = attr.ib(default=None)
+    umsatzsteuer_id: str = attr.ib(default=None)
+    glaeubiger_id: str = attr.ib(default=None)
+    e_mail_adresse: str = attr.ib(default=None)
     website: str = attr.ib(default=None)
     geschaeftspartnerrolle: Geschaeftspartnerrolle
     partneradresse: Adresse
