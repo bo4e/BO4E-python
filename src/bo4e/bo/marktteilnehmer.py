@@ -1,8 +1,7 @@
-from enum import Enum
 import attr
 from attr.validators import matches_re
 
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
@@ -31,6 +30,8 @@ class Marktteilnehmer(Geschaeftspartner):
 
 
 class MarktteilnehmerSchema(GeschaeftspartnerSchema, JavaScriptMixin):
+    class_name = Marktteilnehmer
+
     # required attributes
     marktrolle = EnumField(Marktrolle)
     rollencodenummer = fields.Str()
@@ -41,9 +42,3 @@ class MarktteilnehmerSchema(GeschaeftspartnerSchema, JavaScriptMixin):
 
     # required attributes with default value
     bo_typ = EnumField(BoTyp)
-
-    @post_load
-    def make_marktteilnehmer(self, data, **kwargs) -> Marktteilnehmer:
-        if data["bo_typ"] == BoTyp.MARKTTEILNEHMER:
-            return Marktteilnehmer(**data)
-        return data

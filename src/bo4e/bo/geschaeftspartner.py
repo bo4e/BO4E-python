@@ -1,12 +1,11 @@
 import attr
 
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.cases import JavaScriptMixin
 from bo4e.com.adresse import Adresse, AdresseSchema
-from bo4e.com.externereferenz import ExterneReferenzSchema
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
@@ -38,6 +37,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
 
 class GeschaeftspartnerSchema(GeschaeftsobjektSchema, JavaScriptMixin):
+    class_name = Geschaeftspartner
 
     anrede = EnumField(Anrede, missing=None)
     name1 = fields.Str()
@@ -55,10 +55,3 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema, JavaScriptMixin):
     partneradresse = fields.Nested(AdresseSchema)
 
     bo_typ = EnumField(BoTyp, missing=None)
-
-    # rename function to deserialise instead of make_geschaeftspartner
-    @post_load
-    def make_geschaeftspartner(self, data, **kwargs) -> Geschaeftspartner:
-        if data["bo_typ"] == BoTyp.GESCHAEFTSPARTNER:
-            return Geschaeftspartner(**data)
-        return data

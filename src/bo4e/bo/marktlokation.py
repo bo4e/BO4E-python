@@ -1,7 +1,7 @@
 import re
 
 import attr
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField
 
 from bo4e.cases import JavaScriptMixin
@@ -107,6 +107,8 @@ class Marktlokation(Geschaeftsobjekt):
 
 
 class MarktlokationSchema(GeschaeftsobjektSchema, JavaScriptMixin):
+    class_name = Marktlokation
+
     marktlokations_id = fields.Str(missing=None)
     sparte = EnumField(Sparte)
     energierichtung = EnumField(Energierichtung)
@@ -128,7 +130,3 @@ class MarktlokationSchema(GeschaeftsobjektSchema, JavaScriptMixin):
     katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)
 
     bo_typ = EnumField(BoTyp)
-
-    @post_load
-    def make_marktlokation(self, data, **kwargs) -> Marktlokation:
-        return Marktlokation(**data)

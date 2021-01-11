@@ -23,14 +23,12 @@ class Geschaeftsobjekt:
 
 
 class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
+    class_name = Geschaeftsobjekt
+
     versionstruktur = fields.Integer()
     bo_typ = EnumField(BoTyp)
     externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), missing=None)
 
-    # not sure if we need to deserialise Geschaeftsobjekt
-    # if yes, we could use a try except setup
-    # @post_load
-    # def make_geschaeftsobjekt(self, data, **kwargs) -> Geschaeftsobjekt:
-    # if data["bo_typ"]:
-    # return Geschaeftsobjekt(**data)
-    # return data
+    @post_load
+    def deserialise(self, data, **kwargs):
+        return type(self).class_name(**data)
