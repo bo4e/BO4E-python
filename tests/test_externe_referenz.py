@@ -1,6 +1,4 @@
-import jsons
-
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
@@ -39,15 +37,11 @@ class TestExterneReferenz:
             ),
         )
 
-        gp_json = gp.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = GeschaeftspartnerSchema()
 
-        deserialized_gp: Geschaeftspartner = Geschaeftspartner.loads(
-            gp_json, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        gp_json = schema.dumps(gp, ensure_ascii=False)
+
+        deserialized_gp: Geschaeftspartner = schema.loads(gp_json)
         assert len(deserialized_gp.externe_referenzen) == 2
         assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"
 
@@ -66,13 +60,9 @@ class TestExterneReferenz:
             ),
         )
 
-        gp_json = gp.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = GeschaeftspartnerSchema()
 
-        deserialized_gp: Geschaeftspartner = Geschaeftspartner.loads(
-            gp_json, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        gp_json = schema.dumps(gp, ensure_ascii=False)
+
+        deserialized_gp: Geschaeftspartner = schema.loads(gp_json)
         assert deserialized_gp.externe_referenzen is None

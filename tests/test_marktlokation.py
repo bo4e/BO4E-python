@@ -1,10 +1,9 @@
 import json
+import pytest
+
 from typing import Tuple
 
-import pytest
-import jsons
-
-from bo4e.bo.marktlokation import Marktlokation
+from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
 from bo4e.com.adresse import Adresse
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
@@ -29,18 +28,15 @@ class TestMaLo:
         assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
         assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        json_string = malo.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = MarktlokationSchema()
+
+        json_string = schema.dumps(malo, ensure_ascii=False)
         json_dict = json.loads(json_string)
+
         assert "boTyp" in json_dict, "No camel case serialization"
         assert "marktlokationsId" in json_dict, "No camel case serialization"
 
-        deserialized_malo: Marktlokation = Marktlokation.loads(
-            json_string, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        deserialized_malo: Marktlokation = schema.loads(json_string)
 
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id

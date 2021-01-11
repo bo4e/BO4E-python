@@ -1,8 +1,6 @@
 import json
 
-import jsons
-
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
+from bo4e.bo.marktteilnehmer import Marktteilnehmer, MarktteilnehmerSchema
 from bo4e.com.adresse import Adresse
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
@@ -32,18 +30,17 @@ class TestMarktteilnehmer:
         assert mt.versionstruktur == 2, "versionstruktur was not automatically set"
         assert mt.bo_typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
 
-        json_string = mt.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = MarktteilnehmerSchema()
+
+        json_string = schema.dumps(mt, ensure_ascii=False)
         json_dict = json.loads(json_string)
+
+        # Test camelcase
         assert "boTyp" in json_dict
         assert "marktrolle" in json_dict
 
-        deserialized_mt: Marktteilnehmer = Marktteilnehmer.loads(
-            json_string, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        deserialized_mt: Marktteilnehmer = schema.loads(json_string)
 
-        assert mt.marktrolle == deserialized_mt.marktrolle
-        assert mt.marktrolle is not deserialized_mt.marktrolle
+        assert mt.marktrolle is deserialized_mt.marktrolle
+        # Test snakecase
+        assert deserialized_mt.bo_typ is BoTyp.MARKTTEILNEHMER
