@@ -1,4 +1,3 @@
-from enum import Enum
 import attr
 from attr.validators import matches_re
 
