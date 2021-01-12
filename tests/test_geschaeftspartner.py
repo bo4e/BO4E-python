@@ -1,6 +1,5 @@
 import pytest
 import json
-import jsons
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse
