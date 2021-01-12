@@ -11,6 +11,17 @@ Subpackages
    bo4e.com
    bo4e.enum
 
+Submodules
+----------
+
+bo4e.cases module
+-----------------
+
+.. automodule:: bo4e.cases
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 
