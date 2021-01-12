@@ -2,3 +2,4 @@ attrs
 marshmallow
 marshmallow-enum
 iso3166
+stringcase
