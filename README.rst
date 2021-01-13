@@ -3,7 +3,10 @@ BO4E
 =============
 |PyPi|_
 |license|_
+|code style|_
 |PyPI pyversions|_
+
+
 
 .. |PyPi| image:: https://img.shields.io/pypi/v/bo4e.svg
 .. _PyPi: https://img.shields.io/pypi/v/bo4e
@@ -11,8 +14,13 @@ BO4E
 .. |license| image:: https://img.shields.io/badge/License-MIT-blue.svg
 .. _license: https://github.com/Hochfrequenz/BO4E-python/blob/master/LICENSE.rst
 
+.. |code style| image:: https://img.shields.io/badge/code%20style-black-000000.svg
+.. _`code style`: https://github.com/psf/black
+
 .. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/bo4e.svg
 .. _`PyPI pyversions`: https://pypi.python.org/pypi/bo4e/
+
+
 
 
 Python Library that Implements the `BO4E Standard`_.
