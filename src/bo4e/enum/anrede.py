@@ -9,6 +9,6 @@ _anrede = {
     "FRAU": "FRAU",
     "EHELEUTE": "EHELEUTE",
     "FIRMA": "FIRMA",
-    "INDIVIDUELL": "INDIVIDUELL"
+    "INDIVIDUELL": "INDIVIDUELL",
 }
 Anrede = Enum("Anrede", _anrede)
