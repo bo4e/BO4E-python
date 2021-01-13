@@ -113,7 +113,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     class_name = Marktlokation
 
     # required attributes
-    marktlokations_id = fields.Str(missing=None)
+    marktlokations_id = fields.Str()
     sparte = EnumField(Sparte)
     energierichtung = EnumField(Energierichtung)
     bilanzierungsmethode = EnumField(Bilanzierungsmethode)
