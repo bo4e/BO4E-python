@@ -40,6 +40,7 @@ class TestMaLo:
 
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
+        assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
 
     def test_address_validation(self):
         with pytest.raises(ValueError) as excinfo:
