@@ -5,7 +5,7 @@ from marshmallow import fields
 from marshmallow_enum import EnumField
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
@@ -128,7 +128,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     bilanzierungsgebiet = fields.Str(missing=None)
     grundversorgercodenr = fields.Str(missing=None)
     gasqualitaet = EnumField(Gasqualitaet, missing=None)
-    endkunde = fields.Str(missing=None)
+    endkunde = fields.Nested(GeschaeftspartnerSchema, missing=None)
     zugehoerige_messlokation = fields.Str(missing=None)
 
     # only one of the following three optional attributes can be set
