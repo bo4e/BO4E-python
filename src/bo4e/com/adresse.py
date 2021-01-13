@@ -39,8 +39,8 @@ class Adresse(COM):
 
 class AdresseSchema(Schema, JavaScriptMixin):
     # required attributes
-    postleitzahl = fields.Str(missing=None)
-    ort = fields.Str(missing=None)
+    postleitzahl = fields.Str()
+    ort = fields.Str()
 
     # optional attributes
     strasse = fields.Str(missing=None)
