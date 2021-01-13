@@ -10,7 +10,7 @@ from bo4e.com.com import COM
 @attr.s(auto_attribs=True, kw_only=True)
 class Geokoordinaten(COM):
     """
-    Diese Komponente liefert die Geokoordinaten für einen Ort.
+    This component provides the geo-coordinates for a location..
     """
 
     # = attr.ib() has to be there, to make the validator work
@@ -19,9 +19,14 @@ class Geokoordinaten(COM):
 
 
 class GeokoordinatenSchema(Schema, JavaScriptMixin):
-    # standard json library can not serialise Decimal type
-    # therefor these information will be serialised as string
-    # during the deserialisiation it will become a Decimal type again
+    """
+    Standard json library can not serialise Decimal type.
+    Therefore these information will be serialised as string.
+    During the deserialisiation it will become a Decimal type again.
+    Link to official documentain:
+    https://marshmallow.readthedocs.io/en/latest/api_reference.html?highlight=function#marshmallow.fields.Decimal
+    """
+
     breitengrad = fields.Decimal(as_string=True)
     laengengrad = fields.Decimal(as_string=True)
 
