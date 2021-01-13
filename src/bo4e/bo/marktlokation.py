@@ -133,5 +133,3 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     lokationsadresse = fields.Nested(AdresseSchema, missing=None)
     geoadresse = fields.Nested(GeokoordinatenSchema, missing=None)
     katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)
-
-    bo_typ = EnumField(BoTyp)

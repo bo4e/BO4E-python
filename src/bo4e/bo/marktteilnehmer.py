@@ -38,6 +38,3 @@ class MarktteilnehmerSchema(GeschaeftspartnerSchema):
 
     # optional attributes
     makoadresse = fields.Str(missing=None)
-
-    # required attributes with default value
-    bo_typ = EnumField(BoTyp)

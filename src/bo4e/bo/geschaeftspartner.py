@@ -56,5 +56,3 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     glaeubiger_id = fields.Str(missing=None)
     e_mail_adresse = fields.Str(missing=None)
     website = fields.Str(missing=None)
-
-    bo_typ = EnumField(BoTyp, missing=None)
