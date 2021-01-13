@@ -4,7 +4,6 @@ import attr
 from marshmallow import fields
 from marshmallow_enum import EnumField
 
-from bo4e.cases import JavaScriptMixin
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -108,7 +107,7 @@ class Marktlokation(Geschaeftsobjekt):
         return str(result)
 
 
-class MarktlokationSchema(GeschaeftsobjektSchema, JavaScriptMixin):
+class MarktlokationSchema(GeschaeftsobjektSchema):
     class_name = Marktlokation
 
     # required attributes

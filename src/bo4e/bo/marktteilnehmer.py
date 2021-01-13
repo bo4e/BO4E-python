@@ -5,7 +5,6 @@ from marshmallow import fields
 from marshmallow_enum import EnumField
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.cases import JavaScriptMixin
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
@@ -28,8 +27,8 @@ class Marktteilnehmer(Geschaeftspartner):
     # required attributes with default value
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
 
-
-class MarktteilnehmerSchema(GeschaeftspartnerSchema, JavaScriptMixin):
+class MarktteilnehmerSchema(GeschaeftspartnerSchema):
+    # class_name is needed to use the correct schema for deserialisation.
     class_name = Marktteilnehmer
 
     # required attributes

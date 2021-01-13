@@ -4,7 +4,6 @@ from marshmallow import fields
 from marshmallow_enum import EnumField
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.cases import JavaScriptMixin
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.kontaktart import Kontaktart
@@ -38,6 +37,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     website: str = attr.ib(default=None)
 
 
+class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
 
     # required attributes
     name1 = fields.Str()
