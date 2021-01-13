@@ -3,6 +3,11 @@ from marshmallow import pre_load, post_dump
 
 
 class JavaScriptMixin:
+    """
+    This class is used so that we always use snake_case in the Python world and CamelCase in the JSON (Javascript world).
+    It is always executed before loading or after dumping a JSON file.
+    """
+
     @pre_load
     def to_snakecase(self, data, **kwargs):
         return {snakecase(key): value for key, value in data.items()}
