@@ -42,13 +42,17 @@ class Marktlokation(Geschaeftsobjekt):
                 f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
             )
 
+    # required attributes
+    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
     marktlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
     sparte: Sparte
     energierichtung: Energierichtung
     bilanzierungsmethode: Bilanzierungsmethode
+    netzebene: Netzebene
+
+    # optional attributes
     verbrauchsart: Verbrauchsart = attr.ib(default=None)
     unterbrechbar: bool = attr.ib(default=None)
-    netzebene: Netzebene
     netzbetreibercodenr: str = attr.ib(default=None)
     gebietstyp: Gebietstyp = attr.ib(default=None)
     netzgebietsnr: str = attr.ib(default=None)
@@ -58,11 +62,10 @@ class Marktlokation(Geschaeftsobjekt):
     endkunde: Geschaeftspartner = attr.ib(default=None)
     zugehoerige_messlokation: str = attr.ib(default=None)
 
+    # only one of the following three optional attributes can be set
     lokationsadresse: Adresse = attr.ib(default=None)
     geoadresse: Geokoordinaten = attr.ib(default=None)
     katasterinformation: Katasteradresse = attr.ib(default=None)
-
-    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
 
     @lokationsadresse.validator
     @geoadresse.validator
@@ -109,13 +112,16 @@ class Marktlokation(Geschaeftsobjekt):
 class MarktlokationSchema(GeschaeftsobjektSchema, JavaScriptMixin):
     class_name = Marktlokation
 
+    # required attributes
     marktlokations_id = fields.Str(missing=None)
     sparte = EnumField(Sparte)
     energierichtung = EnumField(Energierichtung)
     bilanzierungsmethode = EnumField(Bilanzierungsmethode)
+    netzebene = EnumField(Netzebene)
+
+    # optional attributes
     verbrauchsart = EnumField(Verbrauchsart, missing=None)
     unterbrechbar = fields.Bool()
-    netzebene = EnumField(Netzebene)
     netzbetreibercodenr = fields.Str(missing=None)
     gebietstyp = EnumField(Gebietstyp, missing=None)
     netzgebietsnr = fields.Str(missing=None)
@@ -125,6 +131,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema, JavaScriptMixin):
     endkunde = fields.Str(missing=None)
     zugehoerige_messlokation = fields.Str(missing=None)
 
+    # only one of the following three optional attributes can be set
     lokationsadresse = fields.Nested(AdresseSchema, missing=None)
     geoadresse = fields.Nested(GeokoordinatenSchema, missing=None)
     katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)

@@ -18,11 +18,17 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Objekt zur Aufnahme der Information zu einem Geschaeftspartner
     """
 
-    anrede: Anrede = attr.ib(default=None)
+    # required attributes
+    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
     name1: str
+    gewerbekennzeichnung: bool
+    geschaeftspartnerrolle: Geschaeftspartnerrolle
+    partneradresse: Adresse
+
+    # optional attributes
+    anrede: Anrede = attr.ib(default=None)
     name2: str = attr.ib(default=None)
     name3: str = attr.ib(default=None)
-    gewerbekennzeichnung: bool
     hrnummer: str = attr.ib(default=None)
     amtsgericht: str = attr.ib(default=None)
     kontaktweg: Kontaktart = attr.ib(default=None)
@@ -30,20 +36,19 @@ class Geschaeftspartner(Geschaeftsobjekt):
     glaeubiger_id: str = attr.ib(default=None)
     e_mail_adresse: str = attr.ib(default=None)
     website: str = attr.ib(default=None)
-    geschaeftspartnerrolle: Geschaeftspartnerrolle
-    partneradresse: Adresse
-
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
 
 
-class GeschaeftspartnerSchema(GeschaeftsobjektSchema, JavaScriptMixin):
-    class_name = Geschaeftspartner
 
-    anrede = EnumField(Anrede, missing=None)
+    # required attributes
     name1 = fields.Str()
+    gewerbekennzeichnung = fields.Bool()
+    geschaeftspartnerrolle = EnumField(Geschaeftspartnerrolle)
+    partneradresse = fields.Nested(AdresseSchema)
+
+    # optional attributes
+    anrede = EnumField(Anrede, missing=None)
     name2 = fields.Str(missing=None)
     name3 = fields.Str(missing=None)
-    gewerbekennzeichnung = fields.Bool()
     hrnummer = fields.Str(missing=None)
     amtsgericht = fields.Str(missing=None)
     kontaktweg = EnumField(Kontaktart, missing=None)
@@ -51,7 +56,5 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema, JavaScriptMixin):
     glaeubiger_id = fields.Str(missing=None)
     e_mail_adresse = fields.Str(missing=None)
     website = fields.Str(missing=None)
-    geschaeftspartnerrolle = EnumField(Geschaeftspartnerrolle)
-    partneradresse = fields.Nested(AdresseSchema)
 
     bo_typ = EnumField(BoTyp, missing=None)
