@@ -17,6 +17,7 @@ class Marktteilnehmer(Geschaeftspartner):
     """
 
     # required attributes
+    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
     marktrolle: Marktrolle
     rollencodenummer: str = attr.ib(validator=matches_re(r"^\d{13}$"))
     rollencodetyp: Rollencodetyp
@@ -24,8 +25,6 @@ class Marktteilnehmer(Geschaeftspartner):
     # optional attributes
     makoadresse: str = attr.ib(default=None)
 
-    # required attributes with default value
-    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
 
 class MarktteilnehmerSchema(GeschaeftspartnerSchema):
     # class_name is needed to use the correct schema for deserialisation.
