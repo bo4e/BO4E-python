@@ -9,6 +9,10 @@ from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
+from bo4e.com.messlokationszuordnung import (
+    Messlokationszuordnung,
+    MesslokationszuordnungSchema,
+)
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
@@ -59,7 +63,7 @@ class Marktlokation(Geschaeftsobjekt):
     grundversorgercodenr: str = attr.ib(default=None)
     gasqualitaet: Gasqualitaet = attr.ib(default=None)
     endkunde: Geschaeftspartner = attr.ib(default=None)
-    zugehoerige_messlokation: str = attr.ib(default=None)
+    zugehoerige_messlokation: Messlokationszuordnung = attr.ib(default=None)
 
     # only one of the following three optional attributes can be set
     lokationsadresse: Adresse = attr.ib(default=None)
@@ -129,7 +133,9 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     grundversorgercodenr = fields.Str(missing=None)
     gasqualitaet = EnumField(Gasqualitaet, missing=None)
     endkunde = fields.Nested(GeschaeftspartnerSchema, missing=None)
-    zugehoerige_messlokation = fields.Str(missing=None)
+    zugehoerige_messlokation = fields.List(
+        fields.Nested(MesslokationszuordnungSchema), missing=None
+    )
 
     # only one of the following three optional attributes can be set
     lokationsadresse = fields.Nested(AdresseSchema, missing=None)
