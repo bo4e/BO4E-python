@@ -121,7 +121,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     verbrauchsart = EnumField(Verbrauchsart, missing=None)
-    unterbrechbar = fields.Bool()
+    unterbrechbar = fields.Bool(missing=None)
     netzbetreibercodenr = fields.Str(missing=None)
     gebietstyp = EnumField(Gebietstyp, missing=None)
     netzgebietsnr = fields.Str(missing=None)
