@@ -25,7 +25,7 @@ _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 @attr.s(auto_attribs=True, kw_only=True)
 class Marktlokation(Geschaeftsobjekt):
     """
-    Objekt zur Aufnahme der Informationen zu einer Marktlokation
+    Object for containing information about a Marktlokation
     """
 
     def _validate_marktlokations_id(self, marklokations_id_attribute, value):
@@ -87,10 +87,9 @@ class Marktlokation(Geschaeftsobjekt):
         """
         Get the checksum of a marktlokations id.
         a) Quersumme aller Ziffern in ungerader Position
-        b) Quersumme aller Ziffern
-        auf gerader Position multipliziert mit 2 c) Summe von a) und b) d) Differenz
-        von c) zum nächsten Vielfachen von 10 (ergibt sich hier 10, wird die
-        Prüfziffer 0 genommen
+        b) Quersumme aller Ziffern auf gerader Position multipliziert mit 2
+        c) Summe von a) und b) d) Differenz von c) zum nächsten Vielfachen von 10 (ergibt sich hier 10, wird die
+           Prüfziffer 0 genommen
         https://bdew-codes.de/Content/Files/MaLo/2017-04-28-BDEW-Anwendungshilfe-MaLo-ID_Version1.0_FINAL.PDF
         :param self:
         :return: the checksum as string

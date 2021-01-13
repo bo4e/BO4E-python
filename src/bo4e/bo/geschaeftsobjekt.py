@@ -12,7 +12,7 @@ from bo4e.enum.botyp import BoTyp
 @attr.s(auto_attribs=True, kw_only=True)
 class Geschaeftsobjekt:
     """
-    base class for all business objects
+    Base class for all business objects
     """
 
     # required attributes

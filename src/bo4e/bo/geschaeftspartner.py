@@ -15,7 +15,7 @@ from bo4e.enum.botyp import BoTyp
 @attr.s(auto_attribs=True, kw_only=True)
 class Geschaeftspartner(Geschaeftsobjekt):
     """
-    Objekt zur Aufnahme der Information zu einem Geschaeftspartner
+    Object for containing information about a Geschaeftspartner
     """
 
     # required attributes
