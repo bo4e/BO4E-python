@@ -53,5 +53,5 @@ class TestGeschaeftspartner:
 
         gp_deserialised = schema.loads(gp_json)
 
-        assert gp.bo_typ == gp_deserialised.bo_typ
+        assert  gp_deserialised.bo_typ == gp.bo_typ
         assert type(gp_deserialised.partneradresse) == Adresse
