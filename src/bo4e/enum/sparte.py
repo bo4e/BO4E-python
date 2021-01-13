@@ -1,14 +1,14 @@
+"""
+Unterscheidungsmöglichkeiten für die Sparte.
+"""
 from enum import Enum
 
-
-class Sparte(str, Enum):
-    """
-    Unterscheidungsmöglichkeiten für die Sparte.
-    """
-
-    STROM = "STROM"
-    GAS = "GAS"
-    FERNWAERME = "FERNWAERME"
-    NAHWAERME = "NAHWAERME"
-    WASSER = "WASSER"
-    ABWASSER = "ABWASSER"
+_sparte = {
+    "STROM": "STROM",
+    "GAS": "GAS",
+    "FERNWAERME": "FERNWAERME",
+    "NAHWAERME": "NAHWAERME",
+    "WASSER": "WASSER",
+    "ABWASSER": "ABWASSER"
+}
+Sparte = Enum("Sparte", _sparte)

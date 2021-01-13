@@ -12,6 +12,14 @@ bo4e.enum.anrede module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.arithmetische\_operation module
+-----------------------------------------
+
+.. automodule:: bo4e.enum.arithmetische_operation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.bilanzierungsmethode module
 -------------------------------------
 

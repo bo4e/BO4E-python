@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.com.externereferenz import ExterneReferenz
 
@@ -33,7 +33,7 @@ class TestGeschaeftsobjet:
             (BoTyp.ENERGIEMENGE, 2, None),
         ],
     )
-    def test_initialization_with_all_attributes(
+    def test_serialisation(
         self, bo_typ: BoTyp, versionstruktur: int, externe_referenzen: ExterneReferenz
     ):
         go = Geschaeftsobjekt(
@@ -41,8 +41,19 @@ class TestGeschaeftsobjet:
             versionstruktur=versionstruktur,
             externe_referenzen=externe_referenzen,
         )
-
         assert isinstance(go, Geschaeftsobjekt)
+
+        schema = GeschaeftsobjektSchema()
+
+        go_json = schema.dumps(go, ensure_ascii=False)
+
+        assert str(versionstruktur) in go_json
+
+        go_deserialised = schema.loads(go_json)
+
+        assert go_deserialised.bo_typ is bo_typ
+        assert go_deserialised.versionstruktur == versionstruktur
+        assert go_deserialised.externe_referenzen == externe_referenzen
 
     def test_initialization_with_minimal_attributs(self):
         go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)

@@ -1,18 +1,78 @@
+import json
+import pytest
+
 from typing import Tuple
 
-import pytest
-import jsons
-
-from bo4e.bo.marktlokation import Marktlokation
+from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
+from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
+from bo4e.enum.anrede import Anrede
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
+from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.sparte import Sparte
+from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.netzebene import Netzebene
+from bo4e.enum.sparte import Sparte
 
 
 class TestMaLo:
-    def test_serialization(self):
+    def test_serialisation_only_required_attributes(self):
+        """
+        Test serialisation of Marktlokation only with required attributes
+        """
+        malo = Marktlokation(
+            marktlokations_id="51238696781",
+            sparte=Sparte.GAS,
+            lokationsadresse=Adresse(
+                postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"
+            ),
+            energierichtung=Energierichtung.EINSP,
+            bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+            netzebene=Netzebene.NSP,
+        )
+        assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
+        assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
+
+        schema = MarktlokationSchema()
+
+        json_string = schema.dumps(malo, ensure_ascii=False)
+        json_dict = json.loads(json_string)
+
+        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "marktlokationsId" in json_dict, "No camel case serialization"
+
+        deserialized_malo: Marktlokation = schema.loads(json_string)
+
+        assert deserialized_malo.marktlokations_id == malo.marktlokations_id
+        assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
+        assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
+
+    def test_serialization_required_and_optional_attributes(self):
+        """
+        Test serialisation of Marktlokation with required attributes and optional attributes
+        """
+        gp = Geschaeftspartner(
+            anrede=Anrede.FRAU,
+            name1="von Sinnen",
+            name2="Helga",
+            name3=None,
+            gewerbekennzeichnung=True,
+            hrnummer="HRB 254466",
+            amtsgericht="Amtsgericht München",
+            kontaktweg=Kontaktart.E_MAIL,
+            umsatzsteuer_id="DE267311963",
+            glaeubiger_id="DE98ZZZ09999999999",
+            e_mail_adresse="test@bo4e.de",
+            website="bo4e.de",
+            geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
+            partneradresse=Adresse(
+                postleitzahl="82031",
+                ort="Grünwald",
+                strasse="Nördliche Münchner Straße",
+                hausnummer="27A",
+            ),
+        )
         malo = Marktlokation(
             marktlokations_id="51238696781",
             sparte=Sparte.GAS,
@@ -23,28 +83,70 @@ class TestMaLo:
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             unterbrechbar=True,  # optional attribute
             netzebene=Netzebene.NSP,
+            endkunde=gp,
         )
         assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
-        assert malo.bo_typ == "MARKTLOKATION", "boTyp was not automatically set"
+        assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        json_string = malo.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
-        assert (
-            "boTyp" in json_string
-        ), "No camel case serialization"  # camel case serialization
-        assert (
-            "marktlokationsId" in json_string
-        ), "No camel case serialization"  # camel case serialization
+        schema = MarktlokationSchema()
 
-        deserialized_malo: Marktlokation = Marktlokation.loads(
-            json_string, key_transformer=jsons.KEY_TRANSFORMER_SNAKECASE
-        )
+        json_string = schema.dumps(malo, ensure_ascii=False)
+        json_dict = json.loads(json_string)
 
-        assert malo.marktlokations_id == deserialized_malo.marktlokations_id
-        assert malo.marktlokations_id is not deserialized_malo.marktlokations_id
+        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "marktlokationsId" in json_dict, "No camel case serialization"
+
+        deserialized_malo: Marktlokation = schema.loads(json_string)
+
+        assert deserialized_malo.marktlokations_id == malo.marktlokations_id
+        assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
+        assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
+        assert deserialized_malo.endkunde == gp
+
+    def test_missing_required_fields(self):
+        """
+        Test required
+        Test that the required attributes are checked in the deserialisation.
+        Therefore the required attribute `marktlokations_id` is removed.
+        """
+        invalid_json_string = """{
+            "katasterinformation": null,
+            "boTyp": "MARKTLOKATION",
+            "endkunde": null,
+            "sparte": "GAS",
+            "zugehoerigeMesslokation": null,
+            "verbrauchsart": null,
+            "externeReferenzen": null,
+            "gebietstyp": null,
+            "grundversorgercodenr": null,
+            "netzebene": "NSP",
+            "netzbetreibercodenr": null,
+            "netzgebietsnr": null,
+            "lokationsadresse": {
+                "ort": "Leipzig",
+                "strasse": "Jahnalle",
+                "adresszusatz": null,
+                "coErgaenzung": null,
+                "landescode": "DE",
+                "postfach": null,
+                "hausnummer": "1",
+                "postleitzahl": "04177"
+                },
+            "unterbrechbar": null,
+            "gasqualitaet": null,
+            "bilanzierungsgebiet": null,
+            "geoadresse": null,
+            "bilanzierungsmethode": "PAUSCHAL",
+            "versionstruktur": 2,
+            "energierichtung": "EINSP"
+            }"""
+
+        schema = MarktlokationSchema()
+
+        with pytest.raises(TypeError) as excinfo:
+            schema.loads(invalid_json_string)
+
+        assert "marktlokations_id" in str(excinfo.value)
 
     def test_address_validation(self):
         with pytest.raises(ValueError) as excinfo:
