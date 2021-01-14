@@ -113,7 +113,7 @@ class Marktlokation(Geschaeftsobjekt):
 
 class MarktlokationSchema(GeschaeftsobjektSchema):
     # class_name is needed to use the correct schema for deserialisation.
-    # see fuction `deserialise` in geschaeftsobjekt.py
+    # see function `deserialise` in geschaeftsobjekt.py
     class_name = Marktlokation
 
     # required attributes
