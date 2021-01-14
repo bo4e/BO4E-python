@@ -28,7 +28,7 @@ _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 @attr.s(auto_attribs=True, kw_only=True)
 class Marktlokation(Geschaeftsobjekt):
     """
-    Object for containing information about a Marktlokation
+    Object containing information about a Marktlokation
     """
 
     def _validate_marktlokations_id(self, marklokations_id_attribute, value):
