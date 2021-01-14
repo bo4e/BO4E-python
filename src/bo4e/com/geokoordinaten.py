@@ -10,7 +10,7 @@ from bo4e.com.com import COM
 @attr.s(auto_attribs=True, kw_only=True)
 class Geokoordinaten(COM):
     """
-    This component provides the geo-coordinates for a location..
+    This component provides the geo-coordinates for a location.
     """
 
     # = attr.ib() has to be there, to make the validator work
