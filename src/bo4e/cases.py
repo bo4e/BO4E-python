@@ -5,7 +5,7 @@ from marshmallow import pre_load, post_dump
 class JavaScriptMixin:
     """
     This class is used so that we always use snake_case in the Python world and CamelCase in the JSON (Javascript world).
-    It is always executed before loading or after dumping a JSON file.
+    Its methods are executed before loading or after dumping a JSON string respectively.
     """
 
     @pre_load
