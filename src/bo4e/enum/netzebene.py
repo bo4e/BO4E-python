@@ -7,7 +7,7 @@ from enum import Enum
 _netzebene = {
     "NSP": "NSP",  # Niederspannung; Strom
     "MSP": "MSP",  # Mittelspannung; Strom
-    "HSP": "HSP",  # Hochspannung;Strom
+    "HSP": "HSP",  # Hochspannung; Strom
     "HSS": "HSS",  # Hoechstspannung; Strom
     "MSP_NSP_UMSP": "MSP_NSP_UMSP",  # MS/NS Umspannung; Strom
     "HSP_MSP_UMSP": "HSP_MSP_UMSP",  # HS/MS Umspannung; Strom
