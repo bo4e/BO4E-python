@@ -107,7 +107,6 @@ class TestMaLo:
 
     def test_missing_required_fields(self):
         """
-        Test required
         Test that the required attributes are checked in the deserialization.
         Therefore the required attribute `marktlokations_id` is removed.
         """
