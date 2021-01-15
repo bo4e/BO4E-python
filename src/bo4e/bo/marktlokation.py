@@ -31,7 +31,7 @@ class Marktlokation(Geschaeftsobjekt):
     Object containing information about a Marktlokation
     """
 
-    def _validate_marktlokations_id(self, marklokations_id_attribute, value):
+    def _validate_marktlokations_id(self, marktlokations_id_attribute, value):
         if not value:
             raise ValueError("The marktlokations_id must not be empty.")
         if not _malo_id_pattern.match(value):

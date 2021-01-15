@@ -14,7 +14,7 @@ class Messlokationszuordnung(COM):
     """
     Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.
     Dabei kann eine arithmetische Operation (Addition, Subtraktion) angegeben werden,
-    mit der die Messlokation zum Verbrauch der Marklokation beiträgt.
+    mit der die Messlokation zum Verbrauch der Marktlokation beiträgt.
     """
 
     # required attributes
