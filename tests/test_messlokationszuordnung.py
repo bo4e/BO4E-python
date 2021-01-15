@@ -43,13 +43,15 @@ class TestMesslokationszuordnung:
         )
 
         schema = MesslokationszuordnungSchema()
-        json_string = schema.dumps(mlz, ensure_ascii=False)
+        mlz_dict = schema.dump(mlz)
 
-        assert messlokations_id in json_string
-        assert "ADDITION" in json_string
-        assert "2021-01-13" in json_string
+        # CamelCase keys are made because they will put into JSON strings
+        # to send them to the frontend (= JavaScript land)
+        assert mlz_dict["messlokationsId"] == messlokations_id
+        assert mlz_dict["arithmetik"] == "ADDITION"
+        assert mlz_dict["gueltigSeit"] == "2021-01-13T00:00:00"
 
-        mlz_deserialised = schema.loads(json_string)
+        mlz_deserialised = schema.load(mlz_dict)
 
         assert mlz_deserialised.messlokations_id == messlokations_id
         assert mlz_deserialised.arithmetik == ArithmetischeOperation.ADDITION

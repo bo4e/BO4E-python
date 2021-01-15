@@ -25,14 +25,14 @@ class TestAddress:
         )
 
         schema = AdresseSchema()
-        address_json = schema.dumps(a, ensure_ascii=False)
+        address_dict = schema.dump(a)
 
-        assert "Nördliche Münchner Straße" in address_json
-        assert "27A" in address_json
-        assert "82031" in address_json
-        assert "DE" in address_json
+        assert address_dict["strasse"] == "Nördliche Münchner Straße"
+        assert address_dict["hausnummer"] == "27A"
+        assert address_dict["postleitzahl"] == "82031"
+        assert address_dict["landescode"] == "DE"
 
-        deserialized_address = schema.loads(address_json)
+        deserialized_address = schema.load(address_dict)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
