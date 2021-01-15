@@ -31,7 +31,7 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     All business objects are inherited from this class.
     """
 
-    # class_name is needed to use the correct schema for deserialisation.
+    # class_name is needed to use the correct schema for deserialization.
     class_name = Geschaeftsobjekt
 
     # required attributes
