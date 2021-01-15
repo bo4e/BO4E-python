@@ -107,7 +107,7 @@ class TestMaLo:
         """
         Test required
         Test that the required attributes are checked in the deserialization.
-        Therefore the required attribute `marktlokations_id` is removed.
+        Therefore the required attribute `marktlokations_id` is removed in the test data.
         """
         invalid_json_string = """{
             "katasterinformation": null,
