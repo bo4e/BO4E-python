@@ -13,7 +13,7 @@ from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 class Messlokationszuordnung(COM):
     """
     Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.
-    Dabei kann eine arithmetische Operation (Addition, Subtraktion) angegeben werden,
+    Dabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,
     mit der die Messlokation zum Verbrauch der Marktlokation beiträgt.
     """
 
