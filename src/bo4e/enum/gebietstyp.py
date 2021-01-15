@@ -1,5 +1,5 @@
 """
-Auflistung der möglichen Gebietstypen. (no shit, sherlock)
+List of possible Gebietstypen.
 """
 from enum import Enum
 
