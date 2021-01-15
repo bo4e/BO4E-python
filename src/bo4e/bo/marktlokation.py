@@ -103,10 +103,10 @@ class Marktlokation(Geschaeftsobjekt):
         # of "even" and "odd" but stop at tenth digit.
         for i in range(1, 11):
             s = malo_id[i - 1 : i]
-            if i % 2 == 0:
-                even_checksum += 2 * int(s)
-            else:
+            if i % 2 - 1 == 0:
                 odd_checksum += int(s)
+            else:
+                even_checksum += 2 * int(s)
         result: int = (10 - ((even_checksum + odd_checksum) % 10)) % 10
         return str(result)
 
