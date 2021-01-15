@@ -1,10 +1,10 @@
 import pytest
 import json
-import jsons
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
+from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 
@@ -29,9 +29,9 @@ class TestGeschaeftspartner:
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht München",
             kontaktweg=Kontaktart.E_MAIL,
-            umsatzsteuerId="DE267311963",
-            glaeubigerId="DE98ZZZ09999999999",
-            eMailAdresse="test@bo4e.de",
+            umsatzsteuer_id="DE267311963",
+            glaeubiger_id="DE98ZZZ09999999999",
+            e_mail_adresse="test@bo4e.de",
             website="bo4e.de",
             geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
             partneradresse=Adresse(
@@ -43,12 +43,15 @@ class TestGeschaeftspartner:
         )
 
         # test default value for bo_typ in Geschaeftspartner
-        assert gp.bo_typ == "GESCHAEFTSPARTNER"
+        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
 
-        gp_json = gp.dumps(
-            strip_nulls=True,
-            key_transformer=jsons.KEY_TRANSFORMER_CAMELCASE,
-            jdkwargs={"ensure_ascii": False},
-        )
+        schema = GeschaeftspartnerSchema()
+
+        gp_json = schema.dumps(gp, ensure_ascii=False)
 
         assert "Helga" in gp_json
+
+        gp_deserialised = schema.loads(gp_json)
+
+        assert gp_deserialised.bo_typ == gp.bo_typ
+        assert type(gp_deserialised.partneradresse) == Adresse

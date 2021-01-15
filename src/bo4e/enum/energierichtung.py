@@ -1,10 +1,10 @@
+"""
+Spezifiziert die Energierichtung einer Markt- und/oder Messlokation
+"""
 from enum import Enum
 
-
-class Energierichtung(str, Enum):
-    """
-    Spezifiziert die Energierichtung einer Markt- und/oder Messlokation
-    """
-
-    AUSSP = "AUSSP"
-    EINSP = "EINSP"
+_energierichtung = {
+    "AUSSP": "AUSSP",  # Ausspeisung
+    "EINSP": "EINSP"  # Einspeisung
+}
+Energierichtung = Enum("Energierichtung", _energierichtung)

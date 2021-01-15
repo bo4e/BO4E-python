@@ -44,6 +44,14 @@ bo4e.com.katasteradresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.messlokationszuordnung module
+--------------------------------------
+
+.. automodule:: bo4e.com.messlokationszuordnung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

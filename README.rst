@@ -44,9 +44,9 @@ Release workflow
 ================
 * Check with tox all tests and lintings: `tox`
 * Check with tox if the packaging works fine: `tox -e test_packaging`
-* Merge all your changes you would like to have in the release into the master branch
+* Merge all your changes you would like to have in the release into the master branch (`open new PR develop→master`_)
 * Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master) 
-* Go to `BO4E-python`_ and click on *Create a new release* in the right sidebar
+* Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
 * Add a describtion to the release
 * Publish the release
@@ -70,3 +70,5 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`develop branch`: https://github.com/Hochfrequenz/BO4E-python/tree/develop
 .. _`tox`: https://pypi.org/project/tox/
 .. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
+.. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
+.. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
