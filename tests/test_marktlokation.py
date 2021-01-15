@@ -44,6 +44,8 @@ class TestMaLo:
 
         deserialized_malo: Marktlokation = schema.loads(json_string)
 
+        # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
+        # but are **not** the same object.
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
         assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
