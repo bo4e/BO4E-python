@@ -17,7 +17,7 @@ class Geschaeftsobjekt:
 
     # required attributes
     versionstruktur: int = attr.ib(default=2)
-    bo_typ: BoTyp
+    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
