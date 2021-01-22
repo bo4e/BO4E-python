@@ -12,7 +12,7 @@ class TestMarktteilnehmer:
     def test_serialization(self):
         mt = Marktteilnehmer(
             # required attributes of Marktteilnehmer only
-            marktrolle=Marktrolle.DIENSTLEISTER,
+            marktrolle=Marktrolle.DL,
             rollencodenummer="9903916000000",
             rollencodetyp=Rollencodetyp.BDEW,
             # required attributes inherited from Geschaeftspartner
@@ -27,7 +27,7 @@ class TestMarktteilnehmer:
             ),
         )
 
-        assert mt.versionstruktur == 2, "versionstruktur was not automatically set"
+        assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
         assert mt.bo_typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
 
         schema = MarktteilnehmerSchema()

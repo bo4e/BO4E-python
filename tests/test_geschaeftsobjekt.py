@@ -59,7 +59,7 @@ class TestGeschaeftsobjet:
         go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)
 
         assert go.externe_referenzen == []
-        assert go.versionstruktur == 2
+        assert go.versionstruktur == "2"
 
     def test_no_list_in_externen_referenzen(self):
         with pytest.raises(TypeError) as excinfo:

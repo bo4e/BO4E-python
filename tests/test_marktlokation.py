@@ -31,7 +31,7 @@ class TestMaLo:
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             netzebene=Netzebene.NSP,
         )
-        assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
+        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         schema = MarktlokationSchema()
@@ -87,7 +87,7 @@ class TestMaLo:
             netzebene=Netzebene.NSP,
             endkunde=gp,
         )
-        assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
+        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         schema = MarktlokationSchema()
