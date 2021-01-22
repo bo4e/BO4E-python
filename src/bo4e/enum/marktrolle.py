@@ -11,7 +11,7 @@ _marktrolle = {
     "BKV": "BKV",  # Bilanzkreisverantwortlicher,
     "BKO": "BKO",  # Bilanzkoordinator / Marktgebietsverantwortlicher
     "UENB": "UENB",  # Übertragungsnetzbetreiber
-    "KUNDE-SELBST-NN": "KUNDE-SELBST-NN",  # Kunden, die Netznutzungsentgelte selbst zahlen
+    "KUNDE_SELBST_NN": "KUNDE_SELBST_NN",  # Kunden, die Netznutzungsentgelte selbst zahlen
     "MGV": "MGV",  # Marktgebietsverantwortlicher
     "EIV": "EIV",  # Einsatzverantwortlicher
     "RB": "RB",  # Registerbetreiber
