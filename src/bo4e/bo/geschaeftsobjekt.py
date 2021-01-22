@@ -35,7 +35,7 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     class_name = Geschaeftsobjekt
 
     # required attributes
-    versionstruktur = fields.Integer()
+    versionstruktur = fields.String()
     bo_typ = EnumField(BoTyp)
 
     # optional attributes
