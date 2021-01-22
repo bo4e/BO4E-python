@@ -16,7 +16,7 @@ class Geschaeftsobjekt:
     """
 
     # required attributes
-    versionstruktur: int = attr.ib(default=2)
+    versionstruktur: str = attr.ib(default="2")
     bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)
 
     # optional attributes
