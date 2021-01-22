@@ -65,4 +65,5 @@ class TestExterneReferenz:
         gp_json = schema.dumps(gp, ensure_ascii=False)
 
         deserialized_gp: Geschaeftspartner = schema.loads(gp_json)
+
         assert deserialized_gp.externe_referenzen == []
