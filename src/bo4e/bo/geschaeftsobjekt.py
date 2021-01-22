@@ -16,12 +16,12 @@ class Geschaeftsobjekt:
     """
 
     # required attributes
-    versionstruktur: int = attr.ib(default=2)
-    bo_typ: BoTyp
+    versionstruktur: str = attr.ib(default="2")
+    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
-        default=None, validator=attr.validators.instance_of((type(None), List))
+        default=[], validator=attr.validators.instance_of(List)
     )
 
 
@@ -35,7 +35,7 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     class_name = Geschaeftsobjekt
 
     # required attributes
-    versionstruktur = fields.Integer()
+    versionstruktur = fields.String()
     bo_typ = EnumField(BoTyp)
 
     # optional attributes

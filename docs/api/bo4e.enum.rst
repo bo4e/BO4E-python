@@ -52,10 +52,10 @@ bo4e.enum.gasqualitaet module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.gebietstyp module
----------------------------
+bo4e.enum.gebiettyp module
+--------------------------
 
-.. automodule:: bo4e.enum.gebietstyp
+.. automodule:: bo4e.enum.gebiettyp
    :members:
    :undoc-members:
    :show-inheritance:

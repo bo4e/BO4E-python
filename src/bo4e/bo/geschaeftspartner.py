@@ -2,6 +2,7 @@ import attr
 
 from marshmallow import fields
 from marshmallow_enum import EnumField
+from typing import List
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -21,7 +22,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
     name1: str
     gewerbekennzeichnung: bool
-    geschaeftspartnerrolle: Geschaeftspartnerrolle
+    geschaeftspartnerrolle: List[Geschaeftspartnerrolle]
     partneradresse: Adresse
 
     # optional attributes
@@ -30,7 +31,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     name3: str = attr.ib(default=None)
     hrnummer: str = attr.ib(default=None)
     amtsgericht: str = attr.ib(default=None)
-    kontaktweg: Kontaktart = attr.ib(default=None)
+    kontaktweg: List[Kontaktart] = attr.ib(default=[])
     umsatzsteuer_id: str = attr.ib(default=None)
     glaeubiger_id: str = attr.ib(default=None)
     e_mail_adresse: str = attr.ib(default=None)
@@ -45,7 +46,7 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     # required attributes
     name1 = fields.Str()
     gewerbekennzeichnung = fields.Bool()
-    geschaeftspartnerrolle = EnumField(Geschaeftspartnerrolle)
+    geschaeftspartnerrolle = fields.List(EnumField(Geschaeftspartnerrolle))
     partneradresse = fields.Nested(AdresseSchema)
 
     # optional attributes
@@ -54,7 +55,7 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     name3 = fields.Str(missing=None)
     hrnummer = fields.Str(missing=None)
     amtsgericht = fields.Str(missing=None)
-    kontaktweg = EnumField(Kontaktart, missing=None)
+    kontaktweg = fields.List(EnumField(Kontaktart), missing=None)
     umsatzsteuer_id = fields.Str(missing=None)
     glaeubiger_id = fields.Str(missing=None)
     e_mail_adresse = fields.Str(missing=None)

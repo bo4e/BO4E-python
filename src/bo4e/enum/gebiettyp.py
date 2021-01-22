@@ -1,9 +1,9 @@
 """
-List of possible Gebietstypen.
+List of possible Gebiettypen.
 """
 from enum import Enum
 
-_gebietstyp = {
+_gebiettyp = {
     "REGELZONE": "REGELZONE",
     "MARKTGEBIET": "MARKTGEBIET",
     "BILANZIERUNGSGEBIET": "BILANZIERUNGSGEBIET",
@@ -14,4 +14,4 @@ _gebietstyp = {
     "GRUNDVERSORGUNGSGEBIET": "GRUNDVERSORGUNGSGEBIET",
     "VERSORGUNGSGEBIET": "VERSORGUNGSGEBIET",
 }
-Gebietstyp = Enum("Gebietstyp", _gebietstyp)
+Gebiettyp = Enum("Gebiettyp", _gebiettyp)

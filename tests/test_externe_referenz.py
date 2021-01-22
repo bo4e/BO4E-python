@@ -28,7 +28,7 @@ class TestExterneReferenz:
             name1="Duck",
             name2="Donald",
             gewerbekennzeichnung=False,
-            geschaeftspartnerrolle=Geschaeftspartnerrolle.KUNDE,
+            geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
                 hausnummer="17",
@@ -51,7 +51,7 @@ class TestExterneReferenz:
             name1="Duck",
             name2="Donald",
             gewerbekennzeichnung=False,
-            geschaeftspartnerrolle=Geschaeftspartnerrolle.KUNDE,
+            geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
                 hausnummer="17",
@@ -65,4 +65,5 @@ class TestExterneReferenz:
         gp_json = schema.dumps(gp, ensure_ascii=False)
 
         deserialized_gp: Geschaeftspartner = schema.loads(gp_json)
-        assert deserialized_gp.externe_referenzen is None
+
+        assert deserialized_gp.externe_referenzen == []

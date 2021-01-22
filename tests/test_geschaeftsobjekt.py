@@ -11,7 +11,7 @@ class TestGeschaeftsobjet:
         [
             (
                 BoTyp.ENERGIEMENGE,
-                2,
+                "2",
                 [
                     ExterneReferenz(
                         ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"
@@ -23,14 +23,14 @@ class TestGeschaeftsobjet:
             ),
             (
                 BoTyp.ENERGIEMENGE,
-                2,
+                "2",
                 [
                     ExterneReferenz(
                         ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"
                     )
                 ],
             ),
-            (BoTyp.ENERGIEMENGE, 2, None),
+            (BoTyp.ENERGIEMENGE, "2", []),
         ],
     )
     def test_serialisation(
@@ -58,8 +58,8 @@ class TestGeschaeftsobjet:
     def test_initialization_with_minimal_attributs(self):
         go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)
 
-        assert go.externe_referenzen is None
-        assert go.versionstruktur == 2
+        assert go.externe_referenzen == []
+        assert go.versionstruktur == "2"
 
     def test_no_list_in_externen_referenzen(self):
         with pytest.raises(TypeError) as excinfo:
@@ -69,4 +69,4 @@ class TestGeschaeftsobjet:
                     ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"
                 ),
             )
-        assert "must be (<class 'NoneType'>, typing.List)" in str(excinfo.value)
+        assert "must be typing.List" in str(excinfo.value)

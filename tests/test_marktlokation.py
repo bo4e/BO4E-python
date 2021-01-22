@@ -31,7 +31,7 @@ class TestMaLo:
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             netzebene=Netzebene.NSP,
         )
-        assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
+        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         schema = MarktlokationSchema()
@@ -62,12 +62,12 @@ class TestMaLo:
             gewerbekennzeichnung=True,
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht München",
-            kontaktweg=Kontaktart.E_MAIL,
+            kontaktweg=[Kontaktart.E_MAIL],
             umsatzsteuer_id="DE267311963",
             glaeubiger_id="DE98ZZZ09999999999",
             e_mail_adresse="test@bo4e.de",
             website="bo4e.de",
-            geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
+            geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
             partneradresse=Adresse(
                 postleitzahl="82031",
                 ort="Grünwald",
@@ -87,7 +87,7 @@ class TestMaLo:
             netzebene=Netzebene.NSP,
             endkunde=gp,
         )
-        assert malo.versionstruktur == 2, "versionstruktur was not automatically set"
+        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         schema = MarktlokationSchema()
@@ -138,7 +138,7 @@ class TestMaLo:
             "bilanzierungsgebiet": null,
             "geoadresse": null,
             "bilanzierungsmethode": "PAUSCHAL",
-            "versionstruktur": 2,
+            "versionstruktur": "2",
             "energierichtung": "EINSP"
             }"""
 
