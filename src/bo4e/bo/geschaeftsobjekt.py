@@ -21,7 +21,7 @@ class Geschaeftsobjekt:
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
-        default=None, validator=attr.validators.instance_of((type(None), List))
+        default=[], validator=attr.validators.instance_of(List)
     )
 
 
