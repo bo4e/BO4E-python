@@ -18,7 +18,7 @@ class TestMarktteilnehmer:
             # required attributes inherited from Geschaeftspartner
             name1="Netze BW GmbH",
             gewerbekennzeichnung=True,
-            geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
+            geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
             partneradresse=Adresse(
                 strasse="Schelmenwasenstraße",
                 hausnummer="15",
