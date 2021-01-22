@@ -11,7 +11,7 @@ class TestGeschaeftsobjet:
         [
             (
                 BoTyp.ENERGIEMENGE,
-                2,
+                "2",
                 [
                     ExterneReferenz(
                         ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"
@@ -23,14 +23,14 @@ class TestGeschaeftsobjet:
             ),
             (
                 BoTyp.ENERGIEMENGE,
-                2,
+                "2",
                 [
                     ExterneReferenz(
                         ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"
                     )
                 ],
             ),
-            (BoTyp.ENERGIEMENGE, 2, []),
+            (BoTyp.ENERGIEMENGE, "2", []),
         ],
     )
     def test_serialisation(

@@ -138,7 +138,7 @@ class TestMaLo:
             "bilanzierungsgebiet": null,
             "geoadresse": null,
             "bilanzierungsmethode": "PAUSCHAL",
-            "versionstruktur": 2,
+            "versionstruktur": "2",
             "energierichtung": "EINSP"
             }"""
 
