@@ -19,7 +19,7 @@ from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.verbrauchsart import Verbrauchsart
 from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.gebietstyp import Gebietstyp
+from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.gasqualitaet import Gasqualitaet
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
@@ -57,7 +57,7 @@ class Marktlokation(Geschaeftsobjekt):
     verbrauchsart: Verbrauchsart = attr.ib(default=None)
     unterbrechbar: bool = attr.ib(default=None)
     netzbetreibercodenr: str = attr.ib(default=None)
-    gebietstyp: Gebietstyp = attr.ib(default=None)
+    gebietstyp: Gebiettyp = attr.ib(default=None)
     netzgebietsnr: str = attr.ib(default=None)
     bilanzierungsgebiet: str = attr.ib(default=None)
     grundversorgercodenr: str = attr.ib(default=None)
@@ -127,7 +127,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     verbrauchsart = EnumField(Verbrauchsart, missing=None)
     unterbrechbar = fields.Bool(missing=None)
     netzbetreibercodenr = fields.Str(missing=None)
-    gebietstyp = EnumField(Gebietstyp, missing=None)
+    gebietstyp = EnumField(Gebiettyp, missing=None)
     netzgebietsnr = fields.Str(missing=None)
     bilanzierungsgebiet = fields.Str(missing=None)
     grundversorgercodenr = fields.Str(missing=None)
