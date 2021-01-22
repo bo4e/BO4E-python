@@ -4,14 +4,14 @@ Diese Rollen kann ein Marktteilnehmer einnehmen.
 from enum import Enum
 
 _marktrolle = {
-    "VNB": "NB",  # Grid Operator
+    "NB": "NB",  # Grid Operator
     "LF": "LF",  # Supplier
     "MSB": "MSB",  # Messstellenbetreiber
-    "DIENSTLEISTER": "DL",  # Dienstleister
+    "DL": "DL",  # Dienstleister
     "BKV": "BKV",  # Bilanzkreisverantwortlicher,
-    "BIKO": "BKV",  # Bilanzkoordinator / Marktgebietsverantwortlicher
+    "BKO": "BKO",  # Bilanzkoordinator / Marktgebietsverantwortlicher
     "UENB": "UENB",  # Übertragungsnetzbetreiber
-    "KUNDE_NN_SELBST": "KUNDE-NN-SELBST",  # Kunden, die Netznutzungsentgelte selbst zahlen
+    "KUNDE-SELBST-NN": "KUNDE-SELBST-NN",  # Kunden, die Netznutzungsentgelte selbst zahlen
     "MGV": "MGV",  # Marktgebietsverantwortlicher
     "EIV": "EIV",  # Einsatzverantwortlicher
     "RB": "RB",  # Registerbetreiber
