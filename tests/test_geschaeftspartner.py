@@ -56,7 +56,12 @@ class TestGeschaeftspartner:
         assert gp_deserialised.bo_typ == gp.bo_typ
         assert type(gp_deserialised.partneradresse) == Adresse
 
-    def test_geschaeftspartnerrolle(self):
+    def test_list_validation_of_geschaeftspartnerrolle(self):
+        """
+        The attribute geschaeftspartnerrolle of Geschaeftspartner must be a list type.
+        Therefore the list validator checks the type of geschaeftspartnerrolle
+        during the initialization of Geschaeftspartner
+        """
 
         with pytest.raises(TypeError) as excinfo:
 
