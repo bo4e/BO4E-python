@@ -55,3 +55,31 @@ class TestGeschaeftspartner:
 
         assert gp_deserialised.bo_typ == gp.bo_typ
         assert type(gp_deserialised.partneradresse) == Adresse
+
+    def test_geschaeftspartnerrolle(self):
+
+        with pytest.raises(TypeError) as excinfo:
+
+            _ = Geschaeftspartner(
+                anrede=Anrede.FRAU,
+                name1="von Sinnen",
+                name2="Helga",
+                name3=None,
+                gewerbekennzeichnung=True,
+                hrnummer="HRB 254466",
+                amtsgericht="Amtsgericht München",
+                kontaktweg=[Kontaktart.E_MAIL],
+                umsatzsteuer_id="DE267311963",
+                glaeubiger_id="DE98ZZZ09999999999",
+                e_mail_adresse="test@bo4e.de",
+                website="bo4e.de",
+                geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
+                partneradresse=Adresse(
+                    postleitzahl="01069",
+                    ort="Dresden",
+                    strasse="Goethestraße",
+                    hausnummer="1",
+                ),
+            )
+
+        assert "must be typing.List" in str(excinfo.value)
