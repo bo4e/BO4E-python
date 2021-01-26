@@ -56,11 +56,47 @@ class TestGeschaeftspartner:
         assert gp_deserialised.bo_typ == gp.bo_typ
         assert type(gp_deserialised.partneradresse) == Adresse
 
+    def test_optional_attribute_partneradresse(self):
+        """
+        The BO4E standard does not yet define the cardinality of the partneradresse attribute.
+        We will set this as an optional argument until the standard defines the cardinality.
+
+        This test checks whether the Geschaeftspartner can also be initialised without a partneradresse.
+        """
+
+        gp = Geschaeftspartner(
+            anrede=Anrede.FRAU,
+            name1="von Sinnen",
+            name2="Helga",
+            name3=None,
+            gewerbekennzeichnung=True,
+            hrnummer="HRB 254466",
+            amtsgericht="Amtsgericht München",
+            kontaktweg=[Kontaktart.E_MAIL],
+            umsatzsteuer_id="DE267311963",
+            glaeubiger_id="DE98ZZZ09999999999",
+            e_mail_adresse="test@bo4e.de",
+            website="bo4e.de",
+            geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+        )
+
+        schema = GeschaeftspartnerSchema()
+        gp_json = schema.dumps(gp, ensure_ascii=False)
+
+        assert "Helga" in gp_json
+
+        gp_deserialised = schema.loads(gp_json)
+
+        assert gp_deserialised.bo_typ == gp.bo_typ
+        assert gp_deserialised.partneradresse is None
+
     def test_list_validation_of_geschaeftspartnerrolle(self):
         """
+        Tests that if the geschaeftspartnerrolle of Geschaeftspartner is not a list, an error is raised.
+
         The attribute geschaeftspartnerrolle of Geschaeftspartner must be a list type.
         Therefore the list validator checks the type of geschaeftspartnerrolle
-        during the initialization of Geschaeftspartner
+        during the initialization of Geschaeftspartner.
         """
 
         with pytest.raises(TypeError) as excinfo:
