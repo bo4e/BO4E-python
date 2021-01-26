@@ -61,7 +61,7 @@ class TestGeschaeftspartner:
         The BO4E standard does not yet define the cardinality of the partneradresse attribute.
         We will set this as an optional argument until the standard defines the cardinality.
 
-        This test checks whether the Geschaeftspartner can also be initialised without a partneradresse.
+        This test checks whether the Geschaeftspartner can also be initialized without a partneradresse.
         """
 
         gp = Geschaeftspartner(
