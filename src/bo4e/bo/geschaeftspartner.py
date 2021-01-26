@@ -22,7 +22,9 @@ class Geschaeftspartner(Geschaeftsobjekt):
     bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
     name1: str
     gewerbekennzeichnung: bool
-    geschaeftspartnerrolle: List[Geschaeftspartnerrolle]
+    geschaeftspartnerrolle: List[Geschaeftspartnerrolle] = attr.ib(
+        validator=attr.validators.instance_of(List)
+    )
     partneradresse: Adresse
 
     # optional attributes
