@@ -82,12 +82,8 @@ class TestGeschaeftspartner:
 
         schema = GeschaeftspartnerSchema()
         gp_json = schema.dumps(gp, ensure_ascii=False)
-
-        assert "Helga" in gp_json
-
         gp_deserialised = schema.loads(gp_json)
 
-        assert gp_deserialised.bo_typ == gp.bo_typ
         assert gp_deserialised.partneradresse is None
 
     def test_list_validation_of_geschaeftspartnerrolle(self):
