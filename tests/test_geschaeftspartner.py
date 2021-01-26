@@ -58,8 +58,8 @@ class TestGeschaeftspartner:
 
     def test_optional_attribute_partneradresse(self):
         """
-        The BO4E standard does not yet define the cardinality of the partneradresse attribute.
-        We will set this as an optional argument until the standard defines the cardinality.
+        The BO4E standard does not yet define whether the partneradresse is mandatory or not.
+        We will set this as an optional argument until the standard is clear about it.
 
         This test checks whether the Geschaeftspartner can also be initialized without a partneradresse.
         """
