@@ -25,7 +25,6 @@ class Geschaeftspartner(Geschaeftsobjekt):
     geschaeftspartnerrolle: List[Geschaeftspartnerrolle] = attr.ib(
         validator=attr.validators.instance_of(List)
     )
-    partneradresse: Adresse
 
     # optional attributes
     anrede: Anrede = attr.ib(default=None)
@@ -38,6 +37,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     glaeubiger_id: str = attr.ib(default=None)
     e_mail_adresse: str = attr.ib(default=None)
     website: str = attr.ib(default=None)
+    partneradresse: Adresse = attr.ib(default=None)
 
 
 class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
@@ -49,7 +49,6 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     name1 = fields.Str()
     gewerbekennzeichnung = fields.Bool()
     geschaeftspartnerrolle = fields.List(EnumField(Geschaeftspartnerrolle))
-    partneradresse = fields.Nested(AdresseSchema)
 
     # optional attributes
     anrede = EnumField(Anrede, missing=None)
@@ -62,3 +61,4 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     glaeubiger_id = fields.Str(missing=None)
     e_mail_adresse = fields.Str(missing=None)
     website = fields.Str(missing=None)
+    partneradresse = fields.Nested(AdresseSchema, missing=None)
