@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=41.0"]
+requires = ["setuptools>=41.0", "wheel", "attr", "iso3166", "marshmallow", "marshmallow-enum", "stringcase"]
 build-backend = "setuptools.build_meta"
 
 [tool.black]
