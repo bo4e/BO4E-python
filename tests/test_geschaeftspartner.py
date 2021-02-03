@@ -10,14 +10,10 @@ from bo4e.enum.kontaktart import Kontaktart
 
 
 class TestGeschaeftspartner:
-    @pytest.mark.datafiles(
-        "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json"
-    )
+    @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json")
     def test_serializable(self, datafiles):
 
-        with open(
-            datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8"
-        ) as json_file:
+        with open(datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
         gp = Geschaeftspartner(

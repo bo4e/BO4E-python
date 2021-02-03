@@ -24,9 +24,7 @@ class TestMaLo:
         malo = Marktlokation(
             marktlokations_id="51238696781",
             sparte=Sparte.GAS,
-            lokationsadresse=Adresse(
-                postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"
-            ),
+            lokationsadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
             energierichtung=Energierichtung.EINSP,
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             netzebene=Netzebene.NSP,
@@ -78,9 +76,7 @@ class TestMaLo:
         malo = Marktlokation(
             marktlokations_id="51238696781",
             sparte=Sparte.GAS,
-            lokationsadresse=Adresse(
-                postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"
-            ),
+            lokationsadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
             energierichtung=Energierichtung.EINSP,
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             unterbrechbar=True,  # optional attribute

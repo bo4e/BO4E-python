@@ -35,9 +35,7 @@ class Marktlokation(Geschaeftsobjekt):
         if not value:
             raise ValueError("The marktlokations_id must not be empty.")
         if not _malo_id_pattern.match(value):
-            raise ValueError(
-                f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}"
-            )
+            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
         expected_checksum = Marktlokation._get_checksum(value)
         actual_checksum = value[10:11]
         if expected_checksum != actual_checksum:
@@ -79,9 +77,7 @@ class Marktlokation(Geschaeftsobjekt):
             self.geoadresse,
             self.katasterinformation,
         ]
-        amount_of_given_address_infos = len(
-            [i for i in all_address_attributes if i is not None]
-        )
+        amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
         if amount_of_given_address_infos != 1:
             raise ValueError("No or more than one address information is given.")
 
@@ -133,9 +129,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     grundversorgercodenr = fields.Str(missing=None)
     gasqualitaet = EnumField(Gasqualitaet, missing=None)
     endkunde = fields.Nested(GeschaeftspartnerSchema, missing=None)
-    zugehoerige_messlokation = fields.List(
-        fields.Nested(MesslokationszuordnungSchema), missing=None
-    )
+    zugehoerige_messlokation = fields.List(fields.Nested(MesslokationszuordnungSchema), missing=None)
 
     # only one of the following three optional attributes can be set
     lokationsadresse = fields.Nested(AdresseSchema, missing=None)
