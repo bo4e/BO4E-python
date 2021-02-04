@@ -12,6 +12,11 @@ import os
 import sys
 import inspect
 import shutil
+from pkg_resources import get_distribution
+
+# Get version information for the documentation
+release = get_distribution("bo4e").version
+version = ".".join(release.split(".")[:2])
 
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
