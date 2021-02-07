@@ -51,7 +51,7 @@ To get the current version run in your working directory:
 
    python setup.py --version
 
-At the moment it is not possible to get the version number in runtime.
+At the moment it is not possible to get the version number at runtime.
 To achieve this, we have to implement `Retrieving package version at runtime`_.
 
 Release workflow
