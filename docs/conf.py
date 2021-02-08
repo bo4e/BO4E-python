@@ -12,10 +12,14 @@ import os
 import sys
 import inspect
 import shutil
+from pkg_resources import get_distribution
 
-__location__ = os.path.join(
-    os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe()))
-)
+# Get version information for the package documentation
+# which is published on read the docs: https://bo4e-python.readthedocs.io/en/latest/
+release = get_distribution("bo4e").version
+version = ".".join(release.split(".")[:2])
+
+__location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the

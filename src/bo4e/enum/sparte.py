@@ -9,6 +9,6 @@ _sparte = {
     "FERNWAERME": "FERNWAERME",
     "NAHWAERME": "NAHWAERME",
     "WASSER": "WASSER",
-    "ABWASSER": "ABWASSER"
+    "ABWASSER": "ABWASSER",
 }
 Sparte = Enum("Sparte", _sparte)

@@ -40,6 +40,20 @@ To enhance this BO4E implementation and contribute to this project check out the
    
 The created venv should be located somewhere around .tox/dev/Scripts.
 
+Versioning
+==========
+To track the versions of this python package we use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_.
+There are different kind of ways to achieve the version tracking. We will use the `pyproject.toml` usage.
+
+To get the current version run in your working directory:
+
+.. code-block:: Python
+
+   python setup.py --version
+
+At the moment it is not possible to get the version number at runtime.
+To achieve this, we have to implement `Retrieving package version at runtime`_.
+
 Release workflow
 ================
 * Check with tox all tests and lintings: `tox`
@@ -72,3 +86,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
 .. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
+.. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/

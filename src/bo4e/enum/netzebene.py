@@ -14,6 +14,6 @@ _netzebene = {
     "HSS_HSP_UMSP": "HSS_HSP_UMSP",  # HOES/HS Umspannung; Strom
     "HD": "HD",  # Hochdruck; Gas
     "MD": "MD",  # Mitteldruck; Gas
-    "ND": "ND"  # Niederdruck; Gas
+    "ND": "ND",  # Niederdruck; Gas
 }
 Netzebene = Enum("Netzebene", _netzebene)
