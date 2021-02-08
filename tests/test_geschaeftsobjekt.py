@@ -13,29 +13,19 @@ class TestGeschaeftsobjet:
                 BoTyp.ENERGIEMENGE,
                 "2",
                 [
-                    ExterneReferenz(
-                        ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"
-                    ),
-                    ExterneReferenz(
-                        ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"
-                    ),
+                    ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"),
+                    ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
                 ],
             ),
             (
                 BoTyp.ENERGIEMENGE,
                 "2",
-                [
-                    ExterneReferenz(
-                        ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"
-                    )
-                ],
+                [ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")],
             ),
             (BoTyp.ENERGIEMENGE, "2", []),
         ],
     )
-    def test_serialisation(
-        self, bo_typ: BoTyp, versionstruktur: int, externe_referenzen: ExterneReferenz
-    ):
+    def test_serialisation(self, bo_typ: BoTyp, versionstruktur: int, externe_referenzen: ExterneReferenz):
         go = Geschaeftsobjekt(
             bo_typ=bo_typ,
             versionstruktur=versionstruktur,
@@ -65,8 +55,6 @@ class TestGeschaeftsobjet:
         with pytest.raises(TypeError) as excinfo:
             _ = Geschaeftsobjekt(
                 bo_typ=BoTyp.ENERGIEMENGE,
-                externe_referenzen=ExterneReferenz(
-                    ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"
-                ),
+                externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
             )
         assert "must be typing.List" in str(excinfo.value)

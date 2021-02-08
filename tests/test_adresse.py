@@ -124,16 +124,12 @@ class TestAddress:
         a: Adresse = schema.loads(json_string)
         assert a.landescode is Landescode.AT
 
-    @pytest.mark.datafiles(
-        "./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json"
-    )
+    @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json")
     def test_missing_required_attribute(self, datafiles):
         """
         Test for getting an error message if a required attribute is missing
         """
-        with open(
-            datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8"
-        ) as json_file:
+        with open(datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
         with pytest.raises(TypeError) as excinfo:
