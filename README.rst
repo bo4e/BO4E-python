@@ -42,15 +42,15 @@ The created venv should be located somewhere around .tox/dev/Scripts.
 
 Versioning
 ==========
-Short background information about versioning of python packages.
-At the moment (2021-02-10) there are `**seven** ways to define the version of your package <https://packaging.python.org/guides/single-sourcing-package-version/>`_.
-We use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_ for versioning so we can use the tags of git to define the version.
-The tool itself again has several ways how to configure it.
-We use the `pyproject.toml` file to configure setuptools-scm.
-There we tell the build-system with ``"setuptools_scm[toml]>=3.4"`` that we use setuptools_scm and the version must be at least ``3.4``.
-The ``[toml]`` section tells setuptools-scm that it finds all settings in our pyproject.toml file.
-``[tool.setuptools_scm]`` in pyproject.toml enables version inference.
-In the setup.py we have to use the attribute ``use_scm_version=True``.
+| Short background information about versioning of python packages.
+| At the moment (2021-02-10) there are `seven ways to define the version of your package <https://packaging.python.org/guides/single-sourcing-package-version/>`_.
+| We use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_ for versioning so we can use the tags of git to define the version.
+| The tool itself again has several ways how to configure it.
+| We use the `pyproject.toml` file to configure setuptools-scm.
+| There we tell the build-system with ``"setuptools_scm[toml]>=3.4"`` that we use setuptools_scm and the version must be at least ``3.4``.
+| The ``[toml]`` section tells setuptools-scm that it finds all settings in our pyproject.toml file.
+| ``[tool.setuptools_scm]`` in pyproject.toml enables version inference.
+| In the setup.py we have to use the attribute ``use_scm_version=True``.
 
 To create the version number itself, we stick to the default behavior of setuptools-scm.
 It will take a look at three things:
@@ -61,14 +61,15 @@ It will take a look at three things:
 
 and uses roughly the following logic to render the version:
 
-**no distance and clean:**
-`{tag}`
-**distance and clean:**
-`{next_version}.dev{distance}+{scm letter}{revision hash}`
-**no distance and not clean:**
-`{tag}+dYYYYMMDD`
-**distance and not clean:**
-`{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYYMMDD`
+no distance and clean:
+    ``{tag}``
+distance and clean:
+    ``{next_version}.dev{distance}+{scm letter}{revision hash}``
+no distance and not clean:
+    ``{tag}+dYYYYMMDD``
+distance and not clean:
+    ``{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYYMMDD``
+
 
 The next version is calculated by adding 1 to the last numeric component of the tag.
 
