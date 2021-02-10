@@ -43,14 +43,14 @@ The created venv should be located somewhere around .tox/dev/Scripts.
 Versioning
 ==========
 Short background information about versioning of python packages.
-At the moment (10.02.2021) there are `**seven** ways to define the version of your package <https://packaging.python.org/guides/single-sourcing-package-version/>`_.
-We use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_ for versioning so we can use the labels of git to define the version.
+At the moment (2021-02-10) there are `**seven** ways to define the version of your package <https://packaging.python.org/guides/single-sourcing-package-version/>`_.
+We use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_ for versioning so we can use the tags of git to define the version.
 The tool itself again has several ways how to configure it.
-We will use the `pyproject.toml` file to configure setuptools-scm.
-There we tell the build-system with `"setuptools_scm[toml]>=3.4"` that we use setuptools_scm and the version must be at least `3.4`.
-The `[toml]` section tells setuptools-scm that it finds all settings in our pyproject.toml file.
-`[tool.setuptools_scm]` in pyproject.toml enables version inference.
-In the setup.py we have to use the attribute `use_scm_version=True`.
+We use the `pyproject.toml` file to configure setuptools-scm.
+There we tell the build-system with ``"setuptools_scm[toml]>=3.4"`` that we use setuptools_scm and the version must be at least ``3.4``.
+The ``[toml]`` section tells setuptools-scm that it finds all settings in our pyproject.toml file.
+``[tool.setuptools_scm]`` in pyproject.toml enables version inference.
+In the setup.py we have to use the attribute ``use_scm_version=True``.
 
 To create the version number itself, we stick to the default behavior of setuptools-scm.
 It will take a look at three things:
