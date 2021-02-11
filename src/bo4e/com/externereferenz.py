@@ -3,10 +3,10 @@ Contains ExterenzeReferenz class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields, post_load
 
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+from bo4e.com.com import COM, COMSchema
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -22,7 +22,7 @@ class ExterneReferenz(COM):
     ex_ref_wert: str
 
 
-class ExterneReferenzSchema(Schema, JavaScriptMixin):
+class ExterneReferenzSchema(COMSchema):
     """
     Schema for de-/serialization of ExterneReferenz.
     Inherits from Schema and JavaScriptMixin.

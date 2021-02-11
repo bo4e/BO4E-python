@@ -5,12 +5,12 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 
 import attr
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
 
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+from bo4e.com.com import COM, COMSchema
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -30,7 +30,7 @@ class Messlokationszuordnung(COM):
     gueltig_bis: datetime = attr.ib(default=None)
 
 
-class MesslokationszuordnungSchema(Schema, JavaScriptMixin):
+class MesslokationszuordnungSchema(COMSchema):
     """
     Schema for de-/serialization of Katasteradresse.
     Inherits from Schema and JavaScriptMixin.

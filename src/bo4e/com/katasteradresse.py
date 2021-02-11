@@ -3,10 +3,10 @@ Contains Katasteradresse class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields, post_load
 
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+from bo4e.com.com import COM, COMSchema
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -19,7 +19,7 @@ class Katasteradresse(COM):
     flurstueck: str
 
 
-class KatasteradresseSchema(Schema, JavaScriptMixin):
+class KatasteradresseSchema(COMSchema):
     """
     Schema for de-/serialization of Katasteradresse.
     Inherits from Schema and JavaScriptMixin.

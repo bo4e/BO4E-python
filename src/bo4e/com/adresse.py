@@ -4,12 +4,12 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
 
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+from bo4e.com.com import COM, COMSchema
 from bo4e.enum.landescode import Landescode
+
 
 # pylint: disable=unused-argument
 def strasse_xor_postfach(instance, attribute, value):
@@ -46,7 +46,7 @@ class Adresse(COM):
     landescode: Landescode = attr.ib(default=Landescode.DE)
 
 
-class AdresseSchema(Schema, JavaScriptMixin):
+class AdresseSchema(COMSchema):
     """
     Schema for de-/serialization of Adresse.
     Inherits from Schema and JavaScriptMixin.

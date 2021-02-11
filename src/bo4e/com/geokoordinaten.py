@@ -5,10 +5,10 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import Schema, fields, post_load
+from marshmallow import fields, post_load
 
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+from bo4e.com.com import COM, COMSchema
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -22,7 +22,7 @@ class Geokoordinaten(COM):
     laengengrad: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
 
 
-class GeokoordinatenSchema(Schema, JavaScriptMixin):
+class GeokoordinatenSchema(COMSchema):
     """
     Schema for de-/serialization of Geokoordinaten.
     Inherits from Schema and JavaScriptMixin.
