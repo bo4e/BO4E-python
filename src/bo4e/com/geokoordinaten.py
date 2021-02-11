@@ -1,3 +1,7 @@
+"""
+Contains Geokoordinaten class
+and corresponding marshmallow schema for de-/serialization
+"""
 from decimal import Decimal
 
 import attr
@@ -6,7 +10,7 @@ from marshmallow import Schema, fields, post_load
 from bo4e.cases import JavaScriptMixin
 from bo4e.com.com import COM
 
-
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Geokoordinaten(COM):
     """
@@ -30,6 +34,8 @@ class GeokoordinatenSchema(Schema, JavaScriptMixin):
     breitengrad = fields.Decimal(as_string=True)
     laengengrad = fields.Decimal(as_string=True)
 
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialise(self, data, **kwargs) -> Geokoordinaten:
+        """ Deserialize JSON to Geokoordinaten object """
         return Geokoordinaten(**data)
