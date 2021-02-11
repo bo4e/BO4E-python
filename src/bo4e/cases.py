@@ -3,8 +3,8 @@ Small module to convert snake_case to CamelCase and vice versa.
 """
 # pylint: disable=unused-argument, no-self-use
 
+from marshmallow import post_dump, pre_load
 from stringcase import camelcase, snakecase
-from marshmallow import pre_load, post_dump
 
 
 class JavaScriptMixin:

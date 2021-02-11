@@ -1,6 +1,5 @@
 import attr
 from attr.validators import matches_re
-
 from marshmallow import fields
 from marshmallow_enum import EnumField
 

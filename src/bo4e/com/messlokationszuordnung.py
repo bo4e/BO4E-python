@@ -1,6 +1,6 @@
-import attr
-
 from datetime import datetime
+
+import attr
 from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField
 

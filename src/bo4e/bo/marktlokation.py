@@ -9,18 +9,15 @@ from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
-from bo4e.com.messlokationszuordnung import (
-    Messlokationszuordnung,
-    MesslokationszuordnungSchema,
-)
-from bo4e.enum.sparte import Sparte
+from bo4e.com.messlokationszuordnung import Messlokationszuordnung, MesslokationszuordnungSchema
+from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.gasqualitaet import Gasqualitaet
+from bo4e.enum.gebiettyp import Gebiettyp
+from bo4e.enum.netzebene import Netzebene
+from bo4e.enum.sparte import Sparte
+from bo4e.enum.verbrauchsart import Verbrauchsart
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 

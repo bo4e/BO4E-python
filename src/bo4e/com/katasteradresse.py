@@ -1,5 +1,4 @@
 import attr
-
 from marshmallow import Schema, fields, post_load
 
 from bo4e.cases import JavaScriptMixin
