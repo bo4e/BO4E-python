@@ -1,3 +1,8 @@
+"""
+Contains Adresse class
+and corresponding marshmallow schema for de-/serialization
+"""
+
 import attr
 from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField
@@ -6,21 +11,26 @@ from bo4e.cases import JavaScriptMixin
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
 
-
+# pylint: disable=unused-argument
 def strasse_xor_postfach(instance, attribute, value):
+    """
+    An address is valid if it contains a postfach XOR a strasse AND hausnummer.
+    This functions checks for these conditions of a valid address.
+    """
     if instance.strasse or instance.hausnummer:
         if instance.postfach:
             raise ValueError("Enter either strasse and hausnummer OR postfach.")
-        elif not instance.strasse:
+        if not instance.strasse:
             raise ValueError("Missing strasse to hausnummer.")
-        elif not instance.hausnummer:
+        if not instance.hausnummer:
             raise ValueError("Missing hausnummer to strasse.")
 
 
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Adresse(COM):
     """
-    Enthält eine Adresse, die für die meisten Zwecke verwendbar ist.
+    Contains an address that can be used for most purposes.
     """
 
     # required attributes
@@ -37,6 +47,11 @@ class Adresse(COM):
 
 
 class AdresseSchema(Schema, JavaScriptMixin):
+    """
+    Schema for de-/serialization of Adresse.
+    Inherits from Schema and JavaScriptMixin.
+    """
+
     # required attributes
     postleitzahl = fields.Str()
     ort = fields.Str()
@@ -49,6 +64,8 @@ class AdresseSchema(Schema, JavaScriptMixin):
     co_ergaenzung = fields.Str(missing=None)
     landescode = EnumField(Landescode)
 
+    # pylint: disable=no-self-use
     @post_load
     def deserialise(self, data, **kwargs) -> Adresse:
+        """ Deserialize JSON to Adresse object """
         return Adresse(**data)
