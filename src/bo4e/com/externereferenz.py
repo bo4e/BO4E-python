@@ -1,14 +1,20 @@
+"""
+Contains ExterenzeReferenz class
+and corresponding marshmallow schema for de-/serialization
+"""
 import attr
 from marshmallow import Schema, fields, post_load
 
 from bo4e.cases import JavaScriptMixin
 from bo4e.com.com import COM
 
-
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class ExterneReferenz(COM):
     """
-    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf. Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich, sich die eindeutigen IDs der anzubindenden Systeme zu merken.
+    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.
+    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,
+    sich die eindeutigen IDs der anzubindenden Systeme zu merken.
     """
 
     # required attributes
@@ -17,9 +23,16 @@ class ExterneReferenz(COM):
 
 
 class ExterneReferenzSchema(Schema, JavaScriptMixin):
+    """
+    Schema for de-/serialization of ExterneReferenz.
+    Inherits from Schema and JavaScriptMixin.
+    """
+
     ex_ref_name = fields.Str()
     ex_ref_wert = fields.Str()
 
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialise(self, data, **kwargs) -> ExterneReferenz:
+        """ Deserialize JSON to ExterneReferenz object """
         return ExterneReferenz(**data)
