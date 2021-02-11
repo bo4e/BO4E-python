@@ -1,3 +1,8 @@
+"""
+Contains Geschaeftspartner class
+and corresponding marshmallow schema for de-/serialization
+"""
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import List
 
 import attr
@@ -39,6 +44,11 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
 
 class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
+    """
+    Scheme for de-/serialization of Geschaeftspartner.
+    Inherits from GeschaeftsobjektSchema.
+    """
+
     # class_name is needed to use the correct schema for deserialisation.
     # see function `deserialise` in geschaeftsobjekt.py
     class_name = Geschaeftspartner
