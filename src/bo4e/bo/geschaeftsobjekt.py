@@ -1,5 +1,6 @@
 """
 Contains base class for all business objects
+and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=missing-module-docstring, unused-argument, too-few-public-methods
 from typing import List, Optional
