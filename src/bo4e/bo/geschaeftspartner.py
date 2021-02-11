@@ -45,7 +45,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
 class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     """
-    Scheme for de-/serialization of Geschaeftspartner.
+    Schema for de-/serialization of Geschaeftspartner.
     Inherits from GeschaeftsobjektSchema.
     """
 
