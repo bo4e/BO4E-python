@@ -12,6 +12,7 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
 
+
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Marktteilnehmer(Geschaeftspartner):
