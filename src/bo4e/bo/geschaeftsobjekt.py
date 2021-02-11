@@ -33,6 +33,7 @@ class Geschaeftsobjekt:
 class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     """
     This is an "abstract" class.
+    Inherits from Schema and JavaScriptMixin.
     All business objects are inherited from this class.
     """
 
