@@ -1,3 +1,7 @@
+"""
+Contains base class for all business objects
+"""
+# pylint: disable=missing-module-docstring, unused-argument, too-few-public-methods
 from typing import List, Optional
 
 import attr
@@ -43,4 +47,5 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
 
     @post_load
     def deserialise(self, data, **kwargs):
+        """ Deserialize JSON to python object"""
         return type(self).class_name(**data)
