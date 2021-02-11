@@ -44,7 +44,7 @@ class Marktlokation(Geschaeftsobjekt):
         if expected_checksum != actual_checksum:
             # pylint: disable=line-too-long
             raise ValueError(
-                f"""The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."""
+                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
             )
 
     # required attributes
