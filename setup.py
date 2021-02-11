@@ -16,4 +16,4 @@ You are using Python {sys.version_info}
     sys.exit(error)
 
 
-setup(name="bo4e")
+setup(name="bo4e", use_scm_version=True)
