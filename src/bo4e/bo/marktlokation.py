@@ -1,3 +1,7 @@
+"""
+Contains Marktlokation class
+and corresponding marshmallow schema for de-/serialization
+"""
 import re
 
 import attr
@@ -22,12 +26,14 @@ from bo4e.enum.verbrauchsart import Verbrauchsart
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 
 
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation
     """
 
+    # pylint: disable=unused-argument, no-self-use
     def _validate_marktlokations_id(self, marktlokations_id_attribute, value):
         if not value:
             raise ValueError("The marktlokations_id must not be empty.")
@@ -36,8 +42,9 @@ class Marktlokation(Geschaeftsobjekt):
         expected_checksum = Marktlokation._get_checksum(value)
         actual_checksum = value[10:11]
         if expected_checksum != actual_checksum:
+            # pylint: disable=line-too-long
             raise ValueError(
-                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
+                f"""The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."""
             )
 
     # required attributes
@@ -69,6 +76,7 @@ class Marktlokation(Geschaeftsobjekt):
     @geoadresse.validator
     @katasterinformation.validator
     def validate_address_info(self, address_attribute, value):
+        """ Checks for validate address """
         all_address_attributes = [
             self.lokationsadresse,
             self.geoadresse,
@@ -95,6 +103,7 @@ class Marktlokation(Geschaeftsobjekt):
         # start counting at 1 to be consistent with the above description
         # of "even" and "odd" but stop at tenth digit.
         for i in range(1, 11):
+            # pylint: disable=invalid-name
             s = malo_id[i - 1 : i]
             if i % 2 - 1 == 0:
                 odd_checksum += int(s)
@@ -105,6 +114,11 @@ class Marktlokation(Geschaeftsobjekt):
 
 
 class MarktlokationSchema(GeschaeftsobjektSchema):
+    """
+    Schema for de-/serialization of Marktlokation.
+    Inherits from GeschaeftsobjektSchema.
+    """
+
     # class_name is needed to use the correct schema for deserialisation.
     # see function `deserialise` in geschaeftsobjekt.py
     class_name = Marktlokation
