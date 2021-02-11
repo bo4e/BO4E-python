@@ -6,3 +6,6 @@ build-backend = "setuptools.build_meta"
 line-length = 120
 
 [tool.setuptools_scm]
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length=120
