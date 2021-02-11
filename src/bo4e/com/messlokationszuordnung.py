@@ -1,3 +1,7 @@
+"""
+Contains Messlokationszuordnung class
+and corresponding marshmallow schema for de-/serialization
+"""
 from datetime import datetime
 
 import attr
@@ -8,7 +12,7 @@ from bo4e.cases import JavaScriptMixin
 from bo4e.com.com import COM
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
-
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Messlokationszuordnung(COM):
     """
@@ -27,6 +31,11 @@ class Messlokationszuordnung(COM):
 
 
 class MesslokationszuordnungSchema(Schema, JavaScriptMixin):
+    """
+    Schema for de-/serialization of Katasteradresse.
+    Inherits from Schema and JavaScriptMixin.
+    """
+
     # required attributes
     messlokations_id = fields.Str()
     arithmetik = EnumField(ArithmetischeOperation)
@@ -35,6 +44,8 @@ class MesslokationszuordnungSchema(Schema, JavaScriptMixin):
     gueltig_seit = fields.DateTime(missing=None)
     gueltig_bis = fields.DateTime(missing=None)
 
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialise(self, data, **kwargs) -> Messlokationszuordnung:
+        """ Deserialize JSON to Messlokationszuordnung object """
         return Messlokationszuordnung(**data)
