@@ -33,7 +33,6 @@ class Marktteilnehmer(Geschaeftspartner):
 class MarktteilnehmerSchema(GeschaeftspartnerSchema):
     """
     Schema for de-/serialization of Marktteilnehmer.
-    Inherits from GeschaeftsobjektSchema.
     """
 
     # class_name is needed to use the correct schema for deserialization.

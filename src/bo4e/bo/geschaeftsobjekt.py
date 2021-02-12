@@ -33,8 +33,7 @@ class Geschaeftsobjekt:
 class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     """
     This is an "abstract" class.
-    Inherits from Schema and JavaScriptMixin.
-    All business objects are inherited from this class.
+    All business objects do inherit from this class.
     """
 
     # class_name is needed to use the correct schema for deserialization.
@@ -49,5 +48,5 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
 
     @post_load
     def deserialise(self, data, **kwargs):
-        """ Deserialize JSON to python object"""
+        """ Deserialize JSON to python object. """
         return type(self).class_name(**data)

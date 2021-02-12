@@ -22,7 +22,6 @@ class Katasteradresse(COM):
 class KatasteradresseSchema(COMSchema):
     """
     Schema for de-/serialization of Katasteradresse.
-    Inherits from Schema and JavaScriptMixin.
     """
 
     gemarkung_flur = fields.Str()

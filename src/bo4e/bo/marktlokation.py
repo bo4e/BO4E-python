@@ -76,7 +76,7 @@ class Marktlokation(Geschaeftsobjekt):
     @geoadresse.validator
     @katasterinformation.validator
     def validate_address_info(self, address_attribute, value):
-        """ Checks for validate address """
+        """ Checks that there is one and only one valid adress given. """
         all_address_attributes = [
             self.lokationsadresse,
             self.geoadresse,

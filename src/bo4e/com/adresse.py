@@ -14,7 +14,7 @@ from bo4e.enum.landescode import Landescode
 # pylint: disable=unused-argument
 def strasse_xor_postfach(instance, attribute, value):
     """
-    An address is valid if it contains a postfach XOR a strasse AND hausnummer.
+    An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
     This functions checks for these conditions of a valid address.
     """
     if instance.strasse or instance.hausnummer:

@@ -33,7 +33,6 @@ class Messlokationszuordnung(COM):
 class MesslokationszuordnungSchema(COMSchema):
     """
     Schema for de-/serialization of Katasteradresse.
-    Inherits from Schema and JavaScriptMixin.
     """
 
     # required attributes

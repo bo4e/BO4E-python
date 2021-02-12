@@ -25,7 +25,6 @@ class Geokoordinaten(COM):
 class GeokoordinatenSchema(COMSchema):
     """
     Schema for de-/serialization of Geokoordinaten.
-    Inherits from Schema and JavaScriptMixin.
 
     Standard json library can not serialise Decimal type.
     Therefore these information will be serialised as string.

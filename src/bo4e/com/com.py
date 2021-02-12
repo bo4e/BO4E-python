@@ -18,6 +18,5 @@ class COM:
 class COMSchema(Schema, JavaScriptMixin):
     """
     This is an "abstract" class.
-    Inherits from Schema and JavaScriptMixin.
     All components objects are inherited from this class.
     """
