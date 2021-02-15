@@ -11,12 +11,12 @@ from bo4e.cases import JavaScriptMixin
 @attr.s(auto_attribs=True, kw_only=True)
 class COM:
     """
-    abstract base class for all components
+    base class for all components
     """
 
 
 class COMSchema(Schema, JavaScriptMixin):
     """
-    This is an "abstract" class.
+    This is a base class.
     All components objects are inherited from this class.
     """
