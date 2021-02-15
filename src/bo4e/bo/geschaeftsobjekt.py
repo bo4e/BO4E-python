@@ -1,10 +1,15 @@
+"""
+Contains base class for all business objects
+and corresponding marshmallow schema for de-/serialization
+"""
+# pylint: disable=unused-argument, too-few-public-methods
 from typing import List, Optional
 
 import attr
 from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField
-from bo4e.cases import JavaScriptMixin
 
+from bo4e.cases import JavaScriptMixin
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
 
@@ -28,7 +33,7 @@ class Geschaeftsobjekt:
 class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     """
     This is an "abstract" class.
-    All business objects are inherited from this class.
+    All business objects do inherit from this class.
     """
 
     # class_name is needed to use the correct schema for deserialization.
@@ -43,4 +48,5 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
 
     @post_load
     def deserialise(self, data, **kwargs):
+        """ Deserialize JSON to python object. """
         return type(self).class_name(**data)

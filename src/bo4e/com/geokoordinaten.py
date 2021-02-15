@@ -1,12 +1,16 @@
-import attr
-
+"""
+Contains Geokoordinaten class
+and corresponding marshmallow schema for de-/serialization
+"""
 from decimal import Decimal
-from marshmallow import Schema, fields, post_load
 
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+import attr
+from marshmallow import fields, post_load
+
+from bo4e.com.com import COM, COMSchema
 
 
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Geokoordinaten(COM):
     """
@@ -18,8 +22,10 @@ class Geokoordinaten(COM):
     laengengrad: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
 
 
-class GeokoordinatenSchema(Schema, JavaScriptMixin):
+class GeokoordinatenSchema(COMSchema):
     """
+    Schema for de-/serialization of Geokoordinaten.
+
     Standard json library can not serialise Decimal type.
     Therefore these information will be serialised as string.
     During the deserialisiation it will become a Decimal type again.
@@ -30,6 +36,8 @@ class GeokoordinatenSchema(Schema, JavaScriptMixin):
     breitengrad = fields.Decimal(as_string=True)
     laengengrad = fields.Decimal(as_string=True)
 
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialise(self, data, **kwargs) -> Geokoordinaten:
+        """ Deserialize JSON to Geokoordinaten object """
         return Geokoordinaten(**data)

@@ -1,11 +1,14 @@
+"""
+Contains Katasteradresse class
+and corresponding marshmallow schema for de-/serialization
+"""
 import attr
+from marshmallow import fields, post_load
 
-from marshmallow import Schema, fields, post_load
-
-from bo4e.cases import JavaScriptMixin
-from bo4e.com.com import COM
+from bo4e.com.com import COM, COMSchema
 
 
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Katasteradresse(COM):
     """
@@ -16,10 +19,16 @@ class Katasteradresse(COM):
     flurstueck: str
 
 
-class KatasteradresseSchema(Schema, JavaScriptMixin):
+class KatasteradresseSchema(COMSchema):
+    """
+    Schema for de-/serialization of Katasteradresse.
+    """
+
     gemarkung_flur = fields.Str()
     flurstueck = fields.Str()
 
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialise(self, data, **kwargs) -> Katasteradresse:
+        """ Deserialize JSON to Katasteradresse object """
         return Katasteradresse(**data)
