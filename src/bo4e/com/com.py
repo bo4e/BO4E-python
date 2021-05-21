@@ -2,9 +2,8 @@
 Contains base class for all components
 """
 import attr
-from marshmallow import Schema
-
 from bo4e.cases import JavaScriptMixin
+from marshmallow import Schema
 
 
 # pylint: disable=too-few-public-methods

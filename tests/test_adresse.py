@@ -1,6 +1,6 @@
 import json
-import pytest
 
+import pytest
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.landescode import Landescode
 
@@ -133,7 +133,6 @@ class TestAddress:
             address_test_data = json.load(json_file)
 
         with pytest.raises(TypeError) as excinfo:
-
             _ = Adresse(
                 ort=address_test_data["ort"],
                 strasse=address_test_data["strasse"],
@@ -192,9 +191,7 @@ class TestAddress:
         ],
     )
     def test_strasse_xor_postfach(self, address_test_data, expected):
-
         with pytest.raises(ValueError) as excinfo:
-
             _ = Adresse(
                 postleitzahl=address_test_data["postleitzahl"],
                 ort=address_test_data["ort"],

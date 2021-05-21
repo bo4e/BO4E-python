@@ -3,17 +3,15 @@ Contains Zaehler class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from attr.validators import matches_re
-from marshmallow import fields
-from marshmallow_enum import EnumField
-
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.zaehlwerk import Zaehlwerk, ZaehlwerkSchema
+from bo4e.com.zaehlwerk import ZaehlwerkSchema
 from bo4e.enum.botyp import BoTyp
-
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
+from marshmallow import fields
+from marshmallow_enum import EnumField
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -35,7 +33,7 @@ class Zaehler(Geschaeftsobjekt):
 
     # optional attributes
     zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  # Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[datetime] = attr.ib(default=None)  # 	Bis zu diesem Datum ist der Zähler geeicht.
+    eichung_bis: Optional[datetime] = attr.ib(default=None)  # Bis zu diesem Datum ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = attr.ib(
         default=None
     )  # Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.

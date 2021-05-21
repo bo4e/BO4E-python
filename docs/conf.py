@@ -8,10 +8,11 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-import sys
 import inspect
+import os
 import shutil
+import sys
+
 from pkg_resources import get_distribution
 
 # Get version information for the package documentation
@@ -244,7 +245,6 @@ html_static_path = ["_static"]
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "bo4e-doc"
-
 
 # -- Options for LaTeX output --------------------------------------------------
 

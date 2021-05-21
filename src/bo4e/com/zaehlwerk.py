@@ -3,13 +3,12 @@ Contains Zaehlwerk class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
 from attr.validators import matches_re
-
+from bo4e.com.com import COM, COMSchema
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.com.com import COM, COMSchema
+from marshmallow import fields, post_load
+from marshmallow_enum import EnumField
 
 
 # pylint: disable=too-few-public-methods
@@ -21,10 +20,10 @@ class Zaehlwerk(COM):
 
     zaehlwerk_id: str = attr.ib(
         validator=attr.validators.instance_of(str)
-    )  # 	Identifikation des Zählwerks (Registers) innerhalb des Zählers. Oftmals eine laufende Nummer hinter der Zählernummer. Z.B. 47110815_1
+    )  # Identifikation des Zählwerks (Registers) innerhalb des Zählers. Oftmals eine laufende Nummer hinter der Zählernummer. Z.B. 47110815_1
     bezeichnung: str = attr.ib(
         validator=attr.validators.instance_of(str)
-    )  # 	Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit.
+    )  # Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit.
     richtung: Energierichtung  # Die Energierichtung, Einspeisung oder Ausspeisung.
     obis_kennzahl: str = attr.ib(
         validator=matches_re(

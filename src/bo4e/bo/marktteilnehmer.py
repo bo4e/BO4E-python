@@ -4,13 +4,12 @@ and corresponding marshmallow schema for de-/serialization
 """
 import attr
 from attr.validators import matches_re
-from marshmallow import fields
-from marshmallow_enum import EnumField
-
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
+from marshmallow import fields
+from marshmallow_enum import EnumField
 
 
 # pylint: disable=too-few-public-methods
