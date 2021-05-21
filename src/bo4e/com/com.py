@@ -6,7 +6,6 @@ from marshmallow import Schema
 from bo4e.cases import JavaScriptMixin
 
 
-
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class COM:

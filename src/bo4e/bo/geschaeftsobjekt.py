@@ -13,7 +13,6 @@ from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
 
 
-
 @attr.s(auto_attribs=True, kw_only=True)
 class Geschaeftsobjekt:
     """

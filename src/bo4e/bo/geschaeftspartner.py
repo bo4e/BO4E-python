@@ -16,7 +16,6 @@ from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 
 
-
 @attr.s(auto_attribs=True, kw_only=True)
 class Geschaeftspartner(Geschaeftsobjekt):
     """

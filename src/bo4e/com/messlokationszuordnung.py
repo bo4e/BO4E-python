@@ -11,7 +11,6 @@ from bo4e.com.com import COM, COMSchema
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
 
-
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Messlokationszuordnung(COM):

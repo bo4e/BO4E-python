@@ -21,7 +21,6 @@ from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
-
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Zaehler(Geschaeftsobjekt):

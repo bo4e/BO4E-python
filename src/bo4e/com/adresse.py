@@ -10,7 +10,6 @@ from bo4e.com.com import COM, COMSchema
 from bo4e.enum.landescode import Landescode
 
 
-
 # pylint: disable=unused-argument
 def strasse_xor_postfach(instance, attribute, value):
     """
