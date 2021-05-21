@@ -2,15 +2,24 @@
 Contains Zaehler class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import List, Optional
+from decimal import Decimal
+from datetime import datetime
 import attr
+
+from marshmallow import fields
+from marshmallow_enum import EnumField
+
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.zaehlwerk import ZaehlwerkSchema
+from bo4e.com.zaehlwerk import Zaehlwerk, ZaehlwerkSchema
 from bo4e.enum.botyp import BoTyp
+from bo4e.enum.energierichtung import Energierichtung
+from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
-from marshmallow import fields
-from marshmallow_enum import EnumField
+
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -37,7 +46,7 @@ class Zaehler(Geschaeftsobjekt):
     letzte_eichung: Optional[datetime] = attr.ib(
         default=None
     )  # Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlwerk: Optional[List[Zaehlerwerk]] = attr.ib(default=None)  # Die Zählwerke des Zählers.
+    zaehlwerk: Optional[List[Zaehlwerk]] = attr.ib(default=None)  # Die Zählwerke des Zählers.
     zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  # Der Hersteller des Zählers.
 
 

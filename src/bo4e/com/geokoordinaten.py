@@ -5,8 +5,9 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from bo4e.com.com import COM, COMSchema
 from marshmallow import fields, post_load
+
+from bo4e.com.com import COM, COMSchema
 
 
 # pylint: disable=too-few-public-methods

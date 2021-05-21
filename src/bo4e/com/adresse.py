@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from bo4e.com.com import COM, COMSchema
-from bo4e.enum.landescode import Landescode
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
+from bo4e.com.com import COM, COMSchema
+from bo4e.enum.landescode import Landescode
+
 
 
 # pylint: disable=unused-argument

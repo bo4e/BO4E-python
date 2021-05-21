@@ -5,10 +5,11 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 
 import attr
-from bo4e.com.com import COM, COMSchema
-from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
+from bo4e.com.com import COM, COMSchema
+from bo4e.enum.arithmetische_operation import ArithmetischeOperation
+
 
 
 # pylint: disable=too-few-public-methods
