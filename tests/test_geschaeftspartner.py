@@ -1,18 +1,18 @@
-import pytest
 import json
 
+import pytest
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.landescode import Landescode
 
 
 class TestGeschaeftspartner:
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json")
     def test_serializable(self, datafiles):
-
         with open(datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
@@ -92,7 +92,6 @@ class TestGeschaeftspartner:
         """
 
         with pytest.raises(TypeError) as excinfo:
-
             _ = Geschaeftspartner(
                 anrede=Anrede.FRAU,
                 name1="von Sinnen",
@@ -116,3 +115,27 @@ class TestGeschaeftspartner:
             )
 
         assert "must be typing.List" in str(excinfo.value)
+
+    def test_serialization_of_non_german_address(self):
+        """
+        Test that partneradresses with a Landescode!=DE (default) are (de)serialized correctly.
+        """
+        gp = Geschaeftspartner(
+            anrede=Anrede.FRAU,
+            name1="Kurz",
+            name2="Sebastian",
+            name3=None,
+            gewerbekennzeichnung=True,
+            hrnummer="HRB 254466",
+            amtsgericht="Amtsgericht Ibiza",
+            kontaktweg=[Kontaktart.E_MAIL],
+            umsatzsteuer_id="AT12345",
+            geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+            partneradresse=Adresse(
+                postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT
+            ),
+        )
+        schema = GeschaeftspartnerSchema()
+        gp_json = schema.dumps(gp, ensure_ascii=False)
+        gp_deserialised = schema.loads(gp_json)
+        assert gp_deserialised.partneradresse.landescode == Landescode.AT
