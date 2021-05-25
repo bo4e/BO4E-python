@@ -73,7 +73,7 @@ class ZaehlerSchema(GeschaeftsobjektSchema):
     zaehlwerke = fields.Nested(ZaehlwerkSchema, many=True)
 
     # optional attributes
-    zaehlerkonstante = fields.Decimal(missing=None)
+    zaehlerkonstante = fields.Decimal(missing=None, as_string=True)
     eichung_bis = fields.DateTime(missing=None)
     letzte_eichung = fields.DateTime(missing=None)
 

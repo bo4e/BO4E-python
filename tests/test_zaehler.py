@@ -1,7 +1,9 @@
+from datetime import datetime
 from decimal import Decimal
 
 import pytest
 from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
+from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
@@ -13,7 +15,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 class TestZaehler:
-    def test_de_serialisation_only_required_attributes(self):
+    def test_de_serialisation(self):
         """
         Test de-/serialisation of Zaehler only with required attributes
         """
@@ -33,6 +35,10 @@ class TestZaehler:
             ],
             zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
             tarifart=Tarifart.ZWEITARIF,
+            zaehlerkonstante=Decimal(0.9),
+            eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
+            externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+            letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
