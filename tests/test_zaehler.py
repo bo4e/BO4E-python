@@ -71,7 +71,7 @@ class TestZaehler:
 
     def test_serialization_fails_for_empty_zaehlwerke(self):
         """
-        Test serialisation of Zaehler fails if OBIS is wrong.
+        Test serialisation of Zaehler fails if there are no zaehlwerke.
         """
         with pytest.raises(ValueError) as value_error:
             _ = Zaehler(
