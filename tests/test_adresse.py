@@ -200,3 +200,17 @@ class TestAddress:
                 postfach=address_test_data["postfach"],
             )
         assert expected in str(excinfo.value)
+
+    def test_serialization_of_non_german_address(self):
+        """
+        Minimal (not) working example
+        :return:
+        """
+        a = Adresse(
+            postleitzahl="6413", ort="Wildermieming", strasse="Gerhardhof", hausnummer="1", landescode=Landescode.AT
+        )
+        assert a.landescode == Landescode.AT
+        serialized_address = AdresseSchema().dumps(a)
+        assert '"AT"' in serialized_address
+        deserialized_address = AdresseSchema().loads(serialized_address)
+        assert deserialized_address.landescode == Landescode.AT
