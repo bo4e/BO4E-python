@@ -3,11 +3,11 @@ Contains Zaehlwerk class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
+
 import attr
 from attr.validators import matches_re
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
-
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.energierichtung import Energierichtung
@@ -50,10 +50,10 @@ class ZaehlwerkSchema(COMSchema):
 
     zaehlwerk_id = fields.Str()
     bezeichnung = fields.Str()
-    richtung: EnumField(Energierichtung)
+    richtung = EnumField(Energierichtung)
     obis_kennzahl = fields.Str()
     wandlerfaktor = fields.Decimal(as_string=True)
-    richtung: EnumField(Mengeneinheit)
+    einheit = EnumField(Mengeneinheit)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
