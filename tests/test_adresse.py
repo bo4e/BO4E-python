@@ -203,7 +203,7 @@ class TestAddress:
 
     def test_serialization_of_non_german_address(self):
         """
-        Minimal (not) working example
+        Minimal working example
         :return:
         """
         a = Adresse(

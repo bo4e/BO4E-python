@@ -1,5 +1,5 @@
 """
-Bei diesem Enum handelt es sich die Abbildung von Zählertypen der Sparten Strom und Gas.
+Bei diesem Enum handelt es sich um die Abbildung von Zählertypen der Sparten Strom und Gas.
 """
 
 from enum import Enum

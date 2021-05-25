@@ -15,7 +15,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 class TestZaehler:
     def test_de_serialisation_only_required_attributes(self):
         """
-        Test serialisation of Zaehler only with required attributes
+        Test de-/serialisation of Zaehler only with required attributes
         """
         zaehler = Zaehler(
             zaehlernummer="000111222",
@@ -71,7 +71,7 @@ class TestZaehler:
 
     def test_serialization_fails_for_empty_zaehlwerke(self):
         """
-        Test serialisation of Zaehler fails if OBIS is wrong.
+        Test serialisation of Zaehler fails if there are no zaehlwerke.
         """
         with pytest.raises(ValueError) as value_error:
             _ = Zaehler(
