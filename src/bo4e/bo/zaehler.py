@@ -37,7 +37,6 @@ class Zaehler(Geschaeftsobjekt):
     zaehlerauspraegung: Zaehlerauspraegung
     zaehlertyp: Zaehlertyp
     tarifart: Tarifart  # Spezifikation bezüglich unterstützter Tarifarten
-    energierichtung: Energierichtung
 
     # optional attributes
     zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  # Zählerkonstante auf dem Zähler

@@ -33,7 +33,6 @@ class TestZaehler:
             ],
             zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
             tarifart=Tarifart.ZWEITARIF,
-            energierichtung=Energierichtung.EINSP,
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
@@ -61,5 +60,4 @@ class TestZaehler:
                 ],
                 zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
                 tarifart=Tarifart.ZWEITARIF,
-                energierichtung=Energierichtung.EINSP,
             )
