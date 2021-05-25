@@ -21,7 +21,7 @@ class TestZaehler:
             zaehlernummer="000111222",
             sparte=Sparte.STROM,
             zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
-            zaehlwerk=[
+            zaehlwerke=[
                 Zaehlwerk(
                     zaehlwerk_id="98765",
                     einheit=Mengeneinheit.KW,
@@ -43,12 +43,12 @@ class TestZaehler:
         """
         Test serialisation of Zaehler fails if OBIS is wrong.
         """
-        with pytest.raises(ValueError):
+        with pytest.raises(ValueError) as value_error:
             _ = Zaehler(
                 zaehlernummer="000111222",
                 sparte=Sparte.STROM,
                 zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
-                zaehlwerk=[
+                zaehlwerke=[
                     Zaehlwerk(
                         zaehlwerk_id="98765",
                         einheit=Mengeneinheit.KW,
@@ -61,3 +61,19 @@ class TestZaehler:
                 zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
                 tarifart=Tarifart.ZWEITARIF,
             )
+        assert value_error.value.args[0].startswith("'obis_kennzahl' must match regex")
+
+    def test_serialization_fails_for_empty_zaehlwerke(self):
+        """
+        Test serialisation of Zaehler fails if OBIS is wrong.
+        """
+        with pytest.raises(ValueError) as value_error:
+            _ = Zaehler(
+                zaehlernummer="000111222",
+                sparte=Sparte.STROM,
+                zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
+                zaehlwerke=[],
+                zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
+                tarifart=Tarifart.ZWEITARIF,
+            )
+        assert value_error.value.args[0] == "The Zaehler must have at least 1 Zaehlwerk"
