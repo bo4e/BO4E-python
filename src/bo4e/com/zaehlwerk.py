@@ -43,7 +43,6 @@ class Zaehlwerk(COM):
     einheit: Mengeneinheit  # Die Einheit der gemessenen Größe, z.B. kWh
 
 
-#
 class ZaehlwerkSchema(COMSchema):
     """
     Schema for de-/serialization of Zaehlwerk.

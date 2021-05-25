@@ -13,7 +13,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 class TestZaehler:
-    def test_serialisation_only_required_attributes(self):
+    def test_de_serialisation_only_required_attributes(self):
         """
         Test serialisation of Zaehler only with required attributes
         """
@@ -36,8 +36,12 @@ class TestZaehler:
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
+        assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
+        assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
         schema = ZaehlerSchema()
-        _ = schema.dumps(zaehler, ensure_ascii=False)  # just to ensure it can be dumped.
+        json_string = schema.dumps(zaehler, ensure_ascii=False)
+        deserialized_zaehler = schema.loads(json_data=json_string)
+        assert deserialized_zaehler == zaehler
 
     def test_serialization_fails_for_invalid_obis(self):
         """

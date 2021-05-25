@@ -70,7 +70,7 @@ class ZaehlerSchema(GeschaeftsobjektSchema):
     zaehlerauspraegung = EnumField(Zaehlerauspraegung)
     zaehlertyp = EnumField(Zaehlertyp)
     tarifart = EnumField(Tarifart)
-    zaehlwerke = fields.Nested(ZaehlwerkSchema)
+    zaehlwerke = fields.Nested(ZaehlwerkSchema, many=True)
 
     # optional attributes
     zaehlerkonstante = fields.Decimal(missing=None)
