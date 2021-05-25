@@ -40,6 +40,8 @@ class TestZaehler:
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
         schema = ZaehlerSchema()
         json_string = schema.dumps(zaehler, ensure_ascii=False)
+        assert "\"richtung\"" in json_string, "Zaehlwerk->richtung was not serialized"
+        assert "\"einheit\"" in json_string, "Zaehlwerk->einheit was not serialized"
         deserialized_zaehler = schema.loads(json_data=json_string)
         assert deserialized_zaehler == zaehler
 
