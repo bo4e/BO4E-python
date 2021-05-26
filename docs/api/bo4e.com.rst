@@ -52,6 +52,14 @@ bo4e.com.messlokationszuordnung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.zaehlwerk module
+-------------------------
+
+.. automodule:: bo4e.com.zaehlwerk
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

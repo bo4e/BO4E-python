@@ -3,10 +3,9 @@ Contains Marktteilnehmer class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from attr.validators import matches_re
 from marshmallow import fields
 from marshmallow_enum import EnumField
-
+from attr.validators import matches_re
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
@@ -36,7 +35,7 @@ class MarktteilnehmerSchema(GeschaeftspartnerSchema):
     """
 
     # class_name is needed to use the correct schema for deserialization.
-    # see function `deserialise` in geschaeftsobjekt.py
+    # see function `deserialize` in geschaeftsobjekt.py
     class_name = Marktteilnehmer
 
     # required attributes

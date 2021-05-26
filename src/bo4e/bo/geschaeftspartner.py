@@ -8,7 +8,6 @@ from typing import List
 import attr
 from marshmallow import fields
 from marshmallow_enum import EnumField
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.anrede import Anrede
@@ -49,7 +48,7 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     """
 
     # class_name is needed to use the correct schema for deserialisation.
-    # see function `deserialise` in geschaeftsobjekt.py
+    # see function `deserialize` in geschaeftsobjekt.py
     class_name = Geschaeftspartner
 
     # required attributes

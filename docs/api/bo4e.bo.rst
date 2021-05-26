@@ -36,6 +36,14 @@ bo4e.bo.marktteilnehmer module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.zaehler module
+----------------------
+
+.. automodule:: bo4e.bo.zaehler
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

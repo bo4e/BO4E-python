@@ -4,7 +4,6 @@ and corresponding marshmallow schema for de-/serialization
 """
 import attr
 from marshmallow import fields, post_load
-
 from bo4e.com.com import COM, COMSchema
 
 
@@ -33,6 +32,6 @@ class ExterneReferenzSchema(COMSchema):
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
-    def deserialise(self, data, **kwargs) -> ExterneReferenz:
+    def deserialize(self, data, **kwargs) -> ExterneReferenz:
         """ Deserialize JSON to ExterneReferenz object """
         return ExterneReferenz(**data)

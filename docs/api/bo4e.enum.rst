@@ -92,6 +92,14 @@ bo4e.enum.marktrolle module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.mengeneinheit module
+------------------------------
+
+.. automodule:: bo4e.enum.mengeneinheit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.netzebene module
 --------------------------
 
@@ -116,10 +124,34 @@ bo4e.enum.sparte module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.tarifart module
+-------------------------
+
+.. automodule:: bo4e.enum.tarifart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.verbrauchsart module
 ------------------------------
 
 .. automodule:: bo4e.enum.verbrauchsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zaehlerauspraegung module
+-----------------------------------
+
+.. automodule:: bo4e.enum.zaehlerauspraegung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zaehlertyp module
+---------------------------
+
+.. automodule:: bo4e.enum.zaehlertyp
    :members:
    :undoc-members:
    :show-inheritance:

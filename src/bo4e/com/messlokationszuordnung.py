@@ -7,7 +7,6 @@ from datetime import datetime
 import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
-
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
@@ -45,6 +44,6 @@ class MesslokationszuordnungSchema(COMSchema):
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
-    def deserialise(self, data, **kwargs) -> Messlokationszuordnung:
+    def deserialize(self, data, **kwargs) -> Messlokationszuordnung:
         """ Deserialize JSON to Messlokationszuordnung object """
         return Messlokationszuordnung(**data)

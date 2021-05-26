@@ -6,7 +6,6 @@ and corresponding marshmallow schema for de-/serialization
 import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
-
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.landescode import Landescode
 
@@ -66,6 +65,6 @@ class AdresseSchema(COMSchema):
 
     # pylint: disable=no-self-use
     @post_load
-    def deserialise(self, data, **kwargs) -> Adresse:
+    def deserialize(self, data, **kwargs) -> Adresse:
         """ Deserialize JSON to Adresse object """
         return Adresse(**data)

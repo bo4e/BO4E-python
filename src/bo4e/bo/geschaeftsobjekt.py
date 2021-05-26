@@ -8,7 +8,6 @@ from typing import List, Optional
 import attr
 from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField
-
 from bo4e.cases import JavaScriptMixin
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
@@ -47,6 +46,6 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), missing=None)
 
     @post_load
-    def deserialise(self, data, **kwargs):
+    def deserialize(self, data, **kwargs):
         """ Deserialize JSON to python object. """
         return type(self).class_name(**data)
