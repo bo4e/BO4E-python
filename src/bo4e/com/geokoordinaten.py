@@ -26,8 +26,8 @@ class GeokoordinatenSchema(COMSchema):
     """
     Schema for de-/serialization of Geokoordinaten.
 
-    Standard json library can not serialise Decimal type.
-    Therefore these information will be serialised as string.
+    Standard json library can not serialize Decimal type.
+    Therefore these information will be serialized as string.
     During the deserialisiation it will become a Decimal type again.
     Link to official documentain:
     https://marshmallow.readthedocs.io/en/latest/api_reference.html?highlight=function#marshmallow.fields.Decimal
@@ -38,6 +38,6 @@ class GeokoordinatenSchema(COMSchema):
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
-    def deserialise(self, data, **kwargs) -> Geokoordinaten:
+    def deserialize(self, data, **kwargs) -> Geokoordinaten:
         """ Deserialize JSON to Geokoordinaten object """
         return Geokoordinaten(**data)

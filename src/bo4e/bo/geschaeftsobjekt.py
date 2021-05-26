@@ -46,6 +46,6 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
     externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), missing=None)
 
     @post_load
-    def deserialise(self, data, **kwargs):
+    def deserialize(self, data, **kwargs):
         """ Deserialize JSON to python object. """
         return type(self).class_name(**data)

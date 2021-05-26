@@ -35,7 +35,7 @@ class MarktteilnehmerSchema(GeschaeftspartnerSchema):
     """
 
     # class_name is needed to use the correct schema for deserialization.
-    # see function `deserialise` in geschaeftsobjekt.py
+    # see function `deserialize` in geschaeftsobjekt.py
     class_name = Marktteilnehmer
 
     # required attributes

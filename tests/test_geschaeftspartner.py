@@ -47,10 +47,10 @@ class TestGeschaeftspartner:
 
         assert "Helga" in gp_json
 
-        gp_deserialised = schema.loads(gp_json)
+        gp_deserialized = schema.loads(gp_json)
 
-        assert gp_deserialised.bo_typ == gp.bo_typ
-        assert type(gp_deserialised.partneradresse) == Adresse
+        assert gp_deserialized.bo_typ == gp.bo_typ
+        assert type(gp_deserialized.partneradresse) == Adresse
 
     def test_optional_attribute_partneradresse(self):
         """
@@ -78,9 +78,9 @@ class TestGeschaeftspartner:
 
         schema = GeschaeftspartnerSchema()
         gp_json = schema.dumps(gp, ensure_ascii=False)
-        gp_deserialised = schema.loads(gp_json)
+        gp_deserialized = schema.loads(gp_json)
 
-        assert gp_deserialised.partneradresse is None
+        assert gp_deserialized.partneradresse is None
 
     def test_list_validation_of_geschaeftspartnerrolle(self):
         """
@@ -137,5 +137,5 @@ class TestGeschaeftspartner:
         )
         schema = GeschaeftspartnerSchema()
         gp_json = schema.dumps(gp, ensure_ascii=False)
-        gp_deserialised = schema.loads(gp_json)
-        assert gp_deserialised.partneradresse.landescode == Landescode.AT
+        gp_deserialized = schema.loads(gp_json)
+        assert gp_deserialized.partneradresse.landescode == Landescode.AT

@@ -61,7 +61,7 @@ class ZaehlerSchema(GeschaeftsobjektSchema):
     """
 
     # class_name is needed to use the correct schema for deserialisation.
-    # see function `deserialise` in geschaeftsobjekt.py
+    # see function `deserialize` in geschaeftsobjekt.py
     class_name = Zaehler
 
     # required attributes

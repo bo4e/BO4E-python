@@ -28,6 +28,6 @@ class KatasteradresseSchema(COMSchema):
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
-    def deserialise(self, data, **kwargs) -> Katasteradresse:
+    def deserialize(self, data, **kwargs) -> Katasteradresse:
         """ Deserialize JSON to Katasteradresse object """
         return Katasteradresse(**data)
