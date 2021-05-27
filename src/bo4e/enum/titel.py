@@ -5,8 +5,8 @@
 from enum import Enum
 
 _titel = {
-    "DR": "DR",
-    "PROF": "PROF",
-    "PROF-DR": "PROF-DR",
+    "DR": "DR",  # Doktor
+    "PROF": "PROF",  # Professor
+    "PROF-DR": "PROF-DR",  # Professor Dr.
 }
 Titel = Enum("Titel", _titel)
