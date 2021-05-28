@@ -109,6 +109,7 @@ class TestAnsprechpartner:
         json_string = schema.dumps(ansprechpartner, ensure_ascii=False)
         assert "Müller-Schmidt" in json_string
         assert "Mühlenweg" in json_string
+        assert "PROF_DR" in json_string
 
         deserialized_ansprechpartner = schema.loads(json_data=json_string)
 
