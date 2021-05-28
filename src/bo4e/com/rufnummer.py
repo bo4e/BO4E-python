@@ -9,7 +9,7 @@ from marshmallow_enum import EnumField
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.rufnummernart import Rufnummernart
 
-
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Rufnummer(COM):
     """
@@ -30,7 +30,7 @@ class RufnummerSchema(COMSchema):
     nummerntyp = EnumField(Rufnummernart)
     rufnummer = fields.Str()
 
-    # pylint: disable=no-self-use
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Rufnummer:
         """Deserialize JSON to Rufnummer object"""

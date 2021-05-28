@@ -14,7 +14,7 @@ from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.titel import Titel
 
-
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Ansprechpartner(Geschaeftsobjekt):
     """

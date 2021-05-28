@@ -7,10 +7,9 @@ import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
 from bo4e.com.com import COM, COMSchema
-from bo4e.enum.rufnummernart import Rufnummernart
 from bo4e.enum.themengebiet import Themengebiet
 
-
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Zustaendigkeit(COM):
     """
@@ -37,7 +36,7 @@ class ZustaendigkeitSchema(COMSchema):
     jobtitel: str = fields.Str(missing=None)
     abteilung: str = fields.Str(missing=None)
 
-    # pylint: disable=no-self-use
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Zustaendigkeit:
         """Deserialize JSON to Zustaendigkeit object"""
