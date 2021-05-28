@@ -18,20 +18,20 @@ from bo4e.enum.titel import Titel
 @attr.s(auto_attribs=True, kw_only=True)
 class Ansprechpartner(Geschaeftsobjekt):
     """
-    Object containing information about a Geschaeftspartner
+    Object containing information about a Ansprechpartner
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
+    bo_typ: BoTyp = attr.ib(default=BoTyp.ANSPRECHPARTNER)
     nachname: str
     geschaeftspartner: Geschaeftspartner
 
     # optional attributes
     anrede: Anrede = attr.ib(default=None)
-    individuelleAnrede: str = attr.ib(default=None)
+    individuelle_anrede: str = attr.ib(default=None)
     titel: Titel = attr.ib(default=None)
     vorname: str = attr.ib(default=None)
-    eMailAdresse: str = attr.ib(default=None)
+    e_mail_adresse: str = attr.ib(default=None)
     kommentar: str = attr.ib(default=None)
     adresse: Adresse = attr.ib(default=None)
     rufnummer: Rufnummer = attr.ib(default=None)
@@ -53,10 +53,10 @@ class AnsprechpartnerSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     anrede = EnumField(Anrede, missing=None)
-    individuelleAnrede = fields.Str(missing=None)
+    individuelle_anrede = fields.Str(missing=None)
     titel = EnumField(Titel, missing=None)
     vorname = fields.Str(missing=None)
-    eMailAdresse = fields.Str(missing=None)
+    e_mail_adresse = fields.Str(missing=None)
     kommentar = fields.Str(missing=None)
     adresse = fields.Nested(AdresseSchema, missing=None)
     rufnummer = fields.Nested(RufnummerSchema, missing=None)
