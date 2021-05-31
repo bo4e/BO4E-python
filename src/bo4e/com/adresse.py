@@ -66,5 +66,5 @@ class AdresseSchema(COMSchema):
     # pylint: disable=no-self-use
     @post_load
     def deserialize(self, data, **kwargs) -> Adresse:
-        """ Deserialize JSON to Adresse object """
+        """Deserialize JSON to Adresse object"""
         return Adresse(**data)
