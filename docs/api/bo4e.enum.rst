@@ -116,6 +116,14 @@ bo4e.enum.rollencodetyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.rufnummernart module
+------------------------------
+
+.. automodule:: bo4e.enum.rufnummernart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.sparte module
 -----------------------
 
@@ -132,10 +140,42 @@ bo4e.enum.tarifart module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.themengebiet module
+-----------------------------
+
+.. automodule:: bo4e.enum.themengebiet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.titel module
+----------------------
+
+.. automodule:: bo4e.enum.titel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.verbrauchsart module
 ------------------------------
 
 .. automodule:: bo4e.enum.verbrauchsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.vertragsart module
+----------------------------
+
+.. automodule:: bo4e.enum.vertragsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.vertragsstatus module
+-------------------------------
+
+.. automodule:: bo4e.enum.vertragsstatus
    :members:
    :undoc-members:
    :show-inheritance:
@@ -152,6 +192,14 @@ bo4e.enum.zaehlertyp module
 ---------------------------
 
 .. automodule:: bo4e.enum.zaehlertyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zeiteinheit module
+----------------------------
+
+.. automodule:: bo4e.enum.zeiteinheit
    :members:
    :undoc-members:
    :show-inheritance:
