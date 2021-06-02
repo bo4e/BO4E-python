@@ -44,6 +44,14 @@ bo4e.com.katasteradresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.menge module
+---------------------
+
+.. automodule:: bo4e.com.menge
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.messlokationszuordnung module
 --------------------------------------
 
@@ -52,10 +60,58 @@ bo4e.com.messlokationszuordnung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.rufnummer module
+-------------------------
+
+.. automodule:: bo4e.com.rufnummer
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.unterschrift module
+----------------------------
+
+.. automodule:: bo4e.com.unterschrift
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.vertragskonditionen module
+-----------------------------------
+
+.. automodule:: bo4e.com.vertragskonditionen
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.vertragsteil module
+----------------------------
+
+.. automodule:: bo4e.com.vertragsteil
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.zaehlwerk module
 -------------------------
 
 .. automodule:: bo4e.com.zaehlwerk
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.zeitraum module
+------------------------
+
+.. automodule:: bo4e.com.zeitraum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.zustaendigkeit module
+------------------------------
+
+.. automodule:: bo4e.com.zustaendigkeit
    :members:
    :undoc-members:
    :show-inheritance:
