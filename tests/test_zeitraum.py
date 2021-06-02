@@ -94,10 +94,10 @@ class TestZeitraum:
         with pytest.raises(ValueError) as excinfo:
             _ = Zeitraum(**arguments)
         assert """
-            Please choose from one of the three possibilities to specify the timerange:
-            - einheit and dauer
-            - startdatum and enddatum
-            - startzeitpunkt and endzeitpunkt
-            """ in str(
+        Please choose from one of the three possibilities to specify the timerange:
+        - einheit and dauer
+        - startdatum and enddatum
+        - startzeitpunkt and endzeitpunkt
+        """ in str(
             excinfo.value
         )
