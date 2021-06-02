@@ -117,8 +117,8 @@ class TestVertrag:
             ],
             beschreibung="Hello Vertrag",
             vertragskonditionen=Vertragskonditionen(beschreibung="Beschreibung"),
-            unterzeichnervp1=Unterschrift(name="Foo"),
-            unterzeichnervp2=Unterschrift(name="Bar"),
+            unterzeichnervp1=[Unterschrift(name="Foo")],
+            unterzeichnervp2=[Unterschrift(name="Bar"), Unterschrift(name="Dr.No")],
         )
 
         schema = VertragSchema()
@@ -139,6 +139,7 @@ class TestVertrag:
         assert "Beschreibung" in json_string
         assert "Foo" in json_string
         assert "Bar" in json_string
+        assert "Dr.No" in json_string
 
         vertrag_deserialized = schema.loads(json_string)
 
@@ -156,8 +157,8 @@ class TestVertrag:
         ]
         assert vertrag_deserialized.beschreibung == "Hello Vertrag"
         assert vertrag_deserialized.vertragskonditionen == Vertragskonditionen(beschreibung="Beschreibung")
-        assert vertrag_deserialized.unterzeichnervp1 == Unterschrift(name="Foo")
-        assert vertrag_deserialized.unterzeichnervp2 == Unterschrift(name="Bar")
+        assert vertrag_deserialized.unterzeichnervp1 == [Unterschrift(name="Foo")]
+        assert vertrag_deserialized.unterzeichnervp2 == [Unterschrift(name="Bar"), Unterschrift(name="Dr.No")]
 
     def test_missing_required_attributes(self):
         with pytest.raises(TypeError) as excinfo:

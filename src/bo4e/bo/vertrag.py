@@ -51,8 +51,8 @@ class Vertrag(Geschaeftsobjekt):
     # optional attributes
     beschreibung: Optional[str] = attr.ib(default=None)
     vertragskonditionen: Optional[Vertragskonditionen] = attr.ib(default=None)
-    unterzeichnervp1: Optional[Unterschrift] = attr.ib(default=None)
-    unterzeichnervp2: Optional[Unterschrift] = attr.ib(default=None)
+    unterzeichnervp1: Optional[List[Unterschrift]] = attr.ib(default=None)
+    unterzeichnervp2: Optional[List[Unterschrift]] = attr.ib(default=None)
 
 
 class VertragSchema(GeschaeftsobjektSchema):
@@ -79,5 +79,5 @@ class VertragSchema(GeschaeftsobjektSchema):
     # optional attributes
     beschreibung = fields.Str(missing=None)
     vertragskonditionen = fields.Nested(VertragskonditionenSchema, missing=None)
-    unterzeichnervp1 = fields.Nested(UnterschriftSchema, missing=None)
-    unterzeichnervp2 = fields.Nested(UnterschriftSchema, missing=None)
+    unterzeichnervp1 = fields.Nested(UnterschriftSchema, missing=None, many=True)
+    unterzeichnervp2 = fields.Nested(UnterschriftSchema, missing=None, many=True)
