@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
 from decimal import Decimal
 
+import pytest
+
 from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
@@ -67,3 +69,35 @@ class TestZeitraum:
         assert zeitraum_deserialized.startzeitpunkt == datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc)
         assert isinstance(zeitraum_deserialized.endzeitpunkt, datetime)
         assert zeitraum_deserialized.endzeitpunkt == datetime(2021, 7, 30, tzinfo=timezone.utc)
+
+    @pytest.mark.parametrize(
+        "arguments",
+        [
+            pytest.param({"startdatum": datetime(2013, 5, 1, tzinfo=timezone.utc)}),
+            pytest.param(
+                {
+                    "startdatum": datetime(2013, 5, 1, tzinfo=timezone.utc),
+                    "startzeitpunkt": datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
+                    "endzeitpunkt": datetime(2021, 7, 30, tzinfo=timezone.utc),
+                }
+            ),
+            pytest.param({}),
+            pytest.param(
+                {
+                    "startdatum": datetime(2013, 5, 1, tzinfo=timezone.utc),
+                    "endzeitpunkt": datetime(2021, 7, 30, tzinfo=timezone.utc),
+                }
+            ),
+        ],
+    )
+    def test_validator_time_range_possibilities(self, arguments):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Zeitraum(**arguments)
+        assert """
+            Please choose from one of the three possibilities to specify the timerange:
+            - einheit and dauer
+            - startdatum and enddatum
+            - startzeitpunkt and endzeitpunkt
+            """ in str(
+            excinfo.value
+        )
