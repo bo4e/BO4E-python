@@ -1,4 +1,0 @@
--r base.in
-pytest
-pytest-datafiles
-flake8
