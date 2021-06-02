@@ -2,7 +2,7 @@
 Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
-from datetime import date
+from datetime import datetime
 import attr
 from marshmallow import fields, post_load
 from bo4e.com.com import COM, COMSchema
@@ -19,7 +19,7 @@ class Unterschrift(COM):
 
     # optional attributes
     ort: str = attr.ib(default=None)
-    datum: date = attr.ib(default=None)
+    datum: datetime = attr.ib(default=None)
 
 
 class UnterschriftSchema(COMSchema):
@@ -32,7 +32,7 @@ class UnterschriftSchema(COMSchema):
 
     # optional attributes
     ort = fields.String(missing=None)
-    datum = fields.Date(missing=None)
+    datum = fields.DateTime(missing=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

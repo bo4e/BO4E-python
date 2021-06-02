@@ -3,7 +3,7 @@ Contains Vertragsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
-from datetime import date
+from datetime import datetime
 import attr
 from marshmallow import fields, post_load
 from bo4e.com.com import COM, COMSchema
@@ -18,8 +18,8 @@ class Vertragsteil(COM):
     """
 
     # required attributes
-    vertragsteilbeginn: date = attr.ib(validator=attr.validators.instance_of(date))
-    vertragsteilende: date = attr.ib(validator=attr.validators.instance_of(date))
+    vertragsteilbeginn: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    vertragsteilende: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
 
     # optional attributes
     lokation: Optional[str] = attr.ib(default=None)
@@ -34,8 +34,8 @@ class VertragsteilSchema(COMSchema):
     """
 
     # required attributes
-    vertragsteilbeginn = fields.Date()
-    vertragsteilende = fields.Date()
+    vertragsteilbeginn = fields.DateTime()
+    vertragsteilende = fields.DateTime()
 
     # optional attributes
     lokation = fields.String(missing=None)

@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import datetime, timezone
 import pytest
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.vertrag import Vertrag, VertragSchema
@@ -20,8 +20,8 @@ class TestVertrag:
     _vertragsart = Vertragsart.BILANZIERUNGSVERTRAG
     _vertragsstatus = Vertragsstatus.AKTIV
     _sparte = Sparte.STROM
-    _vertragsbeginn = datetime(2021, 4, 30, 13, 45)
-    _vertragsende = datetime(2021, 6, 5, 16, 30)
+    _vertragsbeginn = datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc)
+    _vertragsende = datetime(2021, 6, 5, 16, 30, tzinfo=timezone.utc)
     _vertragspartner1 = Geschaeftspartner(
         anrede=Anrede.FRAU,
         name1="von Sinnen",
@@ -53,7 +53,12 @@ class TestVertrag:
             hausnummer="67",
         ),
     )
-    _vertragsteile = [Vertragsteil(vertragsteilbeginn=date(2021, 4, 30), vertragsteilende=date(2021, 6, 5))]
+    _vertragsteile = [
+        Vertragsteil(
+            vertragsteilbeginn=datetime(2021, 4, 30, tzinfo=timezone.utc),
+            vertragsteilende=datetime(2021, 6, 5, tzinfo=timezone.utc),
+        )
+    ]
 
     def test_serialisation_only_required_attributes(self):
         """
@@ -79,11 +84,11 @@ class TestVertrag:
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
         assert "STROM" in json_string
-        assert "2021-04-30T13:45:00" in json_string
-        assert "2021-06-05T16:30:00" in json_string
+        assert "2021-04-30T13:45:00+00:00" in json_string
+        assert "2021-06-05T16:30:00+00:00" in json_string
         assert "von Sinnen" in json_string
         assert "Preetz" in json_string
-        assert "2021-06-05" in json_string
+        assert "2021-06-05T00:00:00+00:00" in json_string
 
         vertrag_deserialized = schema.loads(json_string)
 
@@ -112,8 +117,14 @@ class TestVertrag:
             vertragspartner1=self._vertragspartner1,
             vertragspartner2=self._vertragspartner2,
             vertragsteile=[
-                Vertragsteil(vertragsteilbeginn=date(2021, 4, 30), vertragsteilende=date(2021, 6, 5)),
-                Vertragsteil(vertragsteilbeginn=date(2001, 1, 23), vertragsteilende=date(2002, 12, 3)),
+                Vertragsteil(
+                    vertragsteilbeginn=datetime(2021, 4, 30, tzinfo=timezone.utc),
+                    vertragsteilende=datetime(2021, 6, 5, tzinfo=timezone.utc),
+                ),
+                Vertragsteil(
+                    vertragsteilbeginn=datetime(2001, 1, 23, tzinfo=timezone.utc),
+                    vertragsteilende=datetime(2002, 12, 3, tzinfo=timezone.utc),
+                ),
             ],
             beschreibung="Hello Vertrag",
             vertragskonditionen=Vertragskonditionen(beschreibung="Beschreibung"),
@@ -129,12 +140,12 @@ class TestVertrag:
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
         assert "STROM" in json_string
-        assert "2021-04-30T13:45:00" in json_string
-        assert "2021-06-05T16:30:00" in json_string
+        assert "2021-04-30T13:45:00+00:00" in json_string
+        assert "2021-06-05T16:30:00+00:00" in json_string
         assert "von Sinnen" in json_string
         assert "Preetz" in json_string
-        assert "2021-06-05" in json_string
-        assert "2002-12-03" in json_string
+        assert "2021-06-05T00:00:00+00:00" in json_string
+        assert "2002-12-03T00:00:00+00:00" in json_string
         assert "Hello Vertrag" in json_string
         assert "Beschreibung" in json_string
         assert "Foo" in json_string
@@ -152,8 +163,14 @@ class TestVertrag:
         assert vertrag_deserialized.vertragspartner1 == self._vertragspartner1
         assert vertrag_deserialized.vertragspartner2 == self._vertragspartner2
         assert vertrag_deserialized.vertragsteile == [
-            Vertragsteil(vertragsteilbeginn=date(2021, 4, 30), vertragsteilende=date(2021, 6, 5)),
-            Vertragsteil(vertragsteilbeginn=date(2001, 1, 23), vertragsteilende=date(2002, 12, 3)),
+            Vertragsteil(
+                vertragsteilbeginn=datetime(2021, 4, 30, tzinfo=timezone.utc),
+                vertragsteilende=datetime(2021, 6, 5, tzinfo=timezone.utc),
+            ),
+            Vertragsteil(
+                vertragsteilbeginn=datetime(2001, 1, 23, tzinfo=timezone.utc),
+                vertragsteilende=datetime(2002, 12, 3, tzinfo=timezone.utc),
+            ),
         ]
         assert vertrag_deserialized.beschreibung == "Hello Vertrag"
         assert vertrag_deserialized.vertragskonditionen == Vertragskonditionen(beschreibung="Beschreibung")

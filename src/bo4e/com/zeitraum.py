@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Optional
 from decimal import Decimal
-from datetime import date, datetime
+from datetime import datetime
 
 import attr
 from marshmallow import fields, post_load
@@ -28,8 +28,8 @@ class Zeitraum(COM):
     # optional attributes
     einheit: Optional[Zeiteinheit] = attr.ib(default=None)
     dauer: Optional[Decimal] = attr.ib(default=None)
-    startdatum: Optional[date] = attr.ib(default=None)
-    enddatum: Optional[date] = attr.ib(default=None)
+    startdatum: Optional[datetime] = attr.ib(default=None)
+    enddatum: Optional[datetime] = attr.ib(default=None)
     startzeitpunkt: Optional[datetime] = attr.ib(default=None)
     endzeitpunkt: Optional[datetime] = attr.ib(default=None)
 
@@ -42,8 +42,8 @@ class ZeitraumSchema(COMSchema):
     # optional attributes
     einheit = EnumField(Zeiteinheit, missing=None)
     dauer = fields.Decimal(missing=None, as_string=True)
-    startdatum = fields.Date(missing=None)
-    enddatum = fields.Date(missing=None)
+    startdatum = fields.DateTime(missing=None)
+    enddatum = fields.DateTime(missing=None)
     startzeitpunkt = fields.DateTime(missing=None)
     endzeitpunkt = fields.DateTime(missing=None)
 
