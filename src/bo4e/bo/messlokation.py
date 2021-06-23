@@ -82,31 +82,6 @@ class Messlokation(Geschaeftsobjekt):
         if amount_of_given_address_infos != 1:
             raise ValueError("No or more than one address information is given.")
 
-    @staticmethod
-    def _get_checksum(malo_id: str) -> str:
-        """
-        Get the checksum of a marktlokations id.
-        a) Quersumme aller Ziffern in ungerader Position
-        b) Quersumme aller Ziffern auf gerader Position multipliziert mit 2
-        c) Summe von a) und b) d) Differenz von c) zum nächsten Vielfachen von 10 (ergibt sich hier 10, wird die
-           Prüfziffer 0 genommen
-        https://bdew-codes.de/Content/Files/MaLo/2017-04-28-BDEW-Anwendungshilfe-MaLo-ID_Version1.0_FINAL.PDF
-        :param self:
-        :return: the checksum as string
-        """
-        odd_checksum: int = 0
-        even_checksum: int = 0
-        # start counting at 1 to be consistent with the above description
-        # of "even" and "odd" but stop at tenth digit.
-        for i in range(1, 11):
-            digit = malo_id[i - 1 : i]
-            if i % 2 - 1 == 0:
-                odd_checksum += int(digit)
-            else:
-                even_checksum += 2 * int(digit)
-        result: int = (10 - ((even_checksum + odd_checksum) % 10)) % 10
-        return str(result)
-
 
 class MesslokationSchema(GeschaeftsobjektSchema):
     """
@@ -138,27 +113,3 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     messadresse = fields.Nested(AdresseSchema, missing=None)
     geoadresse = fields.Nested(GeokoordinatenSchema, missing=None)
     katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)
-
-    # # required attributes
-    # marktlokations_id = fields.Str()
-    # sparte = EnumField(Sparte)
-    # energierichtung = EnumField(Energierichtung)
-    # bilanzierungsmethode = EnumField(Bilanzierungsmethode)
-    # netzebene = EnumField(Netzebene)
-
-    # # optional attributes
-    # verbrauchsart = EnumField(Verbrauchsart, missing=None)
-    # unterbrechbar = fields.Bool(missing=None)
-    # netzbetreibercodenr = fields.Str(missing=None)
-    # gebietstyp = EnumField(Gebiettyp, missing=None)
-    # netzgebietsnr = fields.Str(missing=None)
-    # bilanzierungsgebiet = fields.Str(missing=None)
-    # grundversorgercodenr = fields.Str(missing=None)
-    # gasqualitaet = EnumField(Gasqualitaet, missing=None)
-    # endkunde = fields.Nested(GeschaeftspartnerSchema, missing=None)
-    # zugehoerige_messlokation = fields.List(fields.Nested(MesslokationszuordnungSchema), missing=None)
-
-    # only one of the following three optional attributes can be set
-    # messadresse = fields.Nested(AdresseSchema, missing=None)
-    # geoadresse = fields.Nested(GeokoordinatenSchema, missing=None)
-    # katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)
