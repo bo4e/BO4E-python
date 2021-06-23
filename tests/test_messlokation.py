@@ -133,13 +133,29 @@ class TestMeLo:
                 katasterinformation="test",
             )
 
-        assert "More than one address information is given." == str(excinfo.value)
+        assert str(excinfo.value) == "More than one address information is given."
+
+    def test_grundzustaendiger_x_codenr_validation(self):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Messlokation(
+                messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
+                sparte=Sparte.STROM,
+                netzebene=Netzebene.MSP,
+                energierichtung=Energierichtung.EINSP,
+                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                grundzustaendiger_msb_codenr="9904768000008",
+                grundzustaendiger_msbim_codenr="test",
+                grundzustaendiger_mdl_codenr="test",
+            )
+
+        assert str(excinfo.value) == "No or more than one grundzustaendiger msb/mdl codenr is given."
 
     @pytest.mark.parametrize(
         "melo_id_valid",
         [
             ("DE00056266802AO6G56M11SN51G21M24S", True),
             ("FR00056266802AO6G56M11SN51G21M24S", True),
+            ("XX00056266802AO6G56M11SN51G21M24S", False),
             ("0000056266802AO6G56M11SN51G21M24S", False),
             ("asdasd", False),
             ("   ", False),
