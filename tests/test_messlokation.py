@@ -1,14 +1,28 @@
 import json
+from datetime import datetime
+from decimal import Decimal
 from typing import Tuple
 
 import pytest
+
 from bo4e.bo.messlokation import Messlokation, MesslokationSchema
+from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
+from bo4e.com.dienstleistung import Dienstleistung
+from bo4e.com.externereferenz import ExterneReferenz
+from bo4e.com.hardware import Hardware
+from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
+from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
+from bo4e.enum.geraetetyp import Geraetetyp
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.tarifart import Tarifart
+from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
+from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 class TestMeLo:
@@ -56,6 +70,43 @@ class TestMeLo:
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             # optional attributes
             messgebietnr="664073",
+            geraete=[
+                Hardware(geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM, bezeichnung="intelligentes Messsystem"),
+                Hardware(geraetetyp=Geraetetyp.MODEM, bezeichnung="56k Modem"),
+            ],
+            messdienstleistung=[
+                Dienstleistung(
+                    dienstleistungstyp=Dienstleistungstyp.AUSLESUNG_TAEGLICH_FERNAUSLESUNG,
+                    bezeichnung="fernauslesung_taeglich",
+                ),
+                Dienstleistung(
+                    dienstleistungstyp=Dienstleistungstyp.ENTSPERRUNG,
+                    bezeichnung="entsperrung",
+                ),
+            ],
+            messlokationszaehler=[
+                Zaehler(
+                    zaehlernummer="000111222",
+                    sparte=Sparte.STROM,
+                    zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
+                    zaehlwerke=[
+                        Zaehlwerk(
+                            zaehlwerk_id="98765",
+                            einheit=Mengeneinheit.KW,
+                            richtung=Energierichtung.EINSP,
+                            bezeichnung="my zaehlwerk",
+                            obis_kennzahl="1-0:1.8.1",
+                            wandlerfaktor=Decimal(0.95),
+                        )
+                    ],
+                    zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
+                    tarifart=Tarifart.ZWEITARIF,
+                    zaehlerkonstante=Decimal(0.9),
+                    eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
+                    externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+                    letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
+                )
+            ],
             grundzustaendiger_mdl_codenr="9904768000008",
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
