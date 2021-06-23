@@ -14,6 +14,7 @@ from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
 from bo4e.com.hardware import Hardware, HardwareSchema
 from bo4e.com.dienstleistung import Dienstleistung, DienstleistungSchema
+from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
@@ -60,6 +61,7 @@ class Messlokation(Geschaeftsobjekt):
     grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
     geraete: List[Hardware] = attr.ib(default=None)
     messdienstleistung: List[Dienstleistung] = attr.ib(default=None)
+    messlokationszaehler: List[Zaehler] = attr.ib(default=None)
 
     # only one of the following three optional attributes can be set
     messadresse: Adresse = attr.ib(default=None)
@@ -130,6 +132,7 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     grundzustaendiger_mdl_codenr = fields.Str(missing=None)
     geraete = fields.List(fields.Nested(HardwareSchema), missing=None)  #: List[Hardware]
     messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), missing=None)  #: List[Dienstleistung]
+    messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), missing=None)
 
     # only one of the following three optional attributes can be set
     messadresse = fields.Nested(AdresseSchema, missing=None)
