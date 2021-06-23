@@ -12,6 +12,8 @@ from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
+from bo4e.com.hardware import Hardware, HardwareSchema
+from bo4e.com.dienstleistung import Dienstleistung, DienstleistungSchema
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
@@ -56,8 +58,8 @@ class Messlokation(Geschaeftsobjekt):
     grundzustaendiger_msb_codenr: str = attr.ib(default=None)
     grundzustaendiger_msbim_codenr: str = attr.ib(default=None)
     grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
-    geraete: List[Hardware]
-    messdienstleistung: List[Dienstleistung]
+    geraete: List[Hardware] = attr.ib(default=None)
+    messdienstleistung: List[Dienstleistung] = attr.ib(default=None)
 
     # only one of the following three optional attributes can be set
     messadresse: Adresse = attr.ib(default=None)
