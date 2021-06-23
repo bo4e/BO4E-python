@@ -3,6 +3,7 @@ Auflistung möglicher abzurechnender Dienstleistungen.
 """
 from enum import Enum
 
+# pylint: disable=line-too-long
 _dienstleistungstyp = {
     "DATENBEREITSTELLUNG_TAEGLICH": "DATENBEREITSTELLUNG_TAEGLICH",  # Datenbereitstellung täglich
     "DATENBEREITSTELLUNG_WOECHENTLICH": "DATENBEREITSTELLUNG_WOECHENTLICH",  # Datenbereitstellung wöchentlich
@@ -40,4 +41,4 @@ _dienstleistungstyp = {
     "MAHNKOSTEN": "MAHNKOSTEN",  # Mahnkosten
     "INKASSOKOSTEN": "INKASSOKOSTEN",  # Inkassokosten
 }
-Dienstleistungstyp = Enum("Dienstleistungstyp", _dienstleistungstyp)
+Dienstleistungstyp: Enum = Enum("Dienstleistungstyp", _dienstleistungstyp)

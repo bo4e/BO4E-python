@@ -3,6 +3,7 @@ Auflistung möglicher abzurechnender Gerätetypen.
 """
 from enum import Enum
 
+# pylint: disable=line-too-long
 _geraetetyp = {
     "WECHSELSTROMZAEHLER": "WECHSELSTROMZAEHLER",  # Wechselstromzähler
     "DREHSTROMZAEHLER": "DREHSTROMZAEHLER",  # Drehstromzähler
