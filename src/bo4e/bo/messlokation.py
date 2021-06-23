@@ -18,11 +18,18 @@ from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
+from bo4e.enum.landescode import Landescode
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 
+# Structure of a Messlokations-ID
+# Ländercode nach DIN ISO 3166 (2 Stellen)
+# Verteilnetzbetreiber (6 Stellen)
+# Postleitzahl (5 Stellen)
+# Zählpunktnummer (20 Stellen alphanumerisch)
+# source: https://de.wikipedia.org/wiki/Z%C3%A4hlpunkt#Struktur_der_Z%C3%A4hlpunktbezeichnung
 
-_malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
+_melo_id_pattern = re.compile(r"^[A-Z]{2}\d{6}\d{5}[A-Z\d]{20}$")
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -33,22 +40,17 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     # pylint: disable=unused-argument, no-self-use
-    def _validate_marktlokations_id(self, marktlokations_id_attribute, value):
+    def _validate_messlokations_id(self, messlokations_id_attribute, value):
         if not value:
-            raise ValueError("The marktlokations_id must not be empty.")
-        if not _malo_id_pattern.match(value):
-            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
-        expected_checksum = Messlokation._get_checksum(value)
-        actual_checksum = value[10:11]
-        if expected_checksum != actual_checksum:
-            # pylint: disable=line-too-long
-            raise ValueError(
-                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
-            )
+            raise ValueError("The messlokations_id must not be empty.")
+        if not _melo_id_pattern.match(value):
+            raise ValueError(f"The messlokations_id '{value}' does not match {_melo_id_pattern.pattern}")
+        if not value[0:2] in Landescode:
+            raise ValueError(f"The country code '{value[0:2]}' is not a valid country code")
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
-    messlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
+    messlokations_id: str = attr.ib(validator=_validate_messlokations_id)
     sparte: Sparte
     netzebene: Netzebene
     energierichtung: Energierichtung
