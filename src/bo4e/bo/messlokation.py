@@ -6,19 +6,20 @@ import re
 from typing import List
 
 import attr
+from iso3166 import countries
 from marshmallow import fields
 from marshmallow_enum import EnumField
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.adresse import Adresse, AdresseSchema
-from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
-from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
-from bo4e.com.hardware import Hardware, HardwareSchema
-from bo4e.com.dienstleistung import Dienstleistung, DienstleistungSchema
 from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
+from bo4e.com.adresse import Adresse, AdresseSchema
+from bo4e.com.dienstleistung import Dienstleistung, DienstleistungSchema
+from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
+from bo4e.com.hardware import Hardware, HardwareSchema
+from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.landescode import Landescode
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 
