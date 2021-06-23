@@ -59,14 +59,16 @@ class Messlokation(Geschaeftsobjekt):
 
     # optional attributes
     messgebietnr: str = attr.ib(default=None)
-    grundzustaendiger_msb_codenr: str = attr.ib(default=None)
-    grundzustaendiger_msbim_codenr: str = attr.ib(default=None)
-    grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
     geraete: List[Hardware] = attr.ib(default=None)
     messdienstleistung: List[Dienstleistung] = attr.ib(default=None)
     messlokationszaehler: List[Zaehler] = attr.ib(default=None)
 
-    # only one of the following three optional attributes can be set
+    # only one of the following three optional address attributes can be set
+    grundzustaendiger_msb_codenr: str = attr.ib(default=None)
+    grundzustaendiger_msbim_codenr: str = attr.ib(default=None)
+    grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
+
+    # only one of the following three optional address attributes can be set
     messadresse: Adresse = attr.ib(default=None)
     geoadresse: Geokoordinaten = attr.ib(default=None)
     katasterinformation: Katasteradresse = attr.ib(default=None)
@@ -82,8 +84,24 @@ class Messlokation(Geschaeftsobjekt):
             self.katasterinformation,
         ]
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
-        if amount_of_given_address_infos >= 1:
+        if amount_of_given_address_infos > 1:
             raise ValueError("More than one address information is given.")
+
+    @grundzustaendiger_msb_codenr.validator
+    @grundzustaendiger_msbim_codenr.validator
+    @grundzustaendiger_mdl_codenr.validator
+    def validate_grundzustaendiger_x_codenr(self, attribute, value):
+        """Checks that there is one and only one valid grundzustaendiger msb codenr given."""
+        all_grundzustaendiger_x_codenr_attributes = [
+            self.grundzustaendiger_msb_codenr,
+            self.grundzustaendiger_msbim_codenr,
+            self.grundzustaendiger_mdl_codenr,
+        ]
+        amount_of_given_grundzustaendiger_x_codenr = len(
+            [i for i in all_grundzustaendiger_x_codenr_attributes if i is not None]
+        )
+        if amount_of_given_grundzustaendiger_x_codenr > 1:
+            raise ValueError("No or more than one grundzustaendiger msb/mdl codenr is given.")
 
 
 class MesslokationSchema(GeschaeftsobjektSchema):
