@@ -20,6 +20,14 @@ bo4e.com.com module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.dienstleistung module
+------------------------------
+
+.. automodule:: bo4e.com.dienstleistung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.externereferenz module
 -------------------------------
 
@@ -32,6 +40,14 @@ bo4e.com.geokoordinaten module
 ------------------------------
 
 .. automodule:: bo4e.com.geokoordinaten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.hardware module
+------------------------
+
+.. automodule:: bo4e.com.hardware
    :members:
    :undoc-members:
    :show-inheritance:

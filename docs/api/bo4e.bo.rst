@@ -44,6 +44,14 @@ bo4e.bo.marktteilnehmer module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.messlokation module
+---------------------------
+
+.. automodule:: bo4e.bo.messlokation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.vertrag module
 ----------------------
 
