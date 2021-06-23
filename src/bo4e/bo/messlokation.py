@@ -46,11 +46,11 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError("The messlokations_id must not be empty.")
         if not _melo_id_pattern.match(value):
             raise ValueError(f"The messlokations_id '{value}' does not match {_melo_id_pattern.pattern}")
-        if not value[0:2] in Landescode:
+        if not value[0:2] in countries:
             raise ValueError(f"The country code '{value[0:2]}' is not a valid country code")
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
+    bo_typ: BoTyp = attr.ib(default=BoTyp.MESSLOKATION)
     messlokations_id: str = attr.ib(validator=_validate_messlokations_id)
     sparte: Sparte
     netzebene: Netzebene
@@ -75,15 +75,15 @@ class Messlokation(Geschaeftsobjekt):
     @geoadresse.validator
     @katasterinformation.validator
     def validate_address_info(self, address_attribute, value):
-        """Checks that there is one and only one valid adress given."""
+        """Checks that if an address is given, that there is only one valid address given"""
         all_address_attributes = [
             self.messadresse,
             self.geoadresse,
             self.katasterinformation,
         ]
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
-        if amount_of_given_address_infos != 1:
-            raise ValueError("No or more than one address information is given.")
+        if amount_of_given_address_infos >= 1:
+            raise ValueError("More than one address information is given.")
 
 
 class MesslokationSchema(GeschaeftsobjektSchema):
