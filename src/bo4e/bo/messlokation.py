@@ -87,7 +87,7 @@ class Messlokation(Geschaeftsobjekt):
     @grundzustaendiger_msbim_codenr.validator
     @grundzustaendiger_mdl_codenr.validator
     def validate_grundzustaendiger_x_codenr(self, attribute, value):
-        """Checks that there is one and only one valid grundzustaendiger msb codenr given."""
+        """Checks that if a codenr is given, that there is only one valid codenr given."""
         all_grundzustaendiger_x_codenr_attributes = [
             self.grundzustaendiger_msb_codenr,
             self.grundzustaendiger_msbim_codenr,
@@ -97,7 +97,7 @@ class Messlokation(Geschaeftsobjekt):
             [i for i in all_grundzustaendiger_x_codenr_attributes if i is not None]
         )
         if amount_of_given_grundzustaendiger_x_codenr > 1:
-            raise ValueError("No or more than one grundzustaendiger msb/mdl codenr is given.")
+            raise ValueError("More than one codenr is given.")
 
 
 class MesslokationSchema(GeschaeftsobjektSchema):
