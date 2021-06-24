@@ -33,9 +33,7 @@ class TestMeLo:
         melo = Messlokation(
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
-            netzebene=Netzebene.MSP,
-            energierichtung=Energierichtung.EINSP,
-            bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+            netzebene_messung=Netzebene.MSP,
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
@@ -65,9 +63,7 @@ class TestMeLo:
             # required attributes
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
-            netzebene=Netzebene.MSP,
-            energierichtung=Energierichtung.EINSP,
-            bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+            netzebene_messung=Netzebene.MSP,
             # optional attributes
             messgebietnr="664073",
             geraete=[
@@ -138,7 +134,6 @@ class TestMeLo:
                 "messlokationszaehler": null,
                 "katasterinformation": null,
                 "messgebietnr": "664073",
-                "bilanzierungsmethode": "PAUSCHAL",
                 "messadresse":
                     {
                         "strasse": "Jahnalle",
@@ -151,7 +146,7 @@ class TestMeLo:
                         "ort": "Leipzig"
                     },
                 "sparte": "STROM",
-                "netzebene": "MSP",
+                "netzebeneMessung": "MSP",
                 "grundzustaendigerMsbCodenr": null,
                 "geraete": null,
                 "externeReferenzen": [],
@@ -159,7 +154,6 @@ class TestMeLo:
                 "geoadresse": null,
                 "grundzustaendigerMdlCodenr": "9904768000008",
                 "versionstruktur": "2",
-                "energierichtung": "EINSP",
                 "grundzustaendigerMsbimCodenr": null
                 }
                 """
@@ -176,9 +170,7 @@ class TestMeLo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                 sparte=Sparte.STROM,
-                netzebene=Netzebene.MSP,
-                energierichtung=Energierichtung.EINSP,
-                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                netzebene_messung=Netzebene.MSP,
                 messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
                 geoadresse="test",
                 katasterinformation="test",
@@ -191,15 +183,13 @@ class TestMeLo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                 sparte=Sparte.STROM,
-                netzebene=Netzebene.MSP,
-                energierichtung=Energierichtung.EINSP,
-                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                netzebene_messung=Netzebene.MSP,
                 grundzustaendiger_msb_codenr="9904768000008",
                 grundzustaendiger_msbim_codenr="test",
                 grundzustaendiger_mdl_codenr="test",
             )
 
-        assert str(excinfo.value) == "No or more than one grundzustaendiger msb/mdl codenr is given."
+        assert str(excinfo.value) == "More than one codenr is given."
 
     @pytest.mark.parametrize(
         "melo_id_valid",
