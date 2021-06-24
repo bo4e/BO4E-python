@@ -192,7 +192,7 @@ class TestMeLo:
         assert str(excinfo.value) == "More than one codenr is given."
 
     @pytest.mark.parametrize(
-        "melo_id_valid",
+        "melo_id, is_valid",
         [
             ("DE00056266802AO6G56M11SN51G21M24S", True),
             ("FR00056266802AO6G56M11SN51G21M24S", True),
@@ -206,18 +206,16 @@ class TestMeLo:
             ("", False),
         ],
     )
-    def test_id_validation(self, melo_id_valid: Tuple[str, bool]):
+    def test_id_validation(self, melo_id: str, is_valid: bool):
         def _instantiate_melo(melo_id: str):
             _ = Messlokation(
                 messlokations_id=melo_id,
                 sparte=Sparte.STROM,
-                netzebene=Netzebene.MSP,
-                energierichtung=Energierichtung.EINSP,
-                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                netzebene_messung=Netzebene.MSP,
             )
 
-        if not melo_id_valid[1]:
+        if not is_valid:
             with pytest.raises(ValueError):
-                _instantiate_melo(melo_id_valid[0])
+                _instantiate_melo(melo_id)
         else:
-            _instantiate_melo(melo_id_valid[0])
+            _instantiate_melo(melo_id)
