@@ -61,7 +61,7 @@ class Messlokation(Geschaeftsobjekt):
     messdienstleistung: List[Dienstleistung] = attr.ib(default=None)
     messlokationszaehler: List[Zaehler] = attr.ib(default=None)
 
-    # only one of the following three optional address attributes can be set
+    # only one of the following three optional codenr attributes can be set
     grundzustaendiger_msb_codenr: str = attr.ib(default=None)
     grundzustaendiger_msbim_codenr: str = attr.ib(default=None)
     grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
