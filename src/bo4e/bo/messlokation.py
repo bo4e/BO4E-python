@@ -119,12 +119,14 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     # optional attributes
     netzebene_messung = EnumField(Netzebene)
     messgebietnr = fields.Str(missing=None)
-    grundzustaendiger_msb_codenr = fields.Str(missing=None)
-    grundzustaendiger_msbim_codenr = fields.Str(missing=None)
-    grundzustaendiger_mdl_codenr = fields.Str(missing=None)
     geraete = fields.List(fields.Nested(HardwareSchema), missing=None)  #: List[Hardware]
     messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), missing=None)  #: List[Dienstleistung]
     messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), missing=None)
+
+    # only one of the following three optional codenr attributes can be set
+    grundzustaendiger_msb_codenr = fields.Str(missing=None)
+    grundzustaendiger_msbim_codenr = fields.Str(missing=None)
+    grundzustaendiger_mdl_codenr = fields.Str(missing=None)
 
     # only one of the following three optional attributes can be set
     messadresse = fields.Nested(AdresseSchema, missing=None)
