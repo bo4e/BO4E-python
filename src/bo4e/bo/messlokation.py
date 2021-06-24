@@ -53,11 +53,9 @@ class Messlokation(Geschaeftsobjekt):
     bo_typ: BoTyp = attr.ib(default=BoTyp.MESSLOKATION)
     messlokations_id: str = attr.ib(validator=_validate_messlokations_id)
     sparte: Sparte
-    netzebene: Netzebene
-    energierichtung: Energierichtung
-    bilanzierungsmethode: Bilanzierungsmethode
 
     # optional attributes
+    netzebene_messung: Netzebene = attr.ib(default=None)
     messgebietnr: str = attr.ib(default=None)
     geraete: List[Hardware] = attr.ib(default=None)
     messdienstleistung: List[Dienstleistung] = attr.ib(default=None)
@@ -117,11 +115,9 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     # required attributes
     messlokations_id = fields.Str()
     sparte = EnumField(Sparte)
-    netzebene = EnumField(Netzebene)
-    energierichtung = EnumField(Energierichtung)
-    bilanzierungsmethode = EnumField(Bilanzierungsmethode)
 
     # optional attributes
+    netzebene_messung = EnumField(Netzebene)
     messgebietnr = fields.Str(missing=None)
     grundzustaendiger_msb_codenr = fields.Str(missing=None)
     grundzustaendiger_msbim_codenr = fields.Str(missing=None)
