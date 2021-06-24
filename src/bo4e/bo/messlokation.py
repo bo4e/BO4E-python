@@ -17,9 +17,7 @@ from bo4e.com.dienstleistung import Dienstleistung, DienstleistungSchema
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.hardware import Hardware, HardwareSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
-from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 
