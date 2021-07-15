@@ -53,11 +53,11 @@ class Messlokation(Geschaeftsobjekt):
     sparte: Sparte
 
     # optional attributes
-    netzebene_messung: Netzebene = attr.ib(default=None)
+    netzebene_messung: Optional[Netzebene] = attr.ib(default=None)
     messgebietnr: str = attr.ib(default=None)
-    geraete: List[Hardware] = attr.ib(default=None)
-    messdienstleistung: List[Dienstleistung] = attr.ib(default=None)
-    messlokationszaehler: List[Zaehler] = attr.ib(default=None)
+    geraete: Optional[List[Hardware]] = attr.ib(default=None)
+    messdienstleistung: Optional[List[Dienstleistung]] = attr.ib(default=None)
+    messlokationszaehler: Optional[List[Zaehler]] = attr.ib(default=None)
 
     # only one of the following three optional codenr attributes can be set
     grundzustaendiger_msb_codenr: str = attr.ib(default=None)
@@ -65,9 +65,9 @@ class Messlokation(Geschaeftsobjekt):
     grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
 
     # only one of the following three optional address attributes can be set
-    messadresse: Adresse = attr.ib(default=None)
-    geoadresse: Geokoordinaten = attr.ib(default=None)
-    katasterinformation: Katasteradresse = attr.ib(default=None)
+    messadresse: Optional[Adresse] = attr.ib(default=None)
+    geoadresse: Optional[Geokoordinaten] = attr.ib(default=None)
+    katasterinformation: Optional[Katasteradresse] = attr.ib(default=None)
 
     @messadresse.validator
     @geoadresse.validator
