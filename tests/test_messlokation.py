@@ -103,7 +103,7 @@ class TestMeLo:
                     letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
                 )
             ],
-            grundzustaendiger_mdl_codenr="9904768000008",
+            grundzustaendiger_msb_codenr="9910125000002",
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
@@ -152,7 +152,6 @@ class TestMeLo:
                 "externeReferenzen": [],
                 "messdienstleistung": null,
                 "geoadresse": null,
-                "grundzustaendigerMdlCodenr": "9904768000008",
                 "versionstruktur": "2",
                 "grundzustaendigerMsbimCodenr": null
                 }
@@ -186,7 +185,6 @@ class TestMeLo:
                 netzebene_messung=Netzebene.MSP,
                 grundzustaendiger_msb_codenr="9904768000008",
                 grundzustaendiger_msbim_codenr="test",
-                grundzustaendiger_mdl_codenr="test",
             )
 
         assert str(excinfo.value) == "More than one codenr is given."
