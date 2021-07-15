@@ -1,7 +1,6 @@
 import json
 from datetime import datetime
 from decimal import Decimal
-from typing import Tuple
 
 import pytest
 
@@ -12,7 +11,6 @@ from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.hardware import Hardware
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
