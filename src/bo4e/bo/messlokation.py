@@ -3,7 +3,7 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import List
+from typing import List, Optional
 
 import attr
 from iso3166 import countries
