@@ -59,10 +59,9 @@ class Messlokation(Geschaeftsobjekt):
     messdienstleistung: Optional[List[Dienstleistung]] = attr.ib(default=None)
     messlokationszaehler: Optional[List[Zaehler]] = attr.ib(default=None)
 
-    # only one of the following three optional codenr attributes can be set
+    # only one of the following two optional codenr attributes can be set
     grundzustaendiger_msb_codenr: str = attr.ib(default=None)
     grundzustaendiger_msbim_codenr: str = attr.ib(default=None)
-    grundzustaendiger_mdl_codenr: str = attr.ib(default=None)
 
     # only one of the following three optional address attributes can be set
     messadresse: Optional[Adresse] = attr.ib(default=None)
@@ -85,13 +84,11 @@ class Messlokation(Geschaeftsobjekt):
 
     @grundzustaendiger_msb_codenr.validator
     @grundzustaendiger_msbim_codenr.validator
-    @grundzustaendiger_mdl_codenr.validator
     def validate_grundzustaendiger_x_codenr(self, attribute, value):
         """Checks that if a codenr is given, that there is only one valid codenr given."""
         all_grundzustaendiger_x_codenr_attributes = [
             self.grundzustaendiger_msb_codenr,
             self.grundzustaendiger_msbim_codenr,
-            self.grundzustaendiger_mdl_codenr,
         ]
         amount_of_given_grundzustaendiger_x_codenr = len(
             [i for i in all_grundzustaendiger_x_codenr_attributes if i is not None]
@@ -121,10 +118,9 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), missing=None)  #: List[Dienstleistung]
     messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), missing=None)
 
-    # only one of the following three optional codenr attributes can be set
+    # only one of the following two optional codenr attributes can be set
     grundzustaendiger_msb_codenr = fields.Str(missing=None)
     grundzustaendiger_msbim_codenr = fields.Str(missing=None)
-    grundzustaendiger_mdl_codenr = fields.Str(missing=None)
 
     # only one of the following three optional attributes can be set
     messadresse = fields.Nested(AdresseSchema, missing=None)
