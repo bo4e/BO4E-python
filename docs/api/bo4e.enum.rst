@@ -36,6 +36,14 @@ bo4e.enum.botyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.dienstleistungstyp module
+-----------------------------------
+
+.. automodule:: bo4e.enum.dienstleistungstyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.energierichtung module
 --------------------------------
 
@@ -56,6 +64,14 @@ bo4e.enum.gebiettyp module
 --------------------------
 
 .. automodule:: bo4e.enum.gebiettyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.geraetetyp module
+---------------------------
+
+.. automodule:: bo4e.enum.geraetetyp
    :members:
    :undoc-members:
    :show-inheritance:
