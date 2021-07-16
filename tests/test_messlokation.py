@@ -60,8 +60,8 @@ class TestMeLo:
             # required attributes
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
-            netzebene_messung=Netzebene.MSP,
             # optional attributes
+            netzebene_messung=Netzebene.MSP,
             messgebietnr="664073",
             geraete=[
                 Hardware(geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM, bezeichnung="intelligentes Messsystem"),
