@@ -31,7 +31,6 @@ class TestMeLo:
         melo = Messlokation(
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
-            netzebene_messung=Netzebene.MSP,
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
