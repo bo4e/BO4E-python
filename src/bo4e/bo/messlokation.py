@@ -54,14 +54,14 @@ class Messlokation(Geschaeftsobjekt):
 
     # optional attributes
     netzebene_messung: Optional[Netzebene] = attr.ib(default=None)
-    messgebietnr: str = attr.ib(default=None)
+    messgebietnr: Optional[str] = attr.ib(default=None)
     geraete: Optional[List[Hardware]] = attr.ib(default=None)
     messdienstleistung: Optional[List[Dienstleistung]] = attr.ib(default=None)
     messlokationszaehler: Optional[List[Zaehler]] = attr.ib(default=None)
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr: str = attr.ib(default=None)
-    grundzustaendiger_msbim_codenr: str = attr.ib(default=None)
+    grundzustaendiger_msb_codenr: Optional[str] = attr.ib(default=None)
+    grundzustaendiger_msbim_codenr: Optional[str] = attr.ib(default=None)
 
     # only one of the following three optional address attributes can be set
     messadresse: Optional[Adresse] = attr.ib(default=None)
