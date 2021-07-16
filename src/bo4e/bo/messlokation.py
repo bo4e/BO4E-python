@@ -112,7 +112,7 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     sparte = EnumField(Sparte)
 
     # optional attributes
-    netzebene_messung = EnumField(Netzebene)
+    netzebene_messung = EnumField(Netzebene, missing=None)
     messgebietnr = fields.Str(missing=None)
     geraete = fields.List(fields.Nested(HardwareSchema), missing=None)  #: List[Hardware]
     messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), missing=None)  #: List[Dienstleistung]
