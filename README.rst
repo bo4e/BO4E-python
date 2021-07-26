@@ -24,7 +24,14 @@ BO4E
 
 
 Python Library that Implements the `BO4E Standard`_.
-Requires Python >=3.8. See also our `DOTNET implementation`_.
+Requires Python >=3.8.
+
+Other Noteworthy BO4E Implementations
+=====================================
+
+* `C#/.NET`_
+* `Golang`_
+* `Kotlin`_
 
 Contributing
 ============
@@ -107,7 +114,9 @@ Applications of talented developers are welcome at any time! Please consider vis
 
 
 .. _`BO4E Standard`: https://www.bo4e.de/dokumentation
-.. _`DOTNET implementation`: https://github.com/Hochfrequenz/BO4E-dotnet
+.. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
+.. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
+.. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
