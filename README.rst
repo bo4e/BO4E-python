@@ -23,7 +23,7 @@ BO4E
 
 
 
-Python Library that Implements the `BO4E Standard`_.
+Python Library that Implements the `BO4E website`_.
 Requires Python >=3.8.
 
 Other Noteworthy BO4E Implementations
@@ -50,7 +50,7 @@ The created venv should be located somewhere around .tox/dev/Scripts.
 Regular Expression for Enumerations
 -----------------------------------
 
-If you want to add a new enumeration from the `BO4E Standard`_ then you can use the following regular expression:
+If you want to add a new enumeration from the `BO4E website`_ then you can use the following regular expression pattern:
 
 .. code-block:: Shell
 
@@ -125,7 +125,7 @@ According to `Kununu ratings`_ Hochfrequenz is among the most attractive employe
 Applications of talented developers are welcome at any time! Please consider visiting our `career page`_ that also contains job openings.
 
 
-.. _`BO4E Standard`: https://www.bo4e.de/dokumentation
+.. _`BO4E website`: https://www.bo4e.de/dokumentation
 .. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
 .. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
 .. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
