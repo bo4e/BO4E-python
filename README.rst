@@ -62,8 +62,7 @@ In combination with this substitution:
 
     "$wert": "$wert", # $bedeutung
 
-
-This regex can directly used on the website `regex101`_.
+This substitution can directly used on the website `regex101`_.
 
 
 Versioning
