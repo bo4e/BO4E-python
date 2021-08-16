@@ -54,7 +54,14 @@ If you want to add a new enumeration from the `BO4E website`_ then you can use t
 
 .. code-block:: Shell
 
-    ^([A-Z\d_]+)\t(.+)$
+    ^(?<wert>[A-Z\d_]+)\t(?<bedeutung>.+)$
+
+In combination with this substitution:
+
+.. code-block:: Shell
+
+    "$wert": "$wert", # $bedeutung
+
 
 This regex can directly used on the website `regex101`_.
 
