@@ -23,7 +23,7 @@ BO4E
 
 
 
-Python Library that Implements the `BO4E Standard`_.
+Python Library that Implements `BO4E <https://www.bo4e.de/dokumentation>`_.
 Requires Python >=3.8.
 
 Other Noteworthy BO4E Implementations
@@ -43,9 +43,27 @@ To enhance this BO4E implementation and contribute to this project check out the
 
 .. code-block:: Shell
 
-   tox -e dev 
-   
+   tox -e dev
+
 The created venv should be located somewhere around .tox/dev/Scripts.
+
+Regular Expression for Enumerations
+-----------------------------------
+
+If you want to add a new enumeration from the `BO4E website`_ then you can use the following regular expression pattern:
+
+.. code-block:: Shell
+
+    ^(?<wert>[A-Z\d_]+)\t(?<bedeutung>.+)$
+
+In combination with this substitution:
+
+.. code-block:: Shell
+
+    "$wert": "$wert", # $bedeutung
+
+This substitution can directly used on the website `regex101`_.
+
 
 Versioning
 ==========
@@ -96,7 +114,7 @@ Release workflow
 * Check with tox all tests and lintings: `tox`
 * Check with tox if the packaging works fine: `tox -e test_packaging`
 * Merge all your changes you would like to have in the release into the master branch (`open new PR develop→master`_)
-* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master) 
+* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
 * Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
 * Add a describtion to the release
@@ -113,7 +131,7 @@ According to `Kununu ratings`_ Hochfrequenz is among the most attractive employe
 Applications of talented developers are welcome at any time! Please consider visiting our `career page`_ that also contains job openings.
 
 
-.. _`BO4E Standard`: https://www.bo4e.de/dokumentation
+.. _`BO4E website`: https://www.bo4e.de/dokumentation
 .. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
 .. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
 .. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
@@ -126,3 +144,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
+.. _`regex101`: https://regex101.com/r/JWeb51/1
