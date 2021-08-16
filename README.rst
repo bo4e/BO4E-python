@@ -145,4 +145,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
-.. _`regex101`: https://regex101.com/r/6uonB8/1
+.. _`regex101`: https://regex101.com/r/JWeb51/1
