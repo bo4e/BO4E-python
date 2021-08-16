@@ -23,7 +23,7 @@ BO4E
 
 
 
-Python Library that Implements the `BO4E website`_.
+Python Library that Implements `BO4E <https://www.bo4e.de/dokumentation>`_.
 Requires Python >=3.8.
 
 Other Noteworthy BO4E Implementations
