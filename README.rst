@@ -43,9 +43,21 @@ To enhance this BO4E implementation and contribute to this project check out the
 
 .. code-block:: Shell
 
-   tox -e dev 
-   
+   tox -e dev
+
 The created venv should be located somewhere around .tox/dev/Scripts.
+
+Regular Expression for Enumerations
+-----------------------------------
+
+If you want to add a new enumeration from the `BO4E Standard`_ then you can use the following regular expression:
+
+.. code-block:: Shell
+
+    ^([A-Z\d_]+)\t(.+)$
+
+This regex can directly used on the website `regex101`_.
+
 
 Versioning
 ==========
@@ -96,7 +108,7 @@ Release workflow
 * Check with tox all tests and lintings: `tox`
 * Check with tox if the packaging works fine: `tox -e test_packaging`
 * Merge all your changes you would like to have in the release into the master branch (`open new PR develop→master`_)
-* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master) 
+* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
 * Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
 * Add a describtion to the release
@@ -126,3 +138,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
+.. _`regex101`: https://regex101.com/r/6uonB8/1
