@@ -13,11 +13,12 @@ import os
 import shutil
 import sys
 
-from pkg_resources import get_distribution
+# from pkg_resources import get_distribution
+from importlib.metadata import version as get_version
 
 # Get version information for the package documentation
 # which is published on read the docs: https://bo4e-python.readthedocs.io/en/latest/
-release = get_distribution("bo4e").version
+release = get_version("bo4e")
 version = ".".join(release.split(".")[:2])
 
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
