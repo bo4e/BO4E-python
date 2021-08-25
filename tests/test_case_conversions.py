@@ -2,7 +2,7 @@ from typing import Dict, Optional
 
 import attr
 import pytest
-from bo4e.schemata.lowercamelschema import to_snake_case, snake_to_lower_camel_case, SnakeCaseSchema
+from bo4e.schemata.lowercamelschema import to_snake_case, snake_to_lower_camel_case, CaseConverterSchema
 from marshmallow import fields, post_load
 
 
@@ -13,7 +13,7 @@ class MyClass:
     something: Optional[dict]
 
 
-class MySchema(SnakeCaseSchema):
+class MySchema(CaseConverterSchema):
     some_string = fields.Str(required=True, allow_none=False)
     an_integer = fields.Integer(required=True, allow_none=False)
     something = fields.Dict(required=False, allow_none=True)
@@ -26,7 +26,7 @@ class MySchema(SnakeCaseSchema):
         return MyClass(**data)
 
 
-class MySchemaWithDataKeys(SnakeCaseSchema):
+class MySchemaWithDataKeys(CaseConverterSchema):
     """
     The data_key attribute always allows to override the default behaviour.
     """

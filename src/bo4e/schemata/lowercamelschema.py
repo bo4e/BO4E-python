@@ -59,7 +59,7 @@ def to_snake_case(string: str) -> str:
     return result
 
 
-class SnakeCaseSchema(Schema):
+class CaseConverterSchema(Schema):
     """
     Schema that uses snake case for its internal representation and lowerCamelCase for external representation unless
     explicitly specified otherwise by using the data_key attribute.
