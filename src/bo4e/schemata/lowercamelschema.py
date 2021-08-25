@@ -78,7 +78,7 @@ class SnakeCaseSchema(Schema):
     # pylint:disable=unused-argument
     def convert_keys_to_snake_case(self, data, many, **kwargs):
         """
-        Converts all the keys of data to snake case.
+        Converts all the keys of data to snake_case.
         :param data:
         :param many:
         :param kwargs:
