@@ -58,5 +58,5 @@ class ZaehlwerkSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Zaehlwerk:
-        """ Deserialize JSON to Zaehlwerk object """
+        """Deserialize JSON to Zaehlwerk object"""
         return Zaehlwerk(**data)

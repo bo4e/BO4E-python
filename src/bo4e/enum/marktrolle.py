@@ -17,6 +17,6 @@ _marktrolle = {
     "RB": "RB",  # Registerbetreiber
     "KUNDE": "KUNDE",
     "INTERESSENT": "INTERESSENT",
-    "BTR": "BTR" # Betreiber einer technischen Ressource
+    "BTR": "BTR",  # Betreiber einer technischen Ressource
 }
 Marktrolle = Enum("Marktrolle", _marktrolle)

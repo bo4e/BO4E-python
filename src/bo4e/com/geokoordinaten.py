@@ -39,5 +39,5 @@ class GeokoordinatenSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Geokoordinaten:
-        """ Deserialize JSON to Geokoordinaten object """
+        """Deserialize JSON to Geokoordinaten object"""
         return Geokoordinaten(**data)
