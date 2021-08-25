@@ -47,5 +47,5 @@ class GeschaeftsobjektSchema(Schema, JavaScriptMixin):
 
     @post_load
     def deserialize(self, data, **kwargs):
-        """ Deserialize JSON to python object. """
+        """Deserialize JSON to python object."""
         return type(self).class_name(**data)
