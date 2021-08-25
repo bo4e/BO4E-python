@@ -48,7 +48,6 @@ class Adresse(COM):
 class AdresseSchema(COMSchema):
     """
     Schema for de-/serialization of Adresse.
-    Inherits from Schema and JavaScriptMixin.
     """
 
     # required attributes

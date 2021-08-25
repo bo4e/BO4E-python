@@ -4,10 +4,10 @@ bo4e.schemata package
 Submodules
 ----------
 
-bo4e.schemata.lowercamelschema module
--------------------------------------
+bo4e.schemata.caseconverterschema module
+----------------------------------------
 
-.. automodule:: bo4e.schemata.lowercamelschema
+.. automodule:: bo4e.schemata.caseconverterschema
    :members:
    :undoc-members:
    :show-inheritance:

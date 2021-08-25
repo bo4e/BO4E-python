@@ -91,7 +91,6 @@ class CaseConverterSchema(Schema):
         return data
 
     @post_dump(pass_many=True)
-    # pylint:disable=unused-argument
     def convert_keys_to_lower_camel(self, data, many, **kwargs):
         """
         Converts all the internal keys to lowerCamel keys
@@ -100,6 +99,8 @@ class CaseConverterSchema(Schema):
         :param kwargs:
         :return:
         """
+        if many:
+            return [self.convert_keys_to_lower_camel(d, many=False, **kwargs) for d in data]
         for internal_key in list(data.keys()):
             if internal_key in self.fields:
                 external_key = snake_to_lower_camel_case(internal_key)

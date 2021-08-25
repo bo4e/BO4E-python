@@ -2,7 +2,7 @@ from typing import Dict, Optional
 
 import attr
 import pytest
-from bo4e.schemata.lowercamelschema import to_snake_case, snake_to_lower_camel_case, CaseConverterSchema
+from bo4e.schemata.caseconverterschema import to_snake_case, snake_to_lower_camel_case, CaseConverterSchema
 from marshmallow import fields, post_load
 
 
