@@ -18,9 +18,6 @@ class MySchema(CaseConverterSchema):
     an_integer = fields.Integer(required=True, allow_none=False)
     something = fields.Dict(required=False, allow_none=True)
 
-    class Meta:
-        model = MyClass
-
     @post_load
     def to_my_class(self, data, **kwargs) -> MyClass:
         return MyClass(**data)
