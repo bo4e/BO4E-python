@@ -33,5 +33,5 @@ class ExterneReferenzSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> ExterneReferenz:
-        """ Deserialize JSON to ExterneReferenz object """
+        """Deserialize JSON to ExterneReferenz object"""
         return ExterneReferenz(**data)

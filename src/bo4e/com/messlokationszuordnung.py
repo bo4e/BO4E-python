@@ -45,5 +45,5 @@ class MesslokationszuordnungSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Messlokationszuordnung:
-        """ Deserialize JSON to Messlokationszuordnung object """
+        """Deserialize JSON to Messlokationszuordnung object"""
         return Messlokationszuordnung(**data)
