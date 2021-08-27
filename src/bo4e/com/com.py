@@ -2,9 +2,7 @@
 Contains base class for all components
 """
 import attr
-from marshmallow import Schema
-from bo4e.cases import JavaScriptMixin
-
+from bo4e.schemata.caseconverterschema import CaseConverterSchema
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -14,8 +12,8 @@ class COM:
     """
 
 
-class COMSchema(Schema, JavaScriptMixin):
+class COMSchema(CaseConverterSchema):
     """
     This is a base class.
-    All components objects are inherited from this class.
+    All components objects schemata are inherited from this class.
     """
