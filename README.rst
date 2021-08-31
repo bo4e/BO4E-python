@@ -23,8 +23,15 @@ BO4E
 
 
 
-Python Library that Implements the `BO4E Standard`_.
-Requires Python >=3.8. See also our `DOTNET implementation`_.
+Python Library that Implements `BO4E <https://www.bo4e.de/dokumentation>`_.
+Requires Python >=3.8.
+
+Other Noteworthy BO4E Implementations
+=====================================
+
+* `C#/.NET`_
+* `Golang`_
+* `Kotlin`_
 
 Contributing
 ============
@@ -36,14 +43,60 @@ To enhance this BO4E implementation and contribute to this project check out the
 
 .. code-block:: Shell
 
-   tox -e dev 
-   
+   tox -e dev
+
 The created venv should be located somewhere around .tox/dev/Scripts.
+
+Regular Expression for Enumerations
+-----------------------------------
+
+If you want to add a new enumeration from the `BO4E website`_ then you can use the following regular expression pattern:
+
+.. code-block:: Shell
+
+    ^(?<wert>[A-Z\d_]+)\t(?<bedeutung>.+)$
+
+In combination with this substitution:
+
+.. code-block:: Shell
+
+    "$wert": "$wert", # $bedeutung
+
+This substitution can directly used on the website `regex101`_.
+
 
 Versioning
 ==========
-To track the versions of this python package we use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_.
-There are different kind of ways to achieve the version tracking. We will use the `pyproject.toml` usage.
+| Short background information about versioning of python packages.
+| At the moment (2021-02-10) there are `seven ways to define the version of your package <https://packaging.python.org/guides/single-sourcing-package-version/>`_.
+| We use `setuptools-scm <https://pypi.org/project/setuptools-scm/>`_ for versioning so we can use the tags of git to define the version.
+| The tool itself again has several ways how to configure it.
+| We use the `pyproject.toml` file to configure setuptools-scm.
+| There we tell the build-system with ``"setuptools_scm[toml]>=3.4"`` that we use setuptools_scm and the version must be at least ``3.4``.
+| The ``[toml]`` section tells setuptools-scm that it finds all settings in our pyproject.toml file.
+| ``[tool.setuptools_scm]`` in pyproject.toml enables version inference.
+| In the setup.py we have to use the attribute ``use_scm_version=True``.
+
+To create the version number itself, we stick to the default behavior of setuptools-scm.
+It will take a look at three things:
+
+1. latest tag (with a version number)
+2. the distance to this tag (e.g. number of revisions since latest tag)
+3. workdir state (e.g. uncommitted changes since latest tag)
+
+and uses roughly the following logic to render the version:
+
+no distance and clean:
+    ``{tag}``
+distance and clean:
+    ``{next_version}.dev{distance}+{scm letter}{revision hash}``
+no distance and not clean:
+    ``{tag}+dYYYYMMDD``
+distance and not clean:
+    ``{next_version}.dev{distance}+{scm letter}{revision hash}.dYYYYMMDD``
+
+
+The next version is calculated by adding 1 to the last numeric component of the tag.
 
 To get the current version run in your working directory:
 
@@ -54,12 +107,14 @@ To get the current version run in your working directory:
 At the moment it is not possible to get the version number at runtime.
 To achieve this, we have to implement `Retrieving package version at runtime`_.
 
+If you follow the instruction in the *release workflow*, you will get the version number which you define with the label name.
+
 Release workflow
 ================
 * Check with tox all tests and lintings: `tox`
 * Check with tox if the packaging works fine: `tox -e test_packaging`
 * Merge all your changes you would like to have in the release into the master branch (`open new PR develop→master`_)
-* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master) 
+* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
 * Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
 * Add a describtion to the release
@@ -76,8 +131,10 @@ According to `Kununu ratings`_ Hochfrequenz is among the most attractive employe
 Applications of talented developers are welcome at any time! Please consider visiting our `career page`_ that also contains job openings.
 
 
-.. _`BO4E Standard`: https://www.bo4e.de/dokumentation
-.. _`DOTNET implementation`: https://github.com/Hochfrequenz/BO4E-dotnet
+.. _`BO4E website`: https://www.bo4e.de/dokumentation
+.. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
+.. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
+.. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
@@ -87,3 +144,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
+.. _`regex101`: https://regex101.com/r/JWeb51/1

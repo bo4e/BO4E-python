@@ -1,8 +1,7 @@
 import pytest
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.enum.botyp import BoTyp
 from bo4e.com.externereferenz import ExterneReferenz
+from bo4e.enum.botyp import BoTyp
 
 
 class TestGeschaeftsobjet:
@@ -39,11 +38,11 @@ class TestGeschaeftsobjet:
 
         assert str(versionstruktur) in go_json
 
-        go_deserialised = schema.loads(go_json)
+        go_deserialized = schema.loads(go_json)
 
-        assert go_deserialised.bo_typ is bo_typ
-        assert go_deserialised.versionstruktur == versionstruktur
-        assert go_deserialised.externe_referenzen == externe_referenzen
+        assert go_deserialized.bo_typ is bo_typ
+        assert go_deserialized.versionstruktur == versionstruktur
+        assert go_deserialized.externe_referenzen == externe_referenzen
 
     def test_initialization_with_minimal_attributs(self):
         go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)

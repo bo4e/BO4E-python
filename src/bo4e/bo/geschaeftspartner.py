@@ -1,15 +1,19 @@
-import attr
-
-from marshmallow import fields
-from marshmallow_enum import EnumField
+"""
+Contains Geschaeftspartner class
+and corresponding marshmallow schema for de-/serialization
+"""
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import List
 
+import attr
+from marshmallow import fields
+from marshmallow_enum import EnumField
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.botyp import BoTyp
+from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e.enum.kontaktart import Kontaktart
 
 
 @attr.s(auto_attribs=True, kw_only=True)
@@ -39,8 +43,12 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
 
 class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
+    """
+    Schema for de-/serialization of Geschaeftspartner.
+    """
+
     # class_name is needed to use the correct schema for deserialisation.
-    # see function `deserialise` in geschaeftsobjekt.py
+    # see function `deserialize` in geschaeftsobjekt.py
     class_name = Geschaeftspartner
 
     # required attributes

@@ -2,7 +2,6 @@ import sys
 
 from setuptools import setup
 
-
 min_version = (3, 8)
 
 if sys.version_info < min_version:
@@ -14,6 +13,5 @@ You are using Python {sys.version_info}
         ".".join(str(n) for n in sys.version_info[:3]),
     )
     sys.exit(error)
-
 
 setup(name="bo4e", use_scm_version=True)

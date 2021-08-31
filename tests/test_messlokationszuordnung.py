@@ -1,9 +1,10 @@
+from datetime import datetime
+
 from bo4e.com.messlokationszuordnung import (
     Messlokationszuordnung,
     MesslokationszuordnungSchema,
 )
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
-from datetime import datetime
 
 
 class TestMesslokationszuordnung:
@@ -24,10 +25,10 @@ class TestMesslokationszuordnung:
         assert messlokations_id in json_string
         assert "ADDITION" in json_string
 
-        mlz_deserialised = schema.loads(json_string)
+        mlz_deserialized = schema.loads(json_string)
 
-        assert mlz_deserialised.messlokations_id == messlokations_id
-        assert mlz_deserialised.arithmetik == ArithmetischeOperation.ADDITION
+        assert mlz_deserialized.messlokations_id == messlokations_id
+        assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION
 
     def test_serialisation_required_and_optional_attributes(self):
         """
@@ -51,9 +52,9 @@ class TestMesslokationszuordnung:
         assert mlz_dict["arithmetik"] == "ADDITION"
         assert mlz_dict["gueltigSeit"] == "2021-01-13T00:00:00"
 
-        mlz_deserialised = schema.load(mlz_dict)
+        mlz_deserialized = schema.load(mlz_dict)
 
-        assert mlz_deserialised.messlokations_id == messlokations_id
-        assert mlz_deserialised.arithmetik == ArithmetischeOperation.ADDITION
-        assert mlz_deserialised.gueltig_seit == datetime(year=2021, month=1, day=13)
-        assert mlz_deserialised.gueltig_bis == datetime(year=2021, month=5, day=4)
+        assert mlz_deserialized.messlokations_id == messlokations_id
+        assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION
+        assert mlz_deserialized.gueltig_seit == datetime(year=2021, month=1, day=13)
+        assert mlz_deserialized.gueltig_bis == datetime(year=2021, month=5, day=4)

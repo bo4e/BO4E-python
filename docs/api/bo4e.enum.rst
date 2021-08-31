@@ -36,6 +36,14 @@ bo4e.enum.botyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.dienstleistungstyp module
+-----------------------------------
+
+.. automodule:: bo4e.enum.dienstleistungstyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.energierichtung module
 --------------------------------
 
@@ -56,6 +64,14 @@ bo4e.enum.gebiettyp module
 --------------------------
 
 .. automodule:: bo4e.enum.gebiettyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.geraetetyp module
+---------------------------
+
+.. automodule:: bo4e.enum.geraetetyp
    :members:
    :undoc-members:
    :show-inheritance:
@@ -92,6 +108,14 @@ bo4e.enum.marktrolle module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.mengeneinheit module
+------------------------------
+
+.. automodule:: bo4e.enum.mengeneinheit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.netzebene module
 --------------------------
 
@@ -108,6 +132,14 @@ bo4e.enum.rollencodetyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.rufnummernart module
+------------------------------
+
+.. automodule:: bo4e.enum.rufnummernart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.sparte module
 -----------------------
 
@@ -116,10 +148,74 @@ bo4e.enum.sparte module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.tarifart module
+-------------------------
+
+.. automodule:: bo4e.enum.tarifart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.themengebiet module
+-----------------------------
+
+.. automodule:: bo4e.enum.themengebiet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.titel module
+----------------------
+
+.. automodule:: bo4e.enum.titel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.verbrauchsart module
 ------------------------------
 
 .. automodule:: bo4e.enum.verbrauchsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.vertragsart module
+----------------------------
+
+.. automodule:: bo4e.enum.vertragsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.vertragsstatus module
+-------------------------------
+
+.. automodule:: bo4e.enum.vertragsstatus
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zaehlerauspraegung module
+-----------------------------------
+
+.. automodule:: bo4e.enum.zaehlerauspraegung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zaehlertyp module
+---------------------------
+
+.. automodule:: bo4e.enum.zaehlertyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zeiteinheit module
+----------------------------
+
+.. automodule:: bo4e.enum.zeiteinheit
    :members:
    :undoc-members:
    :show-inheritance:

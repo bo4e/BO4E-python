@@ -1,36 +1,39 @@
+"""
+Contains Marktlokation class
+and corresponding marshmallow schema for de-/serialization
+"""
 import re
 
 import attr
 from marshmallow import fields
 from marshmallow_enum import EnumField
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
-from bo4e.com.messlokationszuordnung import (
-    Messlokationszuordnung,
-    MesslokationszuordnungSchema,
-)
-from bo4e.enum.sparte import Sparte
+from bo4e.com.messlokationszuordnung import Messlokationszuordnung, MesslokationszuordnungSchema
+from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.gasqualitaet import Gasqualitaet
+from bo4e.enum.gebiettyp import Gebiettyp
+from bo4e.enum.netzebene import Netzebene
+from bo4e.enum.sparte import Sparte
+from bo4e.enum.verbrauchsart import Verbrauchsart
+
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 
 
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation
     """
 
+    # pylint: disable=unused-argument, no-self-use
     def _validate_marktlokations_id(self, marktlokations_id_attribute, value):
         if not value:
             raise ValueError("The marktlokations_id must not be empty.")
@@ -39,6 +42,7 @@ class Marktlokation(Geschaeftsobjekt):
         expected_checksum = Marktlokation._get_checksum(value)
         actual_checksum = value[10:11]
         if expected_checksum != actual_checksum:
+            # pylint: disable=line-too-long
             raise ValueError(
                 f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
             )
@@ -72,6 +76,7 @@ class Marktlokation(Geschaeftsobjekt):
     @geoadresse.validator
     @katasterinformation.validator
     def validate_address_info(self, address_attribute, value):
+        """Checks that there is one and only one valid adress given."""
         all_address_attributes = [
             self.lokationsadresse,
             self.geoadresse,
@@ -98,18 +103,23 @@ class Marktlokation(Geschaeftsobjekt):
         # start counting at 1 to be consistent with the above description
         # of "even" and "odd" but stop at tenth digit.
         for i in range(1, 11):
-            s = malo_id[i - 1 : i]
+            digit = malo_id[i - 1 : i]
             if i % 2 - 1 == 0:
-                odd_checksum += int(s)
+                odd_checksum += int(digit)
             else:
-                even_checksum += 2 * int(s)
+                even_checksum += 2 * int(digit)
         result: int = (10 - ((even_checksum + odd_checksum) % 10)) % 10
         return str(result)
 
 
 class MarktlokationSchema(GeschaeftsobjektSchema):
+    """
+    Schema for de-/serialization of Marktlokation.
+    Inherits from GeschaeftsobjektSchema.
+    """
+
     # class_name is needed to use the correct schema for deserialisation.
-    # see function `deserialise` in geschaeftsobjekt.py
+    # see function `deserialize` in geschaeftsobjekt.py
     class_name = Marktlokation
 
     # required attributes

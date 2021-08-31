@@ -8,16 +8,11 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import os
-import sys
 import inspect
+import os
 import shutil
-from pkg_resources import get_distribution
+import sys
 
-# Get version information for the package documentation
-# which is published on read the docs: https://bo4e-python.readthedocs.io/en/latest/
-release = get_distribution("bo4e").version
-version = ".".join(release.split(".")[:2])
 
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
@@ -244,7 +239,6 @@ html_static_path = ["_static"]
 
 # Output file base name for HTML help builder.
 htmlhelp_basename = "bo4e-doc"
-
 
 # -- Options for LaTeX output --------------------------------------------------
 
