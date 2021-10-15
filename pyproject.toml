@@ -13,7 +13,6 @@ markers = ["datafiles: load datafiles"]
 
 [tool.pylint.'MESSAGES CONTROL']
 max-line-length = 120
-disable = "C0411"
 
 [tool.isort]
 line_length = 120

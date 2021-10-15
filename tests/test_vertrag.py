@@ -1,18 +1,20 @@
 from datetime import datetime, timezone
+
 import pytest
+
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.vertrag import Vertrag, VertragSchema
+from bo4e.com.adresse import Adresse
 from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.com.vertragsteil import Vertragsteil
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsstatus import Vertragsstatus
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.com.adresse import Adresse
+from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
+from bo4e.enum.vertragsstatus import Vertragsstatus
 
 
 class TestVertrag:

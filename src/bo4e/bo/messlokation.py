@@ -6,6 +6,10 @@ import re
 from typing import List, Optional
 
 import attr
+from iso3166 import countries  # type:ignore
+from marshmallow import fields
+from marshmallow_enum import EnumField  # type:ignore
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -16,9 +20,6 @@ from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
-from iso3166 import countries  # type:ignore
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore
 
 # Structure of a Messlokations-ID
 # Ländercode nach DIN ISO 3166 (2 Stellen)

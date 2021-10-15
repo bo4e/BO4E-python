@@ -3,6 +3,9 @@ Contains Ansprechpartner class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
+from marshmallow import fields
+from marshmallow_enum import EnumField  # type:ignore
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -11,8 +14,6 @@ from bo4e.com.zustaendigkeit import Zustaendigkeit, ZustaendigkeitSchema
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.titel import Titel
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

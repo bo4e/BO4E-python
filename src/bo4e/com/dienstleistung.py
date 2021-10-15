@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from bo4e.com.com import COM, COMSchema
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore
+
+from bo4e.com.com import COM, COMSchema
+from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
 
 # pylint: disable=too-few-public-methods

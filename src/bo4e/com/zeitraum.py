@@ -8,10 +8,11 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from bo4e.com.com import COM, COMSchema
-from bo4e.enum.zeiteinheit import Zeiteinheit
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore
+
+from bo4e.com.com import COM, COMSchema
+from bo4e.enum.zeiteinheit import Zeiteinheit
 
 
 # pylint: disable=unused-argument
