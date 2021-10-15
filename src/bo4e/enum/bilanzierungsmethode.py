@@ -10,4 +10,4 @@ _bilanzierungsmethode = {
     "TLP_GETRENNT": "TLP_GETRENNT",  # TLP getrennte Messung
     "PAUSCHAL": "PAUSCHAL",  # Pauschale Betrachtung (Band)
 }
-Bilanzierungsmethode = Enum("Bilanzierungsmethode", _bilanzierungsmethode)
+Bilanzierungsmethode = Enum("Bilanzierungsmethode", _bilanzierungsmethode)  # type: ignore

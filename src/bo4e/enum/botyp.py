@@ -34,4 +34,4 @@ _boTyp = {
     "ZAEHLER": "ZAEHLER",
     "ZEITREIHE": "ZEITREIHE",
 }
-BoTyp = Enum("BoTyp", _boTyp)
+BoTyp = Enum("BoTyp", _boTyp)  # type: ignore

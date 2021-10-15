@@ -9,4 +9,4 @@ _titel = {
     "PROF": "PROF",  # Professor
     "PROF_DR": "PROF_DR",  # Professor Dr.
 }
-Titel = Enum("Titel", _titel)
+Titel = Enum("Titel", _titel)  # type: ignore

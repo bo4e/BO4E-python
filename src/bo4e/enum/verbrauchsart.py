@@ -10,4 +10,4 @@ _verbrauchsart = {
     "W": "W",  # Wärme
     "WS": "WS",  # Wärme/Speicherheizung
 }
-Verbrauchsart = Enum("Verbrauchsart", _verbrauchsart)
+Verbrauchsart = Enum("Verbrauchsart", _verbrauchsart)  # type: ignore

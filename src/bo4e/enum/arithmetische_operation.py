@@ -10,4 +10,4 @@ _arithmetische_operation = {
     "MULTIPLIKATION": "MULTIPLIKATION",
     "DIVISION": "DIVISION",
 }
-ArithmetischeOperation = Enum("ArithmetischeOperation", _arithmetische_operation)
+ArithmetischeOperation = Enum("ArithmetischeOperation", _arithmetische_operation)  # type: ignore

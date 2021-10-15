@@ -11,4 +11,4 @@ _sparte = {
     "WASSER": "WASSER",
     "ABWASSER": "ABWASSER",
 }
-Sparte = Enum("Sparte", _sparte)
+Sparte = Enum("Sparte", _sparte)  # type: ignore

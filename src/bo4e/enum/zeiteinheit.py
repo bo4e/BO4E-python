@@ -16,4 +16,4 @@ _zeiteinheit = {
     "HALBJAHR": "HALBJAHR",  # Halbjahr
     "JAHR": "JAHR",  # Jahr
 }
-Zeiteinheit = Enum("Zeiteinheit", _zeiteinheit)
+Zeiteinheit = Enum("Zeiteinheit", _zeiteinheit)  # type: ignore

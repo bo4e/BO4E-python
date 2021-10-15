@@ -15,4 +15,4 @@ _zaehlertyp = {
     "ULTRASCHALLGASZAEHLER": "ULTRASCHALLGASZAEHLER",  # Ultraschallgaszähler
     "WECHSELSTROMZAEHLER": "WECHSELSTROMZAEHLER",  # Wechselstromzähler
 }
-Zaehlertyp = Enum("Zaehlertyp", _zaehlertyp)
+Zaehlertyp = Enum("Zaehlertyp", _zaehlertyp)  # type: ignore

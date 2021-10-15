@@ -11,4 +11,4 @@ _anrede = {
     "FIRMA": "FIRMA",
     "INDIVIDUELL": "INDIVIDUELL",
 }
-Anrede = Enum("Anrede", _anrede)
+Anrede = Enum("Anrede", _anrede)  # type: ignore

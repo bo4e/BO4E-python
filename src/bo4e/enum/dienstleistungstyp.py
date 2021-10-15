@@ -41,4 +41,4 @@ _dienstleistungstyp = {
     "MAHNKOSTEN": "MAHNKOSTEN",  # Mahnkosten
     "INKASSOKOSTEN": "INKASSOKOSTEN",  # Inkassokosten
 }
-Dienstleistungstyp: Enum = Enum("Dienstleistungstyp", _dienstleistungstyp)
+Dienstleistungstyp: Enum = Enum("Dienstleistungstyp", _dienstleistungstyp)  # type: ignore

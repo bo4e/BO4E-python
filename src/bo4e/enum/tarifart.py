@@ -11,4 +11,4 @@ _tarifart = {
     "SMART_METER": "SMART_METER",  # Smart Meter Tarif
     "LEISTUNGSGEMESSEN": "LEISTUNGSGEMESSEN",  # Leistungsgemessener Tarif
 }
-Tarifart = Enum("Tarifart", _tarifart)
+Tarifart = Enum("Tarifart", _tarifart)  # type: ignore

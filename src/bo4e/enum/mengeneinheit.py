@@ -19,4 +19,4 @@ _mengeneinheit = {
     "JAHR": "JAHR",  # Jahr
     "PROZENT": "PROZENT",  # Prozent
 }
-Mengeneinheit = Enum("Mengeneinheit", _mengeneinheit)
+Mengeneinheit = Enum("Mengeneinheit", _mengeneinheit)  # type: ignore

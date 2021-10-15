@@ -10,4 +10,4 @@ _geschaeftspartnerrolle = {
     "INTERESSENT": "INTERESSENT",
     "MARKTPARTNER": "MARKTPARTNER",
 }
-Geschaeftspartnerrolle = Enum("Geschaeftspartnerrolle", _geschaeftspartnerrolle)
+Geschaeftspartnerrolle = Enum("Geschaeftspartnerrolle", _geschaeftspartnerrolle)  # type: ignore

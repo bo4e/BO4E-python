@@ -15,4 +15,4 @@ _rufnummernart = {
     "FAX_DURCHWAHL": "FAX_DURCHWAHL",  # Faxnummer Durchwahl
     "MOBIL_NUMMER": "MOBIL_NUMMER",  # Nummer des mobilen Telefons
 }
-Rufnummernart = Enum("Rufnummernart", _rufnummernart)
+Rufnummernart = Enum("Rufnummernart", _rufnummernart)  # type: ignore

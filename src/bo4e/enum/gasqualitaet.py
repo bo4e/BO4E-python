@@ -7,4 +7,4 @@ _gasqualitaet = {
     "H_GAS": "H_GAS",  # High Caloric Gas
     "L_GAS": "L_GAS",  # Low Caloric Gas
 }
-Gasqualitaet = Enum("Gasqualitaet", _gasqualitaet)
+Gasqualitaet = Enum("Gasqualitaet", _gasqualitaet)  # type: ignore

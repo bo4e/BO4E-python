@@ -16,4 +16,4 @@ _netzebene = {
     "MD": "MD",  # Mitteldruck; Gas
     "ND": "ND",  # Niederdruck; Gas
 }
-Netzebene = Enum("Netzebene", _netzebene)
+Netzebene = Enum("Netzebene", _netzebene)  # type: ignore

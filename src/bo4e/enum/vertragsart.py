@@ -10,4 +10,4 @@ _vertragsart = {
     "MESSSTELLENBETRIEBSVERTRAG": "MESSSTELLENBETRIEBSVERTRAG",  # Messstellenabetriebsvertrag
     "BUENDELVERTRAG": "BUENDELVERTRAG",  # Bündelvertrag
 }
-Vertragsart = Enum("Vertragsart", _vertragsart)
+Vertragsart = Enum("Vertragsart", _vertragsart)  # type: ignore

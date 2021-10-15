@@ -19,4 +19,4 @@ _marktrolle = {
     "INTERESSENT": "INTERESSENT",
     "BTR": "BTR",  # Betreiber einer technischen Ressource
 }
-Marktrolle = Enum("Marktrolle", _marktrolle)
+Marktrolle = Enum("Marktrolle", _marktrolle)  # type: ignore

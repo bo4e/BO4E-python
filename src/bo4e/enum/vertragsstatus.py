@@ -14,4 +14,4 @@ _vertragsstatus = {
     "GEKUENDIGT": "GEKUENDIGT",  # gekündigt
     "BEENDET": "BEENDET",  # beendet
 }
-Vertragsstatus = Enum("Vertragsstatus", _vertragsstatus)
+Vertragsstatus = Enum("Vertragsstatus", _vertragsstatus)  # type: ignore

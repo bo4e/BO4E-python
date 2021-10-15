@@ -14,4 +14,4 @@ _gebiettyp = {
     "GRUNDVERSORGUNGSGEBIET": "GRUNDVERSORGUNGSGEBIET",
     "VERSORGUNGSGEBIET": "VERSORGUNGSGEBIET",
 }
-Gebiettyp = Enum("Gebiettyp", _gebiettyp)
+Gebiettyp = Enum("Gebiettyp", _gebiettyp)  # type: ignore

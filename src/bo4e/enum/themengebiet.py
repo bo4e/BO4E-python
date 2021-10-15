@@ -68,4 +68,4 @@ _themengebiet = {
     "ZUORDNUNGSVEREINBARUNG": "ZUORDNUNGSVEREINBARUNG",  # Zuordnungsvereinbarung
 }
 
-Themengebiet = Enum("Themengebiet", _themengebiet)
+Themengebiet = Enum("Themengebiet", _themengebiet)  # type: ignore

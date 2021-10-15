@@ -9,4 +9,4 @@ _rollenrodetyp = {
     "DVG": "DVG",  # Deutscher Verein des Gas- und Wasserfaches
     "GLN": "GLN",  # Global Location Number
 }
-Rollencodetyp = Enum("Rollencodetyp", _rollenrodetyp)
+Rollencodetyp = Enum("Rollencodetyp", _rollenrodetyp)  # type: ignore

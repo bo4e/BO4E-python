@@ -8,4 +8,4 @@ _zaehlerauspraegung = {
     "EINRICHTUNGSZAEHLER": "EINRICHTUNGSZAEHLER",  # Einrichtungszaehler
     "ZWEIRICHTUNGSZAEHLER": "ZWEIRICHTUNGSZAEHLER",  # Zweirichtungszaehler
 }
-Zaehlerauspraegung = Enum("Zaehlerauspraegung", _zaehlerauspraegung)
+Zaehlerauspraegung = Enum("Zaehlerauspraegung", _zaehlerauspraegung)  # type: ignore

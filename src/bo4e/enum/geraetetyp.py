@@ -50,4 +50,4 @@ _geraetetyp = {
     "96_H_ZAEHLER": "96_H_ZAEHLER",  # 96 h Zähler
     "EDL_40_ZAEHLERAUFSATZ": "EDL_40_ZAEHLERAUFSATZ",  # EDL 40 Zähleraufsatz für Zähler
 }
-Geraetetyp = Enum("Geraetetyp", _geraetetyp)
+Geraetetyp = Enum("Geraetetyp", _geraetetyp)  # type: ignore

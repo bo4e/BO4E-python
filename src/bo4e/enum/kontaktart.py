@@ -10,4 +10,4 @@ _kontaktart = {
     "E_MAIL": "E_MAIL",
     "SMS": "SMS",
 }
-Kontaktart = Enum("Kontaktart", _kontaktart)
+Kontaktart = Enum("Kontaktart", _kontaktart)  # type: ignore
