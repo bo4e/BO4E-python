@@ -3,7 +3,7 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import List, Type
+from typing import List, Type, Optional
 
 import attr
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -30,8 +30,8 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     # optional attributes
     anrede: Anrede = attr.ib(default=None)
-    name2: str = attr.ib(default=None)
-    name3: str = attr.ib(default=None)
+    name2: Optional[str] = attr.ib(default=None)
+    name3: Optional[str] = attr.ib(default=None)
     hrnummer: str = attr.ib(default=None)
     amtsgericht: str = attr.ib(default=None)
     kontaktweg: List[Kontaktart] = attr.ib(default=[])
