@@ -3,7 +3,7 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import List
+from typing import List, Type
 
 import attr
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -49,7 +49,7 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
 
     # class_name is needed to use the correct schema for deserialisation.
     # see function `deserialize` in geschaeftsobjekt.py
-    class_name = Geschaeftspartner
+    class_name: Type[Geschaeftspartner] = Geschaeftspartner
 
     # required attributes
     name1 = fields.Str()

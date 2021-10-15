@@ -42,7 +42,7 @@ class Adresse(COM):
     postfach: str = attr.ib(default=None, validator=strasse_xor_postfach)
     adresszusatz: str = attr.ib(default=None)
     co_ergaenzung: str = attr.ib(default=None)
-    landescode: Landescode = attr.ib(default=Landescode.DE)
+    landescode: Landescode = attr.ib(default=Landescode.DE)  # type:ignore
 
 
 class AdresseSchema(COMSchema):

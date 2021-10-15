@@ -4,11 +4,13 @@
 
 from enum import Enum
 
-_anrede = {
-    "HERR": "HERR",
-    "FRAU": "FRAU",
-    "EHELEUTE": "EHELEUTE",
-    "FIRMA": "FIRMA",
-    "INDIVIDUELL": "INDIVIDUELL",
-}
-Anrede = Enum("Anrede", _anrede)  # type: ignore
+Anrede = Enum(
+    "Anrede",
+    {
+        "HERR": "HERR",
+        "FRAU": "FRAU",
+        "EHELEUTE": "EHELEUTE",
+        "FIRMA": "FIRMA",
+        "INDIVIDUELL": "INDIVIDUELL",
+    },
+)

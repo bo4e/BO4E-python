@@ -16,7 +16,7 @@ from bo4e.com.katasteradresse import Katasteradresse, KatasteradresseSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
-from iso3166 import countries
+from iso3166 import countries  # type:ignore
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore
 

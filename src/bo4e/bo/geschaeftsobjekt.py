@@ -3,7 +3,7 @@ Contains base class for all business objects
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=unused-argument, too-few-public-methods
-from typing import List, Optional
+from typing import List, Optional, Type
 
 import attr
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
@@ -25,8 +25,17 @@ class Geschaeftsobjekt:
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
-        default=[], validator=attr.validators.instance_of(List)
+        default=_create_empty_referenzen_list(), validator=attr.validators.instance_of(List[ExterneReferenz])
     )
+
+
+def _create_empty_referenzen_list() -> List[ExterneReferenz]:
+    """
+    A method with a type hint to please mypy
+    https://stackoverflow.com/a/61281305/10009545
+    :return:
+    """
+    return []
 
 
 class GeschaeftsobjektSchema(CaseConverterSchema):
@@ -36,7 +45,7 @@ class GeschaeftsobjektSchema(CaseConverterSchema):
     """
 
     # class_name is needed to use the correct schema for deserialization.
-    class_name = Geschaeftsobjekt
+    class_name: Type[Geschaeftsobjekt] = Geschaeftsobjekt
 
     # required attributes
     versionstruktur = fields.String()
