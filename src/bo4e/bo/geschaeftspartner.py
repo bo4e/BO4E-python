@@ -6,14 +6,14 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List
 
 import attr
-from marshmallow import fields
-from marshmallow_enum import EnumField
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
+from marshmallow import fields
+from marshmallow_enum import EnumField  # type:ignore
 
 
 @attr.s(auto_attribs=True, kw_only=True)

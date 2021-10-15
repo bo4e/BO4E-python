@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.rufnummernart import Rufnummernart
+from marshmallow import fields, post_load
+from marshmallow_enum import EnumField  # type:ignore
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)

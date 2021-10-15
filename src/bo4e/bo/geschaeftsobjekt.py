@@ -6,11 +6,11 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.schemata.caseconverterschema import CaseConverterSchema
+from marshmallow import fields, post_load
+from marshmallow_enum import EnumField  # type:ignore
 
 
 @attr.s(auto_attribs=True, kw_only=True)

@@ -6,12 +6,11 @@ from decimal import Decimal
 
 import attr
 from attr.validators import matches_re
-from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
-
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
+from marshmallow import fields, post_load
+from marshmallow_enum import EnumField  # type:ignore
 
 
 # pylint: disable=too-few-public-methods

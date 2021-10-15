@@ -4,19 +4,20 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from typing import List, Optional
-import attr
-from marshmallow import fields
-from marshmallow_enum import EnumField
 
+import attr
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.vertragsteil import Vertragsteil, VertragsteilSchema
-from bo4e.com.vertragskonditionen import Vertragskonditionen, VertragskonditionenSchema
 from bo4e.com.unterschrift import Unterschrift, UnterschriftSchema
+from bo4e.com.vertragskonditionen import Vertragskonditionen, VertragskonditionenSchema
+from bo4e.com.vertragsteil import Vertragsteil, VertragsteilSchema
 from bo4e.enum.botyp import BoTyp
+from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
-from bo4e.enum.sparte import Sparte
+from marshmallow import fields
+from marshmallow_enum import EnumField  # type:ignore
+
 
 # pylint: disable=unused-argument
 def at_least_one_vertragsteil(instance, attribute, value):

@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.themengebiet import Themengebiet
+from marshmallow import fields, post_load
+from marshmallow_enum import EnumField  # type:ignore
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -33,8 +34,8 @@ class ZustaendigkeitSchema(COMSchema):
     themengebiet = EnumField(Themengebiet)
 
     # optional attributes
-    jobtitel: str = fields.Str(missing=None)
-    abteilung: str = fields.Str(missing=None)
+    jobtitel = fields.Str(missing=None)
+    abteilung = fields.Str(missing=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
