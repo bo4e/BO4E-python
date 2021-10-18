@@ -1,4 +1,5 @@
 import pytest
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp

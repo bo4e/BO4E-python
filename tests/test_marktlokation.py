@@ -2,6 +2,7 @@ import json
 from typing import Tuple
 
 import pytest
+
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
 from bo4e.com.adresse import Adresse

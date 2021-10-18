@@ -5,7 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore
+
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.landescode import Landescode
 
@@ -42,7 +43,7 @@ class Adresse(COM):
     postfach: str = attr.ib(default=None, validator=strasse_xor_postfach)
     adresszusatz: str = attr.ib(default=None)
     co_ergaenzung: str = attr.ib(default=None)
-    landescode: Landescode = attr.ib(default=Landescode.DE)
+    landescode: Landescode = attr.ib(default=Landescode.DE)  # type:ignore
 
 
 class AdresseSchema(COMSchema):

@@ -3,16 +3,17 @@ Contains Zeitraum class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from decimal import Decimal
 from datetime import datetime
+from decimal import Decimal
+from typing import Optional
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.zeiteinheit import Zeiteinheit
+
 
 # pylint: disable=unused-argument
 def time_range_possibilities(instance, attribute, value):

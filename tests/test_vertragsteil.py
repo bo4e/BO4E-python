@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+
 import pytest
+
 from bo4e.com.menge import Menge
 from bo4e.com.vertragsteil import Vertragsteil, VertragsteilSchema
 from bo4e.enum.mengeneinheit import Mengeneinheit

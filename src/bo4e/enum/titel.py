@@ -4,9 +4,11 @@
 
 from enum import Enum
 
-_titel = {
-    "DR": "DR",  # Doktor
-    "PROF": "PROF",  # Professor
-    "PROF_DR": "PROF_DR",  # Professor Dr.
-}
-Titel = Enum("Titel", _titel)
+Titel = Enum(
+    "Titel",
+    {
+        "DR": "DR",  # Doktor*In
+        "PROF": "PROF",  # Professor*In
+        "PROF_DR": "PROF_DR",  # Professor*In Dr.
+    },
+)

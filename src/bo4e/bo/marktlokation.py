@@ -6,7 +6,8 @@ import re
 
 import attr
 from marshmallow import fields
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -21,7 +22,6 @@ from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
-
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 

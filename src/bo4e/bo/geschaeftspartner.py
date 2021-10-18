@@ -3,11 +3,12 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import List
+from typing import List, Optional, Type
 
 import attr
 from marshmallow import fields
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.anrede import Anrede
@@ -30,15 +31,15 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     # optional attributes
     anrede: Anrede = attr.ib(default=None)
-    name2: str = attr.ib(default=None)
-    name3: str = attr.ib(default=None)
-    hrnummer: str = attr.ib(default=None)
-    amtsgericht: str = attr.ib(default=None)
+    name2: Optional[str] = attr.ib(default=None)
+    name3: Optional[str] = attr.ib(default=None)
+    hrnummer: Optional[str] = attr.ib(default=None)
+    amtsgericht: Optional[str] = attr.ib(default=None)
     kontaktweg: List[Kontaktart] = attr.ib(default=[])
-    umsatzsteuer_id: str = attr.ib(default=None)
-    glaeubiger_id: str = attr.ib(default=None)
-    e_mail_adresse: str = attr.ib(default=None)
-    website: str = attr.ib(default=None)
+    umsatzsteuer_id: Optional[str] = attr.ib(default=None)
+    glaeubiger_id: Optional[str] = attr.ib(default=None)
+    e_mail_adresse: Optional[str] = attr.ib(default=None)
+    website: Optional[str] = attr.ib(default=None)
     partneradresse: Adresse = attr.ib(default=None)
 
 
@@ -49,7 +50,7 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
 
     # class_name is needed to use the correct schema for deserialisation.
     # see function `deserialize` in geschaeftsobjekt.py
-    class_name = Geschaeftspartner
+    class_name: Type[Geschaeftspartner] = Geschaeftspartner
 
     # required attributes
     name1 = fields.Str()

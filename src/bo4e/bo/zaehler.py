@@ -8,7 +8,7 @@ from typing import List, Optional
 
 import attr
 from marshmallow import fields
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
@@ -18,6 +18,7 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
+
 
 # pylint: disable=unused-argument
 def at_least_one_zaehlwerk(instance, attribute, value):

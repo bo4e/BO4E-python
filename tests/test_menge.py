@@ -1,5 +1,7 @@
 from decimal import Decimal
+
 import pytest
+
 from bo4e.com.menge import Menge, MengeSchema
 from bo4e.enum.mengeneinheit import Mengeneinheit
 

@@ -3,9 +3,10 @@ Contains Marktteilnehmer class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import fields
-from marshmallow_enum import EnumField
 from attr.validators import matches_re
+from marshmallow import fields
+from marshmallow_enum import EnumField  # type:ignore
+
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
