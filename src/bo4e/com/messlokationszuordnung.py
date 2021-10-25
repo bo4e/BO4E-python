@@ -6,7 +6,7 @@ from datetime import datetime
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField  # type:ignore
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation

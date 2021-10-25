@@ -6,9 +6,9 @@ import re
 from typing import List, Optional
 
 import attr
-from iso3166 import countries  # type:ignore
+from iso3166 import countries  # type:ignore[import]
 from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
