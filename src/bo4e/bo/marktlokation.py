@@ -6,7 +6,7 @@ import re
 
 import attr
 from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema

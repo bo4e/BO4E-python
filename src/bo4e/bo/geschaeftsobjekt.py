@@ -7,7 +7,7 @@ from typing import List, Optional, Type
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField  # type:ignore
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
@@ -35,7 +35,7 @@ class Geschaeftsobjekt:
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
-        default=_create_empty_referenzen_list(), validator=attr.validators.instance_of(List)  # type:ignore
+        default=_create_empty_referenzen_list(), validator=attr.validators.instance_of(List)  # type:ignore[arg-type]
     )
 
 
