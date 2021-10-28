@@ -3,6 +3,7 @@ from datetime import datetime
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
+
 from bo4e.bo.messlokation import Messlokation, MesslokationSchema
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
