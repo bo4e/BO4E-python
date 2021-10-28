@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.externereferenz import ExterneReferenz

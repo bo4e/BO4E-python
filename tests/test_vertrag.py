@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-import pytest
+import pytest  # type:ignore[import]
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.vertrag import Vertrag, VertragSchema
