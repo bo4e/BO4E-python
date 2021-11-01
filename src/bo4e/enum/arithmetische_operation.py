@@ -1,15 +1,13 @@
-"""
-Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.
-"""
+# pylint: disable=missing-module-docstring
+from bo4e.enum.strenum import StrEnum
 
-from enum import Enum
 
-ArithmetischeOperation = Enum(
-    "ArithmetischeOperation",
-    {
-        "ADDITION": "ADDITION",
-        "SUBTRAKTION": "SUBTRAKTION",
-        "MULTIPLIKATION": "MULTIPLIKATION",
-        "DIVISION": "DIVISION",
-    },
-)
+class ArithmetischeOperation(StrEnum):
+    """
+    Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.
+    """
+
+    ADDITION = "ADDITION"
+    SUBTRAKTION = "SUBTRAKTION"
+    MULTIPLIKATION = "MULTIPLIKATION"
+    DIVISION = "DIVISION"
