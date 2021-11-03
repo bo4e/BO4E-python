@@ -1,14 +1,15 @@
-"""
-Die Tarifart wird verwendet zur Charakterisierung von Zählern und daraus resultierenden Tarifen.
-"""
+# pylint:disable=missing-module-docstring
 
-from enum import Enum
+from bo4e.enum.strenum import StrEnum
 
-_tarifart = {
-    "EINTARIF": "EINTARIF",  # Eintarif
-    "ZWEITARIF": "ZWEITARIF",  # Zweitarif
-    "MEHRTARIF": "MEHRTARIF",  # Mehrtarif
-    "SMART_METER": "SMART_METER",  # Smart Meter Tarif
-    "LEISTUNGSGEMESSEN": "LEISTUNGSGEMESSEN",  # Leistungsgemessener Tarif
-}
-Tarifart = Enum("Tarifart", _tarifart)
+
+class Tarifart(StrEnum):
+    """
+    Die Tarifart wird verwendet zur Charakterisierung von Zählern und daraus resultierenden Tarifen.
+    """
+
+    EINTARIF = "EINTARIF"  # Eintarif
+    ZWEITARIF = "ZWEITARIF"  # Zweitarif
+    MEHRTARIF = "MEHRTARIF"  # Mehrtarif
+    SMART_METER = "SMART_METER"  # Smart Meter Tarif
+    LEISTUNGSGEMESSEN = "LEISTUNGSGEMESSEN"  # Leistungsgemessener Tarif

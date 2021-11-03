@@ -4,7 +4,7 @@ Functions and classes related to case conversions in schemata.
 import re
 from typing import Pattern
 
-from marshmallow import Schema, pre_load, post_dump
+from marshmallow import Schema, post_dump, pre_load
 
 
 def snake_to_lower_camel_case(string: str) -> str:

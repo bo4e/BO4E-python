@@ -1,7 +1,12 @@
-"""
-Spezifiziert die Energierichtung einer Markt- und/oder Messlokation
-"""
-from enum import Enum
+# pylint:disable=missing-module-docstring
 
-_energierichtung = {"AUSSP": "AUSSP", "EINSP": "EINSP"}  # Ausspeisung  # Einspeisung
-Energierichtung = Enum("Energierichtung", _energierichtung)
+from bo4e.enum.strenum import StrEnum
+
+
+class Energierichtung(StrEnum):
+    """
+    Spezifiziert die Energierichtung einer Markt- und/oder Messlokation
+    """
+
+    AUSSP = "AUSSP"  # Ausspeisung
+    EINSP = "EINSP"  # Einspeisung

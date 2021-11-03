@@ -1,7 +1,8 @@
 from datetime import datetime
 from decimal import Decimal
 
-import pytest
+import pytest  # type:ignore[import]
+
 from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk

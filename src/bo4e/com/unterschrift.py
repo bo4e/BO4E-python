@@ -3,9 +3,12 @@ Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
+
 import attr
 from marshmallow import fields, post_load
+
 from bo4e.com.com import COM, COMSchema
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)

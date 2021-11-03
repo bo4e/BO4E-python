@@ -1,9 +1,10 @@
 from typing import Dict, Optional
 
 import attr
-import pytest
-from bo4e.schemata.caseconverterschema import to_snake_case, snake_to_lower_camel_case, CaseConverterSchema
+import pytest  # type:ignore[import]
 from marshmallow import fields, post_load
+
+from bo4e.schemata.caseconverterschema import CaseConverterSchema, snake_to_lower_camel_case, to_snake_case
 
 
 @attr.s(auto_attribs=True)

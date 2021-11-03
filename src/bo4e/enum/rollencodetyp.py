@@ -1,12 +1,13 @@
-"""
-Gibt den Codetyp einer Rolle, beispielsweise einer Marktrolle, an.
-"""
+# pylint:disable=missing-module-docstring
 
-from enum import Enum
+from bo4e.enum.strenum import StrEnum
 
-_rollenrodetyp = {
-    "BDEW": "BDEW",  # Bundesverband der Energie- u. Wasserwirtschaft
-    "DVG": "DVG",  # Deutscher Verein des Gas- und Wasserfaches
-    "GLN": "GLN",  # Global Location Number
-}
-Rollencodetyp = Enum("Rollencodetyp", _rollenrodetyp)
+
+class Rollencodetyp(StrEnum):
+    """
+    Gibt den Codetyp einer Rolle, beispielsweise einer Marktrolle, an.
+    """
+
+    BDEW = "BDEW"  # Bundesverband der Energie- u. Wasserwirtschaft
+    DVG = "DVG"  # Deutscher Verein des Gas- und Wasserfaches
+    GLN = "GLN"  # Global Location Number

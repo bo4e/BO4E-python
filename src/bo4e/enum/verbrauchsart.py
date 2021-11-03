@@ -1,13 +1,15 @@
-"""
-Verbrauchsart einer Marktlokation.
-"""
-from enum import Enum
+# pylint:disable=missing-module-docstring
 
-_verbrauchsart = {
-    "KL": "KL",  # Kraft/Licht
-    "KLW": "KLW",  # Kraft/Licht/Wärme
-    "KLWS": "KLWS",  # Kraft/Licht/Wärme/Speicherheizung
-    "W": "W",  # Wärme
-    "WS": "WS",  # Wärme/Speicherheizung
-}
-Verbrauchsart = Enum("Verbrauchsart", _verbrauchsart)
+from bo4e.enum.strenum import StrEnum
+
+
+class Verbrauchsart(StrEnum):
+    """
+    Verbrauchsart einer Marktlokation.
+    """
+
+    KL = "KL"  # Kraft/Licht
+    KLW = "KLW"  # Kraft/Licht/Wärme
+    KLWS = "KLWS"  # Kraft/Licht/Wärme/Speicherheizung
+    W = "W"  # Wärme
+    WS = "WS"  # Wärme/Speicherheizung

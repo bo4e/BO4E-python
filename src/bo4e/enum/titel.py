@@ -1,12 +1,13 @@
-"""
-Übersicht möglicher Titel, z.B. eines Geschäftspartners.
-"""
+# pylint:disable=missing-module-docstring
 
-from enum import Enum
+from bo4e.enum.strenum import StrEnum
 
-_titel = {
-    "DR": "DR",  # Doktor
-    "PROF": "PROF",  # Professor
-    "PROF_DR": "PROF_DR",  # Professor Dr.
-}
-Titel = Enum("Titel", _titel)
+
+class Titel(StrEnum):
+    """
+    Übersicht möglicher Titel, z.B. eines Geschäftspartners.
+    """
+
+    DR = "DR"  # Doktor*In
+    PROF = "PROF"  # Professor*In
+    PROF_DR = "PROF_DR"  # Professor*In Dr.
