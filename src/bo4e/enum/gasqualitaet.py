@@ -1,12 +1,12 @@
-"""
-Unterscheidung für hoch- und niedrig-kalorisches Gas.
-"""
-from enum import Enum
+# pylint:disable=missing-module-docstring
 
-Gasqualitaet = Enum(
-    "Gasqualitaet",
-    {
-        "H_GAS": "H_GAS",  # High Caloric Gas
-        "L_GAS": "L_GAS",  # Low Caloric Gas
-    },
-)  # type: ignore
+from bo4e.enum.strenum import StrEnum
+
+
+class Gasqualitaet(StrEnum):
+    """
+    Unterscheidung für hoch- und niedrig-kalorisches Gas.
+    """
+
+    H_GAS = "H_GAS"  # High Caloric Gas
+    L_GAS = "L_GAS"  # Low Caloric Gas

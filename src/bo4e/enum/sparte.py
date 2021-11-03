@@ -1,16 +1,16 @@
-"""
-Unterscheidungsmöglichkeiten für die Sparte.
-"""
-from enum import Enum
+# pylint:disable=missing-module-docstring
 
-Sparte = Enum(
-    "Sparte",
-    {
-        "STROM": "STROM",
-        "GAS": "GAS",
-        "FERNWAERME": "FERNWAERME",
-        "NAHWAERME": "NAHWAERME",
-        "WASSER": "WASSER",
-        "ABWASSER": "ABWASSER",
-    },
-)
+from bo4e.enum.strenum import StrEnum
+
+
+class Sparte(StrEnum):
+    """
+    Unterscheidungsmöglichkeiten für die Sparte.
+    """
+
+    STROM = "STROM"
+    GAS = "GAS"
+    FERNWAERME = "FERNWAERME"
+    NAHWAERME = "NAHWAERME"
+    WASSER = "WASSER"
+    ABWASSER = "ABWASSER"

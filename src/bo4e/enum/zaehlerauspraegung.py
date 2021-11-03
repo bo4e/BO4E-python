@@ -1,13 +1,12 @@
-"""
-Gibt an, ob es sich um einen Einrichtungs- oder Zweirichtungszähler handelt.
-"""
+# pylint:disable=missing-module-docstring
 
-from enum import Enum
+from bo4e.enum.strenum import StrEnum
 
-Zaehlerauspraegung = Enum(
-    "Zaehlerauspraegung",
-    {
-        "EINRICHTUNGSZAEHLER": "EINRICHTUNGSZAEHLER",  # Einrichtungszaehler
-        "ZWEIRICHTUNGSZAEHLER": "ZWEIRICHTUNGSZAEHLER",  # Zweirichtungszaehler
-    },
-)
+
+class Zaehlerauspraegung(StrEnum):
+    """
+    Gibt an, ob es sich um einen Einrichtungs- oder Zweirichtungszähler handelt.
+    """
+
+    EINRICHTUNGSZAEHLER = "EINRICHTUNGSZAEHLER"  # Einrichtungszaehler
+    ZWEIRICHTUNGSZAEHLER = "ZWEIRICHTUNGSZAEHLER"  # Zweirichtungszaehler
