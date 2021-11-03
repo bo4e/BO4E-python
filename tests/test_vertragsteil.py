@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from decimal import Decimal
 
-import pytest
+import pytest  # type:ignore[import]
 
 from bo4e.com.menge import Menge
 from bo4e.com.vertragsteil import Vertragsteil, VertragsteilSchema
