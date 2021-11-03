@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-import pytest
+import pytest  # type:ignore[import]
 
 from bo4e.com.unterschrift import Unterschrift, UnterschriftSchema
 

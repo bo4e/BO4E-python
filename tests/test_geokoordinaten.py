@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-import pytest
+import pytest  # type:ignore[import]
 
 from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
 

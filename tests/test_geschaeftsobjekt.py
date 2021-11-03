@@ -1,4 +1,6 @@
-import pytest
+from typing import List, Optional
+
+import pytest  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.externereferenz import ExterneReferenz
@@ -25,7 +27,9 @@ class TestGeschaeftsobjet:
             (BoTyp.ENERGIEMENGE, "2", []),
         ],
     )
-    def test_serialisation(self, bo_typ: BoTyp, versionstruktur: int, externe_referenzen: ExterneReferenz):
+    def test_serialisation(
+        self, bo_typ: BoTyp, versionstruktur: str, externe_referenzen: Optional[List[ExterneReferenz]]
+    ):
         go = Geschaeftsobjekt(
             bo_typ=bo_typ,
             versionstruktur=versionstruktur,
