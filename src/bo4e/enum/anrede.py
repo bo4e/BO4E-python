@@ -12,3 +12,5 @@ class Anrede(StrEnum):
     EHELEUTE = "EHELEUTE"
     FIRMA = "FIRMA"
     INDIVIDUELL = "INDIVIDUELL"
+    DIVERS = "DIVERS"
+    
