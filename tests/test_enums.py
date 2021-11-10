@@ -50,7 +50,7 @@ class TestEnums:
         Tests that the docstrings of the enum classes do not start with whitespace or blank lines.
         """
         all_enums = TestEnums._get_all_enum_classes()
-        assert len(all_enums) > 100  # just to be sure
+        assert len(all_enums) > 100  # just to be sure we're not using the wrong directory or path
         for enum_class in all_enums:
             docstring = TestEnums._get_class_doc(enum_class)
             assert docstring is not None
