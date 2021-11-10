@@ -1,14 +1,14 @@
 # pylint: disable=missing-module-docstring
-from bo4e.enum.strenum import StrEnum
+from bo4e.enum.strenum import DocumentedStrEnum
 
 
-class Anrede(StrEnum):
+class Anrede(DocumentedStrEnum):
     """
     Übersicht möglicher Anreden, z.B. eines Geschäftspartners.
     """
 
-    HERR = "HERR"
-    FRAU = "FRAU"
-    EHELEUTE = "EHELEUTE"
-    FIRMA = "FIRMA"
-    INDIVIDUELL = "INDIVIDUELL"
+    HERR = "HERR", "Herr"
+    FRAU = "FRAU", "Frau"
+    EHELEUTE = "EHELEUTE", "Eheleute"
+    FIRMA = "FIRMA", "Firma"
+    INDIVIDUELL = "INDIVIDUELL", 'Individuell (z.B. "Profx")'
