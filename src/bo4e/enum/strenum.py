@@ -18,6 +18,13 @@ class StrEnum(str, Enum):
 class DocumentedStrEnum(StrEnum):
     """
     A StrEnum that has docstrings attached to its members.
+    Use it like this:
+    class MyDocumentedEnum(DocumentedStrEnum):
+        Foo = "Serialized Foo", "my good docstring of Foo"
+        Bar = "Serialized Bar", "bar is not foo (this is a docstring)"
+    Then wherever MyDocumentedEnum is used in BOs or COMs, the attribute will serialize as either "Serialized Foo"
+    or "Serialized Bar". And inspect.getdocs(MyDocumentedEnum.Foo) will return the respective docstring.
+    This is unittested.
     """
 
     # see https://stackoverflow.com/a/50473952/10009545
