@@ -21,7 +21,7 @@ class TestEnums:
     TEnum = TypeVar("TEnum", bound=StrEnum)
 
     @staticmethod
-    def _all_enum_classes() -> List[TEnum]:
+    def _get_all_enum_classes() -> List[TEnum]:
         """
         returns a list of all bo4e.enum classes
         """
@@ -37,18 +37,6 @@ class TestEnums:
                         result.append(candidate)
         return result
 
-    def test_enum_classes_docstrings(self):
-        """
-        Tests that the docstrings of the enum classes do not start with whitespace or blank lines.
-        """
-        all_enums = TestEnums._all_enum_classes()
-        assert len(all_enums) > 100  # just to be sure
-        for enum_class in all_enums:
-            docstring = TestEnums._get_class_doc(enum_class)
-            assert docstring is not None
-            assert not TestEnums.starts_with_whitespace_pattern.match(docstring)
-            assert not TestEnums.ends_with_whitespace_pattern.match(docstring)
-
     @staticmethod
     def _get_class_doc(enum_class: TEnum) -> Optional[str]:
         """
@@ -56,6 +44,18 @@ class TestEnums:
         """
         assert inspect.isclass(enum_class)
         return inspect.getdoc(enum_class)
+
+    def test_enum_classes_docstrings(self):
+        """
+        Tests that the docstrings of the enum classes do not start with whitespace or blank lines.
+        """
+        all_enums = TestEnums._get_all_enum_classes()
+        assert len(all_enums) > 100  # just to be sure
+        for enum_class in all_enums:
+            docstring = TestEnums._get_class_doc(enum_class)
+            assert docstring is not None
+            assert not TestEnums.starts_with_whitespace_pattern.match(docstring)
+            assert not TestEnums.ends_with_whitespace_pattern.match(docstring)
 
     @pytest.mark.parametrize(
         "enum_member, expected_docstring",
@@ -76,7 +76,7 @@ class TestEnums:
         """
         The class docstrings are enforced using pylint but the docstrings of enum members are not covered by pylint.
         """
-        all_enums = self._all_enum_classes()
+        all_enums = self._get_all_enum_classes()
         for enum_class in all_enums:
             class_docstring = TestEnums._get_class_doc(enum_class)
             for enum_member in enum_class:
