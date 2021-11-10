@@ -25,6 +25,7 @@ class TestEnums:
         arbitrary_enum_module_path = Path(anrede.__file__)
         result = []
         for python_file in arbitrary_enum_module_path.parent.glob("*.py"):
+            # don't ask me why. but it works.
             enum_module = __import__("bo4e.enum." + python_file.name.split(".")[0])
             for name, member in inspect.getmembers(enum_module.enum):
                 if inspect.ismodule(member):
@@ -65,4 +66,6 @@ class TestEnums:
                 assert (
                     member_docstring != class_docstring
                 ), f"Docstring of Enum member {enum_member} must not be the same as the class docstring"
+                assert not TestEnums.starts_with_whitespace_pattern.match(member_docstring)
+                assert not TestEnums.ends_with_whitespace_pattern.match(member_docstring)
             break  # proof this works just for the wip anrede
