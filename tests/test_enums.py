@@ -3,7 +3,10 @@ import re
 from pathlib import Path
 from typing import List, Optional, TypeVar
 
+import pytest
+
 from bo4e.enum import anrede
+from bo4e.enum.anrede import Anrede
 from bo4e.enum.strenum import StrEnum
 
 
@@ -54,7 +57,22 @@ class TestEnums:
         assert inspect.isclass(enum_class)
         return inspect.getdoc(enum_class)
 
-    def test_enum_members_are_documented(self):
+    @pytest.mark.parametrize(
+        "enum_member, expected_docstring",
+        [
+            pytest.param(Anrede.HERR, "Herr"),
+            pytest.param(Anrede.INDIVIDUELL, 'Individuell (z.B. "Profx")'),
+        ],
+    )
+    def test_enum_member_docstrings_explicitly(self, enum_member: TEnum, expected_docstring: Optional[str]):
+        """
+        Test the docstrings of the enum members explicitly.
+        if the general approach (using DocumentedStrEnum) works for single members, it will also work for all enums,
+        which are constructed similarly.
+        """
+        assert inspect.getdoc(enum_member) == expected_docstring
+
+    def test_enum_members_are_all_documented(self):
         """
         The class docstrings are enforced using pylint but the docstrings of enum members are not covered by pylint.
         """
@@ -66,6 +84,8 @@ class TestEnums:
                 assert (
                     member_docstring != class_docstring
                 ), f"Docstring of Enum member {enum_member} must not be the same as the class docstring"
+                assert member_docstring is not None
+                assert member_docstring != ""
                 assert not TestEnums.starts_with_whitespace_pattern.match(member_docstring)
                 assert not TestEnums.ends_with_whitespace_pattern.match(member_docstring)
             break  # proof this works just for the wip anrede
