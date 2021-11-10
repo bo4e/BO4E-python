@@ -30,7 +30,7 @@ class TestEnums:
         for python_file in arbitrary_enum_module_path.parent.glob("*.py"):
             # don't ask me why. but it works.
             enum_module = __import__("bo4e.enum." + python_file.name.split(".")[0])
-            for name, member in inspect.getmembers(enum_module.enum):
+            for _, member in inspect.getmembers(enum_module.enum):
                 if inspect.ismodule(member):
                     candidate = inspect.getmembers(member)[0][1]
                     if inspect.isclass(candidate):
