@@ -148,6 +148,14 @@ bo4e.enum.sparte module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.strenum module
+------------------------
+
+.. automodule:: bo4e.enum.strenum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.tarifart module
 -------------------------
 
