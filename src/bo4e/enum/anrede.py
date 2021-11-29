@@ -13,4 +13,3 @@ class Anrede(StrEnum):
     FIRMA = "FIRMA"
     INDIVIDUELL = "INDIVIDUELL"
     DIVERS = "DIVERS"
-    
