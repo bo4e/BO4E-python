@@ -17,7 +17,7 @@ class Themengebiet(StrEnum):
     BILANZKREISKOORDINATOR = "BILANZKREISKOORDINATOR"  #: Bilanzkreiskoordinator
     BILANZKREISVERANTWORTLICHER = "BILANZKREISVERANTWORTLICHER"  #: Bilanzkreisverantwortlicher
     DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN = (
-        "DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN"  # Datenformate, Zertifikate, Verschlüsselungen
+        "DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN"  #: Datenformate, Zertifikate, Verschlüsselungen
     )
     DEBITORENMANAGEMENT = "DEBITORENMANAGEMENT"  #: Debitorenmanagement
     DEMAND_SIDE_MANAGEMENT = "DEMAND_SIDE_MANAGEMENT"  #: Demand-Side-Management
