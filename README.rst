@@ -39,7 +39,7 @@ Contributions are welcome.
 Feel free to open a Pull Request against the develop branch of this repository.
 Please provide unit tests if you contribute logic beyond bare bare business object definitions.
 
-To enhance this BO4E implementation and contribute to this project check out the `develop branch`_, install `tox`_ and set the virtual environment created by the command
+To enhance this BO4E implementation and contribute to this project check out the `master branch`_, install `tox`_ and set the virtual environment created by the command
 
 .. code-block:: Shell
 
@@ -113,14 +113,14 @@ Release workflow
 ================
 * Check with tox all tests and lintings: `tox`
 * Check with tox if the packaging works fine: `tox -e test_packaging`
-* Merge all your changes you would like to have in the release into the master branch (`open new PR develop→master`_)
+* Merge all your changes you would like to have in the release into the master branch
 * Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
 * Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
 * Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
 * Add a describtion to the release
 * Publish the release
 
-There is a github action which gets triggered by a release event.
+There is a Github Action which gets triggered by a release event.
 It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file.
 After checking the package with `twine check` it will finally upload the new package release.
 
@@ -138,10 +138,9 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
-.. _`develop branch`: https://github.com/Hochfrequenz/BO4E-python/tree/develop
+.. _`develop branch`: https://github.com/Hochfrequenz/BO4E-python/tree/master
 .. _`tox`: https://pypi.org/project/tox/
 .. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
-.. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
 .. _`regex101`: https://regex101.com/r/JWeb51/2
