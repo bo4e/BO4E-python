@@ -3,7 +3,9 @@ from bo4e.enum.strenum import StrEnum
 
 
 class Steuerkennzeichen(StrEnum):
-    """ """
+    """
+    Zur Kennzeichnung verschiedener Steuersätze und Verfahren.
+    """
 
     UST_0 = "UST_0"  #: Keine Umsatzsteuer, bzw. nicht steuerbar.
     UST_19 = "UST_19"  #: Umsatzsteuer 19%

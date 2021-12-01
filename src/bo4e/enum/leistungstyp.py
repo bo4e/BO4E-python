@@ -2,10 +2,10 @@
 from bo4e.enum.strenum import StrEnum
 
 
+# pylint:disable=empty-docstring
+# no docstring in official docs as of 2021-12-01
 class Leistungstyp(StrEnum):
-    """
-    BezeichnungNameARBEITSPREIS_WIRKARBEITArbeitspreis zur Abrechnung der WirkarbeitLEISTUNGSPREIS_WIRKLEISTUNGLeistungspreis zur Abrechnung der WirkleistungARBEITSPREIS_BLINDARBEIT_INDArbeitspreis zur Abrechnung der Blindarbeit induktivARBEITSPREIS_BLINDARBEIT_KAPArbeitspreis zur Abrechnung der Blindarbeit kapazitivGRUNDPREISGrundpreis (pro Zeiteinheit)GRUNDPREIS_ARBEITGrundpreis, der auf die Arbeit berechnet wird (bei RLM)GRUNDPREIS_LEISTUNGGrundpreis, der auf die Leistung berechnet wird (bei RLM)MEHRMINDERMENGEMehr- oder MindermengeMESSSTELLENBETRIEBPreis pro ZeiteinheitMESSDIENSTLEISTUNGPreis pro ZeiteinheitMESSDIENSTLEISTUNG_INKL_MESSUNGMDL inklusive der Messung (ab 2017), Preis pro ZeiteinheitABRECHNUNGPreis pro ZeiteinheitKONZESSIONS_ABGABEKonzessionsabgabeKWK_UMLAGEKWK-UmlageOFFSHORE_UMLAGEOffshore-HaftungsumlageABLAV_UMLAGEUmlage für abschaltbare LastenSONDERKUNDEN_UMLAGE§19 StromNEV UmlageREGELENERGIE_UMLAGERegelenergieumlageBILANZIERUNG_UMLAGEBilanzierungsumlageAUSLESUNG_ZUSAETZLICHZusätzliche Auslesung (pro Vorgang)ABLESUNG_ZUSAETZLICHZusätzliche Ablesung (pro Vorgang)ABRECHNUNG_ZUSAETZLICHZusätzliche Abresung (pro Vorgang)SPERRUNGSperrung einer AbnahmestelleENTSPERRUNGEntsperrung einer AbnahmestelleMAHNKOSTENMahnkostenINKASSOKOSTENInkassokostenEEG_UMLAGEEEG-UmlageENERGIESTEUERStrom- oder ErdgassteuerNETZPREISNetzpreisMESSPREISMesspreisSONSTIGER_PREISSonstiger_Preis
-    """
+    """ """
 
     ARBEITSPREIS_WIRKARBEIT = "ARBEITSPREIS_WIRKARBEIT"  #: Arbeitspreis zur Abrechnung der Wirkarbeit
     LEISTUNGSPREIS_WIRKLEISTUNG = "LEISTUNGSPREIS_WIRKLEISTUNG"  #: Leistungspreis zur Abrechnung der Wirkleistung

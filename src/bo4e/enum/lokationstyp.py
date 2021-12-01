@@ -7,5 +7,5 @@ class Lokationstyp(StrEnum):
     Gibt an, ob es sich um eine Markt- oder Messlokation handelt.
     """
 
-    MaLo = "MaLo"  #: Marktlokation
-    MeLo = "MeLo"  #: Messlokation
+    MALO = "MALO"  #: Marktlokation
+    MELO = "MELO"  #: Messlokation

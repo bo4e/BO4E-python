@@ -1,4 +1,4 @@
-# pylint: disable=missing-module-docstring
+# pylint: disable=missing-module-docstring,line-too-long
 from bo4e.enum.strenum import StrEnum
 
 

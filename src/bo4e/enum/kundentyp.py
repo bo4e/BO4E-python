@@ -3,7 +3,9 @@ from bo4e.enum.strenum import StrEnum
 
 
 class Kundentyp(StrEnum):
-    """ """
+    """
+    Auflistung der Typen von Endkunden. Daraus kann das Verbrauchsprofil abgeleitet werden.
+    """
 
     GEWERBE = "GEWERBE"  #: Gewerbekunden
     PRIVAT = "PRIVAT"  #: Privatkunden
