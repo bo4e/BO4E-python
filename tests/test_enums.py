@@ -4,9 +4,7 @@ from pathlib import Path
 from typing import List, Optional, TypeVar
 
 import pytest  # type:ignore[import]
-
 from bo4e.enum import anrede
-from bo4e.enum.anrede import Anrede
 from bo4e.enum.strenum import StrEnum
 
 
@@ -56,36 +54,3 @@ class TestEnums:
             assert docstring is not None
             assert not TestEnums.starts_with_whitespace_pattern.match(docstring)
             assert not TestEnums.ends_with_whitespace_pattern.match(docstring)
-
-    @pytest.mark.parametrize(
-        "enum_member, expected_docstring",
-        [
-            pytest.param(Anrede.HERR, "Herr"),
-            pytest.param(Anrede.INDIVIDUELL, 'Individuell (z.B. "Profx")'),
-        ],
-    )
-    def test_enum_member_docstrings_explicitly(self, enum_member: TEnum, expected_docstring: Optional[str]):
-        """
-        Test the docstrings of the enum members explicitly.
-        if the general approach (using DocumentedStrEnum) works for single members, it will also work for all enums,
-        which are constructed similarly.
-        """
-        assert inspect.getdoc(enum_member) == expected_docstring
-
-    def test_enum_members_are_all_documented(self):
-        """
-        The class docstrings are enforced using pylint but the docstrings of enum members are not covered by pylint.
-        """
-        all_enums = self._get_all_enum_classes()
-        for enum_class in all_enums:
-            class_docstring = TestEnums._get_class_doc(enum_class)
-            for enum_member in enum_class:
-                member_docstring = inspect.getdoc(enum_member)
-                assert (
-                    member_docstring != class_docstring
-                ), f"Docstring of Enum member {enum_member} must not be the same as the class docstring"
-                assert member_docstring is not None
-                assert member_docstring != ""
-                assert not TestEnums.starts_with_whitespace_pattern.match(member_docstring)
-                assert not TestEnums.ends_with_whitespace_pattern.match(member_docstring)
-            break  # proof this works just for the wip anrede

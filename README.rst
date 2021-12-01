@@ -50,7 +50,7 @@ The created venv should be located somewhere around .tox/dev/Scripts.
 Regular Expression for Enumerations
 -----------------------------------
 
-If you want to add a new enumeration from the `BO4E website`_ then you can use the following regular expression pattern:
+If you want to add a new enumeration from the `BO4E website`_ then you can copy paste HTML table content and use the following regular expression pattern:
 
 .. code-block:: Shell
 
@@ -60,7 +60,7 @@ In combination with this substitution:
 
 .. code-block:: Shell
 
-    "$wert": "$wert", # $bedeutung
+    "$wert": "$wert", #: $bedeutung
 
 This substitution can directly used on the website `regex101`_.
 
@@ -144,4 +144,4 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`open new PR develop→master`: https://github.com/Hochfrequenz/BO4E-python/compare/master...develop
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
-.. _`regex101`: https://regex101.com/r/JWeb51/1
+.. _`regex101`: https://regex101.com/r/JWeb51/2
