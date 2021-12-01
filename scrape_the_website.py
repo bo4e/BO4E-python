@@ -36,10 +36,25 @@ for enum_url in enum_urls:
     for table_row in table_rows:
         row_cells = list(table_row.find_all("td"))
         if len(row_cells) == 0:
+            # this is probably the <th> row.
+            use_name_as_docstring = False
+            headings = [th.text.strip() for th in table_row.find_all("th")]
+            name_index = headings.index("Bezeichnung")  # usually 0
+            try:
+                doc_index = headings.index("Name")  # usually 1
+            except ValueError:
+                try:
+                    doc_index = headings.index("Beschreibung")
+                except ValueError:
+                    # f.e. https://www.bo4e.de/dokumentation/enumerations/enum-medium
+                    use_name_as_docstring = True
             continue  # probably the <th> row
-        enum_member_name = row_cells[0].text
-        enum_member_doc = row_cells[-1].text
-        enum_member_codes.append(f"    {enum_member_name} #: {enum_member_doc}")
+        enum_member_name = row_cells[name_index].text
+        if use_name_as_docstring:
+            enum_member_doc = enum_member_name
+        else:
+            enum_member_doc = row_cells[doc_index].text
+        enum_member_codes.append(f'    {enum_member_name} = "{enum_member_name}" #: {enum_member_doc}')
     replacement_dict = {
         "enum_class_name": enum_class_name,
         "enum_class_docstring": enum_class_docstring,
