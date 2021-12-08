@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 from typing import Optional
+
 import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]

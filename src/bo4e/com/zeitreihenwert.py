@@ -10,6 +10,15 @@ from marshmallow import fields, post_load
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
 
 
+# pylint: disable=unused-argument
+def check_bis_is_later_than_von(instance, attribute, value):
+    """
+    assert that von is later than bis
+    """
+    if not (instance.datum_uhrzeit_bis >= instance.datum_uhrzeit_von):
+        raise ValueError("datum_uhrzeit_bis has to be >= datum_uhrzeit_von")
+
+
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Zeitreihenwert(Zeitreihenwertkompakt):
@@ -19,11 +28,11 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
 
     # required attributes
     datum_uhrzeit_von: datetime = attr.ib(
-        validator=attr.validators.instance_of(datetime)
-    )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde
+        validator=[attr.validators.instance_of(datetime), check_bis_is_later_than_von]
+    )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
     datum_uhrzeit_bis: datetime = attr.ib(
-        validator=attr.validators.instance_of(datetime)
-    )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet
+        validator=[attr.validators.instance_of(datetime), check_bis_is_later_than_von]
+    )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
 
 
 class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):

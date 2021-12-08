@@ -55,8 +55,18 @@ class TestZeitreihenwert:
         zeitreihenwert_deserialized: Zeitreihenwert = schema.loads(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
 
-    def test_vertragsteil_missing_required_attribute(self):
+    def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
             _ = Zeitreihenwert(datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc), wert=Decimal(1.5))
 
         assert "missing 1 required" in str(excinfo.value)
+
+    def test_von_later_than_bis(self):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Zeitreihenwert(
+                datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc),
+                datum_uhrzeit_bis=datetime(2006, 11, 27, tzinfo=timezone.utc),
+                wert=Decimal(1.5),
+            )
+
+        assert ">=" in str(excinfo.value)
