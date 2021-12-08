@@ -23,8 +23,10 @@ class Betrag(COM):
     """
 
     # required attributes
-    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
-    waehrung: Waehrungscode = attr.ib(validator=attr.validators.instance_of(Waehrungscode))
+    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Gibt den Betrag des Preises an.
+    waehrung: Waehrungscode = attr.ib(
+        validator=attr.validators.instance_of(Waehrungscode)
+    )  #: Die entsprechende Waehrung
 
 
 class BetragSchema(COMSchema):
