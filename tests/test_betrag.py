@@ -1,38 +1,32 @@
-import pytest
+from decimal import Decimal
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.adresse import Adresse
-from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+import pytest  # type:ignore[import]
+
+from bo4e.com.betrag import Betrag, BetragSchema
+from bo4e.enum.waehrungscode import Waehrungscode
+from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 
 class TestBetrag:
     @pytest.mark.parametrize(
-        "regionskriterium, expected_json_dict",
+        "betrag, expected_json_dict",
         [
             pytest.param(
-                Regionskriterium(
-                    regionskriteriumtyp=Regionskriteriumtyp.REGELGEBIET_NAME,
-                    gueltigkeitstyp=Gueltigkeitstyp.NICHT_IN,
-                    wert="Was ist ein Regionskriterium?",
+                Betrag(
+                    waehrung=Waehrungscode.EUR,
+                    wert=Decimal(12.5),
                 ),
-                {
-                    "gueltigkeitstyp": "NICHT_IN",
-                    "regionskriteriumtyp": "REGELGEBIET_NAME",
-                    "wert": "Was ist ein Regionskriterium?",
-                },
+                {"wert": "12.500000", "waehrung": "EUR"},
             ),
         ],
     )
-    def test_regionskriterium_serialization_roundtrip(
-        self, regionskriterium: Regionskriterium, expected_json_dict: dict
-    ):
+    def test_regionskriterium_serialization_roundtrip(self, betrag: Betrag, expected_json_dict: dict):
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        assert_serialization_roundtrip(regionskriterium, RegionskriteriumSchema(), expected_json_dict)
+        assert_serialization_roundtrip(betrag, BetragSchema(), expected_json_dict)
 
     def test_regionskriterium_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
-            _ = Regionskriterium()
-        assert "missing 3 required" in str(excinfo.value)
+            _ = Betrag()
+        assert "missing 2 required" in str(excinfo.value)
