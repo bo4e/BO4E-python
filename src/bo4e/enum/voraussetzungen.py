@@ -53,8 +53,8 @@ class Voraussetzungen(StrEnum):
     )
     NIEDRIGENERGIE = "NIEDRIGENERGIE"  #: Niedrigenergieaustattung des Hauses
     ORTSTEILE_LIEFERGEBIET = "ORTSTEILE_LIEFERGEBIET"  #: nur für bestimmte Ortsteile in diesem Liefergebiet
-    WAERMEBEDARF_ERDGAS = "WAERMEBEDARF_ERDGAS"  #: Waermebedarf wird nur oder überwiegend mit Erdgas gedeckt
-    MAX_ZAEHLER_LIEFERSTELLEN = "MAX_ZAEHLER_LIEFERSTELLEN"  #: beschraenkt auf max. Anzahl Zaehler oder Abnahmestellen
+    WAERMEBEDARF_ERDGAS = "WAERMEBEDARF_ERDGAS"  #: Wärmebedarf wird nur oder überwiegend mit Erdgas gedeckt
+    MAX_ZAEHLER_LIEFERSTELLEN = "MAX_ZAEHLER_LIEFERSTELLEN"  #: beschränkt auf max. Anzahl Zähler oder Abnahmestellen
     LIEFERUNGSBESCHRAENKUNG_GASART = (
         "LIEFERUNGSBESCHRAENKUNG_GASART"  #: Lieferungsbeschraenkung auf bestimmte Gasart, wie H-Gas oder L-Gas
     )
