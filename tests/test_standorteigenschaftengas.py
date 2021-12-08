@@ -31,3 +31,24 @@ class TestStandorteigenschaftenGas:
             _ = StandorteigenschaftenGas()
 
         assert "missing 2 required" in str(excinfo.value)
+
+    @pytest.mark.parametrize(
+        "wrong_netzkontonummern, expected_error_message",
+        [
+            pytest.param(
+                [],
+                "Netzkontonummern must not be empty.",
+            ),
+            pytest.param(
+                ["1", "2", "3"],
+                "Maximum number of Netzkontonummern is 2.",
+            ),
+        ],
+    )
+    def test_standorteigenschaftengas_list_lenght_validation(self, wrong_netzkontonummern, expected_error_message):
+        with pytest.raises(ValueError) as excinfo:
+            _ = StandorteigenschaftenGas(
+                netzkontonummern=wrong_netzkontonummern,
+                marktgebiete=[MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")],
+            )
+        assert expected_error_message in str(excinfo.value)
