@@ -41,3 +41,18 @@ class TestZeitreihenwertkompakt:
             _ = Zeitreihenwertkompakt(status=Messwertstatus.ABGELESEN)
 
         assert "missing 1 required" in str(excinfo.value)
+
+    def test_only_required(self):
+        zrwk = Zeitreihenwertkompakt(
+            wert=Decimal(1.5),
+        )
+
+        schema = ZeitreihenwertkompaktSchema()
+
+        json_string = schema.dumps(zrwk, ensure_ascii=False)
+
+        assert "1.5" in json_string
+
+        deserialized_zrwk: Zeitreihenwertkompakt = schema.loads(json_string)
+
+        assert deserialized_zrwk == zrwk

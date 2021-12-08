@@ -3,6 +3,7 @@ Contains Zeitreihenwertkompakt class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
+from typing import Optional
 
 import attr
 from marshmallow import fields, post_load
@@ -24,11 +25,11 @@ class Zeitreihenwertkompakt(COM):
     wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Der im Zeitintervall gültige Wert.
 
     # optional attributes
-    status: Messwertstatus = attr.ib(
+    status: Optional[Messwertstatus] = attr.ib(
         default=None
     )  #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
 
-    statuszusatz: Messwertstatuszusatz = attr.ib(
+    statuszusatz: Optional[Messwertstatuszusatz] = attr.ib(
         default=None
     )  #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
 
@@ -42,8 +43,8 @@ class ZeitreihenwertkompaktSchema(COMSchema):
     wert = fields.Decimal(as_string=True)
 
     # optional attributes
-    status = EnumField(Messwertstatus)
-    statuszusatz = EnumField(Messwertstatuszusatz)
+    status = EnumField(Messwertstatus, load_default=None)
+    statuszusatz = EnumField(Messwertstatuszusatz, load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
