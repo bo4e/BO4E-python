@@ -26,6 +26,11 @@ class Energieherkunft(COM):
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
     anteil_prozent: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
 
+    @anteil_prozent.validator
+    def check_percentage_between_0_100(self, attribute, value):
+        if not 0 <= value <= 100:
+            raise ValueError("anteil_prozent must be between 0 and 100")
+
 
 class EnergieherkunftSchema(COMSchema):
     """
