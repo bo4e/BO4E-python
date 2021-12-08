@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.energieherkunft import Energieherkunft  # type:ignore[import]
+from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.com.energiemix import Energiemix, EnergiemixSchema
 from bo4e.enum.erzeugungsart import Erzeugungsart
 from bo4e.enum.oekolabel import Oekolabel
