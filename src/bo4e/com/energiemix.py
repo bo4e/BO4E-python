@@ -27,7 +27,7 @@ class Energiemix(COM):
     # required attributes
     #: Eindeutige Nummer zur Identifizierung des Energiemixes
     energiemixnummer: int = attr.ib(validator=attr.validators.instance_of(int))
-    #: Strom oder Gas etc..
+    #: Strom oder Gas etc.
     energieart: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
     #: Bezeichnung des Energiemix
     bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
