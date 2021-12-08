@@ -2,9 +2,6 @@
 Contains Zeitintervall class
 and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
-from typing import Optional
-
 import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
@@ -33,7 +30,7 @@ class ZeitintervallSchema(COMSchema):
 
     # required attributes
     wert = fields.Integer()
-    vertragsteilende = EnumField(Zeiteinheit)
+    zeiteinheit = EnumField(Zeiteinheit)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
