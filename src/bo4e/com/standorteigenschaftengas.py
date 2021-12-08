@@ -29,7 +29,7 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: List = attr.ib(validator=check_list_length)  #: Netzkontonummern der Gasnetze
+    netzkontonummern: List[str] = attr.ib(validator=check_list_length)  #: Netzkontonummern der Gasnetze
     marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
 
 
