@@ -29,9 +29,15 @@ class TestAngebotsposition:
                     positionsbezeichnung="Beispielangebotsposition",
                 ),
                 {
-                    "positionskosten": {"waehrung": "EUR", "wert": "98240"},
                     "positionsbezeichnung": "Beispielangebotsposition",
                     "positionsmenge": {"wert": "4000", "einheit": "KWH"},
+                    "positionskosten": {"waehrung": "EUR", "wert": "98240"},
+                    "positionspreis": {
+                        "bezugswert": "KWH",
+                        "status": None,
+                        "wert": "0.2456000000000000127453603226967970840632915496826171875",
+                        "einheit": "EUR",
+                    },
                 },
             ),
         ],
