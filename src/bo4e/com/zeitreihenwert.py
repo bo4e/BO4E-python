@@ -23,7 +23,7 @@ class _VonBisType(Protocol):
 # pylint: disable=unused-argument
 def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
     """
-    assert that von is later than bis
+    assert that bis is later than von
     """
     if not instance.datum_uhrzeit_bis >= instance.datum_uhrzeit_von:
         raise ValueError("datum_uhrzeit_bis has to be >= datum_uhrzeit_von")
