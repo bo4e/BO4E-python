@@ -13,4 +13,4 @@ class TestMarktgebietinfo:
 
         deserialized_mgi: Marktgebietinfo = schema.loads(json_string)
 
-        assert mgi.marktgebiet == deserialized_mgi.marktgebiet
+        assert mgi == deserialized_mgi
