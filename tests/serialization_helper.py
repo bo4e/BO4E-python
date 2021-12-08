@@ -9,7 +9,7 @@ from marshmallow import Schema
 T = TypeVar("T")
 
 
-def test_serialization_roundtrip(serializable_object: T, schema: Schema, expected_json_dict: dict) -> T:
+def assert_serialization_roundtrip(serializable_object: T, schema: Schema, expected_json_dict: dict) -> T:
     """
     Serializes the serializable_object using the provided schema,
     asserts, that the result is equal to the expected_json_dict

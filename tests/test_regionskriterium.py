@@ -3,7 +3,7 @@ import pytest  # type:ignore[import]
 from bo4e.com.regionskriterium import Regionskriterium, RegionskriteriumSchema
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
-from tests.serialization_test_helper import test_serialization_roundtrip
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestRegionskriterium:
@@ -30,7 +30,7 @@ class TestRegionskriterium:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        test_serialization_roundtrip(regionskriterium, RegionskriteriumSchema(), expected_json_dict)
+        assert_serialization_roundtrip(regionskriterium, RegionskriteriumSchema(), expected_json_dict)
 
     def test_regionskriterium_missing_required_attribute(self):
         with pytest.raises(TypeError):
