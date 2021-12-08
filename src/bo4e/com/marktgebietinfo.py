@@ -15,8 +15,8 @@ class Marktgebietinfo(COM):
     Informationen zum Marktgebiet im Gas.
     """
 
-    marktgebiet: str
-    marktgebietcode: str
+    marktgebiet: str  #: Der Name des Marktgebietes
+    marktgebietcode: str  #: Die standardisierte Codenummer des Marktgebietes
 
 
 class MarktgebietinfoSchema(COMSchema):
