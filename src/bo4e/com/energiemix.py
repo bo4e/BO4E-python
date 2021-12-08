@@ -38,11 +38,11 @@ class Energiemix(COM):
 
     @anteil.validator
     # pylint: disable=unused-argument, no-self-use
-    def check_list_length(instance, attribute, value):
+    def check_list_length(self, attribute, value):
         """
         Check that minimal list length is at least one.
         """
-        if len(instance.anteil) < 1:
+        if len(value) < 1:
             raise ValueError("anteil must not be empty.")
 
     # optional attributes
