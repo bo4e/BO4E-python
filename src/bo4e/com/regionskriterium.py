@@ -46,5 +46,5 @@ class RegionskriteriumSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Regionskriterium:
-        """Deserialize JSON to Menge object"""
+        """Deserialize JSON to Regionskriterium object"""
         return Regionskriterium(**data)
