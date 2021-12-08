@@ -2,10 +2,9 @@ from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
 
-from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
 from bo4e.com.zeitraum import Zeitraum
-
+from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 
