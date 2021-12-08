@@ -36,6 +36,15 @@ class Energiemix(COM):
     #: Anteile der jeweiligen Erzeugungsart.
     anteil: List[Energieherkunft] = attr.ib(validator=attr.validators.instance_of(List))
 
+    @anteil.validator
+    # pylint: disable=unused-argument, no-self-use
+    def check_list_length(instance, attribute, value):
+        """
+        Check that minimal list length is at least one.
+        """
+        if len(instance.anteil) < 1:
+            raise ValueError("anteil must not be empty.")
+
     # optional attributes
     #: Bemerkung zum Energiemix.
     bemerkung: str = attr.ib(default=None)

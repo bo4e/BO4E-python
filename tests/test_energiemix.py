@@ -114,3 +114,15 @@ class TestEnergiemix:
             _ = Energiemix()
 
         assert "missing 5 required" in str(excinfo.value)
+
+    def test_energiemix_anteil_required(self):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Energiemix(
+                energiemixnummer=2,
+                energieart=Sparte.STROM,
+                bezeichnung="foo",
+                gueltigkeitsjahr=2021,
+                anteil=[],
+            )
+
+        assert "anteil must not be empty." in str(excinfo.value)
