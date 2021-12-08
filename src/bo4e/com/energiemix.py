@@ -25,31 +25,31 @@ class Energiemix(COM):
     """
 
     # required attributes
-    #: Eindeutige Nummer zur Identifizierung des Energiemixes.
+    #: Eindeutige Nummer zur Identifizierung des Energiemixes
     energiemixnummer: int = attr.ib(validator=attr.validators.instance_of(int))
     #: Strom oder Gas etc..
     energieart: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
-    #: Bezeichnung des Energiemix.
+    #: Bezeichnung des Energiemix
     bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
-    #: Jahr, für das der Energiemix gilt.
+    #: Jahr, für das der Energiemix gilt
     gueltigkeitsjahr: int = attr.ib(validator=attr.validators.instance_of(int))
-    #: Anteile der jeweiligen Erzeugungsart.
+    #: Anteile der jeweiligen Erzeugungsart
     anteil: List[Energieherkunft] = attr.ib(validator=attr.validators.instance_of(List))
 
     # optional attributes
-    #: Bemerkung zum Energiemix.
+    #: Bemerkung zum Energiemix
     bemerkung: str = attr.ib(default=None)
-    #: Höhe des erzeugten CO2-Ausstosses in g/kWh.
+    #: Höhe des erzeugten CO2-Ausstosses in g/kWh
     co2_emission: Decimal = attr.ib(default=None)
-    #: Höhe des erzeugten Atommülls in g/kWh.
+    #: Höhe des erzeugten Atommülls in g/kWh
     atommuell: Decimal = attr.ib(default=None)
-    #: Zertifikate für den Energiemix.
+    #: Zertifikate für den Energiemix
     oekozertifikate: List[Oekozertifikat] = attr.ib(default=[])
-    #: Ökolabel für den Energiemix.
+    #: Ökolabel für den Energiemix
     oekolabel: List[Oekolabel] = attr.ib(default=[])
-    #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört.
+    #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
     oeko_top_ten: bool = attr.ib(default=None)
-    #: Internetseite, auf der die Strommixdaten veröffentlicht sind.
+    #: Internetseite, auf der die Strommixdaten veröffentlicht sind
     website: str = attr.ib(default=None)
 
 
