@@ -12,6 +12,14 @@ bo4e.com.adresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.aufabschlagstaffelproort module
+----------------------------------------
+
+.. automodule:: bo4e.com.aufabschlagstaffelproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.betrag module
 ----------------------
 
