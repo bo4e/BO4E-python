@@ -1,8 +1,8 @@
 import pytest  # type:ignore[import]
 
-from src.bo4e.com.regionskriterium import Regionskriterium, RegionskriteriumSchema
-from src.bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from src.bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
+from bo4e.com.regionskriterium import Regionskriterium, RegionskriteriumSchema
+from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
+from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 from tests.serialization_test_helper import test_serialization_roundtrip
 
 
