@@ -6,12 +6,22 @@ from datetime import datetime
 
 import attr
 from marshmallow import fields, post_load
+from typing_extensions import Protocol
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
 
 
+class _VonBisType(Protocol):
+    """
+    an overengineered protocol class
+    """
+
+    datum_uhrzeit_von: datetime
+    datum_uhrzeit_bis: datetime
+
+
 # pylint: disable=unused-argument
-def check_bis_is_later_than_von(instance, attribute, value):
+def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
     """
     assert that von is later than bis
     """
