@@ -35,7 +35,7 @@ class Angebotsposition(COM):
         validator=attr.validators.instance_of(Betrag)
     )  #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
 
-    # note that the validation can only work once we resolve issue 126
+    # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126
 
 

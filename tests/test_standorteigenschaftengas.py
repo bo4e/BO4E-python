@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
-from bo4e.com.marktgebietinfo import MarktgebietInfo
 
+from bo4e.com.marktgebietinfo import MarktgebietInfo
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas, StandorteigenschaftenGasSchema
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
