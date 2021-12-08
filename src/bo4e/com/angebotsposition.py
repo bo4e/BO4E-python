@@ -26,6 +26,7 @@ class Angebotsposition(COM):
     # required attributes
     #: Bezeichnung der jeweiligen Position des Angebotsteils
     positionsbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
     positionspreis: Preis = attr.ib(validator=attr.validators.instance_of(Preis))
 
     # optional attributes
