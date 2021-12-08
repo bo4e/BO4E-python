@@ -16,7 +16,7 @@ from bo4e.com.com import COM, COMSchema
 class Sigmoidparameter(COM):
     """
     Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:
-    LP=\frac{A}{1+(P/B)^C)}+D
+    LP=A/(1+(P/B)^C)+D
     """
 
     # required attributes
