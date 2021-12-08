@@ -2,7 +2,6 @@
 Contains Sigmoidparameter class and corresponding marshmallow schema for de-/serialization
 """
 
-
 # pylint: disable=too-few-public-methods
 from decimal import Decimal
 
@@ -21,10 +20,18 @@ class Sigmoidparameter(COM):
     """
 
     # required attributes
-    A: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Briefmarke Ortsverteilnetz
-    B: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Wendepunkt für die bepreiste Menge
-    C: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Exponent
-    D: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Briefmarke Transportnetz
+    A: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Briefmarke Ortsverteilnetz (EUR/kWh)
+    B: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Wendepunkt für die bepreiste Menge (kW)
+    C: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Exponent (einheitenlos)
+    D: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Briefmarke Transportnetz (EUR/kWh)
+
+    def calculate(self, leistung: Decimal) -> Decimal:
+        """
+        calculates LP
+        :param p: Leistung in Kilowatt
+        :return: den Sigmoidparameter LP in EUR/kWh
+        """
+        return self.A / (1 + (leistung / self.B) ** self.C) + self.D
 
 
 class SigmoidparameterSchema(COMSchema):
