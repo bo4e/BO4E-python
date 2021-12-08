@@ -15,6 +15,7 @@ class MarktgebietInfo(COM):
     Informationen zum Marktgebiet im Gas.
     """
 
+    # required attributes
     marktgebiet: str  #: Der Name des Marktgebietes
     marktgebietcode: str  #: Die standardisierte Codenummer des Marktgebietes
 
@@ -24,6 +25,7 @@ class MarktgebietInfoSchema(COMSchema):
     Schema for de-/serialization of Marktgebietinfo.
     """
 
+    # required attributes
     marktgebiet = fields.Str()
     marktgebietcode = fields.Str()
 
