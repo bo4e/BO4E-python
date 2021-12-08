@@ -28,7 +28,7 @@ class KriteriumWert(COM):
 
 class KriteriumWertSchema(COMSchema):
     """
-    Schema for de-/serialization of Dienstleistung.
+    Schema for de-/serialization of KriteriumWert.
     """
 
     # required attributes
