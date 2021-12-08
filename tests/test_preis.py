@@ -27,7 +27,8 @@ class TestPreis:
         assert isinstance(preis_deserialized.wert, Decimal)
         assert isinstance(preis_deserialized.einheit, Waehrungseinheit)
         assert isinstance(preis_deserialized.bezugswert, Mengeneinheit)
-        assert not preis_deserialized.status
+        assert preis_deserialized.status is None
+        assert preis == preis_deserialized
 
     def test_wrong_datatype(self):
         with pytest.raises(TypeError) as excinfo:
