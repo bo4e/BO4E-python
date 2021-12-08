@@ -3,14 +3,15 @@ Contains Zeitreihenwert class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
+from typing import Protocol
 
 import attr
 from marshmallow import fields, post_load
-from typing_extensions import Protocol
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
 
 
+# pylint:disable=too-few-public-methods
 class _VonBisType(Protocol):
     """
     an overengineered protocol class
@@ -23,7 +24,7 @@ class _VonBisType(Protocol):
 # pylint: disable=unused-argument
 def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
     """
-    assert that von is later than bis
+    assert that bis is later than von
     """
     if not instance.datum_uhrzeit_bis >= instance.datum_uhrzeit_von:
         raise ValueError("datum_uhrzeit_bis has to be >= datum_uhrzeit_von")
