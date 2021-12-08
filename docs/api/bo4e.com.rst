@@ -60,6 +60,14 @@ bo4e.com.katasteradresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.marktgebietinfo module
+-------------------------------
+
+.. automodule:: bo4e.com.marktgebietinfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.menge module
 ---------------------
 
@@ -72,6 +80,22 @@ bo4e.com.messlokationszuordnung module
 --------------------------------------
 
 .. automodule:: bo4e.com.messlokationszuordnung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.preisgarantie module
+-----------------------------
+
+.. automodule:: bo4e.com.preisgarantie
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.regionskriterium module
+--------------------------------
+
+.. automodule:: bo4e.com.regionskriterium
    :members:
    :undoc-members:
    :show-inheritance:
@@ -112,6 +136,14 @@ bo4e.com.zaehlwerk module
 -------------------------
 
 .. automodule:: bo4e.com.zaehlwerk
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.zeitintervall module
+-----------------------------
+
+.. automodule:: bo4e.com.zeitintervall
    :members:
    :undoc-members:
    :show-inheritance:
