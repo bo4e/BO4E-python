@@ -1,0 +1,58 @@
+"""
+Contains Angebotsposition class
+and corresponding marshmallow schema for de-/serialization
+"""
+
+import attr
+from marshmallow import fields, post_load
+from marshmallow_enum import EnumField  # type:ignore[import]
+
+from bo4e.com.betrag import Betrag, BetragSchema
+from bo4e.com.com import COM, COMSchema
+from bo4e.com.menge import Menge, MengeSchema
+from bo4e.com.preis import Preis, PreisSchema
+
+
+# pylint: disable=too-few-public-methods
+@attr.s(auto_attribs=True, kw_only=True)
+class Angebotsposition(COM):
+    """
+    Unterhalb von Angebotsteilen sind die Angebotspositionen eingebunden.
+    Hier werden die angebotenen Bestandteile einzeln aufgeführt. Beispiel:
+    Positionsmenge: 4000 kWh
+    Positionspreis: 24,56 ct/kWh
+    Positionskosten: 982,40 EUR
+    """
+
+    # required attributes
+    #: Bezeichnung der jeweiligen Position des Angebotsteils
+    positionsbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    positionspreis: Preis = attr.ib(validator=attr.validators.instance_of(Preis))
+
+    # optional attributes
+    #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
+    positionsmenge: Menge = attr.ib(validator=attr.validators.instance_of(Menge))
+    positionskosten: Betrag = attr.ib(
+        validator=attr.validators.instance_of(Betrag)
+    )  #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
+
+    # note that the validation can only work once we resolve issue 126
+    # https://github.com/Hochfrequenz/BO4E-python/issues/126
+
+
+class AngebotspositionSchema(COMSchema):
+    """
+    Schema for de-/serialization of Betrag.
+    """
+
+    # required attributes
+    positionsbezeichnung = fields.String()
+    waehrung = fields.Nested(PreisSchema)
+    positionsmenge = fields.Nested(MengeSchema, load_default=None)
+    positionskosten = fields.Nested(BetragSchema, load_default=None)
+
+    # pylint: disable=no-self-use, unused-argument
+    @post_load
+    def deserialize(self, data, **kwargs) -> Angebotsposition:
+        """Deserialize JSON to Angebotsposition object"""
+        return Angebotsposition(**data)
