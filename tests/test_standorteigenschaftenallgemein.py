@@ -1,7 +1,7 @@
 import pytest  # type:ignore[import]
 
 from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein, StandorteigenschaftenAllgemeinSchema
-from tests.serialization_helper import assert_serialization_roundtrip
+from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 
 class TestStandorteigenschaftenAllgemein:
