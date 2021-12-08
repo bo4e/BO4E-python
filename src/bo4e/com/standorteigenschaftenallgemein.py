@@ -47,7 +47,7 @@ class StandorteigenschaftenAllgemeinSchema(COMSchema):
     gemeindeeinwohner = fields.Int()
     bundesland = fields.Str()
 
-    # pylint: disable=no-self-use
+    # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> StandorteigenschaftenAllgemein:
         """Deserialize JSON to StandorteigenschaftenAllgemein object"""
