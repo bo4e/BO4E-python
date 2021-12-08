@@ -74,3 +74,4 @@ class TestPreis:
 
         assert isinstance(tarifpreis_deserialized.beschreibung, str)
         assert tarifpreis_deserialized.beschreibung == "Das ist ein HT Arbeitspreis"
+        assert tarifpreis_deserialized == tarifpreis
