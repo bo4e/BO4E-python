@@ -4,7 +4,7 @@ Contains Regionskriterium class and corresponding marshmallow schema for de-/ser
 
 
 # pylint: disable=too-few-public-methods
-import attr as attr
+import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
 
