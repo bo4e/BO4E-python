@@ -30,9 +30,9 @@ class Angebotsposition(COM):
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Menge = attr.ib(validator=attr.validators.instance_of(Menge))
+    positionsmenge: Menge = attr.ib(default=None, validator=attr.validators.instance_of(Menge))
     positionskosten: Betrag = attr.ib(
-        validator=attr.validators.instance_of(Betrag)
+        default=None, validator=attr.validators.instance_of(Betrag)
     )  #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
 
     # for a preis = menge*times validation we first need to resolve
@@ -46,7 +46,7 @@ class AngebotspositionSchema(COMSchema):
 
     # required attributes
     positionsbezeichnung = fields.String()
-    waehrung = fields.Nested(PreisSchema)
+    positionspreis = fields.Nested(PreisSchema)
     positionsmenge = fields.Nested(MengeSchema, load_default=None)
     positionskosten = fields.Nested(BetragSchema, load_default=None)
 
