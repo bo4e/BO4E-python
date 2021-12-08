@@ -20,9 +20,17 @@ class Regionskriterium(COM):
     """
 
     # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp = attr.ib(validator=attr.validators.instance_of(Gueltigkeitstyp))
-    regionskriteriumtyp: Regionskriteriumtyp = attr.ib(validator=attr.validators.instance_of(Regionskriteriumtyp))
+    gueltigkeitstyp: Gueltigkeitstyp = attr.ib(
+        validator=attr.validators.instance_of(Gueltigkeitstyp)
+    )  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
+    regionskriteriumtyp: Regionskriteriumtyp = attr.ib(
+        validator=attr.validators.instance_of(Regionskriteriumtyp)
+    )  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
     wert: str = attr.ib(validator=attr.validators.instance_of(str))
+    """
+    Der Wert, den das Kriterium annehmen kann, z.B. NRW.
+    Im Falle des Regionskriteriumstyp BUNDESWEIT spielt dieser Wert keine Rolle.
+    """
 
 
 class RegionskriteriumSchema(COMSchema):
