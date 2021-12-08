@@ -52,6 +52,14 @@ bo4e.com.energieherkunft module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.energiemix module
+--------------------------
+
+.. automodule:: bo4e.com.energiemix
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.externereferenz module
 -------------------------------
 
@@ -80,6 +88,14 @@ bo4e.com.katasteradresse module
 -------------------------------
 
 .. automodule:: bo4e.com.katasteradresse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.kriteriumwert module
+-----------------------------
+
+.. automodule:: bo4e.com.kriteriumwert
    :members:
    :undoc-members:
    :show-inheritance:
@@ -140,6 +156,14 @@ bo4e.com.rufnummer module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.sigmoidparameter module
+--------------------------------
+
+.. automodule:: bo4e.com.sigmoidparameter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.standorteigenschaftengas module
 ----------------------------------------
 
@@ -152,6 +176,14 @@ bo4e.com.steuerbetrag module
 ----------------------------
 
 .. automodule:: bo4e.com.steuerbetrag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tarifpreis module
+--------------------------
+
+.. automodule:: bo4e.com.tarifpreis
    :members:
    :undoc-members:
    :show-inheritance:
