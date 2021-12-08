@@ -29,7 +29,7 @@ class Preis(COM):
     bezugswert: Mengeneinheit = attr.ib(validator=attr.validators.in_(Mengeneinheit))
 
     # optional attributes
-    status: Optional[Preisstatus] = attr.ib(default=None, validator=attr.validators.in_(Preisstatus))
+    status: Optional[Preisstatus] = attr.ib(default=None)
 
 
 class PreisSchema(COMSchema):
@@ -38,7 +38,7 @@ class PreisSchema(COMSchema):
     """
 
     # required attributes
-    wert = fields.Decimal()
+    wert = fields.Decimal(as_string=True)
     einheit = EnumField(Waehrungseinheit)
     bezugswert = EnumField(Mengeneinheit)
 
