@@ -2,10 +2,23 @@
 Contains StandorteigenschaftenGas class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import List
 import attr
 from marshmallow import fields, post_load
 
 from bo4e.com.com import COM, COMSchema
+from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfoSchema
+
+
+# pylint: disable=unused-argument
+def check_list_length(instance, attribute, value):
+    """
+    Check if list length is one or two.
+    """
+    if len(instance.netzkontonummern) == 0:
+        raise ValueError("Netzkontonummern must not be empty.")
+    elif len(instance.netzkontonummern) > 2:
+        raise ValueError("Maximum number of Netzkontonummern is 2.")
 
 
 # pylint: disable=too-few-public-methods
@@ -16,8 +29,8 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: str  #: Netzkontonummern der Gasnetze
-    marktgebiete: MarktgebietInfo  #: Die Informationen zu Marktgebieten in dem Netz.
+    netzkontonummern: List = attr.ib(validator=check_list_length)  #: Netzkontonummern der Gasnetze
+    marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
 
 
 class StandorteigenschaftenGasSchema(COMSchema):
@@ -25,8 +38,9 @@ class StandorteigenschaftenGasSchema(COMSchema):
     Schema for de-/serialization of StandorteigenschaftenGas.
     """
 
-    netzkontonummern = fields.Str()
-    marktgebiete = fields.Str()
+    # required attributes
+    netzkontonummern = fields.List(fields.Str())
+    marktgebiete = fields.List(fields.Nested(MarktgebietInfoSchema))
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
