@@ -17,8 +17,8 @@ class TestZeitintervall:
         schema = ZeitintervallSchema()
         json_string = schema.dumps(zeitintervall, ensure_ascii=False)
 
-        assert 2 in json_string
-        assert "2022-01-28T00:00:00+00:00" in json_string
+        assert "2" in json_string
+        assert "VIERTEL_STUNDE" in json_string
 
         zeitintervall_deserialized = schema.loads(json_string)
 
@@ -26,3 +26,15 @@ class TestZeitintervall:
         assert zeitintervall_deserialized.wert == 2
         assert isinstance(zeitintervall_deserialized.zeiteinheit, Zeiteinheit)
         assert zeitintervall_deserialized.zeiteinheit == Zeiteinheit.VIERTEL_STUNDE.value
+
+    def test_wrong_datatype(self):
+        with pytest.raises(TypeError) as excinfo:
+            _ = Zeitintervall(wert="3", zeiteinheit=Zeiteinheit.TAG)
+
+        assert "'wert' must be <class 'int'>" in str(excinfo.value)
+
+    def test_missing_required_attribute(self):
+        with pytest.raises(TypeError) as excinfo:
+            _ = Zeitintervall(wert=3)
+
+        assert "missing 1 required keyword" in str(excinfo.value)
