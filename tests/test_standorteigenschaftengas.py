@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type:ignore[import]
 from bo4e.com.marktgebietinfo import MarktgebietInfo
 
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas, StandorteigenschaftenGasSchema
