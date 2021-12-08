@@ -9,6 +9,7 @@ from marshmallow import fields, post_load
 
 from bo4e.com.com import COM, COMSchema
 
+
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class StandorteigenschaftenAllgemein(COM):
