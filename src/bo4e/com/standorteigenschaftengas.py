@@ -3,6 +3,7 @@ Contains StandorteigenschaftenGas class
 and corresponding marshmallow schema for de-/serialization
 """
 from typing import List
+
 import attr
 from marshmallow import fields, post_load
 
