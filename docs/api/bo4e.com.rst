@@ -12,6 +12,14 @@ bo4e.com.adresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.aufabschlagstaffelproort module
+----------------------------------------
+
+.. automodule:: bo4e.com.aufabschlagstaffelproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.betrag module
 ----------------------
 
@@ -32,6 +40,14 @@ bo4e.com.dienstleistung module
 ------------------------------
 
 .. automodule:: bo4e.com.dienstleistung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.energieherkunft module
+-------------------------------
+
+.. automodule:: bo4e.com.energieherkunft
    :members:
    :undoc-members:
    :show-inheritance:
@@ -128,6 +144,14 @@ bo4e.com.standorteigenschaftengas module
 ----------------------------------------
 
 .. automodule:: bo4e.com.standorteigenschaftengas
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.steuerbetrag module
+----------------------------
+
+.. automodule:: bo4e.com.steuerbetrag
    :members:
    :undoc-members:
    :show-inheritance:
