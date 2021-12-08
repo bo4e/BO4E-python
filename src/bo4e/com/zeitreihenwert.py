@@ -41,8 +41,8 @@ class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):
     """
 
     # required attributes
-    datum_uhrzeit_von = fields.DateTime(load_default=None)
-    datum_uhrzeit_bis = fields.DateTime(load_default=None)
+    datum_uhrzeit_von = fields.DateTime()
+    datum_uhrzeit_bis = fields.DateTime()
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
