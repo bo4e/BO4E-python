@@ -13,9 +13,7 @@ class TestPreis:
         """
         Test de-/serialisation of Preis (only has required attributes).
         """
-        preis = Preis(
-                wert=Decimal(2.53), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH
-        )
+        preis = Preis(wert=Decimal(2.53), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
 
         schema = PreisSchema()
         json_string = schema.dumps(preis, ensure_ascii=False)
@@ -45,7 +43,12 @@ class TestPreis:
         assert "missing 1 required" in str(excinfo.value)
 
     def test_optional_attribute(self):
-        preis = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH, status=Preisstatus.ENDGUELTIG)
+        preis = Preis(
+            wert=Decimal(3.50),
+            einheit=Waehrungseinheit.EUR,
+            bezugswert=Mengeneinheit.KWH,
+            status=Preisstatus.ENDGUELTIG,
+        )
 
         schema = PreisSchema()
         json_string = schema.dumps(preis, ensure_ascii=False)
