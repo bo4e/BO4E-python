@@ -3,9 +3,9 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.preis import Preis, PreisSchema
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
+from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
 class TestPreis:
