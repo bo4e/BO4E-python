@@ -140,6 +140,14 @@ bo4e.com.rufnummer module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.standorteigenschaftengas module
+----------------------------------------
+
+.. automodule:: bo4e.com.standorteigenschaftengas
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.steuerbetrag module
 ----------------------------
 
