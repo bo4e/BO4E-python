@@ -76,12 +76,12 @@ class ZeitraumSchema(COMSchema):
     """
 
     # optional attributes
-    einheit = EnumField(Zeiteinheit, missing=None)
-    dauer = fields.Decimal(missing=None, as_string=True)
-    startdatum = fields.DateTime(missing=None)
-    enddatum = fields.DateTime(missing=None)
-    startzeitpunkt = fields.DateTime(missing=None)
-    endzeitpunkt = fields.DateTime(missing=None)
+    einheit = EnumField(Zeiteinheit, load_default=None)
+    dauer = fields.Decimal(load_default=None, as_string=True)
+    startdatum = fields.DateTime(load_default=None)
+    enddatum = fields.DateTime(load_default=None)
+    startzeitpunkt = fields.DateTime(load_default=None)
+    endzeitpunkt = fields.DateTime(load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

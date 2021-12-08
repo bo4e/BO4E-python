@@ -40,8 +40,8 @@ class MesslokationszuordnungSchema(COMSchema):
     arithmetik = EnumField(ArithmetischeOperation)
 
     # optional attributes
-    gueltig_seit = fields.DateTime(missing=None)
-    gueltig_bis = fields.DateTime(missing=None)
+    gueltig_seit = fields.DateTime(load_default=None)
+    gueltig_bis = fields.DateTime(load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

@@ -33,12 +33,12 @@ class VertragskonditionenSchema(COMSchema):
     """
 
     # optional attributes
-    beschreibung = fields.String(missing=None)
-    anzahl_abschlaege = fields.Decimal(missing=None, as_string=True)
-    vertragslaufzeit = fields.Nested(ZeitraumSchema, missing=None)
-    kuendigungsfrist = fields.Nested(ZeitraumSchema, missing=None)
-    vertragsverlaengerung = fields.Nested(ZeitraumSchema, missing=None)
-    abschlagszyklus = fields.Nested(ZeitraumSchema, missing=None)
+    beschreibung = fields.String(load_default=None)
+    anzahl_abschlaege = fields.Decimal(load_default=None, as_string=True)
+    vertragslaufzeit = fields.Nested(ZeitraumSchema, load_default=None)
+    kuendigungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
+    vertragsverlaengerung = fields.Nested(ZeitraumSchema, load_default=None)
+    abschlagszyklus = fields.Nested(ZeitraumSchema, load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

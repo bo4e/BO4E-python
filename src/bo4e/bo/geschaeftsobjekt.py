@@ -53,7 +53,7 @@ class GeschaeftsobjektSchema(CaseConverterSchema):
     bo_typ = EnumField(BoTyp)
 
     # optional attributes
-    externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), missing=None)
+    externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), load_default=None)
 
     @post_load
     def deserialize(self, data, **kwargs):
