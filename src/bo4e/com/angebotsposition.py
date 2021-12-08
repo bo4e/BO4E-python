@@ -31,9 +31,9 @@ class Angebotsposition(COM):
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
     positionsmenge: Menge = attr.ib(default=None, validator=attr.validators.instance_of(Menge))
-    positionskosten: Betrag = attr.ib(
-        default=None, validator=attr.validators.instance_of(Betrag)
-    )  #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
+    #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
+    positionskosten: Betrag = attr.ib(default=None, validator=attr.validators.instance_of(Betrag))
+    
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126
