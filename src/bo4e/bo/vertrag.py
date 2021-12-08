@@ -79,7 +79,7 @@ class VertragSchema(GeschaeftsobjektSchema):
     vertragsteile = fields.Nested(VertragsteilSchema, many=True)
 
     # optional attributes
-    beschreibung = fields.Str(missing=None)
-    vertragskonditionen = fields.Nested(VertragskonditionenSchema, missing=None)
-    unterzeichnervp1 = fields.Nested(UnterschriftSchema, missing=None, many=True)
-    unterzeichnervp2 = fields.Nested(UnterschriftSchema, missing=None, many=True)
+    beschreibung = fields.Str(load_default=None)
+    vertragskonditionen = fields.Nested(VertragskonditionenSchema, load_default=None)
+    unterzeichnervp1 = fields.Nested(UnterschriftSchema, load_default=None, many=True)
+    unterzeichnervp2 = fields.Nested(UnterschriftSchema, load_default=None, many=True)
