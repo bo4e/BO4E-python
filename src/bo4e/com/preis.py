@@ -32,7 +32,7 @@ class Preis(COM):
     bezugswert: Mengeneinheit = attr.ib(validator=attr.validators.in_(Mengeneinheit))
 
     # optional attributes
-    #:  Gibt den Status des veröffentlichten Preises an, Details siehe ENUM Preisstatus
+    #:  Gibt den Status des veröffentlichten Preises an
     status: Optional[Preisstatus] = attr.ib(default=None)
 
 
