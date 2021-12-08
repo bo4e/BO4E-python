@@ -25,7 +25,7 @@ class Tarifpreis(Preis):
     """
 
     # required attributes
-    #:  Angabe des Preistypes (z.B. Grundpreis
+    #:  Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Preistyp = attr.ib(validator=attr.validators.in_(Preistyp))
 
     # optional attributes
