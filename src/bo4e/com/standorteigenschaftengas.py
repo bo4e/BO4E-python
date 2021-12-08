@@ -17,7 +17,7 @@ def check_list_length(instance, attribute, value):
     """
     if len(instance.netzkontonummern) == 0:
         raise ValueError("Netzkontonummern must not be empty.")
-    elif len(instance.netzkontonummern) > 2:
+    if len(instance.netzkontonummern) > 2:
         raise ValueError("Maximum number of Netzkontonummern is 2.")
 
 
