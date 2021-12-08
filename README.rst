@@ -138,7 +138,7 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
-.. _`develop branch`: https://github.com/Hochfrequenz/BO4E-python/tree/master
+.. _`master branch`: https://github.com/Hochfrequenz/BO4E-python/tree/master
 .. _`tox`: https://pypi.org/project/tox/
 .. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
