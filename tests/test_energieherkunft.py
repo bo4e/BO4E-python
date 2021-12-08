@@ -13,10 +13,7 @@ class TestEnergieherkunft:
         "energieherkunft, expected_json_dict",
         [
             pytest.param(
-                Energieherkunft(
-                    erzeugungsart=Erzeugungsart.BIOMASSE,
-                    anteil_prozent=Decimal(25.5)
-                ),
+                Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(25.5)),
                 {
                     "erzeugungsart": "BIOMASSE",
                     "anteilProzent": "25.5",
