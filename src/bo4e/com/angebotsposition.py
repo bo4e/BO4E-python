@@ -41,7 +41,7 @@ class Angebotsposition(COM):
 
 class AngebotspositionSchema(COMSchema):
     """
-    Schema for de-/serialization of Betrag.
+    Schema for de-/serialization of Angebotsposition.
     """
 
     # required attributes
