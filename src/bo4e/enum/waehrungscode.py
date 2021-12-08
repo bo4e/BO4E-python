@@ -151,7 +151,7 @@ class Waehrungscode(StrEnum):
     TJS = "TJS"  #: Somoni
     TMT = "TMT"  #: Turkmenistan New Manat
     TND = "TND"  #: Tunisian Dinar
-    TOP = "TOP"  #: PaÊ»anga
+    TOP = "TOP"  #: Paʻanga
     TRY = "TRY"  #: Turkish Lira
     TTD = "TTD"  #: Trinidad and Tobago Dollar
     TWD = "TWD"  #: New Taiwan Dollar
