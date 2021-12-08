@@ -6,7 +6,7 @@ Contains Regionskriterium class and corresponding marshmallow schema for de-/ser
 # pylint: disable=too-few-public-methods
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
