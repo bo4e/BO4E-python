@@ -4,7 +4,7 @@ from bo4e.enum.strenum import StrEnum
 
 class Tarifkalkulationsmethode(StrEnum):
     """
-    Aulistung der verschiedenen Berechnungsmethoden für ein Preisblatt.
+    Auflistung der verschiedenen Berechnungsmethoden für ein Preisblatt.
     """
 
     KEINE = "KEINE"  #: Es wird keine Berechnung durchgeführt, sondern lediglich die Menge mit dem Preis multipliziert.
