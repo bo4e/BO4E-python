@@ -1,5 +1,5 @@
 """
-Contains Zaehlwerk class
+Contains Zeitreihenwertkompakt class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
@@ -21,13 +21,17 @@ class Zeitreihenwertkompakt(COM):
     Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.
     """
 
+    # required attributes
+    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Der im Zeitintervall gültige Wert.
 
-# Der im Zeitintervall gültige Wert.
-wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
-# Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
-status: Messwertstatus
-# Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
-statuszusatz: Messwertstatuszusatz
+    # optional attributes
+    status: Messwertstatus = attr.ib(
+        default=None
+    )  #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
+
+    statuszusatz: Messwertstatuszusatz = attr.ib(
+        default=None
+    )  #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
 
 
 class ZeitreihenwertkompaktSchema(COMSchema):
@@ -35,15 +39,15 @@ class ZeitreihenwertkompaktSchema(COMSchema):
     Schema for de-/serialization of Zeitreihenwertkompakt.
     """
 
+    # required attributes
+    wert = fields.Decimal(as_string=True)
 
-wert = fields.Decimal(as_string=True)
-status = EnumField(Messwertstatus)
-statuszusatz = EnumField(Messwertstatuszusatz)
+    # optional attributes
+    status = EnumField(Messwertstatus)
+    statuszusatz = EnumField(Messwertstatuszusatz)
 
-# pylint: disable=no-self-use, unused-argument
-
-
-@post_load
-def deserialize(self, data, **kwargs) -> Zeitreihenwertkompakt:
-    """Deserialize JSON to Zeitreihenwertkompakt object"""
-    return Zeitreihenwertkompakt(**data)
+    # pylint: disable=no-self-use, unused-argument
+    @post_load
+    def deserialize(self, data, **kwargs) -> Zeitreihenwertkompakt:
+        """Deserialize JSON to Zeitreihenwertkompakt object"""
+        return Zeitreihenwertkompakt(**data)
