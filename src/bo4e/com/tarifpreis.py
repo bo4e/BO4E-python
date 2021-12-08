@@ -11,9 +11,9 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COMSchema
 from bo4e.com.preis import Preis, PreisSchema
-from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
+from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
