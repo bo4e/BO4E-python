@@ -35,5 +35,5 @@ class ZeitintervallSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Zeitintervall:
-        """Deserialize JSON to Vertragsteil object"""
+        """Deserialize JSON to Zeitintervall object"""
         return Zeitintervall(**data)
