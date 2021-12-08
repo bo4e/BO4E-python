@@ -28,7 +28,7 @@ class StandorteigenschaftenAllgemein(COM):
     #: Die standardisierte Kennziffer der Gemeinde
     gemeindekennziffer: str = attr.ib(validator=attr.validators.instance_of(str))
     #: Anzahl der Einwohner in der Gemeinde
-    gemeindeeinwohner: int = attr.ib(validator=attr.validators.instance_of(str))
+    gemeindeeinwohner: int = attr.ib(validator=attr.validators.instance_of(int))
     #: Das Bundesland zu dem der Standort gehört
     bundesland: str = attr.ib(validator=attr.validators.instance_of(str))
 
