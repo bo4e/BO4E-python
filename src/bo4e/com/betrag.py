@@ -18,8 +18,8 @@ from bo4e.enum.waehrungscode import Waehrungscode
 @attr.s(auto_attribs=True, kw_only=True)
 class Betrag(COM):
     """
-    Die Komponente wird dazu verwendet, Summebeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge a
-    bzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…
+    Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge abzubilden.
+    Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…
     """
 
     # required attributes
