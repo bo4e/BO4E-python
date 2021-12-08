@@ -35,7 +35,7 @@ class BetragSchema(COMSchema):
     """
 
     # required attributes
-    wert = fields.Decimal(as_string=True, places=6)
+    wert = fields.Decimal(as_string=True)
     waehrung = EnumField(Waehrungscode)
 
     # pylint: disable=no-self-use, unused-argument

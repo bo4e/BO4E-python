@@ -16,7 +16,7 @@ class TestBetrag:
                     waehrung=Waehrungscode.EUR,
                     wert=Decimal(12.5),
                 ),
-                {"wert": "12.500000", "waehrung": "EUR"},
+                {"wert": "12.5", "waehrung": "EUR"},
             ),
         ],
     )
