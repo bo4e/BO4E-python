@@ -33,5 +33,6 @@ class TestRegionskriterium:
         assert_serialization_roundtrip(regionskriterium, RegionskriteriumSchema(), expected_json_dict)
 
     def test_regionskriterium_missing_required_attribute(self):
-        with pytest.raises(TypeError):
+        with pytest.raises(TypeError) as excinfo:
             _ = Regionskriterium()
+        assert "missing 3 required" in str(excinfo.value)
