@@ -132,6 +132,14 @@ bo4e.com.rufnummer module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.steuerbetrag module
+----------------------------
+
+.. automodule:: bo4e.com.steuerbetrag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.unterschrift module
 ----------------------------
 
