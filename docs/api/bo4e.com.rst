@@ -44,6 +44,14 @@ bo4e.com.dienstleistung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.energieherkunft module
+-------------------------------
+
+.. automodule:: bo4e.com.energieherkunft
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.externereferenz module
 -------------------------------
 
