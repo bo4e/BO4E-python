@@ -16,7 +16,7 @@ from src.bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 @attr.s(auto_attribs=True, kw_only=True)
 class Regionskriterium(COM):
     """
-    Komponente zur Abbildung eines Regionskriteriums.
+    Komponente zur Abbildung eines Regionskriteriums
     """
 
     # required attributes
