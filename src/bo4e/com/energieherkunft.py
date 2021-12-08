@@ -24,7 +24,7 @@ class Energieherkunft(COM):
     #: Art der Erzeugung der Energie.
     erzeugungsart: Erzeugungsart = attr.ib(validator=attr.validators.in_(Erzeugungsart))
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
-    anteil_prozent: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  
+    anteil_prozent: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
 
 
 class EnergieherkunftSchema(COMSchema):
