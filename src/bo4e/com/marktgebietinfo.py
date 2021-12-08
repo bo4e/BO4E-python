@@ -30,5 +30,5 @@ class MarktgebietinfoSchema(COMSchema):
     # pylint: disable=no-self-use, unused-argument
     @post_load
     def deserialize(self, data, **kwargs) -> Marktgebietinfo:
-        """Deserialize JSON to Katasteradresse object"""
+        """Deserialize JSON to Marktgebietinfo object"""
         return Marktgebietinfo(**data)
