@@ -6,7 +6,7 @@
 #
 attrs==21.2.0
     # via -r requirements.in
-iso3166==1.0.1
+iso3166==2.0.2
     # via -r requirements.in
 marshmallow==3.12.1
     # via
