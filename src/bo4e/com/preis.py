@@ -26,7 +26,7 @@ class Preis(COM):
     # required attributes
     #:  Gibt die nomiale Höhe des Preises an.
     wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
-    #:  Währungseinheit für den Preis, z.B. Euro oder Ct. Details siehe ENUM Waehrungseinheit
+    #:  Währungseinheit für den Preis, z.B. Euro oder Ct.
     einheit: Waehrungseinheit = attr.ib(validator=attr.validators.in_(Waehrungseinheit))
     #:  Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh. Siehe ENUM Mengeneinheit
     bezugswert: Mengeneinheit = attr.ib(validator=attr.validators.in_(Mengeneinheit))
