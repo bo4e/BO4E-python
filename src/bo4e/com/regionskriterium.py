@@ -8,9 +8,9 @@ import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField
 
-from src.bo4e.com.com import COM, COMSchema
-from src.bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from src.bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
+from bo4e.com.com import COM, COMSchema
+from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
+from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 
 
 @attr.s(auto_attribs=True, kw_only=True)
