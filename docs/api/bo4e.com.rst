@@ -12,6 +12,22 @@ bo4e.com.adresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.aufabschlagstaffelproort module
+----------------------------------------
+
+.. automodule:: bo4e.com.aufabschlagstaffelproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.betrag module
+----------------------
+
+.. automodule:: bo4e.com.betrag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.com module
 -------------------
 
@@ -84,6 +100,14 @@ bo4e.com.messlokationszuordnung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.preis module
+---------------------
+
+.. automodule:: bo4e.com.preis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.preisgarantie module
 -----------------------------
 
@@ -152,6 +176,14 @@ bo4e.com.zeitraum module
 ------------------------
 
 .. automodule:: bo4e.com.zeitraum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.zeitreihenwertkompakt module
+-------------------------------------
+
+.. automodule:: bo4e.com.zeitreihenwertkompakt
    :members:
    :undoc-members:
    :show-inheritance:
