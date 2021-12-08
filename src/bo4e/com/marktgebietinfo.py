@@ -10,7 +10,7 @@ from bo4e.com.com import COM, COMSchema
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
-class Marktgebietinfo(COM):
+class MarktgebietInfo(COM):
     """
     Informationen zum Marktgebiet im Gas.
     """
@@ -19,7 +19,7 @@ class Marktgebietinfo(COM):
     marktgebietcode: str  #: Die standardisierte Codenummer des Marktgebietes
 
 
-class MarktgebietinfoSchema(COMSchema):
+class MarktgebietInfoSchema(COMSchema):
     """
     Schema for de-/serialization of Marktgebietinfo.
     """
@@ -29,6 +29,6 @@ class MarktgebietinfoSchema(COMSchema):
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
-    def deserialize(self, data, **kwargs) -> Marktgebietinfo:
+    def deserialize(self, data, **kwargs) -> MarktgebietInfo:
         """Deserialize JSON to Marktgebietinfo object"""
-        return Marktgebietinfo(**data)
+        return MarktgebietInfo(**data)

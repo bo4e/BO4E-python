@@ -1,16 +1,16 @@
-from bo4e.com.marktgebietinfo import Marktgebietinfo, MarktgebietinfoSchema
+from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfoSchema
 
 
 class TestMarktgebietinfo:
     def test_serialization(self):
-        mgi = Marktgebietinfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")
+        mgi = MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")
 
-        schema = MarktgebietinfoSchema()
+        schema = MarktgebietInfoSchema()
 
         json_string = schema.dumps(mgi, ensure_ascii=False)
 
         assert "marktgebiet" in json_string, "No camel case serialization"
 
-        deserialized_mgi: Marktgebietinfo = schema.loads(json_string)
+        deserialized_mgi: MarktgebietInfo = schema.loads(json_string)
 
         assert mgi == deserialized_mgi
