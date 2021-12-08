@@ -45,4 +45,4 @@ class MarktteilnehmerSchema(GeschaeftspartnerSchema):
     rollencodetyp = EnumField(Rollencodetyp)
 
     # optional attributes
-    makoadresse = fields.Str(missing=None)
+    makoadresse = fields.Str(load_default=None)

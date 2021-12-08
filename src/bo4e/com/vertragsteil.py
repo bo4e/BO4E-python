@@ -41,10 +41,10 @@ class VertragsteilSchema(COMSchema):
     vertragsteilende = fields.DateTime()
 
     # optional attributes
-    lokation = fields.String(missing=None)
-    vertraglich_fixierte_menge = fields.Nested(MengeSchema, missing=None)
-    minimale_abnahmemenge = fields.Nested(MengeSchema, missing=None)
-    maximale_abnahmemenge = fields.Nested(MengeSchema, missing=None)
+    lokation = fields.String(load_default=None)
+    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None)
+    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
+    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

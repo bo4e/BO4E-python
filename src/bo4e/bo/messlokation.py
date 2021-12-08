@@ -112,17 +112,17 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     sparte = EnumField(Sparte)
 
     # optional attributes
-    netzebene_messung = EnumField(Netzebene, missing=None)
-    messgebietnr = fields.Str(missing=None)
-    geraete = fields.List(fields.Nested(HardwareSchema), missing=None)  #: List[Hardware]
-    messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), missing=None)  #: List[Dienstleistung]
-    messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), missing=None)
+    netzebene_messung = EnumField(Netzebene, load_default=None)
+    messgebietnr = fields.Str(load_default=None)
+    geraete = fields.List(fields.Nested(HardwareSchema), load_default=None)  #: List[Hardware]
+    messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), load_default=None)  #: List[Dienstleistung]
+    messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), load_default=None)
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr = fields.Str(missing=None)
-    grundzustaendiger_msbim_codenr = fields.Str(missing=None)
+    grundzustaendiger_msb_codenr = fields.Str(load_default=None)
+    grundzustaendiger_msbim_codenr = fields.Str(load_default=None)
 
     # only one of the following three optional attributes can be set
-    messadresse = fields.Nested(AdresseSchema, missing=None)
-    geoadresse = fields.Nested(GeokoordinatenSchema, missing=None)
-    katasterinformation = fields.Nested(KatasteradresseSchema, missing=None)
+    messadresse = fields.Nested(AdresseSchema, load_default=None)
+    geoadresse = fields.Nested(GeokoordinatenSchema, load_default=None)
+    katasterinformation = fields.Nested(KatasteradresseSchema, load_default=None)

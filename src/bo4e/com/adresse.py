@@ -56,11 +56,11 @@ class AdresseSchema(COMSchema):
     ort = fields.Str()
 
     # optional attributes
-    strasse = fields.Str(missing=None)
-    hausnummer = fields.Str(missing=None)
-    postfach = fields.Str(missing=None)
-    adresszusatz = fields.Str(missing=None)
-    co_ergaenzung = fields.Str(missing=None)
+    strasse = fields.Str(load_default=None)
+    hausnummer = fields.Str(load_default=None)
+    postfach = fields.Str(load_default=None)
+    adresszusatz = fields.Str(load_default=None)
+    co_ergaenzung = fields.Str(load_default=None)
     landescode = EnumField(Landescode)
 
     # pylint: disable=no-self-use

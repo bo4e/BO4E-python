@@ -34,8 +34,8 @@ class UnterschriftSchema(COMSchema):
     name = fields.String()
 
     # optional attributes
-    ort = fields.String(missing=None)
-    datum = fields.DateTime(missing=None)
+    ort = fields.String(load_default=None)
+    datum = fields.DateTime(load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

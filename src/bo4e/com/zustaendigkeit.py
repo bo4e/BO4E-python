@@ -35,8 +35,8 @@ class ZustaendigkeitSchema(COMSchema):
     themengebiet = EnumField(Themengebiet)
 
     # optional attributes
-    jobtitel = fields.Str(missing=None)
-    abteilung = fields.Str(missing=None)
+    jobtitel = fields.Str(load_default=None)
+    abteilung = fields.Str(load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
