@@ -67,7 +67,7 @@ class EnergiemixSchema(COMSchema):
 
     # optional attributes
     bemerkung = fields.Str(load_default=None)
-    cO2_emission = fields.Decimal(load_default=None, as_string=True)
+    co2_emission = fields.Decimal(load_default=None, as_string=True)
     atommuell = fields.Decimal(load_default=None, as_string=True)
     oekozertifikate = fields.List(EnumField(Oekozertifikat), load_default=None)
     oekolabel = fields.List(EnumField(Oekolabel), load_default=None)
