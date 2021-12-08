@@ -18,10 +18,10 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     """
 
     # required attributes
-    datumUhrzeitVon: datetime = attr.ib(
+    datum_uhrzeit_von: datetime = attr.ib(
         validator=attr.validators.instance_of(datetime)
     )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde
-    datumUhrzeitBis: datetime = attr.ib(
+    datum_uhrzeit_bis: datetime = attr.ib(
         validator=attr.validators.instance_of(datetime)
     )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet
 
@@ -32,8 +32,8 @@ class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):
     """
 
     # required attributes
-    datumUhrzeitVon = fields.DateTime(load_default=None)
-    datumUhrzeitBis = fields.DateTime(load_default=None)
+    datum_uhrzeit_von = fields.DateTime(load_default=None)
+    datum_uhrzeit_bis = fields.DateTime(load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

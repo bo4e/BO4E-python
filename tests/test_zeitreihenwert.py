@@ -17,8 +17,8 @@ class TestZeitreihenwert:
         """
         zeitreihenwert = Zeitreihenwert(
             wert=Decimal(2.5),
-            datumUhrzeitVon=datetime(2001, 3, 15, tzinfo=timezone.utc),
-            datumUhrzeitBis=datetime(2007, 11, 27, tzinfo=timezone.utc),
+            datum_uhrzeit_von=datetime(2001, 3, 15, tzinfo=timezone.utc),
+            datum_uhrzeit_bis=datetime(2007, 11, 27, tzinfo=timezone.utc),
         )
 
         schema = ZeitreihenwertSchema()
@@ -36,8 +36,8 @@ class TestZeitreihenwert:
         Test de-/serialisation of Zeitreihenwert with maximal attributes.
         """
         zeitreihenwert = Zeitreihenwert(
-            datumUhrzeitVon=datetime(2001, 3, 15, tzinfo=timezone.utc),
-            datumUhrzeitBis=datetime(2007, 11, 27, tzinfo=timezone.utc),
+            datum_uhrzeit_von=datetime(2001, 3, 15, tzinfo=timezone.utc),
+            datum_uhrzeit_bis=datetime(2007, 11, 27, tzinfo=timezone.utc),
             wert=Decimal(2.5),
             status=Messwertstatus.ABGELESEN,
             statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL,
@@ -57,6 +57,6 @@ class TestZeitreihenwert:
 
     def test_vertragsteil_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
-            _ = Zeitreihenwert(datumUhrzeitVon=datetime(2007, 11, 27, tzinfo=timezone.utc), wert=Decimal(1.5))
+            _ = Zeitreihenwert(datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc), wert=Decimal(1.5))
 
         assert "missing 1 required" in str(excinfo.value)
