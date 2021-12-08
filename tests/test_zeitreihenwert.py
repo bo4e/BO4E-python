@@ -26,7 +26,6 @@ class TestZeitreihenwert:
 
         assert "2001-03-15T00:00:00+00:00" in json_string
         assert "2007-11-27T00:00:00+00:00" in json_string
-        # assert "2.5" in json_string
 
         zeitreihenwert_deserialized: Zeitreihenwert = schema.loads(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
