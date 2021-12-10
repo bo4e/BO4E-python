@@ -3,9 +3,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.menge import Menge
 from bo4e.com.zeitreihenwert import Zeitreihenwert, ZeitreihenwertSchema
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
