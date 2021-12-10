@@ -24,10 +24,10 @@ class RegionaleGueltigkeit(COM):
     # required attributes
     gueltigkeitstyp: Gueltigkeitstyp = attr.ib(
         validator=attr.validators.in_(Gueltigkeitstyp)
-    )  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird.
+    )  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
     kriteriums_werte: List[KriteriumWert] = attr.ib(
         validator=attr.validators.instance_of(List)
-    )  #:  Hier stehen die Kriterien, die die regionale Gültigkeit festlegen.
+    )  #:  Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
 
     @kriteriums_werte.validator
     # pylint: disable=unused-argument, no-self-use
