@@ -6,22 +6,22 @@ from typing import Optional
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.menge import Menge, MengeSchema
-
-# pylint: disable=too-few-public-methods
 from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
 class Ausschreibungsdetail(COM):
     """
-    Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines Ausschreibungsloses abzubilden.
+    Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines
+    Ausschreibungsloses abzubilden.
     """
 
     # required attributes
@@ -87,16 +87,16 @@ class AusschreibungsdetailSchema(COMSchema):
     zeitraum = fields.Nested(ZeitraumSchema)
 
     # optional attributes
-    netzbetreiber = fields.Str(default=None)
-    kunde = fields.Str(default=None)
-    zaehlernummer = fields.Str(default=None)
-    lokationsbezeichnung = fields.Str(default=None)
+    netzbetreiber = fields.Str(dump_default=None)
+    kunde = fields.Str(dump_default=None)
+    zaehlernummer = fields.Str(dump_default=None)
+    lokationsbezeichnung = fields.Str(dump_default=None)
     zaehlertechnik = EnumField(Zaehlertyp, allow_none=True)
     lastgang_vorhanden = fields.Boolean(allow_none=True)
-    prognose_jahresarbeit = fields.Nested(MengeSchema, default=None)
-    prognose_arbeit_lieferzeitraum = fields.Nested(MengeSchema, default=None)
-    prognose_leistung = fields.Nested(MengeSchema, default=None)
-    rechnungsadresse = fields.Nested(AdresseSchema, default=None)
+    prognose_jahresarbeit = fields.Nested(MengeSchema, dump_default=None)
+    prognose_arbeit_lieferzeitraum = fields.Nested(MengeSchema, dump_default=None)
+    prognose_leistung = fields.Nested(MengeSchema, dump_default=None)
+    rechnungsadresse = fields.Nested(AdresseSchema, dump_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
