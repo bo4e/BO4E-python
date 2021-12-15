@@ -1,6 +1,7 @@
 """
 Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 import attr
 from marshmallow import post_load
@@ -25,7 +26,7 @@ class Geraeteeigenschaften(COM):
 
     # optional attributes
     #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..
-    geraetemerkmal: Geraetemerkmal = attr.ib(
+    geraetemerkmal: Optional[Geraetemerkmal] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Geraetemerkmal))
     )
 
