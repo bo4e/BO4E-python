@@ -11,10 +11,8 @@ class TestGeraeteeigenschaften:
         "geraeteeigenschaften, expected_json_dict",
         [
             pytest.param(
-                Geraeteeigenschaften(
-                    geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=Geraetetyp.EDL_40_ZAEHLERAUFSATZ
-                ),
-                {"geraetemerkmal": "GAS_G1000", "geraetetyp": "EDL_40_ZAEHLERAUFSATZ"},
+                Geraeteeigenschaften(geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=Geraetetyp.MULTIPLEXANLAGE),
+                {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
             ),
         ],
     )
