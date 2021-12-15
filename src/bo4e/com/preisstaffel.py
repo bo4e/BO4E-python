@@ -43,6 +43,8 @@ class PreisstaffelSchema(COMSchema):
     einheitspreis = fields.Decimal(as_string=True)
     staffelgrenze_von = fields.Decimal(as_string=True)
     staffelgrenze_bis = fields.Decimal(as_string=True)
+
+    # optional attributes
     sigmoidparameter = fields.Nested(SigmoidparameterSchema, default=None)
 
     # pylint: disable=no-self-use, unused-argument
