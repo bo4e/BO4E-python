@@ -12,6 +12,22 @@ bo4e.com.adresse module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.angebotsposition module
+--------------------------------
+
+.. automodule:: bo4e.com.angebotsposition
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.aufabschlagproort module
+---------------------------------
+
+.. automodule:: bo4e.com.aufabschlagproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.aufabschlagstaffelproort module
 ----------------------------------------
 
@@ -140,6 +156,14 @@ bo4e.com.preisgarantie module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.regionalegueltigkeit module
+------------------------------------
+
+.. automodule:: bo4e.com.regionalegueltigkeit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.regionskriterium module
 --------------------------------
 
@@ -160,6 +184,14 @@ bo4e.com.sigmoidparameter module
 --------------------------------
 
 .. automodule:: bo4e.com.sigmoidparameter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.standorteigenschaftenallgemein module
+----------------------------------------------
+
+.. automodule:: bo4e.com.standorteigenschaftenallgemein
    :members:
    :undoc-members:
    :show-inheritance:
@@ -232,6 +264,14 @@ bo4e.com.zeitraum module
 ------------------------
 
 .. automodule:: bo4e.com.zeitraum
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.zeitreihenwert module
+------------------------------
+
+.. automodule:: bo4e.com.zeitreihenwert
    :members:
    :undoc-members:
    :show-inheritance:

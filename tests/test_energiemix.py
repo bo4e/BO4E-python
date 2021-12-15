@@ -125,4 +125,4 @@ class TestEnergiemix:
                 anteil=[],
             )
 
-        assert "anteil must not be empty." in str(excinfo.value)
+        assert "List anteil must not be empty." in str(excinfo.value)
