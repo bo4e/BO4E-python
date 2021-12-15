@@ -27,9 +27,9 @@ class TestPreisstaffel:
             ),
         ],
     )
-    def test_required_attributes(self, preisstaffel: Preisstaffel, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel, expected_json_dict: dict):
         """
-        Test de-/serialisation of Energieherkunft with minimal attributes.
+        Test de-/serialisation of Preisstaffel.
         """
         assert_serialization_roundtrip(preisstaffel, PreisstaffelSchema(), expected_json_dict)
 
