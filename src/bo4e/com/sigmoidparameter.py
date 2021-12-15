@@ -28,7 +28,7 @@ class Sigmoidparameter(COM):
     def calculate(self, leistung: Decimal) -> Decimal:
         """
         calculates LP
-        :param p: Leistung in Kilowatt
+        :param leistung: Leistung in Kilowatt
         :return: den Sigmoidparameter LP in EUR/kWh
         """
         return self.A / (1 + (leistung / self.B) ** self.C) + self.D
