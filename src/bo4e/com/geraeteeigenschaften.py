@@ -1,5 +1,5 @@
 """
-Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
+Contains Geraeteeigenschaften and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
