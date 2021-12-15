@@ -5,18 +5,21 @@ import pytest  # type:ignore[import]
 from bo4e.com.sigmoidparameter import Sigmoidparameter, SigmoidparameterSchema
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+# this sigmoid parameter can be imported by other tests
+example_sigmoidparameter = Sigmoidparameter(
+    A=Decimal(1),
+    B=Decimal(2),
+    C=Decimal(3),
+    D=Decimal(4),
+)
+
 
 class TestSigmoidparameter:
     @pytest.mark.parametrize(
         "sigmoidparameter, expected_json_dict",
         [
             pytest.param(
-                Sigmoidparameter(
-                    A=Decimal(1),
-                    B=Decimal(2),
-                    C=Decimal(3),
-                    D=Decimal(4),
-                ),
+                example_sigmoidparameter,
                 {"a": "1", "b": "2", "c": "3", "d": "4"},
             ),
         ],
