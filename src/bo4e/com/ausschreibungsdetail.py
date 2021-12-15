@@ -25,7 +25,6 @@ class Ausschreibungsdetail(COM):
     """
 
     # required attributes
-    # todo open a ticket: this should be marktlokationsId if it's always a malo
     #: Identifikation einer ausgeschriebenen Marktlokation
     lokations_id: str = attr.ib(validator=attr.validators.instance_of(str))
     #: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung
@@ -47,7 +46,6 @@ class Ausschreibungsdetail(COM):
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
     lokationsbezeichnung: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
 
-    # todo: we should name this zaehlertyp to avoid confusions and enhance readability
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
     zaehlertechnik: Optional[Zaehlertyp] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(Zaehlertyp))
