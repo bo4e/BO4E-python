@@ -16,9 +16,9 @@ class TestGeraeteeigenschaften:
             ),
         ],
     )
-    def test_required_attributes(self, geraeteeigenschaften: Geraeteeigenschaften, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, geraeteeigenschaften: Geraeteeigenschaften, expected_json_dict: dict):
         """
-        Test de-/serialisation of Geraeteeigenschaften with minimal attributes.
+        Test de-/serialisation of Geraeteeigenschaften
         """
         assert_serialization_roundtrip(geraeteeigenschaften, GeraeteeigenschaftenSchema(), expected_json_dict)
 
