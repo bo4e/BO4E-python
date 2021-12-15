@@ -15,6 +15,7 @@ from bo4e.com.energieherkunft import Energieherkunft, EnergieherkunftSchema
 from bo4e.enum.oekolabel import Oekolabel
 from bo4e.enum.oekozertifikat import Oekozertifikat
 from bo4e.enum.sparte import Sparte
+from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
@@ -34,16 +35,9 @@ class Energiemix(COM):
     #: Jahr, für das der Energiemix gilt
     gueltigkeitsjahr: int = attr.ib(validator=attr.validators.instance_of(int))
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: List[Energieherkunft] = attr.ib(validator=attr.validators.instance_of(List))
-
-    @anteil.validator
-    # pylint: disable=unused-argument, no-self-use
-    def check_list_length(self, attribute, value):
-        """
-        Check that minimal list length is at least one.
-        """
-        if len(value) < 1:
-            raise ValueError("anteil must not be empty.")
+    anteil: List[Energieherkunft] = attr.ib(
+        validator=[attr.validators.instance_of(List), check_list_length_at_least_one]
+    )
 
     # optional attributes
     #: Bemerkung zum Energiemix
