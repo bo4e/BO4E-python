@@ -100,6 +100,14 @@ bo4e.com.geokoordinaten module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.geraet module
+----------------------
+
+.. automodule:: bo4e.com.geraet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.geraeteeigenschaften module
 ------------------------------------
 
