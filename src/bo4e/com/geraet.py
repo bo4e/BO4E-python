@@ -20,7 +20,7 @@ class Geraet(COM):
     """
 
     # optional attributes
-    #: Die auf dem Geräte aufgedruckte Nummer, die vom MSB vergeben wird.
+    #: Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
     geraetenummer: Optional[str] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
     )
