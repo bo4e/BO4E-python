@@ -8,6 +8,7 @@ from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
+
 # pylint: disable=too-few-public-methods
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 
