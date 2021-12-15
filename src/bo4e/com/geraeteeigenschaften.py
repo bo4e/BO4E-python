@@ -38,6 +38,8 @@ class GeraeteeigenschaftenSchema(COMSchema):
 
     # required attributes
     geraetetyp = EnumField(Geraetetyp)
+
+    # optional attributes
     geraetemerkmal = EnumField(Geraetemerkmal, allow_none=True)
 
     # pylint: disable=no-self-use, unused-argument
