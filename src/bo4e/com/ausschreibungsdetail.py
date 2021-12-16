@@ -95,16 +95,16 @@ class AusschreibungsdetailSchema(COMSchema):
     lieferzeitraum = fields.Nested(ZeitraumSchema)
 
     # optional attributes
-    netzbetreiber = fields.Str(dump_default=None)
-    kunde = fields.Str(dump_default=None)
-    zaehlernummer = fields.Str(dump_default=None)
-    lokationsbezeichnung = fields.Str(dump_default=None)
+    netzbetreiber = fields.Str(allow_none=True)
+    kunde = fields.Str(allow_none=True)
+    zaehlernummer = fields.Str(allow_none=True)
+    lokationsbezeichnung = fields.Str(allow_none=True)
     zaehlertechnik = EnumField(Zaehlertyp, allow_none=True)
     lastgang_vorhanden = fields.Boolean(allow_none=True)
-    prognose_jahresarbeit = fields.Nested(MengeSchema, dump_default=None)
-    prognose_arbeit_lieferzeitraum = fields.Nested(MengeSchema, dump_default=None)
-    prognose_leistung = fields.Nested(MengeSchema, dump_default=None)
-    rechnungsadresse = fields.Nested(AdresseSchema, dump_default=None)
+    prognose_jahresarbeit = fields.Nested(MengeSchema, allow_none=True)
+    prognose_arbeit_lieferzeitraum = fields.Nested(MengeSchema, allow_none=True)
+    prognose_leistung = fields.Nested(MengeSchema, allow_none=True)
+    rechnungsadresse = fields.Nested(AdresseSchema, allow_none=True)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
