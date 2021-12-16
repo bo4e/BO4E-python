@@ -78,6 +78,58 @@ class TestAusschreibungsdetail:
                     "prognoseArbeitLieferzeitraum": {"wert": "2500", "einheit": "KWH"},
                 },
             ),
+            pytest.param(
+                Ausschreibungsdetail(
+                    lokations_id="56789012345",
+                    netzebene_lieferung=Netzebene.MSP,
+                    netzebene_messung=Netzebene.NSP,
+                    lokationsadresse=example_adresse,
+                    lieferzeitraum=example_zeitraum,
+                    rechnungsadresse=example_adresse,
+                ),
+                {
+                    "zaehlernummer": None,
+                    "zaehlertechnik": None,
+                    "kunde": None,
+                    "lokationsbezeichnung": None,
+                    "lieferzeitraum": {
+                        "dauer": "5",
+                        "startdatum": None,
+                        "endzeitpunkt": None,
+                        "enddatum": None,
+                        "einheit": "TAG",
+                        "startzeitpunkt": None,
+                    },
+                    "lokationsadresse": {
+                        "landescode": "DE",
+                        "hausnummer": "27A",
+                        "strasse": "Nördliche Münchner Straße",
+                        "postleitzahl": "82031",
+                        "ort": "Grünwald",
+                        "adresszusatz": None,
+                        "postfach": None,
+                        "coErgaenzung": None,
+                    },
+                    "rechnungsadresse": {
+                        "landescode": "DE",
+                        "hausnummer": "27A",
+                        "strasse": "Nördliche Münchner Straße",
+                        "postleitzahl": "82031",
+                        "ort": "Grünwald",
+                        "adresszusatz": None,
+                        "postfach": None,
+                        "coErgaenzung": None,
+                    },
+                    "netzbetreiber": None,
+                    "netzebeneLieferung": "MSP",
+                    "prognoseArbeitLieferzeitraum": None,
+                    "netzebeneMessung": "NSP",
+                    "prognoseLeistung": None,
+                    "lastgangVorhanden": None,
+                    "prognoseJahresarbeit": None,
+                    "lokationsId": "56789012345",
+                },
+            ),
         ],
     )
     def test_serialization_roundtrip(self, ausschreibungsdetail: Ausschreibungsdetail, expected_json_dict: dict):
@@ -90,4 +142,5 @@ class TestAusschreibungsdetail:
         with pytest.raises(TypeError) as excinfo:
             _ = Ausschreibungsdetail()
 
-        assert "missing 15 required" in str(excinfo.value)
+        assert "missing 5 required" in str(excinfo.value)
+        # 'lokations_id', 'netzebene_lieferung', 'netzebene_messung', 'lokationsadresse', and 'lieferzeitraum'

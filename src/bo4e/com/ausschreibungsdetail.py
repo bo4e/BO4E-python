@@ -38,19 +38,27 @@ class Ausschreibungsdetail(COM):
 
     # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
-    netzbetreiber: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    netzbetreiber: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    )
     #: Bezeichnung des Kunden, der die Marktlokation nutzt
-    kunde: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    kunde: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
     #: Die Bezeichnung des Zählers an der Marktlokation
-    zaehlernummer: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    zaehlernummer: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    )
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
-    lokationsbezeichnung: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    lokationsbezeichnung: Optional[str] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    )
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
     zaehlertechnik: Optional[Zaehlertyp] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Zaehlertyp))
+        validator=attr.validators.optional(attr.validators.instance_of(Zaehlertyp)), default=None
     )
-    lastgang_vorhanden: Optional[bool] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(bool)))
+    lastgang_vorhanden: Optional[bool] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(bool)), default=None
+    )
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden
@@ -58,17 +66,19 @@ class Ausschreibungsdetail(COM):
 
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
     prognose_jahresarbeit: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge))
+        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
     )
     #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
     prognose_arbeit_lieferzeitraum: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge))
+        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
     )
     #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
-    prognose_leistung: Optional[Menge] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Menge)))
+    prognose_leistung: Optional[Menge] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    )
     #: Die (evtl. abweichende) Rechnungsadresse
     rechnungsadresse: Optional[Adresse] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Adresse))
+        validator=attr.validators.optional(attr.validators.instance_of(Adresse)), default=None
     )
 
 
