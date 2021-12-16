@@ -23,7 +23,7 @@ class TestAusschreibungsdetail:
                     netzebene_lieferung=Netzebene.MSP,
                     netzebene_messung=Netzebene.NSP,
                     lokationsadresse=example_adresse,
-                    zeitraum=example_zeitraum,
+                    lieferzeitraum=example_zeitraum,
                     netzbetreiber="Stromnetz Hamburg GmbH",
                     kunde="Dei Mudder ihr Kunde",
                     zaehlernummer="1YSK4234092304",
@@ -37,7 +37,7 @@ class TestAusschreibungsdetail:
                 ),
                 {
                     "netzbetreiber": "Stromnetz Hamburg GmbH",
-                    "zeitraum": {
+                    "lieferzeitraum": {
                         "enddatum": None,
                         "startdatum": None,
                         "einheit": "TAG",

@@ -34,7 +34,7 @@ class Ausschreibungsdetail(COM):
     #: Die Adresse an der die Marktlokation sich befindet
     lokationsadresse: Adresse = attr.ib(validator=attr.validators.instance_of(Adresse))
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
-    zeitraum: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    lieferzeitraum: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
 
     # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
@@ -82,7 +82,7 @@ class AusschreibungsdetailSchema(COMSchema):
     netzebene_lieferung = EnumField(Netzebene)
     netzebene_messung = EnumField(Netzebene)
     lokationsadresse = fields.Nested(AdresseSchema)
-    zeitraum = fields.Nested(ZeitraumSchema)
+    lieferzeitraum = fields.Nested(ZeitraumSchema)
 
     # optional attributes
     netzbetreiber = fields.Str(dump_default=None)
