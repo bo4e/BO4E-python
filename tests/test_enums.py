@@ -33,7 +33,7 @@ class TestEnums:
                 if inspect.ismodule(member):
                     candidate = inspect.getmembers(member)[0][1]
                     if inspect.isclass(candidate):
-                        result.append(candidate)
+                        result.append(candidate)  # type:ignore[arg-type]
         return result
 
     @staticmethod
