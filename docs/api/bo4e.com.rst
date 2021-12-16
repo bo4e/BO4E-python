@@ -92,6 +92,22 @@ bo4e.com.geokoordinaten module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.geraet module
+----------------------
+
+.. automodule:: bo4e.com.geraet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.geraeteeigenschaften module
+------------------------------------
+
+.. automodule:: bo4e.com.geraeteeigenschaften
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.hardware module
 ------------------------
 
@@ -152,6 +168,14 @@ bo4e.com.preisgarantie module
 -----------------------------
 
 .. automodule:: bo4e.com.preisgarantie
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.preisstaffel module
+----------------------------
+
+.. automodule:: bo4e.com.preisstaffel
    :members:
    :undoc-members:
    :show-inheritance:
