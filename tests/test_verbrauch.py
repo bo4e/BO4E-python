@@ -35,7 +35,7 @@ class TestVerbrauch:
     )
     def test_serialization_roundtrip(self, verbrauch: Verbrauch, expected_json_dict: dict):
         """
-        Test de-/serialisation of Preisstaffel.
+        Test de-/serialisation of Verbrauch.
         """
         assert_serialization_roundtrip(verbrauch, VerbrauchSchema(), expected_json_dict)
 
