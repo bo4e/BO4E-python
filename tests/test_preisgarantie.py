@@ -14,7 +14,6 @@ class TestPreisgarantie:
         [
             pytest.param(
                 Preisgarantie(
-                    beschreibung="foo",
                     preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
                     zeitliche_gueltigkeit=Zeitraum(
                         startdatum=datetime(2020, 1, 1, tzinfo=timezone.utc),
@@ -22,7 +21,7 @@ class TestPreisgarantie:
                     ),
                 ),
                 {
-                    "beschreibung": "foo",
+                    "beschreibung": None,
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "zeitlicheGueltigkeit": {
                         "startdatum": "2020-01-01T00:00:00+00:00",
@@ -46,4 +45,4 @@ class TestPreisgarantie:
         with pytest.raises(TypeError) as excinfo:
             _ = Preisgarantie()
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "missing 2 required" in str(excinfo.value)
