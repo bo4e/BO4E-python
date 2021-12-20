@@ -48,7 +48,7 @@ class TestVerbrauch:
     @pytest.mark.parametrize(
         "not_a_valid_obis",
         [
-            pytest.param("foo"),  # not a sigmoid parameter instance
+            pytest.param("foo"),  # not a obis instance
         ],
     )
     def test_failing_validation_obis(self, not_a_valid_obis: str):
