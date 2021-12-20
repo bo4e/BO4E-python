@@ -5,16 +5,17 @@ import pytest  # type:ignore[import]
 from bo4e.com.menge import Menge, MengeSchema
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
+example_menge = Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH)
+
 
 class TestMenge:
     def test_menge(self):
         """
         Test de-/serialisation of Menge (only has required attributes).
         """
-        menge = Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH)
 
         schema = MengeSchema()
-        json_string = schema.dumps(menge, ensure_ascii=False)
+        json_string = schema.dumps(example_menge, ensure_ascii=False)
 
         assert "3.41" in json_string
         assert "MWH" in json_string

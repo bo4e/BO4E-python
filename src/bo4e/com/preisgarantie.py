@@ -3,6 +3,8 @@ Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
+from typing import Optional
+
 import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
@@ -20,13 +22,17 @@ class Preisgarantie(COM):
     """
 
     # required attributes
-    #: Freitext zur Beschreibung der Preisgarantie.
-    beschreibung: str = attr.ib(validator=attr.validators.instance_of(str))
     #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
     preisgarantietyp: Preisgarantietyp = attr.ib(validator=attr.validators.instance_of(Preisgarantietyp))
     zeitliche_gueltigkeit: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
     """ Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum
     oder als Laufzeit in Monaten. """
+
+    # optionale attributes
+    #: Freitext zur Beschreibung der Preisgarantie.
+    beschreibung: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 class PreisgarantieSchema(COMSchema):
@@ -35,9 +41,11 @@ class PreisgarantieSchema(COMSchema):
     """
 
     # required attributes
-    beschreibung = fields.Str()
     preisgarantietyp = EnumField(Preisgarantietyp)
     zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema)
+
+    # optionale attributes
+    beschreibung = fields.Str(load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
