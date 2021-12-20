@@ -30,7 +30,7 @@ class _StartEndType(Protocol):
 # pylint: disable=unused-argument
 def check_end_is_later_than_start(instance: _StartEndType, attribute, value):
     """
-    assert that bis is later than von
+    assert that enddatum is later than startdatum
     """
     if not instance.enddatum >= instance.startdatum:
         raise ValueError("enddatum has to be >= startdatum")
@@ -40,7 +40,7 @@ def check_end_is_later_than_start(instance: _StartEndType, attribute, value):
 @attr.s(auto_attribs=True, kw_only=True)
 class Verbrauch(COM):
     """
-    Gibt die Staffelgrenzen der jeweiligen Preise an
+    Abbildung eines zeitlich abgegrenzten Verbrauchs
     """
 
     # required attributes
@@ -60,7 +60,7 @@ class Verbrauch(COM):
     mengeneinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
 
 
-class VerbauchSchema(COMSchema):
+class VerbrauchSchema(COMSchema):
     """
     Schema for de-/serialization of Verbrauch
     """
@@ -70,7 +70,7 @@ class VerbauchSchema(COMSchema):
     enddatum = fields.DateTime()
     wertermittlungsverfahren = EnumField(Wertermittlungsverfahren)
     obis_kennzahl = fields.Str()
-    wert = fields.Decimal()
+    wert = fields.Decimal(as_string=True)
     mengeneinheit = EnumField(Mengeneinheit)
 
     # pylint: disable=no-self-use, unused-argument
