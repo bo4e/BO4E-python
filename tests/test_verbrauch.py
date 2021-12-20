@@ -7,7 +7,6 @@ from bo4e.com.verbrauch import Verbrauch, VerbrauchSchema
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
 
 class TestVerbrauch:
