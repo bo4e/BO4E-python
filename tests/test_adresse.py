@@ -5,6 +5,15 @@ import pytest  # type:ignore[import]
 from bo4e.com.adresse import Adresse, AdresseSchema
 from bo4e.enum.landescode import Landescode
 
+# can be imported by other tests
+example_adresse = Adresse(
+    ort="Grünwald",
+    landescode=Landescode.DE,  # type:ignore[attr-defined]
+    hausnummer="27A",
+    strasse="Nördliche Münchner Straße",
+    postleitzahl="82031",
+)
+
 
 class TestAddress:
     def test_serialization_strasse(self):
