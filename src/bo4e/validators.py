@@ -2,7 +2,7 @@
 Contains validators for BO s and COM s classes.
 """
 from datetime import datetime
-from typing import Protocol, Optional
+from typing import Optional, Protocol
 
 import attr.validators
 
