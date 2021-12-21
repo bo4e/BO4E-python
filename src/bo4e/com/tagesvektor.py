@@ -10,7 +10,6 @@ from marshmallow import fields, post_load
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
 
-
 # pylint: disable=too-few-public-methods
 from bo4e.validators import check_list_length_at_least_one
 
