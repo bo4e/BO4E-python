@@ -31,10 +31,10 @@ def check_list_length_is_one_or_two(instance, attribute, value):
     Check if list length is one or two.
     So far only used in StandorteigenschaftenGas.
     """
-    if len(instance.netzkontonummern) == 0:
-        raise ValueError("Netzkontonummern must not be empty.")
-    if len(instance.netzkontonummern) > 2:
-        raise ValueError("Maximum number of Netzkontonummern is 2.")
+    if len(value) == 0:
+        raise ValueError(f"{attribute.name} must not be empty.")
+    if len(value) > 2:
+        raise ValueError(f"Maximum number of {attribute.name} is 2.")
 
 
 # pylint:disable=too-few-public-methods
