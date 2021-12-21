@@ -27,7 +27,7 @@ class Fremdkostenposition(COM):
     betrag_kostenposition: Betrag = attr.ib(validator=attr.validators.instance_of(Betrag))
     """Der errechnete Gesamtbetrag der Position als Ergebnis der Berechnung <Menge * Einzelpreis> oder
     <Einzelpreis / (Anzahl Tage Jahr) * zeitmenge>"""
-    # todo: validate above calculation
+    # todo: validate above calculation, see https://github.com/Hochfrequenz/BO4E-python/issues/282
 
     #: Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT
     artikelbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
