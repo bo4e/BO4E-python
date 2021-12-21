@@ -20,6 +20,14 @@ bo4e.com.angebotsposition module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.angebotsteil module
+----------------------------
+
+.. automodule:: bo4e.com.angebotsteil
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.aufabschlag module
 ---------------------------
 
