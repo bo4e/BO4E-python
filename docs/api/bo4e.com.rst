@@ -44,6 +44,14 @@ bo4e.com.aufabschlagproort module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.aufabschlagregional module
+-----------------------------------
+
+.. automodule:: bo4e.com.aufabschlagregional
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.aufabschlagstaffelproort module
 ----------------------------------------
 
@@ -104,6 +112,14 @@ bo4e.com.externereferenz module
 -------------------------------
 
 .. automodule:: bo4e.com.externereferenz
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.fremdkostenposition module
+-----------------------------------
+
+.. automodule:: bo4e.com.fremdkostenposition
    :members:
    :undoc-members:
    :show-inheritance:
@@ -176,6 +192,14 @@ bo4e.com.messlokationszuordnung module
 --------------------------------------
 
 .. automodule:: bo4e.com.messlokationszuordnung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.positionsaufabschlag module
+------------------------------------
+
+.. automodule:: bo4e.com.positionsaufabschlag
    :members:
    :undoc-members:
    :show-inheritance:
@@ -260,6 +284,22 @@ bo4e.com.steuerbetrag module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tagesvektor module
+---------------------------
+
+.. automodule:: bo4e.com.tagesvektor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tarifeinschraenkung module
+-----------------------------------
+
+.. automodule:: bo4e.com.tarifeinschraenkung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.tarifpreis module
 --------------------------
 
@@ -272,6 +312,14 @@ bo4e.com.unterschrift module
 ----------------------------
 
 .. automodule:: bo4e.com.unterschrift
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.verbrauch module
+-------------------------
+
+.. automodule:: bo4e.com.verbrauch
    :members:
    :undoc-members:
    :show-inheritance:
