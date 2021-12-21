@@ -37,35 +37,53 @@ class Fremdkostenposition(COM):
 
     # optional attributes
     #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
-    von: Optional[datetime] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(datetime)))
+    von: Optional[datetime] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(datetime))
+    )
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
-    bis: Optional[datetime] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(datetime)))
+    bis: Optional[datetime] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(datetime))
+    )
     # todo: implement von/bis validation as soon as https://github.com/Hochfrequenz/BO4E-python/pull/266 is merged
 
     #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
-    menge: Optional[Menge] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Menge)))
+    menge: Optional[Menge] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
+    )
 
-    zeitmenge: Optional[Menge] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Menge)))
+    zeitmenge: Optional[Menge] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
+    )
     """
     Wenn es einen zeitbasierten Preis gibt (z.B. €/Jahr), dann ist hier die Menge angegeben mit der die Kosten berechnet
     wurden. Z.B. 138 Tage.
     """
 
     #: Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
-    artikeldetail: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    artikeldetail: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
     #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
-    marktpartnername: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    marktpartnername: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
     #: Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt
-    marktpartnercode: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    marktpartnercode: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
     #: EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT
-    gebietcode_eic: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    gebietcode_eic: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     # todo: see issue https://github.com/Hochfrequenz/BO4E-python/issues/147 for EIC validation
 
     #: Link zum veröffentlichten Preisblatt
-    link_preisblatt: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    link_preisblatt: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
 
 
 class FremdkostenpositionSchema(COMSchema):

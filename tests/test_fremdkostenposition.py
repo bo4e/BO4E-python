@@ -23,11 +23,7 @@ class TestFremdkostenposition:
             pytest.param(
                 Fremdkostenposition(
                     positionstitel="Mudders Preisstaffel",
-                    von=datetime(2013, 5, 1, tzinfo=timezone.utc),
-                    bis=datetime(2014, 5, 1, tzinfo=timezone.utc),
                     artikelbezeichnung="Dei Mudder ihr Preisstaffel",
-                    link_preisblatt=None,
-                    zeitmenge=None,
                     einzelpreis=Preis(
                         wert=Decimal(3.50),
                         einheit=Waehrungseinheit.EUR,
@@ -38,19 +34,14 @@ class TestFremdkostenposition:
                         waehrung=Waehrungscode.EUR,
                         wert=Decimal(12.5),
                     ),
-                    menge=None,
-                    artikeldetail=None,
-                    marktpartnercode=None,
-                    marktpartnername=None,
-                    gebietcode_eic=None,
                 ),
                 {
                     "einzelpreis": {"wert": "3.5", "status": "ENDGUELTIG", "bezugswert": "KWH", "einheit": "EUR"},
-                    "bis": "2014-05-01T00:00:00+00:00",
+                    "bis": None,
                     "artikeldetail": None,
                     "positionstitel": "Mudders Preisstaffel",
                     "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
-                    "von": "2013-05-01T00:00:00+00:00",
+                    "von": None,
                     "marktpartnercode": None,
                     "menge": None,
                     "marktpartnername": None,
@@ -59,6 +50,7 @@ class TestFremdkostenposition:
                     "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
                     "linkPreisblatt": None,
                 },
+                id="only required attributes",
             ),
             pytest.param(
                 Fremdkostenposition(
@@ -99,6 +91,7 @@ class TestFremdkostenposition:
                     "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
                     "linkPreisblatt": "http://foo.bar/",
                 },
+                id="required and optional attributes",
             ),
         ],
     )
@@ -112,4 +105,4 @@ class TestFremdkostenposition:
         with pytest.raises(TypeError) as excinfo:
             _ = Fremdkostenposition()
 
-        assert "missing 13 required" in str(excinfo.value)
+        assert "missing 4 required" in str(excinfo.value)
