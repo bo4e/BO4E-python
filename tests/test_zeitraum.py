@@ -6,6 +6,11 @@ import pytest  # type:ignore[import]
 from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
+example_zeitraum = Zeitraum(
+    einheit=Zeiteinheit.TAG,
+    dauer=Decimal(5),
+)
+
 
 class TestZeitraum:
     def test_zeitraum_dauer(self):

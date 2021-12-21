@@ -3,34 +3,16 @@ Contains Zeitreihenwert class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Protocol
 
 import attr
 from marshmallow import fields, post_load
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
 
-
-# pylint:disable=too-few-public-methods
-class _VonBisType(Protocol):
-    """
-    an overengineered protocol class
-    """
-
-    datum_uhrzeit_von: datetime
-    datum_uhrzeit_bis: datetime
-
-
-# pylint: disable=unused-argument
-def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
-    """
-    assert that bis is later than von
-    """
-    if not instance.datum_uhrzeit_bis >= instance.datum_uhrzeit_von:
-        raise ValueError("datum_uhrzeit_bis has to be >= datum_uhrzeit_von")
-
-
 # pylint: disable=too-few-public-methods
+from bo4e.validators import check_bis_is_later_than_von
+
+
 @attr.s(auto_attribs=True, kw_only=True)
 class Zeitreihenwert(Zeitreihenwertkompakt):
     """
@@ -44,6 +26,16 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     datum_uhrzeit_bis: datetime = attr.ib(
         validator=[attr.validators.instance_of(datetime), check_bis_is_later_than_von]
     )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
+
+    def get_inclusive_start(self) -> datetime:
+        """
+        return the inclusive start (used in the validator)
+        """
+        return self.datum_uhrzeit_von
+
+    def get_exclusive_end(self) -> datetime:
+        """return the exclusive end (used in the validator)"""
+        return self.datum_uhrzeit_bis
 
 
 class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):

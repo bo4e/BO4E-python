@@ -20,6 +20,14 @@ bo4e.com.angebotsposition module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.aufabschlag module
+---------------------------
+
+.. automodule:: bo4e.com.aufabschlag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.aufabschlagproort module
 ---------------------------------
 
@@ -32,6 +40,14 @@ bo4e.com.aufabschlagstaffelproort module
 ----------------------------------------
 
 .. automodule:: bo4e.com.aufabschlagstaffelproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.ausschreibungsdetail module
+------------------------------------
+
+.. automodule:: bo4e.com.ausschreibungsdetail
    :members:
    :undoc-members:
    :show-inheritance:
@@ -88,6 +104,22 @@ bo4e.com.geokoordinaten module
 ------------------------------
 
 .. automodule:: bo4e.com.geokoordinaten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.geraet module
+----------------------
+
+.. automodule:: bo4e.com.geraet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.geraeteeigenschaften module
+------------------------------------
+
+.. automodule:: bo4e.com.geraeteeigenschaften
    :members:
    :undoc-members:
    :show-inheritance:
@@ -156,6 +188,14 @@ bo4e.com.preisgarantie module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.preisstaffel module
+----------------------------
+
+.. automodule:: bo4e.com.preisstaffel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.regionalegueltigkeit module
 ------------------------------------
 
@@ -208,6 +248,14 @@ bo4e.com.steuerbetrag module
 ----------------------------
 
 .. automodule:: bo4e.com.steuerbetrag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tarifeinschraenkung module
+-----------------------------------
+
+.. automodule:: bo4e.com.tarifeinschraenkung
    :members:
    :undoc-members:
    :show-inheritance:
