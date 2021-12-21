@@ -60,8 +60,9 @@ def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
     """
     assert that 'bis' is later than 'von'
     """
-    start = instance._get_inclusive_start()
-    end = instance._get_exclusive_end()
+    # we want access to private methods here because these helper methods should be "hidden"
+    start = instance._get_inclusive_start()  # pylint: disable=protected-access
+    end = instance._get_exclusive_end()  # pylint: disable=protected-access
     if start and end and not end >= start:
         raise ValueError(f"The end '{end}' has to be later than the start '{start}'")
 

@@ -3,7 +3,7 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import Protocol, Optional
+from typing import Optional
 
 import attr
 from marshmallow import fields, post_load
@@ -12,8 +12,6 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 from bo4e.com.com import COM, COMSchema
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
-
-# pylint:disable=too-few-public-methods
 from bo4e.validators import obis_validator, check_bis_is_later_than_von
 
 
