@@ -27,13 +27,11 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
         validator=[attr.validators.instance_of(datetime), check_bis_is_later_than_von]
     )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
 
-    def get_inclusive_start(self) -> datetime:
-        """
-        return the inclusive start (used in the validator)
-        """
+    def _get_inclusive_start(self) -> datetime:
+        """return the inclusive start (used in the validator)"""
         return self.datum_uhrzeit_von
 
-    def get_exclusive_end(self) -> datetime:
+    def _get_exclusive_end(self) -> datetime:
         """return the exclusive end (used in the validator)"""
         return self.datum_uhrzeit_bis
 
