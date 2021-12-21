@@ -9,17 +9,7 @@ from marshmallow import fields, post_load
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfoSchema
-
-
-# pylint: disable=unused-argument
-def check_list_length(instance, attribute, value):
-    """
-    Check if list length is one or two.
-    """
-    if len(instance.netzkontonummern) == 0:
-        raise ValueError("Netzkontonummern must not be empty.")
-    if len(instance.netzkontonummern) > 2:
-        raise ValueError("Maximum number of Netzkontonummern is 2.")
+from bo4e.validators import check_list_length_is_one_or_two
 
 
 # pylint: disable=too-few-public-methods
@@ -30,7 +20,7 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: List[str] = attr.ib(validator=check_list_length)  #: Netzkontonummern der Gasnetze
+    netzkontonummern: List[str] = attr.ib(validator=check_list_length_is_one_or_two)  #: Netzkontonummern der Gasnetze
     marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
 
 
