@@ -22,7 +22,7 @@ class Tarifeinschraenkung(COM):
     """
 
     # optional attributes
-    #: Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können.
+    #: Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können
     zusatzprodukte: Optional[List[str]] = attr.ib(
         default=None,
         validator=attr.validators.optional(
@@ -32,7 +32,7 @@ class Tarifeinschraenkung(COM):
             )
         ),
     )
-    #: Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann.
+    #: Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann
     voraussetzungen: Optional[List[Voraussetzungen]] = attr.ib(
         default=None,
         validator=attr.validators.optional(
