@@ -3,7 +3,7 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import Protocol
+from typing import Protocol, Optional
 
 import attr
 from marshmallow import fields, post_load
@@ -45,9 +45,15 @@ class Verbrauch(COM):
 
     # required attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: datetime = attr.ib(validator=[attr.validators.instance_of(datetime), check_end_is_later_than_start])
+    startdatum: Optional[datetime] = attr.ib(
+        default=None,
+        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_end_is_later_than_start]),
+    )
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: datetime = attr.ib(validator=[attr.validators.instance_of(datetime), check_end_is_later_than_start])
+    enddatum: Optional[datetime] = attr.ib(
+        default=None,
+        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_end_is_later_than_start]),
+    )
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Wertermittlungsverfahren = attr.ib(
         validator=attr.validators.instance_of(Wertermittlungsverfahren)
@@ -66,8 +72,8 @@ class VerbrauchSchema(COMSchema):
     """
 
     # required attributes
-    startdatum = fields.DateTime()
-    enddatum = fields.DateTime()
+    startdatum = fields.DateTime(default=None)
+    enddatum = fields.DateTime(default=None)
     wertermittlungsverfahren = EnumField(Wertermittlungsverfahren)
     obis_kennzahl = fields.Str()
     wert = fields.Decimal(as_string=True)

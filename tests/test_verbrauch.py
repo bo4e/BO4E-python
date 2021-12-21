@@ -43,7 +43,7 @@ class TestVerbrauch:
         with pytest.raises(TypeError) as excinfo:
             _ = Verbrauch()
 
-        assert "missing 6 required" in str(excinfo.value)
+        assert "missing 4 required" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "not_a_valid_obis",
