@@ -45,8 +45,6 @@ class Angebotsteil(COM):
     anfrage_subreferenz: Optional[str] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
     )
-    #: Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
-    # Durch die Marktlokation ist auch die Lieferadresse festgelegt
     lieferstellenangebotsteil: Optional[List[Marktlokation]] = attr.ib(
         default=None,
         validator=attr.validators.optional(
@@ -56,6 +54,10 @@ class Angebotsteil(COM):
             )
         ),
     )
+    """
+    Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
+    Durch die Marktlokation ist auch die Lieferadresse festgelegt
+    """
     #: Summe der Verbräuche aller in diesem Angebotsteil eingeschlossenen Lieferstellen
     gesamtmengeangebotsteil: Optional[Menge] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
