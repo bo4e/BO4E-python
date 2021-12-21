@@ -2,7 +2,9 @@
 Contains validators for BO s and COM s classes.
 """
 from datetime import datetime
-from typing import Protocol
+from typing import Protocol, Optional
+
+import attr.validators
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 
@@ -43,12 +45,12 @@ class _VonBisType(Protocol):
     a protocol for all classes that have an inclusive start and exclusive end
     """
 
-    def get_inclusive_start(self) -> datetime:
+    def _get_inclusive_start(self) -> Optional[datetime]:
         """
         should return the inclusive start of the timeslice
         """
 
-    def get_exclusive_end(self) -> datetime:
+    def _get_exclusive_end(self) -> Optional[datetime]:
         """
         should return the exclusive end of the timeslice
         """
@@ -58,7 +60,15 @@ def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
     """
     assert that 'bis' is later than 'von'
     """
-    start = instance.get_inclusive_start()
-    end = instance.get_exclusive_end()
-    if not end >= start:
+    # we want access to private methods here because these helper methods should be "hidden"
+    start = instance._get_inclusive_start()  # pylint: disable=protected-access
+    end = instance._get_exclusive_end()  # pylint: disable=protected-access
+    if start and end and not end >= start:
         raise ValueError(f"The end '{end}' has to be later than the start '{start}'")
+
+
+# pylint:disable=line-too-long
+#: a regular expression that should match all OBIS Kennziffern
+OBIS_PATTERN = r"((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\.((?:6|8|9|29))\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\.(.{1,2})\.([0-9]{1,2}))"
+#: an attr validator
+obis_validator = attr.validators.matches_re(OBIS_PATTERN)
