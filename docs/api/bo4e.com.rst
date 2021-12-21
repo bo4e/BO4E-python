@@ -44,6 +44,14 @@ bo4e.com.aufabschlagstaffelproort module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.ausschreibungsdetail module
+------------------------------------
+
+.. automodule:: bo4e.com.ausschreibungsdetail
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.betrag module
 ----------------------
 
@@ -160,6 +168,14 @@ bo4e.com.messlokationszuordnung module
 --------------------------------------
 
 .. automodule:: bo4e.com.messlokationszuordnung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.positionsaufabschlag module
+------------------------------------
+
+.. automodule:: bo4e.com.positionsaufabschlag
    :members:
    :undoc-members:
    :show-inheritance:
