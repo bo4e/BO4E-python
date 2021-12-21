@@ -31,6 +31,22 @@ class TestVerbrauch:
                     "obisKennzahl": "1-0:1.8.1",
                 },
             ),
+            pytest.param(
+                Verbrauch(
+                    wert=Decimal(40),
+                    obis_kennzahl="1-0:1.8.1",
+                    mengeneinheit=Mengeneinheit.KWH,
+                    wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+                ),
+                {
+                    "wert": "40",
+                    "mengeneinheit": "KWH",
+                    "wertermittlungsverfahren": "MESSUNG",
+                    "startdatum": None,
+                    "enddatum": None,
+                    "obisKennzahl": "1-0:1.8.1",
+                },
+            ),
         ],
     )
     def test_serialization_roundtrip(self, verbrauch: Verbrauch, expected_json_dict: dict):
@@ -74,4 +90,4 @@ class TestVerbrauch:
                 mengeneinheit=Mengeneinheit.KWH,
                 wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
             )
-        assert "enddatum has to be >= startdatum" in str(excinfo)
+        assert "has to be later than the start" in str(excinfo)
