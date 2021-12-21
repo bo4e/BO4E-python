@@ -16,7 +16,7 @@ from tests.test_menge import example_menge  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
 
-class TestPreisstaffel:
+class TestFremdkostenposition:
     @pytest.mark.parametrize(
         "fremdkostenposition, expected_json_dict",
         [
@@ -102,9 +102,9 @@ class TestPreisstaffel:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, fremdkostenposition: Preisstaffel, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, fremdkostenposition: Fremdkostenposition, expected_json_dict: dict):
         """
-        Test de-/serialisation of Preisstaffel.
+        Test de-/serialisation of Fremdkostenposition.
         """
         assert_serialization_roundtrip(fremdkostenposition, FremdkostenpositionSchema(), expected_json_dict)
 
