@@ -9,11 +9,11 @@ from marshmallow import fields, post_load
 from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeitSchema
 
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class RegionalePreisgarantie(Preisgarantie):
     """
-    Abbildung einer Preisgarantie mit regionaler Abgrenzung.
+    Abbildung einer Preisgarantie mit regionaler Abgrenzung
     """
 
     # required attributes
