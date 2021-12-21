@@ -80,3 +80,9 @@ class TestTarifpreisposition:
         Test de-/serialisation of Tarifpreisposition.
         """
         assert_serialization_roundtrip(tarifpreisposition, TarifpreispositionSchema(), expected_json_dict)
+
+    def test_missing_required_attribute(self):
+        with pytest.raises(TypeError) as excinfo:
+            _ = Tarifpreisposition()
+
+        assert "missing 4 required" in str(excinfo.value)
