@@ -108,6 +108,14 @@ bo4e.com.externereferenz module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.fremdkostenposition module
+-----------------------------------
+
+.. automodule:: bo4e.com.fremdkostenposition
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.geokoordinaten module
 ------------------------------
 
@@ -268,6 +276,14 @@ bo4e.com.steuerbetrag module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tagesvektor module
+---------------------------
+
+.. automodule:: bo4e.com.tagesvektor
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.tarifeinschraenkung module
 -----------------------------------
 
@@ -288,6 +304,14 @@ bo4e.com.unterschrift module
 ----------------------------
 
 .. automodule:: bo4e.com.unterschrift
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.verbrauch module
+-------------------------
+
+.. automodule:: bo4e.com.verbrauch
    :members:
    :undoc-members:
    :show-inheritance:
