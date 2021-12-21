@@ -180,6 +180,14 @@ bo4e.com.messlokationszuordnung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.positionsaufabschlag module
+------------------------------------
+
+.. automodule:: bo4e.com.positionsaufabschlag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.preis module
 ---------------------
 
