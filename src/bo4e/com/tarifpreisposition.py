@@ -14,6 +14,7 @@ from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e.validators import check_list_length_at_least_one
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -31,10 +32,13 @@ class Tarifpreisposition(COM):
     bezugseinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: List[Preisstaffel] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Preisstaffel),
-            iterable_validator=attr.validators.instance_of(list),
-        )
+        validator=[
+            attr.validators.deep_iterable(
+                member_validator=attr.validators.instance_of(Preisstaffel),
+                iterable_validator=attr.validators.instance_of(list),
+            ),
+            check_list_length_at_least_one,
+        ]
     )
 
     # optional attributes

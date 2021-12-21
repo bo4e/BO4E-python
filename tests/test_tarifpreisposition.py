@@ -86,3 +86,14 @@ class TestTarifpreisposition:
             _ = Tarifpreisposition()
 
         assert "missing 4 required" in str(excinfo.value)
+
+    def test_tarifpreisposition_betraege_required(self):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Tarifpreisposition(
+                preistyp=Preistyp.ENTGELT_ABLESUNG,
+                einheit=Waehrungseinheit.EUR,
+                bezugseinheit=Mengeneinheit.KWH,
+                preisstaffeln=[],
+            )
+
+        assert "List preisstaffeln must not be empty." in str(excinfo.value)
