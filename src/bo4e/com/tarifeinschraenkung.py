@@ -74,8 +74,8 @@ class TarifeinschraenkungSchema(COMSchema):
     # optional attributes
     zusatzprodukte = fields.List(fields.String, load_default=None, many=True)
     voraussetzungen = fields.List(EnumField(Voraussetzungen), allow_none=True, many=True)
-    einschraenkungzaehler = fields.List(fields.Nested(GeraetSchema), load_default=None, many=True)
-    einschraenkungleistung = fields.List(fields.Nested(MengeSchema), load_default=None, many=True)
+    einschraenkungzaehler = fields.List(fields.Nested(GeraetSchema), load_default=None)
+    einschraenkungleistung = fields.List(fields.Nested(MengeSchema), load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
