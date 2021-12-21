@@ -37,11 +37,11 @@ class TestStandorteigenschaftenGas:
         [
             pytest.param(
                 [],
-                "Netzkontonummern must not be empty.",
+                "netzkontonummern must not be empty.",
             ),
             pytest.param(
                 ["1", "2", "3"],
-                "Maximum number of Netzkontonummern is 2.",
+                "Maximum number of netzkontonummern is 2.",
             ),
         ],
     )
