@@ -12,7 +12,7 @@ from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_menge import example_menge
+from tests.test_menge import example_menge  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
 
