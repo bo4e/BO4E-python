@@ -45,7 +45,7 @@ class PreisstaffelSchema(COMSchema):
     staffelgrenze_bis = fields.Decimal(as_string=True)
 
     # optional attributes
-    sigmoidparameter = fields.Nested(SigmoidparameterSchema, default=None)
+    sigmoidparameter = fields.Nested(SigmoidparameterSchema, load_default=None)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load

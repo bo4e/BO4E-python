@@ -25,7 +25,7 @@ class TestEnums:
         returns a list of all bo4e.enum classes
         """
         arbitrary_enum_module_path = Path(anrede.__file__)
-        result = []
+        result: List[TestEnums.TEnum] = []
         for python_file in arbitrary_enum_module_path.parent.glob("*.py"):
             # don't ask me why. but it works.
             enum_module = __import__("bo4e.enum." + python_file.name.split(".")[0])
@@ -33,7 +33,7 @@ class TestEnums:
                 if inspect.ismodule(member):
                     candidate = inspect.getmembers(member)[0][1]
                     if inspect.isclass(candidate):
-                        result.append(candidate)
+                        result.append(candidate)  # type:ignore[arg-type]
         return result
 
     @staticmethod
