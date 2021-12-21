@@ -23,16 +23,6 @@ class Verbrauch(COM):
     """
 
     # required attributes
-    #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: Optional[datetime] = attr.ib(
-        default=None,
-        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_bis_is_later_than_von]),
-    )
-    #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: Optional[datetime] = attr.ib(
-        default=None,
-        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_bis_is_later_than_von]),
-    )
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Wertermittlungsverfahren = attr.ib(
         validator=attr.validators.instance_of(Wertermittlungsverfahren)
@@ -43,6 +33,18 @@ class Verbrauch(COM):
     wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
     #: Gibt die Einheit zum jeweiligen Wert an
     mengeneinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
+
+    # optional attributes
+    #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
+    startdatum: Optional[datetime] = attr.ib(
+        default=None,
+        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_bis_is_later_than_von]),
+    )
+    #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
+    enddatum: Optional[datetime] = attr.ib(
+        default=None,
+        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_bis_is_later_than_von]),
+    )
 
     def _get_inclusive_start(self) -> Optional[datetime]:
         """a method for easier usage of the check_bis_is_later_than_von validator"""
@@ -59,12 +61,14 @@ class VerbrauchSchema(COMSchema):
     """
 
     # required attributes
-    startdatum = fields.DateTime(allow_none=True)
-    enddatum = fields.DateTime(allow_none=True)
     wertermittlungsverfahren = EnumField(Wertermittlungsverfahren)
     obis_kennzahl = fields.Str()
     wert = fields.Decimal(as_string=True)
     mengeneinheit = EnumField(Mengeneinheit)
+
+    # optional attributes
+    startdatum = fields.DateTime(allow_none=True)
+    enddatum = fields.DateTime(allow_none=True)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
