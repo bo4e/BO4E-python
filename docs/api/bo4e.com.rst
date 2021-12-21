@@ -260,6 +260,14 @@ bo4e.com.steuerbetrag module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tarifeinschraenkung module
+-----------------------------------
+
+.. automodule:: bo4e.com.tarifeinschraenkung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.tarifpreis module
 --------------------------
 
