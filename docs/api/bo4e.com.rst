@@ -36,6 +36,14 @@ bo4e.com.aufabschlagproort module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.aufabschlagregional module
+-----------------------------------
+
+.. automodule:: bo4e.com.aufabschlagregional
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.aufabschlagstaffelproort module
 ----------------------------------------
 
