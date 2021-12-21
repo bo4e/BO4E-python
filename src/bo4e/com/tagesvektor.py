@@ -12,6 +12,9 @@ from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, Zeitreihenwert
 
 
 # pylint: disable=too-few-public-methods
+from bo4e.validators import check_list_length_at_least_one
+
+
 @attr.s(auto_attribs=True, kw_only=True)
 class Tagesvektor(COM):
     """
@@ -29,10 +32,13 @@ class Tagesvektor(COM):
     # for the validator see also https://github.com/Hochfrequenz/BO4E-python/issues/262
     # https://www.attrs.org/en/stable/api.html#attr.validators.deep_iterable
     werte: List[Zeitreihenwertkompakt] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Zeitreihenwertkompakt),
-            iterable_validator=attr.validators.instance_of(list),
-        )
+        validator=[
+            attr.validators.deep_iterable(
+                member_validator=attr.validators.instance_of(Zeitreihenwertkompakt),
+                iterable_validator=attr.validators.instance_of(list),
+            ),
+            check_list_length_at_least_one,
+        ]
     )
     """
     Die Werte am angegebenen Tag;

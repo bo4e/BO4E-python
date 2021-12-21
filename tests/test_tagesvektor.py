@@ -47,4 +47,10 @@ class TestTagesvektor:
 
         assert "missing 2 required" in str(excinfo.value)
 
+    def test_list_not_long_enough_attribute(self):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Tagesvektor(tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc), werte=[])
+
+        assert "List werte must not be empty" in str(excinfo.value)
+
     # add tests for issues 261 and 262 here
