@@ -66,4 +66,5 @@ class TestZeitreihenwert:
                 wert=Decimal(1.5),
             )
 
-        assert ">=" in str(excinfo.value)
+        assert "start" in str(excinfo.value)
+        assert "end" in str(excinfo.value)
