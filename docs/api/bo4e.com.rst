@@ -44,6 +44,14 @@ bo4e.com.aufabschlagstaffelproort module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.ausschreibungsdetail module
+------------------------------------
+
+.. automodule:: bo4e.com.ausschreibungsdetail
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.betrag module
 ----------------------
 
@@ -240,6 +248,14 @@ bo4e.com.steuerbetrag module
 ----------------------------
 
 .. automodule:: bo4e.com.steuerbetrag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tarifeinschraenkung module
+-----------------------------------
+
+.. automodule:: bo4e.com.tarifeinschraenkung
    :members:
    :undoc-members:
    :show-inheritance:
