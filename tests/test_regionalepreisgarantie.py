@@ -17,7 +17,6 @@ class TestRegionalePreisgarantie:
         [
             pytest.param(
                 RegionalePreisgarantie(
-                    beschreibung="foo",
                     preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
                     zeitliche_gueltigkeit=Zeitraum(
                         startzeitpunkt=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
@@ -29,7 +28,7 @@ class TestRegionalePreisgarantie:
                     ),
                 ),
                 {
-                    "beschreibung": "foo",
+                    "beschreibung": None,
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
@@ -58,4 +57,4 @@ class TestRegionalePreisgarantie:
         with pytest.raises(TypeError) as excinfo:
             _ = RegionalePreisgarantie()
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "missing 3 required" in str(excinfo.value)
