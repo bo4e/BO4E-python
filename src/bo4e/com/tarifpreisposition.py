@@ -3,7 +3,7 @@ Contains Tarifpreisposition class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional, List
+from typing import List, Optional
 
 import attr
 from marshmallow import fields, post_load
@@ -11,10 +11,11 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.validators import check_list_length_at_least_one
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
