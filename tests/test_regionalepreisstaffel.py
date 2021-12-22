@@ -1,18 +1,15 @@
-from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie, RegionalePreisgarantieSchema
+from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel, RegionalePreisstaffelSchema
-from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_sigmoidparameter import example_sigmoidparameter
+from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
 
 class TestRegionalePreisstaffel:
