@@ -6,8 +6,8 @@ from bo4e.com.angebotsvariante import Angebotsvariante, AngebotsvarianteSchema
 from bo4e.enum.angebotsstatus import Angebotsstatus
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json  # type:ignore[import]
-from tests.test_betrag import example_betrag, example_betrag_json
-from tests.test_menge import example_menge
+from tests.test_betrag import example_betrag, example_betrag_json  # type:ignore[import]
+from tests.test_menge import example_menge  # type:ignore[import]
 
 
 class TestAngebotsvariante:
@@ -42,6 +42,8 @@ class TestAngebotsvariante:
                 ),
                 {
                     "gesamtmenge": {"einheit": "MWH", "wert": "3.410000000000000142108547152020037174224853515625"},
+                    # this is a problem for https://github.com/Hochfrequenz/BO4E-python/issues/249
+                    # I just reused the example_menge but don't attempt to fix it in the context of the Angebotsvariante
                     "angebotsstatus": "NACHGEFASST",
                     "erstellungsdatum": "2021-12-22T00:00:00+00:00",
                     "gesamtkosten": example_betrag_json,
