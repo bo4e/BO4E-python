@@ -14,7 +14,7 @@ from bo4e.com.preis import Preis, PreisSchema
 from bo4e.validators import check_bis_is_later_than_von
 
 
-# pylint: disable=too-few-public-methods
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
 class Kostenposition(COM):
     """

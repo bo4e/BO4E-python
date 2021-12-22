@@ -1,17 +1,12 @@
 """
 Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
 from typing import Optional
 
 import attr
 from marshmallow import fields, post_load
 
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
 from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.preis import Preis, PreisSchema
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
