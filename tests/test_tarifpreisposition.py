@@ -2,11 +2,11 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.tarifpreisposition import Tarifpreisposition, TarifpreispositionSchema
 from bo4e.com.preisstaffel import Preisstaffel
+from bo4e.com.tarifpreisposition import Tarifpreisposition, TarifpreispositionSchema
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.enum.mengeneinheit import Mengeneinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 
