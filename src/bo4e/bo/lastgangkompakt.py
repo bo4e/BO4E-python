@@ -57,8 +57,9 @@ class LastgangKompakt(Geschaeftsobjekt):
         )
     )
 
+    # optional attributes
     #: Versionsnummer des Lastgangs
-    version: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+    version: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
 
 
 class LastgangKompaktSchema(GeschaeftsobjektSchema):
@@ -66,6 +67,7 @@ class LastgangKompaktSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of LastgangKompakt
     """
 
+    # required attributes
     sparte = EnumField(Sparte)
     lokations_id = fields.Str()
     lokationstyp = EnumField(Lokationstyp)
@@ -73,6 +75,9 @@ class LastgangKompaktSchema(GeschaeftsobjektSchema):
     zeitintervall = fields.Nested(ZeitintervallSchema)
     obis_kennzahl = fields.Str()
     tagesvektoren = fields.List(fields.Nested(TagesvektorSchema))
+
+    # optional attributes
+    version = fields.Str(allow_none=True)
 
     # pylint: disable=no-self-use, unused-argument
     @post_load
