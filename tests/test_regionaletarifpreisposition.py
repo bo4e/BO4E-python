@@ -2,70 +2,76 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
+from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
+from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
+from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
+from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisPosition, RegionaleTarifpreisPositionSchema
+from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
+from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e.enum.preistyp import Preistyp
+from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
+from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
 
-class TestPreisstaffel:
+class TestRegionaleTarifpreisPosition:
     @pytest.mark.parametrize(
-        "preisstaffel, expected_json_dict",
+        "regionale_tarifpreis_position, expected_json_dict",
         [
             pytest.param(
-                Preisstaffel(
-                    einheitspreis=Decimal(40.0),
-                    staffelgrenze_von=Decimal(12.5),
-                    staffelgrenze_bis=Decimal(25.0),
-                    sigmoidparameter=example_sigmoidparameter,
+                RegionaleTarifpreisPosition(
+                    preistyp=Preistyp.ARBEITSPREIS_NT,
+                    einheit=Waehrungseinheit.EUR,
+                    bezugseinheit=Mengeneinheit.KWH,
+                    mengeneinheitstaffel=[Mengeneinheit.WH],
+                    preisstaffeln=[
+                        RegionalePreisstaffel(
+                            einheitspreis=Decimal(40.0),
+                            staffelgrenze_von=Decimal(12.5),
+                            staffelgrenze_bis=Decimal(25.0),
+                            sigmoidparameter=example_sigmoidparameter,
+                            regionale_gueltigkeit=RegionaleGueltigkeit(
+                                gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
+                                kriteriums_werte=[
+                                    KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")
+                                ],
+                            ),
+                        ),
+                    ],
                 ),
                 {
-                    "einheitspreis": "40",
-                    "sigmoidparameter": {"a": "1", "b": "2", "c": "3", "d": "4"},
-                    "staffelgrenzeVon": "12.5",
-                    "staffelgrenzeBis": "25",
+                    "bezugseinheit": "KWH",
+                    "preisstaffeln": [
+                        {
+                            "regionaleGueltigkeit": {
+                                "gueltigkeitstyp": "NUR_IN",
+                                "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": "01069"}],
+                            },
+                            "einheitspreis": "40",
+                            "sigmoidparameter": {"a": "1", "b": "2", "c": "3", "d": "4"},
+                            "staffelgrenzeVon": "12.5",
+                            "staffelgrenzeBis": "25",
+                        }
+                    ],
+                    "einheit": "EUR",
+                    "mengeneinheitstaffel": ["WH"],
+                    "preistyp": "ARBEITSPREIS_NT",
                 },
                 id="all attributes",
             ),
-            pytest.param(
-                Preisstaffel(
-                    einheitspreis=Decimal(40.0), staffelgrenze_von=Decimal(12.5), staffelgrenze_bis=Decimal(25.0)
-                ),
-                {
-                    "einheitspreis": "40",
-                    "staffelgrenzeVon": "12.5",
-                    "staffelgrenzeBis": "25",
-                    "sigmoidparameter": None,
-                },
-                id="only required params",
-            ),
         ],
     )
-    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel, expected_json_dict: dict):
-        """
-        Test de-/serialisation of Preisstaffel.
-        """
-        assert_serialization_roundtrip(preisstaffel, PreisstaffelSchema(), expected_json_dict)
+    def test_serialization_roundtrip(
+        self, regionale_tarifpreis_position: RegionaleTarifpreisPosition, expected_json_dict: dict
+    ):
+        assert_serialization_roundtrip(
+            regionale_tarifpreis_position, RegionaleTarifpreisPositionSchema(), expected_json_dict
+        )
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
-            _ = Preisstaffel()
+            _ = RegionaleTarifpreisPosition()
 
-        assert "missing 3 required" in str(excinfo.value)
-
-    @pytest.mark.parametrize(
-        "not_a_sigmoid_parameter",
-        [
-            pytest.param(17),  # not a sigmoid parameter instance
-            pytest.param("foo"),  # not a sigmoid parameter instance
-        ],
-    )
-    def test_failing_validation(self, not_a_sigmoid_parameter):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Preisstaffel(
-                einheitspreis=Decimal(40.0),
-                staffelgrenze_von=Decimal(12.5),
-                staffelgrenze_bis=Decimal(25.0),
-                sigmoidparameter=not_a_sigmoid_parameter,
-            )
-
-        assert "'sigmoidparameter' must be " in str(excinfo.value)
+        assert "missing 4 required" in str(excinfo.value)
