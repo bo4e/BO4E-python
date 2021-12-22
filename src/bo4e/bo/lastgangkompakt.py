@@ -2,31 +2,26 @@
 Contains LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional, Type
+from typing import List, Optional
 
 import attr
-from marshmallow import fields
+from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.adresse import Adresse, AdresseSchema
-from bo4e.com.tagesvektor import Tagesvektor
-from bo4e.com.zeitintervall import Zeitintervall
-from bo4e.enum.anrede import Anrede
+from bo4e.com.tagesvektor import Tagesvektor, TagesvektorSchema
+from bo4e.com.zeitintervall import Zeitintervall, ZeitintervallSchema
 from bo4e.enum.botyp import BoTyp
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-
-# pylint: disable=too-many-instance-attributes, too-few-public-methods
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
 from bo4e.validators import obis_validator
 
 
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class LastgangKompakt(Geschaeftsobjekt):
-    """ "
+    """
     Modell zur Abbildung eines kompakten Lastganges.
     In diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten übertragen.
     Daher ist dieses BO nur zur Übertragung von äquidistanten Messwertverläufen geeignet.
@@ -61,3 +56,26 @@ class LastgangKompakt(Geschaeftsobjekt):
             iterable_validator=attr.validators.instance_of(list),
         )
     )
+
+    #: Versionsnummer des Lastgangs
+    version: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)))
+
+
+class LastgangKompaktSchema(GeschaeftsobjektSchema):
+    """
+    Schema for de-/serialization of LastgangKompakt
+    """
+
+    sparte = EnumField(Sparte)
+    lokations_id = fields.Str()
+    lokationstyp = EnumField(Lokationstyp)
+    messgroesse = EnumField(Mengeneinheit)
+    zeitintervall = fields.Nested(ZeitintervallSchema)
+    obis_kennzahl = fields.Str()
+    tagesvektoren = fields.List(fields.Nested(TagesvektorSchema))
+
+    # pylint: disable=no-self-use, unused-argument
+    @post_load
+    def deserialize(self, data, **kwargs) -> LastgangKompakt:
+        """Deserialize JSON to Angebotsposition object"""
+        return LastgangKompakt(**data)
