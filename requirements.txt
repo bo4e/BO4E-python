@@ -4,7 +4,7 @@
 #
 #    pip-compile requirements.in
 #
-attrs==21.2.0
+attrs==21.3.0
     # via -r requirements.in
 iso3166==2.0.2
     # via -r requirements.in
