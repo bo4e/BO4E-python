@@ -8,7 +8,7 @@ import attr
 from marshmallow import fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
+from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, AusschreibungsdetailSchema
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.menge import Menge, MengeSchema
 from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
@@ -107,6 +107,7 @@ class AusschreibungslosSchema(COMSchema):
     wunsch_vertragsform = EnumField(Vertragsform)
     betreut_durch = fields.String()
     anzahl_lieferstellen = fields.Integer()
+    lieferstellen = fields.List(fields.Nested(AusschreibungsdetailSchema))
 
     # optional attributes
     bemerkung = fields.String(load_default=None)

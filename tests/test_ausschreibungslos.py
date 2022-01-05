@@ -36,23 +36,23 @@ class TestAusschreibungslos:
                     wiederholungsintervall=example_zeitraum,
                 ),
                 {
-                    "losnummer": "foo",
-                    "bezeichnung": "bar",
-                    "bemerkung": "asd",
+                    "lieferzeitraum": example_zeitraum_dict,
                     "preismodell": "FESTPREIS",
                     "energieart": "STROM",
-                    "wunschRechnungslegung": "MONATSRECHN",
-                    "wunschVertragsform": "DIREKT",
-                    "betreutDurch": "Max Mustermann",
+                    "wiederholungsintervall": example_zeitraum_dict,
+                    "bemerkung": "asd",
+                    "bezeichnung": "bar",
+                    "losnummer": "foo",
                     "anzahlLieferstellen": 17,
                     "lieferstellen": [example_ausschreibungsdetail_dict],
-                    "gesamtMenge": example_menge_dict,
-                    "wunschMindestmenge": example_menge_dict,
-                    "wunschMaximalmenge": example_menge_dict,
-                    "lieferzeitraum": example_zeitraum_dict,
                     "wunschKuendingungsfrist": example_zeitraum_dict,
                     "wunschZahlungsziel": example_zeitraum_dict,
-                    "wiederholungsintervall": example_zeitraum_dict,
+                    "gesamtMenge": example_menge_dict,
+                    "wunschVertragsform": "DIREKT",
+                    "wunschMaximalmenge": example_menge_dict,
+                    "wunschRechnungslegung": "MONATSRECHN",
+                    "wunschMindestmenge": example_menge_dict,
+                    "betreutDurch": "Max Mustermann",
                 },
                 id="maximal attributes",
             ),
@@ -66,9 +66,21 @@ class TestAusschreibungslos:
 
     def test_ausschreibungslos_lieferstellen_required(self):
         with pytest.raises(ValueError) as excinfo:
-            _ = Ausschreibungslos(lieferstellen=[])
+            _ = Ausschreibungslos(
+                losnummer="foo",
+                bezeichnung="bar",
+                bemerkung="asd",
+                preismodell=Preismodell.FESTPREIS,
+                energieart=Sparte.STROM,
+                wunsch_rechnungslegung=Rechnungslegung.MONATSRECHN,
+                wunsch_vertragsform=Vertragsform.DIREKT,
+                betreut_durch="Max Mustermann",
+                anzahl_lieferstellen=17,
+                ## ^^ above is just clutter
+                lieferstellen=[],  # the important line
+            )
 
-        assert "List positionen must not be empty." in str(excinfo.value)
+        assert "List lieferstellen must not be empty." in str(excinfo.value)
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
