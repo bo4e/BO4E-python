@@ -48,23 +48,6 @@ To enhance this BO4E implementation and contribute to this project check out the
 
 The created venv should be located somewhere around .tox/dev/Scripts.
 
-Regular Expression for Enumerations
------------------------------------
-
-If you want to add a new enumeration from the `BO4E website`_ then you can copy paste HTML table content and use the following regular expression pattern:
-
-.. code-block:: Shell
-
-    ^(?<wert>[A-Z\d_]+)\t(?<bedeutung>.+)$
-
-In combination with this substitution:
-
-.. code-block:: Shell
-
-    "$wert": "$wert", #: $bedeutung
-
-This substitution can directly used on the website `regex101`_.
-
 Release workflow
 ================
 * Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
@@ -97,4 +80,3 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
 .. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
-.. _`regex101`: https://regex101.com/r/JWeb51/2
