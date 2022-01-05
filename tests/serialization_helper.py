@@ -21,7 +21,7 @@ def assert_serialization_roundtrip(
     json_string = schema.dumps(serializable_object)
     assert json_string is not None
     actual_json_dict = json.loads(json_string)
-    if expected_json_dict:
+    if expected_json_dict is not None:
         assert actual_json_dict == expected_json_dict
     deserialized_object = schema.loads(json_data=json_string)
     assert isinstance(deserialized_object, type(serializable_object))
