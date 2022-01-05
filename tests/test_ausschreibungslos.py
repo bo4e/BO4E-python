@@ -6,9 +6,12 @@ from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsform import Vertragsform
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_ausschreibungsdetail import example_ausschreibungsdetail, example_ausschreibungsdetail_dict
-from tests.test_menge import example_menge, example_menge_dict
-from tests.test_zeitraum import example_zeitraum, example_zeitraum_dict
+from tests.test_ausschreibungsdetail import (
+    example_ausschreibungsdetail,
+    example_ausschreibungsdetail_dict,
+)  # type:ignore[import]
+from tests.test_menge import example_menge, example_menge_dict  # type:ignore[import]
+from tests.test_zeitraum import example_zeitraum, example_zeitraum_dict  # type:ignore[import]
 
 
 class TestAusschreibungslos:
