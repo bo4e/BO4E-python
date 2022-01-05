@@ -39,7 +39,7 @@ Contributing
 Contributions are welcome.
 Feel free to open a Pull Request against the master branch of this repository.
 Please provide unit tests if you contribute logic beyond bare bare business object definitions.
-For business objects please provide a roundtrip test that shows that your code is serializable and deserialable.
+For business objects please provide a roundtrip test that shows that your code produces serializable and deseriazable objects.
 
 To enhance this BO4E implementation and contribute to this project check out the `master branch`_, install `tox`_ and set the virtual environment created by the command
 
