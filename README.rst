@@ -32,6 +32,7 @@ Other Noteworthy BO4E Implementations
 * `C#/.NET`_
 * `Golang`_
 * `Kotlin`_
+* `TypeScript`_
 
 Contributing
 ============
@@ -135,6 +136,7 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
 .. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
 .. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
+.. _`TypeScript`: https://github.com/openEnWi/tsBO4E-lib
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
