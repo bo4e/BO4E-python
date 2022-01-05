@@ -48,23 +48,6 @@ To enhance this BO4E implementation and contribute to this project check out the
 
 The created venv should be located somewhere around .tox/dev/Scripts.
 
-Regular Expression for Enumerations
------------------------------------
-
-If you want to add a new enumeration from the `BO4E website`_ then you can copy paste HTML table content and use the following regular expression pattern:
-
-.. code-block:: Shell
-
-    ^(?<wert>[A-Z\d_]+)\t(?<bedeutung>.+)$
-
-In combination with this substitution:
-
-.. code-block:: Shell
-
-    "$wert": "$wert", #: $bedeutung
-
-This substitution can directly used on the website `regex101`_.
-
 
 Versioning
 ==========
