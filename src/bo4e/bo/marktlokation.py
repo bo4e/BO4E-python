@@ -90,8 +90,8 @@ class Marktlokation(Geschaeftsobjekt):
 
     Beziehung 1 : 0 : Hier handelt es sich um Pauschalanlagen ohne Messung. D.h. die Verbrauchsdaten sind direkt über
     die Marktlokation abgreifbar.
-    Beziehung 1 : 1 : Das ist die Standard-Beziehung für die meisten Fälle. In diesem Fall gibt es zu einer Marktlokation
-    genau eine Messlokation.
+    Beziehung 1 : 1 : Das ist die Standard-Beziehung für die meisten Fälle. In diesem Fall gibt es zu einer
+    Marktlokation genau eine Messlokation.
     Beziehung 1 : N : Hier liegt beispielsweise eine Untermessung vor. Der Verbrauch einer Marklokation berechnet sich
     hier aus mehreren Messungen.
 
