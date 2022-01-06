@@ -40,20 +40,20 @@ class Zaehler(Geschaeftsobjekt):
     bo_typ: BoTyp = attr.ib(default=BoTyp.ZAEHLER)
     zaehlernummer: str = attr.ib(
         validator=attr.validators.instance_of(str)
-    )  # Nummerierung des Zählers, vergeben durch den Messstellenbetreiber
-    sparte: Sparte
-    zaehlerauspraegung: Zaehlerauspraegung
-    zaehlertyp: Zaehlertyp
-    zaehlwerke: List[Zaehlwerk] = attr.ib(validator=at_least_one_zaehlwerk)
-    tarifart: Tarifart  # Spezifikation bezüglich unterstützter Tarifarten
+    )  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
+    sparte: Sparte  #: Strom oder Gas
+    zaehlerauspraegung: Zaehlerauspraegung  #: Spezifikation die Richtung des Zählers betreffend
+    zaehlertyp: Zaehlertyp  #: Typisierung des Zählers
+    zaehlwerke: List[Zaehlwerk] = attr.ib(validator=at_least_one_zaehlwerk)  #: Die Zählwerke des Zählers
+    tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes
-    zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  # Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[datetime] = attr.ib(default=None)  # Bis zu diesem Datum ist der Zähler geeicht.
+    zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  #: Zählerkonstante auf dem Zähler
+    eichung_bis: Optional[datetime] = attr.ib(default=None)  #: Bis zu diesem Datum ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = attr.ib(
         default=None
-    )  # Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  # Der Hersteller des Zählers.
+    )  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  #: Der Hersteller des Zählers.
 
 
 class ZaehlerSchema(GeschaeftsobjektSchema):
