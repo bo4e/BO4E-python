@@ -32,6 +32,7 @@ Other Noteworthy BO4E Implementations
 * `C#/.NET`_
 * `Golang`_
 * `Kotlin`_
+* `TypeScript`_
 
 Contributing
 ============
@@ -46,23 +47,6 @@ To enhance this BO4E implementation and contribute to this project check out the
    tox -e dev
 
 The created venv should be located somewhere around .tox/dev/Scripts.
-
-Regular Expression for Enumerations
------------------------------------
-
-If you want to add a new enumeration from the `BO4E website`_ then you can copy paste HTML table content and use the following regular expression pattern:
-
-.. code-block:: Shell
-
-    ^(?<wert>[A-Z\d_]+)\t(?<bedeutung>.+)$
-
-In combination with this substitution:
-
-.. code-block:: Shell
-
-    "$wert": "$wert", #: $bedeutung
-
-This substitution can directly used on the website `regex101`_.
 
 
 Versioning
@@ -135,6 +119,7 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
 .. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
 .. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
+.. _`TypeScript`: https://github.com/openEnWi/tsBO4E-lib
 .. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
 .. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
