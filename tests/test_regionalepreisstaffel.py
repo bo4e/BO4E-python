@@ -11,22 +11,24 @@ from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
+example_regionale_preisstaffel = RegionalePreisstaffel(
+    einheitspreis=Decimal(40.0),
+    staffelgrenze_von=Decimal(12.5),
+    staffelgrenze_bis=Decimal(25.0),
+    sigmoidparameter=example_sigmoidparameter,
+    regionale_gueltigkeit=RegionaleGueltigkeit(
+        gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
+        kriteriums_werte=[KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")],
+    ),
+)
+
 
 class TestRegionalePreisstaffel:
     @pytest.mark.parametrize(
         "regionale_preisstaffel, expected_json_dict",
         [
             pytest.param(
-                RegionalePreisstaffel(
-                    einheitspreis=Decimal(40.0),
-                    staffelgrenze_von=Decimal(12.5),
-                    staffelgrenze_bis=Decimal(25.0),
-                    sigmoidparameter=example_sigmoidparameter,
-                    regionale_gueltigkeit=RegionaleGueltigkeit(
-                        gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
-                        kriteriums_werte=[KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")],
-                    ),
-                ),
+                example_regionale_preisstaffel,
                 {
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
