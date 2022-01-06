@@ -49,11 +49,11 @@ class Zaehler(Geschaeftsobjekt):
 
     # optional attributes
     zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  #: Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[datetime] = attr.ib(default=None)  #: Bis zu diesem Datum ist der Zähler geeicht.
+    eichung_bis: Optional[datetime] = attr.ib(default=None)  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = attr.ib(
         default=None
     )  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  #: Der Hersteller des Zählers.
+    zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  #: Der Hersteller des Zählers
 
 
 class ZaehlerSchema(GeschaeftsobjektSchema):
