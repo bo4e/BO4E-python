@@ -17,7 +17,7 @@ class RegionalePreisstaffel(Preisstaffel):
     """
 
     # required attributes
-    #: Regionale Eingrenzung der Regionale Eingrenzung der Preisstaffel
+    #: Regionale Eingrenzung der Preisstaffel
     regionale_gueltigkeit: RegionaleGueltigkeit = attr.ib(validator=attr.validators.instance_of(RegionaleGueltigkeit))
 
 
