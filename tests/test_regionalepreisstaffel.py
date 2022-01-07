@@ -43,7 +43,7 @@ class TestRegionalePreisstaffel:
     )
     def test_serialization_roundtrip(self, regionale_preisstaffel: RegionalePreisstaffel, expected_json_dict):
         """
-        Test de-/serialisation of RegionalePreisgarantie with minimal attributes.
+        Test de-/serialisation of RegionalePreisgarantie with maximal attributes.
         """
         assert_serialization_roundtrip(regionale_preisstaffel, RegionalePreisstaffelSchema(), expected_json_dict)
 

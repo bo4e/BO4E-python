@@ -24,19 +24,21 @@ def _create_empty_referenzen_list() -> List[ExterneReferenz]:
 
 
 @attr.s(auto_attribs=True, kw_only=True)
-class Geschaeftsobjekt:
+class Geschaeftsobjekt:  # Base class for all business objects
     """
-    Base class for all business objects
+    Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
+    Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
     """
 
     # required attributes
-    versionstruktur: str = attr.ib(default="2")
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)
+    versionstruktur: str = attr.ib(default="2")  #: Version der BO-Struktur aka "fachliche Versionierung"
+    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)  #: Der Typ des Geschäftsobjektes
+    # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
         default=_create_empty_referenzen_list(), validator=attr.validators.instance_of(List)  # type:ignore[arg-type]
-    )
+    )  #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
 
 
 class GeschaeftsobjektSchema(CaseConverterSchema):
