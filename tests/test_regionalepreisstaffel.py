@@ -29,7 +29,6 @@ class TestRegionalePreisstaffel:
         [
             pytest.param(
                 example_regionale_preisstaffel,
-                ),
                 {
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
@@ -40,7 +39,8 @@ class TestRegionalePreisstaffel:
                     "staffelgrenzeVon": "12.5",
                     "staffelgrenzeBis": "25",
                 },
-                id="maximal attributes",  # the messing sigmoidparameter is tested in the Preisstaffel tests
+                id="maximal attributes"
+                # the messing sigmoidparameter is tested in the Preisstaffel tests
             ),
         ],
     )
