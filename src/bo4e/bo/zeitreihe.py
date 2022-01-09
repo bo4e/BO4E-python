@@ -18,7 +18,7 @@ from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from bo4e.validators import check_list_length_at_least_one
 
 
-# pylint: disable=too-few-public-methods
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
 class Zeitreihe(Geschaeftsobjekt):
     """
