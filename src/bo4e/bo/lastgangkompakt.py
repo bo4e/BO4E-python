@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -67,6 +67,7 @@ class LastgangKompaktSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of LastgangKompakt
     """
 
+    class_name = LastgangKompakt
     # required attributes
     sparte = EnumField(Sparte)
     lokations_id = fields.Str()
@@ -78,9 +79,3 @@ class LastgangKompaktSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     version = fields.Str(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> LastgangKompakt:
-        """Deserialize JSON to Angebotsposition object"""
-        return LastgangKompakt(**data)
