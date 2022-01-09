@@ -5,7 +5,7 @@ Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -135,6 +135,7 @@ class RegionalerAufAbschlagSchema(COMSchema):
     Schema for de-/serialization of RegionalerAufAbschlag
     """
 
+    class_name = RegionalerAufAbschlag
     # required attributes
     bezeichnung = fields.Str()
     staffeln = fields.List(fields.Nested(RegionalePreisstaffelSchema))
@@ -155,9 +156,3 @@ class RegionalerAufAbschlagSchema(COMSchema):
     vertagskonditionsaenderung = fields.Nested(VertragskonditionenSchema, default=None)
     garantieaenderung = fields.Nested(PreisgarantieSchema, default=None)
     einschraenkungsaenderung = fields.Nested(TarifeinschraenkungSchema, default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> RegionalerAufAbschlag:
-        """Deserialize JSON to RegionalerAufAbschlag object"""
-        return RegionalerAufAbschlag(**data)
