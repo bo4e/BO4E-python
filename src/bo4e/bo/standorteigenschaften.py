@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein, StandorteigenschaftenAllgemeinSchema
@@ -47,6 +47,7 @@ class StandorteigenschaftenSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of Standorteigenschaften
     """
 
+    class_name = Standorteigenschaften
     # required attributes
     eigenschaften_allgemein = fields.Nested(StandorteigenschaftenAllgemeinSchema)
 
@@ -54,9 +55,3 @@ class StandorteigenschaftenSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     eigenschaften_gas = fields.Nested(StandorteigenschaftenGasSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Standorteigenschaften:
-        """Deserialize JSON to Standorteigenschaften object"""
-        return Standorteigenschaften(**data)
