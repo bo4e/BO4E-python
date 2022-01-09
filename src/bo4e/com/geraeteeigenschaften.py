@@ -7,9 +7,9 @@ import attr
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
-
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)

@@ -11,6 +11,7 @@ from bo4e.com.com import COM, COMSchema
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 
+
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Regionskriterium(COM):

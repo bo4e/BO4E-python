@@ -8,9 +8,9 @@ from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
-
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)

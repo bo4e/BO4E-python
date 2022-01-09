@@ -8,9 +8,8 @@ import attr
 from marshmallow import fields
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
-
-
 from bo4e.validators import check_bis_is_later_than_von
+
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
