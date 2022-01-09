@@ -6,7 +6,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -60,6 +60,7 @@ class VerbrauchSchema(COMSchema):
     Schema for de-/serialization of Verbrauch
     """
 
+    class_name = Verbrauch
     # required attributes
     wertermittlungsverfahren = EnumField(Wertermittlungsverfahren)
     obis_kennzahl = fields.Str()
@@ -69,9 +70,3 @@ class VerbrauchSchema(COMSchema):
     # optional attributes
     startdatum = fields.DateTime(allow_none=True)
     enddatum = fields.DateTime(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Verbrauch:
-        """Deserialize JSON to Verbrauch object"""
-        return Verbrauch(**data)

@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -33,11 +33,7 @@ class GeokoordinatenSchema(COMSchema):
     https://marshmallow.readthedocs.io/en/latest/api_reference.html?highlight=function#marshmallow.fields.Decimal
     """
 
+    class_name = Geokoordinaten
+
     breitengrad = fields.Decimal(as_string=True)
     laengengrad = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Geokoordinaten:
-        """Deserialize JSON to Geokoordinaten object"""
-        return Geokoordinaten(**data)

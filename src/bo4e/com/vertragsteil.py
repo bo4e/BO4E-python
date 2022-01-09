@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.menge import Menge, MengeSchema
@@ -36,6 +36,7 @@ class VertragsteilSchema(COMSchema):
     Schema for de-/serialization of Vertragsteil.
     """
 
+    class_name = Vertragsteil
     # required attributes
     vertragsteilbeginn = fields.DateTime()
     vertragsteilende = fields.DateTime()
@@ -45,9 +46,3 @@ class VertragsteilSchema(COMSchema):
     vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None)
     minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
     maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Vertragsteil:
-        """Deserialize JSON to Vertragsteil object"""
-        return Vertragsteil(**data)
