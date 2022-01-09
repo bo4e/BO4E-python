@@ -6,7 +6,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.sigmoidparameter import Sigmoidparameter, SigmoidparameterSchema
@@ -39,6 +39,7 @@ class PreisstaffelSchema(COMSchema):
     Schema for de-/serialization of Preisstaffel
     """
 
+    class_name = Preisstaffel
     # required attributes
     einheitspreis = fields.Decimal(as_string=True)
     staffelgrenze_von = fields.Decimal(as_string=True)
@@ -46,9 +47,3 @@ class PreisstaffelSchema(COMSchema):
 
     # optional attributes
     sigmoidparameter = fields.Nested(SigmoidparameterSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Preisstaffel:
-        """Deserialize JSON to Preisstaffel object"""
-        return Preisstaffel(**data)

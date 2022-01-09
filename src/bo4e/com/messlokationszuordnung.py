@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -35,6 +35,7 @@ class MesslokationszuordnungSchema(COMSchema):
     Schema for de-/serialization of Katasteradresse.
     """
 
+    class_name = Messlokationszuordnung
     # required attributes
     messlokations_id = fields.Str()
     arithmetik = EnumField(ArithmetischeOperation)
@@ -42,9 +43,3 @@ class MesslokationszuordnungSchema(COMSchema):
     # optional attributes
     gueltig_seit = fields.DateTime(load_default=None)
     gueltig_bis = fields.DateTime(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Messlokationszuordnung:
-        """Deserialize JSON to Messlokationszuordnung object"""
-        return Messlokationszuordnung(**data)

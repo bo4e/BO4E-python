@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
 from bo4e.com.angebotsposition import Angebotsposition, AngebotspositionSchema
@@ -77,6 +77,7 @@ class AngebotsteilSchema(COMSchema):
     Schema for de-/serialization of Angebotsteil.
     """
 
+    class_name = Angebotsteil
     # required attributes
     positionen = fields.List(fields.Nested(AngebotspositionSchema))
 
@@ -86,9 +87,3 @@ class AngebotsteilSchema(COMSchema):
     gesamtmengeangebotsteil = fields.Nested(MengeSchema, load_default=None)
     gesamtkostenangebotsteil = fields.Nested(BetragSchema, load_default=None)
     lieferzeitraum = fields.Nested(ZeitraumSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Angebotsteil:
-        """Deserialize JSON to Angebotsteil object"""
-        return Angebotsteil(**data)

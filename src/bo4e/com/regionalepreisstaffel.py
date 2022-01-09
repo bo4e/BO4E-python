@@ -3,7 +3,7 @@ Contains RegionalePreisstaffel class and corresponding marshmallow schema for de
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeitSchema
@@ -26,11 +26,6 @@ class RegionalePreisstaffelSchema(PreisstaffelSchema):
     Schema for de-/serialization of RegionalePreisgarantie.
     """
 
+    class_name = RegionalePreisstaffel  # type:ignore[assignment]
     # required attributes
     regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> RegionalePreisstaffel:
-        """Deserialize JSON to Energiemix object"""
-        return RegionalePreisstaffel(**data)

@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -64,9 +64,10 @@ class AufAbschlag(COM):
 
 class AufAbschlagSchema(COMSchema):
     """
-    Schema for de-/serialization of AufAbschlag.
+    Schema for de-/serialization of AufAbschlag
     """
 
+    class_name = AufAbschlag
     # required attributes
     bezeichnung = fields.Str()
     staffeln = fields.List(fields.Nested(PreisstaffelSchema))
@@ -78,9 +79,3 @@ class AufAbschlagSchema(COMSchema):
     einheit = EnumField(Waehrungseinheit, allow_none=True)
     website = fields.Str(load_default=None)
     gueltigkeitszeitraum = fields.Nested(ZeitraumSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> AufAbschlag:
-        """Deserialize JSON to AufAbschlag object"""
-        return AufAbschlag(**data)
