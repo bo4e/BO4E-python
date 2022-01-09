@@ -4,7 +4,7 @@ Contains Region class and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.regionskriterium import Regionskriterium, RegionskriteriumSchema
@@ -50,15 +50,10 @@ class RegionSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of Region
     """
 
+    class_name = Region
     # required attributes
     bezeichnung = fields.Str()
     positiv_liste = fields.List(fields.Nested(RegionskriteriumSchema))
 
     # optional attributes
     negativ_liste = fields.List(fields.Nested(RegionskriteriumSchema), load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Region:
-        """Deserialize JSON to Region object"""
-        return Region(**data)
