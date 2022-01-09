@@ -22,11 +22,15 @@ class Marktteilnehmer(Geschaeftspartner):
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
+    #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
+    #: Gibt die Codenummer der Marktrolle an
     rollencodenummer: str = attr.ib(validator=matches_re(r"^\d{13}$"))
+    #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
 
     # optional attributes
+    #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
     makoadresse: str = attr.ib(default=None)
 
 
