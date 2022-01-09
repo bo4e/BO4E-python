@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
@@ -32,6 +32,7 @@ class VertragskonditionenSchema(COMSchema):
     Schema for de-/serialization of Vertragskonditionen.
     """
 
+    class_name = Vertragskonditionen
     # optional attributes
     beschreibung = fields.String(load_default=None)
     anzahl_abschlaege = fields.Decimal(load_default=None, as_string=True)
@@ -39,9 +40,3 @@ class VertragskonditionenSchema(COMSchema):
     kuendigungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
     vertragsverlaengerung = fields.Nested(ZeitraumSchema, load_default=None)
     abschlagszyklus = fields.Nested(ZeitraumSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Vertragskonditionen:
-        """Deserialize JSON to Vertragskonditionen object"""
-        return Vertragskonditionen(**data)

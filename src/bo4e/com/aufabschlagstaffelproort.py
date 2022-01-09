@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -32,13 +32,8 @@ class AufAbschlagstaffelProOrtSchema(COMSchema):
     Schema for de-/serialization of AufAbschlagstaffelProOrt.
     """
 
+    class_name = AufAbschlagstaffelProOrt
     # required attributes
     wert = fields.Decimal(as_string=True)
     staffelgrenze_von = fields.Decimal(as_string=True)
     staffelgrenze_bis = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> AufAbschlagstaffelProOrt:
-        """Deserialize JSON to AufAbschlagstaffelProOrt object"""
-        return AufAbschlagstaffelProOrt(**data)

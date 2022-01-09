@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -28,12 +28,7 @@ class DienstleistungSchema(COMSchema):
     Schema for de-/serialization of Dienstleistung.
     """
 
+    class_name = Dienstleistung
     # required attributes
     dienstleistungstyp = EnumField(Dienstleistungstyp)
     bezeichnung = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Dienstleistung:
-        """Deserialize JSON to Dienstleistung object"""
-        return Dienstleistung(**data)
