@@ -4,7 +4,7 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -64,6 +64,7 @@ class ZeitreiheSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of Zeitreihe
     """
 
+    class_name = Zeitreihe
     bezeichnung = fields.Str()
     messgroesse = EnumField(Messgroesse)
     messart = EnumField(Messart)
@@ -75,9 +76,3 @@ class ZeitreiheSchema(GeschaeftsobjektSchema):
     beschreibung = fields.Str(load_default=None)
     version = fields.Str(load_default=None)
     wertherkunft = EnumField(Wertermittlungsverfahren, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zeitreihe:
-        """Deserialize JSON to Zeitreihe object"""
-        return Zeitreihe(**data)
