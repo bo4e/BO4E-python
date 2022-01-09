@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -30,12 +30,7 @@ class MengeSchema(COMSchema):
     Schema for de-/serialization of Menge.
     """
 
+    class_name = Menge
     # required attributes
     wert = fields.Decimal(as_string=True)
     einheit = EnumField(Mengeneinheit)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Menge:
-        """Deserialize JSON to Menge object"""
-        return Menge(**data)
