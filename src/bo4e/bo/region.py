@@ -5,17 +5,11 @@ from typing import List, Optional
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.regionskriterium import Regionskriterium, RegionskriteriumSchema
-from bo4e.com.tagesvektor import Tagesvektor, TagesvektorSchema
-from bo4e.com.zeitintervall import Zeitintervall, ZeitintervallSchema
 from bo4e.enum.botyp import BoTyp
-from bo4e.enum.lokationstyp import Lokationstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.sparte import Sparte
-from bo4e.validators import check_list_length_at_least_one, obis_validator
+from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
