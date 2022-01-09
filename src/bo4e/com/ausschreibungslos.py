@@ -5,7 +5,7 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, AusschreibungsdetailSchema
@@ -98,6 +98,8 @@ class AusschreibungslosSchema(COMSchema):
     Schema for de-/serialization of Ausschreibungslos.
     """
 
+    class_name = Ausschreibungslos
+
     # required attributes
     losnummer = fields.String()
     bezeichnung = fields.String()
@@ -118,9 +120,3 @@ class AusschreibungslosSchema(COMSchema):
     lieferzeitraum = fields.Nested(ZeitraumSchema, load_default=None)
     wunsch_kuendingungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
     wunsch_zahlungsziel = fields.Nested(ZeitraumSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Ausschreibungslos:
-        """Deserialize JSON to Angebotsteil object"""
-        return Ausschreibungslos(**data)
