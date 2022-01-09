@@ -24,6 +24,19 @@ class TestPreisstaffel:
                     "staffelgrenzeVon": "12.5",
                     "staffelgrenzeBis": "25",
                 },
+                id="all attributes",
+            ),
+            pytest.param(
+                Preisstaffel(
+                    einheitspreis=Decimal(40.0), staffelgrenze_von=Decimal(12.5), staffelgrenze_bis=Decimal(25.0)
+                ),
+                {
+                    "einheitspreis": "40",
+                    "staffelgrenzeVon": "12.5",
+                    "staffelgrenzeBis": "25",
+                    "sigmoidparameter": None,
+                },
+                id="only required params",
             ),
         ],
     )

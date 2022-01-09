@@ -4,7 +4,7 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
 
@@ -45,13 +45,8 @@ class FremdkostenpositionSchema(KostenpositionSchema):
     """
 
     # optional attributes (additional to those from Kostenposition)
+    class_name = Fremdkostenposition
     marktpartnername = fields.Str(allow_none=True)
     marktpartnercode = fields.Str(allow_none=True)
     gebietcode_eic = fields.Str(allow_none=True)
     link_preisblatt = fields.Str(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Fremdkostenposition:
-        """Deserialize JSON to Fremdkostenposition object"""
-        return Fremdkostenposition(**data)

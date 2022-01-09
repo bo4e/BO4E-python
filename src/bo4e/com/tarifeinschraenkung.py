@@ -4,7 +4,7 @@ Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serial
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -12,9 +12,8 @@ from bo4e.com.geraet import Geraet, GeraetSchema
 from bo4e.com.menge import Menge, MengeSchema
 from bo4e.enum.voraussetzungen import Voraussetzungen
 
+
 # pylint: disable=too-few-public-methods
-
-
 @attr.s(auto_attribs=True, kw_only=True)
 class Tarifeinschraenkung(COM):
     """
@@ -71,14 +70,9 @@ class TarifeinschraenkungSchema(COMSchema):
     Schema for de-/serialization of Tarifeinschraenkung
     """
 
+    class_name = Tarifeinschraenkung
     # optional attributes
     zusatzprodukte = fields.List(fields.String, load_default=None, many=True)
     voraussetzungen = fields.List(EnumField(Voraussetzungen), allow_none=True, many=True)
     einschraenkungzaehler = fields.List(fields.Nested(GeraetSchema), load_default=None)
     einschraenkungleistung = fields.List(fields.Nested(MengeSchema), load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Tarifeinschraenkung:
-        """Deserialize JSON to Tarifeinschraenkung object"""
-        return Tarifeinschraenkung(**data)
