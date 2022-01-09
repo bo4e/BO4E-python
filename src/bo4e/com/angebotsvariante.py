@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.angebotsteil import Angebotsteil, AngebotsteilSchema
@@ -65,6 +65,7 @@ class AngebotsvarianteSchema(COMSchema):
     Schema for de-/serialization of Angebotsvariante
     """
 
+    class_name = Angebotsvariante
     # required attributes
     angebotsstatus = EnumField(Angebotsstatus)
     erstellungsdatum = fields.DateTime()
@@ -74,9 +75,3 @@ class AngebotsvarianteSchema(COMSchema):
     # optional attributes
     gesamtmenge = fields.Nested(MengeSchema, allow_none=True)
     gesamtkosten = fields.Nested(BetragSchema, allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Angebotsvariante:
-        """Deserialize JSON to Angebotsvariante object"""
-        return Angebotsvariante(**data)
