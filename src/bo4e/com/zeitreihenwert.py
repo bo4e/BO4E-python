@@ -40,7 +40,7 @@ class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):
     Schema for de-/serialization of Zeitreihenwert.
     """
 
-    class_name = Zeitreihenwert
+    class_name = Zeitreihenwert  # type:ignore[assignment]
     # required attributes
     datum_uhrzeit_von = fields.DateTime()
     datum_uhrzeit_bis = fields.DateTime()

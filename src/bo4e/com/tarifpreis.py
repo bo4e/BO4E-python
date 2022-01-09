@@ -34,7 +34,7 @@ class TarifpreisSchema(PreisSchema):
     Schema for de-/serialization of Tarifpreis.
     """
 
-    class_name = Tarifpreis
+    class_name = Tarifpreis  # type:ignore[assignment]
     # required attributes
     preistyp = EnumField(Preistyp)
 

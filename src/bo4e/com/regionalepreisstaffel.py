@@ -26,6 +26,6 @@ class RegionalePreisstaffelSchema(PreisstaffelSchema):
     Schema for de-/serialization of RegionalePreisgarantie.
     """
 
-    class_name = RegionalePreisstaffel
+    class_name = RegionalePreisstaffel  # type:ignore[assignment]
     # required attributes
     regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema)
