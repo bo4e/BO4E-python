@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.betrag import Betrag, BetragSchema
 from bo4e.com.com import COM, COMSchema
@@ -78,6 +78,7 @@ class KostenpositionSchema(COMSchema):
     Schema for de-/serialization of Kostenposition
     """
 
+    class_name = Kostenposition
     # required attributes
     positionstitel = fields.Str()
     betrag_kostenposition = fields.Nested(BetragSchema)
@@ -90,9 +91,3 @@ class KostenpositionSchema(COMSchema):
     menge = fields.Nested(MengeSchema, allow_none=True)
     zeitmenge = fields.Nested(MengeSchema, allow_none=True)
     artikeldetail = fields.Str(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Kostenposition:
-        """Deserialize JSON to Kostenposition object"""
-        return Kostenposition(**data)

@@ -45,7 +45,7 @@ class FremdkostenpositionSchema(KostenpositionSchema):
     """
 
     # optional attributes (additional to those from Kostenposition)
-    class_name = Fremdkostenposition
+    class_name = Fremdkostenposition  # type:ignore[assignment]
     marktpartnername = fields.Str(allow_none=True)
     marktpartnercode = fields.Str(allow_none=True)
     gebietcode_eic = fields.Str(allow_none=True)
