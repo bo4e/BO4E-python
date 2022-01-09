@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.betrag import Betrag, BetragSchema
@@ -96,6 +96,8 @@ class RechnungspositionSchema(COMSchema):
     Schema for de-/serialization of RechnungspositionSchema
     """
 
+    class_name = Rechnungsposition
+
     # required attributes
     positionsnummer = fields.Integer()
     lieferung_von = fields.DateTime()
@@ -112,9 +114,3 @@ class RechnungspositionSchema(COMSchema):
     lokations_id = fields.String(load_default=None)
     zeitbezogene_menge = fields.Nested(MengeSchema, load_default=None)
     teilrabatt_netto = fields.Nested(BetragSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Rechnungsposition:
-        """Deserialize JSON to Angebotsteil object"""
-        return Rechnungsposition(**data)
