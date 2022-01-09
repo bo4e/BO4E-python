@@ -18,7 +18,7 @@ from bo4e.validators import check_list_length_at_least_one
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Standorteigenschaften(Geschaeftsobjekt):
-    """ "
+    """
     Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.
     """
 
