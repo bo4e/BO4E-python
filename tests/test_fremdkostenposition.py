@@ -6,7 +6,6 @@ import pytest  # type:ignore[import]
 from bo4e.com.betrag import Betrag
 from bo4e.com.fremdkostenposition import Fremdkostenposition, FremdkostenpositionSchema
 from bo4e.com.preis import Preis
-from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungscode import Waehrungscode

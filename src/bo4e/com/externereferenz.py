@@ -3,7 +3,7 @@ Contains ExterenzeReferenz class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -28,11 +28,6 @@ class ExterneReferenzSchema(COMSchema):
     Inherits from Schema and JavaScriptMixin.
     """
 
+    class_name = ExterneReferenz
     ex_ref_name = fields.Str()
     ex_ref_wert = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> ExterneReferenz:
-        """Deserialize JSON to ExterneReferenz object"""
-        return ExterneReferenz(**data)

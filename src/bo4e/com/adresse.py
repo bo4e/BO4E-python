@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -51,6 +51,8 @@ class AdresseSchema(COMSchema):
     Schema for de-/serialization of Adresse.
     """
 
+    class_name = Adresse
+
     # required attributes
     postleitzahl = fields.Str()
     ort = fields.Str()
@@ -62,9 +64,3 @@ class AdresseSchema(COMSchema):
     adresszusatz = fields.Str(load_default=None)
     co_ergaenzung = fields.Str(load_default=None)
     landescode = EnumField(Landescode)
-
-    # pylint: disable=no-self-use
-    @post_load
-    def deserialize(self, data, **kwargs) -> Adresse:
-        """Deserialize JSON to Adresse object"""
-        return Adresse(**data)
