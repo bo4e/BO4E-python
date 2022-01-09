@@ -6,7 +6,7 @@ from typing import List
 
 import attr
 from marshmallow import fields, post_load
-from marshmallow_enum import EnumField
+from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.verbrauch import Verbrauch, VerbrauchSchema
