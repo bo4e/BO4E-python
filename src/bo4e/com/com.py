@@ -27,6 +27,7 @@ class COMSchema(CaseConverterSchema):
     class_name: Type[COM] = COM
 
     @post_load
+    # pylint:disable=unused-argument
     def deserialize(self, data, **kwargs):
         """Deserialize JSON to python object."""
         return type(self).class_name(**data)

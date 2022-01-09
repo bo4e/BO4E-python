@@ -4,16 +4,15 @@ Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/seria
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 
-# pylint: disable=too-few-public-methods
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
-
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class PositionsAufAbschlag(COM):
     """

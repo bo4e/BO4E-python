@@ -3,7 +3,7 @@ Contains RegionalePreisstaffel class and corresponding marshmallow schema for de
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeitSchema
