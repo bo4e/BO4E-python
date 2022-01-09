@@ -15,7 +15,7 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import obis_validator, check_list_length_at_least_one
+from bo4e.validators import check_list_length_at_least_one, obis_validator
 
 
 # pylint: disable=too-few-public-methods
