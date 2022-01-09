@@ -6,7 +6,7 @@ from decimal import Decimal
 
 import attr
 from attr.validators import matches_re
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -48,15 +48,10 @@ class ZaehlwerkSchema(COMSchema):
     Schema for de-/serialization of Zaehlwerk.
     """
 
+    class_name = Zaehlwerk
     zaehlwerk_id = fields.Str()
     bezeichnung = fields.Str()
     richtung = EnumField(Energierichtung)
     obis_kennzahl = fields.Str()
     wandlerfaktor = fields.Decimal(as_string=True)
     einheit = EnumField(Mengeneinheit)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zaehlwerk:
-        """Deserialize JSON to Zaehlwerk object"""
-        return Zaehlwerk(**data)

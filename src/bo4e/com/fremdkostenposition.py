@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.betrag import Betrag, BetragSchema
 from bo4e.com.com import COM, COMSchema
@@ -91,6 +91,7 @@ class FremdkostenpositionSchema(COMSchema):
     Schema for de-/serialization of Fremdkostenposition
     """
 
+    class_name = Fremdkostenposition
     # required attributes
     positionstitel = fields.Str()
     betrag_kostenposition = fields.Nested(BetragSchema)
@@ -107,9 +108,3 @@ class FremdkostenpositionSchema(COMSchema):
     marktpartnercode = fields.Str(allow_none=True)
     gebietcode_eic = fields.Str(allow_none=True)
     link_preisblatt = fields.Str(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Fremdkostenposition:
-        """Deserialize JSON to Fremdkostenposition object"""
-        return Fremdkostenposition(**data)

@@ -6,7 +6,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -39,15 +39,10 @@ class ZeitreihenwertkompaktSchema(COMSchema):
     Schema for de-/serialization of Zeitreihenwertkompakt.
     """
 
+    class_name = Zeitreihenwertkompakt
     # required attributes
     wert = fields.Decimal(as_string=True)
 
     # optional attributes
     status = EnumField(Messwertstatus, load_default=None)
     statuszusatz = EnumField(Messwertstatuszusatz, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zeitreihenwertkompakt:
-        """Deserialize JSON to Zeitreihenwertkompakt object"""
-        return Zeitreihenwertkompakt(**data)

@@ -7,7 +7,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -24,15 +24,15 @@ class Preis(COM):
     """
 
     # required attributes
-    #:  Gibt die nomiale Höhe des Preises an.
+    #: Gibt die nominale Höhe des Preises an.
     wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
-    #:  Währungseinheit für den Preis, z.B. Euro oder Ct.
+    #: Währungseinheit für den Preis, z.B. Euro oder Ct.
     einheit: Waehrungseinheit = attr.ib(validator=attr.validators.in_(Waehrungseinheit))
-    #:  Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
+    #: Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
     bezugswert: Mengeneinheit = attr.ib(validator=attr.validators.in_(Mengeneinheit))
 
     # optional attributes
-    #:  Gibt den Status des veröffentlichten Preises an
+    #: Gibt den Status des veröffentlichten Preises an
     status: Optional[Preisstatus] = attr.ib(default=None)
 
 
@@ -41,6 +41,7 @@ class PreisSchema(COMSchema):
     Schema for de-/serialization of Preis.
     """
 
+    class_name = Preis
     # required attributes
     wert = fields.Decimal(as_string=True)
     einheit = EnumField(Waehrungseinheit)
@@ -48,9 +49,3 @@ class PreisSchema(COMSchema):
 
     # optional attributes
     status = EnumField(Preisstatus, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Preis:
-        """Deserialize JSON to Preis object"""
-        return Preis(**data)
