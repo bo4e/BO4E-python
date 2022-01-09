@@ -39,12 +39,7 @@ class EnergieherkunftSchema(COMSchema):
     Schema for de-/serialization of Energieherkunft.
     """
 
+    class_name = Energieherkunft
     # required attributes
     erzeugungsart = EnumField(Erzeugungsart)
     anteil_prozent = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Energieherkunft:
-        """Deserialize JSON to Energieherkunft object"""
-        return Energieherkunft(**data)

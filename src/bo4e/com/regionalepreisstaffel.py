@@ -26,11 +26,6 @@ class RegionalePreisstaffelSchema(PreisstaffelSchema):
     Schema for de-/serialization of RegionalePreisgarantie.
     """
 
+    class_name = RegionalePreisstaffel
     # required attributes
     regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> RegionalePreisstaffel:
-        """Deserialize JSON to Energiemix object"""
-        return RegionalePreisstaffel(**data)

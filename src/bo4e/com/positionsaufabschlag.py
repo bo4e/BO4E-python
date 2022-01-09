@@ -41,15 +41,10 @@ class PositionsAufAbschlagSchema(COMSchema):
     Schema for de-/serialization of PositionsAufAbschlag
     """
 
+    class_name = PositionsAufAbschlag
     # required attributes
     bezeichnung = fields.Str()
     beschreibung = fields.Str()
     auf_abschlagstyp = EnumField(AufAbschlagstyp)
     auf_abschlagswert = fields.Decimal(as_string=True)
     auf_abschlagswaehrung = EnumField(Waehrungseinheit)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> PositionsAufAbschlag:
-        """Deserialize JSON to PositionsAufAbschlag object"""
-        return PositionsAufAbschlag(**data)

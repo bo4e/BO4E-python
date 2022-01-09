@@ -24,11 +24,6 @@ class KatasteradresseSchema(COMSchema):
     Schema for de-/serialization of Katasteradresse.
     """
 
+    class_name = Katasteradresse
     gemarkung_flur = fields.Str()
     flurstueck = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Katasteradresse:
-        """Deserialize JSON to Katasteradresse object"""
-        return Katasteradresse(**data)

@@ -5,7 +5,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -87,6 +87,7 @@ class AusschreibungsdetailSchema(COMSchema):
     Schema for de-/serialization of Ausschreibungsdetail
     """
 
+    class_name = Ausschreibungsdetail
     # required attributes
     lokations_id = fields.Str()
     netzebene_lieferung = EnumField(Netzebene)
@@ -105,9 +106,3 @@ class AusschreibungsdetailSchema(COMSchema):
     prognose_arbeit_lieferzeitraum = fields.Nested(MengeSchema, allow_none=True)
     prognose_leistung = fields.Nested(MengeSchema, allow_none=True)
     rechnungsadresse = fields.Nested(AdresseSchema, allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Ausschreibungsdetail:
-        """Deserialize JSON to Ausschreibungsdetail object"""
-        return Ausschreibungsdetail(**data)
