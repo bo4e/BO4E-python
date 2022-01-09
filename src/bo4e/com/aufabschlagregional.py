@@ -5,7 +5,7 @@ Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serial
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt, AufAbschlagProOrtSchema
@@ -119,6 +119,7 @@ class AufAbschlagRegionalSchema(COMSchema):
     Schema for de-/serialization of AufAbschlagRegional.
     """
 
+    class_name = AufAbschlagRegional
     # required attributes
     bezeichnung = fields.Str()
     betraege = fields.List(fields.Nested(AufAbschlagProOrtSchema))
@@ -137,9 +138,3 @@ class AufAbschlagRegionalSchema(COMSchema):
     vertagskonditionsaenderung = fields.Nested(VertragskonditionenSchema, load_default=None)
     garantieaenderung = fields.Nested(PreisgarantieSchema, load_default=None)
     einschraenkungsaenderung = fields.Nested(TarifeinschraenkungSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> AufAbschlagRegional:
-        """Deserialize JSON to AufAbschlagRegional object"""
-        return AufAbschlagRegional(**data)
