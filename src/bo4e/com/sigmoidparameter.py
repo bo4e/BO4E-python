@@ -2,16 +2,15 @@
 Contains Sigmoidparameter class and corresponding marshmallow schema for de-/serialization
 """
 
-# pylint: disable=too-few-public-methods
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
-# pylint:disable=invalid-name
+# pylint:disable=invalid-name, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Sigmoidparameter(COM):
     """
@@ -39,14 +38,9 @@ class SigmoidparameterSchema(COMSchema):
     Schema for de-/serialization of Sigmoidparameter.
     """
 
+    class_name = Sigmoidparameter
     # required attributes
     A = fields.Decimal(as_string=True)
     B = fields.Decimal(as_string=True)
     C = fields.Decimal(as_string=True)
     D = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Sigmoidparameter:
-        """Deserialize JSON to Sigmoidparameter object"""
-        return Sigmoidparameter(**data)
