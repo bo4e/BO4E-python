@@ -4,7 +4,7 @@ Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.betrag import Betrag, BetragSchema
 from bo4e.com.com import COM, COMSchema
@@ -48,14 +48,9 @@ class KostenblockSchema(COMSchema):
     Schema for de-/serialization of Kostenblock
     """
 
+    class_name = Kostenblock
     # required attributes
     kostenblockbezeichnung = fields.Str()
     # optional attributes
     summe_kostenblock = fields.Nested(BetragSchema, allow_none=True)
     kostenpositionen = fields.List(fields.Nested(KostenpositionSchema), allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Kostenblock:
-        """Deserialize JSON to Kostenposition object"""
-        return Kostenblock(**data)
