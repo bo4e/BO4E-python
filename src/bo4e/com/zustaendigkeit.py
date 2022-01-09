@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -31,15 +31,10 @@ class ZustaendigkeitSchema(COMSchema):
     Schema for de-/serialization of Zustaendigkeit.
     """
 
+    class_name = Zustaendigkeit
     # required attributes
     themengebiet = EnumField(Themengebiet)
 
     # optional attributes
     jobtitel = fields.Str(load_default=None)
     abteilung = fields.Str(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zustaendigkeit:
-        """Deserialize JSON to Zustaendigkeit object"""
-        return Zustaendigkeit(**data)

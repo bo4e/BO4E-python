@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -39,6 +39,7 @@ class StandorteigenschaftenAllgemeinSchema(COMSchema):
     Schema for de-/serialization of StandorteigenschaftenAllgemein.
     """
 
+    class_name = StandorteigenschaftenAllgemein
     # required attributes
     postleitzahl = fields.Str()
     ort = fields.Str()
@@ -47,9 +48,3 @@ class StandorteigenschaftenAllgemeinSchema(COMSchema):
     gemeindekennziffer = fields.Str()
     gemeindeeinwohner = fields.Int()
     bundesland = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> StandorteigenschaftenAllgemein:
-        """Deserialize JSON to StandorteigenschaftenAllgemein object"""
-        return StandorteigenschaftenAllgemein(**data)

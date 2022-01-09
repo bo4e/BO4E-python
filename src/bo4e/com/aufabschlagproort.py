@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt, AufAbschlagstaffelProOrtSchema
 from bo4e.com.com import COM, COMSchema
@@ -36,17 +36,12 @@ class AufAbschlagProOrt(COM):
 
 class AufAbschlagProOrtSchema(COMSchema):
     """
-    Schema for de-/serialization of AufAbschlagProOrt.
+    Schema for de-/serialization of AufAbschlagProOrt
     """
 
+    class_name = AufAbschlagProOrt
     # required attributes
     postleitzahl = fields.Str()
     ort = fields.Str()
     netznr = fields.Str()
     staffeln = fields.List(fields.Nested(AufAbschlagstaffelProOrtSchema))
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> AufAbschlagProOrt:
-        """Deserialize JSON to AufAbschlagstaffelProOrt object"""
-        return AufAbschlagProOrt(**data)
