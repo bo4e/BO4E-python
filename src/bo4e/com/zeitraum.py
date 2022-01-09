@@ -8,7 +8,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -75,6 +75,7 @@ class ZeitraumSchema(COMSchema):
     Schema for de-/serialization of Zeitraum.
     """
 
+    class_name = Zeitraum
     # optional attributes
     einheit = EnumField(Zeiteinheit, load_default=None)
     dauer = fields.Decimal(load_default=None, as_string=True)
@@ -82,9 +83,3 @@ class ZeitraumSchema(COMSchema):
     enddatum = fields.DateTime(load_default=None)
     startzeitpunkt = fields.DateTime(load_default=None)
     endzeitpunkt = fields.DateTime(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zeitraum:
-        """Deserialize JSON to Zeitraum object"""
-        return Zeitraum(**data)

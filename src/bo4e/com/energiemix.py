@@ -7,7 +7,7 @@ from decimal import Decimal
 from typing import List
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -61,6 +61,7 @@ class EnergiemixSchema(COMSchema):
     Schema for de-/serialization of Energiemix.
     """
 
+    class_name = Energiemix
     # required attributes
     energiemixnummer = fields.Int()
     energieart = EnumField(Sparte)
@@ -76,9 +77,3 @@ class EnergiemixSchema(COMSchema):
     oekolabel = fields.List(EnumField(Oekolabel), load_default=None)
     oeko_top_ten = fields.Bool(load_default=None)
     website = fields.Str(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Energiemix:
-        """Deserialize JSON to Energiemix object"""
-        return Energiemix(**data)
