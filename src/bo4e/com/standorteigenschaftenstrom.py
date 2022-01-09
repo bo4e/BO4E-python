@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -34,13 +34,8 @@ class StandorteigenschaftenStromSchema(COMSchema):
     Schema for de-/serialization of StandorteigenschaftenStrom.
     """
 
+    class_name = StandorteigenschaftenStrom
     # required attributes
     bilanzierungsgebiet_eic = fields.Str()
     regelzone = fields.Str()
     regelzone_eic = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> StandorteigenschaftenStrom:
-        """Deserialize JSON to StandorteigenschaftenGas object"""
-        return StandorteigenschaftenStrom(**data)
