@@ -4,7 +4,7 @@ Contains RegionaleTarifpreisPosition class and corresponding marshmallow schema 
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -59,6 +59,7 @@ class RegionaleTarifpreisPositionSchema(COMSchema):
     Schema for de-/serialization of RegionaleTarifpreisPosition
     """
 
+    class_name = RegionaleTarifpreisPosition
     # required attributes
     preistyp = EnumField(Preistyp)
     einheit = EnumField(Waehrungseinheit)
@@ -67,9 +68,3 @@ class RegionaleTarifpreisPositionSchema(COMSchema):
 
     # optional attributes
     mengeneinheitstaffel = fields.List(EnumField(Mengeneinheit), allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> RegionaleTarifpreisPosition:
-        """Deserialize JSON to RegionaleTarifpreisPosition object"""
-        return RegionaleTarifpreisPosition(**data)
