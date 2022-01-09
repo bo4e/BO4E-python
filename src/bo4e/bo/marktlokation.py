@@ -49,28 +49,78 @@ class Marktlokation(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
+    #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
+    #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
+    #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
     energierichtung: Energierichtung
+    #: Die Bilanzierungsmethode, RLM oder SLP
     bilanzierungsmethode: Bilanzierungsmethode
     netzebene: Netzebene
+    """
+    Netzebene, in der der Bezug der Energie erfolgt.
+    Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.
+    Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.
+    """
 
     # optional attributes
+    #: Verbrauchsart der Marktlokation.
     verbrauchsart: Verbrauchsart = attr.ib(default=None)
+    #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
     unterbrechbar: bool = attr.ib(default=None)
+    #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
     netzbetreibercodenr: str = attr.ib(default=None)
+    #: Typ des Netzgebietes, z.B. Verteilnetz
     gebietstyp: Gebiettyp = attr.ib(default=None)
-    netzgebietsnr: str = attr.ib(default=None)
+    #: Die ID des Gebietes in der ene't-Datenbank
+    netzgebietsnr: str = attr.ib(default=None)  # todo: rename to "id" (see 2021-12-15 update)
+    #: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
     bilanzierungsgebiet: str = attr.ib(default=None)
+    #: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
     grundversorgercodenr: str = attr.ib(default=None)
+    #: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
     gasqualitaet: Gasqualitaet = attr.ib(default=None)
+    #: Geschäftspartner, dem diese Marktlokation gehört
     endkunde: Geschaeftspartner = attr.ib(default=None)
-    zugehoerige_messlokation: Messlokationszuordnung = attr.ib(default=None)
+    zugehoerige_messlokation: Messlokationszuordnung = attr.ib(default=None)  # todo: rename to plural
+    """
+    Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.
+    Es können 3 verschiedene Konstrukte auftreten:
+
+    Beziehung 1 : 0 : Hier handelt es sich um Pauschalanlagen ohne Messung. D.h. die Verbrauchsdaten sind direkt über
+    die Marktlokation abgreifbar.
+    Beziehung 1 : 1 : Das ist die Standard-Beziehung für die meisten Fälle. In diesem Fall gibt es zu einer
+    Marktlokation genau eine Messlokation.
+    Beziehung 1 : N : Hier liegt beispielsweise eine Untermessung vor. Der Verbrauch einer Marklokation berechnet sich
+    hier aus mehreren Messungen.
+
+    Es gibt praktisch auch noch die Beziehung N : 1, beispielsweise bei einer Zweirichtungsmessung bei der durch eine
+    Messeinrichtung die Messung sowohl für die Einspreiseseite als auch für die Aussspeiseseite erfolgt.
+    Da Abrechnung und Bilanzierung jedoch für beide Marktlokationen getrennt erfolgt, werden nie beide Marktlokationen
+    gemeinsam betrachtet. Daher lässt sich dieses Konstrukt auf zwei 1:1-Beziehung zurückführen,
+    wobei die Messlokation in beiden Fällen die gleiche ist.
+
+    In den Zuordnungen sind ist die arithmetische Operation mit der der Verbrauch einer Messlokation zum Verbrauch einer
+    Marktlokation beitrögt mit aufgeführt.
+    Der Standard ist hier die Addition.
+    """
 
     # only one of the following three optional attributes can be set
+    #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
     lokationsadresse: Adresse = attr.ib(default=None)
     geoadresse: Geokoordinaten = attr.ib(default=None)
+    """
+    Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
+    (z.B. zur Identifikation von Sendemasten).
+    """
     katasterinformation: Katasteradresse = attr.ib(default=None)
+    """
+    Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
+    Flurstück erfolgen.
+    """
+
+    # todo: add kundengruppe
 
     @lokationsadresse.validator
     @geoadresse.validator

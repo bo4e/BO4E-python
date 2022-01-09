@@ -39,21 +39,45 @@ class Vertrag(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.VERTRAG)
+    #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: str = attr.ib(validator=attr.validators.instance_of(str))
+    #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt.
     vertragsart: Vertragsart = attr.ib(validator=attr.validators.instance_of(Vertragsart))
+    #: Gibt den Status des Vertrags an
     vertragsstatus: Vertragsstatus = attr.ib(validator=attr.validators.instance_of(Vertragsstatus))
+    #: Unterscheidungsmöglichkeiten für die Sparte
     sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
+    #: Gibt an, wann der Vertrag beginnt (inklusiv)
     vertragsbeginn: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
     vertragsende: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
-
+    # todo: add von/bis validator
     vertragspartner1: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
+    """
+    Der "erstgenannte" Vertragspartner.
+    In der Regel der Aussteller des Vertrags.
+    Beispiel: "Vertrag zwischen Vertragspartner 1 ..."
+    """
     vertragspartner2: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
+    """
+    Der "zweitgenannte" Vertragspartner.
+    In der Regel der Empfänger des Vertrags.
+    Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
+    """
     vertragsteile: List[Vertragsteil] = attr.ib(validator=at_least_one_vertragsteil)
+    """
+    Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
+    (Markt- oder Messlokation) festzulegen.
+    """
 
     # optional attributes
+    #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = attr.ib(default=None)
+    #: Festlegungen zu Laufzeiten und Kündigungsfristen
     vertragskonditionen: Optional[Vertragskonditionen] = attr.ib(default=None)
+    #: Unterzeichner des Vertragspartners 1
     unterzeichnervp1: Optional[List[Unterschrift]] = attr.ib(default=None)
+    #: Unterzeichner des Vertragspartners 2
     unterzeichnervp2: Optional[List[Unterschrift]] = attr.ib(default=None)
 
 
