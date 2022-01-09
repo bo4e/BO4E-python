@@ -10,6 +10,7 @@ class BoTyp(StrEnum):
     ANGEBOT = "ANGEBOT"
     ANSPRECHPARTNER = "ANSPRECHPARTNER"
     AUSSCHREIBUNG = "AUSSCHREIUNG"
+    BUENDELVERTRAG = "BUENDELVERTRAG"
     ENERGIEMENGE = "ENERGIEMENGE"
     # It is practical to use the BoTyp Enum as discriminator in the database.
     # Therefore we added one additional entry for GESCHAEFTSOBJEKT

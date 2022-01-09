@@ -62,11 +62,8 @@ class TestVertrag:
         )
     ]
 
-    def test_serialisation_only_required_attributes(self):
-        """
-        Test de-/serialisation of Vertrag with minimal attributes.
-        """
-        vertrag = Vertrag(
+    def get_example_vertrag(self) -> Vertrag:
+        return Vertrag(
             vertragsnummer=self._vertragsnummer,
             vertragsart=self._vertragsart,
             vertragsstatus=self._vertragsstatus,
@@ -77,6 +74,12 @@ class TestVertrag:
             vertragspartner2=self._vertragspartner2,
             vertragsteile=self._vertragsteile,
         )
+
+    def test_serialisation_only_required_attributes(self):
+        """
+        Test de-/serialisation of Vertrag with minimal attributes.
+        """
+        vertrag = self.get_example_vertrag()
 
         schema = VertragSchema()
         json_string = schema.dumps(vertrag, ensure_ascii=False)
