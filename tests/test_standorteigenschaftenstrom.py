@@ -9,6 +9,7 @@ example_standorteigenschaften_strom = StandorteigenschaftenStrom(
     regelzone_eic="10YDE-ENBW-----N",
 )
 
+
 class TestStandorteigenschaftenStrom:
     @pytest.mark.parametrize(
         "standorteigenschaften_strom, expected_json_dict",
