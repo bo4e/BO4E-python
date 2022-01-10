@@ -4,7 +4,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenposition import Fremdkostenposition, FremdkostenpositionSchema
+from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -15,12 +15,12 @@ from tests.test_menge import example_menge  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
 
-class TestFremdkostenposition:
+class TestKostenposition:
     @pytest.mark.parametrize(
-        "fremdkostenposition, expected_json_dict",
+        "kostenposition, expected_json_dict",
         [
             pytest.param(
-                Fremdkostenposition(
+                Kostenposition(
                     positionstitel="Mudders Preisstaffel",
                     artikelbezeichnung="Dei Mudder ihr Preisstaffel",
                     einzelpreis=Preis(
@@ -35,29 +35,24 @@ class TestFremdkostenposition:
                     ),
                 ),
                 {
-                    "marktpartnercode": None,
                     "positionstitel": "Mudders Preisstaffel",
-                    "einzelpreis": {"wert": "3.5", "einheit": "EUR", "bezugswert": "KWH", "status": "ENDGUELTIG"},
+                    "einzelpreis": {"status": "ENDGUELTIG", "einheit": "EUR", "wert": "3.5", "bezugswert": "KWH"},
                     "bis": None,
+                    "von": None,
                     "menge": None,
                     "zeitmenge": None,
                     "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
-                    "marktpartnername": None,
                     "artikeldetail": None,
-                    "von": None,
-                    "linkPreisblatt": None,
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
-                    "gebietcodeEic": None,
+                    "betragKostenposition": {"waehrung": "EUR", "wert": "12.5"},
                 },
                 id="only required attributes",
             ),
             pytest.param(
-                Fremdkostenposition(
-                    positionstitel="Vadders Preisstaffel",
+                Kostenposition(
+                    positionstitel="Vadders Kostenposition",
                     von=datetime(2013, 5, 1, tzinfo=timezone.utc),
                     bis=datetime(2014, 5, 1, tzinfo=timezone.utc),
-                    artikelbezeichnung="Deim Vadder sei Preisstaffel",
-                    link_preisblatt="http://foo.bar/",
+                    artikelbezeichnung="Deim Vadder sei Kostenposition",
                     zeitmenge=example_menge,
                     einzelpreis=Preis(
                         wert=Decimal(3.50),
@@ -71,37 +66,51 @@ class TestFremdkostenposition:
                     ),
                     menge=example_menge,
                     artikeldetail="foo",
-                    marktpartnercode="986543210123",
-                    marktpartnername="Mein MP",
-                    gebietcode_eic="not an eic code but validation will follow in ticket 146",
                 ),
                 {
-                    "artikelbezeichnung": "Deim Vadder sei Preisstaffel",
-                    "artikeldetail": "foo",
-                    "marktpartnername": "Mein MP",
-                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
+                    "artikelbezeichnung": "Deim Vadder sei Kostenposition",
+                    "positionstitel": "Vadders Kostenposition",
                     "menge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
-                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
-                    "marktpartnercode": "986543210123",
-                    "bis": "2014-05-01T00:00:00+00:00",
-                    "positionstitel": "Vadders Preisstaffel",
+                    "artikeldetail": "foo",
+                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
                     "von": "2013-05-01T00:00:00+00:00",
+                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
+                    "bis": "2014-05-01T00:00:00+00:00",
                     "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
-                    "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
-                    "linkPreisblatt": "http://foo.bar/",
                 },
                 id="required and optional attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, fremdkostenposition: Fremdkostenposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: dict):
         """
-        Test de-/serialisation of Fremdkostenposition.
+        Test de-/serialisation of Kostenposition.
         """
-        assert_serialization_roundtrip(fremdkostenposition, FremdkostenpositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kostenposition, KostenpositionSchema(), expected_json_dict)
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
-            _ = Fremdkostenposition()
+            _ = Kostenposition()
 
         assert "missing 4 required" in str(excinfo.value)
+
+    def test_von_bis_validation_attribute(self):
+        with pytest.raises(ValueError) as excinfo:
+            _ = Kostenposition(
+                positionstitel="Mudders Preisstaffel",
+                artikelbezeichnung="Dei Mudder ihr Preisstaffel",
+                einzelpreis=Preis(
+                    wert=Decimal(3.50),
+                    einheit=Waehrungseinheit.EUR,
+                    bezugswert=Mengeneinheit.KWH,
+                    status=Preisstatus.ENDGUELTIG,
+                ),
+                betrag_kostenposition=Betrag(
+                    waehrung=Waehrungscode.EUR,
+                    wert=Decimal(12.5),
+                ),
+                von=datetime(2014, 5, 1, tzinfo=timezone.utc),
+                bis=datetime(2013, 5, 1, tzinfo=timezone.utc),
+            )
+
+        assert "has to be later than the start" in str(excinfo.value)
