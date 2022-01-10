@@ -84,7 +84,7 @@ class TestKostenposition:
     )
     def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: dict):
         """
-        Test de-/serialisation of Fremdkostenposition.
+        Test de-/serialisation of Kostenposition
         """
         assert_serialization_roundtrip(kostenposition, KostenpositionSchema(), expected_json_dict)
 
