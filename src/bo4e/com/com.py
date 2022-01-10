@@ -1,7 +1,7 @@
 """
 Contains base class for all components
 """
-from typing import TypeVar, Generic, Type
+from typing import Generic, Type, TypeVar
 
 import attr
 from marshmallow import post_load
