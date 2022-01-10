@@ -2,10 +2,6 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.angebotsposition import Angebotsposition, AngebotspositionSchema
-from bo4e.com.betrag import Betrag
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
 from bo4e.com.preisposition import Preisposition, PreispositionSchema
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
@@ -13,7 +9,6 @@ from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
 from bo4e.enum.leistungstyp import Leistungstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.tarifzeit import Tarifzeit
-from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
