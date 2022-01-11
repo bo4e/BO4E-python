@@ -21,8 +21,6 @@ class TestKostenblock:
             pytest.param(
                 Kostenblock(
                     kostenblockbezeichnung="Mein Kostenblock",
-                    summe_kostenblock=None,
-                    kostenpositionen=None,
                 ),
                 {
                     "kostenblockbezeichnung": "Mein Kostenblock",
