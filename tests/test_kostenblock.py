@@ -77,7 +77,7 @@ class TestKostenblock:
                     ],
                     "summeKostenblock": {"waehrung": "EUR", "wert": "12.5"},
                 },
-                id="minimal",
+                id="maximal",
             ),
         ],
     )
