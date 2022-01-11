@@ -17,18 +17,14 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
 from bo4e.validators import obis_validator
 
-
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
-class LastgangKompakt(Geschaeftsobjekt):
+class _LastgangBody:
     """
-    Modell zur Abbildung eines kompakten Lastganges.
-    In diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten übertragen.
-    Daher ist dieses BO nur zur Übertragung von äquidistanten Messwertverläufen geeignet.
+    The LastgangBody is a mixin that contains the "body" of a Lastgang that is used in both the :class:`Lastgang` as
+    well as :class:`LastgangKompakt`.
     """
 
-    # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.LASTGANG_KOMPAKT)
     #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
     sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
 
@@ -46,8 +42,24 @@ class LastgangKompakt(Geschaeftsobjekt):
     zeitintervall: Zeitintervall = attr.ib(validator=attr.validators.instance_of(Zeitintervall))
     # todo: implement a cross check that this zeitintervall is actually the one used in tagesvektoren
 
+    # optional attributes
+    #: Versionsnummer des Lastgangs
+    version: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: str = attr.ib(validator=obis_validator)
+    obis_kennzahl: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(obis_validator))
+
+
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
+@attr.s(auto_attribs=True, kw_only=True)
+class LastgangKompakt(Geschaeftsobjekt, _LastgangBody):
+    """
+    Modell zur Abbildung eines kompakten Lastganges.
+    In diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten übertragen.
+    Daher ist dieses BO nur zur Übertragung von äquidistanten Messwertverläufen geeignet.
+    """
+
+    # required attributes
+    bo_typ: BoTyp = attr.ib(default=BoTyp.LASTGANG_KOMPAKT)
 
     #: Die im Lastgang enthaltenen Messwerte in Form von Tagesvektoren
     tagesvektoren: List[Tagesvektor] = attr.ib(
@@ -57,25 +69,28 @@ class LastgangKompakt(Geschaeftsobjekt):
         )
     )
 
+
+class _LastgangBodySchemaMixin:
+    """
+    A mixin for schemas to deserialize Lastgang and LastgangKompakt objects.
+    """
+
+    sparte = EnumField(Sparte)
+    lokations_id = fields.Str()
+    lokationstyp = EnumField(Lokationstyp)
+    messgroesse = EnumField(Mengeneinheit)
+    zeitintervall = fields.Nested(ZeitintervallSchema)
+
     # optional attributes
-    #: Versionsnummer des Lastgangs
-    version: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
+    obis_kennzahl = fields.Str(load_default=None)
+    version = fields.Str(allow_none=True)
 
 
-class LastgangKompaktSchema(GeschaeftsobjektSchema):
+class LastgangKompaktSchema(GeschaeftsobjektSchema, _LastgangBodySchemaMixin):
     """
     Schema for de-/serialization of LastgangKompakt
     """
 
     class_name = LastgangKompakt
     # required attributes
-    sparte = EnumField(Sparte)
-    lokations_id = fields.Str()
-    lokationstyp = EnumField(Lokationstyp)
-    messgroesse = EnumField(Mengeneinheit)
-    zeitintervall = fields.Nested(ZeitintervallSchema)
-    obis_kennzahl = fields.Str()
     tagesvektoren = fields.List(fields.Nested(TagesvektorSchema))
-
-    # optional attributes
-    version = fields.Str(allow_none=True)

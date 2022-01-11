@@ -54,4 +54,4 @@ class TestLastgangKompakt:
         with pytest.raises(TypeError) as excinfo:
             _ = LastgangKompakt()
 
-        assert "missing 7 required" in str(excinfo.value)
+        assert "missing 6 required" in str(excinfo.value)
