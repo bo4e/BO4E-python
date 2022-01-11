@@ -1,5 +1,5 @@
 """
-Contains RegionaleTarifpreisPosition class and corresponding marshmallow schema for de-/serialization
+Contains RegionaleTarifpreisposition class and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
 
