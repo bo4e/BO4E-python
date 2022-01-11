@@ -54,12 +54,12 @@ class RegionaleTarifpreisposition(COM):
     )
 
 
-class RegionaleTarifpreisPositionSchema(COMSchema):
+class RegionaleTarifpreispositionSchema(COMSchema):
     """
-    Schema for de-/serialization of RegionaleTarifpreisPosition
+    Schema for de-/serialization of RegionaleTarifpreisposition
     """
 
-    class_name = RegionaleTarifpreisPosition
+    class_name = RegionaleTarifpreisposition
     # required attributes
     preistyp = EnumField(Preistyp)
     einheit = EnumField(Waehrungseinheit)
