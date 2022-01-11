@@ -43,14 +43,8 @@ class RegionaleTarifpreisposition(COM):
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Optional[List[Mengeneinheit]] = attr.ib(
-        default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Mengeneinheit),
-                iterable_validator=attr.validators.instance_of(list),
-            )
-        ),
+    mengeneinheitstaffel: Optional[Mengeneinheit] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(Mengeneinheit))
     )
 
 
@@ -67,4 +61,4 @@ class RegionaleTarifpreispositionSchema(COMSchema):
     preisstaffeln = fields.List(fields.Nested(RegionalePreisstaffelSchema))
 
     # optional attributes
-    mengeneinheitstaffel = fields.List(EnumField(Mengeneinheit), allow_none=True)
+    mengeneinheitstaffel = EnumField(Mengeneinheit, load_default=None)

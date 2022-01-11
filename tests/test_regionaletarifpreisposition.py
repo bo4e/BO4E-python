@@ -3,10 +3,9 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisPosition, RegionaleTarifpreisPositionSchema
+from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition, RegionaleTarifpreispositionSchema
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
@@ -21,11 +20,11 @@ class TestRegionaleTarifpreisPosition:
         "regionale_tarifpreis_position, expected_json_dict",
         [
             pytest.param(
-                RegionaleTarifpreisPosition(
+                RegionaleTarifpreisposition(
                     preistyp=Preistyp.ARBEITSPREIS_NT,
                     einheit=Waehrungseinheit.EUR,
                     bezugseinheit=Mengeneinheit.KWH,
-                    mengeneinheitstaffel=[Mengeneinheit.WH],
+                    mengeneinheitstaffel=Mengeneinheit.WH,
                     preisstaffeln=[
                         RegionalePreisstaffel(
                             einheitspreis=Decimal(40.0),
@@ -56,7 +55,7 @@ class TestRegionaleTarifpreisPosition:
                         }
                     ],
                     "einheit": "EUR",
-                    "mengeneinheitstaffel": ["WH"],
+                    "mengeneinheitstaffel": "WH",
                     "preistyp": "ARBEITSPREIS_NT",
                 },
                 id="all attributes",
@@ -64,14 +63,14 @@ class TestRegionaleTarifpreisPosition:
         ],
     )
     def test_serialization_roundtrip(
-        self, regionale_tarifpreis_position: RegionaleTarifpreisPosition, expected_json_dict: dict
+        self, regionale_tarifpreis_position: RegionaleTarifpreisposition, expected_json_dict: dict
     ):
         assert_serialization_roundtrip(
-            regionale_tarifpreis_position, RegionaleTarifpreisPositionSchema(), expected_json_dict
+            regionale_tarifpreis_position, RegionaleTarifpreispositionSchema(), expected_json_dict
         )
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
-            _ = RegionaleTarifpreisPosition()
+            _ = RegionaleTarifpreisposition()
 
         assert "missing 4 required" in str(excinfo.value)
