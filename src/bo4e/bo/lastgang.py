@@ -11,11 +11,13 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.tagesvektor import Tagesvektor, TagesvektorSchema
 from bo4e.com.zeitintervall import Zeitintervall, ZeitintervallSchema
+from bo4e.com.zeitreihenwert import Zeitreihenwert, ZeitreihenwertSchema
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import obis_validator
+from bo4e.validators import check_list_length_at_least_one, obis_validator
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
@@ -38,10 +40,6 @@ class _LastgangBody:
     #: Definition der gemessenen Größe anhand ihrer Einheit
     messgroesse: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
 
-    #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
-    zeitintervall: Zeitintervall = attr.ib(validator=attr.validators.instance_of(Zeitintervall))
-    # todo: implement a cross check that this zeitintervall is actually the one used in tagesvektoren
-
     # optional attributes
     #: Versionsnummer des Lastgangs
     version: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
@@ -61,11 +59,36 @@ class LastgangKompakt(Geschaeftsobjekt, _LastgangBody):
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.LASTGANG_KOMPAKT)
 
+    #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
+    zeitintervall: Zeitintervall = attr.ib(validator=attr.validators.instance_of(Zeitintervall))
+    # todo: implement a cross check that this zeitintervall is actually the one used in tagesvektoren
+
     #: Die im Lastgang enthaltenen Messwerte in Form von Tagesvektoren
     tagesvektoren: List[Tagesvektor] = attr.ib(
         validator=attr.validators.deep_iterable(
             member_validator=attr.validators.instance_of(Tagesvektor),
             iterable_validator=attr.validators.instance_of(list),
+        )
+    )
+
+
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
+@attr.s(auto_attribs=True, kw_only=True)
+class Lastgang(Geschaeftsobjekt, _LastgangBody):
+    """
+    Modell zur Abbildung eines Lastganges;
+    In diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall angegeben und es bietet daher eine hohe
+    Flexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.
+    """
+
+    # required attributes
+    bo_typ: BoTyp = attr.ib(default=BoTyp.LASTGANG)
+
+    #: Die im Lastgang enthaltenen Messwerte
+    werte: List[Zeitreihenwert] = attr.ib(
+        validator=attr.validators.deep_iterable(
+            member_validator=attr.validators.instance_of(Zeitreihenwert),
+            iterable_validator=check_list_length_at_least_one,
         )
     )
 
@@ -79,7 +102,6 @@ class _LastgangBodySchemaMixin:
     lokations_id = fields.Str()
     lokationstyp = EnumField(Lokationstyp)
     messgroesse = EnumField(Mengeneinheit)
-    zeitintervall = fields.Nested(ZeitintervallSchema)
 
     # optional attributes
     obis_kennzahl = fields.Str(load_default=None)
@@ -93,4 +115,15 @@ class LastgangKompaktSchema(GeschaeftsobjektSchema, _LastgangBodySchemaMixin):
 
     class_name = LastgangKompakt
     # required attributes
+    zeitintervall = fields.Nested(ZeitintervallSchema)
     tagesvektoren = fields.List(fields.Nested(TagesvektorSchema))
+
+
+class LastgangSchema(GeschaeftsobjektSchema, _LastgangBodySchemaMixin):
+    """
+    Schema for de-/serialization of Lastgang
+    """
+
+    class_name = Lastgang
+    # required attributes
+    werte = fields.List(fields.Nested(ZeitreihenwertSchema))
