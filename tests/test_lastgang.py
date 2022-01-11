@@ -10,7 +10,7 @@ from tests.test_zeitreihenwert import example_zeitreihenwert  # type:ignore[impo
 
 class TestLastgang:
     @pytest.mark.parametrize(
-        "lastgang_kompakt, expected_json_dict",
+        "lastgang_kompakt",
         [
             pytest.param(
                 Lastgang(
