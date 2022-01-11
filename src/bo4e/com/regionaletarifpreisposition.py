@@ -17,7 +17,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
-class RegionaleTarifpreisPosition(COM):
+class RegionaleTarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet
     werden.
