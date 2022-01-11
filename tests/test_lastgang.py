@@ -35,4 +35,4 @@ class TestLastgang:
         with pytest.raises(TypeError) as excinfo:
             _ = Lastgang()
 
-        assert "missing 6 required" in str(excinfo.value)
+        assert "missing 5 required" in str(excinfo.value)
