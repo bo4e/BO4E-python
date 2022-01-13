@@ -1,5 +1,5 @@
 """
-Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
+Contains Angebotsvariante and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from typing import List, Optional
