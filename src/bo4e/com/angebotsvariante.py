@@ -53,7 +53,7 @@ class Angebotsvariante(COM):
     gesamtmenge: Optional[Menge] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
     )
-    # todo: write a validator for this
+    # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320
     #: Aufsummierte Kosten aller Angebotsteile
     gesamtkosten: Optional[Betrag] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
