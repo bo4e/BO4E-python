@@ -24,7 +24,7 @@ class Angebotsvariante(COM):
     """
 
     # required attributes
-    #: Preis pro abgerechneter Mengeneinheit
+    #: Gibt den Status eines Angebotes an.
     angebotsstatus: Angebotsstatus = attr.ib(validator=attr.validators.instance_of(Angebotsstatus))
 
     #: Datum der Erstellung der Angebotsvariante
