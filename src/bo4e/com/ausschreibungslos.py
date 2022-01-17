@@ -29,7 +29,7 @@ class Ausschreibungslos(COM):
     # required attributes
     #: Laufende Nummer des Loses
     losnummer: str = attr.ib(validator=attr.validators.instance_of(str))
-    #: Bezeichnung des Loses
+    #: Bezeichnung der Ausschreibung
     bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
     preismodell: Preismodell = attr.ib(validator=attr.validators.instance_of(Preismodell))
