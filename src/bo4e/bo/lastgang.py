@@ -36,6 +36,7 @@ class _LastgangBody:
     #: Marktlokation oder Messlokation
     lokationstyp: str = attr.ib(validator=attr.validators.instance_of(Lokationstyp))
     # todo: implement a lokations-id + lokationstyp cross check (such that lokationstyp malo checks for valid malo id)
+    # https://github.com/Hochfrequenz/BO4E-python/issues/321
 
     #: Definition der gemessenen Größe anhand ihrer Einheit
     messgroesse: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
@@ -62,6 +63,7 @@ class LastgangKompakt(Geschaeftsobjekt, _LastgangBody):
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
     zeitintervall: Zeitintervall = attr.ib(validator=attr.validators.instance_of(Zeitintervall))
     # todo: implement a cross check that this zeitintervall is actually the one used in tagesvektoren
+    # https://github.com/Hochfrequenz/BO4E-python/issues/322
 
     #: Die im Lastgang enthaltenen Messwerte in Form von Tagesvektoren
     tagesvektoren: List[Tagesvektor] = attr.ib(
