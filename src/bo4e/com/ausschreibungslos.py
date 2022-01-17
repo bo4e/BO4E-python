@@ -45,7 +45,7 @@ class Ausschreibungslos(COM):
     #: Anzahl der Lieferstellen in dieser Ausschreibung
     anzahl_lieferstellen: int = attr.ib(validator=attr.validators.instance_of(int))
 
-    #:Die ausgeschriebenen Lieferstellen
+    #: Die ausgeschriebenen Lieferstellen
     lieferstellen: List[Ausschreibungsdetail] = attr.ib(
         validator=attr.validators.deep_iterable(
             member_validator=attr.validators.instance_of(Ausschreibungsdetail),
