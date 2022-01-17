@@ -46,7 +46,7 @@ class TestLastgangKompakt:
     )
     def test_serialization_roundtrip(self, lastgang_kompakt: LastgangKompakt, expected_json_dict: dict):
         """
-        Test de-/serialisation of Preisstaffel.
+        Test de-/serialisation of LastgangKompakt.
         """
         assert_serialization_roundtrip(lastgang_kompakt, LastgangKompaktSchema(), expected_json_dict)
 
