@@ -88,4 +88,4 @@ class TestAusschreibungslos:
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
             _ = Ausschreibungslos()
-        assert "missing 9 required" in str(excinfo.value)
+        assert "missing 10 required" in str(excinfo.value)
