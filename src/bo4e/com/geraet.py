@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften, GeraeteeigenschaftenSchema
@@ -35,12 +35,7 @@ class GeraetSchema(COMSchema):
     Schema for de-/serialization of Geraet.
     """
 
+    class_name = Geraet
     # optional attributes
     geraetenummer = fields.Str(missing=None)
     geraeteeigenschaften = fields.Nested(GeraeteeigenschaftenSchema, missing=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Geraet:
-        """Deserialize JSON to Geraet object"""
-        return Geraet(**data)

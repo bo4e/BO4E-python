@@ -5,7 +5,7 @@ import datetime
 from typing import List
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
@@ -50,12 +50,7 @@ class TagesvektorSchema(COMSchema):
     Schema for de-/serialization of Tagesvektor
     """
 
+    class_name = Tagesvektor
     # required attributes
     tag = fields.DateTime()
     werte = fields.List(fields.Nested(ZeitreihenwertkompaktSchema))
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Tagesvektor:
-        """Deserialize JSON to Preisstaffel object"""
-        return Tagesvektor(**data)

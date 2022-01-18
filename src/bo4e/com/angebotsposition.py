@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.betrag import Betrag, BetragSchema
 from bo4e.com.com import COM, COMSchema
@@ -44,14 +44,9 @@ class AngebotspositionSchema(COMSchema):
     Schema for de-/serialization of Angebotsposition.
     """
 
+    class_name = Angebotsposition
     # required attributes
     positionsbezeichnung = fields.String()
     positionspreis = fields.Nested(PreisSchema)
     positionsmenge = fields.Nested(MengeSchema, load_default=None)
     positionskosten = fields.Nested(BetragSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Angebotsposition:
-        """Deserialize JSON to Angebotsposition object"""
-        return Angebotsposition(**data)
