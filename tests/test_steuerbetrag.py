@@ -7,18 +7,20 @@ from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
 from bo4e.enum.waehrungscode import Waehrungscode
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_steuerbetrag = Steuerbetrag(
+    steuerkennzeichen=Steuerkennzeichen.UST_7,
+    basiswert=Decimal(100),
+    steuerwert=Decimal(19),
+    waehrung=Waehrungscode.EUR,
+)
+
 
 class TestSteuerbetrag:
     @pytest.mark.parametrize(
         "steuerbetrag, expected_json_dict",
         [
             pytest.param(
-                Steuerbetrag(
-                    steuerkennzeichen=Steuerkennzeichen.UST_7,
-                    basiswert=Decimal(100),
-                    steuerwert=Decimal(19),
-                    waehrung=Waehrungscode.EUR,
-                ),
+                example_steuerbetrag,
                 {"steuerkennzeichen": "UST_7", "basiswert": "100", "steuerwert": "19", "waehrung": "EUR"},
             ),
         ],
