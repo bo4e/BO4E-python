@@ -82,7 +82,7 @@ class TestFremdkostenblock:
     )
     def test_serialization_roundtrip(self, fremdkostenblock, expected_json_dict):
         """
-        Test de-/serialisation of Fremdkostenblock with minimal attributes.
+        Test de-/serialisation of Fremdkostenblock
         """
         assert_serialization_roundtrip(fremdkostenblock, FremdkostenblockSchema(), expected_json_dict)
 
