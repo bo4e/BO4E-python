@@ -7,17 +7,19 @@ from bo4e.com.zeitreihenwert import Zeitreihenwert, ZeitreihenwertSchema
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
+example_zeitreihenwert = Zeitreihenwert(
+    wert=Decimal(2.5),
+    datum_uhrzeit_von=datetime(2001, 3, 15, tzinfo=timezone.utc),
+    datum_uhrzeit_bis=datetime(2007, 11, 27, tzinfo=timezone.utc),
+)
+
 
 class TestZeitreihenwert:
     def test_zeitreihenwert_only_required_attributes(self):
         """
         Test de-/serialisation of Zeitreihenwert with minimal attributes.
         """
-        zeitreihenwert = Zeitreihenwert(
-            wert=Decimal(2.5),
-            datum_uhrzeit_von=datetime(2001, 3, 15, tzinfo=timezone.utc),
-            datum_uhrzeit_bis=datetime(2007, 11, 27, tzinfo=timezone.utc),
-        )
+        zeitreihenwert = example_zeitreihenwert
 
         schema = ZeitreihenwertSchema()
         json_string = schema.dumps(zeitreihenwert, ensure_ascii=False)
