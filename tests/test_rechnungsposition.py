@@ -3,6 +3,7 @@ from datetime import datetime, timezone
 import pytest  # type:ignore[import]
 
 from bo4e.com.rechnungsposition import Rechnungsposition, RechnungspositionSchema
+from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -31,6 +32,7 @@ class TestRechnungsposition:
                     teilsumme_netto=example_betrag,
                     teilrabatt_netto=example_betrag,
                     teilsumme_steuer=example_steuerbetrag,
+                    artikel_id=ArtikelId.ARTIKEL_2017004,
                 ),
                 id="maximal attributes",
             )

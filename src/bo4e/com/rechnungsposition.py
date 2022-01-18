@@ -13,6 +13,7 @@ from bo4e.com.com import COM, COMSchema
 from bo4e.com.menge import Menge, MengeSchema
 from bo4e.com.preis import Preis, PreisSchema
 from bo4e.com.steuerbetrag import Steuerbetrag, SteuerbetragSchema
+from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit
 from bo4e.validators import check_bis_is_later_than_von, validate_marktlokations_id
@@ -82,6 +83,10 @@ class Rechnungsposition(COM):
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
     )
 
+    artikel_id: Optional[ArtikelId] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(ArtikelId)), default=None
+    )  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
+
     def _get_inclusive_start(self) -> datetime:
         """return the inclusive start (used in the validator)"""
         return self.lieferung_von
@@ -114,3 +119,4 @@ class RechnungspositionSchema(COMSchema):
     lokations_id = fields.String(load_default=None)
     zeitbezogene_menge = fields.Nested(MengeSchema, load_default=None)
     teilrabatt_netto = fields.Nested(BetragSchema, load_default=None)
+    artikel_id = EnumField(ArtikelId, load_default=None)
