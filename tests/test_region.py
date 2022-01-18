@@ -30,7 +30,7 @@ class TestRegion:
             _ = Region()
 
         assert "missing 2 required" in str(excinfo.value)
-        
+
     def test_region_positiv_liste_required_and_negativ_liste_not_required(self):
         with pytest.raises(ValueError) as excinfo:
             _ = Region(
