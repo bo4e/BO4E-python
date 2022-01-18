@@ -149,7 +149,6 @@ class RegionalerAufAbschlagSchema(COMSchema):
     zusatzprodukte = fields.List(fields.Str(), default=None)
     voraussetzungen = fields.List(fields.Str(), default=None)
 
-    #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten
     tarifnamensaenderungen = fields.Str(default=None)
     gueltigkeitszeitraum = fields.Nested(ZeitraumSchema, default=None)
     energiemixaenderung = fields.Nested(EnergiemixSchema, default=None)
