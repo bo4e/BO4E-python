@@ -11,15 +11,15 @@ example_betrag = Betrag(
     wert=Decimal(12.5),
 )
 
+example_betrag_json = {"wert": "12.5", "waehrung": "EUR"}
+
+
 
 class TestBetrag:
     @pytest.mark.parametrize(
         "betrag, expected_json_dict",
         [
-            pytest.param(
-                example_betrag,
-                {"wert": "12.5", "waehrung": "EUR"},
-            ),
+            pytest.param(example_betrag, example_betrag_json),
         ],
     )
     def test_regionskriterium_serialization_roundtrip(self, betrag: Betrag, expected_json_dict: dict):
