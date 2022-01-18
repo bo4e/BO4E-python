@@ -54,7 +54,7 @@ class Ausschreibungslos(COM):
     )
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Zeitraum = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)))
+    lieferzeitraum: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
 
     # optional attributes
     #: Bemerkung des Kunden zum Los
