@@ -32,7 +32,7 @@ class Tarifinfo(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.TARIFINFO)
-    #: 	Name des Tarifs
+    #: Name des Tarifs
     bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
     #: Der Name des Marktpartners, der den Tarif anbietet
     anbietername: str = attr.ib(validator=attr.validators.instance_of(str))
