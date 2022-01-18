@@ -6,6 +6,10 @@ from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
+example_preisstaffel = Preisstaffel(
+    einheitspreis=Decimal(40.0), staffelgrenze_von=Decimal(12.5), staffelgrenze_bis=Decimal(25.0)
+)
+
 
 class TestPreisstaffel:
     @pytest.mark.parametrize(
@@ -27,9 +31,7 @@ class TestPreisstaffel:
                 id="all attributes",
             ),
             pytest.param(
-                Preisstaffel(
-                    einheitspreis=Decimal(40.0), staffelgrenze_von=Decimal(12.5), staffelgrenze_bis=Decimal(25.0)
-                ),
+                example_preisstaffel,
                 {
                     "einheitspreis": "40",
                     "staffelgrenzeVon": "12.5",
