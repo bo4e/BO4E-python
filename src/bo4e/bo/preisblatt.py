@@ -1,5 +1,5 @@
 """
-Contains LastgangKompakt class
+Contains Preisblatt class
 and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
