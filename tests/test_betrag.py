@@ -6,18 +6,19 @@ from bo4e.com.betrag import Betrag, BetragSchema
 from bo4e.enum.waehrungscode import Waehrungscode
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_betrag = Betrag(
+    waehrung=Waehrungscode.EUR,
+    wert=Decimal(12.5),
+)
+
+example_betrag_json = {"wert": "12.5", "waehrung": "EUR"}
+
 
 class TestBetrag:
     @pytest.mark.parametrize(
         "betrag, expected_json_dict",
         [
-            pytest.param(
-                Betrag(
-                    waehrung=Waehrungscode.EUR,
-                    wert=Decimal(12.5),
-                ),
-                {"wert": "12.5", "waehrung": "EUR"},
-            ),
+            pytest.param(example_betrag, example_betrag_json),
         ],
     )
     def test_regionskriterium_serialization_roundtrip(self, betrag: Betrag, expected_json_dict: dict):

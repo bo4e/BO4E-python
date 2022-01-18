@@ -3,17 +3,19 @@ import pytest  # type:ignore[import]
 from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom, StandorteigenschaftenStromSchema
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_standorteigenschaften_strom = StandorteigenschaftenStrom(
+    regelzone="Transnet BW",
+    bilanzierungsgebiet_eic="11YW-ALBSTADT--5",
+    regelzone_eic="10YDE-ENBW-----N",
+)
+
 
 class TestStandorteigenschaftenStrom:
     @pytest.mark.parametrize(
         "standorteigenschaften_strom, expected_json_dict",
         [
             pytest.param(
-                StandorteigenschaftenStrom(
-                    regelzone="Transnet BW",
-                    bilanzierungsgebiet_eic="11YW-ALBSTADT--5",
-                    regelzone_eic="10YDE-ENBW-----N",
-                ),
+                example_standorteigenschaften_strom,
                 {
                     "regelzone": "Transnet BW",
                     "bilanzierungsgebietEic": "11YW-ALBSTADT--5",

@@ -10,6 +10,14 @@ example_zeitraum = Zeitraum(
     einheit=Zeiteinheit.TAG,
     dauer=Decimal(5),
 )
+example_zeitraum_dict = {
+    "dauer": "5",
+    "startdatum": None,
+    "endzeitpunkt": None,
+    "einheit": "TAG",
+    "enddatum": None,
+    "startzeitpunkt": None,
+}
 
 
 class TestZeitraum:
