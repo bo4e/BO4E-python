@@ -8,6 +8,13 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_verbrauch = Verbrauch(
+    wert=Decimal(40),
+    obis_kennzahl="1-0:1.8.1",
+    mengeneinheit=Mengeneinheit.KWH,
+    wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+)
+
 
 class TestVerbrauch:
     @pytest.mark.parametrize(
@@ -32,12 +39,7 @@ class TestVerbrauch:
                 },
             ),
             pytest.param(
-                Verbrauch(
-                    wert=Decimal(40),
-                    obis_kennzahl="1-0:1.8.1",
-                    mengeneinheit=Mengeneinheit.KWH,
-                    wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
-                ),
+                example_verbrauch,
                 {
                     "wert": "40",
                     "mengeneinheit": "KWH",
