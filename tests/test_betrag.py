@@ -14,7 +14,6 @@ example_betrag = Betrag(
 example_betrag_json = {"wert": "12.5", "waehrung": "EUR"}
 
 
-
 class TestBetrag:
     @pytest.mark.parametrize(
         "betrag, expected_json_dict",
