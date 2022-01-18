@@ -22,7 +22,7 @@ from bo4e.validators import check_list_length_at_least_one
 @attr.s(auto_attribs=True, kw_only=True)
 class Zeitreihe(Geschaeftsobjekt):
     """
-    Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor;
+    Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
     Die Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.
     """
 
