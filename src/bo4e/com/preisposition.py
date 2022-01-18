@@ -84,7 +84,7 @@ class Preisposition(COM):
     """
     artikel_id: Optional[ArtikelId] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(ArtikelId)), default=None
-    )
+    )  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
 
 
 class PreispositionSchema(COMSchema):
