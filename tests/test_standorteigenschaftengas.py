@@ -4,16 +4,18 @@ from bo4e.com.marktgebietinfo import MarktgebietInfo
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas, StandorteigenschaftenGasSchema
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_standorteigenschaften_gas = StandorteigenschaftenGas(
+    netzkontonummern=["GASPOOLNH700xxxx"],
+    marktgebiete=[MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")],
+)
+
 
 class TestStandorteigenschaftenGas:
     @pytest.mark.parametrize(
         "standorteigenschaftengas, expected_json_dict",
         [
             pytest.param(
-                StandorteigenschaftenGas(
-                    netzkontonummern=["GASPOOLNH700xxxx"],
-                    marktgebiete=[MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")],
-                ),
+                example_standorteigenschaften_gas,
                 {
                     "netzkontonummern": ["GASPOOLNH700xxxx"],
                     "marktgebiete": [{"marktgebiet": "Gaspool", "marktgebietcode": "37Z701133MH0000B"}],
