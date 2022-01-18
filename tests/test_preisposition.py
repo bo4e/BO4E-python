@@ -31,7 +31,6 @@ example_preisposition = Preisposition(
     artikel_id=ArtikelId.ARTIKEL_2017005,
 )
 
-
 class TestPreisposition:
     @pytest.mark.parametrize(
         "preisposition",
