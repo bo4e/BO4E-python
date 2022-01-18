@@ -22,8 +22,7 @@ from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
-
-_malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
+from bo4e.validators import validate_marktlokations_id
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -33,24 +32,10 @@ class Marktlokation(Geschaeftsobjekt):
     Object containing information about a Marktlokation
     """
 
-    # pylint: disable=unused-argument, no-self-use
-    def _validate_marktlokations_id(self, marktlokations_id_attribute, value):
-        if not value:
-            raise ValueError("The marktlokations_id must not be empty.")
-        if not _malo_id_pattern.match(value):
-            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
-        expected_checksum = Marktlokation._get_checksum(value)
-        actual_checksum = value[10:11]
-        if expected_checksum != actual_checksum:
-            # pylint: disable=line-too-long
-            raise ValueError(
-                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
-            )
-
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
+    marktlokations_id: str = attr.ib(validator=validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
