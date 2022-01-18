@@ -10,6 +10,7 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
+from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
 from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
@@ -81,6 +82,9 @@ class Preisposition(COM):
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)
     """
+    artikel_id: Optional[ArtikelId] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(ArtikelId)), default=None
+    )
 
 
 class PreispositionSchema(COMSchema):
@@ -105,3 +109,4 @@ class PreispositionSchema(COMSchema):
     zonungsgroesse = EnumField(Bemessungsgroesse, load_default=None)
     freimenge_blindarbeit = fields.Decimal(load_default=None, as_string=True)
     freimenge_leistungsfaktor = fields.Decimal(load_default=None, as_string=True)
+    artikel_id = EnumField(ArtikelId, load_default=None)

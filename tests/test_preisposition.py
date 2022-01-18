@@ -3,6 +3,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.preisposition import Preisposition, PreispositionSchema
+from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
 from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
@@ -33,6 +34,7 @@ class TestPreisposition:
                     freimenge_blindarbeit=Decimal(50),  # %
                     freimenge_leistungsfaktor=Decimal(1.0),
                     preisstaffeln=[example_preisstaffel],
+                    artikel_id=ArtikelId.Artikel2017006,
                 )
             ),
         ],
