@@ -10,14 +10,14 @@ class ArtikelId(StrEnum):
 
     # von allen enums ist das hier wohl das mit den unpassendsten Namen ;)
 
-    Artikel2017001 = "2-01-7-001"  #: Unterbrechung der Anschlussnutzung in der regulären Arbeitszeit (€/Auftrag)
-    Artikel2017002 = "2-01-7-002"  #: Wiederherstellung der Anschlussnutzung in der regulären Arbeitszeit (€/Auftrag)
-    Artikel2017003 = "2-01-7-003"  #: Erfolglose Unterbrechung (€/Auftrag)
+    ARTIKEL_2017001 = "2-01-7-001"  #: Unterbrechung der Anschlussnutzung in der regulären Arbeitszeit (€/Auftrag)
+    ARTIKEL_2017002 = "2-01-7-002"  #: Wiederherstellung der Anschlussnutzung in der regulären Arbeitszeit (€/Auftrag)
+    ARTIKEL_2017003 = "2-01-7-003"  #: Erfolglose Unterbrechung (€/Auftrag)
     #: Stornierung eines Auftrages zur Unterbrechung der Anschlussnutzung bis zum Vortag der Sperrung (€/Auftrag)
-    Artikel2017004 = "2-01-7-004"
+    ARTIKEL_2017004 = "2-01-7-004"
     #: Stornierung eines Auftrages zur Unterbrechung der Anschlussnutzung am Tag der Sperrung (€/Auftrag)
-    Artikel2017005 = "2-01-7-005"
+    ARTIKEL_2017005 = "2-01-7-005"
     #: Wiederherstellung der Anschlussnutzung außerhalb der regulären Arbeitszeit (€/Auftrag)
-    Artikel2017006 = "2-01-7-006"
-    Artikel2020001 = "2-02-0-001"  #: Verzugskosten pauschal (€/Fall)
-    Artikel2020002 = "2-02-0-002"  #: Verzugskosten variabel (€)
+    ARTIKEL_2017006 = "2-01-7-006"
+    ARTIKEL_2020001 = "2-02-0-001"  #: Verzugskosten pauschal (€/Fall)
+    ARTIKEL_2020002 = "2-02-0-002"  #: Verzugskosten variabel (€)

@@ -34,7 +34,7 @@ class TestPreisposition:
                     freimenge_blindarbeit=Decimal(50),  # %
                     freimenge_leistungsfaktor=Decimal(1.0),
                     preisstaffeln=[example_preisstaffel],
-                    artikel_id=ArtikelId.Artikel2017006,
+                    artikel_id=ArtikelId.ARTIKEL_2017003,
                 )
             ),
         ],
