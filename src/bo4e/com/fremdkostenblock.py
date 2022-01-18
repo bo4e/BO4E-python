@@ -44,6 +44,7 @@ class Fremdkostenblock(COM):
     summe_kostenblock: Optional[Betrag] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
     )
+    # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324
 
 
 class FremdkostenblockSchema(COMSchema):
