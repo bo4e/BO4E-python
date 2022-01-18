@@ -5,23 +5,25 @@ from bo4e.com.vertragskonditionen import Vertragskonditionen, Vertragskonditione
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
+example_vertragskonditionen = Vertragskonditionen(
+    beschreibung="Foobar",
+    anzahl_abschlaege=Decimal(3),
+    vertragslaufzeit=Zeitraum(
+        startdatum=datetime(2012, 9, 21, tzinfo=timezone.utc),
+        enddatum=datetime(2013, 10, 11, tzinfo=timezone.utc),
+    ),
+    kuendigungsfrist=Zeitraum(einheit=Zeiteinheit.WOCHE, dauer=Decimal(3)),
+    vertragsverlaengerung=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(14)),
+    abschlagszyklus=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(5)),
+)
+
 
 class TestVertragskonditionen:
     def test_vertragskonditionen_with_optional_attributes(self):
         """
         Test de-/serialisation of Vertragskonditionen (only has optional attributes).
         """
-        vertragskonditionen = Vertragskonditionen(
-            beschreibung="Foobar",
-            anzahl_abschlaege=Decimal(3),
-            vertragslaufzeit=Zeitraum(
-                startdatum=datetime(2012, 9, 21, tzinfo=timezone.utc),
-                enddatum=datetime(2013, 10, 11, tzinfo=timezone.utc),
-            ),
-            kuendigungsfrist=Zeitraum(einheit=Zeiteinheit.WOCHE, dauer=Decimal(3)),
-            vertragsverlaengerung=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(14)),
-            abschlagszyklus=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(5)),
-        )
+        vertragskonditionen = example_vertragskonditionen
 
         schema = VertragskonditionenSchema()
         json_string = schema.dumps(vertragskonditionen, ensure_ascii=False)
