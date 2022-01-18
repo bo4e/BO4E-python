@@ -48,7 +48,7 @@ class Fremdkostenblock(COM):
 
 class FremdkostenblockSchema(COMSchema):
     """
-    Schema for de-/serialization of Fremdkostenblock.
+    Schema for de-/serialization of Fremdkostenblock
     """
 
     class_name = Fremdkostenblock
