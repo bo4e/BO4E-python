@@ -8,30 +8,33 @@ from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
+example_tagesvektor: Tagesvektor = Tagesvektor(
+    tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
+    werte=[
+        Zeitreihenwertkompakt(
+            wert=Decimal(40),
+        ),
+        Zeitreihenwertkompakt(
+            wert=Decimal(50),
+        ),
+    ],
+)
+example_tagesvektor_json = {
+    "tag": "2021-12-15T05:00:00+00:00",
+    "werte": [
+        {"wert": "40", "statuszusatz": None, "status": None},
+        {"wert": "50", "statuszusatz": None, "status": None},
+    ],
+}
+
 
 class TestTagesvektor:
     @pytest.mark.parametrize(
         "tagesvektor, expected_json_dict",
         [
             pytest.param(
-                Tagesvektor(
-                    tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
-                    werte=[
-                        Zeitreihenwertkompakt(
-                            wert=Decimal(40),
-                        ),
-                        Zeitreihenwertkompakt(
-                            wert=Decimal(50),
-                        ),
-                    ],
-                ),
-                {
-                    "tag": "2021-12-15T05:00:00+00:00",
-                    "werte": [
-                        {"wert": "40", "statuszusatz": None, "status": None},
-                        {"wert": "50", "statuszusatz": None, "status": None},
-                    ],
-                },
+                example_tagesvektor,
+                example_tagesvektor_json,
             ),
         ],
     )
