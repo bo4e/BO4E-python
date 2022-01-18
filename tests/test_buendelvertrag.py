@@ -7,13 +7,13 @@ from tests.test_vertrag import TestVertrag  # type:ignore[import]
 
 class TestBuendelvertrag:
     @pytest.mark.parametrize(
-        "energiemenge",
+        "buendelvertrag",
         [
             pytest.param(Buendelvertrag(einzelvertraege=[TestVertrag().get_example_vertrag()])),
         ],
     )
-    def test_serialization_roundtrip(self, energiemenge: Buendelvertrag):
-        assert_serialization_roundtrip(energiemenge, BuendelvertragSchema())
+    def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag):
+        assert_serialization_roundtrip(buendelvertrag, BuendelvertragSchema())
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
