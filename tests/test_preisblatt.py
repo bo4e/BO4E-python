@@ -9,7 +9,7 @@ from tests.test_preisposition import example_preisposition  # type:ignore[import
 from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
 
 
-class TestPreisposition:
+class TestPreisblatt:
     @pytest.mark.parametrize(
         "preisblatt",
         [
