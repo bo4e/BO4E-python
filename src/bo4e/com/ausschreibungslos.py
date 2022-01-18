@@ -53,6 +53,9 @@ class Ausschreibungslos(COM):
         )
     )
 
+    #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
+    lieferzeitraum: Zeitraum = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)))
+
     # optional attributes
     #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = attr.ib(
@@ -79,10 +82,6 @@ class Ausschreibungslos(COM):
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
 
-    #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Optional[Zeitraum] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)), default=None
-    )
     #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
     wunsch_kuendingungsfrist: Optional[Zeitraum] = attr.ib(
         validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)), default=None
@@ -110,6 +109,7 @@ class AusschreibungslosSchema(COMSchema):
     betreut_durch = fields.String()
     anzahl_lieferstellen = fields.Integer()
     lieferstellen = fields.List(fields.Nested(AusschreibungsdetailSchema))
+    lieferzeitraum = fields.Nested(ZeitraumSchema)
 
     # optional attributes
     bemerkung = fields.String(load_default=None)
@@ -117,6 +117,5 @@ class AusschreibungslosSchema(COMSchema):
     wunsch_mindestmenge = fields.Nested(MengeSchema, load_default=None)
     wunsch_maximalmenge = fields.Nested(MengeSchema, load_default=None)
     wiederholungsintervall = fields.Nested(ZeitraumSchema, load_default=None)
-    lieferzeitraum = fields.Nested(ZeitraumSchema, load_default=None)
     wunsch_kuendingungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
     wunsch_zahlungsziel = fields.Nested(ZeitraumSchema, load_default=None)

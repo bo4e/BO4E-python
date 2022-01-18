@@ -79,6 +79,7 @@ class TestAusschreibungslos:
                 wunsch_vertragsform=Vertragsform.DIREKT,
                 betreut_durch="Max Mustermann",
                 anzahl_lieferstellen=17,
+                lieferzeitraum=example_zeitraum,
                 ## ^^ above is just clutter
                 lieferstellen=[],  # the important line
             )
