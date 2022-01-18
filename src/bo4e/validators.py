@@ -75,6 +75,8 @@ OBIS_PATTERN = r"((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\.((?:6|8|9|29)
 obis_validator = attr.validators.matches_re(OBIS_PATTERN)
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
+
+
 # pylint: disable=unused-argument, no-self-use
 def validate_marktlokations_id(self, marktlokations_id_attribute, value):
     """
