@@ -2,7 +2,6 @@
 Contains Marktlokation class
 and corresponding marshmallow schema for de-/serialization
 """
-import re
 
 import attr
 from marshmallow import fields
@@ -22,8 +21,7 @@ from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
-
-_malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
+from bo4e.validators import validate_marktlokations_id
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -33,24 +31,10 @@ class Marktlokation(Geschaeftsobjekt):
     Object containing information about a Marktlokation
     """
 
-    # pylint: disable=unused-argument, no-self-use
-    def _validate_marktlokations_id(self, marktlokations_id_attribute, value):
-        if not value:
-            raise ValueError("The marktlokations_id must not be empty.")
-        if not _malo_id_pattern.match(value):
-            raise ValueError(f"The marktlokations_id '{value}' does not match {_malo_id_pattern.pattern}")
-        expected_checksum = Marktlokation._get_checksum(value)
-        actual_checksum = value[10:11]
-        if expected_checksum != actual_checksum:
-            # pylint: disable=line-too-long
-            raise ValueError(
-                f"The marktlokations_id '{value}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
-            )
-
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str = attr.ib(validator=_validate_marktlokations_id)
+    marktlokations_id: str = attr.ib(validator=validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
@@ -122,6 +106,7 @@ class Marktlokation(Geschaeftsobjekt):
 
     # todo: add kundengruppe
 
+    # pylint:disable=unused-argument
     @lokationsadresse.validator
     @geoadresse.validator
     @katasterinformation.validator
@@ -135,31 +120,6 @@ class Marktlokation(Geschaeftsobjekt):
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
         if amount_of_given_address_infos != 1:
             raise ValueError("No or more than one address information is given.")
-
-    @staticmethod
-    def _get_checksum(malo_id: str) -> str:
-        """
-        Get the checksum of a marktlokations id.
-        a) Quersumme aller Ziffern in ungerader Position
-        b) Quersumme aller Ziffern auf gerader Position multipliziert mit 2
-        c) Summe von a) und b) d) Differenz von c) zum nächsten Vielfachen von 10 (ergibt sich hier 10, wird die
-           Prüfziffer 0 genommen
-        https://bdew-codes.de/Content/Files/MaLo/2017-04-28-BDEW-Anwendungshilfe-MaLo-ID_Version1.0_FINAL.PDF
-        :param self:
-        :return: the checksum as string
-        """
-        odd_checksum: int = 0
-        even_checksum: int = 0
-        # start counting at 1 to be consistent with the above description
-        # of "even" and "odd" but stop at tenth digit.
-        for i in range(1, 11):
-            digit = malo_id[i - 1 : i]
-            if i % 2 - 1 == 0:
-                odd_checksum += int(digit)
-            else:
-                even_checksum += 2 * int(digit)
-        result: int = (10 - ((even_checksum + odd_checksum) % 10)) % 10
-        return str(result)
 
 
 class MarktlokationSchema(GeschaeftsobjektSchema):
