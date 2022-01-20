@@ -27,7 +27,7 @@ class Tarifberechnungsparameter(COM):
     # optional attributes
 
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
-    berechnungsmethode: Tarifkalkulationsmethode = attr.ib(
+    berechnungsmethode: Optional[Tarifkalkulationsmethode] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifkalkulationsmethode))
     )
     #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
