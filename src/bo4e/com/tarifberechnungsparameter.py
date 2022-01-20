@@ -18,7 +18,7 @@ from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 # yes. there is no description in the official docs.
 # https://github.com/Hochfrequenz/BO4E-python/issues/328
 
-# pylint: disable=too-few-public-methods, empty-docstring
+# pylint: disable=too-few-public-methods, empty-docstring, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
 class Tarifberechnungsparameter(COM):
     """ """
