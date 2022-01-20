@@ -16,7 +16,7 @@ example_tarifpreis = Tarifpreis(
 )
 
 
-class TestPreis:
+class TestTarifpreis:
     def test_tarifpreis_only_required(self):
         """
         Test de-/serialisation of Tarifpreis (only has required attributes).

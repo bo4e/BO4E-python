@@ -11,7 +11,7 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.preis import Preis, PreisSchema
-from bo4e.com.tarifpreis import Tarifpreis
+from bo4e.com.tarifpreis import Tarifpreis, TarifpreisSchema
 from bo4e.enum.messpreistyp import Messpreistyp
 from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 
@@ -100,4 +100,4 @@ class TarifberechnungsparameterSchema(COMSchema):
     hoechstpreis_n_t = fields.Nested(PreisSchema, data_key="hoechstpreisHT")
     hoechstpreis_h_t = fields.Nested(PreisSchema, data_key="hoechstpreisNT")
     mindestpreis = fields.Nested(PreisSchema)
-    zusatzpreise = fields.List(fields.Nested(PreisSchema))
+    zusatzpreise = fields.List(fields.Nested(TarifpreisSchema))
