@@ -22,7 +22,7 @@ class PreisblattMessung(Preisblatt):
     Variante des Preisblattmodells zur Abbildung der Preise des Messstellenbetriebs und damit verbundener Leistungen
     """
 
-    bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTNETZNUTZUNG)
+    bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTMESSUNG)
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attr.ib(validator=attr.validators.instance_of(Bilanzierungsmethode))
