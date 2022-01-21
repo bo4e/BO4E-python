@@ -1,5 +1,5 @@
 """
-Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattHardware class and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
 
@@ -17,21 +17,20 @@ from bo4e.enum.netzebene import Netzebene
 
 # pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
-class PreisblattMessung(Preisblatt):
+class PreisblattHardware(Preisblatt):
     """
-    Variante des Preisblattmodells zur Abbildung der Preise des Messstellenbetriebs und damit verbundener Leistungen
+    Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware
     """
 
-    bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTMESSUNG)
+    bo_typ: BoTyp = attr.ib(default=BoTyp.PREIS)
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attr.ib(validator=attr.validators.instance_of(Bilanzierungsmethode))
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
     messebene: Netzebene = attr.ib(validator=attr.validators.instance_of(Netzebene))
 
-    #: Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
-    zaehler: Geraeteeigenschaften = attr.ib(validator=attr.validators.instance_of(Geraeteeigenschaften))
-    # todo: https://github.com/Hochfrequenz/BO4E-python/issues/333
+    #: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät
+    basisgeraet: Geraeteeigenschaften = attr.ib(validator=attr.validators.instance_of(Geraeteeigenschaften))
 
     # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
@@ -57,16 +56,16 @@ class PreisblattMessung(Preisblatt):
     )
 
 
-class PreisblattMessungSchema(PreisblattSchema):
+class PreisblattHardwareSchema(PreisblattSchema):
     """
-    Schema for de-/serialization of PreisblattMessung
+    Schema for de-/serialization of PreisblattHardware
     """
 
-    class_name = PreisblattMessung  # type:ignore[assignment]
+    class_name = PreisblattHardware  # type:ignore[assignment]
     # required attributes
     bilanzierungsmethode = EnumField(Bilanzierungsmethode)
     messebene = EnumField(Netzebene)
-    zaehler = fields.Nested(GeraeteeigenschaftenSchema)
+    basisgeraet = fields.Nested(GeraeteeigenschaftenSchema)
     # optional attributes
     inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp))
     inklusive_geraete = fields.List(fields.Nested(GeraeteeigenschaftenSchema))
