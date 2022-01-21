@@ -8,18 +8,20 @@ from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
+example_tarifpreis = Tarifpreis(
+    wert=Decimal(12.5),
+    einheit=Waehrungseinheit.EUR,
+    bezugswert=Mengeneinheit.KWH,
+    preistyp=Preistyp.ARBEITSPREIS_HT,
+)
 
-class TestPreis:
+
+class TestTarifpreis:
     def test_tarifpreis_only_required(self):
         """
         Test de-/serialisation of Tarifpreis (only has required attributes).
         """
-        tarifpreis = Tarifpreis(
-            wert=Decimal(3.78),
-            einheit=Waehrungseinheit.EUR,
-            bezugswert=Mengeneinheit.KWH,
-            preistyp=Preistyp.ARBEITSPREIS_HT,
-        )
+        tarifpreis = example_tarifpreis
 
         schema = TarifpreisSchema()
         json_string = schema.dumps(tarifpreis, ensure_ascii=False)
