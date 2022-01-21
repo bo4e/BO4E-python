@@ -35,7 +35,7 @@ class TarifkostenSchema(TarifinfoSchema):
 
     # class_name is needed to use the correct schema for deserialization.
     # see function `deserialize` in geschaeftsobjekt.py
-    class_name = Tarifkosten
+    class_name = Tarifkosten  # type:ignore[assignment]
 
     # required attributes
     kosten = fields.Nested(KostenSchema)
