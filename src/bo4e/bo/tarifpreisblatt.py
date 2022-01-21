@@ -44,20 +44,21 @@ class Tarifpreisblatt(Tarifinfo):
     # optional attributes
     #: Festlegung von Garantien für bestimmte Preisanteile
     tarifeinschraenkung: Optional[Tarifeinschraenkung] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Tarifeinschraenkung))
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifeinschraenkung))
     )
     #:Festlegung von Garantien für bestimmte Preisanteile
     preisgarantie: Optional[Preisgarantie] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Preisgarantie))
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(Preisgarantie))
     )
     #: Auf- und Abschläge auf die Preise oder Kosten
     tarif_auf_abschlaege: Optional[List[AufAbschlag]] = attr.ib(
+        default=None,
         validator=attr.validators.optional(
             attr.validators.deep_iterable(
                 member_validator=attr.validators.instance_of(AufAbschlag),
                 iterable_validator=attr.validators.instance_of(list),
             )
-        )
+        ),
     )
 
 
