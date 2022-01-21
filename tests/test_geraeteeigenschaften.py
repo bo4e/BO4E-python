@@ -5,13 +5,17 @@ from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_geraeteeigenschaften = Geraeteeigenschaften(
+    geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=Geraetetyp.MULTIPLEXANLAGE
+)
+
 
 class TestGeraeteeigenschaften:
     @pytest.mark.parametrize(
         "geraeteeigenschaften, expected_json_dict",
         [
             pytest.param(
-                Geraeteeigenschaften(geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=Geraetetyp.MULTIPLEXANLAGE),
+                example_geraeteeigenschaften,
                 {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
             ),
         ],

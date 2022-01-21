@@ -66,7 +66,7 @@ class PreisblattMessungSchema(PreisblattSchema):
     # required attributes
     bilanzierungsmethode = EnumField(Bilanzierungsmethode)
     messebene = EnumField(Netzebene)
-    zaehler = fields.Nested(Geraeteeigenschaften)
+    zaehler = fields.Nested(GeraeteeigenschaftenSchema)
     # optional attributes
     inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp))
     inklusive_geraete = fields.List(fields.Nested(GeraeteeigenschaftenSchema))
