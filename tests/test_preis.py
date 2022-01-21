@@ -7,7 +7,7 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
-example_preis = Preis(wert=Decimal(2.53), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
+example_preis = Preis(wert=Decimal(12.5), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
 
 
 class TestPreis:
