@@ -25,7 +25,7 @@ class PreisblattDienstleistung(Preisblatt):
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attr.ib(validator=attr.validators.instance_of(Bilanzierungsmethode))
-    #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
+    #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
     basisdienstleistung: Dienstleistungstyp = attr.ib(validator=attr.validators.instance_of(Dienstleistungstyp))
 
     # optional attributes
