@@ -22,7 +22,7 @@ class PreisblattHardware(Preisblatt):
     Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware
     """
 
-    bo_typ: BoTyp = attr.ib(default=BoTyp.PREIS)
+    bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTHARDWARE)
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attr.ib(validator=attr.validators.instance_of(Bilanzierungsmethode))

@@ -43,4 +43,4 @@ class TestPreisblattHardware:
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
             _ = PreisblattHardware()
-        assert "missing 8 required" in str(excinfo.value)  # 5 from preisblatt + 3 from preisblatt messung
+        assert "missing 8 required" in str(excinfo.value)  # 5 from preisblatt + 3 from preisblatt hardware
