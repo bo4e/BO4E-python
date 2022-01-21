@@ -31,7 +31,7 @@ class Tarifpreis(Preis):
 
 class TarifpreisSchema(PreisSchema):
     """
-    Schema for de-/serialization of Tarifpreis.
+    Schema for de-/serialization of Tarifpreis
     """
 
     class_name = Tarifpreis  # type:ignore[assignment]
