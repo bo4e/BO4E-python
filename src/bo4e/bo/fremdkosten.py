@@ -8,7 +8,7 @@ from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
 from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.kostenblock import Kostenblock, KostenblockSchema
+from bo4e.com.fremdkostenblock import Fremdkostenblock, FremdkostenblockSchema
 from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
 from bo4e.enum.botyp import BoTyp
 
@@ -32,11 +32,11 @@ class Fremdkosten(Geschaeftsobjekt):
         validator=attr.validators.optional(attr.validators.instance_of(Betrag)), default=None
     )
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[List[Kostenblock]] = attr.ib(
+    kostenbloecke: Optional[List[Fremdkostenblock]] = attr.ib(
         default=None,
         validator=attr.validators.optional(
             attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Kostenblock),
+                member_validator=attr.validators.instance_of(Fremdkostenblock),
                 iterable_validator=attr.validators.instance_of(list),
             )
         ),
@@ -54,4 +54,4 @@ class FremdkostenSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     summe_kosten = fields.Nested(BetragSchema, load_default=None)
-    kostenbloecke = fields.List(fields.Nested(KostenblockSchema), load_default=None)
+    kostenbloecke = fields.List(fields.Nested(FremdkostenblockSchema), load_default=None)
