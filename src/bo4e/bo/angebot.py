@@ -36,9 +36,9 @@ class Angebot(Geschaeftsobjekt):
     angebotsdatum: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
     sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
-    #: 	Link auf den Ersteller des Angebots
+    #: Ersteller des Angebots
     angebotsgeber: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
-    #: Link auf den Empfänger des Angebots
+    #: Empfänger des Angebots
     angebotsnehmer: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
 
     varianten: List[Angebotsvariante] = attr.ib(
@@ -47,24 +47,24 @@ class Angebot(Geschaeftsobjekt):
             iterable_validator=check_list_length_at_least_one,
         )
     )
-    """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen.
+    """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 
     # optional attributes
     anfragereferenz: Optional[str] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
     )
-    """	Referenz auf eine Anfrage oder Ausschreibung.
+    """	Referenz auf eine Anfrage oder Ausschreibung;
     Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""
     #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
     bindefrist: Optional[datetime] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(datetime))
     )
-    #: Link auf die Person, die als Angebotsnehmer das Angebot angenommen hat
+    #: Person, die als Angebotsnehmer das Angebot angenommen hat
     unterzeichner_angebotsnehmer: Optional[Ansprechpartner] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Ansprechpartner))
     )
-    #: Link auf die Person, die als Angebotsgeber das Angebots ausgestellt hat
+    #: Person, die als Angebotsgeber das Angebots ausgestellt hat
     unterzeichner_angebotsgeber: Optional[Ansprechpartner] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Ansprechpartner))
     )
