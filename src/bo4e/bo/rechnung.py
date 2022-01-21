@@ -21,7 +21,7 @@ from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
 
 
-# pylint: disable=too-few-public-methods
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
 class Rechnung(Geschaeftsobjekt):
     """
@@ -31,8 +31,11 @@ class Rechnung(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.RECHNUNG)
-    #: Kennzeichnung, ob es sich um eine Stornorechnung handelt; Im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
     storno: bool = attr.ib(validator=attr.validators.instance_of(bool))
+    """
+    Kennzeichnung, ob es sich um eine Stornorechnung handelt;
+    im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
+    """
     #: Eine im Verwendungskontext eindeutige Nummer für die Rechnung
     rechnungsnummer: str = attr.ib(validator=attr.validators.instance_of(str))
     #: Ausstellungsdatum der Rechnung
@@ -73,7 +76,7 @@ class Rechnung(Geschaeftsobjekt):
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Rechnungsstatus))
     )
     #: Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung
-    originalRechnungsnummer: Optional[str] = attr.ib(
+    original_rechnungsnummer: Optional[str] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
     )
     #: Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert
@@ -81,10 +84,9 @@ class Rechnung(Geschaeftsobjekt):
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
     )
     #: Gesamtrabatt auf den Bruttobetrag
-    rabattBrutto: Optional[Betrag] = attr.ib(
+    rabatt_brutto: Optional[Betrag] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
     )
-    #: Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz; die Summe dieser Beträge ergibt den Wert für gesamtsteuer.
     steuerbetraege: Optional[List[Steuerbetrag]] = attr.ib(
         default=None,
         validator=attr.validators.optional(
@@ -94,6 +96,10 @@ class Rechnung(Geschaeftsobjekt):
             )
         ),
     )
+    """
+    Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
+    die Summe dieser Beträge ergibt den Wert für gesamtsteuer.
+    """
 
 
 class RechnungSchema(GeschaeftsobjektSchema):
@@ -121,7 +127,7 @@ class RechnungSchema(GeschaeftsobjektSchema):
     rechnungspositionen = fields.List(fields.Nested(RechnungspositionSchema))
 
     # optional attributes
-    originalRechnungsnummer = fields.Str()
+    original_rechnungsnummer = fields.Str()
     vorausgezahlt = fields.Nested(BetragSchema)
-    rabattBrutto = fields.Nested(BetragSchema)
+    rabatt_brutto = fields.Nested(BetragSchema)
     steuerbetraege = fields.List(fields.Nested(SteuerbetragSchema))
