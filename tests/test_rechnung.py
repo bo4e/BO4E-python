@@ -47,7 +47,7 @@ class TestRechnung:
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
-                    originalRechnungsnummer="RE-2022-01-21_1701",
+                    original_rechnungsnummer="RE-2022-01-21_1701",
                     rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
                     rechnungsersteller=_rechnungsersteller,
                     rechnungsempfaenger=_rechnungsempfaenger,
@@ -55,7 +55,7 @@ class TestRechnung:
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     vorausgezahlt=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    rabattBrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    rabatt_brutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     zuzahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     steuerbetraege=[
                         Steuerbetrag(
