@@ -3,8 +3,8 @@ import pytest  # type:ignore[import]
 from bo4e.bo.fremdkosten import Fremdkosten, FremdkostenSchema
 from bo4e.com.kostenblock import Kostenblock
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_betrag import example_betrag
-from tests.test_zeitraum import example_zeitraum
+from tests.test_betrag import example_betrag  # type:ignore[import]
+from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
 
 
 class TestFremdkosten:
