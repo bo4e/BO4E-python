@@ -45,7 +45,7 @@ class Tarifpreisblatt(Tarifinfo):
     tarifeinschraenkung: Optional[Tarifeinschraenkung] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifeinschraenkung))
     )
-    #:Festlegung von Garantien für bestimmte Preisanteile
+    #: Festlegung von Garantien für bestimmte Preisanteile
     preisgarantie: Optional[Preisgarantie] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Preisgarantie))
     )
@@ -70,7 +70,7 @@ class TarifpreisblattSchema(TarifinfoSchema):
     # required attributes
     preisstand = fields.DateTime()
     berechnungsparameter = fields.Nested(TarifberechnungsparameterSchema)
-    tarifpreise = fields.List(TarifpreispositionSchema)
+    tarifpreise = fields.List(fields.Nested(TarifpreispositionSchema))
     # optional attributes
     tarif_auf_abschlaege = fields.List(fields.Nested(AufAbschlagSchema))
     preisgarantie = fields.Nested(PreisgarantieSchema)
