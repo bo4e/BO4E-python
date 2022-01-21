@@ -75,7 +75,7 @@ class AngebotSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of Angebot
     """
 
-    class_name = Angebot  # type:ignore[assignment]
+    class_name = Angebot
 
     # required attributes
     angebotsnummer = fields.Str()
