@@ -34,7 +34,7 @@ class PreisblattDienstleistung(Preisblatt):
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Geraeteeigenschaften))
     )
 
-    #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
+    #: Weitere Dienstleistungen, die im Preis enthalten sind
     inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = attr.ib(
         default=None,
         validator=attr.validators.optional(
