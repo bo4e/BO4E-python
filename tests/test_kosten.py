@@ -7,22 +7,24 @@ from tests.serialization_helper import assert_serialization_roundtrip  # type:ig
 from tests.test_betrag import example_betrag  # type:ignore[import]
 from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
 
+example_kosten = Kosten(
+    kostenklasse=Kostenklasse.FREMDKOSTEN,
+    gueltigkeit=example_zeitraum,
+    kostenbloecke=[
+        Kostenblock(
+            kostenblockbezeichnung="Mein Kostenblock",
+        )
+    ],
+    summe_kosten=[example_betrag],
+)
+
 
 class TestKosten:
     @pytest.mark.parametrize(
         "kosten",
         [
             pytest.param(
-                Kosten(
-                    kostenklasse=Kostenklasse.FREMDKOSTEN,
-                    gueltigkeit=example_zeitraum,
-                    kostenbloecke=[
-                        Kostenblock(
-                            kostenblockbezeichnung="Mein Kostenblock",
-                        )
-                    ],
-                    summe_kosten=[example_betrag],
-                ),
+                example_kosten,
                 id="maximal attributes",
             )
         ],
