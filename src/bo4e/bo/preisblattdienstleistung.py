@@ -46,9 +46,9 @@ class PreisblattDienstleistung(Preisblatt):
     )
 
 
-class PreisblattMessungSchema(PreisblattSchema):
+class PreisblattDienstleistungSchema(PreisblattSchema):
     """
-    Schema for de-/serialization of PreisblattMessung
+    Schema for de-/serialization of PreisblattDienstleistung
     """
 
     class_name = PreisblattDienstleistung  # type:ignore[assignment]
