@@ -28,6 +28,14 @@ bo4e.com.angebotsteil module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.angebotsvariante module
+--------------------------------
+
+.. automodule:: bo4e.com.angebotsvariante
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.aufabschlag module
 ---------------------------
 
@@ -64,6 +72,14 @@ bo4e.com.ausschreibungsdetail module
 ------------------------------------
 
 .. automodule:: bo4e.com.ausschreibungsdetail
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.ausschreibungslos module
+---------------------------------
+
+.. automodule:: bo4e.com.ausschreibungslos
    :members:
    :undoc-members:
    :show-inheritance:
@@ -116,6 +132,14 @@ bo4e.com.externereferenz module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.fremdkostenblock module
+--------------------------------
+
+.. automodule:: bo4e.com.fremdkostenblock
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.fremdkostenposition module
 -----------------------------------
 
@@ -160,6 +184,22 @@ bo4e.com.katasteradresse module
 -------------------------------
 
 .. automodule:: bo4e.com.katasteradresse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.kostenblock module
+---------------------------
+
+.. automodule:: bo4e.com.kostenblock
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.kostenposition module
+------------------------------
+
+.. automodule:: bo4e.com.kostenposition
    :members:
    :undoc-members:
    :show-inheritance:
@@ -220,6 +260,14 @@ bo4e.com.preisgarantie module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.preisposition module
+-----------------------------
+
+.. automodule:: bo4e.com.preisposition
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.preisstaffel module
 ----------------------------
 
@@ -228,10 +276,50 @@ bo4e.com.preisstaffel module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.rechnungsposition module
+---------------------------------
+
+.. automodule:: bo4e.com.rechnungsposition
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.regionalegueltigkeit module
 ------------------------------------
 
 .. automodule:: bo4e.com.regionalegueltigkeit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.regionalepreisgarantie module
+--------------------------------------
+
+.. automodule:: bo4e.com.regionalepreisgarantie
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.regionalepreisstaffel module
+-------------------------------------
+
+.. automodule:: bo4e.com.regionalepreisstaffel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.regionaleraufabschlag module
+-------------------------------------
+
+.. automodule:: bo4e.com.regionaleraufabschlag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.regionaletarifpreisposition module
+-------------------------------------------
+
+.. automodule:: bo4e.com.regionaletarifpreisposition
    :members:
    :undoc-members:
    :show-inheritance:
@@ -276,6 +364,14 @@ bo4e.com.standorteigenschaftengas module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.standorteigenschaftenstrom module
+------------------------------------------
+
+.. automodule:: bo4e.com.standorteigenschaftenstrom
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.steuerbetrag module
 ----------------------------
 
@@ -292,6 +388,14 @@ bo4e.com.tagesvektor module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tarifberechnungsparameter module
+-----------------------------------------
+
+.. automodule:: bo4e.com.tarifberechnungsparameter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.tarifeinschraenkung module
 -----------------------------------
 
@@ -304,6 +408,14 @@ bo4e.com.tarifpreis module
 --------------------------
 
 .. automodule:: bo4e.com.tarifpreis
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tarifpreisposition module
+----------------------------------
+
+.. automodule:: bo4e.com.tarifpreisposition
    :members:
    :undoc-members:
    :show-inheritance:

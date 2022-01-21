@@ -28,6 +28,14 @@ bo4e.enum.arithmetische\_operation module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.artikelid module
+--------------------------
+
+.. automodule:: bo4e.enum.artikelid
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.aufabschlagstyp module
 --------------------------------
 
