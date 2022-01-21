@@ -104,7 +104,7 @@ class Rechnung(Geschaeftsobjekt):
 
 class RechnungSchema(GeschaeftsobjektSchema):
     """
-    Schema for de-/serialization of Preisblatt
+    Schema for de-/serialization of Rechnung
     """
 
     class_name = Rechnung  # type:ignore[assignment]
