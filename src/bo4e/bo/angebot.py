@@ -31,7 +31,7 @@ class Angebot(Geschaeftsobjekt):
     bo_typ: BoTyp = attr.ib(default=BoTyp.ANGEBOT)
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: str = attr.ib(validator=attr.validators.instance_of(str))
+    angebotsnummer: str = attr.ib(validator=attr.validators.matches_re("^\d+$"))
     #: Erstellungsdatum des Angebots
     angebotsdatum: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
