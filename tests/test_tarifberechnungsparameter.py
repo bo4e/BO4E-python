@@ -30,6 +30,10 @@ class TestFremdkostenposition:
                 ),
                 id="maximal attributes",
             ),
+             pytest.param(
+                Tarifberechnungsparameter(),
+                id="minimal attributes",
+            ),
         ],
     )
     def test_serialization_roundtrip(self, tarifberechnungsparameter: Fremdkostenposition):
