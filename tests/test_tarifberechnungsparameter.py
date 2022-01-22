@@ -30,7 +30,7 @@ class TestFremdkostenposition:
                 ),
                 id="maximal attributes",
             ),
-             pytest.param(
+            pytest.param(
                 Tarifberechnungsparameter(),
                 id="minimal attributes",
             ),
