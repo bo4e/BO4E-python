@@ -107,7 +107,7 @@ class RechnungSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of Rechnung
     """
 
-    class_name = Rechnung  # type:ignore[assignment]
+    class_name = Rechnung
 
     # required attributes
     rechnungstitel = fields.Str()
