@@ -1,6 +1,7 @@
 """
 Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 import attr
 from marshmallow import fields
@@ -45,7 +46,9 @@ class Netznutzungsrechnung(Rechnung):
     simuliert: bool = attr.ib(validator=attr.validators.instance_of(bool))
 
     # optional attributes
-    lokations_id: str = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
+    lokations_id: Optional[str] = attr.ib(
+        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    )
     """
     Die Markt- oder Messlokations-Identifikation (als Malo/Melo-Id) der Lokation, auf die sich die Rechnung bezieht
     """
@@ -56,7 +59,7 @@ class NetznutzungsrechnungSchema(RechnungSchema):
     Schema for de-/serialization of Netznutzungsrechnung
     """
 
-    class_name = Netznutzungsrechnung
+    class_name = Netznutzungsrechnung  # type:ignore[assignment]
 
     # required attributes (additional to those of Rechnung)
     sparte = EnumField(Sparte)

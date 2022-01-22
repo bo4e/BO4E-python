@@ -51,7 +51,7 @@ class TestNetznutzungsrechnung:
                     nnrechnungstyp=NNRechnungstyp.TURNUSRECHNUNG,
                     original=True,
                     simuliert=True,
-                    lokationsId="56789012345",
+                    lokations_id="56789012345",
                     # ^^ above are the original Netznutzungsrechnung atrtibutes
                     # vv below are the fields inherited from Rechnung
                     rechnungstitel="Hüpfburg",
