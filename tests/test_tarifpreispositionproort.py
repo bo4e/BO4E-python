@@ -4,18 +4,20 @@ from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt, Tarifpre
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_tarifpreisstaffelproort import example_tarifpreisstaffelproort  # type:ignore[import]
 
+example_tarifpreispositionproort = TarifpreispositionProOrt(
+    postleitzahl="82031",
+    ort="Grünwald",
+    netznr="0815",
+    preisstaffeln=[example_tarifpreisstaffelproort],
+)
+
 
 class TestTarifpreispositionProOrt:
     @pytest.mark.parametrize(
         "tarifpreisposition",
         [
             pytest.param(
-                TarifpreispositionProOrt(
-                    postleitzahl="82031",
-                    ort="Grünwald",
-                    netznr="0815",
-                    preisstaffeln=[example_tarifpreisstaffelproort],
-                ),
+                example_tarifpreispositionproort,
                 id="minimal and maximal attributes",
             ),
         ],
