@@ -6,7 +6,6 @@ from decimal import Decimal
 
 import attr
 from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
 
