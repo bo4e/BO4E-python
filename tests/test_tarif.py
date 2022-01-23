@@ -50,6 +50,23 @@ class TestTarif:
                 ),
                 id="required and optional attributes",
             ),
+            pytest.param(
+                Tarif(
+                    preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
+                    berechnungsparameter=example_tarifberechnungsparameter,
+                    tarifpreise=[example_tarifpreispositionproort],
+                    # below are the attributes of tarifinfo
+                    bezeichnung="foo",
+                    anbietername="der beste stromanbieter",
+                    sparte=Sparte.STROM,
+                    kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
+                    tarifart=Tarifart.MEHRTARIF,
+                    tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
+                    tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
+                    anbieter=example_marktteilnehmer,
+                ),
+                id="only required attributes",
+            ),
         ],
     )
     def test_serialization_roundtrip(self, tarif: Tarif):
