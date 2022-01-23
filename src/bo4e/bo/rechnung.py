@@ -107,11 +107,9 @@ class RechnungSchema(GeschaeftsobjektSchema):
     Schema for de-/serialization of Rechnung
     """
 
-    class_name = Rechnung
+    class_name = Rechnung  # type:ignore[assignment]
 
     # required attributes
-    rechnungstitel = fields.Str()
-    rechnungsstatus = EnumField(Rechnungsstatus)
     storno = fields.Bool()
     rechnungsnummer = fields.Str()
     rechnungsdatum = fields.DateTime()
@@ -127,7 +125,9 @@ class RechnungSchema(GeschaeftsobjektSchema):
     rechnungspositionen = fields.List(fields.Nested(RechnungspositionSchema))
 
     # optional attributes
-    original_rechnungsnummer = fields.Str()
-    vorausgezahlt = fields.Nested(BetragSchema)
-    rabatt_brutto = fields.Nested(BetragSchema)
-    steuerbetraege = fields.List(fields.Nested(SteuerbetragSchema))
+    rechnungstitel = fields.Str(allow_none=True)
+    rechnungsstatus = EnumField(Rechnungsstatus, allow_none=True)
+    original_rechnungsnummer = fields.Str(allow_none=True)
+    vorausgezahlt = fields.Nested(BetragSchema, allow_none=True)
+    rabatt_brutto = fields.Nested(BetragSchema, allow_none=True)
+    steuerbetraege = fields.List(fields.Nested(SteuerbetragSchema), allow_none=True)

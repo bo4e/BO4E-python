@@ -4,6 +4,14 @@ bo4e.bo package
 Submodules
 ----------
 
+bo4e.bo.angebot module
+----------------------
+
+.. automodule:: bo4e.bo.angebot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.ansprechpartner module
 ------------------------------
 
@@ -24,6 +32,14 @@ bo4e.bo.energiemenge module
 ---------------------------
 
 .. automodule:: bo4e.bo.energiemenge
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.fremdkosten module
+--------------------------
+
+.. automodule:: bo4e.bo.fremdkosten
    :members:
    :undoc-members:
    :show-inheritance:
@@ -92,6 +108,22 @@ bo4e.bo.preisblatt module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.preisblattdienstleistung module
+---------------------------------------
+
+.. automodule:: bo4e.bo.preisblattdienstleistung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.preisblatthardware module
+---------------------------------
+
+.. automodule:: bo4e.bo.preisblatthardware
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.preisblattkonzessionsabgabe module
 ------------------------------------------
 
@@ -132,6 +164,14 @@ bo4e.bo.region module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.regionaltarif module
+----------------------------
+
+.. automodule:: bo4e.bo.regionaltarif
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.standorteigenschaften module
 ------------------------------------
 
@@ -152,6 +192,14 @@ bo4e.bo.tarifkosten module
 --------------------------
 
 .. automodule:: bo4e.bo.tarifkosten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.tarifpreisblatt module
+------------------------------
+
+.. automodule:: bo4e.bo.tarifpreisblatt
    :members:
    :undoc-members:
    :show-inheritance:

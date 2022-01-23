@@ -10,25 +10,31 @@ from tests.serialization_helper import assert_serialization_roundtrip  # type:ig
 from tests.test_preis import example_preis  # type:ignore[import]
 from tests.test_tarifpreis import example_tarifpreis  # type:ignore[import]
 
+example_tarifberechnungsparameter = Tarifberechnungsparameter(
+    berechnungsmethode=Tarifkalkulationsmethode.ZONEN,
+    messpreis_in_gp_enthalten=True,
+    kw_inklusive=Decimal(12.5),
+    kw_weitere_mengen=Decimal(12.5),
+    messpreistyp=Messpreistyp.MESSPREIS_G6,
+    messpreis_beruecksichtigen=True,
+    hoechstpreis_h_t=example_preis,
+    hoechstpreis_n_t=example_preis,
+    mindestpreis=example_preis,
+    zusatzpreise=[example_tarifpreis],
+)
+
 
 class TestFremdkostenposition:
     @pytest.mark.parametrize(
         "tarifberechnungsparameter",
         [
             pytest.param(
-                Tarifberechnungsparameter(
-                    berechnungsmethode=Tarifkalkulationsmethode.ZONEN,
-                    messpreis_in_gp_enthalten=True,
-                    kw_inklusive=Decimal(12.5),
-                    kw_weitere_mengen=Decimal(12.5),
-                    messpreistyp=Messpreistyp.MESSPREIS_G6,
-                    messpreis_beruecksichtigen=True,
-                    hoechstpreis_h_t=example_preis,
-                    hoechstpreis_n_t=example_preis,
-                    mindestpreis=example_preis,
-                    zusatzpreise=[example_tarifpreis],
-                ),
+                example_tarifberechnungsparameter,
                 id="maximal attributes",
+            ),
+            pytest.param(
+                Tarifberechnungsparameter(),
+                id="minimal attributes",
             ),
         ],
     )
