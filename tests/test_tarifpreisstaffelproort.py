@@ -28,7 +28,7 @@ class TestTarifpreisstaffelProOrt:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifpreisstaffel, TarifpreisstaffelProOrtSchema())
+        assert_serialization_roundtrip(tarifpreisstaffelproort, TarifpreisstaffelProOrtSchema())
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
