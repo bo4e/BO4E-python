@@ -41,7 +41,7 @@ from bo4e.enum.strenum import StrEnum
 
 class MyBo4eEnum(StrEnum):
     """
-    Ein deutscher Text, der Sinn und Zweck des Enums beschreibt.
+    Hier sollte ein deutscher Text stehen, der Sinn und Zweck des Enums beschreibt.
     """
 
     FOO = "FOO" #: FOO ist, wenn der Himmel blau ist
