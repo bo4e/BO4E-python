@@ -62,6 +62,7 @@ class Ausschreibung(Geschaeftsobjekt):
             iterable_validator=check_list_length_at_least_one,
         )
     )
+
     # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale
     ausschreibungportal: Optional[Ausschreibungsportal] = attr.ib(
