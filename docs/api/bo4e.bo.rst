@@ -108,6 +108,14 @@ bo4e.bo.preisblattkonzessionsabgabe module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.preisblattmessung module
+--------------------------------
+
+.. automodule:: bo4e.bo.preisblattmessung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.preisblattnetznutzung module
 ------------------------------------
 
@@ -124,6 +132,14 @@ bo4e.bo.region module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.regionaltarif module
+----------------------------
+
+.. automodule:: bo4e.bo.regionaltarif
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.standorteigenschaften module
 ------------------------------------
 
@@ -136,6 +152,14 @@ bo4e.bo.tarifinfo module
 ------------------------
 
 .. automodule:: bo4e.bo.tarifinfo
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.tarifkosten module
+--------------------------
+
+.. automodule:: bo4e.bo.tarifkosten
    :members:
    :undoc-members:
    :show-inheritance:

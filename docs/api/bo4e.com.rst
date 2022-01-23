@@ -388,6 +388,14 @@ bo4e.com.tagesvektor module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tarifberechnungsparameter module
+-----------------------------------------
+
+.. automodule:: bo4e.com.tarifberechnungsparameter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.tarifeinschraenkung module
 -----------------------------------
 
