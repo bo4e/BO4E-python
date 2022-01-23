@@ -46,5 +46,5 @@ class TarifpreisstaffelProOrtSchema(COMSchema):
     arbeitspreis = fields.Decimal(as_string=True)
     arbeitspreis_n_t = fields.Decimal(as_string=True, data_key="arbeitspreisNT")
     grundpreis = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True)
-    staffelgrenze_bis = fields.Decimal(as_string=True)
+    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
+    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")
