@@ -100,6 +100,6 @@ class TarifinfoSchema(GeschaeftsobjektSchema):
     # optional attributes
     website = fields.Str(load_default=None)
     bemerkung = fields.Str(load_default=None)
-    zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema, load_default=None)
+    zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema, load_default=None, data_key="zeitlicheGueltigkeit")
     energiemix = fields.Nested(EnergiemixSchema, load_default=None)
     vertragskonditionen = fields.Nested(VertragskonditionenSchema, load_default=None)

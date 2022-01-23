@@ -67,5 +67,5 @@ class PreisblattHardwareSchema(PreisblattSchema):
     messebene = EnumField(Netzebene)
     basisgeraet = fields.Nested(GeraeteeigenschaftenSchema)
     # optional attributes
-    inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp))
-    inklusive_geraete = fields.List(fields.Nested(GeraeteeigenschaftenSchema))
+    inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp), data_key="inklusiveDienstleistungen")
+    inklusive_geraete = fields.List(fields.Nested(GeraeteeigenschaftenSchema), data_key="inklusiveGeraete")

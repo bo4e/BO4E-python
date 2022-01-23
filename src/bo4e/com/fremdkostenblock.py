@@ -58,4 +58,4 @@ class FremdkostenblockSchema(COMSchema):
 
     # optional attributes
     kostenpositionen = fields.List(fields.Nested(FremdkostenpositionSchema), load_default=None)
-    summe_kostenblock = fields.Nested(BetragSchema, load_default=None)
+    summe_kostenblock = fields.Nested(BetragSchema, load_default=None, data_key="summeKostenblock")

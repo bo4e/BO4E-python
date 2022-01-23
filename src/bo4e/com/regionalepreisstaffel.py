@@ -28,4 +28,4 @@ class RegionalePreisstaffelSchema(PreisstaffelSchema):
 
     class_name = RegionalePreisstaffel  # type:ignore[assignment]
     # required attributes
-    regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema)
+    regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema, data_key="regionaleGueltigkeit")

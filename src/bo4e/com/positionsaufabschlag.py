@@ -44,6 +44,6 @@ class PositionsAufAbschlagSchema(COMSchema):
     # required attributes
     bezeichnung = fields.Str()
     beschreibung = fields.Str()
-    auf_abschlagstyp = EnumField(AufAbschlagstyp)
-    auf_abschlagswert = fields.Decimal(as_string=True)
-    auf_abschlagswaehrung = EnumField(Waehrungseinheit)
+    auf_abschlagstyp = EnumField(AufAbschlagstyp, data_key="aufAbschlagstyp")
+    auf_abschlagswert = fields.Decimal(as_string=True, data_key="aufAbschlagswert")
+    auf_abschlagswaehrung = EnumField(Waehrungseinheit, data_key="aufAbschlagswaehrung")

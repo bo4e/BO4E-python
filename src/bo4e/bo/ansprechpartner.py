@@ -63,10 +63,10 @@ class AnsprechpartnerSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     anrede = EnumField(Anrede, load_default=None)
-    individuelle_anrede = fields.Str(load_default=None)
+    individuelle_anrede = fields.Str(load_default=None, data_key="individuelleAnrede")
     titel = EnumField(Titel, load_default=None)
     vorname = fields.Str(load_default=None)
-    e_mail_adresse = fields.Str(load_default=None)
+    e_mail_adresse = fields.Str(load_default=None, data_key="eMailAdresse")
     kommentar = fields.Str(load_default=None)
     adresse = fields.Nested(AdresseSchema, load_default=None)
     rufnummer = fields.Nested(RufnummerSchema, load_default=None)
