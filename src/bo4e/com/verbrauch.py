@@ -63,7 +63,7 @@ class VerbrauchSchema(COMSchema):
     class_name = Verbrauch
     # required attributes
     wertermittlungsverfahren = EnumField(Wertermittlungsverfahren)
-    obis_kennzahl = fields.Str()
+    obis_kennzahl = fields.Str(data_key="obisKennzahl")
     wert = fields.Decimal(as_string=True)
     mengeneinheit = EnumField(Mengeneinheit)
 

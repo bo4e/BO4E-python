@@ -105,8 +105,8 @@ class PreispositionSchema(COMSchema):
     # optional attributes
     zeitbasis = EnumField(Zeiteinheit, load_default=None)
     tarifzeit = EnumField(Tarifzeit, load_default=None)
-    bdew_artikelnummer = EnumField(BDEWArtikelnummer, load_default=None)
+    bdew_artikelnummer = EnumField(BDEWArtikelnummer, load_default=None, data_key="bdewArtikelnummer")
     zonungsgroesse = EnumField(Bemessungsgroesse, load_default=None)
-    freimenge_blindarbeit = fields.Decimal(load_default=None, as_string=True)
-    freimenge_leistungsfaktor = fields.Decimal(load_default=None, as_string=True)
-    artikel_id = EnumField(ArtikelId, load_default=None)
+    freimenge_blindarbeit = fields.Decimal(load_default=None, as_string=True, data_key="freimengeBlindarbeit")
+    freimenge_leistungsfaktor = fields.Decimal(load_default=None, as_string=True, data_key="freimengeLeistungsfaktor")
+    artikel_id = EnumField(ArtikelId, load_default=None, data_key="artikelId")
