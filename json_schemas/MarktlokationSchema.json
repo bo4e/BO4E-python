@@ -12,7 +12,7 @@
                         "null"
                     ]
                 },
-                "co_ergaenzung": {
+                "coErgaenzung": {
                     "title": "co_ergaenzung",
                     "type": [
                         "string",
@@ -310,11 +310,11 @@
         "ExterneReferenzSchema": {
             "additionalProperties": false,
             "properties": {
-                "ex_ref_name": {
+                "exRefName": {
                     "title": "ex_ref_name",
                     "type": "string"
                 },
-                "ex_ref_wert": {
+                "exRefWert": {
                     "title": "ex_ref_wert",
                     "type": "string"
                 }
@@ -361,27 +361,34 @@
                         "null"
                     ]
                 },
-                "bo_typ": {
+                "boTyp": {
                     "enum": [
                         "ANGEBOT",
                         "ANSPRECHPARTNER",
                         "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
                         "ENERGIEMENGE",
+                        "FREMDKOSTEN",
                         "GESCHAEFTSOBJEKT",
                         "GESCHAEFTSPARTNER",
                         "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
                         "MARKTLOKATION",
                         "MESSLOKATION",
                         "MARKTTEILNEHMER",
                         "NETZNUTZUNGSRECHNUNG",
                         "PREISBLATT",
                         "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
                         "PREISBLATTKONZESSIONSABGABE",
                         "PREISBLATTMESSUNG",
                         "PREISBLATTNETZNUTZUNG",
                         "PREISBLATTUMLAGEN",
                         "RECHNUNG",
+                        "REGION",
                         "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
                         "TARIFINFO",
                         "TARIFKOSTEN",
                         "TARIFPREISBLATT",
@@ -399,7 +406,7 @@
                         "null"
                     ]
                 },
-                "externe_referenzen": {
+                "externeReferenzen": {
                     "items": {
                         "$ref": "#/definitions/ExterneReferenzSchema",
                         "type": "object"
@@ -429,7 +436,7 @@
                     "title": "gewerbekennzeichnung",
                     "type": "boolean"
                 },
-                "glaeubiger_id": {
+                "glauebigerId": {
                     "title": "glaeubiger_id",
                     "type": [
                         "string",
@@ -511,7 +518,7 @@
                     "title": "flurstueck",
                     "type": "string"
                 },
-                "gemarkung_flur": {
+                "gemarkungFlur": {
                     "title": "gemarkung_flur",
                     "type": "string"
                 }
@@ -539,27 +546,34 @@
                     "title": "bilanzierungsmethode",
                     "type": "string"
                 },
-                "bo_typ": {
+                "boTyp": {
                     "enum": [
                         "ANGEBOT",
                         "ANSPRECHPARTNER",
                         "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
                         "ENERGIEMENGE",
+                        "FREMDKOSTEN",
                         "GESCHAEFTSOBJEKT",
                         "GESCHAEFTSPARTNER",
                         "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
                         "MARKTLOKATION",
                         "MESSLOKATION",
                         "MARKTTEILNEHMER",
                         "NETZNUTZUNGSRECHNUNG",
                         "PREISBLATT",
                         "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
                         "PREISBLATTKONZESSIONSABGABE",
                         "PREISBLATTMESSUNG",
                         "PREISBLATTNETZNUTZUNG",
                         "PREISBLATTUMLAGEN",
                         "RECHNUNG",
+                        "REGION",
                         "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
                         "TARIFINFO",
                         "TARIFKOSTEN",
                         "TARIFPREISBLATT",
@@ -582,7 +596,7 @@
                     "title": "energierichtung",
                     "type": "string"
                 },
-                "externe_referenzen": {
+                "externeReferenzen": {
                     "items": {
                         "$ref": "#/definitions/ExterneReferenzSchema",
                         "type": "object"
@@ -641,7 +655,7 @@
                     "$ref": "#/definitions/AdresseSchema",
                     "type": "object"
                 },
-                "marktlokations_id": {
+                "marktlokationsId": {
                     "title": "marktlokations_id",
                     "type": "string"
                 },
@@ -712,7 +726,7 @@
                     "title": "versionstruktur",
                     "type": "string"
                 },
-                "zugehoerige_messlokation": {
+                "zugehoerigeMesslokation": {
                     "items": {
                         "$ref": "#/definitions/MesslokationszuordnungSchema",
                         "type": "object"
@@ -739,7 +753,7 @@
                     "title": "arithmetik",
                     "type": "string"
                 },
-                "gueltig_bis": {
+                "gueltigBis": {
                     "format": "date-time",
                     "title": "gueltig_bis",
                     "type": [
@@ -747,7 +761,7 @@
                         "null"
                     ]
                 },
-                "gueltig_seit": {
+                "gueltigSeit": {
                     "format": "date-time",
                     "title": "gueltig_seit",
                     "type": [
@@ -755,7 +769,7 @@
                         "null"
                     ]
                 },
-                "messlokations_id": {
+                "messlokationsId": {
                     "title": "messlokations_id",
                     "type": "string"
                 }
