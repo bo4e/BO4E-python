@@ -53,7 +53,7 @@ class RegionSchema(GeschaeftsobjektSchema):
     class_name = Region
     # required attributes
     bezeichnung = fields.Str()
-    positiv_liste = fields.List(fields.Nested(RegionskriteriumSchema))
+    positiv_liste = fields.List(fields.Nested(RegionskriteriumSchema), data_key="positivListe")
 
     # optional attributes
-    negativ_liste = fields.List(fields.Nested(RegionskriteriumSchema), load_default=None)
+    negativ_liste = fields.List(fields.Nested(RegionskriteriumSchema), load_default=None, data_key="negativListe")

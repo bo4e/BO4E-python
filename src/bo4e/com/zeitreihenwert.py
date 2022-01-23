@@ -42,5 +42,5 @@ class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):
 
     class_name = Zeitreihenwert  # type:ignore[assignment]
     # required attributes
-    datum_uhrzeit_von = fields.DateTime()
-    datum_uhrzeit_bis = fields.DateTime()
+    datum_uhrzeit_von = fields.DateTime(data_key="datumUhrzeitVon")
+    datum_uhrzeit_bis = fields.DateTime(data_key="datumUhrzeitBis")

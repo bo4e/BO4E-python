@@ -92,11 +92,11 @@ class TarifberechnungsparameterSchema(COMSchema):
     class_name = Tarifberechnungsparameter
     # optional attributes
     berechnungsmethode = EnumField(Tarifkalkulationsmethode, allow_none=True)
-    messpreis_in_gp_enthalten = fields.Bool(allow_none=True)
-    messpreis_beruecksichtigen = fields.Bool(allow_none=True)
+    messpreis_in_gp_enthalten = fields.Bool(allow_none=True, data_key="messpreisInGpEnthalten")
+    messpreis_beruecksichtigen = fields.Bool(allow_none=True, data_key="messpreisBeruecksichtigen")
     messpreistyp = EnumField(Messpreistyp, allow_none=True)
-    kw_inklusive = fields.Decimal(as_string=True, allow_none=True)
-    kw_weitere_mengen = fields.Decimal(as_string=True, allow_none=True)
+    kw_inklusive = fields.Decimal(as_string=True, allow_none=True, data_key="kwInklusive")
+    kw_weitere_mengen = fields.Decimal(as_string=True, allow_none=True, data_key="kwWeitereMengen")
     hoechstpreis_n_t = fields.Nested(PreisSchema, data_key="hoechstpreisHT", allow_none=True)
     hoechstpreis_h_t = fields.Nested(PreisSchema, data_key="hoechstpreisNT", allow_none=True)
     mindestpreis = fields.Nested(PreisSchema, allow_none=True)

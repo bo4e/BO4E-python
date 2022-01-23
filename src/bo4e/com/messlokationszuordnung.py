@@ -37,9 +37,9 @@ class MesslokationszuordnungSchema(COMSchema):
 
     class_name = Messlokationszuordnung
     # required attributes
-    messlokations_id = fields.Str()
+    messlokations_id = fields.Str(data_key="messlokationsId")
     arithmetik = EnumField(ArithmetischeOperation)
 
     # optional attributes
-    gueltig_seit = fields.DateTime(load_default=None)
-    gueltig_bis = fields.DateTime(load_default=None)
+    gueltig_seit = fields.DateTime(load_default=None, data_key="gueltigSeit")
+    gueltig_bis = fields.DateTime(load_default=None, data_key="gueltigBis")

@@ -74,8 +74,8 @@ class AufAbschlagSchema(COMSchema):
 
     # optional attributes
     beschreibung = fields.Str(load_default=None)
-    auf_abschlagstyp = EnumField(AufAbschlagstyp, allow_none=True)
-    auf_abschlagsziel = EnumField(AufAbschlagsziel, allow_none=True)
+    auf_abschlagstyp = EnumField(AufAbschlagstyp, allow_none=True, data_key="aufAbschlagstyp")
+    auf_abschlagsziel = EnumField(AufAbschlagsziel, allow_none=True, data_key="aufAbschlagsziel")
     einheit = EnumField(Waehrungseinheit, allow_none=True)
     website = fields.Str(load_default=None)
     gueltigkeitszeitraum = fields.Nested(ZeitraumSchema, load_default=None)

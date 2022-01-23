@@ -25,5 +25,5 @@ class KatasteradresseSchema(COMSchema):
     """
 
     class_name = Katasteradresse
-    gemarkung_flur = fields.Str()
+    gemarkung_flur = fields.Str(data_key="gemarkungFlur")
     flurstueck = fields.Str()

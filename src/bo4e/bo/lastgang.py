@@ -101,12 +101,12 @@ class _LastgangBodySchemaMixin:
     """
 
     sparte = EnumField(Sparte)
-    lokations_id = fields.Str()
+    lokations_id = fields.Str(data_key="lokationsId")
     lokationstyp = EnumField(Lokationstyp)
     messgroesse = EnumField(Mengeneinheit)
 
     # optional attributes
-    obis_kennzahl = fields.Str(load_default=None)
+    obis_kennzahl = fields.Str(load_default=None, data_key="obisKennzahl")
     version = fields.Str(allow_none=True)
 
 

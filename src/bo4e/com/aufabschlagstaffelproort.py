@@ -35,5 +35,5 @@ class AufAbschlagstaffelProOrtSchema(COMSchema):
     class_name = AufAbschlagstaffelProOrt
     # required attributes
     wert = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True)
-    staffelgrenze_bis = fields.Decimal(as_string=True)
+    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
+    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")

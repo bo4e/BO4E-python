@@ -29,5 +29,5 @@ class ExterneReferenzSchema(COMSchema):
     """
 
     class_name = ExterneReferenz
-    ex_ref_name = fields.Str()
-    ex_ref_wert = fields.Str()
+    ex_ref_name = fields.Str(data_key="exRefName")
+    ex_ref_wert = fields.Str(data_key="exRefWert")
