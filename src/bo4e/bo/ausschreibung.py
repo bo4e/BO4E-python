@@ -54,7 +54,6 @@ class Ausschreibung(Geschaeftsobjekt):
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
-
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
     lose: List[Ausschreibungslos] = attr.ib(
         validator=attr.validators.deep_iterable(
