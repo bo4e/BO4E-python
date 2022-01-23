@@ -38,7 +38,6 @@ class Ausschreibung(Geschaeftsobjekt):
     kostenpflichtig: bool = attr.ib(validator=attr.validators.instance_of(bool))
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
     veroeffentlichungszeitpunkt: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
-
     ausschreibender: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
