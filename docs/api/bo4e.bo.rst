@@ -4,6 +4,14 @@ bo4e.bo package
 Submodules
 ----------
 
+bo4e.bo.angebot module
+----------------------
+
+.. automodule:: bo4e.bo.angebot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.ansprechpartner module
 ------------------------------
 

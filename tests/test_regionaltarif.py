@@ -31,7 +31,9 @@ class TestRegionaltarif:
                     tarif_auf_abschlaege=[example_regionaler_auf_abschlag],
                     tarifpreise=[example_regionale_tarifpreisposition],
                     preisgarantien=[example_regionale_preisgarantie],
-                    tarifeinschraenkungen=example_tarifeinschraenkung,
+                    tarifeinschraenkung=example_tarifeinschraenkung,
+                    # ^^ above are the attributes of Regionaltarif
+                    # vv below is all copy pasted from Tarifinfo test
                     bezeichnung="foo",
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
@@ -53,6 +55,8 @@ class TestRegionaltarif:
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                     berechnungsparameter=example_tarifberechnungsparameter,
                     tarifpreise=[example_regionale_tarifpreisposition],
+                    # ^^ above are the attributes of Regionaltarif
+                    # vv below is all copy pasted from Tarifinfo test
                     bezeichnung="foo",
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,

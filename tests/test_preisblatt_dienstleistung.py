@@ -1,9 +1,8 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.preisblattmessung import PreisblattMessung, PreisblattMessungSchema
+from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung, PreisblattDienstleistungSchema
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -13,12 +12,12 @@ from tests.test_preisposition import example_preisposition  # type:ignore[import
 from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
 
 
-class TestPreisblattMessung:
+class TestPreisblattDienstleistung:
     @pytest.mark.parametrize(
-        "preisblatt_messung",
+        "preisblatt_dienstleistung",
         [
             pytest.param(
-                PreisblattMessung(
+                PreisblattDienstleistung(
                     bezeichnung="foo",
                     sparte=Sparte.STROM,
                     preisstatus=Preisstatus.ENDGUELTIG,
@@ -26,21 +25,20 @@ class TestPreisblattMessung:
                     gueltigkeit=example_zeitraum,
                     herausgeber=example_marktteilnehmer,
                     bilanzierungsmethode=Bilanzierungsmethode.TLP_GEMEINSAM,
-                    messebene=Netzebene.MSP,
+                    basisdienstleistung=Dienstleistungstyp.ABLESUNG_MONATLICH,
                     inklusive_dienstleistungen=[Dienstleistungstyp.AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB],
-                    zaehler=example_geraeteeigenschaften,
-                    inklusive_geraete=[example_geraeteeigenschaften],
+                    geraetedetails=example_geraeteeigenschaften,
                 )
             ),
         ],
     )
-    def test_serialization_roundtrip(self, preisblatt_messung: PreisblattMessung):
+    def test_serialization_roundtrip(self, preisblatt_dienstleistung: PreisblattDienstleistung):
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(preisblatt_messung, PreisblattMessungSchema())
+        assert_serialization_roundtrip(preisblatt_dienstleistung, PreisblattDienstleistungSchema())
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
-            _ = PreisblattMessung()
-        assert "missing 8 required" in str(excinfo.value)  # 5 from preisblatt + 3 from preisblatt messung
+            _ = PreisblattDienstleistung()
+        assert "missing 7 required" in str(excinfo.value)  # 5 from preisblatt + 2 from preisblatt dienstleistung
