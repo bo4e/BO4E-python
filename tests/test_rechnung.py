@@ -77,7 +77,38 @@ class TestRechnung:
                             teilsumme_steuer=example_steuerbetrag,
                         )
                     ],
-                )
+                ),
+                id="maximal attributes",
+            ),
+            pytest.param(
+                Rechnung(
+                    storno=True,
+                    rechnungsnummer="202201211701",
+                    rechnungsdatum=datetime.today(),
+                    faelligkeitsdatum=datetime.today(),
+                    rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
+                    original_rechnungsnummer="RE-2022-01-21_1701",
+                    rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
+                    rechnungsersteller=_rechnungsersteller,
+                    rechnungsempfaenger=_rechnungsempfaenger,
+                    gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    zuzahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    rechnungspositionen=[
+                        Rechnungsposition(
+                            positionsnummer=1,
+                            lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
+                            lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
+                            positionstext="Besonders wertvolle Rechnungsposition",
+                            positions_menge=example_menge,
+                            einzelpreis=example_preis,
+                            teilsumme_netto=example_betrag,
+                            teilsumme_steuer=example_steuerbetrag,
+                        )
+                    ],
+                ),
+                id="minimal attributes",
             ),
         ],
     )
