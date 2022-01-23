@@ -11,7 +11,6 @@ from marshmallow import fields
 from bo4e.bo.tarifinfo import Tarifinfo, TarifinfoSchema
 from bo4e.com.aufabschlagregional import AufAbschlagRegional, AufAbschlagRegionalSchema
 from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter, TarifberechnungsparameterSchema
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung, TarifeinschraenkungSchema
 from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt, TarifpreispositionProOrtSchema
