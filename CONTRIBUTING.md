@@ -1,29 +1,33 @@
 # How to Contribute Code
+
 This document describes how the BO4E Python implementation is written and what to watch out for.
 
 ## Technical Setup in your IDE
+
 We're using tox.
-Please follow the instructions in our [Python Template Repository](https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine). 
+Please follow the instructions in our [Python Template Repository](https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine).
 Feel free to open an issue if you run into any kind of problems.
 
 ## Coding Style and Guidelines
 
 ### General Rules
-* We use (and enforce in the CI):
-  * black for formatting
-  * pylint for linting
-  * mypy for static type checking
-  * pytest for unittests
-  * Sphinx for documentation
-* Technical Documentation is in English; For example: "Don't use the builtin validator here because ..."
-* But data model docstrings are in German; For example: "Ist das Ende nicht gesetzt, so ist der Zeitraum als offen zuverstehen."
-* Docstrings should not be trivial/useless
-  * Bad: "Energiemenge ist eine Klasse zur Abbildung von Energiemengen." ❌ (no shit sherlock)
-  * Good: "Eine Energiemenge ordnet einer :class:`Marktlokation` oder :class:`Messlokation`, die über die `lokations_id` referenziert werden, einen oder mehrere Energieverbräuche zu." ✔
-* Only sentences have a fullstop at the end.
-* we use `snake_case` internally but serialize as `camelCase` by overriding the `data_key` property of the schema fields
+
+- We use (and enforce in the CI):
+  - black for formatting
+  - pylint for linting
+  - mypy for static type checking
+  - pytest for unittests
+  - Sphinx for documentation
+- Technical Documentation is in English; For example: "Don't use the builtin validator here because ..."
+- But data model docstrings are in German; For example: "Ist das Ende nicht gesetzt, so ist der Zeitraum als offen zuverstehen."
+- Docstrings should not be trivial/useless
+  - Bad: "Energiemenge ist eine Klasse zur Abbildung von Energiemengen." ❌ (no shit sherlock)
+  - Good: "Eine Energiemenge ordnet einer :class:`Marktlokation` oder :class:`Messlokation`, die über die `lokations_id` referenziert werden, einen oder mehrere Energieverbräuche zu." ✔
+- Only sentences have a fullstop at the end.
+- we use `snake_case` internally but serialize as `camelCase` by overriding the `data_key` property of the schema fields
 
 ### How to Define an ENUM?
+
 All Enums inherit from `bo4e.enum.StrEnum`.
 It's is just a usual Enum with a `str` mixin (see [the official docs](https://docs.python.org/3/library/enum.html?highlight=strenum#others) for details).
 This allows us to precisly define how an enum value will be serialized.
@@ -48,19 +52,20 @@ class MyBo4eEnum(StrEnum):
     """
     EIGENSCHAFT_0815 = "0815" #: manchmal heißen eigenschaften anders (EIGENSCHAFT_0815) als sie serialisiert werden ("0815")
     # this typically happens for annoying enum values that contains "-" or start with digits
- ```
- 
- ### How to Define `COM`s or `BO`s
- All COMponents inherit from `bo4e.com.COM`.
- All Business Objects inherit from `bo4e.bo.Geschaeftsobjekt`.
- 
- The classes are defined with the help of [`attrs`](https://www.attrs.org/).
- 
- For the de/serialization we use [`marshmallow`](https://marshmallow.readthedocs.io/).
- Each Python attr-decorated class comes with a corresponding marshmallow schema.
- 
- All COMpontent schemas inherit from `bo4e.com.com.COMSchema`.
- All Business Object schemas inherit from `bo4e.bo.Geschaeftsobjekt.GeschaeftsobjektSchema`.
+```
+
+### How to Define `COM`s or `BO`s
+
+All COMponents inherit from `bo4e.com.COM`.
+All Business Objects inherit from `bo4e.bo.Geschaeftsobjekt`.
+
+The classes are defined with the help of [`attrs`](https://www.attrs.org/).
+
+For the de/serialization we use [`marshmallow`](https://marshmallow.readthedocs.io/).
+Each Python attr-decorated class comes with a corresponding marshmallow schema.
+
+All COMpontent schemas inherit from `bo4e.com.com.COMSchema`.
+All Business Object schemas inherit from `bo4e.bo.Geschaeftsobjekt.GeschaeftsobjektSchema`.
 
 ```python
 """
@@ -128,12 +133,14 @@ class MeinBoSchema(GeschaeftsobjektSchema):
 ```
 
 ## Unittests
+
 Ideally provide unittests that show:
-* that the BO/COM can be instantiated
-  * with only the required attributes
-  * with all attributes
-* can be serialized and deserialized again
-  * with only the required attributes
-  * with all attributes
- 
+
+- that the BO/COM can be instantiated
+  - with only the required attributes
+  - with all attributes
+- can be serialized and deserialized again
+  - with only the required attributes
+  - with all attributes
+
 Therefore copy one of the existing "roundtrip" tests, see f.e. `TestTarifeinschraenkung`.
