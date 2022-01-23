@@ -41,7 +41,7 @@ class TarifpreispositionProOrt(COM):
 
 class TarifpreispositionProOrtSchema(COMSchema):
     """
-    Schema for de-/serialization of Tarifpreisposition.
+    Schema for de-/serialization of TarifpreispositionProOrt.
     """
 
     class_name = TarifpreispositionProOrt
