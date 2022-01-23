@@ -23,10 +23,11 @@ Feel free to open an issue if you run into any kind of problems.
 * Only sentences have a fullstop at the end.
 * we use `snake_case` internally but serialize as `camelCase` by overriding the `data_key` property of the schema fields
 
-### How to create an ENUM
-All Enums inherit from `StrEnum`.
-It's is just a usual Enum with a `str` mixin (see [the official docs](see https://docs.python.org/3/library/enum.html?highlight=strenum#others) for details).
+### How to Define an ENUM?
+All Enums inherit from `bo4e.enum.StrEnum`.
+It's is just a usual Enum with a `str` mixin (see [the official docs](https://docs.python.org/3/library/enum.html?highlight=strenum#others) for details).
 This allows us to precisly define how an enum value will be serialized.
+All enum values have UPPER_CASE names.
 
 ```python
 # pylint:disable=missing-module-docstring
@@ -45,6 +46,94 @@ class MyBo4eEnum(StrEnum):
     Der Docstring für BAR kann auch hier drunter stehen, wenn er besonders lang ist und mehr sagen will,
     als dass BAR für die grüne Wiese steht. Denn manchmal braucht es mehr als hundert Zeichen.
     """
-    EIGENSCHAFT_0815 = "0815" #: manchmal heißen eigenschaften anders als sie serialisiert werden.
+    EIGENSCHAFT_0815 = "0815" #: manchmal heißen eigenschaften anders (EIGENSCHAFT_0815) als sie serialisiert werden ("0815")
     # this typically happens for annoying enum values that contains "-" or start with digits
- ```   
+ ```
+ 
+ ### How to Define `COM`s or `BO`s
+ All COMponents inherit from `bo4e.com.COM`.
+ All Business Objects inherit from `bo4e.bo.Geschaeftsobjekt`.
+ 
+ The classes are defined with the help of [`attrs`](https://www.attrs.org/).
+ 
+ For the de/serialization we use [`marshmallow`](https://marshmallow.readthedocs.io/).
+ Each Python attr-decorated class comes with a corresponding marshmallow schema.
+ 
+ All COMpontent schemas inherit from `bo4e.com.com.COMSchema`.
+ All Business Object schemas inherit from `bo4e.bo.Geschaeftsobjekt.GeschaeftsobjektSchema`.
+
+```python
+"""
+Give the module a docstring to describe what it contains
+"""
+
+from datetime import datetime
+from typing import Optional
+
+import attr
+from marshmallow import fields
+
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
+from bo4e.com.menge import Menge, MengeSchema
+from bo4e.enum.botyp import BoTyp
+
+
+# pylint: disable=too-few-public-methods
+@attr.s(auto_attribs=True, kw_only=True)
+class MeinBo(Geschaeftsobjekt):
+    """
+    MeinBo ist ein ganz besonderes Business Objekt.
+    Es kommt nur bei meinem Strom-Lieferanten zum Einsatz und beschreibt dort all die tollen Eingeschaften, die mein Stromverhalten hat.
+    """
+
+    bo_typ: BoTyp = attr.ib(default=BoTyp.MEINBO)
+    # required attributes
+    #: Der Lieferbeginn beschreibt den Zeitpunkt ab dem (inklusiv) mich ein Versorger seinen Kunden nennen darf
+    lieferbeginn: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+
+    anzahl_freudenspruenge: int = attr.ib(validator=attr.validators.instance_of(int))
+    """
+    Anzahl Freudensprünge beschreibt, wie oft der CEO des Stromkonzerns in die Luft gesprungen ist, als ich den Vertrag unterschrieben habe.
+    Dieser Wert sollte im Normalfall mindestens 5 sein.
+    """
+    # todo: write a validator for anzahl_freudensprunge to be >5 and raise a ValidationError otherwise
+    # we can help you with anything you might be missing or unable to implement.
+    # You don't need to be a perfect programmer to contribute to bo4e :)
+
+    #: Optionale Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte
+    freimenge: Optional[Menge] = attr.ib(
+        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    )
+
+
+class MeinBoSchema(GeschaeftsobjektSchema):
+    """
+    Schema for de-/serialization of :class:`MeinBo`
+    """
+
+    # you don't need to copy paste the docstrings to the schema
+
+    class_name = MeinBo
+    # this is used so that the Pyhton object created on deserialization/loading has the correct type
+
+    # required attributes
+    lieferbeginn = fields.DateTime()
+    # the camelCase is implemented via he data_key kwarg
+    anzahl_freudenspruenge = fields.Int(data_key="anzahlFreudenspruenge")
+
+    # optional attributes
+    # when nesting you need to reference the schema here (not Menge but MengeSchema!)
+    freimenge = fields.Nested(MengeSchema, load_default=None)
+
+```
+
+## Unittests
+Ideally provide unittests that show:
+* that the BO/COM can be instantiated
+  * with only the required attributes
+  * with all attributes
+* can be serialized and deserialized again
+  * with only the required attributes
+  * with all attributes
+ 
+Therefore copy one of the existing "roundtrip" tests, see f.e. `TestTarifeinschraenkung`.
