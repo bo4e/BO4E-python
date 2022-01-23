@@ -34,7 +34,6 @@ class Ausschreibung(Geschaeftsobjekt):
     ausschreibungstyp: Ausschreibungstyp = attr.ib(validator=attr.validators.instance_of(Ausschreibungstyp))
     #: Bezeichnungen für die Ausschreibungsphasen
     ausschreibungsstatus: Ausschreibungsstatus = attr.ib(validator=attr.validators.instance_of(Ausschreibungsstatus))
-
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
     kostenpflichtig: bool = attr.ib(validator=attr.validators.instance_of(bool))
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
