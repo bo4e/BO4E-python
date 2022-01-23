@@ -72,7 +72,7 @@ class Tarif(Tarifinfo):
 
 class TarifSchema(TarifinfoSchema):
     """
-    Schema for de-/serialization of Regionaltarif
+    Schema for de-/serialization of Tarif
     """
 
     class_name = Tarif  # type:ignore[assignment]
