@@ -47,6 +47,6 @@ class EnergiemengeSchema(GeschaeftsobjektSchema):
 
     class_name = Energiemenge
     # required attributes
-    lokations_id = fields.Str()
+    lokations_id = fields.Str(data_key="lokationsId")
     lokationstyp = EnumField(Lokationstyp)
     energieverbrauch = fields.List(fields.Nested(VerbrauchSchema))

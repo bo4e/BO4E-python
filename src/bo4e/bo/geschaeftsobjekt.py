@@ -52,10 +52,12 @@ class GeschaeftsobjektSchema(CaseConverterSchema):
 
     # required attributes
     versionstruktur = fields.String()
-    bo_typ = EnumField(BoTyp)
+    bo_typ = EnumField(BoTyp, data_key="boTyp")
 
     # optional attributes
-    externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), load_default=None)
+    externe_referenzen = fields.List(
+        fields.Nested(ExterneReferenzSchema), data_key="externeReferenzen", load_default=None
+    )
 
     @post_load
     def deserialize(self, data, **kwargs):

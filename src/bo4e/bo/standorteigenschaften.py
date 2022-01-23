@@ -49,9 +49,9 @@ class StandorteigenschaftenSchema(GeschaeftsobjektSchema):
 
     class_name = Standorteigenschaften
     # required attributes
-    eigenschaften_allgemein = fields.Nested(StandorteigenschaftenAllgemeinSchema)
+    eigenschaften_allgemein = fields.Nested(StandorteigenschaftenAllgemeinSchema, data_key="eigenschaftenAllgemein")
 
-    eigenschaften_strom = fields.List(fields.Nested(StandorteigenschaftenStromSchema))
+    eigenschaften_strom = fields.List(fields.Nested(StandorteigenschaftenStromSchema), data_key="eigenschaftenStrom")
 
     # optional attributes
-    eigenschaften_gas = fields.Nested(StandorteigenschaftenGasSchema, load_default=None)
+    eigenschaften_gas = fields.Nested(StandorteigenschaftenGasSchema, load_default=None, data_key="eigenschaftenGas")

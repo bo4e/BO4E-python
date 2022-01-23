@@ -127,7 +127,7 @@ class RechnungSchema(GeschaeftsobjektSchema):
     # optional attributes
     rechnungstitel = fields.Str(allow_none=True)
     rechnungsstatus = EnumField(Rechnungsstatus, allow_none=True)
-    original_rechnungsnummer = fields.Str(allow_none=True)
+    original_rechnungsnummer = fields.Str(allow_none=True, data_key="originalRechnungsnummer")
     vorausgezahlt = fields.Nested(BetragSchema, allow_none=True)
-    rabatt_brutto = fields.Nested(BetragSchema, allow_none=True)
+    rabatt_brutto = fields.Nested(BetragSchema, allow_none=True, data_key="rabattBrutto")
     steuerbetraege = fields.List(fields.Nested(SteuerbetragSchema), allow_none=True)
