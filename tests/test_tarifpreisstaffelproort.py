@@ -24,7 +24,7 @@ class TestTarifpreisstaffelProOrt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreisstaffel: TarifpreisstaffelProOrt):
+    def test_serialization_roundtrip(self, tarifpreisstaffelproort: TarifpreisstaffelProOrt):
         """
         Test de-/serialisation
         """
