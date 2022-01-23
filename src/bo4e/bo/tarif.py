@@ -55,7 +55,7 @@ class Tarif(Tarifinfo):
     # todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional
     # https://github.com/Hochfrequenz/BO4E-python/issues/345
 
-    #: Festlegung von Garantien für bestimmte Preisanteile
+    #: Preisgarantie für diesen Tarif
     preisgarantie: Optional[Preisgarantie] = attr.ib(
         default=None,
         validator=attr.validators.optional(
