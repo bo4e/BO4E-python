@@ -81,7 +81,7 @@ class KostenpositionSchema(COMSchema):
     class_name = Kostenposition
     # required attributes
     positionstitel = fields.Str()
-    betrag_kostenposition = fields.Nested(BetragSchema)
+    betrag_kostenposition = fields.Nested(BetragSchema, data_key="betragKostenposition")
     artikelbezeichnung = fields.Str()
     einzelpreis = fields.Nested(PreisSchema)
 

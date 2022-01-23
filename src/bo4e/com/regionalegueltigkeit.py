@@ -47,4 +47,4 @@ class RegionaleGueltigkeitSchema(COMSchema):
     class_name = RegionaleGueltigkeit
     # required attributes
     gueltigkeitstyp = EnumField(Gueltigkeitstyp)
-    kriteriums_werte = fields.List(fields.Nested(KriteriumWertSchema))
+    kriteriums_werte = fields.List(fields.Nested(KriteriumWertSchema), data_key="kriteriumsWerte")

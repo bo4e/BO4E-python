@@ -49,9 +49,9 @@ class ZaehlwerkSchema(COMSchema):
     """
 
     class_name = Zaehlwerk
-    zaehlwerk_id = fields.Str()
+    zaehlwerk_id = fields.Str(data_key="zaehlwerkId")
     bezeichnung = fields.Str()
     richtung = EnumField(Energierichtung)
-    obis_kennzahl = fields.Str()
+    obis_kennzahl = fields.Str(data_key="obisKennzahl")
     wandlerfaktor = fields.Decimal(as_string=True)
     einheit = EnumField(Mengeneinheit)

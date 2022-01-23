@@ -102,7 +102,7 @@ class GeschaeftspartnerSchema(GeschaeftsobjektSchema):
     amtsgericht = fields.Str(load_default=None)
     kontaktweg = fields.List(EnumField(Kontaktart), load_default=None)
     umsatzsteuer_id = fields.Str(load_default=None)
-    glaeubiger_id = fields.Str(load_default=None)
+    glaeubiger_id = fields.Str(load_default=None, data_key="glauebigerId")
     e_mail_adresse = fields.Str(load_default=None)
     website = fields.Str(load_default=None)
     partneradresse = fields.Nested(AdresseSchema, load_default=None)

@@ -35,7 +35,7 @@ class VertragskonditionenSchema(COMSchema):
     class_name = Vertragskonditionen
     # optional attributes
     beschreibung = fields.String(load_default=None)
-    anzahl_abschlaege = fields.Decimal(load_default=None, as_string=True)
+    anzahl_abschlaege = fields.Decimal(load_default=None, as_string=True, data_key="anzahlAbschlaege")
     vertragslaufzeit = fields.Nested(ZeitraumSchema, load_default=None)
     kuendigungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
     vertragsverlaengerung = fields.Nested(ZeitraumSchema, load_default=None)

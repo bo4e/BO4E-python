@@ -43,6 +43,6 @@ class VertragsteilSchema(COMSchema):
 
     # optional attributes
     lokation = fields.String(load_default=None)
-    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None)
-    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
-    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
+    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None, data_key="vertraglichFixierteMenge")
+    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="minimaleAbnahmemenge")
+    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="maximaleAbnahmemenge")

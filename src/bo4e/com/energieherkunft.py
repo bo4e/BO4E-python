@@ -42,4 +42,4 @@ class EnergieherkunftSchema(COMSchema):
     class_name = Energieherkunft
     # required attributes
     erzeugungsart = EnumField(Erzeugungsart)
-    anteil_prozent = fields.Decimal(as_string=True)
+    anteil_prozent = fields.Decimal(as_string=True, data_key="anteilProzent")

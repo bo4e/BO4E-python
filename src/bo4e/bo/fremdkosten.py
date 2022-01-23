@@ -53,5 +53,5 @@ class FremdkostenSchema(GeschaeftsobjektSchema):
     gueltigkeit = fields.Nested(ZeitraumSchema)
 
     # optional attributes
-    summe_kosten = fields.Nested(BetragSchema, load_default=None)
+    summe_kosten = fields.Nested(BetragSchema, load_default=None, data_key="summeKosten")
     kostenbloecke = fields.List(fields.Nested(FremdkostenblockSchema), load_default=None)

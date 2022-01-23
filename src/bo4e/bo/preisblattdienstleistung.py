@@ -57,5 +57,5 @@ class PreisblattDienstleistungSchema(PreisblattSchema):
     basisdienstleistung = EnumField(Dienstleistungstyp)
 
     # optional attributes
-    inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp))
+    inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp), data_key="inklusiveDienstleistungen")
     geraetedetails = fields.Nested(GeraeteeigenschaftenSchema)

@@ -36,6 +36,6 @@ class StandorteigenschaftenStromSchema(COMSchema):
 
     class_name = StandorteigenschaftenStrom
     # required attributes
-    bilanzierungsgebiet_eic = fields.Str()
+    bilanzierungsgebiet_eic = fields.Str(data_key="bilanzierungsgebietEic")
     regelzone = fields.Str()
-    regelzone_eic = fields.Str()
+    regelzone_eic = fields.Str(data_key="regelzoneEic")

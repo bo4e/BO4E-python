@@ -63,4 +63,4 @@ class KostenSchema(GeschaeftsobjektSchema):
     gueltigkeit = fields.Nested(ZeitraumSchema)
     kostenbloecke = fields.List(fields.Nested(KostenblockSchema))
     # optional attributes
-    summe_kosten = fields.List(fields.Nested(BetragSchema), load_default=None)
+    summe_kosten = fields.List(fields.Nested(BetragSchema), load_default=None, data_key="summeKosten")

@@ -81,6 +81,8 @@ class RegionaltarifSchema(TarifinfoSchema):
     tarifpreise = fields.List(fields.Nested(RegionaleTarifpreispositionSchema))
 
     # optional attributes
-    tarif_auf_abschlaege = fields.List(fields.Nested(RegionalerAufAbschlagSchema), allow_none=True)
+    tarif_auf_abschlaege = fields.List(
+        fields.Nested(RegionalerAufAbschlagSchema), allow_none=True, data_key="tarifAufAbschlaege"
+    )
     preisgarantien = fields.List(fields.Nested(RegionalePreisgarantieSchema), allow_none=True)
     tarifeinschraenkung = fields.Nested(TarifeinschraenkungSchema, allow_none=True)

@@ -88,5 +88,9 @@ class AngebotSchema(GeschaeftsobjektSchema):
     # optional attributes
     anfragereferenz = fields.Str(allow_none=True)
     bindefrist = fields.DateTime(allow_none=True)
-    unterzeichner_angebotsnehmer = fields.Nested(AnsprechpartnerSchema, allow_none=True)
-    unterzeichner_angebotsgeber = fields.Nested(AnsprechpartnerSchema, allow_none=True)
+    unterzeichner_angebotsnehmer = fields.Nested(
+        AnsprechpartnerSchema, allow_none=True, data_key="unterzeichnerAngebotsnehmer"
+    )
+    unterzeichner_angebotsgeber = fields.Nested(
+        AnsprechpartnerSchema, allow_none=True, data_key="unterzeichnerAngebotsgeber"
+    )
