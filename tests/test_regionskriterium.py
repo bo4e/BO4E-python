@@ -5,17 +5,19 @@ from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_regionskriterium = Regionskriterium(
+    regionskriteriumtyp=Regionskriteriumtyp.REGELGEBIET_NAME,
+    gueltigkeitstyp=Gueltigkeitstyp.NICHT_IN,
+    wert="Was ist ein Regionskriterium?",
+)
+
 
 class TestRegionskriterium:
     @pytest.mark.parametrize(
         "regionskriterium, expected_json_dict",
         [
             pytest.param(
-                Regionskriterium(
-                    regionskriteriumtyp=Regionskriteriumtyp.REGELGEBIET_NAME,
-                    gueltigkeitstyp=Gueltigkeitstyp.NICHT_IN,
-                    wert="Was ist ein Regionskriterium?",
-                ),
+                example_regionskriterium,
                 {
                     "gueltigkeitstyp": "NICHT_IN",
                     "regionskriteriumtyp": "REGELGEBIET_NAME",

@@ -9,24 +9,26 @@ from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_tarifpreisposition = Tarifpreisposition(
+    preistyp=Preistyp.ENTGELT_ABLESUNG,
+    einheit=Waehrungseinheit.EUR,
+    bezugseinheit=Mengeneinheit.KWH,
+    preisstaffeln=[
+        Preisstaffel(
+            einheitspreis=Decimal(40.0),
+            staffelgrenze_von=Decimal(12.5),
+            staffelgrenze_bis=Decimal(25.0),
+        ),
+    ],
+)
+
 
 class TestTarifpreisposition:
     @pytest.mark.parametrize(
         "tarifpreisposition, expected_json_dict",
         [
             pytest.param(
-                Tarifpreisposition(
-                    preistyp=Preistyp.ENTGELT_ABLESUNG,
-                    einheit=Waehrungseinheit.EUR,
-                    bezugseinheit=Mengeneinheit.KWH,
-                    preisstaffeln=[
-                        Preisstaffel(
-                            einheitspreis=Decimal(40.0),
-                            staffelgrenze_von=Decimal(12.5),
-                            staffelgrenze_bis=Decimal(25.0),
-                        ),
-                    ],
-                ),
+                example_tarifpreisposition,
                 {
                     "preistyp": "ENTGELT_ABLESUNG",
                     "einheit": "EUR",

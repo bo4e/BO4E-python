@@ -6,7 +6,6 @@ import pytest  # type:ignore[import]
 from bo4e.com.betrag import Betrag
 from bo4e.com.fremdkostenposition import Fremdkostenposition, FremdkostenpositionSchema
 from bo4e.com.preis import Preis
-from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungscode import Waehrungscode
@@ -36,19 +35,19 @@ class TestFremdkostenposition:
                     ),
                 ),
                 {
-                    "einzelpreis": {"wert": "3.5", "status": "ENDGUELTIG", "bezugswert": "KWH", "einheit": "EUR"},
-                    "bis": None,
-                    "artikeldetail": None,
-                    "positionstitel": "Mudders Preisstaffel",
-                    "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
-                    "von": None,
                     "marktpartnercode": None,
+                    "positionstitel": "Mudders Preisstaffel",
+                    "einzelpreis": {"wert": "3.5", "einheit": "EUR", "bezugswert": "KWH", "status": "ENDGUELTIG"},
+                    "bis": None,
                     "menge": None,
-                    "marktpartnername": None,
                     "zeitmenge": None,
-                    "gebietcodeEic": None,
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
+                    "marktpartnername": None,
+                    "artikeldetail": None,
+                    "von": None,
                     "linkPreisblatt": None,
+                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "gebietcodeEic": None,
                 },
                 id="only required attributes",
             ),
@@ -77,16 +76,16 @@ class TestFremdkostenposition:
                     gebietcode_eic="not an eic code but validation will follow in ticket 146",
                 ),
                 {
-                    "marktpartnername": "Mein MP",
                     "artikelbezeichnung": "Deim Vadder sei Preisstaffel",
-                    "menge": {"einheit": "MWH", "wert": "3.410000000000000142108547152020037174224853515625"},
                     "artikeldetail": "foo",
-                    "zeitmenge": {"einheit": "MWH", "wert": "3.410000000000000142108547152020037174224853515625"},
-                    "positionstitel": "Vadders Preisstaffel",
+                    "marktpartnername": "Mein MP",
+                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
+                    "menge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
+                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
                     "marktpartnercode": "986543210123",
                     "bis": "2014-05-01T00:00:00+00:00",
+                    "positionstitel": "Vadders Preisstaffel",
                     "von": "2013-05-01T00:00:00+00:00",
-                    "einzelpreis": {"einheit": "EUR", "status": "ENDGUELTIG", "wert": "3.5", "bezugswert": "KWH"},
                     "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
                     "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
                     "linkPreisblatt": "http://foo.bar/",

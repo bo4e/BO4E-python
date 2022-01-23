@@ -4,14 +4,24 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.aufabschlag import AufAbschlag, AufAbschlagSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.com.preisstaffel import Preisstaffel
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
+
+example_aufabschlag = AufAbschlag(
+    bezeichnung="foo",
+    staffeln=[
+        Preisstaffel(
+            einheitspreis=Decimal(15.0),
+            staffelgrenze_von=Decimal(2.5),
+            staffelgrenze_bis=Decimal(40.5),
+        ),
+    ],
+)
 
 
 class TestAufAbschlag:
@@ -77,16 +87,7 @@ class TestAufAbschlag:
                 id="maximal attributes",
             ),
             pytest.param(
-                AufAbschlag(
-                    bezeichnung="foo",
-                    staffeln=[
-                        Preisstaffel(
-                            einheitspreis=Decimal(15.0),
-                            staffelgrenze_von=Decimal(2.5),
-                            staffelgrenze_bis=Decimal(40.5),
-                        ),
-                    ],
-                ),
+                example_aufabschlag,
                 {
                     "bezeichnung": "foo",
                     "beschreibung": None,
