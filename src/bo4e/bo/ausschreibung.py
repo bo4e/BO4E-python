@@ -43,7 +43,6 @@ class Ausschreibung(Geschaeftsobjekt):
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein
     """
-
     abgabefrist: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
