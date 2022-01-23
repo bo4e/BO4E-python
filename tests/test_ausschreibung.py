@@ -36,7 +36,27 @@ class TestAusschreibung:
                         partneradresse=example_adresse,
                     ),
                     lose=[example_ausschreibungslos],
-                )
+                ),
+                id="maximal attributes",
+            ),
+            pytest.param(
+                Ausschreibung(
+                    ausschreibungsnummer="239230",
+                    ausschreibungstyp=Ausschreibungstyp.PRIVATRECHTLICH,
+                    ausschreibungsstatus=Ausschreibungsstatus.PHASE3,
+                    kostenpflichtig=True,
+                    veroeffentlichungszeitpunkt=datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
+                    abgabefrist=example_zeitraum,
+                    bindefrist=example_zeitraum,
+                    ausschreibender=Geschaeftspartner(
+                        name1="Batman",
+                        gewerbekennzeichnung=True,
+                        geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
+                        partneradresse=example_adresse,
+                    ),
+                    lose=[example_ausschreibungslos],
+                ),
+                id="minimal attributes",
             ),
         ],
     )
