@@ -146,21 +146,21 @@ Ideally provide unittests that show:
 Therefore copy one of the existing "roundtrip" tests, see f.e. `TestTarifeinschraenkung`.
 
 ## Pull Request
+
 Open a Pull Request against the main/default branch of this repository.
 We'd appreciate if you allowed maintainer edits.
 
 ## Release Workflow
-* Check with tox all tests and lintings: `tox`
-* Check with tox if the packaging works fine: `tox -e test_packaging`
-* Squash Merge all your changes you would like to have in the release into the main/default branch
-* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
-* Go to the repositorys right side bar and click on "[Draft a new release](https://github.com/Hochfrequenz/BO4E-python/releases/new)"
-* Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
-* Add a describtion to the release (or just autogenerate the change log which will be fine for 95% of cases)
-* Publish the release
+
+- Check with tox all tests and lintings: `tox`
+- Check with tox if the packaging works fine: `tox -e test_packaging`
+- Squash Merge all your changes you would like to have in the release into the main/default branch
+- Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
+- Go to the repositorys right side bar and click on "[Draft a new release](https://github.com/Hochfrequenz/BO4E-python/releases/new)"
+- Write in the _Tag version_ field and in the _Release title_ your new version, i.e. `v0.0.6`
+- Add a describtion to the release (or just autogenerate the change log which will be fine for 95% of cases)
+- Publish the release
 
 There is a Github Action which gets triggered by a release event.
-It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file.
+It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the _setup.cfg_ file.
 After checking the package with `twine check` it will finally upload the new package release.
-
- 
