@@ -63,7 +63,7 @@ class Regionaltarif(Tarifinfo):
         ),
     )
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkungen: Optional[Tarifeinschraenkung] = attr.ib(
+    tarifeinschraenkung: Optional[Tarifeinschraenkung] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifeinschraenkung))
     )
 
@@ -83,4 +83,4 @@ class RegionaltarifSchema(TarifinfoSchema):
     # optional attributes
     tarif_auf_abschlaege = fields.List(fields.Nested(RegionalerAufAbschlagSchema), allow_none=True)
     preisgarantien = fields.List(fields.Nested(RegionalePreisgarantieSchema), allow_none=True)
-    tarifeinschraenkungen = fields.Nested(TarifeinschraenkungSchema, allow_none=True)
+    tarifeinschraenkung = fields.Nested(TarifeinschraenkungSchema, allow_none=True)

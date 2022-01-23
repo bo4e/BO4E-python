@@ -31,7 +31,7 @@ class TestRegionaltarif:
                     tarif_auf_abschlaege=[example_regionaler_auf_abschlag],
                     tarifpreise=[example_regionale_tarifpreisposition],
                     preisgarantien=[example_regionale_preisgarantie],
-                    tarifeinschraenkungen=example_tarifeinschraenkung,
+                    tarifeinschraenkung=example_tarifeinschraenkung,
                     bezeichnung="foo",
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
