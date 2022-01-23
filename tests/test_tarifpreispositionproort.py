@@ -14,7 +14,7 @@ example_tarifpreispositionproort = TarifpreispositionProOrt(
 
 class TestTarifpreispositionProOrt:
     @pytest.mark.parametrize(
-        "tarifpreisposition",
+        "tarifpreispositionproort",
         [
             pytest.param(
                 example_tarifpreispositionproort,
