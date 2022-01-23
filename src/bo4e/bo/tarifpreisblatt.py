@@ -41,7 +41,7 @@ class Tarifpreisblatt(Tarifinfo):
     )
 
     # optional attributes
-    #: Festlegung von Garantien für bestimmte Preisanteile
+    #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
     tarifeinschraenkung: Optional[Tarifeinschraenkung] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifeinschraenkung))
     )
