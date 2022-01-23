@@ -75,7 +75,7 @@ class ZaehlerSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     zaehlerkonstante = fields.Decimal(load_default=None, as_string=True)
-    eichung_bis = fields.DateTime(load_default=None)
-    letzte_eichung = fields.DateTime(load_default=None)
+    eichung_bis = fields.DateTime(load_default=None, data_key="eichungBis")
+    letzte_eichung = fields.DateTime(load_default=None, data_key="letzteEichung")
 
     zaehlerhersteller = fields.Nested(GeschaeftspartnerSchema, load_default=None)

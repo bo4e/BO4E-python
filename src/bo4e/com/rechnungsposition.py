@@ -105,18 +105,18 @@ class RechnungspositionSchema(COMSchema):
 
     # required attributes
     positionsnummer = fields.Integer()
-    lieferung_von = fields.DateTime()
-    lieferung_bis = fields.DateTime()
+    lieferung_von = fields.DateTime(data_key="lieferungVon")
+    lieferung_bis = fields.DateTime(data_key="lieferungBis")
     positionstext = fields.String()
-    positions_menge = fields.Nested(MengeSchema)
+    positions_menge = fields.Nested(MengeSchema, data_key="positionsMenge")
     einzelpreis = fields.Nested(PreisSchema)
-    teilsumme_netto = fields.Nested(BetragSchema)
-    teilsumme_steuer = fields.Nested(SteuerbetragSchema)
+    teilsumme_netto = fields.Nested(BetragSchema, data_key="teilsummeNetto")
+    teilsumme_steuer = fields.Nested(SteuerbetragSchema, data_key="teilsummeSteuer")
 
     # optional attributes
     zeiteinheit = EnumField(Zeiteinheit, load_default=None)
     artikelnummer = EnumField(BDEWArtikelnummer, load_default=None)
-    lokations_id = fields.String(load_default=None)
-    zeitbezogene_menge = fields.Nested(MengeSchema, load_default=None)
-    teilrabatt_netto = fields.Nested(BetragSchema, load_default=None)
-    artikel_id = EnumField(ArtikelId, load_default=None)
+    lokations_id = fields.String(load_default=None, data_key="lokationsId")
+    zeitbezogene_menge = fields.Nested(MengeSchema, load_default=None, data_key="zeitbezogeneMenge")
+    teilrabatt_netto = fields.Nested(BetragSchema, load_default=None, data_key="teilrabattNetto")
+    artikel_id = EnumField(ArtikelId, load_default=None, data_key="artikelId")

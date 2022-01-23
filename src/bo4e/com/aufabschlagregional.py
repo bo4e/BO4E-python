@@ -126,8 +126,8 @@ class AufAbschlagRegionalSchema(COMSchema):
 
     # optional attributes
     beschreibung = fields.Str(load_default=None)
-    auf_abschlagstyp = EnumField(AufAbschlagstyp, load_default=None)
-    auf_abschlagsziel = EnumField(AufAbschlagsziel, load_default=None)
+    auf_abschlagstyp = EnumField(AufAbschlagstyp, load_default=None, data_key="aufAbschlagstyp")
+    auf_abschlagsziel = EnumField(AufAbschlagsziel, load_default=None, data_key="aufAbschlagsziel")
     einheit = EnumField(Waehrungseinheit, load_default=None)
     website = fields.Str(load_default=None)
     zusatzprodukte = fields.List(fields.Str, load_default=None)

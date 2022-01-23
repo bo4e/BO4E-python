@@ -48,5 +48,5 @@ class FremdkostenpositionSchema(KostenpositionSchema):
     class_name = Fremdkostenposition  # type:ignore[assignment]
     marktpartnername = fields.Str(allow_none=True)
     marktpartnercode = fields.Str(allow_none=True)
-    gebietcode_eic = fields.Str(allow_none=True)
-    link_preisblatt = fields.Str(allow_none=True)
+    gebietcode_eic = fields.Str(allow_none=True, data_key="gebietcodeEic")
+    link_preisblatt = fields.Str(allow_none=True, data_key="linkPreisblatt")

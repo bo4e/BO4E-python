@@ -35,7 +35,7 @@ class TestRegionalePreisstaffel:
                         "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": "01069"}],
                     },
                     "einheitspreis": "40",
-                    "sigmoidparameter": {"a": "1", "b": "2", "c": "3", "d": "4"},
+                    "sigmoidparameter": {"A": "1", "B": "2", "C": "3", "D": "4"},
                     "staffelgrenzeVon": "12.5",
                     "staffelgrenzeBis": "25",
                 },

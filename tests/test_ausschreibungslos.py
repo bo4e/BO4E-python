@@ -13,31 +13,33 @@ from tests.test_ausschreibungsdetail import (  # type:ignore[import]
 from tests.test_menge import example_menge, example_menge_dict  # type:ignore[import]
 from tests.test_zeitraum import example_zeitraum, example_zeitraum_dict  # type:ignore[import]
 
+example_ausschreibungslos = Ausschreibungslos(
+    losnummer="foo",
+    bezeichnung="bar",
+    bemerkung="asd",
+    preismodell=Preismodell.FESTPREIS,
+    energieart=Sparte.STROM,
+    wunsch_rechnungslegung=Rechnungslegung.MONATSRECHN,
+    wunsch_vertragsform=Vertragsform.DIREKT,
+    betreut_durch="Max Mustermann",
+    anzahl_lieferstellen=17,
+    lieferstellen=[example_ausschreibungsdetail],
+    gesamt_menge=example_menge,
+    wunsch_mindestmenge=example_menge,
+    wunsch_maximalmenge=example_menge,
+    lieferzeitraum=example_zeitraum,
+    wunsch_kuendingungsfrist=example_zeitraum,
+    wunsch_zahlungsziel=example_zeitraum,
+    wiederholungsintervall=example_zeitraum,
+)
+
 
 class TestAusschreibungslos:
     @pytest.mark.parametrize(
         "ausschreibungslos, expected_json_dict",
         [
             pytest.param(
-                Ausschreibungslos(
-                    losnummer="foo",
-                    bezeichnung="bar",
-                    bemerkung="asd",
-                    preismodell=Preismodell.FESTPREIS,
-                    energieart=Sparte.STROM,
-                    wunsch_rechnungslegung=Rechnungslegung.MONATSRECHN,
-                    wunsch_vertragsform=Vertragsform.DIREKT,
-                    betreut_durch="Max Mustermann",
-                    anzahl_lieferstellen=17,
-                    lieferstellen=[example_ausschreibungsdetail],
-                    gesamt_menge=example_menge,
-                    wunsch_mindestmenge=example_menge,
-                    wunsch_maximalmenge=example_menge,
-                    lieferzeitraum=example_zeitraum,
-                    wunsch_kuendingungsfrist=example_zeitraum,
-                    wunsch_zahlungsziel=example_zeitraum,
-                    wiederholungsintervall=example_zeitraum,
-                ),
+                example_ausschreibungslos,
                 {
                     "lieferzeitraum": example_zeitraum_dict,
                     "preismodell": "FESTPREIS",

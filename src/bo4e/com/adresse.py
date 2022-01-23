@@ -62,5 +62,5 @@ class AdresseSchema(COMSchema):
     hausnummer = fields.Str(load_default=None)
     postfach = fields.Str(load_default=None)
     adresszusatz = fields.Str(load_default=None)
-    co_ergaenzung = fields.Str(load_default=None)
+    co_ergaenzung = fields.Str(load_default=None, data_key="coErgaenzung")
     landescode = EnumField(Landescode)

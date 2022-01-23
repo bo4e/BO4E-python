@@ -40,7 +40,7 @@ class SigmoidparameterSchema(COMSchema):
 
     class_name = Sigmoidparameter
     # required attributes
-    A = fields.Decimal(as_string=True)
-    B = fields.Decimal(as_string=True)
-    C = fields.Decimal(as_string=True)
-    D = fields.Decimal(as_string=True)
+    A = fields.Decimal(as_string=True, data_key="A")
+    B = fields.Decimal(as_string=True, data_key="B")
+    C = fields.Decimal(as_string=True, data_key="C")
+    D = fields.Decimal(as_string=True, data_key="D")

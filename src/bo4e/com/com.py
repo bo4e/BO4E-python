@@ -4,9 +4,7 @@ Contains base class for all components
 from typing import Generic, Type, TypeVar
 
 import attr
-from marshmallow import post_load
-
-from bo4e.schemata.caseconverterschema import CaseConverterSchema
+from marshmallow import Schema, post_load
 
 
 # pylint: disable=too-few-public-methods
@@ -22,7 +20,7 @@ TCom = TypeVar("TCom", bound=Type[COM])
 # todo: find out if this way of typing is correct
 
 
-class COMSchema(CaseConverterSchema, Generic[TCom]):
+class COMSchema(Schema, Generic[TCom]):
     """
     This is a base class.
     All components objects schemata are inherited from this class.

@@ -42,8 +42,8 @@ class PreisstaffelSchema(COMSchema):
     class_name = Preisstaffel
     # required attributes
     einheitspreis = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True)
-    staffelgrenze_bis = fields.Decimal(as_string=True)
+    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
+    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")
 
     # optional attributes
     sigmoidparameter = fields.Nested(SigmoidparameterSchema, load_default=None)

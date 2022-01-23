@@ -43,7 +43,7 @@ class PreisgarantieSchema(COMSchema):
     class_name = Preisgarantie
     # required attributes
     preisgarantietyp = EnumField(Preisgarantietyp)
-    zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema)
+    zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema, data_key="zeitlicheGueltigkeit")
 
     # optionale attributes
     beschreibung = fields.Str(load_default=None)

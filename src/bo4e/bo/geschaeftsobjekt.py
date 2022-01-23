@@ -6,12 +6,11 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional, Type
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
-from bo4e.schemata.caseconverterschema import CaseConverterSchema
 
 
 def _create_empty_referenzen_list() -> List[ExterneReferenz]:
@@ -41,7 +40,7 @@ class Geschaeftsobjekt:  # Base class for all business objects
     )  #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
 
 
-class GeschaeftsobjektSchema(CaseConverterSchema):
+class GeschaeftsobjektSchema(Schema):
     """
     This is an "abstract" class.
     All business objects schemata do inherit from this class.
@@ -52,10 +51,12 @@ class GeschaeftsobjektSchema(CaseConverterSchema):
 
     # required attributes
     versionstruktur = fields.String()
-    bo_typ = EnumField(BoTyp)
+    bo_typ = EnumField(BoTyp, data_key="boTyp")
 
     # optional attributes
-    externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), load_default=None)
+    externe_referenzen = fields.List(
+        fields.Nested(ExterneReferenzSchema), data_key="externeReferenzen", load_default=None
+    )
 
     @post_load
     def deserialize(self, data, **kwargs):

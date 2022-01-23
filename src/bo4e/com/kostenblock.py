@@ -52,5 +52,5 @@ class KostenblockSchema(COMSchema):
     # required attributes
     kostenblockbezeichnung = fields.Str()
     # optional attributes
-    summe_kostenblock = fields.Nested(BetragSchema, allow_none=True)
+    summe_kostenblock = fields.Nested(BetragSchema, allow_none=True, data_key="summeKostenblock")
     kostenpositionen = fields.List(fields.Nested(KostenpositionSchema), allow_none=True)

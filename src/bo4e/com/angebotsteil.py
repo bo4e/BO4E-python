@@ -82,7 +82,7 @@ class AngebotsteilSchema(COMSchema):
     positionen = fields.List(fields.Nested(AngebotspositionSchema))
 
     # optional attributes
-    anfrage_subreferenz = fields.Str(load_default=None)
+    anfrage_subreferenz = fields.Str(load_default=None, data_key="anfrageSubreferenz")
     lieferstellenangebotsteil = fields.List(fields.Nested(MarktlokationSchema), load_default=None)
     gesamtmengeangebotsteil = fields.Nested(MengeSchema, load_default=None)
     gesamtkostenangebotsteil = fields.Nested(BetragSchema, load_default=None)

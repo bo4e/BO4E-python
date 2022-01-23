@@ -36,6 +36,14 @@ bo4e.bo.energiemenge module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.fremdkosten module
+--------------------------
+
+.. automodule:: bo4e.bo.fremdkosten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.geschaeftsobjekt module
 -------------------------------
 
@@ -100,6 +108,22 @@ bo4e.bo.preisblatt module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.preisblattdienstleistung module
+---------------------------------------
+
+.. automodule:: bo4e.bo.preisblattdienstleistung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.preisblatthardware module
+---------------------------------
+
+.. automodule:: bo4e.bo.preisblatthardware
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.preisblattkonzessionsabgabe module
 ------------------------------------------
 
@@ -120,6 +144,14 @@ bo4e.bo.preisblattnetznutzung module
 ------------------------------------
 
 .. automodule:: bo4e.bo.preisblattnetznutzung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.rechnung module
+-----------------------
+
+.. automodule:: bo4e.bo.rechnung
    :members:
    :undoc-members:
    :show-inheritance:
@@ -160,6 +192,14 @@ bo4e.bo.tarifkosten module
 --------------------------
 
 .. automodule:: bo4e.bo.tarifkosten
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.tarifpreisblatt module
+------------------------------
+
+.. automodule:: bo4e.bo.tarifpreisblatt
    :members:
    :undoc-members:
    :show-inheritance:
