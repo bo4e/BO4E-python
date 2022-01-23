@@ -15,7 +15,7 @@ from bo4e.com.com import COM, COMSchema
 @attr.s(auto_attribs=True, kw_only=True)
 class AufAbschlagstaffelProOrt(COM):
     """
-    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an.
+    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
     """
 
     # required attributes
@@ -29,7 +29,7 @@ class AufAbschlagstaffelProOrt(COM):
 
 class AufAbschlagstaffelProOrtSchema(COMSchema):
     """
-    Schema for de-/serialization of AufAbschlagstaffelProOrt.
+    Schema for de-/serialization of AufAbschlagstaffelProOrt
     """
 
     class_name = AufAbschlagstaffelProOrt
