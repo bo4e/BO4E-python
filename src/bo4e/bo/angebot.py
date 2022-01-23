@@ -32,7 +32,7 @@ class Angebot(Geschaeftsobjekt):
     # required attributes
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: str = attr.ib(validator=attr.validators.matches_re(r"^\d+$"))
-    #: Erstellungsdatum des \Angebots
+    #: Erstellungsdatum des Angebots
     angebotsdatum: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
     sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
