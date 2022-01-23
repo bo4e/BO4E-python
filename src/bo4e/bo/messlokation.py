@@ -135,7 +135,7 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     class_name = Messlokation
 
     # required attributes
-    messlokations_id = fields.Str()
+    messlokations_id = fields.Str(data_key="messlokationsId")
     sparte = EnumField(Sparte)
 
     # optional attributes

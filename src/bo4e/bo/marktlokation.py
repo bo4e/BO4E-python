@@ -133,7 +133,7 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     class_name = Marktlokation
 
     # required attributes
-    marktlokations_id = fields.Str()
+    marktlokations_id = fields.Str(data_key="marktlokationsId")
     sparte = EnumField(Sparte)
     energierichtung = EnumField(Energierichtung)
     bilanzierungsmethode = EnumField(Bilanzierungsmethode)
@@ -149,7 +149,9 @@ class MarktlokationSchema(GeschaeftsobjektSchema):
     grundversorgercodenr = fields.Str(load_default=None)
     gasqualitaet = EnumField(Gasqualitaet, load_default=None)
     endkunde = fields.Nested(GeschaeftspartnerSchema, load_default=None)
-    zugehoerige_messlokation = fields.List(fields.Nested(MesslokationszuordnungSchema), load_default=None)
+    zugehoerige_messlokation = fields.List(
+        fields.Nested(MesslokationszuordnungSchema), load_default=None, data_key="zugehoerigeMesslokation"
+    )
 
     # only one of the following three optional attributes can be set
     lokationsadresse = fields.Nested(AdresseSchema, load_default=None)

@@ -113,9 +113,9 @@ class AusschreibungslosSchema(COMSchema):
 
     # optional attributes
     bemerkung = fields.String(load_default=None)
-    gesamt_menge = fields.Nested(MengeSchema, load_default=None, data_key="gesamtMengen")
+    gesamt_menge = fields.Nested(MengeSchema, load_default=None, data_key="gesamtMenge")
     wunsch_mindestmenge = fields.Nested(MengeSchema, load_default=None, data_key="wunschMindestmenge")
     wunsch_maximalmenge = fields.Nested(MengeSchema, load_default=None, data_key="wunschMaximalmenge")
     wiederholungsintervall = fields.Nested(ZeitraumSchema, load_default=None)
-    wunsch_kuendingungsfrist = fields.Nested(ZeitraumSchema, load_default=None, data_key="wunschKuendigungsfrist")
+    wunsch_kuendingungsfrist = fields.Nested(ZeitraumSchema, load_default=None, data_key="wunschKuendingungsfrist")
     wunsch_zahlungsziel = fields.Nested(ZeitraumSchema, load_default=None, data_key="wunschZahlungsziel")
