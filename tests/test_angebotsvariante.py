@@ -9,18 +9,21 @@ from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_j
 from tests.test_betrag import example_betrag, example_betrag_json  # type:ignore[import]
 from tests.test_menge import example_menge  # type:ignore[import]
 
+# can be imported by other tests
+example_angebotsvariante = Angebotsvariante(
+    angebotsstatus=Angebotsstatus.NACHGEFASST,
+    bindefrist=datetime.datetime(2022, 2, 1, 0, 0, 0, tzinfo=datetime.timezone.utc),
+    erstellungsdatum=datetime.datetime(2021, 12, 22, 0, 0, 0, tzinfo=datetime.timezone.utc),
+    teile=[example_angebotsteil],
+)
+
 
 class TestAngebotsvariante:
     @pytest.mark.parametrize(
         "angebotsvariante, expected_json_dict",
         [
             pytest.param(
-                Angebotsvariante(
-                    angebotsstatus=Angebotsstatus.NACHGEFASST,
-                    bindefrist=datetime.datetime(2022, 2, 1, 0, 0, 0, tzinfo=datetime.timezone.utc),
-                    erstellungsdatum=datetime.datetime(2021, 12, 22, 0, 0, 0, tzinfo=datetime.timezone.utc),
-                    teile=[example_angebotsteil],
-                ),
+                example_angebotsvariante,
                 {
                     "gesamtmenge": None,
                     "angebotsstatus": "NACHGEFASST",

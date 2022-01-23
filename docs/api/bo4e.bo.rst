@@ -4,6 +4,14 @@ bo4e.bo package
 Submodules
 ----------
 
+bo4e.bo.angebot module
+----------------------
+
+.. automodule:: bo4e.bo.angebot
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.ansprechpartner module
 ------------------------------
 
@@ -116,18 +124,18 @@ bo4e.bo.preisblattnetznutzung module
    :undoc-members:
    :show-inheritance:
 
-bo4e.bo.rechnung module
------------------------
-
-.. automodule:: bo4e.bo.rechnung
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.bo.region module
 ---------------------
 
 .. automodule:: bo4e.bo.region
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.regionaltarif module
+----------------------------
+
+.. automodule:: bo4e.bo.regionaltarif
    :members:
    :undoc-members:
    :show-inheritance:
