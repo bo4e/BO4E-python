@@ -91,5 +91,5 @@ class AusschreibungSchema(GeschaeftsobjektSchema):
     lose = fields.List(fields.Nested(AusschreibungslosSchema))
 
     # optional attributes
-    ausschreibungportal = EnumField(Ausschreibungsportal, load_default=None)
-    webseite = fields.Str(load_default=None)
+    ausschreibungportal = EnumField(Ausschreibungsportal, allow_none=True)
+    webseite = fields.Str(allow_none=True)
