@@ -7,7 +7,6 @@ BO4E
 |PyPI pyversions|_
 
 
-
 .. |PyPi| image:: https://img.shields.io/pypi/v/bo4e.svg
 .. _PyPi: https://img.shields.io/pypi/v/bo4e
 
@@ -21,18 +20,13 @@ BO4E
 .. _`PyPI pyversions`: https://pypi.python.org/pypi/bo4e/
 
 
+🇩🇪Dies ist eine BO4E Referenz-Implementierung in Python.
+Gleichzeitig ist dieses Repository der Ort, um Fragen und Erweiterungen des BO4E-Standards zu diskutieren.
+
+🇬🇧This is a Python library that implements Business Objects for Energy `BO4E <https://www.bo4e.de/>`_.
+It requires Python >=3.8.
 
 
-Python Library that Implements `BO4E <https://www.bo4e.de/dokumentation>`_.
-Requires Python >=3.8.
-
-Other Noteworthy BO4E Implementations
-=====================================
-
-* `C#/.NET`_
-* `Golang`_
-* `Kotlin`_
-* `TypeScript`_
 
 Contributing
 ============
@@ -49,6 +43,13 @@ To enhance this BO4E implementation and contribute to this project check out the
 
 The created venv should be located somewhere around .tox/dev/Scripts.
 
+Other Noteworthy BO4E Implementations
+=====================================
+
+* `C#/.NET`_
+* `Golang`_
+* `Kotlin`_
+* `TypeScript`_
 
 Versioning
 ==========
