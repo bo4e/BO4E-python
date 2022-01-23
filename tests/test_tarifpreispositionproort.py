@@ -22,11 +22,11 @@ class TestTarifpreispositionProOrt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreisposition: TarifpreispositionProOrt):
+    def test_serialization_roundtrip(self, tarifpreispositionproort: TarifpreispositionProOrt):
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifpreisposition, TarifpreispositionProOrtSchema())
+        assert_serialization_roundtrip(tarifpreispositionproort, TarifpreispositionProOrtSchema())
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:
