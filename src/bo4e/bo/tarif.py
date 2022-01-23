@@ -33,8 +33,8 @@ class Tarif(Tarifinfo):
     berechnungsparameter: Tarifberechnungsparameter = attr.ib(
         validator=attr.validators.instance_of(Tarifberechnungsparameter)
     )
-    #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: List[RegionaleTarifpreisposition] = attr.ib(
+    #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
+    tarifpreise: List[TarifpreispositionProOrt] = attr.ib(
         validator=attr.validators.deep_iterable(
             member_validator=attr.validators.instance_of(TarifpreispositionProOrt),
             iterable_validator=check_list_length_at_least_one,
