@@ -27,12 +27,12 @@ class Netznutzungsrechnung(Rechnung):
     sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
     absendercodenummer: str = attr.ib(validator=attr.validators.matches_re(r"^\d{13}$"))
     """
-    Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`);
+    Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
     empfaengercodenummer: str = attr.ib(validator=attr.validators.matches_re(r"^\d{13}$"))
     """
-    Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`);
+    Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
     #: Aus der INVOIC entnommen
