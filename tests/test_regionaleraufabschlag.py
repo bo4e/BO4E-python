@@ -12,29 +12,31 @@ from tests.test_regionalepreisstaffel import example_regionale_preisstaffel  # t
 from tests.test_vertragskonditionen import example_vertragskonditionen  # type:ignore[import]
 from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
 
+example_regionaler_auf_abschlag = RegionalerAufAbschlag(
+    bezeichnung="Foo",
+    beschreibung="Bar",
+    auf_abschlagstyp=AufAbschlagstyp.RELATIV,
+    auf_abschlagsziel=AufAbschlagsziel.ARBEITSPREIS_HT,
+    einheit=Waehrungseinheit.CT,
+    website="https://www.hochfrequenz.de",
+    zusatzprodukte=["ein standmixer", "ein thermomix"],
+    voraussetzungen=["lecker essen", "mit ökostrom gekocht"],
+    tarifnamensaenderungen="Super-Duper Tarif",
+    staffeln=[example_regionale_preisstaffel],
+    gueltigkeitszeitraum=example_zeitraum,
+    energiemixaenderung=example_energiemix,
+    vertagskonditionsaenderung=example_vertragskonditionen,
+    garantieaenderung=example_preisgarantie,
+    einschraenkungsaenderung=Tarifeinschraenkung(),
+)
+
 
 class TestRegionalerAufAbschlag:
     @pytest.mark.parametrize(
         "regionaler_auf_abschlag",
         [
             pytest.param(
-                RegionalerAufAbschlag(
-                    bezeichnung="Foo",
-                    beschreibung="Bar",
-                    auf_abschlagstyp=AufAbschlagstyp.RELATIV,
-                    auf_abschlagsziel=AufAbschlagsziel.ARBEITSPREIS_HT,
-                    einheit=Waehrungseinheit.CT,
-                    website="https://www.hochfrequenz.de",
-                    zusatzprodukte=["ein standmixer", "ein thermomix"],
-                    voraussetzungen=["lecker essen", "mit ökostrom gekocht"],
-                    tarifnamensaenderungen="Super-Duper Tarif",
-                    staffeln=[example_regionale_preisstaffel],
-                    gueltigkeitszeitraum=example_zeitraum,
-                    energiemixaenderung=example_energiemix,
-                    vertagskonditionsaenderung=example_vertragskonditionen,
-                    garantieaenderung=example_preisgarantie,
-                    einschraenkungsaenderung=Tarifeinschraenkung(),
-                ),
+                example_regionaler_auf_abschlag,
                 id="maximal attributes",
             ),
         ],

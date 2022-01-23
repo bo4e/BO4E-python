@@ -91,13 +91,13 @@ class TarifberechnungsparameterSchema(COMSchema):
 
     class_name = Tarifberechnungsparameter
     # optional attributes
-    berechnungsmethode = EnumField(Tarifkalkulationsmethode)
-    messpreis_in_gp_enthalten = fields.Bool()
-    messpreis_beruecksichtigen = fields.Bool()
-    messpreistyp = EnumField(Messpreistyp)
-    kw_inklusive = fields.Decimal(as_string=True)
-    kw_weitere_mengen = fields.Decimal(as_string=True)
-    hoechstpreis_n_t = fields.Nested(PreisSchema, data_key="hoechstpreisHT")
-    hoechstpreis_h_t = fields.Nested(PreisSchema, data_key="hoechstpreisNT")
-    mindestpreis = fields.Nested(PreisSchema)
-    zusatzpreise = fields.List(fields.Nested(TarifpreisSchema))
+    berechnungsmethode = EnumField(Tarifkalkulationsmethode, allow_none=True)
+    messpreis_in_gp_enthalten = fields.Bool(allow_none=True)
+    messpreis_beruecksichtigen = fields.Bool(allow_none=True)
+    messpreistyp = EnumField(Messpreistyp, allow_none=True)
+    kw_inklusive = fields.Decimal(as_string=True, allow_none=True)
+    kw_weitere_mengen = fields.Decimal(as_string=True, allow_none=True)
+    hoechstpreis_n_t = fields.Nested(PreisSchema, data_key="hoechstpreisHT", allow_none=True)
+    hoechstpreis_h_t = fields.Nested(PreisSchema, data_key="hoechstpreisNT", allow_none=True)
+    mindestpreis = fields.Nested(PreisSchema, allow_none=True)
+    zusatzpreise = fields.List(fields.Nested(TarifpreisSchema), allow_none=True)
