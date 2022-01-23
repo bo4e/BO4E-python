@@ -21,7 +21,7 @@ class TarifpreispositionProOrt(COM):
     """
 
     # required attributes
-    #:Postleitzahl des Ortes für den der Preis gilt
+    #: Postleitzahl des Ortes für den der Preis gilt
     postleitzahl: str = attr.ib(validator=attr.validators.matches_re(r"^\d{5}$"))
     #: Ort für den der Preis gilt
     ort: str = attr.ib(validator=attr.validators.instance_of(str))
