@@ -90,7 +90,7 @@ master_doc = "index"
 
 # General information about the project.
 project = u"bo4e"
-copyright = u"2021, Hochfrequenz GmbH"
+copyright = u"2022, Hochfrequenz GmbH"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

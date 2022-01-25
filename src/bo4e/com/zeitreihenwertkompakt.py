@@ -21,7 +21,7 @@ class Zeitreihenwertkompakt(COM):
     Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.
 
     .. HINT::
-        `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZeitreihenwertkompaktSchema.json>`_
+        `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZeitreihenwertkompaktSchema.json>`_
     """
 
     # required attributes

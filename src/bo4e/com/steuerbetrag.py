@@ -21,7 +21,7 @@ class Steuerbetrag(COM):
     Abbildung eines Steuerbetrages.
 
     .. HINT::
-        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/SteuerbetragSchema.json>`_
+        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/SteuerbetragSchema.json>`_
     """
 
     # required attributes

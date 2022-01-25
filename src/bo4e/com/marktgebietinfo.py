@@ -15,7 +15,7 @@ class MarktgebietInfo(COM):
     Informationen zum Marktgebiet im Gas.
 
     .. HINT::
-        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/MarktgebietInfoSchema.json>`_
+        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/MarktgebietInfoSchema.json>`_
     """
 
     # required attributes

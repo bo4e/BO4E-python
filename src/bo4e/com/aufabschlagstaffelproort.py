@@ -18,7 +18,7 @@ class AufAbschlagstaffelProOrt(COM):
     Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
 
     .. HINT::
-        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AufAbschlagstaffelProOrtSchema.json>`_
+        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagstaffelProOrtSchema.json>`_
     """
 
     # required attributes

@@ -17,7 +17,7 @@ class StandorteigenschaftenAllgemein(COM):
     Allgemeine Standorteigenschaften
 
     .. HINT::
-        `StandorteigenschaftenAllgemein JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/StandorteigenschaftenAllgemeinSchema.json>`_
+        `StandorteigenschaftenAllgemein JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/StandorteigenschaftenAllgemeinSchema.json>`_
     """
 
     # required attributes

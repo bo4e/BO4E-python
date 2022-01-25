@@ -20,7 +20,7 @@ class Tarifeinschraenkung(COM):
     Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.
 
     .. HINT::
-        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifeinschraenkungSchema.json>`_
+        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifeinschraenkungSchema.json>`_
     """
 
     # optional attributes

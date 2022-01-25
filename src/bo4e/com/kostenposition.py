@@ -21,7 +21,7 @@ class Kostenposition(COM):
     Diese Komponente wird zur Übertagung der Details zu einer Kostenposition verwendet.
 
     .. HINT::
-        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/KostenpositionSchema.json>`_
+        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/KostenpositionSchema.json>`_
     """
 
     # required attributes

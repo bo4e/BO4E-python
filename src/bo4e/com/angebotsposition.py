@@ -23,7 +23,7 @@ class Angebotsposition(COM):
     Positionskosten: 982,40 EUR
 
     .. HINT::
-        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AngebotspositionSchema.json>`_
+        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AngebotspositionSchema.json>`_
 
     """
 

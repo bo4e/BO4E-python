@@ -17,7 +17,7 @@ class ExterneReferenz(COM):
     sich die eindeutigen IDs der anzubindenden Systeme zu merken.
 
     .. HINT::
-        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ExterneReferenzSchema.json>`_
+        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ExterneReferenzSchema.json>`_
 
     """
 

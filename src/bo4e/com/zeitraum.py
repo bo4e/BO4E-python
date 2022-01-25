@@ -22,7 +22,7 @@ def time_range_possibilities(instance, attribute, value):
     This functions checks for these conditions of a valid address.
 
     .. HINT::
-        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZeitraumSchema.json>`_
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZeitraumSchema.json>`_
     """
     if (
         instance.einheit

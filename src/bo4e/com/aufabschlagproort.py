@@ -21,7 +21,7 @@ class AufAbschlagProOrt(COM):
     mit örtlichen Gültigkeiten abgebildet werden.
 
     .. HINT::
-        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AufAbschlagProOrtSchema.json>`_
+        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagProOrtSchema.json>`_
 
     """
 

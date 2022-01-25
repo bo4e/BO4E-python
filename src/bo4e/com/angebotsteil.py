@@ -28,7 +28,7 @@ class Angebotsteil(COM):
     Eine Variante besteht mindestens aus einem Angebotsteil.
 
     .. HINT::
-        `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AngebotsteilSchema.json>`_
+        `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AngebotsteilSchema.json>`_
 
     """
 

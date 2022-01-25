@@ -29,7 +29,7 @@ class Preisposition(COM):
     Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes
 
     .. HINT::
-        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreispositionSchema.json>`_
+        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PreispositionSchema.json>`_
     """
 
     # required attributes
