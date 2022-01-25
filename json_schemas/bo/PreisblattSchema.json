@@ -1,0 +1,4676 @@
+{
+    "$ref": "#/definitions/PreisblattSchema",
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "definitions": {
+        "AdresseSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "adresszusatz": {
+                    "title": "adresszusatz",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "coErgaenzung": {
+                    "title": "co_ergaenzung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hausnummer": {
+                    "title": "hausnummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "landescode": {
+                    "enum": [
+                        "AF",
+                        "AX",
+                        "AL",
+                        "DZ",
+                        "AS",
+                        "AD",
+                        "AO",
+                        "AI",
+                        "AQ",
+                        "AG",
+                        "AR",
+                        "AM",
+                        "AW",
+                        "AU",
+                        "AT",
+                        "AZ",
+                        "BS",
+                        "BH",
+                        "BD",
+                        "BB",
+                        "BY",
+                        "BE",
+                        "BZ",
+                        "BJ",
+                        "BM",
+                        "BT",
+                        "BO",
+                        "BQ",
+                        "BA",
+                        "BW",
+                        "BV",
+                        "BR",
+                        "IO",
+                        "BN",
+                        "BG",
+                        "BF",
+                        "BI",
+                        "KH",
+                        "CM",
+                        "CA",
+                        "CV",
+                        "KY",
+                        "CF",
+                        "TD",
+                        "CL",
+                        "CN",
+                        "CX",
+                        "CC",
+                        "CO",
+                        "KM",
+                        "CG",
+                        "CD",
+                        "CK",
+                        "CR",
+                        "CI",
+                        "HR",
+                        "CU",
+                        "CW",
+                        "CY",
+                        "CZ",
+                        "DK",
+                        "DJ",
+                        "DM",
+                        "DO",
+                        "EC",
+                        "EG",
+                        "SV",
+                        "GQ",
+                        "ER",
+                        "EE",
+                        "ET",
+                        "FK",
+                        "FO",
+                        "FJ",
+                        "FI",
+                        "FR",
+                        "GF",
+                        "PF",
+                        "TF",
+                        "GA",
+                        "GM",
+                        "GE",
+                        "DE",
+                        "GH",
+                        "GI",
+                        "GR",
+                        "GL",
+                        "GD",
+                        "GP",
+                        "GU",
+                        "GT",
+                        "GG",
+                        "GN",
+                        "GW",
+                        "GY",
+                        "HT",
+                        "HM",
+                        "VA",
+                        "HN",
+                        "HK",
+                        "HU",
+                        "IS",
+                        "IN",
+                        "ID",
+                        "IR",
+                        "IQ",
+                        "IE",
+                        "IM",
+                        "IL",
+                        "IT",
+                        "JM",
+                        "JP",
+                        "JE",
+                        "JO",
+                        "KZ",
+                        "KE",
+                        "KI",
+                        "KP",
+                        "KR",
+                        "XK",
+                        "KW",
+                        "KG",
+                        "LA",
+                        "LV",
+                        "LB",
+                        "LS",
+                        "LR",
+                        "LY",
+                        "LI",
+                        "LT",
+                        "LU",
+                        "MO",
+                        "MK",
+                        "MG",
+                        "MW",
+                        "MY",
+                        "MV",
+                        "ML",
+                        "MT",
+                        "MH",
+                        "MQ",
+                        "MR",
+                        "MU",
+                        "YT",
+                        "MX",
+                        "FM",
+                        "MD",
+                        "MC",
+                        "MN",
+                        "ME",
+                        "MS",
+                        "MA",
+                        "MZ",
+                        "MM",
+                        "NA",
+                        "NR",
+                        "NP",
+                        "NL",
+                        "NC",
+                        "NZ",
+                        "NI",
+                        "NE",
+                        "NG",
+                        "NU",
+                        "NF",
+                        "MP",
+                        "NO",
+                        "OM",
+                        "PK",
+                        "PW",
+                        "PS",
+                        "PA",
+                        "PG",
+                        "PY",
+                        "PE",
+                        "PH",
+                        "PN",
+                        "PL",
+                        "PT",
+                        "PR",
+                        "QA",
+                        "RE",
+                        "RO",
+                        "RU",
+                        "RW",
+                        "BL",
+                        "SH",
+                        "KN",
+                        "LC",
+                        "MF",
+                        "PM",
+                        "VC",
+                        "WS",
+                        "SM",
+                        "ST",
+                        "SA",
+                        "SN",
+                        "RS",
+                        "SC",
+                        "SL",
+                        "SG",
+                        "SX",
+                        "SK",
+                        "SI",
+                        "SB",
+                        "SO",
+                        "ZA",
+                        "GS",
+                        "SS",
+                        "ES",
+                        "LK",
+                        "SD",
+                        "SR",
+                        "SJ",
+                        "SZ",
+                        "SE",
+                        "CH",
+                        "SY",
+                        "TW",
+                        "TJ",
+                        "TZ",
+                        "TH",
+                        "TL",
+                        "TG",
+                        "TK",
+                        "TO",
+                        "TT",
+                        "TN",
+                        "TR",
+                        "TM",
+                        "TC",
+                        "TV",
+                        "UG",
+                        "UA",
+                        "AE",
+                        "GB",
+                        "US",
+                        "UM",
+                        "UY",
+                        "UZ",
+                        "VU",
+                        "VE",
+                        "VN",
+                        "VG",
+                        "VI",
+                        "WF",
+                        "EH",
+                        "YE",
+                        "ZM",
+                        "ZW"
+                    ],
+                    "title": "landescode",
+                    "type": "string"
+                },
+                "ort": {
+                    "title": "ort",
+                    "type": "string"
+                },
+                "postfach": {
+                    "title": "postfach",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "postleitzahl": {
+                    "title": "postleitzahl",
+                    "type": "string"
+                },
+                "strasse": {
+                    "title": "strasse",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "AngebotSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "anfragereferenz": {
+                    "title": "anfragereferenz",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "angebotsdatum": {
+                    "format": "date-time",
+                    "title": "angebotsdatum",
+                    "type": "string"
+                },
+                "angebotsgeber": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "angebotsnehmer": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "angebotsnummer": {
+                    "title": "angebotsnummer",
+                    "type": "string"
+                },
+                "bindefrist": {
+                    "format": "date-time",
+                    "title": "bindefrist",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "unterzeichnerAngebotsgeber": {
+                    "$ref": "#/definitions/AnsprechpartnerSchema",
+                    "type": "object"
+                },
+                "unterzeichnerAngebotsnehmer": {
+                    "$ref": "#/definitions/AnsprechpartnerSchema",
+                    "type": "object"
+                },
+                "varianten": {
+                    "items": {
+                        "$ref": "#/definitions/AngebotsvarianteSchema",
+                        "type": "object"
+                    },
+                    "title": "varianten",
+                    "type": "array"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "AngebotspositionSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "positionsbezeichnung": {
+                    "title": "positionsbezeichnung",
+                    "type": "string"
+                },
+                "positionskosten": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "positionsmenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "positionspreis": {
+                    "$ref": "#/definitions/PreisSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AngebotsteilSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "anfrageSubreferenz": {
+                    "title": "anfrage_subreferenz",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gesamtkostenangebotsteil": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "gesamtmengeangebotsteil": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "lieferstellenangebotsteil": {
+                    "items": {
+                        "$ref": "#/definitions/MarktlokationSchema",
+                        "type": "object"
+                    },
+                    "title": "lieferstellenangebotsteil",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "lieferzeitraum": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "positionen": {
+                    "items": {
+                        "$ref": "#/definitions/AngebotspositionSchema",
+                        "type": "object"
+                    },
+                    "title": "positionen",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AngebotsvarianteSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "angebotsstatus": {
+                    "enum": [
+                        "KONZEPTION",
+                        "UNVERBINDLICH",
+                        "VERBINDLICH",
+                        "BEAUFTRAGT",
+                        "UNGUELTIG",
+                        "ABGELEHNT",
+                        "NACHGEFASST",
+                        "AUSSTEHEND",
+                        "ERLEDIGT"
+                    ],
+                    "title": "angebotsstatus",
+                    "type": "string"
+                },
+                "bindefrist": {
+                    "format": "date-time",
+                    "title": "bindefrist",
+                    "type": "string"
+                },
+                "erstellungsdatum": {
+                    "format": "date-time",
+                    "title": "erstellungsdatum",
+                    "type": "string"
+                },
+                "gesamtkosten": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "gesamtmenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "teile": {
+                    "items": {
+                        "$ref": "#/definitions/AngebotsteilSchema",
+                        "type": "object"
+                    },
+                    "title": "teile",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "AnsprechpartnerSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "adresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "anrede": {
+                    "enum": [
+                        "HERR",
+                        "FRAU",
+                        "EHELEUTE",
+                        "FIRMA",
+                        "INDIVIDUELL"
+                    ],
+                    "title": "anrede",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "eMailAdresse": {
+                    "title": "e_mail_adresse",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "geschaeftspartner": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "individuelleAnrede": {
+                    "title": "individuelle_anrede",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "kommentar": {
+                    "title": "kommentar",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nachname": {
+                    "title": "nachname",
+                    "type": "string"
+                },
+                "rufnummer": {
+                    "$ref": "#/definitions/RufnummerSchema",
+                    "type": "object"
+                },
+                "titel": {
+                    "enum": [
+                        "DR",
+                        "PROF",
+                        "PROF_DR"
+                    ],
+                    "title": "titel",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "vorname": {
+                    "title": "vorname",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "zustaendigkeit": {
+                    "$ref": "#/definitions/ZustaendigkeitSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AusschreibungSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "abgabefrist": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "ausschreibender": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "ausschreibungportal": {
+                    "enum": [
+                        "ENPORTAL",
+                        "ENERGIE_AGENTUR",
+                        "BMWI",
+                        "ENERGIE_HANDELSPLATZ",
+                        "BUND",
+                        "VERA_ONLINE",
+                        "ISPEX",
+                        "ENERGIEMARKTPLATZ",
+                        "EVERGABE",
+                        "DTAD"
+                    ],
+                    "title": "ausschreibungportal",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ausschreibungsnummer": {
+                    "title": "ausschreibungsnummer",
+                    "type": "string"
+                },
+                "ausschreibungsstatus": {
+                    "enum": [
+                        "PHASE1",
+                        "PHASE2",
+                        "PHASE3",
+                        "PHASE4"
+                    ],
+                    "title": "ausschreibungsstatus",
+                    "type": "string"
+                },
+                "ausschreibungstyp": {
+                    "enum": [
+                        "PRIVATRECHTLICH",
+                        "OEFFENTLICHRECHTLICH",
+                        "EUROPAWEIT"
+                    ],
+                    "title": "ausschreibungstyp",
+                    "type": "string"
+                },
+                "bindefrist": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "kostenpflichtig": {
+                    "title": "kostenpflichtig",
+                    "type": "boolean"
+                },
+                "lose": {
+                    "items": {
+                        "$ref": "#/definitions/AusschreibungslosSchema",
+                        "type": "object"
+                    },
+                    "title": "lose",
+                    "type": "array"
+                },
+                "veroeffentlichungszeitpunkt": {
+                    "format": "date-time",
+                    "title": "veroeffentlichungszeitpunkt",
+                    "type": "string"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "webseite": {
+                    "title": "webseite",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "AusschreibungsdetailSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "kunde": {
+                    "title": "kunde",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "lastgangVorhanden": {
+                    "title": "lastgang_vorhanden",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "lieferzeitraum": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "lokationsId": {
+                    "title": "lokations_id",
+                    "type": "string"
+                },
+                "lokationsadresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "lokationsbezeichnung": {
+                    "title": "lokationsbezeichnung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "netzbetreiber": {
+                    "title": "netzbetreiber",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "netzebeneLieferung": {
+                    "enum": [
+                        "NSP",
+                        "MSP",
+                        "HSP",
+                        "HSS",
+                        "MSP_NSP_UMSP",
+                        "HSP_MSP_UMSP",
+                        "HSS_HSP_UMSP",
+                        "HD",
+                        "MD",
+                        "ND"
+                    ],
+                    "title": "netzebene_lieferung",
+                    "type": "string"
+                },
+                "netzebeneMessung": {
+                    "enum": [
+                        "NSP",
+                        "MSP",
+                        "HSP",
+                        "HSS",
+                        "MSP_NSP_UMSP",
+                        "HSP_MSP_UMSP",
+                        "HSS_HSP_UMSP",
+                        "HD",
+                        "MD",
+                        "ND"
+                    ],
+                    "title": "netzebene_messung",
+                    "type": "string"
+                },
+                "prognoseArbeitLieferzeitraum": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "prognoseJahresarbeit": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "prognoseLeistung": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "rechnungsadresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "zaehlernummer": {
+                    "title": "zaehlernummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "zaehlertechnik": {
+                    "enum": [
+                        "DREHSTROMZAEHLER",
+                        "BALGENGASZAEHLER",
+                        "DREHKOLBENZAEHLER",
+                        "SMARTMETER",
+                        "LEISTUNGSZAEHLER",
+                        "MAXIMUMZAEHLER",
+                        "TURBINENRADGASZAEHLER",
+                        "ULTRASCHALLGASZAEHLER",
+                        "WECHSELSTROMZAEHLER"
+                    ],
+                    "title": "zaehlertechnik",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "AusschreibungslosSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "anzahlLieferstellen": {
+                    "title": "anzahl_lieferstellen",
+                    "type": "integer"
+                },
+                "bemerkung": {
+                    "title": "bemerkung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "betreutDurch": {
+                    "title": "betreut_durch",
+                    "type": "string"
+                },
+                "bezeichnung": {
+                    "title": "bezeichnung",
+                    "type": "string"
+                },
+                "energieart": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "energieart",
+                    "type": "string"
+                },
+                "gesamtMenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "lieferstellen": {
+                    "items": {
+                        "$ref": "#/definitions/AusschreibungsdetailSchema",
+                        "type": "object"
+                    },
+                    "title": "lieferstellen",
+                    "type": "array"
+                },
+                "lieferzeitraum": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "losnummer": {
+                    "title": "losnummer",
+                    "type": "string"
+                },
+                "preismodell": {
+                    "enum": [
+                        "FESTPREIS",
+                        "TRANCHE"
+                    ],
+                    "title": "preismodell",
+                    "type": "string"
+                },
+                "wiederholungsintervall": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "wunschKuendingungsfrist": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "wunschMaximalmenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "wunschMindestmenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "wunschRechnungslegung": {
+                    "enum": [
+                        "MONATSRECHN",
+                        "ABSCHL_MONATSRECHN",
+                        "ABSCHL_JAHRESRECHN",
+                        "MONATSRECHN_JAHRESRECHN",
+                        "VORKASSE"
+                    ],
+                    "title": "wunsch_rechnungslegung",
+                    "type": "string"
+                },
+                "wunschVertragsform": {
+                    "enum": [
+                        "ONLINE",
+                        "DIREKT",
+                        "FAX"
+                    ],
+                    "title": "wunsch_vertragsform",
+                    "type": "string"
+                },
+                "wunschZahlungsziel": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BetragSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "waehrung": {
+                    "enum": [
+                        "AED",
+                        "AFN",
+                        "ALL",
+                        "AMD",
+                        "ANG",
+                        "AOA",
+                        "ARS",
+                        "AUD",
+                        "AWG",
+                        "AZN",
+                        "BAM",
+                        "BBD",
+                        "BDT",
+                        "BGN",
+                        "BHD",
+                        "BIF",
+                        "BMD",
+                        "BND",
+                        "BOB",
+                        "BOV",
+                        "BRL",
+                        "BSD",
+                        "BTN",
+                        "BWP",
+                        "BYN",
+                        "BYR",
+                        "BZD",
+                        "CAD",
+                        "CDF",
+                        "CHE",
+                        "CHF",
+                        "CHW",
+                        "CLF",
+                        "CLP",
+                        "CNY",
+                        "COP",
+                        "COU",
+                        "CRC",
+                        "CUC",
+                        "CUP",
+                        "CVE",
+                        "CZK",
+                        "DJF",
+                        "DKK",
+                        "DOP",
+                        "DZD",
+                        "EGP",
+                        "ERN",
+                        "ETB",
+                        "EUR",
+                        "FJD",
+                        "FKP",
+                        "GBP",
+                        "GEL",
+                        "GHS",
+                        "GIP",
+                        "GMD",
+                        "GNF",
+                        "GTQ",
+                        "GYD",
+                        "HKD",
+                        "HNL",
+                        "HRK",
+                        "HTG",
+                        "HUF",
+                        "IDR",
+                        "ILS",
+                        "INR",
+                        "IQD",
+                        "IRR",
+                        "ISK",
+                        "JMD",
+                        "JOD",
+                        "JPY",
+                        "KES",
+                        "KGS",
+                        "KHR",
+                        "KMF",
+                        "KPW",
+                        "KRW",
+                        "KWD",
+                        "KYD",
+                        "KZT",
+                        "LAK",
+                        "LBP",
+                        "LKR",
+                        "LRD",
+                        "LSL",
+                        "LTL",
+                        "LYD",
+                        "MAD",
+                        "MDL",
+                        "MGA",
+                        "MKD",
+                        "MMK",
+                        "MNT",
+                        "MOP",
+                        "MRO",
+                        "MUR",
+                        "MVR",
+                        "MWK",
+                        "MXN",
+                        "MXV",
+                        "MYR",
+                        "MZN",
+                        "NAD",
+                        "NGN",
+                        "NIO",
+                        "NOK",
+                        "NPR",
+                        "NZD",
+                        "OMR",
+                        "PAB",
+                        "PEN",
+                        "PGK",
+                        "PHP",
+                        "PKR",
+                        "PLN",
+                        "PYG",
+                        "QAR",
+                        "RON",
+                        "RSD",
+                        "RUB",
+                        "RUR",
+                        "RWF",
+                        "SAR",
+                        "SBD",
+                        "SCR",
+                        "SDG",
+                        "SEK",
+                        "SGD",
+                        "SHP",
+                        "SLL",
+                        "SOS",
+                        "SRD",
+                        "SSP",
+                        "STD",
+                        "SVC",
+                        "SYP",
+                        "SZL",
+                        "THB",
+                        "TJS",
+                        "TMT",
+                        "TND",
+                        "TOP",
+                        "TRY",
+                        "TTD",
+                        "TWD",
+                        "TZS",
+                        "UAH",
+                        "UGX",
+                        "USD",
+                        "USN",
+                        "USS",
+                        "UYI",
+                        "UYU",
+                        "UZS",
+                        "VEF",
+                        "VND",
+                        "VUV",
+                        "WST",
+                        "XAF",
+                        "XAG",
+                        "XAU",
+                        "XBA",
+                        "XBB",
+                        "XBC",
+                        "XBD",
+                        "XCD",
+                        "XDR",
+                        "XOF",
+                        "XPD",
+                        "XPF",
+                        "XPT",
+                        "XSU",
+                        "XTS",
+                        "XUA",
+                        "XXX",
+                        "YER",
+                        "ZAR",
+                        "ZMW",
+                        "ZWL"
+                    ],
+                    "title": "waehrung",
+                    "type": "string"
+                },
+                "wert": {
+                    "format": "decimal",
+                    "title": "wert",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "BuendelvertragSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "einzelvertraege": {
+                    "items": {
+                        "$ref": "#/definitions/VertragSchema",
+                        "type": "object"
+                    },
+                    "title": "einzelvertraege",
+                    "type": "array"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DienstleistungSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "bezeichnung": {
+                    "title": "bezeichnung",
+                    "type": "string"
+                },
+                "dienstleistungstyp": {
+                    "enum": [
+                        "DATENBEREITSTELLUNG_TAEGLICH",
+                        "DATENBEREITSTELLUNG_WOECHENTLICH",
+                        "DATENBEREITSTELLUNG_MONATLICH",
+                        "DATENBEREITSTELLUNG_JAEHRLICH",
+                        "DATENBEREITSTELLUNG_HISTORISCHE_LG",
+                        "DATENBEREITSTELLUNG_STUENDLICH",
+                        "DATENBEREITSTELLUNG_VIERTELJAEHRLICH",
+                        "DATENBEREITSTELLUNG_HALBJAEHRLICH",
+                        "DATENBEREITSTELLUNG_MONATLICH_ZUSAETZLICH",
+                        "DATENBEREITSTELLUNG_EINMALIG",
+                        "AUSLESUNG_2X_TAEGLICH_FERNAUSLESUNG",
+                        "AUSLESUNG_TAEGLICH_FERNAUSLESUNG",
+                        "AUSLESUNG_MANUELL_MSB",
+                        "AUSLESUNG_MONATLICH_FERNAUSLESUNG",
+                        "AUSLESUNG_JAEHRLICH_FERNAUSLESUNG",
+                        "AUSLESUNG_MDE",
+                        "ABLESUNG_MONATLICH",
+                        "ABLESUNG_VIERTELJAEHRLICH",
+                        "ABLESUNG_HALBJAEHRLICH",
+                        "ABLESUNG_JAEHRLICH",
+                        "AUSLESUNG_FERNAUSLESUNG",
+                        "ABLESUNG_ZUSAETZLICH_MSB",
+                        "ABLESUNG_ZUSAETZLICH_KUNDE",
+                        "AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB",
+                        "AUSLESUNG_MOATLICH_FERNAUSLESUNG",
+                        "AUSLESUNG_STUENDLICH_FERNAUSLESUNG",
+                        "AUSLESUNG_TEMPERATURMENGENUMWERTER",
+                        "AUSLESUNG_ZUSTANDSMENGENUMWERTER",
+                        "AUSLESUNG_SYSTEMMENGENUMWERTER",
+                        "AUSLESUNG_VORGANG",
+                        "AUSLESUNG_KOMPAKTMENGENUMWERTER",
+                        "SPERRUNG",
+                        "ENTSPERRUNG",
+                        "MAHNKOSTEN",
+                        "INKASSOKOSTEN"
+                    ],
+                    "title": "dienstleistungstyp",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EnergiemengeSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "energieverbrauch": {
+                    "items": {
+                        "$ref": "#/definitions/VerbrauchSchema",
+                        "type": "object"
+                    },
+                    "title": "energieverbrauch",
+                    "type": "array"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "lokationsId": {
+                    "title": "lokations_id",
+                    "type": "string"
+                },
+                "lokationstyp": {
+                    "enum": [
+                        "MALO",
+                        "MELO"
+                    ],
+                    "title": "lokationstyp",
+                    "type": "string"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExterneReferenzSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "exRefName": {
+                    "title": "ex_ref_name",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "ex_ref_wert",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FremdkostenSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gueltigkeit": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "kostenbloecke": {
+                    "items": {
+                        "$ref": "#/definitions/FremdkostenblockSchema",
+                        "type": "object"
+                    },
+                    "title": "kostenbloecke",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "summeKosten": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FremdkostenblockSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "kostenblockbezeichnung": {
+                    "title": "kostenblockbezeichnung",
+                    "type": "string"
+                },
+                "kostenpositionen": {
+                    "items": {
+                        "$ref": "#/definitions/FremdkostenpositionSchema",
+                        "type": "object"
+                    },
+                    "title": "kostenpositionen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "summeKostenblock": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "FremdkostenpositionSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "artikelbezeichnung": {
+                    "title": "artikelbezeichnung",
+                    "type": "string"
+                },
+                "artikeldetail": {
+                    "title": "artikeldetail",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "betragKostenposition": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "bis": {
+                    "format": "date-time",
+                    "title": "bis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "einzelpreis": {
+                    "$ref": "#/definitions/PreisSchema",
+                    "type": "object"
+                },
+                "gebietcodeEic": {
+                    "title": "gebietcode_eic",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "linkPreisblatt": {
+                    "title": "link_preisblatt",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "marktpartnercode": {
+                    "title": "marktpartnercode",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "marktpartnername": {
+                    "title": "marktpartnername",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "menge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "positionstitel": {
+                    "title": "positionstitel",
+                    "type": "string"
+                },
+                "von": {
+                    "format": "date-time",
+                    "title": "von",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "zeitmenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GeokoordinatenSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "breitengrad": {
+                    "format": "decimal",
+                    "title": "breitengrad",
+                    "type": "number"
+                },
+                "laengengrad": {
+                    "format": "decimal",
+                    "title": "laengengrad",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "GeschaeftspartnerSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "amtsgericht": {
+                    "title": "amtsgericht",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "anrede": {
+                    "enum": [
+                        "HERR",
+                        "FRAU",
+                        "EHELEUTE",
+                        "FIRMA",
+                        "INDIVIDUELL"
+                    ],
+                    "title": "anrede",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "e_mail_adresse": {
+                    "title": "e_mail_adresse",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "geschaeftspartnerrolle": {
+                    "items": {
+                        "enum": [
+                            "LIEFERANT",
+                            "DIENSTLEISTER",
+                            "KUNDE",
+                            "INTERESSENT",
+                            "MARKTPARTNER"
+                        ],
+                        "title": "geschaeftspartnerrolle",
+                        "type": "string"
+                    },
+                    "title": "geschaeftspartnerrolle",
+                    "type": "array"
+                },
+                "gewerbekennzeichnung": {
+                    "title": "gewerbekennzeichnung",
+                    "type": "boolean"
+                },
+                "glauebigerId": {
+                    "title": "glaeubiger_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hrnummer": {
+                    "title": "hrnummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "kontaktweg": {
+                    "items": {
+                        "enum": [
+                            "ANSCHREIBEN",
+                            "TELEFONAT",
+                            "FAX",
+                            "E_MAIL",
+                            "SMS"
+                        ],
+                        "title": "kontaktweg",
+                        "type": "string"
+                    },
+                    "title": "kontaktweg",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "name1": {
+                    "title": "name1",
+                    "type": "string"
+                },
+                "name2": {
+                    "title": "name2",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name3": {
+                    "title": "name3",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "partneradresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "umsatzsteuer_id": {
+                    "title": "umsatzsteuer_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "website": {
+                    "title": "website",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "HardwareSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "bezeichnung": {
+                    "title": "bezeichnung",
+                    "type": "string"
+                },
+                "geraetetyp": {
+                    "enum": [
+                        "WECHSELSTROMZAEHLER",
+                        "DREHSTROMZAEHLER",
+                        "ZWEIRICHTUNGSZAEHLER",
+                        "RLM_ZAEHLER",
+                        "BALGENGASZAEHLER",
+                        "MAXIMUMZAEHLER",
+                        "MULTIPLEXANLAGE",
+                        "PAUSCHALANLAGE",
+                        "VERSTAERKERANLAGE",
+                        "SUMMATIONSGERAET",
+                        "IMPULSGEBER",
+                        "EDL_21_ZAEHLERAUFSATZ",
+                        "VIER_QUADRANTEN_LASTGANGZAEHLER",
+                        "MENGENUMWERTER",
+                        "STROMWANDLER",
+                        "SPANNUNGSWANDLER",
+                        "KOMBIMESSWANDLER",
+                        "BLOCKSTROMWANDLER",
+                        "DATENLOGGER",
+                        "KOMMUNIKATIONSANSCHLUSS",
+                        "MODEM",
+                        "TELEKOMMUNIKATIONSEINRICHTUNG",
+                        "DREHKOLBENGASZAEHLER",
+                        "TURBINENRADGASZAEHLER",
+                        "ULTRASCHALLZAEHLER",
+                        "WIRBELGASZAEHLER",
+                        "MODERNE_MESSEINRICHTUNG",
+                        "INTELLIGENTES_MESSYSTEM",
+                        "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+                        "STEUEREINRICHTUNG",
+                        "TARIFSCHALTGERAET",
+                        "RUNDSTEUEREMPFAENGER",
+                        "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+                        "MESSWANDLERSATZ_IMS_MME",
+                        "KOMBIMESSWANDLER_IMS_MME",
+                        "TARIFSCHALTGERAET_IMS_MME",
+                        "RUNDSTEUEREMPFAENGER_IMS_MME",
+                        "TEMPERATUR_KOMPENSATION",
+                        "HOECHSTBELASTUNGS_ANZEIGER",
+                        "SONSTIGES_GERAET",
+                        "PREPAYMENTZAEHLER",
+                        "EDL_21",
+                        "_96_H_ZAEHLER",
+                        "EDL_40_ZAEHLERAUFSATZ"
+                    ],
+                    "title": "geraetetyp",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "KatasteradresseSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "flurstueck": {
+                    "title": "flurstueck",
+                    "type": "string"
+                },
+                "gemarkungFlur": {
+                    "title": "gemarkung_flur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "KostenSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gueltigkeit": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "kostenbloecke": {
+                    "items": {
+                        "$ref": "#/definitions/KostenblockSchema",
+                        "type": "object"
+                    },
+                    "title": "kostenbloecke",
+                    "type": "array"
+                },
+                "kostenklasse": {
+                    "enum": [
+                        "FREMDKOSTEN",
+                        "BESCHAFFUNG",
+                        "SELBSTKOSTEN",
+                        "MARGEN",
+                        "ENERGIEVERSORGUNGSKOSTEN"
+                    ],
+                    "title": "kostenklasse",
+                    "type": "string"
+                },
+                "summeKosten": {
+                    "items": {
+                        "$ref": "#/definitions/BetragSchema",
+                        "type": "object"
+                    },
+                    "title": "summe_kosten",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "KostenblockSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "kostenblockbezeichnung": {
+                    "title": "kostenblockbezeichnung",
+                    "type": "string"
+                },
+                "kostenpositionen": {
+                    "items": {
+                        "$ref": "#/definitions/KostenpositionSchema",
+                        "type": "object"
+                    },
+                    "title": "kostenpositionen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "summeKostenblock": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "KostenpositionSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "artikelbezeichnung": {
+                    "title": "artikelbezeichnung",
+                    "type": "string"
+                },
+                "artikeldetail": {
+                    "title": "artikeldetail",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "betragKostenposition": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "bis": {
+                    "format": "date-time",
+                    "title": "bis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "einzelpreis": {
+                    "$ref": "#/definitions/PreisSchema",
+                    "type": "object"
+                },
+                "menge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "positionstitel": {
+                    "title": "positionstitel",
+                    "type": "string"
+                },
+                "von": {
+                    "format": "date-time",
+                    "title": "von",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "zeitmenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "LastgangSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "lokationsId": {
+                    "title": "lokations_id",
+                    "type": "string"
+                },
+                "lokationstyp": {
+                    "enum": [
+                        "MALO",
+                        "MELO"
+                    ],
+                    "title": "lokationstyp",
+                    "type": "string"
+                },
+                "messgroesse": {
+                    "enum": [
+                        "W",
+                        "WH",
+                        "KW",
+                        "KWH",
+                        "KVARH",
+                        "MW",
+                        "MWH",
+                        "STUECK",
+                        "KUBIKMETER",
+                        "STUNDE",
+                        "TAG",
+                        "MONAT",
+                        "JAHR",
+                        "PROZENT"
+                    ],
+                    "title": "messgroesse",
+                    "type": "string"
+                },
+                "obisKennzahl": {
+                    "title": "obis_kennzahl",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "version": {
+                    "title": "version",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "werte": {
+                    "items": {
+                        "$ref": "#/definitions/ZeitreihenwertSchema",
+                        "type": "object"
+                    },
+                    "title": "werte",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MarktlokationSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "bilanzierungsgebiet": {
+                    "title": "bilanzierungsgebiet",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "bilanzierungsmethode": {
+                    "enum": [
+                        "RLM",
+                        "SLP",
+                        "TLP_GEMEINSAM",
+                        "TLP_GETRENNT",
+                        "PAUSCHAL"
+                    ],
+                    "title": "bilanzierungsmethode",
+                    "type": "string"
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "endkunde": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "energierichtung": {
+                    "enum": [
+                        "AUSSP",
+                        "EINSP"
+                    ],
+                    "title": "energierichtung",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gasqualitaet": {
+                    "enum": [
+                        "H_GAS",
+                        "L_GAS"
+                    ],
+                    "title": "gasqualitaet",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gebietstyp": {
+                    "enum": [
+                        "REGELZONE",
+                        "MARKTGEBIET",
+                        "BILANZIERUNGSGEBIET",
+                        "VERTEILNETZ",
+                        "TRANSPORTNETZ",
+                        "REGIONALNETZ",
+                        "AREALNETZ",
+                        "GRUNDVERSORGUNGSGEBIET",
+                        "VERSORGUNGSGEBIET"
+                    ],
+                    "title": "gebietstyp",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "geoadresse": {
+                    "$ref": "#/definitions/GeokoordinatenSchema",
+                    "type": "object"
+                },
+                "grundversorgercodenr": {
+                    "title": "grundversorgercodenr",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "katasterinformation": {
+                    "$ref": "#/definitions/KatasteradresseSchema",
+                    "type": "object"
+                },
+                "lokationsadresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "marktlokationsId": {
+                    "title": "marktlokations_id",
+                    "type": "string"
+                },
+                "netzbetreibercodenr": {
+                    "title": "netzbetreibercodenr",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "netzebene": {
+                    "enum": [
+                        "NSP",
+                        "MSP",
+                        "HSP",
+                        "HSS",
+                        "MSP_NSP_UMSP",
+                        "HSP_MSP_UMSP",
+                        "HSS_HSP_UMSP",
+                        "HD",
+                        "MD",
+                        "ND"
+                    ],
+                    "title": "netzebene",
+                    "type": "string"
+                },
+                "netzgebietsnr": {
+                    "title": "netzgebietsnr",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "unterbrechbar": {
+                    "title": "unterbrechbar",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "verbrauchsart": {
+                    "enum": [
+                        "KL",
+                        "KLW",
+                        "KLWS",
+                        "W",
+                        "WS"
+                    ],
+                    "title": "verbrauchsart",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "zugehoerigeMesslokation": {
+                    "items": {
+                        "$ref": "#/definitions/MesslokationszuordnungSchema",
+                        "type": "object"
+                    },
+                    "title": "zugehoerige_messlokation",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "MarktteilnehmerSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "amtsgericht": {
+                    "title": "amtsgericht",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "anrede": {
+                    "enum": [
+                        "HERR",
+                        "FRAU",
+                        "EHELEUTE",
+                        "FIRMA",
+                        "INDIVIDUELL"
+                    ],
+                    "title": "anrede",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "e_mail_adresse": {
+                    "title": "e_mail_adresse",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "geschaeftspartnerrolle": {
+                    "items": {
+                        "enum": [
+                            "LIEFERANT",
+                            "DIENSTLEISTER",
+                            "KUNDE",
+                            "INTERESSENT",
+                            "MARKTPARTNER"
+                        ],
+                        "title": "geschaeftspartnerrolle",
+                        "type": "string"
+                    },
+                    "title": "geschaeftspartnerrolle",
+                    "type": "array"
+                },
+                "gewerbekennzeichnung": {
+                    "title": "gewerbekennzeichnung",
+                    "type": "boolean"
+                },
+                "glauebigerId": {
+                    "title": "glaeubiger_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "hrnummer": {
+                    "title": "hrnummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "kontaktweg": {
+                    "items": {
+                        "enum": [
+                            "ANSCHREIBEN",
+                            "TELEFONAT",
+                            "FAX",
+                            "E_MAIL",
+                            "SMS"
+                        ],
+                        "title": "kontaktweg",
+                        "type": "string"
+                    },
+                    "title": "kontaktweg",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "makoadresse": {
+                    "title": "makoadresse",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "marktrolle": {
+                    "enum": [
+                        "NB",
+                        "LF",
+                        "MSB",
+                        "DL",
+                        "BKV",
+                        "BKO",
+                        "UENB",
+                        "KUNDE_SELBST_NN",
+                        "MGV",
+                        "EIV",
+                        "RB",
+                        "KUNDE",
+                        "INTERESSENT",
+                        "BTR"
+                    ],
+                    "title": "marktrolle",
+                    "type": "string"
+                },
+                "name1": {
+                    "title": "name1",
+                    "type": "string"
+                },
+                "name2": {
+                    "title": "name2",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name3": {
+                    "title": "name3",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "partneradresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "rollencodenummer": {
+                    "title": "rollencodenummer",
+                    "type": "string"
+                },
+                "rollencodetyp": {
+                    "enum": [
+                        "BDEW",
+                        "DVG",
+                        "GLN"
+                    ],
+                    "title": "rollencodetyp",
+                    "type": "string"
+                },
+                "umsatzsteuer_id": {
+                    "title": "umsatzsteuer_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "website": {
+                    "title": "website",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "MengeSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "einheit": {
+                    "enum": [
+                        "W",
+                        "WH",
+                        "KW",
+                        "KWH",
+                        "KVARH",
+                        "MW",
+                        "MWH",
+                        "STUECK",
+                        "KUBIKMETER",
+                        "STUNDE",
+                        "TAG",
+                        "MONAT",
+                        "JAHR",
+                        "PROZENT"
+                    ],
+                    "title": "einheit",
+                    "type": "string"
+                },
+                "wert": {
+                    "format": "decimal",
+                    "title": "wert",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "MesslokationSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "geoadresse": {
+                    "$ref": "#/definitions/GeokoordinatenSchema",
+                    "type": "object"
+                },
+                "geraete": {
+                    "items": {
+                        "$ref": "#/definitions/HardwareSchema",
+                        "type": "object"
+                    },
+                    "title": "geraete",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "grundzustaendigerMsbCodenr": {
+                    "title": "grundzustaendiger_msb_codenr",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "grundzustaendigerMsbimCodenr": {
+                    "title": "grundzustaendiger_msbim_codenr",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "katasterinformation": {
+                    "$ref": "#/definitions/KatasteradresseSchema",
+                    "type": "object"
+                },
+                "messadresse": {
+                    "$ref": "#/definitions/AdresseSchema",
+                    "type": "object"
+                },
+                "messdienstleistung": {
+                    "items": {
+                        "$ref": "#/definitions/DienstleistungSchema",
+                        "type": "object"
+                    },
+                    "title": "messdienstleistung",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "messgebietnr": {
+                    "title": "messgebietnr",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "messlokationsId": {
+                    "title": "messlokations_id",
+                    "type": "string"
+                },
+                "messlokationszaehler": {
+                    "items": {
+                        "$ref": "#/definitions/ZaehlerSchema",
+                        "type": "object"
+                    },
+                    "title": "messlokationszaehler",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "netzebeneMessung": {
+                    "enum": [
+                        "NSP",
+                        "MSP",
+                        "HSP",
+                        "HSS",
+                        "MSP_NSP_UMSP",
+                        "HSP_MSP_UMSP",
+                        "HSS_HSP_UMSP",
+                        "HD",
+                        "MD",
+                        "ND"
+                    ],
+                    "title": "netzebene_messung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "MesslokationszuordnungSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "arithmetik": {
+                    "enum": [
+                        "ADDITION",
+                        "SUBTRAKTION",
+                        "MULTIPLIKATION",
+                        "DIVISION"
+                    ],
+                    "title": "arithmetik",
+                    "type": "string"
+                },
+                "gueltigBis": {
+                    "format": "date-time",
+                    "title": "gueltig_bis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gueltigSeit": {
+                    "format": "date-time",
+                    "title": "gueltig_seit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "messlokationsId": {
+                    "title": "messlokations_id",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NetznutzungsrechnungSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "absendercodenummer": {
+                    "title": "absendercodenummer",
+                    "type": "string"
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "empfaengercodenummer": {
+                    "title": "empfaengercodenummer",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "faelligkeitsdatum": {
+                    "format": "date-time",
+                    "title": "faelligkeitsdatum",
+                    "type": "string"
+                },
+                "gesamtbrutto": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "gesamtnetto": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "gesamtsteuer": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "lokations_id": {
+                    "title": "lokations_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "nnrechnungsart": {
+                    "enum": [
+                        "HANDELSRECHNUNG",
+                        "SELBSTAUSGESTELLT"
+                    ],
+                    "title": "nnrechnungsart",
+                    "type": "string"
+                },
+                "nnrechnungstyp": {
+                    "enum": [
+                        "ABSCHLUSSRECHNUNG",
+                        "ABSCHLAGSRECHNUNG",
+                        "TURNUSRECHNUNG",
+                        "MONATSRECHNUNG",
+                        "WIMRECHNUNG",
+                        "ZWISCHENRECHNUNG",
+                        "INTEGRIERTE_13TE_RECHNUNG",
+                        "ZUSAETZLICHE_13TE_RECHNUNG",
+                        "MEHRMINDERMENGENRECHNUNG"
+                    ],
+                    "title": "nnrechnungstyp",
+                    "type": "string"
+                },
+                "original": {
+                    "title": "original",
+                    "type": "boolean"
+                },
+                "originalRechnungsnummer": {
+                    "title": "original_rechnungsnummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rabattBrutto": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "rechnungsdatum": {
+                    "format": "date-time",
+                    "title": "rechnungsdatum",
+                    "type": "string"
+                },
+                "rechnungsempfaenger": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "rechnungsersteller": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "rechnungsnummer": {
+                    "title": "rechnungsnummer",
+                    "type": "string"
+                },
+                "rechnungsperiode": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "rechnungspositionen": {
+                    "items": {
+                        "$ref": "#/definitions/RechnungspositionSchema",
+                        "type": "object"
+                    },
+                    "title": "rechnungspositionen",
+                    "type": "array"
+                },
+                "rechnungsstatus": {
+                    "enum": [
+                        "UNGEPRUEFT",
+                        "GEPRUEFT_OK",
+                        "GEPRUEFT_FEHLERHAFT",
+                        "GEBUCHT",
+                        "BEZAHLT"
+                    ],
+                    "title": "rechnungsstatus",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rechnungstitel": {
+                    "title": "rechnungstitel",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "rechnungstyp": {
+                    "enum": [
+                        "ENDKUNDENRECHNUNG",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "MEHRMINDERMENGENRECHNUNG",
+                        "MESSSTELLENBETRIEBSRECHNUNG",
+                        "BESCHAFFUNGSRECHNUNG",
+                        "AUSGLEICHSENERGIERECHNUNG"
+                    ],
+                    "title": "rechnungstyp",
+                    "type": "string"
+                },
+                "simuliert": {
+                    "title": "simuliert",
+                    "type": "boolean"
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "steuerbetraege": {
+                    "items": {
+                        "$ref": "#/definitions/SteuerbetragSchema",
+                        "type": "object"
+                    },
+                    "title": "steuerbetraege",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "storno": {
+                    "title": "storno",
+                    "type": "boolean"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "vorausgezahlt": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "zuzahlen": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PreisSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "bezugswert": {
+                    "enum": [
+                        "W",
+                        "WH",
+                        "KW",
+                        "KWH",
+                        "KVARH",
+                        "MW",
+                        "MWH",
+                        "STUECK",
+                        "KUBIKMETER",
+                        "STUNDE",
+                        "TAG",
+                        "MONAT",
+                        "JAHR",
+                        "PROZENT"
+                    ],
+                    "title": "bezugswert",
+                    "type": "string"
+                },
+                "einheit": {
+                    "enum": [
+                        "EUR",
+                        "CT"
+                    ],
+                    "title": "einheit",
+                    "type": "string"
+                },
+                "status": {
+                    "enum": [
+                        "VORLAEUFIG",
+                        "ENDGUELTIG"
+                    ],
+                    "title": "status",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wert": {
+                    "format": "decimal",
+                    "title": "wert",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "PreisblattSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "bezeichnung": {
+                    "title": "bezeichnung",
+                    "type": "string"
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "gueltigkeit": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "herausgeber": {
+                    "$ref": "#/definitions/MarktteilnehmerSchema",
+                    "type": "object"
+                },
+                "preispositionen": {
+                    "items": {
+                        "$ref": "#/definitions/PreispositionSchema",
+                        "type": "object"
+                    },
+                    "title": "preispositionen",
+                    "type": "array"
+                },
+                "preisstatus": {
+                    "enum": [
+                        "VORLAEUFIG",
+                        "ENDGUELTIG"
+                    ],
+                    "title": "preisstatus",
+                    "type": "string"
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PreispositionSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "artikelId": {
+                    "enum": [
+                        "ARTIKEL_2017001",
+                        "ARTIKEL_2017002",
+                        "ARTIKEL_2017003",
+                        "ARTIKEL_2017004",
+                        "ARTIKEL_2017005",
+                        "ARTIKEL_2017006",
+                        "ARTIKEL_2020001",
+                        "ARTIKEL_2020002"
+                    ],
+                    "title": "artikel_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "bdewArtikelnummer": {
+                    "enum": [
+                        "LEISTUNG",
+                        "LEISTUNG_PAUSCHAL",
+                        "GRUNDPREIS",
+                        "REGELENERGIE_ARBEIT",
+                        "REGELENERGIE_LEISTUNG",
+                        "NOTSTROMLIEFERUNG_ARBEIT",
+                        "NOTSTROMLIEFERUNG_LEISTUNG",
+                        "RESERVENETZKAPAZITAET",
+                        "RESERVELEISTUNG",
+                        "ZUSAETZLICHE_ABLESUNG",
+                        "PRUEFGEBUEHREN_AUSSERPLANMAESSIG",
+                        "WIRKARBEIT",
+                        "SINGULAER_GENUTZTE_BETRIEBSMITTEL",
+                        "ABGABE_KWKG",
+                        "ABSCHLAG",
+                        "KONZESSIONSABGABE",
+                        "ENTGELT_FERNAUSLESUNG",
+                        "UNTERMESSUNG",
+                        "BLINDMEHRARBEIT",
+                        "ENTGELT_ABRECHNUNG",
+                        "SPERRKOSTEN",
+                        "ENTSPERRKOSTEN",
+                        "MAHNKOSTEN",
+                        "MEHR_MINDERMENGEN",
+                        "INKASSOKOSTEN",
+                        "BLINDMEHRLEISTUNG",
+                        "ENTGELT_MESSUNG_ABLESUNG",
+                        "ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK",
+                        "AUSGLEICHSENERGIE",
+                        "ZAEHLEINRICHTUNG",
+                        "WANDLER_MENGENUMWERTER",
+                        "KOMMUNIKATIONSEINRICHTUNG",
+                        "TECHNISCHE_STEUEREINRICHTUNG",
+                        "PARAGRAF_19_STROM_NEV_UMLAGE",
+                        "BEFESTIGUNGSEINRICHTUNG",
+                        "OFFSHORE_HAFTUNGSUMLAGE",
+                        "FIXE_ARBEITSENTGELTKOMPONENTE",
+                        "FIXE_LEISTUNGSENTGELTKOMPONENTE",
+                        "UMLAGE_ABSCHALTBARE_LASTEN",
+                        "MEHRMENGE",
+                        "MINDERMENGE",
+                        "ENERGIESTEUER",
+                        "SMARTMETER_GATEWAY",
+                        "STEUERBOX",
+                        "MSB_INKL_MESSUNG",
+                        "AUSGLEICHSENERGIE_UNTERDECKUNG"
+                    ],
+                    "title": "bdew_artikelnummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "berechnungsmethode": {
+                    "enum": [
+                        "STUFEN",
+                        "ZONEN",
+                        "VORZONEN_GP",
+                        "SIGMOID",
+                        "BLINDARBEIT_GT_50_PROZENT",
+                        "BLINDARBEIT_GT_40_PROZENT",
+                        "BLINDARBEIT_MIT_FREIMENGE",
+                        "AP_GP_ZONEN",
+                        "LP_INSTALL_LEISTUNG",
+                        "AP_TRANSPORT_ODER_VERTEILNETZ",
+                        "AP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID",
+                        "LP_JAHRESVERBRAUCH",
+                        "LP_TRANSPORT_ODER_VERTEILNETZ",
+                        "LP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID",
+                        "FUNKTIONEN",
+                        "VERBRAUCH_UEBER_SLP_GRENZE_FUNKTIONSBEZOGEN_WEITERE_BERECHNUNG_ALS_LGK"
+                    ],
+                    "title": "berechnungsmethode",
+                    "type": "string"
+                },
+                "bezugsgroesse": {
+                    "enum": [
+                        "W",
+                        "WH",
+                        "KW",
+                        "KWH",
+                        "KVARH",
+                        "MW",
+                        "MWH",
+                        "STUECK",
+                        "KUBIKMETER",
+                        "STUNDE",
+                        "TAG",
+                        "MONAT",
+                        "JAHR",
+                        "PROZENT"
+                    ],
+                    "title": "bezugsgroesse",
+                    "type": "string"
+                },
+                "freimengeBlindarbeit": {
+                    "format": "decimal",
+                    "title": "freimenge_blindarbeit",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "freimengeLeistungsfaktor": {
+                    "format": "decimal",
+                    "title": "freimenge_leistungsfaktor",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "leistungsbezeichnung": {
+                    "title": "leistungsbezeichnung",
+                    "type": "string"
+                },
+                "leistungstyp": {
+                    "enum": [
+                        "ARBEITSPREIS_WIRKARBEIT",
+                        "LEISTUNGSPREIS_WIRKLEISTUNG",
+                        "ARBEITSPREIS_BLINDARBEIT_IND",
+                        "ARBEITSPREIS_BLINDARBEIT_KAP",
+                        "GRUNDPREIS",
+                        "GRUNDPREIS_ARBEIT",
+                        "GRUNDPREIS_LEISTUNG",
+                        "MEHRMINDERMENGE",
+                        "MESSSTELLENBETRIEB",
+                        "MESSDIENSTLEISTUNG",
+                        "MESSDIENSTLEISTUNG_INKL_MESSUNG",
+                        "ABRECHNUNG",
+                        "KONZESSIONS_ABGABE",
+                        "KWK_UMLAGE",
+                        "OFFSHORE_UMLAGE",
+                        "ABLAV_UMLAGE",
+                        "SONDERKUNDEN_UMLAGE",
+                        "REGELENERGIE_UMLAGE",
+                        "BILANZIERUNG_UMLAGE",
+                        "AUSLESUNG_ZUSAETZLICH",
+                        "ABLESUNG_ZUSAETZLICH",
+                        "ABRECHNUNG_ZUSAETZLICH",
+                        "SPERRUNG",
+                        "ENTSPERRUNG",
+                        "MAHNKOSTEN",
+                        "INKASSOKOSTEN",
+                        "EEG_UMLAGE",
+                        "ENERGIESTEUER",
+                        "NETZPREIS",
+                        "MESSPREIS",
+                        "SONSTIGER_PREIS"
+                    ],
+                    "title": "leistungstyp",
+                    "type": "string"
+                },
+                "preiseinheit": {
+                    "enum": [
+                        "EUR",
+                        "CT"
+                    ],
+                    "title": "preiseinheit",
+                    "type": "string"
+                },
+                "preisstaffeln": {
+                    "items": {
+                        "$ref": "#/definitions/PreisstaffelSchema",
+                        "type": "object"
+                    },
+                    "title": "preisstaffeln",
+                    "type": "array"
+                },
+                "tarifzeit": {
+                    "enum": [
+                        "TZ_STANDARD",
+                        "TZ_HT",
+                        "TZ_NT"
+                    ],
+                    "title": "tarifzeit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "zeitbasis": {
+                    "enum": [
+                        "SEKUNDE",
+                        "MINUTE",
+                        "STUNDE",
+                        "VIERTEL_STUNDE",
+                        "TAG",
+                        "WOCHE",
+                        "MONAT",
+                        "QUARTAL",
+                        "HALBJAHR",
+                        "JAHR"
+                    ],
+                    "title": "zeitbasis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "zonungsgroesse": {
+                    "enum": [
+                        "WIRKARBEIT_EL",
+                        "LEISTUNG_EL",
+                        "BLINDARBEIT_KAP",
+                        "BLINDARBEIT_IND",
+                        "BLINDLEISTUNG_KAP",
+                        "BLINDLEISTUNG_IND",
+                        "WIRKARBEIT_TH",
+                        "LEISTUNG_TH",
+                        "VOLUMEN",
+                        "VOLUMENSTROM",
+                        "BENUTZUNGSDAUER",
+                        "ANZAHL"
+                    ],
+                    "title": "zonungsgroesse",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "PreisstaffelSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "einheitspreis": {
+                    "format": "decimal",
+                    "title": "einheitspreis",
+                    "type": "number"
+                },
+                "sigmoidparameter": {
+                    "$ref": "#/definitions/SigmoidparameterSchema",
+                    "type": "object"
+                },
+                "staffelgrenzeBis": {
+                    "format": "decimal",
+                    "title": "staffelgrenze_bis",
+                    "type": "number"
+                },
+                "staffelgrenzeVon": {
+                    "format": "decimal",
+                    "title": "staffelgrenze_von",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "RechnungspositionSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "artikelId": {
+                    "enum": [
+                        "ARTIKEL_2017001",
+                        "ARTIKEL_2017002",
+                        "ARTIKEL_2017003",
+                        "ARTIKEL_2017004",
+                        "ARTIKEL_2017005",
+                        "ARTIKEL_2017006",
+                        "ARTIKEL_2020001",
+                        "ARTIKEL_2020002"
+                    ],
+                    "title": "artikel_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "artikelnummer": {
+                    "enum": [
+                        "LEISTUNG",
+                        "LEISTUNG_PAUSCHAL",
+                        "GRUNDPREIS",
+                        "REGELENERGIE_ARBEIT",
+                        "REGELENERGIE_LEISTUNG",
+                        "NOTSTROMLIEFERUNG_ARBEIT",
+                        "NOTSTROMLIEFERUNG_LEISTUNG",
+                        "RESERVENETZKAPAZITAET",
+                        "RESERVELEISTUNG",
+                        "ZUSAETZLICHE_ABLESUNG",
+                        "PRUEFGEBUEHREN_AUSSERPLANMAESSIG",
+                        "WIRKARBEIT",
+                        "SINGULAER_GENUTZTE_BETRIEBSMITTEL",
+                        "ABGABE_KWKG",
+                        "ABSCHLAG",
+                        "KONZESSIONSABGABE",
+                        "ENTGELT_FERNAUSLESUNG",
+                        "UNTERMESSUNG",
+                        "BLINDMEHRARBEIT",
+                        "ENTGELT_ABRECHNUNG",
+                        "SPERRKOSTEN",
+                        "ENTSPERRKOSTEN",
+                        "MAHNKOSTEN",
+                        "MEHR_MINDERMENGEN",
+                        "INKASSOKOSTEN",
+                        "BLINDMEHRLEISTUNG",
+                        "ENTGELT_MESSUNG_ABLESUNG",
+                        "ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK",
+                        "AUSGLEICHSENERGIE",
+                        "ZAEHLEINRICHTUNG",
+                        "WANDLER_MENGENUMWERTER",
+                        "KOMMUNIKATIONSEINRICHTUNG",
+                        "TECHNISCHE_STEUEREINRICHTUNG",
+                        "PARAGRAF_19_STROM_NEV_UMLAGE",
+                        "BEFESTIGUNGSEINRICHTUNG",
+                        "OFFSHORE_HAFTUNGSUMLAGE",
+                        "FIXE_ARBEITSENTGELTKOMPONENTE",
+                        "FIXE_LEISTUNGSENTGELTKOMPONENTE",
+                        "UMLAGE_ABSCHALTBARE_LASTEN",
+                        "MEHRMENGE",
+                        "MINDERMENGE",
+                        "ENERGIESTEUER",
+                        "SMARTMETER_GATEWAY",
+                        "STEUERBOX",
+                        "MSB_INKL_MESSUNG",
+                        "AUSGLEICHSENERGIE_UNTERDECKUNG"
+                    ],
+                    "title": "artikelnummer",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "einzelpreis": {
+                    "$ref": "#/definitions/PreisSchema",
+                    "type": "object"
+                },
+                "lieferungBis": {
+                    "format": "date-time",
+                    "title": "lieferung_bis",
+                    "type": "string"
+                },
+                "lieferungVon": {
+                    "format": "date-time",
+                    "title": "lieferung_von",
+                    "type": "string"
+                },
+                "lokationsId": {
+                    "title": "lokations_id",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "positionsMenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "positionsnummer": {
+                    "title": "positionsnummer",
+                    "type": "integer"
+                },
+                "positionstext": {
+                    "title": "positionstext",
+                    "type": "string"
+                },
+                "teilrabattNetto": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "teilsummeNetto": {
+                    "$ref": "#/definitions/BetragSchema",
+                    "type": "object"
+                },
+                "teilsummeSteuer": {
+                    "$ref": "#/definitions/SteuerbetragSchema",
+                    "type": "object"
+                },
+                "zeitbezogeneMenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "zeiteinheit": {
+                    "enum": [
+                        "SEKUNDE",
+                        "MINUTE",
+                        "STUNDE",
+                        "VIERTEL_STUNDE",
+                        "TAG",
+                        "WOCHE",
+                        "MONAT",
+                        "QUARTAL",
+                        "HALBJAHR",
+                        "JAHR"
+                    ],
+                    "title": "zeiteinheit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "RufnummerSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "nummerntyp": {
+                    "enum": [
+                        "RUF_ZENTRALE",
+                        "FAX_ZENTRALE",
+                        "SAMMELRUF",
+                        "SAMMELFAX",
+                        "ABTEILUNGRUF",
+                        "ABTEILUNGFAX",
+                        "RUF_DURCHWAHL",
+                        "FAX_DURCHWAHL",
+                        "MOBIL_NUMMER"
+                    ],
+                    "title": "nummerntyp",
+                    "type": "string"
+                },
+                "rufnummer": {
+                    "title": "rufnummer",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SigmoidparameterSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "A": {
+                    "format": "decimal",
+                    "title": "A",
+                    "type": "number"
+                },
+                "B": {
+                    "format": "decimal",
+                    "title": "B",
+                    "type": "number"
+                },
+                "C": {
+                    "format": "decimal",
+                    "title": "C",
+                    "type": "number"
+                },
+                "D": {
+                    "format": "decimal",
+                    "title": "D",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "SteuerbetragSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "basiswert": {
+                    "format": "decimal",
+                    "title": "basiswert",
+                    "type": "number"
+                },
+                "steuerkennzeichen": {
+                    "enum": [
+                        "UST_0",
+                        "UST_19",
+                        "UST_7",
+                        "VST_0",
+                        "VST_19",
+                        "VST_7",
+                        "RCV"
+                    ],
+                    "title": "steuerkennzeichen",
+                    "type": "string"
+                },
+                "steuerwert": {
+                    "format": "decimal",
+                    "title": "steuerwert",
+                    "type": "number"
+                },
+                "waehrung": {
+                    "enum": [
+                        "AED",
+                        "AFN",
+                        "ALL",
+                        "AMD",
+                        "ANG",
+                        "AOA",
+                        "ARS",
+                        "AUD",
+                        "AWG",
+                        "AZN",
+                        "BAM",
+                        "BBD",
+                        "BDT",
+                        "BGN",
+                        "BHD",
+                        "BIF",
+                        "BMD",
+                        "BND",
+                        "BOB",
+                        "BOV",
+                        "BRL",
+                        "BSD",
+                        "BTN",
+                        "BWP",
+                        "BYN",
+                        "BYR",
+                        "BZD",
+                        "CAD",
+                        "CDF",
+                        "CHE",
+                        "CHF",
+                        "CHW",
+                        "CLF",
+                        "CLP",
+                        "CNY",
+                        "COP",
+                        "COU",
+                        "CRC",
+                        "CUC",
+                        "CUP",
+                        "CVE",
+                        "CZK",
+                        "DJF",
+                        "DKK",
+                        "DOP",
+                        "DZD",
+                        "EGP",
+                        "ERN",
+                        "ETB",
+                        "EUR",
+                        "FJD",
+                        "FKP",
+                        "GBP",
+                        "GEL",
+                        "GHS",
+                        "GIP",
+                        "GMD",
+                        "GNF",
+                        "GTQ",
+                        "GYD",
+                        "HKD",
+                        "HNL",
+                        "HRK",
+                        "HTG",
+                        "HUF",
+                        "IDR",
+                        "ILS",
+                        "INR",
+                        "IQD",
+                        "IRR",
+                        "ISK",
+                        "JMD",
+                        "JOD",
+                        "JPY",
+                        "KES",
+                        "KGS",
+                        "KHR",
+                        "KMF",
+                        "KPW",
+                        "KRW",
+                        "KWD",
+                        "KYD",
+                        "KZT",
+                        "LAK",
+                        "LBP",
+                        "LKR",
+                        "LRD",
+                        "LSL",
+                        "LTL",
+                        "LYD",
+                        "MAD",
+                        "MDL",
+                        "MGA",
+                        "MKD",
+                        "MMK",
+                        "MNT",
+                        "MOP",
+                        "MRO",
+                        "MUR",
+                        "MVR",
+                        "MWK",
+                        "MXN",
+                        "MXV",
+                        "MYR",
+                        "MZN",
+                        "NAD",
+                        "NGN",
+                        "NIO",
+                        "NOK",
+                        "NPR",
+                        "NZD",
+                        "OMR",
+                        "PAB",
+                        "PEN",
+                        "PGK",
+                        "PHP",
+                        "PKR",
+                        "PLN",
+                        "PYG",
+                        "QAR",
+                        "RON",
+                        "RSD",
+                        "RUB",
+                        "RUR",
+                        "RWF",
+                        "SAR",
+                        "SBD",
+                        "SCR",
+                        "SDG",
+                        "SEK",
+                        "SGD",
+                        "SHP",
+                        "SLL",
+                        "SOS",
+                        "SRD",
+                        "SSP",
+                        "STD",
+                        "SVC",
+                        "SYP",
+                        "SZL",
+                        "THB",
+                        "TJS",
+                        "TMT",
+                        "TND",
+                        "TOP",
+                        "TRY",
+                        "TTD",
+                        "TWD",
+                        "TZS",
+                        "UAH",
+                        "UGX",
+                        "USD",
+                        "USN",
+                        "USS",
+                        "UYI",
+                        "UYU",
+                        "UZS",
+                        "VEF",
+                        "VND",
+                        "VUV",
+                        "WST",
+                        "XAF",
+                        "XAG",
+                        "XAU",
+                        "XBA",
+                        "XBB",
+                        "XBC",
+                        "XBD",
+                        "XCD",
+                        "XDR",
+                        "XOF",
+                        "XPD",
+                        "XPF",
+                        "XPT",
+                        "XSU",
+                        "XTS",
+                        "XUA",
+                        "XXX",
+                        "YER",
+                        "ZAR",
+                        "ZMW",
+                        "ZWL"
+                    ],
+                    "title": "waehrung",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UnterschriftSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "datum": {
+                    "format": "date-time",
+                    "title": "datum",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "name": {
+                    "title": "name",
+                    "type": "string"
+                },
+                "ort": {
+                    "title": "ort",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "VerbrauchSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "enddatum": {
+                    "format": "date-time",
+                    "title": "enddatum",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "mengeneinheit": {
+                    "enum": [
+                        "W",
+                        "WH",
+                        "KW",
+                        "KWH",
+                        "KVARH",
+                        "MW",
+                        "MWH",
+                        "STUECK",
+                        "KUBIKMETER",
+                        "STUNDE",
+                        "TAG",
+                        "MONAT",
+                        "JAHR",
+                        "PROZENT"
+                    ],
+                    "title": "mengeneinheit",
+                    "type": "string"
+                },
+                "obisKennzahl": {
+                    "title": "obis_kennzahl",
+                    "type": "string"
+                },
+                "startdatum": {
+                    "format": "date-time",
+                    "title": "startdatum",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wert": {
+                    "format": "decimal",
+                    "title": "wert",
+                    "type": "number"
+                },
+                "wertermittlungsverfahren": {
+                    "enum": [
+                        "PROGNOSE",
+                        "MESSUNG"
+                    ],
+                    "title": "wertermittlungsverfahren",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "VertragSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "beschreibung": {
+                    "title": "beschreibung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "unterzeichnervp1": {
+                    "items": {
+                        "$ref": "#/definitions/UnterschriftSchema",
+                        "type": "object"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "unterzeichnervp2": {
+                    "items": {
+                        "$ref": "#/definitions/UnterschriftSchema",
+                        "type": "object"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "vertragsart": {
+                    "enum": [
+                        "ENERGIELIEFERVERTRAG",
+                        "NETZNUTZUNGSVERTRAG",
+                        "BILANZIERUNGSVERTRAG",
+                        "MESSSTELLENBETRIEBSVERTRAG",
+                        "BUENDELVERTRAG"
+                    ],
+                    "title": "vertragsart",
+                    "type": "string"
+                },
+                "vertragsbeginn": {
+                    "format": "date-time",
+                    "title": "vertragsbeginn",
+                    "type": "string"
+                },
+                "vertragsende": {
+                    "format": "date-time",
+                    "title": "vertragsende",
+                    "type": "string"
+                },
+                "vertragskonditionen": {
+                    "$ref": "#/definitions/VertragskonditionenSchema",
+                    "type": "object"
+                },
+                "vertragsnummer": {
+                    "title": "vertragsnummer",
+                    "type": "string"
+                },
+                "vertragspartner1": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "vertragspartner2": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "vertragsstatus": {
+                    "enum": [
+                        "IN_ARBEIT",
+                        "UEBERMITTELT",
+                        "ANGENOMMEN",
+                        "AKTIV",
+                        "ABGELEHNT",
+                        "WIDERRUFEN",
+                        "STORNIERT",
+                        "GEKUENDIGT",
+                        "BEENDET"
+                    ],
+                    "title": "vertragsstatus",
+                    "type": "string"
+                },
+                "vertragsteile": {
+                    "items": {
+                        "$ref": "#/definitions/VertragsteilSchema",
+                        "type": "object"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "VertragskonditionenSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "abschlagszyklus": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "anzahlAbschlaege": {
+                    "format": "decimal",
+                    "title": "anzahl_abschlaege",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "beschreibung": {
+                    "title": "beschreibung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "kuendigungsfrist": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "vertragslaufzeit": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                },
+                "vertragsverlaengerung": {
+                    "$ref": "#/definitions/ZeitraumSchema",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "VertragsteilSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "lokation": {
+                    "title": "lokation",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "maximaleAbnahmemenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "minimaleAbnahmemenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "vertraglichFixierteMenge": {
+                    "$ref": "#/definitions/MengeSchema",
+                    "type": "object"
+                },
+                "vertragsteilbeginn": {
+                    "format": "date-time",
+                    "title": "vertragsteilbeginn",
+                    "type": "string"
+                },
+                "vertragsteilende": {
+                    "format": "date-time",
+                    "title": "vertragsteilende",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ZaehlerSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "boTyp": {
+                    "enum": [
+                        "ANGEBOT",
+                        "ANSPRECHPARTNER",
+                        "AUSSCHREIBUNG",
+                        "BUENDELVERTRAG",
+                        "ENERGIEMENGE",
+                        "FREMDKOSTEN",
+                        "GESCHAEFTSOBJEKT",
+                        "GESCHAEFTSPARTNER",
+                        "KOSTEN",
+                        "LASTGANG",
+                        "LASTGANG_KOMPAKT",
+                        "MARKTLOKATION",
+                        "MESSLOKATION",
+                        "MARKTTEILNEHMER",
+                        "NETZNUTZUNGSRECHNUNG",
+                        "PREISBLATT",
+                        "PREISBLATTDIENSTLEISTUNG",
+                        "PREISBLATTHARDWARE",
+                        "PREISBLATTKONZESSIONSABGABE",
+                        "PREISBLATTMESSUNG",
+                        "PREISBLATTNETZNUTZUNG",
+                        "PREISBLATTUMLAGEN",
+                        "RECHNUNG",
+                        "REGION",
+                        "REGIONALTARIF",
+                        "STANDORTEIGENSCHAFTEN",
+                        "TARIF",
+                        "TARIFINFO",
+                        "TARIFKOSTEN",
+                        "TARIFPREISBLATT",
+                        "VERTRAG",
+                        "ZAEHLER",
+                        "ZEITREIHE"
+                    ],
+                    "title": "bo_typ",
+                    "type": "string"
+                },
+                "eichungBis": {
+                    "format": "date-time",
+                    "title": "eichung_bis",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "externeReferenzen": {
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenzSchema",
+                        "type": "object"
+                    },
+                    "title": "externe_referenzen",
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                },
+                "letzteEichung": {
+                    "format": "date-time",
+                    "title": "letzte_eichung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "sparte": {
+                    "enum": [
+                        "STROM",
+                        "GAS",
+                        "FERNWAERME",
+                        "NAHWAERME",
+                        "WASSER",
+                        "ABWASSER"
+                    ],
+                    "title": "sparte",
+                    "type": "string"
+                },
+                "tarifart": {
+                    "enum": [
+                        "EINTARIF",
+                        "ZWEITARIF",
+                        "MEHRTARIF",
+                        "SMART_METER",
+                        "LEISTUNGSGEMESSEN"
+                    ],
+                    "title": "tarifart",
+                    "type": "string"
+                },
+                "versionstruktur": {
+                    "title": "versionstruktur",
+                    "type": "string"
+                },
+                "zaehlerauspraegung": {
+                    "enum": [
+                        "EINRICHTUNGSZAEHLER",
+                        "ZWEIRICHTUNGSZAEHLER"
+                    ],
+                    "title": "zaehlerauspraegung",
+                    "type": "string"
+                },
+                "zaehlerhersteller": {
+                    "$ref": "#/definitions/GeschaeftspartnerSchema",
+                    "type": "object"
+                },
+                "zaehlerkonstante": {
+                    "format": "decimal",
+                    "title": "zaehlerkonstante",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "zaehlernummer": {
+                    "title": "zaehlernummer",
+                    "type": "string"
+                },
+                "zaehlertyp": {
+                    "enum": [
+                        "DREHSTROMZAEHLER",
+                        "BALGENGASZAEHLER",
+                        "DREHKOLBENZAEHLER",
+                        "SMARTMETER",
+                        "LEISTUNGSZAEHLER",
+                        "MAXIMUMZAEHLER",
+                        "TURBINENRADGASZAEHLER",
+                        "ULTRASCHALLGASZAEHLER",
+                        "WECHSELSTROMZAEHLER"
+                    ],
+                    "title": "zaehlertyp",
+                    "type": "string"
+                },
+                "zaehlwerke": {
+                    "items": {
+                        "$ref": "#/definitions/ZaehlwerkSchema",
+                        "type": "object"
+                    },
+                    "type": [
+                        "array",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ZaehlwerkSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "bezeichnung": {
+                    "title": "bezeichnung",
+                    "type": "string"
+                },
+                "einheit": {
+                    "enum": [
+                        "W",
+                        "WH",
+                        "KW",
+                        "KWH",
+                        "KVARH",
+                        "MW",
+                        "MWH",
+                        "STUECK",
+                        "KUBIKMETER",
+                        "STUNDE",
+                        "TAG",
+                        "MONAT",
+                        "JAHR",
+                        "PROZENT"
+                    ],
+                    "title": "einheit",
+                    "type": "string"
+                },
+                "obisKennzahl": {
+                    "title": "obis_kennzahl",
+                    "type": "string"
+                },
+                "richtung": {
+                    "enum": [
+                        "AUSSP",
+                        "EINSP"
+                    ],
+                    "title": "richtung",
+                    "type": "string"
+                },
+                "wandlerfaktor": {
+                    "format": "decimal",
+                    "title": "wandlerfaktor",
+                    "type": "number"
+                },
+                "zaehlwerkId": {
+                    "title": "zaehlwerk_id",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ZeitraumSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "dauer": {
+                    "format": "decimal",
+                    "title": "dauer",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "einheit": {
+                    "enum": [
+                        "SEKUNDE",
+                        "MINUTE",
+                        "STUNDE",
+                        "VIERTEL_STUNDE",
+                        "TAG",
+                        "WOCHE",
+                        "MONAT",
+                        "QUARTAL",
+                        "HALBJAHR",
+                        "JAHR"
+                    ],
+                    "title": "einheit",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "enddatum": {
+                    "format": "date-time",
+                    "title": "enddatum",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "endzeitpunkt": {
+                    "format": "date-time",
+                    "title": "endzeitpunkt",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "startdatum": {
+                    "format": "date-time",
+                    "title": "startdatum",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "startzeitpunkt": {
+                    "format": "date-time",
+                    "title": "startzeitpunkt",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ZeitreihenwertSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "datumUhrzeitBis": {
+                    "format": "date-time",
+                    "title": "datum_uhrzeit_bis",
+                    "type": "string"
+                },
+                "datumUhrzeitVon": {
+                    "format": "date-time",
+                    "title": "datum_uhrzeit_von",
+                    "type": "string"
+                },
+                "status": {
+                    "enum": [
+                        "ABGELESEN",
+                        "ERSATZWERT",
+                        "VORSCHLAGSWERT",
+                        "NICHT_VERWENDBAR",
+                        "PROGNOSEWERT",
+                        "VORLAEUFIGERWERT",
+                        "ENERGIEMENGESUMMIERT",
+                        "FEHLT"
+                    ],
+                    "title": "status",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "statuszusatz": {
+                    "enum": [
+                        "Z84_LEERSTAND",
+                        "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
+                        "Z86_PLAUSIBELWGKONTROLLABLESUNG",
+                        "Z87_PLAUSIBELWGKUNDENHINWEIS",
+                        "ZC3_AUSTAUSCHDESERSATZWERTES",
+                        "Z88_VERGLEICHSMESSUNG_GEEICHT",
+                        "Z89_VERGLEICHSMESSUNG_NICHTGEEICHT",
+                        "Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN",
+                        "Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN",
+                        "Z92_INTERPOLATION",
+                        "Z93_HALTEWERT",
+                        "Z94_BILANZIERUNGNETZABSCHNITT",
+                        "Z95_HISTORISCHEMESSWERTE",
+                        "ZJ2_STATISTISCHEMETHODE",
+                        "Z74_KEINZUGANG",
+                        "Z75_KOMMUNIKATIONSSTOERUNG",
+                        "Z76_NETZAUSFALL",
+                        "Z77_SPANNUNGSAUSFALL",
+                        "Z78_GERAETEWECHSEL",
+                        "Z79_KALIBRIERUNG",
+                        "Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN",
+                        "Z81_MESSEINRICHTUNGGESTOERT_DEFEKT",
+                        "Z82_UNSICHERHEITMESSUNG",
+                        "Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK",
+                        "Z99_MENGENUMWERTUNGUNVOLLSTAENDIG",
+                        "ZA0_UHRZEITGESTELLT_SYNCHRONISATION",
+                        "ZA1_MESSWERTUNPLAUSIBEL",
+                        "ZC2_TARIFSCHALTGERAETDEFEKT",
+                        "ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND",
+                        "ZA3_FALSCHERWANDLERFAKTOR",
+                        "ZA4_FEHLERHAFTEABLESUNG",
+                        "ZA5_AENDERUNGDERBERECHNUNG",
+                        "ZA6_UMBAUDERMESSLOKATION",
+                        "ZA7_DATENBEARBEITUNGSFEHLER",
+                        "ZA8_BRENNWERTKORREKTUR",
+                        "ZA9_Z_ZAHL_KORREKTUR",
+                        "ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG",
+                        "ZB9_AENDERUNGTARIFSCHALTZEITEN",
+                        "ZG3_UMSTELLUNGGASQUALITAET"
+                    ],
+                    "title": "statuszusatz",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "wert": {
+                    "format": "decimal",
+                    "title": "wert",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "ZustaendigkeitSchema": {
+            "additionalProperties": false,
+            "properties": {
+                "abteilung": {
+                    "title": "abteilung",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "jobtitel": {
+                    "title": "jobtitel",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "themengebiet": {
+                    "enum": [
+                        "ALLGEMEINER_INFORMATIONSAUSTAUSCH",
+                        "AN_UND_ABMELDUNG",
+                        "ANSPRECHPARTNER_ALLGEMEIN",
+                        "ANSPRECHPARTNER_BDEW_DVGW",
+                        "ANSPRECHPARTNER_IT_TECHNIK",
+                        "BILANZIERUNG",
+                        "BILANZKREISKOORDINATOR",
+                        "BILANZKREISVERANTWORTLICHER",
+                        "DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN",
+                        "DEBITORENMANAGEMENT",
+                        "DEMAND_SIDE_MANAGEMENT",
+                        "EDI_VEREINBARUNG",
+                        "EDIFACT",
+                        "ENERGIEDATENMANAGEMENT",
+                        "FAHRPLANMANAGEMENT",
+                        "ALOCAT",
+                        "APERAK",
+                        "CONTRL",
+                        "INVOIC",
+                        "MSCONS",
+                        "ORDERS",
+                        "ORDERSP",
+                        "REMADV",
+                        "UTILMD",
+                        "GABI",
+                        "GELI",
+                        "GERAETERUECKGABE",
+                        "GERAETEWECHSEL",
+                        "GPKE",
+                        "INBETRIEBNAHME",
+                        "KAPAZITAETSMANAGEMENT",
+                        "KLAERFAELLE",
+                        "LASTGAENGE_RLM",
+                        "LIEFERANTENRAHMENVERTRAG",
+                        "LIEFERANTENWECHSEL",
+                        "MABIS",
+                        "MAHNWESEN",
+                        "MARKTGEBIETSVERANTWORTLICHER",
+                        "MARKTKOMMUNIKATION",
+                        "MEHR_MINDERMENGEN",
+                        "MSB_MDL",
+                        "NETZABRECHNUNG",
+                        "NETZENTGELTE",
+                        "NETZMANAGEMENT",
+                        "RECHT",
+                        "REGULIERUNGSMANAGEMENT",
+                        "REKLAMATIONEN",
+                        "SPERREN_ENTSPERREN_INKASSO",
+                        "STAMMDATEN",
+                        "STOERUNGSFAELLE",
+                        "TECHNISCHE_FRAGEN",
+                        "UMSTELLUNG_INVOIC",
+                        "VERSCHLUESSELUNG_SIGNATUR",
+                        "VERTRAGSMANAGEMENT",
+                        "VERTRIEB",
+                        "WIM",
+                        "ZAEHLERSTAENDE_SLP",
+                        "ZAHLUNGSVERKEHR",
+                        "ZUORDNUNGSVEREINBARUNG"
+                    ],
+                    "title": "themengebiet",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    }
+}
