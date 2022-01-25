@@ -27,6 +27,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     .. HINT::
         `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/GeschaeftspartnerSchema.json>`_
+
     """
 
     # required attributes

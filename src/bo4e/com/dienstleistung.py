@@ -18,7 +18,8 @@ class Dienstleistung(COM):
     Abbildung einer abrechenbaren Dienstleistung.
 
     .. HINT::
-        `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/DienstleistungSchema.json>`_
+        `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/DienstleistungSchema.json>`_
+
     """
 
     # required attributes

@@ -24,7 +24,7 @@ class Ausschreibungsdetail(COM):
     Ausschreibungsloses abzubilden.
 
     .. HINT::
-        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AusschreibungsdetailSchema.json>`_
+        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AusschreibungsdetailSchema.json>`_
 
     """
 

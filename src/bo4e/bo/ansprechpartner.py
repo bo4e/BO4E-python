@@ -24,6 +24,7 @@ class Ansprechpartner(Geschaeftsobjekt):
 
     .. HINT::
         `Ansprechpartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AnsprechpartnerSchema.json>`_
+
     """
 
     # required attributes

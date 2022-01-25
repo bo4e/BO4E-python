@@ -21,7 +21,7 @@ class Messlokationszuordnung(COM):
     mit der die Messlokation zum Verbrauch der Marktlokation beiträgt.
 
     .. HINT::
-        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/MesslokationszuordnungSchema.json>`_
+        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/MesslokationszuordnungSchema.json>`_
 
     """
 

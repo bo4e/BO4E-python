@@ -18,7 +18,8 @@ class Kostenblock(COM):
     Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.
 
     .. HINT::
-        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/KostenblockSchema.json>`_
+        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/KostenblockSchema.json>`_
+
     """
 
     # required attributes

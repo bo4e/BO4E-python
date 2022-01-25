@@ -27,6 +27,7 @@ class Regionaltarif(Tarifinfo):
 
     .. HINT::
         `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RegionaltarifSchema.json>`_
+
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.REGIONALTARIF)

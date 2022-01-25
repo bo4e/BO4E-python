@@ -23,6 +23,7 @@ class Energiemenge(Geschaeftsobjekt):
 
     .. HINT::
         `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/EnergiemengeSchema.json>`_
+
     """
 
     # required attributes

@@ -20,7 +20,8 @@ class TarifpreispositionProOrt(COM):
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden
 
     .. HINT::
-        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifpreispositionProOrtSchema.json>`_
+        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifpreispositionProOrtSchema.json>`_
+
     """
 
     # required attributes

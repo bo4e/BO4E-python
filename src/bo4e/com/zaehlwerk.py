@@ -21,7 +21,8 @@ class Zaehlwerk(COM):
     Mit dieser Komponente werden Zählwerke modelliert.
 
     .. HINT::
-        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZaehlwerkSchema.json>`_
+        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZaehlwerkSchema.json>`_
+
     """
 
     zaehlwerk_id: str = attr.ib(

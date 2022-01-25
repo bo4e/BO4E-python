@@ -25,7 +25,7 @@ class Energiemix(COM):
     Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.
 
     .. HINT::
-        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/EnergiemixSchema.json>`_
+        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/EnergiemixSchema.json>`_
 
     """
 

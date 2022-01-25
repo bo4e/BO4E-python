@@ -24,7 +24,8 @@ class Tarifberechnungsparameter(COM):
     """
 
     .. HINT::
-        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifberechnungsparameterSchema.json>`_
+        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifberechnungsparameterSchema.json>`_
+
     """
 
     # there are no required attributes

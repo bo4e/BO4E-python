@@ -20,7 +20,8 @@ class Tagesvektor(COM):
     Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters
 
     .. HINT::
-        `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TagesvektorSchema.json>`_
+        `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TagesvektorSchema.json>`_
+
     """
 
     # required attributes

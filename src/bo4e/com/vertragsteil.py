@@ -20,7 +20,8 @@ class Vertragsteil(COM):
     eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.
 
     .. HINT::
-        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/VertragsteilSchema.json>`_
+        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/VertragsteilSchema.json>`_
+
     """
 
     # required attributes

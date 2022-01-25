@@ -23,7 +23,8 @@ class RegionaleTarifpreisposition(COM):
     werden.
 
     .. HINT::
-        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RegionaleTarifpreispositionSchema.json>`_
+        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RegionaleTarifpreispositionSchema.json>`_
+
     """
 
     # required attributes
