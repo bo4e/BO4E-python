@@ -19,6 +19,7 @@ class Dienstleistung(COM):
 
     .. HINT::
         `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/DienstleistungSchema.json>`_
+
     """
 
     # required attributes

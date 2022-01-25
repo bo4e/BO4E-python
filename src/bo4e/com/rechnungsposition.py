@@ -28,6 +28,7 @@ class Rechnungsposition(COM):
 
     .. HINT::
         `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RechnungspositionSchema.json>`_
+
     """
 
     # required attributes

@@ -20,6 +20,7 @@ class KriteriumWert(COM):
 
     .. HINT::
         `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/KriteriumWertSchema.json>`_
+
     """
 
     # required attributes

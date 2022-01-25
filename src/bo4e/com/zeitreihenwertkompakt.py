@@ -22,6 +22,7 @@ class Zeitreihenwertkompakt(COM):
 
     .. HINT::
         `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZeitreihenwertkompaktSchema.json>`_
+
     """
 
     # required attributes

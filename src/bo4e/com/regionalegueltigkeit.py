@@ -22,6 +22,7 @@ class RegionaleGueltigkeit(COM):
 
     .. HINT::
         `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RegionaleGueltigkeitSchema.json>`_
+
     """
 
     # required attributes

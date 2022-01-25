@@ -18,6 +18,7 @@ class RegionalePreisgarantie(Preisgarantie):
 
     .. HINT::
         `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RegionalePreisgarantieSchema.json>`_
+
     """
 
     # required attributes

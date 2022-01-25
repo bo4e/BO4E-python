@@ -16,6 +16,7 @@ class Katasteradresse(COM):
 
     .. HINT::
         `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/KatasteradresseSchema.json>`_
+
     """
 
     gemarkung_flur: str

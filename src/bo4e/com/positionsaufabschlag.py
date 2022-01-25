@@ -23,6 +23,7 @@ class PositionsAufAbschlag(COM):
 
     .. HINT::
         `PositionsAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PositionsAufAbschlagSchema.json>`_
+
     """
 
     # required attributes

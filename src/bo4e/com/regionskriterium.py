@@ -20,6 +20,7 @@ class Regionskriterium(COM):
 
     .. HINT::
         `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RegionskriteriumSchema.json>`_
+
     """
 
     # required attributes

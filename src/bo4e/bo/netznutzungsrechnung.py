@@ -22,6 +22,7 @@ class Netznutzungsrechnung(Rechnung):
 
     .. HINT::
         `Netznutzungsrechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/NetznutzungsrechnungSchema.json>`_
+
     """
 
     # required attributes

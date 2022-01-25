@@ -23,6 +23,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     .. HINT::
         `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/StandorteigenschaftenSchema.json>`_
+
     """
 
     # required attributes

@@ -27,6 +27,7 @@ class Ausschreibung(Geschaeftsobjekt):
 
     .. HINT::
         `Ausschreibung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AusschreibungSchema.json>`_
+
     """
 
     # required attributes

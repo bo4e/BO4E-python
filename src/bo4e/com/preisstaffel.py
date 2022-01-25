@@ -20,6 +20,7 @@ class Preisstaffel(COM):
 
     .. HINT::
         `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PreisstaffelSchema.json>`_
+
     """
 
     # required attributes

@@ -21,6 +21,7 @@ class Tarifeinschraenkung(COM):
 
     .. HINT::
         `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifeinschraenkungSchema.json>`_
+
     """
 
     # optional attributes

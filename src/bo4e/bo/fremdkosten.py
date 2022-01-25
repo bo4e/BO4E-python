@@ -23,6 +23,7 @@ class Fremdkosten(Geschaeftsobjekt):
 
     .. HINT::
         `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/FremdkostenSchema.json>`_
+
     """
 
     # required attributes

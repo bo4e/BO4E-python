@@ -29,6 +29,7 @@ class Angebotsteil(COM):
 
     .. HINT::
         `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AngebotsteilSchema.json>`_
+
     """
 
     # required attributes

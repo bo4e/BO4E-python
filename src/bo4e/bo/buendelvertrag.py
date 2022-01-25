@@ -21,6 +21,7 @@ class Buendelvertrag(Geschaeftsobjekt):
 
     .. HINT::
         `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/BuendelvertragSchema.json>`_
+
     """
 
     # required attributes

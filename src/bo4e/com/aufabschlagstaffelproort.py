@@ -19,6 +19,7 @@ class AufAbschlagstaffelProOrt(COM):
 
     .. HINT::
         `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagstaffelProOrtSchema.json>`_
+
     """
 
     # required attributes
