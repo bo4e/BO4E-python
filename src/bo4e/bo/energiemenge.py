@@ -20,6 +20,9 @@ from bo4e.validators import check_list_length_at_least_one
 class Energiemenge(Geschaeftsobjekt):
     """
     Abbildung von Mengen, die Lokationen zugeordnet sind
+
+    .. HINT::
+        `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/EnergiemengeSchema.json>`_
     """
 
     # required attributes

@@ -16,6 +16,9 @@ from bo4e.enum.geraetetyp import Geraetetyp
 class Geraeteeigenschaften(COM):
     """
     Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert
+
+    .. HINT::
+        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/GeraeteeigenschaftenSchema.json>`_
     """
 
     # required attributes

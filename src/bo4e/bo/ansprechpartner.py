@@ -21,6 +21,9 @@ from bo4e.enum.titel import Titel
 class Ansprechpartner(Geschaeftsobjekt):
     """
     Object containing information about a Ansprechpartner
+
+    .. HINT::
+        `Ansprechpartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AnsprechpartnerSchema.json>`_
     """
 
     # required attributes

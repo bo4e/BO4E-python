@@ -21,6 +21,10 @@ class Angebotsposition(COM):
     Positionsmenge: 4000 kWh
     Positionspreis: 24,56 ct/kWh
     Positionskosten: 982,40 EUR
+
+    .. HINT::
+        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AngebotspositionSchema.json>`_
+
     """
 
     # required attributes

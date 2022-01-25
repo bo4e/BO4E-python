@@ -14,6 +14,10 @@ from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
 class Fremdkostenposition(Kostenposition):
     """
     Eine Kostenposition im Bereich der Fremdkosten
+
+    .. HINT::
+        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/FremdkostenpositionSchema.json>`_
+
     """
 
     # optional attributes (additional to those from Kostenposition)

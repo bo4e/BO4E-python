@@ -21,6 +21,9 @@ from bo4e.enum.waehrungseinheit import Waehrungseinheit
 class Preis(COM):
     """
     Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.
+
+    .. HINT::
+        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreisSchema.json>`_
     """
 
     # required attributes

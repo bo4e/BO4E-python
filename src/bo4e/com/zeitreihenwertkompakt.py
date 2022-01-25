@@ -19,6 +19,9 @@ from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 class Zeitreihenwertkompakt(COM):
     """
     Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.
+
+    .. HINT::
+        `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZeitreihenwertkompaktSchema.json>`_
     """
 
     # required attributes

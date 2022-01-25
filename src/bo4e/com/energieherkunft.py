@@ -17,7 +17,11 @@ from bo4e.enum.erzeugungsart import Erzeugungsart
 @attr.s(auto_attribs=True, kw_only=True)
 class Energieherkunft(COM):
     """
-    Abbildung einer Energieherkunft.
+    Abbildung einer Energieherkunft
+
+    .. HINT::
+        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/EnergieherkunftSchema.json>`_
+
     """
 
     # required attributes

@@ -19,6 +19,10 @@ class AufAbschlagProOrt(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang
     mit örtlichen Gültigkeiten abgebildet werden.
+
+    .. HINT::
+        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AufAbschlagProOrtSchema.json>`_
+
     """
 
     # required attributes

@@ -10,7 +10,6 @@ Subpackages
    bo4e.bo
    bo4e.com
    bo4e.enum
-   bo4e.schemata
 
 Submodules
 ----------

@@ -22,6 +22,10 @@ from bo4e.validators import check_list_length_at_least_one
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
+
+    .. HINT::
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifpreispositionSchema.json>`_
+
     """
 
     # required attributes

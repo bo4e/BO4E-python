@@ -28,7 +28,7 @@ class Angebot(Geschaeftsobjekt):
     werden.
 
     .. HINT::
-        JSON Schema: https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AngebotSchema.json
+        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AngebotSchema.json>`_
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.ANGEBOT)

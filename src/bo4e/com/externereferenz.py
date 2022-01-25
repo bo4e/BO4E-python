@@ -15,6 +15,10 @@ class ExterneReferenz(COM):
     Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.
     Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,
     sich die eindeutigen IDs der anzubindenden Systeme zu merken.
+
+    .. HINT::
+        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ExterneReferenzSchema.json>`_
+
     """
 
     # required attributes

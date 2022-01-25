@@ -19,6 +19,9 @@ from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 class PreisblattDienstleistung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für wahlfreie Dienstleistungen
+
+    .. HINT::
+        `PreisblattDienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreisblattDienstleistungSchema.json>`_
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTDIENSTLEISTUNG)
