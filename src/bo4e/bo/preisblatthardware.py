@@ -20,6 +20,10 @@ from bo4e.enum.netzebene import Netzebene
 class PreisblattHardware(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware
+
+    .. HINT::
+        `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreisblattHardwareSchema.json>`_
+
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTHARDWARE)

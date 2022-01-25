@@ -20,6 +20,14 @@ bo4e.bo.ansprechpartner module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.ausschreibung module
+----------------------------
+
+.. automodule:: bo4e.bo.ausschreibung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.buendelvertrag module
 -----------------------------
 
@@ -100,6 +108,14 @@ bo4e.bo.messlokation module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.netznutzungsrechnung module
+-----------------------------------
+
+.. automodule:: bo4e.bo.netznutzungsrechnung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.preisblatt module
 -------------------------
 
@@ -176,6 +192,14 @@ bo4e.bo.standorteigenschaften module
 ------------------------------------
 
 .. automodule:: bo4e.bo.standorteigenschaften
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.tarif module
+--------------------
+
+.. automodule:: bo4e.bo.tarif
    :members:
    :undoc-members:
    :show-inheritance:

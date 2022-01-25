@@ -18,7 +18,7 @@ from bo4e.bo.energiemenge import EnergiemengeSchema
 from bo4e.bo.fremdkosten import FremdkostenSchema
 from bo4e.bo.geschaeftspartner import GeschaeftspartnerSchema
 from bo4e.bo.kosten import KostenSchema
-from bo4e.bo.lastgang import LastgangSchema
+from bo4e.bo.lastgang import LastgangKompaktSchema, LastgangSchema
 from bo4e.bo.marktlokation import MarktlokationSchema
 from bo4e.bo.marktteilnehmer import MarktteilnehmerSchema
 from bo4e.bo.messlokation import MesslokationSchema
@@ -47,6 +47,7 @@ from bo4e.com.angebotsvariante import AngebotsvarianteSchema
 from bo4e.com.aufabschlag import AufAbschlagSchema
 from bo4e.com.aufabschlagproort import AufAbschlagProOrtSchema
 from bo4e.com.aufabschlagregional import AufAbschlagRegionalSchema
+from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrtSchema
 from bo4e.com.ausschreibungsdetail import AusschreibungsdetailSchema
 from bo4e.com.ausschreibungslos import AusschreibungslosSchema
 from bo4e.com.betrag import BetragSchema
@@ -113,6 +114,7 @@ schema_types: List[Type[Schema]] = [
     GeschaeftspartnerSchema,
     KostenSchema,
     LastgangSchema,
+    LastgangKompaktSchema,
     MarktlokationSchema,
     MarktteilnehmerSchema,
     MesslokationSchema,
@@ -142,6 +144,7 @@ schema_types: List[Type[Schema]] = [
     AufAbschlagSchema,
     AufAbschlagProOrtSchema,
     AufAbschlagRegionalSchema,
+    AufAbschlagstaffelProOrtSchema,
     AusschreibungsdetailSchema,
     AusschreibungslosSchema,
     BetragSchema,
@@ -208,6 +211,11 @@ for schema_type in schema_types:
         file_path = this_directory / "com" / file_name
     else:
         file_path = this_directory / file_name
+    # atlassian_url = f"""
+    # .. HINT::
+    #     `{schema_type.__name__[:len(schema_type.__name__)-6]} JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/{file_name}>`_
+    # """
+    # print(atlassian_url)
     schema_instance = schema_type()
     json_schema_dict = json_schema.dump(schema_instance)
     with open(file_path, "w", encoding="utf-8") as json_schema_file:

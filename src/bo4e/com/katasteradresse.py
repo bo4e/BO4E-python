@@ -13,6 +13,9 @@ from bo4e.com.com import COM, COMSchema
 class Katasteradresse(COM):
     """
     Dient der Adressierung über die Liegenschafts-Information.
+
+    .. HINT::
+        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/KatasteradresseSchema.json>`_
     """
 
     gemarkung_flur: str

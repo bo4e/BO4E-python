@@ -18,6 +18,9 @@ from bo4e.validators import check_list_length_at_least_one
 class TarifpreispositionProOrt(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden
+
+    .. HINT::
+        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifpreispositionProOrtSchema.json>`_
     """
 
     # required attributes

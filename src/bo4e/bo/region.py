@@ -17,6 +17,9 @@ from bo4e.validators import check_list_length_at_least_one
 class Region(Geschaeftsobjekt):
     """
     Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben
+
+    .. HINT::
+        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RegionSchema.json>`_
     """
 
     # required attributes

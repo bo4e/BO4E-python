@@ -16,6 +16,9 @@ from bo4e.validators import check_bis_is_later_than_von
 class Zeitreihenwert(Zeitreihenwertkompakt):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
+
+    .. HINT::
+        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZeitreihenwertSchema.json>`_
     """
 
     # required attributes

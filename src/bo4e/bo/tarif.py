@@ -23,6 +23,9 @@ from bo4e.validators import check_list_length_at_least_one
 class Tarif(Tarifinfo):
     """
     Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen
+
+    .. HINT::
+        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifSchema.json>`_
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.TARIF)

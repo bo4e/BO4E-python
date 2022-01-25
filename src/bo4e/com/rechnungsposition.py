@@ -25,6 +25,9 @@ class Rechnungsposition(COM):
     """
     Über Rechnungspositionen werden Rechnungen strukturiert.
     In einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.
+
+    .. HINT::
+        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RechnungspositionSchema.json>`_
     """
 
     # required attributes

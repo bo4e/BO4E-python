@@ -15,6 +15,9 @@ from bo4e.enum.rufnummernart import Rufnummernart
 class Rufnummer(COM):
     """
     Contains information to call or fax someone
+
+    .. HINT::
+        `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RufnummerSchema.json>`_
     """
 
     # required attributes

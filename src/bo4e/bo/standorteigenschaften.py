@@ -20,6 +20,9 @@ from bo4e.validators import check_list_length_at_least_one
 class Standorteigenschaften(Geschaeftsobjekt):
     """
     Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.
+
+    .. HINT::
+        `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/StandorteigenschaftenSchema.json>`_
     """
 
     # required attributes

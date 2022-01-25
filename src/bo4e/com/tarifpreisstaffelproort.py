@@ -15,6 +15,10 @@ from bo4e.com.com import COM, COMSchema
 class TarifpreisstaffelProOrt(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an
+
+    .. HINT::
+        `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifpreisstaffelProOrtSchema.json>`_
+
     """
 
     # todo: decimal doesn't make sense here imo
