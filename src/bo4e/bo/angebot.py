@@ -26,6 +26,9 @@ class Angebot(Geschaeftsobjekt):
     übertragen werden. Es können verschiedene Varianten enthalten sein (z.B. ein- und mehrjährige Laufzeit).
     Innerhalb jeder Variante können Teile enthalten sein, die jeweils für eine oder mehrere Marktlokationen erstellt
     werden.
+
+    .. HINT::
+        JSON Schema: https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AngebotSchema.json
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.ANGEBOT)
