@@ -16,6 +16,10 @@ from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
 class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.
+
+    .. HINT::
+        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/VertragskonditionenSchema.json>`_
+
     """
 
     # optional attributes

@@ -20,6 +20,10 @@ from bo4e.validators import check_bis_is_later_than_von, obis_validator
 class Verbrauch(COM):
     """
     Abbildung eines zeitlich abgegrenzten Verbrauchs
+
+    .. HINT::
+        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/VerbrauchSchema.json>`_
+
     """
 
     # required attributes

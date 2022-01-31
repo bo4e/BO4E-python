@@ -22,16 +22,20 @@ from bo4e.validators import check_list_length_at_least_one
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
+
+    .. HINT::
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifpreispositionSchema.json>`_
+
     """
 
     # required attributes
-    # Angabe des Preistypes (z.B. Grundpreis)
+    #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Preistyp = attr.ib(validator=attr.validators.instance_of(Preistyp))
-    # Einheit des Preises (z.B. EURO)
+    #: Einheit des Preises (z.B. EURO)
     einheit: Waehrungseinheit = attr.ib(validator=attr.validators.instance_of(Waehrungseinheit))
-    # Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
+    #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
-    # Hier sind die Staffeln mit ihren Preisenangaben definiert
+    #: Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: List[Preisstaffel] = attr.ib(
         validator=[
             attr.validators.deep_iterable(
@@ -43,7 +47,7 @@ class Tarifpreisposition(COM):
     )
 
     # optional attributes
-    # Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
+    #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Mengeneinheit))
     )

@@ -17,6 +17,10 @@ from bo4e.com.sigmoidparameter import Sigmoidparameter, SigmoidparameterSchema
 class Preisstaffel(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an
+
+    .. HINT::
+        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PreisstaffelSchema.json>`_
+
     """
 
     # required attributes

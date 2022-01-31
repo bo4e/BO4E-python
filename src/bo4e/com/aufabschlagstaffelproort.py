@@ -15,7 +15,11 @@ from bo4e.com.com import COM, COMSchema
 @attr.s(auto_attribs=True, kw_only=True)
 class AufAbschlagstaffelProOrt(COM):
     """
-    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an.
+    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
+
+    .. HINT::
+        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagstaffelProOrtSchema.json>`_
+
     """
 
     # required attributes
@@ -29,7 +33,7 @@ class AufAbschlagstaffelProOrt(COM):
 
 class AufAbschlagstaffelProOrtSchema(COMSchema):
     """
-    Schema for de-/serialization of AufAbschlagstaffelProOrt.
+    Schema for de-/serialization of AufAbschlagstaffelProOrt
     """
 
     class_name = AufAbschlagstaffelProOrt

@@ -22,6 +22,10 @@ from bo4e.validators import check_list_length_at_least_one
 class Tarifpreisblatt(Tarifinfo):
     """
     Tarifinformation mit Preisen, Aufschlägen und Berechnungssystematik
+
+    .. HINT::
+        `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifpreisblattSchema.json>`_
+
     """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.TARIFPREISBLATT)

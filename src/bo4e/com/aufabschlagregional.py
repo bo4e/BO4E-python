@@ -29,6 +29,10 @@ class AufAbschlagRegional(COM):
     im Zusammenhang mit regionalen Gültigkeiten abgebildet werden.
     Hier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert,
     die sich durch die Auswahl eines Auf- oder Abschlags ergeben.
+
+    .. HINT::
+        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagRegionalSchema.json>`_
+
     """
 
     # required attributess

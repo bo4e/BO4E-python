@@ -18,6 +18,10 @@ from bo4e.com.fremdkostenposition import Fremdkostenposition, Fremdkostenpositio
 class Fremdkostenblock(COM):
     """
     Komponente zur Abbildung eines Kostenblocks in den Fremdkosten
+
+    .. HINT::
+        `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/FremdkostenblockSchema.json>`_
+
     """
 
     # required attributes
