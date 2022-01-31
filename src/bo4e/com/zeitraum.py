@@ -21,6 +21,7 @@ def time_range_possibilities(instance, attribute, value):
     An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
     This functions checks for these conditions of a valid address.
     """
+
     if (
         instance.einheit
         and instance.dauer
@@ -59,6 +60,10 @@ class Zeitraum(COM):
     - Einheit und Dauer oder
     - Zeitraum: Startdatum bis Enddatum oder
     - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)
+
+    .. HINT::
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZeitraumSchema.json>`_
+
     """
 
     # optional attributes

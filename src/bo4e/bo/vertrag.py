@@ -33,8 +33,12 @@ def at_least_one_vertragsteil(instance, attribute, value):
 @attr.s(auto_attribs=True, kw_only=True)
 class Vertrag(Geschaeftsobjekt):
     """
-    Modell für die Abbildung von Vertragsbeziehungen.
+    Modell für die Abbildung von Vertragsbeziehungen;
     Das Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.
+
+    .. HINT::
+        `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/VertragSchema.json>`_
+
     """
 
     # required attributes

@@ -20,29 +20,31 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_aufabschlagregional = AufAbschlagRegional(
+    bezeichnung="foo",
+    betraege=[
+        AufAbschlagProOrt(
+            postleitzahl="01187",
+            ort="Dresden",
+            netznr="2",
+            staffeln=[
+                AufAbschlagstaffelProOrt(
+                    wert=Decimal(2.5),
+                    staffelgrenze_von=Decimal(1),
+                    staffelgrenze_bis=Decimal(5),
+                )
+            ],
+        ),
+    ],
+)
+
 
 class TestAufAbschlagRegional:
     @pytest.mark.parametrize(
         "aufabschlagregional, expected_json_dict",
         [
             pytest.param(
-                AufAbschlagRegional(
-                    bezeichnung="foo",
-                    betraege=[
-                        AufAbschlagProOrt(
-                            postleitzahl="01187",
-                            ort="Dresden",
-                            netznr="2",
-                            staffeln=[
-                                AufAbschlagstaffelProOrt(
-                                    wert=Decimal(2.5),
-                                    staffelgrenze_von=Decimal(1),
-                                    staffelgrenze_bis=Decimal(5),
-                                )
-                            ],
-                        ),
-                    ],
-                ),
+                example_aufabschlagregional,
                 {
                     "bezeichnung": "foo",
                     "betraege": [
