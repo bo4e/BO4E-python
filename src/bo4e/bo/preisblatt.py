@@ -30,7 +30,7 @@ class Preisblatt(Geschaeftsobjekt):
     verschiedenen Anwendungsfälle der Preisblätter dar.
 
     .. HINT::
-        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreisblattSchema.json>`_
+        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattSchema.json>`_
 
     """
 

@@ -22,7 +22,7 @@ class PreisblattHardware(Preisblatt):
     Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware
 
     .. HINT::
-        `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreisblattHardwareSchema.json>`_
+        `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattHardwareSchema.json>`_
 
     """
 

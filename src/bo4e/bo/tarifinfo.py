@@ -30,7 +30,7 @@ class Tarifinfo(Geschaeftsobjekt):
     Dieses BO dient als Basis für weitere BOs mit erweiterten Anwendungsmöglichkeiten.
 
     .. HINT::
-        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifinfoSchema.json>`_
+        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/TarifinfoSchema.json>`_
 
     """
 

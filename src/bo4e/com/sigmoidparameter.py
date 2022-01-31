@@ -18,7 +18,7 @@ class Sigmoidparameter(COM):
     LP=A/(1+(P/B)^C)+D
 
     .. HINT::
-        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/SigmoidparameterSchema.json>`_
+        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/SigmoidparameterSchema.json>`_
 
     """
 

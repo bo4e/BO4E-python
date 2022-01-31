@@ -20,7 +20,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     Es handelt sich hierbei um eine Liste von Einzelverträgen, die in einem Vertragsobjekt gebündelt sind.
 
     .. HINT::
-        `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/BuendelvertragSchema.json>`_
+        `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/BuendelvertragSchema.json>`_
 
     """
 
