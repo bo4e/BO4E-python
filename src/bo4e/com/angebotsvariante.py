@@ -23,7 +23,7 @@ class Angebotsvariante(COM):
     Führt die verschiedenen Ausprägungen der Angebotsberechnung auf
 
     .. HINT::
-        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AngebotsvarianteSchema.json>`_
+        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AngebotsvarianteSchema.json>`_
 
     """
 

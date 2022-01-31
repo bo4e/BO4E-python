@@ -213,7 +213,7 @@ for schema_type in schema_types:
         file_path = this_directory / file_name
     # atlassian_url = f"""
     # .. HINT::
-    #     `{schema_type.__name__[:len(schema_type.__name__)-6]} JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/{file_name}>`_
+    #     `{schema_type.__name__[:len(schema_type.__name__)-6]} JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/{file_name}>`_
     # """
     # print(atlassian_url)
     schema_instance = schema_type()

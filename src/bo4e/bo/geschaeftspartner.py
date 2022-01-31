@@ -26,7 +26,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.
 
     .. HINT::
-        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/GeschaeftspartnerSchema.json>`_
+        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/GeschaeftspartnerSchema.json>`_
 
     """
 

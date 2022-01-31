@@ -19,7 +19,7 @@ class Geraet(COM):
     Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.
 
     .. HINT::
-        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/GeraetSchema.json>`_
+        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/GeraetSchema.json>`_
 
     """
 

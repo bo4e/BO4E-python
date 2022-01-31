@@ -20,7 +20,7 @@ class Tarifpreis(Preis):
     Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.
 
     .. HINT::
-        `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifpreisSchema.json>`_
+        `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisSchema.json>`_
 
     """
 

@@ -83,7 +83,7 @@ class Lastgang(Geschaeftsobjekt, _LastgangBody):
     Flexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.
 
     .. HINT::
-        `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/LastgangSchema.json>`_"
+        `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/LastgangSchema.json>`_"
 
     """
 
