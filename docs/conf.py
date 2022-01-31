@@ -89,8 +89,8 @@ source_suffix = ".rst"
 master_doc = "index"
 
 # General information about the project.
-project = u"bo4e"
-copyright = u"2022, Hochfrequenz GmbH"
+project = "bo4e"
+copyright = "2022, Hochfrequenz GmbH"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -256,8 +256,8 @@ latex_documents = [
     (
         "index",
         "user_guide.tex",
-        u"bo4e Documentation",
-        u"Kevin Krechan",
+        "bo4e Documentation",
+        "Kevin Krechan",
         "manual",
     ),
 ]
