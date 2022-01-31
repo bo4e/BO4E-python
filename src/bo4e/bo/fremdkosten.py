@@ -20,6 +20,10 @@ class Fremdkosten(Geschaeftsobjekt):
     Mit diesem BO werden die Fremdkosten, beispielsweise für eine Angebotserstellung oder eine Rechnungsprüfung,
     übertragen.
     Die Fremdkosten enthalten dabei alle Kostenblöcke, die von anderen Marktteilnehmern oder Instanzen erhoben werden.
+
+    .. HINT::
+        `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/FremdkostenSchema.json>`_
+
     """
 
     # required attributes

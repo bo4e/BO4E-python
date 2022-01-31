@@ -24,6 +24,10 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.
     Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.
     Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.
+
+    .. HINT::
+        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/GeschaeftspartnerSchema.json>`_
+
     """
 
     # required attributes

@@ -23,7 +23,12 @@ from bo4e.validators import check_list_length_at_least_one
 class Regionaltarif(Tarifinfo):
     # no description in the official docs.
     # https://github.com/Hochfrequenz/BO4E-python/issues/338
-    """ """
+    """
+
+    .. HINT::
+        `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RegionaltarifSchema.json>`_
+
+    """
 
     bo_typ: BoTyp = attr.ib(default=BoTyp.REGIONALTARIF)
     # required attributes

@@ -19,6 +19,10 @@ from bo4e.enum.preisgarantietyp import Preisgarantietyp
 class Preisgarantie(COM):
     """
     Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.
+
+    .. HINT::
+        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PreisgarantieSchema.json>`_
+
     """
 
     # required attributes

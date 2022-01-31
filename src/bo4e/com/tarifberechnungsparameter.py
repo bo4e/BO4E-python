@@ -21,7 +21,12 @@ from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 # pylint: disable=too-few-public-methods, empty-docstring, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
 class Tarifberechnungsparameter(COM):
-    """ """
+    """
+
+    .. HINT::
+        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifberechnungsparameterSchema.json>`_
+
+    """
 
     # there are no required attributes
     # optional attributes

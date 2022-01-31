@@ -420,6 +420,22 @@ bo4e.com.tarifpreisposition module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tarifpreispositionproort module
+----------------------------------------
+
+.. automodule:: bo4e.com.tarifpreispositionproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tarifpreisstaffelproort module
+---------------------------------------
+
+.. automodule:: bo4e.com.tarifpreisstaffelproort
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.unterschrift module
 ----------------------------
 

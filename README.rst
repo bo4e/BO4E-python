@@ -34,20 +34,10 @@ Other Noteworthy BO4E Implementations
 * `Kotlin`_
 * `TypeScript`_
 
-Contributing
+Code Beiträge
 ============
-Contributions are welcome.
-Feel free to open a Pull Request against the master branch of this repository.
-Please provide unit tests if you contribute logic beyond bare bare business object definitions.
-For business objects please provide a roundtrip test that shows that your code produces serializable and deseriazable objects.
-
-To enhance this BO4E implementation and contribute to this project check out the `master branch`_, install `tox`_ and set the virtual environment created by the command
-
-.. code-block:: Shell
-
-   tox -e dev
-
-The created venv should be located somewhere around .tox/dev/Scripts.
+Änderungsvorschläge können direkt als Code in Form von Pull Requests eingereicht werden.
+Details dazu finden sich im `Contribution Guide`_.
 
 
 Versioning
@@ -94,21 +84,6 @@ To achieve this, we have to implement `Retrieving package version at runtime`_.
 
 If you follow the instruction in the *release workflow*, you will get the version number which you define with the label name.
 
-Release workflow
-================
-* Check with tox all tests and lintings: `tox`
-* Check with tox if the packaging works fine: `tox -e test_packaging`
-* Merge all your changes you would like to have in the release into the master branch
-* Check that all Github actions for tests and linting do pass (should be automatically enforced for PRs against master)
-* Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
-* Write in the *Tag version* field and in the *Release title* your new version, i.e. `v0.0.6`
-* Add a describtion to the release
-* Publish the release
-
-There is a Github Action which gets triggered by a release event.
-It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file.
-After checking the package with `twine check` it will finally upload the new package release.
-
 Hochfrequenz
 ============
 `Hochfrequenz Unternehmensberatung GmbH`_ is a Grünwald (near Munich) based consulting company with offices in Berlin and Bremen.
@@ -126,7 +101,6 @@ Applications of talented developers are welcome at any time! Please consider vis
 .. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
 .. _`master branch`: https://github.com/Hochfrequenz/BO4E-python/tree/master
 .. _`tox`: https://pypi.org/project/tox/
-.. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
-.. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
+.. _`Contribution Guide`: CONTRIBUTING.md
 .. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
 .. _`regex101`: https://regex101.com/r/JWeb51/2
