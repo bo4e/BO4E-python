@@ -15,6 +15,10 @@ from bo4e.com.com import COM, COMSchema
 class Unterschrift(COM):
     """
     Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.
+
+    .. HINT::
+        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/UnterschriftSchema.json>`_
+
     """
 
     # required attributes

@@ -20,6 +20,10 @@ class PositionsAufAbschlag(COM):
     bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,
     die individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen werden können.
     Es können mehrere Auf-/Abschläge gleichzeitig ausgewählt werden.
+
+    .. HINT::
+        `PositionsAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PositionsAufAbschlagSchema.json>`_
+
     """
 
     # required attributes

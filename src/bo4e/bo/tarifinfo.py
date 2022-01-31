@@ -28,6 +28,10 @@ class Tarifinfo(Geschaeftsobjekt):
     """
     Das BO Tarifinfo liefert die Merkmale, die einen Endkundentarif identifizierbar machen.
     Dieses BO dient als Basis für weitere BOs mit erweiterten Anwendungsmöglichkeiten.
+
+    .. HINT::
+        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/TarifinfoSchema.json>`_
+
     """
 
     # required attributes

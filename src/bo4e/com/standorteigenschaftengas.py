@@ -16,7 +16,11 @@ from bo4e.validators import check_list_length_is_one_or_two
 @attr.s(auto_attribs=True, kw_only=True)
 class StandorteigenschaftenGas(COM):
     """
-    Standorteigenschaften der Sparte Gas.
+    Standorteigenschaften der Sparte Gas
+
+    .. HINT::
+        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/StandorteigenschaftenGasSchema.json>`_
+
     """
 
     # required attributes
