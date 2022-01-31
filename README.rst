@@ -7,7 +7,6 @@ BO4E
 |PyPI pyversions|_
 
 
-
 .. |PyPi| image:: https://img.shields.io/pypi/v/bo4e.svg
 .. _PyPi: https://img.shields.io/pypi/v/bo4e
 
@@ -21,24 +20,30 @@ BO4E
 .. _`PyPI pyversions`: https://pypi.python.org/pypi/bo4e/
 
 
+🇩🇪 Dies ist eine BO4E Referenz-Implementierung in Python.
+Gleichzeitig ist dieses Repository der Ort, um Fragen und Erweiterungen des BO4E-Standards zu diskutieren.
 
+🇬🇧 This is a Python library that implements Business Objects for Energy `BO4E <https://www.bo4e.de/>`_.
+It requires Python >=3.8.
 
-Python Library that Implements `BO4E <https://www.bo4e.de/dokumentation>`_.
-Requires Python >=3.8.
+Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
+==========================================================
+Eine Dokumentation des Datenmodells und JSON Schemata zur Erzeugung von Beispieldaten finden sich auf `read the docs <https://bo4e-python.readthedocs.io/en/master/api/bo4e.html>`_.
 
-Other Noteworthy BO4E Implementations
-=====================================
+Bei Fragen oder Anregungen, bitte `einfach ein Issue in diesem Repo aufmachen <https://github.com/Hochfrequenz/BO4E-python/issues/new?assignees=&labels=BO4E+Enhancement+Proposal&template=funktionale-anforderung-an-den-bo4e-standard.md&title=Ein+aussagekr%C3%A4ftiger+Titel%3A+Hunde-+und+Katzentarife+k%C3%B6nnen+nicht+abgebildet+werden>`_.
+
+Code Beiträge
+=============
+Änderungsvorschläge (sowohl an das Datenmodell als auch an die Implementierung in Python) können direkt als Code in Form von Pull Requests eingereicht werden.
+Details dazu finden sich im `Contribution Guide`_.
+
+Andere nennenswerte BO4E Implementierungen
+==========================================
 
 * `C#/.NET`_
 * `Golang`_
 * `Kotlin`_
 * `TypeScript`_
-
-Code Beiträge
-============
-Änderungsvorschläge können direkt als Code in Form von Pull Requests eingereicht werden.
-Details dazu finden sich im `Contribution Guide`_.
-
 
 Versioning
 ==========
