@@ -18,15 +18,23 @@ from bo4e.enum.rollencodetyp import Rollencodetyp
 class Marktteilnehmer(Geschaeftspartner):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
+
+    .. HINT::
+        `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/MarktteilnehmerSchema.json>`_
+
     """
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
+    #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
+    #: Gibt die Codenummer der Marktrolle an
     rollencodenummer: str = attr.ib(validator=matches_re(r"^\d{13}$"))
+    #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
 
     # optional attributes
+    #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
     makoadresse: str = attr.ib(default=None)
 
 

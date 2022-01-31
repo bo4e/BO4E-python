@@ -1,10 +1,9 @@
 """
-Contains Rufnummer class
-and corresponding marshmallow schema for de-/serialization
+Contains Rufnummer class and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -16,6 +15,10 @@ from bo4e.enum.rufnummernart import Rufnummernart
 class Rufnummer(COM):
     """
     Contains information to call or fax someone
+
+    .. HINT::
+        `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RufnummerSchema.json>`_
+
     """
 
     # required attributes
@@ -28,12 +31,7 @@ class RufnummerSchema(COMSchema):
     Schema for de-/serialization of Rufnummer.
     """
 
+    class_name = Rufnummer
     # required attributes
     nummerntyp = EnumField(Rufnummernart)
     rufnummer = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Rufnummer:
-        """Deserialize JSON to Rufnummer object"""
-        return Rufnummer(**data)

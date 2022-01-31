@@ -7,13 +7,15 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
+example_preis = Preis(wert=Decimal(12.5), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
+
 
 class TestPreis:
     def test_preis_only_required(self):
         """
         Test de-/serialisation of Preis (only has required attributes).
         """
-        preis = Preis(wert=Decimal(2.53), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
+        preis = example_preis
 
         schema = PreisSchema()
         json_string = schema.dumps(preis, ensure_ascii=False)

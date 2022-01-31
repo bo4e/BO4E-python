@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -15,6 +15,10 @@ from bo4e.com.com import COM, COMSchema
 class Unterschrift(COM):
     """
     Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.
+
+    .. HINT::
+        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/UnterschriftSchema.json>`_
+
     """
 
     # required attributes
@@ -30,15 +34,11 @@ class UnterschriftSchema(COMSchema):
     Schema for de-/serialization of Unterschrift.
     """
 
+    class_name = Unterschrift
+
     # required attributes
     name = fields.String()
 
     # optional attributes
     ort = fields.String(load_default=None)
     datum = fields.DateTime(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Unterschrift:
-        """Deserialize JSON to Unterschrift object"""
-        return Unterschrift(**data)

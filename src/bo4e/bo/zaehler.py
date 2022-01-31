@@ -34,26 +34,30 @@ def at_least_one_zaehlwerk(instance, attribute, value):
 class Zaehler(Geschaeftsobjekt):
     """
     Object containing information about a meter/"Zaehler".
+
+    .. HINT::
+        `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZaehlerSchema.json>`_
+
     """
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.ZAEHLER)
     zaehlernummer: str = attr.ib(
         validator=attr.validators.instance_of(str)
-    )  # Nummerierung des Zählers, vergeben durch den Messstellenbetreiber
-    sparte: Sparte
-    zaehlerauspraegung: Zaehlerauspraegung
-    zaehlertyp: Zaehlertyp
-    zaehlwerke: List[Zaehlwerk] = attr.ib(validator=at_least_one_zaehlwerk)
-    tarifart: Tarifart  # Spezifikation bezüglich unterstützter Tarifarten
+    )  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
+    sparte: Sparte  #: Strom oder Gas
+    zaehlerauspraegung: Zaehlerauspraegung  #: Spezifikation die Richtung des Zählers betreffend
+    zaehlertyp: Zaehlertyp  #: Typisierung des Zählers
+    zaehlwerke: List[Zaehlwerk] = attr.ib(validator=at_least_one_zaehlwerk)  #: Die Zählwerke des Zählers
+    tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes
-    zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  # Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[datetime] = attr.ib(default=None)  # Bis zu diesem Datum ist der Zähler geeicht.
+    zaehlerkonstante: Optional[Decimal] = attr.ib(default=None)  #: Zählerkonstante auf dem Zähler
+    eichung_bis: Optional[datetime] = attr.ib(default=None)  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = attr.ib(
         default=None
-    )  # Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  # Der Hersteller des Zählers.
+    )  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    zaehlerhersteller: Optional[Geschaeftspartner] = attr.ib(default=None)  #: Der Hersteller des Zählers
 
 
 class ZaehlerSchema(GeschaeftsobjektSchema):
@@ -75,7 +79,7 @@ class ZaehlerSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     zaehlerkonstante = fields.Decimal(load_default=None, as_string=True)
-    eichung_bis = fields.DateTime(load_default=None)
-    letzte_eichung = fields.DateTime(load_default=None)
+    eichung_bis = fields.DateTime(load_default=None, data_key="eichungBis")
+    letzte_eichung = fields.DateTime(load_default=None, data_key="letzteEichung")
 
     zaehlerhersteller = fields.Nested(GeschaeftspartnerSchema, load_default=None)

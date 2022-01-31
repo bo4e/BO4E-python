@@ -6,7 +6,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -20,6 +20,10 @@ from bo4e.validators import check_bis_is_later_than_von, obis_validator
 class Verbrauch(COM):
     """
     Abbildung eines zeitlich abgegrenzten Verbrauchs
+
+    .. HINT::
+        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/VerbrauchSchema.json>`_
+
     """
 
     # required attributes
@@ -60,18 +64,13 @@ class VerbrauchSchema(COMSchema):
     Schema for de-/serialization of Verbrauch
     """
 
+    class_name = Verbrauch
     # required attributes
     wertermittlungsverfahren = EnumField(Wertermittlungsverfahren)
-    obis_kennzahl = fields.Str()
+    obis_kennzahl = fields.Str(data_key="obisKennzahl")
     wert = fields.Decimal(as_string=True)
     mengeneinheit = EnumField(Mengeneinheit)
 
     # optional attributes
     startdatum = fields.DateTime(allow_none=True)
     enddatum = fields.DateTime(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Verbrauch:
-        """Deserialize JSON to Verbrauch object"""
-        return Verbrauch(**data)

@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -15,7 +15,11 @@ from bo4e.com.com import COM, COMSchema
 @attr.s(auto_attribs=True, kw_only=True)
 class AufAbschlagstaffelProOrt(COM):
     """
-    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an.
+    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
+
+    .. HINT::
+        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagstaffelProOrtSchema.json>`_
+
     """
 
     # required attributes
@@ -29,16 +33,11 @@ class AufAbschlagstaffelProOrt(COM):
 
 class AufAbschlagstaffelProOrtSchema(COMSchema):
     """
-    Schema for de-/serialization of AufAbschlagstaffelProOrt.
+    Schema for de-/serialization of AufAbschlagstaffelProOrt
     """
 
+    class_name = AufAbschlagstaffelProOrt
     # required attributes
     wert = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True)
-    staffelgrenze_bis = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> AufAbschlagstaffelProOrt:
-        """Deserialize JSON to AufAbschlagstaffelProOrt object"""
-        return AufAbschlagstaffelProOrt(**data)
+    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
+    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")

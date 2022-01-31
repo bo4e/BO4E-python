@@ -3,7 +3,7 @@ Contains Marktgebietinfo class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -13,6 +13,10 @@ from bo4e.com.com import COM, COMSchema
 class MarktgebietInfo(COM):
     """
     Informationen zum Marktgebiet im Gas.
+
+    .. HINT::
+        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/MarktgebietInfoSchema.json>`_
+
     """
 
     # required attributes
@@ -25,12 +29,7 @@ class MarktgebietInfoSchema(COMSchema):
     Schema for de-/serialization of Marktgebietinfo.
     """
 
+    class_name = MarktgebietInfo
     # required attributes
     marktgebiet = fields.Str()
     marktgebietcode = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> MarktgebietInfo:
-        """Deserialize JSON to Marktgebietinfo object"""
-        return MarktgebietInfo(**data)

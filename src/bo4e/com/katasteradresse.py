@@ -3,7 +3,7 @@ Contains Katasteradresse class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -13,6 +13,10 @@ from bo4e.com.com import COM, COMSchema
 class Katasteradresse(COM):
     """
     Dient der Adressierung über die Liegenschafts-Information.
+
+    .. HINT::
+        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/KatasteradresseSchema.json>`_
+
     """
 
     gemarkung_flur: str
@@ -24,11 +28,6 @@ class KatasteradresseSchema(COMSchema):
     Schema for de-/serialization of Katasteradresse.
     """
 
-    gemarkung_flur = fields.Str()
+    class_name = Katasteradresse
+    gemarkung_flur = fields.Str(data_key="gemarkungFlur")
     flurstueck = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Katasteradresse:
-        """Deserialize JSON to Katasteradresse object"""
-        return Katasteradresse(**data)

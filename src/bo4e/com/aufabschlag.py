@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -24,6 +24,10 @@ class AufAbschlag(COM):
     """
     Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,
     die individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen wurden.
+
+    .. HINT::
+        `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagSchema.json>`_
+
     """
 
     # required attributes
@@ -64,23 +68,18 @@ class AufAbschlag(COM):
 
 class AufAbschlagSchema(COMSchema):
     """
-    Schema for de-/serialization of AufAbschlag.
+    Schema for de-/serialization of AufAbschlag
     """
 
+    class_name = AufAbschlag
     # required attributes
     bezeichnung = fields.Str()
     staffeln = fields.List(fields.Nested(PreisstaffelSchema))
 
     # optional attributes
     beschreibung = fields.Str(load_default=None)
-    auf_abschlagstyp = EnumField(AufAbschlagstyp, allow_none=True)
-    auf_abschlagsziel = EnumField(AufAbschlagsziel, allow_none=True)
+    auf_abschlagstyp = EnumField(AufAbschlagstyp, allow_none=True, data_key="aufAbschlagstyp")
+    auf_abschlagsziel = EnumField(AufAbschlagsziel, allow_none=True, data_key="aufAbschlagsziel")
     einheit = EnumField(Waehrungseinheit, allow_none=True)
     website = fields.Str(load_default=None)
     gueltigkeitszeitraum = fields.Nested(ZeitraumSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> AufAbschlag:
-        """Deserialize JSON to AufAbschlag object"""
-        return AufAbschlag(**data)

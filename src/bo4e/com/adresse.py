@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -31,6 +31,10 @@ def strasse_xor_postfach(instance, attribute, value):
 class Adresse(COM):
     """
     Contains an address that can be used for most purposes.
+
+    .. HINT::
+        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AdresseSchema.json>`_
+
     """
 
     # required attributes
@@ -51,6 +55,8 @@ class AdresseSchema(COMSchema):
     Schema for de-/serialization of Adresse.
     """
 
+    class_name = Adresse
+
     # required attributes
     postleitzahl = fields.Str()
     ort = fields.Str()
@@ -60,11 +66,5 @@ class AdresseSchema(COMSchema):
     hausnummer = fields.Str(load_default=None)
     postfach = fields.Str(load_default=None)
     adresszusatz = fields.Str(load_default=None)
-    co_ergaenzung = fields.Str(load_default=None)
+    co_ergaenzung = fields.Str(load_default=None, data_key="coErgaenzung")
     landescode = EnumField(Landescode)
-
-    # pylint: disable=no-self-use
-    @post_load
-    def deserialize(self, data, **kwargs) -> Adresse:
-        """Deserialize JSON to Adresse object"""
-        return Adresse(**data)

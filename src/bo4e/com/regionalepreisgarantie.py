@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeitSchema
@@ -15,6 +15,10 @@ from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltig
 class RegionalePreisgarantie(Preisgarantie):
     """
     Abbildung einer Preisgarantie mit regionaler Abgrenzung
+
+    .. HINT::
+        `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/RegionalePreisgarantieSchema.json>`_
+
     """
 
     # required attributes
@@ -27,11 +31,6 @@ class RegionalePreisgarantieSchema(PreisgarantieSchema):
     Schema for de-/serialization of RegionalePreisgarantie.
     """
 
+    class_name = RegionalePreisgarantie  # type:ignore[assignment]
     # required attributes
-    regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> RegionalePreisgarantie:
-        """Deserialize JSON to Energiemix object"""
-        return RegionalePreisgarantie(**data)
+    regionale_gueltigkeit = fields.Nested(RegionaleGueltigkeitSchema, data_key="regionaleGueltigkeit")

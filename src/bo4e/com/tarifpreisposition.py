@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -22,16 +22,20 @@ from bo4e.validators import check_list_length_at_least_one
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
+
+    .. HINT::
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifpreispositionSchema.json>`_
+
     """
 
     # required attributes
-    # Angabe des Preistypes (z.B. Grundpreis)
+    #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Preistyp = attr.ib(validator=attr.validators.instance_of(Preistyp))
-    # Einheit des Preises (z.B. EURO)
+    #: Einheit des Preises (z.B. EURO)
     einheit: Waehrungseinheit = attr.ib(validator=attr.validators.instance_of(Waehrungseinheit))
-    # Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
+    #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
-    # Hier sind die Staffeln mit ihren Preisenangaben definiert
+    #: Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: List[Preisstaffel] = attr.ib(
         validator=[
             attr.validators.deep_iterable(
@@ -43,7 +47,7 @@ class Tarifpreisposition(COM):
     )
 
     # optional attributes
-    # Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
+    #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(Mengeneinheit))
     )
@@ -54,6 +58,7 @@ class TarifpreispositionSchema(COMSchema):
     Schema for de-/serialization of Tarifpreisposition.
     """
 
+    class_name = Tarifpreisposition
     # required attributes
     preistyp = EnumField(Preistyp)
     einheit = EnumField(Waehrungseinheit)
@@ -62,9 +67,3 @@ class TarifpreispositionSchema(COMSchema):
 
     # optional attributes
     mengeneinheitstaffel = EnumField(Mengeneinheit, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Tarifpreisposition:
-        """Deserialize JSON to Tarifpreisposition object"""
-        return Tarifpreisposition(**data)

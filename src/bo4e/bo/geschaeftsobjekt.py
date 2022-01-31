@@ -6,12 +6,11 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional, Type
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
 from bo4e.enum.botyp import BoTyp
-from bo4e.schemata.caseconverterschema import CaseConverterSchema
 
 
 def _create_empty_referenzen_list() -> List[ExterneReferenz]:
@@ -24,22 +23,24 @@ def _create_empty_referenzen_list() -> List[ExterneReferenz]:
 
 
 @attr.s(auto_attribs=True, kw_only=True)
-class Geschaeftsobjekt:
+class Geschaeftsobjekt:  # Base class for all business objects
     """
-    Base class for all business objects
+    Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
+    Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
     """
 
     # required attributes
-    versionstruktur: str = attr.ib(default="2")
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)
+    versionstruktur: str = attr.ib(default="2")  #: Version der BO-Struktur aka "fachliche Versionierung"
+    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)  #: Der Typ des Geschäftsobjektes
+    # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
         default=_create_empty_referenzen_list(), validator=attr.validators.instance_of(List)  # type:ignore[arg-type]
-    )
+    )  #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
 
 
-class GeschaeftsobjektSchema(CaseConverterSchema):
+class GeschaeftsobjektSchema(Schema):
     """
     This is an "abstract" class.
     All business objects schemata do inherit from this class.
@@ -50,10 +51,12 @@ class GeschaeftsobjektSchema(CaseConverterSchema):
 
     # required attributes
     versionstruktur = fields.String()
-    bo_typ = EnumField(BoTyp)
+    bo_typ = EnumField(BoTyp, data_key="boTyp")
 
     # optional attributes
-    externe_referenzen = fields.List(fields.Nested(ExterneReferenzSchema), load_default=None)
+    externe_referenzen = fields.List(
+        fields.Nested(ExterneReferenzSchema), data_key="externeReferenzen", load_default=None
+    )
 
     @post_load
     def deserialize(self, data, **kwargs):

@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
 from bo4e.com.angebotsposition import Angebotsposition, AngebotspositionSchema
@@ -26,6 +26,10 @@ class Angebotsteil(COM):
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
     Eine Variante besteht mindestens aus einem Angebotsteil.
+
+    .. HINT::
+        `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AngebotsteilSchema.json>`_
+
     """
 
     # required attributes
@@ -77,18 +81,13 @@ class AngebotsteilSchema(COMSchema):
     Schema for de-/serialization of Angebotsteil.
     """
 
+    class_name = Angebotsteil
     # required attributes
     positionen = fields.List(fields.Nested(AngebotspositionSchema))
 
     # optional attributes
-    anfrage_subreferenz = fields.Str(load_default=None)
+    anfrage_subreferenz = fields.Str(load_default=None, data_key="anfrageSubreferenz")
     lieferstellenangebotsteil = fields.List(fields.Nested(MarktlokationSchema), load_default=None)
     gesamtmengeangebotsteil = fields.Nested(MengeSchema, load_default=None)
     gesamtkostenangebotsteil = fields.Nested(BetragSchema, load_default=None)
     lieferzeitraum = fields.Nested(ZeitraumSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Angebotsteil:
-        """Deserialize JSON to Angebotsteil object"""
-        return Angebotsteil(**data)

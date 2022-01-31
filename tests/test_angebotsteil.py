@@ -20,6 +20,41 @@ from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_angebotsteil: Angebotsteil = Angebotsteil(
+    positionen=[
+        Angebotsposition(
+            positionsbezeichnung="teststring",
+            positionsmenge=Menge(wert=Decimal(4000), einheit=Mengeneinheit.KWH),
+            positionspreis=Preis(wert=Decimal(0.2456), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH),
+            positionskosten=Betrag(
+                waehrung=Waehrungscode.EUR,
+                wert=Decimal(98240),
+            ),
+        )
+    ],
+)
+
+example_angebotsteil_json = {
+    "positionen": [
+        {
+            "positionsbezeichnung": "teststring",
+            "positionsmenge": {"wert": "4000", "einheit": "KWH"},
+            "positionskosten": {"waehrung": "EUR", "wert": "98240"},
+            "positionspreis": {
+                "bezugswert": "KWH",
+                "status": None,
+                "wert": "0.2456000000000000127453603226967970840632915496826171875",
+                "einheit": "EUR",
+            },
+        },
+    ],
+    "anfrageSubreferenz": None,
+    "lieferstellenangebotsteil": None,
+    "gesamtmengeangebotsteil": None,
+    "gesamtkostenangebotsteil": None,
+    "lieferzeitraum": None,
+}
+
 
 class TestAngebotsteil:
     @pytest.mark.parametrize(
@@ -130,41 +165,8 @@ class TestAngebotsteil:
                 id="maximal attributes",
             ),
             pytest.param(
-                Angebotsteil(
-                    positionen=[
-                        Angebotsposition(
-                            positionsbezeichnung="teststring",
-                            positionsmenge=Menge(wert=Decimal(4000), einheit=Mengeneinheit.KWH),
-                            positionspreis=Preis(
-                                wert=Decimal(0.2456), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH
-                            ),
-                            positionskosten=Betrag(
-                                waehrung=Waehrungscode.EUR,
-                                wert=Decimal(98240),
-                            ),
-                        )
-                    ],
-                ),
-                {
-                    "positionen": [
-                        {
-                            "positionsbezeichnung": "teststring",
-                            "positionsmenge": {"wert": "4000", "einheit": "KWH"},
-                            "positionskosten": {"waehrung": "EUR", "wert": "98240"},
-                            "positionspreis": {
-                                "bezugswert": "KWH",
-                                "status": None,
-                                "wert": "0.2456000000000000127453603226967970840632915496826171875",
-                                "einheit": "EUR",
-                            },
-                        },
-                    ],
-                    "anfrageSubreferenz": None,
-                    "lieferstellenangebotsteil": None,
-                    "gesamtmengeangebotsteil": None,
-                    "gesamtkostenangebotsteil": None,
-                    "lieferzeitraum": None,
-                },
+                example_angebotsteil,
+                example_angebotsteil_json,
                 id="minimal attributes",
             ),
         ],

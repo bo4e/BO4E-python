@@ -2,21 +2,24 @@
 Contains Sigmoidparameter class and corresponding marshmallow schema for de-/serialization
 """
 
-# pylint: disable=too-few-public-methods
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
-# pylint:disable=invalid-name
+# pylint:disable=invalid-name, too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Sigmoidparameter(COM):
     """
     Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:
     LP=A/(1+(P/B)^C)+D
+
+    .. HINT::
+        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/SigmoidparameterSchema.json>`_
+
     """
 
     # required attributes
@@ -39,14 +42,9 @@ class SigmoidparameterSchema(COMSchema):
     Schema for de-/serialization of Sigmoidparameter.
     """
 
+    class_name = Sigmoidparameter
     # required attributes
-    A = fields.Decimal(as_string=True)
-    B = fields.Decimal(as_string=True)
-    C = fields.Decimal(as_string=True)
-    D = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Sigmoidparameter:
-        """Deserialize JSON to Sigmoidparameter object"""
-        return Sigmoidparameter(**data)
+    A = fields.Decimal(as_string=True, data_key="A")
+    B = fields.Decimal(as_string=True, data_key="B")
+    C = fields.Decimal(as_string=True, data_key="C")
+    D = fields.Decimal(as_string=True, data_key="D")

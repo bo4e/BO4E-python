@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -19,6 +19,10 @@ from bo4e.enum.preisgarantietyp import Preisgarantietyp
 class Preisgarantie(COM):
     """
     Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.
+
+    .. HINT::
+        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/PreisgarantieSchema.json>`_
+
     """
 
     # required attributes
@@ -40,15 +44,10 @@ class PreisgarantieSchema(COMSchema):
     Schema for de-/serialization of Preisgarantie.
     """
 
+    class_name = Preisgarantie
     # required attributes
     preisgarantietyp = EnumField(Preisgarantietyp)
-    zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema)
+    zeitliche_gueltigkeit = fields.Nested(ZeitraumSchema, data_key="zeitlicheGueltigkeit")
 
     # optionale attributes
     beschreibung = fields.Str(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Preisgarantie:
-        """Deserialize JSON to Preisgarantie object"""
-        return Preisgarantie(**data)

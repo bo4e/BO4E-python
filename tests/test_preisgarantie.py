@@ -7,19 +7,21 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
+example_preisgarantie = Preisgarantie(
+    preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
+    zeitliche_gueltigkeit=Zeitraum(
+        startdatum=datetime(2020, 1, 1, tzinfo=timezone.utc),
+        enddatum=datetime(2020, 4, 1, tzinfo=timezone.utc),
+    ),
+)
+
 
 class TestPreisgarantie:
     @pytest.mark.parametrize(
         "preisgarantie, expected_json_dict",
         [
             pytest.param(
-                Preisgarantie(
-                    preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
-                    zeitliche_gueltigkeit=Zeitraum(
-                        startdatum=datetime(2020, 1, 1, tzinfo=timezone.utc),
-                        enddatum=datetime(2020, 4, 1, tzinfo=timezone.utc),
-                    ),
-                ),
+                example_preisgarantie,
                 {
                     "beschreibung": None,
                     "preisgarantietyp": "NUR_ENERGIEPREIS",

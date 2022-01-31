@@ -36,6 +36,10 @@ _melo_id_pattern = re.compile(r"^[A-Z]{2}\d{6}\d{5}[A-Z\d]{20}$")
 class Messlokation(Geschaeftsobjekt):
     """
     Object containing information about a Messlokation
+
+    .. HINT::
+        `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/MesslokationSchema.json>`_
+
     """
 
     # pylint: disable=unused-argument, no-self-use
@@ -49,24 +53,51 @@ class Messlokation(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.MESSLOKATION)
+    #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: str = attr.ib(validator=_validate_messlokations_id)
+    #: Sparte der Messlokation, z.B. Gas oder Strom
     sparte: Sparte
 
     # optional attributes
+    #: Spannungsebene der Messung
     netzebene_messung: Optional[Netzebene] = attr.ib(default=None)
+    #: Die Nummer des Messgebietes in der ene't-Datenbank
     messgebietnr: Optional[str] = attr.ib(default=None)
+    #: Liste der Hardware, die zu dieser Messstelle gehört
     geraete: Optional[List[Hardware]] = attr.ib(default=None)
-    messdienstleistung: Optional[List[Dienstleistung]] = attr.ib(default=None)
+    #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
+    messdienstleistung: Optional[List[Dienstleistung]] = attr.ib(default=None)  # todo: rename to plural
+    #: Zähler, die zu dieser Messlokation gehören
     messlokationszaehler: Optional[List[Zaehler]] = attr.ib(default=None)
 
     # only one of the following two optional codenr attributes can be set
     grundzustaendiger_msb_codenr: Optional[str] = attr.ib(default=None)
+    """
+    Codenummer des grundzuständigen Messstellenbetreibers, der für diese Messlokation zuständig ist.
+    (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
+    """
     grundzustaendiger_msbim_codenr: Optional[str] = attr.ib(default=None)
-
+    """
+    Codenummer des grundzuständigen Messstellenbetreibers für intelligente Messsysteme, der für diese Messlokation
+    zuständig ist.
+    (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
+    """
     # only one of the following three optional address attributes can be set
     messadresse: Optional[Adresse] = attr.ib(default=None)
+    """
+    Die Adresse, an der die Messeinrichtungen zu finden sind.
+    (Nur angeben, wenn diese von der Adresse der Marktlokation abweicht.)
+    """
     geoadresse: Optional[Geokoordinaten] = attr.ib(default=None)
+    """
+    Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
+    (z.B. zur Identifikation von Sendemasten).
+    """
     katasterinformation: Optional[Katasteradresse] = attr.ib(default=None)
+    """
+    Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
+    Flurstück erfolgen.
+    """
 
     @messadresse.validator
     @geoadresse.validator
@@ -108,19 +139,19 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     class_name = Messlokation
 
     # required attributes
-    messlokations_id = fields.Str()
+    messlokations_id = fields.Str(data_key="messlokationsId")
     sparte = EnumField(Sparte)
 
     # optional attributes
-    netzebene_messung = EnumField(Netzebene, load_default=None)
+    netzebene_messung = EnumField(Netzebene, load_default=None, data_key="netzebeneMessung")
     messgebietnr = fields.Str(load_default=None)
     geraete = fields.List(fields.Nested(HardwareSchema), load_default=None)  #: List[Hardware]
     messdienstleistung = fields.List(fields.Nested(DienstleistungSchema), load_default=None)  #: List[Dienstleistung]
     messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), load_default=None)
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr = fields.Str(load_default=None)
-    grundzustaendiger_msbim_codenr = fields.Str(load_default=None)
+    grundzustaendiger_msb_codenr = fields.Str(missing=None, data_key="grundzustaendigerMsbCodenr")
+    grundzustaendiger_msbim_codenr = fields.Str(missing=None, data_key="grundzustaendigerMsbimCodenr")
 
     # only one of the following three optional attributes can be set
     messadresse = fields.Nested(AdresseSchema, load_default=None)

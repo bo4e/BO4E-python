@@ -6,7 +6,7 @@ from datetime import datetime
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.menge import Menge, MengeSchema
@@ -18,6 +18,10 @@ class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,
     eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.
+
+    .. HINT::
+        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/VertragsteilSchema.json>`_
+
     """
 
     # required attributes
@@ -36,18 +40,13 @@ class VertragsteilSchema(COMSchema):
     Schema for de-/serialization of Vertragsteil.
     """
 
+    class_name = Vertragsteil
     # required attributes
     vertragsteilbeginn = fields.DateTime()
     vertragsteilende = fields.DateTime()
 
     # optional attributes
     lokation = fields.String(load_default=None)
-    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None)
-    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
-    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Vertragsteil:
-        """Deserialize JSON to Vertragsteil object"""
-        return Vertragsteil(**data)
+    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None, data_key="vertraglichFixierteMenge")
+    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="minimaleAbnahmemenge")
+    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="maximaleAbnahmemenge")

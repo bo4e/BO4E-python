@@ -7,25 +7,27 @@ from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
 
+example_marktteilnehmer = Marktteilnehmer(
+    # required attributes of Marktteilnehmer only
+    marktrolle=Marktrolle.DL,
+    rollencodenummer="9903916000000",
+    rollencodetyp=Rollencodetyp.BDEW,
+    # required attributes inherited from Geschaeftspartner
+    name1="Netze BW GmbH",
+    gewerbekennzeichnung=True,
+    geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+    partneradresse=Adresse(
+        strasse="Schelmenwasenstraße",
+        hausnummer="15",
+        postleitzahl="70567",
+        ort="Stuttgart",
+    ),
+)
+
 
 class TestMarktteilnehmer:
     def test_serialization(self):
-        mt = Marktteilnehmer(
-            # required attributes of Marktteilnehmer only
-            marktrolle=Marktrolle.DL,
-            rollencodenummer="9903916000000",
-            rollencodetyp=Rollencodetyp.BDEW,
-            # required attributes inherited from Geschaeftspartner
-            name1="Netze BW GmbH",
-            gewerbekennzeichnung=True,
-            geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
-            partneradresse=Adresse(
-                strasse="Schelmenwasenstraße",
-                hausnummer="15",
-                postleitzahl="70567",
-                ort="Stuttgart",
-            ),
-        )
+        mt = example_marktteilnehmer
 
         assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
         assert mt.bo_typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"

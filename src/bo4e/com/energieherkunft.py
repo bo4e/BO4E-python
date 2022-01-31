@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -17,7 +17,11 @@ from bo4e.enum.erzeugungsart import Erzeugungsart
 @attr.s(auto_attribs=True, kw_only=True)
 class Energieherkunft(COM):
     """
-    Abbildung einer Energieherkunft.
+    Abbildung einer Energieherkunft
+
+    .. HINT::
+        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/EnergieherkunftSchema.json>`_
+
     """
 
     # required attributes
@@ -39,12 +43,7 @@ class EnergieherkunftSchema(COMSchema):
     Schema for de-/serialization of Energieherkunft.
     """
 
+    class_name = Energieherkunft
     # required attributes
     erzeugungsart = EnumField(Erzeugungsart)
-    anteil_prozent = fields.Decimal(as_string=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Energieherkunft:
-        """Deserialize JSON to Energieherkunft object"""
-        return Energieherkunft(**data)
+    anteil_prozent = fields.Decimal(as_string=True, data_key="anteilProzent")

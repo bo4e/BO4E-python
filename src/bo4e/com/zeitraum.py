@@ -8,7 +8,7 @@ from decimal import Decimal
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -21,6 +21,7 @@ def time_range_possibilities(instance, attribute, value):
     An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
     This functions checks for these conditions of a valid address.
     """
+
     if (
         instance.einheit
         and instance.dauer
@@ -59,6 +60,10 @@ class Zeitraum(COM):
     - Einheit und Dauer oder
     - Zeitraum: Startdatum bis Enddatum oder
     - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)
+
+    .. HINT::
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZeitraumSchema.json>`_
+
     """
 
     # optional attributes
@@ -75,6 +80,7 @@ class ZeitraumSchema(COMSchema):
     Schema for de-/serialization of Zeitraum.
     """
 
+    class_name = Zeitraum
     # optional attributes
     einheit = EnumField(Zeiteinheit, load_default=None)
     dauer = fields.Decimal(load_default=None, as_string=True)
@@ -82,9 +88,3 @@ class ZeitraumSchema(COMSchema):
     enddatum = fields.DateTime(load_default=None)
     startzeitpunkt = fields.DateTime(load_default=None)
     endzeitpunkt = fields.DateTime(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zeitraum:
-        """Deserialize JSON to Zeitraum object"""
-        return Zeitraum(**data)

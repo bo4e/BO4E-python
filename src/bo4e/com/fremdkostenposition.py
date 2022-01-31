@@ -1,69 +1,26 @@
 """
 Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.preis import Preis, PreisSchema
+from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 @attr.s(auto_attribs=True, kw_only=True)
-class Fremdkostenposition(COM):
+class Fremdkostenposition(Kostenposition):
     """
     Eine Kostenposition im Bereich der Fremdkosten
+
+    .. HINT::
+        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/FremdkostenpositionSchema.json>`_
+
     """
 
-    # required attributes
-    #: Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt
-    positionstitel: str = attr.ib(validator=attr.validators.instance_of(str))
-
-    betrag_kostenposition: Betrag = attr.ib(validator=attr.validators.instance_of(Betrag))
-    """Der errechnete Gesamtbetrag der Position als Ergebnis der Berechnung <Menge * Einzelpreis> oder
-    <Einzelpreis / (Anzahl Tage Jahr) * zeitmenge>"""
-    # todo: validate above calculation, see https://github.com/Hochfrequenz/BO4E-python/issues/282
-
-    #: Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT
-    artikelbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
-
-    #: Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.
-    einzelpreis: Preis = attr.ib(validator=attr.validators.instance_of(Preis))
-
-    # optional attributes
-    #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
-    von: Optional[datetime] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(datetime))
-    )
-    #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
-    bis: Optional[datetime] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(datetime))
-    )
-    # todo: implement von/bis validation as soon as https://github.com/Hochfrequenz/BO4E-python/pull/266 is merged
-
-    #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
-    menge: Optional[Menge] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
-    )
-
-    zeitmenge: Optional[Menge] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
-    )
-    """
-    Wenn es einen zeitbasierten Preis gibt (z.B. €/Jahr), dann ist hier die Menge angegeben mit der die Kosten berechnet
-    wurden. Z.B. 138 Tage.
-    """
-
-    #: Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
-    artikeldetail: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
-    )
-
+    # optional attributes (additional to those from Kostenposition)
     #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
     marktpartnername: Optional[str] = attr.ib(
         default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
@@ -86,30 +43,14 @@ class Fremdkostenposition(COM):
     )
 
 
-class FremdkostenpositionSchema(COMSchema):
+class FremdkostenpositionSchema(KostenpositionSchema):
     """
     Schema for de-/serialization of Fremdkostenposition
     """
 
-    # required attributes
-    positionstitel = fields.Str()
-    betrag_kostenposition = fields.Nested(BetragSchema)
-    artikelbezeichnung = fields.Str()
-    einzelpreis = fields.Nested(PreisSchema)
-
-    # optional attributes
-    von = fields.DateTime(allow_none=True)
-    bis = fields.DateTime(allow_none=True)
-    menge = fields.Nested(MengeSchema, allow_none=True)
-    zeitmenge = fields.Nested(MengeSchema, allow_none=True)
-    artikeldetail = fields.Str(allow_none=True)
+    # optional attributes (additional to those from Kostenposition)
+    class_name = Fremdkostenposition  # type:ignore[assignment]
     marktpartnername = fields.Str(allow_none=True)
     marktpartnercode = fields.Str(allow_none=True)
-    gebietcode_eic = fields.Str(allow_none=True)
-    link_preisblatt = fields.Str(allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Fremdkostenposition:
-        """Deserialize JSON to Fremdkostenposition object"""
-        return Fremdkostenposition(**data)
+    gebietcode_eic = fields.Str(allow_none=True, data_key="gebietcodeEic")
+    link_preisblatt = fields.Str(allow_none=True, data_key="linkPreisblatt")

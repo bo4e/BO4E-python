@@ -5,18 +5,21 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
-
-# pylint: disable=too-few-public-methods
 from bo4e.validators import check_bis_is_later_than_von
 
 
+# pylint: disable=too-few-public-methods
 @attr.s(auto_attribs=True, kw_only=True)
 class Zeitreihenwert(Zeitreihenwertkompakt):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
+
+    .. HINT::
+        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZeitreihenwertSchema.json>`_
+
     """
 
     # required attributes
@@ -41,12 +44,7 @@ class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):
     Schema for de-/serialization of Zeitreihenwert.
     """
 
+    class_name = Zeitreihenwert  # type:ignore[assignment]
     # required attributes
-    datum_uhrzeit_von = fields.DateTime()
-    datum_uhrzeit_bis = fields.DateTime()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zeitreihenwert:
-        """Deserialize JSON to Zeitreihenwert object"""
-        return Zeitreihenwert(**data)
+    datum_uhrzeit_von = fields.DateTime(data_key="datumUhrzeitVon")
+    datum_uhrzeit_bis = fields.DateTime(data_key="datumUhrzeitBis")

@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -17,6 +17,10 @@ from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 class KriteriumWert(COM):
     """
     Mit dieser Komponente können Kriterien und deren Werte definiert werden
+
+    .. HINT::
+        `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/KriteriumWertSchema.json>`_
+
     """
 
     # required attributes
@@ -31,12 +35,7 @@ class KriteriumWertSchema(COMSchema):
     Schema for de-/serialization of KriteriumWert.
     """
 
+    class_name = KriteriumWert
     # required attributes
     kriterium = EnumField(Tarifregionskriterium)
     wert = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> KriteriumWert:
-        """Deserialize JSON to KriteriumWert object"""
-        return KriteriumWert(**data)

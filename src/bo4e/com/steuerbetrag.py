@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -19,6 +19,10 @@ from bo4e.enum.waehrungscode import Waehrungscode
 class Steuerbetrag(COM):
     """
     Abbildung eines Steuerbetrages.
+
+    .. HINT::
+        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/SteuerbetragSchema.json>`_
+
     """
 
     # required attributes
@@ -37,14 +41,9 @@ class SteuerbetragSchema(COMSchema):
     Schema for de-/serialization of Steuerbetrag.
     """
 
+    class_name = Steuerbetrag
     # required attributes
     steuerkennzeichen = EnumField(Steuerkennzeichen)
     basiswert = fields.Decimal(as_string=True)
     steuerwert = fields.Decimal(as_string=True)
     waehrung = EnumField(Waehrungscode)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Steuerbetrag:
-        """Deserialize JSON to Steuerbetrag object"""
-        return Steuerbetrag(**data)

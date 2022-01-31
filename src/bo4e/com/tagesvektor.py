@@ -5,7 +5,7 @@ import datetime
 from typing import List
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
@@ -18,6 +18,10 @@ from bo4e.validators import check_list_length_at_least_one
 class Tagesvektor(COM):
     """
     Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters
+
+    .. HINT::
+        `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TagesvektorSchema.json>`_
+
     """
 
     # required attributes
@@ -50,12 +54,7 @@ class TagesvektorSchema(COMSchema):
     Schema for de-/serialization of Tagesvektor
     """
 
+    class_name = Tagesvektor
     # required attributes
     tag = fields.DateTime()
     werte = fields.List(fields.Nested(ZeitreihenwertkompaktSchema))
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Tagesvektor:
-        """Deserialize JSON to Preisstaffel object"""
-        return Tagesvektor(**data)

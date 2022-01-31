@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfoSchema
@@ -16,7 +16,11 @@ from bo4e.validators import check_list_length_is_one_or_two
 @attr.s(auto_attribs=True, kw_only=True)
 class StandorteigenschaftenGas(COM):
     """
-    Standorteigenschaften der Sparte Gas.
+    Standorteigenschaften der Sparte Gas
+
+    .. HINT::
+        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/StandorteigenschaftenGasSchema.json>`_
+
     """
 
     # required attributes
@@ -29,12 +33,7 @@ class StandorteigenschaftenGasSchema(COMSchema):
     Schema for de-/serialization of StandorteigenschaftenGas.
     """
 
+    class_name = StandorteigenschaftenGas
     # required attributes
     netzkontonummern = fields.List(fields.Str())
     marktgebiete = fields.List(fields.Nested(MarktgebietInfoSchema))
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> StandorteigenschaftenGas:
-        """Deserialize JSON to StandorteigenschaftenGas object"""
-        return StandorteigenschaftenGas(**data)

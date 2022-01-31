@@ -5,7 +5,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.adresse import Adresse, AdresseSchema
@@ -22,6 +22,10 @@ class Ausschreibungsdetail(COM):
     """
     Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines
     Ausschreibungsloses abzubilden.
+
+    .. HINT::
+        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AusschreibungsdetailSchema.json>`_
+
     """
 
     # required attributes
@@ -87,10 +91,11 @@ class AusschreibungsdetailSchema(COMSchema):
     Schema for de-/serialization of Ausschreibungsdetail
     """
 
+    class_name = Ausschreibungsdetail
     # required attributes
-    lokations_id = fields.Str()
-    netzebene_lieferung = EnumField(Netzebene)
-    netzebene_messung = EnumField(Netzebene)
+    lokations_id = fields.Str(data_key="lokationsId")
+    netzebene_lieferung = EnumField(Netzebene, data_key="netzebeneLieferung")
+    netzebene_messung = EnumField(Netzebene, data_key="netzebeneMessung")
     lokationsadresse = fields.Nested(AdresseSchema)
     lieferzeitraum = fields.Nested(ZeitraumSchema)
 
@@ -100,14 +105,10 @@ class AusschreibungsdetailSchema(COMSchema):
     zaehlernummer = fields.Str(allow_none=True)
     lokationsbezeichnung = fields.Str(allow_none=True)
     zaehlertechnik = EnumField(Zaehlertyp, allow_none=True)
-    lastgang_vorhanden = fields.Boolean(allow_none=True)
-    prognose_jahresarbeit = fields.Nested(MengeSchema, allow_none=True)
-    prognose_arbeit_lieferzeitraum = fields.Nested(MengeSchema, allow_none=True)
-    prognose_leistung = fields.Nested(MengeSchema, allow_none=True)
+    lastgang_vorhanden = fields.Boolean(allow_none=True, data_key="lastgangVorhanden")
+    prognose_jahresarbeit = fields.Nested(MengeSchema, allow_none=True, data_key="prognoseJahresarbeit")
+    prognose_arbeit_lieferzeitraum = fields.Nested(
+        MengeSchema, allow_none=True, data_key="prognoseArbeitLieferzeitraum"
+    )
+    prognose_leistung = fields.Nested(MengeSchema, allow_none=True, data_key="prognoseLeistung")
     rechnungsadresse = fields.Nested(AdresseSchema, allow_none=True)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Ausschreibungsdetail:
-        """Deserialize JSON to Ausschreibungsdetail object"""
-        return Ausschreibungsdetail(**data)

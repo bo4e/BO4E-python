@@ -3,7 +3,7 @@ Contains ExterenzeReferenz class
 and corresponding marshmallow schema for de-/serialization
 """
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
@@ -15,6 +15,10 @@ class ExterneReferenz(COM):
     Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.
     Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,
     sich die eindeutigen IDs der anzubindenden Systeme zu merken.
+
+    .. HINT::
+        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ExterneReferenzSchema.json>`_
+
     """
 
     # required attributes
@@ -28,11 +32,6 @@ class ExterneReferenzSchema(COMSchema):
     Inherits from Schema and JavaScriptMixin.
     """
 
-    ex_ref_name = fields.Str()
-    ex_ref_wert = fields.Str()
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> ExterneReferenz:
-        """Deserialize JSON to ExterneReferenz object"""
-        return ExterneReferenz(**data)
+    class_name = ExterneReferenz
+    ex_ref_name = fields.Str(data_key="exRefName")
+    ex_ref_wert = fields.Str(data_key="exRefWert")

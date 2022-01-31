@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 import attr
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.preis import Preis, PreisSchema
@@ -18,6 +18,10 @@ from bo4e.enum.preistyp import Preistyp
 class Tarifpreis(Preis):
     """
     Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.
+
+    .. HINT::
+        `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/TarifpreisSchema.json>`_
+
     """
 
     # required attributes
@@ -31,17 +35,12 @@ class Tarifpreis(Preis):
 
 class TarifpreisSchema(PreisSchema):
     """
-    Schema for de-/serialization of Tarifpreis.
+    Schema for de-/serialization of Tarifpreis
     """
 
+    class_name = Tarifpreis  # type:ignore[assignment]
     # required attributes
     preistyp = EnumField(Preistyp)
 
     # optional attributes
     beschreibung = fields.Str(load_default=None)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Tarifpreis:
-        """Deserialize JSON to Tarifpreis object"""
-        return Tarifpreis(**data)

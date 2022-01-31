@@ -6,7 +6,7 @@ from decimal import Decimal
 
 import attr
 from attr.validators import matches_re
-from marshmallow import fields, post_load
+from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.com import COM, COMSchema
@@ -19,6 +19,10 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 class Zaehlwerk(COM):
     """
     Mit dieser Komponente werden Zählwerke modelliert.
+
+    .. HINT::
+        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/ZaehlwerkSchema.json>`_
+
     """
 
     zaehlwerk_id: str = attr.ib(
@@ -48,15 +52,10 @@ class ZaehlwerkSchema(COMSchema):
     Schema for de-/serialization of Zaehlwerk.
     """
 
-    zaehlwerk_id = fields.Str()
+    class_name = Zaehlwerk
+    zaehlwerk_id = fields.Str(data_key="zaehlwerkId")
     bezeichnung = fields.Str()
     richtung = EnumField(Energierichtung)
-    obis_kennzahl = fields.Str()
+    obis_kennzahl = fields.Str(data_key="obisKennzahl")
     wandlerfaktor = fields.Decimal(as_string=True)
     einheit = EnumField(Mengeneinheit)
-
-    # pylint: disable=no-self-use, unused-argument
-    @post_load
-    def deserialize(self, data, **kwargs) -> Zaehlwerk:
-        """Deserialize JSON to Zaehlwerk object"""
-        return Zaehlwerk(**data)

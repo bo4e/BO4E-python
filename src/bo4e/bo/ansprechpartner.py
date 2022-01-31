@@ -21,23 +21,35 @@ from bo4e.enum.titel import Titel
 class Ansprechpartner(Geschaeftsobjekt):
     """
     Object containing information about a Ansprechpartner
+
+    .. HINT::
+        `Ansprechpartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/AnsprechpartnerSchema.json>`_
+
     """
 
     # required attributes
     bo_typ: BoTyp = attr.ib(default=BoTyp.ANSPRECHPARTNER)
-    nachname: str
-    geschaeftspartner: Geschaeftspartner
+    nachname: str  #: Nachname (Familienname) des Ansprechpartners
+    geschaeftspartner: Geschaeftspartner  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
     # optional attributes
-    anrede: Anrede = attr.ib(default=None)
+    anrede: Anrede = attr.ib(default=None)  #: Mögliche Anrede des Ansprechpartners
     individuelle_anrede: str = attr.ib(default=None)
-    titel: Titel = attr.ib(default=None)
-    vorname: str = attr.ib(default=None)
-    e_mail_adresse: str = attr.ib(default=None)
-    kommentar: str = attr.ib(default=None)
+    """
+    Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
+    Beispiel: "Sehr geehrte Frau Müller, sehr geehrter Herr Dr. Müller"
+    """
+
+    titel: Titel = attr.ib(default=None)  #: Möglicher Titel des Ansprechpartners
+    vorname: str = attr.ib(default=None)  #: Vorname des Ansprechpartners
+    e_mail_adresse: str = attr.ib(default=None)  #: E-Mail Adresse
+    kommentar: str = attr.ib(default=None)  #: Weitere Informationen zum Ansprechpartner
+    #: Adresse des Ansprechpartners, falls diese von der Adresse des Geschäftspartners abweicht
     adresse: Adresse = attr.ib(default=None)
-    rufnummer: Rufnummer = attr.ib(default=None)
-    zustaendigkeit: Zustaendigkeit = attr.ib(default=None)
+    #: Liste der Telefonnummern, unter denen der Ansprechpartner erreichbar ist
+    rufnummer: Rufnummer = attr.ib(default=None)  # todo: make this a list and rename to rufnummern
+    #: Liste der Abteilungen und Zuständigkeiten des Ansprechpartners
+    zustaendigkeit: Zustaendigkeit = attr.ib(default=None)  # todo: make this a list and rename to "zustaendigkeiten"
 
 
 class AnsprechpartnerSchema(GeschaeftsobjektSchema):
@@ -55,10 +67,10 @@ class AnsprechpartnerSchema(GeschaeftsobjektSchema):
 
     # optional attributes
     anrede = EnumField(Anrede, load_default=None)
-    individuelle_anrede = fields.Str(load_default=None)
+    individuelle_anrede = fields.Str(load_default=None, data_key="individuelleAnrede")
     titel = EnumField(Titel, load_default=None)
     vorname = fields.Str(load_default=None)
-    e_mail_adresse = fields.Str(load_default=None)
+    e_mail_adresse = fields.Str(load_default=None, data_key="eMailAdresse")
     kommentar = fields.Str(load_default=None)
     adresse = fields.Nested(AdresseSchema, load_default=None)
     rufnummer = fields.Nested(RufnummerSchema, load_default=None)
