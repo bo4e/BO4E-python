@@ -26,13 +26,32 @@ class Vertragsteil(COM):
 
     # required attributes
     vertragsteilbeginn: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    """
+    Start der Gültigkeit des Vertragsteils (inklusiv)
+    """
     vertragsteilende: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    """
+    Ende der Gültigkeit des Vertragsteils (exklusiv)
+    """
 
     # optional attributes
     lokation: Optional[str] = attr.ib(default=None)
+    """
+    Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
+    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
+    """
     vertraglich_fixierte_menge: Optional[Menge] = attr.ib(default=None)
+    """
+    Für die Lokation festgeschriebene Abnahmemenge
+    """
     minimale_abnahmemenge: Optional[Menge] = attr.ib(default=None)
+    """
+    Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
+    """
     maximale_abnahmemenge: Optional[Menge] = attr.ib(default=None)
+    """
+    Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
+    """
 
 
 class VertragsteilSchema(COMSchema):

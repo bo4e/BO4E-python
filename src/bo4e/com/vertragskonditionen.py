@@ -23,11 +23,17 @@ class Vertragskonditionen(COM):
     """
 
     # optional attributes
+    #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
     beschreibung: str = attr.ib(default=None)
+    #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
     anzahl_abschlaege: Decimal = attr.ib(default=None)
+    #: Über diesen Zeitraum läuft der Vertrag
     vertragslaufzeit: Zeitraum = attr.ib(default=None)
+    #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
     kuendigungsfrist: Zeitraum = attr.ib(default=None)
+    #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
     vertragsverlaengerung: Zeitraum = attr.ib(default=None)
+    #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
     abschlagszyklus: Zeitraum = attr.ib(default=None)
 
 

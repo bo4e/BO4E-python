@@ -23,7 +23,9 @@ class Dienstleistung(COM):
     """
 
     # required attributes
+    #: Kennzeichnung der Dienstleistung
     dienstleistungstyp: Dienstleistungstyp = attr.ib(validator=attr.validators.in_(Dienstleistungstyp))
+    #: Bezeichnung der Dienstleistung
     bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
 
 

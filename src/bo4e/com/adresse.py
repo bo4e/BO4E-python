@@ -38,15 +38,23 @@ class Adresse(COM):
     """
 
     # required attributes
+    #: Die Postleitzahl; z.B: "41836"
     postleitzahl: str = attr.ib(validator=attr.validators.instance_of(str))
+    #: Bezeichnung der Stadt; z.B. "Hückelhoven"
     ort: str = attr.ib(validator=attr.validators.instance_of(str))
 
     # optional attributes
+    #: Bezeichnung der Straße; z.B. "Weserstraße"
     strasse: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    #: Hausnummer inkl. Zusatz; z.B. "3", "4a"
     hausnummer: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    #: Im Falle einer Postfachadresse das Postfach; Damit werden Straße und Hausnummer nicht berücksichtigt
     postfach: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    #: Zusatzhinweis zum Auffinden der Adresse, z.B. "3. Stock linke Wohnung"
     adresszusatz: str = attr.ib(default=None)
+    #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
     co_ergaenzung: str = attr.ib(default=None)
+    #: Offizieller ISO-Landescode
     landescode: Landescode = attr.ib(default=Landescode.DE)  # type:ignore
 
 

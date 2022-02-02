@@ -25,7 +25,9 @@ class Menge(COM):
     """
 
     # required attributes
+    #: Gibt den absoluten Wert der Menge an
     wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    #: Gibt die Einheit zum jeweiligen Wert an
     einheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
 
 

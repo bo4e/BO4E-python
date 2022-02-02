@@ -22,11 +22,12 @@ class Unterschrift(COM):
     """
 
     # required attributes
+    #: Name des Unterschreibers
     name: str = attr.ib(validator=attr.validators.instance_of(str))
 
     # optional attributes
-    ort: str = attr.ib(default=None)
-    datum: datetime = attr.ib(default=None)
+    ort: str = attr.ib(default=None)  #: Ort, an dem die Unterschrift geleistet wird
+    datum: datetime = attr.ib(default=None)  #: Datum der Unterschrift
 
 
 class UnterschriftSchema(COMSchema):

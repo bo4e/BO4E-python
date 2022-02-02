@@ -22,7 +22,9 @@ class Rufnummer(COM):
     """
 
     # required attributes
+    #: Ausprägung der Nummer
     nummerntyp: Rufnummernart = attr.ib(validator=attr.validators.in_(Rufnummernart))
+    #: Die konkrete Nummer
     rufnummer: str = attr.ib(validator=attr.validators.instance_of(str))
 
 

@@ -15,7 +15,7 @@ from bo4e.enum.geraetetyp import Geraetetyp
 @attr.s(auto_attribs=True, kw_only=True)
 class Hardware(COM):
     """
-    Abbildung einer abrechenbaren Hardware.
+    Abbildung einer abrechenbaren Hardware
 
     .. HINT::
         `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/HardwareSchema.json>`_
@@ -23,7 +23,9 @@ class Hardware(COM):
     """
 
     # required attributes
+    #: Eindeutiger Typ der Hardware
     geraetetyp: Geraetetyp = attr.ib(validator=attr.validators.in_(Geraetetyp))
+    #: Bezeichnung der Hardware
     bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
 
 
