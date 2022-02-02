@@ -7,12 +7,11 @@ BO4E
 |PyPI pyversions|_
 
 
-
 .. |PyPi| image:: https://img.shields.io/pypi/v/bo4e.svg
 .. _PyPi: https://img.shields.io/pypi/v/bo4e
 
 .. |license| image:: https://img.shields.io/badge/License-MIT-blue.svg
-.. _license: https://github.com/Hochfrequenz/BO4E-python/blob/master/LICENSE.rst
+.. _license: https://github.com/Hochfrequenz/BO4E-python/blob/main/LICENSE.rst
 
 .. |code style| image:: https://img.shields.io/badge/code%20style-black-000000.svg
 .. _`code style`: https://github.com/psf/black
@@ -21,63 +20,34 @@ BO4E
 .. _`PyPI pyversions`: https://pypi.python.org/pypi/bo4e/
 
 
+🇩🇪 Dies ist eine BO4E Referenz-Implementierung in Python.
+Gleichzeitig ist dieses Repository der Ort, um Fragen und Erweiterungen des BO4E-Standards zu diskutieren.
 
+🇬🇧 This is a Python library that implements Business Objects for Energy `BO4E <https://www.bo4e.de/>`_.
+It requires Python >=3.8.
 
-Python Library that Implements `BO4E <https://www.bo4e.de/dokumentation>`_.
-Requires Python >=3.8.
+Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
+==========================================================
+Eine Dokumentation des Datenmodells und JSON Schemata zur Erzeugung von Beispieldaten finden sich auf `read the docs <https://bo4e-python.readthedocs.io/en/latest/api/modules.html>`_.
 
-Other Noteworthy BO4E Implementations
-=====================================
+Bei Fragen oder Anregungen, bitte `einfach ein Issue in diesem Repo aufmachen <https://github.com/Hochfrequenz/BO4E-python/issues/new?assignees=&labels=BO4E+Enhancement+Proposal&template=funktionale-anforderung-an-den-bo4e-standard.md&title=Ein+aussagekr%C3%A4ftiger+Titel%3A+Hunde-+und+Katzentarife+k%C3%B6nnen+nicht+abgebildet+werden>`_.
+
+Code Beiträge
+=============
+Änderungsvorschläge (sowohl an das Datenmodell als auch an die Implementierung in Python) können direkt als Code in Form von Pull Requests eingereicht werden.
+Details dazu finden sich im `Contribution Guide`_.
+
+Andere nennenswerte BO4E Implementierungen
+==========================================
 
 * `C#/.NET`_
 * `Golang`_
 * `Kotlin`_
 * `TypeScript`_
 
-Contributing
-============
-Contributions are welcome.
-Feel free to open a Pull Request against the master branch of this repository.
-Please provide unit tests if you contribute logic beyond bare bare business object definitions.
-For business objects please provide a roundtrip test that shows that your code produces serializable and deseriazable objects.
-
-To enhance this BO4E implementation and contribute to this project check out the `master branch`_, install `tox`_ and set the virtual environment created by the command
-
-.. code-block:: Shell
-
-   tox -e dev
-
-The created venv should be located somewhere around .tox/dev/Scripts.
-
-Release workflow
-================
-* Go to `BO4E-python`_ and click on "`Draft a new release`_" in the right sidebar
-* Write in the *Tag version* field and in the *Release title* your new version, i.e. `v1.2.4`
-* Add a describtion to the release or let it autogenerate
-* Publish the release
-
-There is a Github Action which gets triggered by a release event.
-It will run all default tests with tox.
-If they pass, it will take the tag title to replace the version information in the *setup.cfg* file.
-After checking the package with `twine check` it will finally upload the new package release.
-
-Hochfrequenz
-============
-`Hochfrequenz Unternehmensberatung GmbH`_ is a Grünwald (near Munich) based consulting company with offices in Berlin and Bremen.
-According to `Kununu ratings`_ Hochfrequenz is among the most attractive employers within the German energy market.
-Applications of talented developers are welcome at any time! Please consider visiting our `career page`_ that also contains job openings.
-
-
 .. _`BO4E website`: https://www.bo4e.de/dokumentation
 .. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
 .. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
 .. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
 .. _`TypeScript`: https://github.com/openEnWi/tsBO4E-lib
-.. _`Hochfrequenz Unternehmensberatung GmbH`: https://www.hochfrequenz.de
-.. _`Kununu ratings`: https://www.kununu.com/de/hochfrequenz-unternehmensberatung1
-.. _`career page`: https://www.hochfrequenz.de/karriere/stellenangebote/full-stack-entwickler/
-.. _`master branch`: https://github.com/Hochfrequenz/BO4E-python/tree/master
-.. _`tox`: https://pypi.org/project/tox/
-.. _`BO4E-python`: https://github.com/Hochfrequenz/BO4E-python
-.. _`Draft a new release`: https://github.com/Hochfrequenz/BO4E-python/releases/new
-.. _`Retrieving package version at runtime`: https://pypi.org/project/setuptools-scm/
+.. _`Contribution Guide`: CONTRIBUTING.md

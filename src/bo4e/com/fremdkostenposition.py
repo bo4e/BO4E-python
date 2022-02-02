@@ -16,7 +16,7 @@ class Fremdkostenposition(Kostenposition):
     Eine Kostenposition im Bereich der Fremdkosten
 
     .. HINT::
-        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/FremdkostenpositionSchema.json>`_
+        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/FremdkostenpositionSchema.json>`_
 
     """
 

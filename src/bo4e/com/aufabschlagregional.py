@@ -31,7 +31,7 @@ class AufAbschlagRegional(COM):
     die sich durch die Auswahl eines Auf- oder Abschlags ergeben.
 
     .. HINT::
-        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/AufAbschlagRegionalSchema.json>`_
+        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagRegionalSchema.json>`_
 
     """
 

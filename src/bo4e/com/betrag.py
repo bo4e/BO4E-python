@@ -21,7 +21,7 @@ class Betrag(COM):
     abzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…
 
     .. HINT::
-        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/com/BetragSchema.json>`_
+        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/BetragSchema.json>`_
 
     """
 

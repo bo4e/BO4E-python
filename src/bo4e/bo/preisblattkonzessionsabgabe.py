@@ -17,7 +17,7 @@ class PreisblattKonzessionsabgabe(Preisblatt):
     Die Variante des Preisblattmodells zur Abbildung von allgemeinen Abgaben
 
     .. HINT::
-        `PreisblattKonzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/PreisblattKonzessionsabgabeSchema.json>`_
+        `PreisblattKonzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattKonzessionsabgabeSchema.json>`_
 
     """
 

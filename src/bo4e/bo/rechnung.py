@@ -29,7 +29,7 @@ class Rechnung(Geschaeftsobjekt):
     Ausgehend von diesem Basismodell werden weitere spezifische Formen abgeleitet.
 
     .. HINT::
-        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/RechnungSchema.json>`_
+        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/RechnungSchema.json>`_
 
     """
 

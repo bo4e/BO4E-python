@@ -26,7 +26,7 @@ class Zeitreihe(Geschaeftsobjekt):
     Die Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.
 
     .. HINT::
-        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/master/json_schemas/bo/ZeitreiheSchema.json>`_
+        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/ZeitreiheSchema.json>`_
 
     """
 
