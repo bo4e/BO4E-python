@@ -40,14 +40,10 @@ Details dazu finden sich im `Contribution Guide`_.
 Andere nennenswerte BO4E Implementierungen
 ==========================================
 
-* `C#/.NET`_
-* `Golang`_
-* `Kotlin`_
-* `TypeScript`_
+* `C#/.NET <https://github.com/Hochfrequenz/BO4E-dotnet>`_
+* `Golang <https://github.com/Hochfrequenz/go-bo4e/>`_
+* `Kotlin <https://github.com/openEnWi/ktBO4E-lib>`_
+* `TypeScript <https://github.com/openEnWi/tsBO4E-lib>`_
 
 .. _`BO4E website`: https://www.bo4e.de/dokumentation
-.. _`C#/.NET`: https://github.com/Hochfrequenz/BO4E-dotnet
-.. _`Golang`: https://github.com/Hochfrequenz/go-bo4e/
-.. _`Kotlin`: https://github.com/openEnWi/ktBO4E-lib
-.. _`TypeScript`: https://github.com/openEnWi/tsBO4E-lib
 .. _`Contribution Guide`: CONTRIBUTING.md
