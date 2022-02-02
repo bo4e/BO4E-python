@@ -24,7 +24,13 @@ class Zeitintervall(COM):
 
     # required attributes
     wert: int = attr.ib(validator=attr.validators.instance_of(int))
+    """
+    Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
+    """
     zeiteinheit: Zeiteinheit = attr.ib(validator=attr.validators.instance_of(Zeiteinheit))
+    """
+    Die Einheit des Zeitintervalls
+    """
 
 
 class ZeitintervallSchema(COMSchema):

@@ -24,10 +24,13 @@ class Zustaendigkeit(COM):
 
     # required attributes
     themengebiet: Themengebiet = attr.ib(validator=attr.validators.in_(Themengebiet))
+    """
+    Hier kann eine thematische Zuordnung des Ansprechpartners angegeben werden
+    """
 
     # optional attributes
-    jobtitel: str = attr.ib(default=None)
-    abteilung: str = attr.ib(default=None)
+    jobtitel: str = attr.ib(default=None)  #: Berufliche Rolle des Ansprechpartners
+    abteilung: str = attr.ib(default=None)  #: Abteilung, in der der Ansprechpartner tätig ist
 
 
 class ZustaendigkeitSchema(COMSchema):

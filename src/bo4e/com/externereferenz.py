@@ -22,8 +22,8 @@ class ExterneReferenz(COM):
     """
 
     # required attributes
-    ex_ref_name: str
-    ex_ref_wert: str
+    ex_ref_name: str  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
+    ex_ref_wert: str  #: Wert der externen Referenz (z.B. "123456"; "4711")
 
 
 class ExterneReferenzSchema(COMSchema):
