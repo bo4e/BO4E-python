@@ -8,8 +8,8 @@ class Marktrolle(StrEnum):
     Diese Rollen kann ein Marktteilnehmer einnehmen.
     """
 
-    NB = "NB"  #: Grid Operator
-    LF = "LF"  #: Supplier
+    NB = "NB"  #: Verteilnetzbetreiber
+    LF = "LF"  #: Lieferant
     MSB = "MSB"  #: Messstellenbetreiber
     DL = "DL"  #: Dienstleister
     BKV = "BKV"  #: Bilanzkreisverantwortlicher,
@@ -19,6 +19,6 @@ class Marktrolle(StrEnum):
     MGV = "MGV"  #: Marktgebietsverantwortlicher
     EIV = "EIV"  #: Einsatzverantwortlicher
     RB = "RB"  #: Registerbetreiber
-    KUNDE = "KUNDE"
-    INTERESSENT = "INTERESSENT"
+    KUNDE = "KUNDE"  #: Endkunde
+    INTERESSENT = "INTERESSENT"  #: Interessent
     BTR = "BTR"  #: Betreiber einer technischen Ressource
