@@ -3,7 +3,7 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 """
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Zeitreihe(Geschaeftsobjekt):
     """
     Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
@@ -31,35 +31,37 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.ZEITREIHE)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.ZEITREIHE)
     #: Bezeichnung für die Zeitreihe
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
-    messgroesse: Messgroesse = attr.ib(validator=attr.validators.instance_of(Messgroesse))
+    messgroesse: Messgroesse = attrs.field(validator=attrs.validators.instance_of(Messgroesse))
     #: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
-    messart: Messart = attr.ib(validator=attr.validators.instance_of(Messart))
+    messart: Messart = attrs.field(validator=attrs.validators.instance_of(Messart))
     #: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
-    medium: Medium = attr.ib(validator=attr.validators.instance_of(Medium))
+    medium: Medium = attrs.field(validator=attrs.validators.instance_of(Medium))
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
-    einheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
+    einheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
 
     #: Hier liegen jeweils die Werte
-    werte: List[Zeitreihenwert] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Zeitreihenwert),
+    werte: List[Zeitreihenwert] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Zeitreihenwert),
             iterable_validator=check_list_length_at_least_one,
         )
     )
     # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe
-    beschreibung: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    beschreibung: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
     #: Version der Zeitreihe
-    version: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
+    version: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
+    )
     #: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
-    wertherkunft: Optional[Wertermittlungsverfahren] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Wertermittlungsverfahren))
+    wertherkunft: Optional[Wertermittlungsverfahren] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Wertermittlungsverfahren))
     )
 
 

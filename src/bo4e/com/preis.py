@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,7 @@ from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Preis(COM):
     """
     Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.
@@ -29,15 +29,15 @@ class Preis(COM):
 
     # required attributes
     #: Gibt die nominale Höhe des Preises an.
-    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Währungseinheit für den Preis, z.B. Euro oder Ct.
-    einheit: Waehrungseinheit = attr.ib(validator=attr.validators.in_(Waehrungseinheit))
+    einheit: Waehrungseinheit = attrs.field(validator=attrs.validators.in_(Waehrungseinheit))
     #: Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
-    bezugswert: Mengeneinheit = attr.ib(validator=attr.validators.in_(Mengeneinheit))
+    bezugswert: Mengeneinheit = attrs.field(validator=attrs.validators.in_(Mengeneinheit))
 
     # optional attributes
     #: Gibt den Status des veröffentlichten Preises an
-    status: Optional[Preisstatus] = attr.ib(default=None)
+    status: Optional[Preisstatus] = attrs.field(default=None)
 
 
 class PreisSchema(COMSchema):

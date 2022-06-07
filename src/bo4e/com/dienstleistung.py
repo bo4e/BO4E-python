@@ -3,7 +3,7 @@ Contains Dienstleistung class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -12,7 +12,7 @@ from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Dienstleistung(COM):
     """
     Abbildung einer abrechenbaren Dienstleistung.
@@ -24,9 +24,9 @@ class Dienstleistung(COM):
 
     # required attributes
     #: Kennzeichnung der Dienstleistung
-    dienstleistungstyp: Dienstleistungstyp = attr.ib(validator=attr.validators.in_(Dienstleistungstyp))
+    dienstleistungstyp: Dienstleistungstyp = attrs.field(validator=attrs.validators.in_(Dienstleistungstyp))
     #: Bezeichnung der Dienstleistung
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
 
 
 class DienstleistungSchema(COMSchema):

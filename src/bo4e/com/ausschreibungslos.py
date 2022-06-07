@@ -4,7 +4,7 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -20,7 +20,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Ausschreibungslos(COM):
     """
     Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung
@@ -32,54 +32,54 @@ class Ausschreibungslos(COM):
 
     # required attributes
     #: Laufende Nummer des Loses
-    losnummer: str = attr.ib(validator=attr.validators.instance_of(str))
+    losnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Bezeichnung der Ausschreibung
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
-    preismodell: Preismodell = attr.ib(validator=attr.validators.instance_of(Preismodell))
+    preismodell: Preismodell = attrs.field(validator=attrs.validators.instance_of(Preismodell))
 
     #: Unterscheidungsmöglichkeiten für die Sparte
-    energieart: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
+    energieart: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
     #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
-    wunsch_rechnungslegung: Rechnungslegung = attr.ib(validator=attr.validators.instance_of(Rechnungslegung))
+    wunsch_rechnungslegung: Rechnungslegung = attrs.field(validator=attrs.validators.instance_of(Rechnungslegung))
     #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
-    wunsch_vertragsform: Vertragsform = attr.ib(validator=attr.validators.instance_of(Vertragsform))
+    wunsch_vertragsform: Vertragsform = attrs.field(validator=attrs.validators.instance_of(Vertragsform))
     #: Name des Lizenzpartners
-    betreut_durch: str = attr.ib(validator=attr.validators.instance_of(str))
+    betreut_durch: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Anzahl der Lieferstellen in dieser Ausschreibung
-    anzahl_lieferstellen: int = attr.ib(validator=attr.validators.instance_of(int))
+    anzahl_lieferstellen: int = attrs.field(validator=attrs.validators.instance_of(int))
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: List[Ausschreibungsdetail] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Ausschreibungsdetail),
+    lieferstellen: List[Ausschreibungsdetail] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Ausschreibungsdetail),
             iterable_validator=check_list_length_at_least_one,
         )
     )
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    lieferzeitraum: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
 
     # optional attributes
     #: Bemerkung des Kunden zum Los
-    bemerkung: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    bemerkung: Optional[str] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
     )
     #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an
-    gesamt_menge: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    gesamt_menge: Optional[Menge] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
     )
     #: Mindesmenge Toleranzband (kWh, %)
-    wunsch_mindestmenge: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    wunsch_mindestmenge: Optional[Menge] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
     )
     #: Maximalmenge Toleranzband (kWh, %)
-    wunsch_maximalmenge: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    wunsch_maximalmenge: Optional[Menge] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
     )
 
-    wiederholungsintervall: Optional[Zeitraum] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)), default=None
+    wiederholungsintervall: Optional[Zeitraum] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum)), default=None
     )
     """
     In welchem Intervall die Angebotsabgabe wiederholt werden darf.
@@ -87,12 +87,12 @@ class Ausschreibungslos(COM):
     """
 
     #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
-    wunsch_kuendingungsfrist: Optional[Zeitraum] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)), default=None
+    wunsch_kuendingungsfrist: Optional[Zeitraum] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum)), default=None
     )
     #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
-    wunsch_zahlungsziel: Optional[Zeitraum] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Zeitraum)), default=None
+    wunsch_zahlungsziel: Optional[Zeitraum] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum)), default=None
     )
 
 

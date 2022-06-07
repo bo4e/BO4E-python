@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,7 @@ from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Zeitreihenwertkompakt(COM):
     """
     Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.
@@ -26,14 +26,14 @@ class Zeitreihenwertkompakt(COM):
     """
 
     # required attributes
-    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Der im Zeitintervall gültige Wert.
+    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Der im Zeitintervall gültige Wert.
 
     # optional attributes
-    status: Optional[Messwertstatus] = attr.ib(
+    status: Optional[Messwertstatus] = attrs.field(
         default=None
     )  #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
 
-    statuszusatz: Optional[Messwertstatuszusatz] = attr.ib(
+    statuszusatz: Optional[Messwertstatuszusatz] = attrs.field(
         default=None
     )  #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
 

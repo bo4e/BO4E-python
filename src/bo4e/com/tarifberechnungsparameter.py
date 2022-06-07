@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,7 @@ from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 # https://github.com/Hochfrequenz/BO4E-python/issues/328
 
 # pylint: disable=too-few-public-methods, empty-docstring, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Tarifberechnungsparameter(COM):
     """
 
@@ -32,16 +32,16 @@ class Tarifberechnungsparameter(COM):
     # optional attributes
 
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
-    berechnungsmethode: Optional[Tarifkalkulationsmethode] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifkalkulationsmethode))
+    berechnungsmethode: Optional[Tarifkalkulationsmethode] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Tarifkalkulationsmethode))
     )
     #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
-    messpreis_in_gp_enthalten: Optional[bool] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(bool))
+    messpreis_in_gp_enthalten: Optional[bool] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(bool))
     )
 
-    messpreis_beruecksichtigen: Optional[bool] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(bool))
+    messpreis_beruecksichtigen: Optional[bool] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(bool))
     )
     """
     True, falls bei der Bildung des Durchschnittspreises für die Höchst- und Mindestpreisbetrachtung der Messpreis mit
@@ -49,41 +49,41 @@ class Tarifberechnungsparameter(COM):
     """
 
     #: Typ des Messpreises
-    messpreistyp: Optional[Messpreistyp] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Messpreistyp))
+    messpreistyp: Optional[Messpreistyp] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Messpreistyp))
     )
 
     #: Im Preis bereits eingeschlossene Leistung (für Gas)
-    kw_inklusive: Optional[Decimal] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Decimal))
+    kw_inklusive: Optional[Decimal] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Decimal))
     )
     # todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327
 
     #: Intervall, indem die über "kwInklusive" hinaus abgenommene Leistung kostenpflichtig wird (z.B. je 5 kW 20 EURO)
-    kw_weitere_mengen: Optional[Decimal] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Decimal))
+    kw_weitere_mengen: Optional[Decimal] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Decimal))
     )
     # todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327
 
     #: Höchstpreis für den Durchschnitts-Arbeitspreis NT
-    hoechstpreis_n_t: Optional[Preis] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Preis))
+    hoechstpreis_n_t: Optional[Preis] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Preis))
     )
     #: Höchstpreis für den Durchschnitts-Arbeitspreis HT
-    hoechstpreis_h_t: Optional[Preis] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Preis))
+    hoechstpreis_h_t: Optional[Preis] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Preis))
     )
     #: Mindestpreis für den Durchschnitts-Arbeitspreis
-    mindestpreis: Optional[Preis] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Preis))
+    mindestpreis: Optional[Preis] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Preis))
     )
     #: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise
-    zusatzpreise: Optional[List[Tarifpreis]] = attr.ib(
+    zusatzpreise: Optional[List[Tarifpreis]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Tarifpreis),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Tarifpreis),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )

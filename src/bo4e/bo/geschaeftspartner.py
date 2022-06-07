@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import List, Optional, Type
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,7 @@ from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 
 
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Geschaeftspartner(Geschaeftsobjekt):
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
@@ -31,7 +31,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSPARTNER)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.GESCHAEFTSPARTNER)
     name1: str
     """
     Erster Teil des Namens.
@@ -47,41 +47,41 @@ class Geschaeftspartner(Geschaeftsobjekt):
     oder eine Privatperson handelt. (gewerbeKennzeichnung = false)
     """
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
-    geschaeftspartnerrolle: List[Geschaeftspartnerrolle] = attr.ib(validator=attr.validators.instance_of(List))
+    geschaeftspartnerrolle: List[Geschaeftspartnerrolle] = attrs.field(validator=attrs.validators.instance_of(List))
     # todo: rename to plural
 
     # optional attributes
     #: Die Anrede für den GePa, Z.B. "Herr"
-    anrede: Anrede = attr.ib(default=None)
-    name2: Optional[str] = attr.ib(default=None)
+    anrede: Anrede = attrs.field(default=None)
+    name2: Optional[str] = attrs.field(default=None)
     """
     Zweiter Teil des Namens.
     Hier kann der eine Erweiterung zum Firmennamen oder bei Privatpersonen beispielsweise der Vorname dagestellt werden.
     Beispiele: Bereich Süd oder Nina
     """
 
-    name3: Optional[str] = attr.ib(default=None)
+    name3: Optional[str] = attrs.field(default=None)
     """
     Dritter Teil des Namens.
     Hier können weitere Ergänzungen zum Firmennamen oder bei Privatpersonen Zusätze zum Namen dagestellt werden.
     Beispiele: und Afrika oder Sängerin
     """
     #: Handelsregisternummer des Geschäftspartners
-    hrnummer: Optional[str] = attr.ib(default=None)
+    hrnummer: Optional[str] = attrs.field(default=None)
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
-    amtsgericht: Optional[str] = attr.ib(default=None)
+    amtsgericht: Optional[str] = attrs.field(default=None)
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: List[Kontaktart] = attr.ib(default=[])
+    kontaktweg: List[Kontaktart] = attrs.field(default=[])
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
-    umsatzsteuer_id: Optional[str] = attr.ib(default=None)
+    umsatzsteuer_id: Optional[str] = attrs.field(default=None)
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
-    glaeubiger_id: Optional[str] = attr.ib(default=None)
+    glaeubiger_id: Optional[str] = attrs.field(default=None)
     #: E-Mail-Adresse des Ansprechpartners. Z.B. "info@hochfrequenz.de"
-    e_mail_adresse: Optional[str] = attr.ib(default=None)
+    e_mail_adresse: Optional[str] = attrs.field(default=None)
     #: Internetseite des Marktpartners
-    website: Optional[str] = attr.ib(default=None)
+    website: Optional[str] = attrs.field(default=None)
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
-    partneradresse: Adresse = attr.ib(default=None)  # todo: is it plural or not? the docs are bad
+    partneradresse: Adresse = attrs.field(default=None)  # todo: is it plural or not? the docs are bad
 
 
 class GeschaeftspartnerSchema(GeschaeftsobjektSchema):

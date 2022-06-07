@@ -2,14 +2,14 @@
 Contains Marktgebietinfo class
 and corresponding marshmallow schema for de-/serialization
 """
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class MarktgebietInfo(COM):
     """
     Informationen zum Marktgebiet im Gas.

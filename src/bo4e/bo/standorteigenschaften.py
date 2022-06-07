@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -16,7 +16,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Standorteigenschaften(Geschaeftsobjekt):
     """
     Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.
@@ -27,22 +27,22 @@ class Standorteigenschaften(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.STANDORTEIGENSCHAFTEN)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.STANDORTEIGENSCHAFTEN)
     #: Allgemeine Eigenschaften
-    eigenschaften_allgemein: StandorteigenschaftenAllgemein = attr.ib(
-        validator=attr.validators.instance_of(StandorteigenschaftenAllgemein)
+    eigenschaften_allgemein: StandorteigenschaftenAllgemein = attrs.field(
+        validator=attrs.validators.instance_of(StandorteigenschaftenAllgemein)
     )
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: List[StandorteigenschaftenStrom] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(StandorteigenschaftenStrom),
+    eigenschaften_strom: List[StandorteigenschaftenStrom] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(StandorteigenschaftenStrom),
             iterable_validator=check_list_length_at_least_one,
         )
     )
     # optional attributes
     #: Eigenschaften zur Sparte Gas
-    eigenschaften_gas: Optional[StandorteigenschaftenGas] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(StandorteigenschaftenGas)), default=None
+    eigenschaften_gas: Optional[StandorteigenschaftenGas] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(StandorteigenschaftenGas)), default=None
     )
 
 

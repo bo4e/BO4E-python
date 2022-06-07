@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -14,7 +14,7 @@ from bo4e.enum.erzeugungsart import Erzeugungsart
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Energieherkunft(COM):
     """
     Abbildung einer Energieherkunft
@@ -26,9 +26,9 @@ class Energieherkunft(COM):
 
     # required attributes
     #: Art der Erzeugung der Energie.
-    erzeugungsart: Erzeugungsart = attr.ib(validator=attr.validators.in_(Erzeugungsart))
+    erzeugungsart: Erzeugungsart = attrs.field(validator=attrs.validators.in_(Erzeugungsart))
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
-    anteil_prozent: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    anteil_prozent: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
 
     @anteil_prozent.validator
     # pylint: disable=unused-argument, no-self-use

@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
@@ -12,7 +12,7 @@ from bo4e.validators import check_bis_is_later_than_von
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Zeitreihenwert(Zeitreihenwertkompakt):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
@@ -23,11 +23,11 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     """
 
     # required attributes
-    datum_uhrzeit_von: datetime = attr.ib(
-        validator=[attr.validators.instance_of(datetime), check_bis_is_later_than_von]
+    datum_uhrzeit_von: datetime = attrs.field(
+        validator=[attrs.validators.instance_of(datetime), check_bis_is_later_than_von]
     )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
-    datum_uhrzeit_bis: datetime = attr.ib(
-        validator=[attr.validators.instance_of(datetime), check_bis_is_later_than_von]
+    datum_uhrzeit_bis: datetime = attrs.field(
+        validator=[attrs.validators.instance_of(datetime), check_bis_is_later_than_von]
     )  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
 
     def _get_inclusive_start(self) -> datetime:

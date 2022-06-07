@@ -3,7 +3,7 @@ Contains RegionalePreisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
@@ -11,7 +11,7 @@ from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltig
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class RegionalePreisgarantie(Preisgarantie):
     """
     Abbildung einer Preisgarantie mit regionaler Abgrenzung
@@ -23,7 +23,9 @@ class RegionalePreisgarantie(Preisgarantie):
 
     # required attributes
     #: Regionale Eingrenzung der Preisgarantie.
-    regionale_gueltigkeit: RegionaleGueltigkeit = attr.ib(validator=attr.validators.instance_of(RegionaleGueltigkeit))
+    regionale_gueltigkeit: RegionaleGueltigkeit = attrs.field(
+        validator=attrs.validators.instance_of(RegionaleGueltigkeit)
+    )
 
 
 class RegionalePreisgarantieSchema(PreisgarantieSchema):

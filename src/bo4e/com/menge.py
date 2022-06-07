@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -14,7 +14,7 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Menge(COM):
     """
     Abbildung einer Menge mit Wert und Einheit.
@@ -26,9 +26,9 @@ class Menge(COM):
 
     # required attributes
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
+    einheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
 
 
 class MengeSchema(COMSchema):

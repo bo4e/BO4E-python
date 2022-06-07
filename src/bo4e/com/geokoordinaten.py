@@ -4,14 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Geokoordinaten(COM):
     """
     This component provides the geo-coordinates for a location.
@@ -21,9 +21,9 @@ class Geokoordinaten(COM):
 
     """
 
-    # = attr.ib() has to be there, to make the validator work
-    breitengrad: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
-    laengengrad: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    # = attrs.field() has to be there, to make the validator work
+    breitengrad: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    laengengrad: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
 
 
 class GeokoordinatenSchema(COMSchema):

@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 import re
 from typing import List, Optional
 
-import attr
+import attrs
 from iso3166 import countries  # type:ignore[import]
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
@@ -32,7 +32,7 @@ _melo_id_pattern = re.compile(r"^[A-Z]{2}\d{6}\d{5}[A-Z\d]{20}$")
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Messlokation(Geschaeftsobjekt):
     """
     Object containing information about a Messlokation
@@ -52,48 +52,48 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError(f"The country code '{value[0:2]}' is not a valid country code")
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.MESSLOKATION)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.MESSLOKATION)
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
-    messlokations_id: str = attr.ib(validator=_validate_messlokations_id)
+    messlokations_id: str = attrs.field(validator=_validate_messlokations_id)
     #: Sparte der Messlokation, z.B. Gas oder Strom
     sparte: Sparte
 
     # optional attributes
     #: Spannungsebene der Messung
-    netzebene_messung: Optional[Netzebene] = attr.ib(default=None)
+    netzebene_messung: Optional[Netzebene] = attrs.field(default=None)
     #: Die Nummer des Messgebietes in der ene't-Datenbank
-    messgebietnr: Optional[str] = attr.ib(default=None)
+    messgebietnr: Optional[str] = attrs.field(default=None)
     #: Liste der Hardware, die zu dieser Messstelle gehört
-    geraete: Optional[List[Hardware]] = attr.ib(default=None)
+    geraete: Optional[List[Hardware]] = attrs.field(default=None)
     #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
-    messdienstleistung: Optional[List[Dienstleistung]] = attr.ib(default=None)  # todo: rename to plural
+    messdienstleistung: Optional[List[Dienstleistung]] = attrs.field(default=None)  # todo: rename to plural
     #: Zähler, die zu dieser Messlokation gehören
-    messlokationszaehler: Optional[List[Zaehler]] = attr.ib(default=None)
+    messlokationszaehler: Optional[List[Zaehler]] = attrs.field(default=None)
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr: Optional[str] = attr.ib(default=None)
+    grundzustaendiger_msb_codenr: Optional[str] = attrs.field(default=None)
     """
     Codenummer des grundzuständigen Messstellenbetreibers, der für diese Messlokation zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
-    grundzustaendiger_msbim_codenr: Optional[str] = attr.ib(default=None)
+    grundzustaendiger_msbim_codenr: Optional[str] = attrs.field(default=None)
     """
     Codenummer des grundzuständigen Messstellenbetreibers für intelligente Messsysteme, der für diese Messlokation
     zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
     # only one of the following three optional address attributes can be set
-    messadresse: Optional[Adresse] = attr.ib(default=None)
+    messadresse: Optional[Adresse] = attrs.field(default=None)
     """
     Die Adresse, an der die Messeinrichtungen zu finden sind.
     (Nur angeben, wenn diese von der Adresse der Marktlokation abweicht.)
     """
-    geoadresse: Optional[Geokoordinaten] = attr.ib(default=None)
+    geoadresse: Optional[Geokoordinaten] = attrs.field(default=None)
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Optional[Katasteradresse] = attr.ib(default=None)
+    katasterinformation: Optional[Katasteradresse] = attrs.field(default=None)
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
@@ -150,8 +150,8 @@ class MesslokationSchema(GeschaeftsobjektSchema):
     messlokationszaehler = fields.List(fields.Nested(ZaehlerSchema), load_default=None)
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr = fields.Str(missing=None, data_key="grundzustaendigerMsbCodenr")
-    grundzustaendiger_msbim_codenr = fields.Str(missing=None, data_key="grundzustaendigerMsbimCodenr")
+    grundzustaendiger_msb_codenr = fields.Str(load_default=None, data_key="grundzustaendigerMsbCodenr")
+    grundzustaendiger_msbim_codenr = fields.Str(load_default=None, data_key="grundzustaendigerMsbimCodenr")
 
     # only one of the following three optional attributes can be set
     messadresse = fields.Nested(AdresseSchema, load_default=None)

@@ -4,7 +4,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Ausschreibungsdetail(COM):
     """
     Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines
@@ -30,38 +30,40 @@ class Ausschreibungsdetail(COM):
 
     # required attributes
     #: Identifikation einer ausgeschriebenen Marktlokation
-    lokations_id: str = attr.ib(validator=attr.validators.instance_of(str))
+    lokations_id: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung
-    netzebene_lieferung: str = attr.ib(validator=attr.validators.instance_of(Netzebene))
+    netzebene_lieferung: str = attrs.field(validator=attrs.validators.instance_of(Netzebene))
     #: In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung
-    netzebene_messung: str = attr.ib(validator=attr.validators.instance_of(Netzebene))
+    netzebene_messung: str = attrs.field(validator=attrs.validators.instance_of(Netzebene))
     #: Die Adresse an der die Marktlokation sich befindet
-    lokationsadresse: Adresse = attr.ib(validator=attr.validators.instance_of(Adresse))
+    lokationsadresse: Adresse = attrs.field(validator=attrs.validators.instance_of(Adresse))
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
-    lieferzeitraum: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    lieferzeitraum: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
 
     # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
-    netzbetreiber: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    netzbetreiber: Optional[str] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
     )
     #: Bezeichnung des Kunden, der die Marktlokation nutzt
-    kunde: Optional[str] = attr.ib(validator=attr.validators.optional(attr.validators.instance_of(str)), default=None)
+    kunde: Optional[str] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
+    )
     #: Die Bezeichnung des Zählers an der Marktlokation
-    zaehlernummer: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    zaehlernummer: Optional[str] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
     )
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
-    lokationsbezeichnung: Optional[str] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(str)), default=None
+    lokationsbezeichnung: Optional[str] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
     )
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
-    zaehlertechnik: Optional[Zaehlertyp] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Zaehlertyp)), default=None
+    zaehlertechnik: Optional[Zaehlertyp] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Zaehlertyp)), default=None
     )
-    lastgang_vorhanden: Optional[bool] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(bool)), default=None
+    lastgang_vorhanden: Optional[bool] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(bool)), default=None
     )
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
@@ -69,20 +71,20 @@ class Ausschreibungsdetail(COM):
     """
 
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
-    prognose_jahresarbeit: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    prognose_jahresarbeit: Optional[Menge] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
     )
     #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
-    prognose_arbeit_lieferzeitraum: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    prognose_arbeit_lieferzeitraum: Optional[Menge] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
     )
     #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
-    prognose_leistung: Optional[Menge] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Menge)), default=None
+    prognose_leistung: Optional[Menge] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
     )
     #: Die (evtl. abweichende) Rechnungsadresse
-    rechnungsadresse: Optional[Adresse] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Adresse)), default=None
+    rechnungsadresse: Optional[Adresse] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Adresse)), default=None
     )
 
 

@@ -3,7 +3,7 @@ Contains Fremdkosten class and corresponding marshmallow schema for de-/serializ
 """
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -14,7 +14,7 @@ from bo4e.enum.botyp import BoTyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Fremdkosten(Geschaeftsobjekt):
     """
     Mit diesem BO werden die Fremdkosten, beispielsweise für eine Angebotserstellung oder eine Rechnungsprüfung,
@@ -27,21 +27,21 @@ class Fremdkosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.FREMDKOSTEN)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.FREMDKOSTEN)
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[Betrag] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(Betrag)), default=None
+    summe_kosten: Optional[Betrag] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(Betrag)), default=None
     )
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[List[Fremdkostenblock]] = attr.ib(
+    kostenbloecke: Optional[List[Fremdkostenblock]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Fremdkostenblock),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Fremdkostenblock),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )

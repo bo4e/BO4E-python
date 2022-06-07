@@ -3,7 +3,7 @@ Contains PreisblattDienstleistung class and corresponding marshmallow schema for
 """
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,7 @@ from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class PreisblattDienstleistung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für wahlfreie Dienstleistungen
@@ -25,26 +25,28 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATTDIENSTLEISTUNG)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATTDIENSTLEISTUNG)
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Bilanzierungsmethode = attr.ib(validator=attr.validators.instance_of(Bilanzierungsmethode))
+    bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
+        validator=attrs.validators.instance_of(Bilanzierungsmethode)
+    )
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
-    basisdienstleistung: Dienstleistungstyp = attr.ib(validator=attr.validators.instance_of(Dienstleistungstyp))
+    basisdienstleistung: Dienstleistungstyp = attrs.field(validator=attrs.validators.instance_of(Dienstleistungstyp))
 
     # optional attributes
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
-    geraetedetails: Optional[Geraeteeigenschaften] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Geraeteeigenschaften))
+    geraetedetails: Optional[Geraeteeigenschaften] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Geraeteeigenschaften))
     )
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
-    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = attr.ib(
+    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Dienstleistungstyp),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Dienstleistungstyp),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )

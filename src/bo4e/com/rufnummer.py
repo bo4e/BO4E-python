@@ -2,7 +2,7 @@
 Contains Rufnummer class and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -11,7 +11,7 @@ from bo4e.enum.rufnummernart import Rufnummernart
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Rufnummer(COM):
     """
     Contains information to call or fax someone
@@ -23,9 +23,9 @@ class Rufnummer(COM):
 
     # required attributes
     #: Ausprägung der Nummer
-    nummerntyp: Rufnummernart = attr.ib(validator=attr.validators.in_(Rufnummernart))
+    nummerntyp: Rufnummernart = attrs.field(validator=attrs.validators.in_(Rufnummernart))
     #: Die konkrete Nummer
-    rufnummer: str = attr.ib(validator=attr.validators.instance_of(str))
+    rufnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
 
 
 class RufnummerSchema(COMSchema):

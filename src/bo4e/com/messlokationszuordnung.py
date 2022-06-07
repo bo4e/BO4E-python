@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -13,7 +13,7 @@ from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Messlokationszuordnung(COM):
     """
     Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.
@@ -30,8 +30,8 @@ class Messlokationszuordnung(COM):
     arithmetik: ArithmetischeOperation
 
     # optional attributes
-    gueltig_seit: datetime = attr.ib(default=None)
-    gueltig_bis: datetime = attr.ib(default=None)
+    gueltig_seit: datetime = attrs.field(default=None)
+    gueltig_bis: datetime = attrs.field(default=None)
 
 
 class MesslokationszuordnungSchema(COMSchema):

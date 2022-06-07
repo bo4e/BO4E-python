@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import List
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Energiemix(COM):
     """
     Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.
@@ -31,33 +31,33 @@ class Energiemix(COM):
 
     # required attributes
     #: Eindeutige Nummer zur Identifizierung des Energiemixes
-    energiemixnummer: int = attr.ib(validator=attr.validators.instance_of(int))
+    energiemixnummer: int = attrs.field(validator=attrs.validators.instance_of(int))
     #: Strom oder Gas etc.
-    energieart: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
+    energieart: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
     #: Bezeichnung des Energiemix
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Jahr, für das der Energiemix gilt
-    gueltigkeitsjahr: int = attr.ib(validator=attr.validators.instance_of(int))
+    gueltigkeitsjahr: int = attrs.field(validator=attrs.validators.instance_of(int))
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: List[Energieherkunft] = attr.ib(
-        validator=[attr.validators.instance_of(List), check_list_length_at_least_one]
+    anteil: List[Energieherkunft] = attrs.field(
+        validator=[attrs.validators.instance_of(List), check_list_length_at_least_one]
     )
 
     # optional attributes
     #: Bemerkung zum Energiemix
-    bemerkung: str = attr.ib(default=None)
+    bemerkung: str = attrs.field(default=None)
     #: Höhe des erzeugten CO2-Ausstosses in g/kWh
-    co2_emission: Decimal = attr.ib(default=None)
+    co2_emission: Decimal = attrs.field(default=None)
     #: Höhe des erzeugten Atommülls in g/kWh
-    atommuell: Decimal = attr.ib(default=None)
+    atommuell: Decimal = attrs.field(default=None)
     #: Zertifikate für den Energiemix
-    oekozertifikate: List[Oekozertifikat] = attr.ib(default=[])
+    oekozertifikate: List[Oekozertifikat] = attrs.field(default=[])
     #: Ökolabel für den Energiemix
-    oekolabel: List[Oekolabel] = attr.ib(default=[])
+    oekolabel: List[Oekolabel] = attrs.field(default=[])
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
-    oeko_top_ten: bool = attr.ib(default=None)
+    oeko_top_ten: bool = attrs.field(default=None)
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
-    website: str = attr.ib(default=None)
+    website: str = attrs.field(default=None)
 
 
 class EnergiemixSchema(COMSchema):

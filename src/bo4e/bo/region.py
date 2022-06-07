@@ -3,7 +3,7 @@ Contains Region class and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
@@ -13,7 +13,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Region(Geschaeftsobjekt):
     """
     Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben
@@ -24,26 +24,26 @@ class Region(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.REGION)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.REGION)
     #: Bezeichnung der Region
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
 
     #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: List[Regionskriterium] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Regionskriterium),
+    positiv_liste: List[Regionskriterium] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Regionskriterium),
             iterable_validator=check_list_length_at_least_one,
         )
     )
 
     # optional attributes
     #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: Optional[List[Regionskriterium]] = attr.ib(
+    negativ_liste: Optional[List[Regionskriterium]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Regionskriterium),
-                iterable_validator=attr.validators.instance_of(list),  # no min length for negativListe
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Regionskriterium),
+                iterable_validator=attrs.validators.instance_of(list),  # no min length for negativListe
             )
         ),
     )

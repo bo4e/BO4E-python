@@ -2,7 +2,7 @@
 Contains Ansprechpartner class
 and corresponding marshmallow schema for de-/serialization
 """
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,7 @@ from bo4e.enum.titel import Titel
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Ansprechpartner(Geschaeftsobjekt):
     """
     Object containing information about a Ansprechpartner
@@ -28,28 +28,30 @@ class Ansprechpartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.ANSPRECHPARTNER)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.ANSPRECHPARTNER)
     nachname: str  #: Nachname (Familienname) des Ansprechpartners
     geschaeftspartner: Geschaeftspartner  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
     # optional attributes
-    anrede: Anrede = attr.ib(default=None)  #: Mögliche Anrede des Ansprechpartners
-    individuelle_anrede: str = attr.ib(default=None)
+    anrede: Anrede = attrs.field(default=None)  #: Mögliche Anrede des Ansprechpartners
+    individuelle_anrede: str = attrs.field(default=None)
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Sehr geehrte Frau Müller, sehr geehrter Herr Dr. Müller"
     """
 
-    titel: Titel = attr.ib(default=None)  #: Möglicher Titel des Ansprechpartners
-    vorname: str = attr.ib(default=None)  #: Vorname des Ansprechpartners
-    e_mail_adresse: str = attr.ib(default=None)  #: E-Mail Adresse
-    kommentar: str = attr.ib(default=None)  #: Weitere Informationen zum Ansprechpartner
+    titel: Titel = attrs.field(default=None)  #: Möglicher Titel des Ansprechpartners
+    vorname: str = attrs.field(default=None)  #: Vorname des Ansprechpartners
+    e_mail_adresse: str = attrs.field(default=None)  #: E-Mail Adresse
+    kommentar: str = attrs.field(default=None)  #: Weitere Informationen zum Ansprechpartner
     #: Adresse des Ansprechpartners, falls diese von der Adresse des Geschäftspartners abweicht
-    adresse: Adresse = attr.ib(default=None)
+    adresse: Adresse = attrs.field(default=None)
     #: Liste der Telefonnummern, unter denen der Ansprechpartner erreichbar ist
-    rufnummer: Rufnummer = attr.ib(default=None)  # todo: make this a list and rename to rufnummern
+    rufnummer: Rufnummer = attrs.field(default=None)  # todo: make this a list and rename to rufnummern
     #: Liste der Abteilungen und Zuständigkeiten des Ansprechpartners
-    zustaendigkeit: Zustaendigkeit = attr.ib(default=None)  # todo: make this a list and rename to "zustaendigkeiten"
+    zustaendigkeit: Zustaendigkeit = attrs.field(
+        default=None
+    )  # todo: make this a list and rename to "zustaendigkeiten"
 
 
 class AnsprechpartnerSchema(GeschaeftsobjektSchema):

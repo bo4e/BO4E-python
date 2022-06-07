@@ -3,12 +3,12 @@ Contains base class for all components
 """
 from typing import Generic, Type, TypeVar
 
-import attr
+import attrs
 from marshmallow import Schema, post_load
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class COM:
     """
     base class for all components

@@ -4,14 +4,14 @@ Contains Sigmoidparameter class and corresponding marshmallow schema for de-/ser
 
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
 # pylint:disable=invalid-name, too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Sigmoidparameter(COM):
     """
     Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:
@@ -23,10 +23,12 @@ class Sigmoidparameter(COM):
     """
 
     # required attributes
-    A: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Briefmarke Ortsverteilnetz (EUR/kWh)
-    B: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Wendepunkt für die bepreiste Menge (kW)
-    C: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Exponent (einheitenlos)
-    D: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Briefmarke Transportnetz (EUR/kWh)
+    A: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Briefmarke Ortsverteilnetz (EUR/kWh)
+    B: Decimal = attrs.field(
+        validator=attrs.validators.instance_of(Decimal)
+    )  #: Wendepunkt für die bepreiste Menge (kW)
+    C: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Exponent (einheitenlos)
+    D: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Briefmarke Transportnetz (EUR/kWh)
 
     def calculate(self, leistung: Decimal) -> Decimal:
         """
