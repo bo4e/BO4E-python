@@ -1,4 +1,4 @@
-from typing import List, Optional
+from typing import List
 
 from bo4e.enum.botyp import BoTyp
 from pydantic import BaseModel
