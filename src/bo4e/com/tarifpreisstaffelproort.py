@@ -4,14 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class TarifpreisstaffelProOrt(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an
@@ -26,15 +26,15 @@ class TarifpreisstaffelProOrt(COM):
 
     # required attributes
     #: Der Arbeitspreis in ct/kWh
-    arbeitspreis: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    arbeitspreis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh
-    arbeitspreis_n_t: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    arbeitspreis_n_t: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Der Grundpreis in Euro/Jahr
-    grundpreis: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    grundpreis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Unterer Wert, ab dem die Staffel gilt (inklusive)
-    staffelgrenze_von: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    staffelgrenze_von: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Oberer Wert, bis zu dem die Staffel gilt (exklusive)
-    staffelgrenze_bis: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    staffelgrenze_bis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
 
     # there are no optional attributes
 

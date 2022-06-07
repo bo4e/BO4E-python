@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,7 @@ from bo4e.enum.waehrungscode import Waehrungscode
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Steuerbetrag(COM):
     """
     Abbildung eines Steuerbetrages.
@@ -27,13 +27,13 @@ class Steuerbetrag(COM):
 
     # required attributes
     #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
-    steuerkennzeichen: Steuerkennzeichen = attr.ib(validator=attr.validators.in_(Steuerkennzeichen))
+    steuerkennzeichen: Steuerkennzeichen = attrs.field(validator=attrs.validators.in_(Steuerkennzeichen))
     #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
-    basiswert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    basiswert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
-    steuerwert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    steuerwert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Währung. Z.B. Euro.
-    waehrung: Waehrungscode = attr.ib(validator=attr.validators.in_(Waehrungscode))
+    waehrung: Waehrungscode = attrs.field(validator=attrs.validators.in_(Waehrungscode))
 
 
 class SteuerbetragSchema(COMSchema):

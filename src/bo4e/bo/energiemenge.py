@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -16,7 +16,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Energiemenge(Geschaeftsobjekt):
     """
     Abbildung von Mengen, die Lokationen zugeordnet sind
@@ -27,17 +27,17 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.ENERGIEMENGE)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.ENERGIEMENGE)
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
-    lokations_id: str = attr.ib(validator=attr.validators.instance_of(str))
+    lokations_id: str = attrs.field(validator=attrs.validators.instance_of(str))
     # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp
     #: Gibt an, ob es sich um eine Markt- oder Messlokation handelt
-    lokationstyp: Lokationstyp = attr.ib(validator=attr.validators.instance_of(Lokationstyp))
+    lokationstyp: Lokationstyp = attrs.field(validator=attrs.validators.instance_of(Lokationstyp))
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
-    energieverbrauch: List[Verbrauch] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Verbrauch),
+    energieverbrauch: List[Verbrauch] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Verbrauch),
             iterable_validator=check_list_length_at_least_one,
         )
     )

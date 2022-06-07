@@ -4,7 +4,7 @@ Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serial
 
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -22,7 +22,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class AufAbschlagRegional(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen
@@ -37,13 +37,13 @@ class AufAbschlagRegional(COM):
 
     # required attributess
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    betraege: List[AufAbschlagProOrt] = attr.ib(
+    betraege: List[AufAbschlagProOrt] = attrs.field(
         validator=[
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(AufAbschlagProOrt),
-                iterable_validator=attr.validators.instance_of(list),
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(AufAbschlagProOrt),
+                iterable_validator=attrs.validators.instance_of(list),
             ),
             check_list_length_at_least_one,
         ]
@@ -51,68 +51,70 @@ class AufAbschlagRegional(COM):
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag
-    beschreibung: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    beschreibung: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
     #:Typ des Aufabschlages (z.B. absolut oder prozentual)
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(AufAbschlagstyp))
+    auf_abschlagstyp: Optional[AufAbschlagstyp] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagstyp))
     )
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
-    auf_abschlagsziel: Optional[AufAbschlagsziel] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(AufAbschlagsziel))
+    auf_abschlagsziel: Optional[AufAbschlagsziel] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagsziel))
     )
     #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct.
-    einheit: Optional[Waehrungseinheit] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Waehrungseinheit))
+    einheit: Optional[Waehrungseinheit] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Waehrungseinheit))
     )
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
-    website: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
+    website: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
+    )
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
-    zusatzprodukte: Optional[List[str]] = attr.ib(
+    zusatzprodukte: Optional[List[str]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(str),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(str),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
-    voraussetzungen: Optional[List[str]] = attr.ib(
+    voraussetzungen: Optional[List[str]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(str),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(str),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten.
-    tarifnamensaenderungen: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    tarifnamensaenderungen: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitszeitraum: Optional[Zeitraum] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Zeitraum))
+    gueltigkeitszeitraum: Optional[Zeitraum] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum))
     )
-    energiemixaenderung: Optional[Energiemix] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Energiemix))
+    energiemixaenderung: Optional[Energiemix] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Energiemix))
     )
     """ Der Energiemix kann sich durch einen AufAbschlag ändern (z.B. zwei Cent Aufschlag für Ökostrom:
     Sollte dies der Fall sein, wird hier die neue Zusammensetzung des Energiemix angegeben."""
-    vertagskonditionsaenderung: Optional[Vertragskonditionen] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Vertragskonditionen))
+    vertagskonditionsaenderung: Optional[Vertragskonditionen] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Vertragskonditionen))
     )
     """ Änderungen in den Vertragskonditionen. Falls in dieser Komponenten angegeben,
     werden die Tarifparameter hiermit überschrieben."""
-    garantieaenderung: Optional[Preisgarantie] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Preisgarantie))
+    garantieaenderung: Optional[Preisgarantie] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Preisgarantie))
     )
     """ Änderungen in den Garantievereinbarungen. Falls in dieser Komponenten angegeben,
     werden die Tarifparameter hiermit überschrieben."""
-    einschraenkungsaenderung: Optional[Tarifeinschraenkung] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifeinschraenkung))
+    einschraenkungsaenderung: Optional[Tarifeinschraenkung] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Tarifeinschraenkung))
     )
     """ Änderungen in den Einschränkungen zum Tarif. Falls in dieser Komponenten angegeben,
     werden die Tarifparameter hiermit überschrieben."""

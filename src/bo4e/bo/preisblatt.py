@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Preisblatt(Geschaeftsobjekt):
     """
     Das allgemeine Modell zur Abbildung von Preisen;
@@ -35,26 +35,26 @@ class Preisblatt(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.PREISBLATT)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATT)
     #: Eine Bezeichnung für das Preisblatt
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Preisblatt gilt für angegebene Sparte
-    sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
+    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
     #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
-    preisstatus: Preisstatus = attr.ib(validator=attr.validators.instance_of(Preisstatus))
+    preisstatus: Preisstatus = attrs.field(validator=attrs.validators.instance_of(Preisstatus))
     #: Der Zeitraum für den der Preis festgelegt ist
-    gueltigkeit: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
-    preispositionen: List[Preisposition] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Preisposition),
+    preispositionen: List[Preisposition] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Preisposition),
             iterable_validator=check_list_length_at_least_one,
         )
     )
     # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
-    herausgeber: Optional[Marktteilnehmer] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Marktteilnehmer))
+    herausgeber: Optional[Marktteilnehmer] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Marktteilnehmer))
     )
 
 

@@ -3,7 +3,7 @@ Contains Marktlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -25,7 +25,7 @@ from bo4e.validators import validate_marktlokations_id
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation
@@ -36,9 +36,9 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTLOKATION)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.MARKTLOKATION)
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str = attr.ib(validator=validate_marktlokations_id)
+    marktlokations_id: str = attrs.field(validator=validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
@@ -54,24 +54,24 @@ class Marktlokation(Geschaeftsobjekt):
 
     # optional attributes
     #: Verbrauchsart der Marktlokation.
-    verbrauchsart: Verbrauchsart = attr.ib(default=None)
+    verbrauchsart: Verbrauchsart = attrs.field(default=None)
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
-    unterbrechbar: bool = attr.ib(default=None)
+    unterbrechbar: bool = attrs.field(default=None)
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
-    netzbetreibercodenr: str = attr.ib(default=None)
+    netzbetreibercodenr: str = attrs.field(default=None)
     #: Typ des Netzgebietes, z.B. Verteilnetz
-    gebietstyp: Gebiettyp = attr.ib(default=None)
+    gebietstyp: Gebiettyp = attrs.field(default=None)
     #: Die ID des Gebietes in der ene't-Datenbank
-    netzgebietsnr: str = attr.ib(default=None)  # todo: rename to "id" (see 2021-12-15 update)
+    netzgebietsnr: str = attrs.field(default=None)  # todo: rename to "id" (see 2021-12-15 update)
     #: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
-    bilanzierungsgebiet: str = attr.ib(default=None)
+    bilanzierungsgebiet: str = attrs.field(default=None)
     #: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
-    grundversorgercodenr: str = attr.ib(default=None)
+    grundversorgercodenr: str = attrs.field(default=None)
     #: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
-    gasqualitaet: Gasqualitaet = attr.ib(default=None)
+    gasqualitaet: Gasqualitaet = attrs.field(default=None)
     #: Geschäftspartner, dem diese Marktlokation gehört
-    endkunde: Geschaeftspartner = attr.ib(default=None)
-    zugehoerige_messlokation: Messlokationszuordnung = attr.ib(default=None)  # todo: rename to plural
+    endkunde: Geschaeftspartner = attrs.field(default=None)
+    zugehoerige_messlokation: Messlokationszuordnung = attrs.field(default=None)  # todo: rename to plural
     """
     Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.
     Es können 3 verschiedene Konstrukte auftreten:
@@ -96,13 +96,13 @@ class Marktlokation(Geschaeftsobjekt):
 
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
-    lokationsadresse: Adresse = attr.ib(default=None)
-    geoadresse: Geokoordinaten = attr.ib(default=None)
+    lokationsadresse: Adresse = attrs.field(default=None)
+    geoadresse: Geokoordinaten = attrs.field(default=None)
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Katasteradresse = attr.ib(default=None)
+    katasterinformation: Katasteradresse = attrs.field(default=None)
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.

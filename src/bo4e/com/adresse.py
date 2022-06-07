@@ -3,7 +3,7 @@ Contains Adresse class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -27,7 +27,7 @@ def strasse_xor_postfach(instance, attribute, value):
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Adresse(COM):
     """
     Contains an address that can be used for most purposes.
@@ -39,23 +39,23 @@ class Adresse(COM):
 
     # required attributes
     #: Die Postleitzahl; z.B: "41836"
-    postleitzahl: str = attr.ib(validator=attr.validators.instance_of(str))
+    postleitzahl: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Bezeichnung der Stadt; z.B. "Hückelhoven"
-    ort: str = attr.ib(validator=attr.validators.instance_of(str))
+    ort: str = attrs.field(validator=attrs.validators.instance_of(str))
 
     # optional attributes
     #: Bezeichnung der Straße; z.B. "Weserstraße"
-    strasse: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    strasse: str = attrs.field(default=None, validator=strasse_xor_postfach)
     #: Hausnummer inkl. Zusatz; z.B. "3", "4a"
-    hausnummer: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    hausnummer: str = attrs.field(default=None, validator=strasse_xor_postfach)
     #: Im Falle einer Postfachadresse das Postfach; Damit werden Straße und Hausnummer nicht berücksichtigt
-    postfach: str = attr.ib(default=None, validator=strasse_xor_postfach)
+    postfach: str = attrs.field(default=None, validator=strasse_xor_postfach)
     #: Zusatzhinweis zum Auffinden der Adresse, z.B. "3. Stock linke Wohnung"
-    adresszusatz: str = attr.ib(default=None)
+    adresszusatz: str = attrs.field(default=None)
     #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
-    co_ergaenzung: str = attr.ib(default=None)
+    co_ergaenzung: str = attrs.field(default=None)
     #: Offizieller ISO-Landescode
-    landescode: Landescode = attr.ib(default=Landescode.DE)  # type:ignore
+    landescode: Landescode = attrs.field(default=Landescode.DE)  # type:ignore
 
 
 class AdresseSchema(COMSchema):

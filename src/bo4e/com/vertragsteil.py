@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
@@ -13,7 +13,7 @@ from bo4e.com.menge import Menge, MengeSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,
@@ -25,30 +25,30 @@ class Vertragsteil(COM):
     """
 
     # required attributes
-    vertragsteilbeginn: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    vertragsteilbeginn: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    vertragsteilende: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
     # optional attributes
-    lokation: Optional[str] = attr.ib(default=None)
+    lokation: Optional[str] = attrs.field(default=None)
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
     """
-    vertraglich_fixierte_menge: Optional[Menge] = attr.ib(default=None)
+    vertraglich_fixierte_menge: Optional[Menge] = attrs.field(default=None)
     """
     Für die Lokation festgeschriebene Abnahmemenge
     """
-    minimale_abnahmemenge: Optional[Menge] = attr.ib(default=None)
+    minimale_abnahmemenge: Optional[Menge] = attrs.field(default=None)
     """
     Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
     """
-    maximale_abnahmemenge: Optional[Menge] = attr.ib(default=None)
+    maximale_abnahmemenge: Optional[Menge] = attrs.field(default=None)
     """
     Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
     """

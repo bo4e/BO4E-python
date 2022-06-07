@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=unused-argument, too-few-public-methods
 from typing import List, Optional, Type
 
-import attr
+import attrs
 from marshmallow import Schema, fields, post_load
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -22,7 +22,7 @@ def _create_empty_referenzen_list() -> List[ExterneReferenz]:
     return []
 
 
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Geschaeftsobjekt:  # Base class for all business objects
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
@@ -30,13 +30,13 @@ class Geschaeftsobjekt:  # Base class for all business objects
     """
 
     # required attributes
-    versionstruktur: str = attr.ib(default="2")  #: Version der BO-Struktur aka "fachliche Versionierung"
-    bo_typ: BoTyp = attr.ib(default=BoTyp.GESCHAEFTSOBJEKT)  #: Der Typ des Geschäftsobjektes
+    versionstruktur: str = attrs.field(default="2")  #: Version der BO-Struktur aka "fachliche Versionierung"
+    bo_typ: BoTyp = attrs.field(default=BoTyp.GESCHAEFTSOBJEKT)  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes
-    externe_referenzen: Optional[List[ExterneReferenz]] = attr.ib(
-        default=_create_empty_referenzen_list(), validator=attr.validators.instance_of(List)  # type:ignore[arg-type]
+    externe_referenzen: Optional[List[ExterneReferenz]] = attrs.field(
+        default=_create_empty_referenzen_list(), validator=attrs.validators.instance_of(List)  # type:ignore[arg-type]
     )  #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
 
 

@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
@@ -14,7 +14,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class TarifpreispositionProOrt(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden
@@ -26,16 +26,16 @@ class TarifpreispositionProOrt(COM):
 
     # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: str = attr.ib(validator=attr.validators.matches_re(r"^\d{5}$"))
+    postleitzahl: str = attrs.field(validator=attrs.validators.matches_re(r"^\d{5}$"))
     #: Ort für den der Preis gilt
-    ort: str = attr.ib(validator=attr.validators.instance_of(str))
+    ort: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: ene't-Netznummer des Netzes in dem der Preis gilt
-    netznr: str = attr.ib(validator=attr.validators.instance_of(str))
+    netznr: str = attrs.field(validator=attrs.validators.instance_of(str))
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: List[TarifpreisstaffelProOrt] = attr.ib(
+    preisstaffeln: List[TarifpreisstaffelProOrt] = attrs.field(
         validator=[
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(TarifpreisstaffelProOrt),
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(TarifpreisstaffelProOrt),
                 iterable_validator=check_list_length_at_least_one,
             ),
         ]

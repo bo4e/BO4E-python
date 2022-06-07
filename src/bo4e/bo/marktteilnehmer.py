@@ -2,8 +2,8 @@
 Contains Marktteilnehmer class
 and corresponding marshmallow schema for de-/serialization
 """
-import attr
-from attr.validators import matches_re
+import attrs
+from attrs.validators import matches_re
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -14,7 +14,7 @@ from bo4e.enum.rollencodetyp import Rollencodetyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Marktteilnehmer(Geschaeftspartner):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
@@ -25,17 +25,17 @@ class Marktteilnehmer(Geschaeftspartner):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.MARKTTEILNEHMER)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.MARKTTEILNEHMER)
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: str = attr.ib(validator=matches_re(r"^\d{13}$"))
+    rollencodenummer: str = attrs.field(validator=matches_re(r"^\d{13}$"))
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
-    makoadresse: str = attr.ib(default=None)
+    makoadresse: str = attrs.field(default=None)
 
 
 class MarktteilnehmerSchema(GeschaeftspartnerSchema):

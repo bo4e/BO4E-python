@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.betrag import Betrag, BetragSchema
@@ -14,7 +14,7 @@ from bo4e.com.fremdkostenposition import Fremdkostenposition, Fremdkostenpositio
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Fremdkostenblock(COM):
     """
     Komponente zur Abbildung eines Kostenblocks in den Fremdkosten
@@ -26,15 +26,15 @@ class Fremdkostenblock(COM):
 
     # required attributes
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
-    kostenblockbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    kostenblockbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
 
     # optional attributes
-    kostenpositionen: Optional[List[Fremdkostenposition]] = attr.ib(
+    kostenpositionen: Optional[List[Fremdkostenposition]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Fremdkostenposition),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Fremdkostenposition),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )
@@ -45,8 +45,8 @@ class Fremdkostenblock(COM):
     """
 
     #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Optional[Betrag] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
+    summe_kostenblock: Optional[Betrag] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Betrag))
     )
     # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324
 

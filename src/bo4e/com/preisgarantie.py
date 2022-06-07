@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,7 @@ from bo4e.enum.preisgarantietyp import Preisgarantietyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Preisgarantie(COM):
     """
     Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.
@@ -27,15 +27,15 @@ class Preisgarantie(COM):
 
     # required attributes
     #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
-    preisgarantietyp: Preisgarantietyp = attr.ib(validator=attr.validators.instance_of(Preisgarantietyp))
-    zeitliche_gueltigkeit: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    preisgarantietyp: Preisgarantietyp = attrs.field(validator=attrs.validators.instance_of(Preisgarantietyp))
+    zeitliche_gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
     """ Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum
     oder als Laufzeit in Monaten. """
 
     # optionale attributes
     #: Freitext zur Beschreibung der Preisgarantie.
-    beschreibung: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    beschreibung: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
 
 

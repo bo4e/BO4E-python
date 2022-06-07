@@ -3,7 +3,7 @@ Contains KriteriumWert class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -13,7 +13,7 @@ from bo4e.com.com import COM, COMSchema
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 
 
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class KriteriumWert(COM):
     """
     Mit dieser Komponente können Kriterien und deren Werte definiert werden
@@ -25,9 +25,9 @@ class KriteriumWert(COM):
 
     # required attributes
     #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
-    kriterium: Tarifregionskriterium = attr.ib(validator=attr.validators.instance_of(Tarifregionskriterium))
+    kriterium: Tarifregionskriterium = attrs.field(validator=attrs.validators.instance_of(Tarifregionskriterium))
     #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
-    wert: str = attr.ib(validator=attr.validators.instance_of(str))
+    wert: str = attrs.field(validator=attrs.validators.instance_of(str))
 
 
 class KriteriumWertSchema(COMSchema):
