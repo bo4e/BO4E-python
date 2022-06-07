@@ -20,7 +20,7 @@ from bo4e.validators import check_list_length_at_least_one, obis_validator
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True, slots=False)
 class _LastgangBody:
     """
     The LastgangBody is a mixin that contains the "body" of a Lastgang that is used in both the :class:`Lastgang` as
