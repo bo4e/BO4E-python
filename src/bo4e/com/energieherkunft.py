@@ -31,7 +31,7 @@ class Energieherkunft(COM):
     anteil_prozent: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
 
     @anteil_prozent.validator
-    # pylint: disable=unused-argument, no-self-use
+    # pylint: disable=unused-argument
     def check_percentage_between_0_100(self, attribute, value):
         """Checks that the percentage is between 0 and 100."""
         if not 0 <= value <= 100:

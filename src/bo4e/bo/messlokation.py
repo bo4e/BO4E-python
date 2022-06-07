@@ -42,7 +42,7 @@ class Messlokation(Geschaeftsobjekt):
 
     """
 
-    # pylint: disable=unused-argument, no-self-use
+    # pylint: disable=unused-argument
     def _validate_messlokations_id(self, messlokations_id_attribute, value):
         if not value:
             raise ValueError("The messlokations_id must not be empty.")

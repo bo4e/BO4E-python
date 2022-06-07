@@ -34,7 +34,7 @@ class RegionaleGueltigkeit(COM):
     )  #:  Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
 
     @kriteriums_werte.validator
-    # pylint: disable=unused-argument, no-self-use
+    # pylint: disable=unused-argument
     def check_list_length(self, attribute, value):
         """
         Check that minimal list length is at least one.
