@@ -3,8 +3,13 @@ Contains base class for all components
 """
 from typing import Generic, Type, TypeVar
 from pydantic import BaseModel
+from humps.main import camelize
 import attrs
 from marshmallow import Schema, post_load
+
+
+def to_camel(string):
+    return camelize(string)
 
 
 # pylint: disable=too-few-public-methods
@@ -13,6 +18,10 @@ class COM(BaseModel):
     """
     base class for all components
     """
+
+    class Config:
+        alias_generator = to_camel
+        allow_population_by_field_name = True
 
 
 #: Any type derived from COM including those that do not directly inherit from COM

@@ -3,6 +3,11 @@ from typing import List, Optional
 from bo4e.enum.botyp import BoTyp
 from pydantic import BaseModel
 from bo4e.com.pydantic_externereferenz import ExterneReferenz
+from humps.main import camelize
+
+
+def to_camel(string):
+    return camelize(string)
 
 
 class Geschaeftsobjekt(BaseModel):
@@ -19,3 +24,7 @@ class Geschaeftsobjekt(BaseModel):
     # optional attributes
     externe_referenzen: List[ExterneReferenz] = []
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+
+    class Config:
+        alias_generator = to_camel
+        allow_population_by_field_name = True
