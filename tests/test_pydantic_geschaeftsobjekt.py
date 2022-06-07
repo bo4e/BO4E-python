@@ -35,12 +35,12 @@ class TestGeschaeftsobjet:
         )
         assert isinstance(go, Geschaeftsobjekt)
 
-        go_json = go.json()
+        go_json = go.json(by_alias=True)
 
+        assert "externeReferenzen" in go_json  # check camelCasing
         assert str(versionstruktur) in go_json
 
         go_deserialized = Geschaeftsobjekt.parse_raw(go_json)
-
         assert go_deserialized.bo_typ is bo_typ
         assert go_deserialized.versionstruktur == versionstruktur
         assert go_deserialized.externe_referenzen == externe_referenzen
