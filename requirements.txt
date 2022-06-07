@@ -16,7 +16,11 @@ marshmallow-enum==1.5.1
     # via -r requirements.in
 packaging==21.3
     # via marshmallow
+pydantic==1.9.1
+    # via -r requirements.in
 pyparsing==3.0.9
     # via packaging
 stringcase==1.2.0
     # via -r requirements.in
+typing-extensions==4.2.0
+    # via pydantic
