@@ -1,4 +1,4 @@
-name: "Formatting with black and isort"
+name: "Check code format with black and isort"
 
 on: [push, pull_request]
 jobs:
