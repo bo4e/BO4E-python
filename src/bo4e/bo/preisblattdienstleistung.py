@@ -3,7 +3,7 @@ Contains PreisblattDienstleistung class and corresponding marshmallow schema for
 """
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,8 @@ from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class PreisblattDienstleistung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für wahlfreie Dienstleistungen
@@ -28,40 +29,13 @@ class PreisblattDienstleistung(Preisblatt):
     bo_typ: BoTyp = BoTyp.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
-        validator=attrs.validators.instance_of(Bilanzierungsmethode)
-    )
+    bilanzierungsmethode: Bilanzierungsmethode
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
     basisdienstleistung: Dienstleistungstyp
 
     # optional attributes
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
-    geraetedetails: Optional[Geraeteeigenschaften] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Geraeteeigenschaften))
-    )
+    geraetedetails: Geraeteeigenschaften
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
-    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = attrs.field(
-        default=None,
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(Dienstleistungstyp),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-    )
-
-
-class PreisblattDienstleistungSchema(PreisblattSchema):
-    """
-    Schema for de-/serialization of PreisblattDienstleistung
-    """
-
-    class_name = PreisblattDienstleistung  # type:ignore[assignment]
-    # required attributes
-    bilanzierungsmethode = EnumField(Bilanzierungsmethode)
-    basisdienstleistung = EnumField(Dienstleistungstyp)
-
-    # optional attributes
-    inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp), data_key="inklusiveDienstleistungen")
-    geraetedetails = fields.Nested(GeraeteeigenschaftenSchema)
+    inklusive_dienstleistungen: List[Dienstleistungstyp] = None

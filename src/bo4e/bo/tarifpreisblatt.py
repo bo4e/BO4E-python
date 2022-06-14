@@ -4,7 +4,7 @@ Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/seri
 from datetime import datetime
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.bo.tarifinfo import Tarifinfo
@@ -18,7 +18,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Tarifpreisblatt(Tarifinfo):
     """
     Tarifinformation mit Preisen, Aufschlägen und Berechnungssystematik
@@ -33,49 +35,14 @@ class Tarifpreisblatt(Tarifinfo):
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: datetime
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: List[Tarifpreisposition] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Tarifpreisposition),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    tarifpreise: conlist(Tarifpreisposition, min_items=1)
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Tarifberechnungsparameter = attrs.field(
-        validator=attrs.validators.instance_of(Tarifberechnungsparameter)
-    )
+    berechnungsparameter: Tarifberechnungsparameter
 
     # optional attributes
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Optional[Tarifeinschraenkung] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Tarifeinschraenkung))
-    )
+    tarifeinschraenkung: Tarifeinschraenkung = None
     #: Festlegung von Garantien für bestimmte Preisanteile
-    preisgarantie: Optional[Preisgarantie] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Preisgarantie))
-    )
+    preisgarantie: Preisgarantie = None
     #: Auf- und Abschläge auf die Preise oder Kosten
-    tarif_auf_abschlaege: Optional[List[AufAbschlag]] = attrs.field(
-        default=None,
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(AufAbschlag),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-    )
-
-
-class TarifpreisblattSchema(TarifinfoSchema):
-    """
-    Schema for de-/serialization of Tarifpreisblatt
-    """
-
-    class_name = Tarifpreisblatt  # type:ignore[assignment]
-    # required attributes
-    preisstand = fields.DateTime()
-    berechnungsparameter = fields.Nested(TarifberechnungsparameterSchema)
-    tarifpreise = fields.List(fields.Nested(TarifpreispositionSchema))
-    # optional attributes
-    tarif_auf_abschlaege = fields.List(fields.Nested(AufAbschlagSchema))
-    preisgarantie = fields.Nested(PreisgarantieSchema)
-    tarifeinschraenkung = fields.Nested(TarifeinschraenkungSchema)
+    tarif_auf_abschlaege: List[AufAbschlag] = None

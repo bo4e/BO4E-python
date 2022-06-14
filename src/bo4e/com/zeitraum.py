@@ -7,7 +7,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -52,7 +52,8 @@ def time_range_possibilities(instance, attribute, value):
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Zeitraum(COM):
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
@@ -67,24 +68,9 @@ class Zeitraum(COM):
     """
 
     # optional attributes
-    einheit: Optional[Zeiteinheit] = attrs.field(default=None, validator=time_range_possibilities)
-    dauer: Optional[Decimal] = attrs.field(default=None, validator=time_range_possibilities)
-    startdatum: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
-    enddatum: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
-    startzeitpunkt: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
-    endzeitpunkt: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
-
-
-class ZeitraumSchema(COMSchema):
-    """
-    Schema for de-/serialization of Zeitraum.
-    """
-
-    class_name = Zeitraum
-    # optional attributes
-    einheit = EnumField(Zeiteinheit, load_default=None)
-    dauer = fields.Decimal(load_default=None, as_string=True)
-    startdatum = fields.DateTime(load_default=None)
-    enddatum = fields.DateTime(load_default=None)
-    startzeitpunkt = fields.DateTime(load_default=None)
-    endzeitpunkt = fields.DateTime(load_default=None)
+    einheit: Zeiteinheit = attrs.field(default=None, validator=time_range_possibilities)
+    dauer: Decimal = attrs.field(default=None, validator=time_range_possibilities)
+    startdatum: datetime = attrs.field(default=None, validator=time_range_possibilities)
+    enddatum: datetime = attrs.field(default=None, validator=time_range_possibilities)
+    startzeitpunkt: datetime = attrs.field(default=None, validator=time_range_possibilities)
+    endzeitpunkt: datetime = attrs.field(default=None, validator=time_range_possibilities)

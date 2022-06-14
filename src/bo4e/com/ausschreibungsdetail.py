@@ -4,7 +4,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 
 from typing import Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,8 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Ausschreibungsdetail(COM):
     """
     Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines
@@ -42,75 +43,27 @@ class Ausschreibungsdetail(COM):
 
     # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
-    netzbetreiber: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    netzbetreiber: str = None
     #: Bezeichnung des Kunden, der die Marktlokation nutzt
-    kunde: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    kunde: str = None
     #: Die Bezeichnung des Zählers an der Marktlokation
-    zaehlernummer: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    zaehlernummer: str = None
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
-    lokationsbezeichnung: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    lokationsbezeichnung: str = None
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
-    zaehlertechnik: Optional[Zaehlertyp] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Zaehlertyp)), default=None
-    )
-    lastgang_vorhanden: Optional[bool] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(bool)), default=None
-    )
+    zaehlertechnik: Zaehlertyp = None
+    lastgang_vorhanden: bool = None
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden
     """
 
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
-    prognose_jahresarbeit: Optional[Menge] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
-    )
+    prognose_jahresarbeit: Menge = None
     #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
-    prognose_arbeit_lieferzeitraum: Optional[Menge] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
-    )
+    prognose_arbeit_lieferzeitraum: Menge = None
     #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
-    prognose_leistung: Optional[Menge] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Menge)), default=None
-    )
+    prognose_leistung: Menge = None
     #: Die (evtl. abweichende) Rechnungsadresse
-    rechnungsadresse: Optional[Adresse] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Adresse)), default=None
-    )
-
-
-class AusschreibungsdetailSchema(COMSchema):
-    """
-    Schema for de-/serialization of Ausschreibungsdetail
-    """
-
-    class_name = Ausschreibungsdetail
-    # required attributes
-    lokations_id = fields.Str(data_key="lokationsId")
-    netzebene_lieferung = EnumField(Netzebene, data_key="netzebeneLieferung")
-    netzebene_messung = EnumField(Netzebene, data_key="netzebeneMessung")
-    lokationsadresse = fields.Nested(AdresseSchema)
-    lieferzeitraum = fields.Nested(ZeitraumSchema)
-
-    # optional attributes
-    netzbetreiber = fields.Str(allow_none=True)
-    kunde = fields.Str(allow_none=True)
-    zaehlernummer = fields.Str(allow_none=True)
-    lokationsbezeichnung = fields.Str(allow_none=True)
-    zaehlertechnik = EnumField(Zaehlertyp, allow_none=True)
-    lastgang_vorhanden = fields.Boolean(allow_none=True, data_key="lastgangVorhanden")
-    prognose_jahresarbeit = fields.Nested(MengeSchema, allow_none=True, data_key="prognoseJahresarbeit")
-    prognose_arbeit_lieferzeitraum = fields.Nested(
-        MengeSchema, allow_none=True, data_key="prognoseArbeitLieferzeitraum"
-    )
-    prognose_leistung = fields.Nested(MengeSchema, allow_none=True, data_key="prognoseLeistung")
-    rechnungsadresse = fields.Nested(AdresseSchema, allow_none=True)
+    rechnungsadresse: Adresse = None

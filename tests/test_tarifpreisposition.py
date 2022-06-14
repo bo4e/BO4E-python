@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.tarifpreisposition import Tarifpreisposition, TarifpreispositionSchema
+from bo4e.com.tarifpreisposition import Tarifpreisposition, Tarifpreisposition
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit

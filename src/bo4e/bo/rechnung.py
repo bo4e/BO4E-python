@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -22,7 +22,8 @@ from bo4e.enum.rechnungstyp import Rechnungstyp
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Rechnung(Geschaeftsobjekt):
     """
     Modell für die Abbildung von Rechnungen im Kontext der Energiewirtschaft;
@@ -63,75 +64,21 @@ class Rechnung(Geschaeftsobjekt):
     #: Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt
     zuzahlen: Betrag
     #: Die Rechnungspositionen
-    rechnungspositionen: List[Rechnungsposition] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Rechnungsposition),
-            iterable_validator=attrs.validators.instance_of(List),
-        )
-    )
+    rechnungspositionen: List[Rechnungsposition]
 
     # optional attributes
     #: Bezeichnung für die vorliegende Rechnung
-    rechnungstitel: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    rechnungstitel: str = None
     #: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes
-    rechnungsstatus: Optional[Rechnungsstatus] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Rechnungsstatus))
-    )
+    rechnungsstatus: Rechnungsstatus = None
     #: Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung
-    original_rechnungsnummer: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    original_rechnungsnummer: str = None
     #: Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert
-    vorausgezahlt: Optional[Betrag] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Betrag))
-    )
+    vorausgezahlt: Betrag = None
     #: Gesamtrabatt auf den Bruttobetrag
-    rabatt_brutto: Optional[Betrag] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Betrag))
-    )
-    steuerbetraege: Optional[List[Steuerbetrag]] = attrs.field(
-        default=None,
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(Steuerbetrag),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-    )
+    rabatt_brutto: Betrag = None
+    steuerbetraege: List[Steuerbetrag] = None
     """
     Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
     die Summe dieser Beträge ergibt den Wert für gesamtsteuer.
     """
-
-
-class RechnungSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Rechnung
-    """
-
-    class_name = Rechnung  # type:ignore[assignment]
-
-    # required attributes
-    storno = fields.Bool()
-    rechnungsnummer = fields.Str()
-    rechnungsdatum = fields.DateTime()
-    faelligkeitsdatum = fields.DateTime()
-    rechnungstyp = EnumField(Rechnungstyp)
-    rechnungsperiode = fields.Nested(ZeitraumSchema)
-    rechnungsersteller = fields.Nested(GeschaeftspartnerSchema)
-    rechnungsempfaenger = fields.Nested(GeschaeftspartnerSchema)
-    gesamtnetto = fields.Nested(BetragSchema)
-    gesamtsteuer = fields.Nested(BetragSchema)
-    gesamtbrutto = fields.Nested(BetragSchema)
-    zuzahlen = fields.Nested(BetragSchema)
-    rechnungspositionen = fields.List(fields.Nested(RechnungspositionSchema))
-
-    # optional attributes
-    rechnungstitel = fields.Str(allow_none=True)
-    rechnungsstatus = EnumField(Rechnungsstatus, allow_none=True)
-    original_rechnungsnummer = fields.Str(allow_none=True, data_key="originalRechnungsnummer")
-    vorausgezahlt = fields.Nested(BetragSchema, allow_none=True)
-    rabatt_brutto = fields.Nested(BetragSchema, allow_none=True, data_key="rabattBrutto")
-    steuerbetraege = fields.List(fields.Nested(SteuerbetragSchema), allow_none=True)

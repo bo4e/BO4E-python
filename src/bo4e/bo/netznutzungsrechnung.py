@@ -3,7 +3,7 @@ Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-
 """
 from typing import Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,9 @@ from bo4e.enum.sparte import Sparte
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import constr
+
+
 class Netznutzungsrechnung(Rechnung):
     """
     Modell für die Abbildung von Netznutzungsrechnungen
@@ -29,12 +31,12 @@ class Netznutzungsrechnung(Rechnung):
     bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Sparte
-    absendercodenummer: str = attrs.field(validator=attrs.validators.matches_re(r"^\d{13}$"))
+    absendercodenummer: constr(regex=r"^\d{13}$")
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
-    empfaengercodenummer: str = attrs.field(validator=attrs.validators.matches_re(r"^\d{13}$"))
+    empfaengercodenummer: constr(regex=r"^\d{13}$")
     """
     Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
@@ -50,28 +52,7 @@ class Netznutzungsrechnung(Rechnung):
     simuliert: bool
 
     # optional attributes
-    lokations_id: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    lokations_id: str = None
     """
     Die Markt- oder Messlokations-Identifikation (als Malo/Melo-Id) der Lokation, auf die sich die Rechnung bezieht
     """
-
-
-class NetznutzungsrechnungSchema(RechnungSchema):
-    """
-    Schema for de-/serialization of Netznutzungsrechnung
-    """
-
-    class_name = Netznutzungsrechnung  # type:ignore[assignment]
-
-    # required attributes (additional to those of Rechnung)
-    sparte = EnumField(Sparte)
-    absendercodenummer = fields.Str()
-    empfaengercodenummer = fields.Str()
-    nnrechnungsart = EnumField(NNRechnungsart)
-    nnrechnungstyp = EnumField(NNRechnungstyp)
-    original = fields.Boolean()
-    simuliert = fields.Boolean()
-    # optional attributes
-    lokations_id = fields.Str(allow_none=True)

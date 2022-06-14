@@ -2,7 +2,7 @@ import datetime
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.angebotsvariante import Angebotsvariante, AngebotsvarianteSchema
+from bo4e.com.angebotsvariante import Angebotsvariante, Angebotsvariante
 from bo4e.enum.angebotsstatus import Angebotsstatus
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json  # type:ignore[import]

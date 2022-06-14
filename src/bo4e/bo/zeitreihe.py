@@ -3,7 +3,7 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 """
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Zeitreihe(Geschaeftsobjekt):
     """
     Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
@@ -42,43 +44,13 @@ class Zeitreihe(Geschaeftsobjekt):
     medium: Medium
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
     einheit: Mengeneinheit
-
     #: Hier liegen jeweils die Werte
-    werte: List[Zeitreihenwert] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Zeitreihenwert),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    werte: conlist(Zeitreihenwert, min_items=1)
+
     # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe
-    beschreibung: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    beschreibung: str = None
     #: Version der Zeitreihe
-    version: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    version: str = None
     #: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
-    wertherkunft: Optional[Wertermittlungsverfahren] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Wertermittlungsverfahren))
-    )
-
-
-class ZeitreiheSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Zeitreihe
-    """
-
-    class_name = Zeitreihe
-    bezeichnung = fields.Str()
-    messgroesse = EnumField(Messgroesse)
-    messart = EnumField(Messart)
-    medium = EnumField(Medium)
-    einheit = EnumField(Mengeneinheit)
-    werte = fields.List(fields.Nested(ZeitreihenwertSchema))
-
-    # optional attributes
-    beschreibung = fields.Str(load_default=None)
-    version = fields.Str(load_default=None)
-    wertherkunft = EnumField(Wertermittlungsverfahren, load_default=None)
+    wertherkunft: Wertermittlungsverfahren = None

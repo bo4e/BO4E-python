@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.com.zeitraum import Zeitraum, Zeitraum
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
 example_zeitraum = Zeitraum(

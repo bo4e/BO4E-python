@@ -5,7 +5,7 @@ import pytest  # type:ignore[import]
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition, RegionaleTarifpreispositionSchema
+from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition, RegionaleTarifpreisposition
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp

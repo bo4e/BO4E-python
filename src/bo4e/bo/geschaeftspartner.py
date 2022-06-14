@@ -48,32 +48,32 @@ class Geschaeftspartner(Geschaeftsobjekt):
     # optional attributes
     #: Die Anrede für den GePa, Z.B. "Herr"
     anrede: Anrede = None
-    name2: Optional[str] = None
+    name2: str = None
     """
     Zweiter Teil des Namens.
     Hier kann der eine Erweiterung zum Firmennamen oder bei Privatpersonen beispielsweise der Vorname dagestellt werden.
     Beispiele: Bereich Süd oder Nina
     """
 
-    name3: Optional[str] = None
+    name3: str = None
     """
     Dritter Teil des Namens.
     Hier können weitere Ergänzungen zum Firmennamen oder bei Privatpersonen Zusätze zum Namen dagestellt werden.
     Beispiele: und Afrika oder Sängerin
     """
     #: Handelsregisternummer des Geschäftspartners
-    hrnummer: Optional[str] = None
+    hrnummer: str = None
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
-    amtsgericht: Optional[str] = None
+    amtsgericht: str = None
     #: Bevorzugte Kontaktwege des Geschäftspartners
     kontaktweg: List[Kontaktart] = []
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
-    umsatzsteuer_id: Optional[str] = None
+    umsatzsteuer_id: str = None
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
-    glaeubiger_id: Optional[str] = None
+    glaeubiger_id: str = None
     #: E-Mail-Adresse des Ansprechpartners. Z.B. "info@hochfrequenz.de"
-    e_mail_adresse: Optional[str] = None
+    e_mail_adresse: str = None
     #: Internetseite des Marktpartners
-    website: Optional[str] = None
+    website: str = None
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
     partneradresse: Adresse = None  # todo: is it plural or not? the docs are bad

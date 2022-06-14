@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung, PreisblattDienstleistungSchema
+from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung, PreisblattDienstleistung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.preisstatus import Preisstatus

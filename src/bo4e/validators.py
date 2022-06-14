@@ -5,8 +5,6 @@ import re
 from datetime import datetime
 from typing import Optional, Protocol
 
-import attrs.validators
-
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 
 
@@ -57,7 +55,7 @@ class _VonBisType(Protocol):
         """
 
 
-def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
+def check_bis_is_later_than_von(instance: _VonBisType, attribute, values):
     """
     assert that 'bis' is later than 'von'
     """
@@ -71,8 +69,6 @@ def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
 # pylint:disable=line-too-long
 #: a regular expression that should match all OBIS Kennziffern
 OBIS_PATTERN = r"((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\.((?:6|8|9|29))\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\.(.{1,2})\.([0-9]{1,2}))"
-#: an attr validator
-obis_validator = attrs.validators.matches_re(OBIS_PATTERN)
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 

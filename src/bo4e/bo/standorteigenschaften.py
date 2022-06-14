@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -16,7 +16,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Standorteigenschaften(Geschaeftsobjekt):
     """
     Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.
@@ -29,33 +31,10 @@ class Standorteigenschaften(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
     #: Allgemeine Eigenschaften
-    eigenschaften_allgemein: StandorteigenschaftenAllgemein = attrs.field(
-        validator=attrs.validators.instance_of(StandorteigenschaftenAllgemein)
-    )
+    eigenschaften_allgemein: StandorteigenschaftenAllgemein
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: List[StandorteigenschaftenStrom] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(StandorteigenschaftenStrom),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    eigenschaften_strom: conlist(StandorteigenschaftenStrom, min_items=1)
+
     # optional attributes
     #: Eigenschaften zur Sparte Gas
-    eigenschaften_gas: Optional[StandorteigenschaftenGas] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(StandorteigenschaftenGas)), default=None
-    )
-
-
-class StandorteigenschaftenSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Standorteigenschaften
-    """
-
-    class_name = Standorteigenschaften
-    # required attributes
-    eigenschaften_allgemein = fields.Nested(StandorteigenschaftenAllgemeinSchema, data_key="eigenschaftenAllgemein")
-
-    eigenschaften_strom = fields.List(fields.Nested(StandorteigenschaftenStromSchema), data_key="eigenschaftenStrom")
-
-    # optional attributes
-    eigenschaften_gas = fields.Nested(StandorteigenschaftenGasSchema, load_default=None, data_key="eigenschaftenGas")
+    eigenschaften_gas: StandorteigenschaftenGas = None

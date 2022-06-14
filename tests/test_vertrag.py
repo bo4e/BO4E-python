@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest  # type:ignore[import]
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.vertrag import Vertrag, VertragSchema
+from bo4e.bo.vertrag import Vertrag, Vertrag
 from bo4e.com.adresse import Adresse
 from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen

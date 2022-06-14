@@ -6,7 +6,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -21,16 +21,12 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 # pylint: disable=unused-argument
-def at_least_one_zaehlwerk(instance, attribute, value):
-    """
-    Ensures that the Zaehler has at least one entry in the zaehlwerke list.
-    """
-    if len(value) == 0:
-        raise ValueError("The Zaehler must have at least 1 Zaehlwerk")
+from pydantic import conlist
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Zaehler(Geschaeftsobjekt):
     """
     Object containing information about a meter/"Zaehler".
@@ -42,46 +38,15 @@ class Zaehler(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = BoTyp.ZAEHLER
-    zaehlernummer: str = attrs.field(
-        validator=attrs.validators.instance_of(str)
-    )  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
+    zaehlernummer: str  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
     sparte: Sparte  #: Strom oder Gas
     zaehlerauspraegung: Zaehlerauspraegung  #: Spezifikation die Richtung des Zählers betreffend
     zaehlertyp: Zaehlertyp  #: Typisierung des Zählers
-    zaehlwerke: List[Zaehlwerk] = attrs.field(validator=at_least_one_zaehlwerk)  #: Die Zählwerke des Zählers
+    zaehlwerke: conlist(Zaehlwerk, min_items=1)  #: Die Zählwerke des Zählers
     tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes
-    zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[datetime] = attrs.field(
-        default=None
-    )  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
-    letzte_eichung: Optional[datetime] = attrs.field(
-        default=None
-    )  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers
-
-
-class ZaehlerSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Zaehler.
-    """
-
-    # class_name is needed to use the correct schema for deserialisation.
-    # see function `deserialize` in geschaeftsobjekt.py
-    class_name = Zaehler
-
-    # required attributes
-    zaehlernummer = fields.Str()
-    sparte = EnumField(Sparte)
-    zaehlerauspraegung = EnumField(Zaehlerauspraegung)
-    zaehlertyp = EnumField(Zaehlertyp)
-    tarifart = EnumField(Tarifart)
-    zaehlwerke = fields.Nested(ZaehlwerkSchema, many=True)
-
-    # optional attributes
-    zaehlerkonstante = fields.Decimal(load_default=None, as_string=True)
-    eichung_bis = fields.DateTime(load_default=None, data_key="eichungBis")
-    letzte_eichung = fields.DateTime(load_default=None, data_key="letzteEichung")
-
-    zaehlerhersteller = fields.Nested(GeschaeftspartnerSchema, load_default=None)
+    zaehlerkonstante: Decimal = None  #: Zählerkonstante auf dem Zähler
+    eichung_bis: datetime = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
+    letzte_eichung: datetime = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    zaehlerhersteller: Geschaeftspartner = None  #: Der Hersteller des Zählers

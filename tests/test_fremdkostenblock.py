@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenblock import Fremdkostenblock, FremdkostenblockSchema
+from bo4e.com.fremdkostenblock import Fremdkostenblock, Fremdkostenblock
 from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit

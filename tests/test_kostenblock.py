@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.kostenblock import Kostenblock, KostenblockSchema
+from bo4e.com.kostenblock import Kostenblock, Kostenblock
 from bo4e.com.kostenposition import Kostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit

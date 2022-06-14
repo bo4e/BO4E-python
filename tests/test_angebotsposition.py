@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.angebotsposition import Angebotsposition, AngebotspositionSchema
+from bo4e.com.angebotsposition import Angebotsposition, Angebotsposition
 from bo4e.com.betrag import Betrag
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis

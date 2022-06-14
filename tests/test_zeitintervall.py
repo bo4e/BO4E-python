@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.zeitintervall import Zeitintervall, ZeitintervallSchema
+from bo4e.com.zeitintervall import Zeitintervall, Zeitintervall
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
 

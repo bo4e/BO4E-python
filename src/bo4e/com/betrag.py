@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -14,7 +14,8 @@ from bo4e.enum.waehrungscode import Waehrungscode
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Betrag(COM):
     """
     Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge

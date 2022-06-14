@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.preisblattnetznutzung import PreisblattNetznutzung, PreisblattNetznutzungSchema
+from bo4e.bo.preisblattnetznutzung import PreisblattNetznutzung, PreisblattNetznutzung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.kundengruppe import Kundengruppe
 from bo4e.enum.netzebene import Netzebene

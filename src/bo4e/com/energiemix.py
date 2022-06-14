@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import List
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Energiemix(COM):
     """
     Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.
@@ -39,9 +41,7 @@ class Energiemix(COM):
     #: Jahr, für das der Energiemix gilt
     gueltigkeitsjahr: int
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: List[Energieherkunft] = attrs.field(
-        validator=[attrs.validators.instance_of(List), check_list_length_at_least_one]
-    )
+    anteil: conlist(Energieherkunft, min_items=1)
 
     # optional attributes
     #: Bemerkung zum Energiemix
@@ -58,26 +58,3 @@ class Energiemix(COM):
     oeko_top_ten: bool = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
     website: str = None
-
-
-class EnergiemixSchema(COMSchema):
-    """
-    Schema for de-/serialization of Energiemix.
-    """
-
-    class_name = Energiemix
-    # required attributes
-    energiemixnummer = fields.Int()
-    energieart = EnumField(Sparte)
-    bezeichnung = fields.Str()
-    gueltigkeitsjahr = fields.Int()
-    anteil = fields.List(fields.Nested(EnergieherkunftSchema))
-
-    # optional attributes
-    bemerkung = fields.Str(load_default=None)
-    co2_emission = fields.Decimal(load_default=None, as_string=True, data_key="co2Emission")
-    atommuell = fields.Decimal(load_default=None, as_string=True)
-    oekozertifikate = fields.List(EnumField(Oekozertifikat), load_default=None)
-    oekolabel = fields.List(EnumField(Oekolabel), load_default=None)
-    oeko_top_ten = fields.Bool(load_default=None, data_key="oekoTopTen")
-    website = fields.Str(load_default=None)

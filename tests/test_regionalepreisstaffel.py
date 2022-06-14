@@ -5,7 +5,7 @@ import pytest  # type:ignore[import]
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
-from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel, RegionalePreisstaffelSchema
+from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel, RegionalePreisstaffel
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]

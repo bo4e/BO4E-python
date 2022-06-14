@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.lastgang import Lastgang, LastgangSchema
+from bo4e.bo.lastgang import Lastgang, Lastgang
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte

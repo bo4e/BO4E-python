@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.kosten import Kosten, KostenSchema
+from bo4e.bo.kosten import Kosten, Kosten
 from bo4e.com.kostenblock import Kostenblock
 from bo4e.enum.kostenklasse import Kostenklasse
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]

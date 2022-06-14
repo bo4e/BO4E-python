@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -18,7 +18,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
@@ -36,34 +38,8 @@ class Tarifpreisposition(COM):
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: List[Preisstaffel] = attrs.field(
-        validator=[
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(Preisstaffel),
-                iterable_validator=attrs.validators.instance_of(list),
-            ),
-            check_list_length_at_least_one,
-        ]
-    )
+    preisstaffeln: conlist(Preisstaffel, min_items=1)
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Optional[Mengeneinheit] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Mengeneinheit))
-    )
-
-
-class TarifpreispositionSchema(COMSchema):
-    """
-    Schema for de-/serialization of Tarifpreisposition.
-    """
-
-    class_name = Tarifpreisposition
-    # required attributes
-    preistyp = EnumField(Preistyp)
-    einheit = EnumField(Waehrungseinheit)
-    bezugseinheit = EnumField(Mengeneinheit)
-    preisstaffeln = fields.List(fields.Nested(PreisstaffelSchema))
-
-    # optional attributes
-    mengeneinheitstaffel = EnumField(Mengeneinheit, load_default=None)
+    mengeneinheitstaffel: Mengeneinheit = None

@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.com.kriteriumwert import KriteriumWert, KriteriumWertSchema
+from bo4e.com.kriteriumwert import KriteriumWert, KriteriumWert
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 

@@ -1,6 +1,6 @@
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
+from bo4e.bo.geschaeftspartner import Geschaeftspartner, Geschaeftspartner
 from bo4e.com.adresse import Adresse
-from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenzSchema
+from bo4e.com.externereferenz import ExterneReferenz, ExterneReferenz
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 
 

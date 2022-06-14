@@ -6,7 +6,7 @@ import pytest  # type:ignore[import]
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
 from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.angebotsteil import Angebotsteil, AngebotsteilSchema
+from bo4e.com.angebotsteil import Angebotsteil, Angebotsteil
 from bo4e.com.betrag import Betrag
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis

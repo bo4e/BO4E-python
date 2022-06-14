@@ -4,7 +4,7 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -23,7 +23,8 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Preisposition(COM):
     """
     Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes
@@ -45,72 +46,30 @@ class Preisposition(COM):
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
     bezugsgroesse: Mengeneinheit
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: List[Preisstaffel] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Preisstaffel),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    preisstaffeln: conlist(Preisstaffel, min_items=1)
 
     # optional attributes
-    zeitbasis: Optional[Zeiteinheit] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeiteinheit))
-    )
+    zeitbasis: Zeiteinheit = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird
     """
     #: Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
-    tarifzeit: Optional[Tarifzeit] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Tarifzeit))
-    )
-    bdew_artikelnummer: Optional[BDEWArtikelnummer] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(BDEWArtikelnummer))
-    )
+    tarifzeit: Tarifzeit = None
+    bdew_artikelnummer: BDEWArtikelnummer = None
     """
     Eine vom BDEW standardisierte Bezeichnug für die abgerechnete Leistungserbringung;
     Diese Artikelnummer wird auch im Rechnungsteil der INVOIC verwendet.
     """
     #: Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden
-    zonungsgroesse: Optional[Bemessungsgroesse] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Bemessungsgroesse))
-    )
+    zonungsgroesse: Bemessungsgroesse = None
     #: Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt
-    freimenge_blindarbeit: Optional[Decimal] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Decimal))
-    )
-    freimenge_leistungsfaktor: Optional[Decimal] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Decimal))
-    )
+    freimenge_blindarbeit: Decimal = None
+    freimenge_leistungsfaktor: Decimal = None
     """
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)
     """
-    artikel_id: Optional[ArtikelId] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(ArtikelId)), default=None
-    )  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
-
-
-class PreispositionSchema(COMSchema):
-    """
-    Schema for de-/serialization of Preisposition
-    """
-
-    class_name = Preisposition
-
-    # required attributes
-    berechnungsmethode = EnumField(Kalkulationsmethode)
-    leistungstyp = EnumField(Leistungstyp)
-    leistungsbezeichnung = fields.Str()
-    preiseinheit = EnumField(Waehrungseinheit)
-    bezugsgroesse = EnumField(Mengeneinheit)
-    preisstaffeln = fields.List(fields.Nested(PreisstaffelSchema))
-
-    # optional attributes
-    zeitbasis = EnumField(Zeiteinheit, load_default=None)
-    tarifzeit = EnumField(Tarifzeit, load_default=None)
-    bdew_artikelnummer = EnumField(BDEWArtikelnummer, load_default=None, data_key="bdewArtikelnummer")
-    zonungsgroesse = EnumField(Bemessungsgroesse, load_default=None)
-    freimenge_blindarbeit = fields.Decimal(load_default=None, as_string=True, data_key="freimengeBlindarbeit")
-    freimenge_leistungsfaktor = fields.Decimal(load_default=None, as_string=True, data_key="freimengeLeistungsfaktor")
-    artikel_id = EnumField(ArtikelId, load_default=None, data_key="artikelId")
+    artikel_id: ArtikelId = (
+        None  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
+    )

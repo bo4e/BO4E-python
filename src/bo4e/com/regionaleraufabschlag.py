@@ -4,7 +4,7 @@ Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de
 
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -22,7 +22,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class RegionalerAufAbschlag(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten
@@ -40,126 +42,56 @@ class RegionalerAufAbschlag(COM):
     bezeichnung: str
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    staffeln: List[RegionalePreisstaffel] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(RegionalePreisstaffel),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    staffeln: conlist(RegionalePreisstaffel, min_items=1)
 
     # optional attributes
     #: Beschreibung des Auf-/Abschlags
-    beschreibung: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    beschreibung: str = None
 
     #: Typ des Aufabschlages (z.B. absolut oder prozentual)
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagstyp)), default=None
-    )
+    auf_abschlagstyp: AufAbschlagstyp = None
 
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
-    auf_abschlagsziel: Optional[AufAbschlagsziel] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagsziel)), default=None
-    )
+    auf_abschlagsziel: AufAbschlagsziel = None
 
     #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird (nur im Falle absoluter Aufschlagstypen).
-    einheit: Optional[Waehrungseinheit] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Waehrungseinheit)), default=None
-    )
+    einheit: Waehrungseinheit = None
 
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
-    website: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    website: str = None
 
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
-    zusatzprodukte: Optional[List[str]] = attrs.field(
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(str),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-        default=None,
-    )
+    zusatzprodukte: List[str] = None
 
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
-    voraussetzungen: Optional[List[str]] = attrs.field(
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(str),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-        default=None,
-    )
+    voraussetzungen: List[str] = None
 
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten
-    tarifnamensaenderungen: Optional[str] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(str)), default=None
-    )
+    tarifnamensaenderungen: str = None
 
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitszeitraum: Optional[Zeitraum] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum)), default=None
-    )
+    gueltigkeitszeitraum: Zeitraum = None
 
-    energiemixaenderung: Optional[Energiemix] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Energiemix)), default=None
-    )
+    energiemixaenderung: Energiemix = None
     """
     Der Energiemix kann sich durch einen AufAbschlag ändern (z.B. zwei Cent Aufschlag für Ökostrom).
     Sollte dies der Fall sein, wird hier die neue Zusammensetzung des Energiemix angegeben.
     """
 
-    vertagskonditionsaenderung: Optional[Vertragskonditionen] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Vertragskonditionen)), default=None
-    )
+    vertagskonditionsaenderung: Vertragskonditionen = None
     """
     Änderungen in den Vertragskonditionen;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
 
-    garantieaenderung: Optional[Preisgarantie] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Preisgarantie)), default=None
-    )
+    garantieaenderung: Preisgarantie = None
     """
     Änderungen in den Garantievereinbarungen;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
 
-    einschraenkungsaenderung: Optional[Tarifeinschraenkung] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(Tarifeinschraenkung)), default=None
-    )
+    einschraenkungsaenderung: Tarifeinschraenkung = None
     """
     Änderungen in den Einschränkungen zum Tarif;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
-
-
-class RegionalerAufAbschlagSchema(COMSchema):
-    """
-    Schema for de-/serialization of RegionalerAufAbschlag
-    """
-
-    class_name = RegionalerAufAbschlag
-    # required attributes
-    bezeichnung = fields.Str()
-    staffeln = fields.List(fields.Nested(RegionalePreisstaffelSchema))
-
-    # optional attributes
-    beschreibung = fields.Str(default=None)
-    auf_abschlagstyp = EnumField(AufAbschlagstyp, default=None, data_key="aufAbschlagstyp")
-    auf_abschlagsziel = EnumField(AufAbschlagsziel, default=None, data_key="aufAbschlagsziel")
-    einheit = EnumField(Waehrungseinheit, default=None)
-    website = fields.Str(default=None)
-    zusatzprodukte = fields.List(fields.Str(), default=None)
-    voraussetzungen = fields.List(fields.Str(), default=None)
-
-    tarifnamensaenderungen = fields.Str(default=None)
-    gueltigkeitszeitraum = fields.Nested(ZeitraumSchema, default=None)
-    energiemixaenderung = fields.Nested(EnergiemixSchema, default=None)
-    vertagskonditionsaenderung = fields.Nested(VertragskonditionenSchema, default=None)
-    garantieaenderung = fields.Nested(PreisgarantieSchema, default=None)
-    einschraenkungsaenderung = fields.Nested(TarifeinschraenkungSchema, default=None)

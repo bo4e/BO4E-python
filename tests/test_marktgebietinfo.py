@@ -1,4 +1,4 @@
-from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfoSchema
+from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfo
 
 
 class TestMarktgebietinfo:

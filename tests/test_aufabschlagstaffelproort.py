@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt, AufAbschlagstaffelProOrtSchema
+from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt, AufAbschlagstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 

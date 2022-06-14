@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, AusschreibungsdetailSchema
+from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, Ausschreibungsdetail
 from bo4e.com.menge import Menge
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene

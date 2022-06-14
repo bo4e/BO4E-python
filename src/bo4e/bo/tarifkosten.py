@@ -2,7 +2,7 @@
 Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
-import attrs
+
 from marshmallow import fields
 
 from bo4e.bo.kosten import Kosten
@@ -11,7 +11,8 @@ from bo4e.enum.botyp import BoTyp
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Tarifkosten(Tarifinfo):
     """
     Objekt zur Kommunikation von Kosten, die im Rahmen der Tarifanwendung entstehen
@@ -22,7 +23,7 @@ class Tarifkosten(Tarifinfo):
     """
 
     # required attributes
-    bo_typ: BoTyp
+    bo_typ: BoTyp = BoTyp.TARIFKOSTEN
     kosten: Kosten
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

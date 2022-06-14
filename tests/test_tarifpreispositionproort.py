@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt, TarifpreispositionProOrtSchema
+from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt, TarifpreispositionProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_tarifpreisstaffelproort import example_tarifpreisstaffelproort  # type:ignore[import]
 

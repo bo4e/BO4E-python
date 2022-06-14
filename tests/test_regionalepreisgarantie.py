@@ -4,7 +4,7 @@ import pytest  # type:ignore[import]
 
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie, RegionalePreisgarantieSchema
+from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie, RegionalePreisgarantie
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.preisgarantietyp import Preisgarantietyp

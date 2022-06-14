@@ -4,14 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.com import COM
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class TarifpreisstaffelProOrt(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an
@@ -37,18 +38,3 @@ class TarifpreisstaffelProOrt(COM):
     staffelgrenze_bis: Decimal
 
     # there are no optional attributes
-
-
-class TarifpreisstaffelProOrtSchema(COMSchema):
-    """
-    Schema for (de)serialization of TarifpreisstaffelProOrt
-    """
-
-    class_name = TarifpreisstaffelProOrt
-
-    # required attributes
-    arbeitspreis = fields.Decimal(as_string=True)
-    arbeitspreis_n_t = fields.Decimal(as_string=True, data_key="arbeitspreisNT")
-    grundpreis = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
-    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")

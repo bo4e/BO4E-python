@@ -6,7 +6,7 @@ from bo4e.com.com import COM
 
 
 # pylint: disable=too-few-public-methods
-# @attrs.define(auto_attribs=True, kw_only=True)
+#
 class ExterneReferenz(COM):
     """
     Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.

@@ -3,7 +3,7 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 """
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -16,7 +16,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class RegionaleTarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet
@@ -35,34 +37,8 @@ class RegionaleTarifpreisposition(COM):
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
-    preisstaffeln: List[RegionalePreisstaffel] = attrs.field(
-        validator=[
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(RegionalePreisstaffel),
-                iterable_validator=attrs.validators.instance_of(list),
-            ),
-            check_list_length_at_least_one,
-        ]
-    )
+    preisstaffeln: conlist(RegionalePreisstaffel, min_items=1)
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Optional[Mengeneinheit] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Mengeneinheit))
-    )
-
-
-class RegionaleTarifpreispositionSchema(COMSchema):
-    """
-    Schema for de-/serialization of RegionaleTarifpreisposition
-    """
-
-    class_name = RegionaleTarifpreisposition
-    # required attributes
-    preistyp = EnumField(Preistyp)
-    einheit = EnumField(Waehrungseinheit)
-    bezugseinheit = EnumField(Mengeneinheit)
-    preisstaffeln = fields.List(fields.Nested(RegionalePreisstaffelSchema))
-
-    # optional attributes
-    mengeneinheitstaffel = EnumField(Mengeneinheit, load_default=None)
+    mengeneinheitstaffel: Mengeneinheit = None

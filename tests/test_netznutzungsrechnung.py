@@ -4,7 +4,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.netznutzungsrechnung import Netznutzungsrechnung, NetznutzungsrechnungSchema
+from bo4e.bo.netznutzungsrechnung import Netznutzungsrechnung, Netznutzungsrechnung
 from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag

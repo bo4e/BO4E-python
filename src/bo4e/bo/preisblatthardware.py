@@ -3,7 +3,7 @@ Contains PreisblattHardware class and corresponding marshmallow schema for de-/s
 """
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -16,7 +16,8 @@ from bo4e.enum.netzebene import Netzebene
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class PreisblattHardware(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware
@@ -29,9 +30,7 @@ class PreisblattHardware(Preisblatt):
     bo_typ: BoTyp = BoTyp.PREISBLATTHARDWARE
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
-        validator=attrs.validators.instance_of(Bilanzierungsmethode)
-    )
+    bilanzierungsmethode: Bilanzierungsmethode
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
     messebene: Netzebene
 
@@ -40,38 +39,7 @@ class PreisblattHardware(Preisblatt):
 
     # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
-    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = attrs.field(
-        default=None,
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(Dienstleistungstyp),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-    )
+    inklusive_dienstleistungen: List[Dienstleistungstyp] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: Optional[List[Geraeteeigenschaften]] = attrs.field(
-        default=None,
-        validator=attrs.validators.optional(
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(Geraeteeigenschaften),
-                iterable_validator=attrs.validators.instance_of(list),
-            )
-        ),
-    )
-
-
-class PreisblattHardwareSchema(PreisblattSchema):
-    """
-    Schema for de-/serialization of PreisblattHardware
-    """
-
-    class_name = PreisblattHardware  # type:ignore[assignment]
-    # required attributes
-    bilanzierungsmethode = EnumField(Bilanzierungsmethode)
-    messebene = EnumField(Netzebene)
-    basisgeraet = fields.Nested(GeraeteeigenschaftenSchema)
-    # optional attributes
-    inklusive_dienstleistungen = fields.List(EnumField(Dienstleistungstyp), data_key="inklusiveDienstleistungen")
-    inklusive_geraete = fields.List(fields.Nested(GeraeteeigenschaftenSchema), data_key="inklusiveGeraete")
+    inklusive_geraete: List[Geraeteeigenschaften] = None

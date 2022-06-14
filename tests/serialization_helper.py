@@ -4,8 +4,6 @@ A module that simplifies assertions for json serialization
 import json
 from typing import Optional, TypeVar
 
-from marshmallow import Schema
-
 T = TypeVar("T")
 
 

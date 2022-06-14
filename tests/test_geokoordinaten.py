@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.geokoordinaten import Geokoordinaten, GeokoordinatenSchema
+from bo4e.com.geokoordinaten import Geokoordinaten, Geokoordinaten
 
 
 class TestGeokoordinaten:

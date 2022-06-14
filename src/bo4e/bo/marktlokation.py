@@ -3,7 +3,7 @@ Contains Marktlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -25,7 +25,9 @@ from bo4e.validators import validate_marktlokations_id
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import validator
+
+
 class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation
@@ -38,7 +40,8 @@ class Marktlokation(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str = attrs.field(validator=validate_marktlokations_id)
+    marktlokations_id: str
+    _marktlokations_id_check = validator("marktlokations_id", allow_reuse=True)(validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
@@ -124,40 +127,3 @@ class Marktlokation(Geschaeftsobjekt):
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
         if amount_of_given_address_infos != 1:
             raise ValueError("No or more than one address information is given.")
-
-
-class MarktlokationSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Marktlokation.
-    Inherits from GeschaeftsobjektSchema.
-    """
-
-    # class_name is needed to use the correct schema for deserialisation.
-    # see function `deserialize` in geschaeftsobjekt.py
-    class_name = Marktlokation
-
-    # required attributes
-    marktlokations_id = fields.Str(data_key="marktlokationsId")
-    sparte = EnumField(Sparte)
-    energierichtung = EnumField(Energierichtung)
-    bilanzierungsmethode = EnumField(Bilanzierungsmethode)
-    netzebene = EnumField(Netzebene)
-
-    # optional attributes
-    verbrauchsart = EnumField(Verbrauchsart, load_default=None)
-    unterbrechbar = fields.Bool(load_default=None)
-    netzbetreibercodenr = fields.Str(load_default=None)
-    gebietstyp = EnumField(Gebiettyp, load_default=None)
-    netzgebietsnr = fields.Str(load_default=None)
-    bilanzierungsgebiet = fields.Str(load_default=None)
-    grundversorgercodenr = fields.Str(load_default=None)
-    gasqualitaet = EnumField(Gasqualitaet, load_default=None)
-    endkunde = fields.Nested(GeschaeftspartnerSchema, load_default=None)
-    zugehoerige_messlokation = fields.List(
-        fields.Nested(MesslokationszuordnungSchema), load_default=None, data_key="zugehoerigeMesslokation"
-    )
-
-    # only one of the following three optional attributes can be set
-    lokationsadresse = fields.Nested(AdresseSchema, load_default=None)
-    geoadresse = fields.Nested(GeokoordinatenSchema, load_default=None)
-    katasterinformation = fields.Nested(KatasteradresseSchema, load_default=None)

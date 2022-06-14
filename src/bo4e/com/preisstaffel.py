@@ -5,7 +5,7 @@ Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.com import COM
@@ -13,7 +13,8 @@ from bo4e.com.sigmoidparameter import Sigmoidparameter
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Preisstaffel(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an
@@ -33,21 +34,4 @@ class Preisstaffel(COM):
 
     # optional attributes
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter
-    sigmoidparameter: Optional[Sigmoidparameter] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Sigmoidparameter))
-    )
-
-
-class PreisstaffelSchema(COMSchema):
-    """
-    Schema for de-/serialization of Preisstaffel
-    """
-
-    class_name = Preisstaffel
-    # required attributes
-    einheitspreis = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
-    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")
-
-    # optional attributes
-    sigmoidparameter = fields.Nested(SigmoidparameterSchema, load_default=None)
+    sigmoidparameter: Sigmoidparameter = None

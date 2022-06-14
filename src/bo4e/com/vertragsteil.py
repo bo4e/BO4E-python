@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.com import COM
@@ -13,7 +13,8 @@ from bo4e.com.menge import Menge
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,
@@ -35,37 +36,20 @@ class Vertragsteil(COM):
     """
 
     # optional attributes
-    lokation: Optional[str] = None
+    lokation: str = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
     """
-    vertraglich_fixierte_menge: Optional[Menge] = None
+    vertraglich_fixierte_menge: Menge = None
     """
     Für die Lokation festgeschriebene Abnahmemenge
     """
-    minimale_abnahmemenge: Optional[Menge] = None
+    minimale_abnahmemenge: Menge = None
     """
     Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
     """
-    maximale_abnahmemenge: Optional[Menge] = None
+    maximale_abnahmemenge: Menge = None
     """
     Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
     """
-
-
-class VertragsteilSchema(COMSchema):
-    """
-    Schema for de-/serialization of Vertragsteil.
-    """
-
-    class_name = Vertragsteil
-    # required attributes
-    vertragsteilbeginn = fields.DateTime()
-    vertragsteilende = fields.DateTime()
-
-    # optional attributes
-    lokation = fields.String(load_default=None)
-    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None, data_key="vertraglichFixierteMenge")
-    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="minimaleAbnahmemenge")
-    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="maximaleAbnahmemenge")

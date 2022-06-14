@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.com import COM
@@ -13,7 +13,9 @@ from bo4e.validators import check_list_length_is_one_or_two
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class StandorteigenschaftenGas(COM):
     """
     Standorteigenschaften der Sparte Gas
@@ -24,18 +26,5 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: List[str] = attrs.field(
-        validator=check_list_length_is_one_or_two
-    )  #: Netzkontonummern der Gasnetze
+    netzkontonummern: conlist(str, min_items=1, max_items=2)  #: Netzkontonummern der Gasnetze
     marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
-
-
-class StandorteigenschaftenGasSchema(COMSchema):
-    """
-    Schema for de-/serialization of StandorteigenschaftenGas.
-    """
-
-    class_name = StandorteigenschaftenGas
-    # required attributes
-    netzkontonummern = fields.List(fields.Str())
-    marktgebiete = fields.List(fields.Nested(MarktgebietInfoSchema))

@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.com.geraet import Geraet, GeraetSchema
+from bo4e.com.geraet import Geraet, Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp

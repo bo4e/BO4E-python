@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
+from bo4e.com.preisstaffel import Preisstaffel, Preisstaffel
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 

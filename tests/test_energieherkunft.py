@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.energieherkunft import Energieherkunft, EnergieherkunftSchema
+from bo4e.com.energieherkunft import Energieherkunft, Energieherkunft
 from bo4e.enum.erzeugungsart import Erzeugungsart
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 

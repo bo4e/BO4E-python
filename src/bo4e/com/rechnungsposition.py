@@ -4,7 +4,6 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 from typing import Optional
 
-import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -20,7 +19,9 @@ from bo4e.validators import check_bis_is_later_than_von, validate_marktlokations
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import validator
+
+
 class Rechnungsposition(COM):
     """
     Über Rechnungspositionen werden Rechnungen strukturiert.
@@ -35,12 +36,9 @@ class Rechnungsposition(COM):
     #: Fortlaufende Nummer für die Rechnungsposition
     positionsnummer: int
 
-    lieferung_von: datetime = attrs.field(
-        validator=[attrs.validators.instance_of(datetime), check_bis_is_later_than_von]
-    )  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
-    lieferung_bis: datetime = attrs.field(
-        validator=[attrs.validators.instance_of(datetime), check_bis_is_later_than_von]
-    )  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
+    lieferung_von: datetime  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
+    lieferung_bis: datetime  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
+    _bis_check = validator("lieferung_bis", always=True, allow_reuse=True)(check_bis_is_later_than_von)
 
     #: Bezeichung für die abgerechnete Position
     positionstext: str
@@ -63,35 +61,24 @@ class Rechnungsposition(COM):
 
     # optional attributes
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Zeiteinheit] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeiteinheit))
-    )
+    zeiteinheit: Zeiteinheit = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
-    artikelnummer: Optional[BDEWArtikelnummer] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(BDEWArtikelnummer))
-    )
+    artikelnummer: BDEWArtikelnummer = None
     #: Marktlokation, die zu dieser Position gehört
-    lokations_id: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(validate_marktlokations_id)
-    )
+    lokations_id: str = None
 
-    zeitbezogene_menge: Optional[Menge] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Menge))
-    )
+    zeitbezogene_menge: Menge = None
     """
     Eine auf die Zeiteinheit bezogene Untermenge.
     Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage.
     Basierend darauf wird der Preis aufgeteilt.
     """
     #: Nettobetrag für den Rabatt dieser Position
-    teilrabatt_netto: Optional[Betrag] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Betrag))
-    )
+    teilrabatt_netto: Betrag = None
 
-    artikel_id: Optional[ArtikelId] = attrs.field(
-        validator=attrs.validators.optional(attrs.validators.instance_of(ArtikelId)), default=None
-    )  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
+    #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
+    artikel_id: ArtikelId = None
 
     def _get_inclusive_start(self) -> datetime:
         """return the inclusive start (used in the validator)"""
@@ -100,29 +87,3 @@ class Rechnungsposition(COM):
     def _get_exclusive_end(self) -> datetime:
         """return the exclusive end (used in the validator)"""
         return self.lieferung_bis
-
-
-class RechnungspositionSchema(COMSchema):
-    """
-    Schema for de-/serialization of RechnungspositionSchema
-    """
-
-    class_name = Rechnungsposition
-
-    # required attributes
-    positionsnummer = fields.Integer()
-    lieferung_von = fields.DateTime(data_key="lieferungVon")
-    lieferung_bis = fields.DateTime(data_key="lieferungBis")
-    positionstext = fields.String()
-    positions_menge = fields.Nested(MengeSchema, data_key="positionsMenge")
-    einzelpreis = fields.Nested(PreisSchema)
-    teilsumme_netto = fields.Nested(BetragSchema, data_key="teilsummeNetto")
-    teilsumme_steuer = fields.Nested(SteuerbetragSchema, data_key="teilsummeSteuer")
-
-    # optional attributes
-    zeiteinheit = EnumField(Zeiteinheit, load_default=None)
-    artikelnummer = EnumField(BDEWArtikelnummer, load_default=None)
-    lokations_id = fields.String(load_default=None, data_key="lokationsId")
-    zeitbezogene_menge = fields.Nested(MengeSchema, load_default=None, data_key="zeitbezogeneMenge")
-    teilrabatt_netto = fields.Nested(BetragSchema, load_default=None, data_key="teilrabattNetto")
-    artikel_id = EnumField(ArtikelId, load_default=None, data_key="artikelId")

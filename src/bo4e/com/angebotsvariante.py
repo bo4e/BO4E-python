@@ -4,7 +4,7 @@ Contains Angebotsvariante and corresponding marshmallow schema for de-/serializa
 from datetime import datetime
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Angebotsvariante(COM):
     """
     Führt die verschiedenen Ausprägungen der Angebotsberechnung auf
@@ -37,15 +39,7 @@ class Angebotsvariante(COM):
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
     bindefrist: datetime
 
-    teile: List[Angebotsteil] = attrs.field(
-        validator=[
-            attrs.validators.deep_iterable(
-                member_validator=attrs.validators.instance_of(Angebotsteil),
-                iterable_validator=attrs.validators.instance_of(list),
-            ),
-            check_list_length_at_least_one,
-        ]
-    )
+    teile: conlist(Angebotsteil, min_items=1)
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
@@ -54,28 +48,7 @@ class Angebotsvariante(COM):
 
     # optional attributes
     #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
-    gesamtmenge: Optional[Menge] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Menge))
-    )
+    gesamtmenge: Menge = None
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320
     #: Aufsummierte Kosten aller Angebotsteile
-    gesamtkosten: Optional[Betrag] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Betrag))
-    )
-
-
-class AngebotsvarianteSchema(COMSchema):
-    """
-    Schema for de-/serialization of Angebotsvariante
-    """
-
-    class_name = Angebotsvariante
-    # required attributes
-    angebotsstatus = EnumField(Angebotsstatus)
-    erstellungsdatum = fields.DateTime()
-    bindefrist = fields.DateTime()
-    teile = fields.List(fields.Nested(AngebotsteilSchema))
-
-    # optional attributes
-    gesamtmenge = fields.Nested(MengeSchema, allow_none=True)
-    gesamtkosten = fields.Nested(BetragSchema, allow_none=True)
+    gesamtkosten: Betrag = None

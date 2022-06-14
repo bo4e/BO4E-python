@@ -4,7 +4,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.aufabschlagregional import AufAbschlagRegional, AufAbschlagRegionalSchema
+from bo4e.com.aufabschlagregional import AufAbschlagRegional, AufAbschlagRegional
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.com.energiemix import Energiemix

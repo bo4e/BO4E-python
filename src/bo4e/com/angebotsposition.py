@@ -3,7 +3,7 @@ Contains Angebotsposition class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.betrag import Betrag
@@ -13,7 +13,8 @@ from bo4e.com.preis import Preis
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Angebotsposition(COM):
     """
     Unterhalb von Angebotsteilen sind die Angebotspositionen eingebunden.
@@ -35,22 +36,9 @@ class Angebotsposition(COM):
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Menge = attrs.field(default=None, validator=attrs.validators.instance_of(Menge))
+    positionsmenge: Menge = None
     #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
-    positionskosten: Betrag = attrs.field(default=None, validator=attrs.validators.instance_of(Betrag))
+    positionskosten: Betrag = None
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126
-
-
-class AngebotspositionSchema(COMSchema):
-    """
-    Schema for de-/serialization of Angebotsposition.
-    """
-
-    class_name = Angebotsposition
-    # required attributes
-    positionsbezeichnung = fields.String()
-    positionspreis = fields.Nested(PreisSchema)
-    positionsmenge = fields.Nested(MengeSchema, load_default=None)
-    positionskosten = fields.Nested(BetragSchema, load_default=None)

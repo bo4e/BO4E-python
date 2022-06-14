@@ -4,14 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 
-import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class StandorteigenschaftenAllgemein(COM):
     """
     Allgemeine Standorteigenschaften
@@ -36,19 +36,3 @@ class StandorteigenschaftenAllgemein(COM):
     gemeindeeinwohner: int
     #: Das Bundesland zu dem der Standort gehört
     bundesland: str
-
-
-class StandorteigenschaftenAllgemeinSchema(COMSchema):
-    """
-    Schema for de-/serialization of StandorteigenschaftenAllgemein.
-    """
-
-    class_name = StandorteigenschaftenAllgemein
-    # required attributes
-    postleitzahl = fields.Str()
-    ort = fields.Str()
-    kreisname = fields.Str()
-    gemeindename = fields.Str()
-    gemeindekennziffer = fields.Str()
-    gemeindeeinwohner = fields.Int()
-    bundesland = fields.Str()

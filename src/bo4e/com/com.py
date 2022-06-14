@@ -11,7 +11,7 @@ def to_camel(string):
 
 
 # pylint: disable=too-few-public-methods
-# @attrs.define(auto_attribs=True, kw_only=True)
+#
 class COM(BaseModel):
     """
     base class for all components

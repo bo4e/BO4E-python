@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.buendelvertrag import Buendelvertrag, BuendelvertragSchema
+from bo4e.bo.buendelvertrag import Buendelvertrag, Buendelvertrag
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_vertrag import TestVertrag  # type:ignore[import]
 

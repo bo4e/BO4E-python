@@ -5,14 +5,15 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.com import COM
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class AufAbschlagstaffelProOrt(COM):
     """
     Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
@@ -29,15 +30,3 @@ class AufAbschlagstaffelProOrt(COM):
     staffelgrenze_von: Decimal
     #: Oberer Wert, bis zu dem die Staffel gilt.
     staffelgrenze_bis: Decimal
-
-
-class AufAbschlagstaffelProOrtSchema(COMSchema):
-    """
-    Schema for de-/serialization of AufAbschlagstaffelProOrt
-    """
-
-    class_name = AufAbschlagstaffelProOrt
-    # required attributes
-    wert = fields.Decimal(as_string=True)
-    staffelgrenze_von = fields.Decimal(as_string=True, data_key="staffelgrenzeVon")
-    staffelgrenze_bis = fields.Decimal(as_string=True, data_key="staffelgrenzeBis")

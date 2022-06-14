@@ -1,4 +1,4 @@
-from bo4e.bo.ansprechpartner import Ansprechpartner, AnsprechpartnerSchema
+from bo4e.bo.ansprechpartner import Ansprechpartner, Ansprechpartner
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
 from bo4e.com.rufnummer import Rufnummer

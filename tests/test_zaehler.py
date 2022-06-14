@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.bo.zaehler import Zaehler, ZaehlerSchema
+from bo4e.bo.zaehler import Zaehler, Zaehler
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.botyp import BoTyp

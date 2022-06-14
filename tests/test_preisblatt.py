@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.preisblatt import Preisblatt, PreisblattSchema
+from bo4e.bo.preisblatt import Preisblatt, Preisblatt
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]

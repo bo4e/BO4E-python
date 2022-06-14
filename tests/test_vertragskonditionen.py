@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from decimal import Decimal
 
-from bo4e.com.vertragskonditionen import Vertragskonditionen, VertragskonditionenSchema
+from bo4e.com.vertragskonditionen import Vertragskonditionen, Vertragskonditionen
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.zeiteinheit import Zeiteinheit
 

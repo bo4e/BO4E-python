@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from bo4e.com.messlokationszuordnung import Messlokationszuordnung, MesslokationszuordnungSchema
+from bo4e.com.messlokationszuordnung import Messlokationszuordnung, Messlokationszuordnung
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
 

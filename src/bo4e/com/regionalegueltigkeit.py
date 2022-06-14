@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,9 @@ from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class RegionaleGueltigkeit(COM):
     """
     Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.
@@ -26,29 +28,7 @@ class RegionaleGueltigkeit(COM):
     """
 
     # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp = attrs.field(
-        validator=attrs.validators.in_(Gueltigkeitstyp)
-    )  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    kriteriums_werte: List[KriteriumWert] = attrs.field(
-        validator=attrs.validators.instance_of(list)
+    gueltigkeitstyp: Gueltigkeitstyp  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
+    kriteriums_werte: conlist(
+        KriteriumWert, min_items=1
     )  #:  Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
-
-    @kriteriums_werte.validator
-    # pylint: disable=unused-argument
-    def check_list_length(self, attribute, value):
-        """
-        Check that minimal list length is at least one.
-        """
-        if len(value) < 1:
-            raise ValueError("kriteriumswerte must not be empty.")
-
-
-class RegionaleGueltigkeitSchema(COMSchema):
-    """
-    Schema for de-/serialization of RegionaleGueltigkeit.
-    """
-
-    class_name = RegionaleGueltigkeit
-    # required attributes
-    gueltigkeitstyp = EnumField(Gueltigkeitstyp)
-    kriteriums_werte = fields.List(fields.Nested(KriteriumWertSchema), data_key="kriteriumsWerte")

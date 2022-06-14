@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.menge import Menge, MengeSchema
+from bo4e.com.menge import Menge, Menge
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
 example_menge = Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH)

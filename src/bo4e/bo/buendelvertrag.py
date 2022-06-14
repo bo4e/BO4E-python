@@ -3,7 +3,7 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 """
 from typing import List
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -13,7 +13,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Buendelvertrag(Geschaeftsobjekt):
     """
     Abbildung eines Bündelvertrags.
@@ -27,19 +29,4 @@ class Buendelvertrag(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.BUENDELVERTRAG
     #: Die Liste mit den Einzelverträgen zu den Abnahmestellen
-    einzelvertraege: List[Vertrag] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Vertrag), iterable_validator=check_list_length_at_least_one
-        )
-    )
-
-
-class BuendelvertragSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Buendelvertrag
-    """
-
-    class_name = Buendelvertrag
-
-    # required attributes
-    einzelvertraege = fields.List(fields.Nested(VertragSchema))
+    einzelvertraege: conlist(Vertrag, min_items=1)

@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.tagesvektor import Tagesvektor, TagesvektorSchema
+from bo4e.com.tagesvektor import Tagesvektor, Tagesvektor
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]

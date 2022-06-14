@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.com import COM
@@ -12,7 +12,8 @@ from bo4e.com.zeitraum import Zeitraum
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.
@@ -35,18 +36,3 @@ class Vertragskonditionen(COM):
     vertragsverlaengerung: Zeitraum = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
     abschlagszyklus: Zeitraum = None
-
-
-class VertragskonditionenSchema(COMSchema):
-    """
-    Schema for de-/serialization of Vertragskonditionen.
-    """
-
-    class_name = Vertragskonditionen
-    # optional attributes
-    beschreibung = fields.String(load_default=None)
-    anzahl_abschlaege = fields.Decimal(load_default=None, as_string=True, data_key="anzahlAbschlaege")
-    vertragslaufzeit = fields.Nested(ZeitraumSchema, load_default=None)
-    kuendigungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
-    vertragsverlaengerung = fields.Nested(ZeitraumSchema, load_default=None)
-    abschlagszyklus = fields.Nested(ZeitraumSchema, load_default=None)

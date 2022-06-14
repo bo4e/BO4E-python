@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -16,7 +16,9 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+from pydantic import conlist
+
+
 class Energiemenge(Geschaeftsobjekt):
     """
     Abbildung von Mengen, die Lokationen zugeordnet sind
@@ -35,22 +37,5 @@ class Energiemenge(Geschaeftsobjekt):
     lokationstyp: Lokationstyp
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
-    energieverbrauch: List[Verbrauch] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Verbrauch),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    energieverbrauch: conlist(Verbrauch, min_items=1)
     # there are no optional attributes
-
-
-class EnergiemengeSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Energiemenge
-    """
-
-    class_name = Energiemenge
-    # required attributes
-    lokations_id = fields.Str(data_key="lokationsId")
-    lokationstyp = EnumField(Lokationstyp)
-    energieverbrauch = fields.List(fields.Nested(VerbrauchSchema))

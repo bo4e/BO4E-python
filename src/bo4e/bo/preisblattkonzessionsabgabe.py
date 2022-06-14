@@ -2,7 +2,7 @@
 Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization
 """
 
-import attrs
+
 from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.preisblatt import Preisblatt
@@ -11,7 +11,8 @@ from bo4e.enum.kundengruppeka import KundengruppeKA
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class PreisblattKonzessionsabgabe(Preisblatt):
     """
     Die Variante des Preisblattmodells zur Abbildung von allgemeinen Abgaben
@@ -27,13 +28,3 @@ class PreisblattKonzessionsabgabe(Preisblatt):
     kundengruppe_k_a: KundengruppeKA
 
     # there are no optional attributes (additionally to those of Preisblatt)
-
-
-class PreisblattKonzessionsabgabeSchema(PreisblattSchema):
-    """
-    Schema for de-/serialization of PreisblattKonzessionsabgabe
-    """
-
-    class_name = PreisblattKonzessionsabgabe  # type:ignore[assignment]
-    # required attributes
-    kundengruppe_k_a = EnumField(KundengruppeKA, data_key="kundengruppeKA")

@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.aufabschlag import AufAbschlag, AufAbschlagSchema
+from bo4e.com.aufabschlag import AufAbschlag, AufAbschlag
 from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp

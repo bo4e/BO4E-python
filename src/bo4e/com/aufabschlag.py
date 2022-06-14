@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-import attrs
+
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,8 @@ from bo4e.validators import einheit_only_for_abschlagstyp_absolut
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class AufAbschlag(COM):
     """
     Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,
@@ -38,18 +39,12 @@ class AufAbschlag(COM):
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag
-    beschreibung: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    beschreibung: str = None
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagstyp))
-    )
+    auf_abschlagstyp: AufAbschlagstyp = None
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
-    auf_abschlagsziel: Optional[AufAbschlagsziel] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagsziel))
-    )
-    einheit: Optional[Waehrungseinheit] = attrs.field(
+    auf_abschlagsziel: AufAbschlagsziel = None
+    einheit: Waehrungseinheit = attrs.field(
         default=None,
         validator=[
             attrs.validators.optional(attrs.validators.instance_of(Waehrungseinheit)),
@@ -59,29 +54,6 @@ class AufAbschlag(COM):
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    website: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    website: str = None
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    gueltigkeitszeitraum: Optional[Zeitraum] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum))
-    )
-
-
-class AufAbschlagSchema(COMSchema):
-    """
-    Schema for de-/serialization of AufAbschlag
-    """
-
-    class_name = AufAbschlag
-    # required attributes
-    bezeichnung = fields.Str()
-    staffeln = fields.List(fields.Nested(PreisstaffelSchema))
-
-    # optional attributes
-    beschreibung = fields.Str(load_default=None)
-    auf_abschlagstyp = EnumField(AufAbschlagstyp, allow_none=True, data_key="aufAbschlagstyp")
-    auf_abschlagsziel = EnumField(AufAbschlagsziel, allow_none=True, data_key="aufAbschlagsziel")
-    einheit = EnumField(Waehrungseinheit, allow_none=True)
-    website = fields.Str(load_default=None)
-    gueltigkeitszeitraum = fields.Nested(ZeitraumSchema, load_default=None)
+    gueltigkeitszeitraum: Zeitraum = None

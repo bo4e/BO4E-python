@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 
-import attrs
+
 from marshmallow import fields
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
@@ -12,7 +12,8 @@ from bo4e.validators import check_bis_is_later_than_von
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Zeitreihenwert(Zeitreihenwertkompakt):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
@@ -37,14 +38,3 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     def _get_exclusive_end(self) -> datetime:
         """return the exclusive end (used in the validator)"""
         return self.datum_uhrzeit_bis
-
-
-class ZeitreihenwertSchema(ZeitreihenwertkompaktSchema):
-    """
-    Schema for de-/serialization of Zeitreihenwert.
-    """
-
-    class_name = Zeitreihenwert  # type:ignore[assignment]
-    # required attributes
-    datum_uhrzeit_von = fields.DateTime(data_key="datumUhrzeitVon")
-    datum_uhrzeit_bis = fields.DateTime(data_key="datumUhrzeitBis")

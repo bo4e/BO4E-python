@@ -1,6 +1,6 @@
 import json
 
-from bo4e.bo.marktteilnehmer import Marktteilnehmer, MarktteilnehmerSchema
+from bo4e.bo.marktteilnehmer import Marktteilnehmer, Marktteilnehmer
 from bo4e.com.adresse import Adresse
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle

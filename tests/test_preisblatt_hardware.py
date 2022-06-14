@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.preisblatthardware import PreisblattHardware, PreisblattHardwareSchema
+from bo4e.bo.preisblatthardware import PreisblattHardware, PreisblattHardware
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.netzebene import Netzebene

@@ -4,7 +4,7 @@ from typing import Tuple
 import pytest  # type:ignore[import]
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
+from bo4e.bo.marktlokation import Marktlokation, Marktlokation
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode

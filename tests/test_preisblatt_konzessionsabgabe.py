@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe, PreisblattKonzessionsabgabeSchema
+from bo4e.bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe, PreisblattKonzessionsabgabe
 from bo4e.enum.kundengruppeka import KundengruppeKA
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte

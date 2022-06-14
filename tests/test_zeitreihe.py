@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.zeitreihe import Zeitreihe, ZeitreiheSchema
+from bo4e.bo.zeitreihe import Zeitreihe, Zeitreihe
 from bo4e.enum.medium import Medium
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart

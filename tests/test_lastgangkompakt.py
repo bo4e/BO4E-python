@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.lastgang import LastgangKompakt, LastgangKompaktSchema
+from bo4e.bo.lastgang import LastgangKompakt, LastgangKompakt
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit

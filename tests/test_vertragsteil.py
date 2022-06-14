@@ -4,7 +4,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.menge import Menge
-from bo4e.com.vertragsteil import Vertragsteil, VertragsteilSchema
+from bo4e.com.vertragsteil import Vertragsteil, Vertragsteil
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
 

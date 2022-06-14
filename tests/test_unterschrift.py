@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.unterschrift import Unterschrift, UnterschriftSchema
+from bo4e.com.unterschrift import Unterschrift, Unterschrift
 
 
 class TestUnterschrift:

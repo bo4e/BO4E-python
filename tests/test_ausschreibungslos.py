@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.com.ausschreibungslos import Ausschreibungslos, AusschreibungslosSchema
+from bo4e.com.ausschreibungslos import Ausschreibungslos, Ausschreibungslos
 from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte
