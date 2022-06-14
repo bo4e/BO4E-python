@@ -26,15 +26,15 @@ class TarifpreisstaffelProOrt(COM):
 
     # required attributes
     #: Der Arbeitspreis in ct/kWh
-    arbeitspreis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    arbeitspreis: Decimal
     #: Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh
-    arbeitspreis_n_t: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    arbeitspreis_n_t: Decimal
     #: Der Grundpreis in Euro/Jahr
-    grundpreis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    grundpreis: Decimal
     #: Unterer Wert, ab dem die Staffel gilt (inklusive)
-    staffelgrenze_von: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    staffelgrenze_von: Decimal
     #: Oberer Wert, bis zu dem die Staffel gilt (exklusive)
-    staffelgrenze_bis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    staffelgrenze_bis: Decimal
 
     # there are no optional attributes
 

@@ -27,18 +27,18 @@ class Kostenposition(COM):
 
     # required attributes
     #: Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt.
-    positionstitel: str = attrs.field(validator=attrs.validators.instance_of(str))
+    positionstitel: str
 
-    betrag_kostenposition: Betrag = attrs.field(validator=attrs.validators.instance_of(Betrag))
+    betrag_kostenposition: Betrag
     """Der errechnete Gesamtbetrag der Position als Ergebnis der Berechnung <Menge * Einzelpreis> oder
     <Einzelpreis / (Anzahl Tage Jahr) * zeitmenge>"""
     # todo: validate above calculation, see https://github.com/Hochfrequenz/BO4E-python/issues/282
 
     #: Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT
-    artikelbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    artikelbezeichnung: str
 
     #: Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.
-    einzelpreis: Preis = attrs.field(validator=attrs.validators.instance_of(Preis))
+    einzelpreis: Preis
 
     # optional attributes
     #: inklusiver von-Zeitpunkt der Kostenzeitscheibe

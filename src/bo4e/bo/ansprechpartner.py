@@ -28,26 +28,26 @@ class Ansprechpartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.ANSPRECHPARTNER)
+    bo_typ: BoTyp = BoTyp.ANSPRECHPARTNER
     nachname: str  #: Nachname (Familienname) des Ansprechpartners
     geschaeftspartner: Geschaeftspartner  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
     # optional attributes
-    anrede: Anrede = attrs.field(default=None)  #: Mögliche Anrede des Ansprechpartners
-    individuelle_anrede: str = attrs.field(default=None)
+    anrede: Anrede = None  #: Mögliche Anrede des Ansprechpartners
+    individuelle_anrede: str = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Sehr geehrte Frau Müller, sehr geehrter Herr Dr. Müller"
     """
 
-    titel: Titel = attrs.field(default=None)  #: Möglicher Titel des Ansprechpartners
-    vorname: str = attrs.field(default=None)  #: Vorname des Ansprechpartners
-    e_mail_adresse: str = attrs.field(default=None)  #: E-Mail Adresse
-    kommentar: str = attrs.field(default=None)  #: Weitere Informationen zum Ansprechpartner
+    titel: Titel = None  #: Möglicher Titel des Ansprechpartners
+    vorname: str = None  #: Vorname des Ansprechpartners
+    e_mail_adresse: str = None  #: E-Mail Adresse
+    kommentar: str = None  #: Weitere Informationen zum Ansprechpartner
     #: Adresse des Ansprechpartners, falls diese von der Adresse des Geschäftspartners abweicht
-    adresse: Adresse = attrs.field(default=None)
+    adresse: Adresse = None
     #: Liste der Telefonnummern, unter denen der Ansprechpartner erreichbar ist
-    rufnummer: Rufnummer = attrs.field(default=None)  # todo: make this a list and rename to rufnummern
+    rufnummer: Rufnummer = None  # todo: make this a list and rename to rufnummern
     #: Liste der Abteilungen und Zuständigkeiten des Ansprechpartners
     zustaendigkeit: Zustaendigkeit = attrs.field(
         default=None

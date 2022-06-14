@@ -24,17 +24,17 @@ class Vertragskonditionen(COM):
 
     # optional attributes
     #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
-    beschreibung: str = attrs.field(default=None)
+    beschreibung: str = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
-    anzahl_abschlaege: Decimal = attrs.field(default=None)
+    anzahl_abschlaege: Decimal = None
     #: Über diesen Zeitraum läuft der Vertrag
-    vertragslaufzeit: Zeitraum = attrs.field(default=None)
+    vertragslaufzeit: Zeitraum = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Zeitraum = attrs.field(default=None)
+    kuendigungsfrist: Zeitraum = None
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Zeitraum = attrs.field(default=None)
+    vertragsverlaengerung: Zeitraum = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Zeitraum = attrs.field(default=None)
+    abschlagszyklus: Zeitraum = None
 
 
 class VertragskonditionenSchema(COMSchema):

@@ -27,11 +27,11 @@ class AufAbschlagProOrt(COM):
 
     # required attributes
     #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
-    postleitzahl: str = attrs.field(validator=attrs.validators.instance_of(str))
+    postleitzahl: str
     #: Der Ort für den der Aufschlag gilt.
-    ort: str = attrs.field(validator=attrs.validators.instance_of(str))
+    ort: str
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
-    netznr: str = attrs.field(validator=attrs.validators.instance_of(str))
+    netznr: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
     staffeln: List[AufAbschlagstaffelProOrt] = attrs.field(
         validator=[attrs.validators.instance_of(List), check_list_length_at_least_one]

@@ -25,14 +25,14 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATTDIENSTLEISTUNG)
+    bo_typ: BoTyp = BoTyp.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
         validator=attrs.validators.instance_of(Bilanzierungsmethode)
     )
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
-    basisdienstleistung: Dienstleistungstyp = attrs.field(validator=attrs.validators.instance_of(Dienstleistungstyp))
+    basisdienstleistung: Dienstleistungstyp
 
     # optional attributes
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße

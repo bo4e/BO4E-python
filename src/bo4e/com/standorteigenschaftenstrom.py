@@ -22,14 +22,14 @@ class StandorteigenschaftenStrom(COM):
 
     # required attributes
     #: Die EIC-Nummer des Bilanzierungsgebietes
-    bilanzierungsgebiet_eic: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bilanzierungsgebiet_eic: str
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147
 
     #: Der Name der Regelzone
-    regelzone: str = attrs.field(validator=attrs.validators.instance_of(str))
+    regelzone: str
 
     #: De EIC-Nummer der Regelzone
-    regelzone_eic: str = attrs.field(validator=attrs.validators.instance_of(str))
+    regelzone_eic: str
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147
 
 

@@ -26,17 +26,17 @@ class PreisblattHardware(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATTHARDWARE)
+    bo_typ: BoTyp = BoTyp.PREISBLATTHARDWARE
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
         validator=attrs.validators.instance_of(Bilanzierungsmethode)
     )
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
-    messebene: Netzebene = attrs.field(validator=attrs.validators.instance_of(Netzebene))
+    messebene: Netzebene
 
     #: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät
-    basisgeraet: Geraeteeigenschaften = attrs.field(validator=attrs.validators.instance_of(Geraeteeigenschaften))
+    basisgeraet: Geraeteeigenschaften
 
     # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung

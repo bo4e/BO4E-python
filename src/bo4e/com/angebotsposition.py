@@ -29,9 +29,9 @@ class Angebotsposition(COM):
 
     # required attributes
     #: Bezeichnung der jeweiligen Position des Angebotsteils
-    positionsbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    positionsbezeichnung: str
     #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Preis = attrs.field(validator=attrs.validators.instance_of(Preis))
+    positionspreis: Preis
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition

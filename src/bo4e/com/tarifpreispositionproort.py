@@ -28,9 +28,9 @@ class TarifpreispositionProOrt(COM):
     #: Postleitzahl des Ortes für den der Preis gilt
     postleitzahl: str = attrs.field(validator=attrs.validators.matches_re(r"^\d{5}$"))
     #: Ort für den der Preis gilt
-    ort: str = attrs.field(validator=attrs.validators.instance_of(str))
+    ort: str
     #: ene't-Netznummer des Netzes in dem der Preis gilt
-    netznr: str = attrs.field(validator=attrs.validators.instance_of(str))
+    netznr: str
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: List[TarifpreisstaffelProOrt] = attrs.field(
         validator=[

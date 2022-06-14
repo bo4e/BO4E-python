@@ -26,9 +26,9 @@ class Netznutzungsrechnung(Rechnung):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.NETZNUTZUNGSRECHNUNG)
+    bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
     absendercodenummer: str = attrs.field(validator=attrs.validators.matches_re(r"^\d{13}$"))
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
@@ -40,14 +40,14 @@ class Netznutzungsrechnung(Rechnung):
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
     #: Aus der INVOIC entnommen
-    nnrechnungsart: NNRechnungsart = attrs.field(validator=attrs.validators.instance_of(NNRechnungsart))
+    nnrechnungsart: NNRechnungsart
     #: Aus der INVOIC entnommen
-    nnrechnungstyp: NNRechnungstyp = attrs.field(validator=attrs.validators.instance_of(NNRechnungstyp))
+    nnrechnungstyp: NNRechnungstyp
 
     #: Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)
-    original: bool = attrs.field(validator=attrs.validators.instance_of(bool))
+    original: bool
     #: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt
-    simuliert: bool = attrs.field(validator=attrs.validators.instance_of(bool))
+    simuliert: bool
 
     # optional attributes
     lokations_id: Optional[str] = attrs.field(

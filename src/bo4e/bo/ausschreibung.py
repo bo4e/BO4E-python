@@ -31,30 +31,30 @@ class Ausschreibung(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.AUSSCHREIBUNG)
+    bo_typ: BoTyp = BoTyp.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
-    ausschreibungsnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
+    ausschreibungsnummer: str
     #: Aufzählung für die Typisierung von Ausschreibungen
-    ausschreibungstyp: Ausschreibungstyp = attrs.field(validator=attrs.validators.instance_of(Ausschreibungstyp))
+    ausschreibungstyp: Ausschreibungstyp
     #: Bezeichnungen für die Ausschreibungsphasen
     ausschreibungsstatus: Ausschreibungsstatus = attrs.field(
         validator=attrs.validators.instance_of(Ausschreibungsstatus)
     )
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
-    kostenpflichtig: bool = attrs.field(validator=attrs.validators.instance_of(bool))
+    kostenpflichtig: bool
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
-    veroeffentlichungszeitpunkt: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
-    ausschreibender: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    veroeffentlichungszeitpunkt: datetime
+    ausschreibender: Geschaeftspartner
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein
     """
-    abgabefrist: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    abgabefrist: Zeitraum
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
-    bindefrist: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    bindefrist: Zeitraum
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein

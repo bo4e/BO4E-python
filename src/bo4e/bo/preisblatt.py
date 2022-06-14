@@ -35,15 +35,15 @@ class Preisblatt(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATT)
+    bo_typ: BoTyp = BoTyp.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Preisblatt gilt für angegebene Sparte
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
     #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
-    preisstatus: Preisstatus = attrs.field(validator=attrs.validators.instance_of(Preisstatus))
+    preisstatus: Preisstatus
     #: Der Zeitraum für den der Preis festgelegt ist
-    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
     preispositionen: List[Preisposition] = attrs.field(
         validator=attrs.validators.deep_iterable(

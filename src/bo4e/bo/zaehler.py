@@ -41,7 +41,7 @@ class Zaehler(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.ZAEHLER)
+    bo_typ: BoTyp = BoTyp.ZAEHLER
     zaehlernummer: str = attrs.field(
         validator=attrs.validators.instance_of(str)
     )  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
@@ -52,14 +52,14 @@ class Zaehler(Geschaeftsobjekt):
     tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes
-    zaehlerkonstante: Optional[Decimal] = attrs.field(default=None)  #: Zählerkonstante auf dem Zähler
+    zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
     eichung_bis: Optional[datetime] = attrs.field(
         default=None
     )  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = attrs.field(
         default=None
     )  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlerhersteller: Optional[Geschaeftspartner] = attrs.field(default=None)  #: Der Hersteller des Zählers
+    zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers
 
 
 class ZaehlerSchema(GeschaeftsobjektSchema):

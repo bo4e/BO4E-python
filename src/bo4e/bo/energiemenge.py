@@ -27,12 +27,12 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.ENERGIEMENGE)
+    bo_typ: BoTyp = BoTyp.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
-    lokations_id: str = attrs.field(validator=attrs.validators.instance_of(str))
+    lokations_id: str
     # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp
     #: Gibt an, ob es sich um eine Markt- oder Messlokation handelt
-    lokationstyp: Lokationstyp = attrs.field(validator=attrs.validators.instance_of(Lokationstyp))
+    lokationstyp: Lokationstyp
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
     energieverbrauch: List[Verbrauch] = attrs.field(

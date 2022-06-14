@@ -22,8 +22,8 @@ class Tarifkosten(Tarifinfo):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.TARIFKOSTEN)
-    kosten: Kosten = attrs.field(validator=attrs.validators.instance_of(Kosten))
+    bo_typ: BoTyp
+    kosten: Kosten
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung
     des Tarifs auf eine Abnahmesituation berechnet wurden

@@ -28,18 +28,18 @@ class _LastgangBody:
     """
 
     #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
 
     #: Eindeutige Nummer der Marktlokation bzw der Messlokation, zu der der Lastgang gehört
-    lokations_id: str = attrs.field(validator=attrs.validators.instance_of(str))
+    lokations_id: str
 
     #: Marktlokation oder Messlokation
-    lokationstyp: str = attrs.field(validator=attrs.validators.instance_of(Lokationstyp))
+    lokationstyp: str
     # todo: implement a lokations-id + lokationstyp cross check (such that lokationstyp malo checks for valid malo id)
     # https://github.com/Hochfrequenz/BO4E-python/issues/321
 
     #: Definition der gemessenen Größe anhand ihrer Einheit
-    messgroesse: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
+    messgroesse: Mengeneinheit
 
     # optional attributes
     #: Versionsnummer des Lastgangs
@@ -60,10 +60,10 @@ class LastgangKompakt(Geschaeftsobjekt, _LastgangBody):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.LASTGANG_KOMPAKT)
+    bo_typ: BoTyp = BoTyp.LASTGANG_KOMPAKT
 
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
-    zeitintervall: Zeitintervall = attrs.field(validator=attrs.validators.instance_of(Zeitintervall))
+    zeitintervall: Zeitintervall
     # todo: implement a cross check that this zeitintervall is actually the one used in tagesvektoren
     # https://github.com/Hochfrequenz/BO4E-python/issues/322
 
@@ -90,7 +90,7 @@ class Lastgang(Geschaeftsobjekt, _LastgangBody):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.LASTGANG)
+    bo_typ: BoTyp = BoTyp.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
     werte: List[Zeitreihenwert] = attrs.field(

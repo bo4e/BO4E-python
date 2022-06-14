@@ -32,22 +32,22 @@ class Ausschreibungslos(COM):
 
     # required attributes
     #: Laufende Nummer des Loses
-    losnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
+    losnummer: str
     #: Bezeichnung der Ausschreibung
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
-    preismodell: Preismodell = attrs.field(validator=attrs.validators.instance_of(Preismodell))
+    preismodell: Preismodell
 
     #: Unterscheidungsmöglichkeiten für die Sparte
-    energieart: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    energieart: Sparte
     #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
-    wunsch_rechnungslegung: Rechnungslegung = attrs.field(validator=attrs.validators.instance_of(Rechnungslegung))
+    wunsch_rechnungslegung: Rechnungslegung
     #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
-    wunsch_vertragsform: Vertragsform = attrs.field(validator=attrs.validators.instance_of(Vertragsform))
+    wunsch_vertragsform: Vertragsform
     #: Name des Lizenzpartners
-    betreut_durch: str = attrs.field(validator=attrs.validators.instance_of(str))
+    betreut_durch: str
     #: Anzahl der Lieferstellen in dieser Ausschreibung
-    anzahl_lieferstellen: int = attrs.field(validator=attrs.validators.instance_of(int))
+    anzahl_lieferstellen: int
 
     #: Die ausgeschriebenen Lieferstellen
     lieferstellen: List[Ausschreibungsdetail] = attrs.field(
@@ -58,7 +58,7 @@ class Ausschreibungslos(COM):
     )
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    lieferzeitraum: Zeitraum
 
     # optional attributes
     #: Bemerkung des Kunden zum Los

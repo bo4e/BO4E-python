@@ -23,11 +23,11 @@ class Zeitintervall(COM):
     """
 
     # required attributes
-    wert: int = attrs.field(validator=attrs.validators.instance_of(int))
+    wert: int
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
     """
-    zeiteinheit: Zeiteinheit = attrs.field(validator=attrs.validators.instance_of(Zeiteinheit))
+    zeiteinheit: Zeiteinheit
     """
     Die Einheit des Zeitintervalls
     """

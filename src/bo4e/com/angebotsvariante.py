@@ -29,13 +29,13 @@ class Angebotsvariante(COM):
 
     # required attributes
     #: Gibt den Status eines Angebotes an.
-    angebotsstatus: Angebotsstatus = attrs.field(validator=attrs.validators.instance_of(Angebotsstatus))
+    angebotsstatus: Angebotsstatus
 
     #: Datum der Erstellung der Angebotsvariante
-    erstellungsdatum: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    erstellungsdatum: datetime
 
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
-    bindefrist: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    bindefrist: datetime
 
     teile: List[Angebotsteil] = attrs.field(
         validator=[

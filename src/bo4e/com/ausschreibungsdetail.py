@@ -30,15 +30,15 @@ class Ausschreibungsdetail(COM):
 
     # required attributes
     #: Identifikation einer ausgeschriebenen Marktlokation
-    lokations_id: str = attrs.field(validator=attrs.validators.instance_of(str))
+    lokations_id: str
     #: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung
-    netzebene_lieferung: str = attrs.field(validator=attrs.validators.instance_of(Netzebene))
+    netzebene_lieferung: str
     #: In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung
-    netzebene_messung: str = attrs.field(validator=attrs.validators.instance_of(Netzebene))
+    netzebene_messung: str
     #: Die Adresse an der die Marktlokation sich befindet
-    lokationsadresse: Adresse = attrs.field(validator=attrs.validators.instance_of(Adresse))
+    lokationsadresse: Adresse
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
-    lieferzeitraum: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    lieferzeitraum: Zeitraum
 
     # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'

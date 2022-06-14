@@ -21,10 +21,10 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATTKONZESSIONSABGABE)
+    bo_typ: BoTyp = BoTyp.PREISBLATTKONZESSIONSABGABE
     # required attributes (additional to those of Preisblatt)
     #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
-    kundengruppe_k_a: KundengruppeKA = attrs.field(validator=attrs.validators.instance_of(KundengruppeKA))
+    kundengruppe_k_a: KundengruppeKA
 
     # there are no optional attributes (additionally to those of Preisblatt)
 

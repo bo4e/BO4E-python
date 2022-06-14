@@ -276,22 +276,6 @@ bo4e.com.preisstaffel module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.pydantic\_com module
------------------------------
-
-.. automodule:: bo4e.com.pydantic_com
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.com.pydantic\_externereferenz module
------------------------------------------
-
-.. automodule:: bo4e.com.pydantic_externereferenz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.rechnungsposition module
 ---------------------------------
 

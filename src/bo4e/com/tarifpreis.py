@@ -30,7 +30,7 @@ class Tarifpreis(Preis):
 
     # optional attributes
     #:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler".
-    beschreibung: Optional[str] = attrs.field(default=None)
+    beschreibung: Optional[str] = None
 
 
 class TarifpreisSchema(PreisSchema):

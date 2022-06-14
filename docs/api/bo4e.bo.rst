@@ -164,14 +164,6 @@ bo4e.bo.preisblattnetznutzung module
    :undoc-members:
    :show-inheritance:
 
-bo4e.bo.pydantic\_geschaeftsobjekt module
------------------------------------------
-
-.. automodule:: bo4e.bo.pydantic_geschaeftsobjekt
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.bo.rechnung module
 -----------------------
 

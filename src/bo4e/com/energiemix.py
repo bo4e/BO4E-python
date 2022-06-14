@@ -31,13 +31,13 @@ class Energiemix(COM):
 
     # required attributes
     #: Eindeutige Nummer zur Identifizierung des Energiemixes
-    energiemixnummer: int = attrs.field(validator=attrs.validators.instance_of(int))
+    energiemixnummer: int
     #: Strom oder Gas etc.
-    energieart: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    energieart: Sparte
     #: Bezeichnung des Energiemix
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Jahr, für das der Energiemix gilt
-    gueltigkeitsjahr: int = attrs.field(validator=attrs.validators.instance_of(int))
+    gueltigkeitsjahr: int
     #: Anteile der jeweiligen Erzeugungsart
     anteil: List[Energieherkunft] = attrs.field(
         validator=[attrs.validators.instance_of(List), check_list_length_at_least_one]
@@ -45,19 +45,19 @@ class Energiemix(COM):
 
     # optional attributes
     #: Bemerkung zum Energiemix
-    bemerkung: str = attrs.field(default=None)
+    bemerkung: str = None
     #: Höhe des erzeugten CO2-Ausstosses in g/kWh
-    co2_emission: Decimal = attrs.field(default=None)
+    co2_emission: Decimal = None
     #: Höhe des erzeugten Atommülls in g/kWh
-    atommuell: Decimal = attrs.field(default=None)
+    atommuell: Decimal = None
     #: Zertifikate für den Energiemix
-    oekozertifikate: List[Oekozertifikat] = attrs.field(default=[])
+    oekozertifikate: List[Oekozertifikat] = []
     #: Ökolabel für den Energiemix
-    oekolabel: List[Oekolabel] = attrs.field(default=[])
+    oekolabel: List[Oekolabel] = []
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
-    oeko_top_ten: bool = attrs.field(default=None)
+    oeko_top_ten: bool = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
-    website: str = attrs.field(default=None)
+    website: str = None
 
 
 class EnergiemixSchema(COMSchema):

@@ -24,11 +24,11 @@ class AufAbschlagstaffelProOrt(COM):
 
     # required attributes
     #: Der Wert für den Auf- oder Abschlag.
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    wert: Decimal
     #: Unterer Wert, ab dem die Staffel gilt.
-    staffelgrenze_von: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    staffelgrenze_von: Decimal
     #: Oberer Wert, bis zu dem die Staffel gilt.
-    staffelgrenze_bis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    staffelgrenze_bis: Decimal
 
 
 class AufAbschlagstaffelProOrtSchema(COMSchema):

@@ -52,7 +52,7 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError(f"The country code '{value[0:2]}' is not a valid country code")
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.MESSLOKATION)
+    bo_typ: BoTyp = BoTyp.MESSLOKATION
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: str = attrs.field(validator=_validate_messlokations_id)
     #: Sparte der Messlokation, z.B. Gas oder Strom
@@ -60,40 +60,40 @@ class Messlokation(Geschaeftsobjekt):
 
     # optional attributes
     #: Spannungsebene der Messung
-    netzebene_messung: Optional[Netzebene] = attrs.field(default=None)
+    netzebene_messung: Optional[Netzebene] = None
     #: Die Nummer des Messgebietes in der ene't-Datenbank
-    messgebietnr: Optional[str] = attrs.field(default=None)
+    messgebietnr: Optional[str] = None
     #: Liste der Hardware, die zu dieser Messstelle gehört
-    geraete: Optional[List[Hardware]] = attrs.field(default=None)
+    geraete: Optional[List[Hardware]] = None
     #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
-    messdienstleistung: Optional[List[Dienstleistung]] = attrs.field(default=None)  # todo: rename to plural
+    messdienstleistung: Optional[List[Dienstleistung]] = None  # todo: rename to plural
     #: Zähler, die zu dieser Messlokation gehören
-    messlokationszaehler: Optional[List[Zaehler]] = attrs.field(default=None)
+    messlokationszaehler: Optional[List[Zaehler]] = None
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr: Optional[str] = attrs.field(default=None)
+    grundzustaendiger_msb_codenr: Optional[str] = None
     """
     Codenummer des grundzuständigen Messstellenbetreibers, der für diese Messlokation zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
-    grundzustaendiger_msbim_codenr: Optional[str] = attrs.field(default=None)
+    grundzustaendiger_msbim_codenr: Optional[str] = None
     """
     Codenummer des grundzuständigen Messstellenbetreibers für intelligente Messsysteme, der für diese Messlokation
     zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
     # only one of the following three optional address attributes can be set
-    messadresse: Optional[Adresse] = attrs.field(default=None)
+    messadresse: Optional[Adresse] = None
     """
     Die Adresse, an der die Messeinrichtungen zu finden sind.
     (Nur angeben, wenn diese von der Adresse der Marktlokation abweicht.)
     """
-    geoadresse: Optional[Geokoordinaten] = attrs.field(default=None)
+    geoadresse: Optional[Geokoordinaten] = None
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Optional[Katasteradresse] = attrs.field(default=None)
+    katasterinformation: Optional[Katasteradresse] = None
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.

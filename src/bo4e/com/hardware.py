@@ -26,7 +26,7 @@ class Hardware(COM):
     #: Eindeutiger Typ der Hardware
     geraetetyp: Geraetetyp = attrs.field(validator=attrs.validators.in_(Geraetetyp))
     #: Bezeichnung der Hardware
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
 
 
 class HardwareSchema(COMSchema):

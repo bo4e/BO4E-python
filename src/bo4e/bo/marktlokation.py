@@ -36,7 +36,7 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.MARKTLOKATION)
+    bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: str = attrs.field(validator=validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
@@ -54,24 +54,24 @@ class Marktlokation(Geschaeftsobjekt):
 
     # optional attributes
     #: Verbrauchsart der Marktlokation.
-    verbrauchsart: Verbrauchsart = attrs.field(default=None)
+    verbrauchsart: Verbrauchsart = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
-    unterbrechbar: bool = attrs.field(default=None)
+    unterbrechbar: bool = None
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
-    netzbetreibercodenr: str = attrs.field(default=None)
+    netzbetreibercodenr: str = None
     #: Typ des Netzgebietes, z.B. Verteilnetz
-    gebietstyp: Gebiettyp = attrs.field(default=None)
+    gebietstyp: Gebiettyp = None
     #: Die ID des Gebietes in der ene't-Datenbank
-    netzgebietsnr: str = attrs.field(default=None)  # todo: rename to "id" (see 2021-12-15 update)
+    netzgebietsnr: str = None  # todo: rename to "id" (see 2021-12-15 update)
     #: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
-    bilanzierungsgebiet: str = attrs.field(default=None)
+    bilanzierungsgebiet: str = None
     #: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
-    grundversorgercodenr: str = attrs.field(default=None)
+    grundversorgercodenr: str = None
     #: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
-    gasqualitaet: Gasqualitaet = attrs.field(default=None)
+    gasqualitaet: Gasqualitaet = None
     #: Geschäftspartner, dem diese Marktlokation gehört
-    endkunde: Geschaeftspartner = attrs.field(default=None)
-    zugehoerige_messlokation: Messlokationszuordnung = attrs.field(default=None)  # todo: rename to plural
+    endkunde: Geschaeftspartner = None
+    zugehoerige_messlokation: Messlokationszuordnung = None  # todo: rename to plural
     """
     Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.
     Es können 3 verschiedene Konstrukte auftreten:
@@ -96,13 +96,13 @@ class Marktlokation(Geschaeftsobjekt):
 
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
-    lokationsadresse: Adresse = attrs.field(default=None)
-    geoadresse: Geokoordinaten = attrs.field(default=None)
+    lokationsadresse: Adresse = None
+    geoadresse: Geokoordinaten = None
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Katasteradresse = attrs.field(default=None)
+    katasterinformation: Katasteradresse = None
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.

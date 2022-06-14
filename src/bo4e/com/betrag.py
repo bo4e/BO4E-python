@@ -26,7 +26,7 @@ class Betrag(COM):
     """
 
     # required attributes
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Gibt den Betrag des Preises an.
+    wert: Decimal  #: Gibt den Betrag des Preises an.
     waehrung: Waehrungscode = attrs.field(
         validator=attrs.validators.instance_of(Waehrungscode)
     )  #: Die entsprechende Waehrung

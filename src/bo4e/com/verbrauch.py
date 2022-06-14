@@ -34,9 +34,9 @@ class Verbrauch(COM):
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
     obis_kennzahl: str = attrs.field(validator=obis_validator)
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
-    mengeneinheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
+    mengeneinheit: Mengeneinheit
 
     # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird

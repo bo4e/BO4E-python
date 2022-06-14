@@ -27,9 +27,9 @@ class Fremdkosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.FREMDKOSTEN)
+    bo_typ: BoTyp = BoTyp.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
     summe_kosten: Optional[Betrag] = attrs.field(

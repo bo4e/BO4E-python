@@ -35,13 +35,13 @@ class Tarifinfo(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.TARIFINFO)
+    bo_typ: BoTyp = BoTyp.TARIFINFO
     #: Name des Tarifs
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Der Name des Marktpartners, der den Tarif anbietet
-    anbietername: str = attrs.field(validator=attrs.validators.instance_of(str))
+    anbietername: str
     #: Strom oder Gas, etc.
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
     #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
     kundentypen: List[Kundentyp] = attrs.field(
         validator=attrs.validators.deep_iterable(
@@ -50,9 +50,9 @@ class Tarifinfo(Geschaeftsobjekt):
         )
     )
     #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
-    tarifart: Tarifart = attrs.field(validator=attrs.validators.instance_of(Tarifart))
+    tarifart: Tarifart
     #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
-    tariftyp: Tariftyp = attrs.field(validator=attrs.validators.instance_of(Tariftyp))
+    tariftyp: Tariftyp
     #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
     tarifmerkmale: List[Tarifmerkmal] = attrs.field(
         validator=attrs.validators.deep_iterable(
@@ -61,7 +61,7 @@ class Tarifinfo(Geschaeftsobjekt):
         )
     )
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
-    anbieter: Marktteilnehmer = attrs.field(validator=attrs.validators.instance_of(Marktteilnehmer))
+    anbieter: Marktteilnehmer
 
     # optional attributes
     #: Internetseite auf dem der Tarif zu finden ist

@@ -33,7 +33,7 @@ class Rechnungsposition(COM):
 
     # required attributes
     #: Fortlaufende Nummer für die Rechnungsposition
-    positionsnummer: int = attrs.field(validator=attrs.validators.instance_of(int))
+    positionsnummer: int
 
     lieferung_von: datetime = attrs.field(
         validator=[attrs.validators.instance_of(datetime), check_bis_is_later_than_von]
@@ -43,14 +43,14 @@ class Rechnungsposition(COM):
     )  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
 
     #: Bezeichung für die abgerechnete Position
-    positionstext: str = attrs.field(validator=attrs.validators.instance_of(str))
+    positionstext: str
 
     #: Die abgerechnete Menge mit Einheit
-    positions_menge: Menge = attrs.field(validator=attrs.validators.instance_of(Menge))
+    positions_menge: Menge
     #: Der Preis für eine Einheit der energetischen Menge
-    einzelpreis: Preis = attrs.field(validator=attrs.validators.instance_of(Preis))
+    einzelpreis: Preis
 
-    teilsumme_netto: Betrag = attrs.field(validator=attrs.validators.instance_of(Betrag))
+    teilsumme_netto: Betrag
     """
     Das Ergebnis der Multiplikation aus einzelpreis * positionsMenge * (Faktor aus zeitbezogeneMenge).
     Z.B. 12,60€ * 120 kW * 3/12 (für 3 Monate).
@@ -59,7 +59,7 @@ class Rechnungsposition(COM):
     # see https://github.com/Hochfrequenz/BO4E-python/issues/126
 
     #: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag
-    teilsumme_steuer: Steuerbetrag = attrs.field(validator=attrs.validators.instance_of(Steuerbetrag))
+    teilsumme_steuer: Steuerbetrag
 
     # optional attributes
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit

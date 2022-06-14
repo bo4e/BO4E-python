@@ -29,10 +29,10 @@ class Tarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.TARIF)
+    bo_typ: BoTyp = BoTyp.TARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    preisstand: datetime
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter = attrs.field(
         validator=attrs.validators.instance_of(Tarifberechnungsparameter)

@@ -23,19 +23,19 @@ class StandorteigenschaftenAllgemein(COM):
 
     # required attributes
     #: Die Postleitzahl des Standorts
-    postleitzahl: str = attrs.field(validator=attrs.validators.instance_of(str))
+    postleitzahl: str
     #: Die Ortsbezeichnung des Standorts
-    ort: str = attrs.field(validator=attrs.validators.instance_of(str))
+    ort: str
     #: Der Name des Kreises in dem der Standort liegt
-    kreisname: str = attrs.field(validator=attrs.validators.instance_of(str))
+    kreisname: str
     #: Der Name der Gemeinde des Standortes
-    gemeindename: str = attrs.field(validator=attrs.validators.instance_of(str))
+    gemeindename: str
     #: Die standardisierte Kennziffer der Gemeinde
-    gemeindekennziffer: str = attrs.field(validator=attrs.validators.instance_of(str))
+    gemeindekennziffer: str
     #: Anzahl der Einwohner in der Gemeinde
-    gemeindeeinwohner: int = attrs.field(validator=attrs.validators.instance_of(int))
+    gemeindeeinwohner: int
     #: Das Bundesland zu dem der Standort gehört
-    bundesland: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bundesland: str
 
 
 class StandorteigenschaftenAllgemeinSchema(COMSchema):

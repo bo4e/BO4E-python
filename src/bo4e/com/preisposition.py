@@ -35,15 +35,15 @@ class Preisposition(COM):
 
     # required attributes
     #: Das Modell, das der Preisbildung zugrunde liegt
-    berechnungsmethode: Kalkulationsmethode = attrs.field(validator=attrs.validators.instance_of(Kalkulationsmethode))
+    berechnungsmethode: Kalkulationsmethode
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
-    leistungstyp: Leistungstyp = attrs.field(validator=attrs.validators.instance_of(Leistungstyp))  #
+    leistungstyp: Leistungstyp  #
     #: Bezeichnung für die in der Position abgebildete Leistungserbringung
-    leistungsbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    leistungsbezeichnung: str
     #: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
-    preiseinheit: Waehrungseinheit = attrs.field(validator=attrs.validators.instance_of(Waehrungseinheit))
+    preiseinheit: Waehrungseinheit
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
-    bezugsgroesse: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
+    bezugsgroesse: Mengeneinheit
     #: Preisstaffeln, die zu dieser Preisposition gehören
     preisstaffeln: List[Preisstaffel] = attrs.field(
         validator=attrs.validators.deep_iterable(

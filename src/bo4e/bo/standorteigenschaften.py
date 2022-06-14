@@ -27,7 +27,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.STANDORTEIGENSCHAFTEN)
+    bo_typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
     #: Allgemeine Eigenschaften
     eigenschaften_allgemein: StandorteigenschaftenAllgemein = attrs.field(
         validator=attrs.validators.instance_of(StandorteigenschaftenAllgemein)

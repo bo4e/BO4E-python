@@ -29,9 +29,9 @@ class Steuerbetrag(COM):
     #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
     steuerkennzeichen: Steuerkennzeichen = attrs.field(validator=attrs.validators.in_(Steuerkennzeichen))
     #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
-    basiswert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    basiswert: Decimal
     #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
-    steuerwert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    steuerwert: Decimal
     #: Währung. Z.B. Euro.
     waehrung: Waehrungscode = attrs.field(validator=attrs.validators.in_(Waehrungscode))
 

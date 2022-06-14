@@ -28,7 +28,7 @@ class Energieherkunft(COM):
     #: Art der Erzeugung der Energie.
     erzeugungsart: Erzeugungsart = attrs.field(validator=attrs.validators.in_(Erzeugungsart))
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
-    anteil_prozent: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    anteil_prozent: Decimal
 
     @anteil_prozent.validator
     # pylint: disable=unused-argument

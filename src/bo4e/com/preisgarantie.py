@@ -27,8 +27,8 @@ class Preisgarantie(COM):
 
     # required attributes
     #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
-    preisgarantietyp: Preisgarantietyp = attrs.field(validator=attrs.validators.instance_of(Preisgarantietyp))
-    zeitliche_gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    preisgarantietyp: Preisgarantietyp
+    zeitliche_gueltigkeit: Zeitraum
     """ Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum
     oder als Laufzeit in Monaten. """
 

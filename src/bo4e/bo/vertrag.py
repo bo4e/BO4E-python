@@ -42,27 +42,27 @@ class Vertrag(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.VERTRAG)
+    bo_typ: BoTyp = BoTyp.VERTRAG
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
-    vertragsnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
+    vertragsnummer: str
     #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt.
-    vertragsart: Vertragsart = attrs.field(validator=attrs.validators.instance_of(Vertragsart))
+    vertragsart: Vertragsart
     #: Gibt den Status des Vertrags an
-    vertragsstatus: Vertragsstatus = attrs.field(validator=attrs.validators.instance_of(Vertragsstatus))
+    vertragsstatus: Vertragsstatus
     #: Unterscheidungsmöglichkeiten für die Sparte
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
     #: Gibt an, wann der Vertrag beginnt (inklusiv)
-    vertragsbeginn: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    vertragsbeginn: datetime
     #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
-    vertragsende: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    vertragsende: datetime
     # todo: add von/bis validator
-    vertragspartner1: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    vertragspartner1: Geschaeftspartner
     """
     Der "erstgenannte" Vertragspartner.
     In der Regel der Aussteller des Vertrags.
     Beispiel: "Vertrag zwischen Vertragspartner 1 ..."
     """
-    vertragspartner2: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    vertragspartner2: Geschaeftspartner
     """
     Der "zweitgenannte" Vertragspartner.
     In der Regel der Empfänger des Vertrags.
@@ -76,13 +76,13 @@ class Vertrag(Geschaeftsobjekt):
 
     # optional attributes
     #: Beschreibung zum Vertrag
-    beschreibung: Optional[str] = attrs.field(default=None)
+    beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen
-    vertragskonditionen: Optional[Vertragskonditionen] = attrs.field(default=None)
+    vertragskonditionen: Optional[Vertragskonditionen] = None
     #: Unterzeichner des Vertragspartners 1
-    unterzeichnervp1: Optional[List[Unterschrift]] = attrs.field(default=None)
+    unterzeichnervp1: Optional[List[Unterschrift]] = None
     #: Unterzeichner des Vertragspartners 2
-    unterzeichnervp2: Optional[List[Unterschrift]] = attrs.field(default=None)
+    unterzeichnervp2: Optional[List[Unterschrift]] = None
 
 
 class VertragSchema(GeschaeftsobjektSchema):

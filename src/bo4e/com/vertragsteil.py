@@ -25,30 +25,30 @@ class Vertragsteil(COM):
     """
 
     # required attributes
-    vertragsteilbeginn: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    vertragsteilbeginn: datetime
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    vertragsteilende: datetime
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
     # optional attributes
-    lokation: Optional[str] = attrs.field(default=None)
+    lokation: Optional[str] = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
     """
-    vertraglich_fixierte_menge: Optional[Menge] = attrs.field(default=None)
+    vertraglich_fixierte_menge: Optional[Menge] = None
     """
     Für die Lokation festgeschriebene Abnahmemenge
     """
-    minimale_abnahmemenge: Optional[Menge] = attrs.field(default=None)
+    minimale_abnahmemenge: Optional[Menge] = None
     """
     Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
     """
-    maximale_abnahmemenge: Optional[Menge] = attrs.field(default=None)
+    maximale_abnahmemenge: Optional[Menge] = None
     """
     Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
     """

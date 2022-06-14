@@ -26,7 +26,7 @@ class Dienstleistung(COM):
     #: Kennzeichnung der Dienstleistung
     dienstleistungstyp: Dienstleistungstyp = attrs.field(validator=attrs.validators.in_(Dienstleistungstyp))
     #: Bezeichnung der Dienstleistung
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
 
 
 class DienstleistungSchema(COMSchema):

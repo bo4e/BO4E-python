@@ -31,17 +31,17 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.ZEITREIHE)
+    bo_typ: BoTyp = BoTyp.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
-    messgroesse: Messgroesse = attrs.field(validator=attrs.validators.instance_of(Messgroesse))
+    messgroesse: Messgroesse
     #: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
-    messart: Messart = attrs.field(validator=attrs.validators.instance_of(Messart))
+    messart: Messart
     #: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
-    medium: Medium = attrs.field(validator=attrs.validators.instance_of(Medium))
+    medium: Medium
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
-    einheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
+    einheit: Mengeneinheit
 
     #: Hier liegen jeweils die Werte
     werte: List[Zeitreihenwert] = attrs.field(

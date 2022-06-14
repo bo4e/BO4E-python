@@ -23,12 +23,12 @@ class Sigmoidparameter(COM):
     """
 
     # required attributes
-    A: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Briefmarke Ortsverteilnetz (EUR/kWh)
+    A: Decimal  #: Briefmarke Ortsverteilnetz (EUR/kWh)
     B: Decimal = attrs.field(
         validator=attrs.validators.instance_of(Decimal)
     )  #: Wendepunkt für die bepreiste Menge (kW)
-    C: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Exponent (einheitenlos)
-    D: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Briefmarke Transportnetz (EUR/kWh)
+    C: Decimal  #: Exponent (einheitenlos)
+    D: Decimal  #: Briefmarke Transportnetz (EUR/kWh)
 
     def calculate(self, leistung: Decimal) -> Decimal:
         """

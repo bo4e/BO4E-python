@@ -34,34 +34,34 @@ class Rechnung(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.RECHNUNG)
-    storno: bool = attrs.field(validator=attrs.validators.instance_of(bool))
+    bo_typ: BoTyp = BoTyp.RECHNUNG
+    storno: bool
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;
     im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
     """
     #: Eine im Verwendungskontext eindeutige Nummer für die Rechnung
-    rechnungsnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
+    rechnungsnummer: str
     #: Ausstellungsdatum der Rechnung
-    rechnungsdatum: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    rechnungsdatum: datetime
     #: Zu diesem Datum ist die Zahlung fällig
-    faelligkeitsdatum: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    faelligkeitsdatum: datetime
     #: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung
-    rechnungstyp: Rechnungstyp = attrs.field(validator=attrs.validators.instance_of(Rechnungstyp))
+    rechnungstyp: Rechnungstyp
     #: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung
-    rechnungsperiode: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    rechnungsperiode: Zeitraum
     #: Der Aussteller der Rechnung
-    rechnungsersteller: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    rechnungsersteller: Geschaeftspartner
     #: Der Aussteller der Rechnung
-    rechnungsempfaenger: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    rechnungsempfaenger: Geschaeftspartner
     #: Die Summe der Nettobeträge der Rechnungsteile
-    gesamtnetto: Betrag = attrs.field(validator=attrs.validators.instance_of(Betrag))
+    gesamtnetto: Betrag
     #: Die Summe der Steuerbeträge der Rechnungsteile
-    gesamtsteuer: Betrag = attrs.field(validator=attrs.validators.instance_of(Betrag))
+    gesamtsteuer: Betrag
     #: Die Summe aus Netto- und Steuerbetrag
-    gesamtbrutto: Betrag = attrs.field(validator=attrs.validators.instance_of(Betrag))
+    gesamtbrutto: Betrag
     #: Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt
-    zuzahlen: Betrag = attrs.field(validator=attrs.validators.instance_of(Betrag))
+    zuzahlen: Betrag
     #: Die Rechnungspositionen
     rechnungspositionen: List[Rechnungsposition] = attrs.field(
         validator=attrs.validators.deep_iterable(

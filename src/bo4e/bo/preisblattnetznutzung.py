@@ -23,15 +23,15 @@ class PreisblattNetznutzung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATTNETZNUTZUNG)
+    bo_typ: BoTyp = BoTyp.PREISBLATTNETZNUTZUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
         validator=attrs.validators.instance_of(Bilanzierungsmethode)
     )
     #: Die Preise gelten für Marktlokationen in der angebebenen Netzebene
-    netzebene: Netzebene = attrs.field(validator=attrs.validators.instance_of(Netzebene))
-    kundengruppe: Kundengruppe = attrs.field(validator=attrs.validators.instance_of(Kundengruppe))
+    netzebene: Netzebene
+    kundengruppe: Kundengruppe
 
     # there are no optional attributes (additionally to those of Preisblatt)
 

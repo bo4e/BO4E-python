@@ -30,8 +30,8 @@ class Messlokationszuordnung(COM):
     arithmetik: ArithmetischeOperation
 
     # optional attributes
-    gueltig_seit: datetime = attrs.field(default=None)
-    gueltig_bis: datetime = attrs.field(default=None)
+    gueltig_seit: datetime = None
+    gueltig_bis: datetime = None
 
 
 class MesslokationszuordnungSchema(COMSchema):

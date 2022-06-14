@@ -25,7 +25,7 @@ class Rufnummer(COM):
     #: Ausprägung der Nummer
     nummerntyp: Rufnummernart = attrs.field(validator=attrs.validators.in_(Rufnummernart))
     #: Die konkrete Nummer
-    rufnummer: str = attrs.field(validator=attrs.validators.instance_of(str))
+    rufnummer: str
 
 
 class RufnummerSchema(COMSchema):

@@ -26,17 +26,17 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATTMESSUNG)
+    bo_typ: BoTyp = BoTyp.PREISBLATTMESSUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Bilanzierungsmethode = attrs.field(
         validator=attrs.validators.instance_of(Bilanzierungsmethode)
     )
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
-    messebene: Netzebene = attrs.field(validator=attrs.validators.instance_of(Netzebene))
+    messebene: Netzebene
 
     #: Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
-    zaehler: Geraeteeigenschaften = attrs.field(validator=attrs.validators.instance_of(Geraeteeigenschaften))
+    zaehler: Geraeteeigenschaften
     # todo: https://github.com/Hochfrequenz/BO4E-python/issues/333
 
     # optional attributes

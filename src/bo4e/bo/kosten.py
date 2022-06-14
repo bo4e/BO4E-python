@@ -29,11 +29,11 @@ class Kosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.KOSTEN)
+    bo_typ: BoTyp = BoTyp.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Kostenklasse = attrs.field(validator=attrs.validators.instance_of(Kostenklasse))
+    kostenklasse: Kostenklasse
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
     kostenbloecke: List[Kostenblock] = attrs.field(
         validator=attrs.validators.deep_iterable(

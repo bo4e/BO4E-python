@@ -26,7 +26,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.GESCHAEFTSPARTNER)
+    bo_typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
     name1: str
     """
     Erster Teil des Namens.
@@ -42,38 +42,38 @@ class Geschaeftspartner(Geschaeftsobjekt):
     oder eine Privatperson handelt. (gewerbeKennzeichnung = false)
     """
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
-    geschaeftspartnerrolle: List[Geschaeftspartnerrolle] = attrs.field(validator=attrs.validators.instance_of(List))
+    geschaeftspartnerrolle: List[Geschaeftspartnerrolle]
     # todo: rename to plural
 
     # optional attributes
     #: Die Anrede für den GePa, Z.B. "Herr"
-    anrede: Anrede = attrs.field(default=None)
-    name2: Optional[str] = attrs.field(default=None)
+    anrede: Anrede = None
+    name2: Optional[str] = None
     """
     Zweiter Teil des Namens.
     Hier kann der eine Erweiterung zum Firmennamen oder bei Privatpersonen beispielsweise der Vorname dagestellt werden.
     Beispiele: Bereich Süd oder Nina
     """
 
-    name3: Optional[str] = attrs.field(default=None)
+    name3: Optional[str] = None
     """
     Dritter Teil des Namens.
     Hier können weitere Ergänzungen zum Firmennamen oder bei Privatpersonen Zusätze zum Namen dagestellt werden.
     Beispiele: und Afrika oder Sängerin
     """
     #: Handelsregisternummer des Geschäftspartners
-    hrnummer: Optional[str] = attrs.field(default=None)
+    hrnummer: Optional[str] = None
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
-    amtsgericht: Optional[str] = attrs.field(default=None)
+    amtsgericht: Optional[str] = None
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: List[Kontaktart] = attrs.field(default=[])
+    kontaktweg: List[Kontaktart] = []
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
-    umsatzsteuer_id: Optional[str] = attrs.field(default=None)
+    umsatzsteuer_id: Optional[str] = None
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
-    glaeubiger_id: Optional[str] = attrs.field(default=None)
+    glaeubiger_id: Optional[str] = None
     #: E-Mail-Adresse des Ansprechpartners. Z.B. "info@hochfrequenz.de"
-    e_mail_adresse: Optional[str] = attrs.field(default=None)
+    e_mail_adresse: Optional[str] = None
     #: Internetseite des Marktpartners
-    website: Optional[str] = attrs.field(default=None)
+    website: Optional[str] = None
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
-    partneradresse: Adresse = attrs.field(default=None)  # todo: is it plural or not? the docs are bad
+    partneradresse: Adresse = None  # todo: is it plural or not? the docs are bad

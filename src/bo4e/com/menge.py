@@ -26,9 +26,9 @@ class Menge(COM):
 
     # required attributes
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
+    einheit: Mengeneinheit
 
 
 class MengeSchema(COMSchema):

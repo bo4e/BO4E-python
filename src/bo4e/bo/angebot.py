@@ -32,18 +32,18 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.ANGEBOT)
+    bo_typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: str = attrs.field(validator=attrs.validators.matches_re(r"^\d+$"))
     #: Erstellungsdatum des Angebots
-    angebotsdatum: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    angebotsdatum: datetime
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
     #: Ersteller des Angebots
-    angebotsgeber: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    angebotsgeber: Geschaeftspartner
     #: Empfänger des Angebots
-    angebotsnehmer: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
+    angebotsnehmer: Geschaeftspartner
 
     varianten: List[Angebotsvariante] = attrs.field(
         validator=attrs.validators.deep_iterable(

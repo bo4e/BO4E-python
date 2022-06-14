@@ -24,9 +24,9 @@ class Region(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.REGION)
+    bo_typ: BoTyp = BoTyp.REGION
     #: Bezeichnung der Region
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
 
     #: Positivliste der Kriterien zur Definition der Region
     positiv_liste: List[Regionskriterium] = attrs.field(

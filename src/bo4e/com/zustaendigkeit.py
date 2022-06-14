@@ -29,8 +29,8 @@ class Zustaendigkeit(COM):
     """
 
     # optional attributes
-    jobtitel: str = attrs.field(default=None)  #: Berufliche Rolle des Ansprechpartners
-    abteilung: str = attrs.field(default=None)  #: Abteilung, in der der Ansprechpartner tätig ist
+    jobtitel: str = None  #: Berufliche Rolle des Ansprechpartners
+    abteilung: str = None  #: Abteilung, in der der Ansprechpartner tätig ist
 
 
 class ZustaendigkeitSchema(COMSchema):

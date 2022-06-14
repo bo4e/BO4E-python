@@ -26,7 +26,7 @@ class Fremdkostenblock(COM):
 
     # required attributes
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
-    kostenblockbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    kostenblockbezeichnung: str
 
     # optional attributes
     kostenpositionen: Optional[List[Fremdkostenposition]] = attrs.field(

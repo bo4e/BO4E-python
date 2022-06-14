@@ -26,7 +26,7 @@ class Tagesvektor(COM):
 
     # required attributes
     # for the validator see https://github.com/Hochfrequenz/BO4E-python/issues/261
-    tag: datetime.datetime = attrs.field(validator=attrs.validators.instance_of(datetime.datetime))
+    tag: datetime.datetime
     """
     Der Zeitpunkt ab dem die Werte ermittelt wurden.
     Es kann entweder der Beginn des Strom- oder Gastages verwendet werden.

@@ -25,9 +25,9 @@ class KriteriumWert(COM):
 
     # required attributes
     #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
-    kriterium: Tarifregionskriterium = attrs.field(validator=attrs.validators.instance_of(Tarifregionskriterium))
+    kriterium: Tarifregionskriterium
     #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
-    wert: str = attrs.field(validator=attrs.validators.instance_of(str))
+    wert: str
 
 
 class KriteriumWertSchema(COMSchema):

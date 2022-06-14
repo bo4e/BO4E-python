@@ -30,7 +30,7 @@ class Regionskriterium(COM):
     regionskriteriumtyp: Regionskriteriumtyp = attrs.field(
         validator=attrs.validators.instance_of(Regionskriteriumtyp)
     )  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
-    wert: str = attrs.field(validator=attrs.validators.instance_of(str))
+    wert: str
     """
     Der Wert, den das Kriterium annehmen kann, z.B. NRW.
     Im Falle des Regionskriteriumstyp BUNDESWEIT spielt dieser Wert keine Rolle.

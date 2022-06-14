@@ -26,7 +26,7 @@ class Zeitreihenwertkompakt(COM):
     """
 
     # required attributes
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Der im Zeitintervall gültige Wert.
+    wert: Decimal  #: Der im Zeitintervall gültige Wert.
 
     # optional attributes
     status: Optional[Messwertstatus] = attrs.field(

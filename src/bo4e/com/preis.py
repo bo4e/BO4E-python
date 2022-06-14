@@ -29,7 +29,7 @@ class Preis(COM):
 
     # required attributes
     #: Gibt die nominale Höhe des Preises an.
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    wert: Decimal
     #: Währungseinheit für den Preis, z.B. Euro oder Ct.
     einheit: Waehrungseinheit = attrs.field(validator=attrs.validators.in_(Waehrungseinheit))
     #: Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
@@ -37,7 +37,7 @@ class Preis(COM):
 
     # optional attributes
     #: Gibt den Status des veröffentlichten Preises an
-    status: Optional[Preisstatus] = attrs.field(default=None)
+    status: Optional[Preisstatus] = None
 
 
 class PreisSchema(COMSchema):

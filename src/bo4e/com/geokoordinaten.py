@@ -22,8 +22,8 @@ class Geokoordinaten(COM):
     """
 
     # = attrs.field() has to be there, to make the validator work
-    breitengrad: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
-    laengengrad: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    breitengrad: Decimal
+    laengengrad: Decimal
 
 
 class GeokoordinatenSchema(COMSchema):

@@ -24,7 +24,7 @@ class Geraeteeigenschaften(COM):
 
     # required attributes
     #: Der Typ eines Gerätes, beispielsweise Drehstromzähler
-    geraetetyp: Geraetetyp = attrs.field(validator=attrs.validators.instance_of(Geraetetyp))
+    geraetetyp: Geraetetyp
 
     # optional attributes
     #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..

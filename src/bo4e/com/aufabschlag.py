@@ -32,9 +32,9 @@ class AufAbschlag(COM):
 
     # required attributes
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Werte für die gestaffelten Auf/Abschläge.
-    staffeln: List[Preisstaffel] = attrs.field(validator=attrs.validators.instance_of(List))
+    staffeln: List[Preisstaffel]
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag

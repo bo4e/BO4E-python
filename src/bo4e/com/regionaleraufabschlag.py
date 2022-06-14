@@ -37,7 +37,7 @@ class RegionalerAufAbschlag(COM):
 
     # required attributes
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
     staffeln: List[RegionalePreisstaffel] = attrs.field(

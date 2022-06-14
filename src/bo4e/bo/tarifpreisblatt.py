@@ -28,10 +28,10 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = attrs.field(default=BoTyp.TARIFPREISBLATT)
+    bo_typ: BoTyp = BoTyp.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    preisstand: datetime
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
     tarifpreise: List[Tarifpreisposition] = attrs.field(
         validator=attrs.validators.deep_iterable(

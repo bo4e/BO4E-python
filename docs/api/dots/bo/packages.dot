@@ -22,7 +22,6 @@ charset="utf-8"
 "bo4e.bo.preisblattkonzessionsabgabe" [color="black", label="bo4e.bo.preisblattkonzessionsabgabe", shape="box", style="solid"];
 "bo4e.bo.preisblattmessung" [color="black", label="bo4e.bo.preisblattmessung", shape="box", style="solid"];
 "bo4e.bo.preisblattnetznutzung" [color="black", label="bo4e.bo.preisblattnetznutzung", shape="box", style="solid"];
-"bo4e.bo.pydantic_geschaeftsobjekt" [color="black", label="bo4e.bo.pydantic_geschaeftsobjekt", shape="box", style="solid"];
 "bo4e.bo.rechnung" [color="black", label="bo4e.bo.rechnung", shape="box", style="solid"];
 "bo4e.bo.region" [color="black", label="bo4e.bo.region", shape="box", style="solid"];
 "bo4e.bo.regionaltarif" [color="black", label="bo4e.bo.regionaltarif", shape="box", style="solid"];

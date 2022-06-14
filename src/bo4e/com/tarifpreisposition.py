@@ -30,11 +30,11 @@ class Tarifpreisposition(COM):
 
     # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Preistyp = attrs.field(validator=attrs.validators.instance_of(Preistyp))
+    preistyp: Preistyp
     #: Einheit des Preises (z.B. EURO)
-    einheit: Waehrungseinheit = attrs.field(validator=attrs.validators.instance_of(Waehrungseinheit))
+    einheit: Waehrungseinheit
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
-    bezugseinheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
+    bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: List[Preisstaffel] = attrs.field(
         validator=[

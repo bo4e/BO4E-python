@@ -25,7 +25,7 @@ class Marktteilnehmer(Geschaeftspartner):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.MARKTTEILNEHMER)
+    bo_typ: BoTyp = BoTyp.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
     #: Gibt die Codenummer der Marktrolle an
@@ -35,7 +35,7 @@ class Marktteilnehmer(Geschaeftspartner):
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
-    makoadresse: str = attrs.field(default=None)
+    makoadresse: str = None
 
 
 class MarktteilnehmerSchema(GeschaeftspartnerSchema):

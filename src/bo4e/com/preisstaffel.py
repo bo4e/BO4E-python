@@ -25,11 +25,11 @@ class Preisstaffel(COM):
 
     # required attributes
     #: Preis pro abgerechneter Mengeneinheit
-    einheitspreis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    einheitspreis: Decimal
     #: Inklusiver unterer Wert, ab dem die Staffel gilt
-    staffelgrenze_von: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    staffelgrenze_von: Decimal
     #: Exklusiver oberer Wert, bis zu dem die Staffel gilt
-    staffelgrenze_bis: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    staffelgrenze_bis: Decimal
 
     # optional attributes
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter

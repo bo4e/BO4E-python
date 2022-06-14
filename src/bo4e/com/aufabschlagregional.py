@@ -37,7 +37,7 @@ class AufAbschlagRegional(COM):
 
     # required attributess
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
     betraege: List[AufAbschlagProOrt] = attrs.field(
         validator=[

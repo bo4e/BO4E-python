@@ -25,7 +25,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.BUENDELVERTRAG)
+    bo_typ: BoTyp = BoTyp.BUENDELVERTRAG
     #: Die Liste mit den Einzelverträgen zu den Abnahmestellen
     einzelvertraege: List[Vertrag] = attrs.field(
         validator=attrs.validators.deep_iterable(
