@@ -2,13 +2,15 @@ import json
 
 import pytest  # type:ignore[import]
 
-from bo4e.com.adresse import Adresse, AdresseSchema
+# import pydantic
+
+from bo4e.com.adresse import Adresse
 from bo4e.enum.landescode import Landescode
 
 # can be imported by other tests
 example_adresse = Adresse(
     ort="Grünwald",
-    landescode=Landescode.DE,  # type:ignore[attr-defined]
+    landescode=Landescode.DE,
     hausnummer="27A",
     strasse="Nördliche Münchner Straße",
     postleitzahl="82031",
@@ -34,15 +36,14 @@ class TestAddress:
             hausnummer=address_test_data["hausnummer"],
         )
 
-        schema = AdresseSchema()
-        address_dict = schema.dump(a)
+        address_dict = a.json(by_alias=True, ensure_ascii=False)
 
-        assert address_dict["strasse"] == "Nördliche Münchner Straße"
-        assert address_dict["hausnummer"] == "27A"
-        assert address_dict["postleitzahl"] == "82031"
-        assert address_dict["landescode"] == "DE"
+        assert "Nördliche Münchner Straße" in address_dict
+        assert "27A" in address_dict
+        assert "82031" in address_dict
+        assert "DE" in address_dict
 
-        deserialized_address = schema.load(address_dict)
+        deserialized_address = Adresse.parse_raw(address_dict)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
@@ -64,14 +65,13 @@ class TestAddress:
             postfach=address_test_data["postfach"],
         )
 
-        schema = AdresseSchema()
-        address_json = schema.dumps(a, ensure_ascii=False)
+        address_json = a.json(by_alias=False, ensure_ascii=False)
 
         assert "10 64 38" in address_json
         assert "82031" in address_json
         assert "DE" in address_json
 
-        deserialized_address = schema.loads(address_json)
+        deserialized_address = Adresse.parse_raw(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
@@ -90,13 +90,12 @@ class TestAddress:
             ort=address_test_data["ort"],
         )
 
-        schema = AdresseSchema()
-        address_json = schema.dumps(a, ensure_ascii=False)
+        address_json = a.json(by_alias=False, ensure_ascii=False)
 
         assert "Grünwald" in address_json
         assert "82031" in address_json
 
-        deserialized_address = schema.loads(address_json)
+        deserialized_address = Adresse.parse_raw(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.ort == "Grünwald"
@@ -117,9 +116,8 @@ class TestAddress:
             landescode=Landescode.AT,
         )
 
-        schema = AdresseSchema()
-        address_json = schema.dumps(a, ensure_ascii=False)
-        deserialized_address = schema.loads(address_json)
+        address_json = a.json(by_alias=False, ensure_ascii=False)
+        deserialized_address = Adresse.parse_raw(address_json)
 
         assert deserialized_address.landescode == Landescode.AT
 
@@ -130,8 +128,7 @@ class TestAddress:
                  "postleitzahl":"5020",
                  "landescode":"AT"}"""
 
-        schema = AdresseSchema()
-        a: Adresse = schema.loads(json_string)
+        a: Adresse = Adresse.parse_raw(json_string)
         assert a.landescode is Landescode.AT
 
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json")
@@ -142,7 +139,7 @@ class TestAddress:
         with open(datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValueError) as excinfo:
             _ = Adresse(
                 ort=address_test_data["ort"],
                 strasse=address_test_data["strasse"],
@@ -162,7 +159,7 @@ class TestAddress:
                     "hausnummer": None,
                     "postfach": None,
                 },
-                "Missing hausnummer",
+                'You have to define either "strasse" and "hausnummer" or "postfach".',
                 id="Missing hausnummer",
             ),
             pytest.param(
@@ -173,7 +170,7 @@ class TestAddress:
                     "hausnummer": "27A",
                     "postfach": None,
                 },
-                "Missing strasse",
+                'You have to define either "strasse" and "hausnummer" or "postfach".',
                 id="Missing strasse",
             ),
             pytest.param(
@@ -184,7 +181,7 @@ class TestAddress:
                     "hausnummer": "27A",
                     "postfach": "10 64 38",
                 },
-                "hausnummer OR postfach",
+                'You have to define either "strasse" and "hausnummer" or "postfach".',
                 id="Strasse, hausnummer and postfach",
             ),
             pytest.param(
@@ -195,7 +192,7 @@ class TestAddress:
                     "hausnummer": "27A",
                     "postfach": "10 64 38",
                 },
-                "hausnummer OR postfach",
+                'You have to define either "strasse" and "hausnummer" or "postfach".',
                 id="Postfach and hausnummer",
             ),
         ],
@@ -220,7 +217,7 @@ class TestAddress:
             postleitzahl="6413", ort="Wildermieming", strasse="Gerhardhof", hausnummer="1", landescode=Landescode.AT
         )
         assert a.landescode == Landescode.AT
-        serialized_address = AdresseSchema().dumps(a)
+        serialized_address = a.json(by_alias=False, ensure_ascii=False)
         assert '"AT"' in serialized_address
-        deserialized_address = AdresseSchema().loads(serialized_address)
+        deserialized_address = Adresse.parse_raw(serialized_address)
         assert deserialized_address.landescode == Landescode.AT

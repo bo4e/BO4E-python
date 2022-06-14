@@ -10,8 +10,10 @@
 
 import inspect
 import os
+import shlex
 import shutil
 import sys
+import subprocess
 
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
@@ -73,6 +75,7 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
+    "sphinx.ext.graphviz",
     "sphinx_rtd_theme",
 ]
 
@@ -288,3 +291,12 @@ intersphinx_mapping = {
     "sphinx": ("http://www.sphinx-doc.org/en/stable", None),
     "python": ("https://docs.python.org/" + python_version, None),
 }
+
+# Create UML diagrams in .dot format with pyreverse
+# command = 'dot --version'
+# subprocess.call(shlex.split(command))
+graphviz_output_format = "png"
+# command = 'pyreverse "{0}/bo/" -s1 -c bo.Geschaeftsobjekt --output-directory "{1}/dots/bo/"'.format(module_dir, output_dir)
+command = 'pyreverse "{0}/bo/" -s1 --output-directory "{1}/dots/bo/"'.format(module_dir, output_dir)
+os.makedirs("{0}/dots/bo/".format(output_dir))
+subprocess.call(shlex.split(command))

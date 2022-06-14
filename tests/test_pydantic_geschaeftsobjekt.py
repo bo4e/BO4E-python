@@ -1,9 +1,9 @@
-from typing import List
+from typing import List, Optional
 
 import pytest  # type:ignore[import]
 import pydantic
-from bo4e.bo.pydantic_geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.pydantic_externereferenz import ExterneReferenz
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
 
 
@@ -25,9 +25,12 @@ class TestGeschaeftsobjet:
                 [ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")],
             ),
             (BoTyp.ENERGIEMENGE, "2", []),
+            (BoTyp.ENERGIEMENGE, "2", None),
         ],
     )
-    def test_serialisation(self, bo_typ: BoTyp, versionstruktur: str, externe_referenzen: List[ExterneReferenz]):
+    def test_serialisation(
+        self, bo_typ: BoTyp, versionstruktur: str, externe_referenzen: Optional[List[ExterneReferenz]]
+    ):
         go = Geschaeftsobjekt(
             bo_typ=bo_typ,
             versionstruktur=versionstruktur,
