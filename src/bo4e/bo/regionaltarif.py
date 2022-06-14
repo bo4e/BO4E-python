@@ -8,12 +8,12 @@ from typing import List, Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.bo.tarifinfo import Tarifinfo, TarifinfoSchema
-from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie, RegionalePreisgarantieSchema
-from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag, RegionalerAufAbschlagSchema
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition, RegionaleTarifpreispositionSchema
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter, TarifberechnungsparameterSchema
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung, TarifeinschraenkungSchema
+from bo4e.bo.tarifinfo import Tarifinfo
+from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
+from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag
+from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
+from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
+from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.botyp import BoTyp
 from bo4e.validators import check_list_length_at_least_one
 

@@ -7,7 +7,7 @@ from datetime import datetime
 import attrs
 from marshmallow import fields
 
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
+from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from bo4e.validators import check_bis_is_later_than_von
 
 

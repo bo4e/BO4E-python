@@ -6,7 +6,7 @@ from typing import Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
+from bo4e.com.kostenposition import Kostenposition
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes

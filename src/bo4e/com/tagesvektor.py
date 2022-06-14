@@ -7,8 +7,8 @@ from typing import List
 import attrs
 from marshmallow import fields
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, ZeitreihenwertkompaktSchema
+from bo4e.com.com import COM
+from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 
 # pylint: disable=too-few-public-methods
 from bo4e.validators import check_list_length_at_least_one

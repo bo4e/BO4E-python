@@ -6,9 +6,9 @@ from typing import List, Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
+from bo4e.com.betrag import Betrag
+from bo4e.com.com import COM
+from bo4e.com.kostenposition import Kostenposition
 
 
 # pylint: disable=too-few-public-methods

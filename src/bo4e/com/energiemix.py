@@ -10,8 +10,8 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.energieherkunft import Energieherkunft, EnergieherkunftSchema
+from bo4e.com.com import COM
+from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.enum.oekolabel import Oekolabel
 from bo4e.enum.oekozertifikat import Oekozertifikat
 from bo4e.enum.sparte import Sparte

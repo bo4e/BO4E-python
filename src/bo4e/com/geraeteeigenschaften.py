@@ -6,7 +6,7 @@ from typing import Optional
 import attrs
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.com import COM, COMSchema
+from bo4e.com.com import COM
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 

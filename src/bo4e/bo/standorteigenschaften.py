@@ -7,10 +7,10 @@ from typing import List, Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein, StandorteigenschaftenAllgemeinSchema
-from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas, StandorteigenschaftenGasSchema
-from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom, StandorteigenschaftenStromSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein
+from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
+from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from bo4e.enum.botyp import BoTyp
 from bo4e.validators import check_list_length_at_least_one
 

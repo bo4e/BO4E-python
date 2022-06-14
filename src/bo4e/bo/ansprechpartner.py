@@ -6,11 +6,11 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.adresse import Adresse, AdresseSchema
-from bo4e.com.rufnummer import Rufnummer, RufnummerSchema
-from bo4e.com.zustaendigkeit import Zustaendigkeit, ZustaendigkeitSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.com.adresse import Adresse
+from bo4e.com.rufnummer import Rufnummer
+from bo4e.com.zustaendigkeit import Zustaendigkeit
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.titel import Titel

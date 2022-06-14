@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
 
-from bo4e.bo.tarifkosten import Tarifkosten, TarifkostenSchema
+from bo4e.bo.tarifkosten import Tarifkosten
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
@@ -42,7 +42,7 @@ class TestTarifkosten:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifkosten, TarifkostenSchema())
+        assert_serialization_roundtrip(tarifkosten)
 
     def test_missing_required_attribute(self):
         with pytest.raises(TypeError) as excinfo:

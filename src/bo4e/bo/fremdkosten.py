@@ -6,10 +6,10 @@ from typing import List, Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.fremdkostenblock import Fremdkostenblock, FremdkostenblockSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.betrag import Betrag
+from bo4e.com.fremdkostenblock import Fremdkostenblock
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 
 

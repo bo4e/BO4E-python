@@ -8,8 +8,8 @@ from typing import Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
 
 
 # pylint: disable=too-few-public-methods

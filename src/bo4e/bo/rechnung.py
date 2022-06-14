@@ -10,12 +10,12 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.rechnungsposition import Rechnungsposition, RechnungspositionSchema
-from bo4e.com.steuerbetrag import Steuerbetrag, SteuerbetragSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.com.betrag import Betrag
+from bo4e.com.rechnungsposition import Rechnungsposition
+from bo4e.com.steuerbetrag import Steuerbetrag
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp

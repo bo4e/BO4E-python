@@ -9,8 +9,8 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
+from bo4e.com.com import COM
+from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit

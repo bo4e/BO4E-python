@@ -8,11 +8,11 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.marktteilnehmer import Marktteilnehmer, MarktteilnehmerSchema
-from bo4e.com.energiemix import Energiemix, EnergiemixSchema
-from bo4e.com.vertragskonditionen import Vertragskonditionen, VertragskonditionenSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.marktteilnehmer import Marktteilnehmer
+from bo4e.com.energiemix import Energiemix
+from bo4e.com.vertragskonditionen import Vertragskonditionen
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte

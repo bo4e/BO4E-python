@@ -7,7 +7,7 @@ and corresponding marshmallow schema for de-/serialization
 import attrs
 from marshmallow import fields
 
-from bo4e.com.com import COM, COMSchema
+from bo4e.com.com import COM
 
 
 # pylint: disable=too-few-public-methods

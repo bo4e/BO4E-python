@@ -9,7 +9,7 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.com import COM, COMSchema
+from bo4e.com.com import COM
 from bo4e.enum.waehrungscode import Waehrungscode
 
 
@@ -30,14 +30,3 @@ class Betrag(COM):
     waehrung: Waehrungscode = attrs.field(
         validator=attrs.validators.instance_of(Waehrungscode)
     )  #: Die entsprechende Waehrung
-
-
-class BetragSchema(COMSchema):
-    """
-    Schema for de-/serialization of Betrag
-    """
-
-    class_name = Betrag
-    # required attributes
-    wert = fields.Decimal(as_string=True)
-    waehrung = EnumField(Waehrungscode)

@@ -7,8 +7,8 @@ from typing import List
 import attrs
 from marshmallow import fields
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.marktgebietinfo import MarktgebietInfo, MarktgebietInfoSchema
+from bo4e.com.com import COM
+from bo4e.com.marktgebietinfo import MarktgebietInfo
 from bo4e.validators import check_list_length_is_one_or_two
 
 

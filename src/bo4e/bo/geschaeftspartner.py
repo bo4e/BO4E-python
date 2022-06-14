@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.adresse import Adresse, AdresseSchema
+from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle

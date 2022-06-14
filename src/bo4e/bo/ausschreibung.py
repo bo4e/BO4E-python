@@ -8,10 +8,10 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
-from bo4e.com.ausschreibungslos import Ausschreibungslos, AusschreibungslosSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.com.ausschreibungslos import Ausschreibungslos
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
 from bo4e.enum.ausschreibungstyp import Ausschreibungstyp

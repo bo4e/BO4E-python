@@ -8,12 +8,12 @@ from typing import List, Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
-from bo4e.com.angebotsposition import Angebotsposition, AngebotspositionSchema
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.bo.marktlokation import Marktlokation
+from bo4e.com.angebotsposition import Angebotsposition
+from bo4e.com.betrag import Betrag
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.validators import check_list_length_at_least_one
 
 

@@ -9,9 +9,9 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.preis import Preis, PreisSchema
-from bo4e.com.tarifpreis import Tarifpreis, TarifpreisSchema
+from bo4e.com.com import COM
+from bo4e.com.preis import Preis
+from bo4e.com.tarifpreis import Tarifpreis
 from bo4e.enum.messpreistyp import Messpreistyp
 from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 

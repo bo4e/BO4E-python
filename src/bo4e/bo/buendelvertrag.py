@@ -6,8 +6,8 @@ from typing import List
 import attrs
 from marshmallow import fields
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.vertrag import Vertrag, VertragSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.vertrag import Vertrag
 from bo4e.enum.botyp import BoTyp
 from bo4e.validators import check_list_length_at_least_one
 

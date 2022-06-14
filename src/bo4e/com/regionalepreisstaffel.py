@@ -5,8 +5,8 @@ Contains RegionalePreisstaffel class and corresponding marshmallow schema for de
 import attrs
 from marshmallow import fields
 
-from bo4e.com.preisstaffel import Preisstaffel, PreisstaffelSchema
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeitSchema
+from bo4e.com.preisstaffel import Preisstaffel
+from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 
 
 # pylint: disable=too-few-public-methods

@@ -7,8 +7,8 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.preisblatt import Preisblatt, PreisblattSchema
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften, GeraeteeigenschaftenSchema
+from bo4e.bo.preisblatt import Preisblatt
+from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp

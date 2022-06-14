@@ -6,10 +6,10 @@ and corresponding marshmallow schema for de-/serialization
 import attrs
 from marshmallow import fields
 
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.preis import Preis, PreisSchema
+from bo4e.com.betrag import Betrag
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
+from bo4e.com.preis import Preis
 
 
 # pylint: disable=too-few-public-methods

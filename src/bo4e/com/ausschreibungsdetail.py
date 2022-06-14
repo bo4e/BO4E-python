@@ -8,10 +8,10 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.adresse import Adresse, AdresseSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.com.adresse import Adresse
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.zaehlertyp import Zaehlertyp
 

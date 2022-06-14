@@ -6,8 +6,8 @@ from typing import List, Optional
 import attrs
 from marshmallow import fields
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.regionskriterium import Regionskriterium, RegionskriteriumSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.regionskriterium import Regionskriterium
 from bo4e.enum.botyp import BoTyp
 from bo4e.validators import check_list_length_at_least_one
 

@@ -8,8 +8,8 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.verbrauch import Verbrauch, VerbrauchSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.verbrauch import Verbrauch
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.validators import check_list_length_at_least_one

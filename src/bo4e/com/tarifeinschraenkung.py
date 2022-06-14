@@ -7,9 +7,9 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.geraet import Geraet, GeraetSchema
-from bo4e.com.menge import Menge, MengeSchema
+from bo4e.com.com import COM
+from bo4e.com.geraet import Geraet
+from bo4e.com.menge import Menge
 from bo4e.enum.voraussetzungen import Voraussetzungen
 
 

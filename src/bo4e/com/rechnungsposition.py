@@ -8,11 +8,11 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.preis import Preis, PreisSchema
-from bo4e.com.steuerbetrag import Steuerbetrag, SteuerbetragSchema
+from bo4e.com.betrag import Betrag
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
+from bo4e.com.preis import Preis
+from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit

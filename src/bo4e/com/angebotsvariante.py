@@ -8,10 +8,10 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.angebotsteil import Angebotsteil, AngebotsteilSchema
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
+from bo4e.com.angebotsteil import Angebotsteil
+from bo4e.com.betrag import Betrag
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
 from bo4e.enum.angebotsstatus import Angebotsstatus
 from bo4e.validators import check_list_length_at_least_one
 

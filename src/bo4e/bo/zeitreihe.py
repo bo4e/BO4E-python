@@ -7,8 +7,8 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.zeitreihenwert import Zeitreihenwert, ZeitreihenwertSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.medium import Medium
 from bo4e.enum.mengeneinheit import Mengeneinheit

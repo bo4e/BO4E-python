@@ -6,8 +6,8 @@ and corresponding marshmallow schema for de-/serialization
 import attrs
 from marshmallow import fields
 
-from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeitSchema
+from bo4e.com.preisgarantie import Preisgarantie
+from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 
 
 # pylint: disable=too-few-public-methods

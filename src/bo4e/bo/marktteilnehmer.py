@@ -7,7 +7,7 @@ from attrs.validators import matches_re
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
+from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp

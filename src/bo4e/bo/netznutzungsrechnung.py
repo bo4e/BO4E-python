@@ -7,7 +7,7 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.rechnung import Rechnung, RechnungSchema
+from bo4e.bo.rechnung import Rechnung
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.nnrechnungsart import NNRechnungsart
 from bo4e.enum.nnrechnungstyp import NNRechnungstyp

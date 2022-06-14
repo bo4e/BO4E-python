@@ -8,10 +8,10 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, AusschreibungsdetailSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte

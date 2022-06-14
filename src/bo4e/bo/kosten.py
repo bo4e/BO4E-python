@@ -7,10 +7,10 @@ import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.kostenblock import Kostenblock, KostenblockSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.betrag import Betrag
+from bo4e.com.kostenblock import Kostenblock
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kostenklasse import Kostenklasse
 from bo4e.validators import check_list_length_at_least_one
