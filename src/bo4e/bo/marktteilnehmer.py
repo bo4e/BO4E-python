@@ -9,6 +9,7 @@ from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, GeschaeftspartnerSchema
 from bo4e.enum.botyp import BoTyp
+from bo4e.enum.sparte import Sparte
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
 
@@ -32,6 +33,8 @@ class Marktteilnehmer(Geschaeftspartner):
     rollencodenummer: str = attrs.field(validator=matches_re(r"^\d{13}$"))
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
+    #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
+    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
@@ -51,6 +54,7 @@ class MarktteilnehmerSchema(GeschaeftspartnerSchema):
     marktrolle = EnumField(Marktrolle)
     rollencodenummer = fields.Str()
     rollencodetyp = EnumField(Rollencodetyp)
+    sparte = EnumField(Sparte)
 
     # optional attributes
     makoadresse = fields.Str(load_default=None)
