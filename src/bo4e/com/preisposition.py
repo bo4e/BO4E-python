@@ -4,7 +4,7 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -23,7 +23,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Preisposition(COM):
     """
     Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes
@@ -35,59 +35,59 @@ class Preisposition(COM):
 
     # required attributes
     #: Das Modell, das der Preisbildung zugrunde liegt
-    berechnungsmethode: Kalkulationsmethode = attr.ib(validator=attr.validators.instance_of(Kalkulationsmethode))
+    berechnungsmethode: Kalkulationsmethode = attrs.field(validator=attrs.validators.instance_of(Kalkulationsmethode))
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
-    leistungstyp: Leistungstyp = attr.ib(validator=attr.validators.instance_of(Leistungstyp))  #
+    leistungstyp: Leistungstyp = attrs.field(validator=attrs.validators.instance_of(Leistungstyp))  #
     #: Bezeichnung für die in der Position abgebildete Leistungserbringung
-    leistungsbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    leistungsbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
-    preiseinheit: Waehrungseinheit = attr.ib(validator=attr.validators.instance_of(Waehrungseinheit))
+    preiseinheit: Waehrungseinheit = attrs.field(validator=attrs.validators.instance_of(Waehrungseinheit))
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
-    bezugsgroesse: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
+    bezugsgroesse: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: List[Preisstaffel] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Preisstaffel),
+    preisstaffeln: List[Preisstaffel] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Preisstaffel),
             iterable_validator=check_list_length_at_least_one,
         )
     )
 
     # optional attributes
-    zeitbasis: Optional[Zeiteinheit] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Zeiteinheit))
+    zeitbasis: Optional[Zeiteinheit] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeiteinheit))
     )
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird
     """
     #: Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
-    tarifzeit: Optional[Tarifzeit] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Tarifzeit))
+    tarifzeit: Optional[Tarifzeit] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Tarifzeit))
     )
-    bdew_artikelnummer: Optional[BDEWArtikelnummer] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(BDEWArtikelnummer))
+    bdew_artikelnummer: Optional[BDEWArtikelnummer] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(BDEWArtikelnummer))
     )
     """
     Eine vom BDEW standardisierte Bezeichnug für die abgerechnete Leistungserbringung;
     Diese Artikelnummer wird auch im Rechnungsteil der INVOIC verwendet.
     """
     #: Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden
-    zonungsgroesse: Optional[Bemessungsgroesse] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Bemessungsgroesse))
+    zonungsgroesse: Optional[Bemessungsgroesse] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Bemessungsgroesse))
     )
     #: Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt
-    freimenge_blindarbeit: Optional[Decimal] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Decimal))
+    freimenge_blindarbeit: Optional[Decimal] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Decimal))
     )
-    freimenge_leistungsfaktor: Optional[Decimal] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Decimal))
+    freimenge_leistungsfaktor: Optional[Decimal] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Decimal))
     )
     """
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)
     """
-    artikel_id: Optional[ArtikelId] = attr.ib(
-        validator=attr.validators.optional(attr.validators.instance_of(ArtikelId)), default=None
+    artikel_id: Optional[ArtikelId] = attrs.field(
+        validator=attrs.validators.optional(attrs.validators.instance_of(ArtikelId)), default=None
     )  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
 
 

@@ -3,14 +3,14 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Fremdkostenposition(Kostenposition):
     """
     Eine Kostenposition im Bereich der Fremdkosten
@@ -22,24 +22,24 @@ class Fremdkostenposition(Kostenposition):
 
     # optional attributes (additional to those from Kostenposition)
     #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
-    marktpartnername: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    marktpartnername: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
 
     #: Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt
-    marktpartnercode: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    marktpartnercode: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
 
     #: EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT
-    gebietcode_eic: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    gebietcode_eic: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
     # todo: see issue https://github.com/Hochfrequenz/BO4E-python/issues/147 for EIC validation
 
     #: Link zum veröffentlichten Preisblatt
-    link_preisblatt: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    link_preisblatt: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
 
 

@@ -4,14 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Unterschrift(COM):
     """
     Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.
@@ -23,11 +23,11 @@ class Unterschrift(COM):
 
     # required attributes
     #: Name des Unterschreibers
-    name: str = attr.ib(validator=attr.validators.instance_of(str))
+    name: str = attrs.field(validator=attrs.validators.instance_of(str))
 
     # optional attributes
-    ort: str = attr.ib(default=None)  #: Ort, an dem die Unterschrift geleistet wird
-    datum: datetime = attr.ib(default=None)  #: Datum der Unterschrift
+    ort: str = attrs.field(default=None)  #: Ort, an dem die Unterschrift geleistet wird
+    datum: datetime = attrs.field(default=None)  #: Datum der Unterschrift
 
 
 class UnterschriftSchema(COMSchema):

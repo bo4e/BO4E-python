@@ -5,7 +5,7 @@ Contains Angebot class and corresponding marshmallow schema for de-/serializatio
 from datetime import datetime
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Angebot(Geschaeftsobjekt):
     """
     Mit diesem BO kann ein Versorgungsangebot zur Strom- oder Gasversorgung oder die Teilnahme an einer Ausschreibung
@@ -32,22 +32,22 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    bo_typ: BoTyp = attr.ib(default=BoTyp.ANGEBOT)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.ANGEBOT)
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: str = attr.ib(validator=attr.validators.matches_re(r"^\d+$"))
+    angebotsnummer: str = attrs.field(validator=attrs.validators.matches_re(r"^\d+$"))
     #: Erstellungsdatum des Angebots
-    angebotsdatum: datetime = attr.ib(validator=attr.validators.instance_of(datetime))
+    angebotsdatum: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Sparte = attr.ib(validator=attr.validators.instance_of(Sparte))
+    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
     #: Ersteller des Angebots
-    angebotsgeber: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
+    angebotsgeber: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
     #: Empfänger des Angebots
-    angebotsnehmer: Geschaeftspartner = attr.ib(validator=attr.validators.instance_of(Geschaeftspartner))
+    angebotsnehmer: Geschaeftspartner = attrs.field(validator=attrs.validators.instance_of(Geschaeftspartner))
 
-    varianten: List[Angebotsvariante] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Angebotsvariante),
+    varianten: List[Angebotsvariante] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Angebotsvariante),
             iterable_validator=check_list_length_at_least_one,
         )
     )
@@ -55,22 +55,22 @@ class Angebot(Geschaeftsobjekt):
     Ein Angebot besteht mindestens aus einer Variante."""
 
     # optional attributes
-    anfragereferenz: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    anfragereferenz: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
     """	Referenz auf eine Anfrage oder Ausschreibung;
     Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""
     #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
-    bindefrist: Optional[datetime] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(datetime))
+    bindefrist: Optional[datetime] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(datetime))
     )
     #: Person, die als Angebotsnehmer das Angebot angenommen hat
-    unterzeichner_angebotsnehmer: Optional[Ansprechpartner] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Ansprechpartner))
+    unterzeichner_angebotsnehmer: Optional[Ansprechpartner] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Ansprechpartner))
     )
     #: Person, die als Angebotsgeber das Angebots ausgestellt hat
-    unterzeichner_angebotsgeber: Optional[Ansprechpartner] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Ansprechpartner))
+    unterzeichner_angebotsgeber: Optional[Ansprechpartner] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Ansprechpartner))
     )
 
 

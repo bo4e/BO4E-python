@@ -3,7 +3,7 @@ Contains Regionskriterium class and corresponding marshmallow schema for de-/ser
 """
 
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -13,7 +13,7 @@ from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Regionskriterium(COM):
     """
     Komponente zur Abbildung eines Regionskriteriums
@@ -24,13 +24,13 @@ class Regionskriterium(COM):
     """
 
     # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp = attr.ib(
-        validator=attr.validators.instance_of(Gueltigkeitstyp)
+    gueltigkeitstyp: Gueltigkeitstyp = attrs.field(
+        validator=attrs.validators.instance_of(Gueltigkeitstyp)
     )  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
-    regionskriteriumtyp: Regionskriteriumtyp = attr.ib(
-        validator=attr.validators.instance_of(Regionskriteriumtyp)
+    regionskriteriumtyp: Regionskriteriumtyp = attrs.field(
+        validator=attrs.validators.instance_of(Regionskriteriumtyp)
     )  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
-    wert: str = attr.ib(validator=attr.validators.instance_of(str))
+    wert: str = attrs.field(validator=attrs.validators.instance_of(str))
     """
     Der Wert, den das Kriterium annehmen kann, z.B. NRW.
     Im Falle des Regionskriteriumstyp BUNDESWEIT spielt dieser Wert keine Rolle.

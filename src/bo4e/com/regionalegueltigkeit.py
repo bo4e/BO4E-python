@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -15,7 +15,7 @@ from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class RegionaleGueltigkeit(COM):
     """
     Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.
@@ -26,15 +26,15 @@ class RegionaleGueltigkeit(COM):
     """
 
     # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp = attr.ib(
-        validator=attr.validators.in_(Gueltigkeitstyp)
+    gueltigkeitstyp: Gueltigkeitstyp = attrs.field(
+        validator=attrs.validators.in_(Gueltigkeitstyp)
     )  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    kriteriums_werte: List[KriteriumWert] = attr.ib(
-        validator=attr.validators.instance_of(list)
+    kriteriums_werte: List[KriteriumWert] = attrs.field(
+        validator=attrs.validators.instance_of(list)
     )  #:  Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
 
     @kriteriums_werte.validator
-    # pylint: disable=unused-argument, no-self-use
+    # pylint: disable=unused-argument
     def check_list_length(self, attribute, value):
         """
         Check that minimal list length is at least one.

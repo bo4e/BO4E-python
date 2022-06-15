@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -14,7 +14,7 @@ from bo4e.enum.waehrungscode import Waehrungscode
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Betrag(COM):
     """
     Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge
@@ -26,9 +26,9 @@ class Betrag(COM):
     """
 
     # required attributes
-    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))  #: Gibt den Betrag des Preises an.
-    waehrung: Waehrungscode = attr.ib(
-        validator=attr.validators.instance_of(Waehrungscode)
+    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))  #: Gibt den Betrag des Preises an.
+    waehrung: Waehrungscode = attrs.field(
+        validator=attrs.validators.instance_of(Waehrungscode)
     )  #: Die entsprechende Waehrung
 
 

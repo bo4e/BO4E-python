@@ -7,7 +7,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -52,7 +52,7 @@ def time_range_possibilities(instance, attribute, value):
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Zeitraum(COM):
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
@@ -67,12 +67,12 @@ class Zeitraum(COM):
     """
 
     # optional attributes
-    einheit: Optional[Zeiteinheit] = attr.ib(default=None, validator=time_range_possibilities)
-    dauer: Optional[Decimal] = attr.ib(default=None, validator=time_range_possibilities)
-    startdatum: Optional[datetime] = attr.ib(default=None, validator=time_range_possibilities)
-    enddatum: Optional[datetime] = attr.ib(default=None, validator=time_range_possibilities)
-    startzeitpunkt: Optional[datetime] = attr.ib(default=None, validator=time_range_possibilities)
-    endzeitpunkt: Optional[datetime] = attr.ib(default=None, validator=time_range_possibilities)
+    einheit: Optional[Zeiteinheit] = attrs.field(default=None, validator=time_range_possibilities)
+    dauer: Optional[Decimal] = attrs.field(default=None, validator=time_range_possibilities)
+    startdatum: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
+    enddatum: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
+    startzeitpunkt: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
+    endzeitpunkt: Optional[datetime] = attrs.field(default=None, validator=time_range_possibilities)
 
 
 class ZeitraumSchema(COMSchema):

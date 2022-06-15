@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
@@ -18,7 +18,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Angebotsteil(COM):
     """
     Mit dieser Komponente wird ein Teil einer Angebotsvariante abgebildet.
@@ -34,11 +34,11 @@ class Angebotsteil(COM):
 
     # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: List[Angebotsposition] = attr.ib(
+    positionen: List[Angebotsposition] = attrs.field(
         validator=[
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Angebotsposition),
-                iterable_validator=attr.validators.instance_of(list),
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Angebotsposition),
+                iterable_validator=attrs.validators.instance_of(list),
             ),
             check_list_length_at_least_one,
         ]
@@ -46,15 +46,15 @@ class Angebotsteil(COM):
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
-    anfrage_subreferenz: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    anfrage_subreferenz: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
-    lieferstellenangebotsteil: Optional[List[Marktlokation]] = attr.ib(
+    lieferstellenangebotsteil: Optional[List[Marktlokation]] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Marktlokation),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Marktlokation),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )
@@ -63,16 +63,16 @@ class Angebotsteil(COM):
     Durch die Marktlokation ist auch die Lieferadresse festgelegt
     """
     #: Summe der Verbräuche aller in diesem Angebotsteil eingeschlossenen Lieferstellen
-    gesamtmengeangebotsteil: Optional[Menge] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Menge))
+    gesamtmengeangebotsteil: Optional[Menge] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Menge))
     )
     #: Summe der Jahresenergiekosten aller in diesem Angebotsteil enthaltenen Lieferstellen
-    gesamtkostenangebotsteil: Optional[Betrag] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Betrag))
+    gesamtkostenangebotsteil: Optional[Betrag] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Betrag))
     )
     #: Hier kann der Belieferungszeitraum angegeben werden, für den dieser Angebotsteil gilt
-    lieferzeitraum: Optional[Zeitraum] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Zeitraum))
+    lieferzeitraum: Optional[Zeitraum] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum))
     )
 
 

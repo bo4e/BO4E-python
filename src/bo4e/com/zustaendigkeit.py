@@ -3,7 +3,7 @@ Contains Zustaendigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -12,7 +12,7 @@ from bo4e.enum.themengebiet import Themengebiet
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Zustaendigkeit(COM):
     """
     Enthält die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zuständigkeiten.
@@ -23,14 +23,14 @@ class Zustaendigkeit(COM):
     """
 
     # required attributes
-    themengebiet: Themengebiet = attr.ib(validator=attr.validators.in_(Themengebiet))
+    themengebiet: Themengebiet = attrs.field(validator=attrs.validators.in_(Themengebiet))
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners angegeben werden
     """
 
     # optional attributes
-    jobtitel: str = attr.ib(default=None)  #: Berufliche Rolle des Ansprechpartners
-    abteilung: str = attr.ib(default=None)  #: Abteilung, in der der Ansprechpartner tätig ist
+    jobtitel: str = attrs.field(default=None)  #: Berufliche Rolle des Ansprechpartners
+    abteilung: str = attrs.field(default=None)  #: Abteilung, in der der Ansprechpartner tätig ist
 
 
 class ZustaendigkeitSchema(COMSchema):

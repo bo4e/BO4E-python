@@ -2,7 +2,7 @@
 Contains Zeitintervall class
 and corresponding marshmallow schema for de-/serialization
 """
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -11,7 +11,7 @@ from bo4e.enum.zeiteinheit import Zeiteinheit
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Zeitintervall(COM):
     """
     Abbildung für ein Zeitintervall. Die Abbildung eines Zeitintervalls.
@@ -23,11 +23,11 @@ class Zeitintervall(COM):
     """
 
     # required attributes
-    wert: int = attr.ib(validator=attr.validators.instance_of(int))
+    wert: int = attrs.field(validator=attrs.validators.instance_of(int))
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
     """
-    zeiteinheit: Zeiteinheit = attr.ib(validator=attr.validators.instance_of(Zeiteinheit))
+    zeiteinheit: Zeiteinheit = attrs.field(validator=attrs.validators.instance_of(Zeiteinheit))
     """
     Die Einheit des Zeitintervalls
     """

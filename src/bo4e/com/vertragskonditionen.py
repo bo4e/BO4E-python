@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
@@ -12,7 +12,7 @@ from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.
@@ -24,17 +24,17 @@ class Vertragskonditionen(COM):
 
     # optional attributes
     #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
-    beschreibung: str = attr.ib(default=None)
+    beschreibung: str = attrs.field(default=None)
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
-    anzahl_abschlaege: Decimal = attr.ib(default=None)
+    anzahl_abschlaege: Decimal = attrs.field(default=None)
     #: Über diesen Zeitraum läuft der Vertrag
-    vertragslaufzeit: Zeitraum = attr.ib(default=None)
+    vertragslaufzeit: Zeitraum = attrs.field(default=None)
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Zeitraum = attr.ib(default=None)
+    kuendigungsfrist: Zeitraum = attrs.field(default=None)
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Zeitraum = attr.ib(default=None)
+    vertragsverlaengerung: Zeitraum = attrs.field(default=None)
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Zeitraum = attr.ib(default=None)
+    abschlagszyklus: Zeitraum = attrs.field(default=None)
 
 
 class VertragskonditionenSchema(COMSchema):

@@ -3,7 +3,7 @@ Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
 from typing import List
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -17,7 +17,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Kosten(Geschaeftsobjekt):
     """
     Dieses BO wird zur Übertagung von hierarchischen Kostenstrukturen verwendet.
@@ -29,26 +29,26 @@ class Kosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = attr.ib(default=BoTyp.KOSTEN)
+    bo_typ: BoTyp = attrs.field(default=BoTyp.KOSTEN)
     #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Kostenklasse = attr.ib(validator=attr.validators.instance_of(Kostenklasse))
+    kostenklasse: Kostenklasse = attrs.field(validator=attrs.validators.instance_of(Kostenklasse))
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum = attr.ib(validator=attr.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: List[Kostenblock] = attr.ib(
-        validator=attr.validators.deep_iterable(
-            member_validator=attr.validators.instance_of(Kostenblock),
+    kostenbloecke: List[Kostenblock] = attrs.field(
+        validator=attrs.validators.deep_iterable(
+            member_validator=attrs.validators.instance_of(Kostenblock),
             iterable_validator=check_list_length_at_least_one,
         )
     )
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: List[Betrag] = attr.ib(
+    summe_kosten: List[Betrag] = attrs.field(
         default=None,
-        validator=attr.validators.optional(
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Betrag),
-                iterable_validator=attr.validators.instance_of(list),
+        validator=attrs.validators.optional(
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Betrag),
+                iterable_validator=attrs.validators.instance_of(list),
             )
         ),
     )

@@ -5,7 +5,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -16,7 +16,7 @@ from bo4e.validators import check_bis_is_later_than_von, obis_validator
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Verbrauch(COM):
     """
     Abbildung eines zeitlich abgegrenzten Verbrauchs
@@ -28,26 +28,26 @@ class Verbrauch(COM):
 
     # required attributes
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
-    wertermittlungsverfahren: Wertermittlungsverfahren = attr.ib(
-        validator=attr.validators.instance_of(Wertermittlungsverfahren)
+    wertermittlungsverfahren: Wertermittlungsverfahren = attrs.field(
+        validator=attrs.validators.instance_of(Wertermittlungsverfahren)
     )
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: str = attr.ib(validator=obis_validator)
+    obis_kennzahl: str = attrs.field(validator=obis_validator)
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal = attr.ib(validator=attr.validators.instance_of(Decimal))
+    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
     #: Gibt die Einheit zum jeweiligen Wert an
-    mengeneinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
+    mengeneinheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
 
     # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: Optional[datetime] = attr.ib(
+    startdatum: Optional[datetime] = attrs.field(
         default=None,
-        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_bis_is_later_than_von]),
+        validator=attrs.validators.optional([attrs.validators.instance_of(datetime), check_bis_is_later_than_von]),
     )
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: Optional[datetime] = attr.ib(
+    enddatum: Optional[datetime] = attrs.field(
         default=None,
-        validator=attr.validators.optional([attr.validators.instance_of(datetime), check_bis_is_later_than_von]),
+        validator=attrs.validators.optional([attrs.validators.instance_of(datetime), check_bis_is_later_than_von]),
     )
 
     def _get_inclusive_start(self) -> Optional[datetime]:

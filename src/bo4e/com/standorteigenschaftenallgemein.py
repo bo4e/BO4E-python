@@ -4,14 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class StandorteigenschaftenAllgemein(COM):
     """
     Allgemeine Standorteigenschaften
@@ -23,19 +23,19 @@ class StandorteigenschaftenAllgemein(COM):
 
     # required attributes
     #: Die Postleitzahl des Standorts
-    postleitzahl: str = attr.ib(validator=attr.validators.instance_of(str))
+    postleitzahl: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Die Ortsbezeichnung des Standorts
-    ort: str = attr.ib(validator=attr.validators.instance_of(str))
+    ort: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Der Name des Kreises in dem der Standort liegt
-    kreisname: str = attr.ib(validator=attr.validators.instance_of(str))
+    kreisname: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Der Name der Gemeinde des Standortes
-    gemeindename: str = attr.ib(validator=attr.validators.instance_of(str))
+    gemeindename: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Die standardisierte Kennziffer der Gemeinde
-    gemeindekennziffer: str = attr.ib(validator=attr.validators.instance_of(str))
+    gemeindekennziffer: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Anzahl der Einwohner in der Gemeinde
-    gemeindeeinwohner: int = attr.ib(validator=attr.validators.instance_of(int))
+    gemeindeeinwohner: int = attrs.field(validator=attrs.validators.instance_of(int))
     #: Das Bundesland zu dem der Standort gehört
-    bundesland: str = attr.ib(validator=attr.validators.instance_of(str))
+    bundesland: str = attrs.field(validator=attrs.validators.instance_of(str))
 
 
 class StandorteigenschaftenAllgemeinSchema(COMSchema):

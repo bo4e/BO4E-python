@@ -5,7 +5,7 @@ import re
 from datetime import datetime
 from typing import Optional, Protocol
 
-import attr.validators
+import attrs.validators
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 
@@ -72,12 +72,12 @@ def check_bis_is_later_than_von(instance: _VonBisType, attribute, value):
 #: a regular expression that should match all OBIS Kennziffern
 OBIS_PATTERN = r"((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\.((?:6|8|9|29))\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\.(.{1,2})\.([0-9]{1,2}))"
 #: an attr validator
-obis_validator = attr.validators.matches_re(OBIS_PATTERN)
+obis_validator = attrs.validators.matches_re(OBIS_PATTERN)
 
 _malo_id_pattern = re.compile(r"^[1-9][\d]{10}$")
 
 
-# pylint: disable=unused-argument, no-self-use
+# pylint: disable=unused-argument
 def validate_marktlokations_id(self, marktlokations_id_attribute, value):
     """
     A validator for marktlokations IDs

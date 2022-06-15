@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -18,7 +18,7 @@ from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
@@ -30,17 +30,17 @@ class Tarifpreisposition(COM):
 
     # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Preistyp = attr.ib(validator=attr.validators.instance_of(Preistyp))
+    preistyp: Preistyp = attrs.field(validator=attrs.validators.instance_of(Preistyp))
     #: Einheit des Preises (z.B. EURO)
-    einheit: Waehrungseinheit = attr.ib(validator=attr.validators.instance_of(Waehrungseinheit))
+    einheit: Waehrungseinheit = attrs.field(validator=attrs.validators.instance_of(Waehrungseinheit))
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
-    bezugseinheit: Mengeneinheit = attr.ib(validator=attr.validators.instance_of(Mengeneinheit))
+    bezugseinheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: List[Preisstaffel] = attr.ib(
+    preisstaffeln: List[Preisstaffel] = attrs.field(
         validator=[
-            attr.validators.deep_iterable(
-                member_validator=attr.validators.instance_of(Preisstaffel),
-                iterable_validator=attr.validators.instance_of(list),
+            attrs.validators.deep_iterable(
+                member_validator=attrs.validators.instance_of(Preisstaffel),
+                iterable_validator=attrs.validators.instance_of(list),
             ),
             check_list_length_at_least_one,
         ]
@@ -48,8 +48,8 @@ class Tarifpreisposition(COM):
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Optional[Mengeneinheit] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Mengeneinheit))
+    mengeneinheitstaffel: Optional[Mengeneinheit] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Mengeneinheit))
     )
 
 

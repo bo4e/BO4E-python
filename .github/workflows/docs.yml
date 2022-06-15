@@ -1,5 +1,5 @@
 name: "Test Doc Creation (Sphinx)"
-on: [push]
+on: [push,pull_request]
 jobs:
   docbuild:
     name: Check Docs

@@ -3,7 +3,7 @@ Contains Angebotsposition class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.betrag import Betrag, BetragSchema
@@ -13,7 +13,7 @@ from bo4e.com.preis import Preis, PreisSchema
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Angebotsposition(COM):
     """
     Unterhalb von Angebotsteilen sind die Angebotspositionen eingebunden.
@@ -29,15 +29,15 @@ class Angebotsposition(COM):
 
     # required attributes
     #: Bezeichnung der jeweiligen Position des Angebotsteils
-    positionsbezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    positionsbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Preis = attr.ib(validator=attr.validators.instance_of(Preis))
+    positionspreis: Preis = attrs.field(validator=attrs.validators.instance_of(Preis))
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Menge = attr.ib(default=None, validator=attr.validators.instance_of(Menge))
+    positionsmenge: Menge = attrs.field(default=None, validator=attrs.validators.instance_of(Menge))
     #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
-    positionskosten: Betrag = attr.ib(default=None, validator=attr.validators.instance_of(Betrag))
+    positionskosten: Betrag = attrs.field(default=None, validator=attrs.validators.instance_of(Betrag))
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126

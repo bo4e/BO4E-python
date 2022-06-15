@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -19,7 +19,7 @@ from bo4e.validators import einheit_only_for_abschlagstyp_absolut
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class AufAbschlag(COM):
     """
     Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,
@@ -32,37 +32,39 @@ class AufAbschlag(COM):
 
     # required attributes
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
     #: Werte für die gestaffelten Auf/Abschläge.
-    staffeln: List[Preisstaffel] = attr.ib(validator=attr.validators.instance_of(List))
+    staffeln: List[Preisstaffel] = attrs.field(validator=attrs.validators.instance_of(List))
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag
-    beschreibung: Optional[str] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(str))
+    beschreibung: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
     )
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(AufAbschlagstyp))
+    auf_abschlagstyp: Optional[AufAbschlagstyp] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagstyp))
     )
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
-    auf_abschlagsziel: Optional[AufAbschlagsziel] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(AufAbschlagsziel))
+    auf_abschlagsziel: Optional[AufAbschlagsziel] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(AufAbschlagsziel))
     )
-    einheit: Optional[Waehrungseinheit] = attr.ib(
+    einheit: Optional[Waehrungseinheit] = attrs.field(
         default=None,
         validator=[
-            attr.validators.optional(attr.validators.instance_of(Waehrungseinheit)),
+            attrs.validators.optional(attrs.validators.instance_of(Waehrungseinheit)),
             einheit_only_for_abschlagstyp_absolut,
         ],
     )
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    website: Optional[str] = attr.ib(default=None, validator=attr.validators.optional(attr.validators.instance_of(str)))
+    website: Optional[str] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
+    )
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    gueltigkeitszeitraum: Optional[Zeitraum] = attr.ib(
-        default=None, validator=attr.validators.optional(attr.validators.instance_of(Zeitraum))
+    gueltigkeitszeitraum: Optional[Zeitraum] = attrs.field(
+        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Zeitraum))
     )
 
 

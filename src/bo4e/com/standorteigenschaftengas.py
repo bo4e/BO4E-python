@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import List
 
-import attr
+import attrs
 from marshmallow import fields
 
 from bo4e.com.com import COM, COMSchema
@@ -13,7 +13,7 @@ from bo4e.validators import check_list_length_is_one_or_two
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class StandorteigenschaftenGas(COM):
     """
     Standorteigenschaften der Sparte Gas
@@ -24,7 +24,9 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: List[str] = attr.ib(validator=check_list_length_is_one_or_two)  #: Netzkontonummern der Gasnetze
+    netzkontonummern: List[str] = attrs.field(
+        validator=check_list_length_is_one_or_two
+    )  #: Netzkontonummern der Gasnetze
     marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
 
 

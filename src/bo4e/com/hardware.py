@@ -3,7 +3,7 @@ Contains Hardware class
 and corresponding marshmallow schema for de-/serialization
 """
 
-import attr
+import attrs
 from marshmallow import fields
 from marshmallow_enum import EnumField  # type:ignore[import]
 
@@ -12,7 +12,7 @@ from bo4e.enum.geraetetyp import Geraetetyp
 
 
 # pylint: disable=too-few-public-methods
-@attr.s(auto_attribs=True, kw_only=True)
+@attrs.define(auto_attribs=True, kw_only=True)
 class Hardware(COM):
     """
     Abbildung einer abrechenbaren Hardware
@@ -24,9 +24,9 @@ class Hardware(COM):
 
     # required attributes
     #: Eindeutiger Typ der Hardware
-    geraetetyp: Geraetetyp = attr.ib(validator=attr.validators.in_(Geraetetyp))
+    geraetetyp: Geraetetyp = attrs.field(validator=attrs.validators.in_(Geraetetyp))
     #: Bezeichnung der Hardware
-    bezeichnung: str = attr.ib(validator=attr.validators.instance_of(str))
+    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
 
 
 class HardwareSchema(COMSchema):
