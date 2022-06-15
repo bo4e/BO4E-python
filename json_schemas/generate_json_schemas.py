@@ -7,7 +7,7 @@ import json
 import pathlib
 from typing import List, Type
 
-from marshmallow import Schema, fields
+from marshmallow import Schema
 from marshmallow_jsonschema import JSONSchema  # type:ignore[import]
 
 from bo4e.bo.angebot import AngebotSchema
