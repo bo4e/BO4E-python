@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.tarifinfo import Tarifinfo, Tarifinfo
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
@@ -40,10 +40,10 @@ class TestTarifinfo:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifinfo, TarifinfoSchema())
+        assert_serialization_roundtrip(tarifinfo)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Tarifinfo()
 
-        assert "missing 8 required" in str(excinfo.value)
+        assert "8 validation errors" in str(excinfo.value)

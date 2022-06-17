@@ -1,11 +1,13 @@
 import json
+from decimal import Decimal
 from typing import Tuple
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.marktlokation import Marktlokation, Marktlokation
 from bo4e.com.adresse import Adresse
+from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
@@ -32,15 +34,12 @@ class TestMaLo:
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        schema = MarktlokationSchema()
+        json_string = malo.json(by_alias=True, ensure_ascii=False)
 
-        json_string = schema.dumps(malo, ensure_ascii=False)
-        json_dict = json.loads(json_string)
+        assert "boTyp" in json_string, "No camel case serialization"
+        assert "marktlokationsId" in json_string, "No camel case serialization"
 
-        assert "boTyp" in json_dict, "No camel case serialization"
-        assert "marktlokationsId" in json_dict, "No camel case serialization"
-
-        deserialized_malo: Marktlokation = schema.loads(json_string)
+        deserialized_malo: Marktlokation = Marktlokation.parse_raw(json_string)
 
         # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
         # but are **not** the same object.
@@ -84,17 +83,14 @@ class TestMaLo:
             endkunde=gp,
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
+        assert malo.bo_typ == BoTyp.MARKTLOKATION.value, "boTyp was not automatically set"
 
-        schema = MarktlokationSchema()
+        json_string = malo.json(by_alias=True, ensure_ascii=False)
 
-        json_string = schema.dumps(malo, ensure_ascii=False)
-        json_dict = json.loads(json_string)
+        assert "boTyp" in json_string, "No camel case serialization"
+        assert "marktlokationsId" in json_string, "No camel case serialization"
 
-        assert "boTyp" in json_dict, "No camel case serialization"
-        assert "marktlokationsId" in json_dict, "No camel case serialization"
-
-        deserialized_malo: Marktlokation = schema.loads(json_string)
+        deserialized_malo: Marktlokation = Marktlokation.parse_raw(json_string)
 
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
@@ -126,7 +122,7 @@ class TestMaLo:
                 "coErgaenzung": null,
                 "landescode": "DE",
                 "postfach": null,
-                "hausnummer": "1",
+                "hausnummer": Decimal("1"),
                 "postleitzahl": "04177"
                 },
             "unterbrechbar": null,
@@ -134,19 +130,21 @@ class TestMaLo:
             "bilanzierungsgebiet": null,
             "geoadresse": null,
             "bilanzierungsmethode": "PAUSCHAL",
-            "versionstruktur": "2",
+            "versionstruktur": Decimal("2"),
             "energierichtung": "EINSP"
             }"""
 
-        schema = MarktlokationSchema()
+        with pytest.raises(ValidationError) as excinfo:
+            Marktlokation.parse_raw(invalid_json_string)
 
-        with pytest.raises(TypeError) as excinfo:
-            schema.loads(invalid_json_string)
-
-        assert "marktlokations_id" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
+        assert "externeReferenzen" in str(excinfo.value)
+        assert "none is not an allowed value" in str(excinfo.value)
+        assert "marktlokationsId" in str(excinfo.value)
+        assert "field required" in str(excinfo.value)
 
     def test_address_validation(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Marktlokation(
                 marktlokations_id="51238696781",
                 sparte=Sparte.GAS,
@@ -160,11 +158,14 @@ class TestMaLo:
                 bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
                 unterbrechbar=True,  # optional attribute
                 netzebene=Netzebene.NSP,
-                geoadresse="test",
-                katasterinformation="test",
+                geoadresse=Geokoordinaten(
+                    breitengrad=Decimal("52"),
+                    laengengrad=Decimal("9"),
+                ),
+                katasterinformation=None,
             )
 
-        assert "No or more than one address information is given." == str(excinfo.value)
+        assert "No or more than one address information is given." in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "malo_id_valid",
@@ -200,7 +201,7 @@ class TestMaLo:
             )
 
         if not malo_id_valid[1]:
-            with pytest.raises(ValueError):
+            with pytest.raises(ValidationError):
                 _instantiate_malo(malo_id_valid[0])
         else:
             _instantiate_malo(malo_id_valid[0])

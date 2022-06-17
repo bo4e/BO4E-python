@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.preisblattmessung import PreisblattMessung, PreisblattMessung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
@@ -38,9 +38,9 @@ class TestPreisblattMessung:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(preisblatt_messung, PreisblattMessungSchema())
+        assert_serialization_roundtrip(preisblatt_messung)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = PreisblattMessung()
-        assert "missing 8 required" in str(excinfo.value)  # 5 from preisblatt + 3 from preisblatt messung
+        assert "8 validation errors" in str(excinfo.value)  # 5 from preisblatt + 3 from preisblatt messung

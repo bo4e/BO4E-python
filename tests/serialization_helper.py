@@ -16,13 +16,16 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
     """
     json_string = serializable_object.json(by_alias=True, ensure_ascii=False)
     assert json_string is not None
-    actual_json_dict = T.parse_raw(json_string)
+    actual_json_dict = serializable_object.dict(by_alias=True)
+    assert actual_json_dict is not None
+    # TODO: serializable_object.dict()
     if expected_json_dict is not None:
         # just for easier debugging
         missing_keys = [k for k in expected_json_dict.keys() if k not in set(actual_json_dict.keys())]
         unknown_keys = [set(expected_json_dict.keys()) - set(actual_json_dict.keys())]
+        assert all([(k in json_string) for k in expected_json_dict.keys()])
         assert actual_json_dict == expected_json_dict
-    deserialized_object = T.parse_raw(json_string)
+    deserialized_object = type(serializable_object).parse_raw(json_string)
     assert isinstance(deserialized_object, type(serializable_object))
     assert deserialized_object == serializable_object
     return deserialized_object

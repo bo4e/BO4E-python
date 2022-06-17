@@ -1,5 +1,7 @@
-import pytest  # type:ignore[import]
+from decimal import Decimal
 
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
 from bo4e.com.geraet import Geraet, Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
@@ -21,7 +23,7 @@ class TestGeraet:
                     ),
                 ),
                 {
-                    "geraetenummer": "0815",
+                    "geraetenummer": Decimal("0815"),
                     "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
                 },
                 id="Maximal attributes",
@@ -32,4 +34,4 @@ class TestGeraet:
         """
         Test de-/serialisation of Geraet
         """
-        assert_serialization_roundtrip(geraet, GeraetSchema(), expected_json_dict)
+        assert_serialization_roundtrip(geraet, expected_json_dict)

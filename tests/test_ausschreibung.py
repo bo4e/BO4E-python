@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.ausschreibung import Ausschreibung, Ausschreibung
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
@@ -61,10 +61,10 @@ class TestAusschreibung:
         ],
     )
     def test_serialization_roundtrip(self, ausschreibung: Ausschreibung):
-        assert_serialization_roundtrip(ausschreibung, AusschreibungSchema())
+        assert_serialization_roundtrip(ausschreibung)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Ausschreibung()
 
-        assert "missing 9 required" in str(excinfo.value)
+        assert "9 validation errors" in str(excinfo.value)

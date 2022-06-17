@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.betrag import Betrag
 from bo4e.com.kostenblock import Kostenblock, Kostenblock
 from bo4e.com.kostenposition import Kostenposition
@@ -62,7 +62,7 @@ class TestKostenblock:
                                 "einheit": "EUR",
                                 "status": "ENDGUELTIG",
                                 "bezugswert": "KWH",
-                                "wert": "3.5",
+                                "wert": Decimal("3.5"),
                             },
                             "menge": None,
                             "zeitmenge": None,
@@ -70,10 +70,10 @@ class TestKostenblock:
                             "artikelbezeichnung": "Dei Mudder ihr kostenposition",
                             "artikeldetail": None,
                             "bis": None,
-                            "betragKostenposition": {"waehrung": "EUR", "wert": "12.5"},
+                            "betragKostenposition": {"waehrung": "EUR", "wert": Decimal("12.5")},
                         }
                     ],
-                    "summeKostenblock": {"waehrung": "EUR", "wert": "12.5"},
+                    "summeKostenblock": {"waehrung": "EUR", "wert": Decimal("12.5")},
                 },
                 id="maximal",
             ),
@@ -83,10 +83,10 @@ class TestKostenblock:
         """
         Test de-/serialisation of kostenblock.
         """
-        assert_serialization_roundtrip(kostenblock, KostenblockSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kostenblock, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Kostenblock()
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

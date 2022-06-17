@@ -1,7 +1,7 @@
 import json
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.geschaeftspartner import Geschaeftspartner, Geschaeftspartner
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
@@ -40,15 +40,13 @@ class TestGeschaeftspartner:
         )
 
         # test default value for bo_typ in Geschaeftspartner
-        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
+        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER.value
 
-        schema = GeschaeftspartnerSchema()
-
-        gp_json = schema.dumps(gp, ensure_ascii=False)
+        gp_json = gp.json(by_alias=True, ensure_ascii=False)
 
         assert "Helga" in gp_json
 
-        gp_deserialized = schema.loads(gp_json)
+        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
 
         assert gp_deserialized.bo_typ == gp.bo_typ
         assert type(gp_deserialized.partneradresse) == Adresse
@@ -77,9 +75,8 @@ class TestGeschaeftspartner:
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
         )
 
-        schema = GeschaeftspartnerSchema()
-        gp_json = schema.dumps(gp, ensure_ascii=False)
-        gp_deserialized = schema.loads(gp_json)
+        gp_json = gp.json(by_alias=True, ensure_ascii=False)
+        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
 
         assert gp_deserialized.partneradresse is None
 
@@ -92,7 +89,7 @@ class TestGeschaeftspartner:
         during the initialization of Geschaeftspartner.
         """
 
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftspartner(
                 anrede=Anrede.FRAU,
                 name1="von Sinnen",
@@ -115,7 +112,8 @@ class TestGeschaeftspartner:
                 ),
             )
 
-        assert "must be typing.List" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "value is not a valid list" in str(excinfo.value)
 
     def test_serialization_of_non_german_address(self):
         """
@@ -136,7 +134,6 @@ class TestGeschaeftspartner:
                 postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT
             ),
         )
-        schema = GeschaeftspartnerSchema()
-        gp_json = schema.dumps(gp, ensure_ascii=False)
-        gp_deserialized = schema.loads(gp_json)
-        assert gp_deserialized.partneradresse.landescode == Landescode.AT
+        gp_json = gp.json(by_alias=True, ensure_ascii=False)
+        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        assert gp_deserialized.partneradresse.landescode == Landescode.AT.value

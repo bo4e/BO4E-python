@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
-
-from bo4e.bo.lastgang import Lastgang, Lastgang
+from pydantic import ValidationError
+from bo4e.bo.lastgang import Lastgang
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
@@ -29,10 +29,10 @@ class TestLastgang:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(lastgang_kompakt, LastgangSchema())
+        assert_serialization_roundtrip(lastgang_kompakt)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Lastgang()
 
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)

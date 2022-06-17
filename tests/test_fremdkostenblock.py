@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.betrag import Betrag
 from bo4e.com.fremdkostenblock import Fremdkostenblock, Fremdkostenblock
 from bo4e.com.fremdkostenposition import Fremdkostenposition
@@ -48,7 +48,7 @@ class TestFremdkostenblock:
                             "marktpartnercode": None,
                             "positionstitel": "fremdkostenblocktitel",
                             "einzelpreis": {
-                                "wert": "3.5",
+                                "wert": Decimal("3.5"),
                                 "einheit": "EUR",
                                 "bezugswert": "KWH",
                                 "status": "ENDGUELTIG",
@@ -61,11 +61,11 @@ class TestFremdkostenblock:
                             "artikeldetail": None,
                             "von": None,
                             "linkPreisblatt": None,
-                            "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                            "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
                             "gebietcodeEic": None,
                         }
                     ],
-                    "summeKostenblock": {"wert": "98240", "waehrung": "EUR"},
+                    "summeKostenblock": {"wert": Decimal("98240"), "waehrung": "EUR"},
                 },
                 id="maximal attributes",
             ),
@@ -84,9 +84,9 @@ class TestFremdkostenblock:
         """
         Test de-/serialisation of Fremdkostenblock
         """
-        assert_serialization_roundtrip(fremdkostenblock, FremdkostenblockSchema(), expected_json_dict)
+        assert_serialization_roundtrip(fremdkostenblock, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Fremdkostenblock()
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

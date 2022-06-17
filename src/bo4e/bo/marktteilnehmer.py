@@ -3,8 +3,6 @@ Contains Marktteilnehmer class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
@@ -13,7 +11,7 @@ from bo4e.enum.rollencodetyp import Rollencodetyp
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import constr
+from pydantic import constr, StrictStr
 
 
 class Marktteilnehmer(Geschaeftspartner):
@@ -30,7 +28,7 @@ class Marktteilnehmer(Geschaeftspartner):
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: constr(regex=r"^\d{13}$")
+    rollencodenummer: constr(strict=True, regex=r"^\d{13}$")
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
 

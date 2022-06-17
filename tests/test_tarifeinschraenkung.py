@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.com.menge import Menge  # type:ignore[import]
@@ -70,7 +70,7 @@ class TestTarifeinschraenkung:
                     "voraussetzungen": ["ALTVERTRAG", "DIREKTVERTRIEB"],
                     "einschraenkungzaehler": [
                         {
-                            "geraetenummer": "0815",
+                            "geraetenummer": Decimal("0815"),
                             "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
                         },
                         {
@@ -80,11 +80,11 @@ class TestTarifeinschraenkung:
                     ],
                     "einschraenkungleistung": [
                         {
-                            "wert": "12.5",
+                            "wert": Decimal("12.5"),
                             "einheit": "MWH",
                         },
                         {
-                            "wert": "30",
+                            "wert": Decimal("30"),
                             "einheit": "KWH",
                         },
                     ],
@@ -97,4 +97,4 @@ class TestTarifeinschraenkung:
         """
         Test de-/serialisation of Tarifeinschraenkung
         """
-        assert_serialization_roundtrip(tarifeinschraenkung, TarifeinschraenkungSchema(), expected_json_dict)
+        assert_serialization_roundtrip(tarifeinschraenkung, expected_json_dict)

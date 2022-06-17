@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, Geschaeftsobjekt
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
@@ -37,13 +37,11 @@ class TestGeschaeftsobjet:
         )
         assert isinstance(go, Geschaeftsobjekt)
 
-        schema = GeschaeftsobjektSchema()
-
-        go_json = schema.dumps(go, ensure_ascii=False)
+        go_json = go.json(by_alias=True, ensure_ascii=False)
 
         assert str(versionstruktur) in go_json
 
-        go_deserialized = schema.loads(go_json)
+        go_deserialized = Geschaeftsobjekt.parse_raw(go_json)
 
         assert go_deserialized.bo_typ is bo_typ
         assert go_deserialized.versionstruktur == versionstruktur
@@ -56,9 +54,10 @@ class TestGeschaeftsobjet:
         assert go.versionstruktur == "2"
 
     def test_no_list_in_externen_referenzen(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftsobjekt(
                 bo_typ=BoTyp.ENERGIEMENGE,
                 externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
             )
-        assert "must be typing.List" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "value is not a valid list" in str(excinfo.value)

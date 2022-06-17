@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.regionskriterium import Regionskriterium, Regionskriterium
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
@@ -32,9 +32,9 @@ class TestRegionskriterium:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        assert_serialization_roundtrip(regionskriterium, RegionskriteriumSchema(), expected_json_dict)
+        assert_serialization_roundtrip(regionskriterium, expected_json_dict)
 
     def test_regionskriterium_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Regionskriterium()
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)

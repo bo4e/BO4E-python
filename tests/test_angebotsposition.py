@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.angebotsposition import Angebotsposition, Angebotsposition
 from bo4e.com.betrag import Betrag
 from bo4e.com.menge import Menge
@@ -30,12 +30,12 @@ class TestAngebotsposition:
                 ),
                 {
                     "positionsbezeichnung": "Beispielangebotsposition",
-                    "positionsmenge": {"wert": "4000", "einheit": "KWH"},
-                    "positionskosten": {"waehrung": "EUR", "wert": "98240"},
+                    "positionsmenge": {"wert": Decimal("4000"), "einheit": "KWH"},
+                    "positionskosten": {"waehrung": "EUR", "wert": Decimal("98240")},
                     "positionspreis": {
                         "bezugswert": "KWH",
                         "status": None,
-                        "wert": "0.2456000000000000127453603226967970840632915496826171875",
+                        "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                         "einheit": "EUR",
                     },
                 },
@@ -46,9 +46,9 @@ class TestAngebotsposition:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        assert_serialization_roundtrip(ap, AngebotspositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(ap, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Angebotsposition()
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

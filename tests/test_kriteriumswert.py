@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.kriteriumwert import KriteriumWert, KriteriumWert
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -22,9 +22,9 @@ class TestKriteriumWert:
         """
         Test de-/serialisation of KriteriumWert with minimal attributes.
         """
-        assert_serialization_roundtrip(kriteriumwert, KriteriumWertSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kriteriumwert, expected_json_dict)
 
     def test_kriteriumwert_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = KriteriumWert()
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

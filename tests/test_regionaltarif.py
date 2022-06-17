@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.regionaltarif import Regionaltarif, Regionaltarif
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
@@ -74,15 +74,15 @@ class TestRegionaltarif:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(regionaltarif, RegionaltarifSchema())
+        assert_serialization_roundtrip(regionaltarif)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Regionaltarif()
-        assert "missing 11 required" in str(excinfo.value)  # 3 from regionaltarif + 8 from tarifinfo
+        assert "11 validation error" in str(excinfo.value)  # 3 from regionaltarif + 8 from tarifinfo
 
     def test_failing_validation_list_length_at_least_one(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Regionaltarif(
                 preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                 berechnungsparameter=example_tarifberechnungsparameter,
@@ -97,4 +97,5 @@ class TestRegionaltarif:
                 anbieter=example_marktteilnehmer,
             )
 
-        assert "List tarifpreise must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

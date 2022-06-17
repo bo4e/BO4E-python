@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.preis import Preis, Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -17,14 +17,13 @@ class TestPreis:
         """
         preis = example_preis
 
-        schema = PreisSchema()
-        json_string = schema.dumps(preis, ensure_ascii=False)
+        json_string = preis.json(by_alias=True, ensure_ascii=False)
 
         assert "KWH" in json_string
         assert "EUR" in json_string
         assert "null" in json_string
 
-        preis_deserialized = schema.loads(json_string)
+        preis_deserialized = Preis.parse_raw(json_string)
 
         assert isinstance(preis_deserialized.wert, Decimal)
         assert isinstance(preis_deserialized.einheit, Waehrungseinheit)
@@ -33,16 +32,16 @@ class TestPreis:
         assert preis == preis_deserialized
 
     def test_wrong_datatype(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preis(wert=3.50, einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
 
         assert "'wert' must be <class 'decimal.Decimal'>" in str(excinfo.value)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
 
     def test_optional_attribute(self):
         preis = Preis(
@@ -52,11 +51,10 @@ class TestPreis:
             status=Preisstatus.ENDGUELTIG,
         )
 
-        schema = PreisSchema()
-        json_string = schema.dumps(preis, ensure_ascii=False)
+        json_string = preis.json(by_alias=True, ensure_ascii=False)
 
         assert "ENDGUELTIG" in json_string
 
-        preis_deserialized = schema.loads(json_string)
+        preis_deserialized = Preis.parse_raw(json_string)
 
         assert isinstance(preis_deserialized.status, Preisstatus)

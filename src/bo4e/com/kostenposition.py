@@ -5,8 +5,6 @@ from datetime import datetime
 from typing import Optional
 
 
-from marshmallow import fields
-
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
@@ -15,7 +13,7 @@ from bo4e.validators import check_bis_is_later_than_von
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import validator
+from pydantic import validator, StrictStr
 
 
 class Kostenposition(COM):
@@ -61,8 +59,10 @@ class Kostenposition(COM):
     #: Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
     artikeldetail: str = None
 
-    def _get_inclusive_start(self) -> Optional[datetime]:
-        return self.von
+    @staticmethod
+    def _get_inclusive_start(values) -> Optional[datetime]:
+        return values["von"]
 
-    def _get_exclusive_end(self) -> Optional[datetime]:
-        return self.bis
+    # @staticmethod
+    # def _get_exclusive_end(values) -> Optional[datetime]:
+    #     return values['bis']

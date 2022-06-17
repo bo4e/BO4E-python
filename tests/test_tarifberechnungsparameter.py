@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter, Tarifberechnungsparameter
 from bo4e.enum.messpreistyp import Messpreistyp
@@ -42,7 +42,7 @@ class TestFremdkostenposition:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifberechnungsparameter, TarifberechnungsparameterSchema())
+        assert_serialization_roundtrip(tarifberechnungsparameter)
 
     def test_missing_required_attribute(self):
         _ = Tarifberechnungsparameter()

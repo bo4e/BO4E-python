@@ -8,13 +8,11 @@ class TestExterneReferenz:
     def test_serialization(self):
         er = ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")
 
-        schema = ExterneReferenzSchema()
-
-        er_json = schema.dumps(er, ensure_ascii=False)
+        er_json = er.json(by_alias=True, ensure_ascii=False)
 
         assert "exRefName" in er_json
 
-        deserialized_er: ExterneReferenz = schema.loads(er_json)
+        deserialized_er: ExterneReferenz = ExterneReferenz.parse_raw(er_json)
         assert isinstance(deserialized_er, ExterneReferenz)
         assert deserialized_er == er
 
@@ -37,11 +35,9 @@ class TestExterneReferenz:
             ),
         )
 
-        schema = GeschaeftspartnerSchema()
+        gp_json = gp.json(by_alias=True, ensure_ascii=False)
 
-        gp_json = schema.dumps(gp, ensure_ascii=False)
-
-        deserialized_gp: Geschaeftspartner = schema.loads(gp_json)
+        deserialized_gp: Geschaeftspartner = Geschaeftspartner.parse_raw(gp_json)
         assert len(deserialized_gp.externe_referenzen) == 2
         assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"
 
@@ -60,10 +56,8 @@ class TestExterneReferenz:
             ),
         )
 
-        schema = GeschaeftspartnerSchema()
+        gp_json = gp.json(by_alias=True, ensure_ascii=False)
 
-        gp_json = schema.dumps(gp, ensure_ascii=False)
-
-        deserialized_gp: Geschaeftspartner = schema.loads(gp_json)
+        deserialized_gp: Geschaeftspartner = Geschaeftspartner.parse_raw(gp_json)
 
         assert deserialized_gp.externe_referenzen == []

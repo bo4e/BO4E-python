@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, Ausschreibungsdetail
 from bo4e.com.menge import Menge
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -26,7 +26,7 @@ example_ausschreibungsdetail_dict = {
     "kunde": None,
     "lokationsbezeichnung": None,
     "lieferzeitraum": {
-        "dauer": "5",
+        "dauer": Decimal("5"),
         "startdatum": None,
         "endzeitpunkt": None,
         "enddatum": None,
@@ -60,7 +60,7 @@ example_ausschreibungsdetail_dict = {
     "prognoseLeistung": None,
     "lastgangVorhanden": None,
     "prognoseJahresarbeit": None,
-    "lokationsId": "56789012345",
+    "lokationsId": Decimal("56789012345"),
 }
 
 
@@ -93,7 +93,7 @@ class TestAusschreibungsdetail:
                         "startdatum": None,
                         "einheit": "TAG",
                         "endzeitpunkt": None,
-                        "dauer": "5",
+                        "dauer": Decimal("5"),
                         "startzeitpunkt": None,
                     },
                     "zaehlertechnik": "LEISTUNGSZAEHLER",
@@ -120,13 +120,13 @@ class TestAusschreibungsdetail:
                         "coErgaenzung": None,
                     },
                     "zaehlernummer": "1YSK4234092304",
-                    "prognoseJahresarbeit": {"wert": "2500", "einheit": "KWH"},
+                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": "KWH"},
                     "netzebeneLieferung": "MSP",
-                    "lokationsId": "56789012345",
-                    "prognoseLeistung": {"wert": "40", "einheit": "KW"},
+                    "lokationsId": Decimal("56789012345"),
+                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": "KW"},
                     "lastgangVorhanden": True,
                     "netzebeneMessung": "NSP",
-                    "prognoseArbeitLieferzeitraum": {"wert": "2500", "einheit": "KWH"},
+                    "prognoseArbeitLieferzeitraum": {"wert": Decimal("2500"), "einheit": "KWH"},
                 },
             ),
             pytest.param(example_ausschreibungsdetail, example_ausschreibungsdetail_dict),
@@ -136,11 +136,11 @@ class TestAusschreibungsdetail:
         """
         Test de-/serialisation of Ausschreibungsdetail
         """
-        assert_serialization_roundtrip(ausschreibungsdetail, AusschreibungsdetailSchema(), expected_json_dict)
+        assert_serialization_roundtrip(ausschreibungsdetail, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Ausschreibungsdetail()
 
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)
         # 'lokations_id', 'netzebene_lieferung', 'netzebene_messung', 'lokationsadresse', and 'lieferzeitraum'

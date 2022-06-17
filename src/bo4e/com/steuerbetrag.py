@@ -6,9 +6,6 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
 from bo4e.enum.waehrungscode import Waehrungscode

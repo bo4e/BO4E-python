@@ -6,9 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import List, Optional
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictBool, StrictStr
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner

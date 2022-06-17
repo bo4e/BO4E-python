@@ -5,8 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-
-from marshmallow import fields
+from pydantic import StrictStr
 
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge

@@ -5,6 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import List, Optional
 
+from pydantic import StrictStr, StrictBool
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede

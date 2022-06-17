@@ -3,8 +3,7 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
-
-from marshmallow import fields
+from pydantic import StrictStr
 
 from bo4e.com.kostenposition import Kostenposition
 

@@ -2,9 +2,7 @@
 Contains StandorteigenschaftenAllgemein class
 and corresponding marshmallow schema for de-/serialization
 """
-
-
-from marshmallow import fields
+from pydantic import StrictStr, StrictInt
 
 from bo4e.com.com import COM
 

@@ -1,7 +1,8 @@
 import datetime
+from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.angebotsvariante import Angebotsvariante, Angebotsvariante
 from bo4e.enum.angebotsstatus import Angebotsstatus
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -44,7 +45,10 @@ class TestAngebotsvariante:
                     gesamtkosten=example_betrag,
                 ),
                 {
-                    "gesamtmenge": {"einheit": "MWH", "wert": "3.410000000000000142108547152020037174224853515625"},
+                    "gesamtmenge": {
+                        "einheit": "MWH",
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                    },
                     # this is a problem for https://github.com/Hochfrequenz/BO4E-python/issues/249
                     # I just reused the example_menge but don't attempt to fix it in the context of the Angebotsvariante
                     "angebotsstatus": "NACHGEFASST",
@@ -61,10 +65,10 @@ class TestAngebotsvariante:
         """
         Test de-/serialisation roundtrip.
         """
-        assert_serialization_roundtrip(angebotsvariante, AngebotsvarianteSchema(), expected_json_dict)
+        assert_serialization_roundtrip(angebotsvariante, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Angebotsvariante()
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)

@@ -7,8 +7,6 @@ from typing import List, Optional
 
 
 from iso3166 import countries  # type:ignore[import]
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler
@@ -27,7 +25,7 @@ from bo4e.enum.sparte import Sparte
 # Postleitzahl (5 Stellen)
 # Zählpunktnummer (20 Stellen alphanumerisch)
 # source: https://de.wikipedia.org/wiki/Z%C3%A4hlpunkt#Struktur_der_Z%C3%A4hlpunktbezeichnung
-from pydantic import validator
+from pydantic import validator, StrictStr
 
 _melo_id_pattern = re.compile(r"^[A-Z]{2}\d{6}\d{5}[A-Z\d]{20}$")
 
@@ -125,3 +123,5 @@ class Messlokation(Geschaeftsobjekt):
         )
         if amount_of_given_grundzustaendiger_x_codenr > 1:
             raise ValueError("More than one codenr is given.")
+        else:
+            return grundzustaendiger_msbim_codenr

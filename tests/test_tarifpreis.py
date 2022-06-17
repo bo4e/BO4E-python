@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.tarifpreis import Tarifpreis, Tarifpreis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -23,13 +23,12 @@ class TestTarifpreis:
         """
         tarifpreis = example_tarifpreis
 
-        schema = TarifpreisSchema()
-        json_string = schema.dumps(tarifpreis, ensure_ascii=False)
+        json_string = tarifpreis.json(by_alias=True, ensure_ascii=False)
 
         assert "ARBEITSPREIS_HT" in json_string
         assert "null" in json_string
 
-        tarifpreis_deserialized = schema.loads(json_string)
+        tarifpreis_deserialized = Tarifpreis.parse_raw(json_string)
 
         assert isinstance(tarifpreis_deserialized.wert, Decimal)
         assert isinstance(tarifpreis_deserialized.einheit, Waehrungseinheit)
@@ -39,7 +38,7 @@ class TestTarifpreis:
         assert tarifpreis == tarifpreis_deserialized
 
     def test_wrong_datatype(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Tarifpreis(
                 wert=3.50, einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH, preistyp=Preistyp.ARBEITSPREIS_HT
             )
@@ -47,7 +46,7 @@ class TestTarifpreis:
         assert "'wert' must be <class 'decimal.Decimal'>" in str(excinfo.value)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Tarifpreis(
                 wert=Decimal(3.50),
                 einheit=Waehrungseinheit.EUR,
@@ -55,7 +54,7 @@ class TestTarifpreis:
                 bezugswert=Mengeneinheit.KWH,
             )
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
 
     def test_optional_attribute(self):
         tarifpreis = Tarifpreis(
@@ -67,12 +66,11 @@ class TestTarifpreis:
             beschreibung="Das ist ein HT Arbeitspreis",
         )
 
-        schema = TarifpreisSchema()
-        json_string = schema.dumps(tarifpreis, ensure_ascii=False)
+        json_string = tarifpreis.json(by_alias=True, ensure_ascii=False)
 
         assert "Das ist ein HT Arbeitspreis" in json_string
 
-        tarifpreis_deserialized = schema.loads(json_string)
+        tarifpreis_deserialized = Tarifpreis.parse_raw(json_string)
 
         assert isinstance(tarifpreis_deserialized.beschreibung, str)
         assert tarifpreis_deserialized.beschreibung == "Das ist ein HT Arbeitspreis"

@@ -5,9 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.preisposition import Preisposition
@@ -15,11 +12,10 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import conlist
+from pydantic import conlist, StrictStr
 
 
 class Preisblatt(Geschaeftsobjekt):

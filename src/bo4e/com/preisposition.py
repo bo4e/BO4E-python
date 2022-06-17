@@ -4,9 +4,7 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 from typing import List, Optional
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictStr, conlist
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -19,7 +17,6 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.tarifzeit import Tarifzeit
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes

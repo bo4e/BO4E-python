@@ -1,5 +1,7 @@
-import pytest  # type:ignore[import]
+from decimal import Decimal
 
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeit
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
@@ -26,7 +28,7 @@ class TestRegionaleGueltigkeit:
                     "kriteriumsWerte": [
                         {
                             "kriterium": "NETZ_NUMMER",
-                            "wert": "12345",
+                            "wert": Decimal("12345"),
                         }
                     ],
                 },
@@ -38,16 +40,16 @@ class TestRegionaleGueltigkeit:
         """
         Test de-/serialisation of RegionaleGueltigkeit with minimal attributes.
         """
-        assert_serialization_roundtrip(regionalegueltigkeit, RegionaleGueltigkeitSchema(), expected_json_dict)
+        assert_serialization_roundtrip(regionalegueltigkeit, expected_json_dict)
 
     def test_regionalegueltigkeit_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = RegionaleGueltigkeit()
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
     def test_regionalegueltigkeit_kriteriumswerte_required(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = RegionaleGueltigkeit(
                 gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
                 kriteriums_werte=[],

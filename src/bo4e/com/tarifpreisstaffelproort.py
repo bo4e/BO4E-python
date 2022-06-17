@@ -5,8 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 
-from marshmallow import fields
-
 from bo4e.com.com import COM
 
 

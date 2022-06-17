@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.preisblatt import Preisblatt, Preisblatt
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
@@ -29,9 +29,9 @@ class TestPreisblatt:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(preisblatt, PreisblattSchema())
+        assert_serialization_roundtrip(preisblatt)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preisblatt()
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)

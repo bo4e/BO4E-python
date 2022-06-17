@@ -4,9 +4,6 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
@@ -25,7 +22,7 @@ from bo4e.validators import validate_marktlokations_id
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from pydantic import validator
+from pydantic import validator, StrictBool, StrictStr
 
 
 class Marktlokation(Geschaeftsobjekt):
@@ -114,16 +111,16 @@ class Marktlokation(Geschaeftsobjekt):
     # todo: add kundengruppe
 
     # pylint:disable=unused-argument
-    @lokationsadresse.validator
-    @geoadresse.validator
-    @katasterinformation.validator
-    def validate_address_info(self, address_attribute, value):
+    @validator("katasterinformation", always=True)
+    def validate_address_info(cls, katasterinformation, values):
         """Checks that there is one and only one valid adress given."""
         all_address_attributes = [
-            self.lokationsadresse,
-            self.geoadresse,
-            self.katasterinformation,
+            values["lokationsadresse"],
+            values["geoadresse"],
+            katasterinformation,
         ]
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
         if amount_of_given_address_infos != 1:
             raise ValueError("No or more than one address information is given.")
+        else:
+            return katasterinformation

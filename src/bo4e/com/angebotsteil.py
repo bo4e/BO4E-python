@@ -6,19 +6,16 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 
-from marshmallow import fields
-
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.angebotsposition import Angebotsposition
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import conlist
+from pydantic import conlist, StrictStr
 
 
 class Angebotsteil(COM):

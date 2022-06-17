@@ -1,13 +1,12 @@
 """
 Contains base class for all components
 """
+from decimal import Decimal
+
+from decimal import Decimal
 from typing import Generic, Type, TypeVar
 from pydantic import BaseModel
 from humps.main import camelize
-
-
-def to_camel(string):
-    return camelize(string)
 
 
 # pylint: disable=too-few-public-methods
@@ -18,8 +17,10 @@ class COM(BaseModel):
     """
 
     class Config:
-        alias_generator = to_camel
+        alias_generator = camelize
         allow_population_by_field_name = True
+        json_encoders = {Decimal: str}
+        use_enum_values = True  # Otherwise the dictionaries by obj.dict() would contain Enum-objects instead of strings
 
 
 #: Any type derived from COM including those that do not directly inherit from COM

@@ -4,9 +4,6 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.botyp import BoTyp
@@ -15,11 +12,10 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart
 from bo4e.enum.messgroesse import Messgroesse
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import conlist
+from pydantic import conlist, StrictStr
 
 
 class Zeitreihe(Geschaeftsobjekt):

@@ -3,8 +3,6 @@ Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema 
 """
 
 
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kundengruppeka import KundengruppeKA

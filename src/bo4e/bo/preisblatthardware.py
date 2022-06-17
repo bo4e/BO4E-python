@@ -4,9 +4,6 @@ Contains PreisblattHardware class and corresponding marshmallow schema for de-/s
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode

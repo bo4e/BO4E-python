@@ -5,8 +5,6 @@ from datetime import datetime
 from typing import List, Optional
 
 
-from marshmallow import fields
-
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlag import AufAbschlag
 from bo4e.com.preisgarantie import Preisgarantie
@@ -14,7 +12,6 @@ from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreisposition import Tarifpreisposition
 from bo4e.enum.botyp import BoTyp
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods

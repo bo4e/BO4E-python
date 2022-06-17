@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
 from bo4e.com.aufabschlagregional import AufAbschlagRegional, AufAbschlagRegional
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
@@ -51,12 +51,12 @@ class TestAufAbschlagRegional:
                         {
                             "postleitzahl": "01187",
                             "ort": "Dresden",
-                            "netznr": "2",
+                            "netznr": Decimal("2"),
                             "staffeln": [
                                 {
-                                    "wert": "2.5",
-                                    "staffelgrenzeVon": "1",
-                                    "staffelgrenzeBis": "5",
+                                    "wert": Decimal("2.5"),
+                                    "staffelgrenzeVon": Decimal("1"),
+                                    "staffelgrenzeBis": Decimal("5"),
                                 }
                             ],
                         },
@@ -134,12 +134,12 @@ class TestAufAbschlagRegional:
                         {
                             "postleitzahl": "01187",
                             "ort": "Dresden",
-                            "netznr": "2",
+                            "netznr": Decimal("2"),
                             "staffeln": [
                                 {
-                                    "wert": "2.5",
-                                    "staffelgrenzeVon": "1",
-                                    "staffelgrenzeBis": "5",
+                                    "wert": Decimal("2.5"),
+                                    "staffelgrenzeVon": Decimal("1"),
+                                    "staffelgrenzeBis": Decimal("5"),
                                 }
                             ],
                         },
@@ -168,7 +168,7 @@ class TestAufAbschlagRegional:
                         "anteil": [
                             {
                                 "erzeugungsart": "BIOGAS",
-                                "anteilProzent": "40",
+                                "anteilProzent": Decimal("40"),
                             }
                         ],
                         "oekolabel": [],
@@ -214,16 +214,16 @@ class TestAufAbschlagRegional:
         """
         Test de-/serialisation of AufAbschlagRegional with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlagregional, AufAbschlagRegionalSchema(), expected_json_dict)
+        assert_serialization_roundtrip(aufabschlagregional, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = AufAbschlagRegional()
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
     def test_aufabschlagregional_betraege_required(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = (
                 AufAbschlagRegional(
                     bezeichnung="foo",
@@ -231,4 +231,5 @@ class TestAufAbschlagRegional:
                 ),
             )
 
-        assert "List betraege must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

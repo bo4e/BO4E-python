@@ -6,8 +6,6 @@ from decimal import Decimal
 from typing import Optional
 
 
-from marshmallow import fields
-
 from bo4e.com.com import COM
 from bo4e.com.sigmoidparameter import Sigmoidparameter
 

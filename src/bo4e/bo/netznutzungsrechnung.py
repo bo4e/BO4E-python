@@ -4,9 +4,6 @@ Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-
 from typing import Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.rechnung import Rechnung
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.nnrechnungsart import NNRechnungsart
@@ -15,7 +12,7 @@ from bo4e.enum.sparte import Sparte
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import constr
+from pydantic import constr, StrictBool, StrictStr
 
 
 class Netznutzungsrechnung(Rechnung):
@@ -31,12 +28,12 @@ class Netznutzungsrechnung(Rechnung):
     bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Sparte
-    absendercodenummer: constr(regex=r"^\d{13}$")
+    absendercodenummer: constr(strict=True, regex=r"^\d{13}$")
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
-    empfaengercodenummer: constr(regex=r"^\d{13}$")
+    empfaengercodenummer: constr(strict=True, regex=r"^\d{13}$")
     """
     Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.

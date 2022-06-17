@@ -4,8 +4,6 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 
-from marshmallow import fields
-
 from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 

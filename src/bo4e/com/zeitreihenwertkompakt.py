@@ -6,9 +6,6 @@ from decimal import Decimal
 from typing import Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz

@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.com.energiemix import Energiemix
 from bo4e.enum.erzeugungsart import Erzeugungsart
@@ -38,7 +38,7 @@ class TestEnergiemix:
                     "anteil": [
                         {
                             "erzeugungsart": "BIOGAS",
-                            "anteilProzent": "40",
+                            "anteilProzent": Decimal("40"),
                         }
                     ],
                     "oekolabel": [],
@@ -86,17 +86,17 @@ class TestEnergiemix:
                     "anteil": [
                         {
                             "erzeugungsart": "BIOGAS",
-                            "anteilProzent": "40",
+                            "anteilProzent": Decimal("40"),
                         },
                         {
                             "erzeugungsart": "GEOTHERMIE",
-                            "anteilProzent": "60",
+                            "anteilProzent": Decimal("60"),
                         },
                     ],
                     "oekolabel": ["GASGREEN", "GRUENER_STROM_GOLD"],
                     "bemerkung": "bar",
-                    "co2Emission": "40",
-                    "atommuell": "5",
+                    "co2Emission": Decimal("40"),
+                    "atommuell": Decimal("5"),
                     "website": "foobar.de",
                     "oekozertifikate": ["FRAUNHOFER", "FREIBERG"],
                     "oekoTopTen": True,
@@ -109,16 +109,16 @@ class TestEnergiemix:
         """
         Test de-/serialisation of Energiehermix with minimal attributes.
         """
-        assert_serialization_roundtrip(energiemix, EnergiemixSchema(), expected_json_dict)
+        assert_serialization_roundtrip(energiemix, expected_json_dict)
 
     def test_energiemix_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Energiemix()
 
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)
 
     def test_energiemix_anteil_required(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Energiemix(
                 energiemixnummer=2,
                 energieart=Sparte.STROM,
@@ -127,4 +127,5 @@ class TestEnergiemix:
                 anteil=[],
             )
 
-        assert "List anteil must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.betrag import Betrag, Betrag
 from bo4e.enum.waehrungscode import Waehrungscode
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -11,7 +11,7 @@ example_betrag = Betrag(
     wert=Decimal(12.5),
 )
 
-example_betrag_json = {"wert": "12.5", "waehrung": "EUR"}
+example_betrag_json = {"wert": Decimal("12.5"), "waehrung": "EUR"}
 
 
 class TestBetrag:
@@ -25,9 +25,9 @@ class TestBetrag:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        assert_serialization_roundtrip(betrag, BetragSchema(), expected_json_dict)
+        assert_serialization_roundtrip(betrag, expected_json_dict)
 
     def test_regionskriterium_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Betrag()
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

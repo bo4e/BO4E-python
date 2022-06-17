@@ -6,9 +6,6 @@ from datetime import datetime
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.unterschrift import Unterschrift
@@ -21,7 +18,7 @@ from bo4e.enum.vertragsstatus import Vertragsstatus
 
 
 # pylint: disable=unused-argument
-from pydantic import conlist
+from pydantic import conlist, StrictStr
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

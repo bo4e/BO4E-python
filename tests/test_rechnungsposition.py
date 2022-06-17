@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.rechnungsposition import Rechnungsposition, Rechnungsposition
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
@@ -42,9 +42,9 @@ class TestRechnungsposition:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(rechnungsposition, RechnungspositionSchema())
+        assert_serialization_roundtrip(rechnungsposition)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Rechnungsposition()
-        assert "missing 8 required" in str(excinfo.value)
+        assert "8 validation errors" in str(excinfo.value)

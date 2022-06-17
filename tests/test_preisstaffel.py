@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.preisstaffel import Preisstaffel, Preisstaffel
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
@@ -23,19 +23,19 @@ class TestPreisstaffel:
                     sigmoidparameter=example_sigmoidparameter,
                 ),
                 {
-                    "einheitspreis": "40",
-                    "sigmoidparameter": {"A": "1", "B": "2", "C": "3", "D": "4"},
-                    "staffelgrenzeVon": "12.5",
-                    "staffelgrenzeBis": "25",
+                    "einheitspreis": Decimal("40"),
+                    "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                    "staffelgrenzeVon": Decimal("12.5"),
+                    "staffelgrenzeBis": Decimal("25"),
                 },
                 id="all attributes",
             ),
             pytest.param(
                 example_preisstaffel,
                 {
-                    "einheitspreis": "40",
-                    "staffelgrenzeVon": "12.5",
-                    "staffelgrenzeBis": "25",
+                    "einheitspreis": Decimal("40"),
+                    "staffelgrenzeVon": Decimal("12.5"),
+                    "staffelgrenzeBis": Decimal("25"),
                     "sigmoidparameter": None,
                 },
                 id="only required params",
@@ -46,13 +46,13 @@ class TestPreisstaffel:
         """
         Test de-/serialisation of Preisstaffel.
         """
-        assert_serialization_roundtrip(preisstaffel, PreisstaffelSchema(), expected_json_dict)
+        assert_serialization_roundtrip(preisstaffel, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preisstaffel()
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "not_a_sigmoid_parameter",
@@ -62,7 +62,7 @@ class TestPreisstaffel:
         ],
     )
     def test_failing_validation(self, not_a_sigmoid_parameter):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preisstaffel(
                 einheitspreis=Decimal(40.0),
                 staffelgrenze_von=Decimal(12.5),

@@ -2,7 +2,7 @@ from datetime import datetime
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.zaehler import Zaehler, Zaehler
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk
@@ -43,20 +43,19 @@ class TestZaehler:
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
-        assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
-        assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
-        schema = ZaehlerSchema()
-        json_string = schema.dumps(zaehler, ensure_ascii=False)
+        assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP.value
+        assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW.value
+        json_string = zaehler.json(by_alias=True, ensure_ascii=False)
         assert "richtung" in json_string, "Zaehlwerk->richtung was not serialized"
         assert "einheit" in json_string, "Zaehlwerk->einheit was not serialized"
-        deserialized_zaehler = schema.loads(json_data=json_string)
+        deserialized_zaehler = Zaehler.parse_raw(json_string)
         assert deserialized_zaehler == zaehler
 
     def test_serialization_fails_for_invalid_obis(self):
         """
         Test serialisation of Zaehler fails if OBIS is wrong.
         """
-        with pytest.raises(ValueError) as value_error:
+        with pytest.raises(ValidationError) as value_error:
             _ = Zaehler(
                 zaehlernummer="000111222",
                 sparte=Sparte.STROM,
@@ -80,7 +79,7 @@ class TestZaehler:
         """
         Test serialisation of Zaehler fails if there are no zaehlwerke.
         """
-        with pytest.raises(ValueError) as value_error:
+        with pytest.raises(ValidationError) as value_error:
             _ = Zaehler(
                 zaehlernummer="000111222",
                 sparte=Sparte.STROM,

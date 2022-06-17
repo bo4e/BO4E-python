@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.preisgarantie import Preisgarantie, Preisgarantie
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
@@ -41,10 +41,10 @@ class TestPreisgarantie:
         """
         Test de-/serialisation of Preisgarantie with minimal attributes.
         """
-        assert_serialization_roundtrip(preisgarantie, PreisgarantieSchema(), expected_json_dict)
+        assert_serialization_roundtrip(preisgarantie, expected_json_dict)
 
     def test_preisgarantie_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preisgarantie()
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

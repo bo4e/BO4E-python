@@ -5,50 +5,11 @@ and corresponding marshmallow schema for de-/serialization
 
 from datetime import datetime
 from decimal import Decimal
-from typing import Optional
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import validator
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
-
-
-# pylint: disable=unused-argument
-def time_range_possibilities(instance, attribute, value):
-    """
-    An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
-    This functions checks for these conditions of a valid address.
-    """
-
-    if (
-        instance.einheit
-        and instance.dauer
-        and not (instance.startdatum or instance.enddatum or instance.startzeitpunkt or instance.endzeitpunkt)
-    ):
-        return
-    if (
-        instance.startdatum
-        and instance.enddatum
-        and not (instance.einheit or instance.dauer or instance.startzeitpunkt or instance.endzeitpunkt)
-    ):
-        return
-    if (
-        instance.startzeitpunkt
-        and instance.endzeitpunkt
-        and not (instance.einheit or instance.dauer or instance.startdatum or instance.enddatum)
-    ):
-        return
-
-    raise ValueError(
-        """
-        Please choose from one of the three possibilities to specify the timerange:
-        - einheit and dauer
-        - startdatum and enddatum
-        - startzeitpunkt and endzeitpunkt
-        """
-    )
 
 
 # pylint: disable=too-few-public-methods
@@ -68,9 +29,45 @@ class Zeitraum(COM):
     """
 
     # optional attributes
-    einheit: Zeiteinheit = attrs.field(default=None, validator=time_range_possibilities)
-    dauer: Decimal = attrs.field(default=None, validator=time_range_possibilities)
-    startdatum: datetime = attrs.field(default=None, validator=time_range_possibilities)
-    enddatum: datetime = attrs.field(default=None, validator=time_range_possibilities)
-    startzeitpunkt: datetime = attrs.field(default=None, validator=time_range_possibilities)
-    endzeitpunkt: datetime = attrs.field(default=None, validator=time_range_possibilities)
+    einheit: Zeiteinheit = None
+    dauer: Decimal = None
+    startdatum: datetime = None
+    enddatum: datetime = None
+    startzeitpunkt: datetime = None
+    endzeitpunkt: datetime = None
+
+    # pylint: disable=unused-argument
+    @validator("endzeitpunkt", always=True)
+    def time_range_possibilities(cls, endzeitpunkt, values):
+        """
+        An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
+        This functions checks for these conditions of a valid address.
+        """
+
+        if (
+            values["einheit"]
+            and values["dauer"]
+            and not (values["startdatum"] or values["enddatum"] or values["startzeitpunkt"] or endzeitpunkt)
+        ):
+            return endzeitpunkt
+        if (
+            values["startdatum"]
+            and values["enddatum"]
+            and not (values["einheit"] or values["dauer"] or values["startzeitpunkt"] or endzeitpunkt)
+        ):
+            return endzeitpunkt
+        if (
+            values["startzeitpunkt"]
+            and endzeitpunkt
+            and not (values["einheit"] or values["dauer"] or values["startdatum"] or values["enddatum"])
+        ):
+            return endzeitpunkt
+
+        raise ValueError(
+            """
+            Please choose from one of the three possibilities to specify the timerange:
+            - einheit and dauer
+            - startdatum and enddatum
+            - startzeitpunkt and endzeitpunkt
+            """
+        )

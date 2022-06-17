@@ -4,8 +4,6 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 from typing import Optional
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -19,7 +17,7 @@ from bo4e.validators import check_bis_is_later_than_von, validate_marktlokations
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import validator
+from pydantic import validator, StrictInt, StrictStr
 
 
 class Rechnungsposition(COM):
@@ -80,10 +78,11 @@ class Rechnungsposition(COM):
     #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
     artikel_id: ArtikelId = None
 
-    def _get_inclusive_start(self) -> datetime:
+    @staticmethod
+    def _get_inclusive_start(values) -> datetime:
         """return the inclusive start (used in the validator)"""
-        return self.lieferung_von
+        return values["lieferung_von"]
 
-    def _get_exclusive_end(self) -> datetime:
-        """return the exclusive end (used in the validator)"""
-        return self.lieferung_bis
+    # def _get_exclusive_end(self) -> datetime:
+    #     """return the exclusive end (used in the validator)"""
+    #     return self.lieferung_bis

@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.energieherkunft import Energieherkunft, Energieherkunft
 from bo4e.enum.erzeugungsart import Erzeugungsart
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -18,7 +18,7 @@ class TestEnergieherkunft:
                 example_energieherkunft,
                 {
                     "erzeugungsart": "BIOMASSE",
-                    "anteilProzent": "25.5",
+                    "anteilProzent": Decimal("25.5"),
                 },
             ),
         ],
@@ -27,13 +27,13 @@ class TestEnergieherkunft:
         """
         Test de-/serialisation of Energieherkunft with minimal attributes.
         """
-        assert_serialization_roundtrip(energieherkunft, EnergieherkunftSchema(), expected_json_dict)
+        assert_serialization_roundtrip(energieherkunft, expected_json_dict)
 
     def test_energieherkunft_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Energieherkunft()
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "failing_percentage",
@@ -43,7 +43,10 @@ class TestEnergieherkunft:
         ],
     )
     def test_energieherkunft_failing_validation(self, failing_percentage):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = (Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(failing_percentage)),)
 
-        assert "anteil_prozent must be between 0 and 100" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value is less than 100" in str(
+            excinfo.value
+        ) or "ensure this value is greater than 0" in str(excinfo.value)

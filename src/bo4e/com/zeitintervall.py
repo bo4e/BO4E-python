@@ -2,9 +2,7 @@
 Contains Zeitintervall class
 and corresponding marshmallow schema for de-/serialization
 """
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictInt
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit

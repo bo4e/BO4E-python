@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.angebot import Angebot, Angebot
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -84,9 +84,9 @@ class TestAngebot:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(angebot, AngebotSchema())
+        assert_serialization_roundtrip(angebot)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Angebot()
-        assert "missing 6 required" in str(excinfo.value)
+        assert "6 validation errors" in str(excinfo.value)

@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.menge import Menge
 from bo4e.com.vertragsteil import Vertragsteil, Vertragsteil
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -18,13 +18,12 @@ class TestVertragsteil:
             vertragsteilende=datetime(2007, 11, 27, tzinfo=timezone.utc),
         )
 
-        schema = VertragsteilSchema()
-        json_string = schema.dumps(vertragsteil, ensure_ascii=False)
+        json_string = vertragsteil.json(by_alias=True, ensure_ascii=False)
 
         assert "2001-03-15T00:00:00+00:00" in json_string
         assert "2007-11-27T00:00:00+00:00" in json_string
 
-        vertragsteil_deserialized = schema.loads(json_string)
+        vertragsteil_deserialized = Vertragsteil.parse_raw(json_string)
 
         assert isinstance(vertragsteil_deserialized.vertragsteilbeginn, datetime)
         assert vertragsteil_deserialized.vertragsteilbeginn == datetime(2001, 3, 15, tzinfo=timezone.utc)
@@ -44,8 +43,7 @@ class TestVertragsteil:
             maximale_abnahmemenge=Menge(wert=Decimal(0.111111), einheit=Mengeneinheit.KWH),
         )
 
-        schema = VertragsteilSchema()
-        json_string = schema.dumps(vertragsteil, ensure_ascii=False)
+        json_string = vertragsteil.json(by_alias=True, ensure_ascii=False)
 
         assert "2001-03-15T00:00:00+00:00" in json_string
         assert "2007-11-27T00:00:00+00:00" in json_string
@@ -53,7 +51,7 @@ class TestVertragsteil:
         assert "KWH" in json_string
         assert "0.111111" in json_string
 
-        vertragsteil_deserialized = schema.loads(json_string)
+        vertragsteil_deserialized = Vertragsteil.parse_raw(json_string)
 
         assert isinstance(vertragsteil_deserialized.vertragsteilbeginn, datetime)
         assert vertragsteil_deserialized.vertragsteilbeginn == datetime(2001, 3, 15, tzinfo=timezone.utc)
@@ -65,7 +63,7 @@ class TestVertragsteil:
         assert vertragsteil_deserialized.minimale_abnahmemenge == Menge(wert=Decimal(2000), einheit=Mengeneinheit.KWH)
 
     def test_vertragsteil_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Vertragsteil(vertragsteilende=datetime(2007, 11, 27, tzinfo=timezone.utc))
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

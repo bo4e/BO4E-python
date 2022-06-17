@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.aufabschlag import AufAbschlag, AufAbschlag
 from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.com.zeitraum import Zeitraum
@@ -71,16 +71,21 @@ class TestAufAbschlag:
                     },
                     "staffeln": [
                         {
-                            "einheitspreis": "40",
-                            "sigmoidparameter": {"A": "1", "B": "2", "C": "3", "D": "4"},
-                            "staffelgrenzeVon": "12.5",
-                            "staffelgrenzeBis": "25",
+                            "einheitspreis": Decimal("40"),
+                            "sigmoidparameter": {
+                                "A": Decimal("1"),
+                                "B": Decimal("2"),
+                                "C": Decimal("3"),
+                                "D": Decimal("4"),
+                            },
+                            "staffelgrenzeVon": Decimal("12.5"),
+                            "staffelgrenzeBis": Decimal("25"),
                         },
                         {
-                            "einheitspreis": "15",
+                            "einheitspreis": Decimal("15"),
                             "sigmoidparameter": None,
-                            "staffelgrenzeVon": "2.5",
-                            "staffelgrenzeBis": "40.5",
+                            "staffelgrenzeVon": Decimal("2.5"),
+                            "staffelgrenzeBis": Decimal("40.5"),
                         },
                     ],
                 },
@@ -98,10 +103,10 @@ class TestAufAbschlag:
                     "gueltigkeitszeitraum": None,
                     "staffeln": [
                         {
-                            "einheitspreis": "15",
+                            "einheitspreis": Decimal("15"),
                             "sigmoidparameter": None,
-                            "staffelgrenzeVon": "2.5",
-                            "staffelgrenzeBis": "40.5",
+                            "staffelgrenzeVon": Decimal("2.5"),
+                            "staffelgrenzeBis": Decimal("40.5"),
                         },
                     ],
                 },
@@ -113,13 +118,13 @@ class TestAufAbschlag:
         """
         Test de-/serialisation of AufAbschlag with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlag, AufAbschlagSchema(), expected_json_dict)
+        assert_serialization_roundtrip(aufabschlag, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = AufAbschlag()
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "auf_abschlagstyp",
@@ -135,7 +140,7 @@ class TestAufAbschlag:
         ],
     )
     def test_failing_validation_einheit_only_for_abschlagstyp_absolut(self, auf_abschlagstyp):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = AufAbschlag(
                 bezeichnung="foo",
                 staffeln=[

@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
-from pydantic import validator
+from pydantic import validator, StrictStr
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

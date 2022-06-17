@@ -1,7 +1,8 @@
 from datetime import datetime, timezone
+from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie, RegionalePreisgarantie
@@ -35,7 +36,7 @@ class TestRegionalePreisgarantie:
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": "01069"}],
+                        "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": Decimal("01069")}],
                     },
                     "zeitlicheGueltigkeit": {
                         "startdatum": None,
@@ -54,10 +55,10 @@ class TestRegionalePreisgarantie:
         """
         Test de-/serialisation of RegionalePreisgarantie with minimal attributes.
         """
-        assert_serialization_roundtrip(regionale_preisgarantie, RegionalePreisgarantieSchema(), expected_json_dict)
+        assert_serialization_roundtrip(regionale_preisgarantie, expected_json_dict)
 
     def test_regionalepreisgarantie_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = RegionalePreisgarantie()
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)

@@ -3,7 +3,6 @@ Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from marshmallow import fields
 
 from bo4e.bo.kosten import Kosten
 from bo4e.bo.tarifinfo import Tarifinfo

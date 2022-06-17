@@ -1,5 +1,7 @@
-import pytest  # type:ignore[import]
+from decimal import Decimal
 
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
 from bo4e.bo.lastgang import LastgangKompakt, LastgangKompakt
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.lokationstyp import Lokationstyp
@@ -29,13 +31,13 @@ class TestLastgangKompakt:
                     tagesvektoren=[example_tagesvektor],
                 ),
                 {
-                    "version": "1.1",
+                    "version": Decimal("1.1"),
                     "sparte": "STROM",
                     "lokationstyp": "MELO",
                     "messgroesse": "KWH",
                     "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1},
                     "tagesvektoren": [example_tagesvektor_json],
-                    "versionstruktur": "2",
+                    "versionstruktur": Decimal("2"),
                     "externeReferenzen": [],
                     "lokationsId": "DE0000011111222223333344444555556",
                     "boTyp": "LASTGANG_KOMPAKT",
@@ -48,10 +50,10 @@ class TestLastgangKompakt:
         """
         Test de-/serialisation of LastgangKompakt.
         """
-        assert_serialization_roundtrip(lastgang_kompakt, LastgangKompaktSchema(), expected_json_dict)
+        assert_serialization_roundtrip(lastgang_kompakt, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = LastgangKompakt()
 
-        assert "missing 6 required" in str(excinfo.value)
+        assert "6 validation errors" in str(excinfo.value)

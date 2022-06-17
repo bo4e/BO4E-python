@@ -4,15 +4,13 @@ Contains Region class and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 
-from marshmallow import fields
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.regionskriterium import Regionskriterium
 from bo4e.enum.botyp import BoTyp
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import conlist
+from pydantic import conlist, StrictStr
 
 
 class Region(Geschaeftsobjekt):

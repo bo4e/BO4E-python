@@ -4,8 +4,6 @@ Contains Geraeteeigenschaften and corresponding marshmallow schema for de-/seria
 from typing import Optional
 
 
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp

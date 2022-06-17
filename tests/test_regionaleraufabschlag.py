@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag, RegionalerAufAbschlag
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
@@ -45,9 +45,9 @@ class TestRegionalerAufAbschlag:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(regionaler_auf_abschlag, RegionalerAufAbschlagSchema())
+        assert_serialization_roundtrip(regionaler_auf_abschlag)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = RegionalerAufAbschlag()
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

@@ -2,7 +2,7 @@ import datetime
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.verbrauch import Verbrauch, Verbrauch
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
@@ -31,7 +31,7 @@ class TestVerbrauch:
                 ),
                 {
                     "startdatum": "2021-12-01T00:00:00+00:00",
-                    "wert": "40",
+                    "wert": Decimal("40"),
                     "mengeneinheit": "KWH",
                     "enddatum": "2021-12-02T00:00:00+00:00",
                     "wertermittlungsverfahren": "MESSUNG",
@@ -41,7 +41,7 @@ class TestVerbrauch:
             pytest.param(
                 example_verbrauch,
                 {
-                    "wert": "40",
+                    "wert": Decimal("40"),
                     "mengeneinheit": "KWH",
                     "wertermittlungsverfahren": "MESSUNG",
                     "startdatum": None,
@@ -55,13 +55,13 @@ class TestVerbrauch:
         """
         Test de-/serialisation of Verbrauch.
         """
-        assert_serialization_roundtrip(verbrauch, VerbrauchSchema(), expected_json_dict)
+        assert_serialization_roundtrip(verbrauch, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Verbrauch()
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "not_a_valid_obis",
@@ -70,7 +70,7 @@ class TestVerbrauch:
         ],
     )
     def test_failing_validation_obis(self, not_a_valid_obis: str):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Verbrauch(
                 obis_kennzahl=not_a_valid_obis,
                 wert=Decimal(40),
@@ -83,7 +83,7 @@ class TestVerbrauch:
         assert "'obis_kennzahl' must match regex " in str(excinfo.value)
 
     def test_failing_validation_end_later_than_start(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Verbrauch(
                 obis_kennzahl="1-0:1.8.1",
                 wert=Decimal(40),

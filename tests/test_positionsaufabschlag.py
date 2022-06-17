@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.positionsaufabschlag import PositionsAufAbschlag, PositionsAufAbschlag
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
@@ -24,7 +24,7 @@ class TestPositionsAufAbschlag:
                     "bezeichnung": "foo",
                     "beschreibung": "bar",
                     "aufAbschlagstyp": "ABSOLUT",
-                    "aufAbschlagswert": "4.25",
+                    "aufAbschlagswert": Decimal("4.25"),
                     "aufAbschlagswaehrung": "EUR",
                 },
             ),
@@ -34,10 +34,10 @@ class TestPositionsAufAbschlag:
         """
         Test de-/serialisation of PositionsAufAbschlag
         """
-        assert_serialization_roundtrip(positionsaufabschlag, PositionsAufAbschlagSchema(), expected_json_dict)
+        assert_serialization_roundtrip(positionsaufabschlag, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = PositionsAufAbschlag()
 
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)

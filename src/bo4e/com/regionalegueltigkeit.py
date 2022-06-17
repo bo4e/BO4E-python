@@ -6,9 +6,6 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp

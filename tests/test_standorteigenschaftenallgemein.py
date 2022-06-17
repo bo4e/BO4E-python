@@ -1,6 +1,8 @@
-import pytest  # type:ignore[import]
+from decimal import Decimal
 
-from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein, StandorteigenschaftenAllgemeinSchema
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
+from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 example_standorteigenschaften_allgemein = StandorteigenschaftenAllgemein(
@@ -39,6 +41,6 @@ class TestStandorteigenschaftenAllgemein:
         )
 
     def test_standorteigenschaftenallgemein_missing_required_attributes(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = StandorteigenschaftenAllgemein()
-        assert "missing 7 required" in str(excinfo.value)
+        assert "7 validation errors" in str(excinfo.value)

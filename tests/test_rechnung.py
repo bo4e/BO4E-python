@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.rechnung import Rechnung, Rechnung
 from bo4e.com.betrag import Betrag
@@ -116,9 +116,9 @@ class TestRechnung:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(rechnung, RechnungSchema())
+        assert_serialization_roundtrip(rechnung)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Rechnung()
-        assert "missing 13 required" in str(excinfo.value)  # 13 from rechnung
+        assert "13 validation errors" in str(excinfo.value)  # 13 from rechnung

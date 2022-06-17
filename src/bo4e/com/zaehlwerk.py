@@ -5,16 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import constr
+from pydantic import constr, StrictStr
 
 
 class Zaehlwerk(COM):
@@ -31,8 +28,9 @@ class Zaehlwerk(COM):
     bezeichnung: str  # Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit.
     richtung: Energierichtung  # Die Energierichtung, Einspeisung oder Ausspeisung.
     obis_kennzahl: constr(
+        strict=True,
         regex=r"(?:(1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\.((?:6|8|9|29))\.([0-9]{1,2}))|"
-        r"(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\.(.{1,2})\.([0-9]{1,2}))"
+        r"(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\.(.{1,2})\.([0-9]{1,2}))",
     )  # Die OBIS-Kennzahl für das Zählwerk, die festlegt, welche auf die gemessene Größe mit dem Stand gemeldet wird.
     # Nur Zählwerkstände mit dieser OBIS-Kennzahl werden an diesem Zählwerk registriert.
     wandlerfaktor: Decimal  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum

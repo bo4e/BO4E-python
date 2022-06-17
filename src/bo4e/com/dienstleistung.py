@@ -2,10 +2,7 @@
 Contains Dienstleistung class
 and corresponding marshmallow schema for de-/serialization
 """
-
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictStr
 
 from bo4e.com.com import COM
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp

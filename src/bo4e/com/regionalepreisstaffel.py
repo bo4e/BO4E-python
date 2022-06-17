@@ -3,8 +3,6 @@ Contains RegionalePreisstaffel class and corresponding marshmallow schema for de
 """
 
 
-from marshmallow import fields
-
 from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 

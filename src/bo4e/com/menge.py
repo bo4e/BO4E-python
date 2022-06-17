@@ -2,12 +2,9 @@
 Contains Menge class
 and corresponding marshmallow schema for de-/serialization
 """
-
 from decimal import Decimal
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from decimal import Decimal
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit

@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
 from bo4e.com.angebotsposition import Angebotsposition
@@ -38,12 +38,12 @@ example_angebotsteil_json = {
     "positionen": [
         {
             "positionsbezeichnung": "teststring",
-            "positionsmenge": {"wert": "4000", "einheit": "KWH"},
-            "positionskosten": {"waehrung": "EUR", "wert": "98240"},
+            "positionsmenge": {"wert": Decimal("4000"), "einheit": "KWH"},
+            "positionskosten": {"waehrung": "EUR", "wert": Decimal("98240")},
             "positionspreis": {
                 "bezugswert": "KWH",
                 "status": None,
-                "wert": "0.2456000000000000127453603226967970840632915496826171875",
+                "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                 "einheit": "EUR",
             },
         },
@@ -106,19 +106,19 @@ class TestAngebotsteil:
                     "positionen": [
                         {
                             "positionsbezeichnung": "testtring",
-                            "positionsmenge": {"wert": "4000", "einheit": "KWH"},
-                            "positionskosten": {"waehrung": "EUR", "wert": "98240"},
+                            "positionsmenge": {"wert": Decimal("4000"), "einheit": "KWH"},
+                            "positionskosten": {"waehrung": "EUR", "wert": Decimal("98240")},
                             "positionspreis": {
                                 "bezugswert": "KWH",
                                 "status": None,
-                                "wert": "0.2456000000000000127453603226967970840632915496826171875",
+                                "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                                 "einheit": "EUR",
                             },
                         },
                     ],
                     "lieferstellenangebotsteil": [
                         {
-                            "marktlokationsId": "51238696781",
+                            "marktlokationsId": Decimal("51238696781"),
                             "sparte": "GAS",
                             "lokationsadresse": {
                                 "postleitzahl": "82031",
@@ -135,7 +135,7 @@ class TestAngebotsteil:
                             "unterbrechbar": True,
                             "netzebene": "NSP",
                             "netzgebietsnr": None,
-                            "versionstruktur": "2",
+                            "versionstruktur": Decimal("2"),
                             "katasterinformation": None,
                             "bilanzierungsgebiet": None,
                             "grundversorgercodenr": None,
@@ -150,8 +150,8 @@ class TestAngebotsteil:
                             "boTyp": "MARKTLOKATION",
                         }
                     ],
-                    "gesamtmengeangebotsteil": {"wert": "4000", "einheit": "KWH"},
-                    "gesamtkostenangebotsteil": {"waehrung": "EUR", "wert": "98240"},
+                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": "KWH"},
+                    "gesamtkostenangebotsteil": {"waehrung": "EUR", "wert": Decimal("98240")},
                     "anfrageSubreferenz": "teststring",
                     "lieferzeitraum": {
                         "startdatum": "2020-01-01T00:00:00+00:00",
@@ -175,15 +175,16 @@ class TestAngebotsteil:
         """
         Test de-/serialisation of Angebotsteil with minimal attributes.
         """
-        assert_serialization_roundtrip(angebotsteil, AngebotsteilSchema(), expected_json_dict)
+        assert_serialization_roundtrip(angebotsteil, expected_json_dict)
 
     def test_angebotsteil_positionen_required(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Angebotsteil(positionen=[])
 
-        assert "List positionen must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Angebotsteil()
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

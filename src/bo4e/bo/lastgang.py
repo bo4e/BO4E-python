@@ -5,9 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.tagesvektor import Tagesvektor
 from bo4e.com.zeitintervall import Zeitintervall
@@ -20,7 +17,7 @@ from bo4e.validators import OBIS_PATTERN
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import constr, conlist
+from pydantic import constr, conlist, StrictStr
 
 
 class _LastgangBody(Geschaeftsobjekt):
@@ -47,7 +44,7 @@ class _LastgangBody(Geschaeftsobjekt):
     #: Versionsnummer des Lastgangs
     version: str = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: constr(regex=OBIS_PATTERN) = None
+    obis_kennzahl: constr(strict=True, regex=OBIS_PATTERN) = None
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

@@ -7,19 +7,15 @@ from decimal import Decimal
 from typing import List
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.enum.oekolabel import Oekolabel
 from bo4e.enum.oekozertifikat import Oekozertifikat
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import conlist
+from pydantic import conlist, StrictInt, StrictStr, StrictBool
 
 
 class Energiemix(COM):

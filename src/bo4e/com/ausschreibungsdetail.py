@@ -4,9 +4,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 
 from typing import Optional
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictStr, StrictBool
 
 from bo4e.com.adresse import Adresse
 from bo4e.com.com import COM

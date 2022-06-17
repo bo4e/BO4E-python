@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.energiemenge import Energiemenge, Energiemenge
 from bo4e.enum.lokationstyp import Lokationstyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -20,10 +20,10 @@ class TestEnergiemenge:
         ],
     )
     def test_serialization_roundtrip(self, energiemenge: Energiemenge):
-        assert_serialization_roundtrip(energiemenge, EnergiemengeSchema())
+        assert_serialization_roundtrip(energiemenge)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Energiemenge()
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)

@@ -1,5 +1,5 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.ausschreibungslos import Ausschreibungslos, Ausschreibungslos
 from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
@@ -67,10 +67,10 @@ class TestAusschreibungslos:
         """
         Test de-/serialisation of Ausschreibungslos
         """
-        assert_serialization_roundtrip(ausschreibungslos, AusschreibungslosSchema(), expected_json_dict)
+        assert_serialization_roundtrip(ausschreibungslos, expected_json_dict)
 
     def test_ausschreibungslos_lieferstellen_required(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Ausschreibungslos(
                 losnummer="foo",
                 bezeichnung="bar",
@@ -86,9 +86,10 @@ class TestAusschreibungslos:
                 lieferstellen=[],  # the important line
             )
 
-        assert "List lieferstellen must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Ausschreibungslos()
-        assert "missing 10 required" in str(excinfo.value)
+        assert "10 validation errors" in str(excinfo.value)

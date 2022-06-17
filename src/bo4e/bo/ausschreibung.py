@@ -5,9 +5,6 @@ from datetime import datetime
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.ausschreibungslos import Ausschreibungslos
@@ -16,11 +13,10 @@ from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
 from bo4e.enum.ausschreibungstyp import Ausschreibungstyp
 from bo4e.enum.botyp import BoTyp
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import conlist
+from pydantic import conlist, StrictStr, StrictBool
 
 
 class Ausschreibung(Geschaeftsobjekt):

@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.tarif import Tarif, Tarif
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
@@ -73,9 +73,9 @@ class TestTarif:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarif, TarifSchema())
+        assert_serialization_roundtrip(tarif)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Tarif()
-        assert "missing 11 required" in str(excinfo.value)  # 3 from Tarif + 8 from tarifinfo
+        assert "11 validation error" in str(excinfo.value)  # 3 from Tarif + 8 from tarifinfo

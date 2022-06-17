@@ -2,9 +2,10 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.kostenposition import Kostenposition, Kostenposition
+from bo4e.com.kostenposition import Kostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -36,14 +37,19 @@ class TestKostenposition:
                 ),
                 {
                     "positionstitel": "Mudders Preisstaffel",
-                    "einzelpreis": {"status": "ENDGUELTIG", "einheit": "EUR", "wert": "3.5", "bezugswert": "KWH"},
+                    "einzelpreis": {
+                        "status": "ENDGUELTIG",
+                        "einheit": "EUR",
+                        "wert": Decimal("3.5"),
+                        "bezugswert": "KWH",
+                    },
                     "bis": None,
                     "von": None,
                     "menge": None,
                     "zeitmenge": None,
                     "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
                     "artikeldetail": None,
-                    "betragKostenposition": {"waehrung": "EUR", "wert": "12.5"},
+                    "betragKostenposition": {"waehrung": "EUR", "wert": Decimal("12.5")},
                 },
                 id="only required attributes",
             ),
@@ -70,13 +76,21 @@ class TestKostenposition:
                 {
                     "artikelbezeichnung": "Deim Vadder sei Kostenposition",
                     "positionstitel": "Vadders Kostenposition",
-                    "menge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
+                    "menge": {"wert": Decimal("3.410000000000000142108547152020037174224853515625"), "einheit": "MWH"},
                     "artikeldetail": "foo",
-                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
+                    "einzelpreis": {
+                        "bezugswert": "KWH",
+                        "status": "ENDGUELTIG",
+                        "wert": Decimal("3.5"),
+                        "einheit": "EUR",
+                    },
                     "von": "2013-05-01T00:00:00+00:00",
-                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
+                    "zeitmenge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": "MWH",
+                    },
                     "bis": "2014-05-01T00:00:00+00:00",
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
                 },
                 id="required and optional attributes",
             ),
@@ -86,16 +100,16 @@ class TestKostenposition:
         """
         Test de-/serialisation of Kostenposition
         """
-        assert_serialization_roundtrip(kostenposition, KostenpositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kostenposition, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Kostenposition()
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)
 
     def test_von_bis_validation_attribute(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Kostenposition(
                 positionstitel="Mudders Preisstaffel",
                 artikelbezeichnung="Dei Mudder ihr Preisstaffel",

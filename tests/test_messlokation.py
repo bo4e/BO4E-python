@@ -3,7 +3,7 @@ from datetime import datetime
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.bo.messlokation import Messlokation, Messlokation
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
@@ -35,15 +35,13 @@ class TestMeLo:
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
 
-        schema = MesslokationSchema()
-
-        json_string = schema.dumps(melo, ensure_ascii=False)
+        json_string = melo.json(by_alias=True, ensure_ascii=False)
         json_dict = json.loads(json_string)
 
         assert "boTyp" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
-        deserialized_melo: Messlokation = schema.loads(json_string)
+        deserialized_melo: Messlokation = Messlokation.parse_raw(json_string)
 
         # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
         # but are **not** the same object.
@@ -104,17 +102,15 @@ class TestMeLo:
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.bo_typ == BoTyp.MESSLOKATION.value, "boTyp was not automatically set"
 
-        schema = MesslokationSchema()
-
-        json_string = schema.dumps(melo, ensure_ascii=False)
+        json_string = melo.json(by_alias=True, ensure_ascii=False)
         json_dict = json.loads(json_string)
 
         assert "boTyp" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
-        deserialized_melo: Messlokation = schema.loads(json_string)
+        deserialized_melo: Messlokation = Messlokation.parse_raw(json_string)
 
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
@@ -130,11 +126,11 @@ class TestMeLo:
                 "boTyp": "MESSLOKATION",
                 "messlokationszaehler": null,
                 "katasterinformation": null,
-                "messgebietnr": "664073",
+                "messgebietnr": Decimal("664073"),
                 "messadresse":
                     {
                         "strasse": "Jahnalle",
-                        "hausnummer": "1",
+                        "hausnummer": Decimal("1"),
                         "postfach": null,
                         "postleitzahl": "04177",
                         "landescode": "DE",
@@ -149,20 +145,18 @@ class TestMeLo:
                 "externeReferenzen": [],
                 "messdienstleistung": null,
                 "geoadresse": null,
-                "versionstruktur": "2",
+                "versionstruktur": Decimal("2"),
                 "grundzustaendigerMsbimCodenr": null
                 }
                 """
 
-        schema = MesslokationSchema()
-
-        with pytest.raises(TypeError) as excinfo:
-            schema.loads(invalid_json_string)
+        with pytest.raises(ValidationError) as excinfo:
+            Messlokation.parse_raw(invalid_json_string)
 
         assert "messlokations_id" in str(excinfo.value)
 
     def test_address_validation(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                 sparte=Sparte.STROM,
@@ -175,7 +169,7 @@ class TestMeLo:
         assert str(excinfo.value) == "More than one address information is given."
 
     def test_grundzustaendiger_x_codenr_validation(self):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                 sparte=Sparte.STROM,
@@ -210,7 +204,7 @@ class TestMeLo:
             )
 
         if not is_valid:
-            with pytest.raises(ValueError):
+            with pytest.raises(ValidationError):
                 _instantiate_melo(melo_id)
         else:
             _instantiate_melo(melo_id)

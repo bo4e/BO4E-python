@@ -4,8 +4,6 @@ Contains Fremdkosten class and corresponding marshmallow schema for de-/serializ
 from typing import List, Optional
 
 
-from marshmallow import fields
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
 from bo4e.com.fremdkostenblock import Fremdkostenblock

@@ -1,6 +1,6 @@
 import pytest  # type:ignore[import]
-
-from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom, StandorteigenschaftenStromSchema
+from pydantic import ValidationError
+from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 example_standorteigenschaften_strom = StandorteigenschaftenStrom(
@@ -27,12 +27,10 @@ class TestStandorteigenschaftenStrom:
     def test_serialization_roundtrip(
         self, standorteigenschaften_strom: StandorteigenschaftenStrom, expected_json_dict: dict
     ):
-        assert_serialization_roundtrip(
-            standorteigenschaften_strom, StandorteigenschaftenStromSchema(), expected_json_dict
-        )
+        assert_serialization_roundtrip(standorteigenschaften_strom, expected_json_dict)
 
     def test_missing_required_attributes(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = StandorteigenschaftenStrom()
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)

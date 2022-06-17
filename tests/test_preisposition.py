@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.preisposition import Preisposition, Preisposition
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
@@ -43,9 +43,9 @@ class TestPreisposition:
         """
         Test de-/serialisation of Preisposition
         """
-        assert_serialization_roundtrip(preisposition, PreispositionSchema())
+        assert_serialization_roundtrip(preisposition)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Preisposition()
-        assert "missing 6 required" in str(excinfo.value)
+        assert "6 validation errors" in str(excinfo.value)

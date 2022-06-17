@@ -3,9 +3,7 @@ Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/seria
 """
 from decimal import Decimal
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictStr
 
 from bo4e.com.com import COM
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp

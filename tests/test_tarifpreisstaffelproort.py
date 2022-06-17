@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt, TarifpreisstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -28,10 +28,10 @@ class TestTarifpreisstaffelProOrt:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifpreisstaffelproort, TarifpreisstaffelProOrtSchema())
+        assert_serialization_roundtrip(tarifpreisstaffelproort)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = TarifpreisstaffelProOrt()
 
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)

@@ -5,12 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List
 
 
-from marshmallow import fields
-
 from bo4e.com.com import COM
 from bo4e.com.marktgebietinfo import MarktgebietInfo
-from bo4e.validators import check_list_length_is_one_or_two
-
 
 # pylint: disable=too-few-public-methods
 from pydantic import conlist

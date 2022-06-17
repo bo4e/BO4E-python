@@ -5,9 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.energiemix import Energiemix
@@ -19,11 +16,10 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.tarifmerkmal import Tarifmerkmal
 from bo4e.enum.tariftyp import Tariftyp
-from bo4e.validators import check_list_length_at_least_one
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from pydantic import conlist
+from pydantic import conlist, StrictStr
 
 
 class Tarifinfo(Geschaeftsobjekt):

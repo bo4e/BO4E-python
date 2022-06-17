@@ -5,9 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import List, Optional
 
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictBool
 
 from bo4e.com.com import COM
 from bo4e.com.preis import Preis

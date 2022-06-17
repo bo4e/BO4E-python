@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.betrag import Betrag
 from bo4e.com.fremdkostenposition import Fremdkostenposition, Fremdkostenposition
 from bo4e.com.preis import Preis
@@ -37,7 +37,12 @@ class TestFremdkostenposition:
                 {
                     "marktpartnercode": None,
                     "positionstitel": "Mudders Preisstaffel",
-                    "einzelpreis": {"wert": "3.5", "einheit": "EUR", "bezugswert": "KWH", "status": "ENDGUELTIG"},
+                    "einzelpreis": {
+                        "wert": Decimal("3.5"),
+                        "einheit": "EUR",
+                        "bezugswert": "KWH",
+                        "status": "ENDGUELTIG",
+                    },
                     "bis": None,
                     "menge": None,
                     "zeitmenge": None,
@@ -46,7 +51,7 @@ class TestFremdkostenposition:
                     "artikeldetail": None,
                     "von": None,
                     "linkPreisblatt": None,
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
                     "gebietcodeEic": None,
                 },
                 id="only required attributes",
@@ -79,14 +84,22 @@ class TestFremdkostenposition:
                     "artikelbezeichnung": "Deim Vadder sei Preisstaffel",
                     "artikeldetail": "foo",
                     "marktpartnername": "Mein MP",
-                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
-                    "menge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
-                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
-                    "marktpartnercode": "986543210123",
+                    "einzelpreis": {
+                        "bezugswert": "KWH",
+                        "status": "ENDGUELTIG",
+                        "wert": Decimal("3.5"),
+                        "einheit": "EUR",
+                    },
+                    "menge": {"wert": Decimal("3.410000000000000142108547152020037174224853515625"), "einheit": "MWH"},
+                    "zeitmenge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": "MWH",
+                    },
+                    "marktpartnercode": Decimal("986543210123"),
                     "bis": "2014-05-01T00:00:00+00:00",
                     "positionstitel": "Vadders Preisstaffel",
                     "von": "2013-05-01T00:00:00+00:00",
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
                     "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
                     "linkPreisblatt": "http://foo.bar/",
                 },
@@ -98,10 +111,10 @@ class TestFremdkostenposition:
         """
         Test de-/serialisation of Fremdkostenposition.
         """
-        assert_serialization_roundtrip(fremdkostenposition, FremdkostenpositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(fremdkostenposition, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Fremdkostenposition()
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)

@@ -6,9 +6,6 @@ from decimal import Decimal
 from typing import Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
@@ -16,7 +13,7 @@ from bo4e.validators import check_bis_is_later_than_von, OBIS_PATTERN
 
 
 # pylint: disable=too-few-public-methods
-from pydantic import constr
+from pydantic import constr, validator
 
 
 class Verbrauch(COM):
@@ -32,7 +29,7 @@ class Verbrauch(COM):
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Wertermittlungsverfahren
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:
-    obis_kennzahl: constr(regex=OBIS_PATTERN)
+    obis_kennzahl: constr(strict=True, regex=OBIS_PATTERN)
     #: Gibt den absoluten Wert der Menge an
     wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
@@ -40,20 +37,16 @@ class Verbrauch(COM):
 
     # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: datetime = attrs.field(
-        default=None,
-        validator=attrs.validators.optional([attrs.validators.instance_of(datetime), check_bis_is_later_than_von]),
-    )
+    startdatum: datetime = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: datetime = attrs.field(
-        default=None,
-        validator=attrs.validators.optional([attrs.validators.instance_of(datetime), check_bis_is_later_than_von]),
-    )
+    enddatum: datetime = None
+    _bis_check = validator("enddatum", always=True, allow_reuse=True)(check_bis_is_later_than_von)
 
-    def _get_inclusive_start(self) -> Optional[datetime]:
+    @staticmethod
+    def _get_inclusive_start(values) -> Optional[datetime]:
         """a method for easier usage of the check_bis_is_later_than_von validator"""
-        return self.startdatum
+        return values["startdatum"]
 
-    def _get_exclusive_end(self) -> Optional[datetime]:
-        """a method for easier usage of the check_bis_is_later_than_von validator"""
-        return self.enddatum
+    # def _get_exclusive_end(self) -> Optional[datetime]:
+    #     """a method for easier usage of the check_bis_is_later_than_von validator"""
+    #     return self.enddatum

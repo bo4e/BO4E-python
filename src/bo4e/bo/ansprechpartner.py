@@ -2,9 +2,7 @@
 Contains Ansprechpartner class
 and corresponding marshmallow schema for de-/serialization
 """
-
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+from pydantic import StrictStr
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner

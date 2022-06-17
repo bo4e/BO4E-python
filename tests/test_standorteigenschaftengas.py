@@ -1,7 +1,7 @@
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.marktgebietinfo import MarktgebietInfo
-from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas, StandorteigenschaftenGasSchema
+from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 example_standorteigenschaften_gas = StandorteigenschaftenGas(
@@ -26,13 +26,13 @@ class TestStandorteigenschaftenGas:
     def test_standorteigenschaftengas_serialization_roundtrip(
         self, standorteigenschaftengas: StandorteigenschaftenGas, expected_json_dict: dict
     ):
-        assert_serialization_roundtrip(standorteigenschaftengas, StandorteigenschaftenGasSchema(), expected_json_dict)
+        assert_serialization_roundtrip(standorteigenschaftengas, expected_json_dict)
 
     def test_standorteigenschaftengas_missing_required_attributes(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = StandorteigenschaftenGas()
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "wrong_netzkontonummern, expected_error_message",
@@ -48,7 +48,7 @@ class TestStandorteigenschaftenGas:
         ],
     )
     def test_standorteigenschaftengas_list_lenght_validation(self, wrong_netzkontonummern, expected_error_message):
-        with pytest.raises(ValueError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = StandorteigenschaftenGas(
                 netzkontonummern=wrong_netzkontonummern,
                 marktgebiete=[MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")],

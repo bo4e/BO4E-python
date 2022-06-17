@@ -1,7 +1,7 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-
+from pydantic import ValidationError
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
@@ -32,12 +32,12 @@ class TestRegionalePreisstaffel:
                 {
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": "01069"}],
+                        "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": Decimal("01069")}],
                     },
-                    "einheitspreis": "40",
-                    "sigmoidparameter": {"A": "1", "B": "2", "C": "3", "D": "4"},
-                    "staffelgrenzeVon": "12.5",
-                    "staffelgrenzeBis": "25",
+                    "einheitspreis": Decimal("40"),
+                    "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                    "staffelgrenzeVon": Decimal("12.5"),
+                    "staffelgrenzeBis": Decimal("25"),
                 },
                 id="maximal attributes"
                 # the messing sigmoidparameter is tested in the Preisstaffel tests
@@ -48,10 +48,10 @@ class TestRegionalePreisstaffel:
         """
         Test de-/serialisation of RegionalePreisgarantie with maximal attributes.
         """
-        assert_serialization_roundtrip(regionale_preisstaffel, RegionalePreisstaffelSchema(), expected_json_dict)
+        assert_serialization_roundtrip(regionale_preisstaffel, expected_json_dict)
 
     def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
+        with pytest.raises(ValidationError) as excinfo:
             _ = RegionalePreisgarantie()
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)

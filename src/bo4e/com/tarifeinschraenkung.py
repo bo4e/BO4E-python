@@ -4,9 +4,6 @@ Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serial
 from typing import List, Optional
 
 
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
 from bo4e.com.com import COM
 from bo4e.com.geraet import Geraet
 from bo4e.com.menge import Menge
