@@ -1,8 +1,7 @@
 """
 Contains PreisblattDienstleistung class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
-
+from typing import List
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
@@ -32,7 +31,7 @@ class PreisblattDienstleistung(Preisblatt):
 
     # optional attributes
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
-    geraetedetails: Geraeteeigenschaften
+    geraetedetails: Geraeteeigenschaften = None
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
     inklusive_dienstleistungen: List[Dienstleistungstyp] = None

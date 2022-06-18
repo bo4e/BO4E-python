@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.angebotsposition import Angebotsposition, Angebotsposition
+
+from bo4e.com.angebotsposition import Angebotsposition
 from bo4e.com.betrag import Betrag
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
@@ -30,13 +31,13 @@ class TestAngebotsposition:
                 ),
                 {
                     "positionsbezeichnung": "Beispielangebotsposition",
-                    "positionsmenge": {"wert": Decimal("4000"), "einheit": "KWH"},
-                    "positionskosten": {"waehrung": "EUR", "wert": Decimal("98240")},
+                    "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
+                    "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
                     "positionspreis": {
-                        "bezugswert": "KWH",
+                        "bezugswert": Mengeneinheit.KWH,
                         "status": None,
                         "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
-                        "einheit": "EUR",
+                        "einheit": Waehrungseinheit.EUR,
                     },
                 },
             ),

@@ -4,14 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
+# pylint: disable=no-name-in-module
+# pylint: disable=no-name-in-module
+from pydantic import constr
 
 from bo4e.com.com import COM
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
-
 # pylint: disable=too-few-public-methods
-from pydantic import constr, StrictStr
 
 
 class Zaehlwerk(COM):

@@ -3,7 +3,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.zaehler import Zaehler, Zaehler
+
+from bo4e.bo.zaehler import Zaehler
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.botyp import BoTyp
@@ -43,8 +44,8 @@ class TestZaehler:
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
-        assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP.value
-        assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW.value
+        assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
+        assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
         json_string = zaehler.json(by_alias=True, ensure_ascii=False)
         assert "richtung" in json_string, "Zaehlwerk->richtung was not serialized"
         assert "einheit" in json_string, "Zaehlwerk->einheit was not serialized"
@@ -55,7 +56,7 @@ class TestZaehler:
         """
         Test serialisation of Zaehler fails if OBIS is wrong.
         """
-        with pytest.raises(ValidationError) as value_error:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Zaehler(
                 zaehlernummer="000111222",
                 sparte=Sparte.STROM,
@@ -73,13 +74,15 @@ class TestZaehler:
                 zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
                 tarifart=Tarifart.ZWEITARIF,
             )
-        assert value_error.value.args[0].startswith("'obis_kennzahl' must match regex")
+        assert "1 validation error" in str(excinfo.value)
+        assert "obisKennzahl" in str(excinfo.value)
+        assert "string does not match regex" in str(excinfo.value)
 
     def test_serialization_fails_for_empty_zaehlwerke(self):
         """
         Test serialisation of Zaehler fails if there are no zaehlwerke.
         """
-        with pytest.raises(ValidationError) as value_error:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Zaehler(
                 zaehlernummer="000111222",
                 sparte=Sparte.STROM,
@@ -88,4 +91,5 @@ class TestZaehler:
                 zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
                 tarifart=Tarifart.ZWEITARIF,
             )
-        assert value_error.value.args[0] == "The Zaehler must have at least 1 Zaehlwerk"
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

@@ -2,17 +2,15 @@
 Contains Energiemenge class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.verbrauch import Verbrauch
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.lokationstyp import Lokationstyp
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import conlist, StrictStr
 
 
 class Energiemenge(Geschaeftsobjekt):

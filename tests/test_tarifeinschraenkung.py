@@ -1,11 +1,11 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-from pydantic import ValidationError
+
 from bo4e.com.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.com.menge import Menge  # type:ignore[import]
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung, Tarifeinschraenkung
+from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -70,8 +70,11 @@ class TestTarifeinschraenkung:
                     "voraussetzungen": ["ALTVERTRAG", "DIREKTVERTRIEB"],
                     "einschraenkungzaehler": [
                         {
-                            "geraetenummer": Decimal("0815"),
-                            "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
+                            "geraetenummer": "0815",
+                            "geraeteeigenschaften": {
+                                "geraetemerkmal": "GAS_G1000",
+                                "geraetetyp": Geraetetyp.MULTIPLEXANLAGE,
+                            },
                         },
                         {
                             "geraetenummer": "197foo",
@@ -81,11 +84,11 @@ class TestTarifeinschraenkung:
                     "einschraenkungleistung": [
                         {
                             "wert": Decimal("12.5"),
-                            "einheit": "MWH",
+                            "einheit": Mengeneinheit.MWH,
                         },
                         {
                             "wert": Decimal("30"),
-                            "einheit": "KWH",
+                            "einheit": Mengeneinheit.KWH,
                         },
                     ],
                 },

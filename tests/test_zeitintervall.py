@@ -1,9 +1,7 @@
-from datetime import datetime, timezone
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.zeitintervall import Zeitintervall, Zeitintervall
+
+from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
 
@@ -24,13 +22,15 @@ class TestZeitintervall:
         assert isinstance(zeitintervall_deserialized.wert, int)
         assert zeitintervall_deserialized.wert == 2
         assert isinstance(zeitintervall_deserialized.zeiteinheit, Zeiteinheit)
-        assert zeitintervall_deserialized.zeiteinheit == Zeiteinheit.VIERTEL_STUNDE.value
+        assert zeitintervall_deserialized.zeiteinheit == Zeiteinheit.VIERTEL_STUNDE
 
     def test_wrong_datatype(self):
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitintervall(wert="3", zeiteinheit=Zeiteinheit.TAG)
+            _ = Zeitintervall(wert="errrrrror", zeiteinheit=Zeiteinheit.TAG)
 
-        assert "'wert' must be <class 'int'>" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "wert" in str(excinfo.value)
+        assert "value is not a valid integer" in str(excinfo.value)
 
     def test_missing_required_attribute(self):
         with pytest.raises(ValidationError) as excinfo:

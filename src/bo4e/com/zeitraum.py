@@ -37,6 +37,7 @@ class Zeitraum(COM):
     endzeitpunkt: datetime = None
 
     # pylint: disable=unused-argument
+    # pylint: disable=no-self-argument
     @validator("endzeitpunkt", always=True)
     def time_range_possibilities(cls, endzeitpunkt, values):
         """

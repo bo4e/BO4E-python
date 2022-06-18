@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.preisposition import Preisposition, Preisposition
+
+from bo4e.com.preisposition import Preisposition
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.bemessungsgroesse import Bemessungsgroesse

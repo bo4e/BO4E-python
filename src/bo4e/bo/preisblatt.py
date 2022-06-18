@@ -2,8 +2,10 @@
 Contains Preisblatt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
@@ -12,10 +14,6 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import conlist, StrictStr
 
 
 class Preisblatt(Geschaeftsobjekt):

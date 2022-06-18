@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung, PreisblattDienstleistung
+
+from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.preisstatus import Preisstatus

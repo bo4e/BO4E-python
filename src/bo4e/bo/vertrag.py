@@ -3,8 +3,11 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List, Optional
+from typing import List
 
+# pylint: disable=unused-argument
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -15,10 +18,6 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
-
-
-# pylint: disable=unused-argument
-from pydantic import conlist, StrictStr
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

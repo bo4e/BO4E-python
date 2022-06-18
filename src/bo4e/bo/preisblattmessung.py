@@ -1,8 +1,7 @@
 """
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
-
+from typing import List
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften

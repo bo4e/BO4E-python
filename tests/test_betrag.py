@@ -2,8 +2,10 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.betrag import Betrag, Betrag
+
+from bo4e.com.betrag import Betrag
 from bo4e.enum.waehrungscode import Waehrungscode
+from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 example_betrag = Betrag(
@@ -11,7 +13,7 @@ example_betrag = Betrag(
     wert=Decimal(12.5),
 )
 
-example_betrag_json = {"wert": Decimal("12.5"), "waehrung": "EUR"}
+example_betrag_json = {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR}
 
 
 class TestBetrag:

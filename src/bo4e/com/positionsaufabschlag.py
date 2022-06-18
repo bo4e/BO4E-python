@@ -3,10 +3,7 @@ Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/seria
 """
 from decimal import Decimal
 
-from pydantic import StrictStr
-
 from bo4e.com.com import COM
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 

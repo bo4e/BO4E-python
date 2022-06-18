@@ -2,7 +2,8 @@ import datetime
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.tarifpreisblatt import Tarifpreisblatt, Tarifpreisblatt
+
+from bo4e.bo.tarifpreisblatt import Tarifpreisblatt
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.kundentyp import Kundentyp

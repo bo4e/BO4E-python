@@ -4,14 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import constr
+
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import constr, StrictStr
 
 
 class Marktteilnehmer(Geschaeftspartner):

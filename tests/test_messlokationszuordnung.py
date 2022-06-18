@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from bo4e.com.messlokationszuordnung import Messlokationszuordnung, Messlokationszuordnung
+from bo4e.com.messlokationszuordnung import Messlokationszuordnung
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
 
@@ -24,7 +24,7 @@ class TestMesslokationszuordnung:
         mlz_deserialized = Messlokationszuordnung.parse_raw(json_string)
 
         assert mlz_deserialized.messlokations_id == messlokations_id
-        assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION.value
+        assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION
 
     def test_serialisation_required_and_optional_attributes(self):
         """
@@ -50,9 +50,9 @@ class TestMesslokationszuordnung:
         assert "gueltigSeit" in mlz_json
         assert "2021-01-13T00:00:00" in mlz_json
 
-        mlz_deserialized = Messlokationszuordnung.parse_raw(mlz)
+        mlz_deserialized = Messlokationszuordnung.parse_raw(mlz_json)
 
         assert mlz_deserialized.messlokations_id == messlokations_id
-        assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION.value
+        assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION
         assert mlz_deserialized.gueltig_seit == datetime(year=2021, month=1, day=13)
         assert mlz_deserialized.gueltig_bis == datetime(year=2021, month=5, day=4)

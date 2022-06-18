@@ -3,8 +3,9 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenposition import Fremdkostenposition, Fremdkostenposition
+from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -39,9 +40,9 @@ class TestFremdkostenposition:
                     "positionstitel": "Mudders Preisstaffel",
                     "einzelpreis": {
                         "wert": Decimal("3.5"),
-                        "einheit": "EUR",
-                        "bezugswert": "KWH",
-                        "status": "ENDGUELTIG",
+                        "einheit": Waehrungseinheit.EUR,
+                        "bezugswert": Mengeneinheit.KWH,
+                        "status": Preisstatus.ENDGUELTIG,
                     },
                     "bis": None,
                     "menge": None,
@@ -51,7 +52,7 @@ class TestFremdkostenposition:
                     "artikeldetail": None,
                     "von": None,
                     "linkPreisblatt": None,
-                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                     "gebietcodeEic": None,
                 },
                 id="only required attributes",
@@ -85,21 +86,24 @@ class TestFremdkostenposition:
                     "artikeldetail": "foo",
                     "marktpartnername": "Mein MP",
                     "einzelpreis": {
-                        "bezugswert": "KWH",
-                        "status": "ENDGUELTIG",
+                        "bezugswert": Mengeneinheit.KWH,
+                        "status": Preisstatus.ENDGUELTIG,
                         "wert": Decimal("3.5"),
-                        "einheit": "EUR",
+                        "einheit": Waehrungseinheit.EUR,
                     },
-                    "menge": {"wert": Decimal("3.410000000000000142108547152020037174224853515625"), "einheit": "MWH"},
+                    "menge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": Mengeneinheit.MWH,
+                    },
                     "zeitmenge": {
                         "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
-                        "einheit": "MWH",
+                        "einheit": Mengeneinheit.MWH,
                     },
-                    "marktpartnercode": Decimal("986543210123"),
-                    "bis": "2014-05-01T00:00:00+00:00",
+                    "marktpartnercode": "986543210123",
+                    "bis": datetime(2014, 5, 1, 0, 0, tzinfo=timezone.utc),
                     "positionstitel": "Vadders Preisstaffel",
-                    "von": "2013-05-01T00:00:00+00:00",
-                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
+                    "von": datetime(2013, 5, 1, 0, 0, tzinfo=timezone.utc),
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                     "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
                     "linkPreisblatt": "http://foo.bar/",
                 },

@@ -1,5 +1,6 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.bo.lastgang import Lastgang
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit

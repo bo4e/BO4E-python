@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.kriteriumwert import KriteriumWert, KriteriumWert
+
+from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -14,7 +15,7 @@ class TestKriteriumWert:
                     kriterium=Tarifregionskriterium.ORT,
                     wert="Grünwald",
                 ),
-                {"kriterium": "ORT", "wert": "Grünwald"},
+                {"kriterium": Tarifregionskriterium.ORT, "wert": "Grünwald"},
             ),
         ],
     )

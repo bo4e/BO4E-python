@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.ausschreibungslos import Ausschreibungslos, Ausschreibungslos
+
+from bo4e.com.ausschreibungslos import Ausschreibungslos
 from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte
@@ -42,8 +43,8 @@ class TestAusschreibungslos:
                 example_ausschreibungslos,
                 {
                     "lieferzeitraum": example_zeitraum_dict,
-                    "preismodell": "FESTPREIS",
-                    "energieart": "STROM",
+                    "preismodell": Preismodell.FESTPREIS,
+                    "energieart": Sparte.STROM,
                     "wiederholungsintervall": example_zeitraum_dict,
                     "bemerkung": "asd",
                     "bezeichnung": "bar",
@@ -53,9 +54,9 @@ class TestAusschreibungslos:
                     "wunschKuendingungsfrist": example_zeitraum_dict,
                     "wunschZahlungsziel": example_zeitraum_dict,
                     "gesamtMenge": example_menge_dict,
-                    "wunschVertragsform": "DIREKT",
+                    "wunschVertragsform": Vertragsform.DIREKT,
                     "wunschMaximalmenge": example_menge_dict,
-                    "wunschRechnungslegung": "MONATSRECHN",
+                    "wunschRechnungslegung": Rechnungslegung.MONATSRECHN,
                     "wunschMindestmenge": example_menge_dict,
                     "betreutDurch": "Max Mustermann",
                 },

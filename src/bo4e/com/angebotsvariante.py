@@ -2,18 +2,16 @@
 Contains Angebotsvariante and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List, Optional
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.com.angebotsteil import Angebotsteil
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.enum.angebotsstatus import Angebotsstatus
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import conlist
 
 
 class Angebotsvariante(COM):

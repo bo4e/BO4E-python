@@ -1,9 +1,8 @@
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit, RegionaleGueltigkeit
+from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -28,7 +27,7 @@ class TestRegionaleGueltigkeit:
                     "kriteriumsWerte": [
                         {
                             "kriterium": "NETZ_NUMMER",
-                            "wert": Decimal("12345"),
+                            "wert": "12345",
                         }
                     ],
                 },
@@ -55,4 +54,5 @@ class TestRegionaleGueltigkeit:
                 kriteriums_werte=[],
             )
 
-        assert "kriteriumswerte must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

@@ -1,4 +1,4 @@
-from bo4e.com.katasteradresse import Katasteradresse, Katasteradresse
+from bo4e.com.katasteradresse import Katasteradresse
 
 
 class TestKatasteradresse:

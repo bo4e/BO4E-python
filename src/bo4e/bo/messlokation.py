@@ -3,10 +3,17 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import List, Optional
-
+from typing import List
 
 from iso3166 import countries  # type:ignore[import]
+
+# Structure of a Messlokations-ID
+# Ländercode nach DIN ISO 3166 (2 Stellen)
+# Verteilnetzbetreiber (6 Stellen)
+# Postleitzahl (5 Stellen)
+# Zählpunktnummer (20 Stellen alphanumerisch)
+# source: https://de.wikipedia.org/wiki/Z%C3%A4hlpunkt#Struktur_der_Z%C3%A4hlpunktbezeichnung
+from pydantic import validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler
@@ -18,14 +25,6 @@ from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
-
-# Structure of a Messlokations-ID
-# Ländercode nach DIN ISO 3166 (2 Stellen)
-# Verteilnetzbetreiber (6 Stellen)
-# Postleitzahl (5 Stellen)
-# Zählpunktnummer (20 Stellen alphanumerisch)
-# source: https://de.wikipedia.org/wiki/Z%C3%A4hlpunkt#Struktur_der_Z%C3%A4hlpunktbezeichnung
-from pydantic import validator, StrictStr
 
 _melo_id_pattern = re.compile(r"^[A-Z]{2}\d{6}\d{5}[A-Z\d]{20}$")
 
@@ -41,15 +40,6 @@ class Messlokation(Geschaeftsobjekt):
         `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/MesslokationSchema.json>`_
 
     """
-
-    # pylint: disable=unused-argument
-    def _validate_messlokations_id(self, messlokations_id_attribute, value):
-        if not value:
-            raise ValueError("The messlokations_id must not be empty.")
-        if not _melo_id_pattern.match(value):
-            raise ValueError(f"The messlokations_id '{value}' does not match {_melo_id_pattern.pattern}")
-        if not value[0:2] in countries:
-            raise ValueError(f"The country code '{value[0:2]}' is not a valid country code")
 
     # required attributes
     bo_typ: BoTyp = BoTyp.MESSLOKATION
@@ -99,6 +89,19 @@ class Messlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
+    # pylint: disable=unused-argument
+    # pylint: disable=no-self-argument
+    @validator("messlokations_id", always=True)
+    def _validate_messlokations_id(cls, messlokations_id, values):
+        if not messlokations_id:
+            raise ValueError("The messlokations_id must not be empty.")
+        if not _melo_id_pattern.match(messlokations_id):
+            raise ValueError(f"The messlokations_id '{messlokations_id}' does not match {_melo_id_pattern.pattern}")
+        if not messlokations_id[0:2] in countries:
+            raise ValueError(f"The country code '{messlokations_id[0:2]}' is not a valid country code")
+        return messlokations_id
+
+    # pylint: disable=no-self-argument
     @validator("katasterinformation", always=True)
     def validate_address_info(cls, katasterinformation, values):
         """Checks that if an address is given, that there is only one valid address given"""
@@ -110,7 +113,9 @@ class Messlokation(Geschaeftsobjekt):
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
         if amount_of_given_address_infos > 1:
             raise ValueError("More than one address information is given.")
+        return katasterinformation
 
+    # pylint: disable=no-self-argument
     @validator("grundzustaendiger_msbim_codenr", always=True)
     def validate_grundzustaendiger_x_codenr(cls, grundzustaendiger_msbim_codenr, values):
         """Checks that if a codenr is given, that there is only one valid codenr given."""
@@ -123,5 +128,4 @@ class Messlokation(Geschaeftsobjekt):
         )
         if amount_of_given_grundzustaendiger_x_codenr > 1:
             raise ValueError("More than one codenr is given.")
-        else:
-            return grundzustaendiger_msbim_codenr
+        return grundzustaendiger_msbim_codenr

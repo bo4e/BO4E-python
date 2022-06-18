@@ -3,10 +3,6 @@ Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-
-from pydantic import StrictStr
-
 from bo4e.com.com import COM
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preisgarantietyp import Preisgarantietyp

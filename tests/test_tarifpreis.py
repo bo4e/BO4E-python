@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.tarifpreis import Tarifpreis, Tarifpreis
+
+from bo4e.com.tarifpreis import Tarifpreis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.preistyp import Preistyp
@@ -40,10 +41,15 @@ class TestTarifpreis:
     def test_wrong_datatype(self):
         with pytest.raises(ValidationError) as excinfo:
             _ = Tarifpreis(
-                wert=3.50, einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH, preistyp=Preistyp.ARBEITSPREIS_HT
+                wert="blubb",
+                einheit=Waehrungseinheit.EUR,
+                bezugswert=Mengeneinheit.KWH,
+                preistyp=Preistyp.ARBEITSPREIS_HT,
             )
 
-        assert "'wert' must be <class 'decimal.Decimal'>" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "wert" in str(excinfo.value)
+        assert "value is not a valid decimal" in str(excinfo.value)
 
     def test_missing_required_attribute(self):
         with pytest.raises(ValidationError) as excinfo:

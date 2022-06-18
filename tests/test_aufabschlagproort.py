@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.aufabschlagproort import AufAbschlagProOrt, AufAbschlagProOrt
+
+from bo4e.com.aufabschlagproort import AufAbschlagProOrt
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -27,7 +28,7 @@ class TestAufAbschlagProOrt:
                 {
                     "postleitzahl": "01187",
                     "ort": "Dresden",
-                    "netznr": Decimal("2"),
+                    "netznr": "2",
                     "staffeln": [
                         {
                             "wert": Decimal("2.5"),

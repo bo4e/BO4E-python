@@ -1,6 +1,6 @@
 import json
 
-from bo4e.bo.marktteilnehmer import Marktteilnehmer, Marktteilnehmer
+from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.adresse import Adresse
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
@@ -30,7 +30,7 @@ class TestMarktteilnehmer:
         mt = example_marktteilnehmer
 
         assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert mt.bo_typ == BoTyp.MARKTTEILNEHMER.value, "boTyp was not automatically set"
+        assert mt.bo_typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
 
         json_string = mt.json(by_alias=True, ensure_ascii=False)
         json_dict = json.loads(json_string)

@@ -2,7 +2,8 @@ from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.preisgarantie import Preisgarantie, Preisgarantie
+
+from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -26,10 +27,10 @@ class TestPreisgarantie:
                     "beschreibung": None,
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "zeitlicheGueltigkeit": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },

@@ -2,15 +2,10 @@
 Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-
-from pydantic import StrictStr, StrictBool
-
 from bo4e.com.adresse import Adresse
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
 

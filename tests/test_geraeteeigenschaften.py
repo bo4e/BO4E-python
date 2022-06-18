@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften, Geraeteeigenschaften
+
+from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -16,7 +17,7 @@ class TestGeraeteeigenschaften:
         [
             pytest.param(
                 example_geraeteeigenschaften,
-                {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
+                {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE},
             ),
         ],
     )

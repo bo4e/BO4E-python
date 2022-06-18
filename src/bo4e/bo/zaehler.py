@@ -4,8 +4,10 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import List, Optional
 
+# pylint: disable=unused-argument
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -15,10 +17,6 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
-
-
-# pylint: disable=unused-argument
-from pydantic import conlist, StrictStr
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

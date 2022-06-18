@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe, PreisblattKonzessionsabgabe
+
+from bo4e.bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe
 from bo4e.enum.kundengruppeka import KundengruppeKA
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte

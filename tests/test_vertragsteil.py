@@ -3,8 +3,9 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.menge import Menge
-from bo4e.com.vertragsteil import Vertragsteil, Vertragsteil
+from bo4e.com.vertragsteil import Vertragsteil
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
 

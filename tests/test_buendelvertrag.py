@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.buendelvertrag import Buendelvertrag, Buendelvertrag
+
+from bo4e.bo.buendelvertrag import Buendelvertrag
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_vertrag import TestVertrag  # type:ignore[import]
 

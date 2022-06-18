@@ -3,14 +3,12 @@ Contains validators for BO s and COM s classes.
 """
 import re
 from datetime import datetime
-from decimal import Decimal
 from typing import Optional, Protocol
-
-from pydantic import StrictInt
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 
 
+# pylint: disable=unused-argument
 def einheit_only_for_abschlagstyp_absolut(cls, value, values):
     """
     Check that einheit is only there if abschlagstyp is absolut.
@@ -18,8 +16,7 @@ def einheit_only_for_abschlagstyp_absolut(cls, value, values):
     """
     if value and (not values["auf_abschlagstyp"] or (values["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
         raise ValueError("Only state einheit if auf_abschlagstyp is absolute.")
-    else:
-        return value
+    return value
 
 
 # pylint:disable=too-few-public-methods
@@ -49,8 +46,7 @@ def check_bis_is_later_than_von(cls, value, values):
     end = value
     if start and end and not end >= start:
         raise ValueError(f"The end '{end}' has to be later than the start '{start}'")
-    else:
-        return value
+    return value
 
 
 # pylint:disable=line-too-long
@@ -77,8 +73,7 @@ def validate_marktlokations_id(cls, marktlokations_id, values):
         raise ValueError(
             f"The Marktlokations-ID '{marktlokations_id}' has checksum '{actual_checksum}' but '{expected_checksum}' was expected."
         )
-    else:
-        return marktlokations_id
+    return marktlokations_id
 
 
 def _get_malo_id_checksum(malo_id: str) -> str:

@@ -4,8 +4,6 @@ and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
 
-from pydantic import StrictStr
-
 from bo4e.com.com import COM
 from bo4e.com.zeitraum import Zeitraum
 

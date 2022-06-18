@@ -4,9 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import List, Optional
-
-from pydantic import StrictBool, StrictStr
+from typing import List
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner

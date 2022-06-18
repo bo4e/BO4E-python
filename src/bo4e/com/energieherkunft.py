@@ -2,16 +2,13 @@
 Contains Energieherkunft class
 and corresponding marshmallow schema for de-/serialization
 """
-
-from decimal import Decimal
-
+# pylint: disable=no-name-in-module
+from pydantic import condecimal
 
 from bo4e.com.com import COM
 from bo4e.enum.erzeugungsart import Erzeugungsart
 
-
 # pylint: disable=too-few-public-methods
-from pydantic import condecimal
 
 
 class Energieherkunft(COM):

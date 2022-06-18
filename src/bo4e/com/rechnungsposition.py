@@ -2,8 +2,9 @@
 Contains Rechnungsposition class and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Optional
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+from pydantic import validator
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -13,11 +14,7 @@ from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from bo4e.validators import check_bis_is_later_than_von, validate_marktlokations_id
-
-
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import validator, StrictInt, StrictStr
+from bo4e.validators import check_bis_is_later_than_von
 
 
 class Rechnungsposition(COM):

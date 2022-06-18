@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.preisstaffel import Preisstaffel, Preisstaffel
+
+from bo4e.com.preisstaffel import Preisstaffel
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
 
@@ -70,4 +71,5 @@ class TestPreisstaffel:
                 sigmoidparameter=not_a_sigmoid_parameter,
             )
 
-        assert "'sigmoidparameter' must be " in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "sigmoidparameter" in str(excinfo.value)

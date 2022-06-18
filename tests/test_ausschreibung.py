@@ -2,7 +2,8 @@ from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.ausschreibung import Ausschreibung, Ausschreibung
+
+from bo4e.bo.ausschreibung import Ausschreibung
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus

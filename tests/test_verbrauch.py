@@ -1,9 +1,10 @@
-import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.verbrauch import Verbrauch, Verbrauch
+
+from bo4e.com.verbrauch import Verbrauch
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -23,18 +24,18 @@ class TestVerbrauch:
             pytest.param(
                 Verbrauch(
                     wert=Decimal(40),
-                    startdatum=datetime.datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=datetime.timezone.utc),
-                    enddatum=datetime.datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=datetime.timezone.utc),
+                    startdatum=datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
+                    enddatum=datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=timezone.utc),
                     obis_kennzahl="1-0:1.8.1",
                     mengeneinheit=Mengeneinheit.KWH,
                     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
                 ),
                 {
-                    "startdatum": "2021-12-01T00:00:00+00:00",
+                    "startdatum": datetime(2021, 12, 1, 0, 0, tzinfo=timezone.utc),
                     "wert": Decimal("40"),
-                    "mengeneinheit": "KWH",
-                    "enddatum": "2021-12-02T00:00:00+00:00",
-                    "wertermittlungsverfahren": "MESSUNG",
+                    "mengeneinheit": Mengeneinheit.KWH,
+                    "enddatum": datetime(2021, 12, 2, 0, 0, tzinfo=timezone.utc),
+                    "wertermittlungsverfahren": Wertermittlungsverfahren.MESSUNG,
                     "obisKennzahl": "1-0:1.8.1",
                 },
             ),
@@ -42,8 +43,8 @@ class TestVerbrauch:
                 example_verbrauch,
                 {
                     "wert": Decimal("40"),
-                    "mengeneinheit": "KWH",
-                    "wertermittlungsverfahren": "MESSUNG",
+                    "mengeneinheit": Mengeneinheit.KWH,
+                    "wertermittlungsverfahren": Wertermittlungsverfahren.MESSUNG,
                     "startdatum": None,
                     "enddatum": None,
                     "obisKennzahl": "1-0:1.8.1",
@@ -74,22 +75,24 @@ class TestVerbrauch:
             _ = Verbrauch(
                 obis_kennzahl=not_a_valid_obis,
                 wert=Decimal(40),
-                startdatum=datetime.datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=datetime.timezone.utc),
-                enddatum=datetime.datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=datetime.timezone.utc),
+                startdatum=datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
+                enddatum=datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=timezone.utc),
                 mengeneinheit=Mengeneinheit.KWH,
                 wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
             )
 
-        assert "'obis_kennzahl' must match regex " in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "obisKennzahl" in str(excinfo.value)
+        assert "string does not match regex" in str(excinfo.value)
 
     def test_failing_validation_end_later_than_start(self):
         with pytest.raises(ValidationError) as excinfo:
             _ = Verbrauch(
                 obis_kennzahl="1-0:1.8.1",
                 wert=Decimal(40),
-                startdatum=datetime.datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=datetime.timezone.utc),
-                enddatum=datetime.datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=datetime.timezone.utc),
+                startdatum=datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=timezone.utc),
+                enddatum=datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
                 mengeneinheit=Mengeneinheit.KWH,
                 wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
             )
-        assert "has to be later than the start" in str(excinfo)
+        assert "has to be later than the start" in str(excinfo.value)

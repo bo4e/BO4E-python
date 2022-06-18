@@ -1,13 +1,10 @@
-import json
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
-# import pydantic
-
 from bo4e.com.adresse import Adresse
 from bo4e.enum.landescode import Landescode
+
+# import pydantic
 
 # can be imported by other tests
 example_adresse = Adresse(
@@ -44,7 +41,7 @@ class TestAddress:
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
         assert deserialized_address.hausnummer == "27A"
         assert deserialized_address.postleitzahl == "82031"
-        assert deserialized_address.landescode == Landescode.DE.value
+        assert deserialized_address.landescode == Landescode.DE
 
     def test_serialization_only_postfach(self):
         """Test serialization with postfach"""
@@ -71,7 +68,7 @@ class TestAddress:
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
         assert deserialized_address.postleitzahl == "82031"
-        assert deserialized_address.landescode == Landescode.DE.value
+        assert deserialized_address.landescode == Landescode.DE
 
     def test_serialization_only_required_fields(self):
         """Test serialization with just postleitzahl und ort"""
@@ -107,7 +104,7 @@ class TestAddress:
         address_json = address_test_data.json(by_alias=True, ensure_ascii=False)
         deserialized_address = Adresse.parse_raw(address_json)
 
-        assert deserialized_address.landescode == Landescode.AT.value
+        assert deserialized_address.landescode == Landescode.AT
 
     def test_deserialization(self):
         json_string = r"""{"strasse":"Getreidegasse",
@@ -117,7 +114,7 @@ class TestAddress:
                  "landescode":"AT"}"""
 
         a: Adresse = Adresse.parse_raw(json_string)
-        assert a.landescode is Landescode.AT.value
+        assert a.landescode is Landescode.AT
 
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json")
     def test_missing_required_attribute(self, datafiles):
@@ -198,8 +195,8 @@ class TestAddress:
         a = Adresse(
             postleitzahl="6413", ort="Wildermieming", strasse="Gerhardhof", hausnummer="1", landescode=Landescode.AT
         )
-        assert a.landescode == Landescode.AT.value
+        assert a.landescode == Landescode.AT
         serialized_address = a.json(by_alias=True, ensure_ascii=False)
         assert '"AT"' in serialized_address
         deserialized_address = Adresse.parse_raw(serialized_address)
-        assert deserialized_address.landescode == Landescode.AT.value
+        assert deserialized_address.landescode == Landescode.AT

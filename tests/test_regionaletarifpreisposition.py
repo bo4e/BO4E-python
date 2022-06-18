@@ -2,10 +2,11 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition, RegionaleTarifpreisposition
+from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
@@ -41,12 +42,12 @@ class TestRegionaleTarifpreisPosition:
             pytest.param(
                 example_regionale_tarifpreisposition,
                 {
-                    "bezugseinheit": "KWH",
+                    "bezugseinheit": Mengeneinheit.KWH,
                     "preisstaffeln": [
                         {
                             "regionaleGueltigkeit": {
                                 "gueltigkeitstyp": "NUR_IN",
-                                "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": Decimal("01069")}],
+                                "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
                             },
                             "einheitspreis": Decimal("40"),
                             "sigmoidparameter": {
@@ -59,8 +60,8 @@ class TestRegionaleTarifpreisPosition:
                             "staffelgrenzeBis": Decimal("25"),
                         }
                     ],
-                    "einheit": "EUR",
-                    "mengeneinheitstaffel": "WH",
+                    "einheit": Waehrungseinheit.EUR,
+                    "mengeneinheitstaffel": Mengeneinheit.WH,
                     "preistyp": "ARBEITSPREIS_NT",
                 },
                 id="all attributes",
@@ -70,9 +71,7 @@ class TestRegionaleTarifpreisPosition:
     def test_serialization_roundtrip(
         self, regionale_tarifpreis_position: RegionaleTarifpreisposition, expected_json_dict: dict
     ):
-        assert_serialization_roundtrip(
-            regionale_tarifpreis_position, RegionaleTarifpreispositionSchema(), expected_json_dict
-        )
+        assert_serialization_roundtrip(regionale_tarifpreis_position, expected_json_dict)
 
     def test_missing_required_attribute(self):
         with pytest.raises(ValidationError) as excinfo:

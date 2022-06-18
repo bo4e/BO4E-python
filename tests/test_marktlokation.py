@@ -1,11 +1,12 @@
-import json
+from decimal import Decimal
 from decimal import Decimal
 from typing import Tuple
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.marktlokation import Marktlokation, Marktlokation
+from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
 from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.enum.anrede import Anrede
@@ -83,7 +84,7 @@ class TestMaLo:
             endkunde=gp,
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert malo.bo_typ == BoTyp.MARKTLOKATION.value, "boTyp was not automatically set"
+        assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         json_string = malo.json(by_alias=True, ensure_ascii=False)
 
@@ -122,7 +123,7 @@ class TestMaLo:
                 "coErgaenzung": null,
                 "landescode": "DE",
                 "postfach": null,
-                "hausnummer": Decimal("1"),
+                "hausnummer": "1",
                 "postleitzahl": "04177"
                 },
             "unterbrechbar": null,
@@ -130,7 +131,7 @@ class TestMaLo:
             "bilanzierungsgebiet": null,
             "geoadresse": null,
             "bilanzierungsmethode": "PAUSCHAL",
-            "versionstruktur": Decimal("2"),
+            "versionstruktur": "2",
             "energierichtung": "EINSP"
             }"""
 

@@ -3,9 +3,10 @@ Contains Adresse class
 and corresponding marshmallow schema for de-/serialization
 """
 
+from pydantic import validator
+
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
-from pydantic import validator, StrictStr
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -40,20 +41,26 @@ class Adresse(COM):
     #: Offizieller ISO-Landescode
     landescode: Landescode = Landescode.DE  # type:ignore
 
+    # pylint: disable=no-self-argument
     @validator("postfach", always=True)
-    def strasse_xor_postfach(cls, v, values):
+    def strasse_xor_postfach(cls, postfach, values):
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
         This functions checks for these conditions of a valid address.
 
         Nur folgende Angabekombinationen sind (nach der Abfrage) möglich:
-        Straße           w
-        Hausnummer       w
-        Postfach         w
-        Postleitzahl
-        Ort
+        Straße           w   f   f
+        Hausnummer       w   f   f
+        Postfach         f   w   f
+        Postleitzahl     w   w   w
+        Ort              w   w   w
         """
-        if values["strasse"] and values["hausnummer"] and not v or not values["strasse"] and not values["hausnummer"]:
-            return v
-        else:
-            raise ValueError('You have to define either "strasse" and "hausnummer" or "postfach".')
+        if (
+            values["strasse"]
+            and values["hausnummer"]
+            and not postfach
+            or not values["strasse"]
+            and not values["hausnummer"]
+        ):
+            return postfach
+        raise ValueError('You have to define either "strasse" and "hausnummer" or "postfach".')

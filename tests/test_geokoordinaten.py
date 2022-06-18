@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.geokoordinaten import Geokoordinaten, Geokoordinaten
+
+from bo4e.com.geokoordinaten import Geokoordinaten
 
 
 class TestGeokoordinaten:

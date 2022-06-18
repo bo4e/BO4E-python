@@ -3,8 +3,9 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.aufabschlagregional import AufAbschlagRegional, AufAbschlagRegional
+from bo4e.com.aufabschlagregional import AufAbschlagRegional
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.com.energiemix import Energiemix
@@ -51,7 +52,7 @@ class TestAufAbschlagRegional:
                         {
                             "postleitzahl": "01187",
                             "ort": "Dresden",
-                            "netznr": Decimal("2"),
+                            "netznr": "2",
                             "staffeln": [
                                 {
                                     "wert": Decimal("2.5"),
@@ -134,7 +135,7 @@ class TestAufAbschlagRegional:
                         {
                             "postleitzahl": "01187",
                             "ort": "Dresden",
-                            "netznr": Decimal("2"),
+                            "netznr": "2",
                             "staffeln": [
                                 {
                                     "wert": Decimal("2.5"),
@@ -145,29 +146,29 @@ class TestAufAbschlagRegional:
                         },
                     ],
                     "beschreibung": "bar",
-                    "aufAbschlagstyp": "RELATIV",
+                    "aufAbschlagstyp": AufAbschlagstyp.RELATIV,
                     "aufAbschlagsziel": "ARBEITSPREIS_HT",
-                    "einheit": "EUR",
+                    "einheit": Waehrungseinheit.EUR,
                     "website": "foo.bar",
                     "zusatzprodukte": ["Asterix", "Obelix"],
                     "voraussetzungen": ["Petterson", "Findus"],
                     "tarifnamensaenderungen": "foobar",
                     "gueltigkeitszeitraum": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },
                     "energiemixaenderung": {
                         "energiemixnummer": 2,
-                        "energieart": "STROM",
+                        "energieart": Sparte.STROM,
                         "bezeichnung": "foo",
                         "gueltigkeitsjahr": 2021,
                         "anteil": [
                             {
-                                "erzeugungsart": "BIOGAS",
+                                "erzeugungsart": Erzeugungsart.BIOGAS,
                                 "anteilProzent": Decimal("40"),
                             }
                         ],
@@ -191,10 +192,10 @@ class TestAufAbschlagRegional:
                         "beschreibung": None,
                         "preisgarantietyp": "ALLE_PREISBESTANDTEILE_BRUTTO",
                         "zeitlicheGueltigkeit": {
-                            "startdatum": "2020-01-01T00:00:00+00:00",
+                            "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                             "endzeitpunkt": None,
                             "einheit": None,
-                            "enddatum": "2020-04-01T00:00:00+00:00",
+                            "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                             "startzeitpunkt": None,
                             "dauer": None,
                         },

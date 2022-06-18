@@ -3,16 +3,19 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
 from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.angebotsteil import Angebotsteil, Angebotsteil
+from bo4e.com.angebotsteil import Angebotsteil
 from bo4e.com.betrag import Betrag
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
+from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
+from bo4e.enum.landescode import Landescode
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
@@ -38,13 +41,13 @@ example_angebotsteil_json = {
     "positionen": [
         {
             "positionsbezeichnung": "teststring",
-            "positionsmenge": {"wert": Decimal("4000"), "einheit": "KWH"},
-            "positionskosten": {"waehrung": "EUR", "wert": Decimal("98240")},
+            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
+            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
             "positionspreis": {
-                "bezugswert": "KWH",
+                "bezugswert": Mengeneinheit.KWH,
                 "status": None,
                 "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
-                "einheit": "EUR",
+                "einheit": Waehrungseinheit.EUR,
             },
         },
     ],
@@ -106,20 +109,20 @@ class TestAngebotsteil:
                     "positionen": [
                         {
                             "positionsbezeichnung": "testtring",
-                            "positionsmenge": {"wert": Decimal("4000"), "einheit": "KWH"},
-                            "positionskosten": {"waehrung": "EUR", "wert": Decimal("98240")},
+                            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
+                            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
                             "positionspreis": {
-                                "bezugswert": "KWH",
+                                "bezugswert": Mengeneinheit.KWH,
                                 "status": None,
                                 "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
-                                "einheit": "EUR",
+                                "einheit": Waehrungseinheit.EUR,
                             },
                         },
                     ],
                     "lieferstellenangebotsteil": [
                         {
-                            "marktlokationsId": Decimal("51238696781"),
-                            "sparte": "GAS",
+                            "marktlokationsId": "51238696781",
+                            "sparte": Sparte.GAS,
                             "lokationsadresse": {
                                 "postleitzahl": "82031",
                                 "ort": "Grünwald",
@@ -128,14 +131,14 @@ class TestAngebotsteil:
                                 "adresszusatz": None,
                                 "postfach": None,
                                 "coErgaenzung": None,
-                                "landescode": "DE",
+                                "landescode": Landescode.DE,
                             },
-                            "energierichtung": "EINSP",
-                            "bilanzierungsmethode": "PAUSCHAL",
+                            "energierichtung": Energierichtung.EINSP,
+                            "bilanzierungsmethode": Bilanzierungsmethode.PAUSCHAL,
                             "unterbrechbar": True,
-                            "netzebene": "NSP",
+                            "netzebene": Netzebene.NSP,
                             "netzgebietsnr": None,
-                            "versionstruktur": Decimal("2"),
+                            "versionstruktur": "2",
                             "katasterinformation": None,
                             "bilanzierungsgebiet": None,
                             "grundversorgercodenr": None,
@@ -147,17 +150,17 @@ class TestAngebotsteil:
                             "gasqualitaet": None,
                             "zugehoerigeMesslokation": None,
                             "externeReferenzen": [],
-                            "boTyp": "MARKTLOKATION",
+                            "boTyp": BoTyp.MARKTLOKATION,
                         }
                     ],
-                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": "KWH"},
-                    "gesamtkostenangebotsteil": {"waehrung": "EUR", "wert": Decimal("98240")},
+                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
+                    "gesamtkostenangebotsteil": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
                     "anfrageSubreferenz": "teststring",
                     "lieferzeitraum": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },

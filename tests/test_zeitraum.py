@@ -3,7 +3,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.zeitraum import Zeitraum, Zeitraum
+
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
 example_zeitraum = Zeitraum(
@@ -14,7 +15,7 @@ example_zeitraum_dict = {
     "dauer": Decimal("5"),
     "startdatum": None,
     "endzeitpunkt": None,
-    "einheit": "TAG",
+    "einheit": Zeiteinheit.TAG,
     "enddatum": None,
     "startzeitpunkt": None,
 }
@@ -35,7 +36,7 @@ class TestZeitraum:
         zeitraum_deserialized = Zeitraum.parse_raw(json_string)
 
         assert isinstance(zeitraum_deserialized.einheit, Zeiteinheit)
-        assert zeitraum_deserialized.einheit == Zeiteinheit.TAG.value
+        assert zeitraum_deserialized.einheit == Zeiteinheit.TAG
         assert isinstance(zeitraum_deserialized.dauer, Decimal)
         assert zeitraum_deserialized.dauer == Decimal(21)
 
@@ -103,11 +104,4 @@ class TestZeitraum:
     def test_validator_time_range_possibilities(self, arguments):
         with pytest.raises(ValidationError) as excinfo:
             _ = Zeitraum(**arguments)
-        assert """
-        Please choose from one of the three possibilities to specify the timerange:
-        - einheit and dauer
-        - startdatum and enddatum
-        - startzeitpunkt and endzeitpunkt
-        """ in str(
-            excinfo.value
-        )
+        assert "Please choose from one of the three possibilities to specify the timerange:" in str(excinfo.value)

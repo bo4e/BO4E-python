@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.region import Region, Region
+
+from bo4e.bo.region import Region
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_regionskriterium import example_regionskriterium  # type:ignore[import]
 

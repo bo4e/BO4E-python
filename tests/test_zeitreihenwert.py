@@ -3,7 +3,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.zeitreihenwert import Zeitreihenwert, Zeitreihenwert
+
+from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 

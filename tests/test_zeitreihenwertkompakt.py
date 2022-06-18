@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt, Zeitreihenwertkompakt
+
+from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
@@ -23,14 +24,14 @@ class TestZeitreihenwertkompakt:
         assert isinstance(deserialized_zrwk.wert, Decimal)
         assert deserialized_zrwk.wert == Decimal(1.5)
         assert isinstance(deserialized_zrwk.status, Messwertstatus)
-        assert deserialized_zrwk.status == Messwertstatus.ABGELESEN.value
+        assert deserialized_zrwk.status == Messwertstatus.ABGELESEN
         assert isinstance(deserialized_zrwk.statuszusatz, Messwertstatuszusatz)
         assert deserialized_zrwk.statuszusatz == Messwertstatuszusatz.Z78_GERAETEWECHSEL
         assert deserialized_zrwk == zrwk
 
     def test_wrong_datatype(self):
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwertkompakt(wert="1.5")
+            _ = Zeitreihenwertkompakt(wert="helloooo")
 
         assert "wert" in str(excinfo.value)
 

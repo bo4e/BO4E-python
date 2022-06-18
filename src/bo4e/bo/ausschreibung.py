@@ -2,8 +2,10 @@
 Contains Ausschreibung class and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List, Optional
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -13,10 +15,6 @@ from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
 from bo4e.enum.ausschreibungstyp import Ausschreibungstyp
 from bo4e.enum.botyp import BoTyp
-
-
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import conlist, StrictStr, StrictBool
 
 
 class Ausschreibung(Geschaeftsobjekt):

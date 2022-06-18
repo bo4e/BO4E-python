@@ -1,18 +1,16 @@
 """
 Contains RegionaleTarifpreisposition class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.com.com import COM
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import conlist
 
 
 class RegionaleTarifpreisposition(COM):

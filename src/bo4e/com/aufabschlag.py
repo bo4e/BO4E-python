@@ -3,10 +3,9 @@ Contains AufAbschlag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import List
 
-
-from pydantic import validator, StrictStr
+from pydantic import validator
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel

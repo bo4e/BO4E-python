@@ -1,9 +1,7 @@
 """
 Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
-
-from pydantic import StrictStr
+from typing import List
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM

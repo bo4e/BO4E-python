@@ -1,8 +1,7 @@
 """
 Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
-
+from typing import List
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag

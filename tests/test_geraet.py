@@ -1,8 +1,6 @@
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
-from pydantic import ValidationError
-from bo4e.com.geraet import Geraet, Geraet
+
+from bo4e.com.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -23,8 +21,8 @@ class TestGeraet:
                     ),
                 ),
                 {
-                    "geraetenummer": Decimal("0815"),
-                    "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
+                    "geraetenummer": "0815",
+                    "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE},
                 },
                 id="Maximal attributes",
             ),

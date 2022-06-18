@@ -1,8 +1,6 @@
 """
 Contains Geraeteeigenschaften and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
-
 
 from bo4e.com.com import COM
 from bo4e.enum.geraetemerkmal import Geraetemerkmal

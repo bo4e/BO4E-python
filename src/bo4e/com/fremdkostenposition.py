@@ -1,9 +1,6 @@
 """
 Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
-
-from pydantic import StrictStr
 
 from bo4e.com.kostenposition import Kostenposition
 

@@ -3,8 +3,10 @@ Contains Angebot class and corresponding marshmallow schema for de-/serializatio
 """
 
 from datetime import datetime
-from typing import List, Optional
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
+from pydantic import constr, conlist
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -12,10 +14,6 @@ from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.angebotsvariante import Angebotsvariante
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.sparte import Sparte
-
-
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import constr, conlist, StrictStr
 
 
 class Angebot(Geschaeftsobjekt):

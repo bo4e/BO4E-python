@@ -1,9 +1,9 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
-from pydantic import ValidationError
+
 from bo4e.com.fremdkostenposition import Fremdkostenposition
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter, Tarifberechnungsparameter
+from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.enum.messpreistyp import Messpreistyp
 from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]

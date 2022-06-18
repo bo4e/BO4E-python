@@ -2,6 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.sigmoidparameter import Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 

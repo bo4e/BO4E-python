@@ -5,15 +5,14 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import constr, validator
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from bo4e.validators import check_bis_is_later_than_von, OBIS_PATTERN
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import constr, validator
 
 
 class Verbrauch(COM):

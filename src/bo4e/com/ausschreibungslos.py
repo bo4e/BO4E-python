@@ -2,8 +2,9 @@
 Contains Ausschreibungslos class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
-
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
 from bo4e.com.com import COM
@@ -13,10 +14,6 @@ from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsform import Vertragsform
-
-
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import conlist, StrictStr, StrictInt
 
 
 class Ausschreibungslos(COM):

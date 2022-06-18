@@ -2,8 +2,10 @@
 Contains Tarifinfo class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
 
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
@@ -16,10 +18,6 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.tarifmerkmal import Tarifmerkmal
 from bo4e.enum.tariftyp import Tariftyp
-
-
-# pylint: disable=too-many-instance-attributes, too-few-public-methods
-from pydantic import conlist, StrictStr
 
 
 class Tarifinfo(Geschaeftsobjekt):

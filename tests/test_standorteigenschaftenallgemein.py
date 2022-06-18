@@ -1,7 +1,6 @@
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -36,9 +35,7 @@ class TestStandorteigenschaftenAllgemein:
         """
         Test de-/serialisation of StandorteigenschaftenAllgemein with minimal attributes.
         """
-        assert_serialization_roundtrip(
-            standorteigenschaftenallgemein, StandorteigenschaftenAllgemeinSchema(), expected_json_dict
-        )
+        assert_serialization_roundtrip(standorteigenschaftenallgemein, expected_json_dict)
 
     def test_standorteigenschaftenallgemein_missing_required_attributes(self):
         with pytest.raises(ValidationError) as excinfo:

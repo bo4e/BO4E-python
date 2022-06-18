@@ -2,7 +2,6 @@
 Contains Hardware class
 and corresponding marshmallow schema for de-/serialization
 """
-from pydantic import StrictStr
 
 from bo4e.com.com import COM
 from bo4e.enum.geraetetyp import Geraetetyp

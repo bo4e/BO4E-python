@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.tarifinfo import Tarifinfo, Tarifinfo
+
+from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart

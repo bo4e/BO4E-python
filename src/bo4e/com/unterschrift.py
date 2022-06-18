@@ -4,8 +4,6 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 
-from pydantic import StrictStr
-
 from bo4e.com.com import COM
 
 

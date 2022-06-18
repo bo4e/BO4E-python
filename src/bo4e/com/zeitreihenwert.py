@@ -4,7 +4,6 @@ and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 
-
 from pydantic import validator
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt

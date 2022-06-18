@@ -2,8 +2,9 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenblock import Fremdkostenblock, Fremdkostenblock
+from bo4e.com.fremdkostenblock import Fremdkostenblock
 from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -49,9 +50,9 @@ class TestFremdkostenblock:
                             "positionstitel": "fremdkostenblocktitel",
                             "einzelpreis": {
                                 "wert": Decimal("3.5"),
-                                "einheit": "EUR",
-                                "bezugswert": "KWH",
-                                "status": "ENDGUELTIG",
+                                "einheit": Waehrungseinheit.EUR,
+                                "bezugswert": Mengeneinheit.KWH,
+                                "status": Preisstatus.ENDGUELTIG,
                             },
                             "bis": None,
                             "menge": None,
@@ -61,11 +62,11 @@ class TestFremdkostenblock:
                             "artikeldetail": None,
                             "von": None,
                             "linkPreisblatt": None,
-                            "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": "EUR"},
+                            "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                             "gebietcodeEic": None,
                         }
                     ],
-                    "summeKostenblock": {"wert": Decimal("98240"), "waehrung": "EUR"},
+                    "summeKostenblock": {"wert": Decimal("98240"), "waehrung": Waehrungseinheit.EUR},
                 },
                 id="maximal attributes",
             ),

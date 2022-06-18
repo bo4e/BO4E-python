@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag, RegionalerAufAbschlag
+
+from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.aufabschlagsziel import AufAbschlagsziel

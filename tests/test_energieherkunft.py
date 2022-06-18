@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.energieherkunft import Energieherkunft, Energieherkunft
+
+from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.enum.erzeugungsart import Erzeugungsart
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -17,7 +18,7 @@ class TestEnergieherkunft:
             pytest.param(
                 example_energieherkunft,
                 {
-                    "erzeugungsart": "BIOMASSE",
+                    "erzeugungsart": Erzeugungsart.BIOMASSE,
                     "anteilProzent": Decimal("25.5"),
                 },
             ),

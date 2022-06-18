@@ -1,13 +1,14 @@
 """
 A module that simplifies assertions for json serialization
 """
-import json
-from typing import Optional, TypeVar
+from typing import TypeVar
+
+from dictdiffer import diff
 
 T = TypeVar("T")
 
 
-def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: Optional[dict] = None) -> T:
+def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: dict = None) -> T:
     """
     Serializes the serializable_object using the provided schema,
     then asserts, that the result is equal to the expected_json_dict (if given),
@@ -20,11 +21,11 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
     assert actual_json_dict is not None
     # TODO: serializable_object.dict()
     if expected_json_dict is not None:
-        # just for easier debugging
-        missing_keys = [k for k in expected_json_dict.keys() if k not in set(actual_json_dict.keys())]
-        unknown_keys = [set(expected_json_dict.keys()) - set(actual_json_dict.keys())]
+        # this contains the difference between two dicts -> just for easier debugging
+        diffDict = list(diff(expected_json_dict, actual_json_dict))
+
         assert all([(k in json_string) for k in expected_json_dict.keys()])
-        assert actual_json_dict == expected_json_dict
+        assert actual_json_dict == expected_json_dict, f"actual_json_dict != expected_json_dict\n\tdiff = {diffDict}"
     deserialized_object = type(serializable_object).parse_raw(json_string)
     assert isinstance(deserialized_object, type(serializable_object))
     assert deserialized_object == serializable_object

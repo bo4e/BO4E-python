@@ -2,6 +2,7 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.com.energiemix import Energiemix
 from bo4e.enum.erzeugungsart import Erzeugungsart
@@ -32,12 +33,12 @@ class TestEnergiemix:
                 example_energiemix,
                 {
                     "energiemixnummer": 2,
-                    "energieart": "STROM",
+                    "energieart": Sparte.STROM,
                     "bezeichnung": "foo",
                     "gueltigkeitsjahr": 2021,
                     "anteil": [
                         {
-                            "erzeugungsart": "BIOGAS",
+                            "erzeugungsart": Erzeugungsart.BIOGAS,
                             "anteilProzent": Decimal("40"),
                         }
                     ],
@@ -80,16 +81,16 @@ class TestEnergiemix:
                 ),
                 {
                     "energiemixnummer": 2,
-                    "energieart": "STROM",
+                    "energieart": Sparte.STROM,
                     "bezeichnung": "foo",
                     "gueltigkeitsjahr": 2021,
                     "anteil": [
                         {
-                            "erzeugungsart": "BIOGAS",
+                            "erzeugungsart": Erzeugungsart.BIOGAS,
                             "anteilProzent": Decimal("40"),
                         },
                         {
-                            "erzeugungsart": "GEOTHERMIE",
+                            "erzeugungsart": Erzeugungsart.GEOTHERMIE,
                             "anteilProzent": Decimal("60"),
                         },
                     ],

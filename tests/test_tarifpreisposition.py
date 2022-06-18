@@ -2,8 +2,9 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.tarifpreisposition import Tarifpreisposition, Tarifpreisposition
+from bo4e.com.tarifpreisposition import Tarifpreisposition
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
@@ -31,8 +32,8 @@ class TestTarifpreisposition:
                 example_tarifpreisposition,
                 {
                     "preistyp": "ENTGELT_ABLESUNG",
-                    "einheit": "EUR",
-                    "bezugseinheit": "KWH",
+                    "einheit": Waehrungseinheit.EUR,
+                    "bezugseinheit": Mengeneinheit.KWH,
                     "preisstaffeln": [
                         {
                             "einheitspreis": Decimal("40"),
@@ -61,8 +62,8 @@ class TestTarifpreisposition:
                 ),
                 {
                     "preistyp": "ENTGELT_ABLESUNG",
-                    "einheit": "EUR",
-                    "bezugseinheit": "KWH",
+                    "einheit": Waehrungseinheit.EUR,
+                    "bezugseinheit": Mengeneinheit.KWH,
                     "preisstaffeln": [
                         {
                             "einheitspreis": Decimal("40"),
@@ -71,7 +72,7 @@ class TestTarifpreisposition:
                             "staffelgrenzeVon": Decimal("12.5"),
                         }
                     ],
-                    "mengeneinheitstaffel": "STUECK",
+                    "mengeneinheitstaffel": Mengeneinheit.STUECK,
                 },
                 id="optional and required attributes",
             ),

@@ -1,5 +1,6 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.marktgebietinfo import MarktgebietInfo
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -39,11 +40,11 @@ class TestStandorteigenschaftenGas:
         [
             pytest.param(
                 [],
-                "netzkontonummern must not be empty.",
+                "ensure this value has at least 1 item",
             ),
             pytest.param(
                 ["1", "2", "3"],
-                "Maximum number of netzkontonummern is 2.",
+                "ensure this value has at most 2 items",
             ),
         ],
     )

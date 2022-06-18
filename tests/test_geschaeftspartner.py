@@ -2,7 +2,8 @@ import json
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.geschaeftspartner import Geschaeftspartner, Geschaeftspartner
+
+from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
@@ -40,7 +41,7 @@ class TestGeschaeftspartner:
         )
 
         # test default value for bo_typ in Geschaeftspartner
-        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER.value
+        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
 
         gp_json = gp.json(by_alias=True, ensure_ascii=False)
 
@@ -136,4 +137,4 @@ class TestGeschaeftspartner:
         )
         gp_json = gp.json(by_alias=True, ensure_ascii=False)
         gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
-        assert gp_deserialized.partneradresse.landescode == Landescode.AT.value
+        assert gp_deserialized.partneradresse.landescode == Landescode.AT

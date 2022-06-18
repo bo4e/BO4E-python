@@ -3,7 +3,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.aufabschlag import AufAbschlag, AufAbschlag
+
+from bo4e.com.aufabschlag import AufAbschlag
 from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
@@ -57,15 +58,15 @@ class TestAufAbschlag:
                 {
                     "bezeichnung": "foo",
                     "beschreibung": "bar",
-                    "aufAbschlagstyp": "ABSOLUT",
-                    "aufAbschlagsziel": "GESAMTPREIS",
-                    "einheit": "EUR",
+                    "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
+                    "aufAbschlagsziel": AufAbschlagsziel.GESAMTPREIS,
+                    "einheit": Waehrungseinheit.EUR,
                     "website": "foo.bar",
                     "gueltigkeitszeitraum": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },

@@ -2,11 +2,14 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail, Ausschreibungsdetail
+
+from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
 from bo4e.com.menge import Menge
+from bo4e.enum.landescode import Landescode
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.zaehlertyp import Zaehlertyp
+from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_adresse import example_adresse  # type:ignore[import]
 from tests.test_menge import example_menge  # type:ignore[import]
@@ -30,11 +33,11 @@ example_ausschreibungsdetail_dict = {
         "startdatum": None,
         "endzeitpunkt": None,
         "enddatum": None,
-        "einheit": "TAG",
+        "einheit": Zeiteinheit.TAG,
         "startzeitpunkt": None,
     },
     "lokationsadresse": {
-        "landescode": "DE",
+        "landescode": Landescode.DE,
         "hausnummer": "27A",
         "strasse": "Nördliche Münchner Straße",
         "postleitzahl": "82031",
@@ -44,7 +47,7 @@ example_ausschreibungsdetail_dict = {
         "coErgaenzung": None,
     },
     "rechnungsadresse": {
-        "landescode": "DE",
+        "landescode": Landescode.DE,
         "hausnummer": "27A",
         "strasse": "Nördliche Münchner Straße",
         "postleitzahl": "82031",
@@ -54,13 +57,13 @@ example_ausschreibungsdetail_dict = {
         "coErgaenzung": None,
     },
     "netzbetreiber": None,
-    "netzebeneLieferung": "MSP",
+    "netzebeneLieferung": Netzebene.MSP,
     "prognoseArbeitLieferzeitraum": None,
-    "netzebeneMessung": "NSP",
+    "netzebeneMessung": Netzebene.NSP,
     "prognoseLeistung": None,
     "lastgangVorhanden": None,
     "prognoseJahresarbeit": None,
-    "lokationsId": Decimal("56789012345"),
+    "lokationsId": "56789012345",
 }
 
 
@@ -91,12 +94,12 @@ class TestAusschreibungsdetail:
                     "lieferzeitraum": {
                         "enddatum": None,
                         "startdatum": None,
-                        "einheit": "TAG",
+                        "einheit": Zeiteinheit.TAG,
                         "endzeitpunkt": None,
                         "dauer": Decimal("5"),
                         "startzeitpunkt": None,
                     },
-                    "zaehlertechnik": "LEISTUNGSZAEHLER",
+                    "zaehlertechnik": Zaehlertyp.LEISTUNGSZAEHLER,
                     "kunde": "Dei Mudder ihr Kunde",
                     "lokationsbezeichnung": "Zentraler Einkauf, Hamburg",
                     "lokationsadresse": {
@@ -104,7 +107,7 @@ class TestAusschreibungsdetail:
                         "adresszusatz": None,
                         "postfach": None,
                         "postleitzahl": "82031",
-                        "landescode": "DE",
+                        "landescode": Landescode.DE,
                         "ort": "Grünwald",
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
@@ -114,19 +117,19 @@ class TestAusschreibungsdetail:
                         "adresszusatz": None,
                         "postfach": None,
                         "postleitzahl": "82031",
-                        "landescode": "DE",
+                        "landescode": Landescode.DE,
                         "ort": "Grünwald",
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
                     },
                     "zaehlernummer": "1YSK4234092304",
-                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": "KWH"},
-                    "netzebeneLieferung": "MSP",
-                    "lokationsId": Decimal("56789012345"),
-                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": "KW"},
+                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
+                    "netzebeneLieferung": Netzebene.MSP,
+                    "lokationsId": "56789012345",
+                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW},
                     "lastgangVorhanden": True,
-                    "netzebeneMessung": "NSP",
-                    "prognoseArbeitLieferzeitraum": {"wert": Decimal("2500"), "einheit": "KWH"},
+                    "netzebeneMessung": Netzebene.NSP,
+                    "prognoseArbeitLieferzeitraum": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
                 },
             ),
             pytest.param(example_ausschreibungsdetail, example_ausschreibungsdetail_dict),

@@ -2,7 +2,8 @@ from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.rechnungsposition import Rechnungsposition, Rechnungsposition
+
+from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit

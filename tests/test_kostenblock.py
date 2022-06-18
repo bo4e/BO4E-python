@@ -2,8 +2,9 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.betrag import Betrag
-from bo4e.com.kostenblock import Kostenblock, Kostenblock
+from bo4e.com.kostenblock import Kostenblock
 from bo4e.com.kostenposition import Kostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -59,9 +60,9 @@ class TestKostenblock:
                         {
                             "positionstitel": "Mudders kostenposition",
                             "einzelpreis": {
-                                "einheit": "EUR",
-                                "status": "ENDGUELTIG",
-                                "bezugswert": "KWH",
+                                "einheit": Waehrungseinheit.EUR,
+                                "status": Preisstatus.ENDGUELTIG,
+                                "bezugswert": Mengeneinheit.KWH,
                                 "wert": Decimal("3.5"),
                             },
                             "menge": None,
@@ -70,10 +71,10 @@ class TestKostenblock:
                             "artikelbezeichnung": "Dei Mudder ihr kostenposition",
                             "artikeldetail": None,
                             "bis": None,
-                            "betragKostenposition": {"waehrung": "EUR", "wert": Decimal("12.5")},
+                            "betragKostenposition": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
                         }
                     ],
-                    "summeKostenblock": {"waehrung": "EUR", "wert": Decimal("12.5")},
+                    "summeKostenblock": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
                 },
                 id="maximal",
             ),

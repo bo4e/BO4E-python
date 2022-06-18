@@ -1,8 +1,7 @@
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.lastgang import LastgangKompakt, LastgangKompakt
+
+from bo4e.bo.lastgang import LastgangKompakt
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -31,13 +30,13 @@ class TestLastgangKompakt:
                     tagesvektoren=[example_tagesvektor],
                 ),
                 {
-                    "version": Decimal("1.1"),
-                    "sparte": "STROM",
-                    "lokationstyp": "MELO",
-                    "messgroesse": "KWH",
+                    "version": "1.1",
+                    "sparte": Sparte.STROM,
+                    "lokationstyp": Lokationstyp.MELO,
+                    "messgroesse": Mengeneinheit.KWH,
                     "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1},
                     "tagesvektoren": [example_tagesvektor_json],
-                    "versionstruktur": Decimal("2"),
+                    "versionstruktur": "2",
                     "externeReferenzen": [],
                     "lokationsId": "DE0000011111222223333344444555556",
                     "boTyp": "LASTGANG_KOMPAKT",

@@ -4,12 +4,15 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.messlokation import Messlokation, Messlokation
+
+from bo4e.bo.messlokation import Messlokation
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.externereferenz import ExterneReferenz
+from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
+from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
@@ -102,7 +105,7 @@ class TestMeLo:
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ == BoTyp.MESSLOKATION.value, "boTyp was not automatically set"
+        assert melo.bo_typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
 
         json_string = melo.json(by_alias=True, ensure_ascii=False)
         json_dict = json.loads(json_string)
@@ -126,11 +129,11 @@ class TestMeLo:
                 "boTyp": "MESSLOKATION",
                 "messlokationszaehler": null,
                 "katasterinformation": null,
-                "messgebietnr": Decimal("664073"),
+                "messgebietnr": "664073",
                 "messadresse":
                     {
                         "strasse": "Jahnalle",
-                        "hausnummer": Decimal("1"),
+                        "hausnummer": "1",
                         "postfach": null,
                         "postleitzahl": "04177",
                         "landescode": "DE",
@@ -145,7 +148,7 @@ class TestMeLo:
                 "externeReferenzen": [],
                 "messdienstleistung": null,
                 "geoadresse": null,
-                "versionstruktur": Decimal("2"),
+                "versionstruktur": "2",
                 "grundzustaendigerMsbimCodenr": null
                 }
                 """
@@ -153,7 +156,7 @@ class TestMeLo:
         with pytest.raises(ValidationError) as excinfo:
             Messlokation.parse_raw(invalid_json_string)
 
-        assert "messlokations_id" in str(excinfo.value)
+        assert "messlokationsId" in str(excinfo.value)
 
     def test_address_validation(self):
         with pytest.raises(ValidationError) as excinfo:
@@ -162,11 +165,14 @@ class TestMeLo:
                 sparte=Sparte.STROM,
                 netzebene_messung=Netzebene.MSP,
                 messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
-                geoadresse="test",
-                katasterinformation="test",
+                geoadresse=Geokoordinaten(
+                    breitengrad=Decimal(52.52149200439453),
+                    laengengrad=Decimal(13.404866218566895),
+                ),
+                katasterinformation=Katasteradresse(gemarkung_flur="hello", flurstueck="world"),
             )
 
-        assert str(excinfo.value) == "More than one address information is given."
+        assert "More than one address information is given." in str(excinfo.value)
 
     def test_grundzustaendiger_x_codenr_validation(self):
         with pytest.raises(ValidationError) as excinfo:
@@ -178,7 +184,7 @@ class TestMeLo:
                 grundzustaendiger_msbim_codenr="test",
             )
 
-        assert str(excinfo.value) == "More than one codenr is given."
+        assert "More than one codenr is given." in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "melo_id, is_valid",

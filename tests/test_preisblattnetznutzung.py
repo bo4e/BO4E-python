@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.bo.preisblattnetznutzung import PreisblattNetznutzung, PreisblattNetznutzung
+
+from bo4e.bo.preisblattnetznutzung import PreisblattNetznutzung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.kundengruppe import Kundengruppe
 from bo4e.enum.netzebene import Netzebene

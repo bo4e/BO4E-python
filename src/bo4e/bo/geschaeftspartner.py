@@ -3,9 +3,7 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import List, Optional
-
-from pydantic import StrictStr, StrictBool
+from typing import List
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.adresse import Adresse

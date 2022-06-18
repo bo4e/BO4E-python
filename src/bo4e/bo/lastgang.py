@@ -2,22 +2,20 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import List
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import constr, conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.tagesvektor import Tagesvektor
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.botyp import BoTyp
-from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
 from bo4e.validators import OBIS_PATTERN
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import constr, conlist, StrictStr
 
 
 class _LastgangBody(Geschaeftsobjekt):

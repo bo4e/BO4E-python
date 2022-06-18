@@ -3,16 +3,13 @@ Contains RegionaleGueltigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List
-
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.com.com import COM
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-
-
-# pylint: disable=too-few-public-methods
-from pydantic import conlist
 
 
 class RegionaleGueltigkeit(COM):

@@ -1,11 +1,11 @@
 from datetime import datetime, timezone
-from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie, RegionalePreisgarantie
+from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
@@ -36,15 +36,15 @@ class TestRegionalePreisgarantie:
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": Decimal("01069")}],
+                        "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
                     },
                     "zeitlicheGueltigkeit": {
                         "startdatum": None,
                         "einheit": None,
                         "enddatum": None,
                         "dauer": None,
-                        "endzeitpunkt": "2021-07-30T00:00:00+00:00",
-                        "startzeitpunkt": "2011-02-05T16:43:00+00:00",
+                        "endzeitpunkt": datetime(2021, 7, 30, 0, 0, tzinfo=timezone.utc),
+                        "startzeitpunkt": datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
                     },
                 },
                 id="only required attributes",

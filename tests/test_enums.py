@@ -4,7 +4,7 @@ from pathlib import Path
 from typing import List, Optional, TypeVar
 
 import pytest  # type:ignore[import]
-from pydantic import ValidationError
+
 from bo4e.enum import anrede
 from bo4e.enum.strenum import StrEnum
 

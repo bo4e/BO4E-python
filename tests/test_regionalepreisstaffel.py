@@ -2,10 +2,11 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
+
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
-from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel, RegionalePreisstaffel
+from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -32,7 +33,7 @@ class TestRegionalePreisstaffel:
                 {
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": "POSTLEITZAHL", "wert": Decimal("01069")}],
+                        "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
                     },
                     "einheitspreis": Decimal("40"),
                     "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},

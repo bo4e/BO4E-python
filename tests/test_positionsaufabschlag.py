@@ -2,7 +2,8 @@ from decimal import Decimal
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
-from bo4e.com.positionsaufabschlag import PositionsAufAbschlag, PositionsAufAbschlag
+
+from bo4e.com.positionsaufabschlag import PositionsAufAbschlag
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -23,9 +24,9 @@ class TestPositionsAufAbschlag:
                 {
                     "bezeichnung": "foo",
                     "beschreibung": "bar",
-                    "aufAbschlagstyp": "ABSOLUT",
+                    "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
                     "aufAbschlagswert": Decimal("4.25"),
-                    "aufAbschlagswaehrung": "EUR",
+                    "aufAbschlagswaehrung": Waehrungseinheit.EUR,
                 },
             ),
         ],

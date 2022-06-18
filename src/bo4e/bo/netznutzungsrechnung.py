@@ -1,18 +1,16 @@
 """
 Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
+from pydantic import constr
 
 from bo4e.bo.rechnung import Rechnung
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.nnrechnungsart import NNRechnungsart
 from bo4e.enum.nnrechnungstyp import NNRechnungstyp
 from bo4e.enum.sparte import Sparte
-
-
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import constr, StrictBool, StrictStr
 
 
 class Netznutzungsrechnung(Rechnung):

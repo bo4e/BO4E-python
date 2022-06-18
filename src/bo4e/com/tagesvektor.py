@@ -2,14 +2,13 @@
 Contains Tagesvektor class and corresponding marshmallow schema for de-/serialization
 """
 import datetime
-from typing import List
 
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.com.com import COM
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
-
-# pylint: disable=too-few-public-methods
-from pydantic import conlist
 
 
 class Tagesvektor(COM):

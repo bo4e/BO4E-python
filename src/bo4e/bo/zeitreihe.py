@@ -1,8 +1,10 @@
 """
 Contains Zeitreihe class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
 
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
+from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.zeitreihenwert import Zeitreihenwert
@@ -12,10 +14,6 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart
 from bo4e.enum.messgroesse import Messgroesse
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
-
-
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import conlist, StrictStr
 
 
 class Zeitreihe(Geschaeftsobjekt):
