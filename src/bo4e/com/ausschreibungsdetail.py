@@ -17,8 +17,7 @@ class Ausschreibungsdetail(COM):
     Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines
     Ausschreibungsloses abzubilden.
 
-    .. HINT::
-        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AusschreibungsdetailSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Ausschreibungsdetail.dot
 
     """
 

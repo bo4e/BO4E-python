@@ -19,8 +19,7 @@ class Verbrauch(COM):
     """
     Abbildung eines zeitlich abgegrenzten Verbrauchs
 
-    .. HINT::
-        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/VerbrauchSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Verbrauch.dot
 
     """
 

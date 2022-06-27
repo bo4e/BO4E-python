@@ -18,8 +18,7 @@ class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
 
-    .. HINT::
-        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreispositionSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Tarifpreisposition.dot
 
     """
 

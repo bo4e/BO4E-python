@@ -23,8 +23,7 @@ class Zeitraum(COM):
     - Zeitraum: Startdatum bis Enddatum oder
     - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)
 
-    .. HINT::
-        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ZeitraumSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Zeitraum.dot
 
     """
 

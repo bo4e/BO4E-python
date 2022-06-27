@@ -17,8 +17,7 @@ class Betrag(COM):
     Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge
     abzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…
 
-    .. HINT::
-        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/BetragSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Betrag.dot
 
     """
 

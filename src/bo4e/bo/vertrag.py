@@ -28,8 +28,7 @@ class Vertrag(Geschaeftsobjekt):
     Modell für die Abbildung von Vertragsbeziehungen;
     Das Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.
 
-    .. HINT::
-        `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/VertragSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Vertrag.dot
 
     """
 

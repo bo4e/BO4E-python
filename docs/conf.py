@@ -10,17 +10,18 @@
 
 import inspect
 import os
-import shlex
 import shutil
 import sys
-import subprocess
 
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
+
 sys.path.insert(0, os.path.join(__location__, "../src"))
+sys.path.insert(0, os.path.join(__location__, "../"))
+from uml import create_diagrams3
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -295,8 +296,5 @@ intersphinx_mapping = {
 # Create UML diagrams in .dot format with pyreverse
 # command = 'dot --version'
 # subprocess.call(shlex.split(command))
-graphviz_output_format = "png"
-# command = 'pyreverse "{0}/bo/" -s1 -c bo.Geschaeftsobjekt --output-directory "{1}/dots/bo/"'.format(module_dir, output_dir)
-command = 'pyreverse "{0}/bo/" -s1 --output-directory "{1}/dots/bo/"'.format(module_dir, output_dir)
-os.makedirs("{0}/dots/bo/".format(output_dir))
-subprocess.call(shlex.split(command))
+graphviz_output_format = "svg"
+create_diagrams3(module_dir, output_dir)

@@ -27,8 +27,7 @@ class RegionalerAufAbschlag(COM):
     Hier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-
     oder Abschlags ergeben.
 
-    .. HINT::
-        `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalerAufAbschlagSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/RegionalerAufAbschlag.dot
 
     """
 

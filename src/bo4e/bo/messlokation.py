@@ -36,8 +36,7 @@ class Messlokation(Geschaeftsobjekt):
     """
     Object containing information about a Messlokation
 
-    .. HINT::
-        `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/MesslokationSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Messlokation.dot
 
     """
 

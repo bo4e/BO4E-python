@@ -25,8 +25,7 @@ class Preisblatt(Geschaeftsobjekt):
     Die jeweiligen Sätze von Merkmalen sind in der Grafik ergänzt worden und stellen jeweils eine Ausprägung für die
     verschiedenen Anwendungsfälle der Preisblätter dar.
 
-    .. HINT::
-        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Preisblatt.dot
 
     """
 

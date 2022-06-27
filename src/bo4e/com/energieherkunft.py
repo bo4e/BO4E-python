@@ -15,8 +15,7 @@ class Energieherkunft(COM):
     """
     Abbildung einer Energieherkunft
 
-    .. HINT::
-        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/EnergieherkunftSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot
 
     """
 

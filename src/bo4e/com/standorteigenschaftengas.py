@@ -16,8 +16,7 @@ class StandorteigenschaftenGas(COM):
     """
     Standorteigenschaften der Sparte Gas
 
-    .. HINT::
-        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGasSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenGas.dot
 
     """
 

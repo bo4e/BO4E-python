@@ -23,8 +23,8 @@ class Angebot(Geschaeftsobjekt):
     Innerhalb jeder Variante können Teile enthalten sein, die jeweils für eine oder mehrere Marktlokationen erstellt
     werden.
 
-    .. HINT::
-        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/AngebotSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Angebot.dot
+
 
     """
 

@@ -18,8 +18,7 @@ class RegionaleTarifpreisposition(COM):
     Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet
     werden.
 
-    .. HINT::
-        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreispositionSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/RegionaleTarifpreisposition.dot
 
     """
 

@@ -14,8 +14,7 @@ class RegionalePreisstaffel(Preisstaffel):
     """
     Abbildung einer Preisstaffel mit regionaler Abgrenzung
 
-    .. HINT::
-        `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffelSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/RegionalePreisstaffel.dot
 
     """
 

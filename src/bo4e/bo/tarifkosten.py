@@ -16,8 +16,7 @@ class Tarifkosten(Tarifinfo):
     """
     Objekt zur Kommunikation von Kosten, die im Rahmen der Tarifanwendung entstehen
 
-    .. HINT::
-        `Tarifkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/TarifkostenSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Tarifkosten.dot
 
     """
 

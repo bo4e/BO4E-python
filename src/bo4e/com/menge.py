@@ -16,8 +16,7 @@ class Menge(COM):
     """
     Abbildung einer Menge mit Wert und Einheit.
 
-    .. HINT::
-        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MengeSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Menge.dot
 
     """
 

@@ -21,8 +21,7 @@ class Zeitreihe(Geschaeftsobjekt):
     Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
     Die Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.
 
-    .. HINT::
-        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/ZeitreiheSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Zeitreihe.dot
 
     """
 

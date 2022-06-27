@@ -17,8 +17,7 @@ class Messlokationszuordnung(COM):
     Dabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,
     mit der die Messlokation zum Verbrauch der Marktlokation beiträgt.
 
-    .. HINT::
-        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MesslokationszuordnungSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Messlokationszuordnung.dot
 
     """
 

@@ -15,8 +15,7 @@ class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.
 
-    .. HINT::
-        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/VertragskonditionenSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Vertragskonditionen.dot
 
     """
 

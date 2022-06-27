@@ -25,8 +25,7 @@ class Angebotsteil(COM):
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
     Eine Variante besteht mindestens aus einem Angebotsteil.
 
-    .. HINT::
-        `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AngebotsteilSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Angebotsteil.dot
 
     """
 

@@ -14,8 +14,7 @@ class TarifpreisstaffelProOrt(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an
 
-    .. HINT::
-        `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisstaffelProOrtSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/TarifpreisstaffelProOrt.dot
 
     """
 

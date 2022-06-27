@@ -18,8 +18,7 @@ class Marktteilnehmer(Geschaeftspartner):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
 
-    .. HINT::
-        `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/MarktteilnehmerSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Marktteilnehmer.dot
 
     """
 

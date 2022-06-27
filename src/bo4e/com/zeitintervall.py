@@ -15,8 +15,7 @@ class Zeitintervall(COM):
     Abbildung für ein Zeitintervall. Die Abbildung eines Zeitintervalls.
     Z.B. zur Anwendung als Raster in äquidistanten Zeitreihen/Lastgängen, beispielsweise 15 Minuten.
 
-    .. HINT::
-        `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ZeitintervallSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Zeitintervall.dot
 
     """
 

@@ -15,8 +15,7 @@ class RegionalePreisgarantie(Preisgarantie):
     """
     Abbildung einer Preisgarantie mit regionaler Abgrenzung
 
-    .. HINT::
-        `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisgarantieSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/RegionalePreisgarantie.dot
 
     """
 

@@ -23,8 +23,7 @@ class Regionaltarif(Tarifinfo):
     # https://github.com/Hochfrequenz/BO4E-python/issues/338
     """
 
-    .. HINT::
-        `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/RegionaltarifSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Regionaltarif.dot
 
     """
 

@@ -18,8 +18,7 @@ class Kostenposition(COM):
     """
     Diese Komponente wird zur Übertagung der Details zu einer Kostenposition verwendet.
 
-    .. HINT::
-        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KostenpositionSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Kostenposition.dot
 
     """
 

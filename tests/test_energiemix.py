@@ -1,3 +1,4 @@
+import inspect
 from decimal import Decimal
 
 import pytest  # type:ignore[import]

@@ -18,8 +18,7 @@ class Preis(COM):
     """
     Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.
 
-    .. HINT::
-        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/PreisSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Preis.dot
 
     """
 

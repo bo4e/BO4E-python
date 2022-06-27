@@ -21,8 +21,7 @@ class Ausschreibung(Geschaeftsobjekt):
     """
     Das BO Ausschreibung dient zur detaillierten Darstellung von ausgeschriebenen Energiemengen in der Energiewirtschaft
 
-    .. HINT::
-        `Ausschreibung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/AusschreibungSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Ausschreibung.dot
 
     """
 

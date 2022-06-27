@@ -13,8 +13,7 @@ class StandorteigenschaftenAllgemein(COM):
     """
     Allgemeine Standorteigenschaften
 
-    .. HINT::
-        `StandorteigenschaftenAllgemein JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenAllgemeinSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenAllgemein.dot
 
     """
 

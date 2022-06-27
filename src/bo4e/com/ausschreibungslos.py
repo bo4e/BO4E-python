@@ -20,8 +20,7 @@ class Ausschreibungslos(COM):
     """
     Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung
 
-    .. HINT::
-        `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AusschreibungslosSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/Ausschreibungslos.dot
 
     """
 

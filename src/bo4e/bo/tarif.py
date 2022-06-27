@@ -22,8 +22,7 @@ class Tarif(Tarifinfo):
     """
     Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen
 
-    .. HINT::
-        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/TarifSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Tarif.dot
 
     """
 

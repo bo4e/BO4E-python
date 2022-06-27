@@ -13,8 +13,7 @@ class StandorteigenschaftenStrom(COM):
     """
     Standorteigenschaften der Sparte Strom
 
-    .. HINT::
-        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStromSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenStrom.dot
 
     """
 

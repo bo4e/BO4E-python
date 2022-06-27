@@ -18,8 +18,7 @@ class PreisblattMessung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise des Messstellenbetriebs und damit verbundener Leistungen
 
-    .. HINT::
-        `PreisblattMessung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattMessungSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/PreisblattMessung.dot
 
     """
 

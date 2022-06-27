@@ -26,8 +26,7 @@ class Zaehler(Geschaeftsobjekt):
     """
     Object containing information about a meter/"Zaehler".
 
-    .. HINT::
-        `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/ZaehlerSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Zaehler.dot
 
     """
 

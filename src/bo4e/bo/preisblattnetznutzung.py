@@ -17,8 +17,7 @@ class PreisblattNetznutzung(Preisblatt):
     """
     Die Variante des Preisblattmodells zur Abbildung der Netznutzungspreise
 
-    .. HINT::
-        `PreisblattNetznutzung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattNetznutzungSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/PreisblattNetznutzung.dot
 
     """
 

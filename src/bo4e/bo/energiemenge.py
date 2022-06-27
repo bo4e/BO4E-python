@@ -17,8 +17,7 @@ class Energiemenge(Geschaeftsobjekt):
     """
     Abbildung von Mengen, die Lokationen zugeordnet sind
 
-    .. HINT::
-        `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/EnergiemengeSchema.json>`_
+    .. graphviz:: /api/dots/bo4e/bo/Energiemenge.dot
 
     """
 
