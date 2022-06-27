@@ -7,7 +7,7 @@ import re
 import networkx as nx
 
 
-def create_diagrams3(module_dir: str, output_dir: str, radius=1):
+def build_dots(module_dir: str, output_dir: str, radius=1):
     pkgs_scope = {
         "bo": ["bo", "com"],
         "com": ["bo", "com"],
@@ -17,7 +17,7 @@ def create_diagrams3(module_dir: str, output_dir: str, radius=1):
     uml_network = nx.MultiDiGraph()
     parse_to_dot = []
     for pkg in pkgs_scope.keys():
-        modls = [name for _, name, _ in pkgutil.iter_modules([module_dir + "\\" + pkg])]
+        modls = [name for _, name, _ in pkgutil.iter_modules([module_dir + os.path.sep + pkg])]
         for x in modls:
             modl_name = f"bo4e.{pkg}.{x}"
             modl = importlib.import_module(modl_name)
@@ -35,7 +35,7 @@ def create_diagrams3(module_dir: str, output_dir: str, radius=1):
     for modl in parse_to_dot:
         spl = modl.split(".")
         modl_cls_name = spl[-1]
-        dot_path = output_dir + "\\dots\\" + os.path.sep.join(spl[0:-2])
+        dot_path = output_dir + f"{os.path.sep}dots{os.path.sep}" + os.path.sep.join(spl[0:-2])
         dot_file = f"{modl_cls_name}.dot"
         uml_subgraph = nx.ego_graph(uml_network, modl, radius=radius, undirected=True)
         dot_content = 'digraph "' + modl_cls_name + '" {\nrankdir=BT\ncharset="utf-8"\n'
@@ -46,8 +46,8 @@ def create_diagrams3(module_dir: str, output_dir: str, radius=1):
         dot_content += "}\n"
 
         os.makedirs(dot_path, exist_ok=True)
-        with open(rf"{dot_path}\{dot_file}", "w") as f:
-            print(rf'"{dot_path}\{dot_file}" created.')
+        with open(f"{dot_path}{os.path.sep}{dot_file}", "w") as f:
+            print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
             f.write(dot_content)
 
 

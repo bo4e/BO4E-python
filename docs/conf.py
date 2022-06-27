@@ -21,7 +21,7 @@ __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../"))
-from uml import create_diagrams3
+from uml import build_dots
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -293,8 +293,6 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/" + python_version, None),
 }
 
-# Create UML diagrams in .dot format with pyreverse
-# command = 'dot --version'
-# subprocess.call(shlex.split(command))
+# Create UML diagrams in .dot format. See uml.py for more details.
 graphviz_output_format = "svg"
-create_diagrams3(module_dir, output_dir)
+build_dots(module_dir, output_dir)
