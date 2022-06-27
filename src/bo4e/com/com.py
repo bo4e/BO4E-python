@@ -16,6 +16,9 @@ from pydantic import BaseModel
 class COM(BaseModel):
     """
     base class for all components
+
+    .. graphviz:: /api/dots/bo4e/com/COM.dot
+
     """
 
     class Config:

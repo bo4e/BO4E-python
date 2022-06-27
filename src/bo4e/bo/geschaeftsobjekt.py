@@ -17,6 +17,9 @@ class Geschaeftsobjekt(BaseModel):
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
     Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
+
+    .. graphviz:: /api/dots/bo4e/bo/Geschaeftsobjekt.dot
+
     """
 
     # required attributes

@@ -5,6 +5,8 @@ import pkgutil
 import re
 
 import networkx as nx
+from pydantic.fields import MAPPING_LIKE_SHAPES, SHAPE_TUPLE, SHAPE_GENERIC, SHAPE_SINGLETON, SHAPE_NAME_LOOKUP
+from pydantic.typing import display_as_type
 
 
 def build_dots(module_dir: str, output_dir: str, radius=1):
@@ -37,7 +39,7 @@ def build_dots(module_dir: str, output_dir: str, radius=1):
         modl_cls_name = spl[-1]
         dot_path = output_dir + f"{os.path.sep}dots{os.path.sep}" + os.path.sep.join(spl[0:-2])
         dot_file = f"{modl_cls_name}.dot"
-        uml_subgraph = nx.ego_graph(uml_network, modl, radius=radius, undirected=True)
+        uml_subgraph = nx.ego_graph(uml_network, modl, radius=radius, undirected=False)
         dot_content = 'digraph "' + modl_cls_name + '" {\nrankdir=BT\ncharset="utf-8"\n'
         for node in uml_subgraph.nodes:
             dot_content += uml_subgraph.nodes[node]["dot_node_str"] + "\n"
@@ -56,7 +58,7 @@ def recursive_helper(cls_cur, modl_namespace, uml_network, regex_incl_network, r
     uml_network.add_node(modl_namespace, model_cls=cls_cur, dot_node_str="will be replaced")
     dot_cls_str = rf'"{modl_namespace}" [color="black", fontcolor="black", label="' + "{" + rf"{modl_namespace}|"
     for model_field in cls_cur.__fields__.values():
-        dot_cls_str += f"{model_field.alias} : {model_field._type_display()}"
+        dot_cls_str += f"{model_field.alias} : {model_field_str(model_field)}"
         if not model_field.required:
             dot_cls_str += f" = {model_field.default}"
         dot_cls_str += r"\l"
@@ -86,3 +88,23 @@ def recursive_helper(cls_cur, modl_namespace, uml_network, regex_incl_network, r
                 type_modl_namespace,
                 dot_edge_str=f'"{modl_namespace}" -> "{type_modl_namespace}" [arrowhead="empty", arrowtail="none"];',
             )
+
+
+def model_field_str(model_field):
+    # Copied from pydantic.field.ModelField._type_display()
+    t = display_as_type(model_field.type_)
+
+    # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
+    if model_field.shape in MAPPING_LIKE_SHAPES:
+        t = f"Mapping[{display_as_type(self.key_field.type_)}, {t}]"  # type: ignore
+    elif model_field.shape == SHAPE_TUPLE:
+        t = "Tuple[{}]".format(", ".join(display_as_type(f.type_) for f in self.sub_fields))  # type: ignore
+    elif model_field.shape == SHAPE_GENERIC:
+        assert model_field.sub_fields
+        t = "{}[{}]".format(
+            display_as_type(model_field.type_), ", ".join(display_as_type(f.type_) for f in model_field.sub_fields)
+        )
+    elif model_field.shape != SHAPE_SINGLETON:
+        t = SHAPE_NAME_LOOKUP[model_field.shape].format(t)
+
+    return t
