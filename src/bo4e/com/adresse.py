@@ -2,7 +2,7 @@
 Contains Adresse class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from pydantic import validator
 
@@ -44,9 +44,8 @@ class Adresse(COM):
     #: Offizieller ISO-Landescode
     landescode: Landescode = Landescode.DE  # type:ignore
 
-    # pylint: disable=no-self-argument
     @validator("postfach", always=True)
-    def strasse_xor_postfach(cls, postfach, values):
+    def strasse_xor_postfach(cls, postfach: Optional[str], values: Dict[str, Any]) -> Optional[str]:
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
         This functions checks for these conditions of a valid address.

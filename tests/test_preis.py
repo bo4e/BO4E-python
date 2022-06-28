@@ -12,7 +12,7 @@ example_preis = Preis(wert=Decimal(12.5), einheit=Waehrungseinheit.EUR, bezugswe
 
 
 class TestPreis:
-    def test_preis_only_required(self):
+    def test_preis_only_required(self) -> None:
         """
         Test de-/serialisation of Preis (only has required attributes).
         """
@@ -32,21 +32,21 @@ class TestPreis:
         assert preis_deserialized.status is None
         assert preis == preis_deserialized
 
-    def test_wrong_datatype(self):
+    def test_wrong_datatype(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Preis(wert="lululululu", einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
+            _ = Preis(wert="lululululu", einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)  # type: ignore[arg-type]
 
         assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
         assert "value is not a valid decimal" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)
+            _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)  # type: ignore[call-arg]
 
         assert "1 validation error" in str(excinfo.value)
 
-    def test_optional_attribute(self):
+    def test_optional_attribute(self) -> None:
         preis = Preis(
             wert=Decimal(3.50),
             einheit=Waehrungseinheit.EUR,

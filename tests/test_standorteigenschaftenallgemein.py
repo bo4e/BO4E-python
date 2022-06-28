@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -30,14 +32,14 @@ class TestStandorteigenschaftenAllgemein:
         [pytest.param(example_standorteigenschaften_allgemein, example_standorteigenschaften_allgemein_dict)],
     )
     def test_standorteigenschaftenallgemein_serialization_roundtrip(
-        self, standorteigenschaftenallgemein: StandorteigenschaftenAllgemein, expected_json_dict: dict
-    ):
+        self, standorteigenschaftenallgemein: StandorteigenschaftenAllgemein, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of StandorteigenschaftenAllgemein with minimal attributes.
         """
         assert_serialization_roundtrip(standorteigenschaftenallgemein, expected_json_dict)
 
-    def test_standorteigenschaftenallgemein_missing_required_attributes(self):
+    def test_standorteigenschaftenallgemein_missing_required_attributes(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = StandorteigenschaftenAllgemein()
+            _ = StandorteigenschaftenAllgemein()  # type: ignore[call-arg]
         assert "7 validation errors" in str(excinfo.value)

@@ -41,7 +41,7 @@ class Zaehler(Geschaeftsobjekt):
     sparte: Sparte  #: Strom oder Gas
     zaehlerauspraegung: Zaehlerauspraegung  #: Spezifikation die Richtung des Zählers betreffend
     zaehlertyp: Zaehlertyp  #: Typisierung des Zählers
-    zaehlwerke: conlist(Zaehlwerk, min_items=1)  #: Die Zählwerke des Zählers
+    zaehlwerke: conlist(Zaehlwerk, min_items=1)  # type: ignore[valid-type]  #: Die Zählwerke des Zählers
     tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes

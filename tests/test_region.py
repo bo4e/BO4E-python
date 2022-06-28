@@ -23,16 +23,16 @@ class TestRegion:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, region: Region):
+    def test_serialization_roundtrip(self, region: Region) -> None:
         assert_serialization_roundtrip(region)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Region()
+            _ = Region()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)
 
-    def test_region_positiv_liste_required_and_negativ_liste_not_required(self):
+    def test_region_positiv_liste_required_and_negativ_liste_not_required(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Region(
                 bezeichnung="Bikini Bottom",

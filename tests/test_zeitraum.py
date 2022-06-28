@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -22,7 +23,7 @@ example_zeitraum_dict = {
 
 
 class TestZeitraum:
-    def test_zeitraum_dauer(self):
+    def test_zeitraum_dauer(self) -> None:
         """
         Test de-/serialisation of Zeitraum (only has optional attributes) with option dauer and einheit.
         """
@@ -40,7 +41,7 @@ class TestZeitraum:
         assert isinstance(zeitraum_deserialized.dauer, Decimal)
         assert zeitraum_deserialized.dauer == Decimal(21)
 
-    def test_zeitraum_daten(self):
+    def test_zeitraum_daten(self) -> None:
         """
         Test de-/serialisation of Zeitraum (only has optional attributes) with option startdatum and enddatum.
         """
@@ -60,7 +61,7 @@ class TestZeitraum:
         assert isinstance(zeitraum_deserialized.enddatum, datetime)
         assert zeitraum_deserialized.enddatum == datetime(2022, 1, 28, tzinfo=timezone.utc)
 
-    def test_zeitraum_zeitpunkte(self):
+    def test_zeitraum_zeitpunkte(self) -> None:
         """
         Test de-/serialisation of Zeitraum (only has optional attributes) with option startzeitpunkt and endzeitpunkt.
         """
@@ -101,7 +102,7 @@ class TestZeitraum:
             ),
         ],
     )
-    def test_validator_time_range_possibilities(self, arguments):
+    def test_validator_time_range_possibilities(self, arguments: Dict[str, datetime]) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitraum(**arguments)
+            _ = Zeitraum(**arguments)  # type: ignore[arg-type]
         assert "Please choose from one of the three possibilities to specify the timerange:" in str(excinfo.value)

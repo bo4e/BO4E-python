@@ -1,5 +1,5 @@
-import inspect
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -107,19 +107,21 @@ class TestEnergiemix:
             ),
         ],
     )
-    def test_energiemix_serialization_roundtrip(self, energiemix, expected_json_dict):
+    def test_energiemix_serialization_roundtrip(
+        self, energiemix: Energiemix, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Energiehermix with minimal attributes.
         """
         assert_serialization_roundtrip(energiemix, expected_json_dict)
 
-    def test_energiemix_missing_required_attribute(self):
+    def test_energiemix_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Energiemix()
+            _ = Energiemix()  # type: ignore[call-arg]
 
         assert "5 validation errors" in str(excinfo.value)
 
-    def test_energiemix_anteil_required(self):
+    def test_energiemix_anteil_required(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Energiemix(
                 energiemixnummer=2,

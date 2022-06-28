@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -131,7 +132,7 @@ class TestAngebotsteil:
                                 "adresszusatz": None,
                                 "postfach": None,
                                 "coErgaenzung": None,
-                                "landescode": Landescode.DE,
+                                "landescode": Landescode.DE,  # type: ignore[attr-defined]
                             },
                             "energierichtung": Energierichtung.EINSP,
                             "bilanzierungsmethode": Bilanzierungsmethode.PAUSCHAL,
@@ -174,20 +175,20 @@ class TestAngebotsteil:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, angebotsteil, expected_json_dict):
+    def test_serialization_roundtrip(self, angebotsteil: Angebotsteil, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Angebotsteil with minimal attributes.
         """
         assert_serialization_roundtrip(angebotsteil, expected_json_dict)
 
-    def test_angebotsteil_positionen_required(self):
+    def test_angebotsteil_positionen_required(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Angebotsteil(positionen=[])
 
         assert "1 validation error" in str(excinfo.value)
         assert "ensure this value has at least 1 item" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Angebotsteil()
+            _ = Angebotsteil()  # type: ignore[call-arg]
         assert "1 validation error" in str(excinfo.value)

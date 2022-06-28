@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -115,15 +116,15 @@ class TestAufAbschlag:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, aufabschlag, expected_json_dict):
+    def test_serialization_roundtrip(self, aufabschlag: AufAbschlag, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of AufAbschlag with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlag, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlag()
+            _ = AufAbschlag()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)
 
@@ -140,7 +141,7 @@ class TestAufAbschlag:
             ),
         ],
     )
-    def test_failing_validation_einheit_only_for_abschlagstyp_absolut(self, auf_abschlagstyp):
+    def test_failing_validation_einheit_only_for_abschlagstyp_absolut(self, auf_abschlagstyp: AufAbschlagstyp) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = AufAbschlag(
                 bezeichnung="foo",

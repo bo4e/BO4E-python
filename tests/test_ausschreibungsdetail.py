@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -37,7 +38,7 @@ example_ausschreibungsdetail_dict = {
         "startzeitpunkt": None,
     },
     "lokationsadresse": {
-        "landescode": Landescode.DE,
+        "landescode": Landescode.DE,  # type: ignore[attr-defined]
         "hausnummer": "27A",
         "strasse": "Nördliche Münchner Straße",
         "postleitzahl": "82031",
@@ -47,7 +48,7 @@ example_ausschreibungsdetail_dict = {
         "coErgaenzung": None,
     },
     "rechnungsadresse": {
-        "landescode": Landescode.DE,
+        "landescode": Landescode.DE,  # type: ignore[attr-defined]
         "hausnummer": "27A",
         "strasse": "Nördliche Münchner Straße",
         "postleitzahl": "82031",
@@ -107,7 +108,7 @@ class TestAusschreibungsdetail:
                         "adresszusatz": None,
                         "postfach": None,
                         "postleitzahl": "82031",
-                        "landescode": Landescode.DE,
+                        "landescode": Landescode.DE,  # type: ignore[attr-defined]
                         "ort": "Grünwald",
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
@@ -117,7 +118,7 @@ class TestAusschreibungsdetail:
                         "adresszusatz": None,
                         "postfach": None,
                         "postleitzahl": "82031",
-                        "landescode": Landescode.DE,
+                        "landescode": Landescode.DE,  # type: ignore[attr-defined]
                         "ort": "Grünwald",
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
@@ -135,15 +136,17 @@ class TestAusschreibungsdetail:
             pytest.param(example_ausschreibungsdetail, example_ausschreibungsdetail_dict),
         ],
     )
-    def test_serialization_roundtrip(self, ausschreibungsdetail: Ausschreibungsdetail, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, ausschreibungsdetail: Ausschreibungsdetail, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Ausschreibungsdetail
         """
         assert_serialization_roundtrip(ausschreibungsdetail, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungsdetail()
+            _ = Ausschreibungsdetail()  # type: ignore[call-arg]
 
         assert "5 validation errors" in str(excinfo.value)
         # 'lokations_id', 'netzebene_lieferung', 'netzebene_messung', 'lokationsadresse', and 'lieferzeitraum'

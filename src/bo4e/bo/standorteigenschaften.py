@@ -32,7 +32,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
     #: Allgemeine Eigenschaften
     eigenschaften_allgemein: StandorteigenschaftenAllgemein
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: conlist(StandorteigenschaftenStrom, min_items=1)
+    eigenschaften_strom: conlist(StandorteigenschaftenStrom, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Eigenschaften zur Sparte Gas

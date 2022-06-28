@@ -26,14 +26,14 @@ class TestLastgang:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, lastgang_kompakt: Lastgang):
+    def test_serialization_roundtrip(self, lastgang_kompakt: Lastgang) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(lastgang_kompakt)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Lastgang()
+            _ = Lastgang()  # type: ignore[call-arg]
 
         assert "5 validation errors" in str(excinfo.value)

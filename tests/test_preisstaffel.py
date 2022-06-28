@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -43,15 +44,15 @@ class TestPreisstaffel:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Preisstaffel.
         """
         assert_serialization_roundtrip(preisstaffel, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Preisstaffel()
+            _ = Preisstaffel()  # type: ignore[call-arg]
 
         assert "3 validation errors" in str(excinfo.value)
 
@@ -62,7 +63,7 @@ class TestPreisstaffel:
             pytest.param("foo"),  # not a sigmoid parameter instance
         ],
     )
-    def test_failing_validation(self, not_a_sigmoid_parameter):
+    def test_failing_validation(self, not_a_sigmoid_parameter: Any) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Preisstaffel(
                 einheitspreis=Decimal(40.0),

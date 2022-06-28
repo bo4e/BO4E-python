@@ -62,7 +62,7 @@ class Vertrag(Geschaeftsobjekt):
     In der Regel der Empfänger des Vertrags.
     Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
     """
-    vertragsteile: conlist(Vertragsteil, min_items=1)
+    vertragsteile: conlist(Vertragsteil, min_items=1)  # type: ignore[valid-type]
     """
     Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
     (Markt- oder Messlokation) festzulegen.

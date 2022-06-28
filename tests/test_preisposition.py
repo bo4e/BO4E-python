@@ -40,13 +40,13 @@ class TestPreisposition:
             pytest.param(example_preisposition),
         ],
     )
-    def test_serialization_roundtrip(self, preisposition: Preisposition):
+    def test_serialization_roundtrip(self, preisposition: Preisposition) -> None:
         """
         Test de-/serialisation of Preisposition
         """
         assert_serialization_roundtrip(preisposition)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Preisposition()
+            _ = Preisposition()  # type: ignore[call-arg]
         assert "6 validation errors" in str(excinfo.value)

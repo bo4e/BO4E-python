@@ -10,7 +10,7 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 
 
 class TestVertragsteil:
-    def test_vertragsteil_only_required_attributes(self):
+    def test_vertragsteil_only_required_attributes(self) -> None:
         """
         Test de-/serialisation of Vertragsteil with minimal attributes.
         """
@@ -31,7 +31,7 @@ class TestVertragsteil:
         assert isinstance(vertragsteil_deserialized.vertragsteilende, datetime)
         assert vertragsteil_deserialized.vertragsteilende == datetime(2007, 11, 27, tzinfo=timezone.utc)
 
-    def test_vertragsteil_required_and_optional_attributes(self):
+    def test_vertragsteil_required_and_optional_attributes(self) -> None:
         """
         Test de-/serialisation of Vertragsteil with maximal attributes.
         """
@@ -63,8 +63,8 @@ class TestVertragsteil:
         assert isinstance(vertragsteil_deserialized.minimale_abnahmemenge, Menge)
         assert vertragsteil_deserialized.minimale_abnahmemenge == Menge(wert=Decimal(2000), einheit=Mengeneinheit.KWH)
 
-    def test_vertragsteil_missing_required_attribute(self):
+    def test_vertragsteil_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Vertragsteil(vertragsteilende=datetime(2007, 11, 27, tzinfo=timezone.utc))
+            _ = Vertragsteil(vertragsteilende=datetime(2007, 11, 27, tzinfo=timezone.utc))  # type: ignore[call-arg]
 
         assert "1 validation error" in str(excinfo.value)

@@ -5,7 +5,7 @@ from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 
 
 class TestExterneReferenz:
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         er = ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")
 
         er_json = er.json(by_alias=True, ensure_ascii=False)
@@ -16,7 +16,7 @@ class TestExterneReferenz:
         assert isinstance(deserialized_er, ExterneReferenz)
         assert deserialized_er == er
 
-    def test_list_of_externe_referenz(self):
+    def test_list_of_externe_referenz(self) -> None:
         gp = Geschaeftspartner(
             externe_referenzen=[
                 ExterneReferenz(ex_ref_name="SAP GP Nummer", ex_ref_wert="0123456789"),
@@ -41,7 +41,7 @@ class TestExterneReferenz:
         assert len(deserialized_gp.externe_referenzen) == 2
         assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"
 
-    def test_geschaeftspartner_with_no_externe_referenz(self):
+    def test_geschaeftspartner_with_no_externe_referenz(self) -> None:
         gp = Geschaeftspartner(
             # just some dummy data to make the GP valid
             name1="Duck",

@@ -2,7 +2,7 @@
 Contains Kostenposition and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Dict, Any
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 from pydantic import validator
@@ -60,7 +60,7 @@ class Kostenposition(COM):
     artikeldetail: Optional[str] = None
 
     @staticmethod
-    def _get_inclusive_start(values) -> Optional[datetime]:
+    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
         return values["von"]
 
     # @staticmethod

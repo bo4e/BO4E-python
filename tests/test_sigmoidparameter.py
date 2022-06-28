@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -26,16 +27,16 @@ class TestSigmoidparameter:
         ],
     )
     def test_sigmoidparameter_serialization_roundtrip(
-        self, sigmoidparameter: Sigmoidparameter, expected_json_dict: dict
-    ):
+        self, sigmoidparameter: Sigmoidparameter, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Sigmoidparameter with minimal attributes.
         """
         assert_serialization_roundtrip(sigmoidparameter, expected_json_dict)
 
-    def test_sigmoidparameter_missing_required_attribute(self):
+    def test_sigmoidparameter_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Sigmoidparameter()
+            _ = Sigmoidparameter()  # type: ignore[call-arg]
         assert "4 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
@@ -53,5 +54,5 @@ class TestSigmoidparameter:
             ),
         ],
     )
-    def test_lp_calculation(self, sigmoidparameter: Sigmoidparameter, leistung: Decimal, expected_lp: Decimal):
+    def test_lp_calculation(self, sigmoidparameter: Sigmoidparameter, leistung: Decimal, expected_lp: Decimal) -> None:
         assert sigmoidparameter.calculate(leistung) == expected_lp

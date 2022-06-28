@@ -44,11 +44,11 @@ class TestEnums:
         assert inspect.isclass(enum_class)
         return inspect.getdoc(enum_class)
 
-    def test_enum_classes_docstrings(self):
+    def test_enum_classes_docstrings(self) -> None:
         """
         Tests that the docstrings of the enum classes do not start with whitespace or blank lines.
         """
-        all_enums = TestEnums._get_all_enum_classes()
+        all_enums = TestEnums._get_all_enum_classes()  # type: ignore[var-annotated]
         assert len(all_enums) > 100  # just to be sure we're not using the wrong directory or path
         for enum_class in all_enums:
             docstring = TestEnums._get_class_doc(enum_class)

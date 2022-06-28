@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -35,19 +37,21 @@ class TestRegionaleGueltigkeit:
             ),
         ],
     )
-    def test_regionalegueltigkeit_serialization_roundtrip(self, regionalegueltigkeit, expected_json_dict):
+    def test_regionalegueltigkeit_serialization_roundtrip(
+        self, regionalegueltigkeit: RegionaleGueltigkeit, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of RegionaleGueltigkeit with minimal attributes.
         """
         assert_serialization_roundtrip(regionalegueltigkeit, expected_json_dict)
 
-    def test_regionalegueltigkeit_missing_required_attribute(self):
+    def test_regionalegueltigkeit_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleGueltigkeit()
+            _ = RegionaleGueltigkeit()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)
 
-    def test_regionalegueltigkeit_kriteriumswerte_required(self):
+    def test_regionalegueltigkeit_kriteriumswerte_required(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = RegionaleGueltigkeit(
                 gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,

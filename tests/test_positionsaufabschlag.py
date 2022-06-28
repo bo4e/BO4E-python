@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -31,14 +32,16 @@ class TestPositionsAufAbschlag:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, positionsaufabschlag: PositionsAufAbschlag, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, positionsaufabschlag: PositionsAufAbschlag, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of PositionsAufAbschlag
         """
         assert_serialization_roundtrip(positionsaufabschlag, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = PositionsAufAbschlag()
+            _ = PositionsAufAbschlag()  # type: ignore[call-arg]
 
         assert "5 validation errors" in str(excinfo.value)

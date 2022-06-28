@@ -18,7 +18,7 @@ example_tarifpreis = Tarifpreis(
 
 
 class TestTarifpreis:
-    def test_tarifpreis_only_required(self):
+    def test_tarifpreis_only_required(self) -> None:
         """
         Test de-/serialisation of Tarifpreis (only has required attributes).
         """
@@ -38,10 +38,10 @@ class TestTarifpreis:
         assert tarifpreis_deserialized.beschreibung is None
         assert tarifpreis == tarifpreis_deserialized
 
-    def test_wrong_datatype(self):
+    def test_wrong_datatype(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Tarifpreis(
-                wert="blubb",
+                wert="blubb",  # type: ignore[arg-type]
                 einheit=Waehrungseinheit.EUR,
                 bezugswert=Mengeneinheit.KWH,
                 preistyp=Preistyp.ARBEITSPREIS_HT,
@@ -51,9 +51,9 @@ class TestTarifpreis:
         assert "wert" in str(excinfo.value)
         assert "value is not a valid decimal" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreis(
+            _ = Tarifpreis(  # type: ignore[call-arg]
                 wert=Decimal(3.50),
                 einheit=Waehrungseinheit.EUR,
                 status=Preisstatus.ENDGUELTIG,
@@ -62,7 +62,7 @@ class TestTarifpreis:
 
         assert "1 validation error" in str(excinfo.value)
 
-    def test_optional_attribute(self):
+    def test_optional_attribute(self) -> None:
         tarifpreis = Tarifpreis(
             wert=Decimal(3.50),
             einheit=Waehrungseinheit.EUR,

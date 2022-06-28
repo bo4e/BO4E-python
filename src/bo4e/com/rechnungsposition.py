@@ -4,7 +4,7 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from pydantic import validator
 
@@ -80,7 +80,7 @@ class Rechnungsposition(COM):
     artikel_id: Optional[ArtikelId] = None
 
     @staticmethod
-    def _get_inclusive_start(values) -> datetime:
+    def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
         """return the inclusive start (used in the validator)"""
         return values["lieferung_von"]
 

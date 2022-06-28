@@ -36,7 +36,7 @@ class Angebot(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: constr(strict=True, regex=r"^\d+$")
+    angebotsnummer: constr(strict=True, regex=r"^\d+$")  # type: ignore[valid-type]
     #: Erstellungsdatum des Angebots
     angebotsdatum: datetime
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
@@ -46,7 +46,7 @@ class Angebot(Geschaeftsobjekt):
     #: Empfänger des Angebots
     angebotsnehmer: Geschaeftspartner
 
-    varianten: conlist(Angebotsvariante, min_items=1)
+    varianten: conlist(Angebotsvariante, min_items=1)  # type: ignore[valid-type]
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 

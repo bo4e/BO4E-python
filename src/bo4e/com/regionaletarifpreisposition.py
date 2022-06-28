@@ -35,7 +35,7 @@ class RegionaleTarifpreisposition(COM):
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
-    preisstaffeln: conlist(RegionalePreisstaffel, min_items=1)
+    preisstaffeln: conlist(RegionalePreisstaffel, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)

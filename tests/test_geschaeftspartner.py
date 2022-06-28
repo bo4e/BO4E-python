@@ -1,6 +1,7 @@
 import json
 
 import pytest  # type:ignore[import]
+from py._path.local import LocalPath  # type: ignore[import]
 from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -14,7 +15,7 @@ from bo4e.enum.landescode import Landescode
 
 class TestGeschaeftspartner:
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json")
-    def test_serializable(self, datafiles):
+    def test_serializable(self, datafiles: LocalPath) -> None:
         with open(datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
@@ -52,7 +53,7 @@ class TestGeschaeftspartner:
         assert gp_deserialized.bo_typ == gp.bo_typ
         assert type(gp_deserialized.partneradresse) == Adresse
 
-    def test_optional_attribute_partneradresse(self):
+    def test_optional_attribute_partneradresse(self) -> None:
         """
         The BO4E standard does not yet define whether the partneradresse is mandatory or not.
         We will set this as an optional argument until the standard is clear about it.
@@ -81,7 +82,7 @@ class TestGeschaeftspartner:
 
         assert gp_deserialized.partneradresse is None
 
-    def test_list_validation_of_geschaeftspartnerrolle(self):
+    def test_list_validation_of_geschaeftspartnerrolle(self) -> None:
         """
         Tests that if the geschaeftspartnerrolle of Geschaeftspartner is not a list, an error is raised.
 
@@ -104,7 +105,7 @@ class TestGeschaeftspartner:
                 glaeubiger_id="DE98ZZZ09999999999",
                 e_mail_adresse="test@bo4e.de",
                 website="bo4e.de",
-                geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,
+                geschaeftspartnerrolle=Geschaeftspartnerrolle.DIENSTLEISTER,  # type: ignore[arg-type]
                 partneradresse=Adresse(
                     postleitzahl="01069",
                     ort="Dresden",
@@ -116,7 +117,7 @@ class TestGeschaeftspartner:
         assert "1 validation error" in str(excinfo.value)
         assert "value is not a valid list" in str(excinfo.value)
 
-    def test_serialization_of_non_german_address(self):
+    def test_serialization_of_non_german_address(self) -> None:
         """
         Test that partneradresses with a Landescode!=DE (default) are (de)serialized correctly.
         """
@@ -132,9 +133,9 @@ class TestGeschaeftspartner:
             umsatzsteuer_id="AT12345",
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
             partneradresse=Adresse(
-                postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT
+                postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
             ),
         )
         gp_json = gp.json(by_alias=True, ensure_ascii=False)
         gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
-        assert gp_deserialized.partneradresse.landescode == Landescode.AT
+        assert gp_deserialized.partneradresse.landescode == Landescode.AT  # type: ignore[attr-defined, union-attr]

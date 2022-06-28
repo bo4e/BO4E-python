@@ -28,10 +28,9 @@ class Zeitreihenwertkompakt(COM):
     wert: Decimal  #: Der im Zeitintervall gültige Wert.
 
     # optional attributes
-    status: Optional[
-        Messwertstatus
-    ] = None  #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
 
-    statuszusatz: Messwertstatuszusatz = (
-        None  #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
-    )
+    #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
+    status: Optional[Messwertstatus] = None
+
+    #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
+    statuszusatz: Optional[Messwertstatuszusatz] = None

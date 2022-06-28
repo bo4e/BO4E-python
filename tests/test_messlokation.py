@@ -27,7 +27,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 class TestMeLo:
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test serialisation of Messlokation only with required attributes
         """
@@ -52,7 +52,7 @@ class TestMeLo:
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
         assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
 
-    def test_serialization_required_and_optional_attributes(self):
+    def test_serialization_required_and_optional_attributes(self) -> None:
         """
         Test serialisation of Messlokation with required attributes and optional attributes
         """
@@ -119,7 +119,7 @@ class TestMeLo:
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
         assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
 
-    def test_missing_required_fields(self):
+    def test_missing_required_fields(self) -> None:
         """
         Test that the required attributes are checked in the deserialization.
         Therefore the required attribute `messlokations_id` is removed in the test data.
@@ -158,7 +158,7 @@ class TestMeLo:
 
         assert "messlokationsId" in str(excinfo.value)
 
-    def test_address_validation(self):
+    def test_address_validation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
@@ -174,7 +174,7 @@ class TestMeLo:
 
         assert "More than one address information is given." in str(excinfo.value)
 
-    def test_grundzustaendiger_x_codenr_validation(self):
+    def test_grundzustaendiger_x_codenr_validation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
@@ -201,8 +201,8 @@ class TestMeLo:
             ("", False),
         ],
     )
-    def test_id_validation(self, melo_id: str, is_valid: bool):
-        def _instantiate_melo(melo_id: str):
+    def test_id_validation(self, melo_id: str, is_valid: bool) -> None:
+        def _instantiate_melo(melo_id: str) -> None:
             _ = Messlokation(
                 messlokations_id=melo_id,
                 sparte=Sparte.STROM,

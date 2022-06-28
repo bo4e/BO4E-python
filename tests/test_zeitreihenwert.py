@@ -16,7 +16,7 @@ example_zeitreihenwert = Zeitreihenwert(
 
 
 class TestZeitreihenwert:
-    def test_zeitreihenwert_only_required_attributes(self):
+    def test_zeitreihenwert_only_required_attributes(self) -> None:
         """
         Test de-/serialisation of Zeitreihenwert with minimal attributes.
         """
@@ -30,7 +30,7 @@ class TestZeitreihenwert:
         zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.parse_raw(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
 
-    def test_zeitreihenwert_required_and_optional_attributes(self):
+    def test_zeitreihenwert_required_and_optional_attributes(self) -> None:
         """
         Test de-/serialisation of Zeitreihenwert with maximal attributes.
         """
@@ -53,13 +53,13 @@ class TestZeitreihenwert:
         zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.parse_raw(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwert(datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc), wert=Decimal(1.5))
+            _ = Zeitreihenwert(datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc), wert=Decimal(1.5))  # type: ignore[call-arg]
 
         assert "1 validation error" in str(excinfo.value)
 
-    def test_von_later_than_bis(self):
+    def test_von_later_than_bis(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Zeitreihenwert(
                 datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc),

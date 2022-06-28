@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -45,14 +47,16 @@ class TestLastgangKompakt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, lastgang_kompakt: LastgangKompakt, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, lastgang_kompakt: LastgangKompakt, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of LastgangKompakt.
         """
         assert_serialization_roundtrip(lastgang_kompakt, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = LastgangKompakt()
+            _ = LastgangKompakt()  # type: ignore[call-arg]
 
         assert "6 validation errors" in str(excinfo.value)

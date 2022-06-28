@@ -1,5 +1,4 @@
 from decimal import Decimal
-from decimal import Decimal
 from typing import Tuple
 
 import pytest  # type:ignore[import]
@@ -20,7 +19,7 @@ from bo4e.enum.sparte import Sparte
 
 
 class TestMaLo:
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test serialisation of Marktlokation only with required attributes
         """
@@ -48,7 +47,7 @@ class TestMaLo:
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
         assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
 
-    def test_serialization_required_and_optional_attributes(self):
+    def test_serialization_required_and_optional_attributes(self) -> None:
         """
         Test serialisation of Marktlokation with required attributes and optional attributes
         """
@@ -98,7 +97,7 @@ class TestMaLo:
         assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
         assert deserialized_malo.endkunde == gp
 
-    def test_missing_required_fields(self):
+    def test_missing_required_fields(self) -> None:
         """
         Test that the required attributes are checked in the deserialization.
         Therefore the required attribute `marktlokations_id` is removed in the test data.
@@ -138,13 +137,11 @@ class TestMaLo:
         with pytest.raises(ValidationError) as excinfo:
             Marktlokation.parse_raw(invalid_json_string)
 
-        assert "2 validation errors" in str(excinfo.value)
-        assert "externeReferenzen" in str(excinfo.value)
-        assert "none is not an allowed value" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
         assert "marktlokationsId" in str(excinfo.value)
         assert "field required" in str(excinfo.value)
 
-    def test_address_validation(self):
+    def test_address_validation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Marktlokation(
                 marktlokations_id="51238696781",
@@ -184,8 +181,8 @@ class TestMaLo:
             ("", False),
         ],
     )
-    def test_id_validation(self, malo_id_valid: Tuple[str, bool]):
-        def _instantiate_malo(malo_id: str):
+    def test_id_validation(self, malo_id_valid: Tuple[str, bool]) -> None:
+        def _instantiate_malo(malo_id: str) -> None:
             _ = Marktlokation(
                 marktlokations_id=malo_id,
                 sparte=Sparte.GAS,

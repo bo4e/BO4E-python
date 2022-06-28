@@ -1,4 +1,8 @@
+from types import NoneType
+from typing import Dict, Optional
+
 import pytest  # type:ignore[import]
+from py._path.local import LocalPath  # type: ignore[import]
 from pydantic import ValidationError
 
 from bo4e.com.adresse import Adresse
@@ -9,7 +13,7 @@ from bo4e.enum.landescode import Landescode
 # can be imported by other tests
 example_adresse = Adresse(
     ort="Grünwald",
-    landescode=Landescode.DE,
+    landescode=Landescode.DE,  # type: ignore[attr-defined]
     hausnummer="27A",
     strasse="Nördliche Münchner Straße",
     postleitzahl="82031",
@@ -17,7 +21,7 @@ example_adresse = Adresse(
 
 
 class TestAddress:
-    def test_serialization_strasse(self):
+    def test_serialization_strasse(self) -> None:
         """
         Test serialization with strasse und hausnummer
         and default value of landescode
@@ -41,9 +45,9 @@ class TestAddress:
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
         assert deserialized_address.hausnummer == "27A"
         assert deserialized_address.postleitzahl == "82031"
-        assert deserialized_address.landescode == Landescode.DE
+        assert deserialized_address.landescode == Landescode.DE  # type: ignore[attr-defined]
 
-    def test_serialization_only_postfach(self):
+    def test_serialization_only_postfach(self) -> None:
         """Test serialization with postfach"""
         address_test_data = {
             "postleitzahl": "82031",
@@ -68,9 +72,9 @@ class TestAddress:
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
         assert deserialized_address.postleitzahl == "82031"
-        assert deserialized_address.landescode == Landescode.DE
+        assert deserialized_address.landescode == Landescode.DE  # type: ignore[attr-defined]
 
-    def test_serialization_only_required_fields(self):
+    def test_serialization_only_required_fields(self) -> None:
         """Test serialization with just postleitzahl und ort"""
         address_test_data = {
             "postleitzahl": "82031",
@@ -93,20 +97,20 @@ class TestAddress:
         assert deserialized_address.ort == "Grünwald"
         assert deserialized_address.postleitzahl == "82031"
 
-    def test_serialization_only_required_fields_landescode_AT(self):
+    def test_serialization_only_required_fields_landescode_AT(self) -> None:
 
         address_test_data = Adresse.parse_file(
             "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
             encoding="utf-8",
         )
-        address_test_data.landescode = Landescode.AT
+        address_test_data.landescode = Landescode.AT  # type: ignore[attr-defined]
 
         address_json = address_test_data.json(by_alias=True, ensure_ascii=False)
         deserialized_address = Adresse.parse_raw(address_json)
 
-        assert deserialized_address.landescode == Landescode.AT
+        assert deserialized_address.landescode == Landescode.AT  # type: ignore[attr-defined]
 
-    def test_deserialization(self):
+    def test_deserialization(self) -> None:
         json_string = r"""{"strasse":"Getreidegasse",
                  "hausnummer":"9",
                  "ort":"Salzburg",
@@ -114,10 +118,10 @@ class TestAddress:
                  "landescode":"AT"}"""
 
         a: Adresse = Adresse.parse_raw(json_string)
-        assert a.landescode is Landescode.AT
+        assert a.landescode is Landescode.AT  # type: ignore[attr-defined]
 
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json")
-    def test_missing_required_attribute(self, datafiles):
+    def test_missing_required_attribute(self, datafiles: LocalPath) -> None:
         """
         Test for getting an error message if a required attribute is missing
         """
@@ -176,27 +180,27 @@ class TestAddress:
             ),
         ],
     )
-    def test_strasse_xor_postfach(self, address_test_data, expected):
+    def test_strasse_xor_postfach(self, address_test_data: Dict[str, Optional[str]], expected: str) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Adresse(
-                postleitzahl=address_test_data["postleitzahl"],
-                ort=address_test_data["ort"],
+                postleitzahl=address_test_data["postleitzahl"],  # type: ignore[arg-type]
+                ort=address_test_data["ort"],  # type: ignore[arg-type]
                 strasse=address_test_data["strasse"],
                 hausnummer=address_test_data["hausnummer"],
                 postfach=address_test_data["postfach"],
             )
         assert expected in str(excinfo.value)
 
-    def test_serialization_of_non_german_address(self):
+    def test_serialization_of_non_german_address(self) -> None:
         """
         Minimal working example
         :return:
         """
         a = Adresse(
-            postleitzahl="6413", ort="Wildermieming", strasse="Gerhardhof", hausnummer="1", landescode=Landescode.AT
+            postleitzahl="6413", ort="Wildermieming", strasse="Gerhardhof", hausnummer="1", landescode=Landescode.AT  # type: ignore[attr-defined]
         )
-        assert a.landescode == Landescode.AT
+        assert a.landescode == Landescode.AT  # type: ignore[attr-defined]
         serialized_address = a.json(by_alias=True, ensure_ascii=False)
         assert '"AT"' in serialized_address
         deserialized_address = Adresse.parse_raw(serialized_address)
-        assert deserialized_address.landescode == Landescode.AT
+        assert deserialized_address.landescode == Landescode.AT  # type: ignore[attr-defined]

@@ -3,6 +3,7 @@ Contains Zeitreihenwert class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
+from typing import Dict, Any
 
 from pydantic import validator
 
@@ -30,7 +31,7 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     _bis_check = validator("datum_uhrzeit_bis", allow_reuse=True)(check_bis_is_later_than_von)
 
     @staticmethod
-    def _get_inclusive_start(values) -> datetime:
+    def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
         """return the inclusive start (used in the validator)"""
         return values["datum_uhrzeit_von"]
 

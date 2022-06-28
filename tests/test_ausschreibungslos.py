@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -64,13 +66,15 @@ class TestAusschreibungslos:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, ausschreibungslos, expected_json_dict):
+    def test_serialization_roundtrip(
+        self, ausschreibungslos: Ausschreibungslos, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Ausschreibungslos
         """
         assert_serialization_roundtrip(ausschreibungslos, expected_json_dict)
 
-    def test_ausschreibungslos_lieferstellen_required(self):
+    def test_ausschreibungslos_lieferstellen_required(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Ausschreibungslos(
                 losnummer="foo",
@@ -90,7 +94,7 @@ class TestAusschreibungslos:
         assert "1 validation error" in str(excinfo.value)
         assert "ensure this value has at least 1 item" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungslos()
+            _ = Ausschreibungslos()  # type: ignore[call-arg]
         assert "10 validation errors" in str(excinfo.value)

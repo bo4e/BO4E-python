@@ -39,13 +39,13 @@ class TestRechnungsposition:
             )
         ],
     )
-    def test_serialization_roundtrip(self, rechnungsposition):
+    def test_serialization_roundtrip(self, rechnungsposition: Rechnungsposition) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(rechnungsposition)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Rechnungsposition()
+            _ = Rechnungsposition()  # type: ignore[call-arg]
         assert "8 validation errors" in str(excinfo.value)

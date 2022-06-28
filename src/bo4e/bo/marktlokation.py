@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from pydantic import validator
 
@@ -114,9 +114,10 @@ class Marktlokation(Geschaeftsobjekt):
     # todo: add kundengruppe
 
     # pylint:disable=unused-argument
-    # pylint: disable=no-self-argument
     @validator("katasterinformation", always=True)
-    def validate_address_info(cls, katasterinformation, values):
+    def validate_address_info(
+        cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
+    ) -> Optional[Katasteradresse]:
         """Checks that there is one and only one valid adress given."""
         all_address_attributes = [
             values["lokationsadresse"],

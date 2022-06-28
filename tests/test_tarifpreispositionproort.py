@@ -23,14 +23,14 @@ class TestTarifpreispositionProOrt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreispositionproort: TarifpreispositionProOrt):
+    def test_serialization_roundtrip(self, tarifpreispositionproort: TarifpreispositionProOrt) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifpreispositionproort)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = TarifpreispositionProOrt()
+            _ = TarifpreispositionProOrt()  # type: ignore[call-arg]
 
         assert "4 validation errors" in str(excinfo.value)

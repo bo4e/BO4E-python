@@ -8,7 +8,7 @@ from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
 
 
-class TestGeschaeftsobjet:
+class TestGeschaeftsobjekt:
     @pytest.mark.parametrize(
         "bo_typ, versionstruktur, externe_referenzen",
         [
@@ -30,7 +30,7 @@ class TestGeschaeftsobjet:
     )
     def test_serialisation(
         self, bo_typ: BoTyp, versionstruktur: str, externe_referenzen: Optional[List[ExterneReferenz]]
-    ):
+    ) -> None:
         go = Geschaeftsobjekt(
             bo_typ=bo_typ,
             versionstruktur=versionstruktur,
@@ -48,17 +48,17 @@ class TestGeschaeftsobjet:
         assert go_deserialized.versionstruktur == versionstruktur
         assert go_deserialized.externe_referenzen == externe_referenzen
 
-    def test_initialization_with_minimal_attributs(self):
+    def test_initialization_with_minimal_attributs(self) -> None:
         go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)
 
         assert go.externe_referenzen == []
         assert go.versionstruktur == "2"
 
-    def test_no_list_in_externen_referenzen(self):
+    def test_no_list_in_externen_referenzen(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftsobjekt(
                 bo_typ=BoTyp.ENERGIEMENGE,
-                externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
+                externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
         assert "1 validation error" in str(excinfo.value)
         assert "value is not a valid list" in str(excinfo.value)

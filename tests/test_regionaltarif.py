@@ -71,18 +71,18 @@ class TestRegionaltarif:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, regionaltarif: Regionaltarif):
+    def test_serialization_roundtrip(self, regionaltarif: Regionaltarif) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(regionaltarif)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Regionaltarif()
+            _ = Regionaltarif()  # type: ignore[call-arg]
         assert "11 validation error" in str(excinfo.value)  # 3 from regionaltarif + 8 from tarifinfo
 
-    def test_failing_validation_list_length_at_least_one(self):
+    def test_failing_validation_list_length_at_least_one(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Regionaltarif(
                 preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),

@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -28,14 +30,14 @@ class TestRegionskriterium:
         ],
     )
     def test_regionskriterium_serialization_roundtrip(
-        self, regionskriterium: Regionskriterium, expected_json_dict: dict
-    ):
+        self, regionskriterium: Regionskriterium, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
         assert_serialization_roundtrip(regionskriterium, expected_json_dict)
 
-    def test_regionskriterium_missing_required_attribute(self):
+    def test_regionskriterium_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Regionskriterium()
+            _ = Regionskriterium()  # type: ignore[call-arg]
         assert "3 validation errors" in str(excinfo.value)

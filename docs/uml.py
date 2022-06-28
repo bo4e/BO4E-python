@@ -3,13 +3,21 @@ import inspect
 import os
 import pkgutil
 import re
+from re import Pattern
 
-import networkx as nx
-from pydantic.fields import MAPPING_LIKE_SHAPES, SHAPE_TUPLE, SHAPE_GENERIC, SHAPE_SINGLETON, SHAPE_NAME_LOOKUP
+import networkx as nx  # type: ignore[import]
+from pydantic.fields import (
+    MAPPING_LIKE_SHAPES,
+    SHAPE_TUPLE,
+    SHAPE_GENERIC,
+    SHAPE_SINGLETON,
+    SHAPE_NAME_LOOKUP,
+    ModelField,
+)
 from pydantic.typing import display_as_type
 
 
-def build_dots(module_dir: str, output_dir: str, radius=1):
+def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
     pkgs_scope = {
         "bo": ["bo", "com"],
         "com": ["bo", "com"],
@@ -34,12 +42,12 @@ def build_dots(module_dir: str, output_dir: str, radius=1):
 
     print("Successfully created relationship network.")
 
-    for modl in parse_to_dot:
-        spl = modl.split(".")
+    for modl_to_parse in parse_to_dot:
+        spl = modl_to_parse.split(".")
         modl_cls_name = spl[-1]
         dot_path = output_dir + f"{os.path.sep}dots{os.path.sep}" + os.path.sep.join(spl[0:-2])
         dot_file = f"{modl_cls_name}.dot"
-        uml_subgraph = nx.ego_graph(uml_network, modl, radius=radius, undirected=False)
+        uml_subgraph = nx.ego_graph(uml_network, modl_to_parse, radius=radius, undirected=False)
         dot_content = 'digraph "' + modl_cls_name + '" {\nrankdir=BT\ncharset="utf-8"\n'
         for node in uml_subgraph.nodes:
             dot_content += uml_subgraph.nodes[node]["dot_node_str"] + "\n"
@@ -53,7 +61,13 @@ def build_dots(module_dir: str, output_dir: str, radius=1):
             print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
 
 
-def recursive_helper(cls_cur, modl_namespace, uml_network, regex_incl_network, regex_excl_network):
+def recursive_helper(
+    cls_cur,
+    modl_namespace: str,
+    uml_network: nx.MultiDiGraph,  # type: ignore[no-untyped-def]
+    regex_incl_network: Pattern[str],
+    regex_excl_network: Pattern[str],
+) -> None:
     # print(f'"{modl_namespace}" added.')
     uml_network.add_node(modl_namespace, model_cls=cls_cur, dot_node_str="will be replaced")
     dot_cls_str = rf'"{modl_namespace}" [color="black", fontcolor="black", label="' + "{" + rf"{modl_namespace}|"
@@ -90,7 +104,7 @@ def recursive_helper(cls_cur, modl_namespace, uml_network, regex_incl_network, r
             )
 
 
-def model_field_str(model_field):
+def model_field_str(model_field: ModelField) -> str:
     # Copied from pydantic.field.ModelField._type_display()
     t = display_as_type(model_field.type_)
 

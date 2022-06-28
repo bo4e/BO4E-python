@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 
 from bo4e.com.geraet import Geraet
@@ -28,7 +30,7 @@ class TestGeraet:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, geraet: Geraet, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, geraet: Geraet, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Geraet
         """

@@ -30,12 +30,12 @@ class Netznutzungsrechnung(Rechnung):
     bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Sparte
-    absendercodenummer: constr(strict=True, regex=r"^\d{13}$")
+    absendercodenummer: constr(strict=True, regex=r"^\d{13}$")  # type: ignore[valid-type]
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
-    empfaengercodenummer: constr(strict=True, regex=r"^\d{13}$")
+    empfaengercodenummer: constr(strict=True, regex=r"^\d{13}$")  # type: ignore[valid-type]
     """
     Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.

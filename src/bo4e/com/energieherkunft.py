@@ -27,4 +27,4 @@ class Energieherkunft(COM):
     #: Art der Erzeugung der Energie.
     erzeugungsart: Erzeugungsart
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
-    anteil_prozent: condecimal(gt=0, lt=100)
+    anteil_prozent: condecimal(gt=0, lt=100)  # type: ignore[valid-type]

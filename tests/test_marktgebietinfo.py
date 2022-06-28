@@ -2,7 +2,7 @@ from bo4e.com.marktgebietinfo import MarktgebietInfo
 
 
 class TestMarktgebietinfo:
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         mgi = MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")
 
         json_string = mgi.json(by_alias=True, ensure_ascii=False)

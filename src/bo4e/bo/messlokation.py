@@ -3,9 +3,9 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import List, Optional
+from typing import List, Optional, Dict, Any
 
-from iso3166 import countries  # type:ignore[import]
+from iso3166 import countries
 
 # Structure of a Messlokations-ID
 # Ländercode nach DIN ISO 3166 (2 Stellen)
@@ -92,9 +92,8 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     # pylint: disable=unused-argument
-    # pylint: disable=no-self-argument
     @validator("messlokations_id", always=True)
-    def _validate_messlokations_id(cls, messlokations_id):
+    def _validate_messlokations_id(cls, messlokations_id: str) -> str:
         if not messlokations_id:
             raise ValueError("The messlokations_id must not be empty.")
         if not _melo_id_pattern.match(messlokations_id):
@@ -103,9 +102,10 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError(f"The country code '{messlokations_id[0:2]}' is not a valid country code")
         return messlokations_id
 
-    # pylint: disable=no-self-argument
     @validator("katasterinformation", always=True)
-    def validate_address_info(cls, katasterinformation, values):
+    def validate_address_info(
+        cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
+    ) -> Optional[Katasteradresse]:
         """Checks that if an address is given, that there is only one valid address given"""
         all_address_attributes = [
             values["messadresse"],
@@ -117,9 +117,10 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError("More than one address information is given.")
         return katasterinformation
 
-    # pylint: disable=no-self-argument
     @validator("grundzustaendiger_msbim_codenr", always=True)
-    def validate_grundzustaendiger_x_codenr(cls, grundzustaendiger_msbim_codenr, values):
+    def validate_grundzustaendiger_x_codenr(
+        cls, grundzustaendiger_msbim_codenr: Optional[str], values: Dict[str, Any]
+    ) -> Optional[str]:
         """Checks that if a codenr is given, that there is only one valid codenr given."""
         all_grundzustaendiger_x_codenr_attributes = [
             values["grundzustaendiger_msb_codenr"],

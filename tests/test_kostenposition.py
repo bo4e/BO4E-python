@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -99,19 +100,19 @@ class TestKostenposition:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Kostenposition
         """
         assert_serialization_roundtrip(kostenposition, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Kostenposition()
+            _ = Kostenposition()  # type: ignore[call-arg]
 
         assert "4 validation errors" in str(excinfo.value)
 
-    def test_von_bis_validation_attribute(self):
+    def test_von_bis_validation_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Kostenposition(
                 positionstitel="Mudders Preisstaffel",

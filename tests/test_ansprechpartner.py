@@ -13,7 +13,7 @@ from bo4e.enum.titel import Titel
 
 
 class TestAnsprechpartner:
-    def test_de_serialisation_minimal_attributes(self):
+    def test_de_serialisation_minimal_attributes(self) -> None:
         """
         Test de-/serialisation of Ansprechpartner only with required attributes
         """
@@ -56,7 +56,7 @@ class TestAnsprechpartner:
         assert isinstance(deserialized_ansprechpartner.geschaeftspartner, Geschaeftspartner)
         assert deserialized_ansprechpartner == ansprechpartner
 
-    def test_de_serialisation_maximal_attributes(self):
+    def test_de_serialisation_maximal_attributes(self) -> None:
         """
         Test de-/serialisation of Ansprechpartner only with required attributes
         """

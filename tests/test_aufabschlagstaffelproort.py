@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -25,14 +26,16 @@ class TestAufAbschlagstaffelProOrt:
             ),
         ],
     )
-    def test_aufabschlagstaffelproort_required_attributes(self, aufabschlagstaffelproort, expected_json_dict):
+    def test_aufabschlagstaffelproort_required_attributes(
+        self, aufabschlagstaffelproort: AufAbschlagstaffelProOrt, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of AufAbschlagstaffelProOrt with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlagstaffelproort, expected_json_dict)
 
-    def test_aufabschlagstaffelproort_missing_required_attribute(self):
+    def test_aufabschlagstaffelproort_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlagstaffelProOrt()
+            _ = AufAbschlagstaffelProOrt()  # type: ignore[call-arg]
 
         assert "3 validation errors" in str(excinfo.value)

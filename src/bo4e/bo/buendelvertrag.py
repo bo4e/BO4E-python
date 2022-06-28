@@ -26,4 +26,4 @@ class Buendelvertrag(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.BUENDELVERTRAG
     #: Die Liste mit den Einzelverträgen zu den Abnahmestellen
-    einzelvertraege: conlist(Vertrag, min_items=1)
+    einzelvertraege: conlist(Vertrag, min_items=1)  # type: ignore[valid-type]

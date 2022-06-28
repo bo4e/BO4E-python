@@ -61,11 +61,11 @@ class TestAusschreibung:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, ausschreibung: Ausschreibung):
+    def test_serialization_roundtrip(self, ausschreibung: Ausschreibung) -> None:
         assert_serialization_roundtrip(ausschreibung)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibung()
+            _ = Ausschreibung()  # type: ignore[call-arg]
 
         assert "9 validation errors" in str(excinfo.value)

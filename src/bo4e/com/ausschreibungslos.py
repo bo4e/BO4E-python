@@ -49,7 +49,7 @@ class Ausschreibungslos(COM):
     anzahl_lieferstellen: int
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: conlist(Ausschreibungsdetail, min_items=1)
+    lieferstellen: conlist(Ausschreibungsdetail, min_items=1)  # type: ignore[valid-type]
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
     lieferzeitraum: Zeitraum

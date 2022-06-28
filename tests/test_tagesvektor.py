@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -39,19 +40,19 @@ class TestTagesvektor:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tagesvektor: Tagesvektor, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, tagesvektor: Tagesvektor, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Preisstaffel.
         """
         assert_serialization_roundtrip(tagesvektor, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Tagesvektor()
+            _ = Tagesvektor()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)
 
-    def test_list_not_long_enough_attribute(self):
+    def test_list_not_long_enough_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Tagesvektor(tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc), werte=[])
 

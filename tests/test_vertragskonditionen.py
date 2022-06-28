@@ -19,7 +19,7 @@ example_vertragskonditionen = Vertragskonditionen(
 
 
 class TestVertragskonditionen:
-    def test_vertragskonditionen_with_optional_attributes(self):
+    def test_vertragskonditionen_with_optional_attributes(self) -> None:
         """
         Test de-/serialisation of Vertragskonditionen (only has optional attributes).
         """
@@ -49,7 +49,7 @@ class TestVertragskonditionen:
             einheit=Zeiteinheit.TAG, dauer=Decimal(14)
         )
 
-    def test_vertragskonditionen_empty(self):
+    def test_vertragskonditionen_empty(self) -> None:
         """
         Test empty Vertragskonditionen (only has optional attributes).
         """

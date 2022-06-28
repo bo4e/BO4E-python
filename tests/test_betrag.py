@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -23,13 +24,13 @@ class TestBetrag:
             pytest.param(example_betrag, example_betrag_json),
         ],
     )
-    def test_regionskriterium_serialization_roundtrip(self, betrag: Betrag, expected_json_dict: dict):
+    def test_regionskriterium_serialization_roundtrip(self, betrag: Betrag, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
         assert_serialization_roundtrip(betrag, expected_json_dict)
 
-    def test_regionskriterium_missing_required_attribute(self):
+    def test_regionskriterium_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Betrag()
+            _ = Betrag()  # type: ignore[call-arg]
         assert "2 validation errors" in str(excinfo.value)

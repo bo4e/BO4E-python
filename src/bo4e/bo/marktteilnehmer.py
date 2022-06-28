@@ -32,7 +32,7 @@ class Marktteilnehmer(Geschaeftspartner):
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: constr(strict=True, regex=r"^\d{13}$")
+    rollencodenummer: constr(strict=True, regex=r"^\d{13}$")  # type: ignore[valid-type]
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
 

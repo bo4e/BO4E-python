@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -111,14 +112,16 @@ class TestFremdkostenposition:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, fremdkostenposition: Fremdkostenposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, fremdkostenposition: Fremdkostenposition, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Fremdkostenposition.
         """
         assert_serialization_roundtrip(fremdkostenposition, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Fremdkostenposition()
+            _ = Fremdkostenposition()  # type: ignore[call-arg]
 
         assert "4 validation errors" in str(excinfo.value)

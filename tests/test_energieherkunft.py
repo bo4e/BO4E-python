@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -24,15 +25,17 @@ class TestEnergieherkunft:
             ),
         ],
     )
-    def test_energieherkunft_required_attributes(self, energieherkunft, expected_json_dict):
+    def test_energieherkunft_required_attributes(
+        self, energieherkunft: Energieherkunft, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Energieherkunft with minimal attributes.
         """
         assert_serialization_roundtrip(energieherkunft, expected_json_dict)
 
-    def test_energieherkunft_missing_required_attribute(self):
+    def test_energieherkunft_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Energieherkunft()
+            _ = Energieherkunft()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)
 
@@ -43,7 +46,7 @@ class TestEnergieherkunft:
             pytest.param(-2),
         ],
     )
-    def test_energieherkunft_failing_validation(self, failing_percentage):
+    def test_energieherkunft_failing_validation(self, failing_percentage: float) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = (Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(failing_percentage)),)
 

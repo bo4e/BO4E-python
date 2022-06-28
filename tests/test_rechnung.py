@@ -113,13 +113,13 @@ class TestRechnung:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, rechnung: Rechnung):
+    def test_serialization_roundtrip(self, rechnung: Rechnung) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(rechnung)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Rechnung()
+            _ = Rechnung()  # type: ignore[call-arg]
         assert "13 validation errors" in str(excinfo.value)  # 13 from rechnung

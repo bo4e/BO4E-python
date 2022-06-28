@@ -3,13 +3,16 @@ Contains validators for BO s and COM s classes.
 """
 import re
 from datetime import datetime
-from typing import Optional, Protocol
+from typing import Optional, Protocol, Dict, Any
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 
 
 # pylint: disable=unused-argument
-def einheit_only_for_abschlagstyp_absolut(cls, value, values):
+from bo4e.enum.waehrungseinheit import Waehrungseinheit
+
+
+def einheit_only_for_abschlagstyp_absolut(cls, value: Waehrungseinheit, values: Dict[str, Any]) -> Waehrungseinheit:  # type: ignore[no-untyped-def]
     """
     Check that einheit is only there if abschlagstyp is absolut.
     Currently, (2021-12-15) only used in COM AufAbschlag.
@@ -26,7 +29,7 @@ class _VonBisType(Protocol):
     """
 
     @staticmethod
-    def _get_inclusive_start(values) -> Optional[datetime]:
+    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
         """
         should return the inclusive start of the timeslice
         """
@@ -37,7 +40,7 @@ class _VonBisType(Protocol):
     #     """
 
 
-def check_bis_is_later_than_von(cls, value, values):
+def check_bis_is_later_than_von(cls, value: datetime, values: Dict[str, Any]):  # type: ignore[no-untyped-def]
     """
     assert that 'bis' is later than 'von'
     """
@@ -58,7 +61,7 @@ _malo_id_pattern = re.compile(r"^[1-9]\d{10}$")
 
 
 # pylint: disable=unused-argument
-def validate_marktlokations_id(cls, marktlokations_id, values):
+def validate_marktlokations_id(cls, marktlokations_id: str, values: Dict[str, Any]) -> str:  # type: ignore[no-untyped-def]
     """
     A validator for marktlokations IDs
     """

@@ -2,7 +2,7 @@ from bo4e.com.katasteradresse import Katasteradresse
 
 
 class TestKatasteradresse:
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         ka = Katasteradresse(gemarkung_flur="hello", flurstueck="world")
 
         json_string = ka.json(by_alias=True, ensure_ascii=False)

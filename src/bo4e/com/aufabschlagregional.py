@@ -38,7 +38,7 @@ class AufAbschlagRegional(COM):
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    betraege: conlist(AufAbschlagProOrt, min_items=1)
+    betraege: conlist(AufAbschlagProOrt, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag

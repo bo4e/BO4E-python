@@ -34,7 +34,7 @@ class Kosten(Geschaeftsobjekt):
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Zeitraum
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: conlist(Kostenblock, min_items=1)
+    kostenbloecke: conlist(Kostenblock, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen

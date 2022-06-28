@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -45,14 +46,16 @@ class TestRegionalePreisstaffel:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, regionale_preisstaffel: RegionalePreisstaffel, expected_json_dict):
+    def test_serialization_roundtrip(
+        self, regionale_preisstaffel: RegionalePreisstaffel, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of RegionalePreisgarantie with maximal attributes.
         """
         assert_serialization_roundtrip(regionale_preisstaffel, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = RegionalePreisgarantie()
+            _ = RegionalePreisgarantie()  # type: ignore[call-arg]
 
         assert "3 validation errors" in str(excinfo.value)

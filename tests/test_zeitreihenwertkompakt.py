@@ -9,7 +9,7 @@ from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
 
 class TestZeitreihenwertkompakt:
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         zrwk = Zeitreihenwertkompakt(
             wert=Decimal(1.5), status=Messwertstatus.ABGELESEN, statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL
         )
@@ -29,19 +29,19 @@ class TestZeitreihenwertkompakt:
         assert deserialized_zrwk.statuszusatz == Messwertstatuszusatz.Z78_GERAETEWECHSEL
         assert deserialized_zrwk == zrwk
 
-    def test_wrong_datatype(self):
+    def test_wrong_datatype(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwertkompakt(wert="helloooo")
+            _ = Zeitreihenwertkompakt(wert="helloooo")  # type: ignore[arg-type]
 
         assert "wert" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwertkompakt(status=Messwertstatus.ABGELESEN)
+            _ = Zeitreihenwertkompakt(status=Messwertstatus.ABGELESEN)  # type: ignore[call-arg]
 
         assert "1 validation error" in str(excinfo.value)
 
-    def test_only_required(self):
+    def test_only_required(self) -> None:
         zrwk = Zeitreihenwertkompakt(
             wert=Decimal(1.5),
         )

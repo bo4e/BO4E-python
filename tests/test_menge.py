@@ -15,7 +15,7 @@ example_menge_dict = {
 
 
 class TestMenge:
-    def test_menge(self):
+    def test_menge(self) -> None:
         """
         Test de-/serialisation of Menge (only has required attributes).
         """
@@ -32,17 +32,17 @@ class TestMenge:
         assert isinstance(menge_deserialized.einheit, Mengeneinheit)
         assert menge_deserialized.einheit == Mengeneinheit.MWH
 
-    def test_wrong_datatype(self):
+    def test_wrong_datatype(self) -> None:
         """
         A string "3.14" would be casted to decimal from pydantic therefore no validation error would occure in this case.
         """
         with pytest.raises(ValidationError) as excinfo:
-            _ = Menge(wert="hallo", einheit=Mengeneinheit.MWH)
+            _ = Menge(wert="hallo", einheit=Mengeneinheit.MWH)  # type: ignore[arg-type]
 
         assert "wert" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Menge(wert=Decimal(3.14))
+            _ = Menge(wert=Decimal(3.14))  # type: ignore[call-arg]
 
         assert "1 validation error" in str(excinfo.value)

@@ -17,7 +17,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 class TestZaehler:
-    def test_de_serialisation(self):
+    def test_de_serialisation(self) -> None:
         """
         Test de-/serialisation of Zaehler only with required attributes
         """
@@ -52,7 +52,7 @@ class TestZaehler:
         deserialized_zaehler = Zaehler.parse_raw(json_string)
         assert deserialized_zaehler == zaehler
 
-    def test_serialization_fails_for_invalid_obis(self):
+    def test_serialization_fails_for_invalid_obis(self) -> None:
         """
         Test serialisation of Zaehler fails if OBIS is wrong.
         """
@@ -78,7 +78,7 @@ class TestZaehler:
         assert "obisKennzahl" in str(excinfo.value)
         assert "string does not match regex" in str(excinfo.value)
 
-    def test_serialization_fails_for_empty_zaehlwerke(self):
+    def test_serialization_fails_for_empty_zaehlwerke(self) -> None:
         """
         Test serialisation of Zaehler fails if there are no zaehlwerke.
         """

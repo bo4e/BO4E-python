@@ -58,7 +58,7 @@ class Ausschreibung(Geschaeftsobjekt):
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
-    lose: conlist(Ausschreibungslos, min_items=1)
+    lose: conlist(Ausschreibungslos, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale

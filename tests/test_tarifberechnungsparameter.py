@@ -38,12 +38,12 @@ class TestFremdkostenposition:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifberechnungsparameter: Fremdkostenposition):
+    def test_serialization_roundtrip(self, tarifberechnungsparameter: Fremdkostenposition) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifberechnungsparameter)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         _ = Tarifberechnungsparameter()
         # ok, we're done. no exception here because there are no required attributes

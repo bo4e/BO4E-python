@@ -34,7 +34,7 @@ class Angebotsteil(COM):
 
     # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: conlist(Angebotsposition, min_items=1)
+    positionen: conlist(Angebotsposition, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung

@@ -47,7 +47,7 @@ class Preisposition(COM):
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
     bezugsgroesse: Mengeneinheit
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: conlist(Preisstaffel, min_items=1)
+    preisstaffeln: conlist(Preisstaffel, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     zeitbasis: Optional[Zeiteinheit] = None
@@ -71,6 +71,5 @@ class Preisposition(COM):
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)
     """
-    artikel_id: ArtikelId = (
-        None  #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
-    )
+    #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
+    artikel_id: Optional[ArtikelId] = None

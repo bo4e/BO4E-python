@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from datetime import datetime
 from decimal import Decimal
-from typing import Optional
+from typing import Optional, Dict, Any
 
 from pydantic import validator
 
@@ -40,9 +40,8 @@ class Zeitraum(COM):
     endzeitpunkt: Optional[datetime] = None
 
     # pylint: disable=unused-argument
-    # pylint: disable=no-self-argument
     @validator("endzeitpunkt", always=True)
-    def time_range_possibilities(cls, endzeitpunkt, values):
+    def time_range_possibilities(cls, endzeitpunkt: Optional[datetime], values: Dict[str, Any]) -> Optional[datetime]:
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
         This functions checks for these conditions of a valid address.

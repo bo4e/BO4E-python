@@ -54,13 +54,13 @@ class TestTarifpreisblatt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreisblatt: Tarifpreisblatt):
+    def test_serialization_roundtrip(self, tarifpreisblatt: Tarifpreisblatt) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifpreisblatt)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreisblatt()
+            _ = Tarifpreisblatt()  # type: ignore[call-arg]
         assert "11 validation error" in str(excinfo.value)  # 8 from tarifinfo + 3 from tarifpreisblatt

@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -26,12 +28,12 @@ class TestStandorteigenschaftenStrom:
         ],
     )
     def test_serialization_roundtrip(
-        self, standorteigenschaften_strom: StandorteigenschaftenStrom, expected_json_dict: dict
-    ):
+        self, standorteigenschaften_strom: StandorteigenschaftenStrom, expected_json_dict: Dict[str, Any]
+    ) -> None:
         assert_serialization_roundtrip(standorteigenschaften_strom, expected_json_dict)
 
-    def test_missing_required_attributes(self):
+    def test_missing_required_attributes(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = StandorteigenschaftenStrom()
+            _ = StandorteigenschaftenStrom()  # type: ignore[call-arg]
 
         assert "3 validation errors" in str(excinfo.value)

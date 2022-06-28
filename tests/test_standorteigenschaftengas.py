@@ -1,3 +1,5 @@
+from typing import Dict, Any, List
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -25,13 +27,13 @@ class TestStandorteigenschaftenGas:
         ],
     )
     def test_standorteigenschaftengas_serialization_roundtrip(
-        self, standorteigenschaftengas: StandorteigenschaftenGas, expected_json_dict: dict
-    ):
+        self, standorteigenschaftengas: StandorteigenschaftenGas, expected_json_dict: Dict[str, Any]
+    ) -> None:
         assert_serialization_roundtrip(standorteigenschaftengas, expected_json_dict)
 
-    def test_standorteigenschaftengas_missing_required_attributes(self):
+    def test_standorteigenschaftengas_missing_required_attributes(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = StandorteigenschaftenGas()
+            _ = StandorteigenschaftenGas()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)
 
@@ -48,7 +50,9 @@ class TestStandorteigenschaftenGas:
             ),
         ],
     )
-    def test_standorteigenschaftengas_list_lenght_validation(self, wrong_netzkontonummern, expected_error_message):
+    def test_standorteigenschaftengas_list_lenght_validation(
+        self, wrong_netzkontonummern: List[str], expected_error_message: str
+    ) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = StandorteigenschaftenGas(
                 netzkontonummern=wrong_netzkontonummern,

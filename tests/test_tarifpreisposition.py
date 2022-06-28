@@ -1,4 +1,5 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -78,19 +79,21 @@ class TestTarifpreisposition:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreisposition: Tarifpreisposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, tarifpreisposition: Tarifpreisposition, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Tarifpreisposition.
         """
         assert_serialization_roundtrip(tarifpreisposition, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreisposition()
+            _ = Tarifpreisposition()  # type: ignore[call-arg]
 
         assert "4 validation errors" in str(excinfo.value)
 
-    def test_tarifpreisposition_betraege_required(self):
+    def test_tarifpreisposition_betraege_required(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Tarifpreisposition(
                 preistyp=Preistyp.ENTGELT_ABLESUNG,

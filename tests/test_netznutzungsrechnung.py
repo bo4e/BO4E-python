@@ -135,13 +135,13 @@ class TestNetznutzungsrechnung:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, nnrechnung: Netznutzungsrechnung):
+    def test_serialization_roundtrip(self, nnrechnung: Netznutzungsrechnung) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(nnrechnung)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Netznutzungsrechnung()
+            _ = Netznutzungsrechnung()  # type: ignore[call-arg]
         assert "20 validation errors" in str(excinfo.value)  # 13 from rechnung + 7 from Netznutzungsrechnung

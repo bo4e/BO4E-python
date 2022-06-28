@@ -30,11 +30,11 @@ class TestZeitreihe:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, zeitreihe: Zeitreihe):
+    def test_serialization_roundtrip(self, zeitreihe: Zeitreihe) -> None:
         assert_serialization_roundtrip(zeitreihe)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihe()
+            _ = Zeitreihe()  # type: ignore[call-arg]
 
         assert "6 validation errors" in str(excinfo.value)

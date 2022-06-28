@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -52,15 +53,15 @@ class TestVerbrauch:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, verbrauch: Verbrauch, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, verbrauch: Verbrauch, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Verbrauch.
         """
         assert_serialization_roundtrip(verbrauch, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Verbrauch()
+            _ = Verbrauch()  # type: ignore[call-arg]
 
         assert "4 validation errors" in str(excinfo.value)
 
@@ -70,7 +71,7 @@ class TestVerbrauch:
             pytest.param("foo"),  # not a obis instance
         ],
     )
-    def test_failing_validation_obis(self, not_a_valid_obis: str):
+    def test_failing_validation_obis(self, not_a_valid_obis: str) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Verbrauch(
                 obis_kennzahl=not_a_valid_obis,
@@ -85,7 +86,7 @@ class TestVerbrauch:
         assert "obisKennzahl" in str(excinfo.value)
         assert "string does not match regex" in str(excinfo.value)
 
-    def test_failing_validation_end_later_than_start(self):
+    def test_failing_validation_end_later_than_start(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Verbrauch(
                 obis_kennzahl="1-0:1.8.1",

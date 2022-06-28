@@ -3,7 +3,7 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import Optional
+from typing import Optional, Dict, Any
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -30,7 +30,7 @@ class Verbrauch(COM):
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Wertermittlungsverfahren
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:
-    obis_kennzahl: constr(strict=True, regex=OBIS_PATTERN)
+    obis_kennzahl: constr(strict=True, regex=OBIS_PATTERN)  # type: ignore[valid-type]  # type: ignore[valid-type]
     #: Gibt den absoluten Wert der Menge an
     wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
@@ -44,7 +44,7 @@ class Verbrauch(COM):
     _bis_check = validator("enddatum", always=True, allow_reuse=True)(check_bis_is_later_than_von)
 
     @staticmethod
-    def _get_inclusive_start(values) -> Optional[datetime]:
+    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
         """a method for easier usage of the check_bis_is_later_than_von validator"""
         return values["startdatum"]
 

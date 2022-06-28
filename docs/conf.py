@@ -20,7 +20,7 @@ __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
-sys.path.insert(0, os.path.join(__location__, "../"))
+sys.path.insert(0, os.path.join(__location__, "../docs"))
 from uml import build_dots
 
 # -- Run sphinx-apidoc ------------------------------------------------------

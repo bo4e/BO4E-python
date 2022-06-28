@@ -21,11 +21,11 @@ class TestStandorteigenschaften:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, standorteigenschaften: Standorteigenschaften):
+    def test_serialization_roundtrip(self, standorteigenschaften: Standorteigenschaften) -> None:
         assert_serialization_roundtrip(standorteigenschaften)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Standorteigenschaften()
+            _ = Standorteigenschaften()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)

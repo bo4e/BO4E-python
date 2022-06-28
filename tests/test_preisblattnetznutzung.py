@@ -32,13 +32,13 @@ class TestPreisblatt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, preisblatt_netznutzung: PreisblattNetznutzung):
+    def test_serialization_roundtrip(self, preisblatt_netznutzung: PreisblattNetznutzung) -> None:
         """
         Test de-/serialisation
         """
         assert_serialization_roundtrip(preisblatt_netznutzung)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = PreisblattNetznutzung()
+            _ = PreisblattNetznutzung()  # type: ignore[call-arg]
         assert "8 validation errors" in str(excinfo.value)  # 5 from preisblatt + 3 from preisblatt netznutzung

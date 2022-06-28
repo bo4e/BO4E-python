@@ -1,3 +1,5 @@
+from typing import Dict, Any
+
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
 
@@ -21,15 +23,17 @@ class TestGeraeteeigenschaften:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, geraeteeigenschaften: Geraeteeigenschaften, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, geraeteeigenschaften: Geraeteeigenschaften, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Geraeteeigenschaften
         """
         assert_serialization_roundtrip(geraeteeigenschaften, expected_json_dict)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Geraeteeigenschaften()
+            _ = Geraeteeigenschaften()  # type: ignore[call-arg]
 
         assert "1 validation error" in str(excinfo.value)
 
@@ -40,7 +44,7 @@ class TestGeraeteeigenschaften:
             pytest.param("foo"),  # not a geraetetyp
         ],
     )
-    def test_failing_validation(self, not_a_geraetetyp):
+    def test_failing_validation(self, not_a_geraetetyp: Any) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Geraeteeigenschaften(geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=not_a_geraetetyp)
 

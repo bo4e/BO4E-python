@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError
@@ -38,14 +39,16 @@ class TestPreisgarantie:
             ),
         ],
     )
-    def test_preisgarantie_required_attributes(self, preisgarantie, expected_json_dict):
+    def test_preisgarantie_required_attributes(
+        self, preisgarantie: Preisgarantie, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Preisgarantie with minimal attributes.
         """
         assert_serialization_roundtrip(preisgarantie, expected_json_dict)
 
-    def test_preisgarantie_missing_required_attribute(self):
+    def test_preisgarantie_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Preisgarantie()
+            _ = Preisgarantie()  # type: ignore[call-arg]
 
         assert "2 validation errors" in str(excinfo.value)

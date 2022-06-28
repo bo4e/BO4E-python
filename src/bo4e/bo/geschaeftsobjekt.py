@@ -1,6 +1,6 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import List
+from typing import List, Optional
 
 from humps.main import camelize
 
@@ -32,7 +32,7 @@ class Geschaeftsobjekt(BaseModel):
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes
-    externe_referenzen: List[ExterneReferenz] = []
+    externe_referenzen: Optional[List[ExterneReferenz]] = []
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
 
     class Config:

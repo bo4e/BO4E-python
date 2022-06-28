@@ -35,7 +35,7 @@ class Tarifpreisposition(COM):
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: conlist(Preisstaffel, min_items=1)
+    preisstaffeln: conlist(Preisstaffel, min_items=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)

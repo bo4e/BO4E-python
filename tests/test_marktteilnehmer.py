@@ -26,7 +26,7 @@ example_marktteilnehmer = Marktteilnehmer(
 
 
 class TestMarktteilnehmer:
-    def test_serialization(self):
+    def test_serialization(self) -> None:
         mt = example_marktteilnehmer
 
         assert mt.versionstruktur == "2", "versionstruktur was not automatically set"

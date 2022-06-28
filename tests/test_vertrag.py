@@ -76,7 +76,7 @@ class TestVertrag:
             vertragsteile=self._vertragsteile,
         )
 
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test de-/serialisation of Vertrag with minimal attributes.
         """
@@ -107,7 +107,7 @@ class TestVertrag:
         assert vertrag_deserialized.vertragspartner2 == self._vertragspartner2
         assert vertrag_deserialized.vertragsteile == self._vertragsteile
 
-    def test_serialisation_required_and_optional_attributes(self):
+    def test_serialisation_required_and_optional_attributes(self) -> None:
         """
         Test de-/serialisation of Vertrag with maximal attributes.
         """
@@ -181,13 +181,13 @@ class TestVertrag:
         assert vertrag_deserialized.unterzeichnervp1 == [Unterschrift(name="Foo")]
         assert vertrag_deserialized.unterzeichnervp2 == [Unterschrift(name="Bar"), Unterschrift(name="Dr.No")]
 
-    def test_missing_required_attributes(self):
+    def test_missing_required_attributes(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Vertrag()
+            _ = Vertrag()  # type: ignore[call-arg]
 
         assert "9 validation errors" in str(excinfo.value)
 
-    def test_serialization_fails_for_empty_vertragsteile(self):
+    def test_serialization_fails_for_empty_vertragsteile(self) -> None:
         """
         Test serialisation of Zaehler fails if there are no vertragsteile.
         """

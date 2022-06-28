@@ -5,7 +5,7 @@ from bo4e.enum.arithmetische_operation import ArithmetischeOperation
 
 
 class TestMesslokationszuordnung:
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test serialisation of Messlokationszuordnung with required attributes only
         """
@@ -26,7 +26,7 @@ class TestMesslokationszuordnung:
         assert mlz_deserialized.messlokations_id == messlokations_id
         assert mlz_deserialized.arithmetik == ArithmetischeOperation.ADDITION
 
-    def test_serialisation_required_and_optional_attributes(self):
+    def test_serialisation_required_and_optional_attributes(self) -> None:
         """
         Test serialisation of Messlokationszuordnung with required and optional attributes
         """

@@ -1,10 +1,11 @@
 from decimal import Decimal
+from typing import Dict, Any
 
 import pytest  # type:ignore[import]
 
 from bo4e.com.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
-from bo4e.com.menge import Menge  # type:ignore[import]
+from bo4e.com.menge import Menge
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -96,7 +97,9 @@ class TestTarifeinschraenkung:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifeinschraenkung: Tarifeinschraenkung, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, tarifeinschraenkung: Tarifeinschraenkung, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Tarifeinschraenkung
         """
