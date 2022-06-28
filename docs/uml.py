@@ -58,7 +58,8 @@ def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
         os.makedirs(dot_path, exist_ok=True)
         with open(f"{dot_path}{os.path.sep}{dot_file}", "w") as f:
             f.write(dot_content)
-            print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
+            # print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
+    print("Successfully created dot files.")
 
 
 def recursive_helper(  # type: ignore[no-untyped-def]

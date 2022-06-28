@@ -38,8 +38,8 @@ class TestExterneReferenz:
         gp_json = gp.json(by_alias=True, ensure_ascii=False)
 
         deserialized_gp: Geschaeftspartner = Geschaeftspartner.parse_raw(gp_json)
-        assert len(deserialized_gp.externe_referenzen) == 2
-        assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"
+        assert len(deserialized_gp.externe_referenzen) == 2  # type: ignore[arg-type]
+        assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"  # type: ignore[index]
 
     def test_geschaeftspartner_with_no_externe_referenz(self) -> None:
         gp = Geschaeftspartner(
