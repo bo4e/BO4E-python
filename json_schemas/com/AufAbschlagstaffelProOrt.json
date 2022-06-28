@@ -1,0 +1,24 @@
+{
+    "description": "Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n.. graphviz:: /api/dots/bo4e/com/AufAbschlagstaffelProOrt.dot",
+    "properties": {
+        "staffelgrenzeBis": {
+            "title": "Staffelgrenzebis",
+            "type": "number"
+        },
+        "staffelgrenzeVon": {
+            "title": "Staffelgrenzevon",
+            "type": "number"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "number"
+        }
+    },
+    "required": [
+        "wert",
+        "staffelgrenzeVon",
+        "staffelgrenzeBis"
+    ],
+    "title": "AufAbschlagstaffelProOrt",
+    "type": "object"
+}

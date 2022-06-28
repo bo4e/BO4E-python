@@ -1,0 +1,71 @@
+{
+    "definitions": {
+        "Geraetetyp": {
+            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "enum": [
+                "WECHSELSTROMZAEHLER",
+                "DREHSTROMZAEHLER",
+                "ZWEIRICHTUNGSZAEHLER",
+                "RLM_ZAEHLER",
+                "BALGENGASZAEHLER",
+                "MAXIMUMZAEHLER",
+                "MULTIPLEXANLAGE",
+                "PAUSCHALANLAGE",
+                "VERSTAERKERANLAGE",
+                "SUMMATIONSGERAET",
+                "IMPULSGEBER",
+                "EDL_21_ZAEHLERAUFSATZ",
+                "VIER_QUADRANTEN_LASTGANGZAEHLER",
+                "MENGENUMWERTER",
+                "STROMWANDLER",
+                "SPANNUNGSWANDLER",
+                "KOMBIMESSWANDLER",
+                "BLOCKSTROMWANDLER",
+                "DATENLOGGER",
+                "KOMMUNIKATIONSANSCHLUSS",
+                "MODEM",
+                "TELEKOMMUNIKATIONSEINRICHTUNG",
+                "DREHKOLBENGASZAEHLER",
+                "TURBINENRADGASZAEHLER",
+                "ULTRASCHALLZAEHLER",
+                "WIRBELGASZAEHLER",
+                "MODERNE_MESSEINRICHTUNG",
+                "INTELLIGENTES_MESSYSTEM",
+                "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+                "STEUEREINRICHTUNG",
+                "TARIFSCHALTGERAET",
+                "RUNDSTEUEREMPFAENGER",
+                "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+                "MESSWANDLERSATZ_IMS_MME",
+                "KOMBIMESSWANDLER_IMS_MME",
+                "TARIFSCHALTGERAET_IMS_MME",
+                "RUNDSTEUEREMPFAENGER_IMS_MME",
+                "TEMPERATUR_KOMPENSATION",
+                "HOECHSTBELASTUNGS_ANZEIGER",
+                "SONSTIGES_GERAET",
+                "PREPAYMENTZAEHLER",
+                "EDL_21",
+                "96_H_ZAEHLER",
+                "EDL_40_ZAEHLERAUFSATZ"
+            ],
+            "title": "Geraetetyp",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung einer abrechenbaren Hardware\n\n.. graphviz:: /api/dots/bo4e/com/Hardware.dot",
+    "properties": {
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "geraetetyp": {
+            "$ref": "#/definitions/Geraetetyp"
+        }
+    },
+    "required": [
+        "geraetetyp",
+        "bezeichnung"
+    ],
+    "title": "Hardware",
+    "type": "object"
+}

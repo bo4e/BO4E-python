@@ -1,0 +1,62 @@
+{
+    "definitions": {
+        "Dienstleistungstyp": {
+            "description": "Auflistung möglicher abzurechnender Dienstleistungen.",
+            "enum": [
+                "DATENBEREITSTELLUNG_TAEGLICH",
+                "DATENBEREITSTELLUNG_WOECHENTLICH",
+                "DATENBEREITSTELLUNG_MONATLICH",
+                "DATENBEREITSTELLUNG_JAEHRLICH",
+                "DATENBEREITSTELLUNG_HISTORISCHE_LG",
+                "DATENBEREITSTELLUNG_STUENDLICH",
+                "DATENBEREITSTELLUNG_VIERTELJAEHRLICH",
+                "DATENBEREITSTELLUNG_HALBJAEHRLICH",
+                "DATENBEREITSTELLUNG_MONATLICH_ZUSAETZLICH",
+                "DATENBEREITSTELLUNG_EINMALIG",
+                "AUSLESUNG_2X_TAEGLICH_FERNAUSLESUNG",
+                "AUSLESUNG_TAEGLICH_FERNAUSLESUNG",
+                "AUSLESUNG_MANUELL_MSB",
+                "AUSLESUNG_MONATLICH_FERNAUSLESUNG",
+                "AUSLESUNG_JAEHRLICH_FERNAUSLESUNG",
+                "AUSLESUNG_MDE",
+                "ABLESUNG_MONATLICH",
+                "ABLESUNG_VIERTELJAEHRLICH",
+                "ABLESUNG_HALBJAEHRLICH",
+                "ABLESUNG_JAEHRLICH",
+                "AUSLESUNG_FERNAUSLESUNG",
+                "ABLESUNG_ZUSAETZLICH_MSB",
+                "ABLESUNG_ZUSAETZLICH_KUNDE",
+                "AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB",
+                "AUSLESUNG_MOATLICH_FERNAUSLESUNG",
+                "AUSLESUNG_STUENDLICH_FERNAUSLESUNG",
+                "AUSLESUNG_TEMPERATURMENGENUMWERTER",
+                "AUSLESUNG_ZUSTANDSMENGENUMWERTER",
+                "AUSLESUNG_SYSTEMMENGENUMWERTER",
+                "AUSLESUNG_VORGANG",
+                "AUSLESUNG_KOMPAKTMENGENUMWERTER",
+                "SPERRUNG",
+                "ENTSPERRUNG",
+                "MAHNKOSTEN",
+                "INKASSOKOSTEN"
+            ],
+            "title": "Dienstleistungstyp",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung einer abrechenbaren Dienstleistung.\n\n.. graphviz:: /api/dots/bo4e/com/Dienstleistung.dot",
+    "properties": {
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "dienstleistungstyp": {
+            "$ref": "#/definitions/Dienstleistungstyp"
+        }
+    },
+    "required": [
+        "dienstleistungstyp",
+        "bezeichnung"
+    ],
+    "title": "Dienstleistung",
+    "type": "object"
+}

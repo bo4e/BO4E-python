@@ -1,0 +1,37 @@
+{
+    "definitions": {
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung für ein Zeitintervall. Die Abbildung eines Zeitintervalls.\nZ.B. zur Anwendung als Raster in äquidistanten Zeitreihen/Lastgängen, beispielsweise 15 Minuten.\n\n.. graphviz:: /api/dots/bo4e/com/Zeitintervall.dot",
+    "properties": {
+        "wert": {
+            "title": "Wert",
+            "type": "integer"
+        },
+        "zeiteinheit": {
+            "$ref": "#/definitions/Zeiteinheit"
+        }
+    },
+    "required": [
+        "wert",
+        "zeiteinheit"
+    ],
+    "title": "Zeitintervall",
+    "type": "object"
+}

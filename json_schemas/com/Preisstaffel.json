@@ -1,0 +1,58 @@
+{
+    "definitions": {
+        "Sigmoidparameter": {
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "properties": {
+                "A": {
+                    "title": "A",
+                    "type": "number"
+                },
+                "B": {
+                    "title": "B",
+                    "type": "number"
+                },
+                "C": {
+                    "title": "C",
+                    "type": "number"
+                },
+                "D": {
+                    "title": "D",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "title": "Sigmoidparameter",
+            "type": "object"
+        }
+    },
+    "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+    "properties": {
+        "einheitspreis": {
+            "title": "Einheitspreis",
+            "type": "number"
+        },
+        "sigmoidparameter": {
+            "$ref": "#/definitions/Sigmoidparameter"
+        },
+        "staffelgrenzeBis": {
+            "title": "Staffelgrenzebis",
+            "type": "number"
+        },
+        "staffelgrenzeVon": {
+            "title": "Staffelgrenzevon",
+            "type": "number"
+        }
+    },
+    "required": [
+        "einheitspreis",
+        "staffelgrenzeVon",
+        "staffelgrenzeBis"
+    ],
+    "title": "Preisstaffel",
+    "type": "object"
+}

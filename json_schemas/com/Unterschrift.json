@@ -1,0 +1,23 @@
+{
+    "description": "Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.\n\n.. graphviz:: /api/dots/bo4e/com/Unterschrift.dot",
+    "properties": {
+        "datum": {
+            "format": "date-time",
+            "title": "Datum",
+            "type": "string"
+        },
+        "name": {
+            "title": "Name",
+            "type": "string"
+        },
+        "ort": {
+            "title": "Ort",
+            "type": "string"
+        }
+    },
+    "required": [
+        "name"
+    ],
+    "title": "Unterschrift",
+    "type": "object"
+}

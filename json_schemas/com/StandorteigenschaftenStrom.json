@@ -1,0 +1,24 @@
+{
+    "description": "Standorteigenschaften der Sparte Strom\n\n.. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenStrom.dot",
+    "properties": {
+        "bilanzierungsgebietEic": {
+            "title": "Bilanzierungsgebieteic",
+            "type": "string"
+        },
+        "regelzone": {
+            "title": "Regelzone",
+            "type": "string"
+        },
+        "regelzoneEic": {
+            "title": "Regelzoneeic",
+            "type": "string"
+        }
+    },
+    "required": [
+        "bilanzierungsgebietEic",
+        "regelzone",
+        "regelzoneEic"
+    ],
+    "title": "StandorteigenschaftenStrom",
+    "type": "object"
+}

@@ -1,0 +1,29 @@
+{
+    "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+    "properties": {
+        "A": {
+            "title": "A",
+            "type": "number"
+        },
+        "B": {
+            "title": "B",
+            "type": "number"
+        },
+        "C": {
+            "title": "C",
+            "type": "number"
+        },
+        "D": {
+            "title": "D",
+            "type": "number"
+        }
+    },
+    "required": [
+        "A",
+        "B",
+        "C",
+        "D"
+    ],
+    "title": "Sigmoidparameter",
+    "type": "object"
+}

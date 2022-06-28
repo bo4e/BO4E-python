@@ -1,0 +1,41 @@
+{
+    "definitions": {
+        "ArithmetischeOperation": {
+            "description": "Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.",
+            "enum": [
+                "ADDITION",
+                "SUBTRAKTION",
+                "MULTIPLIKATION",
+                "DIVISION"
+            ],
+            "title": "ArithmetischeOperation",
+            "type": "string"
+        }
+    },
+    "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. graphviz:: /api/dots/bo4e/com/Messlokationszuordnung.dot",
+    "properties": {
+        "arithmetik": {
+            "$ref": "#/definitions/ArithmetischeOperation"
+        },
+        "gueltigBis": {
+            "format": "date-time",
+            "title": "Gueltigbis",
+            "type": "string"
+        },
+        "gueltigSeit": {
+            "format": "date-time",
+            "title": "Gueltigseit",
+            "type": "string"
+        },
+        "messlokationsId": {
+            "title": "Messlokationsid",
+            "type": "string"
+        }
+    },
+    "required": [
+        "messlokationsId",
+        "arithmetik"
+    ],
+    "title": "Messlokationszuordnung",
+    "type": "object"
+}

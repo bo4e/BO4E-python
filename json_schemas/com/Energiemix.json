@@ -1,0 +1,170 @@
+{
+    "definitions": {
+        "Energieherkunft": {
+            "description": "Abbildung einer Energieherkunft\n\n.. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot",
+            "properties": {
+                "anteilProzent": {
+                    "exclusiveMaximum": 100,
+                    "exclusiveMinimum": 0,
+                    "title": "Anteilprozent",
+                    "type": "number"
+                },
+                "erzeugungsart": {
+                    "$ref": "#/definitions/Erzeugungsart"
+                }
+            },
+            "required": [
+                "erzeugungsart",
+                "anteilProzent"
+            ],
+            "title": "Energieherkunft",
+            "type": "object"
+        },
+        "Erzeugungsart": {
+            "description": "Auflistung der Erzeugungsarten von Energie.",
+            "enum": [
+                "FOSSIL",
+                "KWK",
+                "WIND",
+                "SOLAR",
+                "KERNKRAFT",
+                "WASSER",
+                "GEOTHERMIE",
+                "BIOMASSE",
+                "KOHLE",
+                "GAS",
+                "SONSTIGE",
+                "SONSTIGE_EEG",
+                "BIOGAS",
+                "KLIMANEUTRALES_GAS"
+            ],
+            "title": "Erzeugungsart",
+            "type": "string"
+        },
+        "Oekolabel": {
+            "description": "Aufzählung der Labels für Öko-Strom von verschiedenen Herausgebern.",
+            "enum": [
+                "ENERGREEN",
+                "GASGREEN_GRUENER_STROM",
+                "GASGREEN",
+                "GRUENER_STROM_GOLD",
+                "GRUENER_STROM_SILBER",
+                "GRUENER_STROM",
+                "GRUENES_GAS",
+                "NATURWATT_STROM",
+                "OK_POWER",
+                "RENEWABLE_PLUS",
+                "WATERGREEN",
+                "WATERGREEN_PLUS"
+            ],
+            "title": "Oekolabel",
+            "type": "string"
+        },
+        "Oekozertifikat": {
+            "description": "Zertifikate für Ökostrom von verschiedenen Herausgebern.",
+            "enum": [
+                "CMS_EE01",
+                "CMS_EE02",
+                "EECS",
+                "FRAUNHOFER",
+                "BET",
+                "KLIMA_INVEST",
+                "LGA",
+                "FREIBERG",
+                "RECS",
+                "REGS_EGL",
+                "TUEV",
+                "TUEV_HESSEN",
+                "TUEV_NORD",
+                "TUEV_RHEINLAND",
+                "TUEV_SUED",
+                "TUEV_SUED_EE01",
+                "TUEV_SUED_EE02"
+            ],
+            "title": "Oekozertifikat",
+            "type": "string"
+        },
+        "Sparte": {
+            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "FERNWAERME",
+                "NAHWAERME",
+                "WASSER",
+                "ABWASSER"
+            ],
+            "title": "Sparte",
+            "type": "string"
+        }
+    },
+    "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.\n\n.. graphviz:: /api/dots/bo4e/com/Energiemix.dot",
+    "properties": {
+        "anteil": {
+            "items": {
+                "$ref": "#/definitions/Energieherkunft"
+            },
+            "minItems": 1,
+            "title": "Anteil",
+            "type": "array"
+        },
+        "atommuell": {
+            "title": "Atommuell",
+            "type": "number"
+        },
+        "bemerkung": {
+            "title": "Bemerkung",
+            "type": "string"
+        },
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "co2Emission": {
+            "title": "Co2Emission",
+            "type": "number"
+        },
+        "energieart": {
+            "$ref": "#/definitions/Sparte"
+        },
+        "energiemixnummer": {
+            "title": "Energiemixnummer",
+            "type": "integer"
+        },
+        "gueltigkeitsjahr": {
+            "title": "Gueltigkeitsjahr",
+            "type": "integer"
+        },
+        "oekoTopTen": {
+            "title": "Oekotopten",
+            "type": "boolean"
+        },
+        "oekolabel": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/Oekolabel"
+            },
+            "type": "array"
+        },
+        "oekozertifikate": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/Oekozertifikat"
+            },
+            "type": "array"
+        },
+        "website": {
+            "title": "Website",
+            "type": "string"
+        }
+    },
+    "required": [
+        "energiemixnummer",
+        "energieart",
+        "bezeichnung",
+        "gueltigkeitsjahr",
+        "anteil"
+    ],
+    "title": "Energiemix",
+    "type": "object"
+}

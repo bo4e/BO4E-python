@@ -1,0 +1,83 @@
+{
+    "definitions": {
+        "Messwertstatus": {
+            "description": "Der Status eines Zählerstandes",
+            "enum": [
+                "ABGELESEN",
+                "ERSATZWERT",
+                "VORSCHLAGSWERT",
+                "NICHT_VERWENDBAR",
+                "PROGNOSEWERT",
+                "VORLAEUFIGERWERT",
+                "ENERGIEMENGESUMMIERT",
+                "FEHLT"
+            ],
+            "title": "Messwertstatus",
+            "type": "string"
+        },
+        "Messwertstatuszusatz": {
+            "description": "Aufzählung von zusätzlichen Informationen zum Status, beispielsweise in Lastgängen oder Zählwerkständen.",
+            "enum": [
+                "Z84_LEERSTAND",
+                "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
+                "Z86_PLAUSIBELWGKONTROLLABLESUNG",
+                "Z87_PLAUSIBELWGKUNDENHINWEIS",
+                "ZC3_AUSTAUSCHDESERSATZWERTES",
+                "Z88_VERGLEICHSMESSUNG(GEEICHT)",
+                "Z89_VERGLEICHSMESSUNG(NICHTGEEICHT)",
+                "Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN",
+                "Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN",
+                "Z92_INTERPOLATION",
+                "Z93_HALTEWERT",
+                "Z94_BILANZIERUNGNETZABSCHNITT",
+                "Z95_HISTORISCHEMESSWERTE",
+                "ZJ2_STATISTISCHEMETHODE",
+                "Z74_KEINZUGANG",
+                "Z75_KOMMUNIKATIONSSTOERUNG",
+                "Z76_NETZAUSFALL",
+                "Z77_SPANNUNGSAUSFALL",
+                "Z78_GERAETEWECHSEL",
+                "Z79_KALIBRIERUNG",
+                "Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN",
+                "Z81_MESSEINRICHTUNGGESTOERT_DEFEKT",
+                "Z82_UNSICHERHEITMESSUNG",
+                "Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK",
+                "Z99_MENGENUMWERTUNGUNVOLLSTAENDIG",
+                "ZA0_UHRZEITGESTELLT_SYNCHRONISATION",
+                "ZA1_MESSWERTUNPLAUSIBEL",
+                "ZC2_TARIFSCHALTGERAETDEFEKT",
+                "ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND",
+                "ZA3_FALSCHERWANDLERFAKTOR",
+                "ZA4_FEHLERHAFTEABLESUNG",
+                "ZA5_AENDERUNGDERBERECHNUNG",
+                "ZA6_UMBAUDERMESSLOKATION",
+                "ZA7_DATENBEARBEITUNGSFEHLER",
+                "ZA8_BRENNWERTKORREKTUR",
+                "ZA9_Z-ZAHL-KORREKTUR",
+                "ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG",
+                "ZB9_AENDERUNGTARIFSCHALTZEITEN",
+                "ZG3_UMSTELLUNGGASQUALITAET"
+            ],
+            "title": "Messwertstatuszusatz",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. graphviz:: /api/dots/bo4e/com/Zeitreihenwertkompakt.dot",
+    "properties": {
+        "status": {
+            "$ref": "#/definitions/Messwertstatus"
+        },
+        "statuszusatz": {
+            "$ref": "#/definitions/Messwertstatuszusatz"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "number"
+        }
+    },
+    "required": [
+        "wert"
+    ],
+    "title": "Zeitreihenwertkompakt",
+    "type": "object"
+}

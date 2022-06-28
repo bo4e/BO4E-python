@@ -1,0 +1,41 @@
+{
+    "definitions": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+    "properties": {
+        "einheit": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "number"
+        }
+    },
+    "required": [
+        "wert",
+        "einheit"
+    ],
+    "title": "Menge",
+    "type": "object"
+}

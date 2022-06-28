@@ -1,0 +1,296 @@
+{
+    "definitions": {
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
+        },
+        "ExterneReferenz": {
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "Medium": {
+            "description": "Gibt ein physikalisches Medium an.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "WASSER",
+                "DAMPF"
+            ],
+            "title": "Medium",
+            "type": "string"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Messart": {
+            "description": "Gibt an, auf welche Art gemessen wurde.",
+            "enum": [
+                "AKTUELLERWERT",
+                "MITTELWERT",
+                "MAXIMALWERT"
+            ],
+            "title": "Messart",
+            "type": "string"
+        },
+        "Messgroesse": {
+            "description": "Gibt die physikalische Größe an, die gemessen wurde.",
+            "enum": [
+                "STROM",
+                "SPANNUNG",
+                "WIRKLEISTUNG",
+                "BLINDLEISTUNG",
+                "DRUCK",
+                "LASTGANG",
+                "LASTPROFIL",
+                "TEMPERATUR",
+                "ZZAHL",
+                "BRENNWERT",
+                "GRADTZAGSZAHLEN",
+                "VOLUMENSTROM",
+                "PREISE"
+            ],
+            "title": "Messgroesse",
+            "type": "string"
+        },
+        "Messwertstatus": {
+            "description": "Der Status eines Zählerstandes",
+            "enum": [
+                "ABGELESEN",
+                "ERSATZWERT",
+                "VORSCHLAGSWERT",
+                "NICHT_VERWENDBAR",
+                "PROGNOSEWERT",
+                "VORLAEUFIGERWERT",
+                "ENERGIEMENGESUMMIERT",
+                "FEHLT"
+            ],
+            "title": "Messwertstatus",
+            "type": "string"
+        },
+        "Messwertstatuszusatz": {
+            "description": "Aufzählung von zusätzlichen Informationen zum Status, beispielsweise in Lastgängen oder Zählwerkständen.",
+            "enum": [
+                "Z84_LEERSTAND",
+                "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
+                "Z86_PLAUSIBELWGKONTROLLABLESUNG",
+                "Z87_PLAUSIBELWGKUNDENHINWEIS",
+                "ZC3_AUSTAUSCHDESERSATZWERTES",
+                "Z88_VERGLEICHSMESSUNG(GEEICHT)",
+                "Z89_VERGLEICHSMESSUNG(NICHTGEEICHT)",
+                "Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN",
+                "Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN",
+                "Z92_INTERPOLATION",
+                "Z93_HALTEWERT",
+                "Z94_BILANZIERUNGNETZABSCHNITT",
+                "Z95_HISTORISCHEMESSWERTE",
+                "ZJ2_STATISTISCHEMETHODE",
+                "Z74_KEINZUGANG",
+                "Z75_KOMMUNIKATIONSSTOERUNG",
+                "Z76_NETZAUSFALL",
+                "Z77_SPANNUNGSAUSFALL",
+                "Z78_GERAETEWECHSEL",
+                "Z79_KALIBRIERUNG",
+                "Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN",
+                "Z81_MESSEINRICHTUNGGESTOERT_DEFEKT",
+                "Z82_UNSICHERHEITMESSUNG",
+                "Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK",
+                "Z99_MENGENUMWERTUNGUNVOLLSTAENDIG",
+                "ZA0_UHRZEITGESTELLT_SYNCHRONISATION",
+                "ZA1_MESSWERTUNPLAUSIBEL",
+                "ZC2_TARIFSCHALTGERAETDEFEKT",
+                "ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND",
+                "ZA3_FALSCHERWANDLERFAKTOR",
+                "ZA4_FEHLERHAFTEABLESUNG",
+                "ZA5_AENDERUNGDERBERECHNUNG",
+                "ZA6_UMBAUDERMESSLOKATION",
+                "ZA7_DATENBEARBEITUNGSFEHLER",
+                "ZA8_BRENNWERTKORREKTUR",
+                "ZA9_Z-ZAHL-KORREKTUR",
+                "ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG",
+                "ZB9_AENDERUNGTARIFSCHALTZEITEN",
+                "ZG3_UMSTELLUNGGASQUALITAET"
+            ],
+            "title": "Messwertstatuszusatz",
+            "type": "string"
+        },
+        "Wertermittlungsverfahren": {
+            "description": "Gibt an, ob es sich um eine Prognose oder eine Messung handelt, beispielsweise bei der Abbildung eines Verbrauchs.",
+            "enum": [
+                "PROGNOSE",
+                "MESSUNG"
+            ],
+            "title": "Wertermittlungsverfahren",
+            "type": "string"
+        },
+        "Zeitreihenwert": {
+            "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. graphviz:: /api/dots/bo4e/com/Zeitreihenwert.dot",
+            "properties": {
+                "datumUhrzeitBis": {
+                    "format": "date-time",
+                    "title": "Datumuhrzeitbis",
+                    "type": "string"
+                },
+                "datumUhrzeitVon": {
+                    "format": "date-time",
+                    "title": "Datumuhrzeitvon",
+                    "type": "string"
+                },
+                "status": {
+                    "$ref": "#/definitions/Messwertstatus"
+                },
+                "statuszusatz": {
+                    "$ref": "#/definitions/Messwertstatuszusatz"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "datumUhrzeitVon",
+                "datumUhrzeitBis"
+            ],
+            "title": "Zeitreihenwert",
+            "type": "object"
+        }
+    },
+    "description": "Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.\nDie Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.\n\n.. graphviz:: /api/dots/bo4e/bo/Zeitreihe.dot",
+    "properties": {
+        "beschreibung": {
+            "title": "Beschreibung",
+            "type": "string"
+        },
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BoTyp"
+                }
+            ],
+            "default": "ZEITREIHE"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "externeReferenzen": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/ExterneReferenz"
+            },
+            "title": "Externereferenzen",
+            "type": "array"
+        },
+        "medium": {
+            "$ref": "#/definitions/Medium"
+        },
+        "messart": {
+            "$ref": "#/definitions/Messart"
+        },
+        "messgroesse": {
+            "$ref": "#/definitions/Messgroesse"
+        },
+        "version": {
+            "title": "Version",
+            "type": "string"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
+        },
+        "werte": {
+            "items": {
+                "$ref": "#/definitions/Zeitreihenwert"
+            },
+            "minItems": 1,
+            "title": "Werte",
+            "type": "array"
+        },
+        "wertherkunft": {
+            "$ref": "#/definitions/Wertermittlungsverfahren"
+        }
+    },
+    "required": [
+        "bezeichnung",
+        "messgroesse",
+        "messart",
+        "medium",
+        "einheit",
+        "werte"
+    ],
+    "title": "Zeitreihe",
+    "type": "object"
+}

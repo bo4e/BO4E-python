@@ -32,7 +32,7 @@ def build_dots(module_dir: str, output_dir: str, radius=1):
                 if not uml_network.has_node(modl_namespace):
                     recursive_helper(cls, modl_namespace, uml_network, regex_incl_network, regex_excl_network)
 
-    print("Successfully created relationship network.\n")
+    print("Successfully created relationship network.")
 
     for modl in parse_to_dot:
         spl = modl.split(".")
@@ -49,12 +49,12 @@ def build_dots(module_dir: str, output_dir: str, radius=1):
 
         os.makedirs(dot_path, exist_ok=True)
         with open(f"{dot_path}{os.path.sep}{dot_file}", "w") as f:
-            print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
             f.write(dot_content)
+            print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
 
 
 def recursive_helper(cls_cur, modl_namespace, uml_network, regex_incl_network, regex_excl_network):
-    print(f'"{modl_namespace}" added.')
+    # print(f'"{modl_namespace}" added.')
     uml_network.add_node(modl_namespace, model_cls=cls_cur, dot_node_str="will be replaced")
     dot_cls_str = rf'"{modl_namespace}" [color="black", fontcolor="black", label="' + "{" + rf"{modl_namespace}|"
     for model_field in cls_cur.__fields__.values():

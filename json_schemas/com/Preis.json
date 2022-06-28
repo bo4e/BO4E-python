@@ -1,0 +1,66 @@
+{
+    "definitions": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preisstatus": {
+            "description": "Statusinformation für Preise",
+            "enum": [
+                "VORLAEUFIG",
+                "ENDGUELTIG"
+            ],
+            "title": "Preisstatus",
+            "type": "string"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+    "properties": {
+        "bezugswert": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "status": {
+            "$ref": "#/definitions/Preisstatus"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "number"
+        }
+    },
+    "required": [
+        "wert",
+        "einheit",
+        "bezugswert"
+    ],
+    "title": "Preis",
+    "type": "object"
+}

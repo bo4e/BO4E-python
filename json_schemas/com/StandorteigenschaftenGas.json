@@ -1,0 +1,48 @@
+{
+    "definitions": {
+        "MarktgebietInfo": {
+            "description": "Informationen zum Marktgebiet im Gas.\n\n.. graphviz:: /api/dots/bo4e/com/MarktgebietInfo.dot",
+            "properties": {
+                "marktgebiet": {
+                    "title": "Marktgebiet",
+                    "type": "string"
+                },
+                "marktgebietcode": {
+                    "title": "Marktgebietcode",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "marktgebiet",
+                "marktgebietcode"
+            ],
+            "title": "MarktgebietInfo",
+            "type": "object"
+        }
+    },
+    "description": "Standorteigenschaften der Sparte Gas\n\n.. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenGas.dot",
+    "properties": {
+        "marktgebiete": {
+            "items": {
+                "$ref": "#/definitions/MarktgebietInfo"
+            },
+            "title": "Marktgebiete",
+            "type": "array"
+        },
+        "netzkontonummern": {
+            "items": {
+                "type": "string"
+            },
+            "maxItems": 2,
+            "minItems": 1,
+            "title": "Netzkontonummern",
+            "type": "array"
+        }
+    },
+    "required": [
+        "netzkontonummern",
+        "marktgebiete"
+    ],
+    "title": "StandorteigenschaftenGas",
+    "type": "object"
+}

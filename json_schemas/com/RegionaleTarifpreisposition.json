@@ -1,0 +1,204 @@
+{
+    "definitions": {
+        "Gueltigkeitstyp": {
+            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "enum": [
+                "NUR_IN",
+                "NICHT_IN",
+                "NUR_IN_KOMBINATION_MIT"
+            ],
+            "title": "Gueltigkeitstyp",
+            "type": "string"
+        },
+        "KriteriumWert": {
+            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. graphviz:: /api/dots/bo4e/com/KriteriumWert.dot",
+            "properties": {
+                "kriterium": {
+                    "$ref": "#/definitions/Tarifregionskriterium"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "kriterium",
+                "wert"
+            ],
+            "title": "KriteriumWert",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preistyp": {
+            "description": "Aufschlüsselung der Preistypen in Tarifen.",
+            "enum": [
+                "GRUNDPREIS",
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "LEISTUNGSPREIS",
+                "MESSPREIS",
+                "ENTGELT_ABLESUNG",
+                "ENTGELT_ABRECHNUNG",
+                "ENTGELT_MSB",
+                "PROVISION"
+            ],
+            "title": "Preistyp",
+            "type": "string"
+        },
+        "RegionaleGueltigkeit": {
+            "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleGueltigkeit.dot",
+            "properties": {
+                "gueltigkeitstyp": {
+                    "$ref": "#/definitions/Gueltigkeitstyp"
+                },
+                "kriteriumsWerte": {
+                    "items": {
+                        "$ref": "#/definitions/KriteriumWert"
+                    },
+                    "minItems": 1,
+                    "title": "Kriteriumswerte",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "gueltigkeitstyp",
+                "kriteriumsWerte"
+            ],
+            "title": "RegionaleGueltigkeit",
+            "type": "object"
+        },
+        "RegionalePreisstaffel": {
+            "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. graphviz:: /api/dots/bo4e/com/RegionalePreisstaffel.dot",
+            "properties": {
+                "einheitspreis": {
+                    "title": "Einheitspreis",
+                    "type": "number"
+                },
+                "regionaleGueltigkeit": {
+                    "$ref": "#/definitions/RegionaleGueltigkeit"
+                },
+                "sigmoidparameter": {
+                    "$ref": "#/definitions/Sigmoidparameter"
+                },
+                "staffelgrenzeBis": {
+                    "title": "Staffelgrenzebis",
+                    "type": "number"
+                },
+                "staffelgrenzeVon": {
+                    "title": "Staffelgrenzevon",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "einheitspreis",
+                "staffelgrenzeVon",
+                "staffelgrenzeBis",
+                "regionaleGueltigkeit"
+            ],
+            "title": "RegionalePreisstaffel",
+            "type": "object"
+        },
+        "Sigmoidparameter": {
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "properties": {
+                "A": {
+                    "title": "A",
+                    "type": "number"
+                },
+                "B": {
+                    "title": "B",
+                    "type": "number"
+                },
+                "C": {
+                    "title": "C",
+                    "type": "number"
+                },
+                "D": {
+                    "title": "D",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "title": "Sigmoidparameter",
+            "type": "object"
+        },
+        "Tarifregionskriterium": {
+            "description": "Mit diesen Kriterien können regionale Bereiche definiert werden.",
+            "enum": [
+                "NETZ_NUMMER",
+                "POSTLEITZAHL",
+                "ORT",
+                "GRUNDVERSORGER_NUMMER",
+                "REGION"
+            ],
+            "title": "Tarifregionskriterium",
+            "type": "string"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        }
+    },
+    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet\nwerden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleTarifpreisposition.dot",
+    "properties": {
+        "bezugseinheit": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "mengeneinheitstaffel": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "preisstaffeln": {
+            "items": {
+                "$ref": "#/definitions/RegionalePreisstaffel"
+            },
+            "minItems": 1,
+            "title": "Preisstaffeln",
+            "type": "array"
+        },
+        "preistyp": {
+            "$ref": "#/definitions/Preistyp"
+        }
+    },
+    "required": [
+        "preistyp",
+        "einheit",
+        "bezugseinheit",
+        "preisstaffeln"
+    ],
+    "title": "RegionaleTarifpreisposition",
+    "type": "object"
+}

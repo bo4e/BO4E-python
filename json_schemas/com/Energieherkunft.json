@@ -1,0 +1,43 @@
+{
+    "definitions": {
+        "Erzeugungsart": {
+            "description": "Auflistung der Erzeugungsarten von Energie.",
+            "enum": [
+                "FOSSIL",
+                "KWK",
+                "WIND",
+                "SOLAR",
+                "KERNKRAFT",
+                "WASSER",
+                "GEOTHERMIE",
+                "BIOMASSE",
+                "KOHLE",
+                "GAS",
+                "SONSTIGE",
+                "SONSTIGE_EEG",
+                "BIOGAS",
+                "KLIMANEUTRALES_GAS"
+            ],
+            "title": "Erzeugungsart",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung einer Energieherkunft\n\n.. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot",
+    "properties": {
+        "anteilProzent": {
+            "exclusiveMaximum": 100,
+            "exclusiveMinimum": 0,
+            "title": "Anteilprozent",
+            "type": "number"
+        },
+        "erzeugungsart": {
+            "$ref": "#/definitions/Erzeugungsart"
+        }
+    },
+    "required": [
+        "erzeugungsart",
+        "anteilProzent"
+    ],
+    "title": "Energieherkunft",
+    "type": "object"
+}

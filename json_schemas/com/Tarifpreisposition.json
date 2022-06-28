@@ -1,0 +1,138 @@
+{
+    "definitions": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preisstaffel": {
+            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+            "properties": {
+                "einheitspreis": {
+                    "title": "Einheitspreis",
+                    "type": "number"
+                },
+                "sigmoidparameter": {
+                    "$ref": "#/definitions/Sigmoidparameter"
+                },
+                "staffelgrenzeBis": {
+                    "title": "Staffelgrenzebis",
+                    "type": "number"
+                },
+                "staffelgrenzeVon": {
+                    "title": "Staffelgrenzevon",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "einheitspreis",
+                "staffelgrenzeVon",
+                "staffelgrenzeBis"
+            ],
+            "title": "Preisstaffel",
+            "type": "object"
+        },
+        "Preistyp": {
+            "description": "Aufschlüsselung der Preistypen in Tarifen.",
+            "enum": [
+                "GRUNDPREIS",
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "LEISTUNGSPREIS",
+                "MESSPREIS",
+                "ENTGELT_ABLESUNG",
+                "ENTGELT_ABRECHNUNG",
+                "ENTGELT_MSB",
+                "PROVISION"
+            ],
+            "title": "Preistyp",
+            "type": "string"
+        },
+        "Sigmoidparameter": {
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "properties": {
+                "A": {
+                    "title": "A",
+                    "type": "number"
+                },
+                "B": {
+                    "title": "B",
+                    "type": "number"
+                },
+                "C": {
+                    "title": "C",
+                    "type": "number"
+                },
+                "D": {
+                    "title": "D",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "title": "Sigmoidparameter",
+            "type": "object"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        }
+    },
+    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.\n\n.. graphviz:: /api/dots/bo4e/com/Tarifpreisposition.dot",
+    "properties": {
+        "bezugseinheit": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "mengeneinheitstaffel": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "preisstaffeln": {
+            "items": {
+                "$ref": "#/definitions/Preisstaffel"
+            },
+            "minItems": 1,
+            "title": "Preisstaffeln",
+            "type": "array"
+        },
+        "preistyp": {
+            "$ref": "#/definitions/Preistyp"
+        }
+    },
+    "required": [
+        "preistyp",
+        "einheit",
+        "bezugseinheit",
+        "preisstaffeln"
+    ],
+    "title": "Tarifpreisposition",
+    "type": "object"
+}

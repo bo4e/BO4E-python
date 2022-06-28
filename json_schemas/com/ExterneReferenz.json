@@ -1,0 +1,19 @@
+{
+    "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+    "properties": {
+        "exRefName": {
+            "title": "Exrefname",
+            "type": "string"
+        },
+        "exRefWert": {
+            "title": "Exrefwert",
+            "type": "string"
+        }
+    },
+    "required": [
+        "exRefName",
+        "exRefWert"
+    ],
+    "title": "ExterneReferenz",
+    "type": "object"
+}

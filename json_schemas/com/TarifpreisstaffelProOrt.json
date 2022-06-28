@@ -1,0 +1,34 @@
+{
+    "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/TarifpreisstaffelProOrt.dot",
+    "properties": {
+        "arbeitspreis": {
+            "title": "Arbeitspreis",
+            "type": "number"
+        },
+        "arbeitspreisNT": {
+            "title": "Arbeitspreisnt",
+            "type": "number"
+        },
+        "grundpreis": {
+            "title": "Grundpreis",
+            "type": "number"
+        },
+        "staffelgrenzeBis": {
+            "title": "Staffelgrenzebis",
+            "type": "number"
+        },
+        "staffelgrenzeVon": {
+            "title": "Staffelgrenzevon",
+            "type": "number"
+        }
+    },
+    "required": [
+        "arbeitspreis",
+        "arbeitspreisNT",
+        "grundpreis",
+        "staffelgrenzeVon",
+        "staffelgrenzeBis"
+    ],
+    "title": "TarifpreisstaffelProOrt",
+    "type": "object"
+}

@@ -1,0 +1,221 @@
+{
+    "definitions": {
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
+        },
+        "ExterneReferenz": {
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "MarktgebietInfo": {
+            "description": "Informationen zum Marktgebiet im Gas.\n\n.. graphviz:: /api/dots/bo4e/com/MarktgebietInfo.dot",
+            "properties": {
+                "marktgebiet": {
+                    "title": "Marktgebiet",
+                    "type": "string"
+                },
+                "marktgebietcode": {
+                    "title": "Marktgebietcode",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "marktgebiet",
+                "marktgebietcode"
+            ],
+            "title": "MarktgebietInfo",
+            "type": "object"
+        },
+        "StandorteigenschaftenAllgemein": {
+            "description": "Allgemeine Standorteigenschaften\n\n.. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenAllgemein.dot",
+            "properties": {
+                "bundesland": {
+                    "title": "Bundesland",
+                    "type": "string"
+                },
+                "gemeindeeinwohner": {
+                    "title": "Gemeindeeinwohner",
+                    "type": "integer"
+                },
+                "gemeindekennziffer": {
+                    "title": "Gemeindekennziffer",
+                    "type": "string"
+                },
+                "gemeindename": {
+                    "title": "Gemeindename",
+                    "type": "string"
+                },
+                "kreisname": {
+                    "title": "Kreisname",
+                    "type": "string"
+                },
+                "ort": {
+                    "title": "Ort",
+                    "type": "string"
+                },
+                "postleitzahl": {
+                    "title": "Postleitzahl",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "postleitzahl",
+                "ort",
+                "kreisname",
+                "gemeindename",
+                "gemeindekennziffer",
+                "gemeindeeinwohner",
+                "bundesland"
+            ],
+            "title": "StandorteigenschaftenAllgemein",
+            "type": "object"
+        },
+        "StandorteigenschaftenGas": {
+            "description": "Standorteigenschaften der Sparte Gas\n\n.. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenGas.dot",
+            "properties": {
+                "marktgebiete": {
+                    "items": {
+                        "$ref": "#/definitions/MarktgebietInfo"
+                    },
+                    "title": "Marktgebiete",
+                    "type": "array"
+                },
+                "netzkontonummern": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 2,
+                    "minItems": 1,
+                    "title": "Netzkontonummern",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "netzkontonummern",
+                "marktgebiete"
+            ],
+            "title": "StandorteigenschaftenGas",
+            "type": "object"
+        },
+        "StandorteigenschaftenStrom": {
+            "description": "Standorteigenschaften der Sparte Strom\n\n.. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenStrom.dot",
+            "properties": {
+                "bilanzierungsgebietEic": {
+                    "title": "Bilanzierungsgebieteic",
+                    "type": "string"
+                },
+                "regelzone": {
+                    "title": "Regelzone",
+                    "type": "string"
+                },
+                "regelzoneEic": {
+                    "title": "Regelzoneeic",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "bilanzierungsgebietEic",
+                "regelzone",
+                "regelzoneEic"
+            ],
+            "title": "StandorteigenschaftenStrom",
+            "type": "object"
+        }
+    },
+    "description": "Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.\n\n.. graphviz:: /api/dots/bo4e/bo/Standorteigenschaften.dot",
+    "properties": {
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BoTyp"
+                }
+            ],
+            "default": "STANDORTEIGENSCHAFTEN"
+        },
+        "eigenschaftenAllgemein": {
+            "$ref": "#/definitions/StandorteigenschaftenAllgemein"
+        },
+        "eigenschaftenGas": {
+            "$ref": "#/definitions/StandorteigenschaftenGas"
+        },
+        "eigenschaftenStrom": {
+            "items": {
+                "$ref": "#/definitions/StandorteigenschaftenStrom"
+            },
+            "minItems": 1,
+            "title": "Eigenschaftenstrom",
+            "type": "array"
+        },
+        "externeReferenzen": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/ExterneReferenz"
+            },
+            "title": "Externereferenzen",
+            "type": "array"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
+        }
+    },
+    "required": [
+        "eigenschaftenAllgemein",
+        "eigenschaftenStrom"
+    ],
+    "title": "Standorteigenschaften",
+    "type": "object"
+}
