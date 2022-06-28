@@ -20,6 +20,7 @@ from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
+# pylint: disable=R0801
 class AufAbschlagRegional(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen
