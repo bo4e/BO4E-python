@@ -19,6 +19,9 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
 
     .. graphviz:: /api/dots/bo4e/com/Zeitreihenwert.dot
 
+    .. HINT::
+        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_
+
     """
 
     # required attributes

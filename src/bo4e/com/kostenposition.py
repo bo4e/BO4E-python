@@ -20,6 +20,9 @@ class Kostenposition(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Kostenposition.dot
 
+    .. HINT::
+        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_
+
     """
 
     # required attributes
@@ -39,22 +42,22 @@ class Kostenposition(COM):
 
     # optional attributes
     #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
-    von: datetime = None
+    von: Optional[datetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
-    bis: datetime = None
+    bis: Optional[datetime] = None
     _bis_check = validator("bis", always=True, allow_reuse=True)(check_bis_is_later_than_von)
 
     #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
-    menge: Menge = None
+    menge: Optional[Menge] = None
 
-    zeitmenge: Menge = None
+    zeitmenge: Optional[Menge] = None
     """
     Wenn es einen zeitbasierten Preis gibt (z.B. €/Jahr), dann ist hier die Menge angegeben mit der die Kosten berechnet
     wurden. Z.B. 138 Tage.
     """
 
     #: Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
-    artikeldetail: str = None
+    artikeldetail: Optional[str] = None
 
     @staticmethod
     def _get_inclusive_start(values) -> Optional[datetime]:

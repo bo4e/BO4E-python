@@ -3,7 +3,7 @@ Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -24,6 +24,9 @@ class Tarif(Tarifinfo):
 
     .. graphviz:: /api/dots/bo4e/bo/Tarif.dot
 
+    .. HINT::
+        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarif.json>`_
+
     """
 
     bo_typ: BoTyp = BoTyp.TARIF
@@ -37,12 +40,12 @@ class Tarif(Tarifinfo):
 
     # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
-    tarif_auf_abschlaege: List[AufAbschlagRegional] = None
+    tarif_auf_abschlaege: Optional[List[AufAbschlagRegional]] = None
     # todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional
     # https://github.com/Hochfrequenz/BO4E-python/issues/345
 
     #: Preisgarantie für diesen Tarif
-    preisgarantie: Preisgarantie = None
+    preisgarantie: Optional[Preisgarantie] = None
     # todo: fix inconsistency with regionaltarif https://github.com/Hochfrequenz/BO4E-python/issues/346
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Tarifeinschraenkung = None
+    tarifeinschraenkung: Optional[Tarifeinschraenkung] = None

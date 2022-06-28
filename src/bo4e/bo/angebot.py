@@ -6,6 +6,8 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import constr, conlist
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
@@ -24,6 +26,9 @@ class Angebot(Geschaeftsobjekt):
     werden.
 
     .. graphviz:: /api/dots/bo4e/bo/Angebot.dot
+
+    .. HINT::
+        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Angebot.json>`_
 
 
     """
@@ -46,12 +51,12 @@ class Angebot(Geschaeftsobjekt):
     Ein Angebot besteht mindestens aus einer Variante."""
 
     # optional attributes
-    anfragereferenz: str = None
+    anfragereferenz: Optional[str] = None
     """	Referenz auf eine Anfrage oder Ausschreibung;
     Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""
     #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
-    bindefrist: datetime = None
+    bindefrist: Optional[datetime] = None
     #: Person, die als Angebotsnehmer das Angebot angenommen hat
-    unterzeichner_angebotsnehmer: Ansprechpartner = None
+    unterzeichner_angebotsnehmer: Optional[Ansprechpartner] = None
     #: Person, die als Angebotsgeber das Angebots ausgestellt hat
-    unterzeichner_angebotsgeber: Ansprechpartner = None
+    unterzeichner_angebotsgeber: Optional[Ansprechpartner] = None

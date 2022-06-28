@@ -4,6 +4,8 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
+from typing import Optional
+
 from pydantic import validator
 
 from bo4e.com.betrag import Betrag
@@ -23,6 +25,9 @@ class Rechnungsposition(COM):
     In einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.
 
     .. graphviz:: /api/dots/bo4e/com/Rechnungsposition.dot
+
+    .. HINT::
+        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_
 
     """
 
@@ -55,24 +60,24 @@ class Rechnungsposition(COM):
 
     # optional attributes
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Zeiteinheit = None
+    zeiteinheit: Optional[Zeiteinheit] = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
-    artikelnummer: BDEWArtikelnummer = None
+    artikelnummer: Optional[BDEWArtikelnummer] = None
     #: Marktlokation, die zu dieser Position gehört
-    lokations_id: str = None
+    lokations_id: Optional[str] = None
 
-    zeitbezogene_menge: Menge = None
+    zeitbezogene_menge: Optional[Menge] = None
     """
     Eine auf die Zeiteinheit bezogene Untermenge.
     Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage.
     Basierend darauf wird der Preis aufgeteilt.
     """
     #: Nettobetrag für den Rabatt dieser Position
-    teilrabatt_netto: Betrag = None
+    teilrabatt_netto: Optional[Betrag] = None
 
     #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
-    artikel_id: ArtikelId = None
+    artikel_id: Optional[ArtikelId] = None
 
     @staticmethod
     def _get_inclusive_start(values) -> datetime:

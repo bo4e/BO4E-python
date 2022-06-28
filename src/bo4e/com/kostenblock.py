@@ -1,7 +1,7 @@
 """
 Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import List, Optional
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -17,6 +17,9 @@ class Kostenblock(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Kostenblock.dot
 
+    .. HINT::
+        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenblock.json>`_
+
     """
 
     # required attributes
@@ -25,9 +28,9 @@ class Kostenblock(COM):
 
     # optional attributes
     #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Betrag = None
+    summe_kostenblock: Optional[Betrag] = None
 
-    kostenpositionen: List[Kostenposition] = None
+    kostenpositionen: Optional[List[Kostenposition]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 01.02.2018, 31.12.2018, Arbeitspreis HT, 3.660 kWh, 5,8200 ct/kWh, 213,01 €

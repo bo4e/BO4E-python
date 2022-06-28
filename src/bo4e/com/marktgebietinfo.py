@@ -15,6 +15,9 @@ class MarktgebietInfo(COM):
 
     .. graphviz:: /api/dots/bo4e/com/MarktgebietInfo.dot
 
+    .. HINT::
+        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_
+
     """
 
     # required attributes

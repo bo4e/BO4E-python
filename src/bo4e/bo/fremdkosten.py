@@ -1,7 +1,7 @@
 """
 Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import List, Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
@@ -21,6 +21,9 @@ class Fremdkosten(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Fremdkosten.dot
 
+    .. HINT::
+        `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Fremdkosten.json>`_
+
     """
 
     # required attributes
@@ -29,6 +32,6 @@ class Fremdkosten(Geschaeftsobjekt):
     gueltigkeit: Zeitraum
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Betrag = None
+    summe_kosten: Optional[Betrag] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: List[Fremdkostenblock] = None
+    kostenbloecke: Optional[List[Fremdkostenblock]] = None

@@ -18,6 +18,9 @@ class Menge(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Menge.dot
 
+    .. HINT::
+        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_
+
     """
 
     # required attributes

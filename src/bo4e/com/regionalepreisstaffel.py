@@ -16,6 +16,9 @@ class RegionalePreisstaffel(Preisstaffel):
 
     .. graphviz:: /api/dots/bo4e/com/RegionalePreisstaffel.dot
 
+    .. HINT::
+        `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_
+
     """
 
     # required attributes

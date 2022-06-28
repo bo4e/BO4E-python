@@ -15,6 +15,9 @@ class StandorteigenschaftenStrom(COM):
 
     .. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenStrom.dot
 
+    .. HINT::
+        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStrom.json>`_
+
     """
 
     # required attributes

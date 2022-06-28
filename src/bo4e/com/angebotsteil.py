@@ -3,7 +3,7 @@ Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -27,6 +27,9 @@ class Angebotsteil(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Angebotsteil.dot
 
+    .. HINT::
+        `Angebotsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsteil.json>`_
+
     """
 
     # required attributes
@@ -35,15 +38,15 @@ class Angebotsteil(COM):
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
-    anfrage_subreferenz: str = None
-    lieferstellenangebotsteil: List[Marktlokation] = None
+    anfrage_subreferenz: Optional[str] = None
+    lieferstellenangebotsteil: Optional[List[Marktlokation]] = None
     """
     Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
     Durch die Marktlokation ist auch die Lieferadresse festgelegt
     """
     #: Summe der Verbräuche aller in diesem Angebotsteil eingeschlossenen Lieferstellen
-    gesamtmengeangebotsteil: Menge = None
+    gesamtmengeangebotsteil: Optional[Menge] = None
     #: Summe der Jahresenergiekosten aller in diesem Angebotsteil enthaltenen Lieferstellen
-    gesamtkostenangebotsteil: Betrag = None
+    gesamtkostenangebotsteil: Optional[Betrag] = None
     #: Hier kann der Belieferungszeitraum angegeben werden, für den dieser Angebotsteil gilt
-    lieferzeitraum: Zeitraum = None
+    lieferzeitraum: Optional[Zeitraum] = None

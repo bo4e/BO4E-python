@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -20,6 +21,9 @@ class Preis(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Preis.dot
 
+    .. HINT::
+        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_
+
     """
 
     # required attributes
@@ -32,4 +36,4 @@ class Preis(COM):
 
     # optional attributes
     #: Gibt den Status des veröffentlichten Preises an
-    status: Preisstatus = None
+    status: Optional[Preisstatus] = None

@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from datetime import datetime
 from decimal import Decimal
+from typing import Optional
 
 from pydantic import validator
 
@@ -25,15 +26,18 @@ class Zeitraum(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Zeitraum.dot
 
+    .. HINT::
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_
+
     """
 
     # optional attributes
-    einheit: Zeiteinheit = None
-    dauer: Decimal = None
-    startdatum: datetime = None
-    enddatum: datetime = None
-    startzeitpunkt: datetime = None
-    endzeitpunkt: datetime = None
+    einheit: Optional[Zeiteinheit] = None
+    dauer: Optional[Decimal] = None
+    startdatum: Optional[datetime] = None
+    enddatum: Optional[datetime] = None
+    startzeitpunkt: Optional[datetime] = None
+    endzeitpunkt: Optional[datetime] = None
 
     # pylint: disable=unused-argument
     # pylint: disable=no-self-argument

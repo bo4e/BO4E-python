@@ -17,6 +17,9 @@ class Tagesvektor(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Tagesvektor.dot
 
+    .. HINT::
+        `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_
+
     """
 
     # required attributes

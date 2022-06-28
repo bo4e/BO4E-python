@@ -1,6 +1,7 @@
 """
 Contains Geraeteeigenschaften and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
@@ -16,6 +17,9 @@ class Geraeteeigenschaften(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Geraeteeigenschaften.dot
 
+    .. HINT::
+        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_
+
     """
 
     # required attributes
@@ -24,4 +28,4 @@ class Geraeteeigenschaften(COM):
 
     # optional attributes
     #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..
-    geraetemerkmal: Geraetemerkmal = None
+    geraetemerkmal: Optional[Geraetemerkmal] = None

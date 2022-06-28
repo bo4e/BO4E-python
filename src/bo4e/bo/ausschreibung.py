@@ -5,6 +5,8 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -22,6 +24,9 @@ class Ausschreibung(Geschaeftsobjekt):
     Das BO Ausschreibung dient zur detaillierten Darstellung von ausgeschriebenen Energiemengen in der Energiewirtschaft
 
     .. graphviz:: /api/dots/bo4e/bo/Ausschreibung.dot
+
+    .. HINT::
+        `Ausschreibung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Ausschreibung.json>`_
 
     """
 
@@ -57,6 +62,6 @@ class Ausschreibung(Geschaeftsobjekt):
 
     # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale
-    ausschreibungportal: Ausschreibungsportal = None
+    ausschreibungportal: Optional[Ausschreibungsportal] = None
     #: Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)
-    webseite: str = None
+    webseite: Optional[str] = None

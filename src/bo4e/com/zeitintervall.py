@@ -17,6 +17,9 @@ class Zeitintervall(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Zeitintervall.dot
 
+    .. HINT::
+        `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_
+
     """
 
     # required attributes

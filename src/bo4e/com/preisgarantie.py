@@ -2,6 +2,7 @@
 Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.zeitraum import Zeitraum
@@ -17,6 +18,9 @@ class Preisgarantie(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Preisgarantie.dot
 
+    .. HINT::
+        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_
+
     """
 
     # required attributes
@@ -28,4 +32,4 @@ class Preisgarantie(COM):
 
     # optionale attributes
     #: Freitext zur Beschreibung der Preisgarantie.
-    beschreibung: str = None
+    beschreibung: Optional[str] = None

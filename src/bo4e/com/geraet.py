@@ -2,6 +2,7 @@
 Contains Geraet class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
@@ -16,10 +17,13 @@ class Geraet(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Geraet.dot
 
+    .. HINT::
+        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_
+
     """
 
     # optional attributes
     #: Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
-    geraetenummer: str = None
+    geraetenummer: Optional[str] = None
     #: Festlegung der Eigenschaften des Gerätes. Z.B. Wandler MS/NS.
-    geraeteeigenschaften: Geraeteeigenschaften = None
+    geraeteeigenschaften: Optional[Geraeteeigenschaften] = None

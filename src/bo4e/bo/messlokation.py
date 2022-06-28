@@ -3,7 +3,7 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import List
+from typing import List, Optional
 
 from iso3166 import countries  # type:ignore[import]
 
@@ -38,6 +38,9 @@ class Messlokation(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Messlokation.dot
 
+    .. HINT::
+        `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Messlokation.json>`_
+
     """
 
     # required attributes
@@ -49,40 +52,40 @@ class Messlokation(Geschaeftsobjekt):
 
     # optional attributes
     #: Spannungsebene der Messung
-    netzebene_messung: Netzebene = None
+    netzebene_messung: Optional[Netzebene] = None
     #: Die Nummer des Messgebietes in der ene't-Datenbank
-    messgebietnr: str = None
+    messgebietnr: Optional[str] = None
     #: Liste der Hardware, die zu dieser Messstelle gehört
-    geraete: List[Hardware] = None
+    geraete: Optional[List[Hardware]] = None
     #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
-    messdienstleistung: List[Dienstleistung] = None  # todo: rename to plural
+    messdienstleistung: Optional[List[Dienstleistung]] = None  # todo: rename to plural
     #: Zähler, die zu dieser Messlokation gehören
-    messlokationszaehler: List[Zaehler] = None
+    messlokationszaehler: Optional[List[Zaehler]] = None
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr: str = None
+    grundzustaendiger_msb_codenr: Optional[str] = None
     """
     Codenummer des grundzuständigen Messstellenbetreibers, der für diese Messlokation zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
-    grundzustaendiger_msbim_codenr: str = None
+    grundzustaendiger_msbim_codenr: Optional[str] = None
     """
     Codenummer des grundzuständigen Messstellenbetreibers für intelligente Messsysteme, der für diese Messlokation
     zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
     # only one of the following three optional address attributes can be set
-    messadresse: Adresse = None
+    messadresse: Optional[Adresse] = None
     """
     Die Adresse, an der die Messeinrichtungen zu finden sind.
     (Nur angeben, wenn diese von der Adresse der Marktlokation abweicht.)
     """
-    geoadresse: Geokoordinaten = None
+    geoadresse: Optional[Geokoordinaten] = None
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Katasteradresse = None
+    katasterinformation: Optional[Katasteradresse] = None
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
@@ -91,7 +94,7 @@ class Messlokation(Geschaeftsobjekt):
     # pylint: disable=unused-argument
     # pylint: disable=no-self-argument
     @validator("messlokations_id", always=True)
-    def _validate_messlokations_id(cls, messlokations_id, values):
+    def _validate_messlokations_id(cls, messlokations_id):
         if not messlokations_id:
             raise ValueError("The messlokations_id must not be empty.")
         if not _melo_id_pattern.match(messlokations_id):

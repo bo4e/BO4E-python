@@ -3,6 +3,7 @@ Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -16,6 +17,9 @@ class Unterschrift(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Unterschrift.dot
 
+    .. HINT::
+        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Unterschrift.json>`_
+
     """
 
     # required attributes
@@ -23,5 +27,5 @@ class Unterschrift(COM):
     name: str
 
     # optional attributes
-    ort: str = None  #: Ort, an dem die Unterschrift geleistet wird
-    datum: datetime = None  #: Datum der Unterschrift
+    ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
+    datum: Optional[datetime] = None  #: Datum der Unterschrift

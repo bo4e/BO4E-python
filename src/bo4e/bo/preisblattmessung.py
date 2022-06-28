@@ -1,7 +1,7 @@
 """
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import List, Optional
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
@@ -20,6 +20,9 @@ class PreisblattMessung(Preisblatt):
 
     .. graphviz:: /api/dots/bo4e/bo/PreisblattMessung.dot
 
+    .. HINT::
+        `PreisblattMessung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattMessung.json>`_
+
     """
 
     bo_typ: BoTyp = BoTyp.PREISBLATTMESSUNG
@@ -35,7 +38,7 @@ class PreisblattMessung(Preisblatt):
 
     # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
-    inklusive_dienstleistungen: List[Dienstleistungstyp] = None
+    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: List[Geraeteeigenschaften] = None
+    inklusive_geraete: Optional[List[Geraeteeigenschaften]] = None

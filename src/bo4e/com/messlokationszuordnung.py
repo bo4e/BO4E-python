@@ -3,6 +3,7 @@ Contains Messlokationszuordnung class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.arithmetische_operation import ArithmetischeOperation
@@ -19,6 +20,9 @@ class Messlokationszuordnung(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Messlokationszuordnung.dot
 
+    .. HINT::
+        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_
+
     """
 
     # required attributes
@@ -26,5 +30,5 @@ class Messlokationszuordnung(COM):
     arithmetik: ArithmetischeOperation
 
     # optional attributes
-    gueltig_seit: datetime = None
-    gueltig_bis: datetime = None
+    gueltig_seit: Optional[datetime] = None
+    gueltig_bis: Optional[datetime] = None

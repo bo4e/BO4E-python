@@ -2,6 +2,7 @@
 Contains Angebotsposition class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -22,6 +23,9 @@ class Angebotsposition(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Angebotsposition.dot
 
+    .. HINT::
+        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsposition.json>`_
+
     """
 
     # required attributes
@@ -32,9 +36,9 @@ class Angebotsposition(COM):
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Menge = None
+    positionsmenge: Optional[Menge] = None
     #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
-    positionskosten: Betrag = None
+    positionskosten: Optional[Betrag] = None
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126

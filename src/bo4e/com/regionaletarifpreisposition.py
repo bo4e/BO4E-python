@@ -4,6 +4,8 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.com.com import COM
@@ -20,6 +22,9 @@ class RegionaleTarifpreisposition(COM):
 
     .. graphviz:: /api/dots/bo4e/com/RegionaleTarifpreisposition.dot
 
+    .. HINT::
+        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreisposition.json>`_
+
     """
 
     # required attributes
@@ -34,4 +39,4 @@ class RegionaleTarifpreisposition(COM):
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Mengeneinheit = None
+    mengeneinheitstaffel: Optional[Mengeneinheit] = None

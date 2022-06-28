@@ -16,6 +16,9 @@ class Regionskriterium(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Regionskriterium.dot
 
+    .. HINT::
+        `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Regionskriterium.json>`_
+
     """
 
     # required attributes

@@ -19,6 +19,9 @@ class COM(BaseModel):
 
     .. graphviz:: /api/dots/bo4e/com/COM.dot
 
+    .. HINT::
+        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/COM.json>`_
+
     """
 
     class Config:

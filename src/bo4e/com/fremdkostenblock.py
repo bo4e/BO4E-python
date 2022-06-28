@@ -3,7 +3,7 @@ Contains Fremdkostenblock class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List
+from typing import List, Optional
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -19,6 +19,9 @@ class Fremdkostenblock(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Fremdkostenblock.dot
 
+    .. HINT::
+        `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenblock.json>`_
+
     """
 
     # required attributes
@@ -26,7 +29,7 @@ class Fremdkostenblock(COM):
     kostenblockbezeichnung: str
 
     # optional attributes
-    kostenpositionen: List[Fremdkostenposition] = None
+    kostenpositionen: Optional[List[Fremdkostenposition]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 2018-02-01, 2019-01-01, Arbeitspreis HT, 3.660 kWh,
@@ -34,5 +37,5 @@ class Fremdkostenblock(COM):
     """
 
     #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Betrag = None
+    summe_kostenblock: Optional[Betrag] = None
     # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324

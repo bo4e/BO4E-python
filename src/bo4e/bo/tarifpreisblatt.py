@@ -2,7 +2,7 @@
 Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -23,6 +23,9 @@ class Tarifpreisblatt(Tarifinfo):
 
     .. graphviz:: /api/dots/bo4e/bo/Tarifpreisblatt.dot
 
+    .. HINT::
+        `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarifpreisblatt.json>`_
+
     """
 
     bo_typ: BoTyp = BoTyp.TARIFPREISBLATT
@@ -36,8 +39,8 @@ class Tarifpreisblatt(Tarifinfo):
 
     # optional attributes
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Tarifeinschraenkung = None
+    tarifeinschraenkung: Optional[Tarifeinschraenkung] = None
     #: Festlegung von Garantien für bestimmte Preisanteile
-    preisgarantie: Preisgarantie = None
+    preisgarantie: Optional[Preisgarantie] = None
     #: Auf- und Abschläge auf die Preise oder Kosten
-    tarif_auf_abschlaege: List[AufAbschlag] = None
+    tarif_auf_abschlaege: Optional[List[AufAbschlag]] = None

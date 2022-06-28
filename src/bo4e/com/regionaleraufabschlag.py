@@ -2,7 +2,7 @@
 Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -29,6 +29,9 @@ class RegionalerAufAbschlag(COM):
 
     .. graphviz:: /api/dots/bo4e/com/RegionalerAufAbschlag.dot
 
+    .. HINT::
+        `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalerAufAbschlag.json>`_
+
     """
 
     # required attributes
@@ -40,51 +43,51 @@ class RegionalerAufAbschlag(COM):
 
     # optional attributes
     #: Beschreibung des Auf-/Abschlags
-    beschreibung: str = None
+    beschreibung: Optional[str] = None
 
     #: Typ des Aufabschlages (z.B. absolut oder prozentual)
-    auf_abschlagstyp: AufAbschlagstyp = None
+    auf_abschlagstyp: Optional[AufAbschlagstyp] = None
 
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
-    auf_abschlagsziel: AufAbschlagsziel = None
+    auf_abschlagsziel: Optional[AufAbschlagsziel] = None
 
     #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird (nur im Falle absoluter Aufschlagstypen).
-    einheit: Waehrungseinheit = None
+    einheit: Optional[Waehrungseinheit] = None
 
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
-    website: str = None
+    website: Optional[str] = None
 
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
-    zusatzprodukte: List[str] = None
+    zusatzprodukte: Optional[List[str]] = None
 
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
-    voraussetzungen: List[str] = None
+    voraussetzungen: Optional[List[str]] = None
 
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten
-    tarifnamensaenderungen: str = None
+    tarifnamensaenderungen: Optional[str] = None
 
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitszeitraum: Zeitraum = None
+    gueltigkeitszeitraum: Optional[Zeitraum] = None
 
-    energiemixaenderung: Energiemix = None
+    energiemixaenderung: Optional[Energiemix] = None
     """
     Der Energiemix kann sich durch einen AufAbschlag ändern (z.B. zwei Cent Aufschlag für Ökostrom).
     Sollte dies der Fall sein, wird hier die neue Zusammensetzung des Energiemix angegeben.
     """
 
-    vertagskonditionsaenderung: Vertragskonditionen = None
+    vertagskonditionsaenderung: Optional[Vertragskonditionen] = None
     """
     Änderungen in den Vertragskonditionen;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
 
-    garantieaenderung: Preisgarantie = None
+    garantieaenderung: Optional[Preisgarantie] = None
     """
     Änderungen in den Garantievereinbarungen;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
 
-    einschraenkungsaenderung: Tarifeinschraenkung = None
+    einschraenkungsaenderung: Optional[Tarifeinschraenkung] = None
     """
     Änderungen in den Einschränkungen zum Tarif;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.

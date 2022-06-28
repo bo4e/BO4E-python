@@ -18,6 +18,9 @@ class Buendelvertrag(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Buendelvertrag.dot
 
+    .. HINT::
+        `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Buendelvertrag.json>`_
+
     """
 
     # required attributes

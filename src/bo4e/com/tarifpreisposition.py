@@ -5,6 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.com.com import COM
@@ -20,6 +22,9 @@ class Tarifpreisposition(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Tarifpreisposition.dot
 
+    .. HINT::
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_
+
     """
 
     # required attributes
@@ -34,4 +39,4 @@ class Tarifpreisposition(COM):
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Mengeneinheit = None
+    mengeneinheitstaffel: Optional[Mengeneinheit] = None

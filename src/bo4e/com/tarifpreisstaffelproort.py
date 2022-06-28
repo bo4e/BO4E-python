@@ -16,6 +16,9 @@ class TarifpreisstaffelProOrt(COM):
 
     .. graphviz:: /api/dots/bo4e/com/TarifpreisstaffelProOrt.dot
 
+    .. HINT::
+        `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisstaffelProOrt.json>`_
+
     """
 
     # todo: decimal doesn't make sense here imo

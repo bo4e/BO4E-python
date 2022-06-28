@@ -8,6 +8,7 @@ from pydantic import condecimal
 from bo4e.com.com import COM
 from bo4e.enum.erzeugungsart import Erzeugungsart
 
+
 # pylint: disable=too-few-public-methods
 
 
@@ -16,6 +17,9 @@ class Energieherkunft(COM):
     Abbildung einer Energieherkunft
 
     .. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot
+
+    .. HINT::
+        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_
 
     """
 

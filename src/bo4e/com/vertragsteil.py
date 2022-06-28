@@ -3,6 +3,7 @@ Contains Vertragsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
@@ -18,6 +19,9 @@ class Vertragsteil(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Vertragsteil.dot
 
+    .. HINT::
+        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_
+
     """
 
     # required attributes
@@ -31,20 +35,20 @@ class Vertragsteil(COM):
     """
 
     # optional attributes
-    lokation: str = None
+    lokation: Optional[str] = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
     """
-    vertraglich_fixierte_menge: Menge = None
+    vertraglich_fixierte_menge: Optional[Menge] = None
     """
     Für die Lokation festgeschriebene Abnahmemenge
     """
-    minimale_abnahmemenge: Menge = None
+    minimale_abnahmemenge: Optional[Menge] = None
     """
     Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
     """
-    maximale_abnahmemenge: Menge = None
+    maximale_abnahmemenge: Optional[Menge] = None
     """
     Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
     """

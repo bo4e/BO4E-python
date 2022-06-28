@@ -7,6 +7,8 @@ from decimal import Decimal
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -28,6 +30,9 @@ class Zaehler(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Zaehler.dot
 
+    .. HINT::
+        `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zaehler.json>`_
+
     """
 
     # required attributes
@@ -40,7 +45,7 @@ class Zaehler(Geschaeftsobjekt):
     tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes
-    zaehlerkonstante: Decimal = None  #: Zählerkonstante auf dem Zähler
-    eichung_bis: datetime = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
-    letzte_eichung: datetime = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    zaehlerhersteller: Geschaeftspartner = None  #: Der Hersteller des Zählers
+    zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
+    eichung_bis: Optional[datetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
+    letzte_eichung: Optional[datetime] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers

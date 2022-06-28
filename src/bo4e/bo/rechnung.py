@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -26,6 +26,9 @@ class Rechnung(Geschaeftsobjekt):
     Ausgehend von diesem Basismodell werden weitere spezifische Formen abgeleitet.
 
     .. graphviz:: /api/dots/bo4e/bo/Rechnung.dot
+
+    .. HINT::
+        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Rechnung.json>`_
 
     """
 
@@ -63,16 +66,16 @@ class Rechnung(Geschaeftsobjekt):
 
     # optional attributes
     #: Bezeichnung für die vorliegende Rechnung
-    rechnungstitel: str = None
+    rechnungstitel: Optional[str] = None
     #: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes
-    rechnungsstatus: Rechnungsstatus = None
+    rechnungsstatus: Optional[Rechnungsstatus] = None
     #: Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung
-    original_rechnungsnummer: str = None
+    original_rechnungsnummer: Optional[str] = None
     #: Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert
-    vorausgezahlt: Betrag = None
+    vorausgezahlt: Optional[Betrag] = None
     #: Gesamtrabatt auf den Bruttobetrag
-    rabatt_brutto: Betrag = None
-    steuerbetraege: List[Steuerbetrag] = None
+    rabatt_brutto: Optional[Betrag] = None
+    steuerbetraege: Optional[List[Steuerbetrag]] = None
     """
     Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
     die Summe dieser Beträge ergibt den Wert für gesamtsteuer.

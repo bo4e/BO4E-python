@@ -5,6 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -20,6 +22,9 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Standorteigenschaften.dot
 
+    .. HINT::
+        `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Standorteigenschaften.json>`_
+
     """
 
     # required attributes
@@ -31,4 +36,4 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     # optional attributes
     #: Eigenschaften zur Sparte Gas
-    eigenschaften_gas: StandorteigenschaftenGas = None
+    eigenschaften_gas: Optional[StandorteigenschaftenGas] = None

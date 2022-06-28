@@ -6,6 +6,8 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import constr
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -20,6 +22,9 @@ class Marktteilnehmer(Geschaeftspartner):
 
     .. graphviz:: /api/dots/bo4e/bo/Marktteilnehmer.dot
 
+    .. HINT::
+        `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktteilnehmer.json>`_
+
     """
 
     # required attributes
@@ -33,4 +38,4 @@ class Marktteilnehmer(Geschaeftspartner):
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
-    makoadresse: str = None
+    makoadresse: Optional[str] = None

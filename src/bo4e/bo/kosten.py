@@ -1,7 +1,7 @@
 """
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -22,6 +22,9 @@ class Kosten(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Kosten.dot
 
+    .. HINT::
+        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Kosten.json>`_
+
     """
 
     # required attributes
@@ -35,4 +38,4 @@ class Kosten(Geschaeftsobjekt):
 
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: List[Betrag] = None
+    summe_kosten: Optional[List[Betrag]] = None

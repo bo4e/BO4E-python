@@ -15,6 +15,9 @@ class Katasteradresse(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Katasteradresse.dot
 
+    .. HINT::
+        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_
+
     """
 
     gemarkung_flur: str

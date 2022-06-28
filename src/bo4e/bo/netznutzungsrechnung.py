@@ -4,6 +4,8 @@ Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import constr
 
 from bo4e.bo.rechnung import Rechnung
@@ -18,6 +20,9 @@ class Netznutzungsrechnung(Rechnung):
     Modell für die Abbildung von Netznutzungsrechnungen
 
     .. graphviz:: /api/dots/bo4e/bo/Netznutzungsrechnung.dot
+
+    .. HINT::
+        `Netznutzungsrechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Netznutzungsrechnung.json>`_
 
     """
 
@@ -46,7 +51,7 @@ class Netznutzungsrechnung(Rechnung):
     simuliert: bool
 
     # optional attributes
-    lokations_id: str = None
+    lokations_id: Optional[str] = None
     """
     Die Markt- oder Messlokations-Identifikation (als Malo/Melo-Id) der Lokation, auf die sich die Rechnung bezieht
     """

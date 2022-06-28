@@ -1,6 +1,7 @@
 """
 Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.kostenposition import Kostenposition
 
@@ -14,18 +15,21 @@ class Fremdkostenposition(Kostenposition):
 
     .. graphviz:: /api/dots/bo4e/com/Fremdkostenposition.dot
 
+    .. HINT::
+        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenposition.json>`_
+
     """
 
     # optional attributes (additional to those from Kostenposition)
     #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
-    marktpartnername: str = None
+    marktpartnername: Optional[str] = None
 
     #: Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt
-    marktpartnercode: str = None
+    marktpartnercode: Optional[str] = None
 
     #: EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT
-    gebietcode_eic: str = None
+    gebietcode_eic: Optional[str] = None
     # todo: see issue https://github.com/Hochfrequenz/BO4E-python/issues/147 for EIC validation
 
     #: Link zum veröffentlichten Preisblatt
-    link_preisblatt: str = None
+    link_preisblatt: Optional[str] = None

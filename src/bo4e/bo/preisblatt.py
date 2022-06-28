@@ -5,6 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -27,6 +29,9 @@ class Preisblatt(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Preisblatt.dot
 
+    .. HINT::
+        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Preisblatt.json>`_
+
     """
 
     # required attributes
@@ -43,4 +48,4 @@ class Preisblatt(Geschaeftsobjekt):
     preispositionen: conlist(Preisposition, min_items=1)
     # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
-    herausgeber: Marktteilnehmer = None
+    herausgeber: Optional[Marktteilnehmer] = None

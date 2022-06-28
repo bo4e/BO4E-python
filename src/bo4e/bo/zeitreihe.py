@@ -4,6 +4,8 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -22,6 +24,9 @@ class Zeitreihe(Geschaeftsobjekt):
     Die Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.
 
     .. graphviz:: /api/dots/bo4e/bo/Zeitreihe.dot
+
+    .. HINT::
+        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zeitreihe.json>`_
 
     """
 
@@ -42,8 +47,8 @@ class Zeitreihe(Geschaeftsobjekt):
 
     # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe
-    beschreibung: str = None
+    beschreibung: Optional[str] = None
     #: Version der Zeitreihe
-    version: str = None
+    version: Optional[str] = None
     #: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
-    wertherkunft: Wertermittlungsverfahren = None
+    wertherkunft: Optional[Wertermittlungsverfahren] = None

@@ -15,6 +15,9 @@ class Rufnummer(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Rufnummer.dot
 
+    .. HINT::
+        `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rufnummer.json>`_
+
     """
 
     # required attributes

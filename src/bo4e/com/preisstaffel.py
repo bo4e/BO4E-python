@@ -3,6 +3,7 @@ Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.sigmoidparameter import Sigmoidparameter
@@ -17,6 +18,9 @@ class Preisstaffel(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot
 
+    .. HINT::
+        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_
+
     """
 
     # required attributes
@@ -29,4 +33,4 @@ class Preisstaffel(COM):
 
     # optional attributes
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter
-    sigmoidparameter: Sigmoidparameter = None
+    sigmoidparameter: Optional[Sigmoidparameter] = None

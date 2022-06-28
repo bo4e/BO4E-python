@@ -21,6 +21,9 @@ class Verbrauch(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Verbrauch.dot
 
+    .. HINT::
+        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verbrauch.json>`_
+
     """
 
     # required attributes
@@ -35,9 +38,9 @@ class Verbrauch(COM):
 
     # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: datetime = None
+    startdatum: Optional[datetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: datetime = None
+    enddatum: Optional[datetime] = None
     _bis_check = validator("enddatum", always=True, allow_reuse=True)(check_bis_is_later_than_von)
 
     @staticmethod

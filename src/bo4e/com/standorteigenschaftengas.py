@@ -18,6 +18,9 @@ class StandorteigenschaftenGas(COM):
 
     .. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenGas.dot
 
+    .. HINT::
+        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGas.json>`_
+
     """
 
     # required attributes

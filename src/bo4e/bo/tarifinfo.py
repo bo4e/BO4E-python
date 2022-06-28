@@ -5,6 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -26,6 +28,9 @@ class Tarifinfo(Geschaeftsobjekt):
     Dieses BO dient als Basis für weitere BOs mit erweiterten Anwendungsmöglichkeiten.
 
     .. graphviz:: /api/dots/bo4e/bo/Tarifinfo.dot
+
+    .. HINT::
+        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarifinfo.json>`_
 
     """
 
@@ -50,13 +55,13 @@ class Tarifinfo(Geschaeftsobjekt):
 
     # optional attributes
     #: Internetseite auf dem der Tarif zu finden ist
-    website: str = None
+    website: Optional[str] = None
     #: Freitext
-    bemerkung: str = None
+    bemerkung: Optional[str] = None
 
     #: Angabe, in welchem Zeitraum der Tarif gültig ist
-    zeitliche_gueltigkeit: Zeitraum = None
+    zeitliche_gueltigkeit: Optional[Zeitraum] = None
     #: Der Energiemix, der für diesen Tarif gilt
-    energiemix: Energiemix = None
+    energiemix: Optional[Energiemix] = None
     #: Mindestlaufzeiten und Kündigungsfristen zusammengefasst
-    vertragskonditionen: Vertragskonditionen = None
+    vertragskonditionen: Optional[Vertragskonditionen] = None

@@ -19,6 +19,9 @@ class PreisblattNetznutzung(Preisblatt):
 
     .. graphviz:: /api/dots/bo4e/bo/PreisblattNetznutzung.dot
 
+    .. HINT::
+        `PreisblattNetznutzung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattNetznutzung.json>`_
+
     """
 
     bo_typ: BoTyp = BoTyp.PREISBLATTNETZNUTZUNG

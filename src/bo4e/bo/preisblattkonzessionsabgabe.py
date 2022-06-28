@@ -17,6 +17,9 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     .. graphviz:: /api/dots/bo4e/bo/PreisblattKonzessionsabgabe.dot
 
+    .. HINT::
+        `PreisblattKonzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattKonzessionsabgabe.json>`_
+
     """
 
     bo_typ: BoTyp = BoTyp.PREISBLATTKONZESSIONSABGABE

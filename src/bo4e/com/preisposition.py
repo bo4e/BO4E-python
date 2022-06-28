@@ -4,6 +4,8 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.com.com import COM
@@ -28,6 +30,9 @@ class Preisposition(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Preisposition.dot
 
+    .. HINT::
+        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_
+
     """
 
     # required attributes
@@ -45,23 +50,23 @@ class Preisposition(COM):
     preisstaffeln: conlist(Preisstaffel, min_items=1)
 
     # optional attributes
-    zeitbasis: Zeiteinheit = None
+    zeitbasis: Optional[Zeiteinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird
     """
     #: Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
-    tarifzeit: Tarifzeit = None
-    bdew_artikelnummer: BDEWArtikelnummer = None
+    tarifzeit: Optional[Tarifzeit] = None
+    bdew_artikelnummer: Optional[BDEWArtikelnummer] = None
     """
     Eine vom BDEW standardisierte Bezeichnug für die abgerechnete Leistungserbringung;
     Diese Artikelnummer wird auch im Rechnungsteil der INVOIC verwendet.
     """
     #: Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden
-    zonungsgroesse: Bemessungsgroesse = None
+    zonungsgroesse: Optional[Bemessungsgroesse] = None
     #: Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt
-    freimenge_blindarbeit: Decimal = None
-    freimenge_leistungsfaktor: Decimal = None
+    freimenge_blindarbeit: Optional[Decimal] = None
+    freimenge_leistungsfaktor: Optional[Decimal] = None
     """
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)

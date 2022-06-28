@@ -107,4 +107,6 @@ def model_field_str(model_field):
     elif model_field.shape != SHAPE_SINGLETON:
         t = SHAPE_NAME_LOOKUP[model_field.shape].format(t)
 
+    if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
+        t = f"Optional[{t}]"
     return t

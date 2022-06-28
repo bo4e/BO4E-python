@@ -2,6 +2,7 @@
 Contains Zustaendigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.themengebiet import Themengebiet
@@ -16,6 +17,9 @@ class Zustaendigkeit(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Zustaendigkeit.dot
 
+    .. HINT::
+        `Zustaendigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zustaendigkeit.json>`_
+
     """
 
     # required attributes
@@ -25,5 +29,5 @@ class Zustaendigkeit(COM):
     """
 
     # optional attributes
-    jobtitel: str = None  #: Berufliche Rolle des Ansprechpartners
-    abteilung: str = None  #: Abteilung, in der der Ansprechpartner tätig ist
+    jobtitel: Optional[str] = None  #: Berufliche Rolle des Ansprechpartners
+    abteilung: Optional[str] = None  #: Abteilung, in der der Ansprechpartner tätig ist

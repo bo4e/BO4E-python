@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -23,6 +23,9 @@ class Energiemix(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Energiemix.dot
 
+    .. HINT::
+        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_
+
     """
 
     # required attributes
@@ -39,16 +42,16 @@ class Energiemix(COM):
 
     # optional attributes
     #: Bemerkung zum Energiemix
-    bemerkung: str = None
+    bemerkung: Optional[str] = None
     #: Höhe des erzeugten CO2-Ausstosses in g/kWh
-    co2_emission: Decimal = None
+    co2_emission: Optional[Decimal] = None
     #: Höhe des erzeugten Atommülls in g/kWh
-    atommuell: Decimal = None
+    atommuell: Optional[Decimal] = None
     #: Zertifikate für den Energiemix
     oekozertifikate: List[Oekozertifikat] = []
     #: Ökolabel für den Energiemix
     oekolabel: List[Oekolabel] = []
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
-    oeko_top_ten: bool = None
+    oeko_top_ten: Optional[bool] = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
-    website: str = None
+    website: Optional[str] = None

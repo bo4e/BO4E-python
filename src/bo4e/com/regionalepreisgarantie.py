@@ -17,6 +17,9 @@ class RegionalePreisgarantie(Preisgarantie):
 
     .. graphviz:: /api/dots/bo4e/com/RegionalePreisgarantie.dot
 
+    .. HINT::
+        `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisgarantie.json>`_
+
     """
 
     # required attributes

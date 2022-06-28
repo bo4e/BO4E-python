@@ -16,6 +16,9 @@ class Dienstleistung(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Dienstleistung.dot
 
+    .. HINT::
+        `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Dienstleistung.json>`_
+
     """
 
     # required attributes

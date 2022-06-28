@@ -17,6 +17,9 @@ class Sigmoidparameter(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot
 
+    .. HINT::
+        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_
+
     """
 
     # required attributes

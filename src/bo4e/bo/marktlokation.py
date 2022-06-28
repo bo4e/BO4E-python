@@ -5,6 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
+from typing import Optional
+
 from pydantic import validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -30,6 +32,9 @@ class Marktlokation(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Marktlokation.dot
 
+    .. HINT::
+        `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_
+
     """
 
     # required attributes
@@ -52,24 +57,24 @@ class Marktlokation(Geschaeftsobjekt):
 
     # optional attributes
     #: Verbrauchsart der Marktlokation.
-    verbrauchsart: Verbrauchsart = None
+    verbrauchsart: Optional[Verbrauchsart] = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
-    unterbrechbar: bool = None
+    unterbrechbar: Optional[bool] = None
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
-    netzbetreibercodenr: str = None
+    netzbetreibercodenr: Optional[str] = None
     #: Typ des Netzgebietes, z.B. Verteilnetz
-    gebietstyp: Gebiettyp = None
+    gebietstyp: Optional[Gebiettyp] = None
     #: Die ID des Gebietes in der ene't-Datenbank
-    netzgebietsnr: str = None  # todo: rename to "id" (see 2021-12-15 update)
+    netzgebietsnr: Optional[str] = None  # todo: rename to "id" (see 2021-12-15 update)
     #: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
-    bilanzierungsgebiet: str = None
+    bilanzierungsgebiet: Optional[str] = None
     #: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
-    grundversorgercodenr: str = None
+    grundversorgercodenr: Optional[str] = None
     #: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
-    gasqualitaet: Gasqualitaet = None
+    gasqualitaet: Optional[Gasqualitaet] = None
     #: Geschäftspartner, dem diese Marktlokation gehört
-    endkunde: Geschaeftspartner = None
-    zugehoerige_messlokation: Messlokationszuordnung = None  # todo: rename to plural
+    endkunde: Optional[Geschaeftspartner] = None
+    zugehoerige_messlokation: Optional[Messlokationszuordnung] = None  # todo: rename to plural
     """
     Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.
     Es können 3 verschiedene Konstrukte auftreten:
@@ -94,13 +99,13 @@ class Marktlokation(Geschaeftsobjekt):
 
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
-    lokationsadresse: Adresse = None
-    geoadresse: Geokoordinaten = None
+    lokationsadresse: Optional[Adresse] = None
+    geoadresse: Optional[Geokoordinaten] = None
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Katasteradresse = None
+    katasterinformation: Optional[Katasteradresse] = None
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.

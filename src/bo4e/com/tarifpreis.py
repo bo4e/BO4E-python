@@ -2,6 +2,7 @@
 Contains Tarifpreis class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.preis import Preis
 from bo4e.enum.preistyp import Preistyp
@@ -16,6 +17,9 @@ class Tarifpreis(Preis):
 
     .. graphviz:: /api/dots/bo4e/com/Tarifpreis.dot
 
+    .. HINT::
+        `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreis.json>`_
+
     """
 
     # required attributes
@@ -24,4 +28,4 @@ class Tarifpreis(Preis):
 
     # optional attributes
     #:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler".
-    beschreibung: str = None
+    beschreibung: Optional[str] = None

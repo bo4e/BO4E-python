@@ -12,6 +12,7 @@ from bo4e.com.com import COM
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
+
 # pylint: disable=too-few-public-methods
 
 
@@ -20,6 +21,9 @@ class Zaehlwerk(COM):
     Mit dieser Komponente werden Zählwerke modelliert.
 
     .. graphviz:: /api/dots/bo4e/com/Zaehlwerk.dot
+
+    .. HINT::
+        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlwerk.json>`_
 
     """
 

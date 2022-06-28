@@ -19,6 +19,9 @@ class Steuerbetrag(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Steuerbetrag.dot
 
+    .. HINT::
+        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_
+
     """
 
     # required attributes

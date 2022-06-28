@@ -1,7 +1,7 @@
 """
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -18,6 +18,9 @@ class Region(Geschaeftsobjekt):
 
     .. graphviz:: /api/dots/bo4e/bo/Region.dot
 
+    .. HINT::
+        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Region.json>`_
+
     """
 
     # required attributes
@@ -30,4 +33,4 @@ class Region(Geschaeftsobjekt):
 
     # optional attributes
     #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: List[Regionskriterium] = None
+    negativ_liste: Optional[List[Regionskriterium]] = None

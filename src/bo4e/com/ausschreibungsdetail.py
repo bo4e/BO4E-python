@@ -1,6 +1,7 @@
 """
 Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.adresse import Adresse
 from bo4e.com.com import COM
@@ -19,6 +20,9 @@ class Ausschreibungsdetail(COM):
 
     .. graphviz:: /api/dots/bo4e/com/Ausschreibungsdetail.dot
 
+    .. HINT::
+        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungsdetail.json>`_
+
     """
 
     # required attributes
@@ -35,27 +39,27 @@ class Ausschreibungsdetail(COM):
 
     # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
-    netzbetreiber: str = None
+    netzbetreiber: Optional[str] = None
     #: Bezeichnung des Kunden, der die Marktlokation nutzt
-    kunde: str = None
+    kunde: Optional[str] = None
     #: Die Bezeichnung des Zählers an der Marktlokation
-    zaehlernummer: str = None
+    zaehlernummer: Optional[str] = None
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
-    lokationsbezeichnung: str = None
+    lokationsbezeichnung: Optional[str] = None
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
-    zaehlertechnik: Zaehlertyp = None
-    lastgang_vorhanden: bool = None
+    zaehlertechnik: Optional[Zaehlertyp] = None
+    lastgang_vorhanden: Optional[bool] = None
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden
     """
 
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
-    prognose_jahresarbeit: Menge = None
+    prognose_jahresarbeit: Optional[Menge] = None
     #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
-    prognose_arbeit_lieferzeitraum: Menge = None
+    prognose_arbeit_lieferzeitraum: Optional[Menge] = None
     #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
-    prognose_leistung: Menge = None
+    prognose_leistung: Optional[Menge] = None
     #: Die (evtl. abweichende) Rechnungsadresse
-    rechnungsadresse: Adresse = None
+    rechnungsadresse: Optional[Adresse] = None

@@ -10,6 +10,7 @@ from pydantic import BaseModel
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
 
+
 # pylint: disable=too-few-public-methods
 
 
@@ -19,6 +20,9 @@ class Geschaeftsobjekt(BaseModel):
     Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
 
     .. graphviz:: /api/dots/bo4e/bo/Geschaeftsobjekt.dot
+
+    .. HINT::
+        `Geschaeftsobjekt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftsobjekt.json>`_
 
     """
 

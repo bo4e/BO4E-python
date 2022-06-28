@@ -5,6 +5,8 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.com.angebotsteil import Angebotsteil
@@ -19,6 +21,9 @@ class Angebotsvariante(COM):
     Führt die verschiedenen Ausprägungen der Angebotsberechnung auf
 
     .. graphviz:: /api/dots/bo4e/com/Angebotsvariante.dot
+
+    .. HINT::
+        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsvariante.json>`_
 
     """
 
@@ -41,7 +46,7 @@ class Angebotsvariante(COM):
 
     # optional attributes
     #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
-    gesamtmenge: Menge = None
+    gesamtmenge: Optional[Menge] = None
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320
     #: Aufsummierte Kosten aller Angebotsteile
-    gesamtkosten: Betrag = None
+    gesamtkosten: Optional[Betrag] = None

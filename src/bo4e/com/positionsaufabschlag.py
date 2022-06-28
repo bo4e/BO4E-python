@@ -19,6 +19,9 @@ class PositionsAufAbschlag(COM):
 
     .. graphviz:: /api/dots/bo4e/com/PositionsAufAbschlag.dot
 
+    .. HINT::
+        `PositionsAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/PositionsAufAbschlag.json>`_
+
     """
 
     # required attributes

@@ -4,6 +4,8 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
+from typing import Optional
+
 from pydantic import conlist
 
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
@@ -21,6 +23,9 @@ class Ausschreibungslos(COM):
     Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung
 
     .. graphviz:: /api/dots/bo4e/com/Ausschreibungslos.dot
+
+    .. HINT::
+        `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungslos.json>`_
 
     """
 
@@ -51,21 +56,21 @@ class Ausschreibungslos(COM):
 
     # optional attributes
     #: Bemerkung des Kunden zum Los
-    bemerkung: str = None
+    bemerkung: Optional[str] = None
     #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an
-    gesamt_menge: Menge = None
+    gesamt_menge: Optional[Menge] = None
     #: Mindesmenge Toleranzband (kWh, %)
-    wunsch_mindestmenge: Menge = None
+    wunsch_mindestmenge: Optional[Menge] = None
     #: Maximalmenge Toleranzband (kWh, %)
-    wunsch_maximalmenge: Menge = None
+    wunsch_maximalmenge: Optional[Menge] = None
 
-    wiederholungsintervall: Zeitraum = None
+    wiederholungsintervall: Optional[Zeitraum] = None
     """
     In welchem Intervall die Angebotsabgabe wiederholt werden darf.
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
 
     #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
-    wunsch_kuendingungsfrist: Zeitraum = None
+    wunsch_kuendingungsfrist: Optional[Zeitraum] = None
     #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
-    wunsch_zahlungsziel: Zeitraum = None
+    wunsch_zahlungsziel: Optional[Zeitraum] = None

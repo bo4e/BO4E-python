@@ -3,7 +3,7 @@ Contains Regionaltarif class and corresponding marshmallow schema for de-/serial
 """
 
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods, empty-docstring
 # pylint: disable=no-name-in-module
@@ -25,6 +25,9 @@ class Regionaltarif(Tarifinfo):
 
     .. graphviz:: /api/dots/bo4e/bo/Regionaltarif.dot
 
+    .. HINT::
+        `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Regionaltarif.json>`_
+
     """
 
     bo_typ: BoTyp = BoTyp.REGIONALTARIF
@@ -38,8 +41,8 @@ class Regionaltarif(Tarifinfo):
 
     # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
-    tarif_auf_abschlaege: List[RegionalerAufAbschlag] = None
+    tarif_auf_abschlaege: Optional[List[RegionalerAufAbschlag]] = None
     #: Festlegung von Garantien für bestimmte Preisanteile
-    preisgarantien: List[RegionalePreisgarantie] = None
+    preisgarantien: Optional[List[RegionalePreisgarantie]] = None
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Tarifeinschraenkung = None
+    tarifeinschraenkung: Optional[Tarifeinschraenkung] = None

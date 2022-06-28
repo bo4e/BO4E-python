@@ -3,7 +3,7 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
@@ -29,6 +29,9 @@ class Vertrag(Geschaeftsobjekt):
     Das Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.
 
     .. graphviz:: /api/dots/bo4e/bo/Vertrag.dot
+
+    .. HINT::
+        `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Vertrag.json>`_
 
     """
 
@@ -67,10 +70,10 @@ class Vertrag(Geschaeftsobjekt):
 
     # optional attributes
     #: Beschreibung zum Vertrag
-    beschreibung: str = None
+    beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen
-    vertragskonditionen: Vertragskonditionen = None
+    vertragskonditionen: Optional[Vertragskonditionen] = None
     #: Unterzeichner des Vertragspartners 1
-    unterzeichnervp1: List[Unterschrift] = None
+    unterzeichnervp1: Optional[List[Unterschrift]] = None
     #: Unterzeichner des Vertragspartners 2
-    unterzeichnervp2: List[Unterschrift] = None
+    unterzeichnervp2: Optional[List[Unterschrift]] = None

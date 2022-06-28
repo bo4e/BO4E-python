@@ -18,6 +18,9 @@ class RegionaleGueltigkeit(COM):
 
     .. graphviz:: /api/dots/bo4e/com/RegionaleGueltigkeit.dot
 
+    .. HINT::
+        `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_
+
     """
 
     # required attributes

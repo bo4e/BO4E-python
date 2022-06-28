@@ -16,6 +16,9 @@ class ExterneReferenz(COM):
 
     .. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot
 
+    .. HINT::
+        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_
+
     """
 
     # required attributes

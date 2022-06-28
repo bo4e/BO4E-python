@@ -2,7 +2,7 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import List, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -40,9 +40,9 @@ class _LastgangBody(Geschaeftsobjekt):
 
     # optional attributes
     #: Versionsnummer des Lastgangs
-    version: str = None
+    version: Optional[str] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: constr(strict=True, regex=OBIS_PATTERN) = None
+    obis_kennzahl: Optional[constr(strict=True, regex=OBIS_PATTERN)] = None
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -77,6 +77,9 @@ class Lastgang(_LastgangBody):
     Flexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.
 
     .. graphviz:: /api/dots/bo4e/bo/Lastgang.dot
+
+    .. HINT::
+        `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Lastgang.json>`_
 
     """
 

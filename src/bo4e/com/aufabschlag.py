@@ -3,7 +3,7 @@ Contains AufAbschlag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List
+from typing import List, Optional
 
 from pydantic import validator
 
@@ -26,6 +26,9 @@ class AufAbschlag(COM):
 
     .. graphviz:: /api/dots/bo4e/com/AufAbschlag.dot
 
+    .. HINT::
+        `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlag.json>`_
+
     """
 
     # required attributes
@@ -36,16 +39,16 @@ class AufAbschlag(COM):
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag
-    beschreibung: str = None
+    beschreibung: Optional[str] = None
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).
-    auf_abschlagstyp: AufAbschlagstyp = None
+    auf_abschlagstyp: Optional[AufAbschlagstyp] = None
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
-    auf_abschlagsziel: AufAbschlagsziel = None
-    einheit: Waehrungseinheit = None
+    auf_abschlagsziel: Optional[AufAbschlagsziel] = None
+    einheit: Optional[Waehrungseinheit] = None
     _einheit_check = validator("einheit", allow_reuse=True)(einheit_only_for_abschlagstyp_absolut)
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    website: str = None
+    website: Optional[str] = None
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    gueltigkeitszeitraum: Zeitraum = None
+    gueltigkeitszeitraum: Optional[Zeitraum] = None
