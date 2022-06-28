@@ -69,7 +69,7 @@ def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
         dot_content += "}\n"
 
         os.makedirs(dot_path, exist_ok=True)
-        with open(f"{dot_path}{os.path.sep}{dot_file_name}", "w", encoding="UTF-8") as dot_file:
+        with open(f"{dot_path}{os.path.sep}{dot_file_name}", "w+", encoding="UTF-8") as dot_file:
             dot_file.write(dot_content)
             # print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
     print("Successfully created dot files.")
