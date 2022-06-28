@@ -51,7 +51,7 @@ def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
                 modl_namespace = f"{cls.__module__}.{name}"
                 parse_to_dot.append(modl_namespace)
                 if not uml_network.has_node(modl_namespace):
-                    _recursive_helper(cls, modl_namespace, uml_network)
+                    _recursive_add_class(cls, modl_namespace, uml_network)
 
     print("Successfully created relationship network.")
 
@@ -75,7 +75,7 @@ def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
     print("Successfully created dot files.")
 
 
-def _recursive_helper(  # type: ignore[no-untyped-def]
+def _recursive_add_class(  # type: ignore[no-untyped-def]
     cls_cur,
     modl_namespace: str,
     uml_network: nx.MultiDiGraph,
@@ -96,7 +96,7 @@ def _recursive_helper(  # type: ignore[no-untyped-def]
         type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
-                _recursive_helper(model_field.type_, type_modl_namespace, uml_network)
+                _recursive_add_class(model_field.type_, type_modl_namespace, uml_network)
             uml_network.add_edge(
                 modl_namespace,
                 type_modl_namespace,
@@ -110,7 +110,7 @@ def _recursive_helper(  # type: ignore[no-untyped-def]
         type_modl_namespace = f"{parent.__module__}.{parent.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
-                _recursive_helper(parent, type_modl_namespace, uml_network)
+                _recursive_add_class(parent, type_modl_namespace, uml_network)
             uml_network.add_edge(
                 modl_namespace,
                 type_modl_namespace,
