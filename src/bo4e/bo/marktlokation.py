@@ -113,7 +113,7 @@ class Marktlokation(Geschaeftsobjekt):
 
     # todo: add kundengruppe
 
-    # pylint:disable=unused-argument
+    # pylint:disable=unused-argument, no-self-argument
     @validator("katasterinformation", always=True)
     def validate_address_info(
         cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]

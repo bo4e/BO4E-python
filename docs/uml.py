@@ -61,10 +61,10 @@ def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
             print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
 
 
-def recursive_helper(
+def recursive_helper(  # type: ignore[no-untyped-def]
     cls_cur,
     modl_namespace: str,
-    uml_network: nx.MultiDiGraph,  # type: ignore[no-untyped-def]
+    uml_network: nx.MultiDiGraph,
     regex_incl_network: Pattern[str],
     regex_excl_network: Pattern[str],
 ) -> None:

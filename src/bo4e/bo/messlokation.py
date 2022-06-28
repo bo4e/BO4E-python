@@ -91,7 +91,7 @@ class Messlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    # pylint: disable=unused-argument
+    # pylint: disable=unused-argument, no-self-argument
     @validator("messlokations_id", always=True)
     def _validate_messlokations_id(cls, messlokations_id: str) -> str:
         if not messlokations_id:
@@ -102,6 +102,7 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError(f"The country code '{messlokations_id[0:2]}' is not a valid country code")
         return messlokations_id
 
+    # pylint: disable=no-self-argument
     @validator("katasterinformation", always=True)
     def validate_address_info(
         cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
@@ -117,6 +118,7 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError("More than one address information is given.")
         return katasterinformation
 
+    # pylint: disable=no-self-argument
     @validator("grundzustaendiger_msbim_codenr", always=True)
     def validate_grundzustaendiger_x_codenr(
         cls, grundzustaendiger_msbim_codenr: Optional[str], values: Dict[str, Any]

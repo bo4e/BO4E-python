@@ -44,6 +44,7 @@ class Adresse(COM):
     #: Offizieller ISO-Landescode
     landescode: Landescode = Landescode.DE  # type:ignore
 
+    # pylint: disable=no-self-argument
     @validator("postfach", always=True)
     def strasse_xor_postfach(cls, postfach: Optional[str], values: Dict[str, Any]) -> Optional[str]:
         """
