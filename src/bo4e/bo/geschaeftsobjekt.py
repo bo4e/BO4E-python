@@ -10,7 +10,6 @@ from pydantic import BaseModel
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
 
-
 # pylint: disable=too-few-public-methods
 
 

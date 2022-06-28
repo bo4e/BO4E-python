@@ -7,7 +7,6 @@ from typing import Optional
 from bo4e.com.preis import Preis
 from bo4e.enum.preistyp import Preistyp
 
-
 # pylint: disable=too-few-public-methods
 
 

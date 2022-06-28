@@ -8,7 +8,6 @@ from bo4e.com.geraet import Geraet
 from bo4e.com.menge import Menge
 from bo4e.enum.voraussetzungen import Voraussetzungen
 
-
 # pylint: disable=too-few-public-methods
 
 

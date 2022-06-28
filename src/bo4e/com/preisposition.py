@@ -20,7 +20,6 @@ from bo4e.enum.tarifzeit import Tarifzeit
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 

@@ -1,7 +1,7 @@
 """
 A module that simplifies assertions for json serialization
 """
-from typing import TypeVar, Dict, Any
+from typing import Any, Dict, TypeVar
 
 from dictdiffer import diff  # type: ignore[import]
 

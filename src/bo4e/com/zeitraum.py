@@ -5,13 +5,12 @@ and corresponding marshmallow schema for de-/serialization
 
 from datetime import datetime
 from decimal import Decimal
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
 from pydantic import validator
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
-
 
 # pylint: disable=too-few-public-methods
 

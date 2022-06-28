@@ -7,7 +7,6 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.kostenposition import Kostenposition
 
-
 # pylint: disable=too-few-public-methods
 
 

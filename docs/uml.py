@@ -8,10 +8,10 @@ from re import Pattern
 import networkx as nx  # type: ignore[import]
 from pydantic.fields import (
     MAPPING_LIKE_SHAPES,
-    SHAPE_TUPLE,
     SHAPE_GENERIC,
-    SHAPE_SINGLETON,
     SHAPE_NAME_LOOKUP,
+    SHAPE_SINGLETON,
+    SHAPE_TUPLE,
     ModelField,
 )
 from pydantic.typing import display_as_type

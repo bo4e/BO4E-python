@@ -4,7 +4,7 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
 from pydantic import validator
 

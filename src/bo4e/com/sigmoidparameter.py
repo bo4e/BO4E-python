@@ -6,7 +6,6 @@ from decimal import Decimal
 
 from bo4e.com.com import COM
 
-
 # pylint:disable=invalid-name, too-few-public-methods
 
 

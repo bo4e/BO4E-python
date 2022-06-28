@@ -6,7 +6,6 @@ and corresponding marshmallow schema for de-/serialization
 from bo4e.com.com import COM
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
-
 # pylint: disable=too-few-public-methods
 
 

@@ -8,7 +8,6 @@ from typing import Optional
 from bo4e.com.com import COM
 from bo4e.com.sigmoidparameter import Sigmoidparameter
 
-
 # pylint: disable=too-few-public-methods
 
 

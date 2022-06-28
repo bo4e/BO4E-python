@@ -9,7 +9,6 @@ from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
 
-
 # pylint: disable=too-few-public-methods
 
 

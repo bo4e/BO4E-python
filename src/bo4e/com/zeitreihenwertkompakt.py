@@ -9,7 +9,6 @@ from bo4e.com.com import COM
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
-
 # pylint: disable=too-few-public-methods
 
 

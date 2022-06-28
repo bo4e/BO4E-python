@@ -3,10 +3,9 @@ Contains validators for BO s and COM s classes.
 """
 import re
 from datetime import datetime
-from typing import Optional, Protocol, Dict, Any
+from typing import Any, Dict, Optional, Protocol
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-
 
 # pylint: disable=unused-argument
 from bo4e.enum.waehrungseinheit import Waehrungseinheit

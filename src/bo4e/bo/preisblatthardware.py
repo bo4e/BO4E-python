@@ -10,7 +10,6 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.netzebene import Netzebene
 
-
 # pylint: disable=too-few-public-methods
 
 

@@ -8,7 +8,7 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from pydantic import constr, conlist
+from pydantic import conlist, constr
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt

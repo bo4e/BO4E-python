@@ -16,7 +16,6 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
 
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 

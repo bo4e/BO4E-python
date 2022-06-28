@@ -1,4 +1,4 @@
-from typing import Dict, Any
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
 from pydantic import ValidationError

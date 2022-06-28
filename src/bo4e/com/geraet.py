@@ -7,7 +7,6 @@ from typing import Optional
 from bo4e.com.com import COM
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 
-
 # pylint: disable=too-few-public-methods
 
 

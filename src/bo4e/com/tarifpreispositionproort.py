@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import constr, conlist
+from pydantic import conlist, constr
 
 from bo4e.com.com import COM
 from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt

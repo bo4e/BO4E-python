@@ -20,7 +20,6 @@ from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
-
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 

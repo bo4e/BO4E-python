@@ -8,7 +8,6 @@ from bo4e.bo.kosten import Kosten
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.enum.botyp import BoTyp
 
-
 # pylint: disable=too-few-public-methods
 
 

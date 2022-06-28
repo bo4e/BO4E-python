@@ -19,7 +19,6 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
 
-
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 

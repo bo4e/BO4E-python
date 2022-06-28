@@ -9,7 +9,6 @@ from bo4e.com.fremdkostenblock import Fremdkostenblock
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 
-
 # pylint: disable=too-few-public-methods
 
 

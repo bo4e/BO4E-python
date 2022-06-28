@@ -11,7 +11,6 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
-
 # pylint: disable=too-few-public-methods
 
 

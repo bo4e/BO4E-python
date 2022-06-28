@@ -7,7 +7,6 @@ and corresponding marshmallow schema for de-/serialization
 from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 
-
 # pylint: disable=too-few-public-methods
 
 

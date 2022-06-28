@@ -5,7 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 
 from bo4e.com.com import COM
 
-
 # pylint: disable=too-few-public-methods
 
 

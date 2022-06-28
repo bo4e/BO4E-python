@@ -7,7 +7,6 @@ from bo4e.bo.preisblatt import Preisblatt
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kundengruppeka import KundengruppeKA
 
-
 # pylint: disable=too-few-public-methods
 
 

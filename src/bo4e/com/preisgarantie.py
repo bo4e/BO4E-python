@@ -8,7 +8,6 @@ from bo4e.com.com import COM
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
 
-
 # pylint: disable=too-few-public-methods
 
 

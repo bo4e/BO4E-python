@@ -9,7 +9,6 @@ from bo4e.com.com import COM
 from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
 from bo4e.enum.waehrungscode import Waehrungscode
 
-
 # pylint: disable=too-few-public-methods
 
 

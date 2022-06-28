@@ -9,7 +9,6 @@ from bo4e.com.menge import Menge
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 

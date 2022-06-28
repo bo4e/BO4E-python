@@ -11,7 +11,6 @@ from bo4e.com.tarifpreis import Tarifpreis
 from bo4e.enum.messpreistyp import Messpreistyp
 from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 
-
 # yes. there is no description in the official docs.
 # https://github.com/Hochfrequenz/BO4E-python/issues/328
 

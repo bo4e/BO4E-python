@@ -9,7 +9,6 @@ from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
-
 # pylint: disable=too-few-public-methods
 
 

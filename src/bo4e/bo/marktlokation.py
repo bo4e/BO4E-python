@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
 from pydantic import validator
 

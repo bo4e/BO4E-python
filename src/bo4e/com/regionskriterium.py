@@ -6,7 +6,6 @@ from bo4e.com.com import COM
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
 
-
 # pylint: disable=too-few-public-methods
 
 

@@ -5,7 +5,6 @@ from typing import Optional
 
 from bo4e.com.kostenposition import Kostenposition
 
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 

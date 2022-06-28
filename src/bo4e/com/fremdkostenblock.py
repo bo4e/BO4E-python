@@ -9,7 +9,6 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.fremdkostenposition import Fremdkostenposition
 
-
 # pylint: disable=too-few-public-methods
 
 
