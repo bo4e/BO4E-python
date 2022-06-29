@@ -21,5 +21,5 @@ for pkg in pkgs:
         for name, cls in cls_list:
             this_directory = pathlib.Path(__file__).parent.absolute()
             file_path = this_directory / pkg / (name + ".json")  # pylint:disable=invalid-name
-            with open(file_path, "w", encoding="utf-8") as json_schema_file:
+            with open(file_path, "w+", encoding="utf-8") as json_schema_file:
                 json_schema_file.write(cls.schema_json(ensure_ascii=False, sort_keys=True, indent=4))
