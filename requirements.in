@@ -1,6 +1,4 @@
 pyhumps
-marshmallow
-marshmallow-enum
 iso3166
 pydantic
 stringcase
