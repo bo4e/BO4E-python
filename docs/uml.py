@@ -62,10 +62,10 @@ def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
         dot_file_name = f"{modl_cls_name}.dot"
         uml_subgraph = nx.ego_graph(uml_network, modl_to_parse, radius=radius, undirected=False)
         dot_content = 'digraph "' + modl_cls_name + '" {\nrankdir=BT\ncharset="utf-8"\n'
-        for node in uml_subgraph.nodes:
-            dot_content += uml_subgraph.nodes[node]["dot_node_str"] + "\n"
-        for edge in uml_subgraph.edges:
-            dot_content += uml_subgraph.edges[edge]["dot_edge_str"] + "\n"
+        for node in uml_subgraph.nodes.values():
+            dot_content += node["dot_node_str"] + "\n"
+        for edge in uml_subgraph.edges.values():
+            dot_content += edge["dot_edge_str"] + "\n"
         dot_content += "}\n"
 
         os.makedirs(dot_path, exist_ok=True)
