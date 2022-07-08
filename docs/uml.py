@@ -313,8 +313,8 @@ class PlantUMLNetwork(_UMLNetworkABC):
             if node == root_node:
                 content += self.get_node_str(node, True, True, root_node) + "\n\n"
             else:
-                namespaces[_pkg]["str"] += (
-                    "\t" + self.get_node_str(node, False, True, root_node) + "\n"  # type:ignore[assignment,operator]
+                namespaces[_pkg]["str"] += (  # type:ignore[assignment]
+                    "\t" + self.get_node_str(node, False, True, root_node) + "\n"  # type:ignore[operator]
                 )
                 namespaces[_pkg]["empty"] = False
         # ------ add all non-empty namespace-strings to `content` ------------------------------------------------------
