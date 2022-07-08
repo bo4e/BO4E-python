@@ -293,17 +293,21 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/" + python_version, None),
 }
 
-# Create UML diagrams in plantuml format. See uml.py for more details.
+# Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
+# See docs/uml.py for more details.
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
-_created_files = write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
+write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
+print("Created uml files.")
 compile_files_plantuml(
     Path(output_dir) / "uml" / "bo4e" / "bo",
     Path(output_dir).parent / "_static" / "images" / "bo4e" / "bo",
     _exec_plantuml,
 )
+print(f"Compiled uml files ({Path(output_dir) / 'uml' / 'bo4e' / 'bo'}) into svg.")
 compile_files_plantuml(
     Path(output_dir) / "uml" / "bo4e" / "com",
     Path(output_dir).parent / "_static" / "images" / "bo4e" / "com",
     _exec_plantuml,
 )
+print(f"Compiled uml files ({Path(output_dir) / 'uml' / 'bo4e' / 'com'}) into svg.")

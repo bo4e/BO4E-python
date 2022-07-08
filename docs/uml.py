@@ -1,6 +1,7 @@
 """
-Contains a method to build dot files from code. It is designed to work with pydantic and only tested in this project
-so far.
+Contains functionality to build UML files from code. Eventually additional parsing into svg as for now for the Plantuml
+parser. Currently, this the only supported parser.
+It is designed to work together with `pydantic` and only is tested in this project so far.
 """
 import importlib
 import inspect
@@ -102,7 +103,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         self, node1: str, node2: str, through_field: ModelField, card1: Cardinality = None, card2: Cardinality = None
     ) -> None:
         """
-        Adds an association-relation. `node1` references `node2` in it's field `through_field`. Additionally, you can
+        Adds an association-relation. `node1` references `node2` in its field `through_field`. Additionally, you can
         provide information relating to the cardinality of the association.
         """
         super().add_edge(node1, node2, type="association", through_field=through_field, card1=card1, card2=card2)
@@ -222,8 +223,6 @@ class PlantUMLNetwork(_UMLNetworkABC):
         if detailed:
             cls_str += " {\n"
             for field in self.nodes[node]["fields"].values():
-                # if name in self.nodes[node]['exclude_fields']:
-                #     continue
                 type_str = _UMLNetworkABC.model_field_str(field)
                 if field.required:
                     cls_str += f"\t{field.alias} : {type_str}\n"
@@ -379,7 +378,6 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
             uml_file.write(file_content)
             path_list.append(file_path / file_name)
             # print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
-    print("Created uml files.")
     return path_list
 
 
@@ -467,4 +465,3 @@ def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) 
     """
     command = f'java -jar "{executable}" "{input_dir}" -svg -o "{output_dir}"'
     subprocess.call(shlex.split(command))
-    print(f"Compiled uml files ({input_dir}) into svg.")
