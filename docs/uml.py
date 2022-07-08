@@ -178,12 +178,20 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
 
         # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
         if model_field.shape in MAPPING_LIKE_SHAPES:
-            result_str = f"Mapping[{display_as_type(model_field.key_field.type_)}, {result_str}]"  # type: ignore
+            result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
         elif model_field.shape == SHAPE_TUPLE:
-            result_str = f"Tuple[{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"  # type: ignore
+            result_str = "Tuple[" + ", ".join(
+                display_as_type(
+                    sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
+                )
+            )
+            result_str += "]"
         elif model_field.shape == SHAPE_GENERIC:
             assert model_field.sub_fields
-            result_str = f"{display_as_type(model_field.type_)}[{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
+            result_str = (
+                f"{display_as_type(model_field.type_)}["
+                f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
+            )
         elif model_field.shape != SHAPE_SINGLETON:
             result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
 
