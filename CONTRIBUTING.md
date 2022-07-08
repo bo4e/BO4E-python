@@ -17,7 +17,7 @@ Feel free to open an issue if you run into any kind of problems.
   - pylint for linting
   - mypy for static type checking
   - pytest for unittests
-  - Sphinx and Graphviz for documentation
+  - Sphinx and Plantuml for documentation
 - Technical Documentation is in English; For example: "Don't use the builtin validator here because …"
 - But data model docstrings are in German; For example: "Ist das Ende nicht gesetzt, so ist der Zeitraum als offen zu verstehen."
 - Docstrings should not be trivial/useless
