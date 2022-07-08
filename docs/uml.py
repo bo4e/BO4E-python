@@ -7,12 +7,11 @@ import inspect
 import os
 import pkgutil
 import re
-import subprocess
 import shlex
+import subprocess
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
-
-from typing import List, Dict, Tuple, Type, cast, Optional
+from typing import Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 
@@ -315,8 +314,8 @@ class PlantUMLNetwork(_UMLNetworkABC):
                 content += self.get_node_str(node, True, True, root_node) + "\n\n"
             else:
                 namespaces[_pkg]["str"] += (
-                    "\t" + self.get_node_str(node, False, True, root_node) + "\n"
-                )  # type:ignore[assignment,operator]
+                    "\t" + self.get_node_str(node, False, True, root_node) + "\n"  # type:ignore[assignment,operator]
+                )
                 namespaces[_pkg]["empty"] = False
         # ------ add all non-empty namespace-strings to `content` ------------------------------------------------------
         for namespace in namespaces.values():

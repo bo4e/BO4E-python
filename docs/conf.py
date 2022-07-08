@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
-from uml import build_network, PlantUMLNetwork, write_class_umls, compile_files_plantuml
+from uml import PlantUMLNetwork, build_network, compile_files_plantuml, write_class_umls
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
