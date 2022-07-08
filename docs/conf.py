@@ -255,7 +255,7 @@ latex_elements = {
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, documentclass [howto/manual]).
+# (source start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
     (
         "index",
@@ -293,7 +293,7 @@ intersphinx_mapping = {
     "python": ("https://docs.python.org/" + python_version, None),
 }
 
-# Create UML diagrams in .dot format. See uml.py for more details.
+# Create UML diagrams in plantuml format. See uml.py for more details.
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
 _created_files = write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
