@@ -77,9 +77,7 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
-    # "sphinx.ext.graphviz",
     "sphinx_rtd_theme",
-    "sphinxcontrib.plantuml",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -297,7 +295,7 @@ intersphinx_mapping = {
 
 # Create UML diagrams in .dot format. See uml.py for more details.
 _exec_plantuml = Path(__location__) / "plantuml.jar"
-_network, _namespaces_to_parse = build_network(module_dir, PlantUMLNetwork)
+_network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
 _created_files = write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
 compile_files_plantuml(
     Path(output_dir) / "uml" / "bo4e" / "bo",
