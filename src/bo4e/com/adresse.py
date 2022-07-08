@@ -16,7 +16,9 @@ class Adresse(COM):
     """
     Contains an address that can be used for most purposes.
 
-    .. graphviz:: /api/dots/bo4e/com/Adresse.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Adresse.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_

@@ -165,3 +165,5 @@ Temporary Items
 
 # This directory rebuilds on 'tox -e docs' therefore not needed in repo
 docs/api
+docs/plantuml.jar
+docs/_static/images

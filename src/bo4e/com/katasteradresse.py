@@ -12,7 +12,9 @@ class Katasteradresse(COM):
     """
     Dient der Adressierung über die Liegenschafts-Information.
 
-    .. graphviz:: /api/dots/bo4e/com/Katasteradresse.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Katasteradresse.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_

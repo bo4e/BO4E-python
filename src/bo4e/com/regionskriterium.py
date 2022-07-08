@@ -13,7 +13,9 @@ class Regionskriterium(COM):
     """
     Komponente zur Abbildung eines Regionskriteriums
 
-    .. graphviz:: /api/dots/bo4e/com/Regionskriterium.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Regionskriterium.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Regionskriterium.json>`_

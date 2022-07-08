@@ -17,7 +17,9 @@ class Energiemenge(Geschaeftsobjekt):
     """
     Abbildung von Mengen, die Lokationen zugeordnet sind
 
-    .. graphviz:: /api/dots/bo4e/bo/Energiemenge.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Energiemenge.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Energiemenge.json>`_

@@ -15,7 +15,9 @@ class Preisgarantie(COM):
     """
     Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.
 
-    .. graphviz:: /api/dots/bo4e/com/Preisgarantie.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Preisgarantie.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_

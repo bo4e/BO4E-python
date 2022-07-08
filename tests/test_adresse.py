@@ -1,4 +1,3 @@
-from types import NoneType
 from typing import Dict, Optional
 
 import pytest  # type:ignore[import]

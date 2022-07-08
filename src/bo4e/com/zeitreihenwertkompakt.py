@@ -16,7 +16,9 @@ class Zeitreihenwertkompakt(COM):
     """
     Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.
 
-    .. graphviz:: /api/dots/bo4e/com/Zeitreihenwertkompakt.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Zeitreihenwertkompakt.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_

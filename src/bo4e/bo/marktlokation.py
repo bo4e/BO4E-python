@@ -30,7 +30,9 @@ class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation
 
-    .. graphviz:: /api/dots/bo4e/bo/Marktlokation.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Marktlokation.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_

@@ -13,7 +13,9 @@ class Dienstleistung(COM):
     """
     Abbildung einer abrechenbaren Dienstleistung.
 
-    .. graphviz:: /api/dots/bo4e/com/Dienstleistung.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Dienstleistung.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Dienstleistung.json>`_

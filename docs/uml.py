@@ -7,6 +7,13 @@ import inspect
 import os
 import pkgutil
 import re
+import subprocess
+import shlex
+from abc import ABCMeta, abstractmethod
+from pathlib import Path
+
+from typingx import NoneType
+from typing import List, Dict, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 
@@ -19,122 +26,416 @@ from pydantic.fields import (
     SHAPE_TUPLE,
     ModelField,
 )
+from pydantic.main import ModelMetaclass
 from pydantic.typing import display_as_type
 
-pkgs_scope = {
-    "bo": ["bo", "com"],
-    "com": ["bo", "com"],
+pkgs = {
+    "bo": {
+        "scope": ["bo", "com"],
+        "color": "#B6D7A8",
+    },
+    "com": {
+        "scope": ["bo", "com"],
+        "color": "#e0a86c",
+    },
 }
-regex_incl_network = re.compile(r"^bo4e\.(" + "|".join(set(sum(pkgs_scope.values(), []))) + r")")
+"""
+UML-files will be created only for classes in the packages indicated by the keys of this dict. Additionally for every
+package one can define a scope meaning that for every class in e.g. `bo` the UML-file will contain only classes in
+packages defined by the value of the dict-entry.
+This is for example useful if you want to include bo4e.enum classes in the UMLs but dont want to create UML-files for
+them.
+"""
+# accent_color = "#6AA84F"
+regex_incl_network = re.compile(r"^bo4e\.(" + "|".join(set(sum([pkg["scope"] for pkg in pkgs.values()], []))) + r")")
+"""
+Regex to include all classes with namespaces matching this pattern. Note that this pattern has to start with `^`.
+(because `re.match()` is called) Currently, this pattern matches all classes which appear in the values of `pkgs-scope`
+"""
 regex_excl_network = re.compile(r"^.*Constrained")
+"""
+Regex to explicitly exclude all classes with namespaces matching this pattern. Note that this pattern has to start with
+`^`. (because `re.match()` is called) Currently, this pattern matches all classes containing `Constrained`.
+This is necessary because e.g. ConstrainedStr is a inner class of `BaseModel` (I think - it is from pydantic :))
+being inherited by all classes in this project. Therefore, their namespace starts with the respective class e.g.
+`bo4e.bo.angebot.Angebot.ConstrainedStr`.
+"""
+#: Define shorthand for Cardinality type since none of the values have to be provided.
+Cardinality = Tuple[str | NoneType, str | NoneType] | NoneType
 
 
-# pylint: disable=too-many-locals
-def build_dots(module_dir: str, output_dir: str, radius: int = 1) -> None:
+class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
     """
-    Build dot files for the packages `bo4e.bo` and `bo4e.com` for later use in sphinx with graphviz.
-    For each class a seperate dot file (uml-diagram) will be generated. They include the class and its neighbors within
-    a distance <= `radius`.
+    Defines the abstract base class for all UML-Parsers. Currently, there is only a Plantuml-parser, but you can easily
+    add a parser by implementing all abstract methods in a subclass.
     """
-    uml_network = nx.MultiDiGraph()
-    parse_to_dot = []
-    for pkg in pkgs_scope:
-        modls = [name for _, name, _ in pkgutil.iter_modules([module_dir + os.path.sep + pkg])]
+
+    def add_class(self, node: str, cls: ModelMetaclass) -> None:
+        """
+        Adds a class to the UML-Network. It copies the __fields__ dictionary because it will possibly be mutated when
+        adding superclasses to the network.
+        """
+        super().add_node(node, cls=cls, fields=cls.__fields__.copy())
+
+    def add_extension(self, node1: str, node2: str) -> None:
+        """
+        Adds an extension-relation: node1 ---|> node2. All fields of the superclass will be removed in node1 to improve
+        clarity.
+        """
+        super().add_edge(node1, node2, type="extension")
+        list(map(self.nodes[node1]["fields"].__delitem__, self.nodes[node2]["cls"].__fields__.keys()))
+
+    def add_association(
+        self, node1: str, node2: str, through_field: ModelField, card1: Cardinality = None, card2: Cardinality = None
+    ) -> None:
+        """
+        Adds an association-relation. `node1` references `node2` in it's field `through_field`. Additionally, you can
+        provide information relating to the cardinality of the association.
+        """
+        super().add_edge(node1, node2, type="association", through_field=through_field, card1=card1, card2=card2)
+
+    def get_node_str(self, node: str, detailed: bool = True, rebuild: bool = True, root_node: str = None) -> str:
+        """
+        Gets the string representation of the node `node`. If `rebuild` is `false` and this string was already built
+        before, the string will be loaded from cache. If you provide a `root_node` this feature is not recommended.
+        """
+        if detailed:
+            if "node_str_detailed" not in self.nodes[node] or rebuild:
+                self.nodes[node]["node_str_detailed"] = self._node_to_str(node, detailed, root_node)
+            return self.nodes[node]["node_str_detailed"]
+        else:
+            if "node_str" not in self.nodes[node] or rebuild:
+                self.nodes[node]["node_str"] = self._node_to_str(node, detailed, root_node)
+            return self.nodes[node]["node_str"]
+
+    def get_edge_str(
+        self, node1: str, node2: str, index: int, detailed: bool = True, rebuild: bool = True, root_node: str = None
+    ) -> str:
+        """
+        Gets the string representation of the edge. If `rebuild` is `false` and this string was already built
+        before, the string will be loaded from cache. If you provide a `root_node` this feature is not recommended.
+        """
+        if detailed:
+            if "edge_str_detailed" not in self[node1][node2][index] or rebuild:
+                self[node1][node2][index]["edge_str_detailed"] = self._edge_to_str(
+                    node1, node2, index, detailed, root_node
+                )
+            return self[node1][node2][index]["edge_str_detailed"]
+        else:
+            if "edge_str" not in self[node1][node2][index] or rebuild:
+                self[node1][node2][index]["edge_str"] = self._edge_to_str(node1, node2, index, detailed, root_node)
+            return self[node1][node2][index]["edge_str"]
+
+    @abstractmethod
+    def _node_to_str(self, node: str, detailed: bool, root_node: str | NoneType) -> str:
+        """
+        Returns a string representation of the provided `node` with a possibly provided `root_node`.
+        """
+        raise NotImplementedError("This method should be overridden.")
+
+    @abstractmethod
+    def _edge_to_str(self, node1: str, node2: str, index: int, detailed: bool, root_node: str | NoneType) -> str:
+        """
+        Returns a string representation of the provided edge with a possibly provided `root_node`.
+        """
+        raise NotImplementedError("This method should be overridden.")
+
+    @abstractmethod
+    def network_to_str(self, root_node: str | NoneType) -> str:
+        """
+        Returns a string representation of the whole network with a possibly provided `root_node`.
+        """
+        raise NotImplementedError("This method should be overridden.")
+
+    @abstractmethod
+    def get_file_name(self, root_node: str) -> str:
+        """
+        Returns the desired file-name of this network.
+        """
+        raise NotImplementedError("This method should be overridden.")
+
+    @staticmethod
+    def model_field_str(model_field: ModelField) -> str:
+        """
+        Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
+        """
+        result_str = display_as_type(model_field.type_)
+
+        # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
+        if model_field.shape in MAPPING_LIKE_SHAPES:
+            result_str = f"Mapping[{display_as_type(model_field.key_field.type_)}, {result_str}]"  # type: ignore
+        elif model_field.shape == SHAPE_TUPLE:
+            result_str = f"Tuple[{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"  # type: ignore
+        elif model_field.shape == SHAPE_GENERIC:
+            assert model_field.sub_fields
+            result_str = f"{display_as_type(model_field.type_)}[{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
+        elif model_field.shape != SHAPE_SINGLETON:
+            result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
+
+        if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
+            result_str = f"Optional[{result_str}]"
+        return result_str
+
+    @staticmethod
+    def _remove_last_package(namespace: str) -> str:
+        return f'{".".join(namespace.split(".")[0:-2])}.{namespace.split(".")[-1]}'
+
+
+class PlantUMLNetwork(_UMLNetworkABC):
+    def _node_to_str(self, node: str, detailed: bool = True, root_node: str | NoneType = None):
+        """
+        Parse the class with their fields into a string for plantuml output.
+        The class will contain a link to the respective class in the documentation.
+        """
+        cls_str = (
+            f'class "[[file:///C:/repos/BO4E-python/.tox/docs/tmp/html/api/bo4e.{node.split(".")[1]}.html#{node}'
+            f' {node.split(".")[-1]}]]\\n<size:10>{".".join(node.split(".")[0:-1])}" as {node.split(".")[-1]}'
+        )
+        if detailed:
+            cls_str += " {\n"
+            for name, field in self.nodes[node]["fields"].items():
+                # if name in self.nodes[node]['exclude_fields']:
+                #     continue
+                type_str = _UMLNetworkABC.model_field_str(field)
+                if field.required:
+                    cls_str += f"\t{field.alias} : {type_str}\n"
+                else:
+                    cls_str += f"\t{field.alias} : {type_str} = {field.default}\n"
+            cls_str += "}"
+
+        return cls_str
+
+    def _edge_to_str(self, node1: str, node2: str, index: int, detailed: bool, root_node: str | NoneType = None) -> str:
+        """
+        Parse the connection into a string for plantuml output.
+        """
+        vert_extension = "{node1} -[norank]-|> {node2} #line:gray"
+        horz_extension_lr = "{node1} --|> {node2}"
+        horz_extension_rl = "{node2} <|-- {node1}"
+        vert_association = "{node1} {card1} -[norank]-* {card2} {node2} #line:gray;text:gray : {field}"
+        horz_association_lr = "{node1} {card1} --* {card2} {node2} : {field}"
+        horz_association_rl = "{node2} {card2} *-- {card1} {node1} : {field}"
+
+        # The only purpose of this is to use less code below by using the get-method with default values
+        association = {
+            node1: horz_association_lr,
+            node2: horz_association_rl,
+        }
+        extension = {
+            node1: horz_extension_lr,
+            node2: horz_extension_rl,
+        }
+
+        node1_str = _UMLNetworkABC._remove_last_package(node1)
+        node2_str = _UMLNetworkABC._remove_last_package(node2)
+        if root_node == node1:
+            node1_str = "." + node1.split(".")[-1]
+        elif root_node == node2:
+            node2_str = "." + node2.split(".")[-1]
+
+        if self[node1][node2][index]["type"] == "extension":
+            return extension.get(root_node, vert_extension).format(node1=node1_str, node2=node2_str)
+        elif self[node1][node2][index]["type"] == "association":
+            card1 = ""
+            card2 = ""
+            if detailed:
+                # ------ Parse the cardinality into readable strings ---------------------------------------------------
+                if self[node1][node2][index]["card1"]:
+                    if self[node1][node2][index]["card1"][0] == self[node1][node2][index]["card1"][1]:
+                        card1 = f'"{self[node1][node2][index]["card1"][0]}"'
+                    else:
+                        card1 = f'"{self[node1][node2][index]["card1"][0]}..{self[node1][node2][index]["card1"][1]}"'
+                if self[node1][node2][index]["card2"]:
+                    if self[node1][node2][index]["card2"][0] == self[node1][node2][index]["card2"][1]:
+                        card2 = f'"{self[node1][node2][index]["card2"][0]}"'
+                    else:
+                        card2 = f'"{self[node1][node2][index]["card2"][0]}..{self[node1][node2][index]["card2"][1]}"'
+                # ------------------------------------------------------------------------------------------------------
+            return association.get(root_node, vert_association).format(
+                node1=node1_str,
+                node2=node2_str,
+                card1=card1,
+                card2=card2,
+                field=self[node1][node2][index]["through_field"].alias,
+            )
+        else:
+            raise ValueError(
+                f"Illegal edge type for plantuml-parser in ['{node1}']['{node2}']['type']: "
+                f"{self[node1][node2][index]['type']}"
+            )
+
+    def network_to_str(self, root_node: str) -> str:
+        """
+        Build the uml file (content) with class `cls_namespace` treated as root node for this network.
+        Classes will be grouped together by namespaces (for instance splitted into `bo` and `com`).
+        Only the root node `root_node` will not be included inside its (visual) package namespace.
+        """
+        # regex_scope = re.compile(r"^bo4e\.(" + "|".join(scope) + r")")
+        pkg = root_node.split(".")[1]
+        regex_pkg = re.compile(r"^bo4e\.(\w+)\.")
+        content = "@startuml\n" "left to right direction\n\n"
+        namespaces: Dict[str, Dict[str, str | bool]] = {}
+        """
+        `namespaces` will contain for each package listed in the scope of `pkg` (`pkgs[pkg]["scope"]`) two information:
+        1. The plantuml-string for the namespaces of the scope containing all respective classes except the root node.
+        2. A boolean value if there is at least one class in this network in the respective namespace. This is needed
+           to avoid empty package boxes in the resulting uml-graphs.
+        """
+
+        # ------ initialize `namespaces` -------------------------------------------------------------------------------
+        for _pkg in pkgs[pkg]["scope"]:
+            namespaces[_pkg] = {
+                "str": f'namespace "[[file:///C:/repos/BO4E-python/.tox/docs/tmp/html/api/bo4e.{_pkg}.html bo4e.{_pkg}'
+                f']]" as bo4e.{_pkg} {pkgs[_pkg]["color"]} ' + "{\n",
+                "empty": True,
+            }
+        # ------ build the content strings for each node inside this network -------------------------------------------
+        for node in self.nodes:
+            pkg = re.match(regex_pkg, node).group(1)
+            if node == root_node:
+                content += self.get_node_str(node, True, True, root_node) + "\n\n"
+            else:
+                namespaces[pkg]["str"] += "\t" + self.get_node_str(node, False, True, root_node) + "\n"
+                namespaces[pkg]["empty"] = False
+        # ------ add all non-empty namespace-strings to `content` ------------------------------------------------------
+        for namespace in namespaces.values():
+            if not namespace["empty"]:
+                content += namespace["str"] + "}\n"
+        content += "\n"
+        # ------ add all connections to `content` ----------------------------------------------------------------------
+        for edge in self.edges:
+            content += self.get_edge_str(edge[0], edge[1], edge[2], True, True, root_node) + "\n"
+        # ------ Only show fields on the root node ---------------------------------------------------------------------
+        content += "\nhide members\n" f"show .{root_node.split('.')[-1]} fields\n" "@enduml\n"
+        # --------------------------------------------------------------------------------------------------------------
+        return content
+
+    def get_file_name(self, root_node: str) -> str:
+        """
+        Returns the desired file name for this network with `root_node` treated as the root_node.
+        """
+        return root_node.split(".")[-1] + ".puml"
+
+
+def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse, output_dir: Path) -> List[Path]:
+    """
+    Creates an UML graph for every class listed in `namespaces_to_parse` into `[output_dir]/uml/`.
+    For each class a separate uml file will be generated. They include this class and its neighbors.
+    Additionally, referenced classes will be included only if `regex_incl_network` matches but explicitly excluded if
+    `regex_excl_network` matches the namespace of the respective class (e.g. `bo4e.bo.angebot.Angebot`).
+    Only relations between the class and its neighbours will be included.
+    Currently, only Plantuml is supported as parser.
+    Returns a list of created files.
+    """
+    path_list: List[Path] = []
+    for namespace_to_parse in namespaces_to_parse:
+        spl = namespace_to_parse.split(".")
+        file_path = output_dir / "/".join(spl[0:-2])
+        file_name = uml_network.get_file_name(namespace_to_parse)
+        uml_subgraph = nx.ego_graph(uml_network, namespace_to_parse, radius=1, undirected=False)
+        regex_scope = re.compile(rf'bo4e\.({"|".join(pkgs[spl[1]]["scope"])})\.')
+        uml_network_scope = cast(
+            _UMLNetworkABC,
+            nx.subgraph_view(
+                uml_subgraph,
+                filter_node=lambda _node: re.match(regex_scope, _node),
+                filter_edge=lambda _node1, _node2, _idx: _node1 == namespace_to_parse or _node2 == namespace_to_parse,
+            ),
+        )
+        file_content = uml_network_scope.network_to_str(namespace_to_parse)
+
+        os.makedirs(file_path, exist_ok=True)
+        with open(file_path / file_name, "w+", encoding="UTF-8") as uml_file:
+            uml_file.write(file_content)
+            path_list.append(file_path / file_name)
+            # print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
+    print("Created uml files.")
+    return path_list
+
+
+def build_network(module_dir: Path, parser: Type[_UMLNetworkABC]) -> Tuple[_UMLNetworkABC, List[str]]:
+    """
+    Build a network of the relationships of all classes found in bo4e packages defined by `pkgs` and all classes
+    referenced by any class in these packages. Referenced classes will be added only if `regex_incl_network` matches and
+    `regex_excl_network` does not match the namespace name of the respective class (e.g. `bo4e.bo.angebot.Angebot`).
+    """
+    uml_network = parser()
+    namespaces_to_parse: List[str] = []
+    for pkg in pkgs:
+        modls = [name for _, name, _ in pkgutil.iter_modules([str(module_dir / pkg)])]
         for modl_name in modls:
             modl_namespace = f"bo4e.{pkg}.{modl_name}"
             modl = importlib.import_module(modl_namespace)
             # pylint: disable=cell-var-from-loop
             cls_list = inspect.getmembers(
-                modl, lambda member: inspect.isclass(member) and member.__module__ == modl_namespace
+                modl, lambda _member: inspect.isclass(_member) and _member.__module__ == modl_namespace
             )
             for name, cls in cls_list:
                 modl_namespace = f"{cls.__module__}.{name}"
-                parse_to_dot.append(modl_namespace)
+                namespaces_to_parse.append(modl_namespace)
                 if not uml_network.has_node(modl_namespace):
                     _recursive_add_class(cls, modl_namespace, uml_network)
-
-    print("Successfully created relationship network.")
-
-    for modl_to_parse in parse_to_dot:
-        spl = modl_to_parse.split(".")
-        modl_cls_name = spl[-1]
-        dot_path = output_dir + f"{os.path.sep}dots{os.path.sep}" + os.path.sep.join(spl[0:-2])
-        dot_file_name = f"{modl_cls_name}.dot"
-        uml_subgraph = nx.ego_graph(uml_network, modl_to_parse, radius=radius, undirected=False)
-        dot_content = 'digraph "' + modl_cls_name + '" {\nrankdir=BT\ncharset="utf-8"\n'
-        for node in uml_subgraph.nodes.values():
-            dot_content += node["dot_node_str"] + "\n"
-        for edge in uml_subgraph.edges.values():
-            dot_content += edge["dot_edge_str"] + "\n"
-        dot_content += "}\n"
-
-        os.makedirs(dot_path, exist_ok=True)
-        with open(f"{dot_path}{os.path.sep}{dot_file_name}", "w+", encoding="UTF-8") as dot_file:
-            dot_file.write(dot_content)
-            # print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
-    print("Successfully created dot files.")
+    return uml_network, namespaces_to_parse
 
 
-def _recursive_add_class(  # type: ignore[no-untyped-def]
-    cls_cur,
+def _recursive_add_class(
+    cls_cur: ModelMetaclass,
     modl_namespace: str,
-    uml_network: nx.MultiDiGraph,
+    uml_network: _UMLNetworkABC,
 ) -> None:
     """
     Add the specified class `cls_cur` to the `uml_network` and recursively add all classes found in fields and
-    bases (super classes).
+    bases including all matching `regex_incl_network` but excluding all matching 'regex_excl_network'. If both regex
+    are conflicting, the respective class will not be added.
     """
-    # print(f'"{modl_namespace}" added.')
-    uml_network.add_node(modl_namespace, model_cls=cls_cur, dot_node_str="will be replaced")
-    dot_cls_str = rf'"{modl_namespace}" [color="black", fontcolor="black", label="' + "{" + rf"{modl_namespace}|"
-    for model_field in cls_cur.__fields__.values():
-        dot_cls_str += f"{model_field.alias} : {_model_field_str(model_field)}"
-        if not model_field.required:
-            dot_cls_str += f" = {model_field.default}"
-        dot_cls_str += r"\l"
-
-        type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
-        if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
-            if not uml_network.has_node(type_modl_namespace):
-                _recursive_add_class(model_field.type_, type_modl_namespace, uml_network)
-            uml_network.add_edge(
-                modl_namespace,
-                type_modl_namespace,
-                through_field=model_field,
-                dot_edge_str=f'"{modl_namespace}" -> "{type_modl_namespace}" [arrowhead="diamond", arrowtail="none", fontcolor="green", label="{model_field.alias}", style="solid"];',
-            )
-
-    dot_cls_str += '|}", shape="record", style="solid"];'
-    uml_network.nodes[modl_namespace]["dot_node_str"] = dot_cls_str
+    uml_network.add_class(modl_namespace, cls=cls_cur)
+    # ------ add base classes to the network which pass `regex_incl_network` and `regex_excl_network` ------------------
     for parent in cls_cur.__bases__:
         type_modl_namespace = f"{parent.__module__}.{parent.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
                 _recursive_add_class(parent, type_modl_namespace, uml_network)
-            uml_network.add_edge(
+            uml_network.add_extension(
                 modl_namespace,
                 type_modl_namespace,
-                dot_edge_str=f'"{modl_namespace}" -> "{type_modl_namespace}" [arrowhead="empty", arrowtail="none"];',
             )
+    # ------------------------------------------------------------------------------------------------------------------
+    # ------ determine references in fields which pass `regex_incl_network` and `regex_excl_network` -------------------
+    for name, model_field in uml_network.nodes[modl_namespace]["fields"].items():
+        type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
+        if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
+            if not uml_network.has_node(type_modl_namespace):
+                _recursive_add_class(model_field.type_, type_modl_namespace, uml_network)
+            type_str = _UMLNetworkABC.model_field_str(model_field)
+
+            # ------ determine cardinality -----------------------------------------------------------------------------
+            card2 = ["1", "1"]
+            if type_str.startswith("Optional["):
+                card2[0] = "0"
+            if type_str.startswith("List[") or type_str.startswith("Optional[List["):
+                card2[0] = "0"
+                card2[1] = "*"
+                if hasattr(model_field.outer_type_, "max_items") and model_field.outer_type_.max_items:
+                    card2[1] = str(model_field.outer_type_.max_items)
+                if hasattr(model_field.outer_type_, "min_items") and model_field.outer_type_.min_items:
+                    card2[0] = str(model_field.outer_type_.min_items)
+            # ----------------------------------------------------------------------------------------------------------
+
+            uml_network.add_association(
+                modl_namespace,
+                type_modl_namespace,
+                through_field=model_field,
+                card1=None,
+                card2=tuple(card2),
+            )
+    # ------------------------------------------------------------------------------------------------------------------
 
 
-def _model_field_str(model_field: ModelField) -> str:
+def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path):
     """
-    Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
+    Compiles all plantuml files inside `input_dir` (not recursive) to svg's in `output_dir`.
     """
-    result_str = display_as_type(model_field.type_)
-
-    # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
-    if model_field.shape in MAPPING_LIKE_SHAPES:
-        result_str = f"Mapping[{display_as_type(model_field.key_field.type_)}, {result_str}]"  # type: ignore
-    elif model_field.shape == SHAPE_TUPLE:
-        result_str = f"Tuple[{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"  # type: ignore
-    elif model_field.shape == SHAPE_GENERIC:
-        assert model_field.sub_fields
-        result_str = f"{display_as_type(model_field.type_)}[{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
-    elif model_field.shape != SHAPE_SINGLETON:
-        result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
-
-    if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
-        result_str = f"Optional[{result_str}]"
-    return result_str
+    command = 'java -jar "{}" "{}" -svg -o "{}"'.format(executable, input_dir, output_dir)
+    # os.makedirs("{0}/dots/bo/".format(output_dir))
+    subprocess.call(shlex.split(command))
+    print(f"Compiled uml files ({input_dir}) into svg.")

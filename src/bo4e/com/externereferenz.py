@@ -14,7 +14,9 @@ class ExterneReferenz(COM):
     Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,
     sich die eindeutigen IDs der anzubindenden Systeme zu merken.
 
-    .. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/ExterneReferenz.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_

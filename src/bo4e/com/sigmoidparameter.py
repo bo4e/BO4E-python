@@ -14,7 +14,9 @@ class Sigmoidparameter(COM):
     Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:
     LP=A/(1+(P/B)^C)+D
 
-    .. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Sigmoidparameter.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_

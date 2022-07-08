@@ -19,7 +19,9 @@ class Netznutzungsrechnung(Rechnung):
     """
     Modell für die Abbildung von Netznutzungsrechnungen
 
-    .. graphviz:: /api/dots/bo4e/bo/Netznutzungsrechnung.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Netznutzungsrechnung.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Netznutzungsrechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Netznutzungsrechnung.json>`_

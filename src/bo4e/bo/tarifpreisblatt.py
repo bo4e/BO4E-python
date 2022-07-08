@@ -21,7 +21,9 @@ class Tarifpreisblatt(Tarifinfo):
     """
     Tarifinformation mit Preisen, Aufschlägen und Berechnungssystematik
 
-    .. graphviz:: /api/dots/bo4e/bo/Tarifpreisblatt.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Tarifpreisblatt.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarifpreisblatt.json>`_

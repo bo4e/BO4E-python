@@ -14,7 +14,9 @@ class Geraet(COM):
     """
     Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.
 
-    .. graphviz:: /api/dots/bo4e/com/Geraet.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Geraet.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_

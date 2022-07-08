@@ -18,10 +18,11 @@ __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
+from pathlib import Path
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
-from uml import build_dots
+from uml import build_network, PlantUMLNetwork, write_class_umls, compile_files_plantuml
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -76,8 +77,9 @@ extensions = [
     "sphinx.ext.ifconfig",
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
-    "sphinx.ext.graphviz",
+    # "sphinx.ext.graphviz",
     "sphinx_rtd_theme",
+    "sphinxcontrib.plantuml",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -294,5 +296,16 @@ intersphinx_mapping = {
 }
 
 # Create UML diagrams in .dot format. See uml.py for more details.
-graphviz_output_format = "svg"
-build_dots(module_dir, output_dir)
+_exec_plantuml = Path(__location__) / "plantuml.jar"
+_network, _namespaces_to_parse = build_network(module_dir, PlantUMLNetwork)
+_created_files = write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
+compile_files_plantuml(
+    Path(output_dir) / "uml" / "bo4e" / "bo",
+    Path(output_dir).parent / "_static" / "images" / "bo4e" / "bo",
+    _exec_plantuml,
+)
+compile_files_plantuml(
+    Path(output_dir) / "uml" / "bo4e" / "com",
+    Path(output_dir).parent / "_static" / "images" / "bo4e" / "com",
+    _exec_plantuml,
+)

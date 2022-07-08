@@ -16,7 +16,9 @@ class PreisblattDienstleistung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für wahlfreie Dienstleistungen
 
-    .. graphviz:: /api/dots/bo4e/bo/PreisblattDienstleistung.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/PreisblattDienstleistung.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `PreisblattDienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattDienstleistung.json>`_

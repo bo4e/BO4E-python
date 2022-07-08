@@ -20,7 +20,9 @@ class Ansprechpartner(Geschaeftsobjekt):
     """
     Object containing information about a Ansprechpartner
 
-    .. graphviz:: /api/dots/bo4e/bo/Ansprechpartner.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Ansprechpartner.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Ansprechpartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Ansprechpartner.json>`_

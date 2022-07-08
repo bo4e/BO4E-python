@@ -20,7 +20,9 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.
     Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.
 
-    .. graphviz:: /api/dots/bo4e/bo/Geschaeftspartner.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Geschaeftspartner.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_

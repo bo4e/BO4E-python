@@ -14,7 +14,9 @@ class AufAbschlagstaffelProOrt(COM):
     """
     Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
 
-    .. graphviz:: /api/dots/bo4e/com/AufAbschlagstaffelProOrt.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_

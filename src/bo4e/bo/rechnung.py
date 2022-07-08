@@ -24,7 +24,9 @@ class Rechnung(Geschaeftsobjekt):
     Modell für die Abbildung von Rechnungen im Kontext der Energiewirtschaft;
     Ausgehend von diesem Basismodell werden weitere spezifische Formen abgeleitet.
 
-    .. graphviz:: /api/dots/bo4e/bo/Rechnung.dot
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Rechnung.svg" type="image/svg+xml"></object>
 
     .. HINT::
         `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Rechnung.json>`_
