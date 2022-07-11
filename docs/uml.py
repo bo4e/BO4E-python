@@ -8,6 +8,7 @@ import inspect
 import os
 import pkgutil
 import re
+import requests
 import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
@@ -457,6 +458,24 @@ def _recursive_add_class(
                 card2=tuple(card2),  # type:ignore[arg-type]
             )
     # ------------------------------------------------------------------------------------------------------------------
+
+
+def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
+    """
+    Compiles all plantuml files inside `input_dir` (recursive) to svg's in `output_dir` with the same subpath as in
+    `input_dir`. Files are compiled using web service of [kroki](https://kroki.io)
+    """
+    url = "https://kroki.io"
+    for root, dirs, files in os.walk(input_dir):
+        for file in files:
+            with open(os.path.join(root, file), "r", encoding="UTF-8") as uml_file:
+                x = requests.post(
+                    url, json={"diagram_source": uml_file.read(), "diagram_type": "plantuml", "output_format": "svg"}
+                )
+                subdir = root[len(str(input_dir)) + 1 :]
+                os.makedirs(output_dir / subdir, exist_ok=True)
+                with open(output_dir / subdir / re.sub(r"\.puml$", ".svg", file), "w+", encoding="UTF-8") as svg_file:
+                    svg_file.write(x.text)
 
 
 def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) -> None:

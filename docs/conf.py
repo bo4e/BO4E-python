@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
-from uml import PlantUMLNetwork, build_network, compile_files_plantuml, write_class_umls
+from uml import PlantUMLNetwork, build_network, write_class_umls, compile_files_kroki
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -78,6 +78,7 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
     "sphinx_rtd_theme",
+    "sphinxcontrib.kroki",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -299,15 +300,6 @@ _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
 write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
 print("Created uml files.")
-compile_files_plantuml(
-    Path(output_dir) / "uml" / "bo4e" / "bo",
-    Path(output_dir).parent / "_static" / "images" / "bo4e" / "bo",
-    _exec_plantuml,
-)
-print(f"Compiled uml files ({Path(output_dir) / 'uml' / 'bo4e' / 'bo'}) into svg.")
-compile_files_plantuml(
-    Path(output_dir) / "uml" / "bo4e" / "com",
-    Path(output_dir).parent / "_static" / "images" / "bo4e" / "com",
-    _exec_plantuml,
-)
-print(f"Compiled uml files ({Path(output_dir) / 'uml' / 'bo4e' / 'com'}) into svg.")
+
+compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images")
+print(f"Compiled uml files into svg using kroki.")
