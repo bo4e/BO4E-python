@@ -1,21 +1,23 @@
 """
-Contains functionality to build UML files from code. Eventually additional parsing into svg as for now for the Plantuml
-parser. Currently, this the only supported parser.
+Contains functionality to build UML files from code. Also, it contains functions to compile these to svg-files.
+Currently, the only supported parser is for Plantuml. The generated `.puml` files can be compiled with kroki by calling
+`compile_files_kroki(...)`.
 It is designed to work together with `pydantic` and only is tested in this project so far.
 """
 import importlib
 import inspect
+import json
 import os
 import pkgutil
 import re
-import requests
 import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
-from typing import Dict, List, Optional, Tuple, Type, cast
+from typing import Dict, List, Optional, Tuple, Type, cast, Any
 
 import networkx as nx  # type: ignore[import]
+import requests  # type: ignore[import]
 
 # pylint: disable=no-name-in-module
 from pydantic.fields import (
@@ -36,7 +38,7 @@ pkgs = {
     },
     "com": {
         "scope": ["bo", "com"],
-        "color": "#e0a86c",
+        "color": "#E0A86C",
     },
 }
 """
@@ -56,14 +58,15 @@ Contains all packages possibly included inside the network. They are determined 
 regex_incl_network = re.compile(r"^bo4e\.(" + "|".join(pkgs_all) + r")")
 """
 Regex to include all classes with namespaces matching this pattern. Note that this pattern has to start with `^`.
-(because `re.match()` is called) Currently, this pattern matches all classes which appear in the values of `pkgs-scope`
+(because `re.match()` is called) Currently, this pattern matches all classes which appear in the values of `pkgs-scope`.
+You can see an example of the regex pattern here: https://regex101.com/r/WibLtS/1
 """
 
 regex_excl_network = re.compile(r"^.*Constrained")
 """
 Regex to explicitly exclude all classes with namespaces matching this pattern. Note that this pattern has to start with
 `^`. (because `re.match()` is called) Currently, this pattern matches all classes containing `Constrained`.
-This is necessary because e.g. ConstrainedStr is a inner class of `BaseModel` (I think - it is from pydantic :))
+This is necessary because e.g. ConstrainedStr is an inner class of `BaseModel` (I think - it is from pydantic :))
 being inherited by all classes in this project. Therefore, their namespace starts with the respective class e.g.
 `bo4e.bo.angebot.Angebot.ConstrainedStr`.
 """
@@ -71,11 +74,11 @@ being inherited by all classes in this project. Therefore, their namespace start
 #: Define shorthand for Cardinality type since none of the values have to be provided.
 Cardinality = Optional[Tuple[Optional[str], Optional[str]]]
 
-#: Define the link base domain used in svg links
-LINK_DOMAIN = "https://bo4e-python.readthedocs.io/en/latest"
+#: Define the link base URI used in svg links
+LINK_URI_BASE = "https://bo4e-python.readthedocs.io/en/latest"
 
 # link domain to test links only local.
-# LINK_DOMAIN = f"file:///{Path.cwd().parent}/.tox/docs/tmp/html"
+# LINK_URI_BASE = f"file:///{Path.cwd().parent}/.tox/docs/tmp/html"
 
 
 class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
@@ -83,6 +86,20 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
     Defines the abstract base class for all UML-Parsers. Currently, there is only a Plantuml-parser, but you can easily
     add a parser by implementing all abstract methods in a subclass.
     """
+
+    class _DictWrapper(dict[str, Any]):
+        """
+        This class is needed because `dict` is in cpython. Therefore, it is not possible to simply assign `__hash__`
+        function dynamically. Instead, we will construct a python object from `**kwargs`
+        """
+
+        def __hash__(self) -> int:  # type:ignore[override]
+            """
+            This method is designed to be assigned as hash function for dictionaries. In this case specifically used for
+            `**kwargs` in `get_node_str` and `get_edge_str` for caching purposes. See those functions for more
+            information.
+            """
+            return hash(json.dumps(self, sort_keys=True))
 
     def add_class(self, node: str, cls: ModelMetaclass) -> None:
         """
@@ -109,63 +126,64 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         """
         super().add_edge(node1, node2, type="association", through_field=through_field, card1=card1, card2=card2)
 
-    def get_node_str(self, node: str, detailed: bool = True, rebuild: bool = True, root_node: str = None) -> str:
+    def get_node_str(self, node: str, cache: bool = True, **kwargs: Any) -> str:
         """
-        Gets the string representation of the node `node`. If `rebuild` is `false` and this string was already built
-        before, the string will be loaded from cache. If you provide a `root_node` this feature is not recommended.
+        Gets the string representation of the node `node`. If `cache` is `true` and this string was already built
+        before, the string will be loaded from cache. The cached strings are specific for the set of provided keyword
+        arguments. I.e. each set of `kwargs` is expected to result in a different string and therefore cached for each
+        different set of `kwargs` separately.
         """
-        if detailed:
-            if "node_str_detailed" not in self.nodes[node] or rebuild:
-                self.nodes[node]["node_str_detailed"] = self._node_to_str(node, detailed, root_node)
-            return self.nodes[node]["node_str_detailed"]
+        if cache:
+            kwargs = _UMLNetworkABC._DictWrapper(**kwargs)
+            if "node_strings" not in self.nodes[node]:
+                self.nodes[node]["node_strings"] = {}
+            if kwargs not in self.nodes[node]["node_strings"]:
+                self.nodes[node]["node_strings"][kwargs] = self._node_to_str(node, **kwargs)
+            return self.nodes[node]["node_strings"][kwargs]
 
-        if "node_str" not in self.nodes[node] or rebuild:
-            self.nodes[node]["node_str"] = self._node_to_str(node, detailed, root_node)
-        return self.nodes[node]["node_str"]
+        return self._node_to_str(node, **kwargs)
 
-    # pylint: disable=too-many-arguments
-    def get_edge_str(
-        self, node1: str, node2: str, index: int, detailed: bool = True, rebuild: bool = True, root_node: str = None
-    ) -> str:
+    def get_edge_str(self, node1: str, node2: str, index: int, cache: bool = True, **kwargs: Any) -> str:
         """
-        Gets the string representation of the edge. If `rebuild` is `false` and this string was already built
-        before, the string will be loaded from cache. If you provide a `root_node` this feature is not recommended.
+        Gets the string representation of the edge. If `cache` is `true` and this string was already built
+        before, the string will be loaded from cache. The cached strings are specific for the set of provided keyword
+        arguments. I.e. each set of `kwargs` is expected to result in a different string and therefore cached for each
+        different set of `kwargs` separately.
         """
-        if detailed:
-            if "edge_str_detailed" not in self[node1][node2][index] or rebuild:
-                self[node1][node2][index]["edge_str_detailed"] = self._edge_to_str(
-                    node1, node2, index, detailed, root_node
-                )
-            return self[node1][node2][index]["edge_str_detailed"]
+        if cache:
+            kwargs = _UMLNetworkABC._DictWrapper(**kwargs)
+            if "edge_strings" not in self[node1][node2][index]:
+                self[node1][node2][index]["edge_strings"] = {}
+            if kwargs not in self[node1][node2][index]["edge_strings"]:
+                self[node1][node2][index]["edge_strings"][kwargs] = self._edge_to_str(node1, node2, index, **kwargs)
+            return self[node1][node2][index]["edge_strings"][kwargs]
 
-        if "edge_str" not in self[node1][node2][index] or rebuild:
-            self[node1][node2][index]["edge_str"] = self._edge_to_str(node1, node2, index, detailed, root_node)
-        return self[node1][node2][index]["edge_str"]
+        return self._edge_to_str(node1, node2, index, **kwargs)
 
     @abstractmethod
-    def _node_to_str(self, node: str, detailed: bool, root_node: Optional[str]) -> str:
+    def _node_to_str(self, node: str, **kwargs: Any) -> str:
         """
-        Returns a string representation of the provided `node` with a possibly provided `root_node`.
+        Returns a string representation of the provided `node`.
         """
         raise NotImplementedError("This method should be overridden.")
 
     # pylint: disable=too-many-arguments
     @abstractmethod
-    def _edge_to_str(self, node1: str, node2: str, index: int, detailed: bool, root_node: Optional[str]) -> str:
+    def _edge_to_str(self, node1: str, node2: str, index: int, **kwargs: Any) -> str:
         """
-        Returns a string representation of the provided edge with a possibly provided `root_node`.
-        """
-        raise NotImplementedError("This method should be overridden.")
-
-    @abstractmethod
-    def network_to_str(self, root_node: Optional[str]) -> str:
-        """
-        Returns a string representation of the whole network with a possibly provided `root_node`.
+        Returns a string representation of the provided edge.
         """
         raise NotImplementedError("This method should be overridden.")
 
     @abstractmethod
-    def get_file_name(self, root_node: str) -> str:
+    def network_to_str(self, **kwargs: Any) -> str:
+        """
+        Returns a string representation of the whole network.
+        """
+        raise NotImplementedError("This method should be overridden.")
+
+    @abstractmethod
+    def get_file_name(self, **kwargs: Any) -> str:
         """
         Returns the desired file-name of this network.
         """
@@ -202,7 +220,13 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         return result_str
 
     @staticmethod
-    def _remove_last_package(namespace: str) -> str:
+    def _remove_last_package_name(namespace: str) -> str:
+        """
+        E.g. `_remove_last_package_name('bo4e.bo.angebot.Angebot')` -> `bo4e.bo.Angebot`. The only use of this function
+        is to make the namespaces in the UML graphs look better (and avoid Plantuml building a subsequent namespace for
+        each class - e.g. for `bo4e.bo.angebot.Angebot` would be drawn inside the `bo4e.bo` namespace but in an
+        additional namespace `bo4e.bo.angebot`).
+        """
         return f'{".".join(namespace.split(".")[0:-2])}.{namespace.split(".")[-1]}'
 
 
@@ -212,13 +236,13 @@ class PlantUMLNetwork(_UMLNetworkABC):
     output.
     """
 
-    def _node_to_str(self, node: str, detailed: bool = True, root_node: Optional[str] = None) -> str:
+    def _node_to_str(self, node: str, detailed: bool = True, **kwargs: Any) -> str:
         """
-        Parse the class with their fields into a string for plantuml output.
-        The class will contain a link to the respective class in the documentation.
+        Parse the class into a string for plantuml output. If `detailed = True` the fields of the class will also be
+        included. The class will contain a link to the respective class in the documentation.
         """
         cls_str = (
-            f'class "[[{LINK_DOMAIN}/api/bo4e.{node.split(".")[1]}.html#{node}'
+            f'class "[[{LINK_URI_BASE}/api/bo4e.{node.split(".")[1]}.html#{node}'
             f' {node.split(".")[-1]}]]\\n<size:10>{".".join(node.split(".")[0:-1])}" as {node.split(".")[-1]}'
         )
         if detailed:
@@ -234,10 +258,15 @@ class PlantUMLNetwork(_UMLNetworkABC):
         return cls_str
 
     # pylint: disable=too-many-arguments, too-many-locals
-    def _edge_to_str(self, node1: str, node2: str, index: int, detailed: bool, root_node: Optional[str] = None) -> str:
+    def _edge_to_str(
+        self, node1: str, node2: str, index: int, detailed: bool = True, root_node: Optional[str] = None, **kwargs: Any
+    ) -> str:
         """
-        Parse the connection into a string for plantuml output.
+        Parse the connection into a string for plantuml output. If `detailed = True`, cardinalities will also be
+        included. The connection's direction will be tweaked with the additional information of the `root_node` of the
+        current graph to be drawn.
         """
+        # "card" is short for cardinality
         vert_extension = "{node1} -[norank]-|> {node2} #line:gray"
         horz_extension_lr = "{node1} --|> {node2}"
         horz_extension_rl = "{node2} <|-- {node1}"
@@ -255,8 +284,8 @@ class PlantUMLNetwork(_UMLNetworkABC):
             node2: horz_extension_rl,
         }
 
-        node1_str = _UMLNetworkABC._remove_last_package(node1)
-        node2_str = _UMLNetworkABC._remove_last_package(node2)
+        node1_str = _UMLNetworkABC._remove_last_package_name(node1)
+        node2_str = _UMLNetworkABC._remove_last_package_name(node2)
         if root_node == node1:
             node1_str = "." + node1.split(".")[-1]
         elif root_node == node2:
@@ -265,20 +294,23 @@ class PlantUMLNetwork(_UMLNetworkABC):
         if self[node1][node2][index]["type"] == "extension":
             return extension.get(root_node, vert_extension).format(node1=node1_str, node2=node2_str)
         if self[node1][node2][index]["type"] == "association":
+            # "card" is short for cardinality
             card1 = ""
             card2 = ""
             if detailed:
                 # ------ Parse the cardinality into readable strings ---------------------------------------------------
-                if self[node1][node2][index]["card1"]:
-                    if self[node1][node2][index]["card1"][0] == self[node1][node2][index]["card1"][1]:
-                        card1 = f'"{self[node1][node2][index]["card1"][0]}"'
-                    else:
-                        card1 = f'"{self[node1][node2][index]["card1"][0]}..{self[node1][node2][index]["card1"][1]}"'
-                if self[node1][node2][index]["card2"]:
-                    if self[node1][node2][index]["card2"][0] == self[node1][node2][index]["card2"][1]:
-                        card2 = f'"{self[node1][node2][index]["card2"][0]}"'
-                    else:
-                        card2 = f'"{self[node1][node2][index]["card2"][0]}..{self[node1][node2][index]["card2"][1]}"'
+                def get_cardinality_string(card_key: str) -> str:
+                    """
+                    Parse the cardinality into a readable string e.g. `1..*` or `0..1`
+                    """
+                    if self[node1][node2][index][card_key]:
+                        if self[node1][node2][index][card_key][0] == self[node1][node2][index][card_key][1]:
+                            return f'"{self[node1][node2][index][card_key][0]}"'
+                        return f'"{self[node1][node2][index][card_key][0]}..{self[node1][node2][index][card_key][1]}"'
+                    return ""
+
+                card1 = get_cardinality_string("card1")
+                card2 = get_cardinality_string("card2")
                 # ------------------------------------------------------------------------------------------------------
             return association.get(root_node, vert_association).format(
                 node1=node1_str,
@@ -292,7 +324,7 @@ class PlantUMLNetwork(_UMLNetworkABC):
             f"{self[node1][node2][index]['type']}"
         )
 
-    def network_to_str(self, root_node: Optional[str]) -> str:
+    def network_to_str(self, root_node: Optional[str] = None, **kwargs: Any) -> str:
         """
         Build the uml file (content) with class `cls_namespace` treated as root node for this network.
         Classes will be grouped together by namespaces (for instance splitted into `bo` and `com`).
@@ -311,7 +343,7 @@ class PlantUMLNetwork(_UMLNetworkABC):
         # ------ initialize `namespaces` -------------------------------------------------------------------------------
         for _pkg, value in pkgs.items():
             namespaces[_pkg] = {
-                "str": f'namespace "[[{LINK_DOMAIN}/api/bo4e.{_pkg}.html bo4e.{_pkg}'
+                "str": f'namespace "[[{LINK_URI_BASE}/api/bo4e.{_pkg}.html bo4e.{_pkg}'
                 f']]" as bo4e.{_pkg} {value["color"]} ' + "{\n",
                 "empty": True,
             }
@@ -319,10 +351,10 @@ class PlantUMLNetwork(_UMLNetworkABC):
         for node in self.nodes:
             _pkg = re.match(regex_pkg, node).group(1)  # type:ignore[union-attr]
             if node == root_node:
-                content += self.get_node_str(node, True, True, root_node) + "\n\n"
+                content += self.get_node_str(node, detailed=True) + "\n\n"
             else:
                 namespaces[_pkg]["str"] += (  # type:ignore[assignment]
-                    "\t" + self.get_node_str(node, False, True, root_node) + "\n"  # type:ignore[operator]
+                    "\t" + self.get_node_str(node, detailed=False) + "\n"  # type:ignore[operator]
                 )
                 namespaces[_pkg]["empty"] = False
         # ------ add all non-empty namespace-strings to `content` ------------------------------------------------------
@@ -332,18 +364,20 @@ class PlantUMLNetwork(_UMLNetworkABC):
         content += "\n"
         # ------ add all connections to `content` ----------------------------------------------------------------------
         for edge in self.edges:
-            content += self.get_edge_str(edge[0], edge[1], edge[2], True, True, root_node) + "\n"
+            content += self.get_edge_str(edge[0], edge[1], edge[2], detailed=True, root_node=root_node) + "\n"
         # ------ Only show fields on the root node ---------------------------------------------------------------------
         if root_node:
             content += "\nhide members\n" f"show .{root_node.split('.')[-1]} fields\n" "@enduml\n"
         # --------------------------------------------------------------------------------------------------------------
         return content
 
-    def get_file_name(self, root_node: str) -> str:
+    def get_file_name(self, root_node: Optional[str] = None, **kwargs: Any) -> str:
         """
         Returns the desired file name for this network with `root_node` treated as the root_node.
         """
-        return root_node.split(".")[-1] + ".puml"
+        if root_node:
+            return root_node.split(".")[-1] + ".puml"
+        raise ValueError("You need to provide a root node.")
 
 
 def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str], output_dir: Path) -> List[Path]:
@@ -360,7 +394,7 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
     for namespace_to_parse in namespaces_to_parse:
         spl = namespace_to_parse.split(".")
         file_path = output_dir / "/".join(spl[0:-2])
-        file_name = uml_network.get_file_name(namespace_to_parse)
+        file_name = uml_network.get_file_name(root_node=namespace_to_parse)
         uml_subgraph = nx.ego_graph(uml_network, namespace_to_parse, radius=1, undirected=False)
         regex_scope = re.compile(rf'bo4e\.({"|".join(pkgs[spl[1]]["scope"])})\.')
         uml_network_scope = cast(
@@ -372,13 +406,13 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
                 filter_edge=lambda _node1, _node2, _idx: namespace_to_parse in (_node1, _node2),
             ),
         )
-        file_content = uml_network_scope.network_to_str(namespace_to_parse)
+        file_content = uml_network_scope.network_to_str(root_node=namespace_to_parse)
 
         os.makedirs(file_path, exist_ok=True)
         with open(file_path / file_name, "w+", encoding="UTF-8") as uml_file:
             uml_file.write(file_content)
             path_list.append(file_path / file_name)
-            # print(f'"{dot_path}{os.path.sep}{dot_file}" created.')
+
     return path_list
 
 
@@ -466,16 +500,16 @@ def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
     `input_dir`. Files are compiled using web service of [kroki](https://kroki.io)
     """
     url = "https://kroki.io"
-    for root, dirs, files in os.walk(input_dir):
+    for root, _, files in os.walk(input_dir):
         for file in files:
             with open(os.path.join(root, file), "r", encoding="UTF-8") as uml_file:
-                x = requests.post(
+                answer = requests.post(
                     url, json={"diagram_source": uml_file.read(), "diagram_type": "plantuml", "output_format": "svg"}
                 )
                 subdir = root[len(str(input_dir)) + 1 :]
                 os.makedirs(output_dir / subdir, exist_ok=True)
                 with open(output_dir / subdir / re.sub(r"\.puml$", ".svg", file), "w+", encoding="UTF-8") as svg_file:
-                    svg_file.write(x.text)
+                    svg_file.write(answer.text)
 
 
 def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) -> None:
