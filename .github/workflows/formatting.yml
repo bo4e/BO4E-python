@@ -1,8 +1,8 @@
-name: "Black"
+name: "Check code format with black and isort"
 
-on: [push,pull_request]
+on: [push, pull_request]
 jobs:
-  black:
+  formatting:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -14,3 +14,6 @@ jobs:
         uses: lgeiger/black-action@v1.0.1
         with:
           args: ". --check"
+      - uses: isort/isort-action@master
+        with:
+          requirementsFiles: "requirements.txt"
