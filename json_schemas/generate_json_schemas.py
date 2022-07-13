@@ -11,12 +11,12 @@ import pkgutil
 pkgs = ["bo", "com"]
 for pkg in pkgs:
     modls = [
-        name
-        for _, name, _ in pkgutil.iter_modules([pathlib.Path(__file__).parent.parent.absolute() / "src" / "bo4e" / pkg])
+        name for _, name, _ in pkgutil.iter_modules([str(pathlib.Path(__file__).parent.parent / "src" / "bo4e" / pkg)])
     ]
     for x in modls:
         modl_name = f"bo4e.{pkg}.{x}"
         modl = importlib.import_module(modl_name)
+        # pylint: disable=cell-var-from-loop
         cls_list = inspect.getmembers(modl, lambda member: inspect.isclass(member) and member.__module__ == modl_name)
         for name, cls in cls_list:
             this_directory = pathlib.Path(__file__).parent.absolute()

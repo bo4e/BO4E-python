@@ -336,7 +336,8 @@ class PlantUMLNetwork(_UMLNetworkABC):
         namespaces: Dict[str, Dict[str, str | bool]] = {}
         # `namespaces` will contain for each package listed in the scope of `pkg` (`pkgs[pkg]["scope"]`) two
         # information:
-        # 1. The plantuml-string for the namespaces of the scope containing all respective classes except the root node.
+        # 1. The plantuml-string for the namespaces of the scope containing all respective classes except the root node
+        #    (class).
         # 2. A boolean value if there is at least one class in this network in the respective namespace. This is needed
         #    to avoid empty package boxes in the resulting uml-graphs.
 
