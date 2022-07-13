@@ -409,7 +409,7 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
         file_content = uml_network_scope.network_to_str(root_node=namespace_to_parse)
 
         os.makedirs(file_path, exist_ok=True)
-        with open(file_path / file_name, "w+", encoding="UTF-8") as uml_file:
+        with open(file_path / file_name, "w+", encoding="utf-8") as uml_file:
             uml_file.write(file_content)
             path_list.append(file_path / file_name)
 
@@ -502,13 +502,13 @@ def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
     url = "https://kroki.io"
     for root, _, files in os.walk(input_dir):
         for file in files:
-            with open(os.path.join(root, file), "r", encoding="UTF-8") as uml_file:
+            with open(os.path.join(root, file), "r", encoding="utf-8") as uml_file:
                 answer = requests.post(
                     url, json={"diagram_source": uml_file.read(), "diagram_type": "plantuml", "output_format": "svg"}
                 )
                 subdir = root[len(str(input_dir)) + 1 :]
                 os.makedirs(output_dir / subdir, exist_ok=True)
-                with open(output_dir / subdir / re.sub(r"\.puml$", ".svg", file), "w+", encoding="UTF-8") as svg_file:
+                with open(output_dir / subdir / re.sub(r"\.puml$", ".svg", file), "w+", encoding="utf-8") as svg_file:
                     svg_file.write(answer.text)
 
 
