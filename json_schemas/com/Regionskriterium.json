@@ -1,0 +1,74 @@
+{
+    "definitions": {
+        "Gueltigkeitstyp": {
+            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "enum": [
+                "NUR_IN",
+                "NICHT_IN",
+                "NUR_IN_KOMBINATION_MIT"
+            ],
+            "title": "Gueltigkeitstyp",
+            "type": "string"
+        },
+        "Regionskriteriumtyp": {
+            "description": "Klassifizierung der Kriterien für eine regionale Eingrenzung.",
+            "enum": [
+                "BUNDESLANDKENNZIFFER",
+                "BUNDESLAND_NAME",
+                "MARKTGEBIET_NUMMER",
+                "MARKTGEBIET_NAME",
+                "REGELGEBIET_NUMMER",
+                "REGELGEBIET_NAME",
+                "NETZ_STROM",
+                "NETZ_GAS",
+                "NETZBETREIBER_NUMMER_STROM",
+                "NETZBETREIBER_NUMMER_GAS",
+                "NETZBETREIBER_NAME_STROM",
+                "NETZBETREIBER_NAME_GAS",
+                "BILANZIERUNGS_GEBIET_NUMMER",
+                "MSB_NUMMER",
+                "MSB_NAME",
+                "VERSORGER_NUMMER",
+                "VERSORGER_NAME",
+                "GRUNDVERSORGER_NUMMER_STROM",
+                "GRUNDVERSORGER_NAME_STROM",
+                "GRUNDVERSORGER_NUMMER_GAS",
+                "GRUNDVERSORGER_NAME_GAS",
+                "KREIS_NAME",
+                "KREISKENNZIFFER",
+                "GEMEINDE_NAME",
+                "GEMEINDEKENNZIFFER",
+                "POSTLEITZAHL",
+                "ORT",
+                "POSTORT",
+                "EINWOHNERZAHL_GEMEINDE",
+                "EINWOHNERZAHL_ORT",
+                "KM_UMKREIS",
+                "BUNDESWEIT",
+                "PLZ_BEREICH"
+            ],
+            "title": "Regionskriteriumtyp",
+            "type": "string"
+        }
+    },
+    "description": "Komponente zur Abbildung eines Regionskriteriums\n\n.. graphviz:: /api/dots/bo4e/com/Regionskriterium.dot",
+    "properties": {
+        "gueltigkeitstyp": {
+            "$ref": "#/definitions/Gueltigkeitstyp"
+        },
+        "regionskriteriumtyp": {
+            "$ref": "#/definitions/Regionskriteriumtyp"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "string"
+        }
+    },
+    "required": [
+        "gueltigkeitstyp",
+        "regionskriteriumtyp",
+        "wert"
+    ],
+    "title": "Regionskriterium",
+    "type": "object"
+}

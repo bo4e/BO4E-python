@@ -1,8 +1,10 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.aufabschlagproort import AufAbschlagProOrt, AufAbschlagProOrtSchema
+from bo4e.com.aufabschlagproort import AufAbschlagProOrt
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -30,29 +32,31 @@ class TestAufAbschlagProOrt:
                     "netznr": "2",
                     "staffeln": [
                         {
-                            "wert": "2.5",
-                            "staffelgrenzeVon": "1",
-                            "staffelgrenzeBis": "5",
+                            "wert": Decimal("2.5"),
+                            "staffelgrenzeVon": Decimal("1"),
+                            "staffelgrenzeBis": Decimal("5"),
                         }
                     ],
                 },
             )
         ],
     )
-    def test_serialization_roundtrip(self, aufabschlagproort, expected_json_dict):
+    def test_serialization_roundtrip(
+        self, aufabschlagproort: AufAbschlagProOrt, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of AufAbschlagProOrt with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlagproort, AufAbschlagProOrtSchema(), expected_json_dict)
+        assert_serialization_roundtrip(aufabschlagproort, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = AufAbschlagProOrt()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = AufAbschlagProOrt()  # type: ignore[call-arg]
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)
 
-    def test_failing_validation_list_length_at_least_one(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_failing_validation_list_length_at_least_one(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = AufAbschlagProOrt(
                 postleitzahl="01187",
                 ort="Dresden",
@@ -60,4 +64,5 @@ class TestAufAbschlagProOrt:
                 staffeln=[],
             )
 
-        assert "List staffeln must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

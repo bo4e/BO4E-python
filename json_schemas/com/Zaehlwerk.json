@@ -1,0 +1,70 @@
+{
+    "definitions": {
+        "Energierichtung": {
+            "description": "Spezifiziert die Energierichtung einer Markt- und/oder Messlokation",
+            "enum": [
+                "AUSSP",
+                "EINSP"
+            ],
+            "title": "Energierichtung",
+            "type": "string"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        }
+    },
+    "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. graphviz:: /api/dots/bo4e/com/Zaehlwerk.dot",
+    "properties": {
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "obisKennzahl": {
+            "pattern": "(?:(1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2}))|(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+            "title": "Obiskennzahl",
+            "type": "string"
+        },
+        "richtung": {
+            "$ref": "#/definitions/Energierichtung"
+        },
+        "wandlerfaktor": {
+            "title": "Wandlerfaktor",
+            "type": "number"
+        },
+        "zaehlwerkId": {
+            "title": "Zaehlwerkid",
+            "type": "string"
+        }
+    },
+    "required": [
+        "zaehlwerkId",
+        "bezeichnung",
+        "richtung",
+        "obisKennzahl",
+        "wandlerfaktor",
+        "einheit"
+    ],
+    "title": "Zaehlwerk",
+    "type": "object"
+}

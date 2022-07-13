@@ -1,9 +1,10 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.vertrag import Vertrag, VertragSchema
+from bo4e.bo.vertrag import Vertrag
 from bo4e.com.adresse import Adresse
 from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
@@ -75,14 +76,13 @@ class TestVertrag:
             vertragsteile=self._vertragsteile,
         )
 
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test de-/serialisation of Vertrag with minimal attributes.
         """
         vertrag = self.get_example_vertrag()
 
-        schema = VertragSchema()
-        json_string = schema.dumps(vertrag, ensure_ascii=False)
+        json_string = vertrag.json(by_alias=True, ensure_ascii=False)
 
         assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
@@ -95,7 +95,7 @@ class TestVertrag:
         assert "Preetz" in json_string
         assert "2021-06-05T00:00:00+00:00" in json_string
 
-        vertrag_deserialized = schema.loads(json_string)
+        vertrag_deserialized = Vertrag.parse_raw(json_string)
 
         assert vertrag_deserialized.vertragsnummer == self._vertragsnummer
         assert vertrag_deserialized.vertragsart == self._vertragsart
@@ -107,7 +107,7 @@ class TestVertrag:
         assert vertrag_deserialized.vertragspartner2 == self._vertragspartner2
         assert vertrag_deserialized.vertragsteile == self._vertragsteile
 
-    def test_serialisation_required_and_optional_attributes(self):
+    def test_serialisation_required_and_optional_attributes(self) -> None:
         """
         Test de-/serialisation of Vertrag with maximal attributes.
         """
@@ -137,8 +137,7 @@ class TestVertrag:
             unterzeichnervp2=[Unterschrift(name="Bar"), Unterschrift(name="Dr.No")],
         )
 
-        schema = VertragSchema()
-        json_string = schema.dumps(vertrag, ensure_ascii=False)
+        json_string = vertrag.json(by_alias=True, ensure_ascii=False)
 
         assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
@@ -157,7 +156,7 @@ class TestVertrag:
         assert "Bar" in json_string
         assert "Dr.No" in json_string
 
-        vertrag_deserialized = schema.loads(json_string)
+        vertrag_deserialized = Vertrag.parse_raw(json_string)
 
         assert vertrag_deserialized.vertragsnummer == self._vertragsnummer
         assert vertrag_deserialized.vertragsart == self._vertragsart
@@ -182,17 +181,17 @@ class TestVertrag:
         assert vertrag_deserialized.unterzeichnervp1 == [Unterschrift(name="Foo")]
         assert vertrag_deserialized.unterzeichnervp2 == [Unterschrift(name="Bar"), Unterschrift(name="Dr.No")]
 
-    def test_missing_required_attributes(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Vertrag()
+    def test_missing_required_attributes(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Vertrag()  # type: ignore[call-arg]
 
-        assert "missing 9 required" in str(excinfo.value)
+        assert "9 validation errors" in str(excinfo.value)
 
-    def test_serialization_fails_for_empty_vertragsteile(self):
+    def test_serialization_fails_for_empty_vertragsteile(self) -> None:
         """
         Test serialisation of Zaehler fails if there are no vertragsteile.
         """
-        with pytest.raises(ValueError) as value_error:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Vertrag(
                 vertragsnummer=self._vertragsnummer,
                 vertragsart=self._vertragsart,
@@ -204,4 +203,6 @@ class TestVertrag:
                 vertragspartner2=self._vertragspartner2,
                 vertragsteile=[],
             )
-        assert value_error.value.args[0] == "The Vertrag must have at least 1 Vertragsteil"
+
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

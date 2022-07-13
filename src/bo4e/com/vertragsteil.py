@@ -5,67 +5,51 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-import attrs
-from marshmallow import fields
-
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,
     eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Vertragsteil.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/VertragsteilSchema.json>`_
+        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_
 
     """
 
     # required attributes
-    vertragsteilbeginn: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    vertragsteilbeginn: datetime
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: datetime = attrs.field(validator=attrs.validators.instance_of(datetime))
+    vertragsteilende: datetime
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
     # optional attributes
-    lokation: Optional[str] = attrs.field(default=None)
+    lokation: Optional[str] = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
     """
-    vertraglich_fixierte_menge: Optional[Menge] = attrs.field(default=None)
+    vertraglich_fixierte_menge: Optional[Menge] = None
     """
     Für die Lokation festgeschriebene Abnahmemenge
     """
-    minimale_abnahmemenge: Optional[Menge] = attrs.field(default=None)
+    minimale_abnahmemenge: Optional[Menge] = None
     """
     Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
     """
-    maximale_abnahmemenge: Optional[Menge] = attrs.field(default=None)
+    maximale_abnahmemenge: Optional[Menge] = None
     """
     Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
     """
-
-
-class VertragsteilSchema(COMSchema):
-    """
-    Schema for de-/serialization of Vertragsteil.
-    """
-
-    class_name = Vertragsteil
-    # required attributes
-    vertragsteilbeginn = fields.DateTime()
-    vertragsteilende = fields.DateTime()
-
-    # optional attributes
-    lokation = fields.String(load_default=None)
-    vertraglich_fixierte_menge = fields.Nested(MengeSchema, load_default=None, data_key="vertraglichFixierteMenge")
-    minimale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="minimaleAbnahmemenge")
-    maximale_abnahmemenge = fields.Nested(MengeSchema, load_default=None, data_key="maximaleAbnahmemenge")

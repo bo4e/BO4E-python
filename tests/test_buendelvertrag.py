@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.buendelvertrag import Buendelvertrag, BuendelvertragSchema
+from bo4e.bo.buendelvertrag import Buendelvertrag
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_vertrag import TestVertrag  # type:ignore[import]
 
@@ -12,11 +13,11 @@ class TestBuendelvertrag:
             pytest.param(Buendelvertrag(einzelvertraege=[TestVertrag().get_example_vertrag()])),
         ],
     )
-    def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag):
-        assert_serialization_roundtrip(buendelvertrag, BuendelvertragSchema())
+    def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag) -> None:
+        assert_serialization_roundtrip(buendelvertrag)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Buendelvertrag()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Buendelvertrag()  # type: ignore[call-arg]
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

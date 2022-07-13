@@ -2,24 +2,22 @@
 Contains Preisblatt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
 
-import attrs
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
+from typing import Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt, GeschaeftsobjektSchema
-from bo4e.bo.marktteilnehmer import Marktteilnehmer, MarktteilnehmerSchema
-from bo4e.com.preisposition import Preisposition, PreispositionSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
+from pydantic import conlist
+
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.bo.marktteilnehmer import Marktteilnehmer
+from bo4e.com.preisposition import Preisposition
+from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import check_list_length_at_least_one
 
 
-# pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
 class Preisblatt(Geschaeftsobjekt):
     """
     Das allgemeine Modell zur Abbildung von Preisen;
@@ -29,48 +27,27 @@ class Preisblatt(Geschaeftsobjekt):
     Die jeweiligen Sätze von Merkmalen sind in der Grafik ergänzt worden und stellen jeweils eine Ausprägung für die
     verschiedenen Anwendungsfälle der Preisblätter dar.
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Preisblatt.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattSchema.json>`_
+        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Preisblatt.json>`_
 
     """
 
     # required attributes
-    bo_typ: BoTyp = attrs.field(default=BoTyp.PREISBLATT)
+    bo_typ: BoTyp = BoTyp.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
-    bezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    bezeichnung: str
     #: Preisblatt gilt für angegebene Sparte
-    sparte: Sparte = attrs.field(validator=attrs.validators.instance_of(Sparte))
+    sparte: Sparte
     #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
-    preisstatus: Preisstatus = attrs.field(validator=attrs.validators.instance_of(Preisstatus))
+    preisstatus: Preisstatus
     #: Der Zeitraum für den der Preis festgelegt ist
-    gueltigkeit: Zeitraum = attrs.field(validator=attrs.validators.instance_of(Zeitraum))
+    gueltigkeit: Zeitraum
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
-    preispositionen: List[Preisposition] = attrs.field(
-        validator=attrs.validators.deep_iterable(
-            member_validator=attrs.validators.instance_of(Preisposition),
-            iterable_validator=check_list_length_at_least_one,
-        )
-    )
+    preispositionen: conlist(Preisposition, min_items=1)  # type: ignore[valid-type]
     # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
-    herausgeber: Optional[Marktteilnehmer] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(Marktteilnehmer))
-    )
-
-
-class PreisblattSchema(GeschaeftsobjektSchema):
-    """
-    Schema for de-/serialization of Preisblatt
-    """
-
-    class_name = Preisblatt
-    # required attributes
-    bezeichnung = fields.Str()
-    sparte = EnumField(Sparte)
-    preisstatus = EnumField(Preisstatus)
-    gueltigkeit = fields.Nested(ZeitraumSchema)
-    preispositionen = fields.List(fields.Nested(PreispositionSchema))
-
-    # optional attributes
-
-    herausgeber = fields.Nested(MarktteilnehmerSchema, load_default=None)
+    herausgeber: Optional[Marktteilnehmer] = None

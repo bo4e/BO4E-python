@@ -1,11 +1,13 @@
-import json
+from decimal import Decimal
 from typing import Tuple
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.marktlokation import Marktlokation, MarktlokationSchema
+from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
+from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
@@ -17,7 +19,7 @@ from bo4e.enum.sparte import Sparte
 
 
 class TestMaLo:
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test serialisation of Marktlokation only with required attributes
         """
@@ -32,15 +34,12 @@ class TestMaLo:
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        schema = MarktlokationSchema()
+        json_string = malo.json(by_alias=True, ensure_ascii=False)
 
-        json_string = schema.dumps(malo, ensure_ascii=False)
-        json_dict = json.loads(json_string)
+        assert "boTyp" in json_string, "No camel case serialization"
+        assert "marktlokationsId" in json_string, "No camel case serialization"
 
-        assert "boTyp" in json_dict, "No camel case serialization"
-        assert "marktlokationsId" in json_dict, "No camel case serialization"
-
-        deserialized_malo: Marktlokation = schema.loads(json_string)
+        deserialized_malo: Marktlokation = Marktlokation.parse_raw(json_string)
 
         # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
         # but are **not** the same object.
@@ -48,7 +47,7 @@ class TestMaLo:
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
         assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
 
-    def test_serialization_required_and_optional_attributes(self):
+    def test_serialization_required_and_optional_attributes(self) -> None:
         """
         Test serialisation of Marktlokation with required attributes and optional attributes
         """
@@ -86,22 +85,19 @@ class TestMaLo:
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        schema = MarktlokationSchema()
+        json_string = malo.json(by_alias=True, ensure_ascii=False)
 
-        json_string = schema.dumps(malo, ensure_ascii=False)
-        json_dict = json.loads(json_string)
+        assert "boTyp" in json_string, "No camel case serialization"
+        assert "marktlokationsId" in json_string, "No camel case serialization"
 
-        assert "boTyp" in json_dict, "No camel case serialization"
-        assert "marktlokationsId" in json_dict, "No camel case serialization"
-
-        deserialized_malo: Marktlokation = schema.loads(json_string)
+        deserialized_malo: Marktlokation = Marktlokation.parse_raw(json_string)
 
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
         assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
         assert deserialized_malo.endkunde == gp
 
-    def test_missing_required_fields(self):
+    def test_missing_required_fields(self) -> None:
         """
         Test that the required attributes are checked in the deserialization.
         Therefore the required attribute `marktlokations_id` is removed in the test data.
@@ -138,15 +134,15 @@ class TestMaLo:
             "energierichtung": "EINSP"
             }"""
 
-        schema = MarktlokationSchema()
+        with pytest.raises(ValidationError) as excinfo:
+            Marktlokation.parse_raw(invalid_json_string)
 
-        with pytest.raises(TypeError) as excinfo:
-            schema.loads(invalid_json_string)
+        assert "1 validation error" in str(excinfo.value)
+        assert "marktlokationsId" in str(excinfo.value)
+        assert "field required" in str(excinfo.value)
 
-        assert "marktlokations_id" in str(excinfo.value)
-
-    def test_address_validation(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_address_validation(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Marktlokation(
                 marktlokations_id="51238696781",
                 sparte=Sparte.GAS,
@@ -160,11 +156,14 @@ class TestMaLo:
                 bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
                 unterbrechbar=True,  # optional attribute
                 netzebene=Netzebene.NSP,
-                geoadresse="test",
-                katasterinformation="test",
+                geoadresse=Geokoordinaten(
+                    breitengrad=Decimal("52"),
+                    laengengrad=Decimal("9"),
+                ),
+                katasterinformation=None,
             )
 
-        assert "No or more than one address information is given." == str(excinfo.value)
+        assert "No or more than one address information is given." in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "malo_id_valid",
@@ -182,8 +181,8 @@ class TestMaLo:
             ("", False),
         ],
     )
-    def test_id_validation(self, malo_id_valid: Tuple[str, bool]):
-        def _instantiate_malo(malo_id: str):
+    def test_id_validation(self, malo_id_valid: Tuple[str, bool]) -> None:
+        def _instantiate_malo(malo_id: str) -> None:
             _ = Marktlokation(
                 marktlokations_id=malo_id,
                 sparte=Sparte.GAS,
@@ -200,7 +199,7 @@ class TestMaLo:
             )
 
         if not malo_id_valid[1]:
-            with pytest.raises(ValueError):
+            with pytest.raises(ValidationError):
                 _instantiate_malo(malo_id_valid[0])
         else:
             _instantiate_malo(malo_id_valid[0])

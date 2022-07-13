@@ -1,0 +1,128 @@
+{
+    "definitions": {
+        "Geraeteeigenschaften": {
+            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. graphviz:: /api/dots/bo4e/com/Geraeteeigenschaften.dot",
+            "properties": {
+                "geraetemerkmal": {
+                    "$ref": "#/definitions/Geraetemerkmal"
+                },
+                "geraetetyp": {
+                    "$ref": "#/definitions/Geraetetyp"
+                }
+            },
+            "required": [
+                "geraetetyp"
+            ],
+            "title": "Geraeteeigenschaften",
+            "type": "object"
+        },
+        "Geraetemerkmal": {
+            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "enum": [
+                "EINTARIF",
+                "ZWEITARIF",
+                "MEHRTARIF",
+                "GAS_G2_5",
+                "GAS_G4",
+                "GAS_G6",
+                "GAS_G10",
+                "GAS_G16",
+                "GAS_G25",
+                "GAS_G40",
+                "GAS_G65",
+                "GAS_G100",
+                "GAS_G160",
+                "GAS_G250",
+                "GAS_G400",
+                "GAS_G650",
+                "GAS_G1000",
+                "GAS_G1600",
+                "GAS_G2500",
+                "IMPULSGEBER_G4_G100",
+                "IMPULSGEBER_G100",
+                "TELEFONANSCHLUSS",
+                "MODEM_GSM",
+                "MODEM_GPRS",
+                "MODEM_FUNK",
+                "MODEM_GSM_O_LG",
+                "MODEM_GSM_M_LG",
+                "MODEM_FESTNETZ",
+                "MODEM_GPRS_M_LG",
+                "PLC_KOM",
+                "ETHERNET_KOM",
+                "DSL_KOM",
+                "LTE_KOM",
+                "KOMPAKT_MU",
+                "SYSTEM_MU",
+                "TEMPERATUR_MU",
+                "ZUSTANDS_MU",
+                "UNBESTIMMT"
+            ],
+            "title": "Geraetemerkmal",
+            "type": "string"
+        },
+        "Geraetetyp": {
+            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "enum": [
+                "WECHSELSTROMZAEHLER",
+                "DREHSTROMZAEHLER",
+                "ZWEIRICHTUNGSZAEHLER",
+                "RLM_ZAEHLER",
+                "BALGENGASZAEHLER",
+                "MAXIMUMZAEHLER",
+                "MULTIPLEXANLAGE",
+                "PAUSCHALANLAGE",
+                "VERSTAERKERANLAGE",
+                "SUMMATIONSGERAET",
+                "IMPULSGEBER",
+                "EDL_21_ZAEHLERAUFSATZ",
+                "VIER_QUADRANTEN_LASTGANGZAEHLER",
+                "MENGENUMWERTER",
+                "STROMWANDLER",
+                "SPANNUNGSWANDLER",
+                "KOMBIMESSWANDLER",
+                "BLOCKSTROMWANDLER",
+                "DATENLOGGER",
+                "KOMMUNIKATIONSANSCHLUSS",
+                "MODEM",
+                "TELEKOMMUNIKATIONSEINRICHTUNG",
+                "DREHKOLBENGASZAEHLER",
+                "TURBINENRADGASZAEHLER",
+                "ULTRASCHALLZAEHLER",
+                "WIRBELGASZAEHLER",
+                "MODERNE_MESSEINRICHTUNG",
+                "INTELLIGENTES_MESSYSTEM",
+                "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+                "STEUEREINRICHTUNG",
+                "TARIFSCHALTGERAET",
+                "RUNDSTEUEREMPFAENGER",
+                "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+                "MESSWANDLERSATZ_IMS_MME",
+                "KOMBIMESSWANDLER_IMS_MME",
+                "TARIFSCHALTGERAET_IMS_MME",
+                "RUNDSTEUEREMPFAENGER_IMS_MME",
+                "TEMPERATUR_KOMPENSATION",
+                "HOECHSTBELASTUNGS_ANZEIGER",
+                "SONSTIGES_GERAET",
+                "PREPAYMENTZAEHLER",
+                "EDL_21",
+                "96_H_ZAEHLER",
+                "EDL_40_ZAEHLERAUFSATZ"
+            ],
+            "title": "Geraetetyp",
+            "type": "string"
+        }
+    },
+    "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. graphviz:: /api/dots/bo4e/com/Geraet.dot",
+    "properties": {
+        "geraeteeigenschaften": {
+            "$ref": "#/definitions/Geraeteeigenschaften"
+        },
+        "geraetenummer": {
+            "title": "Geraetenummer",
+            "type": "string"
+        }
+    },
+    "title": "Geraet",
+    "type": "object"
+}

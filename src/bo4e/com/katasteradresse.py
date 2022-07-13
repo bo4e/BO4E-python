@@ -2,32 +2,24 @@
 Contains Katasteradresse class
 and corresponding marshmallow schema for de-/serialization
 """
-import attrs
-from marshmallow import fields
 
-from bo4e.com.com import COM, COMSchema
-
+from bo4e.com.com import COM
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Katasteradresse(COM):
     """
     Dient der Adressierung über die Liegenschafts-Information.
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Katasteradresse.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KatasteradresseSchema.json>`_
+        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_
 
     """
 
     gemarkung_flur: str
     flurstueck: str
-
-
-class KatasteradresseSchema(COMSchema):
-    """
-    Schema for de-/serialization of Katasteradresse.
-    """
-
-    class_name = Katasteradresse
-    gemarkung_flur = fields.Str(data_key="gemarkungFlur")
-    flurstueck = fields.Str()

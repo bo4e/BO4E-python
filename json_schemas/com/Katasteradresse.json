@@ -1,0 +1,19 @@
+{
+    "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. graphviz:: /api/dots/bo4e/com/Katasteradresse.dot",
+    "properties": {
+        "flurstueck": {
+            "title": "Flurstueck",
+            "type": "string"
+        },
+        "gemarkungFlur": {
+            "title": "Gemarkungflur",
+            "type": "string"
+        }
+    },
+    "required": [
+        "gemarkungFlur",
+        "flurstueck"
+    ],
+    "title": "Katasteradresse",
+    "type": "object"
+}

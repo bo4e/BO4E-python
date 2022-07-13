@@ -1,8 +1,10 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt, AufAbschlagstaffelProOrtSchema
+from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 
@@ -17,21 +19,23 @@ class TestAufAbschlagstaffelProOrt:
                     staffelgrenze_bis=Decimal(5),
                 ),
                 {
-                    "wert": "2.5",
-                    "staffelgrenzeVon": "1",
-                    "staffelgrenzeBis": "5",
+                    "wert": Decimal("2.5"),
+                    "staffelgrenzeVon": Decimal("1"),
+                    "staffelgrenzeBis": Decimal("5"),
                 },
             ),
         ],
     )
-    def test_aufabschlagstaffelproort_required_attributes(self, aufabschlagstaffelproort, expected_json_dict):
+    def test_aufabschlagstaffelproort_required_attributes(
+        self, aufabschlagstaffelproort: AufAbschlagstaffelProOrt, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of AufAbschlagstaffelProOrt with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlagstaffelproort, AufAbschlagstaffelProOrtSchema(), expected_json_dict)
+        assert_serialization_roundtrip(aufabschlagstaffelproort, expected_json_dict)
 
-    def test_aufabschlagstaffelproort_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = AufAbschlagstaffelProOrt()
+    def test_aufabschlagstaffelproort_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = AufAbschlagstaffelProOrt()  # type: ignore[call-arg]
 
-        assert "missing 3 required" in str(excinfo.value)
+        assert "3 validation errors" in str(excinfo.value)

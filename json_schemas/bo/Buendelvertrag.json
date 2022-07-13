@@ -1,0 +1,843 @@
+{
+    "definitions": {
+        "Adresse": {
+            "description": "Contains an address that can be used for most purposes.\n\n.. graphviz:: /api/dots/bo4e/com/Adresse.dot",
+            "properties": {
+                "adresszusatz": {
+                    "title": "Adresszusatz",
+                    "type": "string"
+                },
+                "coErgaenzung": {
+                    "title": "Coergaenzung",
+                    "type": "string"
+                },
+                "hausnummer": {
+                    "title": "Hausnummer",
+                    "type": "string"
+                },
+                "landescode": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/Landescode"
+                        }
+                    ],
+                    "default": "DE"
+                },
+                "ort": {
+                    "title": "Ort",
+                    "type": "string"
+                },
+                "postfach": {
+                    "title": "Postfach",
+                    "type": "string"
+                },
+                "postleitzahl": {
+                    "title": "Postleitzahl",
+                    "type": "string"
+                },
+                "strasse": {
+                    "title": "Strasse",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "postleitzahl",
+                "ort"
+            ],
+            "title": "Adresse",
+            "type": "object"
+        },
+        "Anrede": {
+            "description": "Übersicht möglicher Anreden, z.B. eines Geschäftspartners.",
+            "enum": [
+                "HERR",
+                "FRAU",
+                "EHELEUTE",
+                "FIRMA",
+                "INDIVIDUELL"
+            ],
+            "title": "Anrede",
+            "type": "string"
+        },
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
+        },
+        "ExterneReferenz": {
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "Geschaeftspartner": {
+            "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. graphviz:: /api/dots/bo4e/bo/Geschaeftspartner.dot",
+            "properties": {
+                "amtsgericht": {
+                    "title": "Amtsgericht",
+                    "type": "string"
+                },
+                "anrede": {
+                    "$ref": "#/definitions/Anrede"
+                },
+                "boTyp": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BoTyp"
+                        }
+                    ],
+                    "default": "GESCHAEFTSPARTNER"
+                },
+                "eMailAdresse": {
+                    "title": "Emailadresse",
+                    "type": "string"
+                },
+                "externeReferenzen": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenz"
+                    },
+                    "title": "Externereferenzen",
+                    "type": "array"
+                },
+                "geschaeftspartnerrolle": {
+                    "items": {
+                        "$ref": "#/definitions/Geschaeftspartnerrolle"
+                    },
+                    "type": "array"
+                },
+                "gewerbekennzeichnung": {
+                    "title": "Gewerbekennzeichnung",
+                    "type": "boolean"
+                },
+                "glaeubigerId": {
+                    "title": "Glaeubigerid",
+                    "type": "string"
+                },
+                "hrnummer": {
+                    "title": "Hrnummer",
+                    "type": "string"
+                },
+                "kontaktweg": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/Kontaktart"
+                    },
+                    "type": "array"
+                },
+                "name1": {
+                    "title": "Name1",
+                    "type": "string"
+                },
+                "name2": {
+                    "title": "Name2",
+                    "type": "string"
+                },
+                "name3": {
+                    "title": "Name3",
+                    "type": "string"
+                },
+                "partneradresse": {
+                    "$ref": "#/definitions/Adresse"
+                },
+                "umsatzsteuerId": {
+                    "title": "Umsatzsteuerid",
+                    "type": "string"
+                },
+                "versionstruktur": {
+                    "default": "2",
+                    "title": "Versionstruktur",
+                    "type": "string"
+                },
+                "website": {
+                    "title": "Website",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name1",
+                "gewerbekennzeichnung",
+                "geschaeftspartnerrolle"
+            ],
+            "title": "Geschaeftspartner",
+            "type": "object"
+        },
+        "Geschaeftspartnerrolle": {
+            "description": "Diese Rollen kann ein Geschäftspartner einnehmen.",
+            "enum": [
+                "LIEFERANT",
+                "DIENSTLEISTER",
+                "KUNDE",
+                "INTERESSENT",
+                "MARKTPARTNER"
+            ],
+            "title": "Geschaeftspartnerrolle",
+            "type": "string"
+        },
+        "Kontaktart": {
+            "description": "Art des Kontaktes zwischen Geschäftspartnern.",
+            "enum": [
+                "ANSCHREIBEN",
+                "TELEFONAT",
+                "FAX",
+                "E_MAIL",
+                "SMS"
+            ],
+            "title": "Kontaktart",
+            "type": "string"
+        },
+        "Landescode": {
+            "description": "An enumeration.",
+            "enum": [
+                "AF",
+                "AX",
+                "AL",
+                "DZ",
+                "AS",
+                "AD",
+                "AO",
+                "AI",
+                "AQ",
+                "AG",
+                "AR",
+                "AM",
+                "AW",
+                "AU",
+                "AT",
+                "AZ",
+                "BS",
+                "BH",
+                "BD",
+                "BB",
+                "BY",
+                "BE",
+                "BZ",
+                "BJ",
+                "BM",
+                "BT",
+                "BO",
+                "BQ",
+                "BA",
+                "BW",
+                "BV",
+                "BR",
+                "IO",
+                "BN",
+                "BG",
+                "BF",
+                "BI",
+                "KH",
+                "CM",
+                "CA",
+                "CV",
+                "KY",
+                "CF",
+                "TD",
+                "CL",
+                "CN",
+                "CX",
+                "CC",
+                "CO",
+                "KM",
+                "CG",
+                "CD",
+                "CK",
+                "CR",
+                "CI",
+                "HR",
+                "CU",
+                "CW",
+                "CY",
+                "CZ",
+                "DK",
+                "DJ",
+                "DM",
+                "DO",
+                "EC",
+                "EG",
+                "SV",
+                "GQ",
+                "ER",
+                "EE",
+                "ET",
+                "FK",
+                "FO",
+                "FJ",
+                "FI",
+                "FR",
+                "GF",
+                "PF",
+                "TF",
+                "GA",
+                "GM",
+                "GE",
+                "DE",
+                "GH",
+                "GI",
+                "GR",
+                "GL",
+                "GD",
+                "GP",
+                "GU",
+                "GT",
+                "GG",
+                "GN",
+                "GW",
+                "GY",
+                "HT",
+                "HM",
+                "VA",
+                "HN",
+                "HK",
+                "HU",
+                "IS",
+                "IN",
+                "ID",
+                "IR",
+                "IQ",
+                "IE",
+                "IM",
+                "IL",
+                "IT",
+                "JM",
+                "JP",
+                "JE",
+                "JO",
+                "KZ",
+                "KE",
+                "KI",
+                "KP",
+                "KR",
+                "XK",
+                "KW",
+                "KG",
+                "LA",
+                "LV",
+                "LB",
+                "LS",
+                "LR",
+                "LY",
+                "LI",
+                "LT",
+                "LU",
+                "MO",
+                "MK",
+                "MG",
+                "MW",
+                "MY",
+                "MV",
+                "ML",
+                "MT",
+                "MH",
+                "MQ",
+                "MR",
+                "MU",
+                "YT",
+                "MX",
+                "FM",
+                "MD",
+                "MC",
+                "MN",
+                "ME",
+                "MS",
+                "MA",
+                "MZ",
+                "MM",
+                "NA",
+                "NR",
+                "NP",
+                "NL",
+                "NC",
+                "NZ",
+                "NI",
+                "NE",
+                "NG",
+                "NU",
+                "NF",
+                "MP",
+                "NO",
+                "OM",
+                "PK",
+                "PW",
+                "PS",
+                "PA",
+                "PG",
+                "PY",
+                "PE",
+                "PH",
+                "PN",
+                "PL",
+                "PT",
+                "PR",
+                "QA",
+                "RE",
+                "RO",
+                "RU",
+                "RW",
+                "BL",
+                "SH",
+                "KN",
+                "LC",
+                "MF",
+                "PM",
+                "VC",
+                "WS",
+                "SM",
+                "ST",
+                "SA",
+                "SN",
+                "RS",
+                "SC",
+                "SL",
+                "SG",
+                "SX",
+                "SK",
+                "SI",
+                "SB",
+                "SO",
+                "ZA",
+                "GS",
+                "SS",
+                "ES",
+                "LK",
+                "SD",
+                "SR",
+                "SJ",
+                "SZ",
+                "SE",
+                "CH",
+                "SY",
+                "TW",
+                "TJ",
+                "TZ",
+                "TH",
+                "TL",
+                "TG",
+                "TK",
+                "TO",
+                "TT",
+                "TN",
+                "TR",
+                "TM",
+                "TC",
+                "TV",
+                "UG",
+                "UA",
+                "AE",
+                "GB",
+                "US",
+                "UM",
+                "UY",
+                "UZ",
+                "VU",
+                "VE",
+                "VN",
+                "VG",
+                "VI",
+                "WF",
+                "EH",
+                "YE",
+                "ZM",
+                "ZW"
+            ],
+            "title": "Landescode"
+        },
+        "Menge": {
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "properties": {
+                "einheit": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit"
+            ],
+            "title": "Menge",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Sparte": {
+            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "FERNWAERME",
+                "NAHWAERME",
+                "WASSER",
+                "ABWASSER"
+            ],
+            "title": "Sparte",
+            "type": "string"
+        },
+        "Unterschrift": {
+            "description": "Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.\n\n.. graphviz:: /api/dots/bo4e/com/Unterschrift.dot",
+            "properties": {
+                "datum": {
+                    "format": "date-time",
+                    "title": "Datum",
+                    "type": "string"
+                },
+                "name": {
+                    "title": "Name",
+                    "type": "string"
+                },
+                "ort": {
+                    "title": "Ort",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name"
+            ],
+            "title": "Unterschrift",
+            "type": "object"
+        },
+        "Vertrag": {
+            "description": "Modell für die Abbildung von Vertragsbeziehungen;\nDas Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.\n\n.. graphviz:: /api/dots/bo4e/bo/Vertrag.dot",
+            "properties": {
+                "beschreibung": {
+                    "title": "Beschreibung",
+                    "type": "string"
+                },
+                "boTyp": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/BoTyp"
+                        }
+                    ],
+                    "default": "VERTRAG"
+                },
+                "externeReferenzen": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/ExterneReferenz"
+                    },
+                    "title": "Externereferenzen",
+                    "type": "array"
+                },
+                "sparte": {
+                    "$ref": "#/definitions/Sparte"
+                },
+                "unterzeichnervp1": {
+                    "items": {
+                        "$ref": "#/definitions/Unterschrift"
+                    },
+                    "title": "Unterzeichnervp1",
+                    "type": "array"
+                },
+                "unterzeichnervp2": {
+                    "items": {
+                        "$ref": "#/definitions/Unterschrift"
+                    },
+                    "title": "Unterzeichnervp2",
+                    "type": "array"
+                },
+                "versionstruktur": {
+                    "default": "2",
+                    "title": "Versionstruktur",
+                    "type": "string"
+                },
+                "vertragsart": {
+                    "$ref": "#/definitions/Vertragsart"
+                },
+                "vertragsbeginn": {
+                    "format": "date-time",
+                    "title": "Vertragsbeginn",
+                    "type": "string"
+                },
+                "vertragsende": {
+                    "format": "date-time",
+                    "title": "Vertragsende",
+                    "type": "string"
+                },
+                "vertragskonditionen": {
+                    "$ref": "#/definitions/Vertragskonditionen"
+                },
+                "vertragsnummer": {
+                    "title": "Vertragsnummer",
+                    "type": "string"
+                },
+                "vertragspartner1": {
+                    "$ref": "#/definitions/Geschaeftspartner"
+                },
+                "vertragspartner2": {
+                    "$ref": "#/definitions/Geschaeftspartner"
+                },
+                "vertragsstatus": {
+                    "$ref": "#/definitions/Vertragsstatus"
+                },
+                "vertragsteile": {
+                    "items": {
+                        "$ref": "#/definitions/Vertragsteil"
+                    },
+                    "minItems": 1,
+                    "title": "Vertragsteile",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "vertragsnummer",
+                "vertragsart",
+                "vertragsstatus",
+                "sparte",
+                "vertragsbeginn",
+                "vertragsende",
+                "vertragspartner1",
+                "vertragspartner2",
+                "vertragsteile"
+            ],
+            "title": "Vertrag",
+            "type": "object"
+        },
+        "Vertragsart": {
+            "description": "Aufzählung der Vertragsarten.",
+            "enum": [
+                "ENERGIELIEFERVERTRAG",
+                "NETZNUTZUNGSVERTRAG",
+                "BILANZIERUNGSVERTRAG",
+                "MESSSTELLENBETRIEBSVERTRAG",
+                "BUENDELVERTRAG"
+            ],
+            "title": "Vertragsart",
+            "type": "string"
+        },
+        "Vertragskonditionen": {
+            "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. graphviz:: /api/dots/bo4e/com/Vertragskonditionen.dot",
+            "properties": {
+                "abschlagszyklus": {
+                    "$ref": "#/definitions/Zeitraum"
+                },
+                "anzahlAbschlaege": {
+                    "title": "Anzahlabschlaege",
+                    "type": "number"
+                },
+                "beschreibung": {
+                    "title": "Beschreibung",
+                    "type": "string"
+                },
+                "kuendigungsfrist": {
+                    "$ref": "#/definitions/Zeitraum"
+                },
+                "vertragslaufzeit": {
+                    "$ref": "#/definitions/Zeitraum"
+                },
+                "vertragsverlaengerung": {
+                    "$ref": "#/definitions/Zeitraum"
+                }
+            },
+            "title": "Vertragskonditionen",
+            "type": "object"
+        },
+        "Vertragsstatus": {
+            "description": "Abbildung einer Statusinformation für Verträge.",
+            "enum": [
+                "IN_ARBEIT",
+                "UEBERMITTELT",
+                "ANGENOMMEN",
+                "AKTIV",
+                "ABGELEHNT",
+                "WIDERRUFEN",
+                "STORNIERT",
+                "GEKUENDIGT",
+                "BEENDET"
+            ],
+            "title": "Vertragsstatus",
+            "type": "string"
+        },
+        "Vertragsteil": {
+            "description": "Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\neine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n.. graphviz:: /api/dots/bo4e/com/Vertragsteil.dot",
+            "properties": {
+                "lokation": {
+                    "title": "Lokation",
+                    "type": "string"
+                },
+                "maximaleAbnahmemenge": {
+                    "$ref": "#/definitions/Menge"
+                },
+                "minimaleAbnahmemenge": {
+                    "$ref": "#/definitions/Menge"
+                },
+                "vertraglichFixierteMenge": {
+                    "$ref": "#/definitions/Menge"
+                },
+                "vertragsteilbeginn": {
+                    "format": "date-time",
+                    "title": "Vertragsteilbeginn",
+                    "type": "string"
+                },
+                "vertragsteilende": {
+                    "format": "date-time",
+                    "title": "Vertragsteilende",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "vertragsteilbeginn",
+                "vertragsteilende"
+            ],
+            "title": "Vertragsteil",
+            "type": "object"
+        },
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        },
+        "Zeitraum": {
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "properties": {
+                "dauer": {
+                    "title": "Dauer",
+                    "type": "number"
+                },
+                "einheit": {
+                    "$ref": "#/definitions/Zeiteinheit"
+                },
+                "enddatum": {
+                    "format": "date-time",
+                    "title": "Enddatum",
+                    "type": "string"
+                },
+                "endzeitpunkt": {
+                    "format": "date-time",
+                    "title": "Endzeitpunkt",
+                    "type": "string"
+                },
+                "startdatum": {
+                    "format": "date-time",
+                    "title": "Startdatum",
+                    "type": "string"
+                },
+                "startzeitpunkt": {
+                    "format": "date-time",
+                    "title": "Startzeitpunkt",
+                    "type": "string"
+                }
+            },
+            "title": "Zeitraum",
+            "type": "object"
+        }
+    },
+    "description": "Abbildung eines Bündelvertrags.\nEs handelt sich hierbei um eine Liste von Einzelverträgen, die in einem Vertragsobjekt gebündelt sind.\n\n.. graphviz:: /api/dots/bo4e/bo/Buendelvertrag.dot",
+    "properties": {
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BoTyp"
+                }
+            ],
+            "default": "BUENDELVERTRAG"
+        },
+        "einzelvertraege": {
+            "items": {
+                "$ref": "#/definitions/Vertrag"
+            },
+            "minItems": 1,
+            "title": "Einzelvertraege",
+            "type": "array"
+        },
+        "externeReferenzen": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/ExterneReferenz"
+            },
+            "title": "Externereferenzen",
+            "type": "array"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
+        }
+    },
+    "required": [
+        "einzelvertraege"
+    ],
+    "title": "Buendelvertrag",
+    "type": "object"
+}

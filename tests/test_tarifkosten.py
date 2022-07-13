@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.tarifkosten import Tarifkosten, TarifkostenSchema
+from bo4e.bo.tarifkosten import Tarifkosten
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
@@ -38,14 +39,14 @@ class TestTarifkosten:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifkosten: Tarifkosten):
+    def test_serialization_roundtrip(self, tarifkosten: Tarifkosten) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifkosten, TarifkostenSchema())
+        assert_serialization_roundtrip(tarifkosten)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Tarifkosten()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Tarifkosten()  # type: ignore[call-arg]
 
-        assert "missing 9 required" in str(excinfo.value)
+        assert "9 validation errors" in str(excinfo.value)

@@ -3,54 +3,34 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
-import attrs
-from marshmallow import fields
-
-from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
-
+from bo4e.com.kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Fremdkostenposition(Kostenposition):
     """
     Eine Kostenposition im Bereich der Fremdkosten
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Fremdkostenposition.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/FremdkostenpositionSchema.json>`_
+        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenposition.json>`_
 
     """
 
     # optional attributes (additional to those from Kostenposition)
     #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
-    marktpartnername: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    marktpartnername: Optional[str] = None
 
     #: Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt
-    marktpartnercode: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    marktpartnercode: Optional[str] = None
 
     #: EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT
-    gebietcode_eic: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
+    gebietcode_eic: Optional[str] = None
     # todo: see issue https://github.com/Hochfrequenz/BO4E-python/issues/147 for EIC validation
 
     #: Link zum veröffentlichten Preisblatt
-    link_preisblatt: Optional[str] = attrs.field(
-        default=None, validator=attrs.validators.optional(attrs.validators.instance_of(str))
-    )
-
-
-class FremdkostenpositionSchema(KostenpositionSchema):
-    """
-    Schema for de-/serialization of Fremdkostenposition
-    """
-
-    # optional attributes (additional to those from Kostenposition)
-    class_name = Fremdkostenposition  # type:ignore[assignment]
-    marktpartnername = fields.Str(allow_none=True)
-    marktpartnercode = fields.Str(allow_none=True)
-    gebietcode_eic = fields.Str(allow_none=True, data_key="gebietcodeEic")
-    link_preisblatt = fields.Str(allow_none=True, data_key="linkPreisblatt")
+    link_preisblatt: Optional[str] = None

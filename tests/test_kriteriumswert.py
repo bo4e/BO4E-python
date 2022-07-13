@@ -1,6 +1,9 @@
-import pytest  # type:ignore[import]
+from typing import Any, Dict
 
-from bo4e.com.kriteriumwert import KriteriumWert, KriteriumWertSchema
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
+
+from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
@@ -14,17 +17,19 @@ class TestKriteriumWert:
                     kriterium=Tarifregionskriterium.ORT,
                     wert="Grünwald",
                 ),
-                {"kriterium": "ORT", "wert": "Grünwald"},
+                {"kriterium": Tarifregionskriterium.ORT, "wert": "Grünwald"},
             ),
         ],
     )
-    def test_kriteriumwert_serialization_roundtrip(self, kriteriumwert: KriteriumWert, expected_json_dict: dict):
+    def test_kriteriumwert_serialization_roundtrip(
+        self, kriteriumwert: KriteriumWert, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of KriteriumWert with minimal attributes.
         """
-        assert_serialization_roundtrip(kriteriumwert, KriteriumWertSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kriteriumwert, expected_json_dict)
 
-    def test_kriteriumwert_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = KriteriumWert()
-        assert "missing 2 required" in str(excinfo.value)
+    def test_kriteriumwert_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = KriteriumWert()  # type: ignore[call-arg]
+        assert "2 validation errors" in str(excinfo.value)

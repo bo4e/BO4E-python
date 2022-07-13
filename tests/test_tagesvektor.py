@@ -1,9 +1,11 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.tagesvektor import Tagesvektor, TagesvektorSchema
+from bo4e.com.tagesvektor import Tagesvektor
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
@@ -20,10 +22,10 @@ example_tagesvektor: Tagesvektor = Tagesvektor(
     ],
 )
 example_tagesvektor_json = {
-    "tag": "2021-12-15T05:00:00+00:00",
+    "tag": datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
     "werte": [
-        {"wert": "40", "statuszusatz": None, "status": None},
-        {"wert": "50", "statuszusatz": None, "status": None},
+        {"wert": Decimal("40"), "statuszusatz": None, "status": None},
+        {"wert": Decimal("50"), "statuszusatz": None, "status": None},
     ],
 }
 
@@ -38,22 +40,23 @@ class TestTagesvektor:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tagesvektor: Tagesvektor, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, tagesvektor: Tagesvektor, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Preisstaffel.
         """
-        assert_serialization_roundtrip(tagesvektor, TagesvektorSchema(), expected_json_dict)
+        assert_serialization_roundtrip(tagesvektor, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Tagesvektor()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Tagesvektor()  # type: ignore[call-arg]
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
-    def test_list_not_long_enough_attribute(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_list_not_long_enough_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Tagesvektor(tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc), werte=[])
 
-        assert "List werte must not be empty" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)
 
     # add tests for issues 261 and 262 here

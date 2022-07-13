@@ -3,13 +3,16 @@ from datetime import datetime
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.messlokation import Messlokation, MesslokationSchema
+from bo4e.bo.messlokation import Messlokation
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.externereferenz import ExterneReferenz
+from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
+from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
@@ -24,7 +27,7 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 
 
 class TestMeLo:
-    def test_serialisation_only_required_attributes(self):
+    def test_serialisation_only_required_attributes(self) -> None:
         """
         Test serialisation of Messlokation only with required attributes
         """
@@ -35,15 +38,13 @@ class TestMeLo:
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
 
-        schema = MesslokationSchema()
-
-        json_string = schema.dumps(melo, ensure_ascii=False)
+        json_string = melo.json(by_alias=True, ensure_ascii=False)
         json_dict = json.loads(json_string)
 
         assert "boTyp" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
-        deserialized_melo: Messlokation = schema.loads(json_string)
+        deserialized_melo: Messlokation = Messlokation.parse_raw(json_string)
 
         # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
         # but are **not** the same object.
@@ -51,7 +52,7 @@ class TestMeLo:
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
         assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
 
-    def test_serialization_required_and_optional_attributes(self):
+    def test_serialization_required_and_optional_attributes(self) -> None:
         """
         Test serialisation of Messlokation with required attributes and optional attributes
         """
@@ -106,21 +107,19 @@ class TestMeLo:
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert melo.bo_typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
 
-        schema = MesslokationSchema()
-
-        json_string = schema.dumps(melo, ensure_ascii=False)
+        json_string = melo.json(by_alias=True, ensure_ascii=False)
         json_dict = json.loads(json_string)
 
         assert "boTyp" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
-        deserialized_melo: Messlokation = schema.loads(json_string)
+        deserialized_melo: Messlokation = Messlokation.parse_raw(json_string)
 
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
         assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
 
-    def test_missing_required_fields(self):
+    def test_missing_required_fields(self) -> None:
         """
         Test that the required attributes are checked in the deserialization.
         Therefore the required attribute `messlokations_id` is removed in the test data.
@@ -154,28 +153,29 @@ class TestMeLo:
                 }
                 """
 
-        schema = MesslokationSchema()
+        with pytest.raises(ValidationError) as excinfo:
+            Messlokation.parse_raw(invalid_json_string)
 
-        with pytest.raises(TypeError) as excinfo:
-            schema.loads(invalid_json_string)
+        assert "messlokationsId" in str(excinfo.value)
 
-        assert "messlokations_id" in str(excinfo.value)
-
-    def test_address_validation(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_address_validation(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                 sparte=Sparte.STROM,
                 netzebene_messung=Netzebene.MSP,
                 messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
-                geoadresse="test",
-                katasterinformation="test",
+                geoadresse=Geokoordinaten(
+                    breitengrad=Decimal(52.52149200439453),
+                    laengengrad=Decimal(13.404866218566895),
+                ),
+                katasterinformation=Katasteradresse(gemarkung_flur="hello", flurstueck="world"),
             )
 
-        assert str(excinfo.value) == "More than one address information is given."
+        assert "More than one address information is given." in str(excinfo.value)
 
-    def test_grundzustaendiger_x_codenr_validation(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_grundzustaendiger_x_codenr_validation(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Messlokation(
                 messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                 sparte=Sparte.STROM,
@@ -184,7 +184,7 @@ class TestMeLo:
                 grundzustaendiger_msbim_codenr="test",
             )
 
-        assert str(excinfo.value) == "More than one codenr is given."
+        assert "More than one codenr is given." in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "melo_id, is_valid",
@@ -201,8 +201,8 @@ class TestMeLo:
             ("", False),
         ],
     )
-    def test_id_validation(self, melo_id: str, is_valid: bool):
-        def _instantiate_melo(melo_id: str):
+    def test_id_validation(self, melo_id: str, is_valid: bool) -> None:
+        def _instantiate_melo(melo_id: str) -> None:
             _ = Messlokation(
                 messlokations_id=melo_id,
                 sparte=Sparte.STROM,
@@ -210,7 +210,7 @@ class TestMeLo:
             )
 
         if not is_valid:
-            with pytest.raises(ValueError):
+            with pytest.raises(ValidationError):
                 _instantiate_melo(melo_id)
         else:
             _instantiate_melo(melo_id)

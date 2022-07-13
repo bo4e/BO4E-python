@@ -1,0 +1,64 @@
+{
+    "definitions": {
+        "Gueltigkeitstyp": {
+            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "enum": [
+                "NUR_IN",
+                "NICHT_IN",
+                "NUR_IN_KOMBINATION_MIT"
+            ],
+            "title": "Gueltigkeitstyp",
+            "type": "string"
+        },
+        "KriteriumWert": {
+            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. graphviz:: /api/dots/bo4e/com/KriteriumWert.dot",
+            "properties": {
+                "kriterium": {
+                    "$ref": "#/definitions/Tarifregionskriterium"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "kriterium",
+                "wert"
+            ],
+            "title": "KriteriumWert",
+            "type": "object"
+        },
+        "Tarifregionskriterium": {
+            "description": "Mit diesen Kriterien können regionale Bereiche definiert werden.",
+            "enum": [
+                "NETZ_NUMMER",
+                "POSTLEITZAHL",
+                "ORT",
+                "GRUNDVERSORGER_NUMMER",
+                "REGION"
+            ],
+            "title": "Tarifregionskriterium",
+            "type": "string"
+        }
+    },
+    "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleGueltigkeit.dot",
+    "properties": {
+        "gueltigkeitstyp": {
+            "$ref": "#/definitions/Gueltigkeitstyp"
+        },
+        "kriteriumsWerte": {
+            "items": {
+                "$ref": "#/definitions/KriteriumWert"
+            },
+            "minItems": 1,
+            "title": "Kriteriumswerte",
+            "type": "array"
+        }
+    },
+    "required": [
+        "gueltigkeitstyp",
+        "kriteriumsWerte"
+    ],
+    "title": "RegionaleGueltigkeit",
+    "type": "object"
+}

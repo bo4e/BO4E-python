@@ -2,9 +2,10 @@ from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.netznutzungsrechnung import Netznutzungsrechnung, NetznutzungsrechnungSchema
+from bo4e.bo.netznutzungsrechnung import Netznutzungsrechnung
 from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
@@ -134,13 +135,13 @@ class TestNetznutzungsrechnung:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, nnrechnung: Netznutzungsrechnung):
+    def test_serialization_roundtrip(self, nnrechnung: Netznutzungsrechnung) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(nnrechnung, NetznutzungsrechnungSchema())
+        assert_serialization_roundtrip(nnrechnung)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Netznutzungsrechnung()
-        assert "missing 20 required" in str(excinfo.value)  # 13 from rechnung + 7 from Netznutzungsrechnung
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Netznutzungsrechnung()  # type: ignore[call-arg]
+        assert "20 validation errors" in str(excinfo.value)  # 13 from rechnung + 7 from Netznutzungsrechnung

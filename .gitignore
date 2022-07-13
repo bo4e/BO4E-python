@@ -162,3 +162,8 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# This directory rebuilds on 'tox -e docs' therefore not needed in repo
+docs/api
+docs/plantuml.jar
+docs/_static/images

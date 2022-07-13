@@ -1,0 +1,19 @@
+{
+    "description": "This component provides the geo-coordinates for a location.\n\n.. graphviz:: /api/dots/bo4e/com/Geokoordinaten.dot",
+    "properties": {
+        "breitengrad": {
+            "title": "Breitengrad",
+            "type": "number"
+        },
+        "laengengrad": {
+            "title": "Laengengrad",
+            "type": "number"
+        }
+    },
+    "required": [
+        "breitengrad",
+        "laengengrad"
+    ],
+    "title": "Geokoordinaten",
+    "type": "object"
+}

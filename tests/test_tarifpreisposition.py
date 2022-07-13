@@ -1,9 +1,11 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.tarifpreisposition import Tarifpreisposition, TarifpreispositionSchema
+from bo4e.com.tarifpreisposition import Tarifpreisposition
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preistyp import Preistyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
@@ -31,14 +33,14 @@ class TestTarifpreisposition:
                 example_tarifpreisposition,
                 {
                     "preistyp": "ENTGELT_ABLESUNG",
-                    "einheit": "EUR",
-                    "bezugseinheit": "KWH",
+                    "einheit": Waehrungseinheit.EUR,
+                    "bezugseinheit": Mengeneinheit.KWH,
                     "preisstaffeln": [
                         {
-                            "einheitspreis": "40",
+                            "einheitspreis": Decimal("40"),
                             "sigmoidparameter": None,
-                            "staffelgrenzeBis": "25",
-                            "staffelgrenzeVon": "12.5",
+                            "staffelgrenzeBis": Decimal("25"),
+                            "staffelgrenzeVon": Decimal("12.5"),
                         }
                     ],
                     "mengeneinheitstaffel": None,
@@ -61,36 +63,38 @@ class TestTarifpreisposition:
                 ),
                 {
                     "preistyp": "ENTGELT_ABLESUNG",
-                    "einheit": "EUR",
-                    "bezugseinheit": "KWH",
+                    "einheit": Waehrungseinheit.EUR,
+                    "bezugseinheit": Mengeneinheit.KWH,
                     "preisstaffeln": [
                         {
-                            "einheitspreis": "40",
+                            "einheitspreis": Decimal("40"),
                             "sigmoidparameter": None,
-                            "staffelgrenzeBis": "25",
-                            "staffelgrenzeVon": "12.5",
+                            "staffelgrenzeBis": Decimal("25"),
+                            "staffelgrenzeVon": Decimal("12.5"),
                         }
                     ],
-                    "mengeneinheitstaffel": "STUECK",
+                    "mengeneinheitstaffel": Mengeneinheit.STUECK,
                 },
                 id="optional and required attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreisposition: Tarifpreisposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, tarifpreisposition: Tarifpreisposition, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Tarifpreisposition.
         """
-        assert_serialization_roundtrip(tarifpreisposition, TarifpreispositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(tarifpreisposition, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Tarifpreisposition()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Tarifpreisposition()  # type: ignore[call-arg]
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)
 
-    def test_tarifpreisposition_betraege_required(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_tarifpreisposition_betraege_required(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Tarifpreisposition(
                 preistyp=Preistyp.ENTGELT_ABLESUNG,
                 einheit=Waehrungseinheit.EUR,
@@ -98,4 +102,5 @@ class TestTarifpreisposition:
                 preisstaffeln=[],
             )
 
-        assert "List preisstaffeln must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

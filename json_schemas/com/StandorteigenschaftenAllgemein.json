@@ -1,0 +1,44 @@
+{
+    "description": "Allgemeine Standorteigenschaften\n\n.. graphviz:: /api/dots/bo4e/com/StandorteigenschaftenAllgemein.dot",
+    "properties": {
+        "bundesland": {
+            "title": "Bundesland",
+            "type": "string"
+        },
+        "gemeindeeinwohner": {
+            "title": "Gemeindeeinwohner",
+            "type": "integer"
+        },
+        "gemeindekennziffer": {
+            "title": "Gemeindekennziffer",
+            "type": "string"
+        },
+        "gemeindename": {
+            "title": "Gemeindename",
+            "type": "string"
+        },
+        "kreisname": {
+            "title": "Kreisname",
+            "type": "string"
+        },
+        "ort": {
+            "title": "Ort",
+            "type": "string"
+        },
+        "postleitzahl": {
+            "title": "Postleitzahl",
+            "type": "string"
+        }
+    },
+    "required": [
+        "postleitzahl",
+        "ort",
+        "kreisname",
+        "gemeindename",
+        "gemeindekennziffer",
+        "gemeindeeinwohner",
+        "bundesland"
+    ],
+    "title": "StandorteigenschaftenAllgemein",
+    "type": "object"
+}

@@ -1,10 +1,12 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.kostenposition import Kostenposition, KostenpositionSchema
+from bo4e.com.kostenposition import Kostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -36,14 +38,19 @@ class TestKostenposition:
                 ),
                 {
                     "positionstitel": "Mudders Preisstaffel",
-                    "einzelpreis": {"status": "ENDGUELTIG", "einheit": "EUR", "wert": "3.5", "bezugswert": "KWH"},
+                    "einzelpreis": {
+                        "status": Preisstatus.ENDGUELTIG,
+                        "einheit": Waehrungseinheit.EUR,
+                        "wert": Decimal("3.5"),
+                        "bezugswert": Mengeneinheit.KWH,
+                    },
                     "bis": None,
                     "von": None,
                     "menge": None,
                     "zeitmenge": None,
                     "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
                     "artikeldetail": None,
-                    "betragKostenposition": {"waehrung": "EUR", "wert": "12.5"},
+                    "betragKostenposition": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
                 },
                 id="only required attributes",
             ),
@@ -70,32 +77,43 @@ class TestKostenposition:
                 {
                     "artikelbezeichnung": "Deim Vadder sei Kostenposition",
                     "positionstitel": "Vadders Kostenposition",
-                    "menge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
+                    "menge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": Mengeneinheit.MWH,
+                    },
                     "artikeldetail": "foo",
-                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
-                    "von": "2013-05-01T00:00:00+00:00",
-                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
-                    "bis": "2014-05-01T00:00:00+00:00",
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "einzelpreis": {
+                        "bezugswert": Mengeneinheit.KWH,
+                        "status": Preisstatus.ENDGUELTIG,
+                        "wert": Decimal("3.5"),
+                        "einheit": Waehrungseinheit.EUR,
+                    },
+                    "von": datetime(2013, 5, 1, 0, 0, tzinfo=timezone.utc),
+                    "zeitmenge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": Mengeneinheit.MWH,
+                    },
+                    "bis": datetime(2014, 5, 1, 0, 0, tzinfo=timezone.utc),
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                 },
                 id="required and optional attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Kostenposition
         """
-        assert_serialization_roundtrip(kostenposition, KostenpositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kostenposition, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Kostenposition()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Kostenposition()  # type: ignore[call-arg]
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)
 
-    def test_von_bis_validation_attribute(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_von_bis_validation_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Kostenposition(
                 positionstitel="Mudders Preisstaffel",
                 artikelbezeichnung="Dei Mudder ihr Preisstaffel",

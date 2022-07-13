@@ -1,10 +1,12 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenposition import Fremdkostenposition, FremdkostenpositionSchema
+from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
@@ -37,7 +39,12 @@ class TestFremdkostenposition:
                 {
                     "marktpartnercode": None,
                     "positionstitel": "Mudders Preisstaffel",
-                    "einzelpreis": {"wert": "3.5", "einheit": "EUR", "bezugswert": "KWH", "status": "ENDGUELTIG"},
+                    "einzelpreis": {
+                        "wert": Decimal("3.5"),
+                        "einheit": Waehrungseinheit.EUR,
+                        "bezugswert": Mengeneinheit.KWH,
+                        "status": Preisstatus.ENDGUELTIG,
+                    },
                     "bis": None,
                     "menge": None,
                     "zeitmenge": None,
@@ -46,7 +53,7 @@ class TestFremdkostenposition:
                     "artikeldetail": None,
                     "von": None,
                     "linkPreisblatt": None,
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                     "gebietcodeEic": None,
                 },
                 id="only required attributes",
@@ -79,14 +86,25 @@ class TestFremdkostenposition:
                     "artikelbezeichnung": "Deim Vadder sei Preisstaffel",
                     "artikeldetail": "foo",
                     "marktpartnername": "Mein MP",
-                    "einzelpreis": {"bezugswert": "KWH", "status": "ENDGUELTIG", "wert": "3.5", "einheit": "EUR"},
-                    "menge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
-                    "zeitmenge": {"wert": "3.410000000000000142108547152020037174224853515625", "einheit": "MWH"},
+                    "einzelpreis": {
+                        "bezugswert": Mengeneinheit.KWH,
+                        "status": Preisstatus.ENDGUELTIG,
+                        "wert": Decimal("3.5"),
+                        "einheit": Waehrungseinheit.EUR,
+                    },
+                    "menge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": Mengeneinheit.MWH,
+                    },
+                    "zeitmenge": {
+                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "einheit": Mengeneinheit.MWH,
+                    },
                     "marktpartnercode": "986543210123",
-                    "bis": "2014-05-01T00:00:00+00:00",
+                    "bis": datetime(2014, 5, 1, 0, 0, tzinfo=timezone.utc),
                     "positionstitel": "Vadders Preisstaffel",
-                    "von": "2013-05-01T00:00:00+00:00",
-                    "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                    "von": datetime(2013, 5, 1, 0, 0, tzinfo=timezone.utc),
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                     "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
                     "linkPreisblatt": "http://foo.bar/",
                 },
@@ -94,14 +112,16 @@ class TestFremdkostenposition:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, fremdkostenposition: Fremdkostenposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, fremdkostenposition: Fremdkostenposition, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Fremdkostenposition.
         """
-        assert_serialization_roundtrip(fremdkostenposition, FremdkostenpositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(fremdkostenposition, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Fremdkostenposition()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Fremdkostenposition()  # type: ignore[call-arg]
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)

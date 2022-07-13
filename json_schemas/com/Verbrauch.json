@@ -1,0 +1,70 @@
+{
+    "definitions": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Wertermittlungsverfahren": {
+            "description": "Gibt an, ob es sich um eine Prognose oder eine Messung handelt, beispielsweise bei der Abbildung eines Verbrauchs.",
+            "enum": [
+                "PROGNOSE",
+                "MESSUNG"
+            ],
+            "title": "Wertermittlungsverfahren",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung eines zeitlich abgegrenzten Verbrauchs\n\n.. graphviz:: /api/dots/bo4e/com/Verbrauch.dot",
+    "properties": {
+        "enddatum": {
+            "format": "date-time",
+            "title": "Enddatum",
+            "type": "string"
+        },
+        "mengeneinheit": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "obisKennzahl": {
+            "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+            "title": "Obiskennzahl",
+            "type": "string"
+        },
+        "startdatum": {
+            "format": "date-time",
+            "title": "Startdatum",
+            "type": "string"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "number"
+        },
+        "wertermittlungsverfahren": {
+            "$ref": "#/definitions/Wertermittlungsverfahren"
+        }
+    },
+    "required": [
+        "wertermittlungsverfahren",
+        "obisKennzahl",
+        "wert",
+        "mengeneinheit"
+    ],
+    "title": "Verbrauch",
+    "type": "object"
+}

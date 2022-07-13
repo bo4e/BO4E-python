@@ -1,0 +1,36 @@
+{
+    "definitions": {
+        "Rufnummernart": {
+            "description": "Abbildung verschiedener Rufnummerntypen.",
+            "enum": [
+                "RUF_ZENTRALE",
+                "FAX_ZENTRALE",
+                "SAMMELRUF",
+                "SAMMELFAX",
+                "ABTEILUNGRUF",
+                "ABTEILUNGFAX",
+                "RUF_DURCHWAHL",
+                "FAX_DURCHWAHL",
+                "MOBIL_NUMMER"
+            ],
+            "title": "Rufnummernart",
+            "type": "string"
+        }
+    },
+    "description": "Contains information to call or fax someone\n\n.. graphviz:: /api/dots/bo4e/com/Rufnummer.dot",
+    "properties": {
+        "nummerntyp": {
+            "$ref": "#/definitions/Rufnummernart"
+        },
+        "rufnummer": {
+            "title": "Rufnummer",
+            "type": "string"
+        }
+    },
+    "required": [
+        "nummerntyp",
+        "rufnummer"
+    ],
+    "title": "Rufnummer",
+    "type": "object"
+}

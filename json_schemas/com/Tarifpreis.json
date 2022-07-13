@@ -1,0 +1,91 @@
+{
+    "definitions": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preisstatus": {
+            "description": "Statusinformation für Preise",
+            "enum": [
+                "VORLAEUFIG",
+                "ENDGUELTIG"
+            ],
+            "title": "Preisstatus",
+            "type": "string"
+        },
+        "Preistyp": {
+            "description": "Aufschlüsselung der Preistypen in Tarifen.",
+            "enum": [
+                "GRUNDPREIS",
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "LEISTUNGSPREIS",
+                "MESSPREIS",
+                "ENTGELT_ABLESUNG",
+                "ENTGELT_ABRECHNUNG",
+                "ENTGELT_MSB",
+                "PROVISION"
+            ],
+            "title": "Preistyp",
+            "type": "string"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.\n\n.. graphviz:: /api/dots/bo4e/com/Tarifpreis.dot",
+    "properties": {
+        "beschreibung": {
+            "title": "Beschreibung",
+            "type": "string"
+        },
+        "bezugswert": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "preistyp": {
+            "$ref": "#/definitions/Preistyp"
+        },
+        "status": {
+            "$ref": "#/definitions/Preisstatus"
+        },
+        "wert": {
+            "title": "Wert",
+            "type": "number"
+        }
+    },
+    "required": [
+        "wert",
+        "einheit",
+        "bezugswert",
+        "preistyp"
+    ],
+    "title": "Tarifpreis",
+    "type": "object"
+}

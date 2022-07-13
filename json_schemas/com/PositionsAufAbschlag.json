@@ -1,0 +1,44 @@
+{
+    "definitions": {
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        }
+    },
+    "description": "Differenzierung der zu betrachtenden Produkte anhand der preiserhöhenden (Aufschlag)\nbzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,\ndie individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen werden können.\nEs können mehrere Auf-/Abschläge gleichzeitig ausgewählt werden.\n\n.. graphviz:: /api/dots/bo4e/com/PositionsAufAbschlag.dot",
+    "properties": {
+        "aufAbschlagstyp": {
+            "title": "Aufabschlagstyp",
+            "type": "string"
+        },
+        "aufAbschlagswaehrung": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "aufAbschlagswert": {
+            "title": "Aufabschlagswert",
+            "type": "number"
+        },
+        "beschreibung": {
+            "title": "Beschreibung",
+            "type": "string"
+        },
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        }
+    },
+    "required": [
+        "bezeichnung",
+        "beschreibung",
+        "aufAbschlagstyp",
+        "aufAbschlagswert",
+        "aufAbschlagswaehrung"
+    ],
+    "title": "PositionsAufAbschlag",
+    "type": "object"
+}

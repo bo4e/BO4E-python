@@ -1,10 +1,12 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.aufabschlagregional import AufAbschlagRegional, AufAbschlagRegionalSchema
+from bo4e.com.aufabschlagregional import AufAbschlagRegional
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.com.energiemix import Energiemix
@@ -54,9 +56,9 @@ class TestAufAbschlagRegional:
                             "netznr": "2",
                             "staffeln": [
                                 {
-                                    "wert": "2.5",
-                                    "staffelgrenzeVon": "1",
-                                    "staffelgrenzeBis": "5",
+                                    "wert": Decimal("2.5"),
+                                    "staffelgrenzeVon": Decimal("1"),
+                                    "staffelgrenzeBis": Decimal("5"),
                                 }
                             ],
                         },
@@ -137,38 +139,38 @@ class TestAufAbschlagRegional:
                             "netznr": "2",
                             "staffeln": [
                                 {
-                                    "wert": "2.5",
-                                    "staffelgrenzeVon": "1",
-                                    "staffelgrenzeBis": "5",
+                                    "wert": Decimal("2.5"),
+                                    "staffelgrenzeVon": Decimal("1"),
+                                    "staffelgrenzeBis": Decimal("5"),
                                 }
                             ],
                         },
                     ],
                     "beschreibung": "bar",
-                    "aufAbschlagstyp": "RELATIV",
+                    "aufAbschlagstyp": AufAbschlagstyp.RELATIV,
                     "aufAbschlagsziel": "ARBEITSPREIS_HT",
-                    "einheit": "EUR",
+                    "einheit": Waehrungseinheit.EUR,
                     "website": "foo.bar",
                     "zusatzprodukte": ["Asterix", "Obelix"],
                     "voraussetzungen": ["Petterson", "Findus"],
                     "tarifnamensaenderungen": "foobar",
                     "gueltigkeitszeitraum": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },
                     "energiemixaenderung": {
                         "energiemixnummer": 2,
-                        "energieart": "STROM",
+                        "energieart": Sparte.STROM,
                         "bezeichnung": "foo",
                         "gueltigkeitsjahr": 2021,
                         "anteil": [
                             {
-                                "erzeugungsart": "BIOGAS",
-                                "anteilProzent": "40",
+                                "erzeugungsart": Erzeugungsart.BIOGAS,
+                                "anteilProzent": Decimal("40"),
                             }
                         ],
                         "oekolabel": [],
@@ -191,10 +193,10 @@ class TestAufAbschlagRegional:
                         "beschreibung": None,
                         "preisgarantietyp": "ALLE_PREISBESTANDTEILE_BRUTTO",
                         "zeitlicheGueltigkeit": {
-                            "startdatum": "2020-01-01T00:00:00+00:00",
+                            "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                             "endzeitpunkt": None,
                             "einheit": None,
-                            "enddatum": "2020-04-01T00:00:00+00:00",
+                            "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                             "startzeitpunkt": None,
                             "dauer": None,
                         },
@@ -210,20 +212,22 @@ class TestAufAbschlagRegional:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, aufabschlagregional, expected_json_dict):
+    def test_serialization_roundtrip(
+        self, aufabschlagregional: AufAbschlagRegional, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of AufAbschlagRegional with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlagregional, AufAbschlagRegionalSchema(), expected_json_dict)
+        assert_serialization_roundtrip(aufabschlagregional, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = AufAbschlagRegional()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = AufAbschlagRegional()  # type: ignore[call-arg]
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
-    def test_aufabschlagregional_betraege_required(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_aufabschlagregional_betraege_required(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = (
                 AufAbschlagRegional(
                     bezeichnung="foo",
@@ -231,4 +235,5 @@ class TestAufAbschlagRegional:
                 ),
             )
 
-        assert "List betraege must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)

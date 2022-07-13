@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.zeitreihe import Zeitreihe, ZeitreiheSchema
+from bo4e.bo.zeitreihe import Zeitreihe
 from bo4e.enum.medium import Medium
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart
@@ -29,11 +30,11 @@ class TestZeitreihe:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, zeitreihe: Zeitreihe):
-        assert_serialization_roundtrip(zeitreihe, ZeitreiheSchema())
+    def test_serialization_roundtrip(self, zeitreihe: Zeitreihe) -> None:
+        assert_serialization_roundtrip(zeitreihe)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Zeitreihe()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Zeitreihe()  # type: ignore[call-arg]
 
-        assert "missing 6 required" in str(excinfo.value)
+        assert "6 validation errors" in str(excinfo.value)

@@ -1,8 +1,10 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.angebotsposition import Angebotsposition, AngebotspositionSchema
+from bo4e.com.angebotsposition import Angebotsposition
 from bo4e.com.betrag import Betrag
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
@@ -30,25 +32,25 @@ class TestAngebotsposition:
                 ),
                 {
                     "positionsbezeichnung": "Beispielangebotsposition",
-                    "positionsmenge": {"wert": "4000", "einheit": "KWH"},
-                    "positionskosten": {"waehrung": "EUR", "wert": "98240"},
+                    "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
+                    "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
                     "positionspreis": {
-                        "bezugswert": "KWH",
+                        "bezugswert": Mengeneinheit.KWH,
                         "status": None,
-                        "wert": "0.2456000000000000127453603226967970840632915496826171875",
-                        "einheit": "EUR",
+                        "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
+                        "einheit": Waehrungseinheit.EUR,
                     },
                 },
             ),
         ],
     )
-    def test_serialization_roundtrip(self, ap: Angebotsposition, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, ap: Angebotsposition, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        assert_serialization_roundtrip(ap, AngebotspositionSchema(), expected_json_dict)
+        assert_serialization_roundtrip(ap, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Angebotsposition()
-        assert "missing 2 required" in str(excinfo.value)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Angebotsposition()  # type: ignore[call-arg]
+        assert "2 validation errors" in str(excinfo.value)

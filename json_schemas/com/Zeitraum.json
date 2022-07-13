@@ -1,0 +1,53 @@
+{
+    "definitions": {
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        }
+    },
+    "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+    "properties": {
+        "dauer": {
+            "title": "Dauer",
+            "type": "number"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Zeiteinheit"
+        },
+        "enddatum": {
+            "format": "date-time",
+            "title": "Enddatum",
+            "type": "string"
+        },
+        "endzeitpunkt": {
+            "format": "date-time",
+            "title": "Endzeitpunkt",
+            "type": "string"
+        },
+        "startdatum": {
+            "format": "date-time",
+            "title": "Startdatum",
+            "type": "string"
+        },
+        "startzeitpunkt": {
+            "format": "date-time",
+            "title": "Startzeitpunkt",
+            "type": "string"
+        }
+    },
+    "title": "Zeitraum",
+    "type": "object"
+}

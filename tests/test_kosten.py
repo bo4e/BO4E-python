@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.kosten import Kosten, KostenSchema
+from bo4e.bo.kosten import Kosten
 from bo4e.com.kostenblock import Kostenblock
 from bo4e.enum.kostenklasse import Kostenklasse
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -29,13 +30,13 @@ class TestKosten:
             )
         ],
     )
-    def test_serialization_roundtrip(self, kosten: Kosten):
+    def test_serialization_roundtrip(self, kosten: Kosten) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(kosten, KostenSchema())
+        assert_serialization_roundtrip(kosten)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Kosten()
-        assert "missing 3 required" in str(excinfo.value)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Kosten()  # type: ignore[call-arg]
+        assert "3 validation errors" in str(excinfo.value)

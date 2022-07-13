@@ -1,9 +1,11 @@
 from datetime import datetime, timezone
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.aufabschlag import AufAbschlag, AufAbschlagSchema
+from bo4e.com.aufabschlag import AufAbschlag
 from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
@@ -57,30 +59,35 @@ class TestAufAbschlag:
                 {
                     "bezeichnung": "foo",
                     "beschreibung": "bar",
-                    "aufAbschlagstyp": "ABSOLUT",
-                    "aufAbschlagsziel": "GESAMTPREIS",
-                    "einheit": "EUR",
+                    "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
+                    "aufAbschlagsziel": AufAbschlagsziel.GESAMTPREIS,
+                    "einheit": Waehrungseinheit.EUR,
                     "website": "foo.bar",
                     "gueltigkeitszeitraum": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },
                     "staffeln": [
                         {
-                            "einheitspreis": "40",
-                            "sigmoidparameter": {"A": "1", "B": "2", "C": "3", "D": "4"},
-                            "staffelgrenzeVon": "12.5",
-                            "staffelgrenzeBis": "25",
+                            "einheitspreis": Decimal("40"),
+                            "sigmoidparameter": {
+                                "A": Decimal("1"),
+                                "B": Decimal("2"),
+                                "C": Decimal("3"),
+                                "D": Decimal("4"),
+                            },
+                            "staffelgrenzeVon": Decimal("12.5"),
+                            "staffelgrenzeBis": Decimal("25"),
                         },
                         {
-                            "einheitspreis": "15",
+                            "einheitspreis": Decimal("15"),
                             "sigmoidparameter": None,
-                            "staffelgrenzeVon": "2.5",
-                            "staffelgrenzeBis": "40.5",
+                            "staffelgrenzeVon": Decimal("2.5"),
+                            "staffelgrenzeBis": Decimal("40.5"),
                         },
                     ],
                 },
@@ -98,10 +105,10 @@ class TestAufAbschlag:
                     "gueltigkeitszeitraum": None,
                     "staffeln": [
                         {
-                            "einheitspreis": "15",
+                            "einheitspreis": Decimal("15"),
                             "sigmoidparameter": None,
-                            "staffelgrenzeVon": "2.5",
-                            "staffelgrenzeBis": "40.5",
+                            "staffelgrenzeVon": Decimal("2.5"),
+                            "staffelgrenzeBis": Decimal("40.5"),
                         },
                     ],
                 },
@@ -109,17 +116,17 @@ class TestAufAbschlag:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, aufabschlag, expected_json_dict):
+    def test_serialization_roundtrip(self, aufabschlag: AufAbschlag, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of AufAbschlag with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlag, AufAbschlagSchema(), expected_json_dict)
+        assert_serialization_roundtrip(aufabschlag, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = AufAbschlag()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = AufAbschlag()  # type: ignore[call-arg]
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "auf_abschlagstyp",
@@ -134,8 +141,8 @@ class TestAufAbschlag:
             ),
         ],
     )
-    def test_failing_validation_einheit_only_for_abschlagstyp_absolut(self, auf_abschlagstyp):
-        with pytest.raises(ValueError) as excinfo:
+    def test_failing_validation_einheit_only_for_abschlagstyp_absolut(self, auf_abschlagstyp: AufAbschlagstyp) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = AufAbschlag(
                 bezeichnung="foo",
                 staffeln=[

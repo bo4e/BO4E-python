@@ -1,0 +1,152 @@
+{
+    "definitions": {
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
+        },
+        "ExterneReferenz": {
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Sparte": {
+            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "FERNWAERME",
+                "NAHWAERME",
+                "WASSER",
+                "ABWASSER"
+            ],
+            "title": "Sparte",
+            "type": "string"
+        }
+    },
+    "description": "The LastgangBody is a mixin that contains the \"body\" of a Lastgang that is used in both the :class:`Lastgang` as\nwell as :class:`LastgangKompakt`.",
+    "properties": {
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BoTyp"
+                }
+            ],
+            "default": "GESCHAEFTSOBJEKT"
+        },
+        "externeReferenzen": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/ExterneReferenz"
+            },
+            "title": "Externereferenzen",
+            "type": "array"
+        },
+        "lokationsId": {
+            "title": "Lokationsid",
+            "type": "string"
+        },
+        "lokationstyp": {
+            "title": "Lokationstyp",
+            "type": "string"
+        },
+        "messgroesse": {
+            "$ref": "#/definitions/Mengeneinheit"
+        },
+        "obisKennzahl": {
+            "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+            "title": "Obiskennzahl",
+            "type": "string"
+        },
+        "sparte": {
+            "$ref": "#/definitions/Sparte"
+        },
+        "version": {
+            "title": "Version",
+            "type": "string"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
+        }
+    },
+    "required": [
+        "sparte",
+        "lokationsId",
+        "lokationstyp",
+        "messgroesse"
+    ],
+    "title": "_LastgangBody",
+    "type": "object"
+}

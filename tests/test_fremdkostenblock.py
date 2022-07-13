@@ -1,9 +1,11 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenblock import Fremdkostenblock, FremdkostenblockSchema
+from bo4e.com.fremdkostenblock import Fremdkostenblock
 from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -48,10 +50,10 @@ class TestFremdkostenblock:
                             "marktpartnercode": None,
                             "positionstitel": "fremdkostenblocktitel",
                             "einzelpreis": {
-                                "wert": "3.5",
-                                "einheit": "EUR",
-                                "bezugswert": "KWH",
-                                "status": "ENDGUELTIG",
+                                "wert": Decimal("3.5"),
+                                "einheit": Waehrungseinheit.EUR,
+                                "bezugswert": Mengeneinheit.KWH,
+                                "status": Preisstatus.ENDGUELTIG,
                             },
                             "bis": None,
                             "menge": None,
@@ -61,11 +63,11 @@ class TestFremdkostenblock:
                             "artikeldetail": None,
                             "von": None,
                             "linkPreisblatt": None,
-                            "betragKostenposition": {"wert": "12.5", "waehrung": "EUR"},
+                            "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
                             "gebietcodeEic": None,
                         }
                     ],
-                    "summeKostenblock": {"wert": "98240", "waehrung": "EUR"},
+                    "summeKostenblock": {"wert": Decimal("98240"), "waehrung": Waehrungseinheit.EUR},
                 },
                 id="maximal attributes",
             ),
@@ -80,13 +82,15 @@ class TestFremdkostenblock:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, fremdkostenblock, expected_json_dict):
+    def test_serialization_roundtrip(
+        self, fremdkostenblock: Fremdkostenblock, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Fremdkostenblock
         """
-        assert_serialization_roundtrip(fremdkostenblock, FremdkostenblockSchema(), expected_json_dict)
+        assert_serialization_roundtrip(fremdkostenblock, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Fremdkostenblock()
-        assert "missing 1 required" in str(excinfo.value)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Fremdkostenblock()  # type: ignore[call-arg]
+        assert "1 validation error" in str(excinfo.value)

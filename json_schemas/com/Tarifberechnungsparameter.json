@@ -1,0 +1,204 @@
+{
+    "definitions": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Messpreistyp": {
+            "description": "Festlegung, welcher Typ von Messung mit einem Preis belegt wird",
+            "enum": [
+                "MESSPREIS_G2_5",
+                "MESSPREIS_G4",
+                "MESSPREIS_G6",
+                "MESSPREIS_G10",
+                "MESSPREIS_G16",
+                "MESSPREIS_G25",
+                "MESSPREIS_G40",
+                "ELEKTRONISCHER_AUFSATZ",
+                "SMART_METER_MESSPREIS_G2_5",
+                "SMART_METER_MESSPREIS_G4",
+                "SMART_METER_MESSPREIS_G6",
+                "SMART_METER_MESSPREIS_G10",
+                "SMART_METER_MESSPREIS_G16",
+                "SMART_METER_MESSPREIS_G25",
+                "SMART_METER_MESSPREIS_G40",
+                "VERRECHNUNGSPREIS_ET_WECHSEL",
+                "VERRECHNUNGSPREIS_ET_DREH",
+                "VERRECHNUNGSPREIS_ZT_WECHSEL",
+                "VERRECHNUNGSPREIS_ZT_DREH",
+                "VERRECHNUNGSPREIS_L_ET",
+                "VERRECHNUNGSPREIS_L_ZT",
+                "VERRECHNUNGSPREIS_SM",
+                "AUFSCHLAG_WANDLER",
+                "AUFSCHLAG_TARIFSCHALTUNG"
+            ],
+            "title": "Messpreistyp",
+            "type": "string"
+        },
+        "Preis": {
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+            "properties": {
+                "bezugswert": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "einheit": {
+                    "$ref": "#/definitions/Waehrungseinheit"
+                },
+                "status": {
+                    "$ref": "#/definitions/Preisstatus"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit",
+                "bezugswert"
+            ],
+            "title": "Preis",
+            "type": "object"
+        },
+        "Preisstatus": {
+            "description": "Statusinformation für Preise",
+            "enum": [
+                "VORLAEUFIG",
+                "ENDGUELTIG"
+            ],
+            "title": "Preisstatus",
+            "type": "string"
+        },
+        "Preistyp": {
+            "description": "Aufschlüsselung der Preistypen in Tarifen.",
+            "enum": [
+                "GRUNDPREIS",
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "LEISTUNGSPREIS",
+                "MESSPREIS",
+                "ENTGELT_ABLESUNG",
+                "ENTGELT_ABRECHNUNG",
+                "ENTGELT_MSB",
+                "PROVISION"
+            ],
+            "title": "Preistyp",
+            "type": "string"
+        },
+        "Tarifkalkulationsmethode": {
+            "description": "Auflistung der verschiedenen Berechnungsmethoden für ein Preisblatt.",
+            "enum": [
+                "KEINE",
+                "STAFFELN",
+                "ZONEN",
+                "BESTABRECHNUNG_STAFFEL",
+                "PAKETPREIS"
+            ],
+            "title": "Tarifkalkulationsmethode",
+            "type": "string"
+        },
+        "Tarifpreis": {
+            "description": "Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.\n\n.. graphviz:: /api/dots/bo4e/com/Tarifpreis.dot",
+            "properties": {
+                "beschreibung": {
+                    "title": "Beschreibung",
+                    "type": "string"
+                },
+                "bezugswert": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "einheit": {
+                    "$ref": "#/definitions/Waehrungseinheit"
+                },
+                "preistyp": {
+                    "$ref": "#/definitions/Preistyp"
+                },
+                "status": {
+                    "$ref": "#/definitions/Preisstatus"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit",
+                "bezugswert",
+                "preistyp"
+            ],
+            "title": "Tarifpreis",
+            "type": "object"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        }
+    },
+    "description": ".. graphviz:: /api/dots/bo4e/com/Tarifberechnungsparameter.dot",
+    "properties": {
+        "berechnungsmethode": {
+            "$ref": "#/definitions/Tarifkalkulationsmethode"
+        },
+        "hoechstpreisHT": {
+            "$ref": "#/definitions/Preis"
+        },
+        "hoechstpreisNT": {
+            "$ref": "#/definitions/Preis"
+        },
+        "kwInklusive": {
+            "title": "Kwinklusive",
+            "type": "number"
+        },
+        "kwWeitereMengen": {
+            "title": "Kwweiteremengen",
+            "type": "number"
+        },
+        "messpreisBeruecksichtigen": {
+            "title": "Messpreisberuecksichtigen",
+            "type": "boolean"
+        },
+        "messpreisInGpEnthalten": {
+            "title": "Messpreisingpenthalten",
+            "type": "boolean"
+        },
+        "messpreistyp": {
+            "$ref": "#/definitions/Messpreistyp"
+        },
+        "mindestpreis": {
+            "$ref": "#/definitions/Preis"
+        },
+        "zusatzpreise": {
+            "items": {
+                "$ref": "#/definitions/Tarifpreis"
+            },
+            "title": "Zusatzpreise",
+            "type": "array"
+        }
+    },
+    "title": "Tarifberechnungsparameter",
+    "type": "object"
+}

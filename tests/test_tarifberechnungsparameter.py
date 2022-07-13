@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest  # type:ignore[import]
 
 from bo4e.com.fremdkostenposition import Fremdkostenposition
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter, TarifberechnungsparameterSchema
+from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.enum.messpreistyp import Messpreistyp
 from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -38,12 +38,12 @@ class TestFremdkostenposition:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifberechnungsparameter: Fremdkostenposition):
+    def test_serialization_roundtrip(self, tarifberechnungsparameter: Fremdkostenposition) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifberechnungsparameter, TarifberechnungsparameterSchema())
+        assert_serialization_roundtrip(tarifberechnungsparameter)
 
-    def test_missing_required_attribute(self):
+    def test_missing_required_attribute(self) -> None:
         _ = Tarifberechnungsparameter()
         # ok, we're done. no exception here because there are no required attributes

@@ -1,0 +1,483 @@
+{
+    "definitions": {
+        "ArtikelId": {
+            "description": "Liste von Artikel-IDs, z.B. für standardisierte vom BDEW herausgegebene Artikel,\ndie im Strommarkt die BDEW-Artikelnummer ablösen",
+            "enum": [
+                "2-01-7-001",
+                "2-01-7-002",
+                "2-01-7-003",
+                "2-01-7-004",
+                "2-01-7-005",
+                "2-01-7-006",
+                "2-02-0-001",
+                "2-02-0-002"
+            ],
+            "title": "ArtikelId",
+            "type": "string"
+        },
+        "BDEWArtikelnummer": {
+            "description": "BDEW Artikelnummern",
+            "enum": [
+                "LEISTUNG",
+                "LEISTUNG_PAUSCHAL",
+                "GRUNDPREIS",
+                "REGELENERGIE_ARBEIT",
+                "REGELENERGIE_LEISTUNG",
+                "NOTSTROMLIEFERUNG_ARBEIT",
+                "NOTSTROMLIEFERUNG_LEISTUNG",
+                "RESERVENETZKAPAZITAET",
+                "RESERVELEISTUNG",
+                "ZUSAETZLICHE_ABLESUNG",
+                "PRUEFGEBUEHREN_AUSSERPLANMAESSIG",
+                "WIRKARBEIT",
+                "SINGULAER_GENUTZTE_BETRIEBSMITTEL",
+                "ABGABE_KWKG",
+                "ABSCHLAG",
+                "KONZESSIONSABGABE",
+                "ENTGELT_FERNAUSLESUNG",
+                "UNTERMESSUNG",
+                "BLINDMEHRARBEIT",
+                "ENTGELT_ABRECHNUNG",
+                "SPERRKOSTEN",
+                "ENTSPERRKOSTEN",
+                "MAHNKOSTEN",
+                "MEHR_MINDERMENGEN",
+                "INKASSOKOSTEN",
+                "BLINDMEHRLEISTUNG",
+                "ENTGELT_MESSUNG_ABLESUNG",
+                "ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK",
+                "AUSGLEICHSENERGIE",
+                "ZAEHLEINRICHTUNG",
+                "WANDLER_MENGENUMWERTER",
+                "KOMMUNIKATIONSEINRICHTUNG",
+                "TECHNISCHE_STEUEREINRICHTUNG",
+                "PARAGRAF_19_STROM_NEV_UMLAGE",
+                "BEFESTIGUNGSEINRICHTUNG",
+                "OFFSHORE_HAFTUNGSUMLAGE",
+                "FIXE_ARBEITSENTGELTKOMPONENTE",
+                "FIXE_LEISTUNGSENTGELTKOMPONENTE",
+                "UMLAGE_ABSCHALTBARE_LASTEN",
+                "MEHRMENGE",
+                "MINDERMENGE",
+                "ENERGIESTEUER",
+                "SMARTMETER_GATEWAY",
+                "STEUERBOX",
+                "MSB_INKL_MESSUNG",
+                "AUSGLEICHSENERGIE_UNTERDECKUNG"
+            ],
+            "title": "BDEWArtikelnummer",
+            "type": "string"
+        },
+        "Betrag": {
+            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. graphviz:: /api/dots/bo4e/com/Betrag.dot",
+            "properties": {
+                "waehrung": {
+                    "$ref": "#/definitions/Waehrungscode"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "waehrung"
+            ],
+            "title": "Betrag",
+            "type": "object"
+        },
+        "Menge": {
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "properties": {
+                "einheit": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit"
+            ],
+            "title": "Menge",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preis": {
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+            "properties": {
+                "bezugswert": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "einheit": {
+                    "$ref": "#/definitions/Waehrungseinheit"
+                },
+                "status": {
+                    "$ref": "#/definitions/Preisstatus"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit",
+                "bezugswert"
+            ],
+            "title": "Preis",
+            "type": "object"
+        },
+        "Preisstatus": {
+            "description": "Statusinformation für Preise",
+            "enum": [
+                "VORLAEUFIG",
+                "ENDGUELTIG"
+            ],
+            "title": "Preisstatus",
+            "type": "string"
+        },
+        "Steuerbetrag": {
+            "description": "Abbildung eines Steuerbetrages.\n\n.. graphviz:: /api/dots/bo4e/com/Steuerbetrag.dot",
+            "properties": {
+                "basiswert": {
+                    "title": "Basiswert",
+                    "type": "number"
+                },
+                "steuerkennzeichen": {
+                    "$ref": "#/definitions/Steuerkennzeichen"
+                },
+                "steuerwert": {
+                    "title": "Steuerwert",
+                    "type": "number"
+                },
+                "waehrung": {
+                    "$ref": "#/definitions/Waehrungscode"
+                }
+            },
+            "required": [
+                "steuerkennzeichen",
+                "basiswert",
+                "steuerwert",
+                "waehrung"
+            ],
+            "title": "Steuerbetrag",
+            "type": "object"
+        },
+        "Steuerkennzeichen": {
+            "description": "Zur Kennzeichnung verschiedener Steuersätze und Verfahren.",
+            "enum": [
+                "UST_0",
+                "UST_19",
+                "UST_7",
+                "VST_0",
+                "VST_19",
+                "VST_7",
+                "RCV"
+            ],
+            "title": "Steuerkennzeichen",
+            "type": "string"
+        },
+        "Waehrungscode": {
+            "description": "Aufzählung der Währungscodes.",
+            "enum": [
+                "AED",
+                "AFN",
+                "ALL",
+                "AMD",
+                "ANG",
+                "AOA",
+                "ARS",
+                "AUD",
+                "AWG",
+                "AZN",
+                "BAM",
+                "BBD",
+                "BDT",
+                "BGN",
+                "BHD",
+                "BIF",
+                "BMD",
+                "BND",
+                "BOB",
+                "BOV",
+                "BRL",
+                "BSD",
+                "BTN",
+                "BWP",
+                "BYN",
+                "BYR",
+                "BZD",
+                "CAD",
+                "CDF",
+                "CHE",
+                "CHF",
+                "CHW",
+                "CLF",
+                "CLP",
+                "CNY",
+                "COP",
+                "COU",
+                "CRC",
+                "CUC",
+                "CUP",
+                "CVE",
+                "CZK",
+                "DJF",
+                "DKK",
+                "DOP",
+                "DZD",
+                "EGP",
+                "ERN",
+                "ETB",
+                "EUR",
+                "FJD",
+                "FKP",
+                "GBP",
+                "GEL",
+                "GHS",
+                "GIP",
+                "GMD",
+                "GNF",
+                "GTQ",
+                "GYD",
+                "HKD",
+                "HNL",
+                "HRK",
+                "HTG",
+                "HUF",
+                "IDR",
+                "ILS",
+                "INR",
+                "IQD",
+                "IRR",
+                "ISK",
+                "JMD",
+                "JOD",
+                "JPY",
+                "KES",
+                "KGS",
+                "KHR",
+                "KMF",
+                "KPW",
+                "KRW",
+                "KWD",
+                "KYD",
+                "KZT",
+                "LAK",
+                "LBP",
+                "LKR",
+                "LRD",
+                "LSL",
+                "LTL",
+                "LYD",
+                "MAD",
+                "MDL",
+                "MGA",
+                "MKD",
+                "MMK",
+                "MNT",
+                "MOP",
+                "MRO",
+                "MUR",
+                "MVR",
+                "MWK",
+                "MXN",
+                "MXV",
+                "MYR",
+                "MZN",
+                "NAD",
+                "NGN",
+                "NIO",
+                "NOK",
+                "NPR",
+                "NZD",
+                "OMR",
+                "PAB",
+                "PEN",
+                "PGK",
+                "PHP",
+                "PKR",
+                "PLN",
+                "PYG",
+                "QAR",
+                "RON",
+                "RSD",
+                "RUB",
+                "RUR",
+                "RWF",
+                "SAR",
+                "SBD",
+                "SCR",
+                "SDG",
+                "SEK",
+                "SGD",
+                "SHP",
+                "SLL",
+                "SOS",
+                "SRD",
+                "SSP",
+                "STD",
+                "SVC",
+                "SYP",
+                "SZL",
+                "THB",
+                "TJS",
+                "TMT",
+                "TND",
+                "TOP",
+                "TRY",
+                "TTD",
+                "TWD",
+                "TZS",
+                "UAH",
+                "UGX",
+                "USD",
+                "USN",
+                "USS",
+                "UYI",
+                "UYU",
+                "UZS",
+                "VEF",
+                "VND",
+                "VUV",
+                "WST",
+                "XAF",
+                "XAG",
+                "XAU",
+                "XBA",
+                "XBB",
+                "XBC",
+                "XBD",
+                "XCD",
+                "XDR",
+                "XOF",
+                "XPD",
+                "XPF",
+                "XPT",
+                "XSU",
+                "XTS",
+                "XUA",
+                "XXX",
+                "YER",
+                "ZAR",
+                "ZMW",
+                "ZWL"
+            ],
+            "title": "Waehrungscode",
+            "type": "string"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        },
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        }
+    },
+    "description": "Über Rechnungspositionen werden Rechnungen strukturiert.\nIn einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.\n\n.. graphviz:: /api/dots/bo4e/com/Rechnungsposition.dot",
+    "properties": {
+        "artikelId": {
+            "$ref": "#/definitions/ArtikelId"
+        },
+        "artikelnummer": {
+            "$ref": "#/definitions/BDEWArtikelnummer"
+        },
+        "einzelpreis": {
+            "$ref": "#/definitions/Preis"
+        },
+        "lieferungBis": {
+            "format": "date-time",
+            "title": "Lieferungbis",
+            "type": "string"
+        },
+        "lieferungVon": {
+            "format": "date-time",
+            "title": "Lieferungvon",
+            "type": "string"
+        },
+        "lokationsId": {
+            "title": "Lokationsid",
+            "type": "string"
+        },
+        "positionsMenge": {
+            "$ref": "#/definitions/Menge"
+        },
+        "positionsnummer": {
+            "title": "Positionsnummer",
+            "type": "integer"
+        },
+        "positionstext": {
+            "title": "Positionstext",
+            "type": "string"
+        },
+        "teilrabattNetto": {
+            "$ref": "#/definitions/Betrag"
+        },
+        "teilsummeNetto": {
+            "$ref": "#/definitions/Betrag"
+        },
+        "teilsummeSteuer": {
+            "$ref": "#/definitions/Steuerbetrag"
+        },
+        "zeitbezogeneMenge": {
+            "$ref": "#/definitions/Menge"
+        },
+        "zeiteinheit": {
+            "$ref": "#/definitions/Zeiteinheit"
+        }
+    },
+    "required": [
+        "positionsnummer",
+        "lieferungVon",
+        "lieferungBis",
+        "positionstext",
+        "positionsMenge",
+        "einzelpreis",
+        "teilsummeNetto",
+        "teilsummeSteuer"
+    ],
+    "title": "Rechnungsposition",
+    "type": "object"
+}

@@ -1,6 +1,9 @@
-import pytest  # type:ignore[import]
+from typing import Any, Dict
 
-from bo4e.bo.lastgang import LastgangKompakt, LastgangKompaktSchema
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
+
+from bo4e.bo.lastgang import LastgangKompakt
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -30,9 +33,9 @@ class TestLastgangKompakt:
                 ),
                 {
                     "version": "1.1",
-                    "sparte": "STROM",
-                    "lokationstyp": "MELO",
-                    "messgroesse": "KWH",
+                    "sparte": Sparte.STROM,
+                    "lokationstyp": Lokationstyp.MELO,
+                    "messgroesse": Mengeneinheit.KWH,
                     "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1},
                     "tagesvektoren": [example_tagesvektor_json],
                     "versionstruktur": "2",
@@ -44,14 +47,16 @@ class TestLastgangKompakt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, lastgang_kompakt: LastgangKompakt, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, lastgang_kompakt: LastgangKompakt, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of LastgangKompakt.
         """
-        assert_serialization_roundtrip(lastgang_kompakt, LastgangKompaktSchema(), expected_json_dict)
+        assert_serialization_roundtrip(lastgang_kompakt, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = LastgangKompakt()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = LastgangKompakt()  # type: ignore[call-arg]
 
-        assert "missing 6 required" in str(excinfo.value)
+        assert "6 validation errors" in str(excinfo.value)

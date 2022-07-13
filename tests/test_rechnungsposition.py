@@ -1,8 +1,9 @@
 from datetime import datetime, timezone
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.rechnungsposition import Rechnungsposition, RechnungspositionSchema
+from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit
@@ -38,13 +39,13 @@ class TestRechnungsposition:
             )
         ],
     )
-    def test_serialization_roundtrip(self, rechnungsposition):
+    def test_serialization_roundtrip(self, rechnungsposition: Rechnungsposition) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(rechnungsposition, RechnungspositionSchema())
+        assert_serialization_roundtrip(rechnungsposition)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Rechnungsposition()
-        assert "missing 8 required" in str(excinfo.value)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Rechnungsposition()  # type: ignore[call-arg]
+        assert "8 validation errors" in str(excinfo.value)

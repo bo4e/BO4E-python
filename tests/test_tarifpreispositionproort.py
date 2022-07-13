@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt, TarifpreispositionProOrtSchema
+from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_tarifpreisstaffelproort import example_tarifpreisstaffelproort  # type:ignore[import]
 
@@ -22,14 +23,14 @@ class TestTarifpreispositionProOrt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreispositionproort: TarifpreispositionProOrt):
+    def test_serialization_roundtrip(self, tarifpreispositionproort: TarifpreispositionProOrt) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifpreispositionproort, TarifpreispositionProOrtSchema())
+        assert_serialization_roundtrip(tarifpreispositionproort)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = TarifpreispositionProOrt()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = TarifpreispositionProOrt()  # type: ignore[call-arg]
 
-        assert "missing 4 required" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)

@@ -3,50 +3,37 @@ Contains Vertragskonditionen class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
+from typing import Optional
 
-import attrs
-from marshmallow import fields
-
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.zeitraum import Zeitraum, ZeitraumSchema
-
+from bo4e.com.com import COM
+from bo4e.com.zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Vertragskonditionen.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/VertragskonditionenSchema.json>`_
+        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_
 
     """
 
     # optional attributes
     #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
-    beschreibung: str = attrs.field(default=None)
+    beschreibung: Optional[str] = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
-    anzahl_abschlaege: Decimal = attrs.field(default=None)
+    anzahl_abschlaege: Optional[Decimal] = None
     #: Über diesen Zeitraum läuft der Vertrag
-    vertragslaufzeit: Zeitraum = attrs.field(default=None)
+    vertragslaufzeit: Optional[Zeitraum] = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Zeitraum = attrs.field(default=None)
+    kuendigungsfrist: Optional[Zeitraum] = None
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Zeitraum = attrs.field(default=None)
+    vertragsverlaengerung: Optional[Zeitraum] = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Zeitraum = attrs.field(default=None)
-
-
-class VertragskonditionenSchema(COMSchema):
-    """
-    Schema for de-/serialization of Vertragskonditionen.
-    """
-
-    class_name = Vertragskonditionen
-    # optional attributes
-    beschreibung = fields.String(load_default=None)
-    anzahl_abschlaege = fields.Decimal(load_default=None, as_string=True, data_key="anzahlAbschlaege")
-    vertragslaufzeit = fields.Nested(ZeitraumSchema, load_default=None)
-    kuendigungsfrist = fields.Nested(ZeitraumSchema, load_default=None)
-    vertragsverlaengerung = fields.Nested(ZeitraumSchema, load_default=None)
-    abschlagszyklus = fields.Nested(ZeitraumSchema, load_default=None)
+    abschlagszyklus: Optional[Zeitraum] = None

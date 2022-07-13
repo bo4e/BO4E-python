@@ -1,0 +1,686 @@
+{
+    "definitions": {
+        "AufAbschlagProOrt": {
+            "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang\nmit örtlichen Gültigkeiten abgebildet werden.\n\n.. graphviz:: /api/dots/bo4e/com/AufAbschlagProOrt.dot",
+            "properties": {
+                "netznr": {
+                    "title": "Netznr",
+                    "type": "string"
+                },
+                "ort": {
+                    "title": "Ort",
+                    "type": "string"
+                },
+                "postleitzahl": {
+                    "title": "Postleitzahl",
+                    "type": "string"
+                },
+                "staffeln": {
+                    "items": {
+                        "$ref": "#/definitions/AufAbschlagstaffelProOrt"
+                    },
+                    "minItems": 1,
+                    "title": "Staffeln",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "postleitzahl",
+                "ort",
+                "netznr",
+                "staffeln"
+            ],
+            "title": "AufAbschlagProOrt",
+            "type": "object"
+        },
+        "AufAbschlagstaffelProOrt": {
+            "description": "Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n.. graphviz:: /api/dots/bo4e/com/AufAbschlagstaffelProOrt.dot",
+            "properties": {
+                "staffelgrenzeBis": {
+                    "title": "Staffelgrenzebis",
+                    "type": "number"
+                },
+                "staffelgrenzeVon": {
+                    "title": "Staffelgrenzevon",
+                    "type": "number"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "staffelgrenzeVon",
+                "staffelgrenzeBis"
+            ],
+            "title": "AufAbschlagstaffelProOrt",
+            "type": "object"
+        },
+        "AufAbschlagstyp": {
+            "description": "Festlegung, ob der Auf- oder Abschlag mit relativen oder absoluten Werten erfolgt.",
+            "enum": [
+                "RELATIV",
+                "ABSOLUT"
+            ],
+            "title": "AufAbschlagstyp",
+            "type": "string"
+        },
+        "AufAbschlagsziel": {
+            "description": "Der Preis, auf den sich ein Auf- oder Abschlag bezieht.",
+            "enum": [
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "ARBEITSPREIS_HT_NT",
+                "GRUNDPREIS",
+                "GESAMTPREIS"
+            ],
+            "title": "AufAbschlagsziel",
+            "type": "string"
+        },
+        "Energieherkunft": {
+            "description": "Abbildung einer Energieherkunft\n\n.. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot",
+            "properties": {
+                "anteilProzent": {
+                    "exclusiveMaximum": 100,
+                    "exclusiveMinimum": 0,
+                    "title": "Anteilprozent",
+                    "type": "number"
+                },
+                "erzeugungsart": {
+                    "$ref": "#/definitions/Erzeugungsart"
+                }
+            },
+            "required": [
+                "erzeugungsart",
+                "anteilProzent"
+            ],
+            "title": "Energieherkunft",
+            "type": "object"
+        },
+        "Energiemix": {
+            "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.\n\n.. graphviz:: /api/dots/bo4e/com/Energiemix.dot",
+            "properties": {
+                "anteil": {
+                    "items": {
+                        "$ref": "#/definitions/Energieherkunft"
+                    },
+                    "minItems": 1,
+                    "title": "Anteil",
+                    "type": "array"
+                },
+                "atommuell": {
+                    "title": "Atommuell",
+                    "type": "number"
+                },
+                "bemerkung": {
+                    "title": "Bemerkung",
+                    "type": "string"
+                },
+                "bezeichnung": {
+                    "title": "Bezeichnung",
+                    "type": "string"
+                },
+                "co2Emission": {
+                    "title": "Co2Emission",
+                    "type": "number"
+                },
+                "energieart": {
+                    "$ref": "#/definitions/Sparte"
+                },
+                "energiemixnummer": {
+                    "title": "Energiemixnummer",
+                    "type": "integer"
+                },
+                "gueltigkeitsjahr": {
+                    "title": "Gueltigkeitsjahr",
+                    "type": "integer"
+                },
+                "oekoTopTen": {
+                    "title": "Oekotopten",
+                    "type": "boolean"
+                },
+                "oekolabel": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/Oekolabel"
+                    },
+                    "type": "array"
+                },
+                "oekozertifikate": {
+                    "default": [],
+                    "items": {
+                        "$ref": "#/definitions/Oekozertifikat"
+                    },
+                    "type": "array"
+                },
+                "website": {
+                    "title": "Website",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "energiemixnummer",
+                "energieart",
+                "bezeichnung",
+                "gueltigkeitsjahr",
+                "anteil"
+            ],
+            "title": "Energiemix",
+            "type": "object"
+        },
+        "Erzeugungsart": {
+            "description": "Auflistung der Erzeugungsarten von Energie.",
+            "enum": [
+                "FOSSIL",
+                "KWK",
+                "WIND",
+                "SOLAR",
+                "KERNKRAFT",
+                "WASSER",
+                "GEOTHERMIE",
+                "BIOMASSE",
+                "KOHLE",
+                "GAS",
+                "SONSTIGE",
+                "SONSTIGE_EEG",
+                "BIOGAS",
+                "KLIMANEUTRALES_GAS"
+            ],
+            "title": "Erzeugungsart",
+            "type": "string"
+        },
+        "Geraet": {
+            "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. graphviz:: /api/dots/bo4e/com/Geraet.dot",
+            "properties": {
+                "geraeteeigenschaften": {
+                    "$ref": "#/definitions/Geraeteeigenschaften"
+                },
+                "geraetenummer": {
+                    "title": "Geraetenummer",
+                    "type": "string"
+                }
+            },
+            "title": "Geraet",
+            "type": "object"
+        },
+        "Geraeteeigenschaften": {
+            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. graphviz:: /api/dots/bo4e/com/Geraeteeigenschaften.dot",
+            "properties": {
+                "geraetemerkmal": {
+                    "$ref": "#/definitions/Geraetemerkmal"
+                },
+                "geraetetyp": {
+                    "$ref": "#/definitions/Geraetetyp"
+                }
+            },
+            "required": [
+                "geraetetyp"
+            ],
+            "title": "Geraeteeigenschaften",
+            "type": "object"
+        },
+        "Geraetemerkmal": {
+            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "enum": [
+                "EINTARIF",
+                "ZWEITARIF",
+                "MEHRTARIF",
+                "GAS_G2_5",
+                "GAS_G4",
+                "GAS_G6",
+                "GAS_G10",
+                "GAS_G16",
+                "GAS_G25",
+                "GAS_G40",
+                "GAS_G65",
+                "GAS_G100",
+                "GAS_G160",
+                "GAS_G250",
+                "GAS_G400",
+                "GAS_G650",
+                "GAS_G1000",
+                "GAS_G1600",
+                "GAS_G2500",
+                "IMPULSGEBER_G4_G100",
+                "IMPULSGEBER_G100",
+                "TELEFONANSCHLUSS",
+                "MODEM_GSM",
+                "MODEM_GPRS",
+                "MODEM_FUNK",
+                "MODEM_GSM_O_LG",
+                "MODEM_GSM_M_LG",
+                "MODEM_FESTNETZ",
+                "MODEM_GPRS_M_LG",
+                "PLC_KOM",
+                "ETHERNET_KOM",
+                "DSL_KOM",
+                "LTE_KOM",
+                "KOMPAKT_MU",
+                "SYSTEM_MU",
+                "TEMPERATUR_MU",
+                "ZUSTANDS_MU",
+                "UNBESTIMMT"
+            ],
+            "title": "Geraetemerkmal",
+            "type": "string"
+        },
+        "Geraetetyp": {
+            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "enum": [
+                "WECHSELSTROMZAEHLER",
+                "DREHSTROMZAEHLER",
+                "ZWEIRICHTUNGSZAEHLER",
+                "RLM_ZAEHLER",
+                "BALGENGASZAEHLER",
+                "MAXIMUMZAEHLER",
+                "MULTIPLEXANLAGE",
+                "PAUSCHALANLAGE",
+                "VERSTAERKERANLAGE",
+                "SUMMATIONSGERAET",
+                "IMPULSGEBER",
+                "EDL_21_ZAEHLERAUFSATZ",
+                "VIER_QUADRANTEN_LASTGANGZAEHLER",
+                "MENGENUMWERTER",
+                "STROMWANDLER",
+                "SPANNUNGSWANDLER",
+                "KOMBIMESSWANDLER",
+                "BLOCKSTROMWANDLER",
+                "DATENLOGGER",
+                "KOMMUNIKATIONSANSCHLUSS",
+                "MODEM",
+                "TELEKOMMUNIKATIONSEINRICHTUNG",
+                "DREHKOLBENGASZAEHLER",
+                "TURBINENRADGASZAEHLER",
+                "ULTRASCHALLZAEHLER",
+                "WIRBELGASZAEHLER",
+                "MODERNE_MESSEINRICHTUNG",
+                "INTELLIGENTES_MESSYSTEM",
+                "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+                "STEUEREINRICHTUNG",
+                "TARIFSCHALTGERAET",
+                "RUNDSTEUEREMPFAENGER",
+                "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+                "MESSWANDLERSATZ_IMS_MME",
+                "KOMBIMESSWANDLER_IMS_MME",
+                "TARIFSCHALTGERAET_IMS_MME",
+                "RUNDSTEUEREMPFAENGER_IMS_MME",
+                "TEMPERATUR_KOMPENSATION",
+                "HOECHSTBELASTUNGS_ANZEIGER",
+                "SONSTIGES_GERAET",
+                "PREPAYMENTZAEHLER",
+                "EDL_21",
+                "96_H_ZAEHLER",
+                "EDL_40_ZAEHLERAUFSATZ"
+            ],
+            "title": "Geraetetyp",
+            "type": "string"
+        },
+        "Menge": {
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "properties": {
+                "einheit": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit"
+            ],
+            "title": "Menge",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Oekolabel": {
+            "description": "Aufzählung der Labels für Öko-Strom von verschiedenen Herausgebern.",
+            "enum": [
+                "ENERGREEN",
+                "GASGREEN_GRUENER_STROM",
+                "GASGREEN",
+                "GRUENER_STROM_GOLD",
+                "GRUENER_STROM_SILBER",
+                "GRUENER_STROM",
+                "GRUENES_GAS",
+                "NATURWATT_STROM",
+                "OK_POWER",
+                "RENEWABLE_PLUS",
+                "WATERGREEN",
+                "WATERGREEN_PLUS"
+            ],
+            "title": "Oekolabel",
+            "type": "string"
+        },
+        "Oekozertifikat": {
+            "description": "Zertifikate für Ökostrom von verschiedenen Herausgebern.",
+            "enum": [
+                "CMS_EE01",
+                "CMS_EE02",
+                "EECS",
+                "FRAUNHOFER",
+                "BET",
+                "KLIMA_INVEST",
+                "LGA",
+                "FREIBERG",
+                "RECS",
+                "REGS_EGL",
+                "TUEV",
+                "TUEV_HESSEN",
+                "TUEV_NORD",
+                "TUEV_RHEINLAND",
+                "TUEV_SUED",
+                "TUEV_SUED_EE01",
+                "TUEV_SUED_EE02"
+            ],
+            "title": "Oekozertifikat",
+            "type": "string"
+        },
+        "Preisgarantie": {
+            "description": "Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.\n\n.. graphviz:: /api/dots/bo4e/com/Preisgarantie.dot",
+            "properties": {
+                "beschreibung": {
+                    "title": "Beschreibung",
+                    "type": "string"
+                },
+                "preisgarantietyp": {
+                    "$ref": "#/definitions/Preisgarantietyp"
+                },
+                "zeitlicheGueltigkeit": {
+                    "$ref": "#/definitions/Zeitraum"
+                }
+            },
+            "required": [
+                "preisgarantietyp",
+                "zeitlicheGueltigkeit"
+            ],
+            "title": "Preisgarantie",
+            "type": "object"
+        },
+        "Preisgarantietyp": {
+            "description": "Aufzählung der Möglichkeiten für die Vergabe von Preisgarantien",
+            "enum": [
+                "ALLE_PREISBESTANDTEILE_BRUTTO",
+                "ALLE_PREISBESTANDTEILE_NETTO",
+                "PREISBESTANDTEILE_OHNE_ABGABEN",
+                "NUR_ENERGIEPREIS"
+            ],
+            "title": "Preisgarantietyp",
+            "type": "string"
+        },
+        "Sparte": {
+            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "FERNWAERME",
+                "NAHWAERME",
+                "WASSER",
+                "ABWASSER"
+            ],
+            "title": "Sparte",
+            "type": "string"
+        },
+        "Tarifeinschraenkung": {
+            "description": "Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.\n\n.. graphviz:: /api/dots/bo4e/com/Tarifeinschraenkung.dot",
+            "properties": {
+                "einschraenkungleistung": {
+                    "items": {
+                        "$ref": "#/definitions/Menge"
+                    },
+                    "title": "Einschraenkungleistung",
+                    "type": "array"
+                },
+                "einschraenkungzaehler": {
+                    "items": {
+                        "$ref": "#/definitions/Geraet"
+                    },
+                    "title": "Einschraenkungzaehler",
+                    "type": "array"
+                },
+                "voraussetzungen": {
+                    "items": {
+                        "$ref": "#/definitions/Voraussetzungen"
+                    },
+                    "type": "array"
+                },
+                "zusatzprodukte": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "title": "Zusatzprodukte",
+                    "type": "array"
+                }
+            },
+            "title": "Tarifeinschraenkung",
+            "type": "object"
+        },
+        "Vertragskonditionen": {
+            "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. graphviz:: /api/dots/bo4e/com/Vertragskonditionen.dot",
+            "properties": {
+                "abschlagszyklus": {
+                    "$ref": "#/definitions/Zeitraum"
+                },
+                "anzahlAbschlaege": {
+                    "title": "Anzahlabschlaege",
+                    "type": "number"
+                },
+                "beschreibung": {
+                    "title": "Beschreibung",
+                    "type": "string"
+                },
+                "kuendigungsfrist": {
+                    "$ref": "#/definitions/Zeitraum"
+                },
+                "vertragslaufzeit": {
+                    "$ref": "#/definitions/Zeitraum"
+                },
+                "vertragsverlaengerung": {
+                    "$ref": "#/definitions/Zeitraum"
+                }
+            },
+            "title": "Vertragskonditionen",
+            "type": "object"
+        },
+        "Voraussetzungen": {
+            "description": "Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann.",
+            "enum": [
+                "EINZUGSERMAECHTIGUNG",
+                "ZEITPUNKT",
+                "LIEFERANBINDUNG_EINE",
+                "LIEFERANBINDUNG_ALLE",
+                "GEWERBE",
+                "LASTPROFIL",
+                "ZAEHLERTYP_GROESSE",
+                "AUSSCHLUSS_GROSSVERBRAUCHER",
+                "NEUKUNDE",
+                "BESTIMMTE_VERTRAGSFORMALITAETEN",
+                "SELBSTABLESUNG",
+                "ONLINEVORAUSSETZUNG",
+                "MINDESTUMSATZ",
+                "ZUSATZPRODUKT",
+                "NEUKUNDE_MIT_VORAUSSETZUNGEN",
+                "DIREKTVERTRIEB",
+                "ANSCHLUSSART",
+                "ANSCHLUSSWERT",
+                "ALTER_KUNDENANLAGE",
+                "ANLAGEBESCHAFFENHEIT",
+                "BETRIEBSSTUNDENBEGRENZUNG",
+                "FREIGABEZEITEN",
+                "FAMILIENSTRUKTUR",
+                "MITGLIEDSCHAFT",
+                "STAATLICHE_FOERDERUNG",
+                "BESONDERE_VERBRAUCHSSTELLE",
+                "NIEDRIGENERGIE",
+                "ORTSTEILE_LIEFERGEBIET",
+                "WAERMEBEDARF_ERDGAS",
+                "MAX_ZAEHLER_LIEFERSTELLEN",
+                "LIEFERUNGSBESCHRAENKUNG_GASART",
+                "KOMBI_BONI",
+                "ALTVERTRAG",
+                "VORGESCHRIEBENE_ZUSATZANLAGE",
+                "MEHRERE_ZAEHLER_ABNAHMESTELLEN",
+                "BESTIMMTER_ABNAHMEFALL",
+                "ZUSATZMODALITAET",
+                "NACHWEIS_ZAHLUNGSFAEHIGKEIT",
+                "UMSTELLUNG_ENERGIEART"
+            ],
+            "title": "Voraussetzungen",
+            "type": "string"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        },
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        },
+        "Zeitraum": {
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "properties": {
+                "dauer": {
+                    "title": "Dauer",
+                    "type": "number"
+                },
+                "einheit": {
+                    "$ref": "#/definitions/Zeiteinheit"
+                },
+                "enddatum": {
+                    "format": "date-time",
+                    "title": "Enddatum",
+                    "type": "string"
+                },
+                "endzeitpunkt": {
+                    "format": "date-time",
+                    "title": "Endzeitpunkt",
+                    "type": "string"
+                },
+                "startdatum": {
+                    "format": "date-time",
+                    "title": "Startdatum",
+                    "type": "string"
+                },
+                "startzeitpunkt": {
+                    "format": "date-time",
+                    "title": "Startzeitpunkt",
+                    "type": "string"
+                }
+            },
+            "title": "Zeitraum",
+            "type": "object"
+        }
+    },
+    "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen\nim Zusammenhang mit regionalen Gültigkeiten abgebildet werden.\nHier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert,\ndie sich durch die Auswahl eines Auf- oder Abschlags ergeben.\n\n.. graphviz:: /api/dots/bo4e/com/AufAbschlagRegional.dot",
+    "properties": {
+        "aufAbschlagstyp": {
+            "$ref": "#/definitions/AufAbschlagstyp"
+        },
+        "aufAbschlagsziel": {
+            "$ref": "#/definitions/AufAbschlagsziel"
+        },
+        "beschreibung": {
+            "title": "Beschreibung",
+            "type": "string"
+        },
+        "betraege": {
+            "items": {
+                "$ref": "#/definitions/AufAbschlagProOrt"
+            },
+            "minItems": 1,
+            "title": "Betraege",
+            "type": "array"
+        },
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "einschraenkungsaenderung": {
+            "$ref": "#/definitions/Tarifeinschraenkung"
+        },
+        "energiemixaenderung": {
+            "$ref": "#/definitions/Energiemix"
+        },
+        "garantieaenderung": {
+            "$ref": "#/definitions/Preisgarantie"
+        },
+        "gueltigkeitszeitraum": {
+            "$ref": "#/definitions/Zeitraum"
+        },
+        "tarifnamensaenderungen": {
+            "title": "Tarifnamensaenderungen",
+            "type": "string"
+        },
+        "vertagskonditionsaenderung": {
+            "$ref": "#/definitions/Vertragskonditionen"
+        },
+        "voraussetzungen": {
+            "items": {
+                "type": "string"
+            },
+            "title": "Voraussetzungen",
+            "type": "array"
+        },
+        "website": {
+            "title": "Website",
+            "type": "string"
+        },
+        "zusatzprodukte": {
+            "items": {
+                "type": "string"
+            },
+            "title": "Zusatzprodukte",
+            "type": "array"
+        }
+    },
+    "required": [
+        "bezeichnung",
+        "betraege"
+    ],
+    "title": "AufAbschlagRegional",
+    "type": "object"
+}

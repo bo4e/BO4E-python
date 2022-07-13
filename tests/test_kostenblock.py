@@ -1,9 +1,11 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
 from bo4e.com.betrag import Betrag
-from bo4e.com.kostenblock import Kostenblock, KostenblockSchema
+from bo4e.com.kostenblock import Kostenblock
 from bo4e.com.kostenposition import Kostenposition
 from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -59,10 +61,10 @@ class TestKostenblock:
                         {
                             "positionstitel": "Mudders kostenposition",
                             "einzelpreis": {
-                                "einheit": "EUR",
-                                "status": "ENDGUELTIG",
-                                "bezugswert": "KWH",
-                                "wert": "3.5",
+                                "einheit": Waehrungseinheit.EUR,
+                                "status": Preisstatus.ENDGUELTIG,
+                                "bezugswert": Mengeneinheit.KWH,
+                                "wert": Decimal("3.5"),
                             },
                             "menge": None,
                             "zeitmenge": None,
@@ -70,23 +72,23 @@ class TestKostenblock:
                             "artikelbezeichnung": "Dei Mudder ihr kostenposition",
                             "artikeldetail": None,
                             "bis": None,
-                            "betragKostenposition": {"waehrung": "EUR", "wert": "12.5"},
+                            "betragKostenposition": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
                         }
                     ],
-                    "summeKostenblock": {"waehrung": "EUR", "wert": "12.5"},
+                    "summeKostenblock": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
                 },
                 id="maximal",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, kostenblock: Kostenblock, expected_json_dict: dict):
+    def test_serialization_roundtrip(self, kostenblock: Kostenblock, expected_json_dict: Dict[str, Any]) -> None:
         """
         Test de-/serialisation of kostenblock.
         """
-        assert_serialization_roundtrip(kostenblock, KostenblockSchema(), expected_json_dict)
+        assert_serialization_roundtrip(kostenblock, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Kostenblock()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Kostenblock()  # type: ignore[call-arg]
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

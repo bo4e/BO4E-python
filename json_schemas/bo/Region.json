@@ -1,0 +1,184 @@
+{
+    "definitions": {
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
+        },
+        "ExterneReferenz": {
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "Gueltigkeitstyp": {
+            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "enum": [
+                "NUR_IN",
+                "NICHT_IN",
+                "NUR_IN_KOMBINATION_MIT"
+            ],
+            "title": "Gueltigkeitstyp",
+            "type": "string"
+        },
+        "Regionskriterium": {
+            "description": "Komponente zur Abbildung eines Regionskriteriums\n\n.. graphviz:: /api/dots/bo4e/com/Regionskriterium.dot",
+            "properties": {
+                "gueltigkeitstyp": {
+                    "$ref": "#/definitions/Gueltigkeitstyp"
+                },
+                "regionskriteriumtyp": {
+                    "$ref": "#/definitions/Regionskriteriumtyp"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "gueltigkeitstyp",
+                "regionskriteriumtyp",
+                "wert"
+            ],
+            "title": "Regionskriterium",
+            "type": "object"
+        },
+        "Regionskriteriumtyp": {
+            "description": "Klassifizierung der Kriterien für eine regionale Eingrenzung.",
+            "enum": [
+                "BUNDESLANDKENNZIFFER",
+                "BUNDESLAND_NAME",
+                "MARKTGEBIET_NUMMER",
+                "MARKTGEBIET_NAME",
+                "REGELGEBIET_NUMMER",
+                "REGELGEBIET_NAME",
+                "NETZ_STROM",
+                "NETZ_GAS",
+                "NETZBETREIBER_NUMMER_STROM",
+                "NETZBETREIBER_NUMMER_GAS",
+                "NETZBETREIBER_NAME_STROM",
+                "NETZBETREIBER_NAME_GAS",
+                "BILANZIERUNGS_GEBIET_NUMMER",
+                "MSB_NUMMER",
+                "MSB_NAME",
+                "VERSORGER_NUMMER",
+                "VERSORGER_NAME",
+                "GRUNDVERSORGER_NUMMER_STROM",
+                "GRUNDVERSORGER_NAME_STROM",
+                "GRUNDVERSORGER_NUMMER_GAS",
+                "GRUNDVERSORGER_NAME_GAS",
+                "KREIS_NAME",
+                "KREISKENNZIFFER",
+                "GEMEINDE_NAME",
+                "GEMEINDEKENNZIFFER",
+                "POSTLEITZAHL",
+                "ORT",
+                "POSTORT",
+                "EINWOHNERZAHL_GEMEINDE",
+                "EINWOHNERZAHL_ORT",
+                "KM_UMKREIS",
+                "BUNDESWEIT",
+                "PLZ_BEREICH"
+            ],
+            "title": "Regionskriteriumtyp",
+            "type": "string"
+        }
+    },
+    "description": "Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben\n\n.. graphviz:: /api/dots/bo4e/bo/Region.dot",
+    "properties": {
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/definitions/BoTyp"
+                }
+            ],
+            "default": "REGION"
+        },
+        "externeReferenzen": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/ExterneReferenz"
+            },
+            "title": "Externereferenzen",
+            "type": "array"
+        },
+        "negativListe": {
+            "items": {
+                "$ref": "#/definitions/Regionskriterium"
+            },
+            "title": "Negativliste",
+            "type": "array"
+        },
+        "positivListe": {
+            "items": {
+                "$ref": "#/definitions/Regionskriterium"
+            },
+            "minItems": 1,
+            "title": "Positivliste",
+            "type": "array"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
+        }
+    },
+    "required": [
+        "bezeichnung",
+        "positivListe"
+    ],
+    "title": "Region",
+    "type": "object"
+}

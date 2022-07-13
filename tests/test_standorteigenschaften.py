@@ -1,6 +1,7 @@
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.standorteigenschaften import Standorteigenschaften, StandorteigenschaftenSchema
+from bo4e.bo.standorteigenschaften import Standorteigenschaften
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 from tests.test_standorteigenschaftenallgemein import example_standorteigenschaften_allgemein  # type:ignore[import]
 from tests.test_standorteigenschaftengas import example_standorteigenschaften_gas  # type:ignore[import]
@@ -20,11 +21,11 @@ class TestStandorteigenschaften:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, standorteigenschaften: Standorteigenschaften):
-        assert_serialization_roundtrip(standorteigenschaften, StandorteigenschaftenSchema())
+    def test_serialization_roundtrip(self, standorteigenschaften: Standorteigenschaften) -> None:
+        assert_serialization_roundtrip(standorteigenschaften)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Standorteigenschaften()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Standorteigenschaften()  # type: ignore[call-arg]
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

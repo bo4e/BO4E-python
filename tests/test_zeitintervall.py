@@ -1,40 +1,39 @@
-from datetime import datetime, timezone
-from decimal import Decimal
-
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.zeitintervall import Zeitintervall, ZeitintervallSchema
+from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.zeiteinheit import Zeiteinheit
 
 
 class TestZeitintervall:
-    def test_zeitintervall_daten(self):
+    def test_zeitintervall_daten(self) -> None:
         """
         Test de-/serialisation of Zeitintervall (only has optional attributes) with option startdatum and enddatum.
         """
         zeitintervall = Zeitintervall(wert=2, zeiteinheit=Zeiteinheit.VIERTEL_STUNDE)
 
-        schema = ZeitintervallSchema()
-        json_string = schema.dumps(zeitintervall, ensure_ascii=False)
+        json_string = zeitintervall.json(by_alias=True, ensure_ascii=False)
 
         assert "2" in json_string
         assert "VIERTEL_STUNDE" in json_string
 
-        zeitintervall_deserialized = schema.loads(json_string)
+        zeitintervall_deserialized = Zeitintervall.parse_raw(json_string)
 
         assert isinstance(zeitintervall_deserialized.wert, int)
         assert zeitintervall_deserialized.wert == 2
         assert isinstance(zeitintervall_deserialized.zeiteinheit, Zeiteinheit)
-        assert zeitintervall_deserialized.zeiteinheit == Zeiteinheit.VIERTEL_STUNDE.value
+        assert zeitintervall_deserialized.zeiteinheit == Zeiteinheit.VIERTEL_STUNDE
 
-    def test_wrong_datatype(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Zeitintervall(wert="3", zeiteinheit=Zeiteinheit.TAG)
+    def test_wrong_datatype(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Zeitintervall(wert="errrrrror", zeiteinheit=Zeiteinheit.TAG)  # type: ignore[arg-type]
 
-        assert "'wert' must be <class 'int'>" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "wert" in str(excinfo.value)
+        assert "value is not a valid integer" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Zeitintervall(wert=3)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Zeitintervall(wert=3)  # type: ignore[call-arg]
 
-        assert "missing 1 required keyword" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)

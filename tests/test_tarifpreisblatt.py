@@ -1,8 +1,9 @@
 import datetime
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.bo.tarifpreisblatt import Tarifpreisblatt, TarifpreisblattSchema
+from bo4e.bo.tarifpreisblatt import Tarifpreisblatt
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.kundentyp import Kundentyp
@@ -53,13 +54,13 @@ class TestTarifpreisblatt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifpreisblatt: Tarifpreisblatt):
+    def test_serialization_roundtrip(self, tarifpreisblatt: Tarifpreisblatt) -> None:
         """
         Test de-/serialisation
         """
-        assert_serialization_roundtrip(tarifpreisblatt, TarifpreisblattSchema())
+        assert_serialization_roundtrip(tarifpreisblatt)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Tarifpreisblatt()
-        assert "missing 11 required" in str(excinfo.value)  # 8 from tarifinfo + 3 from tarifpreisblatt
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Tarifpreisblatt()  # type: ignore[call-arg]
+        assert "11 validation error" in str(excinfo.value)  # 8 from tarifinfo + 3 from tarifpreisblatt

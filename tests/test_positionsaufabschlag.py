@@ -1,8 +1,10 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.positionsaufabschlag import PositionsAufAbschlag, PositionsAufAbschlagSchema
+from bo4e.com.positionsaufabschlag import PositionsAufAbschlag
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -23,21 +25,23 @@ class TestPositionsAufAbschlag:
                 {
                     "bezeichnung": "foo",
                     "beschreibung": "bar",
-                    "aufAbschlagstyp": "ABSOLUT",
-                    "aufAbschlagswert": "4.25",
-                    "aufAbschlagswaehrung": "EUR",
+                    "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
+                    "aufAbschlagswert": Decimal("4.25"),
+                    "aufAbschlagswaehrung": Waehrungseinheit.EUR,
                 },
             ),
         ],
     )
-    def test_serialization_roundtrip(self, positionsaufabschlag: PositionsAufAbschlag, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, positionsaufabschlag: PositionsAufAbschlag, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of PositionsAufAbschlag
         """
-        assert_serialization_roundtrip(positionsaufabschlag, PositionsAufAbschlagSchema(), expected_json_dict)
+        assert_serialization_roundtrip(positionsaufabschlag, expected_json_dict)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = PositionsAufAbschlag()
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = PositionsAufAbschlag()  # type: ignore[call-arg]
 
-        assert "missing 5 required" in str(excinfo.value)
+        assert "5 validation errors" in str(excinfo.value)

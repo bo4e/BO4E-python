@@ -2,18 +2,16 @@
 Contains Angebotsposition class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
-import attrs
-from marshmallow import fields
-
-from bo4e.com.betrag import Betrag, BetragSchema
-from bo4e.com.com import COM, COMSchema
-from bo4e.com.menge import Menge, MengeSchema
-from bo4e.com.preis import Preis, PreisSchema
-
+from bo4e.com.betrag import Betrag
+from bo4e.com.com import COM
+from bo4e.com.menge import Menge
+from bo4e.com.preis import Preis
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Angebotsposition(COM):
     """
     Unterhalb von Angebotsteilen sind die Angebotspositionen eingebunden.
@@ -22,35 +20,26 @@ class Angebotsposition(COM):
     Positionspreis: 24,56 ct/kWh
     Positionskosten: 982,40 EUR
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Angebotsposition.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AngebotspositionSchema.json>`_
+        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsposition.json>`_
 
     """
 
     # required attributes
     #: Bezeichnung der jeweiligen Position des Angebotsteils
-    positionsbezeichnung: str = attrs.field(validator=attrs.validators.instance_of(str))
+    positionsbezeichnung: str
     #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Preis = attrs.field(validator=attrs.validators.instance_of(Preis))
+    positionspreis: Preis
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Menge = attrs.field(default=None, validator=attrs.validators.instance_of(Menge))
+    positionsmenge: Optional[Menge] = None
     #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
-    positionskosten: Betrag = attrs.field(default=None, validator=attrs.validators.instance_of(Betrag))
+    positionskosten: Optional[Betrag] = None
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126
-
-
-class AngebotspositionSchema(COMSchema):
-    """
-    Schema for de-/serialization of Angebotsposition.
-    """
-
-    class_name = Angebotsposition
-    # required attributes
-    positionsbezeichnung = fields.String()
-    positionspreis = fields.Nested(PreisSchema)
-    positionsmenge = fields.Nested(MengeSchema, load_default=None)
-    positionskosten = fields.Nested(BetragSchema, load_default=None)

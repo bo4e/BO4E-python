@@ -1,8 +1,9 @@
 from decimal import Decimal
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.preis import Preis, PreisSchema
+from bo4e.com.preis import Preis
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
@@ -11,20 +12,19 @@ example_preis = Preis(wert=Decimal(12.5), einheit=Waehrungseinheit.EUR, bezugswe
 
 
 class TestPreis:
-    def test_preis_only_required(self):
+    def test_preis_only_required(self) -> None:
         """
         Test de-/serialisation of Preis (only has required attributes).
         """
         preis = example_preis
 
-        schema = PreisSchema()
-        json_string = schema.dumps(preis, ensure_ascii=False)
+        json_string = preis.json(by_alias=True, ensure_ascii=False)
 
         assert "KWH" in json_string
         assert "EUR" in json_string
         assert "null" in json_string
 
-        preis_deserialized = schema.loads(json_string)
+        preis_deserialized = Preis.parse_raw(json_string)
 
         assert isinstance(preis_deserialized.wert, Decimal)
         assert isinstance(preis_deserialized.einheit, Waehrungseinheit)
@@ -32,19 +32,21 @@ class TestPreis:
         assert preis_deserialized.status is None
         assert preis == preis_deserialized
 
-    def test_wrong_datatype(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Preis(wert=3.50, einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
+    def test_wrong_datatype(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Preis(wert="lululululu", einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)  # type: ignore[arg-type]
 
-        assert "'wert' must be <class 'decimal.Decimal'>" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "wert" in str(excinfo.value)
+        assert "value is not a valid decimal" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)  # type: ignore[call-arg]
 
-        assert "missing 1 required" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
 
-    def test_optional_attribute(self):
+    def test_optional_attribute(self) -> None:
         preis = Preis(
             wert=Decimal(3.50),
             einheit=Waehrungseinheit.EUR,
@@ -52,11 +54,10 @@ class TestPreis:
             status=Preisstatus.ENDGUELTIG,
         )
 
-        schema = PreisSchema()
-        json_string = schema.dumps(preis, ensure_ascii=False)
+        json_string = preis.json(by_alias=True, ensure_ascii=False)
 
         assert "ENDGUELTIG" in json_string
 
-        preis_deserialized = schema.loads(json_string)
+        preis_deserialized = Preis.parse_raw(json_string)
 
         assert isinstance(preis_deserialized.status, Preisstatus)

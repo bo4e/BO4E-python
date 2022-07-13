@@ -18,7 +18,11 @@ __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
+from pathlib import Path
+
 sys.path.insert(0, os.path.join(__location__, "../src"))
+sys.path.insert(0, os.path.join(__location__, "../docs"))
+from uml import PlantUMLNetwork, build_network, compile_files_kroki, write_class_umls
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
@@ -251,7 +255,7 @@ latex_elements = {
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
-# (source start file, target name, title, author, documentclass [howto/manual]).
+# (source start file, target name, title, author, document class [howto/manual]).
 latex_documents = [
     (
         "index",
@@ -288,3 +292,13 @@ intersphinx_mapping = {
     "sphinx": ("http://www.sphinx-doc.org/en/stable", None),
     "python": ("https://docs.python.org/" + python_version, None),
 }
+
+# Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
+# See docs/uml.py for more details.
+_exec_plantuml = Path(__location__) / "plantuml.jar"
+_network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
+write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
+print("Created uml files.")
+
+compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images")
+print(f"Compiled uml files into svg using kroki.")

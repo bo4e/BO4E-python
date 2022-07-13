@@ -1,0 +1,75 @@
+{
+    "definitions": {
+        "Menge": {
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "properties": {
+                "einheit": {
+                    "$ref": "#/definitions/Mengeneinheit"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit"
+            ],
+            "title": "Menge",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        }
+    },
+    "description": "Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\neine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n.. graphviz:: /api/dots/bo4e/com/Vertragsteil.dot",
+    "properties": {
+        "lokation": {
+            "title": "Lokation",
+            "type": "string"
+        },
+        "maximaleAbnahmemenge": {
+            "$ref": "#/definitions/Menge"
+        },
+        "minimaleAbnahmemenge": {
+            "$ref": "#/definitions/Menge"
+        },
+        "vertraglichFixierteMenge": {
+            "$ref": "#/definitions/Menge"
+        },
+        "vertragsteilbeginn": {
+            "format": "date-time",
+            "title": "Vertragsteilbeginn",
+            "type": "string"
+        },
+        "vertragsteilende": {
+            "format": "date-time",
+            "title": "Vertragsteilende",
+            "type": "string"
+        }
+    },
+    "required": [
+        "vertragsteilbeginn",
+        "vertragsteilende"
+    ],
+    "title": "Vertragsteil",
+    "type": "object"
+}

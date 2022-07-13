@@ -1,11 +1,12 @@
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
 
 from bo4e.com.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
-from bo4e.com.menge import Menge  # type:ignore[import]
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung, TarifeinschraenkungSchema
+from bo4e.com.menge import Menge
+from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -71,7 +72,10 @@ class TestTarifeinschraenkung:
                     "einschraenkungzaehler": [
                         {
                             "geraetenummer": "0815",
-                            "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": "MULTIPLEXANLAGE"},
+                            "geraeteeigenschaften": {
+                                "geraetemerkmal": "GAS_G1000",
+                                "geraetetyp": Geraetetyp.MULTIPLEXANLAGE,
+                            },
                         },
                         {
                             "geraetenummer": "197foo",
@@ -80,12 +84,12 @@ class TestTarifeinschraenkung:
                     ],
                     "einschraenkungleistung": [
                         {
-                            "wert": "12.5",
-                            "einheit": "MWH",
+                            "wert": Decimal("12.5"),
+                            "einheit": Mengeneinheit.MWH,
                         },
                         {
-                            "wert": "30",
-                            "einheit": "KWH",
+                            "wert": Decimal("30"),
+                            "einheit": Mengeneinheit.KWH,
                         },
                     ],
                 },
@@ -93,8 +97,10 @@ class TestTarifeinschraenkung:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tarifeinschraenkung: Tarifeinschraenkung, expected_json_dict: dict):
+    def test_serialization_roundtrip(
+        self, tarifeinschraenkung: Tarifeinschraenkung, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Tarifeinschraenkung
         """
-        assert_serialization_roundtrip(tarifeinschraenkung, TarifeinschraenkungSchema(), expected_json_dict)
+        assert_serialization_roundtrip(tarifeinschraenkung, expected_json_dict)

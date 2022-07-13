@@ -1,0 +1,6 @@
+{
+    "description": "base class for all components\n\n.. graphviz:: /api/dots/bo4e/com/COM.dot",
+    "properties": {},
+    "title": "COM",
+    "type": "object"
+}

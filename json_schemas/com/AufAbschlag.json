@@ -1,0 +1,182 @@
+{
+    "definitions": {
+        "AufAbschlagstyp": {
+            "description": "Festlegung, ob der Auf- oder Abschlag mit relativen oder absoluten Werten erfolgt.",
+            "enum": [
+                "RELATIV",
+                "ABSOLUT"
+            ],
+            "title": "AufAbschlagstyp",
+            "type": "string"
+        },
+        "AufAbschlagsziel": {
+            "description": "Der Preis, auf den sich ein Auf- oder Abschlag bezieht.",
+            "enum": [
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "ARBEITSPREIS_HT_NT",
+                "GRUNDPREIS",
+                "GESAMTPREIS"
+            ],
+            "title": "AufAbschlagsziel",
+            "type": "string"
+        },
+        "Preisstaffel": {
+            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+            "properties": {
+                "einheitspreis": {
+                    "title": "Einheitspreis",
+                    "type": "number"
+                },
+                "sigmoidparameter": {
+                    "$ref": "#/definitions/Sigmoidparameter"
+                },
+                "staffelgrenzeBis": {
+                    "title": "Staffelgrenzebis",
+                    "type": "number"
+                },
+                "staffelgrenzeVon": {
+                    "title": "Staffelgrenzevon",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "einheitspreis",
+                "staffelgrenzeVon",
+                "staffelgrenzeBis"
+            ],
+            "title": "Preisstaffel",
+            "type": "object"
+        },
+        "Sigmoidparameter": {
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "properties": {
+                "A": {
+                    "title": "A",
+                    "type": "number"
+                },
+                "B": {
+                    "title": "B",
+                    "type": "number"
+                },
+                "C": {
+                    "title": "C",
+                    "type": "number"
+                },
+                "D": {
+                    "title": "D",
+                    "type": "number"
+                }
+            },
+            "required": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "title": "Sigmoidparameter",
+            "type": "object"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        },
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        },
+        "Zeitraum": {
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "properties": {
+                "dauer": {
+                    "title": "Dauer",
+                    "type": "number"
+                },
+                "einheit": {
+                    "$ref": "#/definitions/Zeiteinheit"
+                },
+                "enddatum": {
+                    "format": "date-time",
+                    "title": "Enddatum",
+                    "type": "string"
+                },
+                "endzeitpunkt": {
+                    "format": "date-time",
+                    "title": "Endzeitpunkt",
+                    "type": "string"
+                },
+                "startdatum": {
+                    "format": "date-time",
+                    "title": "Startdatum",
+                    "type": "string"
+                },
+                "startzeitpunkt": {
+                    "format": "date-time",
+                    "title": "Startzeitpunkt",
+                    "type": "string"
+                }
+            },
+            "title": "Zeitraum",
+            "type": "object"
+        }
+    },
+    "description": "Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,\ndie individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen wurden.\n\n.. graphviz:: /api/dots/bo4e/com/AufAbschlag.dot",
+    "properties": {
+        "aufAbschlagstyp": {
+            "$ref": "#/definitions/AufAbschlagstyp"
+        },
+        "aufAbschlagsziel": {
+            "$ref": "#/definitions/AufAbschlagsziel"
+        },
+        "beschreibung": {
+            "title": "Beschreibung",
+            "type": "string"
+        },
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
+        },
+        "einheit": {
+            "$ref": "#/definitions/Waehrungseinheit"
+        },
+        "gueltigkeitszeitraum": {
+            "$ref": "#/definitions/Zeitraum"
+        },
+        "staffeln": {
+            "items": {
+                "$ref": "#/definitions/Preisstaffel"
+            },
+            "title": "Staffeln",
+            "type": "array"
+        },
+        "website": {
+            "title": "Website",
+            "type": "string"
+        }
+    },
+    "required": [
+        "bezeichnung",
+        "staffeln"
+    ],
+    "title": "AufAbschlag",
+    "type": "object"
+}

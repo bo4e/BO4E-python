@@ -5,38 +5,27 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 
-import attrs
-from marshmallow import fields
-from marshmallow_enum import EnumField  # type:ignore[import]
-
-from bo4e.com.com import COM, COMSchema
+from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
 
-
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
+
+
 class Menge(COM):
     """
     Abbildung einer Menge mit Wert und Einheit.
 
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Menge.svg" type="image/svg+xml"></object>
+
     .. HINT::
-        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MengeSchema.json>`_
+        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_
 
     """
 
     # required attributes
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal = attrs.field(validator=attrs.validators.instance_of(Decimal))
+    wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Mengeneinheit = attrs.field(validator=attrs.validators.instance_of(Mengeneinheit))
-
-
-class MengeSchema(COMSchema):
-    """
-    Schema for de-/serialization of Menge.
-    """
-
-    class_name = Menge
-    # required attributes
-    wert = fields.Decimal(as_string=True)
-    einheit = EnumField(Mengeneinheit)
+    einheit: Mengeneinheit

@@ -1,0 +1,19 @@
+{
+    "description": "Informationen zum Marktgebiet im Gas.\n\n.. graphviz:: /api/dots/bo4e/com/MarktgebietInfo.dot",
+    "properties": {
+        "marktgebiet": {
+            "title": "Marktgebiet",
+            "type": "string"
+        },
+        "marktgebietcode": {
+            "title": "Marktgebietcode",
+            "type": "string"
+        }
+    },
+    "required": [
+        "marktgebiet",
+        "marktgebietcode"
+    ],
+    "title": "MarktgebietInfo",
+    "type": "object"
+}

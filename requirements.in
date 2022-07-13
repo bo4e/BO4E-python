@@ -1,5 +1,4 @@
-attrs
-marshmallow
-marshmallow-enum
 iso3166
+pydantic
+pyhumps
 stringcase

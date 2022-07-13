@@ -1,6 +1,9 @@
-import pytest  # type:ignore[import]
+from typing import Any, Dict
 
-from bo4e.com.ausschreibungslos import Ausschreibungslos, AusschreibungslosSchema
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
+
+from bo4e.com.ausschreibungslos import Ausschreibungslos
 from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte
@@ -42,8 +45,8 @@ class TestAusschreibungslos:
                 example_ausschreibungslos,
                 {
                     "lieferzeitraum": example_zeitraum_dict,
-                    "preismodell": "FESTPREIS",
-                    "energieart": "STROM",
+                    "preismodell": Preismodell.FESTPREIS,
+                    "energieart": Sparte.STROM,
                     "wiederholungsintervall": example_zeitraum_dict,
                     "bemerkung": "asd",
                     "bezeichnung": "bar",
@@ -53,9 +56,9 @@ class TestAusschreibungslos:
                     "wunschKuendingungsfrist": example_zeitraum_dict,
                     "wunschZahlungsziel": example_zeitraum_dict,
                     "gesamtMenge": example_menge_dict,
-                    "wunschVertragsform": "DIREKT",
+                    "wunschVertragsform": Vertragsform.DIREKT,
                     "wunschMaximalmenge": example_menge_dict,
-                    "wunschRechnungslegung": "MONATSRECHN",
+                    "wunschRechnungslegung": Rechnungslegung.MONATSRECHN,
                     "wunschMindestmenge": example_menge_dict,
                     "betreutDurch": "Max Mustermann",
                 },
@@ -63,14 +66,16 @@ class TestAusschreibungslos:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, ausschreibungslos, expected_json_dict):
+    def test_serialization_roundtrip(
+        self, ausschreibungslos: Ausschreibungslos, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Ausschreibungslos
         """
-        assert_serialization_roundtrip(ausschreibungslos, AusschreibungslosSchema(), expected_json_dict)
+        assert_serialization_roundtrip(ausschreibungslos, expected_json_dict)
 
-    def test_ausschreibungslos_lieferstellen_required(self):
-        with pytest.raises(ValueError) as excinfo:
+    def test_ausschreibungslos_lieferstellen_required(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
             _ = Ausschreibungslos(
                 losnummer="foo",
                 bezeichnung="bar",
@@ -86,9 +91,10 @@ class TestAusschreibungslos:
                 lieferstellen=[],  # the important line
             )
 
-        assert "List lieferstellen must not be empty." in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
+        assert "ensure this value has at least 1 item" in str(excinfo.value)
 
-    def test_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Ausschreibungslos()
-        assert "missing 10 required" in str(excinfo.value)
+    def test_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Ausschreibungslos()  # type: ignore[call-arg]
+        assert "10 validation errors" in str(excinfo.value)

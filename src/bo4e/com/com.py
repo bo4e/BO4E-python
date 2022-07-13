@@ -1,36 +1,41 @@
 """
 Contains base class for all components
 """
-from typing import Generic, Type, TypeVar
 
-import attrs
-from marshmallow import Schema, post_load
+from decimal import Decimal
+from typing import Type, TypeVar
+
+from humps.main import camelize
+
+# pylint: disable=no-name-in-module
+from pydantic import BaseModel
 
 
 # pylint: disable=too-few-public-methods
-@attrs.define(auto_attribs=True, kw_only=True)
-class COM:
+#
+class COM(BaseModel):
     """
     base class for all components
+
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/COM.svg" type="image/svg+xml"></object>
+
+    .. HINT::
+        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/COM.json>`_
+
     """
+
+    class Config:
+        """
+        basic configuration for pydantic's behaviour
+        """
+
+        alias_generator = camelize
+        allow_population_by_field_name = True
+        json_encoders = {Decimal: str}
 
 
 #: Any type derived from COM including those that do not directly inherit from COM
 TCom = TypeVar("TCom", bound=Type[COM])
 # todo: find out if this way of typing is correct
-
-
-class COMSchema(Schema, Generic[TCom]):
-    """
-    This is a base class.
-    All components objects schemata are inherited from this class.
-    """
-
-    #: class_name is needed to use the correct schema for deserialization
-    class_name: TCom
-
-    @post_load
-    # pylint:disable=unused-argument
-    def deserialize(self, data, **kwargs) -> TCom:
-        """Deserialize JSON to python object."""
-        return type(self).class_name(**data)  # type:ignore[return-value,call-arg]

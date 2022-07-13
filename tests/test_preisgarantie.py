@@ -1,8 +1,10 @@
 from datetime import datetime, timezone
+from typing import Any, Dict
 
 import pytest  # type:ignore[import]
+from pydantic import ValidationError
 
-from bo4e.com.preisgarantie import Preisgarantie, PreisgarantieSchema
+from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
@@ -26,10 +28,10 @@ class TestPreisgarantie:
                     "beschreibung": None,
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "zeitlicheGueltigkeit": {
-                        "startdatum": "2020-01-01T00:00:00+00:00",
+                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
                         "endzeitpunkt": None,
                         "einheit": None,
-                        "enddatum": "2020-04-01T00:00:00+00:00",
+                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
                     },
@@ -37,14 +39,16 @@ class TestPreisgarantie:
             ),
         ],
     )
-    def test_preisgarantie_required_attributes(self, preisgarantie, expected_json_dict):
+    def test_preisgarantie_required_attributes(
+        self, preisgarantie: Preisgarantie, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of Preisgarantie with minimal attributes.
         """
-        assert_serialization_roundtrip(preisgarantie, PreisgarantieSchema(), expected_json_dict)
+        assert_serialization_roundtrip(preisgarantie, expected_json_dict)
 
-    def test_preisgarantie_missing_required_attribute(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = Preisgarantie()
+    def test_preisgarantie_missing_required_attribute(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Preisgarantie()  # type: ignore[call-arg]
 
-        assert "missing 2 required" in str(excinfo.value)
+        assert "2 validation errors" in str(excinfo.value)

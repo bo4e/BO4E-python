@@ -1,6 +1,9 @@
-import pytest  # type:ignore[import]
+from typing import Any, Dict
 
-from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein, StandorteigenschaftenAllgemeinSchema
+import pytest  # type:ignore[import]
+from pydantic import ValidationError
+
+from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein
 from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
 
 example_standorteigenschaften_allgemein = StandorteigenschaftenAllgemein(
@@ -29,16 +32,14 @@ class TestStandorteigenschaftenAllgemein:
         [pytest.param(example_standorteigenschaften_allgemein, example_standorteigenschaften_allgemein_dict)],
     )
     def test_standorteigenschaftenallgemein_serialization_roundtrip(
-        self, standorteigenschaftenallgemein: StandorteigenschaftenAllgemein, expected_json_dict: dict
-    ):
+        self, standorteigenschaftenallgemein: StandorteigenschaftenAllgemein, expected_json_dict: Dict[str, Any]
+    ) -> None:
         """
         Test de-/serialisation of StandorteigenschaftenAllgemein with minimal attributes.
         """
-        assert_serialization_roundtrip(
-            standorteigenschaftenallgemein, StandorteigenschaftenAllgemeinSchema(), expected_json_dict
-        )
+        assert_serialization_roundtrip(standorteigenschaftenallgemein, expected_json_dict)
 
-    def test_standorteigenschaftenallgemein_missing_required_attributes(self):
-        with pytest.raises(TypeError) as excinfo:
-            _ = StandorteigenschaftenAllgemein()
-        assert "missing 7 required" in str(excinfo.value)
+    def test_standorteigenschaftenallgemein_missing_required_attributes(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = StandorteigenschaftenAllgemein()  # type: ignore[call-arg]
+        assert "7 validation errors" in str(excinfo.value)

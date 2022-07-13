@@ -1,0 +1,89 @@
+{
+    "definitions": {
+        "Themengebiet": {
+            "description": "Über dieses ENUM kann eine thematische Zuordnung, beispielsweise eines Ansprechpartners, vorgenommen werden.",
+            "enum": [
+                "ALLGEMEINER_INFORMATIONSAUSTAUSCH",
+                "AN_UND_ABMELDUNG",
+                "ANSPRECHPARTNER_ALLGEMEIN",
+                "ANSPRECHPARTNER_BDEW_DVGW",
+                "ANSPRECHPARTNER_IT_TECHNIK",
+                "BILANZIERUNG",
+                "BILANZKREISKOORDINATOR",
+                "BILANZKREISVERANTWORTLICHER",
+                "DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN",
+                "DEBITORENMANAGEMENT",
+                "DEMAND_SIDE_MANAGEMENT",
+                "EDI_VEREINBARUNG",
+                "EDIFACT",
+                "ENERGIEDATENMANAGEMENT",
+                "FAHRPLANMANAGEMENT",
+                "ALOCAT",
+                "APERAK",
+                "CONTRL",
+                "INVOIC",
+                "MSCONS",
+                "ORDERS",
+                "ORDERSP",
+                "REMADV",
+                "UTILMD",
+                "GABI",
+                "GELI",
+                "GERAETERUECKGABE",
+                "GERAETEWECHSEL",
+                "GPKE",
+                "INBETRIEBNAHME",
+                "KAPAZITAETSMANAGEMENT",
+                "KLAERFAELLE",
+                "LASTGAENGE_RLM",
+                "LIEFERANTENRAHMENVERTRAG",
+                "LIEFERANTENWECHSEL",
+                "MABIS",
+                "MAHNWESEN",
+                "MARKTGEBIETSVERANTWORTLICHER",
+                "MARKTKOMMUNIKATION",
+                "MEHR_MINDERMENGEN",
+                "MSB_MDL",
+                "NETZABRECHNUNG",
+                "NETZENTGELTE",
+                "NETZMANAGEMENT",
+                "RECHT",
+                "REGULIERUNGSMANAGEMENT",
+                "REKLAMATIONEN",
+                "SPERREN_ENTSPERREN_INKASSO",
+                "STAMMDATEN",
+                "STOERUNGSFAELLE",
+                "TECHNISCHE_FRAGEN",
+                "UMSTELLUNG_INVOIC",
+                "VERSCHLUESSELUNG_SIGNATUR",
+                "VERTRAGSMANAGEMENT",
+                "VERTRIEB",
+                "WIM",
+                "ZAEHLERSTAENDE_SLP",
+                "ZAHLUNGSVERKEHR",
+                "ZUORDNUNGSVEREINBARUNG"
+            ],
+            "title": "Themengebiet",
+            "type": "string"
+        }
+    },
+    "description": "Enthält die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zuständigkeiten.\n\n.. graphviz:: /api/dots/bo4e/com/Zustaendigkeit.dot",
+    "properties": {
+        "abteilung": {
+            "title": "Abteilung",
+            "type": "string"
+        },
+        "jobtitel": {
+            "title": "Jobtitel",
+            "type": "string"
+        },
+        "themengebiet": {
+            "$ref": "#/definitions/Themengebiet"
+        }
+    },
+    "required": [
+        "themengebiet"
+    ],
+    "title": "Zustaendigkeit",
+    "type": "object"
+}
