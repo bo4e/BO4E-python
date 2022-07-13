@@ -110,7 +110,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
 
     def add_extension(self, node1: str, node2: str) -> None:
         """
-        Adds an extension-relation: node1 ---|> node2. All fields of the superclass will be removed in node1 to improve
+        Adds an extension-relation: node1 🠒 node2. All fields of the superclass will be removed in node1 to improve
         clarity.
         """
         super().add_edge(node1, node2, type="extension")
