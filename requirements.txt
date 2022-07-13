@@ -8,7 +8,7 @@ attrs==21.4.0
     # via -r requirements.in
 iso3166==2.1.1
     # via -r requirements.in
-marshmallow==3.16.0
+marshmallow==3.17.0
     # via
     #   -r requirements.in
     #   marshmallow-enum
