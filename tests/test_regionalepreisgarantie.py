@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.kriteriumwert import KriteriumWert
@@ -11,7 +11,7 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_regionale_preisgarantie = RegionalePreisgarantie(
     preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,

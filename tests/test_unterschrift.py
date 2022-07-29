@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.unterschrift import Unterschrift

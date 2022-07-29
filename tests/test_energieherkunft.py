@@ -1,12 +1,12 @@
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.enum.erzeugungsart import Erzeugungsart
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 # this can be imported by other tests
 example_energieherkunft = Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(25.5))

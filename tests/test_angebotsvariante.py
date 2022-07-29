@@ -2,16 +2,16 @@ from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.angebotsvariante import Angebotsvariante
 from bo4e.enum.angebotsstatus import Angebotsstatus
 from bo4e.enum.mengeneinheit import Mengeneinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json  # type:ignore[import]
-from tests.test_betrag import example_betrag, example_betrag_json  # type:ignore[import]
-from tests.test_menge import example_menge  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json
+from tests.test_betrag import example_betrag, example_betrag_json
+from tests.test_menge import example_menge
 
 # can be imported by other tests
 example_angebotsvariante = Angebotsvariante(

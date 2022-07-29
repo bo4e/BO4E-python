@@ -11,9 +11,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Black Code Formatter
-        uses: lgeiger/black-action@v1.0.1
+        uses: psf/black@stable
         with:
-          args: ". --check"
+          options: "--check --verbose"
+          # without defining a version, we will use the latest version of black published on pypi
+          # source: https://black.readthedocs.io/en/stable/integrations/github_actions.html
+          # version: "22.6.0"
+
       - uses: isort/isort-action@master
         with:
           requirementsFiles: "requirements.txt"

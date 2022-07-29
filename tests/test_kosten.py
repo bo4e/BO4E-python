@@ -1,12 +1,12 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.kosten import Kosten
 from bo4e.com.kostenblock import Kostenblock
 from bo4e.enum.kostenklasse import Kostenklasse
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_betrag import example_betrag  # type:ignore[import]
-from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_betrag import example_betrag
+from tests.test_zeitraum import example_zeitraum
 
 example_kosten = Kosten(
     kostenklasse=Kostenklasse.FREMDKOSTEN,

@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.kriteriumwert import KriteriumWert
@@ -10,8 +10,8 @@ from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_sigmoidparameter import example_sigmoidparameter
 
 example_regionale_preisstaffel = RegionalePreisstaffel(
     einheitspreis=Decimal(40.0),

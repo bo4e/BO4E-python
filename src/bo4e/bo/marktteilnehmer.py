@@ -14,6 +14,7 @@ from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
+from bo4e.enum.sparte import Sparte
 
 
 class Marktteilnehmer(Geschaeftspartner):
@@ -37,6 +38,8 @@ class Marktteilnehmer(Geschaeftspartner):
     rollencodenummer: constr(strict=True, regex=r"^\d{13}$")  # type: ignore[valid-type]
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
+    #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
+    sparte: Sparte
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.

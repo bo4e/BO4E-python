@@ -1,4 +1,4 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.zeitintervall import Zeitintervall

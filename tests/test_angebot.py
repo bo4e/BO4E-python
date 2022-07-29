@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.angebot import Angebot
@@ -8,9 +8,9 @@ from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.sparte import Sparte
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_adresse import example_adresse  # type:ignore[import]
-from tests.test_angebotsvariante import example_angebotsvariante  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_adresse import example_adresse
+from tests.test_angebotsvariante import example_angebotsvariante
 
 
 class TestAngebot:

@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.regionaltarif import Regionaltarif
@@ -9,16 +9,16 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.tarifmerkmal import Tarifmerkmal
 from bo4e.enum.tariftyp import Tariftyp
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_energiemix import example_energiemix  # type:ignore[import]
-from tests.test_marktteilnehmer import example_marktteilnehmer  # type:ignore[import]
-from tests.test_regionalepreisgarantie import example_regionale_preisgarantie  # type:ignore[import]
-from tests.test_regionaleraufabschlag import example_regionaler_auf_abschlag  # type:ignore[import]
-from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition  # type:ignore[import]
-from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter  # type:ignore[import]
-from tests.test_tarifeinschraenkung import example_tarifeinschraenkung  # type:ignore[import]
-from tests.test_vertragskonditionen import example_vertragskonditionen  # type:ignore[import]
-from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_energiemix import example_energiemix
+from tests.test_marktteilnehmer import example_marktteilnehmer
+from tests.test_regionalepreisgarantie import example_regionale_preisgarantie
+from tests.test_regionaleraufabschlag import example_regionaler_auf_abschlag
+from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
+from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
+from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
+from tests.test_vertragskonditionen import example_vertragskonditionen
+from tests.test_zeitraum import example_zeitraum
 
 
 class TestRegionaltarif:

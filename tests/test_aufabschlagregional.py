@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
@@ -20,7 +20,7 @@ from bo4e.enum.erzeugungsart import Erzeugungsart
 from bo4e.enum.preisgarantietyp import Preisgarantietyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_aufabschlagregional = AufAbschlagRegional(
     bezeichnung="foo",

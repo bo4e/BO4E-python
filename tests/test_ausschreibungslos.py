@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.ausschreibungslos import Ausschreibungslos
@@ -8,13 +8,10 @@ from bo4e.enum.preismodell import Preismodell
 from bo4e.enum.rechnungslegung import Rechnungslegung
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsform import Vertragsform
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_ausschreibungsdetail import (  # type:ignore[import]
-    example_ausschreibungsdetail,
-    example_ausschreibungsdetail_dict,
-)
-from tests.test_menge import example_menge, example_menge_dict  # type:ignore[import]
-from tests.test_zeitraum import example_zeitraum, example_zeitraum_dict  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_ausschreibungsdetail import example_ausschreibungsdetail, example_ausschreibungsdetail_dict
+from tests.test_menge import example_menge, example_menge_dict
+from tests.test_zeitraum import example_zeitraum, example_zeitraum_dict
 
 example_ausschreibungslos = Ausschreibungslos(
     losnummer="foo",

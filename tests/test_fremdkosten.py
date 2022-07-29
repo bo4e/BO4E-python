@@ -1,11 +1,11 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.fremdkosten import Fremdkosten
 from bo4e.com.fremdkostenblock import Fremdkostenblock
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_betrag import example_betrag  # type:ignore[import]
-from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_betrag import example_betrag
+from tests.test_zeitraum import example_zeitraum
 
 
 class TestFremdkosten:

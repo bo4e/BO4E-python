@@ -2,7 +2,7 @@ import json
 from datetime import datetime
 from decimal import Decimal
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.messlokation import Messlokation

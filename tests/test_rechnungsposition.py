@@ -1,17 +1,17 @@
 from datetime import datetime, timezone
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_betrag import example_betrag  # type:ignore[import]
-from tests.test_menge import example_menge  # type:ignore[import]
-from tests.test_preis import example_preis  # type:ignore[import]
-from tests.test_steuerbetrag import example_steuerbetrag  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_betrag import example_betrag
+from tests.test_menge import example_menge
+from tests.test_preis import example_preis
+from tests.test_steuerbetrag import example_steuerbetrag
 
 
 class TestRechnungsposition:

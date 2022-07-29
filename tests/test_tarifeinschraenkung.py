@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 
 from bo4e.com.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
@@ -11,7 +11,7 @@ from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.voraussetzungen import Voraussetzungen
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_tarifeinschraenkung = Tarifeinschraenkung(
     zusatzprodukte=["foo", "bar"],

@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.ausschreibung import Ausschreibung
@@ -9,10 +9,10 @@ from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
 from bo4e.enum.ausschreibungstyp import Ausschreibungstyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_adresse import example_adresse  # type:ignore[import]
-from tests.test_ausschreibungslos import example_ausschreibungslos  # type:ignore[import]
-from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_adresse import example_adresse
+from tests.test_ausschreibungslos import example_ausschreibungslos
+from tests.test_zeitraum import example_zeitraum
 
 
 class TestAusschreibung:
