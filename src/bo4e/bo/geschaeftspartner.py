@@ -70,7 +70,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
     amtsgericht: Optional[str] = None
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: List[Kontaktart] = []
+    kontaktweg: Optional[List[Kontaktart]] = []
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
     umsatzsteuer_id: Optional[str] = None
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
