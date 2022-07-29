@@ -6,12 +6,14 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
+from bo4e.enum.sparte import Sparte
 
 example_marktteilnehmer = Marktteilnehmer(
     # required attributes of Marktteilnehmer only
     marktrolle=Marktrolle.DL,
     rollencodenummer="9903916000000",
     rollencodetyp=Rollencodetyp.BDEW,
+    sparte=Sparte.STROM,
     # required attributes inherited from Geschaeftspartner
     name1="Netze BW GmbH",
     gewerbekennzeichnung=True,
