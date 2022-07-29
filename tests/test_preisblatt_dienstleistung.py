@@ -1,4 +1,4 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung
@@ -6,11 +6,11 @@ from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_geraeteeigenschaften import example_geraeteeigenschaften  # type:ignore[import]
-from tests.test_marktteilnehmer import example_marktteilnehmer  # type:ignore[import]
-from tests.test_preisposition import example_preisposition  # type:ignore[import]
-from tests.test_zeitraum import example_zeitraum  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_geraeteeigenschaften import example_geraeteeigenschaften
+from tests.test_marktteilnehmer import example_marktteilnehmer
+from tests.test_preisposition import example_preisposition
+from tests.test_zeitraum import example_zeitraum
 
 
 class TestPreisblattDienstleistung:

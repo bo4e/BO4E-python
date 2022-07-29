@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from decimal import Decimal
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -19,11 +19,11 @@ from bo4e.enum.sparte import Sparte
 from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
 from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_betrag import example_betrag  # type:ignore[import]
-from tests.test_menge import example_menge  # type:ignore[import]
-from tests.test_preis import example_preis  # type:ignore[import]
-from tests.test_steuerbetrag import example_steuerbetrag  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_betrag import example_betrag
+from tests.test_menge import example_menge
+from tests.test_preis import example_preis
+from tests.test_steuerbetrag import example_steuerbetrag
 
 _rechnungsersteller = Geschaeftspartner(
     name1="Joachim",

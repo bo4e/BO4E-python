@@ -1,7 +1,7 @@
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.betrag import Betrag
@@ -12,8 +12,8 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_sigmoidparameter import example_sigmoidparameter
 
 
 class TestKostenblock:

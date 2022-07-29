@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.lastgang import LastgangKompakt
@@ -9,8 +9,8 @@ from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_tagesvektor import example_tagesvektor, example_tagesvektor_json  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_tagesvektor import example_tagesvektor, example_tagesvektor_json
 
 
 class TestLastgangKompakt:

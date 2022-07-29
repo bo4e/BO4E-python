@@ -1,6 +1,6 @@
 from decimal import Decimal
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.preisposition import Preisposition
@@ -13,8 +13,8 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.tarifzeit import Tarifzeit
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_preisstaffel import example_preisstaffel  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_preisstaffel import example_preisstaffel
 
 example_preisposition = Preisposition(
     berechnungsmethode=Kalkulationsmethode.AP_TRANSPORT_ODER_VERTEILNETZ,

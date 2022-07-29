@@ -1,14 +1,14 @@
 from decimal import Decimal
 
-import pytest  # type:ignore[import]
+import pytest
 
 from bo4e.com.fremdkostenposition import Fremdkostenposition
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.enum.messpreistyp import Messpreistyp
 from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_preis import example_preis  # type:ignore[import]
-from tests.test_tarifpreis import example_tarifpreis  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_preis import example_preis
+from tests.test_tarifpreis import example_tarifpreis
 
 example_tarifberechnungsparameter = Tarifberechnungsparameter(
     berechnungsmethode=Tarifkalkulationsmethode.ZONEN,

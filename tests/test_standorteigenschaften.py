@@ -1,11 +1,11 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.standorteigenschaften import Standorteigenschaften
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_standorteigenschaftenallgemein import example_standorteigenschaften_allgemein  # type:ignore[import]
-from tests.test_standorteigenschaftengas import example_standorteigenschaften_gas  # type:ignore[import]
-from tests.test_standorteigenschaftenstrom import example_standorteigenschaften_strom  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_standorteigenschaftenallgemein import example_standorteigenschaften_allgemein
+from tests.test_standorteigenschaftengas import example_standorteigenschaften_gas
+from tests.test_standorteigenschaftenstrom import example_standorteigenschaften_strom
 
 
 class TestStandorteigenschaften:

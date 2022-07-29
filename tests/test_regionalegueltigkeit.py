@@ -1,13 +1,13 @@
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.kriteriumwert import KriteriumWert
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestRegionaleGueltigkeit:

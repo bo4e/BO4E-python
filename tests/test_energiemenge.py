@@ -1,10 +1,10 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.energiemenge import Energiemenge
 from bo4e.enum.lokationstyp import Lokationstyp
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_verbrauch import example_verbrauch  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_verbrauch import example_verbrauch
 
 
 class TestEnergiemenge:

@@ -1,11 +1,11 @@
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestAufAbschlagstaffelProOrt:

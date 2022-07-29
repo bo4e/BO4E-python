@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.marktlokation import Marktlokation
@@ -22,7 +22,7 @@ from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_angebotsteil: Angebotsteil = Angebotsteil(
     positionen=[

@@ -1,4 +1,4 @@
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.zeitreihe import Zeitreihe
@@ -7,8 +7,8 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart
 from bo4e.enum.messgroesse import Messgroesse
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_zeitreihenwert import example_zeitreihenwert  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_zeitreihenwert import example_zeitreihenwert
 
 
 class TestZeitreihe:

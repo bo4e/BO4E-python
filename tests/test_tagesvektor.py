@@ -2,13 +2,13 @@ from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.tagesvektor import Tagesvektor
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
-from tests.test_sigmoidparameter import example_sigmoidparameter  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_sigmoidparameter import example_sigmoidparameter
 
 example_tagesvektor: Tagesvektor = Tagesvektor(
     tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),

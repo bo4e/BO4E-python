@@ -1,10 +1,10 @@
 from decimal import Decimal
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_tarifpreisstaffelproort = TarifpreisstaffelProOrt(
     arbeitspreis=Decimal(10),

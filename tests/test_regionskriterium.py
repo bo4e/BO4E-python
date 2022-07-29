@@ -1,12 +1,12 @@
 from typing import Any, Dict
 
-import pytest  # type:ignore[import]
+import pytest
 from pydantic import ValidationError
 
 from bo4e.com.regionskriterium import Regionskriterium
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
-from tests.serialization_helper import assert_serialization_roundtrip  # type:ignore[import]
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_regionskriterium = Regionskriterium(
     regionskriteriumtyp=Regionskriteriumtyp.REGELGEBIET_NAME,
