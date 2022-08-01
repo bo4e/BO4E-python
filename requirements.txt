@@ -10,7 +10,5 @@ pydantic==1.9.1
     # via -r requirements.in
 pyhumps==3.7.2
     # via -r requirements.in
-stringcase==1.2.0
-    # via -r requirements.in
 typing-extensions==4.2.0
     # via pydantic
