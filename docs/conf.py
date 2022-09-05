@@ -297,6 +297,7 @@ intersphinx_mapping = {
 # See docs/uml.py for more details.
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
+print(_network)
 write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
 print("Created uml files.")
 
