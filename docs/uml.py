@@ -117,8 +117,10 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         adding superclasses to the network.
         """
         super().add_node(
-            node, cls=cls, fields=cls.__fields__.copy() if hasattr(cls, "__fields__") else {}
-        )  # type:ignore[attr-defined]
+            node,
+            cls=cls,
+            fields=cls.__fields__.copy() if hasattr(cls, "__fields__") else {},  # type:ignore[attr-defined]
+        )
 
     def add_extension(self, node1: str, node2: str) -> None:
         """
