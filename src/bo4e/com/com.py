@@ -36,6 +36,7 @@ class COM(BaseModel):
         json_encoders = {Decimal: str}
 
 
+# pylint: disable=invalid-name
 #: Any type derived from COM including those that do not directly inherit from COM
 TCom = TypeVar("TCom", bound=Type[COM])
 # todo: find out if this way of typing is correct
