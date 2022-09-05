@@ -31,15 +31,25 @@ from pydantic.fields import (
 from pydantic.main import ModelMetaclass
 from pydantic.typing import display_as_type
 
+
+# pylint: disable=too-few-public-methods
+class _Package:
+    """
+    Encapsulates scope and color options into a class to make linter and type checker happier
+    """
+
+    scope: List[str] | None
+    color: str | None
+
+    def __init__(self, *, scope: List[str] = None, color: str = None):
+        self.scope = scope
+        self.color = color
+
+
 pkgs = {
-    "bo": {
-        "scope": ["bo", "com"],
-        "color": "#B6D7A8",
-    },
-    "com": {
-        "scope": ["bo", "com"],
-        "color": "#E0A86C",
-    },
+    "bo": _Package(scope=["bo", "com", "enum"], color="#B6D7A8"),
+    "com": _Package(scope=["bo", "com", "enum"], color="#E0A86C"),
+    "enum": _Package(color="#d1c358"),
 }
 """
 UML-files will be created only for classes in the packages indicated by the keys of this dict. Additionally for every
@@ -49,7 +59,7 @@ This is for example useful if you want to include bo4e.enum classes in the UMLs 
 them.
 """
 
-pkgs_all = set(sum([pkg["scope"] for pkg in pkgs.values()], []))  # type:ignore[type-var]
+pkgs_all = set(sum([pkg.scope if pkg.scope is not None else [] for pkg in pkgs.values()], []))
 """
 Contains all packages possibly included inside the network. They are determined by all scopes in `pkgs`.
 """
@@ -106,7 +116,11 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         Adds a class to the UML-Network. It copies the __fields__ dictionary because it will possibly be mutated when
         adding superclasses to the network.
         """
-        super().add_node(node, cls=cls, fields=cls.__fields__.copy())  # type:ignore[attr-defined]
+        super().add_node(
+            node,
+            cls=cls,
+            fields=cls.__fields__.copy() if hasattr(cls, "__fields__") else {},  # type:ignore[attr-defined]
+        )
 
     def add_extension(self, node1: str, node2: str) -> None:
         """
@@ -114,7 +128,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         clarity.
         """
         super().add_edge(node1, node2, type="extension")
-        list(map(self.nodes[node1]["fields"].__delitem__, self.nodes[node2]["cls"].__fields__.keys()))
+        list(map(self.nodes[node1]["fields"].__delitem__, self.nodes[node2]["fields"].keys()))
 
     # pylint: disable=too-many-arguments
     def add_association(
@@ -342,10 +356,10 @@ class PlantUMLNetwork(_UMLNetworkABC):
         #    to avoid empty package boxes in the resulting uml-graphs.
 
         # ------ initialize `namespaces` -------------------------------------------------------------------------------
-        for _pkg, value in pkgs.items():
+        for _pkg, pkg_options in pkgs.items():
             namespaces[_pkg] = {
                 "str": f'namespace "[[{LINK_URI_BASE}/api/bo4e.{_pkg}.html bo4e.{_pkg}'
-                f']]" as bo4e.{_pkg} {value["color"]} ' + "{\n",
+                f']]" as bo4e.{_pkg} {pkg_options.color if pkg_options.color is not None else ""} ' + "{\n",
                 "empty": True,
             }
         # ------ build the content strings for each node inside this network -------------------------------------------
@@ -383,7 +397,7 @@ class PlantUMLNetwork(_UMLNetworkABC):
 
 def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str], output_dir: Path) -> List[Path]:
     """
-    Creates an UML graph for every class listed in `namespaces_to_parse` into `[output_dir]/uml/`.
+    Creates an UML graph for every class listed in `namespaces_to_parse` into `output_dir`.
     For each class a separate uml file will be generated. They include this class and its neighbors.
     Additionally, referenced classes will be included only if `regex_incl_network` matches but explicitly excluded if
     `regex_excl_network` matches the namespace of the respective class (e.g. `bo4e.bo.angebot.Angebot`).
@@ -394,10 +408,12 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
     path_list: List[Path] = []
     for namespace_to_parse in namespaces_to_parse:
         spl = namespace_to_parse.split(".")
+        if pkgs[spl[1]].scope is None:
+            raise RuntimeError(f"pkgs[{spl[1]}].scope shouldn't be None")
         file_path = output_dir / "/".join(spl[0:-2])
         file_name = uml_network.get_file_name(root_node=namespace_to_parse)
         uml_subgraph = nx.ego_graph(uml_network, namespace_to_parse, radius=1, undirected=False)
-        regex_scope = re.compile(rf'bo4e\.({"|".join(pkgs[spl[1]]["scope"])})\.')
+        regex_scope = re.compile(rf'bo4e\.({"|".join(pkgs[spl[1]].scope)})\.')  # type:ignore[arg-type]
         uml_network_scope = cast(
             _UMLNetworkABC,
             # pylint: disable=cell-var-from-loop
@@ -425,7 +441,9 @@ def build_network(module_dir: Path, parser: Type[_UMLNetworkABC]) -> Tuple[_UMLN
     """
     uml_network = parser()
     namespaces_to_parse: List[str] = []
-    for pkg in pkgs:
+    for pkg, pkg_options in pkgs.items():
+        if pkg_options.scope is None:
+            continue
         modls = [name for _, name, _ in pkgutil.iter_modules([str(module_dir / pkg)])]
         for modl_name in modls:
             modl_namespace = f"bo4e.{pkg}.{modl_name}"
@@ -505,7 +523,9 @@ def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
         for file in files:
             with open(os.path.join(root, file), "r", encoding="utf-8") as uml_file:
                 answer = requests.post(
-                    url, json={"diagram_source": uml_file.read(), "diagram_type": "plantuml", "output_format": "svg"}
+                    url,
+                    json={"diagram_source": uml_file.read(), "diagram_type": "plantuml", "output_format": "svg"},
+                    timeout=5,
                 )
                 subdir = root[len(str(input_dir)) + 1 :]
                 os.makedirs(output_dir / subdir, exist_ok=True)
