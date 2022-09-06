@@ -109,7 +109,7 @@ class Marktlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Optional[Katasteradresse] = None
+    katasterinformation: Optional[Katasteradresse] = None  # type: ignore[valid-type]
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
