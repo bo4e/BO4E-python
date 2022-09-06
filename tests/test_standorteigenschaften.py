@@ -26,4 +26,4 @@ class TestStandorteigenschaften:
         with pytest.raises(ValidationError) as excinfo:
             _ = Standorteigenschaften()  # type: ignore[call-arg]
 
-        assert "1 validation errors" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
