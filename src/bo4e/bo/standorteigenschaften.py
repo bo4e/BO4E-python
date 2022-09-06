@@ -31,8 +31,6 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
-    #: Allgemeine Eigenschaften
-    eigenschaften_allgemein: StandorteigenschaftenAllgemein
     #: Eigenschaften zur Sparte Strom
     eigenschaften_strom: conlist(StandorteigenschaftenStrom, min_items=1)  # type: ignore[valid-type]
 
