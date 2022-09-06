@@ -7,6 +7,7 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import Any, Dict, Optional
 
+# pylint: disable=no-name-in-module
 from pydantic import conlist, validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
