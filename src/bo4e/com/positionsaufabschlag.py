@@ -5,10 +5,10 @@ from decimal import Decimal
 from typing import Optional
 
 from bo4e.com.com import COM
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 # pylint: disable=too-few-public-methods
-from src.bo4e.enum.aufabschlagstyp import AufAbschlagstyp
+from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
+from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
 class PositionsAufAbschlag(COM):
