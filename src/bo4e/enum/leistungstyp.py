@@ -44,3 +44,4 @@ class Leistungstyp(StrEnum):
     NETZPREIS = "NETZPREIS"  #: Netzpreis
     MESSPREIS = "MESSPREIS"  #: Messpreis
     SONSTIGER_PREIS = "SONSTIGER_PREIS"  #: Sonstiger_Preis
+    DIENSTLEISTUNG = "DIENSTLEISTUNG"  #: Dienstleistung
