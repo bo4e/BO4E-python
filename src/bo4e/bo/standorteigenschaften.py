@@ -10,7 +10,6 @@ from typing import Optional
 from pydantic import conlist
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.standorteigenschaftenallgemein import StandorteigenschaftenAllgemein
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
 from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from bo4e.enum.botyp import BoTyp
