@@ -79,7 +79,7 @@ class Rechnungsposition(COM):
     teilrabatt_netto: Optional[Betrag] = None
 
     #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
-    artikel_id: Optional[ArtikelId] = None
+    artikel_id: Optional[str] = None
 
     @staticmethod
     def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
