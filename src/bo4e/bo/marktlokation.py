@@ -3,7 +3,6 @@ Contains Marktlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 
-
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import Any, Dict, Optional
 
@@ -109,13 +108,14 @@ class Marktlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Optional[Katasteradresse] = None  # type: ignore[valid-type]
+    katasterinformation: Optional[Katasteradresse] = None
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
 
-    kundengruppen: conlist(Kundentyp, min_items=0) = None  #: Kundengruppen der Marktlokation
+    kundengruppen: conlist(Kundentyp, min_items=0) = None  # type: ignore[valid-type]
+    #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument
     @validator("katasterinformation", always=True)
