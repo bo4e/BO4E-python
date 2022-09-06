@@ -150,6 +150,7 @@ class TestAngebotsteil:
                             "gebietstyp": None,
                             "gasqualitaet": None,
                             "zugehoerigeMesslokation": None,
+                            "kundengruppen": None,
                             "externeReferenzen": [],
                             "boTyp": BoTyp.MARKTLOKATION,
                         }

@@ -7,7 +7,7 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import Any, Dict, Optional
 
-from pydantic import validator
+from pydantic import conlist, validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -20,6 +20,7 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.gasqualitaet import Gasqualitaet
 from bo4e.enum.gebiettyp import Gebiettyp
+from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
@@ -113,7 +114,7 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    # todo: add kundengruppe
+    kundengruppen: conlist(Kundentyp, min_items=0) = None  #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument
     @validator("katasterinformation", always=True)

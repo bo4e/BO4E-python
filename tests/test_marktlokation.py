@@ -14,6 +14,7 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 
@@ -81,6 +82,7 @@ class TestMaLo:
             unterbrechbar=True,  # optional attribute
             netzebene=Netzebene.NSP,
             endkunde=gp,
+            kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
