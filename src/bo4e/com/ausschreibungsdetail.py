@@ -28,13 +28,13 @@ class Ausschreibungsdetail(COM):
 
     # required attributes
     #: Identifikation einer ausgeschriebenen Marktlokation
-    lokations_id: str
+    marktlokations_id: str
     #: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung
     netzebene_lieferung: str
     #: In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung
     netzebene_messung: str
     #: Die Adresse an der die Marktlokation sich befindet
-    lokationsadresse: Adresse
+    marktlokationsadresse: Adresse
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
     lieferzeitraum: Zeitraum
 
@@ -46,7 +46,7 @@ class Ausschreibungsdetail(COM):
     #: Die Bezeichnung des Zählers an der Marktlokation
     zaehlernummer: Optional[str] = None
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
-    lokationsbezeichnung: Optional[str] = None
+    marktlokationsbezeichnung: Optional[str] = None
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
     zaehlertechnik: Optional[Zaehlertyp] = None
