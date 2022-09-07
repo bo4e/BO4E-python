@@ -2,11 +2,13 @@
 Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 # pylint: disable=too-few-public-methods
+from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
+from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
 class PositionsAufAbschlag(COM):
@@ -29,9 +31,9 @@ class PositionsAufAbschlag(COM):
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: str
     #: Beschreibung zum Auf-/Abschlag
-    beschreibung: str
+    beschreibung: Optional[str] = None
     #: Typ des AufAbschlages
-    auf_abschlagstyp: str
+    auf_abschlagstyp: AufAbschlagstyp
     #: Höhe des Auf-/Abschlages
     auf_abschlagswert: Decimal
     #: Einheit, in der der Auf-/Abschlag angegeben ist (z.B. ct/kWh).
