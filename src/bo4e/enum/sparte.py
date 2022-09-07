@@ -14,3 +14,4 @@ class Sparte(StrEnum):
     NAHWAERME = "NAHWAERME"
     WASSER = "WASSER"
     ABWASSER = "ABWASSER"
+    STROM_UND_GAS = "STROM_UND_GAS"
