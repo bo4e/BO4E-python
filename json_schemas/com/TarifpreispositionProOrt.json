@@ -1,7 +1,7 @@
 {
     "definitions": {
         "TarifpreisstaffelProOrt": {
-            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/TarifpreisstaffelProOrt.dot",
+            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisstaffelProOrt.json>`_",
             "properties": {
                 "arbeitspreis": {
                     "title": "Arbeitspreis",
@@ -35,7 +35,7 @@
             "type": "object"
         }
     },
-    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden\n\n.. graphviz:: /api/dots/bo4e/com/TarifpreispositionProOrt.dot",
+    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreispositionProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreispositionProOrt.json>`_",
     "properties": {
         "netznr": {
             "title": "Netznr",

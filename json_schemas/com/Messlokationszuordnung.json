@@ -12,7 +12,7 @@
             "type": "string"
         }
     },
-    "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. graphviz:: /api/dots/bo4e/com/Messlokationszuordnung.dot",
+    "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
     "properties": {
         "arithmetik": {
             "$ref": "#/definitions/ArithmetischeOperation"

@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. graphviz:: /api/dots/bo4e/com/Adresse.dot",
+            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
                 "adresszusatz": {
                     "title": "Adresszusatz",
@@ -132,7 +132,7 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -176,7 +176,7 @@
             "type": "string"
         },
         "Geokoordinaten": {
-            "description": "This component provides the geo-coordinates for a location.\n\n.. graphviz:: /api/dots/bo4e/com/Geokoordinaten.dot",
+            "description": "This component provides the geo-coordinates for a location.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geokoordinaten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geokoordinaten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geokoordinaten.json>`_",
             "properties": {
                 "breitengrad": {
                     "title": "Breitengrad",
@@ -195,7 +195,7 @@
             "type": "object"
         },
         "Geschaeftspartner": {
-            "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. graphviz:: /api/dots/bo4e/bo/Geschaeftspartner.dot",
+            "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
             "properties": {
                 "amtsgericht": {
                     "title": "Amtsgericht",
@@ -299,7 +299,7 @@
             "type": "string"
         },
         "Katasteradresse": {
-            "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. graphviz:: /api/dots/bo4e/com/Katasteradresse.dot",
+            "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_",
             "properties": {
                 "flurstueck": {
                     "title": "Flurstueck",
@@ -327,6 +327,28 @@
                 "SMS"
             ],
             "title": "Kontaktart",
+            "type": "string"
+        },
+        "Kundentyp": {
+            "description": "Auflistung der Typen von Endkunden. Daraus kann das Verbrauchsprofil abgeleitet werden.",
+            "enum": [
+                "GEWERBE",
+                "PRIVAT",
+                "LANDWIRT",
+                "SONSTIGE",
+                "HAUSHALT",
+                "DIREKTHEIZUNG",
+                "GEMEINSCHAFT_MFH",
+                "KIRCHE",
+                "KWK",
+                "LADESAEULE",
+                "BELEUCHTUNG_OEFFENTLICH",
+                "BELEUCHTUNG_STRASSE",
+                "SPEICHERHEIZUNG",
+                "UNTERBR_EINRICHTUNG",
+                "WAERMEPUMPE"
+            ],
+            "title": "Kundentyp",
             "type": "string"
         },
         "Landescode": {
@@ -586,7 +608,7 @@
             "title": "Landescode"
         },
         "Messlokationszuordnung": {
-            "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. graphviz:: /api/dots/bo4e/com/Messlokationszuordnung.dot",
+            "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
             "properties": {
                 "arithmetik": {
                     "$ref": "#/definitions/ArithmetischeOperation"
@@ -638,7 +660,8 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
@@ -656,7 +679,7 @@
             "type": "string"
         }
     },
-    "description": "Object containing information about a Marktlokation\n\n.. graphviz:: /api/dots/bo4e/bo/Marktlokation.dot",
+    "description": "Object containing information about a Marktlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Marktlokation.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_",
     "properties": {
         "bilanzierungsgebiet": {
             "title": "Bilanzierungsgebiet",
@@ -702,6 +725,13 @@
         },
         "katasterinformation": {
             "$ref": "#/definitions/Katasteradresse"
+        },
+        "kundengruppen": {
+            "items": {
+                "$ref": "#/definitions/Kundentyp"
+            },
+            "minItems": 0,
+            "type": "array"
         },
         "lokationsadresse": {
             "$ref": "#/definitions/Adresse"

@@ -62,7 +62,7 @@
             "type": "string"
         },
         "Zeitreihenwertkompakt": {
-            "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. graphviz:: /api/dots/bo4e/com/Zeitreihenwertkompakt.dot",
+            "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_",
             "properties": {
                 "status": {
                     "$ref": "#/definitions/Messwertstatus"
@@ -82,7 +82,7 @@
             "type": "object"
         }
     },
-    "description": "Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters\n\n.. graphviz:: /api/dots/bo4e/com/Tagesvektor.dot",
+    "description": "Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_",
     "properties": {
         "tag": {
             "format": "date-time",

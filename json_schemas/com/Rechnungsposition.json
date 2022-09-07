@@ -1,20 +1,5 @@
 {
     "definitions": {
-        "ArtikelId": {
-            "description": "Liste von Artikel-IDs, z.B. für standardisierte vom BDEW herausgegebene Artikel,\ndie im Strommarkt die BDEW-Artikelnummer ablösen",
-            "enum": [
-                "2-01-7-001",
-                "2-01-7-002",
-                "2-01-7-003",
-                "2-01-7-004",
-                "2-01-7-005",
-                "2-01-7-006",
-                "2-02-0-001",
-                "2-02-0-002"
-            ],
-            "title": "ArtikelId",
-            "type": "string"
-        },
         "BDEWArtikelnummer": {
             "description": "BDEW Artikelnummern",
             "enum": [
@@ -69,7 +54,7 @@
             "type": "string"
         },
         "Betrag": {
-            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. graphviz:: /api/dots/bo4e/com/Betrag.dot",
+            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_",
             "properties": {
                 "waehrung": {
                     "$ref": "#/definitions/Waehrungscode"
@@ -87,7 +72,7 @@
             "type": "object"
         },
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
                 "einheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -126,7 +111,7 @@
             "type": "string"
         },
         "Preis": {
-            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
             "properties": {
                 "bezugswert": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -160,7 +145,7 @@
             "type": "string"
         },
         "Steuerbetrag": {
-            "description": "Abbildung eines Steuerbetrages.\n\n.. graphviz:: /api/dots/bo4e/com/Steuerbetrag.dot",
+            "description": "Abbildung eines Steuerbetrages.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_",
             "properties": {
                 "basiswert": {
                     "title": "Basiswert",
@@ -191,6 +176,7 @@
             "enum": [
                 "UST_0",
                 "UST_19",
+                "UST_16",
                 "UST_7",
                 "VST_0",
                 "VST_19",
@@ -416,10 +402,11 @@
             "type": "string"
         }
     },
-    "description": "Über Rechnungspositionen werden Rechnungen strukturiert.\nIn einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.\n\n.. graphviz:: /api/dots/bo4e/com/Rechnungsposition.dot",
+    "description": "Über Rechnungspositionen werden Rechnungen strukturiert.\nIn einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Rechnungsposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_",
     "properties": {
         "artikelId": {
-            "$ref": "#/definitions/ArtikelId"
+            "title": "Artikelid",
+            "type": "string"
         },
         "artikelnummer": {
             "$ref": "#/definitions/BDEWArtikelnummer"

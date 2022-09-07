@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Betrag": {
-            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. graphviz:: /api/dots/bo4e/com/Betrag.dot",
+            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_",
             "properties": {
                 "waehrung": {
                     "$ref": "#/definitions/Waehrungscode"
@@ -59,7 +59,7 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -78,7 +78,7 @@
             "type": "object"
         },
         "Fremdkostenblock": {
-            "description": "Komponente zur Abbildung eines Kostenblocks in den Fremdkosten\n\n.. graphviz:: /api/dots/bo4e/com/Fremdkostenblock.dot",
+            "description": "Komponente zur Abbildung eines Kostenblocks in den Fremdkosten\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Fremdkostenblock.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenblock.json>`_",
             "properties": {
                 "kostenblockbezeichnung": {
                     "title": "Kostenblockbezeichnung",
@@ -102,7 +102,7 @@
             "type": "object"
         },
         "Fremdkostenposition": {
-            "description": "Eine Kostenposition im Bereich der Fremdkosten\n\n.. graphviz:: /api/dots/bo4e/com/Fremdkostenposition.dot",
+            "description": "Eine Kostenposition im Bereich der Fremdkosten\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Fremdkostenposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenposition.json>`_",
             "properties": {
                 "artikelbezeichnung": {
                     "title": "Artikelbezeichnung",
@@ -165,7 +165,7 @@
             "type": "object"
         },
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
                 "einheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -204,7 +204,7 @@
             "type": "string"
         },
         "Preis": {
-            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
             "properties": {
                 "bezugswert": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -453,7 +453,7 @@
             "type": "string"
         },
         "Zeitraum": {
-            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
                 "dauer": {
                     "title": "Dauer",
@@ -487,7 +487,7 @@
             "type": "object"
         }
     },
-    "description": "Mit diesem BO werden die Fremdkosten, beispielsweise für eine Angebotserstellung oder eine Rechnungsprüfung,\nübertragen.\nDie Fremdkosten enthalten dabei alle Kostenblöcke, die von anderen Marktteilnehmern oder Instanzen erhoben werden.\n\n.. graphviz:: /api/dots/bo4e/bo/Fremdkosten.dot",
+    "description": "Mit diesem BO werden die Fremdkosten, beispielsweise für eine Angebotserstellung oder eine Rechnungsprüfung,\nübertragen.\nDie Fremdkosten enthalten dabei alle Kostenblöcke, die von anderen Marktteilnehmern oder Instanzen erhoben werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Fremdkosten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Fremdkosten.json>`_",
     "properties": {
         "boTyp": {
             "allOf": [

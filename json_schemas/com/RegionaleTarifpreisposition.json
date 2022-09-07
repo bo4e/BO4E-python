@@ -11,7 +11,7 @@
             "type": "string"
         },
         "KriteriumWert": {
-            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. graphviz:: /api/dots/bo4e/com/KriteriumWert.dot",
+            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
             "properties": {
                 "kriterium": {
                     "$ref": "#/definitions/Tarifregionskriterium"
@@ -67,7 +67,7 @@
             "type": "string"
         },
         "RegionaleGueltigkeit": {
-            "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleGueltigkeit.dot",
+            "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_",
             "properties": {
                 "gueltigkeitstyp": {
                     "$ref": "#/definitions/Gueltigkeitstyp"
@@ -89,7 +89,7 @@
             "type": "object"
         },
         "RegionalePreisstaffel": {
-            "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. graphviz:: /api/dots/bo4e/com/RegionalePreisstaffel.dot",
+            "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_",
             "properties": {
                 "einheitspreis": {
                     "title": "Einheitspreis",
@@ -120,7 +120,7 @@
             "type": "object"
         },
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
             "properties": {
                 "A": {
                     "title": "A",
@@ -170,7 +170,7 @@
             "type": "string"
         }
     },
-    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet\nwerden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleTarifpreisposition.dot",
+    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet\nwerden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleTarifpreisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreisposition.json>`_",
     "properties": {
         "bezugseinheit": {
             "$ref": "#/definitions/Mengeneinheit"

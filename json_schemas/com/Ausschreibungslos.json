@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. graphviz:: /api/dots/bo4e/com/Adresse.dot",
+            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
                 "adresszusatz": {
                     "title": "Adresszusatz",
@@ -48,7 +48,7 @@
             "type": "object"
         },
         "Ausschreibungsdetail": {
-            "description": "Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines\nAusschreibungsloses abzubilden.\n\n.. graphviz:: /api/dots/bo4e/com/Ausschreibungsdetail.dot",
+            "description": "Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines\nAusschreibungsloses abzubilden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Ausschreibungsdetail.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungsdetail.json>`_",
             "properties": {
                 "kunde": {
                     "title": "Kunde",
@@ -61,15 +61,15 @@
                 "lieferzeitraum": {
                     "$ref": "#/definitions/Zeitraum"
                 },
-                "lokationsId": {
-                    "title": "Lokationsid",
+                "marktlokationsId": {
+                    "title": "Marktlokationsid",
                     "type": "string"
                 },
-                "lokationsadresse": {
+                "marktlokationsadresse": {
                     "$ref": "#/definitions/Adresse"
                 },
-                "lokationsbezeichnung": {
-                    "title": "Lokationsbezeichnung",
+                "marktlokationsbezeichnung": {
+                    "title": "Marktlokationsbezeichnung",
                     "type": "string"
                 },
                 "netzbetreiber": {
@@ -105,10 +105,10 @@
                 }
             },
             "required": [
-                "lokationsId",
+                "marktlokationsId",
                 "netzebeneLieferung",
                 "netzebeneMessung",
-                "lokationsadresse",
+                "marktlokationsadresse",
                 "lieferzeitraum"
             ],
             "title": "Ausschreibungsdetail",
@@ -371,7 +371,7 @@
             "title": "Landescode"
         },
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
                 "einheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -438,7 +438,8 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
@@ -487,7 +488,7 @@
             "type": "string"
         },
         "Zeitraum": {
-            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
                 "dauer": {
                     "title": "Dauer",
@@ -521,7 +522,7 @@
             "type": "object"
         }
     },
-    "description": "Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung\n\n.. graphviz:: /api/dots/bo4e/com/Ausschreibungslos.dot",
+    "description": "Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Ausschreibungslos.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungslos.json>`_",
     "properties": {
         "anzahlLieferstellen": {
             "title": "Anzahllieferstellen",

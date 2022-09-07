@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Geraeteeigenschaften": {
-            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. graphviz:: /api/dots/bo4e/com/Geraeteeigenschaften.dot",
+            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_",
             "properties": {
                 "geraetemerkmal": {
                     "$ref": "#/definitions/Geraetemerkmal"
@@ -107,13 +107,14 @@
                 "PREPAYMENTZAEHLER",
                 "EDL_21",
                 "96_H_ZAEHLER",
-                "EDL_40_ZAEHLERAUFSATZ"
+                "EDL_40_ZAEHLERAUFSATZ",
+                "EDL_40"
             ],
             "title": "Geraetetyp",
             "type": "string"
         }
     },
-    "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. graphviz:: /api/dots/bo4e/com/Geraet.dot",
+    "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_",
     "properties": {
         "geraeteeigenschaften": {
             "$ref": "#/definitions/Geraeteeigenschaften"

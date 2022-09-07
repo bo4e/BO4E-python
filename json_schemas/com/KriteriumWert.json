@@ -13,7 +13,7 @@
             "type": "string"
         }
     },
-    "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. graphviz:: /api/dots/bo4e/com/KriteriumWert.dot",
+    "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
     "properties": {
         "kriterium": {
             "$ref": "#/definitions/Tarifregionskriterium"

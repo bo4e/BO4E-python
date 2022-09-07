@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
             "properties": {
                 "A": {
                     "title": "A",
@@ -30,7 +30,7 @@
             "type": "object"
         }
     },
-    "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+    "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
     "properties": {
         "einheitspreis": {
             "title": "Einheitspreis",

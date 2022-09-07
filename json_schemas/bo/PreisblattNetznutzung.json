@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. graphviz:: /api/dots/bo4e/com/Adresse.dot",
+            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
                 "adresszusatz": {
                     "title": "Adresszusatz",
@@ -57,21 +57,6 @@
                 "INDIVIDUELL"
             ],
             "title": "Anrede",
-            "type": "string"
-        },
-        "ArtikelId": {
-            "description": "Liste von Artikel-IDs, z.B. für standardisierte vom BDEW herausgegebene Artikel,\ndie im Strommarkt die BDEW-Artikelnummer ablösen",
-            "enum": [
-                "2-01-7-001",
-                "2-01-7-002",
-                "2-01-7-003",
-                "2-01-7-004",
-                "2-01-7-005",
-                "2-01-7-006",
-                "2-02-0-001",
-                "2-02-0-002"
-            ],
-            "title": "ArtikelId",
             "type": "string"
         },
         "BDEWArtikelnummer": {
@@ -199,7 +184,7 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -595,7 +580,8 @@
                 "ENERGIESTEUER",
                 "NETZPREIS",
                 "MESSPREIS",
-                "SONSTIGER_PREIS"
+                "SONSTIGER_PREIS",
+                "DIENSTLEISTUNG"
             ],
             "title": "Leistungstyp",
             "type": "string"
@@ -622,7 +608,7 @@
             "type": "string"
         },
         "Marktteilnehmer": {
-            "description": "Objekt zur Aufnahme der Information zu einem Marktteilnehmer\n\n.. graphviz:: /api/dots/bo4e/bo/Marktteilnehmer.dot",
+            "description": "Objekt zur Aufnahme der Information zu einem Marktteilnehmer\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Marktteilnehmer.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktteilnehmer.json>`_",
             "properties": {
                 "amtsgericht": {
                     "title": "Amtsgericht",
@@ -706,6 +692,9 @@
                 "rollencodetyp": {
                     "$ref": "#/definitions/Rollencodetyp"
                 },
+                "sparte": {
+                    "$ref": "#/definitions/Sparte"
+                },
                 "umsatzsteuerId": {
                     "title": "Umsatzsteuerid",
                     "type": "string"
@@ -726,7 +715,8 @@
                 "geschaeftspartnerrolle",
                 "marktrolle",
                 "rollencodenummer",
-                "rollencodetyp"
+                "rollencodetyp",
+                "sparte"
             ],
             "title": "Marktteilnehmer",
             "type": "object"
@@ -770,11 +760,8 @@
             "type": "string"
         },
         "Preisposition": {
-            "description": "Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. graphviz:: /api/dots/bo4e/com/Preisposition.dot",
+            "description": "Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_",
             "properties": {
-                "artikelId": {
-                    "$ref": "#/definitions/ArtikelId"
-                },
                 "bdewArtikelnummer": {
                     "$ref": "#/definitions/BDEWArtikelnummer"
                 },
@@ -791,6 +778,10 @@
                 "freimengeLeistungsfaktor": {
                     "title": "Freimengeleistungsfaktor",
                     "type": "number"
+                },
+                "gruppenartikelId": {
+                    "title": "Gruppenartikelid",
+                    "type": "string"
                 },
                 "leistungsbezeichnung": {
                     "title": "Leistungsbezeichnung",
@@ -832,7 +823,7 @@
             "type": "object"
         },
         "Preisstaffel": {
-            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
             "properties": {
                 "einheitspreis": {
                     "title": "Einheitspreis",
@@ -878,7 +869,7 @@
             "type": "string"
         },
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
             "properties": {
                 "A": {
                     "title": "A",
@@ -914,7 +905,8 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
@@ -956,7 +948,7 @@
             "type": "string"
         },
         "Zeitraum": {
-            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
                 "dauer": {
                     "title": "Dauer",
@@ -990,7 +982,7 @@
             "type": "object"
         }
     },
-    "description": "Die Variante des Preisblattmodells zur Abbildung der Netznutzungspreise\n\n.. graphviz:: /api/dots/bo4e/bo/PreisblattNetznutzung.dot",
+    "description": "Die Variante des Preisblattmodells zur Abbildung der Netznutzungspreise\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/PreisblattNetznutzung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `PreisblattNetznutzung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattNetznutzung.json>`_",
     "properties": {
         "bezeichnung": {
             "title": "Bezeichnung",

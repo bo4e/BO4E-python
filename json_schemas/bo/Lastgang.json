@@ -41,7 +41,7 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -149,13 +149,14 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
         },
         "Zeitreihenwert": {
-            "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. graphviz:: /api/dots/bo4e/com/Zeitreihenwert.dot",
+            "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_",
             "properties": {
                 "datumUhrzeitBis": {
                     "format": "date-time",
@@ -187,7 +188,7 @@
             "type": "object"
         }
     },
-    "description": "Modell zur Abbildung eines Lastganges;\nIn diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall angegeben und es bietet daher eine hohe\nFlexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.\n\n.. graphviz:: /api/dots/bo4e/bo/Lastgang.dot",
+    "description": "Modell zur Abbildung eines Lastganges;\nIn diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall angegeben und es bietet daher eine hohe\nFlexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Lastgang.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Lastgang.json>`_",
     "properties": {
         "boTyp": {
             "allOf": [

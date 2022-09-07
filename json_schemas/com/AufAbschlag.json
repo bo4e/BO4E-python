@@ -23,7 +23,7 @@
             "type": "string"
         },
         "Preisstaffel": {
-            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
             "properties": {
                 "einheitspreis": {
                     "title": "Einheitspreis",
@@ -50,7 +50,7 @@
             "type": "object"
         },
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
             "properties": {
                 "A": {
                     "title": "A",
@@ -105,7 +105,7 @@
             "type": "string"
         },
         "Zeitraum": {
-            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
                 "dauer": {
                     "title": "Dauer",
@@ -139,7 +139,7 @@
             "type": "object"
         }
     },
-    "description": "Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,\ndie individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen wurden.\n\n.. graphviz:: /api/dots/bo4e/com/AufAbschlag.dot",
+    "description": "Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,\ndie individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen wurden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/AufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlag.json>`_",
     "properties": {
         "aufAbschlagstyp": {
             "$ref": "#/definitions/AufAbschlagstyp"

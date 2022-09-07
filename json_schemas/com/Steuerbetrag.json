@@ -5,6 +5,7 @@
             "enum": [
                 "UST_0",
                 "UST_19",
+                "UST_16",
                 "UST_7",
                 "VST_0",
                 "VST_19",
@@ -204,7 +205,7 @@
             "type": "string"
         }
     },
-    "description": "Abbildung eines Steuerbetrages.\n\n.. graphviz:: /api/dots/bo4e/com/Steuerbetrag.dot",
+    "description": "Abbildung eines Steuerbetrages.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_",
     "properties": {
         "basiswert": {
             "title": "Basiswert",

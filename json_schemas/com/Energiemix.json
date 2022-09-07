@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Energieherkunft": {
-            "description": "Abbildung einer Energieherkunft\n\n.. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot",
+            "description": "Abbildung einer Energieherkunft\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_",
             "properties": {
                 "anteilProzent": {
                     "exclusiveMaximum": 100,
@@ -92,13 +92,14 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
         }
     },
-    "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.\n\n.. graphviz:: /api/dots/bo4e/com/Energiemix.dot",
+    "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_",
     "properties": {
         "anteil": {
             "items": {
