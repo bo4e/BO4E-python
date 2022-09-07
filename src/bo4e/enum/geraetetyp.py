@@ -53,3 +53,4 @@ class Geraetetyp(StrEnum):
     EDL_21 = "EDL_21"  #: EDL21
     _96_H_ZAEHLER = "96_H_ZAEHLER"  #: 96 h Zähler
     EDL_40_ZAEHLERAUFSATZ = "EDL_40_ZAEHLERAUFSATZ"  #: EDL 40 Zähleraufsatz für Zähler
+    EDL_40 = "EDL_40"  #: EDL 40

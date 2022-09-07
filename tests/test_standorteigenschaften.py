@@ -3,7 +3,6 @@ from pydantic import ValidationError
 
 from bo4e.bo.standorteigenschaften import Standorteigenschaften
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_standorteigenschaftenallgemein import example_standorteigenschaften_allgemein
 from tests.test_standorteigenschaftengas import example_standorteigenschaften_gas
 from tests.test_standorteigenschaftenstrom import example_standorteigenschaften_strom
 
@@ -14,7 +13,6 @@ class TestStandorteigenschaften:
         [
             pytest.param(
                 Standorteigenschaften(
-                    eigenschaften_allgemein=example_standorteigenschaften_allgemein,
                     eigenschaften_strom=[example_standorteigenschaften_strom],
                     eigenschaften_gas=example_standorteigenschaften_gas,
                 )
@@ -28,4 +26,4 @@ class TestStandorteigenschaften:
         with pytest.raises(ValidationError) as excinfo:
             _ = Standorteigenschaften()  # type: ignore[call-arg]
 
-        assert "2 validation errors" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
