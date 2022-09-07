@@ -4,7 +4,6 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e.com.preisposition import Preisposition
-from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
 from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
@@ -29,7 +28,7 @@ example_preisposition = Preisposition(
     freimenge_blindarbeit=Decimal(50),  # %
     freimenge_leistungsfaktor=Decimal(1.0),
     preisstaffeln=[example_preisstaffel],
-    artikel_id=ArtikelId.ARTIKEL_2017005,
+    gruppenartikel_id="1-2-3",
 )
 
 
