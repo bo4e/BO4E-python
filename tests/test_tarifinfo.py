@@ -1,3 +1,5 @@
+from datetime import datetime, timezone
+
 import pytest
 from pydantic import ValidationError
 
@@ -33,6 +35,7 @@ class TestTarifinfo:
                     zeitliche_gueltigkeit=example_zeitraum,
                     energiemix=example_energiemix,
                     anbieter=example_marktteilnehmer,
+                    anwendung_von=datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
                 )
             ),
         ],

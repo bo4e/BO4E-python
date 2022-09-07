@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
+from datetime import datetime
 from typing import Optional
 
 from pydantic import conlist
@@ -67,3 +68,8 @@ class Tarifinfo(Geschaeftsobjekt):
     energiemix: Optional[Energiemix] = None
     #: Mindestlaufzeiten und Kündigungsfristen zusammengefasst
     vertragskonditionen: Optional[Vertragskonditionen] = None
+    anwendung_von: Optional[datetime] = None
+    """
+    Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird,
+    z.B. "2021-07-20T18:31:48Z"
+    """
