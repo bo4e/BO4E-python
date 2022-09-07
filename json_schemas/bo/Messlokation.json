@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. graphviz:: /api/dots/bo4e/com/Adresse.dot",
+            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
                 "adresszusatz": {
                     "title": "Adresszusatz",
@@ -100,7 +100,7 @@
             "type": "string"
         },
         "Dienstleistung": {
-            "description": "Abbildung einer abrechenbaren Dienstleistung.\n\n.. graphviz:: /api/dots/bo4e/com/Dienstleistung.dot",
+            "description": "Abbildung einer abrechenbaren Dienstleistung.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Dienstleistung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Dienstleistung.json>`_",
             "properties": {
                 "bezeichnung": {
                     "title": "Bezeichnung",
@@ -169,7 +169,7 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -188,7 +188,7 @@
             "type": "object"
         },
         "Geokoordinaten": {
-            "description": "This component provides the geo-coordinates for a location.\n\n.. graphviz:: /api/dots/bo4e/com/Geokoordinaten.dot",
+            "description": "This component provides the geo-coordinates for a location.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geokoordinaten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geokoordinaten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geokoordinaten.json>`_",
             "properties": {
                 "breitengrad": {
                     "title": "Breitengrad",
@@ -252,13 +252,14 @@
                 "PREPAYMENTZAEHLER",
                 "EDL_21",
                 "96_H_ZAEHLER",
-                "EDL_40_ZAEHLERAUFSATZ"
+                "EDL_40_ZAEHLERAUFSATZ",
+                "EDL_40"
             ],
             "title": "Geraetetyp",
             "type": "string"
         },
         "Geschaeftspartner": {
-            "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. graphviz:: /api/dots/bo4e/bo/Geschaeftspartner.dot",
+            "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
             "properties": {
                 "amtsgericht": {
                     "title": "Amtsgericht",
@@ -362,7 +363,7 @@
             "type": "string"
         },
         "Hardware": {
-            "description": "Abbildung einer abrechenbaren Hardware\n\n.. graphviz:: /api/dots/bo4e/com/Hardware.dot",
+            "description": "Abbildung einer abrechenbaren Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_",
             "properties": {
                 "bezeichnung": {
                     "title": "Bezeichnung",
@@ -380,7 +381,7 @@
             "type": "object"
         },
         "Katasteradresse": {
-            "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. graphviz:: /api/dots/bo4e/com/Katasteradresse.dot",
+            "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_",
             "properties": {
                 "flurstueck": {
                     "title": "Flurstueck",
@@ -712,7 +713,8 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
@@ -730,7 +732,7 @@
             "type": "string"
         },
         "Zaehler": {
-            "description": "Object containing information about a meter/\"Zaehler\".\n\n.. graphviz:: /api/dots/bo4e/bo/Zaehler.dot",
+            "description": "Object containing information about a meter/\"Zaehler\".\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Zaehler.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zaehler.json>`_",
             "properties": {
                 "boTyp": {
                     "allOf": [
@@ -832,7 +834,7 @@
             "type": "string"
         },
         "Zaehlwerk": {
-            "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. graphviz:: /api/dots/bo4e/com/Zaehlwerk.dot",
+            "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlwerk.json>`_",
             "properties": {
                 "bezeichnung": {
                     "title": "Bezeichnung",
@@ -870,7 +872,7 @@
             "type": "object"
         }
     },
-    "description": "Object containing information about a Messlokation\n\n.. graphviz:: /api/dots/bo4e/bo/Messlokation.dot",
+    "description": "Object containing information about a Messlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Messlokation.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Messlokation.json>`_",
     "properties": {
         "boTyp": {
             "allOf": [

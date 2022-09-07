@@ -1,20 +1,5 @@
 {
     "definitions": {
-        "ArtikelId": {
-            "description": "Liste von Artikel-IDs, z.B. für standardisierte vom BDEW herausgegebene Artikel,\ndie im Strommarkt die BDEW-Artikelnummer ablösen",
-            "enum": [
-                "2-01-7-001",
-                "2-01-7-002",
-                "2-01-7-003",
-                "2-01-7-004",
-                "2-01-7-005",
-                "2-01-7-006",
-                "2-02-0-001",
-                "2-02-0-002"
-            ],
-            "title": "ArtikelId",
-            "type": "string"
-        },
         "BDEWArtikelnummer": {
             "description": "BDEW Artikelnummern",
             "enum": [
@@ -143,7 +128,8 @@
                 "ENERGIESTEUER",
                 "NETZPREIS",
                 "MESSPREIS",
-                "SONSTIGER_PREIS"
+                "SONSTIGER_PREIS",
+                "DIENSTLEISTUNG"
             ],
             "title": "Leistungstyp",
             "type": "string"
@@ -170,7 +156,7 @@
             "type": "string"
         },
         "Preisstaffel": {
-            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. graphviz:: /api/dots/bo4e/com/Preisstaffel.dot",
+            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
             "properties": {
                 "einheitspreis": {
                     "title": "Einheitspreis",
@@ -197,7 +183,7 @@
             "type": "object"
         },
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
             "properties": {
                 "A": {
                     "title": "A",
@@ -262,11 +248,8 @@
             "type": "string"
         }
     },
-    "description": "Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. graphviz:: /api/dots/bo4e/com/Preisposition.dot",
+    "description": "Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_",
     "properties": {
-        "artikelId": {
-            "$ref": "#/definitions/ArtikelId"
-        },
         "bdewArtikelnummer": {
             "$ref": "#/definitions/BDEWArtikelnummer"
         },
@@ -283,6 +266,10 @@
         "freimengeLeistungsfaktor": {
             "title": "Freimengeleistungsfaktor",
             "type": "number"
+        },
+        "gruppenartikelId": {
+            "title": "Gruppenartikelid",
+            "type": "string"
         },
         "leistungsbezeichnung": {
             "title": "Leistungsbezeichnung",

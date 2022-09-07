@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
                 "einheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -40,7 +40,7 @@
             "type": "string"
         }
     },
-    "description": "Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\neine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n.. graphviz:: /api/dots/bo4e/com/Vertragsteil.dot",
+    "description": "Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\neine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragsteil.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_",
     "properties": {
         "lokation": {
             "title": "Lokation",

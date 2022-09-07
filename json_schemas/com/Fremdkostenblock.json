@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Betrag": {
-            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. graphviz:: /api/dots/bo4e/com/Betrag.dot",
+            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_",
             "properties": {
                 "waehrung": {
                     "$ref": "#/definitions/Waehrungscode"
@@ -19,7 +19,7 @@
             "type": "object"
         },
         "Fremdkostenposition": {
-            "description": "Eine Kostenposition im Bereich der Fremdkosten\n\n.. graphviz:: /api/dots/bo4e/com/Fremdkostenposition.dot",
+            "description": "Eine Kostenposition im Bereich der Fremdkosten\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Fremdkostenposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenposition.json>`_",
             "properties": {
                 "artikelbezeichnung": {
                     "title": "Artikelbezeichnung",
@@ -82,7 +82,7 @@
             "type": "object"
         },
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
                 "einheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -121,7 +121,7 @@
             "type": "string"
         },
         "Preis": {
-            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
             "properties": {
                 "bezugswert": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -353,7 +353,7 @@
             "type": "string"
         }
     },
-    "description": "Komponente zur Abbildung eines Kostenblocks in den Fremdkosten\n\n.. graphviz:: /api/dots/bo4e/com/Fremdkostenblock.dot",
+    "description": "Komponente zur Abbildung eines Kostenblocks in den Fremdkosten\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Fremdkostenblock.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenblock.json>`_",
     "properties": {
         "kostenblockbezeichnung": {
             "title": "Kostenblockbezeichnung",

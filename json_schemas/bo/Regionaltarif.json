@@ -1,7 +1,7 @@
 {
     "definitions": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. graphviz:: /api/dots/bo4e/com/Adresse.dot",
+            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
                 "adresszusatz": {
                     "title": "Adresszusatz",
@@ -122,7 +122,7 @@
             "type": "string"
         },
         "Energieherkunft": {
-            "description": "Abbildung einer Energieherkunft\n\n.. graphviz:: /api/dots/bo4e/com/Energieherkunft.dot",
+            "description": "Abbildung einer Energieherkunft\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_",
             "properties": {
                 "anteilProzent": {
                     "exclusiveMaximum": 100,
@@ -142,7 +142,7 @@
             "type": "object"
         },
         "Energiemix": {
-            "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.\n\n.. graphviz:: /api/dots/bo4e/com/Energiemix.dot",
+            "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_",
             "properties": {
                 "anteil": {
                     "items": {
@@ -234,7 +234,7 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. graphviz:: /api/dots/bo4e/com/ExterneReferenz.dot",
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -253,7 +253,7 @@
             "type": "object"
         },
         "Geraet": {
-            "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. graphviz:: /api/dots/bo4e/com/Geraet.dot",
+            "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_",
             "properties": {
                 "geraeteeigenschaften": {
                     "$ref": "#/definitions/Geraeteeigenschaften"
@@ -267,7 +267,7 @@
             "type": "object"
         },
         "Geraeteeigenschaften": {
-            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. graphviz:: /api/dots/bo4e/com/Geraeteeigenschaften.dot",
+            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_",
             "properties": {
                 "geraetemerkmal": {
                     "$ref": "#/definitions/Geraetemerkmal"
@@ -373,7 +373,8 @@
                 "PREPAYMENTZAEHLER",
                 "EDL_21",
                 "96_H_ZAEHLER",
-                "EDL_40_ZAEHLERAUFSATZ"
+                "EDL_40_ZAEHLERAUFSATZ",
+                "EDL_40"
             ],
             "title": "Geraetetyp",
             "type": "string"
@@ -413,7 +414,7 @@
             "type": "string"
         },
         "KriteriumWert": {
-            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. graphviz:: /api/dots/bo4e/com/KriteriumWert.dot",
+            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
             "properties": {
                 "kriterium": {
                     "$ref": "#/definitions/Tarifregionskriterium"
@@ -730,7 +731,7 @@
             "type": "string"
         },
         "Marktteilnehmer": {
-            "description": "Objekt zur Aufnahme der Information zu einem Marktteilnehmer\n\n.. graphviz:: /api/dots/bo4e/bo/Marktteilnehmer.dot",
+            "description": "Objekt zur Aufnahme der Information zu einem Marktteilnehmer\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Marktteilnehmer.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktteilnehmer.json>`_",
             "properties": {
                 "amtsgericht": {
                     "title": "Amtsgericht",
@@ -814,6 +815,9 @@
                 "rollencodetyp": {
                     "$ref": "#/definitions/Rollencodetyp"
                 },
+                "sparte": {
+                    "$ref": "#/definitions/Sparte"
+                },
                 "umsatzsteuerId": {
                     "title": "Umsatzsteuerid",
                     "type": "string"
@@ -834,13 +838,14 @@
                 "geschaeftspartnerrolle",
                 "marktrolle",
                 "rollencodenummer",
-                "rollencodetyp"
+                "rollencodetyp",
+                "sparte"
             ],
             "title": "Marktteilnehmer",
             "type": "object"
         },
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. graphviz:: /api/dots/bo4e/com/Menge.dot",
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
                 "einheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -953,7 +958,7 @@
             "type": "string"
         },
         "Preis": {
-            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. graphviz:: /api/dots/bo4e/com/Preis.dot",
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
             "properties": {
                 "bezugswert": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -978,7 +983,7 @@
             "type": "object"
         },
         "Preisgarantie": {
-            "description": "Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.\n\n.. graphviz:: /api/dots/bo4e/com/Preisgarantie.dot",
+            "description": "Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_",
             "properties": {
                 "beschreibung": {
                     "title": "Beschreibung",
@@ -1036,7 +1041,7 @@
             "type": "string"
         },
         "RegionaleGueltigkeit": {
-            "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleGueltigkeit.dot",
+            "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_",
             "properties": {
                 "gueltigkeitstyp": {
                     "$ref": "#/definitions/Gueltigkeitstyp"
@@ -1058,7 +1063,7 @@
             "type": "object"
         },
         "RegionalePreisgarantie": {
-            "description": "Abbildung einer Preisgarantie mit regionaler Abgrenzung\n\n.. graphviz:: /api/dots/bo4e/com/RegionalePreisgarantie.dot",
+            "description": "Abbildung einer Preisgarantie mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisgarantie.json>`_",
             "properties": {
                 "beschreibung": {
                     "title": "Beschreibung",
@@ -1083,7 +1088,7 @@
             "type": "object"
         },
         "RegionalePreisstaffel": {
-            "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. graphviz:: /api/dots/bo4e/com/RegionalePreisstaffel.dot",
+            "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_",
             "properties": {
                 "einheitspreis": {
                     "title": "Einheitspreis",
@@ -1114,7 +1119,7 @@
             "type": "object"
         },
         "RegionaleTarifpreisposition": {
-            "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet\nwerden.\n\n.. graphviz:: /api/dots/bo4e/com/RegionaleTarifpreisposition.dot",
+            "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet\nwerden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleTarifpreisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreisposition.json>`_",
             "properties": {
                 "bezugseinheit": {
                     "$ref": "#/definitions/Mengeneinheit"
@@ -1147,7 +1152,7 @@
             "type": "object"
         },
         "RegionalerAufAbschlag": {
-            "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten\nabgebildet werden.\nHier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-\noder Abschlags ergeben.\n\n.. graphviz:: /api/dots/bo4e/com/RegionalerAufAbschlag.dot",
+            "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten\nabgebildet werden.\nHier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-\noder Abschlags ergeben.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalerAufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalerAufAbschlag.json>`_",
             "properties": {
                 "aufAbschlagstyp": {
                     "$ref": "#/definitions/AufAbschlagstyp"
@@ -1230,7 +1235,7 @@
             "type": "string"
         },
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. graphviz:: /api/dots/bo4e/com/Sigmoidparameter.dot",
+            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
             "properties": {
                 "A": {
                     "title": "A",
@@ -1266,7 +1271,8 @@
                 "FERNWAERME",
                 "NAHWAERME",
                 "WASSER",
-                "ABWASSER"
+                "ABWASSER",
+                "STROM_UND_GAS"
             ],
             "title": "Sparte",
             "type": "string"
@@ -1284,7 +1290,7 @@
             "type": "string"
         },
         "Tarifberechnungsparameter": {
-            "description": ".. graphviz:: /api/dots/bo4e/com/Tarifberechnungsparameter.dot",
+            "description": "In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten zusammengefasst.\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifberechnungsparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifberechnungsparameter.json>`_",
             "properties": {
                 "berechnungsmethode": {
                     "$ref": "#/definitions/Tarifkalkulationsmethode"
@@ -1329,7 +1335,7 @@
             "type": "object"
         },
         "Tarifeinschraenkung": {
-            "description": "Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.\n\n.. graphviz:: /api/dots/bo4e/com/Tarifeinschraenkung.dot",
+            "description": "Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_",
             "properties": {
                 "einschraenkungleistung": {
                     "items": {
@@ -1391,7 +1397,7 @@
             "type": "string"
         },
         "Tarifpreis": {
-            "description": "Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.\n\n.. graphviz:: /api/dots/bo4e/com/Tarifpreis.dot",
+            "description": "Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifpreis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreis.json>`_",
             "properties": {
                 "beschreibung": {
                     "title": "Beschreibung",
@@ -1447,7 +1453,7 @@
             "type": "string"
         },
         "Vertragskonditionen": {
-            "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. graphviz:: /api/dots/bo4e/com/Vertragskonditionen.dot",
+            "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_",
             "properties": {
                 "abschlagszyklus": {
                     "$ref": "#/definitions/Zeitraum"
@@ -1546,7 +1552,7 @@
             "type": "string"
         },
         "Zeitraum": {
-            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. graphviz:: /api/dots/bo4e/com/Zeitraum.dot",
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
                 "dauer": {
                     "title": "Dauer",
@@ -1580,13 +1586,18 @@
             "type": "object"
         }
     },
-    "description": ".. graphviz:: /api/dots/bo4e/bo/Regionaltarif.dot",
+    "description": ".. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Regionaltarif.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Regionaltarif.json>`_",
     "properties": {
         "anbieter": {
             "$ref": "#/definitions/Marktteilnehmer"
         },
         "anbietername": {
             "title": "Anbietername",
+            "type": "string"
+        },
+        "anwendungVon": {
+            "format": "date-time",
+            "title": "Anwendungvon",
             "type": "string"
         },
         "bemerkung": {

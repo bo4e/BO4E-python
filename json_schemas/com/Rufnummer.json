@@ -17,7 +17,7 @@
             "type": "string"
         }
     },
-    "description": "Contains information to call or fax someone\n\n.. graphviz:: /api/dots/bo4e/com/Rufnummer.dot",
+    "description": "Contains information to call or fax someone\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Rufnummer.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rufnummer.json>`_",
     "properties": {
         "nummerntyp": {
             "$ref": "#/definitions/Rufnummernart"
