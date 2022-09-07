@@ -10,7 +10,6 @@ from pydantic import conlist
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
 from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
@@ -72,5 +71,7 @@ class Preisposition(COM):
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)
     """
-    #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
-    artikel_id: Optional[ArtikelId] = None
+    gruppenartikel_id: Optional[str] = None
+    """
+    Übergeordnete Gruppen-ID, die sich ggf. auf die Artikel-ID in der Preisstaffel bezieht
+    """

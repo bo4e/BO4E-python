@@ -19,7 +19,7 @@ from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 
 class Tarifberechnungsparameter(COM):
     """
-
+    In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten zusammengefasst.
     .. raw:: html
 
         <object data="../_static/images/bo4e/com/Tarifberechnungsparameter.svg" type="image/svg+xml"></object>

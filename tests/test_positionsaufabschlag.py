@@ -44,4 +44,4 @@ class TestPositionsAufAbschlag:
         with pytest.raises(ValidationError) as excinfo:
             _ = PositionsAufAbschlag()  # type: ignore[call-arg]
 
-        assert "5 validation errors" in str(excinfo.value)
+        assert "4 validation errors" in str(excinfo.value)

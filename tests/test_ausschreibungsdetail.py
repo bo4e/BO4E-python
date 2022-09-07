@@ -17,10 +17,10 @@ from tests.test_menge import example_menge
 from tests.test_zeitraum import example_zeitraum
 
 example_ausschreibungsdetail = Ausschreibungsdetail(
-    lokations_id="56789012345",
+    marktlokations_id="56789012345",
     netzebene_lieferung=Netzebene.MSP,
     netzebene_messung=Netzebene.NSP,
-    lokationsadresse=example_adresse,
+    marktlokationsadresse=example_adresse,
     lieferzeitraum=example_zeitraum,
     rechnungsadresse=example_adresse,
 )
@@ -28,7 +28,7 @@ example_ausschreibungsdetail_dict = {
     "zaehlernummer": None,
     "zaehlertechnik": None,
     "kunde": None,
-    "lokationsbezeichnung": None,
+    "marktlokationsbezeichnung": None,
     "lieferzeitraum": {
         "dauer": Decimal("5"),
         "startdatum": None,
@@ -37,7 +37,7 @@ example_ausschreibungsdetail_dict = {
         "einheit": Zeiteinheit.TAG,
         "startzeitpunkt": None,
     },
-    "lokationsadresse": {
+    "marktlokationsadresse": {
         "landescode": Landescode.DE,  # type: ignore[attr-defined]
         "hausnummer": "27A",
         "strasse": "Nördliche Münchner Straße",
@@ -64,7 +64,7 @@ example_ausschreibungsdetail_dict = {
     "prognoseLeistung": None,
     "lastgangVorhanden": None,
     "prognoseJahresarbeit": None,
-    "lokationsId": "56789012345",
+    "marktlokationsId": "56789012345",
 }
 
 
@@ -74,15 +74,15 @@ class TestAusschreibungsdetail:
         [
             pytest.param(
                 Ausschreibungsdetail(
-                    lokations_id="56789012345",
+                    marktlokations_id="56789012345",
                     netzebene_lieferung=Netzebene.MSP,
                     netzebene_messung=Netzebene.NSP,
-                    lokationsadresse=example_adresse,
+                    marktlokationsadresse=example_adresse,
                     lieferzeitraum=example_zeitraum,
                     netzbetreiber="Stromnetz Hamburg GmbH",
                     kunde="Dei Mudder ihr Kunde",
                     zaehlernummer="1YSK4234092304",
-                    lokationsbezeichnung="Zentraler Einkauf, Hamburg",
+                    marktlokationsbezeichnung="Zentraler Einkauf, Hamburg",
                     zaehlertechnik=Zaehlertyp.LEISTUNGSZAEHLER,
                     lastgang_vorhanden=True,
                     prognose_leistung=Menge(wert=Decimal(40), einheit=Mengeneinheit.KW),
@@ -102,8 +102,8 @@ class TestAusschreibungsdetail:
                     },
                     "zaehlertechnik": Zaehlertyp.LEISTUNGSZAEHLER,
                     "kunde": "Dei Mudder ihr Kunde",
-                    "lokationsbezeichnung": "Zentraler Einkauf, Hamburg",
-                    "lokationsadresse": {
+                    "marktlokationsbezeichnung": "Zentraler Einkauf, Hamburg",
+                    "marktlokationsadresse": {
                         "hausnummer": "27A",
                         "adresszusatz": None,
                         "postfach": None,
@@ -126,7 +126,7 @@ class TestAusschreibungsdetail:
                     "zaehlernummer": "1YSK4234092304",
                     "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
                     "netzebeneLieferung": Netzebene.MSP,
-                    "lokationsId": "56789012345",
+                    "marktlokationsId": "56789012345",
                     "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW},
                     "lastgangVorhanden": True,
                     "netzebeneMessung": Netzebene.NSP,

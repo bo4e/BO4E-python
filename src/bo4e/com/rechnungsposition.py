@@ -13,7 +13,6 @@ from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
 from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.enum.artikelid import ArtikelId
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.zeiteinheit import Zeiteinheit
 from bo4e.validators import check_bis_is_later_than_von
@@ -79,7 +78,7 @@ class Rechnungsposition(COM):
     teilrabatt_netto: Optional[Betrag] = None
 
     #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
-    artikel_id: Optional[ArtikelId] = None
+    artikel_id: Optional[str] = None
 
     @staticmethod
     def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
