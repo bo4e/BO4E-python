@@ -348,14 +348,6 @@ bo4e.com.sigmoidparameter module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.standorteigenschaftenallgemein module
-----------------------------------------------
-
-.. automodule:: bo4e.com.standorteigenschaftenallgemein
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.standorteigenschaftengas module
 ----------------------------------------
 

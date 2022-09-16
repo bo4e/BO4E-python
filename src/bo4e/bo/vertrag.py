@@ -38,6 +38,7 @@ class Vertrag(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = BoTyp.VERTRAG
+    # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: str
     #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt.
