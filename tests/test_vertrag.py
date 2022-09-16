@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+from typing import Any, Dict, List
 
 import pytest
 from pydantic import ValidationError
@@ -13,6 +14,7 @@ from bo4e.enum.anrede import Anrede
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.landescode import Landescode
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
@@ -62,6 +64,72 @@ class TestVertrag:
             vertragsteilende=datetime(2021, 6, 5, tzinfo=timezone.utc),
         )
     ]
+    _vertragspartner1_dict: Dict[str, Any] = {
+        "versionstruktur": "2",
+        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "externeReferenzen": [],
+        "name1": "von Sinnen",
+        "gewerbekennzeichnung": True,
+        "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
+        "anrede": "FRAU",
+        "name2": "Helga",
+        "name3": None,
+        "hrnummer": None,
+        "amtsgericht": None,
+        "kontaktweg": [Kontaktart.E_MAIL],
+        "umsatzsteuerId": "DE267311963",
+        "glaeubigerId": "DE98ZZZ09999999999",
+        "eMailAdresse": "test@bo4e.de",
+        "website": "bo4e.de",
+        "partneradresse": {
+            "postleitzahl": "24306",
+            "ort": "Plön",
+            "strasse": "Kirchstraße",
+            "hausnummer": "3",
+            "postfach": None,
+            "adresszusatz": None,
+            "coErgaenzung": None,
+            "landescode": Landescode.DE,  # type:ignore[attr-defined]
+        },
+    }
+    _vertragspartner2_dict: Dict[str, Any] = {
+        "versionstruktur": "2",
+        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "externeReferenzen": [],
+        "name1": "Eckart",
+        "gewerbekennzeichnung": False,
+        "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
+        "anrede": None,
+        "name2": "Björn",
+        "name3": None,
+        "hrnummer": None,
+        "amtsgericht": None,
+        "kontaktweg": [],
+        "umsatzsteuerId": None,
+        "glaeubigerId": None,
+        "eMailAdresse": None,
+        "website": None,
+        "partneradresse": {
+            "postleitzahl": "24211",
+            "ort": "Preetz",
+            "strasse": "Am Markt",
+            "hausnummer": "67",
+            "postfach": None,
+            "adresszusatz": None,
+            "coErgaenzung": None,
+            "landescode": Landescode.DE,  # type:ignore[attr-defined]
+        },
+    }
+    _vertragsteile_dict: List[Dict[str, Any]] = [
+        {
+            "vertragsteilbeginn": datetime(2021, 4, 30, tzinfo=timezone.utc),
+            "vertragsteilende": datetime(2021, 6, 5, tzinfo=timezone.utc),
+            "lokation": None,
+            "vertraglichFixierteMenge": None,
+            "minimaleAbnahmemenge": None,
+            "maximaleAbnahmemenge": None,
+        }
+    ]
 
     def get_example_vertrag(self) -> Vertrag:
         return Vertrag(
@@ -75,6 +143,26 @@ class TestVertrag:
             vertragspartner2=self._vertragspartner2,
             vertragsteile=self._vertragsteile,
         )
+
+    def get_example_vertrag_expected_dict(self) -> Dict[str, Any]:
+        return {
+            "vertragsnummer": self._vertragsnummer,
+            "vertragsart": self._vertragsart,
+            "vertragsstatus": self._vertragsstatus,
+            "sparte": self._sparte,
+            "vertragsbeginn": self._vertragsbeginn,
+            "vertragsende": self._vertragsende,
+            "vertragspartner1": self._vertragspartner1_dict,
+            "vertragspartner2": self._vertragspartner2_dict,
+            "vertragsteile": self._vertragsteile_dict,
+            "versionstruktur": "2",
+            "boTyp": BoTyp.VERTRAG,
+            "externeReferenzen": [],
+            "beschreibung": None,
+            "vertragskonditionen": None,
+            "unterzeichnervp1": None,
+            "unterzeichnervp2": None,
+        }
 
     def test_serialisation_only_required_attributes(self) -> None:
         """
