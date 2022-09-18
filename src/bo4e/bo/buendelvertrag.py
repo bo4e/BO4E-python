@@ -46,7 +46,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     sparte: Sparte
     #: Gibt an, wann der Vertrag beginnt (inklusiv)
     vertragsbeginn: datetime
-    #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde
+    #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
     vertragsende: datetime
     #: Der "erstgenannte" Vertragspartner. In der Regel der Aussteller des Vertrags.
     #: Beispiel: "Vertrag zwischen Vertagspartner 1 ..."
