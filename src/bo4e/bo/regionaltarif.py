@@ -19,8 +19,7 @@ from bo4e.enum.botyp import BoTyp
 
 
 class Regionaltarif(Tarifinfo):
-    # no description in the official docs.
-    # https://github.com/Hochfrequenz/BO4E-python/issues/338
+    #: Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen.
     """
 
     .. raw:: html
