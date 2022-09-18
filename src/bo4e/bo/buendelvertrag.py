@@ -44,7 +44,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     vertragsstatus: Vertragsstatus
     #: Unterscheidungsmöglichkeiten für die Sparte
     sparte: Sparte
-    #: Gibt an, wann der Vertrag beginnt
+    #: Gibt an, wann der Vertrag beginnt (inklusiv)
     vertragsbeginn: datetime
     #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde
     vertragsende: datetime
