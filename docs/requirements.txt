@@ -16,7 +16,7 @@ networkx==2.8.4
     # via -r docs/requirements.in
 pydantic==1.10.2
     # via -r docs/requirements.in
-pyhumps==3.7.2
+pyhumps==3.8.0
     # via -r docs/requirements.in
 requests==2.28.1
     # via -r docs/requirements.in
