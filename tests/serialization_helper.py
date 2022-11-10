@@ -1,14 +1,14 @@
 """
 A module that simplifies assertions for json serialization
 """
-from typing import Any, Dict, TypeVar
+from typing import Any, Dict, Optional, TypeVar
 
 from dictdiffer import diff  # type: ignore[import]
 
 T = TypeVar("T")
 
 
-def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: Dict[str, Any] = None) -> T:
+def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: Optional[Dict[str, Any]] = None) -> T:
     """
     Serializes the serializable_object using the provided schema,
     then asserts, that the result is equal to the expected_json_dict (if given),
