@@ -41,7 +41,7 @@ class _Package:
     scope: List[str] | None
     color: str | None
 
-    def __init__(self, *, scope: List[str] = None, color: str = None):
+    def __init__(self, *, scope: Optional[List[str]] = None, color: Optional[str] = None):
         self.scope = scope
         self.color = color
 
