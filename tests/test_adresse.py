@@ -1,7 +1,7 @@
 from typing import Dict, Optional
 
 import pytest
-from py._path.local import LocalPath
+from py._path.local import LocalPath  # type:ignore[import]
 from pydantic import ValidationError
 
 from bo4e.com.adresse import Adresse

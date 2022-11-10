@@ -41,7 +41,7 @@ class _Package:
     scope: List[str] | None
     color: str | None
 
-    def __init__(self, *, scope: List[str] = None, color: str = None):
+    def __init__(self, *, scope: Optional[List[str]] = None, color: Optional[str] = None):
         self.scope = scope
         self.color = color
 
@@ -119,7 +119,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         super().add_node(
             node,
             cls=cls,
-            fields=cls.__fields__.copy() if hasattr(cls, "__fields__") else {},  # type:ignore[attr-defined]
+            fields=cls.__fields__.copy() if hasattr(cls, "__fields__") else {},
         )
 
     def add_extension(self, node1: str, node2: str) -> None:
