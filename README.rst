@@ -37,6 +37,15 @@ Code Beiträge
 Änderungsvorschläge (sowohl an das Datenmodell als auch an die Implementierung in Python) können direkt als Code in Form von Pull Requests eingereicht werden.
 Details dazu finden sich im `Contribution Guide`_.
 
+Nutzung als Python Library
+==========================
+In Python kann diese Library als Paket installiert werden:
+
+.. code-block::
+
+       pip install bo4e
+
+
 Andere nennenswerte BO4E Implementierungen
 ==========================================
 
