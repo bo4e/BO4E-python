@@ -1,4 +1,5 @@
 import inspect
+import json
 
 import pytest
 from pydantic import ValidationError
@@ -63,3 +64,9 @@ class TestValidationBypass:
         # and trying to access the missing netzebene raises an AttributeError:
         with pytest.raises(AttributeError):
             _ = marktlokation.netzebene
+        # you can still serialize the invalid malo
+        malo_json_str = marktlokation.json()  # works
+        assert malo_json_str is not None
+        # but deserializing raises an error:
+        with pytest.raises(ValidationError):
+            Marktlokation.parse_raw(malo_json_str)
