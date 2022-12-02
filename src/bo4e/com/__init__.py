@@ -1,5 +1,5 @@
 """
-This module makes it easier to import a business object.
+This module makes it easier to import a component.
 For example: `from bo4e.com import Adresse`
 """
 
