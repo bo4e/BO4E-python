@@ -1,6 +1,6 @@
 """
 This module makes it easier to import a business object.
-For example: `from bo4e.com import adresse`
+For example: `from bo4e.com import Adresse`
 """
 
 from .adresse import Adresse
