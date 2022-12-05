@@ -255,7 +255,8 @@
                 "DIENSTLEISTER",
                 "KUNDE",
                 "INTERESSENT",
-                "MARKTPARTNER"
+                "MARKTPARTNER",
+                "EINE_NEUE_ROLLE"
             ],
             "title": "Geschaeftspartnerrolle",
             "type": "string"
@@ -351,7 +352,7 @@
             "type": "object"
         },
         "Kostenklasse": {
-            "description": "Kostenklassen bilden die oberste Ebene der verschiedenen Kosten.\nIn der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.",
+            "description": "Kostenklassen bilden die oberste Ebene der verschiedenen Kosten.\n    In der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.",
             "enum": [
                 "FREMDKOSTEN",
                 "BESCHAFFUNG",

@@ -402,7 +402,8 @@
                 "DIENSTLEISTER",
                 "KUNDE",
                 "INTERESSENT",
-                "MARKTPARTNER"
+                "MARKTPARTNER",
+                "EINE_NEUE_ROLLE"
             ],
             "title": "Geschaeftspartnerrolle",
             "type": "string"
