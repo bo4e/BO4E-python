@@ -806,6 +806,10 @@
     },
     "description": "Abbildung eines Bündelvertrags.\nEs handelt sich hierbei um eine Liste von Einzelverträgen, die in einem Vertragsobjekt gebündelt sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Buendelvertrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Buendelvertrag.json>`_",
     "properties": {
+        "beschreibung": {
+            "title": "Beschreibung",
+            "type": "string"
+        },
         "boTyp": {
             "allOf": [
                 {
@@ -815,10 +819,10 @@
             "default": "BUENDELVERTRAG"
         },
         "einzelvertraege": {
+            "default": [],
             "items": {
                 "$ref": "#/definitions/Vertrag"
             },
-            "minItems": 1,
             "title": "Einzelvertraege",
             "type": "array"
         },
@@ -830,14 +834,74 @@
             "title": "Externereferenzen",
             "type": "array"
         },
+        "sparte": {
+            "$ref": "#/definitions/Sparte"
+        },
+        "unterzeichnervp1": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/Unterschrift"
+            },
+            "title": "Unterzeichnervp1",
+            "type": "array"
+        },
+        "unterzeichnervp2": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/Unterschrift"
+            },
+            "title": "Unterzeichnervp2",
+            "type": "array"
+        },
         "versionstruktur": {
             "default": "2",
             "title": "Versionstruktur",
             "type": "string"
+        },
+        "vertragsart": {
+            "$ref": "#/definitions/Vertragsart"
+        },
+        "vertragsbeginn": {
+            "format": "date-time",
+            "title": "Vertragsbeginn",
+            "type": "string"
+        },
+        "vertragsende": {
+            "format": "date-time",
+            "title": "Vertragsende",
+            "type": "string"
+        },
+        "vertragskonditionen": {
+            "default": [],
+            "items": {
+                "$ref": "#/definitions/Vertragskonditionen"
+            },
+            "title": "Vertragskonditionen",
+            "type": "array"
+        },
+        "vertragsnummer": {
+            "title": "Vertragsnummer",
+            "type": "string"
+        },
+        "vertragspartner1": {
+            "$ref": "#/definitions/Geschaeftspartner"
+        },
+        "vertragspartner2": {
+            "$ref": "#/definitions/Geschaeftspartner"
+        },
+        "vertragsstatus": {
+            "$ref": "#/definitions/Vertragsstatus"
         }
     },
     "required": [
-        "einzelvertraege"
+        "vertragsnummer",
+        "vertragsart",
+        "vertragsstatus",
+        "sparte",
+        "vertragsbeginn",
+        "vertragsende",
+        "vertragspartner1",
+        "vertragspartner2"
     ],
     "title": "Buendelvertrag",
     "type": "object"
