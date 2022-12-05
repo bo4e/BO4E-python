@@ -5,6 +5,7 @@ It creates json schema files as described in the README.md in the same directory
 
 import importlib
 import inspect
+import json
 import pathlib
 import pkgutil
 
@@ -21,5 +22,10 @@ for pkg in pkgs:
         for name, cls in cls_list:
             this_directory = pathlib.Path(__file__).parent.absolute()
             file_path = this_directory / pkg / (name + ".json")  # pylint:disable=invalid-name
+            schema_json_dict = json.loads(cls.schema_json(ensure_ascii=False, sort_keys=True, indent=4))
+            if "definitions" in schema_json_dict:
+                for definition in schema_json_dict["definitions"].values():
+                    # this sanitizing step is necessary since python 3.11
+                    definition["description"] = definition["description"].strip()
             with open(file_path, "w+", encoding="utf-8") as json_schema_file:
-                json_schema_file.write(cls.schema_json(ensure_ascii=False, sort_keys=True, indent=4))
+                json_schema_file.write(json.dumps(schema_json_dict, ensure_ascii=False, indent=4))
