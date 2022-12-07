@@ -35,7 +35,7 @@ class Geschaeftsobjekt(BaseModel):
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = []
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-
+    # pylint:disable=duplicate-code
     class Config:
         """
         basic configuration for pydantic's behaviour

@@ -26,6 +26,7 @@ class COM(BaseModel):
 
     """
 
+    # pylint:disable=duplicate-code
     class Config:
         """
         basic configuration for pydantic's behaviour
@@ -40,4 +41,6 @@ class COM(BaseModel):
 # pylint: disable=invalid-name
 #: Any type derived from COM including those that do not directly inherit from COM
 TCom = TypeVar("TCom", bound=Type[COM])
+
+
 # todo: find out if this way of typing is correct
