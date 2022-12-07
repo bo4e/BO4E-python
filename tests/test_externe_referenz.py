@@ -1,3 +1,5 @@
+from typing import Any, Dict
+
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
 from bo4e.com.externereferenz import ExterneReferenz
@@ -61,3 +63,14 @@ class TestExterneReferenz:
         deserialized_gp: Geschaeftspartner = Geschaeftspartner.parse_raw(gp_json)
 
         assert deserialized_gp.externe_referenzen == []
+
+    def test_extension_data(self) -> None:
+        """
+        tests the behaviour of the json extension data (`extra="allow"`)
+        """
+        er = ExterneReferenz(ex_ref_name="foo.bar", ex_ref_wert="12345")
+        er_json: Dict[str, Any] = er.dict()
+        er_json["additional_key"] = "additional_value"
+        deserialized_er: ExterneReferenz = ExterneReferenz.parse_obj(er_json)
+        assert isinstance(deserialized_er, ExterneReferenz)
+        assert deserialized_er.additional_key == "additional_value"  # type:ignore[attr-defined]

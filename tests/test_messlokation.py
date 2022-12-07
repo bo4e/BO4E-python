@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 from decimal import Decimal
+from typing import Any, Dict
 
 import pytest
 from pydantic import ValidationError
@@ -214,3 +215,17 @@ class TestMeLo:
                 _instantiate_melo(melo_id)
         else:
             _instantiate_melo(melo_id)
+
+    def test_extension_data(self) -> None:
+        """
+        tests the behaviour of the json extension data (`extra="allow"`)
+        """
+        melo = Messlokation(
+            messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
+            sparte=Sparte.STROM,
+        )
+        melo_json: Dict[str, Any] = melo.dict()
+        melo_json["additional_key"] = "additional_value"
+        deserialized_melo: Messlokation = Messlokation.parse_obj(melo_json)
+        assert isinstance(deserialized_melo, Messlokation)
+        assert deserialized_melo.additional_key == "additional_value"  # type:ignore[attr-defined]
