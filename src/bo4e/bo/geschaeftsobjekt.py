@@ -35,7 +35,7 @@ class Geschaeftsobjekt(BaseModel):
     # optional attributes
     externe_referenzen: Optional[List[ExterneReferenz]] = []
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-
+    # pylint:disable=duplicate-code
     class Config:
         """
         basic configuration for pydantic's behaviour
@@ -43,4 +43,5 @@ class Geschaeftsobjekt(BaseModel):
 
         alias_generator = camelize
         allow_population_by_field_name = True
+        extra = "allow"
         json_encoders = {Decimal: str}
