@@ -34,7 +34,6 @@ class COM(BaseModel):
 
         alias_generator = camelize
         allow_population_by_field_name = True
-        extra = "allow"
         json_encoders = {Decimal: str}
 
 
