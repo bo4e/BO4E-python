@@ -34,7 +34,7 @@ class TestVerbrauch:
                 {
                     "startdatum": datetime(2021, 12, 1, 0, 0, tzinfo=timezone.utc),
                     "wert": Decimal("40"),
-                    "mengeneinheit": Mengeneinheit.KWH,
+                    "einheit": Mengeneinheit.KWH,
                     "enddatum": datetime(2021, 12, 2, 0, 0, tzinfo=timezone.utc),
                     "wertermittlungsverfahren": Wertermittlungsverfahren.MESSUNG,
                     "obisKennzahl": "1-0:1.8.1",
@@ -44,7 +44,7 @@ class TestVerbrauch:
                 example_verbrauch,
                 {
                     "wert": Decimal("40"),
-                    "mengeneinheit": Mengeneinheit.KWH,
+                    "einheit": Mengeneinheit.KWH,
                     "wertermittlungsverfahren": Wertermittlungsverfahren.MESSUNG,
                     "startdatum": None,
                     "enddatum": None,
