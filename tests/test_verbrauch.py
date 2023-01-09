@@ -13,7 +13,7 @@ from tests.serialization_helper import assert_serialization_roundtrip
 example_verbrauch = Verbrauch(
     wert=Decimal(40),
     obis_kennzahl="1-0:1.8.1",
-    mengeneinheit=Mengeneinheit.KWH,
+    einheit=Mengeneinheit.KWH,
     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
 )
 
