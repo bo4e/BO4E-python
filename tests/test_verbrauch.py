@@ -28,7 +28,7 @@ class TestVerbrauch:
                     startdatum=datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
                     enddatum=datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=timezone.utc),
                     obis_kennzahl="1-0:1.8.1",
-                    mengeneinheit=Mengeneinheit.KWH,
+                    einheit=Mengeneinheit.KWH,
                     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
                 ),
                 {
@@ -78,7 +78,7 @@ class TestVerbrauch:
                 wert=Decimal(40),
                 startdatum=datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
                 enddatum=datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=timezone.utc),
-                mengeneinheit=Mengeneinheit.KWH,
+                einheit=Mengeneinheit.KWH,
                 wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
             )
 
@@ -93,7 +93,7 @@ class TestVerbrauch:
                 wert=Decimal(40),
                 startdatum=datetime(2021, 12, 2, 0, 0, 0).replace(tzinfo=timezone.utc),
                 enddatum=datetime(2021, 12, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
-                mengeneinheit=Mengeneinheit.KWH,
+                einheit=Mengeneinheit.KWH,
                 wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
             )
         assert "has to be later than the start" in str(excinfo.value)
