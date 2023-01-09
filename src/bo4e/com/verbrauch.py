@@ -36,7 +36,7 @@ class Verbrauch(COM):
     #: Gibt den absoluten Wert der Menge an
     wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
-    mengeneinheit: Mengeneinheit
+    einheit: Mengeneinheit
 
     # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
