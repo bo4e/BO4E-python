@@ -18,6 +18,7 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
+from bo4e.enum.zaehlergroesse_gas import ZaehlergroesseGas
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -50,3 +51,7 @@ class Zaehler(Geschaeftsobjekt):
     eichung_bis: Optional[datetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
     zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers
+    zaehlergroesse_gas: Optional[ZaehlergroesseGas] = None
+    """
+    Spezifikation der Zählergröße im Gas ENUM ZaehlergroesseGas
+    """
