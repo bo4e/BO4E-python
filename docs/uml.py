@@ -603,12 +603,3 @@ def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) 
     """
     command = f'java -jar "{executable}" "{input_dir}" -svg -o "{output_dir}"'
     subprocess.call(shlex.split(command))
-
-
-def test_network_build() -> None:
-    """
-    This test is only for debugging purposes.
-    """
-    project_root_dir = Path(__file__).parent.parent
-    module_dir = project_root_dir / "src/bo4e"
-    _network, _namespaces_to_parse = build_network(module_dir, PlantUMLNetwork)
