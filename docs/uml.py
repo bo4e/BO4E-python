@@ -485,8 +485,8 @@ def get_cardinality(model_field: ModelField) -> Cardinality:
     be of another arbitrary type.
     """
     type_str = model_field_str(model_field)
-    card1: Optional[str] = "1"
-    card2: Optional[str] = "1"
+    card1: str = "1"
+    card2: str = "1"
     if type_str.startswith("Optional["):
         card1 = "0"
     if type_str.startswith("List[") or type_str.startswith("Optional[List["):
@@ -564,7 +564,7 @@ def _recursive_add_class(
                 type_modl_namespace,
                 through_field=model_field,
                 card1=None,
-                card2=field_card,  # type:ignore[arg-type]
+                card2=field_card,
             )
     # ------------------------------------------------------------------------------------------------------------------
 
