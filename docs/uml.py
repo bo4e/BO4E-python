@@ -14,10 +14,12 @@ import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
+from re import Pattern
 from typing import Any, Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
+from pydantic import ConstrainedStr
 
 # pylint: disable=no-name-in-module
 from pydantic.fields import (
@@ -250,6 +252,12 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
             )
         elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
             result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
+
+        if isinstance(model_field.outer_type_, type) and issubclass(model_field.outer_type_, ConstrainedStr):
+            if isinstance(model_field.outer_type_.regex, Pattern):
+                result_str = f"str<{model_field.outer_type_.regex.pattern}>"
+            elif isinstance(model_field.outer_type_.regex, str):
+                result_str = f"str<{model_field.outer_type_.regex}>"
 
         assert card is not None
         return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
@@ -595,3 +603,12 @@ def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) 
     """
     command = f'java -jar "{executable}" "{input_dir}" -svg -o "{output_dir}"'
     subprocess.call(shlex.split(command))
+
+
+def test_network_build():
+    """
+    This test is only for debugging purposes.
+    """
+    project_root_dir = Path(__file__).parent.parent
+    module_dir = project_root_dir / "src/bo4e"
+    _network, _namespaces_to_parse = build_network(module_dir, PlantUMLNetwork)
