@@ -19,9 +19,9 @@ from typing import Any, Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
-from pydantic import ConstrainedStr
 
 # pylint: disable=no-name-in-module
+from pydantic import ConstrainedStr
 from pydantic.fields import (
     MAPPING_LIKE_SHAPES,
     SHAPE_GENERIC,
