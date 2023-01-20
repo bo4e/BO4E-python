@@ -605,7 +605,7 @@ def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) 
     subprocess.call(shlex.split(command))
 
 
-def test_network_build():
+def test_network_build() -> None:
     """
     This test is only for debugging purposes.
     """
