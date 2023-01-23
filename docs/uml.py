@@ -14,12 +14,14 @@ import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
+from re import Pattern
 from typing import Any, Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
 
 # pylint: disable=no-name-in-module
+from pydantic import ConstrainedStr
 from pydantic.fields import (
     MAPPING_LIKE_SHAPES,
     SHAPE_GENERIC,
@@ -250,6 +252,12 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
             )
         elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
             result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
+
+        if isinstance(model_field.outer_type_, type) and issubclass(model_field.outer_type_, ConstrainedStr):
+            if isinstance(model_field.outer_type_.regex, Pattern):
+                result_str = f"str<{model_field.outer_type_.regex.pattern}>"
+            elif isinstance(model_field.outer_type_.regex, str):
+                result_str = f"str<{model_field.outer_type_.regex}>"
 
         assert card is not None
         return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
