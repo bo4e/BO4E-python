@@ -6,5 +6,6 @@
   "postfach": "31415",
   "adresszusatz": "to whom it may concern",
   "co_ergaenzung": "you will find me",
-  "landescode": "FR"
+  "landescode": "FR",
+  "ortsteil": "Mitte",
 }
