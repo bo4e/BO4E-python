@@ -32,6 +32,8 @@ class Adresse(COM):
     ort: str
 
     # optional attributes
+    #: Bezeichnung des Ortsteils; z.B. "Mitte"
+    ortsteil: Optional[str] = None
     #: Bezeichnung der Straße; z.B. "Weserstraße"
     strasse: Optional[str] = None
     #: Hausnummer inkl. Zusatz; z.B. "3", "4a"
