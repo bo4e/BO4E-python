@@ -5,6 +5,7 @@ from py._path.local import LocalPath  # type:ignore[import]
 from pydantic import ValidationError
 
 from bo4e.com.adresse import Adresse
+from bo4e.enum import landescode
 from bo4e.enum.landescode import Landescode
 
 # import pydantic
@@ -97,7 +98,6 @@ class TestAddress:
         assert deserialized_address.postleitzahl == "82031"
 
     def test_serialization_only_required_fields_landescode_AT(self) -> None:
-
         address_test_data = Adresse.parse_file(
             "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
             encoding="utf-8",
@@ -203,3 +203,48 @@ class TestAddress:
         assert '"AT"' in serialized_address
         deserialized_address = Adresse.parse_raw(serialized_address)
         assert deserialized_address.landescode == Landescode.AT  # type: ignore[attr-defined]
+
+    @pytest.mark.parametrize(
+        "address_json, adresse",
+        [
+            pytest.param(
+                r"""{"postleitzahl": "12345", 
+                    "ort": "ISS spacestation",
+                    "strasse": "Milky Way",
+                    "hausnummer": "42",
+                    "landescode": "FR",
+                    "adresszusatz": "to whom it may concern",
+                    "co_ergaenzung": "you will find me",
+                    "ortsteil": "Mitte"}""",
+                Adresse(
+                    postleitzahl="12345",
+                    ort="ISS spacestation",
+                    strasse="Milky Way",
+                    hausnummer="42",
+                    landescode=Landescode.FR,  # type:ignore[attr-defined]
+                    adresszusatz="to whom it may concern",
+                    co_ergaenzung="you will find me",
+                    ortsteil="Mitte",
+                ),
+            )
+        ],
+    )
+    def test_serialization_with_all_possible_fields(self, address_json: str, adresse: Adresse) -> None:
+        """
+        Test serialization with all required and optional attributes
+        """
+
+        serialized_address = adresse.json(by_alias=True, ensure_ascii=False)
+
+        assert "ISS spacestation" in serialized_address
+        assert "12345" in serialized_address
+        assert "Milky Way" in serialized_address
+        assert "42" in serialized_address
+        assert "FR" in serialized_address
+        assert "to whom it may concern" in serialized_address
+        assert "you will find me" in serialized_address
+        assert "Mitte" in serialized_address
+
+        deserialized_address = Adresse.parse_raw(address_json)
+
+        assert deserialized_address == adresse
