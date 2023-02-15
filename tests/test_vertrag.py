@@ -90,6 +90,7 @@ class TestVertrag:
             "adresszusatz": None,
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
+            "ortsteil": None,
         },
     }
     _vertragspartner2_dict: Dict[str, Any] = {
@@ -118,6 +119,7 @@ class TestVertrag:
             "adresszusatz": None,
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
+            "ortsteil": None,
         },
     }
     _vertragsteile_dict: List[Dict[str, Any]] = [

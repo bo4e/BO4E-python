@@ -132,6 +132,7 @@ class TestAngebotsteil:
                                 "adresszusatz": None,
                                 "postfach": None,
                                 "coErgaenzung": None,
+                                "ortsteil": None,
                                 "landescode": Landescode.DE,  # type: ignore[attr-defined]
                             },
                             "energierichtung": Energierichtung.EINSP,

@@ -14,15 +14,18 @@ import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
+from re import Pattern
 from typing import Any, Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
 
 # pylint: disable=no-name-in-module
+from pydantic import ConstrainedStr
 from pydantic.fields import (
     MAPPING_LIKE_SHAPES,
     SHAPE_GENERIC,
+    SHAPE_LIST,
     SHAPE_NAME_LOOKUP,
     SHAPE_SINGLETON,
     SHAPE_TUPLE,
@@ -82,7 +85,7 @@ being inherited by all classes in this project. Therefore, their namespace start
 """
 
 #: Define shorthand for Cardinality type since none of the values have to be provided.
-Cardinality = Optional[Tuple[Optional[str], Optional[str]]]
+Cardinality = tuple[str, str]
 
 #: Define the link base URI used in svg links
 LINK_URI_BASE = "https://bo4e-python.readthedocs.io/en/latest"
@@ -119,7 +122,12 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         super().add_node(
             node,
             cls=cls,
-            fields=cls.__fields__.copy() if hasattr(cls, "__fields__") else {},
+            fields={
+                field_name: {"model_field": model_field, "card": None}
+                for field_name, model_field in cls.__fields__.items()
+            }
+            if hasattr(cls, "__fields__")
+            else {},
         )
 
     def add_extension(self, node1: str, node2: str) -> None:
@@ -132,7 +140,12 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
 
     # pylint: disable=too-many-arguments
     def add_association(
-        self, node1: str, node2: str, through_field: ModelField, card1: Cardinality = None, card2: Cardinality = None
+        self,
+        node1: str,
+        node2: str,
+        through_field: ModelField,
+        card1: Optional[Cardinality] = None,
+        card2: Optional[Cardinality] = None,
     ) -> None:
         """
         Adds an association-relation. `node1` references `node2` in its field `through_field`. Additionally, you can
@@ -204,7 +217,18 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         raise NotImplementedError("This method should be overridden.")
 
     @staticmethod
-    def model_field_str(model_field: ModelField) -> str:
+    def get_cardinality_string(card: Optional[Cardinality]) -> Optional[str]:
+        """
+        Parse the cardinality into a readable string e.g. `1..*` or `0..1`
+        """
+        if card:
+            if card[0] == card[1]:
+                return f"{card[0]}"
+            return f"{card[0]}..{card[1]}"
+        return None
+
+    @staticmethod
+    def model_field_str(model_field: ModelField, card: Optional[Cardinality] = None) -> str:
         """
         Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
         """
@@ -226,12 +250,17 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
                 f"{display_as_type(model_field.type_)}["
                 f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
             )
-        elif model_field.shape != SHAPE_SINGLETON:
+        elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
             result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
 
-        if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
-            result_str = f"Optional[{result_str}]"
-        return result_str
+        if isinstance(model_field.outer_type_, type) and issubclass(model_field.outer_type_, ConstrainedStr):
+            if isinstance(model_field.outer_type_.regex, Pattern):
+                result_str = f"str<{model_field.outer_type_.regex.pattern}>"
+            elif isinstance(model_field.outer_type_.regex, str):
+                result_str = f"str<{model_field.outer_type_.regex}>"
+
+        assert card is not None
+        return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
 
     @staticmethod
     def _remove_last_package_name(namespace: str) -> str:
@@ -261,12 +290,17 @@ class PlantUMLNetwork(_UMLNetworkABC):
         )
         if detailed:
             cls_str += " {\n"
-            for field in self.nodes[node]["fields"].values():
-                type_str = _UMLNetworkABC.model_field_str(field)
-                if field.required:
-                    cls_str += f"\t{field.alias} : {type_str}\n"
+            for field_dict in self.nodes[node]["fields"].values():
+                model_field = field_dict["model_field"]
+                type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
+                if type_modl_namespace in self[node]:
+                    # Skip the fields which will appear as references in the graph
+                    continue
+                type_str = _UMLNetworkABC.model_field_str(model_field, field_dict["card"])
+                if model_field.required:
+                    cls_str += f"\t{model_field.alias} : {type_str}\n"
                 else:
-                    cls_str += f"\t{field.alias} : {type_str} = {field.default}\n"
+                    cls_str += f"\t{model_field.alias} : {type_str} = {model_field.default}\n"
             cls_str += "}"
 
         return cls_str
@@ -309,28 +343,18 @@ class PlantUMLNetwork(_UMLNetworkABC):
             return extension.get(root_node, vert_extension).format(node1=node1_str, node2=node2_str)
         if self[node1][node2][index]["type"] == "association":
             # "card" is short for cardinality
-            card1 = ""
-            card2 = ""
+            card1 = None
+            card2 = None
             if detailed:
                 # ------ Parse the cardinality into readable strings ---------------------------------------------------
-                def get_cardinality_string(card_key: str) -> str:
-                    """
-                    Parse the cardinality into a readable string e.g. `1..*` or `0..1`
-                    """
-                    if self[node1][node2][index][card_key]:
-                        if self[node1][node2][index][card_key][0] == self[node1][node2][index][card_key][1]:
-                            return f'"{self[node1][node2][index][card_key][0]}"'
-                        return f'"{self[node1][node2][index][card_key][0]}..{self[node1][node2][index][card_key][1]}"'
-                    return ""
-
-                card1 = get_cardinality_string("card1")
-                card2 = get_cardinality_string("card2")
+                card1 = _UMLNetworkABC.get_cardinality_string(self[node1][node2][index]["card1"])
+                card2 = _UMLNetworkABC.get_cardinality_string(self[node1][node2][index]["card2"])
                 # ------------------------------------------------------------------------------------------------------
             return association.get(root_node, vert_association).format(
                 node1=node1_str,
                 node2=node2_str,
-                card1=card1,
-                card2=card2,
+                card1=f'"{card1}"' if card1 is not None else "",
+                card2=f'"{card2}"' if card2 is not None else "",
                 field=self[node1][node2][index]["through_field"].alias,
             )
         raise ValueError(
@@ -433,6 +457,56 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
     return path_list
 
 
+def model_field_str(model_field: ModelField) -> str:
+    """
+    Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
+    """
+    result_str = display_as_type(model_field.type_)
+
+    # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
+    if model_field.shape in MAPPING_LIKE_SHAPES:
+        result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
+    elif model_field.shape == SHAPE_TUPLE:
+        result_str = "Tuple[" + ", ".join(
+            display_as_type(
+                sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
+            )
+        )
+        result_str += "]"
+    elif model_field.shape == SHAPE_GENERIC:
+        assert model_field.sub_fields
+        result_str = (
+            f"{display_as_type(model_field.type_)}["
+            f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
+        )
+    elif model_field.shape != SHAPE_SINGLETON:
+        result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
+
+    if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
+        result_str = f"Optional[{result_str}]"
+    return result_str
+
+
+def get_cardinality(model_field: ModelField) -> Cardinality:
+    """
+    Determines the cardinality of a field. This field can either contain a reference to another node in the graph or
+    be of another arbitrary type.
+    """
+    type_str = model_field_str(model_field)
+    card1: str = "1"
+    card2: str = "1"
+    if type_str.startswith("Optional["):
+        card1 = "0"
+    if type_str.startswith("List[") or type_str.startswith("Optional[List["):
+        card1 = "0"
+        card2 = "*"
+        if hasattr(model_field.outer_type_, "max_items") and model_field.outer_type_.max_items:
+            card2 = str(model_field.outer_type_.max_items)
+        if hasattr(model_field.outer_type_, "min_items") and model_field.outer_type_.min_items:
+            card1 = str(model_field.outer_type_.min_items)
+    return card1, card2
+
+
 def build_network(module_dir: Path, parser: Type[_UMLNetworkABC]) -> Tuple[_UMLNetworkABC, List[str]]:
     """
     Build a network of the relationships of all classes found in bo4e packages defined by `pkgs` and all classes
@@ -483,32 +557,22 @@ def _recursive_add_class(
             )
     # ------------------------------------------------------------------------------------------------------------------
     # ------ determine references in fields which pass `regex_incl_network` and `regex_excl_network` -------------------
-    for model_field in uml_network.nodes[modl_namespace]["fields"].values():
+    for field_dict in uml_network.nodes[modl_namespace]["fields"].values():
+        model_field: ModelField = field_dict["model_field"]
+        # Add cardinality information to the field
+        field_card = get_cardinality(model_field)
+        field_dict["card"] = field_card
         type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
                 _recursive_add_class(model_field.type_, type_modl_namespace, uml_network)
-            type_str = _UMLNetworkABC.model_field_str(model_field)
-
-            # ------ determine cardinality -----------------------------------------------------------------------------
-            card2 = ["1", "1"]
-            if type_str.startswith("Optional["):
-                card2[0] = "0"
-            if type_str.startswith("List[") or type_str.startswith("Optional[List["):
-                card2[0] = "0"
-                card2[1] = "*"
-                if hasattr(model_field.outer_type_, "max_items") and model_field.outer_type_.max_items:
-                    card2[1] = str(model_field.outer_type_.max_items)
-                if hasattr(model_field.outer_type_, "min_items") and model_field.outer_type_.min_items:
-                    card2[0] = str(model_field.outer_type_.min_items)
-            # ----------------------------------------------------------------------------------------------------------
 
             uml_network.add_association(
                 modl_namespace,
                 type_modl_namespace,
                 through_field=model_field,
                 card1=None,
-                card2=tuple(card2),  # type:ignore[arg-type]
+                card2=field_card,
             )
     # ------------------------------------------------------------------------------------------------------------------
 

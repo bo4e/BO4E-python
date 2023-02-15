@@ -46,6 +46,7 @@ example_ausschreibungsdetail_dict = {
         "adresszusatz": None,
         "postfach": None,
         "coErgaenzung": None,
+        "ortsteil": None,
     },
     "rechnungsadresse": {
         "landescode": Landescode.DE,  # type: ignore[attr-defined]
@@ -56,6 +57,7 @@ example_ausschreibungsdetail_dict = {
         "adresszusatz": None,
         "postfach": None,
         "coErgaenzung": None,
+        "ortsteil": None,
     },
     "netzbetreiber": None,
     "netzebeneLieferung": Netzebene.MSP,
@@ -112,6 +114,7 @@ class TestAusschreibungsdetail:
                         "ort": "Grünwald",
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
+                        "ortsteil": None,
                     },
                     "rechnungsadresse": {
                         "hausnummer": "27A",
@@ -122,6 +125,7 @@ class TestAusschreibungsdetail:
                         "ort": "Grünwald",
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
+                        "ortsteil": None,
                     },
                     "zaehlernummer": "1YSK4234092304",
                     "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},

@@ -74,6 +74,7 @@ class TestBuendelvertrag:
             "adresszusatz": None,
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
+            "ortsteil": None,
         },
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
@@ -95,6 +96,7 @@ class TestBuendelvertrag:
             "adresszusatz": None,
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
+            "ortsteil": None,
         },
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
