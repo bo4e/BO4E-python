@@ -17,3 +17,5 @@ class Rechnungstyp(StrEnum):
     )
     BESCHAFFUNGSRECHNUNG = "BESCHAFFUNGSRECHNUNG"  #: Rechnungen zwischen einem  Händler und Einkäufer von Energie.
     AUSGLEICHSENERGIERECHNUNG = "AUSGLEICHSENERGIERECHNUNG"  #: Rechnung an den Verursacher von Ausgleichsenergie.
+    TURNUSRECHNUNG = "TURNUSRECHNUNG" #: Rechnung vom Lieferanten an den Endkunden oder vom Netzbetreiber an den Lieferanten, welche in regelmäßigen Abständen gestellt wird (i.d.R einmal im Jahr)
+    ABSCHLAGSRECHNUNG = "ABSCHLAGSRECHNUNG" #: Rechnung vom Lieferanten an den Endkunden oder vom Netzbetreiber an den Lieferanten über eine Abschlagszahlung
