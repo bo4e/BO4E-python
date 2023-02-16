@@ -283,6 +283,10 @@
             "title": "Ort",
             "type": "string"
         },
+        "ortsteil": {
+            "title": "Ortsteil",
+            "type": "string"
+        },
         "postfach": {
             "title": "Postfach",
             "type": "string"
