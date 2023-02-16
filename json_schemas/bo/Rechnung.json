@@ -725,7 +725,9 @@
                 "MEHRMINDERMENGENRECHNUNG",
                 "MESSSTELLENBETRIEBSRECHNUNG",
                 "BESCHAFFUNGSRECHNUNG",
-                "AUSGLEICHSENERGIERECHNUNG"
+                "AUSGLEICHSENERGIERECHNUNG",
+                "TURNUSRECHNUNG",
+                "ABSCHLAGSRECHNUNG"
             ],
             "title": "Rechnungstyp",
             "type": "string"
