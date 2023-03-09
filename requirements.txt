@@ -6,7 +6,7 @@
 #
 iso3166==2.1.1
     # via -r requirements.in
-pydantic==1.10.5
+pydantic==1.10.6
     # via -r requirements.in
 pyhumps==3.8.0
     # via -r requirements.in
