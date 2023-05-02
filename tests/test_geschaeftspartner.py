@@ -1,7 +1,7 @@
 import json
+from pathlib import Path
 
 import pytest
-from pathlib import Path
 from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner

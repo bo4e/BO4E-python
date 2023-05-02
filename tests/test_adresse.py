@@ -1,7 +1,7 @@
+from pathlib import Path
 from typing import Dict, Optional
 
 import pytest
-from pathlib import Path
 from pydantic import ValidationError
 
 from bo4e.com.adresse import Adresse
