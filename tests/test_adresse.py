@@ -1,7 +1,7 @@
+from pathlib import Path
 from typing import Dict, Optional
 
 import pytest
-from py._path.local import LocalPath  # type:ignore[import]
 from pydantic import ValidationError
 
 from bo4e.com.adresse import Adresse
@@ -120,7 +120,7 @@ class TestAddress:
         assert a.landescode is Landescode.AT  # type: ignore[attr-defined]
 
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json")
-    def test_missing_required_attribute(self, datafiles: LocalPath) -> None:
+    def test_missing_required_attribute(self, datafiles: Path) -> None:
         """
         Test for getting an error message if a required attribute is missing
         """
