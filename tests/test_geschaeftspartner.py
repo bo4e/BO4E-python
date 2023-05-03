@@ -1,7 +1,7 @@
 import json
+from pathlib import Path
 
 import pytest
-from py._path.local import LocalPath  # type:ignore[import]
 from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -15,7 +15,7 @@ from bo4e.enum.landescode import Landescode
 
 class TestGeschaeftspartner:
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json")
-    def test_serializable(self, datafiles: LocalPath) -> None:
+    def test_serializable(self, datafiles: Path) -> None:
         with open(datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
