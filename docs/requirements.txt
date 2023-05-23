@@ -11,15 +11,15 @@ charset-normalizer==2.1.0
 idna==3.3
     # via requests
 iso3166==2.1.1
-    # via -r docs/requirements.in
+    # via -r requirements.in
 networkx==3.0
-    # via -r docs/requirements.in
+    # via -r requirements.in
 pydantic==1.10.5
-    # via -r docs/requirements.in
+    # via -r requirements.in
 pyhumps==3.8.0
-    # via -r docs/requirements.in
-requests==2.29.0
-    # via -r docs/requirements.in
+    # via -r requirements.in
+requests==2.31.0
+    # via -r requirements.in
 typing-extensions==4.3.0
     # via pydantic
 urllib3==1.26.10
