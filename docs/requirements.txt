@@ -18,7 +18,7 @@ pydantic==1.10.7
     # via -r docs/requirements.in
 pyhumps==3.8.0
     # via -r docs/requirements.in
-requests==2.28.2
+requests==2.31.0
     # via -r docs/requirements.in
 typing-extensions==4.3.0
     # via pydantic
