@@ -9,7 +9,6 @@ from pydantic import validator
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
 
-
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 

@@ -43,7 +43,7 @@ class TestValidationBypass:
         # - or you have to guess values/enter dummy data which you cannot distinguish from real data later on.
         # The workaround is to use construct:
         def instantiate_with_construct() -> Marktlokation:
-            malo = Marktlokation.construct(  # type:ignore[call-arg] # silence mypy complaints about the netzebene
+            malo = Marktlokation.model_construct(  # type:ignore[call-arg] # silence mypy complaints about the netzebene
                 marktlokations_id="51238696781",
                 sparte=Sparte.GAS,
                 lokationsadresse=Adresse(

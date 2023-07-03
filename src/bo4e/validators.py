@@ -8,6 +8,7 @@ from typing import Optional, Protocol
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
+
 # pylint: disable=unused-argument
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
