@@ -6,6 +6,7 @@ import re
 from typing import Any, Dict, List, Optional
 
 from iso3166 import countries
+
 # Structure of a Messlokations-ID
 # Ländercode nach DIN ISO 3166 (2 Stellen)
 # Verteilnetzbetreiber (6 Stellen)

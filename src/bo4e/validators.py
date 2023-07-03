@@ -3,22 +3,22 @@ Contains validators for BO s and COM s classes.
 """
 import re
 from datetime import datetime
-from typing import Any, Dict, Optional, Protocol
+from typing import Optional, Protocol
 
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-
 # pylint: disable=unused-argument
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
-def einheit_only_for_abschlagstyp_absolut(cls, value: Waehrungseinheit, values: Dict[str, Any]) -> Waehrungseinheit:  # type: ignore[no-untyped-def]
+def einheit_only_for_abschlagstyp_absolut(cls, value: Waehrungseinheit, validation_info: ValidationInfo) -> Waehrungseinheit:  # type: ignore[no-untyped-def]
     """
     Check that einheit is only there if abschlagstyp is absolut.
     Currently, (2021-12-15) only used in COM AufAbschlag.
     """
-    if value and (not values.data["auf_abschlagstyp"] or (values.data["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
+    values = validation_info.data  # type:ignore[attr-defined]
+    if value and (not values["auf_abschlagstyp"] or (values["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
         raise ValueError("Only state einheit if auf_abschlagstyp is absolute.")
     return value
 

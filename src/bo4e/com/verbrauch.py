@@ -49,7 +49,7 @@ class Verbrauch(COM):
     @staticmethod
     def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
         """a method for easier usage of the check_bis_is_later_than_von validator"""
-        return values.data["startdatum"]
+        return values.data["startdatum"]  # type:ignore[attr-defined]
 
     # def _get_exclusive_end(self) -> Optional[datetime]:
     #     """a method for easier usage of the check_bis_is_later_than_von validator"""

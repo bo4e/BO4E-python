@@ -43,7 +43,7 @@ class Zeitraum(COM):
 
     # pylint: disable=unused-argument, no-self-argument
     @model_validator(mode="before")
-    def time_range_possibilities(cls, model: "Zeitraum", validation_info: ValidationInfo) -> "Zeitraum":
+    def time_range_possibilities(cls, model: dict, validation_info: ValidationInfo) -> dict:  # type:ignore[type-arg]
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
         This functions checks for these conditions of a valid address.

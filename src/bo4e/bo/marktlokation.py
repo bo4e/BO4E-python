@@ -124,7 +124,7 @@ class Marktlokation(Geschaeftsobjekt):
         cls, katasterinformation: Optional[Katasteradresse], validation_info: ValidationInfo
     ) -> Optional[Katasteradresse]:
         """Checks that there is one and only one valid adress given."""
-        values = validation_info.data
+        values = validation_info.data  # type:ignore[attr-defined]
         all_address_attributes = [
             values["lokationsadresse"],
             values["geoadresse"],

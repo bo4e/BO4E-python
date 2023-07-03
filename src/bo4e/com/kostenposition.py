@@ -64,7 +64,7 @@ class Kostenposition(COM):
 
     @staticmethod
     def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
-        return values.data["von"]
+        return values.data["von"]  # type:ignore[attr-defined]
 
     # @staticmethod
     # def _get_exclusive_end(values) -> Optional[datetime]:
