@@ -26,5 +26,5 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: conlist(str, min_length=1, max_items=2)  # type: ignore[valid-type]  #: Netzkontonummern der Gasnetze
+    netzkontonummern: conlist(str, min_length=1, max_length=2)  # type: ignore[valid-type]  #: Netzkontonummern der Gasnetze
     marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
