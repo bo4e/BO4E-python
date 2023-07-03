@@ -33,4 +33,4 @@ class AufAbschlagProOrt(COM):
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
     netznr: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: conlist(AufAbschlagstaffelProOrt, min_items=1)  # type: ignore[valid-type]
+    staffeln: conlist(AufAbschlagstaffelProOrt, min_length=1)  # type: ignore[valid-type]

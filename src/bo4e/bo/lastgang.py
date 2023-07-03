@@ -89,4 +89,4 @@ class Lastgang(_LastgangBody):
     bo_typ: BoTyp = BoTyp.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
-    werte: conlist(Zeitreihenwert, min_items=1)  # type: ignore[valid-type]
+    werte: conlist(Zeitreihenwert, min_length=1)  # type: ignore[valid-type]

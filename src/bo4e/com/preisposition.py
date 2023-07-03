@@ -47,7 +47,7 @@ class Preisposition(COM):
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
     bezugsgroesse: Mengeneinheit
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: conlist(Preisstaffel, min_items=1)  # type: ignore[valid-type]
+    preisstaffeln: conlist(Preisstaffel, min_length=1)  # type: ignore[valid-type]
 
     # optional attributes
     zeitbasis: Optional[Zeiteinheit] = None

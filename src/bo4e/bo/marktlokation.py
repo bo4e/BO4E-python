@@ -114,7 +114,7 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: conlist(Kundentyp, min_items=0) = None  # type: ignore[valid-type]
+    kundengruppen: conlist(Kundentyp, min_length=0) = None  # type: ignore[valid-type]
     #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument

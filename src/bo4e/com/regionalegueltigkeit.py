@@ -28,5 +28,5 @@ class RegionaleGueltigkeit(COM):
     # required attributes
     gueltigkeitstyp: Gueltigkeitstyp  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
     kriteriums_werte: conlist(  # type: ignore[valid-type]
-        KriteriumWert, min_items=1
+        KriteriumWert, min_length=1
     )  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen

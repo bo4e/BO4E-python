@@ -45,7 +45,7 @@ class Zeitreihe(Geschaeftsobjekt):
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
     einheit: Mengeneinheit
     #: Hier liegen jeweils die Werte
-    werte: conlist(Zeitreihenwert, min_items=1)  # type: ignore[valid-type]
+    werte: conlist(Zeitreihenwert, min_length=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe

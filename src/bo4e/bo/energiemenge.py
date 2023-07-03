@@ -35,5 +35,5 @@ class Energiemenge(Geschaeftsobjekt):
     lokationstyp: Lokationstyp
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
-    energieverbrauch: conlist(Verbrauch, min_items=1)  # type: ignore[valid-type]
+    energieverbrauch: conlist(Verbrauch, min_length=1)  # type: ignore[valid-type]
     # there are no optional attributes

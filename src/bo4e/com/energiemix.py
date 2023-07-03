@@ -40,7 +40,7 @@ class Energiemix(COM):
     #: Jahr, für das der Energiemix gilt
     gueltigkeitsjahr: int
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: conlist(Energieherkunft, min_items=1)  # type: ignore[valid-type]
+    anteil: conlist(Energieherkunft, min_length=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Bemerkung zum Energiemix
