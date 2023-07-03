@@ -7,6 +7,9 @@ from pydantic.fields import FieldInfo
 
 
 def is_constrained_str(model_field: FieldInfo) -> bool:
+    """
+    returns True if the given model_field is a constrained string
+    """
     for metad in model_field.metadata:
         if isinstance(metad, PydanticGeneralMetadata):
             if hasattr(metad, "pattern"):
