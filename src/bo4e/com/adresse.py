@@ -48,7 +48,7 @@ class Adresse(COM):
     landescode: Landescode = Landescode.DE  # type:ignore
 
     # pylint: disable=no-self-argument
-    @validator("postfach", always=True)
+    @validator("postfach")
     def strasse_xor_postfach(cls, postfach: Optional[str], values: Dict[str, Any]) -> Optional[str]:
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).

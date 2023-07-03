@@ -3,11 +3,12 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Dict, Optional
+from typing import Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import constr, validator
+from pydantic import constr, field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -32,7 +33,7 @@ class Verbrauch(COM):
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Wertermittlungsverfahren
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:
-    obis_kennzahl: constr(strict=True, regex=OBIS_PATTERN)  # type: ignore[valid-type]  # type: ignore[valid-type]
+    obis_kennzahl: constr(strict=True, pattern=OBIS_PATTERN)  # type: ignore[valid-type]  # type: ignore[valid-type]
     #: Gibt den absoluten Wert der Menge an
     wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
@@ -43,12 +44,12 @@ class Verbrauch(COM):
     startdatum: Optional[datetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
     enddatum: Optional[datetime] = None
-    _bis_check = validator("enddatum", always=True, allow_reuse=True)(check_bis_is_later_than_von)
+    _bis_check = field_validator("enddatum")(check_bis_is_later_than_von)
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
+    def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
         """a method for easier usage of the check_bis_is_later_than_von validator"""
-        return values["startdatum"]
+        return values.data["startdatum"]  # type:ignore[attr-defined]
 
     # def _get_exclusive_end(self) -> Optional[datetime]:
     #     """a method for easier usage of the check_bis_is_later_than_von validator"""

@@ -28,4 +28,4 @@ for pkg in pkgs:
                     # this sanitizing step is necessary since python 3.11
                     definition["description"] = definition["description"].strip()
             with open(file_path, "w+", encoding="utf-8") as json_schema_file:
-                json_schema_file.write(json.dumps(schema_json_dict, ensure_ascii=False, indent=4))
+                json_schema_file.write(json.dumps(schema_json_dict, indent=4))

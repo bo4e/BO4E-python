@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import List, Optional
 
-from pydantic import validator
+from pydantic import field_validator
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -46,7 +46,7 @@ class AufAbschlag(COM):
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
     auf_abschlagsziel: Optional[AufAbschlagsziel] = None
     einheit: Optional[Waehrungseinheit] = None
-    _einheit_check = validator("einheit", allow_reuse=True)(einheit_only_for_abschlagstyp_absolut)
+    _einheit_check = field_validator("einheit")(einheit_only_for_abschlagstyp_absolut)
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.

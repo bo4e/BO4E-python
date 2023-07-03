@@ -18,13 +18,13 @@ class TestPreis:
         """
         preis = example_preis
 
-        json_string = preis.json(by_alias=True, ensure_ascii=False)
+        json_string = preis.model_dump_json(by_alias=True)
 
         assert "KWH" in json_string
         assert "EUR" in json_string
         assert "null" in json_string
 
-        preis_deserialized = Preis.parse_raw(json_string)
+        preis_deserialized = Preis.model_validate_json(json_string)
 
         assert isinstance(preis_deserialized.wert, Decimal)
         assert isinstance(preis_deserialized.einheit, Waehrungseinheit)
@@ -38,7 +38,7 @@ class TestPreis:
 
         assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
-        assert "value is not a valid decimal" in str(excinfo.value)
+        assert "type=decimal_parsing" in str(excinfo.value)
 
     def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
@@ -54,10 +54,10 @@ class TestPreis:
             status=Preisstatus.ENDGUELTIG,
         )
 
-        json_string = preis.json(by_alias=True, ensure_ascii=False)
+        json_string = preis.model_dump_json(by_alias=True)
 
         assert "ENDGUELTIG" in json_string
 
-        preis_deserialized = Preis.parse_raw(json_string)
+        preis_deserialized = Preis.model_validate_json(json_string)
 
         assert isinstance(preis_deserialized.status, Preisstatus)

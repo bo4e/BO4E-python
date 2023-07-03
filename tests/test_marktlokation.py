@@ -35,12 +35,12 @@ class TestMaLo:
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        json_string = malo.json(by_alias=True, ensure_ascii=False)
+        json_string = malo.model_dump_json(by_alias=True)
 
         assert "boTyp" in json_string, "No camel case serialization"
         assert "marktlokationsId" in json_string, "No camel case serialization"
 
-        deserialized_malo: Marktlokation = Marktlokation.parse_raw(json_string)
+        deserialized_malo: Marktlokation = Marktlokation.model_validate_json(json_string)
 
         # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
         # but are **not** the same object.
@@ -87,12 +87,12 @@ class TestMaLo:
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
         assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
-        json_string = malo.json(by_alias=True, ensure_ascii=False)
+        json_string = malo.model_dump_json(by_alias=True)
 
         assert "boTyp" in json_string, "No camel case serialization"
         assert "marktlokationsId" in json_string, "No camel case serialization"
 
-        deserialized_malo: Marktlokation = Marktlokation.parse_raw(json_string)
+        deserialized_malo: Marktlokation = Marktlokation.model_validate_json(json_string)
 
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
@@ -137,11 +137,11 @@ class TestMaLo:
             }"""
 
         with pytest.raises(ValidationError) as excinfo:
-            Marktlokation.parse_raw(invalid_json_string)
+            Marktlokation.model_validate_json(invalid_json_string)
 
         assert "1 validation error" in str(excinfo.value)
         assert "marktlokationsId" in str(excinfo.value)
-        assert "field required" in str(excinfo.value)
+        assert "Field required" in str(excinfo.value)
 
     def test_address_validation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

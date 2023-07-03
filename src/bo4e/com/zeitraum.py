@@ -5,9 +5,10 @@ and corresponding marshmallow schema for de-/serialization
 
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Dict, Optional
+from typing import Optional
 
-from pydantic import validator
+from pydantic import model_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
@@ -41,31 +42,49 @@ class Zeitraum(COM):
     endzeitpunkt: Optional[datetime] = None
 
     # pylint: disable=unused-argument, no-self-argument
-    @validator("endzeitpunkt", always=True)
-    def time_range_possibilities(cls, endzeitpunkt: Optional[datetime], values: Dict[str, Any]) -> Optional[datetime]:
+    @model_validator(mode="before")
+    def time_range_possibilities(cls, model: dict, validation_info: ValidationInfo) -> dict:  # type:ignore[type-arg]
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
         This functions checks for these conditions of a valid address.
         """
-
+        values = model
+        # todo: rewrite this to be more readable; just migrated to pydantic v2 without thinking too much about it
+        # https://github.com/bo4e/BO4E-python/issues/480
+        endzeitpunkt = values.get("endzeitpunkt")
         if (
-            values["einheit"]
-            and values["dauer"]
-            and not (values["startdatum"] or values["enddatum"] or values["startzeitpunkt"] or endzeitpunkt)
+            ("einheit" in values and values["einheit"])
+            and ("dauer" in values and values["dauer"])
+            and not (
+                ("startdatum" in values and values["startdatum"])
+                or ("enddatum" in values and values["enddatum"])
+                or ("startzeitpunkt" in values and values["startzeitpunkt"])
+                or endzeitpunkt
+            )
         ):
-            return endzeitpunkt
+            return model
         if (
-            values["startdatum"]
-            and values["enddatum"]
-            and not (values["einheit"] or values["dauer"] or values["startzeitpunkt"] or endzeitpunkt)
+            ("startdatum" in values and values["startdatum"])
+            and ("enddatum" in values and values["enddatum"])
+            and not (
+                ("einheit" in values and values["einheit"])
+                or ("dauer" in values and values["dauer"])
+                or ("startzeitpunkt" in values and values["startzeitpunkt"])
+                or endzeitpunkt
+            )
         ):
-            return endzeitpunkt
+            return model
         if (
-            values["startzeitpunkt"]
-            and endzeitpunkt
-            and not (values["einheit"] or values["dauer"] or values["startdatum"] or values["enddatum"])
+            ("startzeitpunkt" in values and values["startzeitpunkt"])
+            and ("endzeitpunkt" in values and model["endzeitpunkt"])
+            and not (
+                ("einheit" in values and values["einheit"])
+                or ("dauer" in values and values["dauer"])
+                or ("startdatum" in values and values["startdatum"])
+                or ("enddatum" in values and values["enddatum"])
+            )
         ):
-            return endzeitpunkt
+            return model
 
         raise ValueError(
             """

@@ -13,11 +13,11 @@ class TestUnterschrift:
         """
         unterschrift = Unterschrift(name="Foo")
 
-        json_string = unterschrift.json(by_alias=True, ensure_ascii=False)
+        json_string = unterschrift.model_dump_json(by_alias=True)
 
         assert "Foo" in json_string
 
-        unterschrift_deserialized = Unterschrift.parse_raw(json_string)
+        unterschrift_deserialized = Unterschrift.model_validate_json(json_string)
 
         assert isinstance(unterschrift_deserialized.name, str)
         assert unterschrift_deserialized.name == "Foo"
@@ -28,13 +28,13 @@ class TestUnterschrift:
         """
         unterschrift = Unterschrift(name="Foo", ort="Grünwald", datum=datetime(2019, 6, 7, tzinfo=timezone.utc))
 
-        json_string = unterschrift.json(by_alias=True, ensure_ascii=False)
+        json_string = unterschrift.model_dump_json(by_alias=True)
 
         assert "Foo" in json_string
         assert "Grünwald" in json_string
-        assert "2019-06-07T00:00:00+00:00" in json_string
+        assert "2019-06-07T00:00:00Z" in json_string
 
-        unterschrift_deserialized = Unterschrift.parse_raw(json_string)
+        unterschrift_deserialized = Unterschrift.model_validate_json(json_string)
 
         assert isinstance(unterschrift_deserialized.name, str)
         assert unterschrift_deserialized.name == "Foo"

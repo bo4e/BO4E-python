@@ -51,6 +51,4 @@ class TestEnergieherkunft:
             _ = (Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(failing_percentage)),)
 
         assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value is less than 100" in str(
-            excinfo.value
-        ) or "ensure this value is greater than 0" in str(excinfo.value)
+        assert "should be less than 100" in str(excinfo.value) or "should be greater than 0" in str(excinfo.value)

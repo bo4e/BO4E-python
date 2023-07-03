@@ -26,11 +26,11 @@ class TarifpreispositionProOrt(COM):
 
     # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: constr(strict=True, regex=r"^\d{5}$")  # type: ignore[valid-type]
+    postleitzahl: constr(strict=True, pattern=r"^\d{5}$")  # type: ignore[valid-type]
     #: Ort für den der Preis gilt
     ort: str
     #: ene't-Netznummer des Netzes in dem der Preis gilt
     netznr: str
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: conlist(TarifpreisstaffelProOrt, min_items=1)  # type: ignore[valid-type]
+    preisstaffeln: conlist(TarifpreisstaffelProOrt, min_length=1)  # type: ignore[valid-type]
     # there are no optional attributes

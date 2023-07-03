@@ -83,8 +83,8 @@ class TestVerbrauch:
             )
 
         assert "1 validation error" in str(excinfo.value)
-        assert "obisKennzahl" in str(excinfo.value)
-        assert "string does not match regex" in str(excinfo.value)
+        assert "obis_kennzahl" in str(excinfo.value)
+        assert "should match pattern" in str(excinfo.value)
 
     def test_failing_validation_end_later_than_start(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

@@ -99,4 +99,4 @@ class TestRegionaltarif:
             )
 
         assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
+        assert "too_short" in str(excinfo.value)

@@ -2,10 +2,11 @@
 Contains Kostenposition and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Any, Dict, Optional
+from typing import Optional
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import validator
+from pydantic import field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -47,7 +48,7 @@ class Kostenposition(COM):
     von: Optional[datetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
     bis: Optional[datetime] = None
-    _bis_check = validator("bis", always=True, allow_reuse=True)(check_bis_is_later_than_von)
+    _bis_check = field_validator("bis")(check_bis_is_later_than_von)
 
     #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
     menge: Optional[Menge] = None
@@ -62,8 +63,8 @@ class Kostenposition(COM):
     artikeldetail: Optional[str] = None
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
-        return values["von"]
+    def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
+        return values.data["von"]  # type:ignore[attr-defined]
 
     # @staticmethod
     # def _get_exclusive_end(values) -> Optional[datetime]:

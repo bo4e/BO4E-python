@@ -46,10 +46,10 @@ class TestZaehler:
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
-        json_string = zaehler.json(by_alias=True, ensure_ascii=False)
+        json_string = zaehler.model_dump_json(by_alias=True)
         assert "richtung" in json_string, "Zaehlwerk->richtung was not serialized"
         assert "einheit" in json_string, "Zaehlwerk->einheit was not serialized"
-        deserialized_zaehler = Zaehler.parse_raw(json_string)
+        deserialized_zaehler = Zaehler.model_validate_json(json_string)
         assert deserialized_zaehler == zaehler
 
     def test_serialization_fails_for_invalid_obis(self) -> None:
@@ -75,8 +75,8 @@ class TestZaehler:
                 tarifart=Tarifart.ZWEITARIF,
             )
         assert "1 validation error" in str(excinfo.value)
-        assert "obisKennzahl" in str(excinfo.value)
-        assert "string does not match regex" in str(excinfo.value)
+        assert "obis_kennzahl" in str(excinfo.value)
+        assert "should match pattern" in str(excinfo.value)
 
     def test_serialization_fails_for_empty_zaehlwerke(self) -> None:
         """
@@ -92,4 +92,4 @@ class TestZaehler:
                 tarifart=Tarifart.ZWEITARIF,
             )
         assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
+        assert "too_short" in str(excinfo.value)

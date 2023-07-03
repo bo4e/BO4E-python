@@ -38,11 +38,11 @@ class TestGeschaeftsobjekt:
         )
         assert isinstance(go, Geschaeftsobjekt)
 
-        go_json = go.json(by_alias=True, ensure_ascii=False)
+        go_json = go.model_dump_json(by_alias=True)
 
         assert str(versionstruktur) in go_json
 
-        go_deserialized = Geschaeftsobjekt.parse_raw(go_json)
+        go_deserialized = Geschaeftsobjekt.model_validate_json(go_json)
 
         assert go_deserialized.bo_typ is bo_typ
         assert go_deserialized.versionstruktur == versionstruktur
@@ -60,5 +60,5 @@ class TestGeschaeftsobjekt:
                 bo_typ=BoTyp.ENERGIEMENGE,
                 externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
-        assert "1 validation error" in str(excinfo.value)
-        assert "value is not a valid list" in str(excinfo.value)
+        assert "2 validation error" in str(excinfo.value)
+        assert "type=model_type" in str(excinfo.value)

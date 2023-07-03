@@ -22,12 +22,12 @@ class TestZeitreihenwert:
         """
         zeitreihenwert = example_zeitreihenwert
 
-        json_string = zeitreihenwert.json(by_alias=True, ensure_ascii=False)
+        json_string = zeitreihenwert.model_dump_json(by_alias=True)
 
-        assert "2001-03-15T00:00:00+00:00" in json_string
-        assert "2007-11-27T00:00:00+00:00" in json_string
+        assert "2001-03-15T00:00:00Z" in json_string
+        assert "2007-11-27T00:00:00Z" in json_string
 
-        zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.parse_raw(json_string)
+        zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.model_validate_json(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
 
     def test_zeitreihenwert_required_and_optional_attributes(self) -> None:
@@ -42,15 +42,15 @@ class TestZeitreihenwert:
             statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL,
         )
 
-        json_string = zeitreihenwert.json(by_alias=True, ensure_ascii=False)
+        json_string = zeitreihenwert.model_dump_json(by_alias=True)
 
         assert "2.5" in json_string
-        assert "2001-03-15T00:00:00+00:00" in json_string
-        assert "2007-11-27T00:00:00+00:00" in json_string
+        assert "2001-03-15T00:00:00Z" in json_string
+        assert "2007-11-27T00:00:00Z" in json_string
         assert "ABGELESEN" in json_string
         assert "Z78_GERAETEWECHSEL" in json_string
 
-        zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.parse_raw(json_string)
+        zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.model_validate_json(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
 
     def test_missing_required_attribute(self) -> None:

@@ -13,12 +13,12 @@ class TestGeokoordinaten:
             laengengrad=Decimal(13.404866218566895),
         )
 
-        json_string = geo.json(by_alias=True, ensure_ascii=False)
+        json_string = geo.model_dump_json(by_alias=True)
 
         assert "breitengrad" in json_string
         assert str(geo.breitengrad) in json_string
 
-        deserialized_geo: Geokoordinaten = Geokoordinaten.parse_raw(json_string)
+        deserialized_geo: Geokoordinaten = Geokoordinaten.model_validate_json(json_string)
 
         assert isinstance(deserialized_geo.breitengrad, Decimal)
         assert isinstance(deserialized_geo.laengengrad, Decimal)

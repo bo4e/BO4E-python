@@ -25,16 +25,16 @@ class TestVertragskonditionen:
         """
         vertragskonditionen = example_vertragskonditionen
 
-        json_string = vertragskonditionen.json(by_alias=True, ensure_ascii=False)
+        json_string = vertragskonditionen.model_dump_json(by_alias=True)
 
         assert "Foobar" in json_string
         assert "3" in json_string
-        assert "2013-10-11T00:00:00+00:00" in json_string
+        assert "2013-10-11T00:00:00Z" in json_string
         assert "WOCHE" in json_string
         assert "TAG" in json_string
         assert "14" in json_string
 
-        vertragskonditionen_deserialized = Vertragskonditionen.parse_raw(json_string)
+        vertragskonditionen_deserialized = Vertragskonditionen.model_validate_json(json_string)
 
         assert isinstance(vertragskonditionen_deserialized.beschreibung, str)
         assert vertragskonditionen_deserialized.beschreibung == "Foobar"

@@ -42,7 +42,7 @@ class RegionalerAufAbschlag(COM):
     bezeichnung: str
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    staffeln: conlist(RegionalePreisstaffel, min_items=1)  # type: ignore[valid-type]
+    staffeln: conlist(RegionalePreisstaffel, min_length=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Beschreibung des Auf-/Abschlags

@@ -38,7 +38,7 @@ class Tarif(Tarifinfo):
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: conlist(TarifpreispositionProOrt, min_items=1)  # type: ignore[valid-type]
+    tarifpreise: conlist(TarifpreispositionProOrt, min_length=1)  # type: ignore[valid-type]
 
     # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung

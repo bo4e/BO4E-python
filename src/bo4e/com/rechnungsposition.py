@@ -4,9 +4,10 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import Any, Dict, Optional
+from typing import Optional
 
-from pydantic import validator
+from pydantic import field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -38,7 +39,7 @@ class Rechnungsposition(COM):
 
     lieferung_von: datetime  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
     lieferung_bis: datetime  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
-    _bis_check = validator("lieferung_bis", always=True, allow_reuse=True)(check_bis_is_later_than_von)
+    _bis_check = field_validator("lieferung_bis")(check_bis_is_later_than_von)
 
     #: Bezeichung für die abgerechnete Position
     positionstext: str
@@ -81,9 +82,9 @@ class Rechnungsposition(COM):
     artikel_id: Optional[str] = None
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
+    def _get_inclusive_start(values: ValidationInfo) -> datetime:
         """return the inclusive start (used in the validator)"""
-        return values["lieferung_von"]
+        return values.data["lieferung_von"]  # type:ignore[attr-defined]
 
     # def _get_exclusive_end(self) -> datetime:
     #     """return the exclusive end (used in the validator)"""

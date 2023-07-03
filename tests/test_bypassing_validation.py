@@ -1,5 +1,4 @@
 import inspect
-import json
 
 import pytest
 from pydantic import ValidationError
@@ -37,14 +36,14 @@ class TestValidationBypass:
         with pytest.raises(ValidationError) as validation_error:
             instantiate_with_constructor()
         error_msg = str(validation_error.value).replace("\n", " ").replace("\r", " ").replace("  ", " ")
-        assert "1 validation error for Marktlokation netzebene  field required" in error_msg
+        assert "1 validation error for Marktlokation netzebene  Field required" in error_msg
 
         # You're in a dilemma:
         # - either you cannot instantiate the BO, although you'd like to use BO4E
         # - or you have to guess values/enter dummy data which you cannot distinguish from real data later on.
         # The workaround is to use construct:
         def instantiate_with_construct() -> Marktlokation:
-            malo = Marktlokation.construct(  # type:ignore[call-arg] # silence mypy complaints about the netzebene
+            malo = Marktlokation.model_construct(  # type:ignore[call-arg] # silence mypy complaints about the netzebene
                 marktlokations_id="51238696781",
                 sparte=Sparte.GAS,
                 lokationsadresse=Adresse(
@@ -65,8 +64,8 @@ class TestValidationBypass:
         with pytest.raises(AttributeError):
             _ = marktlokation.netzebene
         # you can still serialize the invalid malo
-        malo_json_str = marktlokation.json()  # works
+        malo_json_str = marktlokation.model_dump_json()  # works
         assert malo_json_str is not None
         # but deserializing raises an error:
         with pytest.raises(ValidationError):
-            Marktlokation.parse_raw(malo_json_str)
+            Marktlokation.model_validate_json(malo_json_str)

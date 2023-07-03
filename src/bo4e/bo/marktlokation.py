@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Any, Dict, Optional
+from typing import Optional
 
 # pylint: disable=no-name-in-module
-from pydantic import conlist, validator
+from pydantic import conlist, field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -44,7 +45,7 @@ class Marktlokation(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: str
-    _marktlokations_id_check = validator("marktlokations_id", allow_reuse=True)(validate_marktlokations_id)
+    _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
@@ -114,15 +115,16 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: conlist(Kundentyp, min_items=0) = None  # type: ignore[valid-type]
+    kundengruppen: Optional[conlist(Kundentyp, min_length=0)] = None  # type: ignore[valid-type]
     #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument
-    @validator("katasterinformation", always=True)
+    @field_validator("katasterinformation")
     def validate_address_info(
-        cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
+        cls, katasterinformation: Optional[Katasteradresse], validation_info: ValidationInfo
     ) -> Optional[Katasteradresse]:
         """Checks that there is one and only one valid adress given."""
+        values = validation_info.data  # type:ignore[attr-defined]
         all_address_attributes = [
             values["lokationsadresse"],
             values["geoadresse"],
