@@ -57,6 +57,6 @@ class TestTagesvektor:
             _ = Tagesvektor(tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc), werte=[])
 
         assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
+        assert "too_short" in str(excinfo.value)
 
     # add tests for issues 261 and 262 here

@@ -42,7 +42,7 @@ class TestStandorteigenschaftenGas:
         [
             pytest.param(
                 [],
-                "ensure this value has at least 1 item",
+                "too_short",
             ),
             pytest.param(
                 ["1", "2", "3"],

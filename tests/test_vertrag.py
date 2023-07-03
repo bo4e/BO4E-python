@@ -179,11 +179,11 @@ class TestVertrag:
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
         assert "STROM" in json_string
-        assert "2021-04-30T13:45:00+00:00" in json_string
-        assert "2021-06-05T16:30:00+00:00" in json_string
+        assert "2021-04-30T13:45:00Z" in json_string
+        assert "2021-06-05T16:30:00Z" in json_string
         assert "von Sinnen" in json_string
         assert "Preetz" in json_string
-        assert "2021-06-05T00:00:00+00:00" in json_string
+        assert "2021-06-05T00:00:00Z" in json_string
 
         vertrag_deserialized = Vertrag.model_validate_json(json_string)
 
@@ -234,12 +234,12 @@ class TestVertrag:
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
         assert "STROM" in json_string
-        assert "2021-04-30T13:45:00+00:00" in json_string
-        assert "2021-06-05T16:30:00+00:00" in json_string
+        assert "2021-04-30T13:45:00Z" in json_string
+        assert "2021-06-05T16:30:00Z" in json_string
         assert "von Sinnen" in json_string
         assert "Preetz" in json_string
-        assert "2021-06-05T00:00:00+00:00" in json_string
-        assert "2002-12-03T00:00:00+00:00" in json_string
+        assert "2021-06-05T00:00:00Z" in json_string
+        assert "2002-12-03T00:00:00Z" in json_string
         assert "Hello Vertrag" in json_string
         assert "Beschreibung" in json_string
         assert "Foo" in json_string
@@ -295,4 +295,4 @@ class TestVertrag:
             )
 
         assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
+        assert "too_short" in str(excinfo.value)

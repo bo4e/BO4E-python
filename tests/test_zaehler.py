@@ -75,8 +75,8 @@ class TestZaehler:
                 tarifart=Tarifart.ZWEITARIF,
             )
         assert "1 validation error" in str(excinfo.value)
-        assert "obisKennzahl" in str(excinfo.value)
-        assert "string does not match regex" in str(excinfo.value)
+        assert "obis_kennzahl" in str(excinfo.value)
+        assert "should match pattern" in str(excinfo.value)
 
     def test_serialization_fails_for_empty_zaehlwerke(self) -> None:
         """
@@ -92,4 +92,4 @@ class TestZaehler:
                 tarifart=Tarifart.ZWEITARIF,
             )
         assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
+        assert "too_short" in str(excinfo.value)

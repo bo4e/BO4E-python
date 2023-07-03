@@ -37,7 +37,7 @@ class TestValidationBypass:
         with pytest.raises(ValidationError) as validation_error:
             instantiate_with_constructor()
         error_msg = str(validation_error.value).replace("\n", " ").replace("\r", " ").replace("  ", " ")
-        assert "1 validation error for Marktlokation netzebene  field required" in error_msg
+        assert "1 validation error for Marktlokation netzebene  Field required" in error_msg
 
         # You're in a dilemma:
         # - either you cannot instantiate the BO, although you'd like to use BO4E

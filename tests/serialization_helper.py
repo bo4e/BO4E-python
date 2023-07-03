@@ -17,7 +17,7 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
     """
     json_string = serializable_object.model_dump_json(by_alias=True)  # type: ignore[attr-defined]
     assert json_string is not None
-    actual_json_dict = serializable_object.dict(by_alias=True)  # type: ignore[attr-defined]
+    actual_json_dict = serializable_object.model_dump(by_alias=True)  # type: ignore[attr-defined]
     assert actual_json_dict is not None
     # TODO: serializable_object.dict()
     if expected_json_dict is not None:

@@ -51,8 +51,8 @@ class TestZeitraum:
 
         json_string = zeitraum.model_dump_json(by_alias=True)
 
-        assert "2013-05-01T00:00:00+00:00" in json_string
-        assert "2022-01-28T00:00:00+00:00" in json_string
+        assert "2013-05-01T00:00:00Z" in json_string
+        assert "2022-01-28T00:00:00Z" in json_string
 
         zeitraum_deserialized = Zeitraum.model_validate_json(json_string)
 
@@ -72,8 +72,8 @@ class TestZeitraum:
 
         json_string = zeitraum.model_dump_json(by_alias=True)
 
-        assert "2011-02-05T16:43:00+00:00" in json_string
-        assert "2021-07-30T00:00:00+00:00" in json_string
+        assert "2011-02-05T16:43:00Z" in json_string
+        assert "2021-07-30T00:00:00Z" in json_string
 
         zeitraum_deserialized = Zeitraum.model_validate_json(json_string)
 

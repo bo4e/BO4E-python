@@ -224,7 +224,7 @@ class TestMeLo:
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
         )
-        melo_json: Dict[str, Any] = melo.dict()
+        melo_json: Dict[str, Any] = melo.model_dump()
         melo_json["additional_key"] = "additional_value"
         deserialized_melo: Messlokation = Messlokation.parse_obj(melo_json)
         assert isinstance(deserialized_melo, Messlokation)

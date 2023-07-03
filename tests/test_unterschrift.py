@@ -32,7 +32,7 @@ class TestUnterschrift:
 
         assert "Foo" in json_string
         assert "Grünwald" in json_string
-        assert "2019-06-07T00:00:00+00:00" in json_string
+        assert "2019-06-07T00:00:00Z" in json_string
 
         unterschrift_deserialized = Unterschrift.model_validate_json(json_string)
 

@@ -29,7 +29,7 @@ class TestVertragskonditionen:
 
         assert "Foobar" in json_string
         assert "3" in json_string
-        assert "2013-10-11T00:00:00+00:00" in json_string
+        assert "2013-10-11T00:00:00Z" in json_string
         assert "WOCHE" in json_string
         assert "TAG" in json_string
         assert "14" in json_string

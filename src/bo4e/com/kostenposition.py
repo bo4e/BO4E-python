@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Any, Dict, Optional
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import field_validator, field_validator
+from pydantic import field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.betrag import Betrag

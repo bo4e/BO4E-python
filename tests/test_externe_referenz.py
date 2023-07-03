@@ -69,7 +69,7 @@ class TestExterneReferenz:
         tests the behaviour of the json extension data (`extra="allow"`)
         """
         er = ExterneReferenz(ex_ref_name="foo.bar", ex_ref_wert="12345")
-        er_json: Dict[str, Any] = er.dict()
+        er_json: Dict[str, Any] = er.model_dump()
         er_json["additional_key"] = "additional_value"
         deserialized_er: ExterneReferenz = ExterneReferenz.parse_obj(er_json)
         assert isinstance(deserialized_er, ExterneReferenz)
