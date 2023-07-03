@@ -2,7 +2,7 @@
 Contains Kostenposition and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Any, Dict, Optional
+from typing import Optional
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 from pydantic import field_validator

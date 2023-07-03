@@ -3,13 +3,13 @@ Contains Zeitreihenwert class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Any, Dict
 
 from pydantic import field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from bo4e.validators import check_bis_is_later_than_von
+
 
 # pylint: disable=too-few-public-methods
 

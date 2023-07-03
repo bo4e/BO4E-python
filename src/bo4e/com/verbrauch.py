@@ -3,7 +3,7 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Dict, Optional
+from typing import Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
