@@ -12,27 +12,23 @@ import pkgutil
 import re
 import shlex
 import subprocess
+import typing
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
-from re import Pattern
+
+# from re import Pattern
 from typing import Any, Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
+from pydantic._internal._model_construction import ModelMetaclass
+from pydantic._internal._repr import display_as_type
+from pydantic.fields import FieldInfo
 
-# pylint: disable=no-name-in-module
-from pydantic import ConstrainedStr
-from pydantic.fields import (
-    MAPPING_LIKE_SHAPES,
-    SHAPE_GENERIC,
-    SHAPE_LIST,
-    SHAPE_NAME_LOOKUP,
-    SHAPE_SINGLETON,
-    SHAPE_TUPLE,
-    ModelField,
-)
-from pydantic.main import ModelMetaclass
-from pydantic.typing import display_as_type
+# from pydantic.main import ModelMetaclass
+from pydantic_core.core_schema import ModelField
+
+from bo4e.utils import is_constrained_str
 
 
 # pylint: disable=too-few-public-methods
@@ -143,7 +139,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         self,
         node1: str,
         node2: str,
-        through_field: ModelField,
+        through_field: FieldInfo,
         card1: Optional[Cardinality] = None,
         card2: Optional[Cardinality] = None,
     ) -> None:
@@ -228,13 +224,16 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         return None
 
     @staticmethod
-    def model_field_str(model_field: ModelField, card: Optional[Cardinality] = None) -> str:
+    def model_field_str(model_field: FieldInfo, card: Optional[Cardinality] = None) -> str:
         """
-        Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
+        Parse the type of the ModelField to a printable string. Copied from
+        pydantic._internal._repr.display_as_type
+        https://github.com/pydantic/pydantic/blob/58ae1ef77a4bf4276aaa6214aaaaf59455f5e587/pydantic/_internal/_repr.py#L85
         """
-        result_str = display_as_type(model_field.type_)
-
+        result_str = display_as_type(model_field.annotation)
+        # return result_str
         # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
+        """
         if model_field.shape in MAPPING_LIKE_SHAPES:
             result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
         elif model_field.shape == SHAPE_TUPLE:
@@ -253,12 +252,12 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
             result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
 
-        if isinstance(model_field.outer_type_, type) and issubclass(model_field.outer_type_, ConstrainedStr):
+        if is_constrained_str(model_field):
             if isinstance(model_field.outer_type_.regex, Pattern):
                 result_str = f"str<{model_field.outer_type_.regex.pattern}>"
             elif isinstance(model_field.outer_type_.regex, str):
                 result_str = f"str<{model_field.outer_type_.regex}>"
-
+        """
         assert card is not None
         return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
 
@@ -291,13 +290,14 @@ class PlantUMLNetwork(_UMLNetworkABC):
         if detailed:
             cls_str += " {\n"
             for field_dict in self.nodes[node]["fields"].values():
-                model_field = field_dict["model_field"]
-                type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
+                model_field: FieldInfo = field_dict["model_field"]
+                assert model_field.annotation is not None
+                type_modl_namespace = f"{model_field.annotation.__module__}.{model_field.annotation.__name__}"
                 if type_modl_namespace in self[node]:
                     # Skip the fields which will appear as references in the graph
                     continue
                 type_str = _UMLNetworkABC.model_field_str(model_field, field_dict["card"])
-                if model_field.required:
+                if model_field.is_required():
                     cls_str += f"\t{model_field.alias} : {type_str}\n"
                 else:
                     cls_str += f"\t{model_field.alias} : {type_str} = {model_field.default}\n"
@@ -457,12 +457,12 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
     return path_list
 
 
-def model_field_str(model_field: ModelField) -> str:
+def model_field_str(model_field: FieldInfo) -> str:
     """
     Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
     """
-    result_str = display_as_type(model_field.type_)
-
+    result_str = display_as_type(model_field.annotation)
+    """
     # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
     if model_field.shape in MAPPING_LIKE_SHAPES:
         result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
@@ -484,10 +484,11 @@ def model_field_str(model_field: ModelField) -> str:
 
     if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
         result_str = f"Optional[{result_str}]"
+    """
     return result_str
 
 
-def get_cardinality(model_field: ModelField) -> Cardinality:
+def get_cardinality(model_field: FieldInfo) -> Cardinality:
     """
     Determines the cardinality of a field. This field can either contain a reference to another node in the graph or
     be of another arbitrary type.
@@ -500,10 +501,12 @@ def get_cardinality(model_field: ModelField) -> Cardinality:
     if type_str.startswith("List[") or type_str.startswith("Optional[List["):
         card1 = "0"
         card2 = "*"
-        if hasattr(model_field.outer_type_, "max_items") and model_field.outer_type_.max_items:
-            card2 = str(model_field.outer_type_.max_items)
-        if hasattr(model_field.outer_type_, "min_items") and model_field.outer_type_.min_items:
-            card1 = str(model_field.outer_type_.min_items)
+        # todo: re-add min_length / max_length interpretation
+        # https://github.com/bo4e/BO4E-python/issues/477
+        # if hasattr(model_field.outer_type_, "max_items") and model_field.outer_type_.max_items:
+        #    card2 = str(model_field.outer_type_.max_items)
+        # if hasattr(model_field.outer_type_, "min_items") and model_field.outer_type_.min_items:
+        #    card1 = str(model_field.outer_type_.min_items)
     return card1, card2
 
 
@@ -558,14 +561,15 @@ def _recursive_add_class(
     # ------------------------------------------------------------------------------------------------------------------
     # ------ determine references in fields which pass `regex_incl_network` and `regex_excl_network` -------------------
     for field_dict in uml_network.nodes[modl_namespace]["fields"].values():
-        model_field: ModelField = field_dict["model_field"]
+        model_field: FieldInfo = field_dict["model_field"]
         # Add cardinality information to the field
         field_card = get_cardinality(model_field)
         field_dict["card"] = field_card
-        type_modl_namespace = f"{model_field.type_.__module__}.{model_field.type_.__name__}"
+        assert model_field.annotation is not None
+        type_modl_namespace = f"{model_field.annotation.__module__}.{model_field.annotation.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
-                _recursive_add_class(model_field.type_, type_modl_namespace, uml_network)
+                _recursive_add_class(model_field.annotation, type_modl_namespace, uml_network)  # type:ignore[arg-type]
 
             uml_network.add_association(
                 modl_namespace,
