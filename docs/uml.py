@@ -12,7 +12,8 @@ import pkgutil
 import re
 import shlex
 import subprocess
-import typing
+
+# import typing
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
 
@@ -26,9 +27,9 @@ from pydantic._internal._repr import display_as_type
 from pydantic.fields import FieldInfo
 
 # from pydantic.main import ModelMetaclass
-from pydantic_core.core_schema import ModelField
+# from pydantic_core.core_schema import ModelField
 
-from bo4e.utils import is_constrained_str
+# from bo4e.utils import is_constrained_str
 
 
 # pylint: disable=too-few-public-methods
@@ -231,33 +232,32 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         https://github.com/pydantic/pydantic/blob/58ae1ef77a4bf4276aaa6214aaaaf59455f5e587/pydantic/_internal/_repr.py#L85
         """
         result_str = display_as_type(model_field.annotation)
-        # return result_str
+        # todo: check if this is still necessary
+        # https://github.com/bo4e/BO4E-python/issues/478
         # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
-        """
-        if model_field.shape in MAPPING_LIKE_SHAPES:
-            result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
-        elif model_field.shape == SHAPE_TUPLE:
-            result_str = "Tuple[" + ", ".join(
-                display_as_type(
-                    sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
-                )
-            )
-            result_str += "]"
-        elif model_field.shape == SHAPE_GENERIC:
-            assert model_field.sub_fields
-            result_str = (
-                f"{display_as_type(model_field.type_)}["
-                f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
-            )
-        elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
-            result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
-
-        if is_constrained_str(model_field):
-            if isinstance(model_field.outer_type_.regex, Pattern):
-                result_str = f"str<{model_field.outer_type_.regex.pattern}>"
-            elif isinstance(model_field.outer_type_.regex, str):
-                result_str = f"str<{model_field.outer_type_.regex}>"
-        """
+        # if model_field.shape in MAPPING_LIKE_SHAPES:
+        #    result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
+        # elif model_field.shape == SHAPE_TUPLE:
+        #    result_str = "Tuple[" + ", ".join(
+        #        display_as_type(
+        #            sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
+        #        )
+        #    )
+        #    result_str += "]"
+        # elif model_field.shape == SHAPE_GENERIC:
+        #    assert model_field.sub_fields
+        #    result_str = (
+        #        f"{display_as_type(model_field.type_)}["
+        #        f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
+        #    )
+        # elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
+        #    result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
+        #
+        # if is_constrained_str(model_field):
+        #    if isinstance(model_field.outer_type_.regex, Pattern):
+        #        result_str = f"str<{model_field.outer_type_.regex.pattern}>"
+        #    elif isinstance(model_field.outer_type_.regex, str):
+        #        result_str = f"str<{model_field.outer_type_.regex}>"
         assert card is not None
         return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
 
@@ -462,29 +462,28 @@ def model_field_str(model_field: FieldInfo) -> str:
     Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
     """
     result_str = display_as_type(model_field.annotation)
-    """
+    # todo: check if this is still necessary
+    # https://github.com/bo4e/BO4E-python/issues/478
     # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
-    if model_field.shape in MAPPING_LIKE_SHAPES:
-        result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
-    elif model_field.shape == SHAPE_TUPLE:
-        result_str = "Tuple[" + ", ".join(
-            display_as_type(
-                sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
-            )
-        )
-        result_str += "]"
-    elif model_field.shape == SHAPE_GENERIC:
-        assert model_field.sub_fields
-        result_str = (
-            f"{display_as_type(model_field.type_)}["
-            f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
-        )
-    elif model_field.shape != SHAPE_SINGLETON:
-        result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
-
-    if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
-        result_str = f"Optional[{result_str}]"
-    """
+    # if model_field.shape in MAPPING_LIKE_SHAPES:
+    #    result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
+    # elif model_field.shape == SHAPE_TUPLE:
+    #    result_str = "Tuple[" + ", ".join(
+    #        display_as_type(
+    #            sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
+    #        )
+    #    )
+    #    result_str += "]"
+    # elif model_field.shape == SHAPE_GENERIC:
+    #    assert model_field.sub_fields
+    #    result_str = (
+    #        f"{display_as_type(model_field.type_)}["
+    #        f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
+    #    )
+    # elif model_field.shape != SHAPE_SINGLETON:
+    #    result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
+    # if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
+    #    result_str = f"Optional[{result_str}]"
     return result_str
 
 
