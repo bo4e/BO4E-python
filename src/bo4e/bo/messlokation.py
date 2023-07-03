@@ -13,7 +13,7 @@ from iso3166 import countries
 # Postleitzahl (5 Stellen)
 # Zählpunktnummer (20 Stellen alphanumerisch)
 # source: https://de.wikipedia.org/wiki/Z%C3%A4hlpunkt#Struktur_der_Z%C3%A4hlpunktbezeichnung
-from pydantic import validator
+from pydantic import field_validator, validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler
@@ -94,7 +94,7 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     # pylint: disable=unused-argument, no-self-argument
-    @validator("messlokations_id", always=True)
+    @validator("messlokations_id")
     def _validate_messlokations_id(cls, messlokations_id: str) -> str:
         if not messlokations_id:
             raise ValueError("The messlokations_id must not be empty.")
@@ -105,7 +105,7 @@ class Messlokation(Geschaeftsobjekt):
         return messlokations_id
 
     # pylint: disable=no-self-argument
-    @validator("katasterinformation", always=True)
+    @validator("katasterinformation")
     def validate_address_info(
         cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
     ) -> Optional[Katasteradresse]:
@@ -121,7 +121,7 @@ class Messlokation(Geschaeftsobjekt):
         return katasterinformation
 
     # pylint: disable=no-self-argument
-    @validator("grundzustaendiger_msbim_codenr", always=True)
+    @validator("grundzustaendiger_msbim_codenr")
     def validate_grundzustaendiger_x_codenr(
         cls, grundzustaendiger_msbim_codenr: Optional[str], values: Dict[str, Any]
     ) -> Optional[str]:

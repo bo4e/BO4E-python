@@ -34,14 +34,14 @@ class TestMarktteilnehmer:
         assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
         assert mt.bo_typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
 
-        json_string = mt.json(by_alias=True, ensure_ascii=False)
+        json_string = mt.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
         # Test camelcase
         assert "boTyp" in json_dict
         assert "marktrolle" in json_dict
 
-        deserialized_mt: Marktteilnehmer = Marktteilnehmer.parse_raw(json_string)
+        deserialized_mt: Marktteilnehmer = Marktteilnehmer.model_validate_json(json_string)
 
         assert mt.marktrolle is deserialized_mt.marktrolle
         # Test snakecase

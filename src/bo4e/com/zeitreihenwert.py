@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Any, Dict
 
-from pydantic import validator
+from pydantic import field_validator
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from bo4e.validators import check_bis_is_later_than_von
@@ -29,7 +29,7 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     # required attributes
     datum_uhrzeit_von: datetime  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
     datum_uhrzeit_bis: datetime  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
-    _bis_check = validator("datum_uhrzeit_bis", allow_reuse=True)(check_bis_is_later_than_von)
+    _bis_check = field_validator("datum_uhrzeit_bis")(check_bis_is_later_than_von)
 
     @staticmethod
     def _get_inclusive_start(values: Dict[str, Any]) -> datetime:

@@ -14,12 +14,12 @@ class TestZeitreihenwertkompakt:
             wert=Decimal(1.5), status=Messwertstatus.ABGELESEN, statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL
         )
 
-        json_string = zrwk.json(by_alias=True, ensure_ascii=False)
+        json_string = zrwk.model_dump_json(by_alias=True)
 
         assert "1.5" in json_string
         assert "ABGELESEN" in json_string
         assert "Z78_GERAETEWECHSEL" in json_string
-        deserialized_zrwk: Zeitreihenwertkompakt = Zeitreihenwertkompakt.parse_raw(json_string)
+        deserialized_zrwk: Zeitreihenwertkompakt = Zeitreihenwertkompakt.model_validate_json(json_string)
 
         assert isinstance(deserialized_zrwk.wert, Decimal)
         assert deserialized_zrwk.wert == Decimal(1.5)
@@ -46,10 +46,10 @@ class TestZeitreihenwertkompakt:
             wert=Decimal(1.5),
         )
 
-        json_string = zrwk.json(by_alias=True, ensure_ascii=False)
+        json_string = zrwk.model_dump_json(by_alias=True)
 
         assert "1.5" in json_string
 
-        deserialized_zrwk: Zeitreihenwertkompakt = Zeitreihenwertkompakt.parse_raw(json_string)
+        deserialized_zrwk: Zeitreihenwertkompakt = Zeitreihenwertkompakt.model_validate_json(json_string)
 
         assert deserialized_zrwk == zrwk

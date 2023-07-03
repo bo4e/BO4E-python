@@ -45,12 +45,12 @@ class TestAnsprechpartner:
         assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
         assert ansprechpartner.bo_typ is BoTyp.ANSPRECHPARTNER, "boTyp was not automatically set"
 
-        json_string = ansprechpartner.json(by_alias=True, ensure_ascii=False)
+        json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string
         assert "Mühlenweg" in json_string
         assert '"FRAU"' in json_string
 
-        deserialized_ansprechpartner = Ansprechpartner.parse_raw(json_string)
+        deserialized_ansprechpartner = Ansprechpartner.model_validate_json(json_string)
 
         assert isinstance(deserialized_ansprechpartner, Ansprechpartner)
         assert isinstance(deserialized_ansprechpartner.geschaeftspartner, Geschaeftspartner)
@@ -105,12 +105,12 @@ class TestAnsprechpartner:
         assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
         assert ansprechpartner.bo_typ is BoTyp.ANSPRECHPARTNER, "boTyp was not automatically set"
 
-        json_string = ansprechpartner.json(by_alias=True, ensure_ascii=False)
+        json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string
         assert "Mühlenweg" in json_string
         assert "PROF_DR" in json_string
 
-        deserialized_ansprechpartner = Ansprechpartner.parse_raw(json_string)
+        deserialized_ansprechpartner = Ansprechpartner.model_validate_json(json_string)
 
         assert isinstance(deserialized_ansprechpartner, Ansprechpartner)
         assert isinstance(deserialized_ansprechpartner.geschaeftspartner, Geschaeftspartner)

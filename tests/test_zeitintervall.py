@@ -12,12 +12,12 @@ class TestZeitintervall:
         """
         zeitintervall = Zeitintervall(wert=2, zeiteinheit=Zeiteinheit.VIERTEL_STUNDE)
 
-        json_string = zeitintervall.json(by_alias=True, ensure_ascii=False)
+        json_string = zeitintervall.model_dump_json(by_alias=True)
 
         assert "2" in json_string
         assert "VIERTEL_STUNDE" in json_string
 
-        zeitintervall_deserialized = Zeitintervall.parse_raw(json_string)
+        zeitintervall_deserialized = Zeitintervall.model_validate_json(json_string)
 
         assert isinstance(zeitintervall_deserialized.wert, int)
         assert zeitintervall_deserialized.wert == 2

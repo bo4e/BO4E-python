@@ -38,11 +38,11 @@ class TestGeschaeftsobjekt:
         )
         assert isinstance(go, Geschaeftsobjekt)
 
-        go_json = go.json(by_alias=True, ensure_ascii=False)
+        go_json = go.model_dump_json(by_alias=True)
 
         assert str(versionstruktur) in go_json
 
-        go_deserialized = Geschaeftsobjekt.parse_raw(go_json)
+        go_deserialized = Geschaeftsobjekt.model_validate_json(go_json)
 
         assert go_deserialized.bo_typ is bo_typ
         assert go_deserialized.versionstruktur == versionstruktur

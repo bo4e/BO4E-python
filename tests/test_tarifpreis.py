@@ -24,12 +24,12 @@ class TestTarifpreis:
         """
         tarifpreis = example_tarifpreis
 
-        json_string = tarifpreis.json(by_alias=True, ensure_ascii=False)
+        json_string = tarifpreis.model_dump_json(by_alias=True)
 
         assert "ARBEITSPREIS_HT" in json_string
         assert "null" in json_string
 
-        tarifpreis_deserialized = Tarifpreis.parse_raw(json_string)
+        tarifpreis_deserialized = Tarifpreis.model_validate_json(json_string)
 
         assert isinstance(tarifpreis_deserialized.wert, Decimal)
         assert isinstance(tarifpreis_deserialized.einheit, Waehrungseinheit)
@@ -72,11 +72,11 @@ class TestTarifpreis:
             beschreibung="Das ist ein HT Arbeitspreis",
         )
 
-        json_string = tarifpreis.json(by_alias=True, ensure_ascii=False)
+        json_string = tarifpreis.model_dump_json(by_alias=True)
 
         assert "Das ist ein HT Arbeitspreis" in json_string
 
-        tarifpreis_deserialized = Tarifpreis.parse_raw(json_string)
+        tarifpreis_deserialized = Tarifpreis.model_validate_json(json_string)
 
         assert isinstance(tarifpreis_deserialized.beschreibung, str)
         assert tarifpreis_deserialized.beschreibung == "Das ist ein HT Arbeitspreis"

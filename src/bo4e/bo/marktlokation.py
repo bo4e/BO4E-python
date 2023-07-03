@@ -7,7 +7,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Any, Dict, Optional
 
 # pylint: disable=no-name-in-module
-from pydantic import conlist, validator
+from pydantic import conlist, field_validator, validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -44,7 +44,7 @@ class Marktlokation(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: str
-    _marktlokations_id_check = validator("marktlokations_id", allow_reuse=True)(validate_marktlokations_id)
+    _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Sparte
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
@@ -118,7 +118,7 @@ class Marktlokation(Geschaeftsobjekt):
     #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument
-    @validator("katasterinformation", always=True)
+    @validator("katasterinformation")
     def validate_address_info(
         cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
     ) -> Optional[Katasteradresse]:

@@ -5,7 +5,7 @@ from datetime import datetime
 from typing import Any, Dict, Optional
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import validator
+from pydantic import field_validator, field_validator
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -47,7 +47,7 @@ class Kostenposition(COM):
     von: Optional[datetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
     bis: Optional[datetime] = None
-    _bis_check = validator("bis", always=True, allow_reuse=True)(check_bis_is_later_than_von)
+    _bis_check = field_validator("bis")(check_bis_is_later_than_von)
 
     #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
     menge: Optional[Menge] = None

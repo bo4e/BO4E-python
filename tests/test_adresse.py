@@ -32,14 +32,14 @@ class TestAddress:
             encoding="utf-8",
         )
 
-        address_dict = address_test_data.json(by_alias=True, ensure_ascii=False)
+        address_dict = address_test_data.model_dump_json(by_alias=True)
 
         assert "Nördliche Münchner Straße" in address_dict
         assert "27A" in address_dict
         assert "82031" in address_dict
         assert "DE" in address_dict
 
-        deserialized_address = Adresse.parse_raw(address_dict)
+        deserialized_address = Adresse.model_validate_json(address_dict)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.strasse == "Nördliche Münchner Straße"
@@ -61,13 +61,13 @@ class TestAddress:
             postfach=address_test_data["postfach"],
         )
 
-        address_json = a.json(by_alias=True, ensure_ascii=False)
+        address_json = a.model_dump_json(by_alias=True)
 
         assert "10 64 38" in address_json
         assert "82031" in address_json
         assert "DE" in address_json
 
-        deserialized_address = Adresse.parse_raw(address_json)
+        deserialized_address = Adresse.model_validate_json(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.postfach == "10 64 38"
@@ -86,12 +86,12 @@ class TestAddress:
             ort=address_test_data["ort"],
         )
 
-        address_json = a.json(by_alias=True, ensure_ascii=False)
+        address_json = a.model_dump_json(by_alias=True)
 
         assert "Grünwald" in address_json
         assert "82031" in address_json
 
-        deserialized_address = Adresse.parse_raw(address_json)
+        deserialized_address = Adresse.model_validate_json(address_json)
 
         assert isinstance(deserialized_address, Adresse)
         assert deserialized_address.ort == "Grünwald"
@@ -104,8 +104,8 @@ class TestAddress:
         )
         address_test_data.landescode = Landescode.AT  # type: ignore[attr-defined]
 
-        address_json = address_test_data.json(by_alias=True, ensure_ascii=False)
-        deserialized_address = Adresse.parse_raw(address_json)
+        address_json = address_test_data.model_dump_json(by_alias=True)
+        deserialized_address = Adresse.model_validate_json(address_json)
 
         assert deserialized_address.landescode == Landescode.AT  # type: ignore[attr-defined]
 
@@ -116,7 +116,7 @@ class TestAddress:
                  "postleitzahl":"5020",
                  "landescode":"AT"}"""
 
-        a: Adresse = Adresse.parse_raw(json_string)
+        a: Adresse = Adresse.model_validate_json(json_string)
         assert a.landescode is Landescode.AT  # type: ignore[attr-defined]
 
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_missing_plz.json")
@@ -199,9 +199,9 @@ class TestAddress:
             postleitzahl="6413", ort="Wildermieming", strasse="Gerhardhof", hausnummer="1", landescode=Landescode.AT  # type: ignore[attr-defined]
         )
         assert a.landescode == Landescode.AT  # type: ignore[attr-defined]
-        serialized_address = a.json(by_alias=True, ensure_ascii=False)
+        serialized_address = a.model_dump_json(by_alias=True)
         assert '"AT"' in serialized_address
-        deserialized_address = Adresse.parse_raw(serialized_address)
+        deserialized_address = Adresse.model_validate_json(serialized_address)
         assert deserialized_address.landescode == Landescode.AT  # type: ignore[attr-defined]
 
     @pytest.mark.parametrize(
@@ -234,7 +234,7 @@ class TestAddress:
         Test serialization with all required and optional attributes
         """
 
-        serialized_address = adresse.json(by_alias=True, ensure_ascii=False)
+        serialized_address = adresse.model_dump_json(by_alias=True)
 
         assert "ISS spacestation" in serialized_address
         assert "12345" in serialized_address
@@ -245,6 +245,6 @@ class TestAddress:
         assert "you will find me" in serialized_address
         assert "Mitte" in serialized_address
 
-        deserialized_address = Adresse.parse_raw(address_json)
+        deserialized_address = Adresse.model_validate_json(address_json)
 
         assert deserialized_address == adresse

@@ -20,12 +20,12 @@ class TestMenge:
         Test de-/serialisation of Menge (only has required attributes).
         """
 
-        json_string = example_menge.json(by_alias=True, ensure_ascii=False)
+        json_string = example_menge.model_dump_json(by_alias=True)
 
         assert "3.41" in json_string
         assert "MWH" in json_string
 
-        menge_deserialized = Menge.parse_raw(json_string)
+        menge_deserialized = Menge.model_validate_json(json_string)
 
         assert isinstance(menge_deserialized.wert, Decimal)
         assert menge_deserialized.wert == Decimal(3.41)

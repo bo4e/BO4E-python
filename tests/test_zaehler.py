@@ -46,10 +46,10 @@ class TestZaehler:
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
-        json_string = zaehler.json(by_alias=True, ensure_ascii=False)
+        json_string = zaehler.model_dump_json(by_alias=True)
         assert "richtung" in json_string, "Zaehlwerk->richtung was not serialized"
         assert "einheit" in json_string, "Zaehlwerk->einheit was not serialized"
-        deserialized_zaehler = Zaehler.parse_raw(json_string)
+        deserialized_zaehler = Zaehler.model_validate_json(json_string)
         assert deserialized_zaehler == zaehler
 
     def test_serialization_fails_for_invalid_obis(self) -> None:

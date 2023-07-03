@@ -44,11 +44,11 @@ class TestGeschaeftspartner:
         # test default value for bo_typ in Geschaeftspartner
         assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
 
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
+        gp_json = gp.model_dump_json(by_alias=True)
 
         assert "Helga" in gp_json
 
-        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
 
         assert gp_deserialized.bo_typ == gp.bo_typ
         assert type(gp_deserialized.partneradresse) == Adresse
@@ -77,8 +77,8 @@ class TestGeschaeftspartner:
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
         )
 
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
-        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        gp_json = gp.model_dump_json(by_alias=True)
+        gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
 
         assert gp_deserialized.partneradresse is None
 
@@ -136,6 +136,6 @@ class TestGeschaeftspartner:
                 postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
             ),
         )
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
-        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        gp_json = gp.model_dump_json(by_alias=True)
+        gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
         assert gp_deserialized.partneradresse.landescode == Landescode.AT  # type: ignore[attr-defined, union-attr]

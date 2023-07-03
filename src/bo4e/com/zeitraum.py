@@ -7,7 +7,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Any, Dict, Optional
 
-from pydantic import validator
+from pydantic import field_validator, validator
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
@@ -41,7 +41,7 @@ class Zeitraum(COM):
     endzeitpunkt: Optional[datetime] = None
 
     # pylint: disable=unused-argument, no-self-argument
-    @validator("endzeitpunkt", always=True)
+    @validator("endzeitpunkt")
     def time_range_possibilities(cls, endzeitpunkt: Optional[datetime], values: Dict[str, Any]) -> Optional[datetime]:
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).

@@ -29,12 +29,12 @@ class TestZeitraum:
         """
         zeitraum = Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21))
 
-        json_string = zeitraum.json(by_alias=True, ensure_ascii=False)
+        json_string = zeitraum.model_dump_json(by_alias=True)
 
         assert "21" in json_string
         assert "TAG" in json_string
 
-        zeitraum_deserialized = Zeitraum.parse_raw(json_string)
+        zeitraum_deserialized = Zeitraum.model_validate_json(json_string)
 
         assert isinstance(zeitraum_deserialized.einheit, Zeiteinheit)
         assert zeitraum_deserialized.einheit == Zeiteinheit.TAG
@@ -49,12 +49,12 @@ class TestZeitraum:
             startdatum=datetime(2013, 5, 1, tzinfo=timezone.utc), enddatum=datetime(2022, 1, 28, tzinfo=timezone.utc)
         )
 
-        json_string = zeitraum.json(by_alias=True, ensure_ascii=False)
+        json_string = zeitraum.model_dump_json(by_alias=True)
 
         assert "2013-05-01T00:00:00+00:00" in json_string
         assert "2022-01-28T00:00:00+00:00" in json_string
 
-        zeitraum_deserialized = Zeitraum.parse_raw(json_string)
+        zeitraum_deserialized = Zeitraum.model_validate_json(json_string)
 
         assert isinstance(zeitraum_deserialized.startdatum, datetime)
         assert zeitraum_deserialized.startdatum == datetime(2013, 5, 1, tzinfo=timezone.utc)
@@ -70,12 +70,12 @@ class TestZeitraum:
             endzeitpunkt=datetime(2021, 7, 30, tzinfo=timezone.utc),
         )
 
-        json_string = zeitraum.json(by_alias=True, ensure_ascii=False)
+        json_string = zeitraum.model_dump_json(by_alias=True)
 
         assert "2011-02-05T16:43:00+00:00" in json_string
         assert "2021-07-30T00:00:00+00:00" in json_string
 
-        zeitraum_deserialized = Zeitraum.parse_raw(json_string)
+        zeitraum_deserialized = Zeitraum.model_validate_json(json_string)
 
         assert isinstance(zeitraum_deserialized.startzeitpunkt, datetime)
         assert zeitraum_deserialized.startzeitpunkt == datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc)

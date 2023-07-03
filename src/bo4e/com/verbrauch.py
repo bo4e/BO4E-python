@@ -7,7 +7,7 @@ from typing import Any, Dict, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import constr, validator
+from pydantic import constr, field_validator
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -43,7 +43,7 @@ class Verbrauch(COM):
     startdatum: Optional[datetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
     enddatum: Optional[datetime] = None
-    _bis_check = validator("enddatum", always=True, allow_reuse=True)(check_bis_is_later_than_von)
+    _bis_check = field_validator("enddatum")(check_bis_is_later_than_von)
 
     @staticmethod
     def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:

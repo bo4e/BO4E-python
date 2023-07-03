@@ -172,7 +172,7 @@ class TestVertrag:
         """
         vertrag = self.get_example_vertrag()
 
-        json_string = vertrag.json(by_alias=True, ensure_ascii=False)
+        json_string = vertrag.model_dump_json(by_alias=True)
 
         assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
@@ -185,7 +185,7 @@ class TestVertrag:
         assert "Preetz" in json_string
         assert "2021-06-05T00:00:00+00:00" in json_string
 
-        vertrag_deserialized = Vertrag.parse_raw(json_string)
+        vertrag_deserialized = Vertrag.model_validate_json(json_string)
 
         assert vertrag_deserialized.vertragsnummer == self._vertragsnummer
         assert vertrag_deserialized.vertragsart == self._vertragsart
@@ -227,7 +227,7 @@ class TestVertrag:
             unterzeichnervp2=[Unterschrift(name="Bar"), Unterschrift(name="Dr.No")],
         )
 
-        json_string = vertrag.json(by_alias=True, ensure_ascii=False)
+        json_string = vertrag.model_dump_json(by_alias=True)
 
         assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
@@ -246,7 +246,7 @@ class TestVertrag:
         assert "Bar" in json_string
         assert "Dr.No" in json_string
 
-        vertrag_deserialized = Vertrag.parse_raw(json_string)
+        vertrag_deserialized = Vertrag.model_validate_json(json_string)
 
         assert vertrag_deserialized.vertragsnummer == self._vertragsnummer
         assert vertrag_deserialized.vertragsart == self._vertragsart

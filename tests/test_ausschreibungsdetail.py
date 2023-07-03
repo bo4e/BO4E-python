@@ -13,7 +13,6 @@ from bo4e.enum.zaehlertyp import Zaehlertyp
 from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
-from tests.test_menge import example_menge
 from tests.test_zeitraum import example_zeitraum
 
 example_ausschreibungsdetail = Ausschreibungsdetail(

@@ -65,8 +65,8 @@ class TestValidationBypass:
         with pytest.raises(AttributeError):
             _ = marktlokation.netzebene
         # you can still serialize the invalid malo
-        malo_json_str = marktlokation.json()  # works
+        malo_json_str = marktlokation.model_dump_json()  # works
         assert malo_json_str is not None
         # but deserializing raises an error:
         with pytest.raises(ValidationError):
-            Marktlokation.parse_raw(malo_json_str)
+            Marktlokation.model_validate_json(malo_json_str)
