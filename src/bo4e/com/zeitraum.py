@@ -50,6 +50,7 @@ class Zeitraum(COM):
         """
         values = model
         # todo: rewrite this to be more readable; just migrated to pydantic v2 without thinking too much about it
+        # https://github.com/bo4e/BO4E-python/issues/480
         endzeitpunkt = values.get("endzeitpunkt")
         if (
             ("einheit" in values and values["einheit"])
