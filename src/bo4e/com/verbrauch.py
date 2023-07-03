@@ -8,6 +8,7 @@ from typing import Any, Dict, Optional
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from pydantic import constr, field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -46,9 +47,9 @@ class Verbrauch(COM):
     _bis_check = field_validator("enddatum")(check_bis_is_later_than_von)
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
+    def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
         """a method for easier usage of the check_bis_is_later_than_von validator"""
-        return values["startdatum"]
+        return values.data["startdatum"]
 
     # def _get_exclusive_end(self) -> Optional[datetime]:
     #     """a method for easier usage of the check_bis_is_later_than_von validator"""

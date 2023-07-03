@@ -7,6 +7,7 @@ from datetime import datetime
 from typing import Any, Dict, Optional
 
 from pydantic import field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
@@ -81,9 +82,9 @@ class Rechnungsposition(COM):
     artikel_id: Optional[str] = None
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
+    def _get_inclusive_start(values: ValidationInfo) -> datetime:
         """return the inclusive start (used in the validator)"""
-        return values["lieferung_von"]
+        return values.data["lieferung_von"]
 
     # def _get_exclusive_end(self) -> datetime:
     #     """return the exclusive end (used in the validator)"""

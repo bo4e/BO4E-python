@@ -5,6 +5,8 @@ import re
 from datetime import datetime
 from typing import Any, Dict, Optional, Protocol
 
+from pydantic_core.core_schema import ValidationInfo
+
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 
 # pylint: disable=unused-argument
@@ -16,7 +18,7 @@ def einheit_only_for_abschlagstyp_absolut(cls, value: Waehrungseinheit, values: 
     Check that einheit is only there if abschlagstyp is absolut.
     Currently, (2021-12-15) only used in COM AufAbschlag.
     """
-    if value and (not values["auf_abschlagstyp"] or (values["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
+    if value and (not values.data["auf_abschlagstyp"] or (values.data["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
         raise ValueError("Only state einheit if auf_abschlagstyp is absolute.")
     return value
 
@@ -28,7 +30,7 @@ class _VonBisType(Protocol):
     """
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> Optional[datetime]:
+    def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
         """
         should return the inclusive start of the timeslice
         """
@@ -39,7 +41,7 @@ class _VonBisType(Protocol):
     #     """
 
 
-def check_bis_is_later_than_von(cls, value: datetime, values: Dict[str, Any]):  # type: ignore[no-untyped-def]
+def check_bis_is_later_than_von(cls, value: datetime, values: ValidationInfo):  # type: ignore[no-untyped-def]
     """
     assert that 'bis' is later than 'von'
     """
@@ -60,7 +62,7 @@ _malo_id_pattern = re.compile(r"^[1-9]\d{10}$")
 
 
 # pylint: disable=unused-argument
-def validate_marktlokations_id(cls, marktlokations_id: str, values: Dict[str, Any]) -> str:  # type: ignore[no-untyped-def]
+def validate_marktlokations_id(cls, marktlokations_id: str, values: ValidationInfo) -> str:  # type: ignore[no-untyped-def]
     """
     A validator for marktlokations IDs
     """

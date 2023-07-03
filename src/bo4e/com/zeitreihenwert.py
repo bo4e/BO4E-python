@@ -6,6 +6,7 @@ from datetime import datetime
 from typing import Any, Dict
 
 from pydantic import field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from bo4e.validators import check_bis_is_later_than_von
@@ -32,9 +33,9 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     _bis_check = field_validator("datum_uhrzeit_bis")(check_bis_is_later_than_von)
 
     @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
+    def _get_inclusive_start(values: ValidationInfo) -> datetime:
         """return the inclusive start (used in the validator)"""
-        return values["datum_uhrzeit_von"]
+        return values.data["datum_uhrzeit_von"]
 
     # def _get_exclusive_end(self) -> datetime:
     #     """return the exclusive end (used in the validator)"""
