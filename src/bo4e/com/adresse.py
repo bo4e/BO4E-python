@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Any, Dict, Optional
 
-from pydantic import field_validator, validator
+from pydantic import validator
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 

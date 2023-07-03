@@ -49,4 +49,4 @@ class TestGeraeteeigenschaften:
             _ = Geraeteeigenschaften(geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=not_a_geraetetyp)
 
         assert "1 validation error" in str(excinfo.value)
-        assert "value is not a valid enumeration member" in str(excinfo.value)
+        assert "string_type" in str(excinfo.value) or "type=enum" in str(excinfo.value)

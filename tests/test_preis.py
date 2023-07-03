@@ -38,7 +38,7 @@ class TestPreis:
 
         assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
-        assert "value is not a valid decimal" in str(excinfo.value)
+        assert "type=decimal_parsing" in str(excinfo.value)
 
     def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

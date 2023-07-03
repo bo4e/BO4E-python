@@ -46,7 +46,7 @@ class TestStandorteigenschaftenGas:
             ),
             pytest.param(
                 ["1", "2", "3"],
-                "ensure this value has at most 2 items",
+                "should have at most 2 items",
             ),
         ],
     )

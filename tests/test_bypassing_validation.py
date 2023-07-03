@@ -1,5 +1,4 @@
 import inspect
-import json
 
 import pytest
 from pydantic import ValidationError

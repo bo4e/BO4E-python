@@ -4,10 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Any, Dict, Optional
+from typing import Optional
 
 # pylint: disable=no-name-in-module
-from pydantic import conlist, field_validator, validator
+from pydantic import conlist, field_validator
+from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -114,15 +115,16 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: conlist(Kundentyp, min_length=0) = None  # type: ignore[valid-type]
+    kundengruppen: Optional[conlist(Kundentyp, min_length=0)] = None  # type: ignore[valid-type]
     #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument
-    @validator("katasterinformation")
+    @field_validator("katasterinformation")
     def validate_address_info(
-        cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
+        cls, katasterinformation: Optional[Katasteradresse], validation_info: ValidationInfo
     ) -> Optional[Katasteradresse]:
         """Checks that there is one and only one valid adress given."""
+        values = validation_info.data
         all_address_attributes = [
             values["lokationsadresse"],
             values["geoadresse"],

@@ -6,14 +6,13 @@ import re
 from typing import Any, Dict, List, Optional
 
 from iso3166 import countries
-
 # Structure of a Messlokations-ID
 # Ländercode nach DIN ISO 3166 (2 Stellen)
 # Verteilnetzbetreiber (6 Stellen)
 # Postleitzahl (5 Stellen)
 # Zählpunktnummer (20 Stellen alphanumerisch)
 # source: https://de.wikipedia.org/wiki/Z%C3%A4hlpunkt#Struktur_der_Z%C3%A4hlpunktbezeichnung
-from pydantic import field_validator, validator
+from pydantic import validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler

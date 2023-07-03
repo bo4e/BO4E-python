@@ -141,7 +141,7 @@ class TestMaLo:
 
         assert "1 validation error" in str(excinfo.value)
         assert "marktlokationsId" in str(excinfo.value)
-        assert "field required" in str(excinfo.value)
+        assert "Field required" in str(excinfo.value)
 
     def test_address_validation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

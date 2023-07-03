@@ -60,5 +60,5 @@ class TestGeschaeftsobjekt:
                 bo_typ=BoTyp.ENERGIEMENGE,
                 externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
-        assert "1 validation error" in str(excinfo.value)
-        assert "value is not a valid list" in str(excinfo.value)
+        assert "2 validation error" in str(excinfo.value)
+        assert "type=model_type" in str(excinfo.value)

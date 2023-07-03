@@ -115,7 +115,7 @@ class TestGeschaeftspartner:
             )
 
         assert "1 validation error" in str(excinfo.value)
-        assert "value is not a valid list" in str(excinfo.value)
+        assert "type=list_type" in str(excinfo.value)
 
     def test_serialization_of_non_german_address(self) -> None:
         """
