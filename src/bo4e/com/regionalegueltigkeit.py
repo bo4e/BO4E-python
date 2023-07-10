@@ -2,6 +2,9 @@
 Contains RegionaleGueltigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Annotated
+
+from annotated_types import Gt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -27,6 +30,6 @@ class RegionaleGueltigkeit(COM):
 
     # required attributes
     gueltigkeitstyp: Gueltigkeitstyp  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    kriteriums_werte: conlist(  # type: ignore[valid-type]
-        KriteriumWert, min_length=1
-    )  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
+    kriteriums_werte: Annotated[
+        list[KriteriumWert], Gt(1)
+    ]  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen

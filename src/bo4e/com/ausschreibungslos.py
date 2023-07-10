@@ -51,7 +51,7 @@ class Ausschreibungslos(COM):
     anzahl_lieferstellen: int
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: conlist(Ausschreibungsdetail, min_length=1)  # type: ignore[valid-type]
+    lieferstellen: Annotated[list[Ausschreibungsdetail], Gt(1)]
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
     lieferzeitraum: Zeitraum

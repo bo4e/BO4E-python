@@ -31,7 +31,7 @@ class Region(Geschaeftsobjekt):
     bezeichnung: str
 
     #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: conlist(Regionskriterium, min_length=1)  # type: ignore[valid-type]
+    positiv_liste: Annotated[list[Regionskriterium], Gt(1)]
 
     # optional attributes
     #: Negativliste der Kriterien zur Definition der Region

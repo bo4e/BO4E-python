@@ -35,5 +35,5 @@ class Energiemenge(Geschaeftsobjekt):
     lokationstyp: Lokationstyp
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
-    energieverbrauch: conlist(Verbrauch, min_length=1)  # type: ignore[valid-type]
+    energieverbrauch: Annotated[list[Verbrauch], Gt(1)]
     # there are no optional attributes

@@ -46,13 +46,13 @@ class Tarifinfo(Geschaeftsobjekt):
     #: Strom oder Gas, etc.
     sparte: Sparte
     #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
-    kundentypen: conlist(Kundentyp, min_length=1)  # type: ignore[valid-type]
+    kundentypen: Annotated[list[Kundentyp], Gt(1)]
     #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
     tarifart: Tarifart
     #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
     tariftyp: Tariftyp
     #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
-    tarifmerkmale: conlist(Tarifmerkmal, min_length=1)  # type: ignore[valid-type]
+    tarifmerkmale: Annotated[list[Tarifmerkmal], Gt(1)]
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
     anbieter: Marktteilnehmer
 

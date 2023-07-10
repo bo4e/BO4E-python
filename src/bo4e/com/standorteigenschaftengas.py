@@ -2,7 +2,9 @@
 Contains StandorteigenschaftenGas class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List
+from typing import Annotated, List
+
+from annotated_types import Len
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -26,5 +28,5 @@ class StandorteigenschaftenGas(COM):
     """
 
     # required attributes
-    netzkontonummern: conlist(str, min_length=1, max_length=2)  # type: ignore[valid-type]  #: Netzkontonummern der Gasnetze
+    netzkontonummern: Annotated[list[str], Len(1, 2)]  #: Netzkontonummern der Gasnetze
     marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.

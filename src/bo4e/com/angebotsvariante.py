@@ -5,8 +5,9 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
+from annotated_types import Gt
 from pydantic import conlist
 
 from bo4e.com.angebotsteil import Angebotsteil
@@ -39,7 +40,7 @@ class Angebotsvariante(COM):
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
     bindefrist: datetime
 
-    teile: conlist(Angebotsteil, min_length=1)  # type: ignore[valid-type]
+    teile: Annotated[list[Angebotsteil], Gt(1)]
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.

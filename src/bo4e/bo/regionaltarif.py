@@ -38,7 +38,7 @@ class Regionaltarif(Tarifinfo):
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
     #: Die festgelegten Preise mit regionaler Eingrenzung, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: conlist(RegionaleTarifpreisposition, min_length=1)  # type: ignore[valid-type]
+    tarifpreise: Annotated[list[RegionaleTarifpreisposition], Gt(1)]
 
     # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung

@@ -35,7 +35,7 @@ class Tarifpreisblatt(Tarifinfo):
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: datetime
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: conlist(Tarifpreisposition, min_length=1)  # type: ignore[valid-type]
+    tarifpreise: Annotated[list[Tarifpreisposition], Gt(1)]
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
 

@@ -32,5 +32,5 @@ class TarifpreispositionProOrt(COM):
     #: ene't-Netznummer des Netzes in dem der Preis gilt
     netznr: str
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: conlist(TarifpreisstaffelProOrt, min_length=1)  # type: ignore[valid-type]
+    preisstaffeln: Annotated[list[TarifpreisstaffelProOrt], Gt(1)]
     # there are no optional attributes

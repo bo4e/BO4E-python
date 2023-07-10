@@ -36,7 +36,7 @@ class Kosten(Geschaeftsobjekt):
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Zeitraum
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: conlist(Kostenblock, min_length=1)  # type: ignore[valid-type]
+    kostenbloecke: Annotated[list[Kostenblock], Gt(1)]
 
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen

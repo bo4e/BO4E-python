@@ -48,7 +48,7 @@ class Angebot(Geschaeftsobjekt):
     #: Empfänger des Angebots
     angebotsnehmer: Geschaeftspartner
 
-    varianten: conlist(Angebotsvariante, min_length=1)  # type: ignore[valid-type]
+    varianten: Annotated[list[Angebotsvariante], Gt(1)]
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 

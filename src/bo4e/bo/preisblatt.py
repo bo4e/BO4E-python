@@ -47,7 +47,7 @@ class Preisblatt(Geschaeftsobjekt):
     #: Der Zeitraum für den der Preis festgelegt ist
     gueltigkeit: Zeitraum
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
-    preispositionen: conlist(Preisposition, min_length=1)  # type: ignore[valid-type]
+    preispositionen: Annotated[list[Preisposition], Gt(1)]
     # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
     herausgeber: Optional[Marktteilnehmer] = None
