@@ -4,17 +4,18 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Gt
 
 from bo4e.com.com import COM
 from bo4e.com.energieherkunft import Energieherkunft
 from bo4e.enum.oekolabel import Oekolabel
 from bo4e.enum.oekozertifikat import Oekozertifikat
 from bo4e.enum.sparte import Sparte
+
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
 
 
 class Energiemix(COM):

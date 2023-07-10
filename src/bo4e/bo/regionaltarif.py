@@ -3,11 +3,9 @@ Contains Regionaltarif class and corresponding marshmallow schema for de-/serial
 """
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods, empty-docstring
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Gt
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
@@ -16,6 +14,9 @@ from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.enum.botyp import BoTyp
+
+# pylint: disable=too-few-public-methods, empty-docstring
+# pylint: disable=no-name-in-module
 
 
 class Regionaltarif(Tarifinfo):

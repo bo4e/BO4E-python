@@ -2,11 +2,9 @@
 Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Gt
 
 from bo4e.com.com import COM
 from bo4e.com.energiemix import Energiemix
@@ -18,6 +16,9 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
+
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
 
 
 # pylint: disable=R0801

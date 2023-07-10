@@ -4,9 +4,9 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Gt
 
 from bo4e.com.com import COM
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel

@@ -89,7 +89,6 @@ def _get_malo_id_checksum(malo_id: str) -> str:
     c) Summe von a) und b) d) Differenz von c) zum nächsten Vielfachen von 10 (ergibt sich hier 10, wird die
        Prüfziffer 0 genommen
     https://bdew-codes.de/Content/Files/MaLo/2017-04-28-BDEW-Anwendungshilfe-MaLo-ID_Version1.0_FINAL.PDF
-    :param self:
     :return: the checksum as string
     """
     odd_checksum: int = 0

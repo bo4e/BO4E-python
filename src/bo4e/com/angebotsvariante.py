@@ -8,7 +8,6 @@ from datetime import datetime
 from typing import Annotated, Optional
 
 from annotated_types import Gt
-from pydantic import conlist
 
 from bo4e.com.angebotsteil import Angebotsteil
 from bo4e.com.betrag import Betrag
