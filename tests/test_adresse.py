@@ -7,6 +7,7 @@ from pydantic import ValidationError
 from bo4e.com.adresse import Adresse
 from bo4e.enum import landescode
 from bo4e.enum.landescode import Landescode
+from tests.utils import parse_file
 
 # import pydantic
 
@@ -27,9 +28,8 @@ class TestAddress:
         and default value of landescode
         """
 
-        address_test_data = Adresse.parse_file(
-            "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
-            encoding="utf-8",
+        address_test_data = parse_file(
+            Adresse, "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json"
         )
 
         address_dict = address_test_data.model_dump_json(by_alias=True)
@@ -98,9 +98,8 @@ class TestAddress:
         assert deserialized_address.postleitzahl == "82031"
 
     def test_serialization_only_required_fields_landescode_AT(self) -> None:
-        address_test_data = Adresse.parse_file(
-            "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
-            encoding="utf-8",
+        address_test_data = parse_file(
+            Adresse, "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json"
         )
         address_test_data.landescode = Landescode.AT  # type: ignore[attr-defined]
 
@@ -126,7 +125,7 @@ class TestAddress:
         """
 
         with pytest.raises(ValidationError) as excinfo:
-            _ = Adresse.parse_file(datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8")
+            _ = parse_file(Adresse, datafiles / "test_data_adresse_missing_plz.json")
 
         assert "postleitzahl" in str(excinfo.value)
 
