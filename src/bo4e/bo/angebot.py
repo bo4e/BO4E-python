@@ -9,7 +9,7 @@ from datetime import datetime
 from typing import Annotated, Optional
 
 from annotated_types import Len
-from pydantic import constr
+from pydantic import Field
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -39,7 +39,7 @@ class Angebot(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: constr(strict=True, pattern=r"^\d+$")  # type: ignore[valid-type]
+    angebotsnummer: str = Field(strict=True, pattern=r"^\d+$")
     #: Erstellungsdatum des Angebots
     angebotsdatum: datetime
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)

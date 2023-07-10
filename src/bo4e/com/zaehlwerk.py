@@ -6,7 +6,7 @@ from decimal import Decimal
 
 # pylint: disable=no-name-in-module
 # pylint: disable=no-name-in-module
-from pydantic import constr
+from pydantic import Field
 
 from bo4e.com.com import COM
 from bo4e.enum.energierichtung import Energierichtung
@@ -32,7 +32,7 @@ class Zaehlwerk(COM):
     # Oftmals eine laufende Nummer hinter der Zählernummer. Z.B. 47110815_1
     bezeichnung: str  # Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit.
     richtung: Energierichtung  # Die Energierichtung, Einspeisung oder Ausspeisung.
-    obis_kennzahl: constr(  # type: ignore[valid-type]
+    obis_kennzahl: str = Field(
         strict=True,
         pattern=r"(?:(1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\.((?:6|8|9|29))\.([0-9]{1,2}))|"
         r"(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\.(.{1,2})\.([0-9]{1,2}))",

@@ -6,7 +6,7 @@ Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from pydantic import constr
+from pydantic import Field
 
 from bo4e.bo.rechnung import Rechnung
 from bo4e.enum.botyp import BoTyp
@@ -32,12 +32,12 @@ class Netznutzungsrechnung(Rechnung):
     bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Sparte
-    absendercodenummer: constr(strict=True, pattern=r"^\d{13}$")  # type: ignore[valid-type]
+    absendercodenummer: str = Field(strict=True, pattern=r"^\d{13}$")
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
-    empfaengercodenummer: constr(strict=True, pattern=r"^\d{13}$")  # type: ignore[valid-type]
+    empfaengercodenummer: str = Field(strict=True, pattern=r"^\d{13}$")
     """
     Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.

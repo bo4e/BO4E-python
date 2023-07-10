@@ -5,13 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated
 
 from annotated_types import Len
-
-# pylint: disable=too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import constr
+from pydantic import Field
 
 from bo4e.com.com import COM
 from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
+
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class TarifpreispositionProOrt(COM):
@@ -29,7 +29,7 @@ class TarifpreispositionProOrt(COM):
 
     # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: constr(strict=True, pattern=r"^\d{5}$")  # type: ignore[valid-type]
+    postleitzahl: str = Field(strict=True, pattern=r"^\d{5}$")
     #: Ort für den der Preis gilt
     ort: str
     #: ene't-Netznummer des Netzes in dem der Preis gilt

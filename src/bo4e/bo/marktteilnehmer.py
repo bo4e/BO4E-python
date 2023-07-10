@@ -8,7 +8,7 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from pydantic import constr
+from pydantic import Field
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
@@ -35,7 +35,7 @@ class Marktteilnehmer(Geschaeftspartner):
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: constr(strict=True, pattern=r"^\d{13}$")  # type: ignore[valid-type]
+    rollencodenummer: str = Field(strict=True, pattern=r"^\d{13}$")
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom

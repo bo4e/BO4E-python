@@ -7,7 +7,7 @@ from typing import Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import constr, field_validator
+from pydantic import Field, field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.com import COM
@@ -33,7 +33,7 @@ class Verbrauch(COM):
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Wertermittlungsverfahren
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:
-    obis_kennzahl: constr(strict=True, pattern=OBIS_PATTERN)  # type: ignore[valid-type]  # type: ignore[valid-type]
+    obis_kennzahl: str = Field(strict=True, pattern=OBIS_PATTERN)
     #: Gibt den absoluten Wert der Menge an
     wert: Decimal
     #: Gibt die Einheit zum jeweiligen Wert an
