@@ -8,7 +8,7 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 from pydantic import constr
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
@@ -49,7 +49,7 @@ class Angebot(Geschaeftsobjekt):
     #: Empfänger des Angebots
     angebotsnehmer: Geschaeftspartner
 
-    varianten: Annotated[list[Angebotsvariante], Gt(1)]
+    varianten: Annotated[list[Angebotsvariante], Len(1)]
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 

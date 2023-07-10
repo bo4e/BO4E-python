@@ -2,7 +2,9 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Annotated, List, Optional
+
+from annotated_types import Len
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -89,4 +91,4 @@ class Lastgang(_LastgangBody):
     bo_typ: BoTyp = BoTyp.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
-    werte: Annotated[list[Zeitreihenwert], Gt(1)]
+    werte: Annotated[list[Zeitreihenwert], Len(1)]

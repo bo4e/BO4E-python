@@ -6,7 +6,7 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
@@ -37,7 +37,7 @@ class RegionaleTarifpreisposition(COM):
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
-    preisstaffeln: Annotated[list[RegionalePreisstaffel], Gt(1)]
+    preisstaffeln: Annotated[list[RegionalePreisstaffel], Len(1)]
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)

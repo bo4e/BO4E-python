@@ -3,7 +3,7 @@ Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
@@ -37,7 +37,7 @@ class Kosten(Geschaeftsobjekt):
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Zeitraum
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Annotated[list[Kostenblock], Gt(1)]
+    kostenbloecke: Annotated[list[Kostenblock], Len(1)]
 
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen

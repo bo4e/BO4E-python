@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.angebotsposition import Angebotsposition
@@ -37,7 +37,7 @@ class Angebotsteil(COM):
 
     # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: Annotated[list[Angebotsposition], Gt(1)]
+    positionen: Annotated[list[Angebotsposition], Len(1)]
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung

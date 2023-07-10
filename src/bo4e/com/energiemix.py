@@ -6,7 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.energieherkunft import Energieherkunft
@@ -41,7 +41,7 @@ class Energiemix(COM):
     #: Jahr, für das der Energiemix gilt
     gueltigkeitsjahr: int
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: Annotated[list[Energieherkunft], Gt(1)]
+    anteil: Annotated[list[Energieherkunft], Len(1)]
 
     # optional attributes
     #: Bemerkung zum Energiemix

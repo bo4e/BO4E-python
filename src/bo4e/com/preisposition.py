@@ -6,7 +6,7 @@ from decimal import Decimal
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -47,7 +47,7 @@ class Preisposition(COM):
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
     bezugsgroesse: Mengeneinheit
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: Annotated[list[Preisstaffel], Gt(1)]
+    preisstaffeln: Annotated[list[Preisstaffel], Len(1)]
 
     # optional attributes
     zeitbasis: Optional[Zeiteinheit] = None

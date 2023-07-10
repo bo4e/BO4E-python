@@ -6,7 +6,7 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
 from bo4e.com.com import COM
@@ -51,7 +51,7 @@ class Ausschreibungslos(COM):
     anzahl_lieferstellen: int
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: Annotated[list[Ausschreibungsdetail], Gt(1)]
+    lieferstellen: Annotated[list[Ausschreibungsdetail], Len(1)]
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
     lieferzeitraum: Zeitraum

@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Annotated
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.verbrauch import Verbrauch
@@ -37,5 +37,5 @@ class Energiemenge(Geschaeftsobjekt):
     lokationstyp: Lokationstyp
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
-    energieverbrauch: Annotated[list[Verbrauch], Gt(1)]
+    energieverbrauch: Annotated[list[Verbrauch], Len(1)]
     # there are no optional attributes

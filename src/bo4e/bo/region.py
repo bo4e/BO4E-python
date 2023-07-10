@@ -3,7 +3,7 @@ Contains Region class and corresponding marshmallow schema for de-/serialization
 """
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.regionskriterium import Regionskriterium
@@ -32,7 +32,7 @@ class Region(Geschaeftsobjekt):
     bezeichnung: str
 
     #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: Annotated[list[Regionskriterium], Gt(1)]
+    positiv_liste: Annotated[list[Regionskriterium], Len(1)]
 
     # optional attributes
     #: Negativliste der Kriterien zur Definition der Region

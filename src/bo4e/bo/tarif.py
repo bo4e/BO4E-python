@@ -5,7 +5,7 @@ Contains Tarif class and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlagregional import AufAbschlagRegional
@@ -39,7 +39,7 @@ class Tarif(Tarifinfo):
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Annotated[list[TarifpreispositionProOrt], Gt(1)]
+    tarifpreise: Annotated[list[TarifpreispositionProOrt], Len(1)]
 
     # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung

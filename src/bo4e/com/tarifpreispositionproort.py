@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Annotated
 
-from annotated_types import Gt
+from annotated_types import Len
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -35,5 +35,5 @@ class TarifpreispositionProOrt(COM):
     #: ene't-Netznummer des Netzes in dem der Preis gilt
     netznr: str
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Annotated[list[TarifpreisstaffelProOrt], Gt(1)]
+    preisstaffeln: Annotated[list[TarifpreisstaffelProOrt], Len(1)]
     # there are no optional attributes

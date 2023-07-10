@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Annotated
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from bo4e.com.com import COM
@@ -35,4 +35,4 @@ class AufAbschlagProOrt(COM):
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
     netznr: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: Annotated[list[AufAbschlagstaffelProOrt], Gt(1)]
+    staffeln: Annotated[list[AufAbschlagstaffelProOrt], Len(1)]

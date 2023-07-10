@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Annotated
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.kriteriumwert import KriteriumWert
@@ -30,5 +30,5 @@ class RegionaleGueltigkeit(COM):
     # required attributes
     gueltigkeitstyp: Gueltigkeitstyp  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
     kriteriums_werte: Annotated[
-        list[KriteriumWert], Gt(1)
+        list[KriteriumWert], Len(1)
     ]  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen

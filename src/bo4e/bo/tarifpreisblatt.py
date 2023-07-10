@@ -4,7 +4,7 @@ Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/seri
 from datetime import datetime
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlag import AufAbschlag
@@ -36,7 +36,7 @@ class Tarifpreisblatt(Tarifinfo):
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: datetime
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Annotated[list[Tarifpreisposition], Gt(1)]
+    tarifpreise: Annotated[list[Tarifpreisposition], Len(1)]
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
 

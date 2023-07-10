@@ -4,7 +4,7 @@ Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de
 
 from typing import Annotated, List, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.energiemix import Energiemix
@@ -43,7 +43,7 @@ class RegionalerAufAbschlag(COM):
     bezeichnung: str
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    staffeln: Annotated[list[RegionalePreisstaffel], Gt(1)]
+    staffeln: Annotated[list[RegionalePreisstaffel], Len(1)]
 
     # optional attributes
     #: Beschreibung des Auf-/Abschlags

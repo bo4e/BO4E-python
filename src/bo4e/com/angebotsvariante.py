@@ -7,7 +7,7 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.com.angebotsteil import Angebotsteil
 from bo4e.com.betrag import Betrag
@@ -39,7 +39,7 @@ class Angebotsvariante(COM):
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
     bindefrist: datetime
 
-    teile: Annotated[list[Angebotsteil], Gt(1)]
+    teile: Annotated[list[Angebotsteil], Len(1)]
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.

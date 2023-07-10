@@ -8,7 +8,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Annotated, Optional
 
-from annotated_types import Gt
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
@@ -46,13 +46,13 @@ class Tarifinfo(Geschaeftsobjekt):
     #: Strom oder Gas, etc.
     sparte: Sparte
     #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
-    kundentypen: Annotated[list[Kundentyp], Gt(1)]
+    kundentypen: Annotated[list[Kundentyp], Len(1)]
     #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
     tarifart: Tarifart
     #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
     tariftyp: Tariftyp
     #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
-    tarifmerkmale: Annotated[list[Tarifmerkmal], Gt(1)]
+    tarifmerkmale: Annotated[list[Tarifmerkmal], Len(1)]
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
     anbieter: Marktteilnehmer
 

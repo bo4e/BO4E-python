@@ -2,7 +2,9 @@
 Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Annotated, List, Optional
+
+from annotated_types import Len
 
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
 from bo4e.com.com import COM
@@ -40,7 +42,7 @@ class AufAbschlagRegional(COM):
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    betraege: Annotated[list[AufAbschlagProOrt], Gt(1)]
+    betraege: Annotated[list[AufAbschlagProOrt], Len(1)]
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag
