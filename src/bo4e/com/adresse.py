@@ -2,10 +2,9 @@
 Contains Adresse class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Any, Dict, Optional
+from typing import Optional
 
-from pydantic import field_validator, model_validator
-from pydantic_core.core_schema import FieldValidationInfo
+from pydantic import model_validator
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode

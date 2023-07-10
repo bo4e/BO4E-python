@@ -3,7 +3,7 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import Annotated, Any, Dict, List, Optional
+from typing import Annotated, List, Optional
 
 from iso3166 import countries
 from pydantic import Field, field_validator, model_validator
