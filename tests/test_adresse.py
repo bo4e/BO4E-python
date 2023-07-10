@@ -181,13 +181,7 @@ class TestAddress:
     )
     def test_strasse_xor_postfach(self, address_test_data: Dict[str, Optional[str]], expected: str) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Adresse(
-                postleitzahl=address_test_data["postleitzahl"],  # type: ignore[arg-type]
-                ort=address_test_data["ort"],  # type: ignore[arg-type]
-                strasse=address_test_data["strasse"],
-                hausnummer=address_test_data["hausnummer"],
-                postfach=address_test_data["postfach"],
-            )
+            _ = Adresse.model_validate(address_test_data)
         assert expected in str(excinfo.value)
 
     def test_serialization_of_non_german_address(self) -> None:
@@ -208,7 +202,7 @@ class TestAddress:
         "address_json, adresse",
         [
             pytest.param(
-                r"""{"postleitzahl": "12345", 
+                r"""{"postleitzahl": "12345",
                     "ort": "ISS spacestation",
                     "strasse": "Milky Way",
                     "hausnummer": "42",
