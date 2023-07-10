@@ -3,10 +3,10 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import Any, Dict, List, Optional
+from typing import Annotated, Any, Dict, List, Optional
 
 from iso3166 import countries
-from pydantic import field_validator
+from pydantic import Field, field_validator, model_validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler
@@ -48,7 +48,7 @@ class Messlokation(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.MESSLOKATION
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
-    messlokations_id: str
+    messlokations_id: Annotated[str, Field(pattern=_melo_id_pattern.pattern)]
     #: Sparte der Messlokation, z.B. Gas oder Strom
     sparte: Sparte
 
@@ -94,45 +94,34 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     # pylint: disable=unused-argument, no-self-argument
-    @field_validator("messlokations_id")
-    def _validate_messlokations_id(cls, messlokations_id: str) -> str:
-        if not messlokations_id:
-            raise ValueError("The messlokations_id must not be empty.")
-        if not _melo_id_pattern.match(messlokations_id):
-            raise ValueError(f"The messlokations_id '{messlokations_id}' does not match {_melo_id_pattern.pattern}")
+    @field_validator("messlokations_id", mode="after")
+    @classmethod
+    def _validate_messlokations_id_country_code(cls, messlokations_id: str) -> str:
+        # The regex pattern in the annotated type above already checks for the correct format
         if not messlokations_id[0:2] in countries:
             raise ValueError(f"The country code '{messlokations_id[0:2]}' is not a valid country code")
         return messlokations_id
 
     # pylint: disable=no-self-argument
-    @field_validator("katasterinformation")
-    def validate_address_info(
-        cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
-    ) -> Optional[Katasteradresse]:
+    @model_validator(mode="after")
+    @classmethod
+    def validate_address_info(cls, model: "Messlokation") -> "Messlokation":
         """Checks that if an address is given, that there is only one valid address given"""
         all_address_attributes = [
-            values["messadresse"],
-            values["geoadresse"],
-            katasterinformation,
+            model.messadresse,
+            model.geoadresse,
+            model.katasterinformation,
         ]
         amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
         if amount_of_given_address_infos > 1:
             raise ValueError("More than one address information is given.")
-        return katasterinformation
+        return model
 
     # pylint: disable=no-self-argument
-    @field_validator("grundzustaendiger_msbim_codenr")
-    def validate_grundzustaendiger_x_codenr(
-        cls, grundzustaendiger_msbim_codenr: Optional[str], values: Dict[str, Any]
-    ) -> Optional[str]:
+    @model_validator(mode="after")
+    @classmethod
+    def validate_grundzustaendiger_x_codenr(cls, model: "Messlokation") -> "Messlokation":
         """Checks that if a codenr is given, that there is only one valid codenr given."""
-        all_grundzustaendiger_x_codenr_attributes = [
-            values["grundzustaendiger_msb_codenr"],
-            grundzustaendiger_msbim_codenr,
-        ]
-        amount_of_given_grundzustaendiger_x_codenr = len(
-            [i for i in all_grundzustaendiger_x_codenr_attributes if i is not None]
-        )
-        if amount_of_given_grundzustaendiger_x_codenr > 1:
+        if model.grundzustaendiger_msb_codenr is not None and model.grundzustaendiger_msbim_codenr is not None:
             raise ValueError("More than one codenr is given.")
-        return grundzustaendiger_msbim_codenr
+        return model
