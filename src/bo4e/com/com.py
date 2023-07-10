@@ -8,7 +8,7 @@ from typing import Type, TypeVar
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 # pylint: disable=too-few-public-methods
@@ -26,16 +26,15 @@ class COM(BaseModel):
 
     """
 
-    # pylint:disable=duplicate-code
-    class Config:
-        """
-        basic configuration for pydantic's behaviour
-        """
-
-        alias_generator = camelize
-        populate_by_name = True
-        extra = "allow"
-        json_encoders = {Decimal: str}
+    model_config = ConfigDict(
+        alias_generator=camelize,
+        populate_by_name=True,
+        extra="allow",
+        json_encoders={Decimal: str},
+    )
+    """
+    basic configuration for pydantic's behaviour
+    """
 
 
 # pylint: disable=invalid-name

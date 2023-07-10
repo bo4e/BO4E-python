@@ -5,7 +5,7 @@ from typing import List, Optional
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.enum.botyp import BoTyp
@@ -36,13 +36,12 @@ class Geschaeftsobjekt(BaseModel):
     externe_referenzen: Optional[List[ExterneReferenz]] = []
 
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
-    # pylint:disable=duplicate-code
-    class Config:
-        """
-        basic configuration for pydantic's behaviour
-        """
-
-        alias_generator = camelize
-        populate_by_name = True
-        extra = "allow"
-        json_encoders = {Decimal: str}
+    model_config = ConfigDict(
+        alias_generator=camelize,
+        populate_by_name=True,
+        extra="allow",
+        json_encoders={Decimal: str},
+    )
+    """
+    basic configuration for pydantic's behaviour
+    """
