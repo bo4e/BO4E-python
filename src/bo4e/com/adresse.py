@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Any, Dict, Optional
 
-from pydantic import validator
+from pydantic import field_validator, validator
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
@@ -48,7 +48,7 @@ class Adresse(COM):
     landescode: Landescode = Landescode.DE  # type:ignore
 
     # pylint: disable=no-self-argument
-    @validator("postfach")
+    @field_validator("postfach")
     def strasse_xor_postfach(cls, postfach: Optional[str], values: Dict[str, Any]) -> Optional[str]:
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
