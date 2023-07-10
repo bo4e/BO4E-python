@@ -26,6 +26,7 @@ class COM(BaseModel):
 
     """
 
+    # pylint: disable=duplicate-code
     model_config = ConfigDict(
         alias_generator=camelize,
         populate_by_name=True,
@@ -33,7 +34,7 @@ class COM(BaseModel):
         # json_encoders is deprecated, but there is no easy-to-use alternative. The best way would be to create
         # an annotated version of Decimal, but you would have to use it everywhere in the pydantic models.
         # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
-        json_encoders={Decimal: str},
+        json_encoders={Decimal: str},  # type: ignore[typeddict-unknown-key]
     )
     """
     basic configuration for pydantic's behaviour

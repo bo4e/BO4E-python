@@ -48,7 +48,7 @@ class Adresse(COM):
     landescode: Landescode = Landescode.DE  # type:ignore
 
     # pylint: disable=no-self-argument
-    @model_validator(mode="after")
+    @model_validator(mode="after")  # type:ignore[arg-type]
     @classmethod
     def strasse_xor_postfach(cls, model: "Adresse") -> "Adresse":
         """

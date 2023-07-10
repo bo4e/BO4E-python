@@ -103,7 +103,7 @@ class Messlokation(Geschaeftsobjekt):
         return messlokations_id
 
     # pylint: disable=no-self-argument
-    @model_validator(mode="after")
+    @model_validator(mode="after")  # type:ignore[arg-type]
     @classmethod
     def validate_address_info(cls, model: "Messlokation") -> "Messlokation":
         """Checks that if an address is given, that there is only one valid address given"""
@@ -118,7 +118,7 @@ class Messlokation(Geschaeftsobjekt):
         return model
 
     # pylint: disable=no-self-argument
-    @model_validator(mode="after")
+    @model_validator(mode="after")  # type:ignore[arg-type]
     @classmethod
     def validate_grundzustaendiger_x_codenr(cls, model: "Messlokation") -> "Messlokation":
         """Checks that if a codenr is given, that there is only one valid codenr given."""
