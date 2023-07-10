@@ -35,7 +35,7 @@ class Marktteilnehmer(Geschaeftspartner):
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Marktrolle
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: str = Field(strict=True, pattern=r"^\d{13}$")
+    rollencodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
     #: Gibt den Typ des Codes an
     rollencodetyp: Rollencodetyp
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom

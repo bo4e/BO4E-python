@@ -32,12 +32,12 @@ class Netznutzungsrechnung(Rechnung):
     bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Sparte
-    absendercodenummer: str = Field(strict=True, pattern=r"^\d{13}$")
+    absendercodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
-    empfaengercodenummer: str = Field(strict=True, pattern=r"^\d{13}$")
+    empfaengercodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
     """
     Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.

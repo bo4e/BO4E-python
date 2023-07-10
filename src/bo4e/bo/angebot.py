@@ -39,7 +39,7 @@ class Angebot(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: str = Field(strict=True, pattern=r"^\d+$")
+    angebotsnummer: Annotated[str, Field(strict=True, pattern=r"^\d+$")]
     #: Erstellungsdatum des Angebots
     angebotsdatum: datetime
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)

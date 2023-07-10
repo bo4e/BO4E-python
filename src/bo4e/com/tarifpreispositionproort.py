@@ -29,7 +29,7 @@ class TarifpreispositionProOrt(COM):
 
     # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: str = Field(strict=True, pattern=r"^\d{5}$")
+    postleitzahl: Annotated[str, Field(strict=True, pattern=r"^\d{5}$")]
     #: Ort für den der Preis gilt
     ort: str
     #: ene't-Netznummer des Netzes in dem der Preis gilt
