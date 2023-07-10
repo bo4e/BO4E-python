@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Any, Dict, Optional
 
-from pydantic import field_validator, validator
+from pydantic import field_validator
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
