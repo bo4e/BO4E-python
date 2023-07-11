@@ -18,9 +18,12 @@ from typing import Any, Dict, List, Optional, Tuple, Type, cast
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
+from annotated_types import Len, MaxLen, MinLen
+from pydantic import BaseModel
 from pydantic._internal._model_construction import ModelMetaclass
 from pydantic._internal._repr import display_as_type
 from pydantic.fields import FieldInfo
+from typeguard import TypeCheckError, check_type
 
 
 # pylint: disable=too-few-public-methods
@@ -102,9 +105,9 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
             """
             return hash(json.dumps(self, sort_keys=True))
 
-    def add_class(self, node: str, cls: ModelMetaclass) -> None:
+    def add_class(self, node: str, cls: type[BaseModel]) -> None:
         """
-        Adds a class to the UML-Network. It copies the __fields__ dictionary because it will possibly be mutated when
+        Adds a class to the UML-Network. It copies the model_fields dictionary because it will possibly be mutated when
         adding superclasses to the network.
         """
         super().add_node(
@@ -112,9 +115,9 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
             cls=cls,
             fields={
                 field_name: {"model_field": model_field, "card": None}
-                for field_name, model_field in cls.__fields__.items()
+                for field_name, model_field in cls.model_fields.items()
             }
-            if hasattr(cls, "__fields__")
+            if hasattr(cls, "model_fields")
             else {},
         )
 
@@ -223,32 +226,6 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         https://github.com/pydantic/pydantic/blob/58ae1ef77a4bf4276aaa6214aaaaf59455f5e587/pydantic/_internal/_repr.py#L85
         """
         result_str = display_as_type(model_field.annotation)
-        # todo: check if this is still necessary
-        # https://github.com/bo4e/BO4E-python/issues/478
-        # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
-        # if model_field.shape in MAPPING_LIKE_SHAPES:
-        #    result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
-        # elif model_field.shape == SHAPE_TUPLE:
-        #    result_str = "Tuple[" + ", ".join(
-        #        display_as_type(
-        #            sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
-        #        )
-        #    )
-        #    result_str += "]"
-        # elif model_field.shape == SHAPE_GENERIC:
-        #    assert model_field.sub_fields
-        #    result_str = (
-        #        f"{display_as_type(model_field.type_)}["
-        #        f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
-        #    )
-        # elif model_field.shape not in (SHAPE_SINGLETON, SHAPE_LIST):
-        #    result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
-        #
-        # if is_constrained_str(model_field):
-        #    if isinstance(model_field.outer_type_.regex, Pattern):
-        #        result_str = f"str<{model_field.outer_type_.regex.pattern}>"
-        #    elif isinstance(model_field.outer_type_.regex, str):
-        #        result_str = f"str<{model_field.outer_type_.regex}>"
         assert card is not None
         return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
 
@@ -448,55 +425,36 @@ def write_class_umls(uml_network: _UMLNetworkABC, namespaces_to_parse: List[str]
     return path_list
 
 
-def model_field_str(model_field: FieldInfo) -> str:
-    """
-    Parse the type of the ModelField to a printable string. Copied from pydantic.field.ModelField._type_display()
-    """
-    result_str = display_as_type(model_field.annotation)
-    # todo: check if this is still necessary
-    # https://github.com/bo4e/BO4E-python/issues/478
-    # have to do this since display_as_type(self.outer_type_) is different (and wrong) on python 3.6
-    # if model_field.shape in MAPPING_LIKE_SHAPES:
-    #    result_str = f"Mapping[{display_as_type(cast(ModelField, model_field.key_field).type_)}, {result_str}]"
-    # elif model_field.shape == SHAPE_TUPLE:
-    #    result_str = "Tuple[" + ", ".join(
-    #        display_as_type(
-    #            sub_field.type_ for sub_field in model_field.sub_fields  # type:ignore[arg-type,union-attr]
-    #        )
-    #    )
-    #    result_str += "]"
-    # elif model_field.shape == SHAPE_GENERIC:
-    #    assert model_field.sub_fields
-    #    result_str = (
-    #        f"{display_as_type(model_field.type_)}["
-    #        f"{', '.join(display_as_type(sub_field.type_) for sub_field in model_field.sub_fields)}]"
-    #    )
-    # elif model_field.shape != SHAPE_SINGLETON:
-    #    result_str = SHAPE_NAME_LOOKUP[model_field.shape].format(result_str)
-    # if model_field.allow_none and (model_field.shape != SHAPE_SINGLETON or not model_field.sub_fields):
-    #    result_str = f"Optional[{result_str}]"
-    return result_str
-
-
 def get_cardinality(model_field: FieldInfo) -> Cardinality:
     """
     Determines the cardinality of a field. This field can either contain a reference to another node in the graph or
     be of another arbitrary type.
     """
-    type_str = model_field_str(model_field)
     card1: str = "1"
     card2: str = "1"
-    if type_str.startswith("Optional["):
+    try:
+        check_type(None, model_field.annotation)
+        # The field can be None
         card1 = "0"
-    if type_str.startswith("List[") or type_str.startswith("Optional[List["):
+    except TypeCheckError:
+        pass
+    try:
+        check_type([], model_field.annotation)
+        # The field can be a list
         card1 = "0"
         card2 = "*"
-        # todo: re-add min_length / max_length interpretation
-        # https://github.com/bo4e/BO4E-python/issues/477
-        # if hasattr(model_field.outer_type_, "max_items") and model_field.outer_type_.max_items:
-        #    card2 = str(model_field.outer_type_.max_items)
-        # if hasattr(model_field.outer_type_, "min_items") and model_field.outer_type_.min_items:
-        #    card1 = str(model_field.outer_type_.min_items)
+        for metadate in model_field.metadata:
+            # min-length and max-length are stored as entries in the metadata list
+            if isinstance(metadate, MinLen):
+                card1 = str(metadate.min_length)
+            elif isinstance(metadate, MaxLen):
+                card2 = str(metadate.max_length)
+            elif isinstance(metadate, Len):
+                card1 = str(metadate.min_length)
+                if metadate.max_length is not None:
+                    card2 = str(metadate.max_length)
+    except TypeCheckError:
+        pass
     return card1, card2
 
 
@@ -528,7 +486,7 @@ def build_network(module_dir: Path, parser: Type[_UMLNetworkABC]) -> Tuple[_UMLN
 
 
 def _recursive_add_class(
-    cls_cur: ModelMetaclass,
+    cls_cur: type[BaseModel],
     modl_namespace: str,
     uml_network: _UMLNetworkABC,
 ) -> None:
@@ -543,7 +501,7 @@ def _recursive_add_class(
         type_modl_namespace = f"{parent.__module__}.{parent.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
-                _recursive_add_class(cast(ModelMetaclass, parent), type_modl_namespace, uml_network)
+                _recursive_add_class(cast(type[BaseModel], parent), type_modl_namespace, uml_network)
             uml_network.add_extension(
                 modl_namespace,
                 type_modl_namespace,
