@@ -17,14 +17,13 @@ from pathlib import Path
 from types import NoneType
 from typing import Any, Dict, List, Optional, Tuple, Type, Union, cast, get_args
 
-import networkx as nx  # type: ignore[import]
-import requests  # type: ignore[import]
+import networkx as nx
+import requests
 from annotated_types import Len, MaxLen, MinLen
 from pydantic import BaseModel
-from pydantic._internal._model_construction import ModelMetaclass
 from pydantic._internal._repr import display_as_type
 from pydantic.fields import FieldInfo
-from typeguard import TypeCheckError, check_type  # type: ignore[import]
+from typeguard import TypeCheckError, check_type
 
 
 # pylint: disable=too-few-public-methods
@@ -468,6 +467,7 @@ def get_referenced_inner_type(type_annotation: Any) -> Any:
     while True:
         if not hasattr(type_annotation, "__origin__"):
             return type_annotation
+        # pylint: disable=protected-access
         if type_annotation.__origin__ is Union and type_annotation._name == "Optional":
             # Optional is internally a Union with None. We want to ignore the None type.
             generic_alias_args = get_args(type_annotation)
