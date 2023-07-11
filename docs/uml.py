@@ -14,7 +14,8 @@ import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple, Type, cast
+from types import NoneType
+from typing import Any, Dict, List, Optional, Tuple, Type, Union, cast, get_args
 
 import networkx as nx  # type: ignore[import]
 import requests  # type: ignore[import]
@@ -225,7 +226,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         pydantic._internal._repr.display_as_type
         https://github.com/pydantic/pydantic/blob/58ae1ef77a4bf4276aaa6214aaaaf59455f5e587/pydantic/_internal/_repr.py#L85
         """
-        result_str = display_as_type(model_field.annotation)
+        result_str = display_as_type(get_referenced_inner_type(model_field.annotation))
         assert card is not None
         return f"{result_str} [{_UMLNetworkABC.get_cardinality_string(card)}]"
 
@@ -259,8 +260,8 @@ class PlantUMLNetwork(_UMLNetworkABC):
             cls_str += " {\n"
             for field_dict in self.nodes[node]["fields"].values():
                 model_field: FieldInfo = field_dict["model_field"]
-                assert model_field.annotation is not None
-                type_modl_namespace = f"{model_field.annotation.__module__}.{model_field.annotation.__name__}"
+                model_field_inner_type = get_referenced_inner_type(model_field.annotation)
+                type_modl_namespace = f"{model_field_inner_type.__module__}.{model_field_inner_type.__name__}"
                 if type_modl_namespace in self[node]:
                     # Skip the fields which will appear as references in the graph
                     continue
@@ -458,6 +459,40 @@ def get_cardinality(model_field: FieldInfo) -> Cardinality:
     return card1, card2
 
 
+def get_referenced_inner_type(type_annotation: Any) -> Any:
+    """
+    Returns the inner type of a list or optional type annotation.
+    Should also handle nested types like Optional[List[...]].
+    If the type annotation is not a list or optional type, the type annotation itself is returned.
+    """
+    while True:
+        if not hasattr(type_annotation, "__origin__"):
+            return type_annotation
+        if type_annotation.__origin__ is Union and type_annotation._name == "Optional":
+            # Optional is internally a Union with None. We want to ignore the None type.
+            generic_alias_args = get_args(type_annotation)
+            generic_alias_args = tuple(
+                generic_alias_arg for generic_alias_arg in generic_alias_args if generic_alias_arg is not NoneType
+            )
+        elif type_annotation.__origin__ is list:
+            generic_alias_args = get_args(type_annotation)
+        elif hasattr(type_annotation, "__metadata__"):
+            # This is Annotated[...]
+            generic_alias_args = (type_annotation.__origin__,)
+        else:
+            return type_annotation
+        if len(generic_alias_args) > 1:
+            raise TypeError(
+                f"Could not determine inner type of {type_annotation}: Too many generic alias args {generic_alias_args}"
+            )
+        if len(generic_alias_args) == 0:
+            raise TypeError(
+                f"Could not determine inner type of {type_annotation}: "
+                f"Undefined generic alias args {generic_alias_args}"
+            )
+        type_annotation = generic_alias_args[0]
+
+
 def build_network(module_dir: Path, parser: Type[_UMLNetworkABC]) -> Tuple[_UMLNetworkABC, List[str]]:
     """
     Build a network of the relationships of all classes found in bo4e packages defined by `pkgs` and all classes
@@ -510,14 +545,15 @@ def _recursive_add_class(
     # ------ determine references in fields which pass `regex_incl_network` and `regex_excl_network` -------------------
     for field_dict in uml_network.nodes[modl_namespace]["fields"].values():
         model_field: FieldInfo = field_dict["model_field"]
+        model_inner_type = get_referenced_inner_type(model_field.annotation)
         # Add cardinality information to the field
         field_card = get_cardinality(model_field)
         field_dict["card"] = field_card
         assert model_field.annotation is not None
-        type_modl_namespace = f"{model_field.annotation.__module__}.{model_field.annotation.__name__}"
+        type_modl_namespace = f"{model_inner_type.__module__}.{model_inner_type.__name__}"
         if re.match(regex_incl_network, type_modl_namespace) and not re.match(regex_excl_network, type_modl_namespace):
             if not uml_network.has_node(type_modl_namespace):
-                _recursive_add_class(model_field.annotation, type_modl_namespace, uml_network)  # type:ignore[arg-type]
+                _recursive_add_class(model_inner_type, type_modl_namespace, uml_network)
 
             uml_network.add_association(
                 modl_namespace,

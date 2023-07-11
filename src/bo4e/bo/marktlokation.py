@@ -115,7 +115,7 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: Optional[conlist(Kundentyp, min_length=0)] = None  # type: ignore[valid-type]
+    kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument
