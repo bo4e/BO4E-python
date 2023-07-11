@@ -5,9 +5,9 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
@@ -47,7 +47,7 @@ class Preisblatt(Geschaeftsobjekt):
     #: Der Zeitraum für den der Preis festgelegt ist
     gueltigkeit: Zeitraum
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
-    preispositionen: conlist(Preisposition, min_length=1)  # type: ignore[valid-type]
+    preispositionen: Annotated[list[Preisposition], Len(1)]
     # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
     herausgeber: Optional[Marktteilnehmer] = None

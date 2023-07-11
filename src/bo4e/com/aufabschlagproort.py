@@ -2,13 +2,15 @@
 Contains AufAbschlagProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Annotated
 
-# pylint: disable=too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from bo4e.com.com import COM
+
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class AufAbschlagProOrt(COM):
@@ -33,4 +35,4 @@ class AufAbschlagProOrt(COM):
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
     netznr: str
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: conlist(AufAbschlagstaffelProOrt, min_length=1)  # type: ignore[valid-type]
+    staffeln: Annotated[list[AufAbschlagstaffelProOrt], Len(1)]

@@ -7,7 +7,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 # pylint: disable=no-name-in-module
-from pydantic import conlist, field_validator
+from pydantic import field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -115,7 +115,7 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: Optional[conlist(Kundentyp, min_length=0)] = None  # type: ignore[valid-type]
+    kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
 
     # pylint:disable=unused-argument, no-self-argument

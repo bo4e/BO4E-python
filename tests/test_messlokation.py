@@ -226,6 +226,6 @@ class TestMeLo:
         )
         melo_json: Dict[str, Any] = melo.model_dump()
         melo_json["additional_key"] = "additional_value"
-        deserialized_melo: Messlokation = Messlokation.parse_obj(melo_json)
+        deserialized_melo: Messlokation = Messlokation.model_validate(melo_json)
         assert isinstance(deserialized_melo, Messlokation)
         assert deserialized_melo.additional_key == "additional_value"  # type:ignore[attr-defined]

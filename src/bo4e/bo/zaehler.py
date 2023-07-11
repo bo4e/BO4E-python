@@ -7,9 +7,9 @@ from decimal import Decimal
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -42,7 +42,7 @@ class Zaehler(Geschaeftsobjekt):
     sparte: Sparte  #: Strom oder Gas
     zaehlerauspraegung: Zaehlerauspraegung  #: Spezifikation die Richtung des Zählers betreffend
     zaehlertyp: Zaehlertyp  #: Typisierung des Zählers
-    zaehlwerke: conlist(Zaehlwerk, min_length=1)  # type: ignore[valid-type]  #: Die Zählwerke des Zählers
+    zaehlwerke: Annotated[list[Zaehlwerk], Len(1)]
     tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes

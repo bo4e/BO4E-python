@@ -2,11 +2,13 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Annotated, List, Optional
+
+from annotated_types import Len
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import conlist, constr
+from pydantic import constr
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.tagesvektor import Tagesvektor
@@ -89,4 +91,4 @@ class Lastgang(_LastgangBody):
     bo_typ: BoTyp = BoTyp.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
-    werte: conlist(Zeitreihenwert, min_length=1)  # type: ignore[valid-type]
+    werte: Annotated[list[Zeitreihenwert], Len(1)]

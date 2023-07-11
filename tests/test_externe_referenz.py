@@ -71,6 +71,6 @@ class TestExterneReferenz:
         er = ExterneReferenz(ex_ref_name="foo.bar", ex_ref_wert="12345")
         er_json: Dict[str, Any] = er.model_dump()
         er_json["additional_key"] = "additional_value"
-        deserialized_er: ExterneReferenz = ExterneReferenz.parse_obj(er_json)
+        deserialized_er: ExterneReferenz = ExterneReferenz.model_validate(er_json)
         assert isinstance(deserialized_er, ExterneReferenz)
         assert deserialized_er.additional_key == "additional_value"  # type:ignore[attr-defined]

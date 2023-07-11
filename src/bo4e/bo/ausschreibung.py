@@ -5,9 +5,9 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -60,7 +60,7 @@ class Ausschreibung(Geschaeftsobjekt):
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
-    lose: conlist(Ausschreibungslos, min_length=1)  # type: ignore[valid-type]
+    lose: Annotated[list[Ausschreibungslos], Len(1)]
 
     # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale

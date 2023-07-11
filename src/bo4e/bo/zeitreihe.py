@@ -4,9 +4,9 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.zeitreihenwert import Zeitreihenwert
@@ -45,7 +45,7 @@ class Zeitreihe(Geschaeftsobjekt):
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
     einheit: Mengeneinheit
     #: Hier liegen jeweils die Werte
-    werte: conlist(Zeitreihenwert, min_length=1)  # type: ignore[valid-type]
+    werte: Annotated[list[Zeitreihenwert], Len(1)]
 
     # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe

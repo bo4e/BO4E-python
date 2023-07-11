@@ -4,9 +4,9 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -47,7 +47,7 @@ class Preisposition(COM):
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
     bezugsgroesse: Mengeneinheit
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: conlist(Preisstaffel, min_length=1)  # type: ignore[valid-type]
+    preisstaffeln: Annotated[list[Preisstaffel], Len(1)]
 
     # optional attributes
     zeitbasis: Optional[Zeiteinheit] = None

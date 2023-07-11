@@ -4,9 +4,9 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
 from bo4e.com.com import COM
@@ -51,7 +51,7 @@ class Ausschreibungslos(COM):
     anzahl_lieferstellen: int
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: conlist(Ausschreibungsdetail, min_length=1)  # type: ignore[valid-type]
+    lieferstellen: Annotated[list[Ausschreibungsdetail], Len(1)]
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
     lieferzeitraum: Zeitraum

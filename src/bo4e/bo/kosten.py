@@ -1,11 +1,9 @@
 """
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-many-instance-attributes, too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
@@ -13,6 +11,9 @@ from bo4e.com.kostenblock import Kostenblock
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kostenklasse import Kostenklasse
+
+# pylint: disable=too-many-instance-attributes, too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class Kosten(Geschaeftsobjekt):
@@ -36,7 +37,7 @@ class Kosten(Geschaeftsobjekt):
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Zeitraum
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: conlist(Kostenblock, min_length=1)  # type: ignore[valid-type]
+    kostenbloecke: Annotated[list[Kostenblock], Len(1)]
 
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen

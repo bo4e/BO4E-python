@@ -2,11 +2,9 @@
 Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.energiemix import Energiemix
@@ -18,6 +16,9 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
+
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
+# pylint: disable=no-name-in-module
 
 
 # pylint: disable=R0801
@@ -42,7 +43,7 @@ class RegionalerAufAbschlag(COM):
     bezeichnung: str
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    staffeln: conlist(RegionalePreisstaffel, min_length=1)  # type: ignore[valid-type]
+    staffeln: Annotated[list[RegionalePreisstaffel], Len(1)]
 
     # optional attributes
     #: Beschreibung des Auf-/Abschlags

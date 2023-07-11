@@ -6,9 +6,10 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist, constr
+from annotated_types import Len
+from pydantic import Field
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
@@ -38,7 +39,7 @@ class Angebot(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: constr(strict=True, pattern=r"^\d+$")  # type: ignore[valid-type]
+    angebotsnummer: Annotated[str, Field(strict=True, pattern=r"^\d+$")]
     #: Erstellungsdatum des Angebots
     angebotsdatum: datetime
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
@@ -48,7 +49,7 @@ class Angebot(Geschaeftsobjekt):
     #: Empfänger des Angebots
     angebotsnehmer: Geschaeftspartner
 
-    varianten: conlist(Angebotsvariante, min_length=1)  # type: ignore[valid-type]
+    varianten: Annotated[list[Angebotsvariante], Len(1)]
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 

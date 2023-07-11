@@ -5,9 +5,9 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -37,7 +37,7 @@ class Tarifpreisposition(COM):
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
     bezugseinheit: Mengeneinheit
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: conlist(Preisstaffel, min_length=1)  # type: ignore[valid-type]
+    preisstaffeln: Annotated[list[Preisstaffel], Len(1)]
 
     # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)

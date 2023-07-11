@@ -2,11 +2,9 @@
 Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlag import AufAbschlag
@@ -15,6 +13,9 @@ from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreisposition import Tarifpreisposition
 from bo4e.enum.botyp import BoTyp
+
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class Tarifpreisblatt(Tarifinfo):
@@ -35,7 +36,7 @@ class Tarifpreisblatt(Tarifinfo):
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: datetime
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: conlist(Tarifpreisposition, min_length=1)  # type: ignore[valid-type]
+    tarifpreise: Annotated[list[Tarifpreisposition], Len(1)]
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
 

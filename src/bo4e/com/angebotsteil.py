@@ -3,11 +3,9 @@ Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.angebotsposition import Angebotsposition
@@ -15,6 +13,9 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.zeitraum import Zeitraum
+
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class Angebotsteil(COM):
@@ -36,7 +37,7 @@ class Angebotsteil(COM):
 
     # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: conlist(Angebotsposition, min_length=1)  # type: ignore[valid-type]
+    positionen: Annotated[list[Angebotsposition], Len(1)]
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung

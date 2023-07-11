@@ -3,11 +3,9 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=unused-argument
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -18,6 +16,9 @@ from bo4e.enum.botyp import BoTyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
+
+# pylint: disable=unused-argument
+# pylint: disable=no-name-in-module
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -64,7 +65,7 @@ class Vertrag(Geschaeftsobjekt):
     In der Regel der Empfänger des Vertrags.
     Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
     """
-    vertragsteile: conlist(Vertragsteil, min_length=1)  # type: ignore[valid-type]
+    vertragsteile: Annotated[list[Vertragsteil], Len(1)]
     """
     Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
     (Markt- oder Messlokation) festzulegen.

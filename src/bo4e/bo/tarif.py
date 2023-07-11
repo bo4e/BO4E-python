@@ -3,11 +3,9 @@ Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, List, Optional
 
-# pylint: disable=too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import conlist
+from annotated_types import Len
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlagregional import AufAbschlagRegional
@@ -16,6 +14,9 @@ from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
 from bo4e.enum.botyp import BoTyp
+
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class Tarif(Tarifinfo):
@@ -38,7 +39,7 @@ class Tarif(Tarifinfo):
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Tarifberechnungsparameter
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: conlist(TarifpreispositionProOrt, min_length=1)  # type: ignore[valid-type]
+    tarifpreise: Annotated[list[TarifpreispositionProOrt], Len(1)]
 
     # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung

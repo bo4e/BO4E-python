@@ -7,6 +7,7 @@ from pydantic import ValidationError
 from bo4e.com.adresse import Adresse
 from bo4e.enum import landescode
 from bo4e.enum.landescode import Landescode
+from tests.utils import parse_file
 
 # import pydantic
 
@@ -27,9 +28,8 @@ class TestAddress:
         and default value of landescode
         """
 
-        address_test_data = Adresse.parse_file(
-            "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
-            encoding="utf-8",
+        address_test_data = parse_file(
+            Adresse, "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json"
         )
 
         address_dict = address_test_data.model_dump_json(by_alias=True)
@@ -98,9 +98,8 @@ class TestAddress:
         assert deserialized_address.postleitzahl == "82031"
 
     def test_serialization_only_required_fields_landescode_AT(self) -> None:
-        address_test_data = Adresse.parse_file(
-            "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json",
-            encoding="utf-8",
+        address_test_data = parse_file(
+            Adresse, "./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json"
         )
         address_test_data.landescode = Landescode.AT  # type: ignore[attr-defined]
 
@@ -126,7 +125,7 @@ class TestAddress:
         """
 
         with pytest.raises(ValidationError) as excinfo:
-            _ = Adresse.parse_file(datafiles / "test_data_adresse_missing_plz.json", encoding="utf-8")
+            _ = parse_file(Adresse, datafiles / "test_data_adresse_missing_plz.json")
 
         assert "postleitzahl" in str(excinfo.value)
 
@@ -181,13 +180,7 @@ class TestAddress:
     )
     def test_strasse_xor_postfach(self, address_test_data: Dict[str, Optional[str]], expected: str) -> None:
         with pytest.raises(ValidationError) as excinfo:
-            _ = Adresse(
-                postleitzahl=address_test_data["postleitzahl"],  # type: ignore[arg-type]
-                ort=address_test_data["ort"],  # type: ignore[arg-type]
-                strasse=address_test_data["strasse"],
-                hausnummer=address_test_data["hausnummer"],
-                postfach=address_test_data["postfach"],
-            )
+            _ = Adresse.model_validate(address_test_data)
         assert expected in str(excinfo.value)
 
     def test_serialization_of_non_german_address(self) -> None:
@@ -208,7 +201,7 @@ class TestAddress:
         "address_json, adresse",
         [
             pytest.param(
-                r"""{"postleitzahl": "12345", 
+                r"""{"postleitzahl": "12345",
                     "ort": "ISS spacestation",
                     "strasse": "Milky Way",
                     "hausnummer": "42",

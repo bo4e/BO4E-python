@@ -2,9 +2,9 @@
 Contains Adresse class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Any, Dict, Optional
+from typing import Optional
 
-from pydantic import validator
+from pydantic import model_validator
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
@@ -48,8 +48,9 @@ class Adresse(COM):
     landescode: Landescode = Landescode.DE  # type:ignore
 
     # pylint: disable=no-self-argument
-    @validator("postfach")
-    def strasse_xor_postfach(cls, postfach: Optional[str], values: Dict[str, Any]) -> Optional[str]:
+    @model_validator(mode="after")  # type:ignore[arg-type]
+    @classmethod
+    def strasse_xor_postfach(cls, model: "Adresse") -> "Adresse":
         """
         An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
         This functions checks for these conditions of a valid address.
@@ -61,12 +62,6 @@ class Adresse(COM):
         Postleitzahl     w   w   w
         Ort              w   w   w
         """
-        if (
-            values["strasse"]
-            and values["hausnummer"]
-            and not postfach
-            or not values["strasse"]
-            and not values["hausnummer"]
-        ):
-            return postfach
+        if model.strasse and model.hausnummer and not model.postfach or not model.strasse and not model.hausnummer:
+            return model
         raise ValueError('You have to define either "strasse" and "hausnummer" or "postfach".')
