@@ -577,7 +577,7 @@ def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
                 answer = requests.post(
                     url,
                     json={"diagram_source": uml_file.read(), "diagram_type": "plantuml", "output_format": "svg"},
-                    timeout=5,
+                    timeout=15,
                 )
                 subdir = root[len(str(input_dir)) + 1 :]
                 os.makedirs(output_dir / subdir, exist_ok=True)
