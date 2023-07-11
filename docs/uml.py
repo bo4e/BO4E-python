@@ -24,7 +24,7 @@ from pydantic import BaseModel
 from pydantic._internal._model_construction import ModelMetaclass
 from pydantic._internal._repr import display_as_type
 from pydantic.fields import FieldInfo
-from typeguard import TypeCheckError, check_type
+from typeguard import TypeCheckError, check_type  # type: ignore[import]
 
 
 # pylint: disable=too-few-public-methods
