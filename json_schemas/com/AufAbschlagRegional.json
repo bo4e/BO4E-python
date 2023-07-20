@@ -1,1054 +1,1025 @@
 {
-    "$defs": {
-        "AufAbschlagProOrt": {
-            "additionalProperties": true,
-            "description": "\n    Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen im Zusammenhang\n    mit \u00f6rtlichen G\u00fcltigkeiten abgebildet werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagProOrt.json>`_\n\n    ",
-            "properties": {
-                "netznr": {
-                    "title": "Netznr",
-                    "type": "string"
-                },
-                "ort": {
-                    "title": "Ort",
-                    "type": "string"
-                },
-                "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
-                },
-                "staffeln": {
-                    "items": {
-                        "$ref": "#/$defs/AufAbschlagstaffelProOrt"
-                    },
-                    "minItems": 1,
-                    "title": "Staffeln",
-                    "type": "array"
-                }
-            },
-            "required": [
-                "postleitzahl",
-                "ort",
-                "netznr",
-                "staffeln"
-            ],
-            "title": "AufAbschlagProOrt",
-            "type": "object"
+  "$defs": {
+    "AufAbschlagProOrt": {
+      "additionalProperties": true,
+      "description": "\n    Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen im Zusammenhang\n    mit \u00f6rtlichen G\u00fcltigkeiten abgebildet werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagProOrt.json>`_\n\n    ",
+      "properties": {
+        "netznr": {
+          "title": "Netznr",
+          "type": "string"
         },
-        "AufAbschlagstaffelProOrt": {
-            "additionalProperties": true,
-            "description": "\n    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_\n\n    ",
-            "properties": {
-                "staffelgrenzeBis": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "Staffelgrenzebis"
-                },
-                "staffelgrenzeVon": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "Staffelgrenzevon"
-                },
-                "wert": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "Wert"
-                }
-            },
-            "required": [
-                "wert",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
-            "title": "AufAbschlagstaffelProOrt",
-            "type": "object"
+        "ort": {
+          "title": "Ort",
+          "type": "string"
         },
-        "AufAbschlagstyp": {
-            "description": "Festlegung, ob der Auf- oder Abschlag mit relativen oder absoluten Werten erfolgt.",
-            "enum": [
-                "RELATIV",
-                "ABSOLUT"
-            ],
-            "title": "AufAbschlagstyp",
-            "type": "string"
+        "postleitzahl": {
+          "title": "Postleitzahl",
+          "type": "string"
         },
-        "AufAbschlagsziel": {
-            "description": "Der Preis, auf den sich ein Auf- oder Abschlag bezieht.",
-            "enum": [
-                "ARBEITSPREIS_EINTARIF",
-                "ARBEITSPREIS_HT",
-                "ARBEITSPREIS_NT",
-                "ARBEITSPREIS_HT_NT",
-                "GRUNDPREIS",
-                "GESAMTPREIS"
-            ],
-            "title": "AufAbschlagsziel",
-            "type": "string"
-        },
-        "Energieherkunft": {
-            "additionalProperties": true,
-            "description": "\n    Abbildung einer Energieherkunft\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_\n\n    ",
-            "properties": {
-                "anteilProzent": {
-                    "anyOf": [
-                        {
-                            "exclusiveMaximum": 100.0,
-                            "exclusiveMinimum": 0.0,
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "Anteilprozent"
-                },
-                "erzeugungsart": {
-                    "$ref": "#/$defs/Erzeugungsart"
-                }
-            },
-            "required": [
-                "erzeugungsart",
-                "anteilProzent"
-            ],
-            "title": "Energieherkunft",
-            "type": "object"
-        },
-        "Energiemix": {
-            "additionalProperties": true,
-            "description": "\n    Zusammensetzung der gelieferten Energie aus den verschiedenen Prim\u00e4renergieformen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_\n\n    ",
-            "properties": {
-                "anteil": {
-                    "items": {
-                        "$ref": "#/$defs/Energieherkunft"
-                    },
-                    "minItems": 1,
-                    "title": "Anteil",
-                    "type": "array"
-                },
-                "atommuell": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Atommuell"
-                },
-                "bemerkung": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Bemerkung"
-                },
-                "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
-                },
-                "co2Emission": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Co2Emission"
-                },
-                "energieart": {
-                    "$ref": "#/$defs/Sparte"
-                },
-                "energiemixnummer": {
-                    "title": "Energiemixnummer",
-                    "type": "integer"
-                },
-                "gueltigkeitsjahr": {
-                    "title": "Gueltigkeitsjahr",
-                    "type": "integer"
-                },
-                "oekoTopTen": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Oekotopten"
-                },
-                "oekolabel": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekolabel"
-                    },
-                    "title": "Oekolabel",
-                    "type": "array"
-                },
-                "oekozertifikate": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekozertifikat"
-                    },
-                    "title": "Oekozertifikate",
-                    "type": "array"
-                },
-                "website": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Website"
-                }
-            },
-            "required": [
-                "energiemixnummer",
-                "energieart",
-                "bezeichnung",
-                "gueltigkeitsjahr",
-                "anteil"
-            ],
-            "title": "Energiemix",
-            "type": "object"
-        },
-        "Erzeugungsart": {
-            "description": "Auflistung der Erzeugungsarten von Energie.",
-            "enum": [
-                "FOSSIL",
-                "KWK",
-                "WIND",
-                "SOLAR",
-                "KERNKRAFT",
-                "WASSER",
-                "GEOTHERMIE",
-                "BIOMASSE",
-                "KOHLE",
-                "GAS",
-                "SONSTIGE",
-                "SONSTIGE_EEG",
-                "BIOGAS",
-                "KLIMANEUTRALES_GAS"
-            ],
-            "title": "Erzeugungsart",
-            "type": "string"
-        },
-        "Geraet": {
-            "additionalProperties": true,
-            "description": "\n    Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_\n\n    ",
-            "properties": {
-                "geraeteeigenschaften": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Geraeteeigenschaften"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "geraetenummer": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Geraetenummer"
-                }
-            },
-            "title": "Geraet",
-            "type": "object"
-        },
-        "Geraeteeigenschaften": {
-            "additionalProperties": true,
-            "description": "\n    Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_\n\n    ",
-            "properties": {
-                "geraetemerkmal": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Geraetemerkmal"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "geraetetyp": {
-                    "$ref": "#/$defs/Geraetetyp"
-                }
-            },
-            "required": [
-                "geraetetyp"
-            ],
-            "title": "Geraeteeigenschaften",
-            "type": "object"
-        },
-        "Geraetemerkmal": {
-            "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
-            "enum": [
-                "EINTARIF",
-                "ZWEITARIF",
-                "MEHRTARIF",
-                "GAS_G2_5",
-                "GAS_G4",
-                "GAS_G6",
-                "GAS_G10",
-                "GAS_G16",
-                "GAS_G25",
-                "GAS_G40",
-                "GAS_G65",
-                "GAS_G100",
-                "GAS_G160",
-                "GAS_G250",
-                "GAS_G400",
-                "GAS_G650",
-                "GAS_G1000",
-                "GAS_G1600",
-                "GAS_G2500",
-                "IMPULSGEBER_G4_G100",
-                "IMPULSGEBER_G100",
-                "TELEFONANSCHLUSS",
-                "MODEM_GSM",
-                "MODEM_GPRS",
-                "MODEM_FUNK",
-                "MODEM_GSM_O_LG",
-                "MODEM_GSM_M_LG",
-                "MODEM_FESTNETZ",
-                "MODEM_GPRS_M_LG",
-                "PLC_KOM",
-                "ETHERNET_KOM",
-                "DSL_KOM",
-                "LTE_KOM",
-                "KOMPAKT_MU",
-                "SYSTEM_MU",
-                "TEMPERATUR_MU",
-                "ZUSTANDS_MU",
-                "UNBESTIMMT"
-            ],
-            "title": "Geraetemerkmal",
-            "type": "string"
-        },
-        "Geraetetyp": {
-            "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
-            "enum": [
-                "WECHSELSTROMZAEHLER",
-                "DREHSTROMZAEHLER",
-                "ZWEIRICHTUNGSZAEHLER",
-                "RLM_ZAEHLER",
-                "BALGENGASZAEHLER",
-                "MAXIMUMZAEHLER",
-                "MULTIPLEXANLAGE",
-                "PAUSCHALANLAGE",
-                "VERSTAERKERANLAGE",
-                "SUMMATIONSGERAET",
-                "IMPULSGEBER",
-                "EDL_21_ZAEHLERAUFSATZ",
-                "VIER_QUADRANTEN_LASTGANGZAEHLER",
-                "MENGENUMWERTER",
-                "STROMWANDLER",
-                "SPANNUNGSWANDLER",
-                "KOMBIMESSWANDLER",
-                "BLOCKSTROMWANDLER",
-                "DATENLOGGER",
-                "KOMMUNIKATIONSANSCHLUSS",
-                "MODEM",
-                "TELEKOMMUNIKATIONSEINRICHTUNG",
-                "DREHKOLBENGASZAEHLER",
-                "TURBINENRADGASZAEHLER",
-                "ULTRASCHALLZAEHLER",
-                "WIRBELGASZAEHLER",
-                "MODERNE_MESSEINRICHTUNG",
-                "INTELLIGENTES_MESSYSTEM",
-                "ELEKTRONISCHER_HAUSHALTSZAEHLER",
-                "STEUEREINRICHTUNG",
-                "TARIFSCHALTGERAET",
-                "RUNDSTEUEREMPFAENGER",
-                "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
-                "MESSWANDLERSATZ_IMS_MME",
-                "KOMBIMESSWANDLER_IMS_MME",
-                "TARIFSCHALTGERAET_IMS_MME",
-                "RUNDSTEUEREMPFAENGER_IMS_MME",
-                "TEMPERATUR_KOMPENSATION",
-                "HOECHSTBELASTUNGS_ANZEIGER",
-                "SONSTIGES_GERAET",
-                "PREPAYMENTZAEHLER",
-                "EDL_21",
-                "96_H_ZAEHLER",
-                "EDL_40_ZAEHLERAUFSATZ",
-                "EDL_40"
-            ],
-            "title": "Geraetetyp",
-            "type": "string"
-        },
-        "Menge": {
-            "additionalProperties": true,
-            "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
-            "properties": {
-                "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
-                },
-                "wert": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "Wert"
-                }
-            },
-            "required": [
-                "wert",
-                "einheit"
-            ],
-            "title": "Menge",
-            "type": "object"
-        },
-        "Mengeneinheit": {
-            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
-            "enum": [
-                "W",
-                "WH",
-                "KW",
-                "KWH",
-                "KVARH",
-                "MW",
-                "MWH",
-                "STUECK",
-                "KUBIKMETER",
-                "STUNDE",
-                "TAG",
-                "MONAT",
-                "JAHR",
-                "PROZENT"
-            ],
-            "title": "Mengeneinheit",
-            "type": "string"
-        },
-        "Oekolabel": {
-            "description": "Aufz\u00e4hlung der Labels f\u00fcr \u00d6ko-Strom von verschiedenen Herausgebern.",
-            "enum": [
-                "ENERGREEN",
-                "GASGREEN_GRUENER_STROM",
-                "GASGREEN",
-                "GRUENER_STROM_GOLD",
-                "GRUENER_STROM_SILBER",
-                "GRUENER_STROM",
-                "GRUENES_GAS",
-                "NATURWATT_STROM",
-                "OK_POWER",
-                "RENEWABLE_PLUS",
-                "WATERGREEN",
-                "WATERGREEN_PLUS"
-            ],
-            "title": "Oekolabel",
-            "type": "string"
-        },
-        "Oekozertifikat": {
-            "description": "Zertifikate f\u00fcr \u00d6kostrom von verschiedenen Herausgebern.",
-            "enum": [
-                "CMS_EE01",
-                "CMS_EE02",
-                "EECS",
-                "FRAUNHOFER",
-                "BET",
-                "KLIMA_INVEST",
-                "LGA",
-                "FREIBERG",
-                "RECS",
-                "REGS_EGL",
-                "TUEV",
-                "TUEV_HESSEN",
-                "TUEV_NORD",
-                "TUEV_RHEINLAND",
-                "TUEV_SUED",
-                "TUEV_SUED_EE01",
-                "TUEV_SUED_EE02"
-            ],
-            "title": "Oekozertifikat",
-            "type": "string"
-        },
-        "Preisgarantie": {
-            "additionalProperties": true,
-            "description": "\n    Definition f\u00fcr eine Preisgarantie mit der M\u00f6glichkeit verschiedener Auspr\u00e4gungen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_\n\n    ",
-            "properties": {
-                "beschreibung": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Beschreibung"
-                },
-                "preisgarantietyp": {
-                    "$ref": "#/$defs/Preisgarantietyp"
-                },
-                "zeitlicheGueltigkeit": {
-                    "$ref": "#/$defs/Zeitraum"
-                }
-            },
-            "required": [
-                "preisgarantietyp",
-                "zeitlicheGueltigkeit"
-            ],
-            "title": "Preisgarantie",
-            "type": "object"
-        },
-        "Preisgarantietyp": {
-            "description": "Aufz\u00e4hlung der M\u00f6glichkeiten f\u00fcr die Vergabe von Preisgarantien",
-            "enum": [
-                "ALLE_PREISBESTANDTEILE_BRUTTO",
-                "ALLE_PREISBESTANDTEILE_NETTO",
-                "PREISBESTANDTEILE_OHNE_ABGABEN",
-                "NUR_ENERGIEPREIS"
-            ],
-            "title": "Preisgarantietyp",
-            "type": "string"
-        },
-        "Sparte": {
-            "description": "Unterscheidungsm\u00f6glichkeiten f\u00fcr die Sparte.",
-            "enum": [
-                "STROM",
-                "GAS",
-                "FERNWAERME",
-                "NAHWAERME",
-                "WASSER",
-                "ABWASSER",
-                "STROM_UND_GAS"
-            ],
-            "title": "Sparte",
-            "type": "string"
-        },
-        "Tarifeinschraenkung": {
-            "additionalProperties": true,
-            "description": "\n    Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_\n\n    ",
-            "properties": {
-                "einschraenkungleistung": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "$ref": "#/$defs/Menge"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Einschraenkungleistung"
-                },
-                "einschraenkungzaehler": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "$ref": "#/$defs/Geraet"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Einschraenkungzaehler"
-                },
-                "voraussetzungen": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "$ref": "#/$defs/Voraussetzungen"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Voraussetzungen"
-                },
-                "zusatzprodukte": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "type": "string"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Zusatzprodukte"
-                }
-            },
-            "title": "Tarifeinschraenkung",
-            "type": "object"
-        },
-        "Vertragskonditionen": {
-            "additionalProperties": true,
-            "description": "\n    Abbildung f\u00fcr Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_\n\n    ",
-            "properties": {
-                "abschlagszyklus": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Zeitraum"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "anzahlAbschlaege": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Anzahlabschlaege"
-                },
-                "beschreibung": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Beschreibung"
-                },
-                "kuendigungsfrist": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Zeitraum"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "vertragslaufzeit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Zeitraum"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "vertragsverlaengerung": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Zeitraum"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                }
-            },
-            "title": "Vertragskonditionen",
-            "type": "object"
-        },
-        "Voraussetzungen": {
-            "description": "Voraussetzungen, die erf\u00fcllt sein m\u00fcssen, damit dieser Tarif zur Anwendung kommen kann.",
-            "enum": [
-                "EINZUGSERMAECHTIGUNG",
-                "ZEITPUNKT",
-                "LIEFERANBINDUNG_EINE",
-                "LIEFERANBINDUNG_ALLE",
-                "GEWERBE",
-                "LASTPROFIL",
-                "ZAEHLERTYP_GROESSE",
-                "AUSSCHLUSS_GROSSVERBRAUCHER",
-                "NEUKUNDE",
-                "BESTIMMTE_VERTRAGSFORMALITAETEN",
-                "SELBSTABLESUNG",
-                "ONLINEVORAUSSETZUNG",
-                "MINDESTUMSATZ",
-                "ZUSATZPRODUKT",
-                "NEUKUNDE_MIT_VORAUSSETZUNGEN",
-                "DIREKTVERTRIEB",
-                "ANSCHLUSSART",
-                "ANSCHLUSSWERT",
-                "ALTER_KUNDENANLAGE",
-                "ANLAGEBESCHAFFENHEIT",
-                "BETRIEBSSTUNDENBEGRENZUNG",
-                "FREIGABEZEITEN",
-                "FAMILIENSTRUKTUR",
-                "MITGLIEDSCHAFT",
-                "STAATLICHE_FOERDERUNG",
-                "BESONDERE_VERBRAUCHSSTELLE",
-                "NIEDRIGENERGIE",
-                "ORTSTEILE_LIEFERGEBIET",
-                "WAERMEBEDARF_ERDGAS",
-                "MAX_ZAEHLER_LIEFERSTELLEN",
-                "LIEFERUNGSBESCHRAENKUNG_GASART",
-                "KOMBI_BONI",
-                "ALTVERTRAG",
-                "VORGESCHRIEBENE_ZUSATZANLAGE",
-                "MEHRERE_ZAEHLER_ABNAHMESTELLEN",
-                "BESTIMMTER_ABNAHMEFALL",
-                "ZUSATZMODALITAET",
-                "NACHWEIS_ZAHLUNGSFAEHIGKEIT",
-                "UMSTELLUNG_ENERGIEART"
-            ],
-            "title": "Voraussetzungen",
-            "type": "string"
-        },
-        "Waehrungseinheit": {
-            "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
-            "enum": [
-                "EUR",
-                "CT"
-            ],
-            "title": "Waehrungseinheit",
-            "type": "string"
-        },
-        "Zeiteinheit": {
-            "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
-            "enum": [
-                "SEKUNDE",
-                "MINUTE",
-                "STUNDE",
-                "VIERTEL_STUNDE",
-                "TAG",
-                "WOCHE",
-                "MONAT",
-                "QUARTAL",
-                "HALBJAHR",
-                "JAHR"
-            ],
-            "title": "Zeiteinheit",
-            "type": "string"
-        },
-        "Zeitraum": {
-            "additionalProperties": true,
-            "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
-            "properties": {
-                "dauer": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Dauer"
-                },
-                "einheit": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Zeiteinheit"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "enddatum": {
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Enddatum"
-                },
-                "endzeitpunkt": {
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Endzeitpunkt"
-                },
-                "startdatum": {
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Startdatum"
-                },
-                "startzeitpunkt": {
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Startzeitpunkt"
-                }
-            },
-            "title": "Zeitraum",
-            "type": "object"
+        "staffeln": {
+          "items": {
+            "$ref": "#/$defs/AufAbschlagstaffelProOrt"
+          },
+          "minItems": 1,
+          "title": "Staffeln",
+          "type": "array"
         }
+      },
+      "required": ["postleitzahl", "ort", "netznr", "staffeln"],
+      "title": "AufAbschlagProOrt",
+      "type": "object"
     },
-    "additionalProperties": true,
-    "description": "\n    Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen\n    im Zusammenhang mit regionalen G\u00fcltigkeiten abgebildet werden.\n    Hier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert,\n    die sich durch die Auswahl eines Auf- oder Abschlags ergeben.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagRegional.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagRegional.json>`_\n\n    ",
-    "properties": {
-        "aufAbschlagstyp": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/AufAbschlagstyp"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "aufAbschlagsziel": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/AufAbschlagsziel"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "beschreibung": {
-            "anyOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Beschreibung"
-        },
-        "betraege": {
-            "items": {
-                "$ref": "#/$defs/AufAbschlagProOrt"
+    "AufAbschlagstaffelProOrt": {
+      "additionalProperties": true,
+      "description": "\n    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_\n\n    ",
+      "properties": {
+        "staffelgrenzeBis": {
+          "anyOf": [
+            {
+              "type": "number"
             },
-            "minItems": 1,
-            "title": "Betraege",
-            "type": "array"
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Staffelgrenzebis"
+        },
+        "staffelgrenzeVon": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Staffelgrenzevon"
+        },
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
+        }
+      },
+      "required": ["wert", "staffelgrenzeVon", "staffelgrenzeBis"],
+      "title": "AufAbschlagstaffelProOrt",
+      "type": "object"
+    },
+    "AufAbschlagstyp": {
+      "description": "Festlegung, ob der Auf- oder Abschlag mit relativen oder absoluten Werten erfolgt.",
+      "enum": ["RELATIV", "ABSOLUT"],
+      "title": "AufAbschlagstyp",
+      "type": "string"
+    },
+    "AufAbschlagsziel": {
+      "description": "Der Preis, auf den sich ein Auf- oder Abschlag bezieht.",
+      "enum": [
+        "ARBEITSPREIS_EINTARIF",
+        "ARBEITSPREIS_HT",
+        "ARBEITSPREIS_NT",
+        "ARBEITSPREIS_HT_NT",
+        "GRUNDPREIS",
+        "GESAMTPREIS"
+      ],
+      "title": "AufAbschlagsziel",
+      "type": "string"
+    },
+    "Energieherkunft": {
+      "additionalProperties": true,
+      "description": "\n    Abbildung einer Energieherkunft\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_\n\n    ",
+      "properties": {
+        "anteilProzent": {
+          "anyOf": [
+            {
+              "exclusiveMaximum": 100.0,
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Anteilprozent"
+        },
+        "erzeugungsart": {
+          "$ref": "#/$defs/Erzeugungsart"
+        }
+      },
+      "required": ["erzeugungsart", "anteilProzent"],
+      "title": "Energieherkunft",
+      "type": "object"
+    },
+    "Energiemix": {
+      "additionalProperties": true,
+      "description": "\n    Zusammensetzung der gelieferten Energie aus den verschiedenen Prim\u00e4renergieformen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_\n\n    ",
+      "properties": {
+        "anteil": {
+          "items": {
+            "$ref": "#/$defs/Energieherkunft"
+          },
+          "minItems": 1,
+          "title": "Anteil",
+          "type": "array"
+        },
+        "atommuell": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Atommuell"
+        },
+        "bemerkung": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bemerkung"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+          "title": "Bezeichnung",
+          "type": "string"
         },
-        "einheit": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Waehrungseinheit"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
+        "co2Emission": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Co2Emission"
         },
-        "einschraenkungsaenderung": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Tarifeinschraenkung"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
+        "energieart": {
+          "$ref": "#/$defs/Sparte"
         },
-        "energiemixaenderung": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Energiemix"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
+        "energiemixnummer": {
+          "title": "Energiemixnummer",
+          "type": "integer"
         },
-        "garantieaenderung": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Preisgarantie"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
+        "gueltigkeitsjahr": {
+          "title": "Gueltigkeitsjahr",
+          "type": "integer"
         },
-        "gueltigkeitszeitraum": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Zeitraum"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
+        "oekoTopTen": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Oekotopten"
         },
-        "tarifnamensaenderungen": {
-            "anyOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Tarifnamensaenderungen"
+        "oekolabel": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Oekolabel"
+          },
+          "title": "Oekolabel",
+          "type": "array"
         },
-        "vertagskonditionsaenderung": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Vertragskonditionen"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "voraussetzungen": {
-            "anyOf": [
-                {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Voraussetzungen"
+        "oekozertifikate": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Oekozertifikat"
+          },
+          "title": "Oekozertifikate",
+          "type": "array"
         },
         "website": {
-            "anyOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Website"
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Website"
+        }
+      },
+      "required": [
+        "energiemixnummer",
+        "energieart",
+        "bezeichnung",
+        "gueltigkeitsjahr",
+        "anteil"
+      ],
+      "title": "Energiemix",
+      "type": "object"
+    },
+    "Erzeugungsart": {
+      "description": "Auflistung der Erzeugungsarten von Energie.",
+      "enum": [
+        "FOSSIL",
+        "KWK",
+        "WIND",
+        "SOLAR",
+        "KERNKRAFT",
+        "WASSER",
+        "GEOTHERMIE",
+        "BIOMASSE",
+        "KOHLE",
+        "GAS",
+        "SONSTIGE",
+        "SONSTIGE_EEG",
+        "BIOGAS",
+        "KLIMANEUTRALES_GAS"
+      ],
+      "title": "Erzeugungsart",
+      "type": "string"
+    },
+    "Geraet": {
+      "additionalProperties": true,
+      "description": "\n    Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_\n\n    ",
+      "properties": {
+        "geraeteeigenschaften": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Geraeteeigenschaften"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "geraetenummer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Geraetenummer"
+        }
+      },
+      "title": "Geraet",
+      "type": "object"
+    },
+    "Geraeteeigenschaften": {
+      "additionalProperties": true,
+      "description": "\n    Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_\n\n    ",
+      "properties": {
+        "geraetemerkmal": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Geraetemerkmal"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "geraetetyp": {
+          "$ref": "#/$defs/Geraetetyp"
+        }
+      },
+      "required": ["geraetetyp"],
+      "title": "Geraeteeigenschaften",
+      "type": "object"
+    },
+    "Geraetemerkmal": {
+      "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
+      "enum": [
+        "EINTARIF",
+        "ZWEITARIF",
+        "MEHRTARIF",
+        "GAS_G2_5",
+        "GAS_G4",
+        "GAS_G6",
+        "GAS_G10",
+        "GAS_G16",
+        "GAS_G25",
+        "GAS_G40",
+        "GAS_G65",
+        "GAS_G100",
+        "GAS_G160",
+        "GAS_G250",
+        "GAS_G400",
+        "GAS_G650",
+        "GAS_G1000",
+        "GAS_G1600",
+        "GAS_G2500",
+        "IMPULSGEBER_G4_G100",
+        "IMPULSGEBER_G100",
+        "TELEFONANSCHLUSS",
+        "MODEM_GSM",
+        "MODEM_GPRS",
+        "MODEM_FUNK",
+        "MODEM_GSM_O_LG",
+        "MODEM_GSM_M_LG",
+        "MODEM_FESTNETZ",
+        "MODEM_GPRS_M_LG",
+        "PLC_KOM",
+        "ETHERNET_KOM",
+        "DSL_KOM",
+        "LTE_KOM",
+        "KOMPAKT_MU",
+        "SYSTEM_MU",
+        "TEMPERATUR_MU",
+        "ZUSTANDS_MU",
+        "UNBESTIMMT"
+      ],
+      "title": "Geraetemerkmal",
+      "type": "string"
+    },
+    "Geraetetyp": {
+      "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
+      "enum": [
+        "WECHSELSTROMZAEHLER",
+        "DREHSTROMZAEHLER",
+        "ZWEIRICHTUNGSZAEHLER",
+        "RLM_ZAEHLER",
+        "BALGENGASZAEHLER",
+        "MAXIMUMZAEHLER",
+        "MULTIPLEXANLAGE",
+        "PAUSCHALANLAGE",
+        "VERSTAERKERANLAGE",
+        "SUMMATIONSGERAET",
+        "IMPULSGEBER",
+        "EDL_21_ZAEHLERAUFSATZ",
+        "VIER_QUADRANTEN_LASTGANGZAEHLER",
+        "MENGENUMWERTER",
+        "STROMWANDLER",
+        "SPANNUNGSWANDLER",
+        "KOMBIMESSWANDLER",
+        "BLOCKSTROMWANDLER",
+        "DATENLOGGER",
+        "KOMMUNIKATIONSANSCHLUSS",
+        "MODEM",
+        "TELEKOMMUNIKATIONSEINRICHTUNG",
+        "DREHKOLBENGASZAEHLER",
+        "TURBINENRADGASZAEHLER",
+        "ULTRASCHALLZAEHLER",
+        "WIRBELGASZAEHLER",
+        "MODERNE_MESSEINRICHTUNG",
+        "INTELLIGENTES_MESSYSTEM",
+        "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+        "STEUEREINRICHTUNG",
+        "TARIFSCHALTGERAET",
+        "RUNDSTEUEREMPFAENGER",
+        "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+        "MESSWANDLERSATZ_IMS_MME",
+        "KOMBIMESSWANDLER_IMS_MME",
+        "TARIFSCHALTGERAET_IMS_MME",
+        "RUNDSTEUEREMPFAENGER_IMS_MME",
+        "TEMPERATUR_KOMPENSATION",
+        "HOECHSTBELASTUNGS_ANZEIGER",
+        "SONSTIGES_GERAET",
+        "PREPAYMENTZAEHLER",
+        "EDL_21",
+        "96_H_ZAEHLER",
+        "EDL_40_ZAEHLERAUFSATZ",
+        "EDL_40"
+      ],
+      "title": "Geraetetyp",
+      "type": "string"
+    },
+    "Menge": {
+      "additionalProperties": true,
+      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+      "properties": {
+        "einheit": {
+          "$ref": "#/$defs/Mengeneinheit"
+        },
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
+        }
+      },
+      "required": ["wert", "einheit"],
+      "title": "Menge",
+      "type": "object"
+    },
+    "Mengeneinheit": {
+      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
+      "enum": [
+        "W",
+        "WH",
+        "KW",
+        "KWH",
+        "KVARH",
+        "MW",
+        "MWH",
+        "STUECK",
+        "KUBIKMETER",
+        "STUNDE",
+        "TAG",
+        "MONAT",
+        "JAHR",
+        "PROZENT"
+      ],
+      "title": "Mengeneinheit",
+      "type": "string"
+    },
+    "Oekolabel": {
+      "description": "Aufz\u00e4hlung der Labels f\u00fcr \u00d6ko-Strom von verschiedenen Herausgebern.",
+      "enum": [
+        "ENERGREEN",
+        "GASGREEN_GRUENER_STROM",
+        "GASGREEN",
+        "GRUENER_STROM_GOLD",
+        "GRUENER_STROM_SILBER",
+        "GRUENER_STROM",
+        "GRUENES_GAS",
+        "NATURWATT_STROM",
+        "OK_POWER",
+        "RENEWABLE_PLUS",
+        "WATERGREEN",
+        "WATERGREEN_PLUS"
+      ],
+      "title": "Oekolabel",
+      "type": "string"
+    },
+    "Oekozertifikat": {
+      "description": "Zertifikate f\u00fcr \u00d6kostrom von verschiedenen Herausgebern.",
+      "enum": [
+        "CMS_EE01",
+        "CMS_EE02",
+        "EECS",
+        "FRAUNHOFER",
+        "BET",
+        "KLIMA_INVEST",
+        "LGA",
+        "FREIBERG",
+        "RECS",
+        "REGS_EGL",
+        "TUEV",
+        "TUEV_HESSEN",
+        "TUEV_NORD",
+        "TUEV_RHEINLAND",
+        "TUEV_SUED",
+        "TUEV_SUED_EE01",
+        "TUEV_SUED_EE02"
+      ],
+      "title": "Oekozertifikat",
+      "type": "string"
+    },
+    "Preisgarantie": {
+      "additionalProperties": true,
+      "description": "\n    Definition f\u00fcr eine Preisgarantie mit der M\u00f6glichkeit verschiedener Auspr\u00e4gungen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_\n\n    ",
+      "properties": {
+        "beschreibung": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Beschreibung"
+        },
+        "preisgarantietyp": {
+          "$ref": "#/$defs/Preisgarantietyp"
+        },
+        "zeitlicheGueltigkeit": {
+          "$ref": "#/$defs/Zeitraum"
+        }
+      },
+      "required": ["preisgarantietyp", "zeitlicheGueltigkeit"],
+      "title": "Preisgarantie",
+      "type": "object"
+    },
+    "Preisgarantietyp": {
+      "description": "Aufz\u00e4hlung der M\u00f6glichkeiten f\u00fcr die Vergabe von Preisgarantien",
+      "enum": [
+        "ALLE_PREISBESTANDTEILE_BRUTTO",
+        "ALLE_PREISBESTANDTEILE_NETTO",
+        "PREISBESTANDTEILE_OHNE_ABGABEN",
+        "NUR_ENERGIEPREIS"
+      ],
+      "title": "Preisgarantietyp",
+      "type": "string"
+    },
+    "Sparte": {
+      "description": "Unterscheidungsm\u00f6glichkeiten f\u00fcr die Sparte.",
+      "enum": [
+        "STROM",
+        "GAS",
+        "FERNWAERME",
+        "NAHWAERME",
+        "WASSER",
+        "ABWASSER",
+        "STROM_UND_GAS"
+      ],
+      "title": "Sparte",
+      "type": "string"
+    },
+    "Tarifeinschraenkung": {
+      "additionalProperties": true,
+      "description": "\n    Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_\n\n    ",
+      "properties": {
+        "einschraenkungleistung": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Menge"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Einschraenkungleistung"
+        },
+        "einschraenkungzaehler": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Geraet"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Einschraenkungzaehler"
+        },
+        "voraussetzungen": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Voraussetzungen"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Voraussetzungen"
         },
         "zusatzprodukte": {
-            "anyOf": [
-                {
-                    "items": {
-                        "type": "string"
-                    },
-                    "type": "array"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Zusatzprodukte"
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Zusatzprodukte"
         }
+      },
+      "title": "Tarifeinschraenkung",
+      "type": "object"
     },
-    "required": [
-        "bezeichnung",
-        "betraege"
-    ],
-    "title": "AufAbschlagRegional",
-    "type": "object"
+    "Vertragskonditionen": {
+      "additionalProperties": true,
+      "description": "\n    Abbildung f\u00fcr Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_\n\n    ",
+      "properties": {
+        "abschlagszyklus": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeitraum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "anzahlAbschlaege": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Anzahlabschlaege"
+        },
+        "beschreibung": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Beschreibung"
+        },
+        "kuendigungsfrist": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeitraum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "vertragslaufzeit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeitraum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "vertragsverlaengerung": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeitraum"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "title": "Vertragskonditionen",
+      "type": "object"
+    },
+    "Voraussetzungen": {
+      "description": "Voraussetzungen, die erf\u00fcllt sein m\u00fcssen, damit dieser Tarif zur Anwendung kommen kann.",
+      "enum": [
+        "EINZUGSERMAECHTIGUNG",
+        "ZEITPUNKT",
+        "LIEFERANBINDUNG_EINE",
+        "LIEFERANBINDUNG_ALLE",
+        "GEWERBE",
+        "LASTPROFIL",
+        "ZAEHLERTYP_GROESSE",
+        "AUSSCHLUSS_GROSSVERBRAUCHER",
+        "NEUKUNDE",
+        "BESTIMMTE_VERTRAGSFORMALITAETEN",
+        "SELBSTABLESUNG",
+        "ONLINEVORAUSSETZUNG",
+        "MINDESTUMSATZ",
+        "ZUSATZPRODUKT",
+        "NEUKUNDE_MIT_VORAUSSETZUNGEN",
+        "DIREKTVERTRIEB",
+        "ANSCHLUSSART",
+        "ANSCHLUSSWERT",
+        "ALTER_KUNDENANLAGE",
+        "ANLAGEBESCHAFFENHEIT",
+        "BETRIEBSSTUNDENBEGRENZUNG",
+        "FREIGABEZEITEN",
+        "FAMILIENSTRUKTUR",
+        "MITGLIEDSCHAFT",
+        "STAATLICHE_FOERDERUNG",
+        "BESONDERE_VERBRAUCHSSTELLE",
+        "NIEDRIGENERGIE",
+        "ORTSTEILE_LIEFERGEBIET",
+        "WAERMEBEDARF_ERDGAS",
+        "MAX_ZAEHLER_LIEFERSTELLEN",
+        "LIEFERUNGSBESCHRAENKUNG_GASART",
+        "KOMBI_BONI",
+        "ALTVERTRAG",
+        "VORGESCHRIEBENE_ZUSATZANLAGE",
+        "MEHRERE_ZAEHLER_ABNAHMESTELLEN",
+        "BESTIMMTER_ABNAHMEFALL",
+        "ZUSATZMODALITAET",
+        "NACHWEIS_ZAHLUNGSFAEHIGKEIT",
+        "UMSTELLUNG_ENERGIEART"
+      ],
+      "title": "Voraussetzungen",
+      "type": "string"
+    },
+    "Waehrungseinheit": {
+      "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
+      "enum": ["EUR", "CT"],
+      "title": "Waehrungseinheit",
+      "type": "string"
+    },
+    "Zeiteinheit": {
+      "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+      "enum": [
+        "SEKUNDE",
+        "MINUTE",
+        "STUNDE",
+        "VIERTEL_STUNDE",
+        "TAG",
+        "WOCHE",
+        "MONAT",
+        "QUARTAL",
+        "HALBJAHR",
+        "JAHR"
+      ],
+      "title": "Zeiteinheit",
+      "type": "string"
+    },
+    "Zeitraum": {
+      "additionalProperties": true,
+      "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
+      "properties": {
+        "dauer": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Dauer"
+        },
+        "einheit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeiteinheit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "enddatum": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enddatum"
+        },
+        "endzeitpunkt": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endzeitpunkt"
+        },
+        "startdatum": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Startdatum"
+        },
+        "startzeitpunkt": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Startzeitpunkt"
+        }
+      },
+      "title": "Zeitraum",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen\n    im Zusammenhang mit regionalen G\u00fcltigkeiten abgebildet werden.\n    Hier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert,\n    die sich durch die Auswahl eines Auf- oder Abschlags ergeben.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagRegional.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagRegional.json>`_\n\n    ",
+  "properties": {
+    "aufAbschlagstyp": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AufAbschlagstyp"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "aufAbschlagsziel": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AufAbschlagsziel"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "beschreibung": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Beschreibung"
+    },
+    "betraege": {
+      "items": {
+        "$ref": "#/$defs/AufAbschlagProOrt"
+      },
+      "minItems": 1,
+      "title": "Betraege",
+      "type": "array"
+    },
+    "bezeichnung": {
+      "title": "Bezeichnung",
+      "type": "string"
+    },
+    "einheit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Waehrungseinheit"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "einschraenkungsaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Tarifeinschraenkung"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "energiemixaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Energiemix"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "garantieaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Preisgarantie"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "gueltigkeitszeitraum": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Zeitraum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "tarifnamensaenderungen": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tarifnamensaenderungen"
+    },
+    "vertagskonditionsaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Vertragskonditionen"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "voraussetzungen": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Voraussetzungen"
+    },
+    "website": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Website"
+    },
+    "zusatzprodukte": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Zusatzprodukte"
+    }
+  },
+  "required": ["bezeichnung", "betraege"],
+  "title": "AufAbschlagRegional",
+  "type": "object"
 }

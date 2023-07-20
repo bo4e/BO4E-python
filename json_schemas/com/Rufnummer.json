@@ -1,37 +1,34 @@
 {
-    "$defs": {
-        "Rufnummernart": {
-            "description": "Abbildung verschiedener Rufnummerntypen.",
-            "enum": [
-                "RUF_ZENTRALE",
-                "FAX_ZENTRALE",
-                "SAMMELRUF",
-                "SAMMELFAX",
-                "ABTEILUNGRUF",
-                "ABTEILUNGFAX",
-                "RUF_DURCHWAHL",
-                "FAX_DURCHWAHL",
-                "MOBIL_NUMMER"
-            ],
-            "title": "Rufnummernart",
-            "type": "string"
-        }
+  "$defs": {
+    "Rufnummernart": {
+      "description": "Abbildung verschiedener Rufnummerntypen.",
+      "enum": [
+        "RUF_ZENTRALE",
+        "FAX_ZENTRALE",
+        "SAMMELRUF",
+        "SAMMELFAX",
+        "ABTEILUNGRUF",
+        "ABTEILUNGFAX",
+        "RUF_DURCHWAHL",
+        "FAX_DURCHWAHL",
+        "MOBIL_NUMMER"
+      ],
+      "title": "Rufnummernart",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Contains information to call or fax someone\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Rufnummer.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rufnummer.json>`_\n\n    ",
+  "properties": {
+    "nummerntyp": {
+      "$ref": "#/$defs/Rufnummernart"
     },
-    "additionalProperties": true,
-    "description": "\n    Contains information to call or fax someone\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Rufnummer.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Rufnummer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rufnummer.json>`_\n\n    ",
-    "properties": {
-        "nummerntyp": {
-            "$ref": "#/$defs/Rufnummernart"
-        },
-        "rufnummer": {
-            "title": "Rufnummer",
-            "type": "string"
-        }
-    },
-    "required": [
-        "nummerntyp",
-        "rufnummer"
-    ],
-    "title": "Rufnummer",
-    "type": "object"
+    "rufnummer": {
+      "title": "Rufnummer",
+      "type": "string"
+    }
+  },
+  "required": ["nummerntyp", "rufnummer"],
+  "title": "Rufnummer",
+  "type": "object"
 }

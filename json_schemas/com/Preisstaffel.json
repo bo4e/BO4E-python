@@ -1,117 +1,108 @@
 {
-    "$defs": {
-        "Sigmoidparameter": {
-            "additionalProperties": true,
-            "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
-            "properties": {
-                "A": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "A"
-                },
-                "B": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "B"
-                },
-                "C": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "C"
-                },
-                "D": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "D"
-                }
+  "$defs": {
+    "Sigmoidparameter": {
+      "additionalProperties": true,
+      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+      "properties": {
+        "A": {
+          "anyOf": [
+            {
+              "type": "number"
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
-            "title": "Sigmoidparameter",
-            "type": "object"
+            {
+              "type": "string"
+            }
+          ],
+          "title": "A"
+        },
+        "B": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "B"
+        },
+        "C": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "C"
+        },
+        "D": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "D"
         }
-    },
-    "additionalProperties": true,
-    "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
-    "properties": {
-        "einheitspreis": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Einheitspreis"
+      },
+      "required": ["A", "B", "C", "D"],
+      "title": "Sigmoidparameter",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
+  "properties": {
+    "einheitspreis": {
+      "anyOf": [
+        {
+          "type": "number"
         },
-        "sigmoidparameter": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Sigmoidparameter"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "staffelgrenzeBis": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Staffelgrenzebis"
-        },
-        "staffelgrenzeVon": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Staffelgrenzevon"
+        {
+          "type": "string"
         }
+      ],
+      "title": "Einheitspreis"
     },
-    "required": [
-        "einheitspreis",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
-    "title": "Preisstaffel",
-    "type": "object"
+    "sigmoidparameter": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Sigmoidparameter"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "staffelgrenzeBis": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Staffelgrenzebis"
+    },
+    "staffelgrenzeVon": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Staffelgrenzevon"
+    }
+  },
+  "required": ["einheitspreis", "staffelgrenzeVon", "staffelgrenzeBis"],
+  "title": "Preisstaffel",
+  "type": "object"
 }

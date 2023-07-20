@@ -1,119 +1,115 @@
 {
-    "$defs": {
-        "Messwertstatus": {
-            "description": "Der Status eines Z\u00e4hlerstandes",
-            "enum": [
-                "ABGELESEN",
-                "ERSATZWERT",
-                "VORSCHLAGSWERT",
-                "NICHT_VERWENDBAR",
-                "PROGNOSEWERT",
-                "VORLAEUFIGERWERT",
-                "ENERGIEMENGESUMMIERT",
-                "FEHLT"
-            ],
-            "title": "Messwertstatus",
-            "type": "string"
-        },
-        "Messwertstatuszusatz": {
-            "description": "Aufz\u00e4hlung von zus\u00e4tzlichen Informationen zum Status, beispielsweise in Lastg\u00e4ngen oder Z\u00e4hlwerkst\u00e4nden.",
-            "enum": [
-                "Z84_LEERSTAND",
-                "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
-                "Z86_PLAUSIBELWGKONTROLLABLESUNG",
-                "Z87_PLAUSIBELWGKUNDENHINWEIS",
-                "ZC3_AUSTAUSCHDESERSATZWERTES",
-                "Z88_VERGLEICHSMESSUNG(GEEICHT)",
-                "Z89_VERGLEICHSMESSUNG(NICHTGEEICHT)",
-                "Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN",
-                "Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN",
-                "Z92_INTERPOLATION",
-                "Z93_HALTEWERT",
-                "Z94_BILANZIERUNGNETZABSCHNITT",
-                "Z95_HISTORISCHEMESSWERTE",
-                "ZJ2_STATISTISCHEMETHODE",
-                "Z74_KEINZUGANG",
-                "Z75_KOMMUNIKATIONSSTOERUNG",
-                "Z76_NETZAUSFALL",
-                "Z77_SPANNUNGSAUSFALL",
-                "Z78_GERAETEWECHSEL",
-                "Z79_KALIBRIERUNG",
-                "Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN",
-                "Z81_MESSEINRICHTUNGGESTOERT_DEFEKT",
-                "Z82_UNSICHERHEITMESSUNG",
-                "Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK",
-                "Z99_MENGENUMWERTUNGUNVOLLSTAENDIG",
-                "ZA0_UHRZEITGESTELLT_SYNCHRONISATION",
-                "ZA1_MESSWERTUNPLAUSIBEL",
-                "ZC2_TARIFSCHALTGERAETDEFEKT",
-                "ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND",
-                "ZA3_FALSCHERWANDLERFAKTOR",
-                "ZA4_FEHLERHAFTEABLESUNG",
-                "ZA5_AENDERUNGDERBERECHNUNG",
-                "ZA6_UMBAUDERMESSLOKATION",
-                "ZA7_DATENBEARBEITUNGSFEHLER",
-                "ZA8_BRENNWERTKORREKTUR",
-                "ZA9_Z-ZAHL-KORREKTUR",
-                "ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG",
-                "ZB9_AENDERUNGTARIFSCHALTZEITEN",
-                "ZG3_UMSTELLUNGGASQUALITAET"
-            ],
-            "title": "Messwertstatuszusatz",
-            "type": "string"
-        }
+  "$defs": {
+    "Messwertstatus": {
+      "description": "Der Status eines Z\u00e4hlerstandes",
+      "enum": [
+        "ABGELESEN",
+        "ERSATZWERT",
+        "VORSCHLAGSWERT",
+        "NICHT_VERWENDBAR",
+        "PROGNOSEWERT",
+        "VORLAEUFIGERWERT",
+        "ENERGIEMENGESUMMIERT",
+        "FEHLT"
+      ],
+      "title": "Messwertstatus",
+      "type": "string"
     },
-    "additionalProperties": true,
-    "description": "\n    Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_\n\n    ",
-    "properties": {
-        "datumUhrzeitBis": {
-            "format": "date-time",
-            "title": "Datumuhrzeitbis",
-            "type": "string"
-        },
-        "datumUhrzeitVon": {
-            "format": "date-time",
-            "title": "Datumuhrzeitvon",
-            "type": "string"
-        },
-        "status": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Messwertstatus"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "statuszusatz": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Messwertstatuszusatz"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "wert": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Wert"
-        }
+    "Messwertstatuszusatz": {
+      "description": "Aufz\u00e4hlung von zus\u00e4tzlichen Informationen zum Status, beispielsweise in Lastg\u00e4ngen oder Z\u00e4hlwerkst\u00e4nden.",
+      "enum": [
+        "Z84_LEERSTAND",
+        "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
+        "Z86_PLAUSIBELWGKONTROLLABLESUNG",
+        "Z87_PLAUSIBELWGKUNDENHINWEIS",
+        "ZC3_AUSTAUSCHDESERSATZWERTES",
+        "Z88_VERGLEICHSMESSUNG(GEEICHT)",
+        "Z89_VERGLEICHSMESSUNG(NICHTGEEICHT)",
+        "Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN",
+        "Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN",
+        "Z92_INTERPOLATION",
+        "Z93_HALTEWERT",
+        "Z94_BILANZIERUNGNETZABSCHNITT",
+        "Z95_HISTORISCHEMESSWERTE",
+        "ZJ2_STATISTISCHEMETHODE",
+        "Z74_KEINZUGANG",
+        "Z75_KOMMUNIKATIONSSTOERUNG",
+        "Z76_NETZAUSFALL",
+        "Z77_SPANNUNGSAUSFALL",
+        "Z78_GERAETEWECHSEL",
+        "Z79_KALIBRIERUNG",
+        "Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN",
+        "Z81_MESSEINRICHTUNGGESTOERT_DEFEKT",
+        "Z82_UNSICHERHEITMESSUNG",
+        "Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK",
+        "Z99_MENGENUMWERTUNGUNVOLLSTAENDIG",
+        "ZA0_UHRZEITGESTELLT_SYNCHRONISATION",
+        "ZA1_MESSWERTUNPLAUSIBEL",
+        "ZC2_TARIFSCHALTGERAETDEFEKT",
+        "ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND",
+        "ZA3_FALSCHERWANDLERFAKTOR",
+        "ZA4_FEHLERHAFTEABLESUNG",
+        "ZA5_AENDERUNGDERBERECHNUNG",
+        "ZA6_UMBAUDERMESSLOKATION",
+        "ZA7_DATENBEARBEITUNGSFEHLER",
+        "ZA8_BRENNWERTKORREKTUR",
+        "ZA9_Z-ZAHL-KORREKTUR",
+        "ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG",
+        "ZB9_AENDERUNGTARIFSCHALTZEITEN",
+        "ZG3_UMSTELLUNGGASQUALITAET"
+      ],
+      "title": "Messwertstatuszusatz",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_\n\n    ",
+  "properties": {
+    "datumUhrzeitBis": {
+      "format": "date-time",
+      "title": "Datumuhrzeitbis",
+      "type": "string"
     },
-    "required": [
-        "wert",
-        "datumUhrzeitVon",
-        "datumUhrzeitBis"
-    ],
-    "title": "Zeitreihenwert",
-    "type": "object"
+    "datumUhrzeitVon": {
+      "format": "date-time",
+      "title": "Datumuhrzeitvon",
+      "type": "string"
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Messwertstatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "statuszusatz": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Messwertstatuszusatz"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "wert": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Wert"
+    }
+  },
+  "required": ["wert", "datumUhrzeitVon", "datumUhrzeitBis"],
+  "title": "Zeitreihenwert",
+  "type": "object"
 }

@@ -1,33 +1,30 @@
 {
-    "$defs": {
-        "Tarifregionskriterium": {
-            "description": "Mit diesen Kriterien k\u00f6nnen regionale Bereiche definiert werden.",
-            "enum": [
-                "NETZ_NUMMER",
-                "POSTLEITZAHL",
-                "ORT",
-                "GRUNDVERSORGER_NUMMER",
-                "REGION"
-            ],
-            "title": "Tarifregionskriterium",
-            "type": "string"
-        }
+  "$defs": {
+    "Tarifregionskriterium": {
+      "description": "Mit diesen Kriterien k\u00f6nnen regionale Bereiche definiert werden.",
+      "enum": [
+        "NETZ_NUMMER",
+        "POSTLEITZAHL",
+        "ORT",
+        "GRUNDVERSORGER_NUMMER",
+        "REGION"
+      ],
+      "title": "Tarifregionskriterium",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_\n\n    ",
+  "properties": {
+    "kriterium": {
+      "$ref": "#/$defs/Tarifregionskriterium"
     },
-    "additionalProperties": true,
-    "description": "\n    Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_\n\n    ",
-    "properties": {
-        "kriterium": {
-            "$ref": "#/$defs/Tarifregionskriterium"
-        },
-        "wert": {
-            "title": "Wert",
-            "type": "string"
-        }
-    },
-    "required": [
-        "kriterium",
-        "wert"
-    ],
-    "title": "KriteriumWert",
-    "type": "object"
+    "wert": {
+      "title": "Wert",
+      "type": "string"
+    }
+  },
+  "required": ["kriterium", "wert"],
+  "title": "KriteriumWert",
+  "type": "object"
 }
