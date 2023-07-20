@@ -2,6 +2,8 @@
 Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
+from datetime import datetime
+
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import List, Optional
 
@@ -65,6 +67,13 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Hier können weitere Ergänzungen zum Firmennamen oder bei Privatpersonen Zusätze zum Namen dagestellt werden.
     Beispiele: und Afrika oder Sängerin
     """
+
+    geburtsdatum: Optional[datetime] = None
+    """
+    Geburtsdatum (bei Privatpersonen, sonst null)
+    """
+    # the GeburtsDATUM is modelled as datetime to be consistent with all other dateTIMEs in this library
+
     #: Handelsregisternummer des Geschäftspartners
     hrnummer: Optional[str] = None
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
