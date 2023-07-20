@@ -1,59 +1,73 @@
 {
-    "definitions": {
-        "AufAbschlagstaffelProOrt": {
-            "description": "Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_",
-            "properties": {
-                "staffelgrenzeBis": {
-                    "title": "Staffelgrenzebis",
-                    "type": "number"
-                },
-                "staffelgrenzeVon": {
-                    "title": "Staffelgrenzevon",
-                    "type": "number"
-                },
-                "wert": {
-                    "title": "Wert",
-                    "type": "number"
-                }
+  "$defs": {
+    "AufAbschlagstaffelProOrt": {
+      "additionalProperties": true,
+      "description": "\n    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_\n\n    ",
+      "properties": {
+        "staffelgrenzeBis": {
+          "anyOf": [
+            {
+              "type": "number"
             },
-            "required": [
-                "wert",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
-            "title": "AufAbschlagstaffelProOrt",
-            "type": "object"
-        }
-    },
-    "description": "Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang\nmit örtlichen Gültigkeiten abgebildet werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/AufAbschlagProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagProOrt.json>`_",
-    "properties": {
-        "netznr": {
-            "title": "Netznr",
-            "type": "string"
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Staffelgrenzebis"
         },
-        "ort": {
-            "title": "Ort",
-            "type": "string"
-        },
-        "postleitzahl": {
-            "title": "Postleitzahl",
-            "type": "string"
-        },
-        "staffeln": {
-            "items": {
-                "$ref": "#/definitions/AufAbschlagstaffelProOrt"
+        "staffelgrenzeVon": {
+          "anyOf": [
+            {
+              "type": "number"
             },
-            "minItems": 1,
-            "title": "Staffeln",
-            "type": "array"
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Staffelgrenzevon"
+        },
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
         }
+      },
+      "required": ["wert", "staffelgrenzeVon", "staffelgrenzeBis"],
+      "title": "AufAbschlagstaffelProOrt",
+      "type": "object"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen im Zusammenhang\n    mit \u00f6rtlichen G\u00fcltigkeiten abgebildet werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagProOrt.json>`_\n\n    ",
+  "properties": {
+    "netznr": {
+      "title": "Netznr",
+      "type": "string"
     },
-    "required": [
-        "postleitzahl",
-        "ort",
-        "netznr",
-        "staffeln"
-    ],
-    "title": "AufAbschlagProOrt",
-    "type": "object"
+    "ort": {
+      "title": "Ort",
+      "type": "string"
+    },
+    "postleitzahl": {
+      "title": "Postleitzahl",
+      "type": "string"
+    },
+    "staffeln": {
+      "items": {
+        "$ref": "#/$defs/AufAbschlagstaffelProOrt"
+      },
+      "minItems": 1,
+      "title": "Staffeln",
+      "type": "array"
+    }
+  },
+  "required": ["postleitzahl", "ort", "netznr", "staffeln"],
+  "title": "AufAbschlagProOrt",
+  "type": "object"
 }

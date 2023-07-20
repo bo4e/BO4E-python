@@ -1,19 +1,17 @@
 {
-    "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_",
-    "properties": {
-        "flurstueck": {
-            "title": "Flurstueck",
-            "type": "string"
-        },
-        "gemarkungFlur": {
-            "title": "Gemarkungflur",
-            "type": "string"
-        }
+  "additionalProperties": true,
+  "description": "\n    Dient der Adressierung \u00fcber die Liegenschafts-Information.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_\n\n    ",
+  "properties": {
+    "flurstueck": {
+      "title": "Flurstueck",
+      "type": "string"
     },
-    "required": [
-        "gemarkungFlur",
-        "flurstueck"
-    ],
-    "title": "Katasteradresse",
-    "type": "object"
+    "gemarkungFlur": {
+      "title": "Gemarkungflur",
+      "type": "string"
+    }
+  },
+  "required": ["gemarkungFlur", "flurstueck"],
+  "title": "Katasteradresse",
+  "type": "object"
 }
