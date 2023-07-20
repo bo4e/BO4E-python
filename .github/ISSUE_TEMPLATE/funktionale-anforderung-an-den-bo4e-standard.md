@@ -5,7 +5,7 @@ about: Eine Anforderung die so noch nicht vom BO4E Standard abgedeckt ist und/od
 title: 'Ein aussagekräftiger Titel: Hunde- und Katzentarife können nicht abgebildet
   werden'
 labels: BO4E Enhancement Proposal
-assignees: ''
+assignees: '@bo4e/the-gremium-test'
 
 ---
 
