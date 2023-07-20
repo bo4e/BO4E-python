@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "Messwertstatus": {
-            "description": "Der Status eines Zählerstandes",
+            "description": "Der Status eines Z\u00e4hlerstandes",
             "enum": [
                 "ABGELESEN",
                 "ERSATZWERT",
@@ -16,7 +16,7 @@
             "type": "string"
         },
         "Messwertstatuszusatz": {
-            "description": "Aufzählung von zusätzlichen Informationen zum Status, beispielsweise in Lastgängen oder Zählwerkständen.",
+            "description": "Aufz\u00e4hlung von zus\u00e4tzlichen Informationen zum Status, beispielsweise in Lastg\u00e4ngen oder Z\u00e4hlwerkst\u00e4nden.",
             "enum": [
                 "Z84_LEERSTAND",
                 "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
@@ -62,17 +62,41 @@
             "type": "string"
         }
     },
-    "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_\n\n    ",
     "properties": {
         "status": {
-            "$ref": "#/definitions/Messwertstatus"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Messwertstatus"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "statuszusatz": {
-            "$ref": "#/definitions/Messwertstatuszusatz"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Messwertstatuszusatz"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wert": {
-            "title": "Wert",
-            "type": "number"
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Wert"
         }
     },
     "required": [

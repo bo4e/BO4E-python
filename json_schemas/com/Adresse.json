@@ -1,7 +1,6 @@
 {
-    "definitions": {
+    "$defs": {
         "Landescode": {
-            "description": "An enumeration.",
             "enum": [
                 "AF",
                 "AX",
@@ -254,27 +253,53 @@
                 "ZM",
                 "ZW"
             ],
-            "title": "Landescode"
+            "title": "Landescode",
+            "type": "string"
         }
     },
-    "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Contains an address that can be used for most purposes.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_\n\n    ",
     "properties": {
         "adresszusatz": {
-            "title": "Adresszusatz",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Adresszusatz"
         },
         "coErgaenzung": {
-            "title": "Coergaenzung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Coergaenzung"
         },
         "hausnummer": {
-            "title": "Hausnummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Hausnummer"
         },
         "landescode": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/Landescode"
+                    "$ref": "#/$defs/Landescode"
                 }
             ],
             "default": "DE"
@@ -284,20 +309,44 @@
             "type": "string"
         },
         "ortsteil": {
-            "title": "Ortsteil",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ortsteil"
         },
         "postfach": {
-            "title": "Postfach",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Postfach"
         },
         "postleitzahl": {
             "title": "Postleitzahl",
             "type": "string"
         },
         "strasse": {
-            "title": "Strasse",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Strasse"
         }
     },
     "required": [

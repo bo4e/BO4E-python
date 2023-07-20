@@ -1,5 +1,5 @@
 {
-    "definitions": {
+    "$defs": {
         "BDEWArtikelnummer": {
             "description": "BDEW Artikelnummern",
             "enum": [
@@ -54,7 +54,7 @@
             "type": "string"
         },
         "Bemessungsgroesse": {
-            "description": "Zur Abbildung von Messgrössen und zur Verwendung in energiewirtschaftlichen Berechnungen.",
+            "description": "Zur Abbildung von Messgr\u00f6ssen und zur Verwendung in energiewirtschaftlichen Berechnungen.",
             "enum": [
                 "WIRKARBEIT_EL",
                 "LEISTUNG_EL",
@@ -73,7 +73,7 @@
             "type": "string"
         },
         "Kalkulationsmethode": {
-            "description": "Auflistung der verschiedenen Berechnungsmethoden für ein Preisblatt.",
+            "description": "Auflistung der verschiedenen Berechnungsmethoden f\u00fcr ein Preisblatt.",
             "enum": [
                 "STUFEN",
                 "ZONEN",
@@ -135,7 +135,7 @@
             "type": "string"
         },
         "Mengeneinheit": {
-            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
             "enum": [
                 "W",
                 "WH",
@@ -156,22 +156,52 @@
             "type": "string"
         },
         "Preisstaffel": {
-            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
             "properties": {
                 "einheitspreis": {
-                    "title": "Einheitspreis",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Einheitspreis"
                 },
                 "sigmoidparameter": {
-                    "$ref": "#/definitions/Sigmoidparameter"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sigmoidparameter"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "staffelgrenzeBis": {
-                    "title": "Staffelgrenzebis",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
-                    "title": "Staffelgrenzevon",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Staffelgrenzevon"
                 }
             },
             "required": [
@@ -183,23 +213,52 @@
             "type": "object"
         },
         "Sigmoidparameter": {
-            "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
             "properties": {
                 "A": {
-                    "title": "A",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "A"
                 },
                 "B": {
-                    "title": "B",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "B"
                 },
                 "C": {
-                    "title": "C",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "C"
                 },
                 "D": {
-                    "title": "D",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "D"
                 }
             },
             "required": [
@@ -222,7 +281,7 @@
             "type": "string"
         },
         "Waehrungseinheit": {
-            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
             "enum": [
                 "EUR",
                 "CT"
@@ -231,7 +290,7 @@
             "type": "string"
         },
         "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
             "enum": [
                 "SEKUNDE",
                 "MINUTE",
@@ -248,55 +307,118 @@
             "type": "string"
         }
     },
-    "description": "Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Preis f\u00fcr eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_\n\n    ",
     "properties": {
         "bdewArtikelnummer": {
-            "$ref": "#/definitions/BDEWArtikelnummer"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/BDEWArtikelnummer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "berechnungsmethode": {
-            "$ref": "#/definitions/Kalkulationsmethode"
+            "$ref": "#/$defs/Kalkulationsmethode"
         },
         "bezugsgroesse": {
-            "$ref": "#/definitions/Mengeneinheit"
+            "$ref": "#/$defs/Mengeneinheit"
         },
         "freimengeBlindarbeit": {
-            "title": "Freimengeblindarbeit",
-            "type": "number"
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Freimengeblindarbeit"
         },
         "freimengeLeistungsfaktor": {
-            "title": "Freimengeleistungsfaktor",
-            "type": "number"
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Freimengeleistungsfaktor"
         },
         "gruppenartikelId": {
-            "title": "Gruppenartikelid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gruppenartikelid"
         },
         "leistungsbezeichnung": {
             "title": "Leistungsbezeichnung",
             "type": "string"
         },
         "leistungstyp": {
-            "$ref": "#/definitions/Leistungstyp"
+            "$ref": "#/$defs/Leistungstyp"
         },
         "preiseinheit": {
-            "$ref": "#/definitions/Waehrungseinheit"
+            "$ref": "#/$defs/Waehrungseinheit"
         },
         "preisstaffeln": {
             "items": {
-                "$ref": "#/definitions/Preisstaffel"
+                "$ref": "#/$defs/Preisstaffel"
             },
             "minItems": 1,
             "title": "Preisstaffeln",
             "type": "array"
         },
         "tarifzeit": {
-            "$ref": "#/definitions/Tarifzeit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tarifzeit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zeitbasis": {
-            "$ref": "#/definitions/Zeiteinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeiteinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zonungsgroesse": {
-            "$ref": "#/definitions/Bemessungsgroesse"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Bemessungsgroesse"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
     "required": [

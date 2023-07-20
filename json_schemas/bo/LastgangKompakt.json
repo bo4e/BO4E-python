@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
             "enum": [
                 "ANGEBOT",
                 "ANSPRECHPARTNER",
@@ -41,7 +41,8 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -60,7 +61,7 @@
             "type": "object"
         },
         "Mengeneinheit": {
-            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
             "enum": [
                 "W",
                 "WH",
@@ -81,7 +82,7 @@
             "type": "string"
         },
         "Messwertstatus": {
-            "description": "Der Status eines Zählerstandes",
+            "description": "Der Status eines Z\u00e4hlerstandes",
             "enum": [
                 "ABGELESEN",
                 "ERSATZWERT",
@@ -96,7 +97,7 @@
             "type": "string"
         },
         "Messwertstatuszusatz": {
-            "description": "Aufzählung von zusätzlichen Informationen zum Status, beispielsweise in Lastgängen oder Zählwerkständen.",
+            "description": "Aufz\u00e4hlung von zus\u00e4tzlichen Informationen zum Status, beispielsweise in Lastg\u00e4ngen oder Z\u00e4hlwerkst\u00e4nden.",
             "enum": [
                 "Z84_LEERSTAND",
                 "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
@@ -142,7 +143,7 @@
             "type": "string"
         },
         "Sparte": {
-            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "description": "Unterscheidungsm\u00f6glichkeiten f\u00fcr die Sparte.",
             "enum": [
                 "STROM",
                 "GAS",
@@ -156,7 +157,8 @@
             "type": "string"
         },
         "Tagesvektor": {
-            "description": "Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung eines Tagesvektors eines beliebigen \u00e4quidistanten Zeitrasters\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_\n\n    ",
             "properties": {
                 "tag": {
                     "format": "date-time",
@@ -165,7 +167,7 @@
                 },
                 "werte": {
                     "items": {
-                        "$ref": "#/definitions/Zeitreihenwertkompakt"
+                        "$ref": "#/$defs/Zeitreihenwertkompakt"
                     },
                     "minItems": 1,
                     "title": "Werte",
@@ -180,7 +182,7 @@
             "type": "object"
         },
         "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
             "enum": [
                 "SEKUNDE",
                 "MINUTE",
@@ -197,14 +199,15 @@
             "type": "string"
         },
         "Zeitintervall": {
-            "description": "Abbildung für ein Zeitintervall. Die Abbildung eines Zeitintervalls.\nZ.B. zur Anwendung als Raster in äquidistanten Zeitreihen/Lastgängen, beispielsweise 15 Minuten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitintervall.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung f\u00fcr ein Zeitintervall. Die Abbildung eines Zeitintervalls.\n    Z.B. zur Anwendung als Raster in \u00e4quidistanten Zeitreihen/Lastg\u00e4ngen, beispielsweise 15 Minuten.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitintervall.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_\n\n    ",
             "properties": {
                 "wert": {
                     "title": "Wert",
                     "type": "integer"
                 },
                 "zeiteinheit": {
-                    "$ref": "#/definitions/Zeiteinheit"
+                    "$ref": "#/$defs/Zeiteinheit"
                 }
             },
             "required": [
@@ -215,17 +218,41 @@
             "type": "object"
         },
         "Zeitreihenwertkompakt": {
-            "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_\n\n    ",
             "properties": {
                 "status": {
-                    "$ref": "#/definitions/Messwertstatus"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Messwertstatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "statuszusatz": {
-                    "$ref": "#/definitions/Messwertstatuszusatz"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Messwertstatuszusatz"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
                 }
             },
             "required": [
@@ -235,23 +262,31 @@
             "type": "object"
         }
     },
-    "description": "Modell zur Abbildung eines kompakten Lastganges.\nIn diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten übertragen.\nDaher ist dieses BO nur zur Übertragung von äquidistanten Messwertverläufen geeignet.",
+    "additionalProperties": true,
+    "description": "\n    Modell zur Abbildung eines kompakten Lastganges.\n    In diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten \u00fcbertragen.\n    Daher ist dieses BO nur zur \u00dcbertragung von \u00e4quidistanten Messwertverl\u00e4ufen geeignet.\n    ",
     "properties": {
         "boTyp": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/BoTyp"
+                    "$ref": "#/$defs/BoTyp"
                 }
             ],
             "default": "LASTGANG_KOMPAKT"
         },
         "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "default": [],
-            "items": {
-                "$ref": "#/definitions/ExterneReferenz"
-            },
-            "title": "Externereferenzen",
-            "type": "array"
+            "title": "Externereferenzen"
         },
         "lokationsId": {
             "title": "Lokationsid",
@@ -262,26 +297,42 @@
             "type": "string"
         },
         "messgroesse": {
-            "$ref": "#/definitions/Mengeneinheit"
+            "$ref": "#/$defs/Mengeneinheit"
         },
         "obisKennzahl": {
-            "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-            "title": "Obiskennzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Obiskennzahl"
         },
         "sparte": {
-            "$ref": "#/definitions/Sparte"
+            "$ref": "#/$defs/Sparte"
         },
         "tagesvektoren": {
             "items": {
-                "$ref": "#/definitions/Tagesvektor"
+                "$ref": "#/$defs/Tagesvektor"
             },
             "title": "Tagesvektoren",
             "type": "array"
         },
         "version": {
-            "title": "Version",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Version"
         },
         "versionstruktur": {
             "default": "2",
@@ -289,7 +340,7 @@
             "type": "string"
         },
         "zeitintervall": {
-            "$ref": "#/definitions/Zeitintervall"
+            "$ref": "#/$defs/Zeitintervall"
         }
     },
     "required": [

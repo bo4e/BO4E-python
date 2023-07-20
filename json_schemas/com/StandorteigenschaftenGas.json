@@ -1,7 +1,8 @@
 {
-    "definitions": {
+    "$defs": {
         "MarktgebietInfo": {
-            "description": "Informationen zum Marktgebiet im Gas.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/MarktgebietInfo.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Informationen zum Marktgebiet im Gas.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/MarktgebietInfo.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_\n\n    ",
             "properties": {
                 "marktgebiet": {
                     "title": "Marktgebiet",
@@ -20,11 +21,12 @@
             "type": "object"
         }
     },
-    "description": "Standorteigenschaften der Sparte Gas\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/StandorteigenschaftenGas.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGas.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Standorteigenschaften der Sparte Gas\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/StandorteigenschaftenGas.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGas.json>`_\n\n    ",
     "properties": {
         "marktgebiete": {
             "items": {
-                "$ref": "#/definitions/MarktgebietInfo"
+                "$ref": "#/$defs/MarktgebietInfo"
             },
             "title": "Marktgebiete",
             "type": "array"

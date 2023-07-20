@@ -1,24 +1,49 @@
 {
-    "definitions": {
+    "$defs": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Contains an address that can be used for most purposes.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_\n\n    ",
             "properties": {
                 "adresszusatz": {
-                    "title": "Adresszusatz",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Adresszusatz"
                 },
                 "coErgaenzung": {
-                    "title": "Coergaenzung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Coergaenzung"
                 },
                 "hausnummer": {
-                    "title": "Hausnummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Hausnummer"
                 },
                 "landescode": {
                     "allOf": [
                         {
-                            "$ref": "#/definitions/Landescode"
+                            "$ref": "#/$defs/Landescode"
                         }
                     ],
                     "default": "DE"
@@ -28,20 +53,44 @@
                     "type": "string"
                 },
                 "ortsteil": {
-                    "title": "Ortsteil",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ortsteil"
                 },
                 "postfach": {
-                    "title": "Postfach",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postfach"
                 },
                 "postleitzahl": {
                     "title": "Postleitzahl",
                     "type": "string"
                 },
                 "strasse": {
-                    "title": "Strasse",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Strasse"
                 }
             },
             "required": [
@@ -52,7 +101,7 @@
             "type": "object"
         },
         "Anrede": {
-            "description": "Übersicht möglicher Anreden, z.B. eines Geschäftspartners.",
+            "description": "\u00dcbersicht m\u00f6glicher Anreden, z.B. eines Gesch\u00e4ftspartners.",
             "enum": [
                 "HERR",
                 "FRAU",
@@ -64,7 +113,7 @@
             "type": "string"
         },
         "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
             "enum": [
                 "ANGEBOT",
                 "ANSPRECHPARTNER",
@@ -104,7 +153,8 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -123,39 +173,72 @@
             "type": "object"
         },
         "Geschaeftspartner": {
-            "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Mit diesem Objekt k\u00f6nnen Gesch\u00e4ftspartner \u00fcbertragen werden.\n    Sowohl Unternehmen, als auch Privatpersonen k\u00f6nnen Gesch\u00e4ftspartner sein.\n    Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\n    Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_\n\n    ",
             "properties": {
                 "amtsgericht": {
-                    "title": "Amtsgericht",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Amtsgericht"
                 },
                 "anrede": {
-                    "$ref": "#/definitions/Anrede"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Anrede"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "boTyp": {
                     "allOf": [
                         {
-                            "$ref": "#/definitions/BoTyp"
+                            "$ref": "#/$defs/BoTyp"
                         }
                     ],
                     "default": "GESCHAEFTSPARTNER"
                 },
                 "eMailAdresse": {
-                    "title": "Emailadresse",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Emailadresse"
                 },
                 "externeReferenzen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/ExterneReferenz"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "default": [],
-                    "items": {
-                        "$ref": "#/definitions/ExterneReferenz"
-                    },
-                    "title": "Externereferenzen",
-                    "type": "array"
+                    "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
                     "items": {
-                        "$ref": "#/definitions/Geschaeftspartnerrolle"
+                        "$ref": "#/$defs/Geschaeftspartnerrolle"
                     },
+                    "title": "Geschaeftspartnerrolle",
                     "type": "array"
                 },
                 "gewerbekennzeichnung": {
@@ -163,38 +246,94 @@
                     "type": "boolean"
                 },
                 "glaeubigerId": {
-                    "title": "Glaeubigerid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Glaeubigerid"
                 },
                 "hrnummer": {
-                    "title": "Hrnummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Hrnummer"
                 },
                 "kontaktweg": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Kontaktart"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
                     "default": [],
-                    "items": {
-                        "$ref": "#/definitions/Kontaktart"
-                    },
-                    "type": "array"
+                    "title": "Kontaktweg"
                 },
                 "name1": {
                     "title": "Name1",
                     "type": "string"
                 },
                 "name2": {
-                    "title": "Name2",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name2"
                 },
                 "name3": {
-                    "title": "Name3",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name3"
                 },
                 "partneradresse": {
-                    "$ref": "#/definitions/Adresse"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Adresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "umsatzsteuerId": {
-                    "title": "Umsatzsteuerid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Umsatzsteuerid"
                 },
                 "versionstruktur": {
                     "default": "2",
@@ -202,8 +341,16 @@
                     "type": "string"
                 },
                 "website": {
-                    "title": "Website",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Website"
                 }
             },
             "required": [
@@ -215,7 +362,7 @@
             "type": "object"
         },
         "Geschaeftspartnerrolle": {
-            "description": "Diese Rollen kann ein Geschäftspartner einnehmen.",
+            "description": "Diese Rollen kann ein Gesch\u00e4ftspartner einnehmen.",
             "enum": [
                 "LIEFERANT",
                 "DIENSTLEISTER",
@@ -227,7 +374,7 @@
             "type": "string"
         },
         "Kontaktart": {
-            "description": "Art des Kontaktes zwischen Geschäftspartnern.",
+            "description": "Art des Kontaktes zwischen Gesch\u00e4ftspartnern.",
             "enum": [
                 "ANSCHREIBEN",
                 "TELEFONAT",
@@ -239,7 +386,6 @@
             "type": "string"
         },
         "Landescode": {
-            "description": "An enumeration.",
             "enum": [
                 "AF",
                 "AX",
@@ -492,17 +638,26 @@
                 "ZM",
                 "ZW"
             ],
-            "title": "Landescode"
+            "title": "Landescode",
+            "type": "string"
         },
         "Menge": {
-            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
             "properties": {
                 "einheit": {
-                    "$ref": "#/definitions/Mengeneinheit"
+                    "$ref": "#/$defs/Mengeneinheit"
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
                 }
             },
             "required": [
@@ -513,7 +668,7 @@
             "type": "object"
         },
         "Mengeneinheit": {
-            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
             "enum": [
                 "W",
                 "WH",
@@ -534,7 +689,7 @@
             "type": "string"
         },
         "Sparte": {
-            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "description": "Unterscheidungsm\u00f6glichkeiten f\u00fcr die Sparte.",
             "enum": [
                 "STROM",
                 "GAS",
@@ -548,20 +703,37 @@
             "type": "string"
         },
         "Unterschrift": {
-            "description": "Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Unterschrift.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Unterschrift.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Modellierung einer Unterschrift, z.B. f\u00fcr Vertr\u00e4ge, Angebote etc.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Unterschrift.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Unterschrift.json>`_\n\n    ",
             "properties": {
                 "datum": {
-                    "format": "date-time",
-                    "title": "Datum",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Datum"
                 },
                 "name": {
                     "title": "Name",
                     "type": "string"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 }
             },
             "required": [
@@ -571,7 +743,7 @@
             "type": "object"
         },
         "Vertragsart": {
-            "description": "Aufzählung der Vertragsarten.",
+            "description": "Aufz\u00e4hlung der Vertragsarten.",
             "enum": [
                 "ENERGIELIEFERVERTRAG",
                 "NETZNUTZUNGSVERTRAG",
@@ -583,34 +755,86 @@
             "type": "string"
         },
         "Vertragskonditionen": {
-            "description": "Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung f\u00fcr Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_\n\n    ",
             "properties": {
                 "abschlagszyklus": {
-                    "$ref": "#/definitions/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "anzahlAbschlaege": {
-                    "title": "Anzahlabschlaege",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anzahlabschlaege"
                 },
                 "beschreibung": {
-                    "title": "Beschreibung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Beschreibung"
                 },
                 "kuendigungsfrist": {
-                    "$ref": "#/definitions/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "vertragslaufzeit": {
-                    "$ref": "#/definitions/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "vertragsverlaengerung": {
-                    "$ref": "#/definitions/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
             "title": "Vertragskonditionen",
             "type": "object"
         },
         "Vertragsstatus": {
-            "description": "Abbildung einer Statusinformation für Verträge.",
+            "description": "Abbildung einer Statusinformation f\u00fcr Vertr\u00e4ge.",
             "enum": [
                 "IN_ARBEIT",
                 "UEBERMITTELT",
@@ -626,20 +850,53 @@
             "type": "string"
         },
         "Vertragsteil": {
-            "description": "Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\neine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragsteil.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung f\u00fcr einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\n    eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Vertragsteil.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_\n\n    ",
             "properties": {
                 "lokation": {
-                    "title": "Lokation",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Lokation"
                 },
                 "maximaleAbnahmemenge": {
-                    "$ref": "#/definitions/Menge"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Menge"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "minimaleAbnahmemenge": {
-                    "$ref": "#/definitions/Menge"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Menge"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "vertraglichFixierteMenge": {
-                    "$ref": "#/definitions/Menge"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Menge"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "vertragsteilbeginn": {
                     "format": "date-time",
@@ -660,7 +917,7 @@
             "type": "object"
         },
         "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
             "enum": [
                 "SEKUNDE",
                 "MINUTE",
@@ -677,78 +934,162 @@
             "type": "string"
         },
         "Zeitraum": {
-            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
             "properties": {
                 "dauer": {
-                    "title": "Dauer",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Dauer"
                 },
                 "einheit": {
-                    "$ref": "#/definitions/Zeiteinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeiteinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "enddatum": {
-                    "format": "date-time",
-                    "title": "Enddatum",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Enddatum"
                 },
                 "endzeitpunkt": {
-                    "format": "date-time",
-                    "title": "Endzeitpunkt",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Endzeitpunkt"
                 },
                 "startdatum": {
-                    "format": "date-time",
-                    "title": "Startdatum",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Startdatum"
                 },
                 "startzeitpunkt": {
-                    "format": "date-time",
-                    "title": "Startzeitpunkt",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Startzeitpunkt"
                 }
             },
             "title": "Zeitraum",
             "type": "object"
         }
     },
-    "description": "Modell für die Abbildung von Vertragsbeziehungen;\nDas Objekt dient dazu, alle Arten von Verträgen, die in der Energiewirtschaft Verwendung finden, abzubilden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Vertrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Vertrag.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Modell f\u00fcr die Abbildung von Vertragsbeziehungen;\n    Das Objekt dient dazu, alle Arten von Vertr\u00e4gen, die in der Energiewirtschaft Verwendung finden, abzubilden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Vertrag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Vertrag.json>`_\n\n    ",
     "properties": {
         "beschreibung": {
-            "title": "Beschreibung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Beschreibung"
         },
         "boTyp": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/BoTyp"
+                    "$ref": "#/$defs/BoTyp"
                 }
             ],
             "default": "VERTRAG"
         },
         "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "default": [],
-            "items": {
-                "$ref": "#/definitions/ExterneReferenz"
-            },
-            "title": "Externereferenzen",
-            "type": "array"
+            "title": "Externereferenzen"
         },
         "sparte": {
-            "$ref": "#/definitions/Sparte"
+            "$ref": "#/$defs/Sparte"
         },
         "unterzeichnervp1": {
-            "items": {
-                "$ref": "#/definitions/Unterschrift"
-            },
-            "title": "Unterzeichnervp1",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Unterschrift"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Unterzeichnervp1"
         },
         "unterzeichnervp2": {
-            "items": {
-                "$ref": "#/definitions/Unterschrift"
-            },
-            "title": "Unterzeichnervp2",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Unterschrift"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Unterzeichnervp2"
         },
         "versionstruktur": {
             "default": "2",
@@ -756,7 +1097,7 @@
             "type": "string"
         },
         "vertragsart": {
-            "$ref": "#/definitions/Vertragsart"
+            "$ref": "#/$defs/Vertragsart"
         },
         "vertragsbeginn": {
             "format": "date-time",
@@ -769,24 +1110,32 @@
             "type": "string"
         },
         "vertragskonditionen": {
-            "$ref": "#/definitions/Vertragskonditionen"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Vertragskonditionen"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "vertragsnummer": {
             "title": "Vertragsnummer",
             "type": "string"
         },
         "vertragspartner1": {
-            "$ref": "#/definitions/Geschaeftspartner"
+            "$ref": "#/$defs/Geschaeftspartner"
         },
         "vertragspartner2": {
-            "$ref": "#/definitions/Geschaeftspartner"
+            "$ref": "#/$defs/Geschaeftspartner"
         },
         "vertragsstatus": {
-            "$ref": "#/definitions/Vertragsstatus"
+            "$ref": "#/$defs/Vertragsstatus"
         },
         "vertragsteile": {
             "items": {
-                "$ref": "#/definitions/Vertragsteil"
+                "$ref": "#/$defs/Vertragsteil"
             },
             "minItems": 1,
             "title": "Vertragsteile",

@@ -1,24 +1,49 @@
 {
-    "definitions": {
+    "$defs": {
         "Adresse": {
-            "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Contains an address that can be used for most purposes.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_\n\n    ",
             "properties": {
                 "adresszusatz": {
-                    "title": "Adresszusatz",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Adresszusatz"
                 },
                 "coErgaenzung": {
-                    "title": "Coergaenzung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Coergaenzung"
                 },
                 "hausnummer": {
-                    "title": "Hausnummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Hausnummer"
                 },
                 "landescode": {
                     "allOf": [
                         {
-                            "$ref": "#/definitions/Landescode"
+                            "$ref": "#/$defs/Landescode"
                         }
                     ],
                     "default": "DE"
@@ -28,20 +53,44 @@
                     "type": "string"
                 },
                 "ortsteil": {
-                    "title": "Ortsteil",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ortsteil"
                 },
                 "postfach": {
-                    "title": "Postfach",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postfach"
                 },
                 "postleitzahl": {
                     "title": "Postleitzahl",
                     "type": "string"
                 },
                 "strasse": {
-                    "title": "Strasse",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Strasse"
                 }
             },
             "required": [
@@ -52,7 +101,7 @@
             "type": "object"
         },
         "Anrede": {
-            "description": "Übersicht möglicher Anreden, z.B. eines Geschäftspartners.",
+            "description": "\u00dcbersicht m\u00f6glicher Anreden, z.B. eines Gesch\u00e4ftspartners.",
             "enum": [
                 "HERR",
                 "FRAU",
@@ -64,7 +113,7 @@
             "type": "string"
         },
         "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
             "enum": [
                 "ANGEBOT",
                 "ANSPRECHPARTNER",
@@ -104,7 +153,8 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -123,7 +173,7 @@
             "type": "object"
         },
         "Geschaeftspartnerrolle": {
-            "description": "Diese Rollen kann ein Geschäftspartner einnehmen.",
+            "description": "Diese Rollen kann ein Gesch\u00e4ftspartner einnehmen.",
             "enum": [
                 "LIEFERANT",
                 "DIENSTLEISTER",
@@ -135,7 +185,7 @@
             "type": "string"
         },
         "Kontaktart": {
-            "description": "Art des Kontaktes zwischen Geschäftspartnern.",
+            "description": "Art des Kontaktes zwischen Gesch\u00e4ftspartnern.",
             "enum": [
                 "ANSCHREIBEN",
                 "TELEFONAT",
@@ -147,7 +197,6 @@
             "type": "string"
         },
         "Landescode": {
-            "description": "An enumeration.",
             "enum": [
                 "AF",
                 "AX",
@@ -400,42 +449,76 @@
                 "ZM",
                 "ZW"
             ],
-            "title": "Landescode"
+            "title": "Landescode",
+            "type": "string"
         }
     },
-    "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Mit diesem Objekt k\u00f6nnen Gesch\u00e4ftspartner \u00fcbertragen werden.\n    Sowohl Unternehmen, als auch Privatpersonen k\u00f6nnen Gesch\u00e4ftspartner sein.\n    Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\n    Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_\n\n    ",
     "properties": {
         "amtsgericht": {
-            "title": "Amtsgericht",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Amtsgericht"
         },
         "anrede": {
-            "$ref": "#/definitions/Anrede"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Anrede"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "boTyp": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/BoTyp"
+                    "$ref": "#/$defs/BoTyp"
                 }
             ],
             "default": "GESCHAEFTSPARTNER"
         },
         "eMailAdresse": {
-            "title": "Emailadresse",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Emailadresse"
         },
         "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "default": [],
-            "items": {
-                "$ref": "#/definitions/ExterneReferenz"
-            },
-            "title": "Externereferenzen",
-            "type": "array"
+            "title": "Externereferenzen"
         },
         "geschaeftspartnerrolle": {
             "items": {
-                "$ref": "#/definitions/Geschaeftspartnerrolle"
+                "$ref": "#/$defs/Geschaeftspartnerrolle"
             },
+            "title": "Geschaeftspartnerrolle",
             "type": "array"
         },
         "gewerbekennzeichnung": {
@@ -443,38 +526,94 @@
             "type": "boolean"
         },
         "glaeubigerId": {
-            "title": "Glaeubigerid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Glaeubigerid"
         },
         "hrnummer": {
-            "title": "Hrnummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Hrnummer"
         },
         "kontaktweg": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Kontaktart"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "default": [],
-            "items": {
-                "$ref": "#/definitions/Kontaktart"
-            },
-            "type": "array"
+            "title": "Kontaktweg"
         },
         "name1": {
             "title": "Name1",
             "type": "string"
         },
         "name2": {
-            "title": "Name2",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Name2"
         },
         "name3": {
-            "title": "Name3",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Name3"
         },
         "partneradresse": {
-            "$ref": "#/definitions/Adresse"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Adresse"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "umsatzsteuerId": {
-            "title": "Umsatzsteuerid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Umsatzsteuerid"
         },
         "versionstruktur": {
             "default": "2",
@@ -482,8 +621,16 @@
             "type": "string"
         },
         "website": {
-            "title": "Website",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Website"
         }
     },
     "required": [

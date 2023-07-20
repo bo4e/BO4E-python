@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "ArithmetischeOperation": {
-            "description": "Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.",
+            "description": "Mit dieser Aufz\u00e4hlung k\u00f6nnen arithmetische Operationen festgelegt werden.",
             "enum": [
                 "ADDITION",
                 "SUBTRAKTION",
@@ -12,20 +12,37 @@
             "type": "string"
         }
     },
-    "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\n    Dabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\n    mit der die Messlokation zum Verbrauch der Marktlokation beitr\u00e4gt.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_\n\n    ",
     "properties": {
         "arithmetik": {
-            "$ref": "#/definitions/ArithmetischeOperation"
+            "$ref": "#/$defs/ArithmetischeOperation"
         },
         "gueltigBis": {
-            "format": "date-time",
-            "title": "Gueltigbis",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gueltigbis"
         },
         "gueltigSeit": {
-            "format": "date-time",
-            "title": "Gueltigseit",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gueltigseit"
         },
         "messlokationsId": {
             "title": "Messlokationsid",

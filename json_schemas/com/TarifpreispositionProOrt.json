@@ -1,27 +1,63 @@
 {
-    "definitions": {
+    "$defs": {
         "TarifpreisstaffelProOrt": {
-            "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisstaffelProOrt.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisstaffelProOrt.json>`_\n\n    ",
             "properties": {
                 "arbeitspreis": {
-                    "title": "Arbeitspreis",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Arbeitspreis"
                 },
                 "arbeitspreisNT": {
-                    "title": "Arbeitspreisnt",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Arbeitspreisnt"
                 },
                 "grundpreis": {
-                    "title": "Grundpreis",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Grundpreis"
                 },
                 "staffelgrenzeBis": {
-                    "title": "Staffelgrenzebis",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
-                    "title": "Staffelgrenzevon",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Staffelgrenzevon"
                 }
             },
             "required": [
@@ -35,7 +71,8 @@
             "type": "object"
         }
     },
-    "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreispositionProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreispositionProOrt.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Mit dieser Komponente k\u00f6nnen Tarifpreise verschiedener Typen abgebildet werden\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/TarifpreispositionProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreispositionProOrt.json>`_\n\n    ",
     "properties": {
         "netznr": {
             "title": "Netznr",
@@ -52,7 +89,7 @@
         },
         "preisstaffeln": {
             "items": {
-                "$ref": "#/definitions/TarifpreisstaffelProOrt"
+                "$ref": "#/$defs/TarifpreisstaffelProOrt"
             },
             "minItems": 1,
             "title": "Preisstaffeln",

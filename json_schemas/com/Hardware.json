@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "Geraetetyp": {
-            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
             "enum": [
                 "WECHSELSTROMZAEHLER",
                 "DREHSTROMZAEHLER",
@@ -53,14 +53,15 @@
             "type": "string"
         }
     },
-    "description": "Abbildung einer abrechenbaren Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Abbildung einer abrechenbaren Hardware\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_\n\n    ",
     "properties": {
         "bezeichnung": {
             "title": "Bezeichnung",
             "type": "string"
         },
         "geraetetyp": {
-            "$ref": "#/definitions/Geraetetyp"
+            "$ref": "#/$defs/Geraetetyp"
         }
     },
     "required": [

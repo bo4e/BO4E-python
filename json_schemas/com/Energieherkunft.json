@@ -1,5 +1,5 @@
 {
-    "definitions": {
+    "$defs": {
         "Erzeugungsart": {
             "description": "Auflistung der Erzeugungsarten von Energie.",
             "enum": [
@@ -22,16 +22,24 @@
             "type": "string"
         }
     },
-    "description": "Abbildung einer Energieherkunft\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Abbildung einer Energieherkunft\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_\n\n    ",
     "properties": {
         "anteilProzent": {
-            "exclusiveMaximum": 100,
-            "exclusiveMinimum": 0,
-            "title": "Anteilprozent",
-            "type": "number"
+            "anyOf": [
+                {
+                    "exclusiveMaximum": 100.0,
+                    "exclusiveMinimum": 0.0,
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Anteilprozent"
         },
         "erzeugungsart": {
-            "$ref": "#/definitions/Erzeugungsart"
+            "$ref": "#/$defs/Erzeugungsart"
         }
     },
     "required": [

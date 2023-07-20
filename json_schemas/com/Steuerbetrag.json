@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "Steuerkennzeichen": {
-            "description": "Zur Kennzeichnung verschiedener Steuersätze und Verfahren.",
+            "description": "Zur Kennzeichnung verschiedener Steuers\u00e4tze und Verfahren.",
             "enum": [
                 "UST_0",
                 "UST_19",
@@ -16,7 +16,7 @@
             "type": "string"
         },
         "Waehrungscode": {
-            "description": "Aufzählung der Währungscodes.",
+            "description": "Aufz\u00e4hlung der W\u00e4hrungscodes.",
             "enum": [
                 "AED",
                 "AFN",
@@ -205,21 +205,36 @@
             "type": "string"
         }
     },
-    "description": "Abbildung eines Steuerbetrages.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Abbildung eines Steuerbetrages.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_\n\n    ",
     "properties": {
         "basiswert": {
-            "title": "Basiswert",
-            "type": "number"
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Basiswert"
         },
         "steuerkennzeichen": {
-            "$ref": "#/definitions/Steuerkennzeichen"
+            "$ref": "#/$defs/Steuerkennzeichen"
         },
         "steuerwert": {
-            "title": "Steuerwert",
-            "type": "number"
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Steuerwert"
         },
         "waehrung": {
-            "$ref": "#/definitions/Waehrungscode"
+            "$ref": "#/$defs/Waehrungscode"
         }
     },
     "required": [

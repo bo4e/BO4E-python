@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "Dienstleistungstyp": {
-            "description": "Auflistung möglicher abzurechnender Dienstleistungen.",
+            "description": "Auflistung m\u00f6glicher abzurechnender Dienstleistungen.",
             "enum": [
                 "DATENBEREITSTELLUNG_TAEGLICH",
                 "DATENBEREITSTELLUNG_WOECHENTLICH",
@@ -43,14 +43,15 @@
             "type": "string"
         }
     },
-    "description": "Abbildung einer abrechenbaren Dienstleistung.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Dienstleistung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Dienstleistung.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Abbildung einer abrechenbaren Dienstleistung.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Dienstleistung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Dienstleistung.json>`_\n\n    ",
     "properties": {
         "bezeichnung": {
             "title": "Bezeichnung",
             "type": "string"
         },
         "dienstleistungstyp": {
-            "$ref": "#/definitions/Dienstleistungstyp"
+            "$ref": "#/$defs/Dienstleistungstyp"
         }
     },
     "required": [

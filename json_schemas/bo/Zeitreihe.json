@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
             "enum": [
                 "ANGEBOT",
                 "ANSPRECHPARTNER",
@@ -41,7 +41,8 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -71,7 +72,7 @@
             "type": "string"
         },
         "Mengeneinheit": {
-            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
             "enum": [
                 "W",
                 "WH",
@@ -102,7 +103,7 @@
             "type": "string"
         },
         "Messgroesse": {
-            "description": "Gibt die physikalische Größe an, die gemessen wurde.",
+            "description": "Gibt die physikalische Gr\u00f6\u00dfe an, die gemessen wurde.",
             "enum": [
                 "STROM",
                 "SPANNUNG",
@@ -122,7 +123,7 @@
             "type": "string"
         },
         "Messwertstatus": {
-            "description": "Der Status eines Zählerstandes",
+            "description": "Der Status eines Z\u00e4hlerstandes",
             "enum": [
                 "ABGELESEN",
                 "ERSATZWERT",
@@ -137,7 +138,7 @@
             "type": "string"
         },
         "Messwertstatuszusatz": {
-            "description": "Aufzählung von zusätzlichen Informationen zum Status, beispielsweise in Lastgängen oder Zählwerkständen.",
+            "description": "Aufz\u00e4hlung von zus\u00e4tzlichen Informationen zum Status, beispielsweise in Lastg\u00e4ngen oder Z\u00e4hlwerkst\u00e4nden.",
             "enum": [
                 "Z84_LEERSTAND",
                 "Z85_REALERZAEHLERUEBERLAUFGEPRUEFT",
@@ -192,7 +193,8 @@
             "type": "string"
         },
         "Zeitreihenwert": {
-            "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_\n\n    ",
             "properties": {
                 "datumUhrzeitBis": {
                     "format": "date-time",
@@ -205,14 +207,37 @@
                     "type": "string"
                 },
                 "status": {
-                    "$ref": "#/definitions/Messwertstatus"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Messwertstatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "statuszusatz": {
-                    "$ref": "#/definitions/Messwertstatuszusatz"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Messwertstatuszusatz"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "number"
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
                 }
             },
             "required": [
@@ -224,11 +249,20 @@
             "type": "object"
         }
     },
-    "description": "Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.\nDie Werte können mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Zeitreihe.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zeitreihe.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.\n    Die Werte k\u00f6nnen mit wahlfreier zeitlicher Distanz im Vektor abgelegt sein.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Zeitreihe.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zeitreihe.json>`_\n\n    ",
     "properties": {
         "beschreibung": {
-            "title": "Beschreibung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Beschreibung"
         },
         "bezeichnung": {
             "title": "Bezeichnung",
@@ -237,34 +271,49 @@
         "boTyp": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/BoTyp"
+                    "$ref": "#/$defs/BoTyp"
                 }
             ],
             "default": "ZEITREIHE"
         },
         "einheit": {
-            "$ref": "#/definitions/Mengeneinheit"
+            "$ref": "#/$defs/Mengeneinheit"
         },
         "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "default": [],
-            "items": {
-                "$ref": "#/definitions/ExterneReferenz"
-            },
-            "title": "Externereferenzen",
-            "type": "array"
+            "title": "Externereferenzen"
         },
         "medium": {
-            "$ref": "#/definitions/Medium"
+            "$ref": "#/$defs/Medium"
         },
         "messart": {
-            "$ref": "#/definitions/Messart"
+            "$ref": "#/$defs/Messart"
         },
         "messgroesse": {
-            "$ref": "#/definitions/Messgroesse"
+            "$ref": "#/$defs/Messgroesse"
         },
         "version": {
-            "title": "Version",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Version"
         },
         "versionstruktur": {
             "default": "2",
@@ -273,14 +322,22 @@
         },
         "werte": {
             "items": {
-                "$ref": "#/definitions/Zeitreihenwert"
+                "$ref": "#/$defs/Zeitreihenwert"
             },
             "minItems": 1,
             "title": "Werte",
             "type": "array"
         },
         "wertherkunft": {
-            "$ref": "#/definitions/Wertermittlungsverfahren"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Wertermittlungsverfahren"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
     "required": [

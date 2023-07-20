@@ -1,7 +1,7 @@
 {
-    "definitions": {
+    "$defs": {
         "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
             "enum": [
                 "ANGEBOT",
                 "ANSPRECHPARTNER",
@@ -41,7 +41,8 @@
             "type": "string"
         },
         "ExterneReferenz": {
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
             "properties": {
                 "exRefName": {
                     "title": "Exrefname",
@@ -60,7 +61,7 @@
             "type": "object"
         },
         "Gueltigkeitstyp": {
-            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "description": "\u00dcbersicht der verschiedenen G\u00fcltigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
             "enum": [
                 "NUR_IN",
                 "NICHT_IN",
@@ -70,13 +71,14 @@
             "type": "string"
         },
         "Regionskriterium": {
-            "description": "Komponente zur Abbildung eines Regionskriteriums\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Regionskriterium.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Regionskriterium.json>`_",
+            "additionalProperties": true,
+            "description": "\n    Komponente zur Abbildung eines Regionskriteriums\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Regionskriterium.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Regionskriterium.json>`_\n\n    ",
             "properties": {
                 "gueltigkeitstyp": {
-                    "$ref": "#/definitions/Gueltigkeitstyp"
+                    "$ref": "#/$defs/Gueltigkeitstyp"
                 },
                 "regionskriteriumtyp": {
-                    "$ref": "#/definitions/Regionskriteriumtyp"
+                    "$ref": "#/$defs/Regionskriteriumtyp"
                 },
                 "wert": {
                     "title": "Wert",
@@ -92,7 +94,7 @@
             "type": "object"
         },
         "Regionskriteriumtyp": {
-            "description": "Klassifizierung der Kriterien für eine regionale Eingrenzung.",
+            "description": "Klassifizierung der Kriterien f\u00fcr eine regionale Eingrenzung.",
             "enum": [
                 "BUNDESLANDKENNZIFFER",
                 "BUNDESLAND_NAME",
@@ -132,7 +134,8 @@
             "type": "string"
         }
     },
-    "description": "Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Region.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Region.json>`_",
+    "additionalProperties": true,
+    "description": "\n    Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Region.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Region.json>`_\n\n    ",
     "properties": {
         "bezeichnung": {
             "title": "Bezeichnung",
@@ -141,29 +144,44 @@
         "boTyp": {
             "allOf": [
                 {
-                    "$ref": "#/definitions/BoTyp"
+                    "$ref": "#/$defs/BoTyp"
                 }
             ],
             "default": "REGION"
         },
         "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
             "default": [],
-            "items": {
-                "$ref": "#/definitions/ExterneReferenz"
-            },
-            "title": "Externereferenzen",
-            "type": "array"
+            "title": "Externereferenzen"
         },
         "negativListe": {
-            "items": {
-                "$ref": "#/definitions/Regionskriterium"
-            },
-            "title": "Negativliste",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Regionskriterium"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Negativliste"
         },
         "positivListe": {
             "items": {
-                "$ref": "#/definitions/Regionskriterium"
+                "$ref": "#/$defs/Regionskriterium"
             },
             "minItems": 1,
             "title": "Positivliste",
