@@ -13,23 +13,22 @@ charset-normalizer==2.1.0
 idna==3.3
     # via requests
 iso3166==2.1.1
-    # via -r requirements.in
+    # via -r docs/requirements.in
 networkx==3.1
-    # via -r requirements.in
-pydantic==2.0.2
-    # via -r requirements.in
-pydantic-core==2.1.2
+    # via -r docs/requirements.in
+pydantic==2.0.3
+    # via -r docs/requirements.in
+pydantic-core==2.3.0
     # via pydantic
 pyhumps==3.8.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 requests==2.31.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 typeguard==4.0.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 typing-extensions==4.7.1
     # via
     #   pydantic
     #   pydantic-core
-    #   typeguard
 urllib3==1.26.10
     # via requests
