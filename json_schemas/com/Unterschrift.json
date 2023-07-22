@@ -1,23 +1,38 @@
 {
-    "description": "Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Unterschrift.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Unterschrift.json>`_",
-    "properties": {
-        "datum": {
-            "format": "date-time",
-            "title": "Datum",
-            "type": "string"
+  "additionalProperties": true,
+  "description": "\n    Modellierung einer Unterschrift, z.B. f\u00fcr Vertr\u00e4ge, Angebote etc.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Unterschrift.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Unterschrift.json>`_\n\n    ",
+  "properties": {
+    "datum": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
         },
-        "name": {
-            "title": "Name",
-            "type": "string"
-        },
-        "ort": {
-            "title": "Ort",
-            "type": "string"
+        {
+          "type": "null"
         }
+      ],
+      "default": null,
+      "title": "Datum"
     },
-    "required": [
-        "name"
-    ],
-    "title": "Unterschrift",
-    "type": "object"
+    "name": {
+      "title": "Name",
+      "type": "string"
+    },
+    "ort": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ort"
+    }
+  },
+  "required": ["name"],
+  "title": "Unterschrift",
+  "type": "object"
 }

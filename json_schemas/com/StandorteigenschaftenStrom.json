@@ -1,24 +1,21 @@
 {
-    "description": "Standorteigenschaften der Sparte Strom\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/StandorteigenschaftenStrom.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStrom.json>`_",
-    "properties": {
-        "bilanzierungsgebietEic": {
-            "title": "Bilanzierungsgebieteic",
-            "type": "string"
-        },
-        "regelzone": {
-            "title": "Regelzone",
-            "type": "string"
-        },
-        "regelzoneEic": {
-            "title": "Regelzoneeic",
-            "type": "string"
-        }
+  "additionalProperties": true,
+  "description": "\n    Standorteigenschaften der Sparte Strom\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/StandorteigenschaftenStrom.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStrom.json>`_\n\n    ",
+  "properties": {
+    "bilanzierungsgebietEic": {
+      "title": "Bilanzierungsgebieteic",
+      "type": "string"
     },
-    "required": [
-        "bilanzierungsgebietEic",
-        "regelzone",
-        "regelzoneEic"
-    ],
-    "title": "StandorteigenschaftenStrom",
-    "type": "object"
+    "regelzone": {
+      "title": "Regelzone",
+      "type": "string"
+    },
+    "regelzoneEic": {
+      "title": "Regelzoneeic",
+      "type": "string"
+    }
+  },
+  "required": ["bilanzierungsgebietEic", "regelzone", "regelzoneEic"],
+  "title": "StandorteigenschaftenStrom",
+  "type": "object"
 }
