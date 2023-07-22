@@ -58,3 +58,9 @@ class Zeitraum(COM):
         - startzeitpunkt and endzeitpunkt
         """,
     )
+    """
+    Validator that ensures that exactly one of the three possibilities to specify the timerange is chosen.
+        - einheit and dauer
+        - startdatum and enddatum
+        - startzeitpunkt and endzeitpunkt
+    """
