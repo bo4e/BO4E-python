@@ -7,11 +7,9 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from pydantic import model_validator
-from pydantic_core.core_schema import ValidationInfo
-
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e.validators import combinations_of_fields
 
 # pylint: disable=too-few-public-methods
 
@@ -41,56 +39,28 @@ class Zeitraum(COM):
     startzeitpunkt: Optional[datetime] = None
     endzeitpunkt: Optional[datetime] = None
 
-    # pylint: disable=unused-argument, no-self-argument
-    @model_validator(mode="before")
-    def time_range_possibilities(cls, model: dict, validation_info: ValidationInfo) -> dict:  # type:ignore[type-arg]
-        """
-        An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
-        This functions checks for these conditions of a valid address.
-        """
-        values = model
-        # todo: rewrite this to be more readable; just migrated to pydantic v2 without thinking too much about it
-        # https://github.com/bo4e/BO4E-python/issues/480
-        endzeitpunkt = values.get("endzeitpunkt")
-        if (
-            ("einheit" in values and values["einheit"])
-            and ("dauer" in values and values["dauer"])
-            and not (
-                ("startdatum" in values and values["startdatum"])
-                or ("enddatum" in values and values["enddatum"])
-                or ("startzeitpunkt" in values and values["startzeitpunkt"])
-                or endzeitpunkt
-            )
-        ):
-            return model
-        if (
-            ("startdatum" in values and values["startdatum"])
-            and ("enddatum" in values and values["enddatum"])
-            and not (
-                ("einheit" in values and values["einheit"])
-                or ("dauer" in values and values["dauer"])
-                or ("startzeitpunkt" in values and values["startzeitpunkt"])
-                or endzeitpunkt
-            )
-        ):
-            return model
-        if (
-            ("startzeitpunkt" in values and values["startzeitpunkt"])
-            and ("endzeitpunkt" in values and model["endzeitpunkt"])
-            and not (
-                ("einheit" in values and values["einheit"])
-                or ("dauer" in values and values["dauer"])
-                or ("startdatum" in values and values["startdatum"])
-                or ("enddatum" in values and values["enddatum"])
-            )
-        ):
-            return model
-
-        raise ValueError(
-            """
-            Please choose from one of the three possibilities to specify the timerange:
-            - einheit and dauer
-            - startdatum and enddatum
-            - startzeitpunkt and endzeitpunkt
-            """
-        )
+    _time_range_possibilities = combinations_of_fields(
+        "einheit",
+        "dauer",
+        "startdatum",
+        "enddatum",
+        "startzeitpunkt",
+        "endzeitpunkt",
+        valid_combinations={
+            (1, 1, 0, 0, 0, 0),
+            (0, 0, 1, 1, 0, 0),
+            (0, 0, 0, 0, 1, 1),
+        },
+        custom_error_message="""
+        Please choose from one of the three possibilities to specify the timerange:
+        - einheit and dauer
+        - startdatum and enddatum
+        - startzeitpunkt and endzeitpunkt
+        """,
+    )
+    """
+    Validator that ensures that exactly one of the three possibilities to specify the timerange is chosen.
+        - einheit and dauer
+        - startdatum and enddatum
+        - startzeitpunkt and endzeitpunkt
+    """
