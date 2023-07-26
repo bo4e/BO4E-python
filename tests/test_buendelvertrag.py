@@ -27,6 +27,7 @@ class TestBuendelvertrag:
         name1="van der Waal",
         name2="Helga",
         name3=None,
+        geburtsdatum=None,
         gewerbekennzeichnung=True,
         kontaktweg=[Kontaktart.SMS],
         umsatzsteuer_id="DE267311963",
@@ -44,6 +45,7 @@ class TestBuendelvertrag:
     _vertragspartner2 = Geschaeftspartner(
         name1="Eckart",
         name2="Björn",
+        geburtsdatum=None,
         gewerbekennzeichnung=False,
         geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
         partneradresse=Adresse(
@@ -57,6 +59,7 @@ class TestBuendelvertrag:
         "anrede": Anrede.FRAU,
         "name1": "van der Waal",
         "name2": "Helga",
+        "geburtsdatum": None,
         "name3": None,
         "gewerbekennzeichnung": True,
         "kontaktweg": [Kontaktart.SMS],
@@ -85,6 +88,7 @@ class TestBuendelvertrag:
     _vertragspartner2_dict: Dict[str, Any] = {
         "name1": "Eckart",
         "name2": "Björn",
+        "geburtsdatum": None,
         "gewerbekennzeichnung": False,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
         "partneradresse": {
