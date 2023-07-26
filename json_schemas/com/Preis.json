@@ -1,66 +1,72 @@
 {
-    "definitions": {
-        "Mengeneinheit": {
-            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
-            "enum": [
-                "W",
-                "WH",
-                "KW",
-                "KWH",
-                "KVARH",
-                "MW",
-                "MWH",
-                "STUECK",
-                "KUBIKMETER",
-                "STUNDE",
-                "TAG",
-                "MONAT",
-                "JAHR",
-                "PROZENT"
-            ],
-            "title": "Mengeneinheit",
-            "type": "string"
-        },
-        "Preisstatus": {
-            "description": "Statusinformation für Preise",
-            "enum": [
-                "VORLAEUFIG",
-                "ENDGUELTIG"
-            ],
-            "title": "Preisstatus",
-            "type": "string"
-        },
-        "Waehrungseinheit": {
-            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
-            "enum": [
-                "EUR",
-                "CT"
-            ],
-            "title": "Waehrungseinheit",
-            "type": "string"
-        }
+  "$defs": {
+    "Mengeneinheit": {
+      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
+      "enum": [
+        "W",
+        "WH",
+        "KW",
+        "KWH",
+        "KVARH",
+        "MW",
+        "MWH",
+        "STUECK",
+        "KUBIKMETER",
+        "STUNDE",
+        "TAG",
+        "MONAT",
+        "JAHR",
+        "PROZENT"
+      ],
+      "title": "Mengeneinheit",
+      "type": "string"
     },
-    "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
-    "properties": {
-        "bezugswert": {
-            "$ref": "#/definitions/Mengeneinheit"
-        },
-        "einheit": {
-            "$ref": "#/definitions/Waehrungseinheit"
-        },
-        "status": {
-            "$ref": "#/definitions/Preisstatus"
-        },
-        "wert": {
-            "title": "Wert",
-            "type": "number"
-        }
+    "Preisstatus": {
+      "description": "Statusinformation f\u00fcr Preise",
+      "enum": ["VORLAEUFIG", "ENDGUELTIG"],
+      "title": "Preisstatus",
+      "type": "string"
     },
-    "required": [
-        "wert",
-        "einheit",
-        "bezugswert"
-    ],
-    "title": "Preis",
-    "type": "object"
+    "Waehrungseinheit": {
+      "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
+      "enum": ["EUR", "CT"],
+      "title": "Waehrungseinheit",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_\n\n    ",
+  "properties": {
+    "bezugswert": {
+      "$ref": "#/$defs/Mengeneinheit"
+    },
+    "einheit": {
+      "$ref": "#/$defs/Waehrungseinheit"
+    },
+    "status": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Preisstatus"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "wert": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Wert"
+    }
+  },
+  "required": ["wert", "einheit", "bezugswert"],
+  "title": "Preis",
+  "type": "object"
 }

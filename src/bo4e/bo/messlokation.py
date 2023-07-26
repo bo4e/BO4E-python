@@ -18,6 +18,7 @@ from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
+from bo4e.validators import combinations_of_fields
 
 # Structure of a Messlokations-ID
 # Ländercode nach DIN ISO 3166 (2 Stellen)
@@ -102,20 +103,19 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError(f"The country code '{messlokations_id[0:2]}' is not a valid country code")
         return messlokations_id
 
-    # pylint: disable=no-self-argument
-    @model_validator(mode="after")  # type:ignore[arg-type]
-    @classmethod
-    def validate_address_info(cls, model: "Messlokation") -> "Messlokation":
-        """Checks that if an address is given, that there is only one valid address given"""
-        all_address_attributes = [
-            model.messadresse,
-            model.geoadresse,
-            model.katasterinformation,
-        ]
-        amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
-        if amount_of_given_address_infos > 1:
-            raise ValueError("More than one address information is given.")
-        return model
+    _validate_address_info = combinations_of_fields(
+        "messadresse",
+        "geoadresse",
+        "katasterinformation",
+        valid_combinations={
+            (1, 0, 0),
+            (0, 1, 0),
+            (0, 0, 1),
+            (0, 0, 0),
+        },
+        custom_error_message="More than one address information is given.",
+    )
+    "Checks that if an address is given, that there is only one valid address given"
 
     # pylint: disable=no-self-argument
     @model_validator(mode="after")  # type:ignore[arg-type]

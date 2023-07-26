@@ -4,10 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from pydantic import model_validator
-
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
+from bo4e.validators import combinations_of_fields
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -47,21 +46,25 @@ class Adresse(COM):
     #: Offizieller ISO-Landescode
     landescode: Landescode = Landescode.DE  # type:ignore
 
-    # pylint: disable=no-self-argument
-    @model_validator(mode="after")  # type:ignore[arg-type]
-    @classmethod
-    def strasse_xor_postfach(cls, model: "Adresse") -> "Adresse":
-        """
-        An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
-        This functions checks for these conditions of a valid address.
+    _strasse_xor_postfach = combinations_of_fields(
+        "strasse",
+        "hausnummer",
+        "postfach",
+        valid_combinations={
+            (1, 1, 0),
+            (0, 0, 1),
+            (0, 0, 0),
+        },
+        custom_error_message='You have to define either "strasse" and "hausnummer" or "postfach".',
+    )
+    """
+    An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
+    This functions checks for these conditions of a valid address.
 
-        Nur folgende Angabekombinationen sind (nach der Abfrage) möglich:
-        Straße           w   f   f
-        Hausnummer       w   f   f
-        Postfach         f   w   f
-        Postleitzahl     w   w   w
-        Ort              w   w   w
-        """
-        if model.strasse and model.hausnummer and not model.postfach or not model.strasse and not model.hausnummer:
-            return model
-        raise ValueError('You have to define either "strasse" and "hausnummer" or "postfach".')
+    Nur folgende Angabekombinationen sind (nach der Abfrage) möglich:
+    Straße           w   f   f
+    Hausnummer       w   f   f
+    Postfach         f   w   f
+    Postleitzahl     w   w   w
+    Ort              w   w   w
+    """
