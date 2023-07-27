@@ -24,11 +24,12 @@ pyhumps==3.8.0
     # via -r docs/requirements.in
 requests==2.31.0
     # via -r docs/requirements.in
-typeguard==4.0.0
+typeguard==4.0.1
     # via -r docs/requirements.in
 typing-extensions==4.7.1
     # via
     #   pydantic
     #   pydantic-core
+    #   typeguard
 urllib3==1.26.10
     # via requests
