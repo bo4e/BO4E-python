@@ -3,17 +3,63 @@ Contains validators for BO s and COM s classes.
 """
 import re
 from datetime import datetime
-from typing import Optional, Protocol
+from typing import Any, Callable, Optional, Protocol, TypeVar
 
+from pydantic import BaseModel, model_validator
+from pydantic._internal import _decorators
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-
-# pylint: disable=unused-argument
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
+ModelT = TypeVar("ModelT", bound=BaseModel)
 
-def einheit_only_for_abschlagstyp_absolut(cls, value: Waehrungseinheit, validation_info: ValidationInfo) -> Waehrungseinheit:  # type: ignore[no-untyped-def]
+
+def combinations_of_fields(
+    *fields: str,
+    valid_combinations: set[tuple[int, ...]],
+    custom_error_message: Optional[str] = None,
+    custom_boolean_converter: Optional[Callable[[Any], bool]] = None,
+) -> _decorators.PydanticDescriptorProxy[_decorators.ModelValidatorDecoratorInfo]:
+    """
+    A validator to check if a combination of fields is supplied with given allowed combinations.
+    I.e. if you have a model with optional fields but only certain combinations of fields are allowed,
+    you can use this validator to check if the supplied combination is valid.
+
+    Note that the function returns a PydanticDescriptorProxy i.e. you only have to include something like
+    `_my_validator = combinations_of_fields(...)` without using a call to e.g. `model_validator`.
+
+    :param fields: the fields that should be checked
+    :param valid_combinations: a set of tuples of 0 and 1 that indicate which fields are required. The length of the
+        tuples should be equal to the number of fields. The order should be the same as the order of the fields.
+        Otherwise, it could produce unexpected results.
+    :param custom_error_message: a custom error message to be raised if the combination is invalid
+    :param custom_boolean_converter: a custom function to convert the values of the fields to boolean values. The
+        function should return True if the value is considered to be supplied and False otherwise. The default is to
+        check if the value is not None and if the value is a string, if it is not empty.
+    """
+    if custom_boolean_converter is not None:
+        supplied = custom_boolean_converter
+    else:
+
+        def supplied(value: Any) -> bool:
+            return value is not None and (not isinstance(value, str) or value != "")
+
+    def validator(self: ModelT) -> ModelT:
+        bools = tuple(int(supplied(getattr(self, field))) for field in fields)
+        if bools in valid_combinations:
+            return self
+        if custom_error_message:
+            raise ValueError(custom_error_message)
+        raise ValueError(f"Invalid combination of fields {fields} for {self!r}: {bools}")
+
+    return model_validator(mode="after")(validator)
+
+
+# pylint:disable=unused-argument
+def einheit_only_for_abschlagstyp_absolut(  # type: ignore[no-untyped-def]
+    cls, value: Waehrungseinheit, validation_info: ValidationInfo
+) -> Waehrungseinheit:
     """
     Check that einheit is only there if abschlagstyp is absolut.
     Currently, (2021-12-15) only used in COM AufAbschlag.
@@ -63,7 +109,9 @@ _malo_id_pattern = re.compile(r"^[1-9]\d{10}$")
 
 
 # pylint: disable=unused-argument
-def validate_marktlokations_id(cls, marktlokations_id: str, values: ValidationInfo) -> str:  # type: ignore[no-untyped-def]
+def validate_marktlokations_id(  # type: ignore[no-untyped-def]
+    cls, marktlokations_id: str, values: ValidationInfo
+) -> str:
     """
     A validator for marktlokations IDs
     """
