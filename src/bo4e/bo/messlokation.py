@@ -3,7 +3,7 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import Annotated, List, Optional
+from typing import Annotated, Any, List, Optional
 
 from iso3166 import countries
 from pydantic import Field, field_validator, model_validator
@@ -118,10 +118,14 @@ class Messlokation(Geschaeftsobjekt):
     "Checks that if an address is given, that there is only one valid address given"
 
     # pylint: disable=no-self-argument
-    @model_validator(mode="after")  # type:ignore[arg-type]
+    @model_validator(mode="before")  # type:ignore[arg-type]
     @classmethod
-    def validate_grundzustaendiger_x_codenr(cls, model: "Messlokation") -> "Messlokation":
+    def validate_grundzustaendiger_x_codenr(cls, data: Any) -> dict[str, Any]:
         """Checks that if a codenr is given, that there is only one valid codenr given."""
-        if model.grundzustaendiger_msb_codenr is not None and model.grundzustaendiger_msbim_codenr is not None:
+        assert isinstance(data, dict), "data is not a dict"
+        if (
+            data.get("grundzustaendiger_msb_codenr", None) is not None
+            and data.get("grundzustaendiger_msbim_codenr", None) is not None
+        ):
             raise ValueError("More than one codenr is given.")
-        return model
+        return data
