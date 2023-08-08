@@ -45,15 +45,15 @@ def combinations_of_fields(
         def supplied(value: Any) -> bool:
             return value is not None and (not isinstance(value, str) or value != "")
 
-    def validator(self: ModelT) -> ModelT:
-        bools = tuple(int(supplied(getattr(self, field))) for field in fields)
+    def validator(cls: type[ModelT], data: dict[str, Any]) -> dict[str, Any]:
+        bools = tuple(int(supplied(data.get(field, None))) for field in fields)
         if bools in valid_combinations:
-            return self
+            return data
         if custom_error_message:
             raise ValueError(custom_error_message)
-        raise ValueError(f"Invalid combination of fields {fields} for {self!r}: {bools}")
+        raise ValueError(f"Invalid combination of fields {fields} for {cls!r}: {bools}")
 
-    return model_validator(mode="after")(validator)
+    return model_validator(mode="before")(validator)
 
 
 # pylint:disable=unused-argument
