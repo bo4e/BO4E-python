@@ -118,7 +118,7 @@ class Messlokation(Geschaeftsobjekt):
     "Checks that if an address is given, that there is only one valid address given"
 
     # pylint: disable=no-self-argument
-    @model_validator(mode="before")  # type:ignore[arg-type]
+    @model_validator(mode="before")
     @classmethod
     def validate_grundzustaendiger_x_codenr(cls, data: Any) -> dict[str, Any]:
         """Checks that if a codenr is given, that there is only one valid codenr given."""
