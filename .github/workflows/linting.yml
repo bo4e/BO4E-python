@@ -7,7 +7,7 @@ jobs:
     strategy:
       matrix:
         python-version: ["3.11"]
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, windows-latest]
         linter-env: ["linting", "type_check", "dev"]
     steps:
       - uses: actions/checkout@v3
