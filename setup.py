@@ -2,7 +2,7 @@ import sys
 
 from setuptools import setup
 
-min_version = (3, 8)
+min_version = (3, 10)
 
 if sys.version_info < min_version:
     error = f"""
