@@ -815,7 +815,8 @@
         "TAG",
         "MONAT",
         "JAHR",
-        "PROZENT"
+        "PROZENT",
+        "KVAR"
       ],
       "title": "Mengeneinheit",
       "type": "string"

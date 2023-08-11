@@ -22,3 +22,4 @@ class Mengeneinheit(StrEnum):
     MONAT = "MONAT"  #: Monat
     JAHR = "JAHR"  #: Jahr
     PROZENT = "PROZENT"  #: Prozent
+    KVAR = "KVAR"  #: Kilovar
