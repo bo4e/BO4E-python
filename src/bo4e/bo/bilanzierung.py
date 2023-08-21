@@ -85,7 +85,7 @@ class Bilanzierung(Geschaeftsobjekt):
 
     @field_validator("marktlokations_id")
     @classmethod
-    def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> str:
+    def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> Optional[str]:
         if marktlokations_id is None:
             return marktlokations_id
         return validate_marktlokations_id(cls, marktlokations_id)
