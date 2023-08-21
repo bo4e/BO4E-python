@@ -13,6 +13,7 @@ class Tagesparameter(COM):
     Speichert Informationen zu einer tagesparameter abhängigen Messstelle. z.B. den Namen einer Klimazone oder die ID
     der Wetterstation für die Temperaturmessstelle
     """
+
     # optional attributes
     #: Qualifier der Klimazone, e.g. 7624q
     klimazone: Optional[str] = None

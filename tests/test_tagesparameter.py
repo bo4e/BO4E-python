@@ -27,7 +27,7 @@ class TestTagesparameter:
                     "dienstanbieter": "ZT1",
                     "herausgeber": "BDEW",
                 },
-                id="full example"
+                id="full example",
             ),
             pytest.param(
                 Tagesparameter(),
@@ -37,7 +37,7 @@ class TestTagesparameter:
                     "dienstanbieter": None,
                     "herausgeber": None,
                 },
-                id="min example"
+                id="min example",
             ),
         ],
     )

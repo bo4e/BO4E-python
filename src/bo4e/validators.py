@@ -70,6 +70,7 @@ def einheit_only_for_abschlagstyp_absolut(  # type: ignore[no-untyped-def]
         raise ValueError("Only state einheit if auf_abschlagstyp is absolute.")
     return value
 
+
 # pylint:disable=unused-argument
 def tagesparameter_given_for_tagesparam_lastprofil(  # type: ignore[no-untyped-def]
     cls, value: Profilart, validation_info: ValidationInfo
@@ -79,7 +80,7 @@ def tagesparameter_given_for_tagesparam_lastprofil(  # type: ignore[no-untyped-d
     Currently, (2023-08-21) only used in COM Lastprofil.
     """
     values = validation_info.data  # type:ignore[attr-defined]
-    if (value==Profilart.ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL) and not values["tagesparameter"]:
+    if (value == Profilart.ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL) and not values["tagesparameter"]:
         raise ValueError("Lastprofil depends on Tagesparameter. Tagesparameter not given.")
     return value
 

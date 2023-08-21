@@ -8,6 +8,7 @@ class WahlrechtPrognosegrundlage(StrEnum):
     """
     Wahlrecht der Prognosegrundlage der Marktlokation
     """
+
     DURCH_LF = "DURCH_LF"  #: Wahlrecht durch LF gegeben, remark: SG10 CAV
     DURCH_LF_NICHT_GEGEBEN = "DURCH_LF_NICHT_GEGEBEN"  #: Wahlrecht durch LF nicht gegeben, remark: CAV + ZE2
     NICHT_WEGEN_GROSSEN_VERBRAUCHS = "NICHT_WEGEN_GROSSEN_VERBRAUCHS"  # : kein WR, Verbrauch>10k, CAV+ Z55

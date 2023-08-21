@@ -23,36 +23,29 @@ from tests.serialization_helper import assert_serialization_roundtrip
 #:  full example
 example_bilanzierung = Bilanzierung(
     marktlokations_id="51238696781",
-    lastprofil=[Lastprofil(
-        bezeichnung="foo",
-        profilschar="foo2",
-        verfahren=Profilverfahren.SYNTHETISCH,
-        einspeisung=True,
-        tagesparameter=Tagesparameter(
-            klimazone="7624q",
-            temperaturmessstelle="1234x",
-            dienstanbieter="ZT1",
+    lastprofil=[
+        Lastprofil(
+            bezeichnung="foo",
+            profilschar="foo2",
+            verfahren=Profilverfahren.SYNTHETISCH,
+            einspeisung=True,
+            tagesparameter=Tagesparameter(
+                klimazone="7624q",
+                temperaturmessstelle="1234x",
+                dienstanbieter="ZT1",
+                herausgeber="BDEW",
+            ),
+            profilart=Profilart.ART_LASTPROFIL,
             herausgeber="BDEW",
-        ),
-        profilart=Profilart.ART_LASTPROFIL,
-        herausgeber="BDEW",
-    )],
+        )
+    ],
     bilanzierungsbeginn=datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
     bilanzierungsende=datetime(2023, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
     bilanzkreis="foo",
-    jahresverbrauchsprognose=Menge(
-        wert=Decimal(3.41),
-        einheit=Mengeneinheit.MWH
-    ),
-    temperatur_arbeit=Menge(
-        wert=Decimal(3.41),
-        einheit=Mengeneinheit.MWH
-    ),
+    jahresverbrauchsprognose=Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH),
+    temperatur_arbeit=Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH),
     # todo: check einheiten
-    kundenwert=Menge(
-        wert=Decimal(3.41),
-        einheit=Mengeneinheit.MWH
-    ),
+    kundenwert=Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH),
     verbrauchsaufteilung=1.5,
     zeitreihentyp=Zeitreihentyp.EGS,
     aggregationsverantwortung=Aggregationsverantwortung.VNB,
@@ -77,20 +70,22 @@ class TestBilanzierung:
                     "boTyp": BoTyp.BILANZIERUNG,
                     "externeReferenzen": [],
                     "marktlokationsId": "51238696781",
-                    "lastprofil": [{
-                        "bezeichnung": "foo",
-                        "profilschar": "foo2",
-                        "verfahren": Profilverfahren.SYNTHETISCH,
-                        "einspeisung": True,
-                        "tagesparameter": {
-                            "klimazone": "7624q",
-                            "temperaturmessstelle": "1234x",
-                            "dienstanbieter": "ZT1",
+                    "lastprofil": [
+                        {
+                            "bezeichnung": "foo",
+                            "profilschar": "foo2",
+                            "verfahren": Profilverfahren.SYNTHETISCH,
+                            "einspeisung": True,
+                            "tagesparameter": {
+                                "klimazone": "7624q",
+                                "temperaturmessstelle": "1234x",
+                                "dienstanbieter": "ZT1",
+                                "herausgeber": "BDEW",
+                            },
+                            "profilart": Profilart.ART_LASTPROFIL,
                             "herausgeber": "BDEW",
-                        },
-                        "profilart": Profilart.ART_LASTPROFIL,
-                        "herausgeber": "BDEW",
-                    }],
+                        }
+                    ],
                     "bilanzierungsbeginn": datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
                     "bilanzierungsende": datetime(2023, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
                     "bilanzkreis": "foo",
@@ -116,7 +111,7 @@ class TestBilanzierung:
                     "prioritaet": 1,
                     "grundWahlrechtPrognosegrundlage": WahlrechtPrognosegrundlage.DURCH_LF_NICHT_GEGEBEN,
                 },
-                id="full example"
+                id="full example",
             ),
             pytest.param(
                 Bilanzierung(),
@@ -143,7 +138,7 @@ class TestBilanzierung:
                     "prioritaet": None,
                     "grundWahlrechtPrognosegrundlage": None,
                 },
-                id="min example"
+                id="min example",
             ),
         ],
     )

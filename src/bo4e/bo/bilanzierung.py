@@ -20,6 +20,7 @@ class Bilanzierung(Geschaeftsobjekt):
     """
     Bilanzierungs BO
     """
+
     bo_typ: BoTyp = BoTyp.BILANZIERUNG  # added to botyp.py
 
     # optional attributes

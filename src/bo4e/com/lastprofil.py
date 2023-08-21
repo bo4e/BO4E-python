@@ -16,6 +16,7 @@ class Lastprofil(COM):
     """
     Lastprofil
     """
+
     # optional attributes
     #: Bezeichnung des Profils, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
     bezeichnung: Optional[str] = None

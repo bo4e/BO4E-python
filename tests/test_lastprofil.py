@@ -46,7 +46,7 @@ class TestLastprofil:
                     "profilart": Profilart.ART_LASTPROFIL,
                     "herausgeber": "BDEW",
                 },
-                id="max param test"
+                id="max param test",
             ),
             pytest.param(
                 Lastprofil(),
@@ -59,7 +59,7 @@ class TestLastprofil:
                     "profilart": None,
                     "herausgeber": None,
                 },
-                id="min param test"
+                id="min param test",
             ),
         ],
     )
