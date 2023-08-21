@@ -4,6 +4,8 @@ Contains class Bilanzierung
 from datetime import datetime
 from typing import Optional
 
+from pydantic import field_validator
+
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.lastprofil import Lastprofil
 from bo4e.com.menge import Menge
@@ -14,6 +16,7 @@ from bo4e.enum.profiltyp import Profiltyp
 from bo4e.enum.prognosegrundlage import Prognosegrundlage
 from bo4e.enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
 from bo4e.enum.zeitreihentyp import Zeitreihentyp
+from bo4e.validators import validate_marktlokations_id
 
 
 class Bilanzierung(Geschaeftsobjekt):
@@ -27,11 +30,8 @@ class Bilanzierung(Geschaeftsobjekt):
     #:  Welche Marktlokation
     marktlokations_id: Optional[str] = None
 
-    ###
     # todo: optional/add marktlokations_id check?
-
     # _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
-    ###
 
     #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
     lastprofil: list[Optional[Lastprofil]] = []
@@ -82,3 +82,10 @@ class Bilanzierung(Geschaeftsobjekt):
     prioritaet: Optional[int] = None
     #: Grund Wahlrecht der Prognosegrundlage(true=Wahlrecht beim Lieferanten vorhanden)
     grund_wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
+
+    @field_validator("marktlokations_id")
+    @classmethod
+    def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> str:
+        if marktlokations_id is None:
+            return marktlokations_id
+        return validate_marktlokations_id(cls, marktlokations_id)

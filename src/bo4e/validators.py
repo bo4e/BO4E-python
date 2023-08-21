@@ -80,7 +80,7 @@ def tagesparameter_given_for_tagesparam_lastprofil(  # type: ignore[no-untyped-d
     Currently, (2023-08-21) only used in COM Lastprofil.
     """
     values = validation_info.data  # type:ignore[attr-defined]
-    if (value == Profilart.ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL) and not values["tagesparameter"]:
+    if (value is Profilart.ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL) and not values["tagesparameter"]:
         raise ValueError("Lastprofil depends on Tagesparameter. Tagesparameter not given.")
     return value
 
@@ -124,9 +124,7 @@ _malo_id_pattern = re.compile(r"^[1-9]\d{10}$")
 
 
 # pylint: disable=unused-argument
-def validate_marktlokations_id(  # type: ignore[no-untyped-def]
-    cls, marktlokations_id: str, values: ValidationInfo
-) -> str:
+def validate_marktlokations_id(cls, marktlokations_id: str) -> str:  # type: ignore[no-untyped-def]
     """
     A validator for marktlokations IDs
     """

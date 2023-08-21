@@ -1,8 +1,9 @@
 from datetime import datetime, timezone
-from typing import Any, Dict
+from typing import Any, Dict, Tuple
 
 import pytest
 from _decimal import Decimal
+from pydantic import ValidationError
 
 from bo4e.bo.bilanzierung import Bilanzierung
 from bo4e.com.lastprofil import Lastprofil
@@ -147,3 +148,36 @@ class TestBilanzierung:
         Test de-/serialisation of Bilanzierung with minimal attributes.
         """
         assert_serialization_roundtrip(bilanzierung, expected_json_dict)
+
+    @pytest.mark.parametrize(
+        "malo_id_valid",
+        [
+            ("51238696781", True),
+            ("41373559241", True),
+            ("56789012345", True),
+            ("52935155442", True),
+            ("12345678910", False),
+            ("asdasd", False),
+            ("   ", False),
+            ("  asdasdasd ", False),
+            ("keine malo id", False),
+            (None, True),
+            ("", False),
+        ],
+    )
+    def test_id_validation(self, malo_id_valid: Tuple[str, bool]) -> None:
+        """
+        Test different MaLos.
+        Field optional -> None values are allowed
+        """
+
+        def _instantiate_malo(malo_id: str) -> None:
+            _ = Bilanzierung(
+                marktlokations_id=malo_id,
+            )
+
+        if not malo_id_valid[1]:
+            with pytest.raises(ValidationError):
+                _instantiate_malo(malo_id_valid[0])
+        else:
+            _instantiate_malo(malo_id_valid[0])
