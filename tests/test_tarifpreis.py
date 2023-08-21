@@ -47,12 +47,9 @@ class TestTarifpreis:
                 preistyp=Preistyp.ARBEITSPREIS_HT,
             )
 
-        # I don't really know why there are now two validation errors.
-        # I created an issue for this: https://github.com/pydantic/pydantic/issues/6805
-        assert "2 validation errors" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
         assert "type=decimal_parsing" in str(excinfo.value)
-        assert "type=is_instance_of" in str(excinfo.value)
 
     def test_missing_required_attribute(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

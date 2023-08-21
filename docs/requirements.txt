@@ -16,15 +16,15 @@ iso3166==2.1.1
     # via -r docs/requirements.in
 networkx==3.1
     # via -r docs/requirements.in
-pydantic==2.1.1
+pydantic==2.2.1
     # via -r docs/requirements.in
-pydantic-core==2.4.0
+pydantic-core==2.6.1
     # via pydantic
 pyhumps==3.8.0
     # via -r docs/requirements.in
 requests==2.31.0
     # via -r docs/requirements.in
-typeguard==4.1.0
+typeguard==4.1.2
     # via -r docs/requirements.in
 typing-extensions==4.7.1
     # via
