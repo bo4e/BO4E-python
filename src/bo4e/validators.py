@@ -10,6 +10,7 @@ from pydantic._internal import _decorators
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
+from bo4e.enum.profilart import Profilart
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 ModelT = TypeVar("ModelT", bound=BaseModel)
@@ -67,6 +68,19 @@ def einheit_only_for_abschlagstyp_absolut(  # type: ignore[no-untyped-def]
     values = validation_info.data  # type:ignore[attr-defined]
     if value and (not values["auf_abschlagstyp"] or (values["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
         raise ValueError("Only state einheit if auf_abschlagstyp is absolute.")
+    return value
+
+# pylint:disable=unused-argument
+def tagesparameter_given_for_tagesparam_lastprofil(  # type: ignore[no-untyped-def]
+    cls, value: Profilart, validation_info: ValidationInfo
+) -> Profilart:
+    """
+    Check that tagesdparameter is given for tagesparam.abh. Profil
+    Currently, (2023-08-21) only used in COM Lastprofil.
+    """
+    values = validation_info.data  # type:ignore[attr-defined]
+    if (value==Profilart.ART_TAGESPARAMETERABHAENGIGES_LASTPROFIL) and not values["tagesparameter"]:
+        raise ValueError("Lastprofil depends on Tagesparameter. Tagesparameter not given.")
     return value
 
 
