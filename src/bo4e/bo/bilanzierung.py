@@ -79,6 +79,7 @@ class Bilanzierung(Geschaeftsobjekt):
     Validator für marktlokations_id.
     Prüft, ob marktlokations_id, wenn gegeben, formal richtig ist.   
     """
+
     @field_validator("marktlokations_id")
     @classmethod
     def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> Optional[str]:
