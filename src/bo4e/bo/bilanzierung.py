@@ -30,9 +30,6 @@ class Bilanzierung(Geschaeftsobjekt):
     #:  Welche Marktlokation
     marktlokations_id: Optional[str] = None
 
-    # todo: optional/add marktlokations_id check?
-    # _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
-
     #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
     lastprofil: list[Optional[Lastprofil]] = []
     #: Inklusiver Start der Bilanzierung
