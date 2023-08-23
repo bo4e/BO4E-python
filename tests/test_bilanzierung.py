@@ -156,12 +156,14 @@ class TestBilanzierung:
             ("41373559241", True),
             ("56789012345", True),
             ("52935155442", True),
-            ("12345678910", False),
+            ("12345678910", False),  # Prüfsumme falsch
+            ("529351554422", False),  # zu lang
+            ("5293515544", False),  # zu kurz
+            ("5293v15a442", False),  # Mix aus Zahlen und Buchstaben
             ("asdasd", False),
             ("   ", False),
             ("  asdasdasd ", False),
-            ("keine malo id", False),
-            (None, True),
+            (None, True), # malo_id not required
             ("", False),
         ],
     )
