@@ -26,18 +26,14 @@ class Bilanzierung(Geschaeftsobjekt):
 
     bo_typ: BoTyp = BoTyp.BILANZIERUNG  # added to botyp.py
 
-    # optional attributes
     #:  Welche Marktlokation
     marktlokations_id: Optional[str] = None
-
     #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
     lastprofil: list[Optional[Lastprofil]] = []
     #: Inklusiver Start der Bilanzierung
     bilanzierungsbeginn: Optional[datetime] = None
     #: Exklusives Ende der Bilanzierung
     bilanzierungsende: Optional[datetime] = None
-    # todo: add tests?
-
     #: Bilanzkreis
     bilanzkreis: Optional[str] = None
     #: Jahresverbrauchsprognose

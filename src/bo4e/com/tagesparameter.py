@@ -14,7 +14,6 @@ class Tagesparameter(COM):
     der Wetterstation für die Temperaturmessstelle
     """
 
-    # optional attributes
     #: Qualifier der Klimazone, e.g. 7624q
     klimazone: Optional[str] = None
     #: Qualifier der Temperaturmessstelle, e.g. 1234x
