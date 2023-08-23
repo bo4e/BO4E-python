@@ -1,12 +1,12 @@
 """
-Contains class Wahlrechtsprognosgrundlage
+Contains Enums for Wahlrechtsprognosgrundlage.
 """
 from bo4e.enum.strenum import StrEnum
 
 
 class WahlrechtPrognosegrundlage(StrEnum):
     """
-    Wahlrecht der Prognosegrundlage der Marktlokation
+    Wahlrecht der Prognosegrundlage der Marktlokation.
     """
 
     DURCH_LF = "DURCH_LF"  #: Wahlrecht durch LF gegeben, remark: SG10 CAV

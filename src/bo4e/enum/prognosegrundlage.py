@@ -1,12 +1,12 @@
 """
-Contains class Prognosegrundlage
+Contains Enums for Prognosegrundlage.
 """
 from bo4e.enum.strenum import StrEnum
 
 
 class Prognosegrundlage(StrEnum):
     """
-    Prognosegrundlage (WERTE, PROFILE)
+    Prognosegrundlage (WERTE, PROFILE).
     """
 
     WERTE = "WERTE"  #: Prognose auf Basis von Werten

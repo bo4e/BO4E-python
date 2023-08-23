@@ -1,5 +1,5 @@
 """
-Contains class Fallgruppenzuordnung
+Contains Enums for Fallgruppenzuordnung
 """
 
 from bo4e.enum.strenum import StrEnum

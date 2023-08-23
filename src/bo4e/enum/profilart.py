@@ -1,5 +1,5 @@
 """
-Contains class Profilart
+Contains Enums for Profilart.
 """
 
 from bo4e.enum.strenum import StrEnum
@@ -7,7 +7,7 @@ from bo4e.enum.strenum import StrEnum
 
 class Profilart(StrEnum):
     """
-    Profilart: temperaturabh./Standardlastprofil
+    Profilart: temperaturabh./Standardlastprofil.
     """
 
     ART_STANDARDLASTPROFIL = "ART_STANDARDLASTPROFIL"  #: ART_STANDARDLASTPROFIL, Z02
