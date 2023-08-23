@@ -3,6 +3,7 @@ from typing import Any, Dict
 
 import pytest
 from _decimal import Decimal
+from pydantic import ValidationError
 
 from bo4e.com.abweichung import Abweichung
 from bo4e.com.abweichungsposition import Abweichungsposition
@@ -41,9 +42,9 @@ example_full_avisposition = Avisposition(
             abweichungsgrund=Abweichungsgrund.SONSTIGER_ABWEICHUNGSGRUND,
             abweichungsgrund_bemerkung="sonst",
             zugehoerige_rechnung="458011",
-            abschlagsrechnung="foo8",
-            abweichungsgrund_code="foo9",
-            abweichungsgrund_codeliste="foo0",
+            abschlagsrechnung="4580112",
+            abweichungsgrund_code="28",
+            abweichungsgrund_codeliste="G_0081",
         ),
     ],
     positionen=[
@@ -51,18 +52,18 @@ example_full_avisposition = Avisposition(
             positionsnummer="1",
             abweichungspositionen=[
                 Abweichungsposition(
-                    abweichungsgrund_code="foo11",
-                    abweichungsgrund_codeliste="foo12",
-                    abweichungsgrund_bemerkung="foo13",
+                    abweichungsgrund_code="foo",
+                    abweichungsgrund_codeliste="foo",
+                    abweichungsgrund_bemerkung="foo",
                     zugehoerige_rechnung="458011",
-                    zugehoerige_bestellung="foo15",
+                    zugehoerige_bestellung="foo",
                 ),
                 Abweichungsposition(
-                    abweichungsgrund_code="foo21",
-                    abweichungsgrund_codeliste="foo22",
-                    abweichungsgrund_bemerkung="foo23",
+                    abweichungsgrund_code="foo",
+                    abweichungsgrund_codeliste="foo",
+                    abweichungsgrund_bemerkung="foo",
                     zugehoerige_rechnung="458011",
-                    zugehoerige_bestellung="foo25",
+                    zugehoerige_bestellung="foo",
                 ),
             ],
         ),
@@ -70,18 +71,11 @@ example_full_avisposition = Avisposition(
             positionsnummer="2",
             abweichungspositionen=[
                 Abweichungsposition(
-                    abweichungsgrund_code="foo111",
-                    abweichungsgrund_codeliste="foo112",
-                    abweichungsgrund_bemerkung="foo113",
+                    abweichungsgrund_code="foo",
+                    abweichungsgrund_codeliste="foo",
+                    abweichungsgrund_bemerkung="foo",
                     zugehoerige_rechnung="458011",
-                    zugehoerige_bestellung="foo115",
-                ),
-                Abweichungsposition(
-                    abweichungsgrund_code="foo221",
-                    abweichungsgrund_codeliste="foo222",
-                    abweichungsgrund_bemerkung="foo223",
-                    zugehoerige_rechnung="458011",
-                    zugehoerige_bestellung="foo225",
+                    zugehoerige_bestellung="foo",
                 ),
             ],
         ),
@@ -136,9 +130,9 @@ class TestAvisposition:
                             "abweichungsgrund": Abweichungsgrund.SONSTIGER_ABWEICHUNGSGRUND,
                             "abweichungsgrundBemerkung": "sonst",
                             "zugehoerigeRechnung": "458011",
-                            "abschlagsrechnung": "foo8",
-                            "abweichungsgrundCode": "foo9",
-                            "abweichungsgrundCodeliste": "foo0",
+                            "abschlagsrechnung": "4580112",
+                            "abweichungsgrundCode": "28",
+                            "abweichungsgrundCodeliste": "G_0081",
                         },
                     ],
                     "positionen": [
@@ -146,18 +140,18 @@ class TestAvisposition:
                             "positionsnummer": "1",
                             "abweichungspositionen": [
                                 {
-                                    "abweichungsgrundCode": "foo11",
-                                    "abweichungsgrundCodeliste": "foo12",
-                                    "abweichungsgrundBemerkung": "foo13",
+                                    "abweichungsgrundCode": "foo",
+                                    "abweichungsgrundCodeliste": "foo",
+                                    "abweichungsgrundBemerkung": "foo",
                                     "zugehoerigeRechnung": "458011",
-                                    "zugehoerigeBestellung": "foo15",
+                                    "zugehoerigeBestellung": "foo",
                                 },
                                 {
-                                    "abweichungsgrundCode": "foo21",
-                                    "abweichungsgrundCodeliste": "foo22",
-                                    "abweichungsgrundBemerkung": "foo23",
+                                    "abweichungsgrundCode": "foo",
+                                    "abweichungsgrundCodeliste": "foo",
+                                    "abweichungsgrundBemerkung": "foo",
                                     "zugehoerigeRechnung": "458011",
-                                    "zugehoerigeBestellung": "foo25",
+                                    "zugehoerigeBestellung": "foo",
                                 },
                             ],
                         },
@@ -165,18 +159,11 @@ class TestAvisposition:
                             "positionsnummer": "2",
                             "abweichungspositionen": [
                                 {
-                                    "abweichungsgrundCode": "foo111",
-                                    "abweichungsgrundCodeliste": "foo112",
-                                    "abweichungsgrundBemerkung": "foo113",
+                                    "abweichungsgrundCode": "foo",
+                                    "abweichungsgrundCodeliste": "foo",
+                                    "abweichungsgrundBemerkung": "foo",
                                     "zugehoerigeRechnung": "458011",
-                                    "zugehoerigeBestellung": "foo115",
-                                },
-                                {
-                                    "abweichungsgrundCode": "foo221",
-                                    "abweichungsgrundCodeliste": "foo222",
-                                    "abweichungsgrundBemerkung": "foo223",
-                                    "zugehoerigeRechnung": "458011",
-                                    "zugehoerigeBestellung": "foo225",
+                                    "zugehoerigeBestellung": "foo",
                                 },
                             ],
                         },
@@ -212,3 +199,11 @@ class TestAvisposition:
         Test de-/serialisation of Avisposition with minimal attributes.
         """
         assert_serialization_roundtrip(avisposition, expected_json_dict)
+
+    def test_missing_required_attribute(self) -> None:
+        """
+        Check if missing required attributes are identified correctly
+        """
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Avisposition()  # type: ignore[call-arg]
+        assert "5 validation errors" in str(excinfo.value)
