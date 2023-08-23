@@ -29,10 +29,10 @@ class Lastprofil(COM):
     tagesparameter: Optional[Tagesparameter] = None
     #: Profilart des Lastprofils, e.g. ART_STANDARDLASTPROFIL
     profilart: Optional[Profilart] = None
-    _tagesparameter_check = field_validator("profilart")(tagesparameter_given_for_tagesparam_lastprofil)
     """ 
     Field validator für Profilart.
     Wenn die Profilart tagesparameterabh. ist, muss ein Tagesparameter gegeben sein.
     """
+    _tagesparameter_check = field_validator("profilart")(tagesparameter_given_for_tagesparam_lastprofil)
     #: Herausgeber des Lastprofil-Codes, e.g. BDEW
     herausgeber: Optional[str] = None
