@@ -1,189 +1,206 @@
 {
-  "$defs": {
-    "Mengeneinheit": {
-      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
-      "enum": [
-        "W",
-        "WH",
-        "KW",
-        "KWH",
-        "KVARH",
-        "MW",
-        "MWH",
-        "STUECK",
-        "KUBIKMETER",
-        "STUNDE",
-        "TAG",
-        "MONAT",
-        "JAHR",
-        "PROZENT"
-      ],
-      "title": "Mengeneinheit",
-      "type": "string"
-    },
-    "Preisstaffel": {
-      "additionalProperties": true,
-      "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
-      "properties": {
-        "einheitspreis": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Einheitspreis"
+    "$defs": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
         },
-        "sigmoidparameter": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Sigmoidparameter"
+        "Preisstaffel": {
+            "additionalProperties": true,
+            "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
+            "properties": {
+                "einheitspreis": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Einheitspreis"
+                },
+                "sigmoidparameter": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sigmoidparameter"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "staffelgrenzeBis": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Staffelgrenzebis"
+                },
+                "staffelgrenzeVon": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Staffelgrenzevon"
+                }
             },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
+            "required": [
+                "einheitspreis",
+                "staffelgrenzeVon",
+                "staffelgrenzeBis"
+            ],
+            "title": "Preisstaffel",
+            "type": "object"
         },
-        "staffelgrenzeBis": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Staffelgrenzebis"
+        "Preistyp": {
+            "description": "Aufschl\u00fcsselung der Preistypen in Tarifen.",
+            "enum": [
+                "GRUNDPREIS",
+                "ARBEITSPREIS_EINTARIF",
+                "ARBEITSPREIS_HT",
+                "ARBEITSPREIS_NT",
+                "LEISTUNGSPREIS",
+                "MESSPREIS",
+                "ENTGELT_ABLESUNG",
+                "ENTGELT_ABRECHNUNG",
+                "ENTGELT_MSB",
+                "PROVISION"
+            ],
+            "title": "Preistyp",
+            "type": "string"
         },
-        "staffelgrenzeVon": {
-          "anyOf": [
-            {
-              "type": "number"
+        "Sigmoidparameter": {
+            "additionalProperties": true,
+            "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+            "properties": {
+                "A": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "A"
+                },
+                "B": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "B"
+                },
+                "C": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "C"
+                },
+                "D": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "D"
+                }
             },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Staffelgrenzevon"
+            "required": [
+                "A",
+                "B",
+                "C",
+                "D"
+            ],
+            "title": "Sigmoidparameter",
+            "type": "object"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
         }
-      },
-      "required": ["einheitspreis", "staffelgrenzeVon", "staffelgrenzeBis"],
-      "title": "Preisstaffel",
-      "type": "object"
     },
-    "Preistyp": {
-      "description": "Aufschl\u00fcsselung der Preistypen in Tarifen.",
-      "enum": [
-        "GRUNDPREIS",
-        "ARBEITSPREIS_EINTARIF",
-        "ARBEITSPREIS_HT",
-        "ARBEITSPREIS_NT",
-        "LEISTUNGSPREIS",
-        "MESSPREIS",
-        "ENTGELT_ABLESUNG",
-        "ENTGELT_ABRECHNUNG",
-        "ENTGELT_MSB",
-        "PROVISION"
-      ],
-      "title": "Preistyp",
-      "type": "string"
-    },
-    "Sigmoidparameter": {
-      "additionalProperties": true,
-      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
-      "properties": {
-        "A": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "A"
+    "additionalProperties": true,
+    "description": "\n    Mit dieser Komponente k\u00f6nnen Tarifpreise verschiedener Typen abgebildet werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifpreisposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_\n\n    ",
+    "properties": {
+        "bezugseinheit": {
+            "$ref": "#/$defs/Mengeneinheit"
         },
-        "B": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "B"
+        "einheit": {
+            "$ref": "#/$defs/Waehrungseinheit"
         },
-        "C": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "C"
+        "mengeneinheitstaffel": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
-        "D": {
-          "anyOf": [
-            {
-              "type": "number"
+        "preisstaffeln": {
+            "items": {
+                "$ref": "#/$defs/Preisstaffel"
             },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "D"
+            "minItems": 1,
+            "title": "Preisstaffeln",
+            "type": "array"
+        },
+        "preistyp": {
+            "$ref": "#/$defs/Preistyp"
         }
-      },
-      "required": ["A", "B", "C", "D"],
-      "title": "Sigmoidparameter",
-      "type": "object"
     },
-    "Waehrungseinheit": {
-      "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
-      "enum": ["EUR", "CT"],
-      "title": "Waehrungseinheit",
-      "type": "string"
-    }
-  },
-  "additionalProperties": true,
-  "description": "\n    Mit dieser Komponente k\u00f6nnen Tarifpreise verschiedener Typen abgebildet werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifpreisposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_\n\n    ",
-  "properties": {
-    "bezugseinheit": {
-      "$ref": "#/$defs/Mengeneinheit"
-    },
-    "einheit": {
-      "$ref": "#/$defs/Waehrungseinheit"
-    },
-    "mengeneinheitstaffel": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "preisstaffeln": {
-      "items": {
-        "$ref": "#/$defs/Preisstaffel"
-      },
-      "minItems": 1,
-      "title": "Preisstaffeln",
-      "type": "array"
-    },
-    "preistyp": {
-      "$ref": "#/$defs/Preistyp"
-    }
-  },
-  "required": ["preistyp", "einheit", "bezugseinheit", "preisstaffeln"],
-  "title": "Tarifpreisposition",
-  "type": "object"
+    "required": [
+        "preistyp",
+        "einheit",
+        "bezugseinheit",
+        "preisstaffeln"
+    ],
+    "title": "Tarifpreisposition",
+    "type": "object"
 }

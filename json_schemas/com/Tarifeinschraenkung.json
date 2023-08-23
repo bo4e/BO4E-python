@@ -1,311 +1,316 @@
 {
-  "$defs": {
-    "Geraet": {
-      "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_\n\n    ",
-      "properties": {
-        "geraeteeigenschaften": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Geraeteeigenschaften"
+    "$defs": {
+        "Geraet": {
+            "additionalProperties": true,
+            "description": "\n    Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_\n\n    ",
+            "properties": {
+                "geraeteeigenschaften": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraeteeigenschaften"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "geraetenummer": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geraetenummer"
+                }
             },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
+            "title": "Geraet",
+            "type": "object"
         },
-        "geraetenummer": {
-          "anyOf": [
-            {
-              "type": "string"
+        "Geraeteeigenschaften": {
+            "additionalProperties": true,
+            "description": "\n    Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_\n\n    ",
+            "properties": {
+                "geraetemerkmal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraetemerkmal"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "geraetetyp": {
+                    "$ref": "#/$defs/Geraetetyp"
+                }
             },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Geraetenummer"
-        }
-      },
-      "title": "Geraet",
-      "type": "object"
-    },
-    "Geraeteeigenschaften": {
-      "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_\n\n    ",
-      "properties": {
-        "geraetemerkmal": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Geraetemerkmal"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
+            "required": [
+                "geraetetyp"
+            ],
+            "title": "Geraeteeigenschaften",
+            "type": "object"
         },
-        "geraetetyp": {
-          "$ref": "#/$defs/Geraetetyp"
-        }
-      },
-      "required": ["geraetetyp"],
-      "title": "Geraeteeigenschaften",
-      "type": "object"
-    },
-    "Geraetemerkmal": {
-      "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
-      "enum": [
-        "EINTARIF",
-        "ZWEITARIF",
-        "MEHRTARIF",
-        "GAS_G2_5",
-        "GAS_G4",
-        "GAS_G6",
-        "GAS_G10",
-        "GAS_G16",
-        "GAS_G25",
-        "GAS_G40",
-        "GAS_G65",
-        "GAS_G100",
-        "GAS_G160",
-        "GAS_G250",
-        "GAS_G400",
-        "GAS_G650",
-        "GAS_G1000",
-        "GAS_G1600",
-        "GAS_G2500",
-        "IMPULSGEBER_G4_G100",
-        "IMPULSGEBER_G100",
-        "TELEFONANSCHLUSS",
-        "MODEM_GSM",
-        "MODEM_GPRS",
-        "MODEM_FUNK",
-        "MODEM_GSM_O_LG",
-        "MODEM_GSM_M_LG",
-        "MODEM_FESTNETZ",
-        "MODEM_GPRS_M_LG",
-        "PLC_KOM",
-        "ETHERNET_KOM",
-        "DSL_KOM",
-        "LTE_KOM",
-        "KOMPAKT_MU",
-        "SYSTEM_MU",
-        "TEMPERATUR_MU",
-        "ZUSTANDS_MU",
-        "UNBESTIMMT"
-      ],
-      "title": "Geraetemerkmal",
-      "type": "string"
-    },
-    "Geraetetyp": {
-      "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
-      "enum": [
-        "WECHSELSTROMZAEHLER",
-        "DREHSTROMZAEHLER",
-        "ZWEIRICHTUNGSZAEHLER",
-        "RLM_ZAEHLER",
-        "BALGENGASZAEHLER",
-        "MAXIMUMZAEHLER",
-        "MULTIPLEXANLAGE",
-        "PAUSCHALANLAGE",
-        "VERSTAERKERANLAGE",
-        "SUMMATIONSGERAET",
-        "IMPULSGEBER",
-        "EDL_21_ZAEHLERAUFSATZ",
-        "VIER_QUADRANTEN_LASTGANGZAEHLER",
-        "MENGENUMWERTER",
-        "STROMWANDLER",
-        "SPANNUNGSWANDLER",
-        "KOMBIMESSWANDLER",
-        "BLOCKSTROMWANDLER",
-        "DATENLOGGER",
-        "KOMMUNIKATIONSANSCHLUSS",
-        "MODEM",
-        "TELEKOMMUNIKATIONSEINRICHTUNG",
-        "DREHKOLBENGASZAEHLER",
-        "TURBINENRADGASZAEHLER",
-        "ULTRASCHALLZAEHLER",
-        "WIRBELGASZAEHLER",
-        "MODERNE_MESSEINRICHTUNG",
-        "INTELLIGENTES_MESSYSTEM",
-        "ELEKTRONISCHER_HAUSHALTSZAEHLER",
-        "STEUEREINRICHTUNG",
-        "TARIFSCHALTGERAET",
-        "RUNDSTEUEREMPFAENGER",
-        "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
-        "MESSWANDLERSATZ_IMS_MME",
-        "KOMBIMESSWANDLER_IMS_MME",
-        "TARIFSCHALTGERAET_IMS_MME",
-        "RUNDSTEUEREMPFAENGER_IMS_MME",
-        "TEMPERATUR_KOMPENSATION",
-        "HOECHSTBELASTUNGS_ANZEIGER",
-        "SONSTIGES_GERAET",
-        "PREPAYMENTZAEHLER",
-        "EDL_21",
-        "96_H_ZAEHLER",
-        "EDL_40_ZAEHLERAUFSATZ",
-        "EDL_40"
-      ],
-      "title": "Geraetetyp",
-      "type": "string"
-    },
-    "Menge": {
-      "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
-      "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
-        }
-      },
-      "required": ["wert", "einheit"],
-      "title": "Menge",
-      "type": "object"
-    },
-    "Mengeneinheit": {
-      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
-      "enum": [
-        "W",
-        "WH",
-        "KW",
-        "KWH",
-        "KVARH",
-        "MW",
-        "MWH",
-        "STUECK",
-        "KUBIKMETER",
-        "STUNDE",
-        "TAG",
-        "MONAT",
-        "JAHR",
-        "PROZENT"
-      ],
-      "title": "Mengeneinheit",
-      "type": "string"
-    },
-    "Voraussetzungen": {
-      "description": "Voraussetzungen, die erf\u00fcllt sein m\u00fcssen, damit dieser Tarif zur Anwendung kommen kann.",
-      "enum": [
-        "EINZUGSERMAECHTIGUNG",
-        "ZEITPUNKT",
-        "LIEFERANBINDUNG_EINE",
-        "LIEFERANBINDUNG_ALLE",
-        "GEWERBE",
-        "LASTPROFIL",
-        "ZAEHLERTYP_GROESSE",
-        "AUSSCHLUSS_GROSSVERBRAUCHER",
-        "NEUKUNDE",
-        "BESTIMMTE_VERTRAGSFORMALITAETEN",
-        "SELBSTABLESUNG",
-        "ONLINEVORAUSSETZUNG",
-        "MINDESTUMSATZ",
-        "ZUSATZPRODUKT",
-        "NEUKUNDE_MIT_VORAUSSETZUNGEN",
-        "DIREKTVERTRIEB",
-        "ANSCHLUSSART",
-        "ANSCHLUSSWERT",
-        "ALTER_KUNDENANLAGE",
-        "ANLAGEBESCHAFFENHEIT",
-        "BETRIEBSSTUNDENBEGRENZUNG",
-        "FREIGABEZEITEN",
-        "FAMILIENSTRUKTUR",
-        "MITGLIEDSCHAFT",
-        "STAATLICHE_FOERDERUNG",
-        "BESONDERE_VERBRAUCHSSTELLE",
-        "NIEDRIGENERGIE",
-        "ORTSTEILE_LIEFERGEBIET",
-        "WAERMEBEDARF_ERDGAS",
-        "MAX_ZAEHLER_LIEFERSTELLEN",
-        "LIEFERUNGSBESCHRAENKUNG_GASART",
-        "KOMBI_BONI",
-        "ALTVERTRAG",
-        "VORGESCHRIEBENE_ZUSATZANLAGE",
-        "MEHRERE_ZAEHLER_ABNAHMESTELLEN",
-        "BESTIMMTER_ABNAHMEFALL",
-        "ZUSATZMODALITAET",
-        "NACHWEIS_ZAHLUNGSFAEHIGKEIT",
-        "UMSTELLUNG_ENERGIEART"
-      ],
-      "title": "Voraussetzungen",
-      "type": "string"
-    }
-  },
-  "additionalProperties": true,
-  "description": "\n    Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_\n\n    ",
-  "properties": {
-    "einschraenkungleistung": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Menge"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Einschraenkungleistung"
-    },
-    "einschraenkungzaehler": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Geraet"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Einschraenkungzaehler"
-    },
-    "voraussetzungen": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Voraussetzungen"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Voraussetzungen"
-    },
-    "zusatzprodukte": {
-      "anyOf": [
-        {
-          "items": {
+        "Geraetemerkmal": {
+            "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
+            "enum": [
+                "EINTARIF",
+                "ZWEITARIF",
+                "MEHRTARIF",
+                "GAS_G2_5",
+                "GAS_G4",
+                "GAS_G6",
+                "GAS_G10",
+                "GAS_G16",
+                "GAS_G25",
+                "GAS_G40",
+                "GAS_G65",
+                "GAS_G100",
+                "GAS_G160",
+                "GAS_G250",
+                "GAS_G400",
+                "GAS_G650",
+                "GAS_G1000",
+                "GAS_G1600",
+                "GAS_G2500",
+                "IMPULSGEBER_G4_G100",
+                "IMPULSGEBER_G100",
+                "TELEFONANSCHLUSS",
+                "MODEM_GSM",
+                "MODEM_GPRS",
+                "MODEM_FUNK",
+                "MODEM_GSM_O_LG",
+                "MODEM_GSM_M_LG",
+                "MODEM_FESTNETZ",
+                "MODEM_GPRS_M_LG",
+                "PLC_KOM",
+                "ETHERNET_KOM",
+                "DSL_KOM",
+                "LTE_KOM",
+                "KOMPAKT_MU",
+                "SYSTEM_MU",
+                "TEMPERATUR_MU",
+                "ZUSTANDS_MU",
+                "UNBESTIMMT"
+            ],
+            "title": "Geraetemerkmal",
             "type": "string"
-          },
-          "type": "array"
         },
-        {
-          "type": "null"
+        "Geraetetyp": {
+            "description": "Auflistung m\u00f6glicher abzurechnender Ger\u00e4tetypen.",
+            "enum": [
+                "WECHSELSTROMZAEHLER",
+                "DREHSTROMZAEHLER",
+                "ZWEIRICHTUNGSZAEHLER",
+                "RLM_ZAEHLER",
+                "BALGENGASZAEHLER",
+                "MAXIMUMZAEHLER",
+                "MULTIPLEXANLAGE",
+                "PAUSCHALANLAGE",
+                "VERSTAERKERANLAGE",
+                "SUMMATIONSGERAET",
+                "IMPULSGEBER",
+                "EDL_21_ZAEHLERAUFSATZ",
+                "VIER_QUADRANTEN_LASTGANGZAEHLER",
+                "MENGENUMWERTER",
+                "STROMWANDLER",
+                "SPANNUNGSWANDLER",
+                "KOMBIMESSWANDLER",
+                "BLOCKSTROMWANDLER",
+                "DATENLOGGER",
+                "KOMMUNIKATIONSANSCHLUSS",
+                "MODEM",
+                "TELEKOMMUNIKATIONSEINRICHTUNG",
+                "DREHKOLBENGASZAEHLER",
+                "TURBINENRADGASZAEHLER",
+                "ULTRASCHALLZAEHLER",
+                "WIRBELGASZAEHLER",
+                "MODERNE_MESSEINRICHTUNG",
+                "INTELLIGENTES_MESSYSTEM",
+                "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+                "STEUEREINRICHTUNG",
+                "TARIFSCHALTGERAET",
+                "RUNDSTEUEREMPFAENGER",
+                "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+                "MESSWANDLERSATZ_IMS_MME",
+                "KOMBIMESSWANDLER_IMS_MME",
+                "TARIFSCHALTGERAET_IMS_MME",
+                "RUNDSTEUEREMPFAENGER_IMS_MME",
+                "TEMPERATUR_KOMPENSATION",
+                "HOECHSTBELASTUNGS_ANZEIGER",
+                "SONSTIGES_GERAET",
+                "PREPAYMENTZAEHLER",
+                "EDL_21",
+                "96_H_ZAEHLER",
+                "EDL_40_ZAEHLERAUFSATZ",
+                "EDL_40"
+            ],
+            "title": "Geraetetyp",
+            "type": "string"
+        },
+        "Menge": {
+            "additionalProperties": true,
+            "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+            "properties": {
+                "einheit": {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                "wert": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit"
+            ],
+            "title": "Menge",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Voraussetzungen": {
+            "description": "Voraussetzungen, die erf\u00fcllt sein m\u00fcssen, damit dieser Tarif zur Anwendung kommen kann.",
+            "enum": [
+                "EINZUGSERMAECHTIGUNG",
+                "ZEITPUNKT",
+                "LIEFERANBINDUNG_EINE",
+                "LIEFERANBINDUNG_ALLE",
+                "GEWERBE",
+                "LASTPROFIL",
+                "ZAEHLERTYP_GROESSE",
+                "AUSSCHLUSS_GROSSVERBRAUCHER",
+                "NEUKUNDE",
+                "BESTIMMTE_VERTRAGSFORMALITAETEN",
+                "SELBSTABLESUNG",
+                "ONLINEVORAUSSETZUNG",
+                "MINDESTUMSATZ",
+                "ZUSATZPRODUKT",
+                "NEUKUNDE_MIT_VORAUSSETZUNGEN",
+                "DIREKTVERTRIEB",
+                "ANSCHLUSSART",
+                "ANSCHLUSSWERT",
+                "ALTER_KUNDENANLAGE",
+                "ANLAGEBESCHAFFENHEIT",
+                "BETRIEBSSTUNDENBEGRENZUNG",
+                "FREIGABEZEITEN",
+                "FAMILIENSTRUKTUR",
+                "MITGLIEDSCHAFT",
+                "STAATLICHE_FOERDERUNG",
+                "BESONDERE_VERBRAUCHSSTELLE",
+                "NIEDRIGENERGIE",
+                "ORTSTEILE_LIEFERGEBIET",
+                "WAERMEBEDARF_ERDGAS",
+                "MAX_ZAEHLER_LIEFERSTELLEN",
+                "LIEFERUNGSBESCHRAENKUNG_GASART",
+                "KOMBI_BONI",
+                "ALTVERTRAG",
+                "VORGESCHRIEBENE_ZUSATZANLAGE",
+                "MEHRERE_ZAEHLER_ABNAHMESTELLEN",
+                "BESTIMMTER_ABNAHMEFALL",
+                "ZUSATZMODALITAET",
+                "NACHWEIS_ZAHLUNGSFAEHIGKEIT",
+                "UMSTELLUNG_ENERGIEART"
+            ],
+            "title": "Voraussetzungen",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Zusatzprodukte"
-    }
-  },
-  "title": "Tarifeinschraenkung",
-  "type": "object"
+    },
+    "additionalProperties": true,
+    "description": "\n    Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_\n\n    ",
+    "properties": {
+        "einschraenkungleistung": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Menge"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Einschraenkungleistung"
+        },
+        "einschraenkungzaehler": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Geraet"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Einschraenkungzaehler"
+        },
+        "voraussetzungen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Voraussetzungen"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Voraussetzungen"
+        },
+        "zusatzprodukte": {
+            "anyOf": [
+                {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Zusatzprodukte"
+        }
+    },
+    "title": "Tarifeinschraenkung",
+    "type": "object"
 }

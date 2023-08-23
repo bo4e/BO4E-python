@@ -1,178 +1,193 @@
 {
-  "$defs": {
-    "BoTyp": {
-      "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
-      "enum": [
-        "ANGEBOT",
-        "ANSPRECHPARTNER",
-        "AUSSCHREIUNG",
-        "BUENDELVERTRAG",
-        "ENERGIEMENGE",
-        "FREMDKOSTEN",
-        "GESCHAEFTSOBJEKT",
-        "GESCHAEFTSPARTNER",
-        "KOSTEN",
-        "LASTGANG",
-        "LASTGANG_KOMPAKT",
-        "MARKTLOKATION",
-        "MESSLOKATION",
-        "MARKTTEILNEHMER",
-        "NETZNUTZUNGSRECHNUNG",
-        "PREISBLATT",
-        "PREISBLATTDIENSTLEISTUNG",
-        "PREISBLATTHARDWARE",
-        "PREISBLATTKONZESSIONSABGABE",
-        "PREISBLATTMESSUNG",
-        "PREISBLATTNETZNUTZUNG",
-        "PREISBLATTUMLAGEN",
-        "RECHNUNG",
-        "REGION",
-        "REGIONALTARIF",
-        "STANDORTEIGENSCHAFTEN",
-        "TARIF",
-        "TARIFINFO",
-        "TARIFKOSTEN",
-        "TARIFPREISBLATT",
-        "VERTRAG",
-        "ZAEHLER",
-        "ZEITREIHE"
-      ],
-      "title": "BoTyp",
-      "type": "string"
-    },
-    "ExterneReferenz": {
-      "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
-      "properties": {
-        "exRefName": {
-          "title": "Exrefname",
-          "type": "string"
-        },
-        "exRefWert": {
-          "title": "Exrefwert",
-          "type": "string"
-        }
-      },
-      "required": ["exRefName", "exRefWert"],
-      "title": "ExterneReferenz",
-      "type": "object"
-    },
-    "MarktgebietInfo": {
-      "additionalProperties": true,
-      "description": "\n    Informationen zum Marktgebiet im Gas.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/MarktgebietInfo.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_\n\n    ",
-      "properties": {
-        "marktgebiet": {
-          "title": "Marktgebiet",
-          "type": "string"
-        },
-        "marktgebietcode": {
-          "title": "Marktgebietcode",
-          "type": "string"
-        }
-      },
-      "required": ["marktgebiet", "marktgebietcode"],
-      "title": "MarktgebietInfo",
-      "type": "object"
-    },
-    "StandorteigenschaftenGas": {
-      "additionalProperties": true,
-      "description": "\n    Standorteigenschaften der Sparte Gas\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/StandorteigenschaftenGas.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGas.json>`_\n\n    ",
-      "properties": {
-        "marktgebiete": {
-          "items": {
-            "$ref": "#/$defs/MarktgebietInfo"
-          },
-          "title": "Marktgebiete",
-          "type": "array"
-        },
-        "netzkontonummern": {
-          "items": {
+    "$defs": {
+        "BoTyp": {
+            "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
             "type": "string"
-          },
-          "maxItems": 2,
-          "minItems": 1,
-          "title": "Netzkontonummern",
-          "type": "array"
-        }
-      },
-      "required": ["netzkontonummern", "marktgebiete"],
-      "title": "StandorteigenschaftenGas",
-      "type": "object"
-    },
-    "StandorteigenschaftenStrom": {
-      "additionalProperties": true,
-      "description": "\n    Standorteigenschaften der Sparte Strom\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/StandorteigenschaftenStrom.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStrom.json>`_\n\n    ",
-      "properties": {
-        "bilanzierungsgebietEic": {
-          "title": "Bilanzierungsgebieteic",
-          "type": "string"
         },
-        "regelzone": {
-          "title": "Regelzone",
-          "type": "string"
+        "ExterneReferenz": {
+            "additionalProperties": true,
+            "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
         },
-        "regelzoneEic": {
-          "title": "Regelzoneeic",
-          "type": "string"
-        }
-      },
-      "required": ["bilanzierungsgebietEic", "regelzone", "regelzoneEic"],
-      "title": "StandorteigenschaftenStrom",
-      "type": "object"
-    }
-  },
-  "additionalProperties": true,
-  "description": "\n    Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Standorteigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Standorteigenschaften.json>`_\n\n    ",
-  "properties": {
-    "boTyp": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/BoTyp"
-        }
-      ],
-      "default": "STANDORTEIGENSCHAFTEN"
-    },
-    "eigenschaftenGas": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/StandorteigenschaftenGas"
+        "MarktgebietInfo": {
+            "additionalProperties": true,
+            "description": "\n    Informationen zum Marktgebiet im Gas.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/MarktgebietInfo.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_\n\n    ",
+            "properties": {
+                "marktgebiet": {
+                    "title": "Marktgebiet",
+                    "type": "string"
+                },
+                "marktgebietcode": {
+                    "title": "Marktgebietcode",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "marktgebiet",
+                "marktgebietcode"
+            ],
+            "title": "MarktgebietInfo",
+            "type": "object"
         },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "eigenschaftenStrom": {
-      "items": {
-        "$ref": "#/$defs/StandorteigenschaftenStrom"
-      },
-      "minItems": 1,
-      "title": "Eigenschaftenstrom",
-      "type": "array"
-    },
-    "externeReferenzen": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/ExterneReferenz"
-          },
-          "type": "array"
+        "StandorteigenschaftenGas": {
+            "additionalProperties": true,
+            "description": "\n    Standorteigenschaften der Sparte Gas\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/StandorteigenschaftenGas.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGas.json>`_\n\n    ",
+            "properties": {
+                "marktgebiete": {
+                    "items": {
+                        "$ref": "#/$defs/MarktgebietInfo"
+                    },
+                    "title": "Marktgebiete",
+                    "type": "array"
+                },
+                "netzkontonummern": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "maxItems": 2,
+                    "minItems": 1,
+                    "title": "Netzkontonummern",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "netzkontonummern",
+                "marktgebiete"
+            ],
+            "title": "StandorteigenschaftenGas",
+            "type": "object"
         },
-        {
-          "type": "null"
+        "StandorteigenschaftenStrom": {
+            "additionalProperties": true,
+            "description": "\n    Standorteigenschaften der Sparte Strom\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/StandorteigenschaftenStrom.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStrom.json>`_\n\n    ",
+            "properties": {
+                "bilanzierungsgebietEic": {
+                    "title": "Bilanzierungsgebieteic",
+                    "type": "string"
+                },
+                "regelzone": {
+                    "title": "Regelzone",
+                    "type": "string"
+                },
+                "regelzoneEic": {
+                    "title": "Regelzoneeic",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "bilanzierungsgebietEic",
+                "regelzone",
+                "regelzoneEic"
+            ],
+            "title": "StandorteigenschaftenStrom",
+            "type": "object"
         }
-      ],
-      "default": [],
-      "title": "Externereferenzen"
     },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
-    }
-  },
-  "required": ["eigenschaftenStrom"],
-  "title": "Standorteigenschaften",
-  "type": "object"
+    "additionalProperties": true,
+    "description": "\n    Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Standorteigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Standorteigenschaften.json>`_\n\n    ",
+    "properties": {
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/BoTyp"
+                }
+            ],
+            "default": "STANDORTEIGENSCHAFTEN"
+        },
+        "eigenschaftenGas": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/StandorteigenschaftenGas"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "eigenschaftenStrom": {
+            "items": {
+                "$ref": "#/$defs/StandorteigenschaftenStrom"
+            },
+            "minItems": 1,
+            "title": "Eigenschaftenstrom",
+            "type": "array"
+        },
+        "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": [],
+            "title": "Externereferenzen"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
+        }
+    },
+    "required": [
+        "eigenschaftenStrom"
+    ],
+    "title": "Standorteigenschaften",
+    "type": "object"
 }
