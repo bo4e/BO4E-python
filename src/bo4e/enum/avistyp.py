@@ -1,4 +1,4 @@
-"""Contains enum class Avisposition"""
+"""Contains Enums for Avisposition"""
 from bo4e.enum.strenum import StrEnum
 
 

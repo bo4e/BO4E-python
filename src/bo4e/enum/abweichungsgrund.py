@@ -1,4 +1,4 @@
-"""contains enum class Abweichungsgrund."""
+"""Contains Enums for Abweichungsgrund."""
 from bo4e.enum.strenum import StrEnum
 
 

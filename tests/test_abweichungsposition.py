@@ -1,4 +1,4 @@
-# todo: cf. alias_generator=camelize in geschaeftsobjekte.py
+# todo: check camelizing
 from typing import Any, Dict
 
 import pytest
