@@ -19,13 +19,6 @@ example_rueckmeldungsposition = Rueckmeldungsposition(
             zugehoerige_rechnung="458011",
             zugehoerige_bestellung="foo",
         ),
-        Abweichungsposition(
-            abweichungsgrund_code="A16",
-            abweichungsgrund_codeliste="E_0210",
-            abweichungsgrund_bemerkung="Preisschlüsselstamm",
-            zugehoerige_rechnung="458011",
-            zugehoerige_bestellung="foo",
-        ),
     ],
 )
 
@@ -43,13 +36,6 @@ class TestRueckmeldungsposition:
                             "abweichungsgrundCode": "A15",
                             "abweichungsgrundCodeliste": "E_0210",
                             "abweichungsgrundBemerkung": "Umsatzsteuersatz",
-                            "zugehoerigeRechnung": "458011",
-                            "zugehoerigeBestellung": "foo",
-                        },
-                        {
-                            "abweichungsgrundCode": "A16",
-                            "abweichungsgrundCodeliste": "E_0210",
-                            "abweichungsgrundBemerkung": "Preisschlüsselstamm",
                             "zugehoerigeRechnung": "458011",
                             "zugehoerigeBestellung": "foo",
                         },

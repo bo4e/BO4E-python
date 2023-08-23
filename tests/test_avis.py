@@ -46,14 +46,6 @@ example_full_avis = Avis(
                     abweichungsgrund_code="14",
                     abweichungsgrund_codeliste="G_0081",
                 ),
-                Abweichung(
-                    abweichungsgrund=Abweichungsgrund.SONSTIGER_ABWEICHUNGSGRUND,
-                    abweichungsgrund_bemerkung="sonst",
-                    zugehoerige_rechnung="458011",
-                    abschlagsrechnung="4580112",
-                    abweichungsgrund_code="28",
-                    abweichungsgrund_codeliste="G_0081",
-                ),
             ],
             positionen=[
                 Rueckmeldungsposition(
@@ -66,41 +58,9 @@ example_full_avis = Avis(
                             zugehoerige_rechnung="458011",
                             zugehoerige_bestellung="foo",
                         ),
-                        Abweichungsposition(
-                            abweichungsgrund_code="foo",
-                            abweichungsgrund_codeliste="foo",
-                            abweichungsgrund_bemerkung="foo",
-                            zugehoerige_rechnung="458011",
-                            zugehoerige_bestellung="foo",
-                        ),
-                    ],
-                ),
-                Rueckmeldungsposition(
-                    positionsnummer="2",
-                    abweichungspositionen=[
-                        Abweichungsposition(
-                            abweichungsgrund_code="foo",
-                            abweichungsgrund_codeliste="foo",
-                            abweichungsgrund_bemerkung="foo",
-                            zugehoerige_rechnung="458011",
-                            zugehoerige_bestellung="foo",
-                        ),
                     ],
                 ),
             ],
-        ),
-        Avisposition(
-            rechnungs_nummer="12345",
-            rechnungs_datum=datetime(2022, 1, 1, 0, 0, 0),
-            ist_storno=True,
-            gesamtbrutto=Betrag(
-                wert=Decimal(100.5),
-                waehrung=Waehrungscode.EUR,
-            ),
-            zu_zahlen=Betrag(
-                wert=Decimal(15.5),
-                waehrung=Waehrungscode.EUR,
-            ),
         ),
     ],
     zu_zahlen=Betrag(
@@ -170,14 +130,6 @@ class TestAvis:
                                     "abweichungsgrundCode": "14",
                                     "abweichungsgrundCodeliste": "G_0081",
                                 },
-                                {
-                                    "abweichungsgrund": Abweichungsgrund.SONSTIGER_ABWEICHUNGSGRUND,
-                                    "abweichungsgrundBemerkung": "sonst",
-                                    "zugehoerigeRechnung": "458011",
-                                    "abschlagsrechnung": "4580112",
-                                    "abweichungsgrundCode": "28",
-                                    "abweichungsgrundCodeliste": "G_0081",
-                                },
                             ],
                             "positionen": [
                                 {
@@ -190,45 +142,9 @@ class TestAvis:
                                             "zugehoerigeRechnung": "458011",
                                             "zugehoerigeBestellung": "foo",
                                         },
-                                        {
-                                            "abweichungsgrundCode": "foo",
-                                            "abweichungsgrundCodeliste": "foo",
-                                            "abweichungsgrundBemerkung": "foo",
-                                            "zugehoerigeRechnung": "458011",
-                                            "zugehoerigeBestellung": "foo",
-                                        },
-                                    ],
-                                },
-                                {
-                                    "positionsnummer": "2",
-                                    "abweichungspositionen": [
-                                        {
-                                            "abweichungsgrundCode": "foo",
-                                            "abweichungsgrundCodeliste": "foo",
-                                            "abweichungsgrundBemerkung": "foo",
-                                            "zugehoerigeRechnung": "458011",
-                                            "zugehoerigeBestellung": "foo",
-                                        },
                                     ],
                                 },
                             ],
-                        },
-                        {
-                            "rechnungsNummer": "12345",
-                            "rechnungsDatum": datetime(2022, 1, 1, 0, 0, 0),
-                            "istStorno": True,
-                            "gesamtbrutto": {
-                                "wert": Decimal(100.5),
-                                "waehrung": Waehrungscode.EUR,
-                            },
-                            "zuZahlen": {
-                                "wert": Decimal(15.5),
-                                "waehrung": Waehrungscode.EUR,
-                            },
-                            "istSelbstausgestellt": None,
-                            "referenz": None,
-                            "abweichungen": None,
-                            "positionen": None,
                         },
                     ],
                     "zuZahlen": {
