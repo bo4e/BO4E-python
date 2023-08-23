@@ -163,7 +163,7 @@ class TestBilanzierung:
             ("asdasd", False),
             ("   ", False),
             ("  asdasdasd ", False),
-            (None, True), # malo_id not required
+            (None, True),  # malo_id not required
             ("", False),
         ],
     )

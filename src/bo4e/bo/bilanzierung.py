@@ -29,7 +29,7 @@ class Bilanzierung(Geschaeftsobjekt):
     #:  Welche Marktlokation
     marktlokations_id: Optional[str] = None
     #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
-    lastprofil: list[Optional[Lastprofil]] = []
+    lastprofil: Optional[list[Lastprofil]] = None
     #: Inklusiver Start der Bilanzierung
     bilanzierungsbeginn: Optional[datetime] = None
     #: Exklusives Ende der Bilanzierung
@@ -66,7 +66,7 @@ class Bilanzierung(Geschaeftsobjekt):
             Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben,
             so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.
     """
-    details_prognosegrundlage: list[Optional[Profiltyp]] = []
+    details_prognosegrundlage: Optional[list[Profiltyp]] = None
     #: Wahlrecht der Prognosegrundlage (true = Wahlrecht beim Lieferanten vorhanden)
     wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
     #: Fallgruppenzuordnung (für gas RLM)
