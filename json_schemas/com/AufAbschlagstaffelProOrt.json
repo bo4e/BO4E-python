@@ -1,46 +1,42 @@
 {
-    "additionalProperties": true,
-    "description": "\n    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_\n\n    ",
-    "properties": {
-        "staffelgrenzeBis": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Staffelgrenzebis"
+  "additionalProperties": true,
+  "description": "\n    Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_\n\n    ",
+  "properties": {
+    "staffelgrenzeBis": {
+      "anyOf": [
+        {
+          "type": "number"
         },
-        "staffelgrenzeVon": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Staffelgrenzevon"
-        },
-        "wert": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Wert"
+        {
+          "type": "string"
         }
+      ],
+      "title": "Staffelgrenzebis"
     },
-    "required": [
-        "wert",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
-    "title": "AufAbschlagstaffelProOrt",
-    "type": "object"
+    "staffelgrenzeVon": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Staffelgrenzevon"
+    },
+    "wert": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Wert"
+    }
+  },
+  "required": ["wert", "staffelgrenzeVon", "staffelgrenzeBis"],
+  "title": "AufAbschlagstaffelProOrt",
+  "type": "object"
 }

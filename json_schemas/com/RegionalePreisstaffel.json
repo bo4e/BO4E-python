@@ -1,185 +1,170 @@
 {
-    "$defs": {
-        "Gueltigkeitstyp": {
-            "description": "\u00dcbersicht der verschiedenen G\u00fcltigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
-            "enum": [
-                "NUR_IN",
-                "NICHT_IN",
-                "NUR_IN_KOMBINATION_MIT"
-            ],
-            "title": "Gueltigkeitstyp",
-            "type": "string"
-        },
-        "KriteriumWert": {
-            "additionalProperties": true,
-            "description": "\n    Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_\n\n    ",
-            "properties": {
-                "kriterium": {
-                    "$ref": "#/$defs/Tarifregionskriterium"
-                },
-                "wert": {
-                    "title": "Wert",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "kriterium",
-                "wert"
-            ],
-            "title": "KriteriumWert",
-            "type": "object"
-        },
-        "RegionaleGueltigkeit": {
-            "additionalProperties": true,
-            "description": "\n    Mit dieser Komponente k\u00f6nnen regionale G\u00fcltigkeiten, z.B. f\u00fcr Tarife, Zu- und Abschl\u00e4ge und Preise definiert werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_\n\n    ",
-            "properties": {
-                "gueltigkeitstyp": {
-                    "$ref": "#/$defs/Gueltigkeitstyp"
-                },
-                "kriteriumsWerte": {
-                    "items": {
-                        "$ref": "#/$defs/KriteriumWert"
-                    },
-                    "minItems": 1,
-                    "title": "Kriteriumswerte",
-                    "type": "array"
-                }
-            },
-            "required": [
-                "gueltigkeitstyp",
-                "kriteriumsWerte"
-            ],
-            "title": "RegionaleGueltigkeit",
-            "type": "object"
-        },
-        "Sigmoidparameter": {
-            "additionalProperties": true,
-            "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
-            "properties": {
-                "A": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "A"
-                },
-                "B": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "B"
-                },
-                "C": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "C"
-                },
-                "D": {
-                    "anyOf": [
-                        {
-                            "type": "number"
-                        },
-                        {
-                            "type": "string"
-                        }
-                    ],
-                    "title": "D"
-                }
-            },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
-            "title": "Sigmoidparameter",
-            "type": "object"
-        },
-        "Tarifregionskriterium": {
-            "description": "Mit diesen Kriterien k\u00f6nnen regionale Bereiche definiert werden.",
-            "enum": [
-                "NETZ_NUMMER",
-                "POSTLEITZAHL",
-                "ORT",
-                "GRUNDVERSORGER_NUMMER",
-                "REGION"
-            ],
-            "title": "Tarifregionskriterium",
-            "type": "string"
-        }
+  "$defs": {
+    "Gueltigkeitstyp": {
+      "description": "\u00dcbersicht der verschiedenen G\u00fcltigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+      "enum": ["NUR_IN", "NICHT_IN", "NUR_IN_KOMBINATION_MIT"],
+      "title": "Gueltigkeitstyp",
+      "type": "string"
     },
-    "additionalProperties": true,
-    "description": "\n    Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_\n\n    ",
-    "properties": {
-        "einheitspreis": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Einheitspreis"
+    "KriteriumWert": {
+      "additionalProperties": true,
+      "description": "\n    Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_\n\n    ",
+      "properties": {
+        "kriterium": {
+          "$ref": "#/$defs/Tarifregionskriterium"
         },
-        "regionaleGueltigkeit": {
-            "$ref": "#/$defs/RegionaleGueltigkeit"
-        },
-        "sigmoidparameter": {
-            "anyOf": [
-                {
-                    "$ref": "#/$defs/Sigmoidparameter"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null
-        },
-        "staffelgrenzeBis": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Staffelgrenzebis"
-        },
-        "staffelgrenzeVon": {
-            "anyOf": [
-                {
-                    "type": "number"
-                },
-                {
-                    "type": "string"
-                }
-            ],
-            "title": "Staffelgrenzevon"
+        "wert": {
+          "title": "Wert",
+          "type": "string"
         }
+      },
+      "required": ["kriterium", "wert"],
+      "title": "KriteriumWert",
+      "type": "object"
     },
-    "required": [
-        "einheitspreis",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis",
-        "regionaleGueltigkeit"
-    ],
-    "title": "RegionalePreisstaffel",
-    "type": "object"
+    "RegionaleGueltigkeit": {
+      "additionalProperties": true,
+      "description": "\n    Mit dieser Komponente k\u00f6nnen regionale G\u00fcltigkeiten, z.B. f\u00fcr Tarife, Zu- und Abschl\u00e4ge und Preise definiert werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_\n\n    ",
+      "properties": {
+        "gueltigkeitstyp": {
+          "$ref": "#/$defs/Gueltigkeitstyp"
+        },
+        "kriteriumsWerte": {
+          "items": {
+            "$ref": "#/$defs/KriteriumWert"
+          },
+          "minItems": 1,
+          "title": "Kriteriumswerte",
+          "type": "array"
+        }
+      },
+      "required": ["gueltigkeitstyp", "kriteriumsWerte"],
+      "title": "RegionaleGueltigkeit",
+      "type": "object"
+    },
+    "Sigmoidparameter": {
+      "additionalProperties": true,
+      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+      "properties": {
+        "A": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "A"
+        },
+        "B": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "B"
+        },
+        "C": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "C"
+        },
+        "D": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "D"
+        }
+      },
+      "required": ["A", "B", "C", "D"],
+      "title": "Sigmoidparameter",
+      "type": "object"
+    },
+    "Tarifregionskriterium": {
+      "description": "Mit diesen Kriterien k\u00f6nnen regionale Bereiche definiert werden.",
+      "enum": [
+        "NETZ_NUMMER",
+        "POSTLEITZAHL",
+        "ORT",
+        "GRUNDVERSORGER_NUMMER",
+        "REGION"
+      ],
+      "title": "Tarifregionskriterium",
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "description": "\n    Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_\n\n    ",
+  "properties": {
+    "einheitspreis": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Einheitspreis"
+    },
+    "regionaleGueltigkeit": {
+      "$ref": "#/$defs/RegionaleGueltigkeit"
+    },
+    "sigmoidparameter": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Sigmoidparameter"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "staffelgrenzeBis": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Staffelgrenzebis"
+    },
+    "staffelgrenzeVon": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Staffelgrenzevon"
+    }
+  },
+  "required": [
+    "einheitspreis",
+    "staffelgrenzeVon",
+    "staffelgrenzeBis",
+    "regionaleGueltigkeit"
+  ],
+  "title": "RegionalePreisstaffel",
+  "type": "object"
 }
