@@ -1016,7 +1016,7 @@
     },
     "Rollencodetyp": {
       "description": "Gibt den Codetyp einer Rolle, beispielsweise einer Marktrolle, an.",
-      "enum": ["BDEW", "DVG", "GLN"],
+      "enum": ["BDEW", "DVGW", "GLN"],
       "title": "Rollencodetyp",
       "type": "string"
     },
