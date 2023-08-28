@@ -1,4 +1,3 @@
-# todo: check camelizing
 from typing import Any, Dict
 
 import pytest
@@ -57,7 +56,7 @@ class TestRueckmeldungsposition:
         self, rueckmeldungsposition: Rueckmeldungsposition, expected_json_dict: Dict[str, Any]
     ) -> None:
         """
-        Test de-/serialisation of Rueckmeldungsposition with minimal attributes.
+        Test de-/serialisation of Rueckmeldungsposition with minimal/maximal attributes.
         """
         assert_serialization_roundtrip(rueckmeldungsposition, expected_json_dict)
 

@@ -1,4 +1,3 @@
-# todo: check camelizing
 from datetime import datetime
 from typing import Any, Dict
 
@@ -192,7 +191,7 @@ class TestAvis:
     )
     def test_serialization_roundtrip(self, avis: Avis, expected_json_dict: Dict[str, Any]) -> None:
         """
-        Test de-/serialisation of Avis with minimal attributes.
+        Test de-/serialisation of Avis with maximal/minimal attributes.
         """
         assert_serialization_roundtrip(avis, expected_json_dict)
 

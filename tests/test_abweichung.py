@@ -1,4 +1,3 @@
-# todo: check camelizing
 from typing import Any, Dict
 
 import pytest
@@ -50,6 +49,6 @@ class Test_Abweichung:
     )
     def test_serialization_roundtrip(self, abweichung: Abweichung, expected_json_dict: Dict[str, Any]) -> None:
         """
-        Test de-/serialisation of Abweichung with minimal attributes.
+        Test de-/serialisation of Abweichung with maximal/minimal attributes.
         """
         assert_serialization_roundtrip(abweichung, expected_json_dict)

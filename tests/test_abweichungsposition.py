@@ -1,4 +1,3 @@
-# todo: check camelizing
 from typing import Any, Dict
 
 import pytest
@@ -48,6 +47,6 @@ class TestAbweichungsposition:
         self, abweichungsposition: Abweichungsposition, expected_json_dict: Dict[str, Any]
     ) -> None:
         """
-        Test de-/serialisation of Abweichungsposition with minimal attributes.
+        Test de-/serialisation of Abweichungsposition with maximal/minimal attributes.
         """
         assert_serialization_roundtrip(abweichungsposition, expected_json_dict)
