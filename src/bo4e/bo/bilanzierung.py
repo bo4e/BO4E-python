@@ -24,64 +24,59 @@ class Bilanzierung(Geschaeftsobjekt):
     Bilanzierungs BO
     """
 
-    bo_typ: BoTyp = BoTyp.BILANZIERUNG  # added to botyp.py
+    bo_typ: BoTyp = BoTyp.BILANZIERUNG
 
-    #:  Welche Marktlokation
-    marktlokations_id: Optional[str] = None
-    #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
-    lastprofil: Optional[list[Lastprofil]] = None
-    #: Inklusiver Start der Bilanzierung
-    bilanzierungsbeginn: Optional[datetime] = None
-    #: Exklusives Ende der Bilanzierung
-    bilanzierungsende: Optional[datetime] = None
-    #: Bilanzkreis
-    bilanzkreis: Optional[str] = None
-    #: Jahresverbrauchsprognose
-    jahresverbrauchsprognose: Optional[Menge] = None
-    #: Temperatur Arbeit
-    temperatur_arbeit: Optional[Menge] = None
-    #: Kundenwert
-    kundenwert: Optional[Menge] = None
+    marktlokations_id: Optional[str] = None  #:  ID der Marktlokation
+    lastprofil: Optional[list[Lastprofil]] = None  #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
+    bilanzierungsbeginn: Optional[datetime] = None  #: Inklusiver Start der Bilanzierung
+    bilanzierungsende: Optional[datetime] = None  #: Exklusives Ende der Bilanzierung
+    bilanzkreis: Optional[str] = None  #: Bilanzkreis
+    jahresverbrauchsprognose: Optional[Menge] = None  #: Jahresverbrauchsprognose
+    temperatur_arbeit: Optional[Menge] = None  #: Temperatur Arbeit
+    kundenwert: Optional[Menge] = None  #: Kundenwert
+    verbrauchsaufteilung: Optional[float] = None
     """
           Verbrauchsaufteilung in % zwischen SLP und TLP-Profil.
-          
+
           1. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] * [Verbrauchsaufteilung in % / 100%] 
              = [zu verlagernde Energiemenge]
           2. [Gemessene Energiemenge der OBIS "Schwachlast"] - [zu verlagernde Energiemenge] 
              = [Ermittelte Energiemenge für Schwachlast]
           3. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] + [zu verlagernde Energiemenge] 
              = [Ermittelte Energiemenge für nicht Schwachlast]
-    
+
     """
-    verbrauchsaufteilung: Optional[float] = None
-    #: Zeitreihentyp (SLS, TLS, etc.)
-    zeitreihentyp: Optional[Zeitreihentyp] = None
-    #: Aggregationsverantwortung
-    aggregationsverantwortung: Optional[Aggregationsverantwortung] = None
-    #: Prognosegrundlage
-    prognosegrundlage: Optional[Prognosegrundlage] = None
+    zeitreihentyp: Optional[Zeitreihentyp] = None  #: Zeitreihentyp (SLS, TLS, etc.)
+    aggregationsverantwortung: Optional[Aggregationsverantwortung] = None  #: Aggregationsverantwortung
+    prognosegrundlage: Optional[Prognosegrundlage] = None  #: Prognosegrundlage
+    details_prognosegrundlage: Optional[list[Profiltyp]] = None
     """
          Prognosegrundlage.
-         
+
             Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben,
             so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.
     """
-    details_prognosegrundlage: Optional[list[Profiltyp]] = None
-    #: Wahlrecht der Prognosegrundlage (true = Wahlrecht beim Lieferanten vorhanden)
     wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
-    #: Fallgruppenzuordnung (für gas RLM)
-    fallgruppenzuordnung: Optional[Fallgruppenzuordnung] = None
-    #: Priorität des Bilanzkreises (für Gas)
-    prioritaet: Optional[int] = None
-    #: Grund Wahlrecht der Prognosegrundlage(true=Wahlrecht beim Lieferanten vorhanden)
+    """
+        Wahlrecht der Prognosegrundlage.
+        
+            true = Wahlrecht beim Lieferanten vorhanden
+    """
+    fallgruppenzuordnung: Optional[Fallgruppenzuordnung] = None  #: Fallgruppenzuordnung (für gas RLM)
+    prioritaet: Optional[int] = None  #: Priorität des Bilanzkreises (für Gas)
     grund_wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
+    """
+        Grund Wahlrecht der Prognosegrundlage.
+        
+            true=Wahlrecht beim Lieferanten vorhanden
+    """
 
     @field_validator("marktlokations_id")
     @classmethod
     def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> Optional[str]:
         """
-        Validator für marktlokations_id.
-        Prüft, ob marktlokations_id, wenn gegeben, formal richtig ist.
+        Validator for field marktlokations_id.
+        Validates formal correctness of marktlokations_id if given.
         """
         if marktlokations_id is None:
             return marktlokations_id

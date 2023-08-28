@@ -5,7 +5,7 @@ import pytest
 from bo4e.com.tagesparameter import Tagesparameter
 from tests.serialization_helper import assert_serialization_roundtrip
 
-#:  full example
+# full example
 example_tagesparameter = Tagesparameter(
     klimazone="7624q",
     temperaturmessstelle="1234x",
@@ -43,6 +43,6 @@ class TestTagesparameter:
     )
     def test_serialization_roundtrip(self, tagesparameter: Tagesparameter, expected_json_dict: Dict[str, Any]) -> None:
         """
-        Test de-/serialisation of Tagesparameter with minimal attributes.
+        Test de-/serialisation of Tagesparameter with maximal/minimal attributes.
         """
         assert_serialization_roundtrip(tagesparameter, expected_json_dict)

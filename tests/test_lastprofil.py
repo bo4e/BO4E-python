@@ -9,7 +9,7 @@ from bo4e.enum.profilart import Profilart
 from bo4e.enum.profilverfahren import Profilverfahren
 from tests.serialization_helper import assert_serialization_roundtrip
 
-#: maximal example
+# maximal example
 example_lastprofil = Lastprofil(
     bezeichnung="foo",
     profilschar="foo2",
@@ -65,7 +65,7 @@ class TestLastprofil:
     )
     def test_serialization_roundtrip(self, lastprofil: Lastprofil, expected_json_dict: Dict[str, Any]) -> None:
         """
-        Test de-/serialisation of Lastprofil with minimal attributes.
+        Test de-/serialisation of Lastprofil with maximal/minimal attributes.
         """
         assert_serialization_roundtrip(lastprofil, expected_json_dict)
 

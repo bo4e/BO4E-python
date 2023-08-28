@@ -14,11 +14,7 @@ class Tagesparameter(COM):
     der Wetterstation für die Temperaturmessstelle
     """
 
-    #: Qualifier der Klimazone, e.g. 7624q
-    klimazone: Optional[str] = None
-    #: Qualifier der Temperaturmessstelle, e.g. 1234x
-    temperaturmessstelle: Optional[str] = None
-    #: Dienstanbieter (bei Temperaturmessstellen), e.g. ZT1
-    dienstanbieter: Optional[str] = None
-    #: Herausgeber des Lastprofil-Codes, e.g. BDEW
-    herausgeber: Optional[str] = None
+    klimazone: Optional[str] = None  #: Qualifier der Klimazone, e.g. 7624q
+    temperaturmessstelle: Optional[str] = None  #: Qualifier der Temperaturmessstelle, e.g. 1234x
+    dienstanbieter: Optional[str] = None  #: Dienstanbieter (bei Temperaturmessstellen), e.g. ZT1
+    herausgeber: Optional[str] = None  #: Herausgeber des Lastprofil-Codes, e.g. BDEW

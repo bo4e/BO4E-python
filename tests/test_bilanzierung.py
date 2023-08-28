@@ -21,7 +21,7 @@ from bo4e.enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
 from bo4e.enum.zeitreihentyp import Zeitreihentyp
 from tests.serialization_helper import assert_serialization_roundtrip
 
-#:  full example
+# full example
 example_bilanzierung = Bilanzierung(
     marktlokations_id="51238696781",
     lastprofil=[
@@ -145,7 +145,7 @@ class TestBilanzierung:
     )
     def test_serialization_roundtrip(self, bilanzierung: Bilanzierung, expected_json_dict: Dict[str, Any]) -> None:
         """
-        Test de-/serialisation of Bilanzierung with minimal attributes.
+        Test de-/serialisation of Bilanzierung with maximal/minimal attributes.
         """
         assert_serialization_roundtrip(bilanzierung, expected_json_dict)
 

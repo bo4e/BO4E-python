@@ -12,8 +12,8 @@ class Fallgruppenzuordnung(StrEnum):
 
     # todo: Uppercase-Problematik klären. -> pylint
     GABI_RLMmT = "GABI_RLMmT"  # pylint:disable=invalid-name
-    # #: RLM mit Tagesband,
+    """RLM mit Tagesband"""
     GABI_RLMoT = "GABI_RLMoT"  # pylint:disable=invalid-name
-    # #: RLM ohne Tagesband,
+    """RLM ohne Tagesband"""
     GABI_RLMNEV = "GABI_RLMNEV"
-    #: RLM im Nominierungsersatzverfahren
+    """RLM im Nominierungsersatzverfahren"""
