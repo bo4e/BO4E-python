@@ -8,7 +8,6 @@ from bo4e.enum.abweichungsgrund import Abweichungsgrund
 class Abweichung(COM):
     """Zur Angabe einer Abweichung bei Ablehnung einer COMDIS. (REMADV SG5 RFF und SG7 AJT/FTX)."""
 
-    # optional attributes
     abweichungsgrund: Optional[Abweichungsgrund] = None  #: Angabe Abweichungsgrund
     abweichungsgrund_bemerkung: Optional[str] = None  #: Nähere Erläuterung zum Abweichungsgrund
     zugehoerige_rechnung: Optional[str] = None  #: Zugehoerige Rechnung
