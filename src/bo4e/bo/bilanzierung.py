@@ -75,14 +75,14 @@ class Bilanzierung(Geschaeftsobjekt):
     prioritaet: Optional[int] = None
     #: Grund Wahlrecht der Prognosegrundlage(true=Wahlrecht beim Lieferanten vorhanden)
     grund_wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
-    """
-    Validator für marktlokations_id.
-    Prüft, ob marktlokations_id, wenn gegeben, formal richtig ist.   
-    """
 
     @field_validator("marktlokations_id")
     @classmethod
     def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> Optional[str]:
+        """
+        Validator für marktlokations_id.
+        Prüft, ob marktlokations_id, wenn gegeben, formal richtig ist.   
+        """
         if marktlokations_id is None:
             return marktlokations_id
         return validate_marktlokations_id(cls, marktlokations_id)
