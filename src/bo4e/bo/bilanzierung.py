@@ -81,7 +81,7 @@ class Bilanzierung(Geschaeftsobjekt):
     def _validate_malo_if_given(cls, marktlokations_id: Optional[str]) -> Optional[str]:
         """
         Validator für marktlokations_id.
-        Prüft, ob marktlokations_id, wenn gegeben, formal richtig ist.   
+        Prüft, ob marktlokations_id, wenn gegeben, formal richtig ist.
         """
         if marktlokations_id is None:
             return marktlokations_id

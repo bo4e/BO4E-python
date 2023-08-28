@@ -158,7 +158,7 @@ class TestBilanzierung:
             pytest.param("52935155442", True),
             pytest.param("12345678910", False, id="wrong checksum"),
             pytest.param("529351554422", False, id="too long"),
-            pytest.param("5293515544", False, id=""too short"),
+            pytest.param("5293515544", False, id="too short"),
             pytest.param("5293v15a442", False, id="alphanumeric"),
             pytest.param("asdasd", False),
             pytest.param("   ", False),
