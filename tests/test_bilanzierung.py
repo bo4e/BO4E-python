@@ -150,36 +150,31 @@ class TestBilanzierung:
         assert_serialization_roundtrip(bilanzierung, expected_json_dict)
 
     @pytest.mark.parametrize(
-        "malo_id_valid",
+        "malo_id,is_valid",
         [
-            ("51238696781", True),
-            ("41373559241", True),
-            ("56789012345", True),
-            ("52935155442", True),
-            ("12345678910", False),  # Prüfsumme falsch
-            ("529351554422", False),  # zu lang
-            ("5293515544", False),  # zu kurz
-            ("5293v15a442", False),  # Mix aus Zahlen und Buchstaben
-            ("asdasd", False),
-            ("   ", False),
-            ("  asdasdasd ", False),
-            (None, True),  # malo_id not required
-            ("", False),
+            pytest.param("51238696781", True),
+            pytest.param("41373559241", True),
+            pytest.param("56789012345", True),
+            pytest.param("52935155442", True),
+            pytest.param("12345678910", False, id="wrong checksum"),
+            pytest.param("529351554422", False, id="too long"),
+            pytest.param("5293515544", False, id=""too short"),
+            pytest.param("5293v15a442", False, id="alphanumeric"),
+            pytest.param("asdasd", False),
+            pytest.param("   ", False),
+            pytest.param("  asdasdasd ", False),
+            pytest.param(None, True, id="malo_id not required"),
+            pytest.param("", False),
         ],
     )
-    def test_id_validation(self, malo_id_valid: Tuple[str, bool]) -> None:
+    def test_id_validation(self, malo_id: str, is_valid: bool) -> None:
         """
         Test different MaLos.
         Field optional -> None values are allowed
         """
 
-        def _instantiate_malo(malo_id: str) -> None:
-            _ = Bilanzierung(
-                marktlokations_id=malo_id,
-            )
-
-        if not malo_id_valid[1]:
+        if not is_valid:
             with pytest.raises(ValidationError):
-                _instantiate_malo(malo_id_valid[0])
+                _ = Bilanzierung(marktlokations_id=malo_id)
         else:
-            _instantiate_malo(malo_id_valid[0])
+            _ = Bilanzierung(marktlokations_id=malo_id)
