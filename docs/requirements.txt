@@ -24,7 +24,7 @@ pyhumps==3.8.0
     # via -r docs/requirements.in
 requests==2.31.0
     # via -r docs/requirements.in
-typeguard==4.1.3
+typeguard==4.1.5
     # via -r docs/requirements.in
 typing-extensions==4.7.1
     # via
