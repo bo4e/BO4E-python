@@ -8,7 +8,6 @@ from typing import Optional
 
 # pylint: disable=no-name-in-module
 from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -128,6 +127,9 @@ class Marktlokation(Geschaeftsobjekt):
             (0, 0, 1),
             (0, 0, 0),
         },
-        custom_error_message="More than one address information is given.",
+        custom_error_message=(
+            "More than one address information is given. "
+            'You have to chose either "lokationsadresse", "geoadresse" or "katasterinformation".'
+        ),
     )
     "Checks that if an address is given, that there is only one valid address given"

@@ -165,7 +165,10 @@ class TestMaLo:
                 katasterinformation=None,
             )
 
-        assert "More than one address information is given." in str(excinfo.value)
+        assert (
+            "More than one address information is given. "
+            'You have to chose either "lokationsadresse", "geoadresse" or "katasterinformation".'
+        ) in str(excinfo.value)
 
     def test_address_validation_with_out_katasterinformation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
@@ -188,7 +191,10 @@ class TestMaLo:
                 ),
             )
 
-        assert "More than one address information is given." in str(excinfo.value)
+        assert (
+            "More than one address information is given. "
+            'You have to chose either "lokationsadresse", "geoadresse" or "katasterinformation".'
+        ) in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "malo_id_valid",
