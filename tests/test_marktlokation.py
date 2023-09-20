@@ -167,6 +167,27 @@ class TestMaLo:
 
         assert "No or more than one address information is given." in str(excinfo.value)
 
+    def test_address_validation_with_katasterinformation(self) -> None:
+        with pytest.raises(ValidationError) as excinfo:
+            _ = Marktlokation(
+                marktlokations_id="51238696781",
+                sparte=Sparte.GAS,
+                lokationsadresse=Adresse(
+                    postleitzahl="04177",
+                    ort="Leipzig",
+                    hausnummer="1",
+                    strasse="Jahnalle",
+                ),
+                energierichtung=Energierichtung.EINSP,
+                bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
+                unterbrechbar=True,  # optional attribute
+                netzebene=Netzebene.NSP,
+                geoadresse=Geokoordinaten(
+                    breitengrad=Decimal("52"),
+                    laengengrad=Decimal("9"),
+                ),
+            )
+
     @pytest.mark.parametrize(
         "malo_id_valid",
         [
