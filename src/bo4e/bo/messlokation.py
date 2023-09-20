@@ -113,7 +113,10 @@ class Messlokation(Geschaeftsobjekt):
             (0, 0, 1),
             (0, 0, 0),
         },
-        custom_error_message="More than one address information is given.",
+        custom_error_message=(
+            "More than one address information is given. "
+            'You have to chose either "messadresse", "geoadresse" or "katasterinformation".'
+        ),
     )
     "Checks that if an address is given, that there is only one valid address given"
 
