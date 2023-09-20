@@ -117,6 +117,7 @@ class Marktlokation(Geschaeftsobjekt):
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
 
+    # pylint: disable=duplicate-code
     _validate_address_info = combinations_of_fields(
         "lokationsadresse",
         "geoadresse",

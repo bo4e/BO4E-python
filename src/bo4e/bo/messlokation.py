@@ -103,6 +103,7 @@ class Messlokation(Geschaeftsobjekt):
             raise ValueError(f"The country code '{messlokations_id[0:2]}' is not a valid country code")
         return messlokations_id
 
+    # pylint: disable=duplicate-code
     _validate_address_info = combinations_of_fields(
         "messadresse",
         "geoadresse",
