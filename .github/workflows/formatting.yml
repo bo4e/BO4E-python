@@ -1,4 +1,4 @@
-name: "Check code format with black and isort"
+name: "Check code format with pre-commit"
 
 on: [push, pull_request]
 jobs:
