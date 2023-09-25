@@ -64,7 +64,7 @@ def einheit_only_for_abschlagstyp_absolut(  # type: ignore[no-untyped-def]
     Check that einheit is only there if abschlagstyp is absolut.
     Currently, (2021-12-15) only used in COM AufAbschlag.
     """
-    values = validation_info.data  # type:ignore[attr-defined]
+    values = validation_info.data
     if value and (not values["auf_abschlagstyp"] or (values["auf_abschlagstyp"] != AufAbschlagstyp.ABSOLUT)):
         raise ValueError("Only state einheit if auf_abschlagstyp is absolute.")
     return value
