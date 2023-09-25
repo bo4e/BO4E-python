@@ -8,7 +8,6 @@ from typing import Optional
 
 # pylint: disable=no-name-in-module
 from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -25,7 +24,7 @@ from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.validators import validate_marktlokations_id
+from bo4e.validators import combinations_of_fields, validate_marktlokations_id
 
 
 class Marktlokation(Geschaeftsobjekt):
@@ -118,19 +117,20 @@ class Marktlokation(Geschaeftsobjekt):
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
 
-    # pylint:disable=unused-argument, no-self-argument
-    @field_validator("katasterinformation")
-    def validate_address_info(
-        cls, katasterinformation: Optional[Katasteradresse], validation_info: ValidationInfo
-    ) -> Optional[Katasteradresse]:
-        """Checks that there is one and only one valid adress given."""
-        values = validation_info.data  # type:ignore[attr-defined]
-        all_address_attributes = [
-            values["lokationsadresse"],
-            values["geoadresse"],
-            katasterinformation,
-        ]
-        amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
-        if amount_of_given_address_infos != 1:
-            raise ValueError("No or more than one address information is given.")
-        return katasterinformation
+    # pylint: disable=duplicate-code
+    _validate_address_info = combinations_of_fields(
+        "lokationsadresse",
+        "geoadresse",
+        "katasterinformation",
+        valid_combinations={
+            (1, 0, 0),
+            (0, 1, 0),
+            (0, 0, 1),
+            (0, 0, 0),
+        },
+        custom_error_message=(
+            "More than one address information is given. "
+            'You have to chose either "lokationsadresse", "geoadresse" or "katasterinformation".'
+        ),
+    )
+    "Checks that if an address is given, that there is only one valid address given"

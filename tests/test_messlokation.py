@@ -173,7 +173,10 @@ class TestMeLo:
                 katasterinformation=Katasteradresse(gemarkung_flur="hello", flurstueck="world"),
             )
 
-        assert "More than one address information is given." in str(excinfo.value)
+        assert (
+            "More than one address information is given. "
+            'You have to chose either "messadresse", "geoadresse" or "katasterinformation".'
+        ) in str(excinfo.value)
 
     def test_grundzustaendiger_x_codenr_validation(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
