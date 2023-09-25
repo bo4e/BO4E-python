@@ -34,7 +34,7 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     @staticmethod
     def _get_inclusive_start(values: ValidationInfo) -> datetime:
         """return the inclusive start (used in the validator)"""
-        return values.data["datum_uhrzeit_von"]  # type:ignore[attr-defined]
+        return values.data["datum_uhrzeit_von"]
 
     # def _get_exclusive_end(self) -> datetime:
     #     """return the exclusive end (used in the validator)"""
