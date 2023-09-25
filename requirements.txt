@@ -14,7 +14,7 @@ pydantic-core==2.6.3
     # via pydantic
 pyhumps==3.8.0
     # via -r requirements.in
-typing-extensions==4.7.1
+typing-extensions==4.8.0
     # via
     #   pydantic
     #   pydantic-core
