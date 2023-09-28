@@ -1,204 +1,214 @@
 {
-  "$defs": {
-    "Gueltigkeitstyp": {
-      "description": "\u00dcbersicht der verschiedenen G\u00fcltigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
-      "enum": ["NUR_IN", "NICHT_IN", "NUR_IN_KOMBINATION_MIT"],
-      "title": "Gueltigkeitstyp",
-      "type": "string"
-    },
-    "KriteriumWert": {
-      "additionalProperties": true,
-      "description": "Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
-      "properties": {
-        "kriterium": {
-          "$ref": "#/$defs/Tarifregionskriterium"
+    "$defs": {
+        "Gueltigkeitstyp": {
+            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "enum": [
+                "NUR_IN",
+                "NICHT_IN",
+                "NUR_IN_KOMBINATION_MIT"
+            ],
+            "title": "Gueltigkeitstyp",
+            "type": "string"
         },
-        "wert": {
-          "title": "Wert",
-          "type": "string"
+        "KriteriumWert": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
+            "properties": {
+                "kriterium": {
+                    "$ref": "#/$defs/Tarifregionskriterium"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "kriterium",
+                "wert"
+            ],
+            "title": "KriteriumWert",
+            "type": "object"
+        },
+        "Preisgarantietyp": {
+            "description": "Aufzählung der Möglichkeiten für die Vergabe von Preisgarantien",
+            "enum": [
+                "ALLE_PREISBESTANDTEILE_BRUTTO",
+                "ALLE_PREISBESTANDTEILE_NETTO",
+                "PREISBESTANDTEILE_OHNE_ABGABEN",
+                "NUR_ENERGIEPREIS"
+            ],
+            "title": "Preisgarantietyp",
+            "type": "string"
+        },
+        "RegionaleGueltigkeit": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_",
+            "properties": {
+                "gueltigkeitstyp": {
+                    "$ref": "#/$defs/Gueltigkeitstyp"
+                },
+                "kriteriumsWerte": {
+                    "items": {
+                        "$ref": "#/$defs/KriteriumWert"
+                    },
+                    "minItems": 1,
+                    "title": "Kriteriumswerte",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "gueltigkeitstyp",
+                "kriteriumsWerte"
+            ],
+            "title": "RegionaleGueltigkeit",
+            "type": "object"
+        },
+        "Tarifregionskriterium": {
+            "description": "Mit diesen Kriterien können regionale Bereiche definiert werden.",
+            "enum": [
+                "NETZ_NUMMER",
+                "POSTLEITZAHL",
+                "ORT",
+                "GRUNDVERSORGER_NUMMER",
+                "REGION"
+            ],
+            "title": "Tarifregionskriterium",
+            "type": "string"
+        },
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        },
+        "Zeitraum": {
+            "additionalProperties": true,
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
+            "properties": {
+                "dauer": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Dauer"
+                },
+                "einheit": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeiteinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "enddatum": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Enddatum"
+                },
+                "endzeitpunkt": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Endzeitpunkt"
+                },
+                "startdatum": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Startdatum"
+                },
+                "startzeitpunkt": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Startzeitpunkt"
+                }
+            },
+            "title": "Zeitraum",
+            "type": "object"
         }
-      },
-      "required": ["kriterium", "wert"],
-      "title": "KriteriumWert",
-      "type": "object"
     },
-    "Preisgarantietyp": {
-      "description": "Aufz\u00e4hlung der M\u00f6glichkeiten f\u00fcr die Vergabe von Preisgarantien",
-      "enum": [
-        "ALLE_PREISBESTANDTEILE_BRUTTO",
-        "ALLE_PREISBESTANDTEILE_NETTO",
-        "PREISBESTANDTEILE_OHNE_ABGABEN",
-        "NUR_ENERGIEPREIS"
-      ],
-      "title": "Preisgarantietyp",
-      "type": "string"
-    },
-    "RegionaleGueltigkeit": {
-      "additionalProperties": true,
-      "description": "Mit dieser Komponente k\u00f6nnen regionale G\u00fcltigkeiten, z.B. f\u00fcr Tarife, Zu- und Abschl\u00e4ge und Preise definiert werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_",
-      "properties": {
-        "gueltigkeitstyp": {
-          "$ref": "#/$defs/Gueltigkeitstyp"
+    "additionalProperties": true,
+    "description": "Abbildung einer Preisgarantie mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisgarantie.json>`_",
+    "properties": {
+        "beschreibung": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Beschreibung"
         },
-        "kriteriumsWerte": {
-          "items": {
-            "$ref": "#/$defs/KriteriumWert"
-          },
-          "minItems": 1,
-          "title": "Kriteriumswerte",
-          "type": "array"
+        "preisgarantietyp": {
+            "$ref": "#/$defs/Preisgarantietyp"
+        },
+        "regionaleGueltigkeit": {
+            "$ref": "#/$defs/RegionaleGueltigkeit"
+        },
+        "zeitlicheGueltigkeit": {
+            "$ref": "#/$defs/Zeitraum"
         }
-      },
-      "required": ["gueltigkeitstyp", "kriteriumsWerte"],
-      "title": "RegionaleGueltigkeit",
-      "type": "object"
     },
-    "Tarifregionskriterium": {
-      "description": "Mit diesen Kriterien k\u00f6nnen regionale Bereiche definiert werden.",
-      "enum": [
-        "NETZ_NUMMER",
-        "POSTLEITZAHL",
-        "ORT",
-        "GRUNDVERSORGER_NUMMER",
-        "REGION"
-      ],
-      "title": "Tarifregionskriterium",
-      "type": "string"
-    },
-    "Zeiteinheit": {
-      "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
-      "enum": [
-        "SEKUNDE",
-        "MINUTE",
-        "STUNDE",
-        "VIERTEL_STUNDE",
-        "TAG",
-        "WOCHE",
-        "MONAT",
-        "QUARTAL",
-        "HALBJAHR",
-        "JAHR"
-      ],
-      "title": "Zeiteinheit",
-      "type": "string"
-    },
-    "Zeitraum": {
-      "additionalProperties": true,
-      "description": "Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
-      "properties": {
-        "einheit": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Zeiteinheit"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
-        "dauer": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Dauer"
-        },
-        "startdatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startdatum"
-        },
-        "enddatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Enddatum"
-        },
-        "startzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startzeitpunkt"
-        },
-        "endzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Endzeitpunkt"
-        }
-      },
-      "title": "Zeitraum",
-      "type": "object"
-    }
-  },
-  "additionalProperties": true,
-  "description": "Abbildung einer Preisgarantie mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisgarantie.json>`_",
-  "properties": {
-    "preisgarantietyp": {
-      "$ref": "#/$defs/Preisgarantietyp"
-    },
-    "zeitlicheGueltigkeit": {
-      "$ref": "#/$defs/Zeitraum"
-    },
-    "beschreibung": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Beschreibung"
-    },
-    "regionaleGueltigkeit": {
-      "$ref": "#/$defs/RegionaleGueltigkeit"
-    }
-  },
-  "required": [
-    "preisgarantietyp",
-    "zeitlicheGueltigkeit",
-    "regionaleGueltigkeit"
-  ],
-  "title": "RegionalePreisgarantie",
-  "type": "object"
+    "required": [
+        "preisgarantietyp",
+        "zeitlicheGueltigkeit",
+        "regionaleGueltigkeit"
+    ],
+    "title": "RegionalePreisgarantie",
+    "type": "object"
 }

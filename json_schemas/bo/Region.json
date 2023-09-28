@@ -1,188 +1,202 @@
 {
-  "$defs": {
-    "BoTyp": {
-      "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
-      "enum": [
-        "ANGEBOT",
-        "ANSPRECHPARTNER",
-        "AUSSCHREIUNG",
-        "BUENDELVERTRAG",
-        "ENERGIEMENGE",
-        "FREMDKOSTEN",
-        "GESCHAEFTSOBJEKT",
-        "GESCHAEFTSPARTNER",
-        "KOSTEN",
-        "LASTGANG",
-        "LASTGANG_KOMPAKT",
-        "MARKTLOKATION",
-        "MESSLOKATION",
-        "MARKTTEILNEHMER",
-        "NETZNUTZUNGSRECHNUNG",
-        "PREISBLATT",
-        "PREISBLATTDIENSTLEISTUNG",
-        "PREISBLATTHARDWARE",
-        "PREISBLATTKONZESSIONSABGABE",
-        "PREISBLATTMESSUNG",
-        "PREISBLATTNETZNUTZUNG",
-        "PREISBLATTUMLAGEN",
-        "RECHNUNG",
-        "REGION",
-        "REGIONALTARIF",
-        "STANDORTEIGENSCHAFTEN",
-        "TARIF",
-        "TARIFINFO",
-        "TARIFKOSTEN",
-        "TARIFPREISBLATT",
-        "VERTRAG",
-        "ZAEHLER",
-        "ZEITREIHE"
-      ],
-      "title": "BoTyp",
-      "type": "string"
-    },
-    "ExterneReferenz": {
-      "additionalProperties": true,
-      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
-      "properties": {
-        "exRefName": {
-          "title": "Exrefname",
-          "type": "string"
+    "$defs": {
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
         },
-        "exRefWert": {
-          "title": "Exrefwert",
-          "type": "string"
-        }
-      },
-      "required": ["exRefName", "exRefWert"],
-      "title": "ExterneReferenz",
-      "type": "object"
-    },
-    "Gueltigkeitstyp": {
-      "description": "\u00dcbersicht der verschiedenen G\u00fcltigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
-      "enum": ["NUR_IN", "NICHT_IN", "NUR_IN_KOMBINATION_MIT"],
-      "title": "Gueltigkeitstyp",
-      "type": "string"
-    },
-    "Regionskriterium": {
-      "additionalProperties": true,
-      "description": "Komponente zur Abbildung eines Regionskriteriums\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Regionskriterium.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Regionskriterium.json>`_",
-      "properties": {
-        "gueltigkeitstyp": {
-          "$ref": "#/$defs/Gueltigkeitstyp"
+        "ExterneReferenz": {
+            "additionalProperties": true,
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
         },
-        "regionskriteriumtyp": {
-          "$ref": "#/$defs/Regionskriteriumtyp"
+        "Gueltigkeitstyp": {
+            "description": "Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.",
+            "enum": [
+                "NUR_IN",
+                "NICHT_IN",
+                "NUR_IN_KOMBINATION_MIT"
+            ],
+            "title": "Gueltigkeitstyp",
+            "type": "string"
         },
-        "wert": {
-          "title": "Wert",
-          "type": "string"
-        }
-      },
-      "required": ["gueltigkeitstyp", "regionskriteriumtyp", "wert"],
-      "title": "Regionskriterium",
-      "type": "object"
-    },
-    "Regionskriteriumtyp": {
-      "description": "Klassifizierung der Kriterien f\u00fcr eine regionale Eingrenzung.",
-      "enum": [
-        "BUNDESLANDKENNZIFFER",
-        "BUNDESLAND_NAME",
-        "MARKTGEBIET_NUMMER",
-        "MARKTGEBIET_NAME",
-        "REGELGEBIET_NUMMER",
-        "REGELGEBIET_NAME",
-        "NETZ_STROM",
-        "NETZ_GAS",
-        "NETZBETREIBER_NUMMER_STROM",
-        "NETZBETREIBER_NUMMER_GAS",
-        "NETZBETREIBER_NAME_STROM",
-        "NETZBETREIBER_NAME_GAS",
-        "BILANZIERUNGS_GEBIET_NUMMER",
-        "MSB_NUMMER",
-        "MSB_NAME",
-        "VERSORGER_NUMMER",
-        "VERSORGER_NAME",
-        "GRUNDVERSORGER_NUMMER_STROM",
-        "GRUNDVERSORGER_NAME_STROM",
-        "GRUNDVERSORGER_NUMMER_GAS",
-        "GRUNDVERSORGER_NAME_GAS",
-        "KREIS_NAME",
-        "KREISKENNZIFFER",
-        "GEMEINDE_NAME",
-        "GEMEINDEKENNZIFFER",
-        "POSTLEITZAHL",
-        "ORT",
-        "POSTORT",
-        "EINWOHNERZAHL_GEMEINDE",
-        "EINWOHNERZAHL_ORT",
-        "KM_UMKREIS",
-        "BUNDESWEIT",
-        "PLZ_BEREICH"
-      ],
-      "title": "Regionskriteriumtyp",
-      "type": "string"
-    }
-  },
-  "additionalProperties": true,
-  "description": "Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Region.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Region.json>`_",
-  "properties": {
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
-    },
-    "boTyp": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/BoTyp"
-        }
-      ],
-      "default": "REGION"
-    },
-    "externeReferenzen": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/ExterneReferenz"
-          },
-          "type": "array"
+        "Regionskriterium": {
+            "additionalProperties": true,
+            "description": "Komponente zur Abbildung eines Regionskriteriums\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Regionskriterium.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Regionskriterium.json>`_",
+            "properties": {
+                "gueltigkeitstyp": {
+                    "$ref": "#/$defs/Gueltigkeitstyp"
+                },
+                "regionskriteriumtyp": {
+                    "$ref": "#/$defs/Regionskriteriumtyp"
+                },
+                "wert": {
+                    "title": "Wert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "gueltigkeitstyp",
+                "regionskriteriumtyp",
+                "wert"
+            ],
+            "title": "Regionskriterium",
+            "type": "object"
         },
-        {
-          "type": "null"
+        "Regionskriteriumtyp": {
+            "description": "Klassifizierung der Kriterien für eine regionale Eingrenzung.",
+            "enum": [
+                "BUNDESLANDKENNZIFFER",
+                "BUNDESLAND_NAME",
+                "MARKTGEBIET_NUMMER",
+                "MARKTGEBIET_NAME",
+                "REGELGEBIET_NUMMER",
+                "REGELGEBIET_NAME",
+                "NETZ_STROM",
+                "NETZ_GAS",
+                "NETZBETREIBER_NUMMER_STROM",
+                "NETZBETREIBER_NUMMER_GAS",
+                "NETZBETREIBER_NAME_STROM",
+                "NETZBETREIBER_NAME_GAS",
+                "BILANZIERUNGS_GEBIET_NUMMER",
+                "MSB_NUMMER",
+                "MSB_NAME",
+                "VERSORGER_NUMMER",
+                "VERSORGER_NAME",
+                "GRUNDVERSORGER_NUMMER_STROM",
+                "GRUNDVERSORGER_NAME_STROM",
+                "GRUNDVERSORGER_NUMMER_GAS",
+                "GRUNDVERSORGER_NAME_GAS",
+                "KREIS_NAME",
+                "KREISKENNZIFFER",
+                "GEMEINDE_NAME",
+                "GEMEINDEKENNZIFFER",
+                "POSTLEITZAHL",
+                "ORT",
+                "POSTORT",
+                "EINWOHNERZAHL_GEMEINDE",
+                "EINWOHNERZAHL_ORT",
+                "KM_UMKREIS",
+                "BUNDESWEIT",
+                "PLZ_BEREICH"
+            ],
+            "title": "Regionskriteriumtyp",
+            "type": "string"
         }
-      ],
-      "default": [],
-      "title": "Externereferenzen"
     },
-    "bezeichnung": {
-      "title": "Bezeichnung",
-      "type": "string"
-    },
-    "positivListe": {
-      "items": {
-        "$ref": "#/$defs/Regionskriterium"
-      },
-      "minItems": 1,
-      "title": "Positivliste",
-      "type": "array"
-    },
-    "negativListe": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Regionskriterium"
-          },
-          "type": "array"
+    "additionalProperties": true,
+    "description": "Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Region.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Region.json>`_",
+    "properties": {
+        "bezeichnung": {
+            "title": "Bezeichnung",
+            "type": "string"
         },
-        {
-          "type": "null"
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/BoTyp"
+                }
+            ],
+            "default": "REGION"
+        },
+        "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": [],
+            "title": "Externereferenzen"
+        },
+        "negativListe": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Regionskriterium"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Negativliste"
+        },
+        "positivListe": {
+            "items": {
+                "$ref": "#/$defs/Regionskriterium"
+            },
+            "minItems": 1,
+            "title": "Positivliste",
+            "type": "array"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Negativliste"
-    }
-  },
-  "required": ["bezeichnung", "positivListe"],
-  "title": "Region",
-  "type": "object"
+    },
+    "required": [
+        "bezeichnung",
+        "positivListe"
+    ],
+    "title": "Region",
+    "type": "object"
 }

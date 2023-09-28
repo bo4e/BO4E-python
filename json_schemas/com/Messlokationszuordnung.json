@@ -1,50 +1,58 @@
 {
-  "$defs": {
-    "ArithmetischeOperation": {
-      "description": "Mit dieser Aufz\u00e4hlung k\u00f6nnen arithmetische Operationen festgelegt werden.",
-      "enum": ["ADDITION", "SUBTRAKTION", "MULTIPLIKATION", "DIVISION"],
-      "title": "ArithmetischeOperation",
-      "type": "string"
-    }
-  },
-  "additionalProperties": true,
-  "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beitr\u00e4gt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
-  "properties": {
-    "messlokationsId": {
-      "title": "Messlokationsid",
-      "type": "string"
-    },
-    "arithmetik": {
-      "$ref": "#/$defs/ArithmetischeOperation"
-    },
-    "gueltigSeit": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
-        },
-        {
-          "type": "null"
+    "$defs": {
+        "ArithmetischeOperation": {
+            "description": "Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.",
+            "enum": [
+                "ADDITION",
+                "SUBTRAKTION",
+                "MULTIPLIKATION",
+                "DIVISION"
+            ],
+            "title": "ArithmetischeOperation",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Gueltigseit"
     },
-    "gueltigBis": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
+    "additionalProperties": true,
+    "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
+    "properties": {
+        "arithmetik": {
+            "$ref": "#/$defs/ArithmetischeOperation"
         },
-        {
-          "type": "null"
+        "gueltigBis": {
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gueltigbis"
+        },
+        "gueltigSeit": {
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gueltigseit"
+        },
+        "messlokationsId": {
+            "title": "Messlokationsid",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Gueltigbis"
-    }
-  },
-  "required": ["messlokationsId", "arithmetik"],
-  "title": "Messlokationszuordnung",
-  "type": "object"
+    },
+    "required": [
+        "messlokationsId",
+        "arithmetik"
+    ],
+    "title": "Messlokationszuordnung",
+    "type": "object"
 }

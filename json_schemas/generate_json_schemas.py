@@ -51,6 +51,7 @@ def generate_json_schemas(mode: Literal["validate", "generate"]):
                         existing_schema = json.load(json_schema_file)
                     if schema_json_dict != existing_schema:
                         raise ValueError(f"Schema for {name} has changed. Please run this script with mode 'generate'.")
+                        # or call tox -e generate_json_schemas
                     _logger.debug("Schema for %s is consistent", name)
                 elif mode == "generate":
                     with open(file_path, "w+", encoding="utf-8") as json_schema_file:
