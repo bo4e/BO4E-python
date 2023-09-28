@@ -22,7 +22,7 @@ for pkg in pkgs:
         for name, cls in cls_list:
             this_directory = pathlib.Path(__file__).parent.absolute()
             file_path = this_directory / pkg / (name + ".json")  # pylint:disable=invalid-name
-            schema_json_dict = json.loads(cls.schema_json(ensure_ascii=False, sort_keys=True, indent=4))
+            schema_json_dict = cls.model_json_schema()
             if "definitions" in schema_json_dict:
                 for definition in schema_json_dict["definitions"].values():
                     # this sanitizing step is necessary since python 3.11
