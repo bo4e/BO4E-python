@@ -1,0 +1,3 @@
+# requirements for the hatchling build ssystem
+twine
+wheel

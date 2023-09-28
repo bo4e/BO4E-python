@@ -24,7 +24,6 @@ BO4E
 Gleichzeitig ist dieses Repository der Ort, um Fragen und Erweiterungen des BO4E-Standards zu diskutieren.
 
 🇬🇧 This is a Python library that implements Business Objects for Energy `BO4E <https://www.bo4e.de/>`_.
-It requires Python >=3.10.
 
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
 ==========================================================

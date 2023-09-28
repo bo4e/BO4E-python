@@ -1,86 +1,94 @@
 {
-  "$defs": {
-    "Mengeneinheit": {
-      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
-      "enum": [
-        "W",
-        "WH",
-        "KW",
-        "KWH",
-        "KVARH",
-        "MW",
-        "MWH",
-        "STUECK",
-        "KUBIKMETER",
-        "STUNDE",
-        "TAG",
-        "MONAT",
-        "JAHR",
-        "PROZENT"
-      ],
-      "title": "Mengeneinheit",
-      "type": "string"
-    },
-    "Wertermittlungsverfahren": {
-      "description": "Gibt an, ob es sich um eine Prognose oder eine Messung handelt, beispielsweise bei der Abbildung eines Verbrauchs.",
-      "enum": ["PROGNOSE", "MESSUNG"],
-      "title": "Wertermittlungsverfahren",
-      "type": "string"
-    }
-  },
-  "additionalProperties": true,
-  "description": "\n    Abbildung eines zeitlich abgegrenzten Verbrauchs\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Verbrauch.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verbrauch.json>`_\n\n    ",
-  "properties": {
-    "einheit": {
-      "$ref": "#/$defs/Mengeneinheit"
-    },
-    "enddatum": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
+    "$defs": {
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
         },
-        {
-          "type": "null"
+        "Wertermittlungsverfahren": {
+            "description": "Gibt an, ob es sich um eine Prognose oder eine Messung handelt, beispielsweise bei der Abbildung eines Verbrauchs.",
+            "enum": [
+                "PROGNOSE",
+                "MESSUNG"
+            ],
+            "title": "Wertermittlungsverfahren",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Enddatum"
     },
-    "obisKennzahl": {
-      "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-      "title": "Obiskennzahl",
-      "type": "string"
-    },
-    "startdatum": {
-      "anyOf": [
-        {
-          "format": "date-time",
-          "type": "string"
+    "additionalProperties": true,
+    "description": "Abbildung eines zeitlich abgegrenzten Verbrauchs\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verbrauch.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verbrauch.json>`_",
+    "properties": {
+        "einheit": {
+            "$ref": "#/$defs/Mengeneinheit"
         },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Startdatum"
-    },
-    "wert": {
-      "anyOf": [
-        {
-          "type": "number"
+        "enddatum": {
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Enddatum"
         },
-        {
-          "type": "string"
+        "obisKennzahl": {
+            "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+            "title": "Obiskennzahl",
+            "type": "string"
+        },
+        "startdatum": {
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Startdatum"
+        },
+        "wert": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                }
+            ],
+            "title": "Wert"
+        },
+        "wertermittlungsverfahren": {
+            "$ref": "#/$defs/Wertermittlungsverfahren"
         }
-      ],
-      "title": "Wert"
     },
-    "wertermittlungsverfahren": {
-      "$ref": "#/$defs/Wertermittlungsverfahren"
-    }
-  },
-  "required": ["wertermittlungsverfahren", "obisKennzahl", "wert", "einheit"],
-  "title": "Verbrauch",
-  "type": "object"
+    "required": [
+        "wertermittlungsverfahren",
+        "obisKennzahl",
+        "wert",
+        "einheit"
+    ],
+    "title": "Verbrauch",
+    "type": "object"
 }

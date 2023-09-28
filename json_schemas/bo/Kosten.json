@@ -1,672 +1,697 @@
 {
-  "$defs": {
-    "Betrag": {
-      "additionalProperties": true,
-      "description": "\n    Die Komponente wird dazu verwendet, Summenbetr\u00e4ge (beispielsweise in Angeboten und Rechnungen) als Geldbetr\u00e4ge\n    abzubilden. Die Einheit ist dabei immer die Hauptw\u00e4hrung also Euro, Dollar etc\u2026\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_\n\n    ",
-      "properties": {
-        "waehrung": {
-          "$ref": "#/$defs/Waehrungscode"
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
+    "$defs": {
+        "Betrag": {
+            "additionalProperties": true,
+            "description": "Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge\nabzubilden. Die Einheit ist dabei immer die Hauptwährung also Euro, Dollar etc…\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_",
+            "properties": {
+                "waehrung": {
+                    "$ref": "#/$defs/Waehrungscode"
+                },
+                "wert": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
+                }
             },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
+            "required": [
+                "wert",
+                "waehrung"
+            ],
+            "title": "Betrag",
+            "type": "object"
+        },
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
+        },
+        "ExterneReferenz": {
+            "additionalProperties": true,
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "Kostenblock": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Kostenblock.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenblock.json>`_",
+            "properties": {
+                "kostenblockbezeichnung": {
+                    "title": "Kostenblockbezeichnung",
+                    "type": "string"
+                },
+                "kostenpositionen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Kostenposition"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kostenpositionen"
+                },
+                "summeKostenblock": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Betrag"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "required": [
+                "kostenblockbezeichnung"
+            ],
+            "title": "Kostenblock",
+            "type": "object"
+        },
+        "Kostenklasse": {
+            "description": "Kostenklassen bilden die oberste Ebene der verschiedenen Kosten.\nIn der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.",
+            "enum": [
+                "FREMDKOSTEN",
+                "BESCHAFFUNG",
+                "SELBSTKOSTEN",
+                "MARGEN",
+                "ENERGIEVERSORGUNGSKOSTEN"
+            ],
+            "title": "Kostenklasse",
+            "type": "string"
+        },
+        "Kostenposition": {
+            "additionalProperties": true,
+            "description": "Diese Komponente wird zur Übertagung der Details zu einer Kostenposition verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Kostenposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_",
+            "properties": {
+                "artikelbezeichnung": {
+                    "title": "Artikelbezeichnung",
+                    "type": "string"
+                },
+                "artikeldetail": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Artikeldetail"
+                },
+                "betragKostenposition": {
+                    "$ref": "#/$defs/Betrag"
+                },
+                "bis": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bis"
+                },
+                "einzelpreis": {
+                    "$ref": "#/$defs/Preis"
+                },
+                "menge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Menge"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "positionstitel": {
+                    "title": "Positionstitel",
+                    "type": "string"
+                },
+                "von": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Von"
+                },
+                "zeitmenge": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Menge"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "required": [
+                "positionstitel",
+                "betragKostenposition",
+                "artikelbezeichnung",
+                "einzelpreis"
+            ],
+            "title": "Kostenposition",
+            "type": "object"
+        },
+        "Menge": {
+            "additionalProperties": true,
+            "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
+            "properties": {
+                "einheit": {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                "wert": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit"
+            ],
+            "title": "Menge",
+            "type": "object"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preis": {
+            "additionalProperties": true,
+            "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
+            "properties": {
+                "bezugswert": {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                "einheit": {
+                    "$ref": "#/$defs/Waehrungseinheit"
+                },
+                "status": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preisstatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "wert": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        }
+                    ],
+                    "title": "Wert"
+                }
+            },
+            "required": [
+                "wert",
+                "einheit",
+                "bezugswert"
+            ],
+            "title": "Preis",
+            "type": "object"
+        },
+        "Preisstatus": {
+            "description": "Statusinformation für Preise",
+            "enum": [
+                "VORLAEUFIG",
+                "ENDGUELTIG"
+            ],
+            "title": "Preisstatus",
+            "type": "string"
+        },
+        "Waehrungscode": {
+            "description": "Aufzählung der Währungscodes.",
+            "enum": [
+                "AED",
+                "AFN",
+                "ALL",
+                "AMD",
+                "ANG",
+                "AOA",
+                "ARS",
+                "AUD",
+                "AWG",
+                "AZN",
+                "BAM",
+                "BBD",
+                "BDT",
+                "BGN",
+                "BHD",
+                "BIF",
+                "BMD",
+                "BND",
+                "BOB",
+                "BOV",
+                "BRL",
+                "BSD",
+                "BTN",
+                "BWP",
+                "BYN",
+                "BYR",
+                "BZD",
+                "CAD",
+                "CDF",
+                "CHE",
+                "CHF",
+                "CHW",
+                "CLF",
+                "CLP",
+                "CNY",
+                "COP",
+                "COU",
+                "CRC",
+                "CUC",
+                "CUP",
+                "CVE",
+                "CZK",
+                "DJF",
+                "DKK",
+                "DOP",
+                "DZD",
+                "EGP",
+                "ERN",
+                "ETB",
+                "EUR",
+                "FJD",
+                "FKP",
+                "GBP",
+                "GEL",
+                "GHS",
+                "GIP",
+                "GMD",
+                "GNF",
+                "GTQ",
+                "GYD",
+                "HKD",
+                "HNL",
+                "HRK",
+                "HTG",
+                "HUF",
+                "IDR",
+                "ILS",
+                "INR",
+                "IQD",
+                "IRR",
+                "ISK",
+                "JMD",
+                "JOD",
+                "JPY",
+                "KES",
+                "KGS",
+                "KHR",
+                "KMF",
+                "KPW",
+                "KRW",
+                "KWD",
+                "KYD",
+                "KZT",
+                "LAK",
+                "LBP",
+                "LKR",
+                "LRD",
+                "LSL",
+                "LTL",
+                "LYD",
+                "MAD",
+                "MDL",
+                "MGA",
+                "MKD",
+                "MMK",
+                "MNT",
+                "MOP",
+                "MRO",
+                "MUR",
+                "MVR",
+                "MWK",
+                "MXN",
+                "MXV",
+                "MYR",
+                "MZN",
+                "NAD",
+                "NGN",
+                "NIO",
+                "NOK",
+                "NPR",
+                "NZD",
+                "OMR",
+                "PAB",
+                "PEN",
+                "PGK",
+                "PHP",
+                "PKR",
+                "PLN",
+                "PYG",
+                "QAR",
+                "RON",
+                "RSD",
+                "RUB",
+                "RUR",
+                "RWF",
+                "SAR",
+                "SBD",
+                "SCR",
+                "SDG",
+                "SEK",
+                "SGD",
+                "SHP",
+                "SLL",
+                "SOS",
+                "SRD",
+                "SSP",
+                "STD",
+                "SVC",
+                "SYP",
+                "SZL",
+                "THB",
+                "TJS",
+                "TMT",
+                "TND",
+                "TOP",
+                "TRY",
+                "TTD",
+                "TWD",
+                "TZS",
+                "UAH",
+                "UGX",
+                "USD",
+                "USN",
+                "USS",
+                "UYI",
+                "UYU",
+                "UZS",
+                "VEF",
+                "VND",
+                "VUV",
+                "WST",
+                "XAF",
+                "XAG",
+                "XAU",
+                "XBA",
+                "XBB",
+                "XBC",
+                "XBD",
+                "XCD",
+                "XDR",
+                "XOF",
+                "XPD",
+                "XPF",
+                "XPT",
+                "XSU",
+                "XTS",
+                "XUA",
+                "XXX",
+                "YER",
+                "ZAR",
+                "ZMW",
+                "ZWL"
+            ],
+            "title": "Waehrungscode",
+            "type": "string"
+        },
+        "Waehrungseinheit": {
+            "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
+            "enum": [
+                "EUR",
+                "CT"
+            ],
+            "title": "Waehrungseinheit",
+            "type": "string"
+        },
+        "Zeiteinheit": {
+            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+            "enum": [
+                "SEKUNDE",
+                "MINUTE",
+                "STUNDE",
+                "VIERTEL_STUNDE",
+                "TAG",
+                "WOCHE",
+                "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
+                "JAHR"
+            ],
+            "title": "Zeiteinheit",
+            "type": "string"
+        },
+        "Zeitraum": {
+            "additionalProperties": true,
+            "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
+            "properties": {
+                "dauer": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Dauer"
+                },
+                "einheit": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeiteinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "enddatum": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Enddatum"
+                },
+                "endzeitpunkt": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Endzeitpunkt"
+                },
+                "startdatum": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Startdatum"
+                },
+                "startzeitpunkt": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Startzeitpunkt"
+                }
+            },
+            "title": "Zeitraum",
+            "type": "object"
         }
-      },
-      "required": ["wert", "waehrung"],
-      "title": "Betrag",
-      "type": "object"
     },
-    "BoTyp": {
-      "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
-      "enum": [
-        "ANGEBOT",
-        "ANSPRECHPARTNER",
-        "AUSSCHREIUNG",
-        "BUENDELVERTRAG",
-        "ENERGIEMENGE",
-        "FREMDKOSTEN",
-        "GESCHAEFTSOBJEKT",
-        "GESCHAEFTSPARTNER",
-        "KOSTEN",
-        "LASTGANG",
-        "LASTGANG_KOMPAKT",
-        "MARKTLOKATION",
-        "MESSLOKATION",
-        "MARKTTEILNEHMER",
-        "NETZNUTZUNGSRECHNUNG",
-        "PREISBLATT",
-        "PREISBLATTDIENSTLEISTUNG",
-        "PREISBLATTHARDWARE",
-        "PREISBLATTKONZESSIONSABGABE",
-        "PREISBLATTMESSUNG",
-        "PREISBLATTNETZNUTZUNG",
-        "PREISBLATTUMLAGEN",
-        "RECHNUNG",
-        "REGION",
-        "REGIONALTARIF",
-        "STANDORTEIGENSCHAFTEN",
-        "TARIF",
-        "TARIFINFO",
-        "TARIFKOSTEN",
-        "TARIFPREISBLATT",
-        "VERTRAG",
-        "ZAEHLER",
-        "ZEITREIHE"
-      ],
-      "title": "BoTyp",
-      "type": "string"
-    },
-    "ExterneReferenz": {
-      "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
-      "properties": {
-        "exRefName": {
-          "title": "Exrefname",
-          "type": "string"
+    "additionalProperties": true,
+    "description": "Dieses BO wird zur Übertagung von hierarchischen Kostenstrukturen verwendet.\nDie Kosten werden dabei in Kostenblöcke und diese wiederum in Kostenpositionen strukturiert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Kosten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Kosten.json>`_",
+    "properties": {
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/BoTyp"
+                }
+            ],
+            "default": "KOSTEN"
         },
-        "exRefWert": {
-          "title": "Exrefwert",
-          "type": "string"
+        "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": [],
+            "title": "Externereferenzen"
+        },
+        "gueltigkeit": {
+            "$ref": "#/$defs/Zeitraum"
+        },
+        "kostenbloecke": {
+            "items": {
+                "$ref": "#/$defs/Kostenblock"
+            },
+            "minItems": 1,
+            "title": "Kostenbloecke",
+            "type": "array"
+        },
+        "kostenklasse": {
+            "$ref": "#/$defs/Kostenklasse"
+        },
+        "summeKosten": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Betrag"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Summekosten"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
         }
-      },
-      "required": ["exRefName", "exRefWert"],
-      "title": "ExterneReferenz",
-      "type": "object"
     },
-    "Kostenblock": {
-      "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Kostenblock.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenblock.json>`_\n\n    ",
-      "properties": {
-        "kostenblockbezeichnung": {
-          "title": "Kostenblockbezeichnung",
-          "type": "string"
-        },
-        "kostenpositionen": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/Kostenposition"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Kostenpositionen"
-        },
-        "summeKostenblock": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Betrag"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        }
-      },
-      "required": ["kostenblockbezeichnung"],
-      "title": "Kostenblock",
-      "type": "object"
-    },
-    "Kostenklasse": {
-      "description": "Kostenklassen bilden die oberste Ebene der verschiedenen Kosten.\nIn der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.",
-      "enum": [
-        "FREMDKOSTEN",
-        "BESCHAFFUNG",
-        "SELBSTKOSTEN",
-        "MARGEN",
-        "ENERGIEVERSORGUNGSKOSTEN"
-      ],
-      "title": "Kostenklasse",
-      "type": "string"
-    },
-    "Kostenposition": {
-      "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur \u00dcbertagung der Details zu einer Kostenposition verwendet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Kostenposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_\n\n    ",
-      "properties": {
-        "artikelbezeichnung": {
-          "title": "Artikelbezeichnung",
-          "type": "string"
-        },
-        "artikeldetail": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Artikeldetail"
-        },
-        "betragKostenposition": {
-          "$ref": "#/$defs/Betrag"
-        },
-        "bis": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Bis"
-        },
-        "einzelpreis": {
-          "$ref": "#/$defs/Preis"
-        },
-        "menge": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Menge"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
-        "positionstitel": {
-          "title": "Positionstitel",
-          "type": "string"
-        },
-        "von": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Von"
-        },
-        "zeitmenge": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Menge"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        }
-      },
-      "required": [
-        "positionstitel",
-        "betragKostenposition",
-        "artikelbezeichnung",
-        "einzelpreis"
-      ],
-      "title": "Kostenposition",
-      "type": "object"
-    },
-    "Menge": {
-      "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
-      "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
-        }
-      },
-      "required": ["wert", "einheit"],
-      "title": "Menge",
-      "type": "object"
-    },
-    "Mengeneinheit": {
-      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
-      "enum": [
-        "W",
-        "WH",
-        "KW",
-        "KWH",
-        "KVARH",
-        "MW",
-        "MWH",
-        "STUECK",
-        "KUBIKMETER",
-        "STUNDE",
-        "TAG",
-        "MONAT",
-        "JAHR",
-        "PROZENT"
-      ],
-      "title": "Mengeneinheit",
-      "type": "string"
-    },
-    "Preis": {
-      "additionalProperties": true,
-      "description": "\n    Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_\n\n    ",
-      "properties": {
-        "bezugswert": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
-        "einheit": {
-          "$ref": "#/$defs/Waehrungseinheit"
-        },
-        "status": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Preisstatus"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
-        }
-      },
-      "required": ["wert", "einheit", "bezugswert"],
-      "title": "Preis",
-      "type": "object"
-    },
-    "Preisstatus": {
-      "description": "Statusinformation f\u00fcr Preise",
-      "enum": ["VORLAEUFIG", "ENDGUELTIG"],
-      "title": "Preisstatus",
-      "type": "string"
-    },
-    "Waehrungscode": {
-      "description": "Aufz\u00e4hlung der W\u00e4hrungscodes.",
-      "enum": [
-        "AED",
-        "AFN",
-        "ALL",
-        "AMD",
-        "ANG",
-        "AOA",
-        "ARS",
-        "AUD",
-        "AWG",
-        "AZN",
-        "BAM",
-        "BBD",
-        "BDT",
-        "BGN",
-        "BHD",
-        "BIF",
-        "BMD",
-        "BND",
-        "BOB",
-        "BOV",
-        "BRL",
-        "BSD",
-        "BTN",
-        "BWP",
-        "BYN",
-        "BYR",
-        "BZD",
-        "CAD",
-        "CDF",
-        "CHE",
-        "CHF",
-        "CHW",
-        "CLF",
-        "CLP",
-        "CNY",
-        "COP",
-        "COU",
-        "CRC",
-        "CUC",
-        "CUP",
-        "CVE",
-        "CZK",
-        "DJF",
-        "DKK",
-        "DOP",
-        "DZD",
-        "EGP",
-        "ERN",
-        "ETB",
-        "EUR",
-        "FJD",
-        "FKP",
-        "GBP",
-        "GEL",
-        "GHS",
-        "GIP",
-        "GMD",
-        "GNF",
-        "GTQ",
-        "GYD",
-        "HKD",
-        "HNL",
-        "HRK",
-        "HTG",
-        "HUF",
-        "IDR",
-        "ILS",
-        "INR",
-        "IQD",
-        "IRR",
-        "ISK",
-        "JMD",
-        "JOD",
-        "JPY",
-        "KES",
-        "KGS",
-        "KHR",
-        "KMF",
-        "KPW",
-        "KRW",
-        "KWD",
-        "KYD",
-        "KZT",
-        "LAK",
-        "LBP",
-        "LKR",
-        "LRD",
-        "LSL",
-        "LTL",
-        "LYD",
-        "MAD",
-        "MDL",
-        "MGA",
-        "MKD",
-        "MMK",
-        "MNT",
-        "MOP",
-        "MRO",
-        "MUR",
-        "MVR",
-        "MWK",
-        "MXN",
-        "MXV",
-        "MYR",
-        "MZN",
-        "NAD",
-        "NGN",
-        "NIO",
-        "NOK",
-        "NPR",
-        "NZD",
-        "OMR",
-        "PAB",
-        "PEN",
-        "PGK",
-        "PHP",
-        "PKR",
-        "PLN",
-        "PYG",
-        "QAR",
-        "RON",
-        "RSD",
-        "RUB",
-        "RUR",
-        "RWF",
-        "SAR",
-        "SBD",
-        "SCR",
-        "SDG",
-        "SEK",
-        "SGD",
-        "SHP",
-        "SLL",
-        "SOS",
-        "SRD",
-        "SSP",
-        "STD",
-        "SVC",
-        "SYP",
-        "SZL",
-        "THB",
-        "TJS",
-        "TMT",
-        "TND",
-        "TOP",
-        "TRY",
-        "TTD",
-        "TWD",
-        "TZS",
-        "UAH",
-        "UGX",
-        "USD",
-        "USN",
-        "USS",
-        "UYI",
-        "UYU",
-        "UZS",
-        "VEF",
-        "VND",
-        "VUV",
-        "WST",
-        "XAF",
-        "XAG",
-        "XAU",
-        "XBA",
-        "XBB",
-        "XBC",
-        "XBD",
-        "XCD",
-        "XDR",
-        "XOF",
-        "XPD",
-        "XPF",
-        "XPT",
-        "XSU",
-        "XTS",
-        "XUA",
-        "XXX",
-        "YER",
-        "ZAR",
-        "ZMW",
-        "ZWL"
-      ],
-      "title": "Waehrungscode",
-      "type": "string"
-    },
-    "Waehrungseinheit": {
-      "description": "In diesem Enum werden die W\u00e4hrungen und ihre Untereinheiten definiert, beispielsweise f\u00fcr die Verwendung in Preisen.",
-      "enum": ["EUR", "CT"],
-      "title": "Waehrungseinheit",
-      "type": "string"
-    },
-    "Zeiteinheit": {
-      "description": "Auflistung m\u00f6glicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
-      "enum": [
-        "SEKUNDE",
-        "MINUTE",
-        "STUNDE",
-        "VIERTEL_STUNDE",
-        "TAG",
-        "WOCHE",
-        "MONAT",
-        "QUARTAL",
-        "HALBJAHR",
-        "JAHR"
-      ],
-      "title": "Zeiteinheit",
-      "type": "string"
-    },
-    "Zeitraum": {
-      "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
-      "properties": {
-        "dauer": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Dauer"
-        },
-        "einheit": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Zeiteinheit"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
-        "enddatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Enddatum"
-        },
-        "endzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Endzeitpunkt"
-        },
-        "startdatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startdatum"
-        },
-        "startzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startzeitpunkt"
-        }
-      },
-      "title": "Zeitraum",
-      "type": "object"
-    }
-  },
-  "additionalProperties": true,
-  "description": "\n    Dieses BO wird zur \u00dcbertagung von hierarchischen Kostenstrukturen verwendet.\n    Die Kosten werden dabei in Kostenbl\u00f6cke und diese wiederum in Kostenpositionen strukturiert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Kosten.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Kosten.json>`_\n\n    ",
-  "properties": {
-    "boTyp": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/BoTyp"
-        }
-      ],
-      "default": "KOSTEN"
-    },
-    "externeReferenzen": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/ExterneReferenz"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": [],
-      "title": "Externereferenzen"
-    },
-    "gueltigkeit": {
-      "$ref": "#/$defs/Zeitraum"
-    },
-    "kostenbloecke": {
-      "items": {
-        "$ref": "#/$defs/Kostenblock"
-      },
-      "minItems": 1,
-      "title": "Kostenbloecke",
-      "type": "array"
-    },
-    "kostenklasse": {
-      "$ref": "#/$defs/Kostenklasse"
-    },
-    "summeKosten": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Betrag"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Summekosten"
-    },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
-    }
-  },
-  "required": ["kostenklasse", "gueltigkeit", "kostenbloecke"],
-  "title": "Kosten",
-  "type": "object"
+    "required": [
+        "kostenklasse",
+        "gueltigkeit",
+        "kostenbloecke"
+    ],
+    "title": "Kosten",
+    "type": "object"
 }
