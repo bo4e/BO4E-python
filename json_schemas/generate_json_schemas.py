@@ -23,7 +23,7 @@ _logger = logging.getLogger(__name__)
     required=True,
     type=click.Choice(["validate", "generate"]),
 )
-def generate_json_schemas(mode: Literal["validate", "generate"]):
+def generate_json_schemas(mode: Literal["validate", "generate"]) -> None:
     """generate json schemas for all BOs and COMs"""
     for pkg in ["bo", "com"]:
         modls = [
