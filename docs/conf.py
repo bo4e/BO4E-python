@@ -30,7 +30,7 @@ from uml import PlantUMLNetwork, build_network, compile_files_kroki, write_class
 # https://github.com/rtfd/readthedocs.org/issues/1139
 # DON'T FORGET: Check the box "Install your project inside a virtualenv using
 # setup.py install" in the RTD Advanced Settings.
-# Additionally it helps us to avoid running apidoc manually
+# Additionally, it helps us to avoid running apidoc manually
 
 try:  # for Sphinx >= 1.7
     from sphinx.ext import apidoc
