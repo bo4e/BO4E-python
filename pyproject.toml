@@ -27,8 +27,8 @@ dependencies = [
 dynamic = ["readme", "version"]
 
 [project.urls]
-Changelog = "https://github.com/Hochfrequenz/BO4E-python/releases"
-Homepage = "https://github.com/Hochfrequenz/BO4E-python"
+Changelog = "https://github.com/bo4e/bo4e-python/releases"
+Homepage = "https://github.com/bo4e/bo4e-python"
 Documentation = "https://bo4e-python.readthedocs.io/en/latest/"
 
 [tool.hatch.metadata.hooks.fancy-pypi-readme]
