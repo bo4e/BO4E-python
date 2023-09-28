@@ -13,6 +13,8 @@ from typing import Literal
 import click
 
 _logger = logging.getLogger(__name__)
+
+
 @click.command()
 @click.option(
     "--mode",
@@ -61,4 +63,4 @@ def generate_json_schemas(mode: Literal["validate", "generate"]):
 
 
 if __name__ == "__main__":
-    generate_json_schemas()# pylint:disable=no-value-for-parameter
+    generate_json_schemas()  # pylint:disable=no-value-for-parameter
