@@ -33,7 +33,7 @@ jobs:
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-latest
-    # Specifying a GitHub environment, only there the pypi token is available!
+    # Specifying a GitHub environment, which is strongly recommended by PyPI: https://docs.pypi.org/trusted-publishers/adding-a-publisher/
     environment: release
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
