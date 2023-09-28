@@ -167,3 +167,7 @@ Temporary Items
 docs/api
 docs/plantuml.jar
 docs/_static/images
+
+# version number for bo4e-python; gets auto-generated during the command
+# python -m build
+src/_bo4e_python_version.py
