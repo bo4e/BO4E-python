@@ -30,8 +30,8 @@ def generate_json_schemas(mode: Literal["validate", "generate"]) -> None:
             name
             for _, name, _ in pkgutil.iter_modules([str(pathlib.Path(__file__).parent.parent / "src" / "bo4e" / pkg)])
         ]
-        for x in modls:
-            modl_name = f"bo4e.{pkg}.{x}"
+        for model in modls:
+            modl_name = f"bo4e.{pkg}.{model}"
             modl = importlib.import_module(modl_name)
             # pylint: disable=cell-var-from-loop
             cls_list = inspect.getmembers(
