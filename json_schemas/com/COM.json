@@ -1,7 +1,7 @@
 {
-  "additionalProperties": true,
-  "description": "\n    base class for all components\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/COM.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/COM.json>`_\n\n    ",
-  "properties": {},
-  "title": "COM",
-  "type": "object"
+    "additionalProperties": true,
+    "description": "base class for all components\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/COM.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/COM.json>`_",
+    "properties": {},
+    "title": "COM",
+    "type": "object"
 }

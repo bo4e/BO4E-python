@@ -1,170 +1,178 @@
 {
-  "$defs": {
-    "BoTyp": {
-      "description": "Auflistung s\u00e4mtlicher existierender Gesch\u00e4ftsobjekte.",
-      "enum": [
-        "ANGEBOT",
-        "ANSPRECHPARTNER",
-        "AUSSCHREIUNG",
-        "BUENDELVERTRAG",
-        "ENERGIEMENGE",
-        "FREMDKOSTEN",
-        "GESCHAEFTSOBJEKT",
-        "GESCHAEFTSPARTNER",
-        "KOSTEN",
-        "LASTGANG",
-        "LASTGANG_KOMPAKT",
-        "MARKTLOKATION",
-        "MESSLOKATION",
-        "MARKTTEILNEHMER",
-        "NETZNUTZUNGSRECHNUNG",
-        "PREISBLATT",
-        "PREISBLATTDIENSTLEISTUNG",
-        "PREISBLATTHARDWARE",
-        "PREISBLATTKONZESSIONSABGABE",
-        "PREISBLATTMESSUNG",
-        "PREISBLATTNETZNUTZUNG",
-        "PREISBLATTUMLAGEN",
-        "RECHNUNG",
-        "REGION",
-        "REGIONALTARIF",
-        "STANDORTEIGENSCHAFTEN",
-        "TARIF",
-        "TARIFINFO",
-        "TARIFKOSTEN",
-        "TARIFPREISBLATT",
-        "VERTRAG",
-        "ZAEHLER",
-        "ZEITREIHE"
-      ],
-      "title": "BoTyp",
-      "type": "string"
-    },
-    "ExterneReferenz": {
-      "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
-      "properties": {
-        "exRefName": {
-          "title": "Exrefname",
-          "type": "string"
+    "$defs": {
+        "BoTyp": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "BoTyp",
+            "type": "string"
         },
-        "exRefWert": {
-          "title": "Exrefwert",
-          "type": "string"
-        }
-      },
-      "required": ["exRefName", "exRefWert"],
-      "title": "ExterneReferenz",
-      "type": "object"
-    },
-    "Mengeneinheit": {
-      "description": "Einheit: Messgr\u00f6\u00dfen, die per Messung oder Vorgabe ermittelt werden k\u00f6nnen.",
-      "enum": [
-        "W",
-        "WH",
-        "KW",
-        "KWH",
-        "KVARH",
-        "MW",
-        "MWH",
-        "STUECK",
-        "KUBIKMETER",
-        "STUNDE",
-        "TAG",
-        "MONAT",
-        "JAHR",
-        "PROZENT"
-      ],
-      "title": "Mengeneinheit",
-      "type": "string"
-    },
-    "Sparte": {
-      "description": "Unterscheidungsm\u00f6glichkeiten f\u00fcr die Sparte.",
-      "enum": [
-        "STROM",
-        "GAS",
-        "FERNWAERME",
-        "NAHWAERME",
-        "WASSER",
-        "ABWASSER",
-        "STROM_UND_GAS"
-      ],
-      "title": "Sparte",
-      "type": "string"
-    }
-  },
-  "additionalProperties": true,
-  "description": "\n    The LastgangBody is a mixin that contains the \"body\" of a Lastgang that is used in both the :class:`Lastgang` as\n    well as :class:`LastgangKompakt`.\n    ",
-  "properties": {
-    "boTyp": {
-      "allOf": [
-        {
-          "$ref": "#/$defs/BoTyp"
-        }
-      ],
-      "default": "GESCHAEFTSOBJEKT"
-    },
-    "externeReferenzen": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/ExterneReferenz"
-          },
-          "type": "array"
+        "ExterneReferenz": {
+            "additionalProperties": true,
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "properties": {
+                "exRefName": {
+                    "title": "Exrefname",
+                    "type": "string"
+                },
+                "exRefWert": {
+                    "title": "Exrefwert",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "exRefName",
+                "exRefWert"
+            ],
+            "title": "ExterneReferenz",
+            "type": "object"
         },
-        {
-          "type": "null"
-        }
-      ],
-      "default": [],
-      "title": "Externereferenzen"
-    },
-    "lokationsId": {
-      "title": "Lokationsid",
-      "type": "string"
-    },
-    "lokationstyp": {
-      "title": "Lokationstyp",
-      "type": "string"
-    },
-    "messgroesse": {
-      "$ref": "#/$defs/Mengeneinheit"
-    },
-    "obisKennzahl": {
-      "anyOf": [
-        {
-          "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-          "type": "string"
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
         },
-        {
-          "type": "null"
+        "Sparte": {
+            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "FERNWAERME",
+                "NAHWAERME",
+                "WASSER",
+                "ABWASSER",
+                "STROM_UND_GAS"
+            ],
+            "title": "Sparte",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Obiskennzahl"
     },
-    "sparte": {
-      "$ref": "#/$defs/Sparte"
-    },
-    "version": {
-      "anyOf": [
-        {
-          "type": "string"
+    "additionalProperties": true,
+    "description": "The LastgangBody is a mixin that contains the \"body\" of a Lastgang that is used in both the :class:`Lastgang` as\nwell as :class:`LastgangKompakt`.",
+    "properties": {
+        "boTyp": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/BoTyp"
+                }
+            ],
+            "default": "GESCHAEFTSOBJEKT"
         },
-        {
-          "type": "null"
+        "externeReferenzen": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/ExterneReferenz"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": [],
+            "title": "Externereferenzen"
+        },
+        "lokationsId": {
+            "title": "Lokationsid",
+            "type": "string"
+        },
+        "lokationstyp": {
+            "title": "Lokationstyp",
+            "type": "string"
+        },
+        "messgroesse": {
+            "$ref": "#/$defs/Mengeneinheit"
+        },
+        "obisKennzahl": {
+            "anyOf": [
+                {
+                    "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Obiskennzahl"
+        },
+        "sparte": {
+            "$ref": "#/$defs/Sparte"
+        },
+        "version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Version"
+        },
+        "versionstruktur": {
+            "default": "2",
+            "title": "Versionstruktur",
+            "type": "string"
         }
-      ],
-      "default": null,
-      "title": "Version"
     },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
-    }
-  },
-  "required": ["sparte", "lokationsId", "lokationstyp", "messgroesse"],
-  "title": "_LastgangBody",
-  "type": "object"
+    "required": [
+        "sparte",
+        "lokationsId",
+        "lokationstyp",
+        "messgroesse"
+    ],
+    "title": "_LastgangBody",
+    "type": "object"
 }

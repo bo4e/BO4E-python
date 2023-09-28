@@ -1,0 +1,23 @@
+name: "Check consistency of code and JSON Schemas"
+
+on: [push,pull_request]
+jobs:
+  json_schema_check:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        python-version: ["3.11"]
+        os: [ubuntu-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install tox
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox
+      - name: Check JSON Schemas
+        run: |
+          tox -e validate_json_schemas
