@@ -978,7 +978,14 @@
                 "MEHRMINDERMENGENRECHNUNG",
                 "MESSSTELLENBETRIEBSRECHNUNG",
                 "BESCHAFFUNGSRECHNUNG",
-                "AUSGLEICHSENERGIERECHNUNG"
+                "AUSGLEICHSENERGIERECHNUNG",
+                "ABSCHLUSSRECHNUNG",
+                "ABSCHLAGSRECHNUNG",
+                "TURNUSRECHNUNG",
+                "MONATSRECHNUNG",
+                "ZWISCHENRECHNUNG",
+                "INTEGRIERTE_13TE_RECHNUNG",
+                "ZUSAETZLICHE_13TE_RECHNUNG"
             ],
             "title": "Rechnungstyp",
             "type": "string"
