@@ -58,6 +58,7 @@ def generate_json_schemas(mode: Literal["validate", "generate"]):
                         json_schema_file.write(
                             json.dumps(schema_json_dict, indent=4, sort_keys=True, ensure_ascii=False)
                         )
+                        json_schema_file.write("\n")  # empty line at EOF for those with broken pre-commit hook ;)
                     _logger.debug("Generated schema for %s", name)
                 else:
                     raise ValueError(f"Unknown mode '{mode}'")
