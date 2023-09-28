@@ -30,8 +30,19 @@
     },
     "Zeitraum": {
       "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
+      "description": "Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
       "properties": {
+        "einheit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeiteinheit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "dauer": {
           "anyOf": [
             {
@@ -47,16 +58,18 @@
           "default": null,
           "title": "Dauer"
         },
-        "einheit": {
+        "startdatum": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Zeiteinheit"
+              "format": "date-time",
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
-          "default": null
+          "default": null,
+          "title": "Startdatum"
         },
         "enddatum": {
           "anyOf": [
@@ -71,32 +84,6 @@
           "default": null,
           "title": "Enddatum"
         },
-        "endzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Endzeitpunkt"
-        },
-        "startdatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startdatum"
-        },
         "startzeitpunkt": {
           "anyOf": [
             {
@@ -109,6 +96,19 @@
           ],
           "default": null,
           "title": "Startzeitpunkt"
+        },
+        "endzeitpunkt": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endzeitpunkt"
         }
       },
       "title": "Zeitraum",
@@ -116,8 +116,14 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Definition f\u00fcr eine Preisgarantie mit der M\u00f6glichkeit verschiedener Auspr\u00e4gungen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_\n\n    ",
+  "description": "Definition f\u00fcr eine Preisgarantie mit der M\u00f6glichkeit verschiedener Auspr\u00e4gungen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_",
   "properties": {
+    "preisgarantietyp": {
+      "$ref": "#/$defs/Preisgarantietyp"
+    },
+    "zeitlicheGueltigkeit": {
+      "$ref": "#/$defs/Zeitraum"
+    },
     "beschreibung": {
       "anyOf": [
         {
@@ -129,12 +135,6 @@
       ],
       "default": null,
       "title": "Beschreibung"
-    },
-    "preisgarantietyp": {
-      "$ref": "#/$defs/Preisgarantietyp"
-    },
-    "zeitlicheGueltigkeit": {
-      "$ref": "#/$defs/Zeitraum"
     }
   },
   "required": ["preisgarantietyp", "zeitlicheGueltigkeit"],

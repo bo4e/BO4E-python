@@ -2,11 +2,8 @@
   "$defs": {
     "Menge": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+      "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
       "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
         "wert": {
           "anyOf": [
             {
@@ -17,6 +14,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "einheit": {
+          "$ref": "#/$defs/Mengeneinheit"
         }
       },
       "required": ["wert", "einheit"],
@@ -46,8 +46,18 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Abbildung f\u00fcr einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\n    eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Vertragsteil.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_\n\n    ",
+  "description": "Abbildung f\u00fcr einen Vertragsteil. Der Vertragsteil wird dazu verwendet,\neine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragsteil.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragsteil.json>`_",
   "properties": {
+    "vertragsteilbeginn": {
+      "format": "date-time",
+      "title": "Vertragsteilbeginn",
+      "type": "string"
+    },
+    "vertragsteilende": {
+      "format": "date-time",
+      "title": "Vertragsteilende",
+      "type": "string"
+    },
     "lokation": {
       "anyOf": [
         {
@@ -60,7 +70,7 @@
       "default": null,
       "title": "Lokation"
     },
-    "maximaleAbnahmemenge": {
+    "vertraglichFixierteMenge": {
       "anyOf": [
         {
           "$ref": "#/$defs/Menge"
@@ -82,7 +92,7 @@
       ],
       "default": null
     },
-    "vertraglichFixierteMenge": {
+    "maximaleAbnahmemenge": {
       "anyOf": [
         {
           "$ref": "#/$defs/Menge"
@@ -92,16 +102,6 @@
         }
       ],
       "default": null
-    },
-    "vertragsteilbeginn": {
-      "format": "date-time",
-      "title": "Vertragsteilbeginn",
-      "type": "string"
-    },
-    "vertragsteilende": {
-      "format": "date-time",
-      "title": "Vertragsteilende",
-      "type": "string"
     }
   },
   "required": ["vertragsteilbeginn", "vertragsteilende"],

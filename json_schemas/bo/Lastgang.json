@@ -42,7 +42,7 @@
     },
     "ExterneReferenz": {
       "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
       "properties": {
         "exRefName": {
           "title": "Exrefname",
@@ -155,17 +155,18 @@
     },
     "Zeitreihenwert": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_\n\n    ",
+      "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_",
       "properties": {
-        "datumUhrzeitBis": {
-          "format": "date-time",
-          "title": "Datumuhrzeitbis",
-          "type": "string"
-        },
-        "datumUhrzeitVon": {
-          "format": "date-time",
-          "title": "Datumuhrzeitvon",
-          "type": "string"
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
         },
         "status": {
           "anyOf": [
@@ -189,16 +190,15 @@
           ],
           "default": null
         },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
+        "datumUhrzeitVon": {
+          "format": "date-time",
+          "title": "Datumuhrzeitvon",
+          "type": "string"
+        },
+        "datumUhrzeitBis": {
+          "format": "date-time",
+          "title": "Datumuhrzeitbis",
+          "type": "string"
         }
       },
       "required": ["wert", "datumUhrzeitVon", "datumUhrzeitBis"],
@@ -207,8 +207,13 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Modell zur Abbildung eines Lastganges;\n    In diesem Modell werden die Messwerte mit einem vollst\u00e4ndigen Zeitintervall angegeben und es bietet daher eine hohe\n    Flexibilit\u00e4t in der \u00dcbertragung jeglicher zeitlich ver\u00e4nderlicher Messgr\u00f6ssen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Lastgang.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Lastgang.json>`_\n\n    ",
+  "description": "Modell zur Abbildung eines Lastganges;\nIn diesem Modell werden die Messwerte mit einem vollst\u00e4ndigen Zeitintervall angegeben und es bietet daher eine hohe\nFlexibilit\u00e4t in der \u00dcbertragung jeglicher zeitlich ver\u00e4nderlicher Messgr\u00f6ssen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Lastgang.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Lastgang.json>`_",
   "properties": {
+    "versionstruktur": {
+      "default": "2",
+      "title": "Versionstruktur",
+      "type": "string"
+    },
     "boTyp": {
       "allOf": [
         {
@@ -232,6 +237,9 @@
       "default": [],
       "title": "Externereferenzen"
     },
+    "sparte": {
+      "$ref": "#/$defs/Sparte"
+    },
     "lokationsId": {
       "title": "Lokationsid",
       "type": "string"
@@ -242,22 +250,6 @@
     },
     "messgroesse": {
       "$ref": "#/$defs/Mengeneinheit"
-    },
-    "obisKennzahl": {
-      "anyOf": [
-        {
-          "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Obiskennzahl"
-    },
-    "sparte": {
-      "$ref": "#/$defs/Sparte"
     },
     "version": {
       "anyOf": [
@@ -271,10 +263,18 @@
       "default": null,
       "title": "Version"
     },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
+    "obisKennzahl": {
+      "anyOf": [
+        {
+          "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Obiskennzahl"
     },
     "werte": {
       "items": {

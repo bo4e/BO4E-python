@@ -68,19 +68,10 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Enth\u00e4lt die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zust\u00e4ndigkeiten.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zustaendigkeit.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zustaendigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zustaendigkeit.json>`_\n\n    ",
+  "description": "Enth\u00e4lt die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zust\u00e4ndigkeiten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zustaendigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zustaendigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zustaendigkeit.json>`_",
   "properties": {
-    "abteilung": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Abteilung"
+    "themengebiet": {
+      "$ref": "#/$defs/Themengebiet"
     },
     "jobtitel": {
       "anyOf": [
@@ -94,8 +85,17 @@
       "default": null,
       "title": "Jobtitel"
     },
-    "themengebiet": {
-      "$ref": "#/$defs/Themengebiet"
+    "abteilung": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Abteilung"
     }
   },
   "required": ["themengebiet"],

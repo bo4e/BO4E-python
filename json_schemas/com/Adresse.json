@@ -258,8 +258,64 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Contains an address that can be used for most purposes.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_\n\n    ",
+  "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
   "properties": {
+    "postleitzahl": {
+      "title": "Postleitzahl",
+      "type": "string"
+    },
+    "ort": {
+      "title": "Ort",
+      "type": "string"
+    },
+    "ortsteil": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ortsteil"
+    },
+    "strasse": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Strasse"
+    },
+    "hausnummer": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Hausnummer"
+    },
+    "postfach": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Postfach"
+    },
     "adresszusatz": {
       "anyOf": [
         {
@@ -284,18 +340,6 @@
       "default": null,
       "title": "Coergaenzung"
     },
-    "hausnummer": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Hausnummer"
-    },
     "landescode": {
       "allOf": [
         {
@@ -303,50 +347,6 @@
         }
       ],
       "default": "DE"
-    },
-    "ort": {
-      "title": "Ort",
-      "type": "string"
-    },
-    "ortsteil": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Ortsteil"
-    },
-    "postfach": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Postfach"
-    },
-    "postleitzahl": {
-      "title": "Postleitzahl",
-      "type": "string"
-    },
-    "strasse": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Strasse"
     }
   },
   "required": ["postleitzahl", "ort"],

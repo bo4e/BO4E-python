@@ -42,7 +42,7 @@
     },
     "ExterneReferenz": {
       "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
       "properties": {
         "exRefName": {
           "title": "Exrefname",
@@ -94,8 +94,13 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    The LastgangBody is a mixin that contains the \"body\" of a Lastgang that is used in both the :class:`Lastgang` as\n    well as :class:`LastgangKompakt`.\n    ",
+  "description": "The LastgangBody is a mixin that contains the \"body\" of a Lastgang that is used in both the :class:`Lastgang` as\nwell as :class:`LastgangKompakt`.",
   "properties": {
+    "versionstruktur": {
+      "default": "2",
+      "title": "Versionstruktur",
+      "type": "string"
+    },
     "boTyp": {
       "allOf": [
         {
@@ -119,6 +124,9 @@
       "default": [],
       "title": "Externereferenzen"
     },
+    "sparte": {
+      "$ref": "#/$defs/Sparte"
+    },
     "lokationsId": {
       "title": "Lokationsid",
       "type": "string"
@@ -129,22 +137,6 @@
     },
     "messgroesse": {
       "$ref": "#/$defs/Mengeneinheit"
-    },
-    "obisKennzahl": {
-      "anyOf": [
-        {
-          "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Obiskennzahl"
-    },
-    "sparte": {
-      "$ref": "#/$defs/Sparte"
     },
     "version": {
       "anyOf": [
@@ -158,10 +150,18 @@
       "default": null,
       "title": "Version"
     },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
+    "obisKennzahl": {
+      "anyOf": [
+        {
+          "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Obiskennzahl"
     }
   },
   "required": ["sparte", "lokationsId", "lokationstyp", "messgroesse"],

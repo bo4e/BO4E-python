@@ -54,14 +54,14 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Abbildung einer abrechenbaren Hardware\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_\n\n    ",
+  "description": "Abbildung einer abrechenbaren Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_",
   "properties": {
+    "geraetetyp": {
+      "$ref": "#/$defs/Geraetetyp"
+    },
     "bezeichnung": {
       "title": "Bezeichnung",
       "type": "string"
-    },
-    "geraetetyp": {
-      "$ref": "#/$defs/Geraetetyp"
     }
   },
   "required": ["geraetetyp", "bezeichnung"],

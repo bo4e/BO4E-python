@@ -157,7 +157,7 @@
     },
     "Preisstaffel": {
       "additionalProperties": true,
-      "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
+      "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
       "properties": {
         "einheitspreis": {
           "anyOf": [
@@ -170,16 +170,16 @@
           ],
           "title": "Einheitspreis"
         },
-        "sigmoidparameter": {
+        "staffelgrenzeVon": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Sigmoidparameter"
+              "type": "number"
             },
             {
-              "type": "null"
+              "type": "string"
             }
           ],
-          "default": null
+          "title": "Staffelgrenzevon"
         },
         "staffelgrenzeBis": {
           "anyOf": [
@@ -192,16 +192,16 @@
           ],
           "title": "Staffelgrenzebis"
         },
-        "staffelgrenzeVon": {
+        "sigmoidparameter": {
           "anyOf": [
             {
-              "type": "number"
+              "$ref": "#/$defs/Sigmoidparameter"
             },
             {
-              "type": "string"
+              "type": "null"
             }
           ],
-          "title": "Staffelgrenzevon"
+          "default": null
         }
       },
       "required": ["einheitspreis", "staffelgrenzeVon", "staffelgrenzeBis"],
@@ -210,7 +210,7 @@
     },
     "Sigmoidparameter": {
       "additionalProperties": true,
-      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+      "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
       "properties": {
         "A": {
           "anyOf": [
@@ -292,8 +292,54 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Preis f\u00fcr eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_\n\n    ",
+  "description": "Preis f\u00fcr eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_",
   "properties": {
+    "berechnungsmethode": {
+      "$ref": "#/$defs/Kalkulationsmethode"
+    },
+    "leistungstyp": {
+      "$ref": "#/$defs/Leistungstyp"
+    },
+    "leistungsbezeichnung": {
+      "title": "Leistungsbezeichnung",
+      "type": "string"
+    },
+    "preiseinheit": {
+      "$ref": "#/$defs/Waehrungseinheit"
+    },
+    "bezugsgroesse": {
+      "$ref": "#/$defs/Mengeneinheit"
+    },
+    "preisstaffeln": {
+      "items": {
+        "$ref": "#/$defs/Preisstaffel"
+      },
+      "minItems": 1,
+      "title": "Preisstaffeln",
+      "type": "array"
+    },
+    "zeitbasis": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Zeiteinheit"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "tarifzeit": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Tarifzeit"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
     "bdewArtikelnummer": {
       "anyOf": [
         {
@@ -305,11 +351,16 @@
       ],
       "default": null
     },
-    "berechnungsmethode": {
-      "$ref": "#/$defs/Kalkulationsmethode"
-    },
-    "bezugsgroesse": {
-      "$ref": "#/$defs/Mengeneinheit"
+    "zonungsgroesse": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Bemessungsgroesse"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "freimengeBlindarbeit": {
       "anyOf": [
@@ -352,57 +403,6 @@
       ],
       "default": null,
       "title": "Gruppenartikelid"
-    },
-    "leistungsbezeichnung": {
-      "title": "Leistungsbezeichnung",
-      "type": "string"
-    },
-    "leistungstyp": {
-      "$ref": "#/$defs/Leistungstyp"
-    },
-    "preiseinheit": {
-      "$ref": "#/$defs/Waehrungseinheit"
-    },
-    "preisstaffeln": {
-      "items": {
-        "$ref": "#/$defs/Preisstaffel"
-      },
-      "minItems": 1,
-      "title": "Preisstaffeln",
-      "type": "array"
-    },
-    "tarifzeit": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Tarifzeit"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "zeitbasis": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Zeiteinheit"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "zonungsgroesse": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Bemessungsgroesse"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
     }
   },
   "required": [

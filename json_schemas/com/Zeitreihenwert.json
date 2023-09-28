@@ -63,17 +63,18 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_\n\n    ",
+  "description": "Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_",
   "properties": {
-    "datumUhrzeitBis": {
-      "format": "date-time",
-      "title": "Datumuhrzeitbis",
-      "type": "string"
-    },
-    "datumUhrzeitVon": {
-      "format": "date-time",
-      "title": "Datumuhrzeitvon",
-      "type": "string"
+    "wert": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "title": "Wert"
     },
     "status": {
       "anyOf": [
@@ -97,16 +98,15 @@
       ],
       "default": null
     },
-    "wert": {
-      "anyOf": [
-        {
-          "type": "number"
-        },
-        {
-          "type": "string"
-        }
-      ],
-      "title": "Wert"
+    "datumUhrzeitVon": {
+      "format": "date-time",
+      "title": "Datumuhrzeitvon",
+      "type": "string"
+    },
+    "datumUhrzeitBis": {
+      "format": "date-time",
+      "title": "Datumuhrzeitbis",
+      "type": "string"
     }
   },
   "required": ["wert", "datumUhrzeitVon", "datumUhrzeitBis"],

@@ -54,13 +54,24 @@
     },
     "Preis": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_\n\n    ",
+      "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
       "properties": {
-        "bezugswert": {
-          "$ref": "#/$defs/Mengeneinheit"
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
         },
         "einheit": {
           "$ref": "#/$defs/Waehrungseinheit"
+        },
+        "bezugswert": {
+          "$ref": "#/$defs/Mengeneinheit"
         },
         "status": {
           "anyOf": [
@@ -72,17 +83,6 @@
             }
           ],
           "default": null
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
         }
       },
       "required": ["wert", "einheit", "bezugswert"],
@@ -126,28 +126,24 @@
     },
     "Tarifpreis": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifpreis.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreis.json>`_\n\n    ",
+      "description": "Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifpreis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifpreis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreis.json>`_",
       "properties": {
-        "beschreibung": {
+        "wert": {
           "anyOf": [
             {
-              "type": "string"
+              "type": "number"
             },
             {
-              "type": "null"
+              "type": "string"
             }
           ],
-          "default": null,
-          "title": "Beschreibung"
-        },
-        "bezugswert": {
-          "$ref": "#/$defs/Mengeneinheit"
+          "title": "Wert"
         },
         "einheit": {
           "$ref": "#/$defs/Waehrungseinheit"
         },
-        "preistyp": {
-          "$ref": "#/$defs/Preistyp"
+        "bezugswert": {
+          "$ref": "#/$defs/Mengeneinheit"
         },
         "status": {
           "anyOf": [
@@ -160,16 +156,20 @@
           ],
           "default": null
         },
-        "wert": {
+        "preistyp": {
+          "$ref": "#/$defs/Preistyp"
+        },
+        "beschreibung": {
           "anyOf": [
             {
-              "type": "number"
+              "type": "string"
             },
             {
-              "type": "string"
+              "type": "null"
             }
           ],
-          "title": "Wert"
+          "default": null,
+          "title": "Beschreibung"
         }
       },
       "required": ["wert", "einheit", "bezugswert", "preistyp"],
@@ -184,7 +184,7 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    In dieser Komponente sind die Berechnungsparameter f\u00fcr die Ermittlung der Tarifkosten zusammengefasst.\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifberechnungsparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifberechnungsparameter.json>`_\n\n    ",
+  "description": "In dieser Komponente sind die Berechnungsparameter f\u00fcr die Ermittlung der Tarifkosten zusammengefasst.\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifberechnungsparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifberechnungsparameter.json>`_",
   "properties": {
     "berechnungsmethode": {
       "anyOf": [
@@ -197,21 +197,34 @@
       ],
       "default": null
     },
-    "hoechstpreisHT": {
+    "messpreisInGpEnthalten": {
       "anyOf": [
         {
-          "$ref": "#/$defs/Preis"
+          "type": "boolean"
         },
         {
           "type": "null"
         }
       ],
-      "default": null
+      "default": null,
+      "title": "Messpreisingpenthalten"
     },
-    "hoechstpreisNT": {
+    "messpreisBeruecksichtigen": {
       "anyOf": [
         {
-          "$ref": "#/$defs/Preis"
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Messpreisberuecksichtigen"
+    },
+    "messpreistyp": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Messpreistyp"
         },
         {
           "type": "null"
@@ -249,34 +262,21 @@
       "default": null,
       "title": "Kwweiteremengen"
     },
-    "messpreisBeruecksichtigen": {
+    "hoechstpreisNT": {
       "anyOf": [
         {
-          "type": "boolean"
+          "$ref": "#/$defs/Preis"
         },
         {
           "type": "null"
         }
       ],
-      "default": null,
-      "title": "Messpreisberuecksichtigen"
+      "default": null
     },
-    "messpreisInGpEnthalten": {
+    "hoechstpreisHT": {
       "anyOf": [
         {
-          "type": "boolean"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Messpreisingpenthalten"
-    },
-    "messpreistyp": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Messpreistyp"
+          "$ref": "#/$defs/Preis"
         },
         {
           "type": "null"

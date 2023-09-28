@@ -55,11 +55,8 @@
     },
     "Betrag": {
       "additionalProperties": true,
-      "description": "\n    Die Komponente wird dazu verwendet, Summenbetr\u00e4ge (beispielsweise in Angeboten und Rechnungen) als Geldbetr\u00e4ge\n    abzubilden. Die Einheit ist dabei immer die Hauptw\u00e4hrung also Euro, Dollar etc\u2026\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_\n\n    ",
+      "description": "Die Komponente wird dazu verwendet, Summenbetr\u00e4ge (beispielsweise in Angeboten und Rechnungen) als Geldbetr\u00e4ge\nabzubilden. Die Einheit ist dabei immer die Hauptw\u00e4hrung also Euro, Dollar etc\u2026\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_",
       "properties": {
-        "waehrung": {
-          "$ref": "#/$defs/Waehrungscode"
-        },
         "wert": {
           "anyOf": [
             {
@@ -70,6 +67,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "waehrung": {
+          "$ref": "#/$defs/Waehrungscode"
         }
       },
       "required": ["wert", "waehrung"],
@@ -78,11 +78,8 @@
     },
     "Menge": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+      "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
       "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
         "wert": {
           "anyOf": [
             {
@@ -93,6 +90,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "einheit": {
+          "$ref": "#/$defs/Mengeneinheit"
         }
       },
       "required": ["wert", "einheit"],
@@ -122,13 +122,24 @@
     },
     "Preis": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_\n\n    ",
+      "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
       "properties": {
-        "bezugswert": {
-          "$ref": "#/$defs/Mengeneinheit"
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
         },
         "einheit": {
           "$ref": "#/$defs/Waehrungseinheit"
+        },
+        "bezugswert": {
+          "$ref": "#/$defs/Mengeneinheit"
         },
         "status": {
           "anyOf": [
@@ -140,17 +151,6 @@
             }
           ],
           "default": null
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
         }
       },
       "required": ["wert", "einheit", "bezugswert"],
@@ -165,8 +165,11 @@
     },
     "Steuerbetrag": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Steuerbetrages.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_\n\n    ",
+      "description": "Abbildung eines Steuerbetrages.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_",
       "properties": {
+        "steuerkennzeichen": {
+          "$ref": "#/$defs/Steuerkennzeichen"
+        },
         "basiswert": {
           "anyOf": [
             {
@@ -177,9 +180,6 @@
             }
           ],
           "title": "Basiswert"
-        },
-        "steuerkennzeichen": {
-          "$ref": "#/$defs/Steuerkennzeichen"
         },
         "steuerwert": {
           "anyOf": [
@@ -429,19 +429,48 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    \u00dcber Rechnungspositionen werden Rechnungen strukturiert.\n    In einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Rechnungsposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_\n\n    ",
+  "description": "\u00dcber Rechnungspositionen werden Rechnungen strukturiert.\nIn einem Rechnungsteil wird jeweils eine in sich geschlossene Leistung abgerechnet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Rechnungsposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_",
   "properties": {
-    "artikelId": {
+    "positionsnummer": {
+      "title": "Positionsnummer",
+      "type": "integer"
+    },
+    "lieferungVon": {
+      "format": "date-time",
+      "title": "Lieferungvon",
+      "type": "string"
+    },
+    "lieferungBis": {
+      "format": "date-time",
+      "title": "Lieferungbis",
+      "type": "string"
+    },
+    "positionstext": {
+      "title": "Positionstext",
+      "type": "string"
+    },
+    "positionsMenge": {
+      "$ref": "#/$defs/Menge"
+    },
+    "einzelpreis": {
+      "$ref": "#/$defs/Preis"
+    },
+    "teilsummeNetto": {
+      "$ref": "#/$defs/Betrag"
+    },
+    "teilsummeSteuer": {
+      "$ref": "#/$defs/Steuerbetrag"
+    },
+    "zeiteinheit": {
       "anyOf": [
         {
-          "type": "string"
+          "$ref": "#/$defs/Zeiteinheit"
         },
         {
           "type": "null"
         }
       ],
-      "default": null,
-      "title": "Artikelid"
+      "default": null
     },
     "artikelnummer": {
       "anyOf": [
@@ -453,19 +482,6 @@
         }
       ],
       "default": null
-    },
-    "einzelpreis": {
-      "$ref": "#/$defs/Preis"
-    },
-    "lieferungBis": {
-      "format": "date-time",
-      "title": "Lieferungbis",
-      "type": "string"
-    },
-    "lieferungVon": {
-      "format": "date-time",
-      "title": "Lieferungvon",
-      "type": "string"
     },
     "lokationsId": {
       "anyOf": [
@@ -479,16 +495,16 @@
       "default": null,
       "title": "Lokationsid"
     },
-    "positionsMenge": {
-      "$ref": "#/$defs/Menge"
-    },
-    "positionsnummer": {
-      "title": "Positionsnummer",
-      "type": "integer"
-    },
-    "positionstext": {
-      "title": "Positionstext",
-      "type": "string"
+    "zeitbezogeneMenge": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Menge"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     },
     "teilrabattNetto": {
       "anyOf": [
@@ -501,33 +517,17 @@
       ],
       "default": null
     },
-    "teilsummeNetto": {
-      "$ref": "#/$defs/Betrag"
-    },
-    "teilsummeSteuer": {
-      "$ref": "#/$defs/Steuerbetrag"
-    },
-    "zeitbezogeneMenge": {
+    "artikelId": {
       "anyOf": [
         {
-          "$ref": "#/$defs/Menge"
+          "type": "string"
         },
         {
           "type": "null"
         }
       ],
-      "default": null
-    },
-    "zeiteinheit": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Zeiteinheit"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
+      "default": null,
+      "title": "Artikelid"
     }
   },
   "required": [

@@ -21,7 +21,7 @@
     },
     "Preisstaffel": {
       "additionalProperties": true,
-      "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
+      "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
       "properties": {
         "einheitspreis": {
           "anyOf": [
@@ -34,16 +34,16 @@
           ],
           "title": "Einheitspreis"
         },
-        "sigmoidparameter": {
+        "staffelgrenzeVon": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Sigmoidparameter"
+              "type": "number"
             },
             {
-              "type": "null"
+              "type": "string"
             }
           ],
-          "default": null
+          "title": "Staffelgrenzevon"
         },
         "staffelgrenzeBis": {
           "anyOf": [
@@ -56,16 +56,16 @@
           ],
           "title": "Staffelgrenzebis"
         },
-        "staffelgrenzeVon": {
+        "sigmoidparameter": {
           "anyOf": [
             {
-              "type": "number"
+              "$ref": "#/$defs/Sigmoidparameter"
             },
             {
-              "type": "string"
+              "type": "null"
             }
           ],
-          "title": "Staffelgrenzevon"
+          "default": null
         }
       },
       "required": ["einheitspreis", "staffelgrenzeVon", "staffelgrenzeBis"],
@@ -74,7 +74,7 @@
     },
     "Sigmoidparameter": {
       "additionalProperties": true,
-      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+      "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
       "properties": {
         "A": {
           "anyOf": [
@@ -150,8 +150,19 @@
     },
     "Zeitraum": {
       "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
+      "description": "Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
       "properties": {
+        "einheit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeiteinheit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "dauer": {
           "anyOf": [
             {
@@ -167,16 +178,18 @@
           "default": null,
           "title": "Dauer"
         },
-        "einheit": {
+        "startdatum": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Zeiteinheit"
+              "format": "date-time",
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
-          "default": null
+          "default": null,
+          "title": "Startdatum"
         },
         "enddatum": {
           "anyOf": [
@@ -191,32 +204,6 @@
           "default": null,
           "title": "Enddatum"
         },
-        "endzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Endzeitpunkt"
-        },
-        "startdatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startdatum"
-        },
         "startzeitpunkt": {
           "anyOf": [
             {
@@ -229,6 +216,19 @@
           ],
           "default": null,
           "title": "Startzeitpunkt"
+        },
+        "endzeitpunkt": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endzeitpunkt"
         }
       },
       "title": "Zeitraum",
@@ -236,8 +236,31 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Modell f\u00fcr die preiserh\u00f6henden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,\n    die individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen wurden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/AufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlag.json>`_\n\n    ",
+  "description": "Modell f\u00fcr die preiserh\u00f6henden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,\ndie individuell zu einem neuen oder bestehenden Liefervertrag abgeschlossen wurden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/AufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlag.json>`_",
   "properties": {
+    "bezeichnung": {
+      "title": "Bezeichnung",
+      "type": "string"
+    },
+    "staffeln": {
+      "items": {
+        "$ref": "#/$defs/Preisstaffel"
+      },
+      "title": "Staffeln",
+      "type": "array"
+    },
+    "beschreibung": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Beschreibung"
+    },
     "aufAbschlagstyp": {
       "anyOf": [
         {
@@ -260,22 +283,6 @@
       ],
       "default": null
     },
-    "beschreibung": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Beschreibung"
-    },
-    "bezeichnung": {
-      "title": "Bezeichnung",
-      "type": "string"
-    },
     "einheit": {
       "anyOf": [
         {
@@ -286,24 +293,6 @@
         }
       ],
       "default": null
-    },
-    "gueltigkeitszeitraum": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Zeitraum"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "staffeln": {
-      "items": {
-        "$ref": "#/$defs/Preisstaffel"
-      },
-      "title": "Staffeln",
-      "type": "array"
     },
     "website": {
       "anyOf": [
@@ -316,6 +305,17 @@
       ],
       "default": null,
       "title": "Website"
+    },
+    "gueltigkeitszeitraum": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Zeitraum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     }
   },
   "required": ["bezeichnung", "staffeln"],

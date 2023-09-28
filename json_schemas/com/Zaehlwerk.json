@@ -29,22 +29,23 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Mit dieser Komponente werden Z\u00e4hlwerke modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlwerk.json>`_\n\n    ",
+  "description": "Mit dieser Komponente werden Z\u00e4hlwerke modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlwerk.json>`_",
   "properties": {
+    "zaehlwerkId": {
+      "title": "Zaehlwerkid",
+      "type": "string"
+    },
     "bezeichnung": {
       "title": "Bezeichnung",
       "type": "string"
     },
-    "einheit": {
-      "$ref": "#/$defs/Mengeneinheit"
+    "richtung": {
+      "$ref": "#/$defs/Energierichtung"
     },
     "obisKennzahl": {
       "pattern": "(?:(1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2}))|(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
       "title": "Obiskennzahl",
       "type": "string"
-    },
-    "richtung": {
-      "$ref": "#/$defs/Energierichtung"
     },
     "wandlerfaktor": {
       "anyOf": [
@@ -57,9 +58,8 @@
       ],
       "title": "Wandlerfaktor"
     },
-    "zaehlwerkId": {
-      "title": "Zaehlwerkid",
-      "type": "string"
+    "einheit": {
+      "$ref": "#/$defs/Mengeneinheit"
     }
   },
   "required": [

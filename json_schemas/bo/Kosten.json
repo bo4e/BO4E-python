@@ -2,11 +2,8 @@
   "$defs": {
     "Betrag": {
       "additionalProperties": true,
-      "description": "\n    Die Komponente wird dazu verwendet, Summenbetr\u00e4ge (beispielsweise in Angeboten und Rechnungen) als Geldbetr\u00e4ge\n    abzubilden. Die Einheit ist dabei immer die Hauptw\u00e4hrung also Euro, Dollar etc\u2026\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_\n\n    ",
+      "description": "Die Komponente wird dazu verwendet, Summenbetr\u00e4ge (beispielsweise in Angeboten und Rechnungen) als Geldbetr\u00e4ge\nabzubilden. Die Einheit ist dabei immer die Hauptw\u00e4hrung also Euro, Dollar etc\u2026\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Betrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Betrag.json>`_",
       "properties": {
-        "waehrung": {
-          "$ref": "#/$defs/Waehrungscode"
-        },
         "wert": {
           "anyOf": [
             {
@@ -17,6 +14,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "waehrung": {
+          "$ref": "#/$defs/Waehrungscode"
         }
       },
       "required": ["wert", "waehrung"],
@@ -65,7 +65,7 @@
     },
     "ExterneReferenz": {
       "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
       "properties": {
         "exRefName": {
           "title": "Exrefname",
@@ -82,11 +82,22 @@
     },
     "Kostenblock": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Kostenblock.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenblock.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Kostenblock.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenblock.json>`_",
       "properties": {
         "kostenblockbezeichnung": {
           "title": "Kostenblockbezeichnung",
           "type": "string"
+        },
+        "summeKostenblock": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Betrag"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "kostenpositionen": {
           "anyOf": [
@@ -102,17 +113,6 @@
           ],
           "default": null,
           "title": "Kostenpositionen"
-        },
-        "summeKostenblock": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Betrag"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
         }
       },
       "required": ["kostenblockbezeichnung"],
@@ -133,57 +133,21 @@
     },
     "Kostenposition": {
       "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur \u00dcbertagung der Details zu einer Kostenposition verwendet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Kostenposition.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_\n\n    ",
+      "description": "Diese Komponente wird zur \u00dcbertagung der Details zu einer Kostenposition verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Kostenposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_",
       "properties": {
-        "artikelbezeichnung": {
-          "title": "Artikelbezeichnung",
+        "positionstitel": {
+          "title": "Positionstitel",
           "type": "string"
-        },
-        "artikeldetail": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Artikeldetail"
         },
         "betragKostenposition": {
           "$ref": "#/$defs/Betrag"
         },
-        "bis": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Bis"
+        "artikelbezeichnung": {
+          "title": "Artikelbezeichnung",
+          "type": "string"
         },
         "einzelpreis": {
           "$ref": "#/$defs/Preis"
-        },
-        "menge": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Menge"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
-        "positionstitel": {
-          "title": "Positionstitel",
-          "type": "string"
         },
         "von": {
           "anyOf": [
@@ -198,6 +162,30 @@
           "default": null,
           "title": "Von"
         },
+        "bis": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bis"
+        },
+        "menge": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Menge"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "zeitmenge": {
           "anyOf": [
             {
@@ -208,6 +196,18 @@
             }
           ],
           "default": null
+        },
+        "artikeldetail": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artikeldetail"
         }
       },
       "required": [
@@ -221,11 +221,8 @@
     },
     "Menge": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+      "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
       "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
         "wert": {
           "anyOf": [
             {
@@ -236,6 +233,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "einheit": {
+          "$ref": "#/$defs/Mengeneinheit"
         }
       },
       "required": ["wert", "einheit"],
@@ -265,13 +265,24 @@
     },
     "Preis": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_\n\n    ",
+      "description": "Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preis.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_",
       "properties": {
-        "bezugswert": {
-          "$ref": "#/$defs/Mengeneinheit"
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
         },
         "einheit": {
           "$ref": "#/$defs/Waehrungseinheit"
+        },
+        "bezugswert": {
+          "$ref": "#/$defs/Mengeneinheit"
         },
         "status": {
           "anyOf": [
@@ -283,17 +294,6 @@
             }
           ],
           "default": null
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
         }
       },
       "required": ["wert", "einheit", "bezugswert"],
@@ -520,8 +520,19 @@
     },
     "Zeitraum": {
       "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
+      "description": "Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
       "properties": {
+        "einheit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeiteinheit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "dauer": {
           "anyOf": [
             {
@@ -537,16 +548,18 @@
           "default": null,
           "title": "Dauer"
         },
-        "einheit": {
+        "startdatum": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Zeiteinheit"
+              "format": "date-time",
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
-          "default": null
+          "default": null,
+          "title": "Startdatum"
         },
         "enddatum": {
           "anyOf": [
@@ -561,32 +574,6 @@
           "default": null,
           "title": "Enddatum"
         },
-        "endzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Endzeitpunkt"
-        },
-        "startdatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startdatum"
-        },
         "startzeitpunkt": {
           "anyOf": [
             {
@@ -599,6 +586,19 @@
           ],
           "default": null,
           "title": "Startzeitpunkt"
+        },
+        "endzeitpunkt": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endzeitpunkt"
         }
       },
       "title": "Zeitraum",
@@ -606,8 +606,13 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Dieses BO wird zur \u00dcbertagung von hierarchischen Kostenstrukturen verwendet.\n    Die Kosten werden dabei in Kostenbl\u00f6cke und diese wiederum in Kostenpositionen strukturiert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Kosten.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Kosten.json>`_\n\n    ",
+  "description": "Dieses BO wird zur \u00dcbertagung von hierarchischen Kostenstrukturen verwendet.\nDie Kosten werden dabei in Kostenbl\u00f6cke und diese wiederum in Kostenpositionen strukturiert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Kosten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Kosten.json>`_",
   "properties": {
+    "versionstruktur": {
+      "default": "2",
+      "title": "Versionstruktur",
+      "type": "string"
+    },
     "boTyp": {
       "allOf": [
         {
@@ -631,6 +636,9 @@
       "default": [],
       "title": "Externereferenzen"
     },
+    "kostenklasse": {
+      "$ref": "#/$defs/Kostenklasse"
+    },
     "gueltigkeit": {
       "$ref": "#/$defs/Zeitraum"
     },
@@ -641,9 +649,6 @@
       "minItems": 1,
       "title": "Kostenbloecke",
       "type": "array"
-    },
-    "kostenklasse": {
-      "$ref": "#/$defs/Kostenklasse"
     },
     "summeKosten": {
       "anyOf": [
@@ -659,11 +664,6 @@
       ],
       "default": null,
       "title": "Summekosten"
-    },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
     }
   },
   "required": ["kostenklasse", "gueltigkeit", "kostenbloecke"],

@@ -42,7 +42,7 @@
     },
     "ExterneReferenz": {
       "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
       "properties": {
         "exRefName": {
           "title": "Exrefname",
@@ -59,8 +59,13 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Das BO Gesch\u00e4ftsobjekt ist der Master f\u00fcr alle Gesch\u00e4ftsobjekte.\n    Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Geschaeftsobjekt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geschaeftsobjekt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftsobjekt.json>`_\n\n    ",
+  "description": "Das BO Gesch\u00e4ftsobjekt ist der Master f\u00fcr alle Gesch\u00e4ftsobjekte.\nAlle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftsobjekt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftsobjekt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftsobjekt.json>`_",
   "properties": {
+    "versionstruktur": {
+      "default": "2",
+      "title": "Versionstruktur",
+      "type": "string"
+    },
     "boTyp": {
       "allOf": [
         {
@@ -83,11 +88,6 @@
       ],
       "default": [],
       "title": "Externereferenzen"
-    },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
     }
   },
   "title": "Geschaeftsobjekt",

@@ -21,8 +21,11 @@
     },
     "Energieherkunft": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Energieherkunft\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_\n\n    ",
+      "description": "Abbildung einer Energieherkunft\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_",
       "properties": {
+        "erzeugungsart": {
+          "$ref": "#/$defs/Erzeugungsart"
+        },
         "anteilProzent": {
           "anyOf": [
             {
@@ -35,9 +38,6 @@
             }
           ],
           "title": "Anteilprozent"
-        },
-        "erzeugungsart": {
-          "$ref": "#/$defs/Erzeugungsart"
         }
       },
       "required": ["erzeugungsart", "anteilProzent"],
@@ -46,8 +46,23 @@
     },
     "Energiemix": {
       "additionalProperties": true,
-      "description": "\n    Zusammensetzung der gelieferten Energie aus den verschiedenen Prim\u00e4renergieformen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_\n\n    ",
+      "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Prim\u00e4renergieformen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_",
       "properties": {
+        "energiemixnummer": {
+          "title": "Energiemixnummer",
+          "type": "integer"
+        },
+        "energieart": {
+          "$ref": "#/$defs/Sparte"
+        },
+        "bezeichnung": {
+          "title": "Bezeichnung",
+          "type": "string"
+        },
+        "gueltigkeitsjahr": {
+          "title": "Gueltigkeitsjahr",
+          "type": "integer"
+        },
         "anteil": {
           "items": {
             "$ref": "#/$defs/Energieherkunft"
@@ -55,21 +70,6 @@
           "minItems": 1,
           "title": "Anteil",
           "type": "array"
-        },
-        "atommuell": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Atommuell"
         },
         "bemerkung": {
           "anyOf": [
@@ -82,10 +82,6 @@
           ],
           "default": null,
           "title": "Bemerkung"
-        },
-        "bezeichnung": {
-          "title": "Bezeichnung",
-          "type": "string"
         },
         "co2Emission": {
           "anyOf": [
@@ -102,16 +98,36 @@
           "default": null,
           "title": "Co2Emission"
         },
-        "energieart": {
-          "$ref": "#/$defs/Sparte"
+        "atommuell": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Atommuell"
         },
-        "energiemixnummer": {
-          "title": "Energiemixnummer",
-          "type": "integer"
+        "oekozertifikate": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Oekozertifikat"
+          },
+          "title": "Oekozertifikate",
+          "type": "array"
         },
-        "gueltigkeitsjahr": {
-          "title": "Gueltigkeitsjahr",
-          "type": "integer"
+        "oekolabel": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Oekolabel"
+          },
+          "title": "Oekolabel",
+          "type": "array"
         },
         "oekoTopTen": {
           "anyOf": [
@@ -124,22 +140,6 @@
           ],
           "default": null,
           "title": "Oekotopten"
-        },
-        "oekolabel": {
-          "default": [],
-          "items": {
-            "$ref": "#/$defs/Oekolabel"
-          },
-          "title": "Oekolabel",
-          "type": "array"
-        },
-        "oekozertifikate": {
-          "default": [],
-          "items": {
-            "$ref": "#/$defs/Oekozertifikat"
-          },
-          "title": "Oekozertifikate",
-          "type": "array"
         },
         "website": {
           "anyOf": [
@@ -187,19 +187,8 @@
     },
     "Geraet": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_",
       "properties": {
-        "geraeteeigenschaften": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Geraeteeigenschaften"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
         "geraetenummer": {
           "anyOf": [
             {
@@ -211,6 +200,17 @@
           ],
           "default": null,
           "title": "Geraetenummer"
+        },
+        "geraeteeigenschaften": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Geraeteeigenschaften"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "title": "Geraet",
@@ -218,8 +218,11 @@
     },
     "Geraeteeigenschaften": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_",
       "properties": {
+        "geraetetyp": {
+          "$ref": "#/$defs/Geraetetyp"
+        },
         "geraetemerkmal": {
           "anyOf": [
             {
@@ -230,9 +233,6 @@
             }
           ],
           "default": null
-        },
-        "geraetetyp": {
-          "$ref": "#/$defs/Geraetetyp"
         }
       },
       "required": ["geraetetyp"],
@@ -344,7 +344,7 @@
     },
     "KriteriumWert": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_\n\n    ",
+      "description": "Mit dieser Komponente k\u00f6nnen Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
       "properties": {
         "kriterium": {
           "$ref": "#/$defs/Tarifregionskriterium"
@@ -360,11 +360,8 @@
     },
     "Menge": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+      "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
       "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
         "wert": {
           "anyOf": [
             {
@@ -375,6 +372,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "einheit": {
+          "$ref": "#/$defs/Mengeneinheit"
         }
       },
       "required": ["wert", "einheit"],
@@ -447,8 +447,14 @@
     },
     "Preisgarantie": {
       "additionalProperties": true,
-      "description": "\n    Definition f\u00fcr eine Preisgarantie mit der M\u00f6glichkeit verschiedener Auspr\u00e4gungen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_\n\n    ",
+      "description": "Definition f\u00fcr eine Preisgarantie mit der M\u00f6glichkeit verschiedener Auspr\u00e4gungen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_",
       "properties": {
+        "preisgarantietyp": {
+          "$ref": "#/$defs/Preisgarantietyp"
+        },
+        "zeitlicheGueltigkeit": {
+          "$ref": "#/$defs/Zeitraum"
+        },
         "beschreibung": {
           "anyOf": [
             {
@@ -460,12 +466,6 @@
           ],
           "default": null,
           "title": "Beschreibung"
-        },
-        "preisgarantietyp": {
-          "$ref": "#/$defs/Preisgarantietyp"
-        },
-        "zeitlicheGueltigkeit": {
-          "$ref": "#/$defs/Zeitraum"
         }
       },
       "required": ["preisgarantietyp", "zeitlicheGueltigkeit"],
@@ -485,7 +485,7 @@
     },
     "RegionaleGueltigkeit": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente k\u00f6nnen regionale G\u00fcltigkeiten, z.B. f\u00fcr Tarife, Zu- und Abschl\u00e4ge und Preise definiert werden.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_\n\n    ",
+      "description": "Mit dieser Komponente k\u00f6nnen regionale G\u00fcltigkeiten, z.B. f\u00fcr Tarife, Zu- und Abschl\u00e4ge und Preise definiert werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_",
       "properties": {
         "gueltigkeitstyp": {
           "$ref": "#/$defs/Gueltigkeitstyp"
@@ -505,7 +505,7 @@
     },
     "RegionalePreisstaffel": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_\n\n    ",
+      "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_",
       "properties": {
         "einheitspreis": {
           "anyOf": [
@@ -518,19 +518,16 @@
           ],
           "title": "Einheitspreis"
         },
-        "regionaleGueltigkeit": {
-          "$ref": "#/$defs/RegionaleGueltigkeit"
-        },
-        "sigmoidparameter": {
+        "staffelgrenzeVon": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Sigmoidparameter"
+              "type": "number"
             },
             {
-              "type": "null"
+              "type": "string"
             }
           ],
-          "default": null
+          "title": "Staffelgrenzevon"
         },
         "staffelgrenzeBis": {
           "anyOf": [
@@ -543,16 +540,19 @@
           ],
           "title": "Staffelgrenzebis"
         },
-        "staffelgrenzeVon": {
+        "sigmoidparameter": {
           "anyOf": [
             {
-              "type": "number"
+              "$ref": "#/$defs/Sigmoidparameter"
             },
             {
-              "type": "string"
+              "type": "null"
             }
           ],
-          "title": "Staffelgrenzevon"
+          "default": null
+        },
+        "regionaleGueltigkeit": {
+          "$ref": "#/$defs/RegionaleGueltigkeit"
         }
       },
       "required": [
@@ -566,7 +566,7 @@
     },
     "Sigmoidparameter": {
       "additionalProperties": true,
-      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+      "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
       "properties": {
         "A": {
           "anyOf": [
@@ -633,13 +633,13 @@
     },
     "Tarifeinschraenkung": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_",
       "properties": {
-        "einschraenkungleistung": {
+        "zusatzprodukte": {
           "anyOf": [
             {
               "items": {
-                "$ref": "#/$defs/Menge"
+                "type": "string"
               },
               "type": "array"
             },
@@ -648,22 +648,7 @@
             }
           ],
           "default": null,
-          "title": "Einschraenkungleistung"
-        },
-        "einschraenkungzaehler": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/Geraet"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Einschraenkungzaehler"
+          "title": "Zusatzprodukte"
         },
         "voraussetzungen": {
           "anyOf": [
@@ -680,11 +665,11 @@
           "default": null,
           "title": "Voraussetzungen"
         },
-        "zusatzprodukte": {
+        "einschraenkungzaehler": {
           "anyOf": [
             {
               "items": {
-                "type": "string"
+                "$ref": "#/$defs/Geraet"
               },
               "type": "array"
             },
@@ -693,7 +678,22 @@
             }
           ],
           "default": null,
-          "title": "Zusatzprodukte"
+          "title": "Einschraenkungzaehler"
+        },
+        "einschraenkungleistung": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Menge"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Einschraenkungleistung"
         }
       },
       "title": "Tarifeinschraenkung",
@@ -713,18 +713,19 @@
     },
     "Vertragskonditionen": {
       "additionalProperties": true,
-      "description": "\n    Abbildung f\u00fcr Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_\n\n    ",
+      "description": "Abbildung f\u00fcr Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Vertragskonditionen.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_",
       "properties": {
-        "abschlagszyklus": {
+        "beschreibung": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Zeitraum"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
-          "default": null
+          "default": null,
+          "title": "Beschreibung"
         },
         "anzahlAbschlaege": {
           "anyOf": [
@@ -741,17 +742,16 @@
           "default": null,
           "title": "Anzahlabschlaege"
         },
-        "beschreibung": {
+        "vertragslaufzeit": {
           "anyOf": [
             {
-              "type": "string"
+              "$ref": "#/$defs/Zeitraum"
             },
             {
               "type": "null"
             }
           ],
-          "default": null,
-          "title": "Beschreibung"
+          "default": null
         },
         "kuendigungsfrist": {
           "anyOf": [
@@ -764,7 +764,7 @@
           ],
           "default": null
         },
-        "vertragslaufzeit": {
+        "vertragsverlaengerung": {
           "anyOf": [
             {
               "$ref": "#/$defs/Zeitraum"
@@ -775,7 +775,7 @@
           ],
           "default": null
         },
-        "vertragsverlaengerung": {
+        "abschlagszyklus": {
           "anyOf": [
             {
               "$ref": "#/$defs/Zeitraum"
@@ -861,8 +861,19 @@
     },
     "Zeitraum": {
       "additionalProperties": true,
-      "description": "\n    Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\n    Es muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n    - Einheit und Dauer oder\n    - Zeitraum: Startdatum bis Enddatum oder\n    - Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_\n\n    ",
+      "description": "Diese Komponente wird zur Abbildung von Zeitr\u00e4umen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei M\u00f6glichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
       "properties": {
+        "einheit": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Zeiteinheit"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "dauer": {
           "anyOf": [
             {
@@ -878,16 +889,18 @@
           "default": null,
           "title": "Dauer"
         },
-        "einheit": {
+        "startdatum": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Zeiteinheit"
+              "format": "date-time",
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
-          "default": null
+          "default": null,
+          "title": "Startdatum"
         },
         "enddatum": {
           "anyOf": [
@@ -902,32 +915,6 @@
           "default": null,
           "title": "Enddatum"
         },
-        "endzeitpunkt": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Endzeitpunkt"
-        },
-        "startdatum": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Startdatum"
-        },
         "startzeitpunkt": {
           "anyOf": [
             {
@@ -940,6 +927,19 @@
           ],
           "default": null,
           "title": "Startzeitpunkt"
+        },
+        "endzeitpunkt": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Endzeitpunkt"
         }
       },
       "title": "Zeitraum",
@@ -947,8 +947,32 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen im Zusammenhang mit regionalen G\u00fcltigkeiten\n    abgebildet werden.\n    Hier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-\n    oder Abschlags ergeben.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/RegionalerAufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalerAufAbschlag.json>`_\n\n    ",
+  "description": "Mit dieser Komponente k\u00f6nnen Auf- und Abschl\u00e4ge verschiedener Typen im Zusammenhang mit regionalen G\u00fcltigkeiten\nabgebildet werden.\nHier sind auch die Auswirkungen auf verschiedene Tarifparameter modelliert, die sich durch die Auswahl eines Auf-\noder Abschlags ergeben.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalerAufAbschlag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalerAufAbschlag.json>`_",
   "properties": {
+    "bezeichnung": {
+      "title": "Bezeichnung",
+      "type": "string"
+    },
+    "staffeln": {
+      "items": {
+        "$ref": "#/$defs/RegionalePreisstaffel"
+      },
+      "minItems": 1,
+      "title": "Staffeln",
+      "type": "array"
+    },
+    "beschreibung": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Beschreibung"
+    },
     "aufAbschlagstyp": {
       "anyOf": [
         {
@@ -971,22 +995,6 @@
       ],
       "default": null
     },
-    "beschreibung": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Beschreibung"
-    },
-    "bezeichnung": {
-      "title": "Bezeichnung",
-      "type": "string"
-    },
     "einheit": {
       "anyOf": [
         {
@@ -997,96 +1005,6 @@
         }
       ],
       "default": null
-    },
-    "einschraenkungsaenderung": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Tarifeinschraenkung"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "energiemixaenderung": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Energiemix"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "garantieaenderung": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Preisgarantie"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "gueltigkeitszeitraum": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Zeitraum"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "staffeln": {
-      "items": {
-        "$ref": "#/$defs/RegionalePreisstaffel"
-      },
-      "minItems": 1,
-      "title": "Staffeln",
-      "type": "array"
-    },
-    "tarifnamensaenderungen": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Tarifnamensaenderungen"
-    },
-    "vertagskonditionsaenderung": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Vertragskonditionen"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "voraussetzungen": {
-      "anyOf": [
-        {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Voraussetzungen"
     },
     "website": {
       "anyOf": [
@@ -1114,6 +1032,88 @@
       ],
       "default": null,
       "title": "Zusatzprodukte"
+    },
+    "voraussetzungen": {
+      "anyOf": [
+        {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Voraussetzungen"
+    },
+    "tarifnamensaenderungen": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Tarifnamensaenderungen"
+    },
+    "gueltigkeitszeitraum": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Zeitraum"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "energiemixaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Energiemix"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "vertagskonditionsaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Vertragskonditionen"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "garantieaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Preisgarantie"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "einschraenkungsaenderung": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Tarifeinschraenkung"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
     }
   },
   "required": ["bezeichnung", "staffeln"],

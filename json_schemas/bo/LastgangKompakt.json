@@ -42,7 +42,7 @@
     },
     "ExterneReferenz": {
       "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
       "properties": {
         "exRefName": {
           "title": "Exrefname",
@@ -155,7 +155,7 @@
     },
     "Tagesvektor": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines Tagesvektors eines beliebigen \u00e4quidistanten Zeitrasters\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_\n\n    ",
+      "description": "Abbildung eines Tagesvektors eines beliebigen \u00e4quidistanten Zeitrasters\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_",
       "properties": {
         "tag": {
           "format": "date-time",
@@ -194,7 +194,7 @@
     },
     "Zeitintervall": {
       "additionalProperties": true,
-      "description": "\n    Abbildung f\u00fcr ein Zeitintervall. Die Abbildung eines Zeitintervalls.\n    Z.B. zur Anwendung als Raster in \u00e4quidistanten Zeitreihen/Lastg\u00e4ngen, beispielsweise 15 Minuten.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitintervall.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_\n\n    ",
+      "description": "Abbildung f\u00fcr ein Zeitintervall. Die Abbildung eines Zeitintervalls.\nZ.B. zur Anwendung als Raster in \u00e4quidistanten Zeitreihen/Lastg\u00e4ngen, beispielsweise 15 Minuten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitintervall.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_",
       "properties": {
         "wert": {
           "title": "Wert",
@@ -210,8 +210,19 @@
     },
     "Zeitreihenwertkompakt": {
       "additionalProperties": true,
-      "description": "\n    Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_\n\n    ",
+      "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_",
       "properties": {
+        "wert": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Wert"
+        },
         "status": {
           "anyOf": [
             {
@@ -233,17 +244,6 @@
             }
           ],
           "default": null
-        },
-        "wert": {
-          "anyOf": [
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            }
-          ],
-          "title": "Wert"
         }
       },
       "required": ["wert"],
@@ -252,8 +252,13 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Modell zur Abbildung eines kompakten Lastganges.\n    In diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten \u00fcbertragen.\n    Daher ist dieses BO nur zur \u00dcbertragung von \u00e4quidistanten Messwertverl\u00e4ufen geeignet.\n    ",
+  "description": "Modell zur Abbildung eines kompakten Lastganges.\nIn diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten \u00fcbertragen.\nDaher ist dieses BO nur zur \u00dcbertragung von \u00e4quidistanten Messwertverl\u00e4ufen geeignet.",
   "properties": {
+    "versionstruktur": {
+      "default": "2",
+      "title": "Versionstruktur",
+      "type": "string"
+    },
     "boTyp": {
       "allOf": [
         {
@@ -277,6 +282,9 @@
       "default": [],
       "title": "Externereferenzen"
     },
+    "sparte": {
+      "$ref": "#/$defs/Sparte"
+    },
     "lokationsId": {
       "title": "Lokationsid",
       "type": "string"
@@ -287,6 +295,18 @@
     },
     "messgroesse": {
       "$ref": "#/$defs/Mengeneinheit"
+    },
+    "version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Version"
     },
     "obisKennzahl": {
       "anyOf": [
@@ -301,8 +321,8 @@
       "default": null,
       "title": "Obiskennzahl"
     },
-    "sparte": {
-      "$ref": "#/$defs/Sparte"
+    "zeitintervall": {
+      "$ref": "#/$defs/Zeitintervall"
     },
     "tagesvektoren": {
       "items": {
@@ -310,26 +330,6 @@
       },
       "title": "Tagesvektoren",
       "type": "array"
-    },
-    "version": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Version"
-    },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
-    },
-    "zeitintervall": {
-      "$ref": "#/$defs/Zeitintervall"
     }
   },
   "required": [

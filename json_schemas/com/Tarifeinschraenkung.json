@@ -2,19 +2,8 @@
   "$defs": {
     "Geraet": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden alle Ger\u00e4te modelliert, die keine Z\u00e4hler sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_",
       "properties": {
-        "geraeteeigenschaften": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Geraeteeigenschaften"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
-        },
         "geraetenummer": {
           "anyOf": [
             {
@@ -26,6 +15,17 @@
           ],
           "default": null,
           "title": "Geraetenummer"
+        },
+        "geraeteeigenschaften": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Geraeteeigenschaften"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "title": "Geraet",
@@ -33,8 +33,11 @@
     },
     "Geraeteeigenschaften": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden die Eigenschaften eines Ger\u00e4tes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_",
       "properties": {
+        "geraetetyp": {
+          "$ref": "#/$defs/Geraetetyp"
+        },
         "geraetemerkmal": {
           "anyOf": [
             {
@@ -45,9 +48,6 @@
             }
           ],
           "default": null
-        },
-        "geraetetyp": {
-          "$ref": "#/$defs/Geraetetyp"
         }
       },
       "required": ["geraetetyp"],
@@ -153,11 +153,8 @@
     },
     "Menge": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Menge mit Wert und Einheit.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_\n\n    ",
+      "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
       "properties": {
-        "einheit": {
-          "$ref": "#/$defs/Mengeneinheit"
-        },
         "wert": {
           "anyOf": [
             {
@@ -168,6 +165,9 @@
             }
           ],
           "title": "Wert"
+        },
+        "einheit": {
+          "$ref": "#/$defs/Mengeneinheit"
         }
       },
       "required": ["wert", "einheit"],
@@ -243,13 +243,13 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_\n\n    ",
+  "description": "Mit dieser Komponente werden Einschr\u00e4nkungen f\u00fcr die Anwendung von Tarifen modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifeinschraenkung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifeinschraenkung.json>`_",
   "properties": {
-    "einschraenkungleistung": {
+    "zusatzprodukte": {
       "anyOf": [
         {
           "items": {
-            "$ref": "#/$defs/Menge"
+            "type": "string"
           },
           "type": "array"
         },
@@ -258,22 +258,7 @@
         }
       ],
       "default": null,
-      "title": "Einschraenkungleistung"
-    },
-    "einschraenkungzaehler": {
-      "anyOf": [
-        {
-          "items": {
-            "$ref": "#/$defs/Geraet"
-          },
-          "type": "array"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Einschraenkungzaehler"
+      "title": "Zusatzprodukte"
     },
     "voraussetzungen": {
       "anyOf": [
@@ -290,11 +275,11 @@
       "default": null,
       "title": "Voraussetzungen"
     },
-    "zusatzprodukte": {
+    "einschraenkungzaehler": {
       "anyOf": [
         {
           "items": {
-            "type": "string"
+            "$ref": "#/$defs/Geraet"
           },
           "type": "array"
         },
@@ -303,7 +288,22 @@
         }
       ],
       "default": null,
-      "title": "Zusatzprodukte"
+      "title": "Einschraenkungzaehler"
+    },
+    "einschraenkungleistung": {
+      "anyOf": [
+        {
+          "items": {
+            "$ref": "#/$defs/Menge"
+          },
+          "type": "array"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Einschraenkungleistung"
     }
   },
   "title": "Tarifeinschraenkung",

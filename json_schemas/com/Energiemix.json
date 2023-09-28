@@ -2,8 +2,11 @@
   "$defs": {
     "Energieherkunft": {
       "additionalProperties": true,
-      "description": "\n    Abbildung einer Energieherkunft\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_\n\n    ",
+      "description": "Abbildung einer Energieherkunft\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energieherkunft.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_",
       "properties": {
+        "erzeugungsart": {
+          "$ref": "#/$defs/Erzeugungsart"
+        },
         "anteilProzent": {
           "anyOf": [
             {
@@ -16,9 +19,6 @@
             }
           ],
           "title": "Anteilprozent"
-        },
-        "erzeugungsart": {
-          "$ref": "#/$defs/Erzeugungsart"
         }
       },
       "required": ["erzeugungsart", "anteilProzent"],
@@ -105,8 +105,23 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Zusammensetzung der gelieferten Energie aus den verschiedenen Prim\u00e4renergieformen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_\n\n    ",
+  "description": "Zusammensetzung der gelieferten Energie aus den verschiedenen Prim\u00e4renergieformen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Energiemix.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_",
   "properties": {
+    "energiemixnummer": {
+      "title": "Energiemixnummer",
+      "type": "integer"
+    },
+    "energieart": {
+      "$ref": "#/$defs/Sparte"
+    },
+    "bezeichnung": {
+      "title": "Bezeichnung",
+      "type": "string"
+    },
+    "gueltigkeitsjahr": {
+      "title": "Gueltigkeitsjahr",
+      "type": "integer"
+    },
     "anteil": {
       "items": {
         "$ref": "#/$defs/Energieherkunft"
@@ -114,21 +129,6 @@
       "minItems": 1,
       "title": "Anteil",
       "type": "array"
-    },
-    "atommuell": {
-      "anyOf": [
-        {
-          "type": "number"
-        },
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Atommuell"
     },
     "bemerkung": {
       "anyOf": [
@@ -141,10 +141,6 @@
       ],
       "default": null,
       "title": "Bemerkung"
-    },
-    "bezeichnung": {
-      "title": "Bezeichnung",
-      "type": "string"
     },
     "co2Emission": {
       "anyOf": [
@@ -161,16 +157,36 @@
       "default": null,
       "title": "Co2Emission"
     },
-    "energieart": {
-      "$ref": "#/$defs/Sparte"
+    "atommuell": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Atommuell"
     },
-    "energiemixnummer": {
-      "title": "Energiemixnummer",
-      "type": "integer"
+    "oekozertifikate": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Oekozertifikat"
+      },
+      "title": "Oekozertifikate",
+      "type": "array"
     },
-    "gueltigkeitsjahr": {
-      "title": "Gueltigkeitsjahr",
-      "type": "integer"
+    "oekolabel": {
+      "default": [],
+      "items": {
+        "$ref": "#/$defs/Oekolabel"
+      },
+      "title": "Oekolabel",
+      "type": "array"
     },
     "oekoTopTen": {
       "anyOf": [
@@ -183,22 +199,6 @@
       ],
       "default": null,
       "title": "Oekotopten"
-    },
-    "oekolabel": {
-      "default": [],
-      "items": {
-        "$ref": "#/$defs/Oekolabel"
-      },
-      "title": "Oekolabel",
-      "type": "array"
-    },
-    "oekozertifikate": {
-      "default": [],
-      "items": {
-        "$ref": "#/$defs/Oekozertifikat"
-      },
-      "title": "Oekozertifikate",
-      "type": "array"
     },
     "website": {
       "anyOf": [

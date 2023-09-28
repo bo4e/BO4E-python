@@ -2,8 +2,64 @@
   "$defs": {
     "Adresse": {
       "additionalProperties": true,
-      "description": "\n    Contains an address that can be used for most purposes.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_\n\n    ",
+      "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
       "properties": {
+        "postleitzahl": {
+          "title": "Postleitzahl",
+          "type": "string"
+        },
+        "ort": {
+          "title": "Ort",
+          "type": "string"
+        },
+        "ortsteil": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ortsteil"
+        },
+        "strasse": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Strasse"
+        },
+        "hausnummer": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Hausnummer"
+        },
+        "postfach": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Postfach"
+        },
         "adresszusatz": {
           "anyOf": [
             {
@@ -28,18 +84,6 @@
           "default": null,
           "title": "Coergaenzung"
         },
-        "hausnummer": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Hausnummer"
-        },
         "landescode": {
           "allOf": [
             {
@@ -47,50 +91,6 @@
             }
           ],
           "default": "DE"
-        },
-        "ort": {
-          "title": "Ort",
-          "type": "string"
-        },
-        "ortsteil": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Ortsteil"
-        },
-        "postfach": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Postfach"
-        },
-        "postleitzahl": {
-          "title": "Postleitzahl",
-          "type": "string"
-        },
-        "strasse": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Strasse"
         }
       },
       "required": ["postleitzahl", "ort"],
@@ -163,7 +163,7 @@
     },
     "ExterneReferenz": {
       "additionalProperties": true,
-      "description": "\n    Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\n    Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\n    sich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_\n\n    ",
+      "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
       "properties": {
         "exRefName": {
           "title": "Exrefname",
@@ -202,7 +202,7 @@
     },
     "Geokoordinaten": {
       "additionalProperties": true,
-      "description": "\n    This component provides the geo-coordinates for a location.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Geokoordinaten.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geokoordinaten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geokoordinaten.json>`_\n\n    ",
+      "description": "This component provides the geo-coordinates for a location.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geokoordinaten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geokoordinaten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geokoordinaten.json>`_",
       "properties": {
         "breitengrad": {
           "anyOf": [
@@ -233,30 +233,12 @@
     },
     "Geschaeftspartner": {
       "additionalProperties": true,
-      "description": "\n    Mit diesem Objekt k\u00f6nnen Gesch\u00e4ftspartner \u00fcbertragen werden.\n    Sowohl Unternehmen, als auch Privatpersonen k\u00f6nnen Gesch\u00e4ftspartner sein.\n    Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\n    Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_\n\n    ",
+      "description": "Mit diesem Objekt k\u00f6nnen Gesch\u00e4ftspartner \u00fcbertragen werden.\nSowohl Unternehmen, als auch Privatpersonen k\u00f6nnen Gesch\u00e4ftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
       "properties": {
-        "amtsgericht": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Amtsgericht"
-        },
-        "anrede": {
-          "anyOf": [
-            {
-              "$ref": "#/$defs/Anrede"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null
+        "versionstruktur": {
+          "default": "2",
+          "title": "Versionstruktur",
+          "type": "string"
         },
         "boTyp": {
           "allOf": [
@@ -265,18 +247,6 @@
             }
           ],
           "default": "GESCHAEFTSPARTNER"
-        },
-        "eMailAdresse": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Emailadresse"
         },
         "externeReferenzen": {
           "anyOf": [
@@ -293,6 +263,14 @@
           "default": [],
           "title": "Externereferenzen"
         },
+        "name1": {
+          "title": "Name1",
+          "type": "string"
+        },
+        "gewerbekennzeichnung": {
+          "title": "Gewerbekennzeichnung",
+          "type": "boolean"
+        },
         "geschaeftspartnerrolle": {
           "items": {
             "$ref": "#/$defs/Geschaeftspartnerrolle"
@@ -300,52 +278,16 @@
           "title": "Geschaeftspartnerrolle",
           "type": "array"
         },
-        "gewerbekennzeichnung": {
-          "title": "Gewerbekennzeichnung",
-          "type": "boolean"
-        },
-        "glaeubigerId": {
+        "anrede": {
           "anyOf": [
             {
-              "type": "string"
+              "$ref": "#/$defs/Anrede"
             },
             {
               "type": "null"
             }
           ],
-          "default": null,
-          "title": "Glaeubigerid"
-        },
-        "hrnummer": {
-          "anyOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Hrnummer"
-        },
-        "kontaktweg": {
-          "anyOf": [
-            {
-              "items": {
-                "$ref": "#/$defs/Kontaktart"
-              },
-              "type": "array"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": [],
-          "title": "Kontaktweg"
-        },
-        "name1": {
-          "title": "Name1",
-          "type": "string"
+          "default": null
         },
         "name2": {
           "anyOf": [
@@ -371,16 +313,44 @@
           "default": null,
           "title": "Name3"
         },
-        "partneradresse": {
+        "hrnummer": {
           "anyOf": [
             {
-              "$ref": "#/$defs/Adresse"
+              "type": "string"
             },
             {
               "type": "null"
             }
           ],
-          "default": null
+          "default": null,
+          "title": "Hrnummer"
+        },
+        "amtsgericht": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amtsgericht"
+        },
+        "kontaktweg": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/Kontaktart"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": [],
+          "title": "Kontaktweg"
         },
         "umsatzsteuerId": {
           "anyOf": [
@@ -394,10 +364,29 @@
           "default": null,
           "title": "Umsatzsteuerid"
         },
-        "versionstruktur": {
-          "default": "2",
-          "title": "Versionstruktur",
-          "type": "string"
+        "glaeubigerId": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Glaeubigerid"
+        },
+        "eMailAdresse": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Emailadresse"
         },
         "website": {
           "anyOf": [
@@ -410,6 +399,17 @@
           ],
           "default": null,
           "title": "Website"
+        },
+        "partneradresse": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Adresse"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": ["name1", "gewerbekennzeichnung", "geschaeftspartnerrolle"],
@@ -430,14 +430,14 @@
     },
     "Katasteradresse": {
       "additionalProperties": true,
-      "description": "\n    Dient der Adressierung \u00fcber die Liegenschafts-Information.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_\n\n    ",
+      "description": "Dient der Adressierung \u00fcber die Liegenschafts-Information.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_",
       "properties": {
-        "flurstueck": {
-          "title": "Flurstueck",
-          "type": "string"
-        },
         "gemarkungFlur": {
           "title": "Gemarkungflur",
+          "type": "string"
+        },
+        "flurstueck": {
+          "title": "Flurstueck",
           "type": "string"
         }
       },
@@ -731,23 +731,14 @@
     },
     "Messlokationszuordnung": {
       "additionalProperties": true,
-      "description": "\n    Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\n    Dabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\n    mit der die Messlokation zum Verbrauch der Marktlokation beitr\u00e4gt.\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_\n\n    ",
+      "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beitr\u00e4gt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
       "properties": {
+        "messlokationsId": {
+          "title": "Messlokationsid",
+          "type": "string"
+        },
         "arithmetik": {
           "$ref": "#/$defs/ArithmetischeOperation"
-        },
-        "gueltigBis": {
-          "anyOf": [
-            {
-              "format": "date-time",
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ],
-          "default": null,
-          "title": "Gueltigbis"
         },
         "gueltigSeit": {
           "anyOf": [
@@ -762,9 +753,18 @@
           "default": null,
           "title": "Gueltigseit"
         },
-        "messlokationsId": {
-          "title": "Messlokationsid",
-          "type": "string"
+        "gueltigBis": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Gueltigbis"
         }
       },
       "required": ["messlokationsId", "arithmetik"],
@@ -810,22 +810,12 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Object containing information about a Marktlokation\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/bo/Marktlokation.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_\n\n    ",
+  "description": "Object containing information about a Marktlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Marktlokation.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_",
   "properties": {
-    "bilanzierungsgebiet": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Bilanzierungsgebiet"
-    },
-    "bilanzierungsmethode": {
-      "$ref": "#/$defs/Bilanzierungsmethode"
+    "versionstruktur": {
+      "default": "2",
+      "title": "Versionstruktur",
+      "type": "string"
     },
     "boTyp": {
       "allOf": [
@@ -834,20 +824,6 @@
         }
       ],
       "default": "MARKTLOKATION"
-    },
-    "endkunde": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Geschaeftspartner"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "energierichtung": {
-      "$ref": "#/$defs/Energierichtung"
     },
     "externeReferenzen": {
       "anyOf": [
@@ -864,6 +840,104 @@
       "default": [],
       "title": "Externereferenzen"
     },
+    "marktlokationsId": {
+      "title": "Marktlokationsid",
+      "type": "string"
+    },
+    "sparte": {
+      "$ref": "#/$defs/Sparte"
+    },
+    "energierichtung": {
+      "$ref": "#/$defs/Energierichtung"
+    },
+    "bilanzierungsmethode": {
+      "$ref": "#/$defs/Bilanzierungsmethode"
+    },
+    "netzebene": {
+      "$ref": "#/$defs/Netzebene"
+    },
+    "verbrauchsart": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Verbrauchsart"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "unterbrechbar": {
+      "anyOf": [
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Unterbrechbar"
+    },
+    "netzbetreibercodenr": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Netzbetreibercodenr"
+    },
+    "gebietstyp": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Gebiettyp"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "netzgebietsnr": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Netzgebietsnr"
+    },
+    "bilanzierungsgebiet": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Bilanzierungsgebiet"
+    },
+    "grundversorgercodenr": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Grundversorgercodenr"
+    },
     "gasqualitaet": {
       "anyOf": [
         {
@@ -875,10 +949,32 @@
       ],
       "default": null
     },
-    "gebietstyp": {
+    "endkunde": {
       "anyOf": [
         {
-          "$ref": "#/$defs/Gebiettyp"
+          "$ref": "#/$defs/Geschaeftspartner"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "zugehoerigeMesslokation": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Messlokationszuordnung"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "lokationsadresse": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Adresse"
         },
         {
           "type": "null"
@@ -896,18 +992,6 @@
         }
       ],
       "default": null
-    },
-    "grundversorgercodenr": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Grundversorgercodenr"
     },
     "katasterinformation": {
       "anyOf": [
@@ -934,90 +1018,6 @@
       ],
       "default": null,
       "title": "Kundengruppen"
-    },
-    "lokationsadresse": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Adresse"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "marktlokationsId": {
-      "title": "Marktlokationsid",
-      "type": "string"
-    },
-    "netzbetreibercodenr": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Netzbetreibercodenr"
-    },
-    "netzebene": {
-      "$ref": "#/$defs/Netzebene"
-    },
-    "netzgebietsnr": {
-      "anyOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Netzgebietsnr"
-    },
-    "sparte": {
-      "$ref": "#/$defs/Sparte"
-    },
-    "unterbrechbar": {
-      "anyOf": [
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null,
-      "title": "Unterbrechbar"
-    },
-    "verbrauchsart": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Verbrauchsart"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
-    },
-    "versionstruktur": {
-      "default": "2",
-      "title": "Versionstruktur",
-      "type": "string"
-    },
-    "zugehoerigeMesslokation": {
-      "anyOf": [
-        {
-          "$ref": "#/$defs/Messlokationszuordnung"
-        },
-        {
-          "type": "null"
-        }
-      ],
-      "default": null
     }
   },
   "required": [

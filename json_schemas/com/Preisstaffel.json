@@ -2,7 +2,7 @@
   "$defs": {
     "Sigmoidparameter": {
       "additionalProperties": true,
-      "description": "\n    Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\n    LP=A/(1+(P/B)^C)+D\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_\n\n    ",
+      "description": "Die Sigmoid-Funktion, beispielsweise zur Berechnung eines Leistungspreises hat die Form:\nLP=A/(1+(P/B)^C)+D\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Sigmoidparameter.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Sigmoidparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Sigmoidparameter.json>`_",
       "properties": {
         "A": {
           "anyOf": [
@@ -55,7 +55,7 @@
     }
   },
   "additionalProperties": true,
-  "description": "\n    Gibt die Staffelgrenzen der jeweiligen Preise an\n\n    .. raw:: html\n\n        <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n    .. HINT::\n        `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_\n\n    ",
+  "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
   "properties": {
     "einheitspreis": {
       "anyOf": [
@@ -68,16 +68,16 @@
       ],
       "title": "Einheitspreis"
     },
-    "sigmoidparameter": {
+    "staffelgrenzeVon": {
       "anyOf": [
         {
-          "$ref": "#/$defs/Sigmoidparameter"
+          "type": "number"
         },
         {
-          "type": "null"
+          "type": "string"
         }
       ],
-      "default": null
+      "title": "Staffelgrenzevon"
     },
     "staffelgrenzeBis": {
       "anyOf": [
@@ -90,16 +90,16 @@
       ],
       "title": "Staffelgrenzebis"
     },
-    "staffelgrenzeVon": {
+    "sigmoidparameter": {
       "anyOf": [
         {
-          "type": "number"
+          "$ref": "#/$defs/Sigmoidparameter"
         },
         {
-          "type": "string"
+          "type": "null"
         }
       ],
-      "title": "Staffelgrenzevon"
+      "default": null
     }
   },
   "required": ["einheitspreis", "staffelgrenzeVon", "staffelgrenzeBis"],
