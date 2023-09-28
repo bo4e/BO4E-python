@@ -39,7 +39,7 @@ fragments = [{ path = "README.rst" }]
 source = "vcs"
 
 [tool.hatch.build.hooks.vcs]
-version-file = "src/_kohlrahbi_version.py"
+version-file = "src/_bo4e_python_version.py"
 template = '''
 version = "{version}"
 '''

@@ -170,4 +170,4 @@ docs/_static/images
 
 # version number for bo4e-python; gets auto-generated during the command
 # python -m build
-src/_kohlrahbi_version.py
+src/_bo4e_python_version.py
