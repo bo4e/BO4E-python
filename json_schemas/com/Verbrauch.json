@@ -21,6 +21,21 @@
             "title": "Mengeneinheit",
             "type": "string"
         },
+        "Messwertstatus": {
+            "description": "Der Status eines Zählerstandes",
+            "enum": [
+                "ABGELESEN",
+                "ERSATZWERT",
+                "VORSCHLAGSWERT",
+                "NICHT_VERWENDBAR",
+                "PROGNOSEWERT",
+                "VORLAEUFIGERWERT",
+                "ENERGIEMENGESUMMIERT",
+                "FEHLT"
+            ],
+            "title": "Messwertstatus",
+            "type": "string"
+        },
         "Wertermittlungsverfahren": {
             "description": "Gibt an, ob es sich um eine Prognose oder eine Messung handelt, beispielsweise bei der Abbildung eines Verbrauchs.",
             "enum": [
@@ -49,6 +64,17 @@
             ],
             "default": null,
             "title": "Enddatum"
+        },
+        "messwertstatus": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Messwertstatus"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "obisKennzahl": {
             "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
