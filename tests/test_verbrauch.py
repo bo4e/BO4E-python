@@ -7,6 +7,7 @@ from pydantic import ValidationError
 
 from bo4e.com.verbrauch import Verbrauch
 from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -15,6 +16,7 @@ example_verbrauch = Verbrauch(
     obis_kennzahl="1-0:1.8.1",
     einheit=Mengeneinheit.KWH,
     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+    messwertstatus=Messwertstatus.ABGELESEN,
 )
 
 
@@ -30,6 +32,7 @@ class TestVerbrauch:
                     obis_kennzahl="1-0:1.8.1",
                     einheit=Mengeneinheit.KWH,
                     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+                    messwertstatus=Messwertstatus.ABGELESEN,
                 ),
                 {
                     "startdatum": datetime(2021, 12, 1, 0, 0, tzinfo=timezone.utc),
@@ -38,6 +41,7 @@ class TestVerbrauch:
                     "enddatum": datetime(2021, 12, 2, 0, 0, tzinfo=timezone.utc),
                     "wertermittlungsverfahren": Wertermittlungsverfahren.MESSUNG,
                     "obisKennzahl": "1-0:1.8.1",
+                    "messwertstatus": Messwertstatus.ABGELESEN,
                 },
             ),
             pytest.param(
@@ -49,6 +53,7 @@ class TestVerbrauch:
                     "startdatum": None,
                     "enddatum": None,
                     "obisKennzahl": "1-0:1.8.1",
+                    "messwertstatus": Messwertstatus.ABGELESEN,
                 },
             ),
         ],
