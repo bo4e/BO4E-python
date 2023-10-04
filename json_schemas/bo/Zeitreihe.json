@@ -127,6 +127,7 @@
             "enum": [
                 "ABGELESEN",
                 "ERSATZWERT",
+                "ANGABE_FUER_LIEFERSCHEIN",
                 "VORSCHLAGSWERT",
                 "NICHT_VERWENDBAR",
                 "PROGNOSEWERT",
