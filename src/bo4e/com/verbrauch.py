@@ -12,6 +12,7 @@ from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from bo4e.validators import OBIS_PATTERN, check_bis_is_later_than_von
 
@@ -45,6 +46,8 @@ class Verbrauch(COM):
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
     enddatum: Optional[datetime] = None
     _bis_check = field_validator("enddatum")(check_bis_is_later_than_von)
+    #: Messwertstatus includes the plausibility of the value
+    messwertstatus: Optional[Messwertstatus] = None
 
     @staticmethod
     def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
