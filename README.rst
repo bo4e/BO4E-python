@@ -44,8 +44,7 @@ Dabei sind unsere Designentscheidungen:
 * Alle Verknüpfungen sind optional.
 * Verknüpfungen sind, wo sie naheliegend sind, im BO4E Standard vordefiniert (z.B. 1 Messlokation hat n Zähler).
 * Aber wir haben nicht jede theoretisch denkbare Verknüpfungen implementiert (z.B. allein dass User Zähler unter Angabe einer Email-Adresse suchen können, heißt nicht, dass der Zähler eine optionale Eigenschaft `emailAdresse` haben muss.)
-* Generell sollen alle Verknüpfungen bi-direktional sein (z.B. soll jeder Zähler wissen zu welcher Messlokation er gehört).
-
+* Generell sollen zwischen zwei BOs bi-direktional sein, zwischen BOs und COMs aber nur unidirektional (z.B. soll jeder Zähler wissen zu welcher Messlokation er gehört aber eine Adresse muss nicht wissen, welchem Geschäftspartner, welcher Messlokation oder welcher Rechnung sie zugeordnet ist).
 
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
 ==========================================================
