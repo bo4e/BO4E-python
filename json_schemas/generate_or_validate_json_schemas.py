@@ -23,7 +23,7 @@ _logger = logging.getLogger(__name__)
     required=True,
     type=click.Choice(["validate", "generate"]),
 )
-def generate_json_schemas(mode: Literal["validate", "generate"]) -> None:
+def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> None:
     """generate json schemas for all BOs and COMs"""
     for pkg in ["bo", "com"]:
         modls = [
@@ -65,4 +65,4 @@ def generate_json_schemas(mode: Literal["validate", "generate"]) -> None:
 
 
 if __name__ == "__main__":
-    generate_json_schemas()  # pylint:disable=no-value-for-parameter
+    generate_or_validate_json_schemas()  # pylint:disable=no-value-for-parameter
