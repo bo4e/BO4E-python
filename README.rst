@@ -25,6 +25,28 @@ Gleichzeitig ist dieses Repository der Ort, um Fragen und Erweiterungen des BO4E
 
 🇬🇧 This is a Python library that implements Business Objects for Energy `BO4E <https://www.bo4e.de/>`_.
 
+Grundsätzliche Überlegungen
+===========================
+
+Pflichtfelder (nicht nullable Attributes)
+-----------------------------------------
+Der BO4E Standard soll (in Zukunft, Stand 2023-10-05) keine fachlichen Pflichtfelder mehr enthalten.
+Die Entscheidung, was in welchen Fällen ein Pflichtfeld ist, obliegt den Anwendungen, die den Standard nutzen.
+Entsprechend ist auch die Validierung der Pflichtfelder nicht Teil des BO4E Standards sondern anwendungsspezifisch.
+Davon ausgenommen sind technische Pflichtfelder.
+BO4E gibt sinnvolle Datenstrukturen vor, wie diese in der Praxis genutzt werden können und wollen wir aber nicht vorschreiben.
+
+Verknüpfungen zwischen Objekten
+-------------------------------
+Viele Objekte verweisen aufeinander und sind miteinander verknüpft.
+Dabei sind unsere Designentscheidungen:
+
+* Alle Verknüpfungen sind optional.
+* Verknüpfungen sind, wo sie naheliegend sind, im BO4E Standard vordefiniert (z.B. 1 Messlokation hat n Zähler).
+* Aber wir haben nicht jede theoretisch denkbare Verknüpfungen implementiert (z.B. allein dass User Zähler unter Angabe einer Email-Adresse suchen können, heißt nicht, dass der Zähler eine optionale Eigenschaft `emailAdresse` haben muss.)
+* Generell sollen alle Verknüpfungen bi-direktional sein (z.B. soll jeder Zähler wissen zu welcher Messlokation er gehört).
+
+
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
 ==========================================================
 Eine Dokumentation des Datenmodells und JSON Schemata zur Erzeugung von Beispieldaten finden sich auf `read the docs <https://bo4e-python.readthedocs.io/en/latest/api/modules.html>`_.
