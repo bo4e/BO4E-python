@@ -3,7 +3,9 @@ Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlagregional import AufAbschlagRegional
@@ -11,7 +13,7 @@ from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -30,7 +32,7 @@ class Tarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.TARIF
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None

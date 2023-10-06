@@ -2,15 +2,19 @@
 Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
+from dataclasses import Field
+
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.typ import Typ
 
 
 class Geschaeftspartner(Geschaeftsobjekt):
@@ -30,7 +34,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
     name1: Optional[str] = None
     """
     Erster Teil des Namens.

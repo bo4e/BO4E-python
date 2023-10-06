@@ -6,14 +6,16 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.angebotsvariante import Angebotsvariante
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 
 
 class Angebot(Geschaeftsobjekt):
@@ -33,7 +35,7 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.ANGEBOT
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None

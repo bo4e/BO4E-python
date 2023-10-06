@@ -5,15 +5,17 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.preisposition import Preisposition
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 
 
 class Preisblatt(Geschaeftsobjekt):
@@ -35,7 +37,7 @@ class Preisblatt(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.PREISBLATT
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
     bezeichnung: Optional[str] = None
     #: Preisblatt gilt für angegebene Sparte

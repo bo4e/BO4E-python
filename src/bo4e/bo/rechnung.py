@@ -4,7 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -12,9 +14,9 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -34,7 +36,7 @@ class Rechnung(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.RECHNUNG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.RECHNUNG
     storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;

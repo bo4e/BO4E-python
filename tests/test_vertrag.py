@@ -11,11 +11,11 @@ from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.com.vertragsteil import Vertragsteil
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.landescode import Landescode
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
 
@@ -66,7 +66,7 @@ class TestVertrag:
     ]
     _vertragspartner1_dict: Dict[str, Any] = {
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "boTyp": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "name1": "von Sinnen",
         "gewerbekennzeichnung": True,
@@ -97,7 +97,7 @@ class TestVertrag:
     }
     _vertragspartner2_dict: Dict[str, Any] = {
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "boTyp": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "name1": "Eckart",
         "gewerbekennzeichnung": False,
@@ -163,7 +163,7 @@ class TestVertrag:
             "vertragspartner2": self._vertragspartner2_dict,
             "vertragsteile": self._vertragsteile_dict,
             "versionstruktur": "2",
-            "boTyp": BoTyp.VERTRAG,
+            "boTyp": Typ.VERTRAG,
             "externeReferenzen": None,
             "beschreibung": None,
             "vertragskonditionen": None,
@@ -180,7 +180,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is Typ.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
@@ -235,7 +235,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is Typ.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string

@@ -7,11 +7,11 @@ from pydantic import ValidationError
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
+from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
@@ -43,7 +43,7 @@ class TestZaehler:
             letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
+        assert zaehler.typ is Typ.ZAEHLER, "boTyp was not automatically set"
         assert zaehler.zaehlwerke is not None
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW

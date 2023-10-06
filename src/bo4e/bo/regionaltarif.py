@@ -3,7 +3,9 @@ Contains Regionaltarif class and corresponding marshmallow schema for de-/serial
 """
 
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
@@ -11,7 +13,7 @@ from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag
 from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods, empty-docstring
 # pylint: disable=no-name-in-module
@@ -30,7 +32,7 @@ class Regionaltarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.REGIONALTARIF
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGIONALTARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None
