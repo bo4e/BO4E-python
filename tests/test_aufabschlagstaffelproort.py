@@ -22,6 +22,7 @@ class TestAufAbschlagstaffelProOrt:
                     "wert": Decimal("2.5"),
                     "staffelgrenzeVon": Decimal("1"),
                     "staffelgrenzeBis": Decimal("5"),
+                    "_id": None,
                 },
             ),
         ],

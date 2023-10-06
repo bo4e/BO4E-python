@@ -58,6 +58,7 @@ class TestAusschreibungslos:
                     "wunschRechnungslegung": Rechnungslegung.MONATSRECHN,
                     "wunschMindestmenge": example_menge_dict,
                     "betreutDurch": "Max Mustermann",
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),

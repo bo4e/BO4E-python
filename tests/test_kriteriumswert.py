@@ -17,7 +17,7 @@ class TestKriteriumWert:
                     kriterium=Tarifregionskriterium.ORT,
                     wert="Grünwald",
                 ),
-                {"kriterium": Tarifregionskriterium.ORT, "wert": "Grünwald"},
+                {"kriterium": Tarifregionskriterium.ORT, "wert": "Grünwald", "_id": None},
             ),
         ],
     )

@@ -48,7 +48,10 @@ class TestRegionaleTarifpreisPosition:
                         {
                             "regionaleGueltigkeit": {
                                 "gueltigkeitstyp": "NUR_IN",
-                                "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
+                                "kriteriumsWerte": [
+                                    {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
+                                ],
+                                "_id": None,
                             },
                             "einheitspreis": Decimal("40"),
                             "sigmoidparameter": {
@@ -56,14 +59,17 @@ class TestRegionaleTarifpreisPosition:
                                 "B": Decimal("2"),
                                 "C": Decimal("3"),
                                 "D": Decimal("4"),
+                                "_id": None,
                             },
                             "staffelgrenzeVon": Decimal("12.5"),
                             "staffelgrenzeBis": Decimal("25"),
+                            "_id": None,
                         }
                     ],
                     "einheit": Waehrungseinheit.EUR,
                     "mengeneinheitstaffel": Mengeneinheit.WH,
                     "preistyp": "ARBEITSPREIS_NT",
+                    "_id": None,
                 },
                 id="all attributes",
             ),

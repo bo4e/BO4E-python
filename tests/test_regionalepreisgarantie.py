@@ -37,7 +37,10 @@ class TestRegionalePreisgarantie:
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
+                        "kriteriumsWerte": [
+                            {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
+                        ],
+                        "_id": None,
                     },
                     "zeitlicheGueltigkeit": {
                         "startdatum": None,
@@ -46,7 +49,9 @@ class TestRegionalePreisgarantie:
                         "dauer": None,
                         "endzeitpunkt": datetime(2021, 7, 30, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
+                        "_id": None,
                     },
+                    "_id": None,
                 },
                 id="only required attributes",
             ),

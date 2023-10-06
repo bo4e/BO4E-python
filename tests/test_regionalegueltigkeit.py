@@ -26,12 +26,8 @@ class TestRegionaleGueltigkeit:
                 ),
                 {
                     "gueltigkeitstyp": "NUR_IN",
-                    "kriteriumsWerte": [
-                        {
-                            "kriterium": "NETZ_NUMMER",
-                            "wert": "12345",
-                        }
-                    ],
+                    "kriteriumsWerte": [{"kriterium": "NETZ_NUMMER", "wert": "12345", "_id": None}],
+                    "_id": None,
                 },
                 id="only required attributes",
             ),

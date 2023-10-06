@@ -75,12 +75,14 @@ class TestBuendelvertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
         "externeReferenzen": [],
         "hrnummer": None,
         "amtsgericht": None,
+        "_id": None,
     }
     _vertragspartner2_dict: Dict[str, Any] = {
         "name1": "Eckart",
@@ -97,6 +99,7 @@ class TestBuendelvertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
@@ -110,6 +113,7 @@ class TestBuendelvertrag:
         "glaeubigerId": None,
         "eMailAdresse": None,
         "website": None,
+        "_id": None,
     }
 
     @pytest.mark.parametrize(
@@ -143,6 +147,7 @@ class TestBuendelvertrag:
                     "unterzeichnervp1": [],
                     "unterzeichnervp2": [],
                     "beschreibung": None,
+                    "_id": None,
                 },
                 id="minimal fields",
             ),
@@ -183,14 +188,16 @@ class TestBuendelvertrag:
                             "kuendigungsfrist": None,
                             "vertragsverlaengerung": None,
                             "abschlagszyklus": None,
+                            "_id": None,
                         }
                     ],
-                    "unterzeichnervp1": [{"name": "Helga van der Waal", "ort": None, "datum": None}],
+                    "unterzeichnervp1": [{"name": "Helga van der Waal", "ort": None, "datum": None, "_id": None}],
                     "unterzeichnervp2": [
-                        {"name": "Björn oder so", "ort": None, "datum": None},
-                        {"name": "Zweiter Typ", "ort": None, "datum": None},
+                        {"name": "Björn oder so", "ort": None, "datum": None, "_id": None},
+                        {"name": "Zweiter Typ", "ort": None, "datum": None, "_id": None},
                     ],
                     "beschreibung": "Das ist ein Bündelvertrag mit allen optionalen Feldern ausgefüllt.",
+                    "_id": None,
                 },
                 id="maximal fields",
             ),

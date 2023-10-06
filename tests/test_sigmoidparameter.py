@@ -22,7 +22,7 @@ class TestSigmoidparameter:
         [
             pytest.param(
                 example_sigmoidparameter,
-                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4"), "_id": None},
             ),
         ],
     )
