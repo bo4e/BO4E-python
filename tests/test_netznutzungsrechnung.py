@@ -49,8 +49,8 @@ class TestNetznutzungsrechnung:
                     empfaengercodenummer="0123456789012",
                     nnrechnungsart=NNRechnungsart.SELBSTAUSGESTELLT,
                     nnrechnungstyp=NNRechnungstyp.TURNUSRECHNUNG,
-                    istOriginal=True,
-                    istSimuliert=True,
+                    ist_original=True,
+                    ist_simuliert=True,
                     lokations_id="56789012345",
                     # ^^ above are the original Netznutzungsrechnung attributes
                     # vv below are the fields inherited from Rechnung
@@ -101,8 +101,8 @@ class TestNetznutzungsrechnung:
                     empfaengercodenummer="0123456789012",
                     nnrechnungsart=NNRechnungsart.SELBSTAUSGESTELLT,
                     nnrechnungstyp=NNRechnungstyp.TURNUSRECHNUNG,
-                    istOriginal=True,
-                    istSimuliert=True,
+                    ist_original=True,
+                    ist_simuliert=True,
                     # ^^ above are the original Netznutzungsrechnung attributes
                     # vv below are the fields inherited from Rechnung
                     ist_storno=True,
