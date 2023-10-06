@@ -6,7 +6,7 @@ from bo4e.com.zusatzattribut import ZusatzAttribut
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 
 
-class TestExterneReferenz:
+class TestZusatzAttribut:
     def test_serialization(self) -> None:
         er = ZusatzAttribut(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")
 
