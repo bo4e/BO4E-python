@@ -27,7 +27,7 @@ class TestExterneReferenz:
             # just some dummy data to make the GP valid
             name1="Duck",
             name2="Donald",
-            gewerbekennzeichnung=False,
+            ist_gewerbe=False,
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
@@ -48,7 +48,7 @@ class TestExterneReferenz:
             # just some dummy data to make the GP valid
             name1="Duck",
             name2="Donald",
-            gewerbekennzeichnung=False,
+            ist_gewerbe=False,
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
