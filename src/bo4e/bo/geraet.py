@@ -26,6 +26,8 @@ class Geraet(Geschaeftsobjekt):
 
     #: Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
     geraetenummer: Optional[str] = None
+    #: Bezeichnung des Geräts
+    bezeichnung: Optional[str] = None
     #: Der Typ eines Gerätes, beispielsweise Drehstromzähler
     geraetetyp: Optional[Geraetetyp] = None
     #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..

@@ -474,6 +474,18 @@
                     ],
                     "default": "GESCHAEFTSOBJEKT"
                 },
+                "bezeichnung": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
+                },
                 "externeReferenzen": {
                     "anyOf": [
                         {
