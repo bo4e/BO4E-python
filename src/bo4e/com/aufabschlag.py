@@ -3,9 +3,7 @@ Contains AufAbschlag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
-
-from pydantic import field_validator
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -13,7 +11,6 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
 from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.validators import einheit_only_for_abschlagstyp_absolut
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

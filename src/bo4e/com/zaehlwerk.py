@@ -3,15 +3,14 @@ Contains Zaehlwerk class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
-from typing import Annotated, Optional
-
-# pylint: disable=no-name-in-module
-# pylint: disable=no-name-in-module
-from pydantic import Field
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
+
+# pylint: disable=no-name-in-module
+# pylint: disable=no-name-in-module
 
 # pylint: disable=too-few-public-methods
 

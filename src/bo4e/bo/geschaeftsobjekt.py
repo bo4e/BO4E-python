@@ -1,6 +1,6 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import List, Optional
+from typing import Optional
 
 from humps.main import camelize
 

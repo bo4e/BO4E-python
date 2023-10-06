@@ -5,7 +5,7 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from datetime import datetime
-from typing import List, Optional
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner

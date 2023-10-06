@@ -3,7 +3,7 @@ Contains Fremdkostenblock class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Optional
 
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM

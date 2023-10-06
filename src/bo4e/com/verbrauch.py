@@ -3,17 +3,17 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
 from decimal import Decimal
-from typing import Annotated, Optional
+from typing import Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import Field, field_validator
+from pydantic import field_validator
 from pydantic_core.core_schema import ValidationInfo
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
-from bo4e.validators import OBIS_PATTERN, check_bis_is_later_than_von
+from bo4e.validators import check_bis_is_later_than_von
 
 
 class Verbrauch(COM):

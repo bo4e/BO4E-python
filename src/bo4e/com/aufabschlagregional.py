@@ -2,9 +2,7 @@
 Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.com.aufabschlagproort import AufAbschlagProOrt
 from bo4e.com.com import COM

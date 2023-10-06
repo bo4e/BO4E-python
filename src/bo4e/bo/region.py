@@ -1,9 +1,7 @@
 """
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.regionskriterium import Regionskriterium

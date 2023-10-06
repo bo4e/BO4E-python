@@ -3,10 +3,10 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 import re
-from typing import Annotated, Any, List, Optional
+from typing import Any, Optional
 
 from iso3166 import countries
-from pydantic import Field, field_validator, model_validator
+from pydantic import field_validator, model_validator
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler

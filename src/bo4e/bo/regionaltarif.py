@@ -3,9 +3,7 @@ Contains Regionaltarif class and corresponding marshmallow schema for de-/serial
 """
 
 from datetime import datetime
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie

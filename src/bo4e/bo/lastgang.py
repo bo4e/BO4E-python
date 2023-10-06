@@ -2,9 +2,7 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -17,7 +15,6 @@ from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import OBIS_PATTERN
 
 
 class _LastgangBody(Geschaeftsobjekt):
