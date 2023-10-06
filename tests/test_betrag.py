@@ -14,7 +14,7 @@ example_betrag = Betrag(
     wert=Decimal(12.5),
 )
 
-example_betrag_json = {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR}
+example_betrag_json = {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR, "_id": None}
 
 
 class TestBetrag:

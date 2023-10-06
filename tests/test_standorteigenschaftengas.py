@@ -21,7 +21,8 @@ class TestStandorteigenschaftenGas:
                 example_standorteigenschaften_gas,
                 {
                     "netzkontonummern": ["GASPOOLNH700xxxx"],
-                    "marktgebiete": [{"marktgebiet": "Gaspool", "marktgebietcode": "37Z701133MH0000B"}],
+                    "marktgebiete": [{"marktgebiet": "Gaspool", "marktgebietcode": "37Z701133MH0000B", "_id": None}],
+                    "_id": None,
                 },
             )
         ],

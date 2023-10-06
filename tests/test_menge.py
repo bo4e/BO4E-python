@@ -11,6 +11,7 @@ example_menge = Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH)
 example_menge_dict = {
     "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
     "einheit": Mengeneinheit.MWH,
+    "_id": None,
 }
 
 

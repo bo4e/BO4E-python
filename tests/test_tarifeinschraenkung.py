@@ -44,6 +44,7 @@ class TestTarifeinschraenkung:
                     "voraussetzungen": None,
                     "einschraenkungzaehler": None,
                     "einschraenkungleistung": None,
+                    "_id": None,
                 },
                 id="minimal attributes",
             ),
@@ -75,23 +76,17 @@ class TestTarifeinschraenkung:
                             "geraeteeigenschaften": {
                                 "geraetemerkmal": "GAS_G1000",
                                 "geraetetyp": Geraetetyp.MULTIPLEXANLAGE,
+                                "_id": None,
                             },
+                            "_id": None,
                         },
-                        {
-                            "geraetenummer": "197foo",
-                            "geraeteeigenschaften": None,
-                        },
+                        {"geraetenummer": "197foo", "geraeteeigenschaften": None, "_id": None},
                     ],
                     "einschraenkungleistung": [
-                        {
-                            "wert": Decimal("12.5"),
-                            "einheit": Mengeneinheit.MWH,
-                        },
-                        {
-                            "wert": Decimal("30"),
-                            "einheit": Mengeneinheit.KWH,
-                        },
+                        {"wert": Decimal("12.5"), "einheit": Mengeneinheit.MWH, "_id": None},
+                        {"wert": Decimal("30"), "einheit": Mengeneinheit.KWH, "_id": None},
                     ],
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),

@@ -29,6 +29,7 @@ class TestSteuerbetrag:
                     "basiswert": Decimal("100"),
                     "steuerwert": Decimal("19"),
                     "waehrung": Waehrungseinheit.EUR,
+                    "_id": None,
                 },
             ),
         ],

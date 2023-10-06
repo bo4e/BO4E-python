@@ -35,6 +35,7 @@ class TestAngebotsvariante:
                     "gesamtkosten": None,
                     "bindefrist": datetime(2022, 2, 1, 0, 0, tzinfo=timezone.utc),
                     "teile": [example_angebotsteil_json],
+                    "_id": None,
                 },
                 id="minimal attributes",
             ),
@@ -51,6 +52,7 @@ class TestAngebotsvariante:
                     "gesamtmenge": {
                         "einheit": Mengeneinheit.MWH,
                         "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
+                        "_id": None,
                     },
                     # this is a problem for https://github.com/Hochfrequenz/BO4E-python/issues/249
                     # I just reused the example_menge but don't attempt to fix it in the context of the Angebotsvariante
@@ -59,6 +61,7 @@ class TestAngebotsvariante:
                     "gesamtkosten": example_betrag_json,
                     "bindefrist": datetime(2022, 2, 1, 0, 0, tzinfo=timezone.utc),
                     "teile": [example_angebotsteil_json],
+                    "_id": None,
                 },
                 id="max attributes",  # = min + menge and betrag
             ),
