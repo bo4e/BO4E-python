@@ -3,7 +3,7 @@ Contains base class for all components
 """
 
 from decimal import Decimal
-from typing import Optional, Type, TypeVar
+from typing import Annotated, Optional, Type, TypeVar
 
 from humps.main import camelize
 
@@ -28,7 +28,7 @@ class COM(BaseModel):
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
-    id: Optional[str] = Field(alias="_id", default=None)
+    id: Annotated[Optional[str], Field(alias="_id")] = None
     """
     Eine generische ID, die für eigene Zwecke genutzt werden kann.
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
