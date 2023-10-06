@@ -15,33 +15,35 @@ from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
+example_zaehler = Zaehler(
+    zaehlernummer="000111222",
+    sparte=Sparte.STROM,
+    zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
+    zaehlwerke=[
+        Zaehlwerk(
+            zaehlwerk_id="98765",
+            einheit=Mengeneinheit.KW,
+            richtung=Energierichtung.EINSP,
+            bezeichnung="my zaehlwerk",
+            obis_kennzahl="1-0:1.8.1",
+            wandlerfaktor=Decimal(0.95),
+        )
+    ],
+    zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
+    tarifart=Tarifart.ZWEITARIF,
+    zaehlerkonstante=Decimal(0.9),
+    eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
+    externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+    letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
+)
+
 
 class TestZaehler:
     def test_de_serialisation(self) -> None:
         """
         Test de-/serialisation of Zaehler only with required attributes
         """
-        zaehler = Zaehler(
-            zaehlernummer="000111222",
-            sparte=Sparte.STROM,
-            zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
-            zaehlwerke=[
-                Zaehlwerk(
-                    zaehlwerk_id="98765",
-                    einheit=Mengeneinheit.KW,
-                    richtung=Energierichtung.EINSP,
-                    bezeichnung="my zaehlwerk",
-                    obis_kennzahl="1-0:1.8.1",
-                    wandlerfaktor=Decimal(0.95),
-                )
-            ],
-            zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-            tarifart=Tarifart.ZWEITARIF,
-            zaehlerkonstante=Decimal(0.9),
-            eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
-            externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
-            letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
-        )
+        zaehler = example_zaehler
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.typ is Typ.ZAEHLER, "_typ was not automatically set"
         assert zaehler.zaehlwerke is not None
