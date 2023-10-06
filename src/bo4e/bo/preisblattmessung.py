@@ -5,8 +5,9 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from bo4e.bo.geraet import Geraet
 from bo4e.bo.preisblatt import Preisblatt
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
+from bo4e.bo.zaehler import Zaehler
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.netzebene import Netzebene
@@ -36,11 +37,10 @@ class PreisblattMessung(Preisblatt):
     messebene: Optional[Netzebene] = None
 
     #: Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
-    zaehler: Optional[Geraeteeigenschaften] = None
-    # todo: https://github.com/Hochfrequenz/BO4E-python/issues/333
+    zaehler: Optional[Zaehler] = None
 
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
     inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: Optional[list[Geraeteeigenschaften]] = None
+    inklusive_geraete: Optional[list[Geraet]] = None
