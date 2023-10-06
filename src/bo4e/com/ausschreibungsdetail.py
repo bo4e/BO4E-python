@@ -26,7 +26,6 @@ class Ausschreibungsdetail(COM):
 
     """
 
-    # required attributes
     #: Identifikation einer ausgeschriebenen Marktlokation
     marktlokations_id: Optional[str] = None
     #: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung
@@ -38,7 +37,6 @@ class Ausschreibungsdetail(COM):
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
     lieferzeitraum: Optional[Zeitraum] = None
 
-    # optional attributes
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
     netzbetreiber: Optional[str] = None
     #: Bezeichnung des Kunden, der die Marktlokation nutzt

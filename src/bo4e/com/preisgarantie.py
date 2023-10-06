@@ -24,7 +24,6 @@ class Preisgarantie(COM):
 
     """
 
-    # required attributes
     #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
     preisgarantietyp: Optional[Preisgarantietyp] = None
     zeitliche_gueltigkeit: Optional[Zeitraum] = None

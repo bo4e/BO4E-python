@@ -31,14 +31,12 @@ class Ansprechpartner(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANSPRECHPARTNER
     nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
     geschaeftspartner: Optional[
         Geschaeftspartner
     ] = None  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
-    # optional attributes
     anrede: Optional[Anrede] = None  #: Mögliche Anrede des Ansprechpartners
     individuelle_anrede: Optional[str] = None
     """

@@ -23,7 +23,6 @@ class Hardware(COM):
 
     """
 
-    # required attributes
     #: Eindeutiger Typ der Hardware
     geraetetyp: Optional[Geraetetyp] = None
     #: Bezeichnung der Hardware

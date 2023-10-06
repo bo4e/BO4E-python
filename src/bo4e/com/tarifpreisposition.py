@@ -27,7 +27,6 @@ class Tarifpreisposition(COM):
 
     """
 
-    # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Optional[Preistyp] = None
     #: Einheit des Preises (z.B. EURO)
@@ -37,6 +36,5 @@ class Tarifpreisposition(COM):
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = None

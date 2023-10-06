@@ -24,7 +24,6 @@ class Tagesvektor(COM):
 
     """
 
-    # required attributes
     # for the validator see https://github.com/Hochfrequenz/BO4E-python/issues/261
     tag: Optional[datetime] = None
     """

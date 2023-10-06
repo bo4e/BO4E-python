@@ -26,7 +26,6 @@ class Steuerbetrag(COM):
 
     """
 
-    # required attributes
     #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
     steuerkennzeichen: Optional[Steuerkennzeichen] = None
     #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100

@@ -27,7 +27,6 @@ class Preis(COM):
 
     """
 
-    # required attributes
     #: Gibt die nominale Höhe des Preises an.
     wert: Optional[Decimal] = None
     #: Währungseinheit für den Preis, z.B. Euro oder Ct.
@@ -35,6 +34,5 @@ class Preis(COM):
     #: Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
     bezugswert: Optional[Mengeneinheit] = None
 
-    # optional attributes
     #: Gibt den Status des veröffentlichten Preises an
     status: Optional[Preisstatus] = None

@@ -31,7 +31,6 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
     name1: Optional[str] = None
     """
@@ -51,7 +50,6 @@ class Geschaeftspartner(Geschaeftsobjekt):
     geschaeftspartnerrolle: Optional[list[Geschaeftspartnerrolle]] = None
     # todo: rename to plural
 
-    # optional attributes
     #: Die Anrede für den GePa, Z.B. "Herr"
     anrede: Optional[Anrede] = None
     name2: Optional[str] = None

@@ -30,7 +30,6 @@ class Kosten(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
     kostenklasse: Optional[Kostenklasse] = None
@@ -39,6 +38,5 @@ class Kosten(Geschaeftsobjekt):
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
     kostenbloecke: Optional[list[Kostenblock]] = None
 
-    # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
     summe_kosten: Optional[list[Betrag]] = None

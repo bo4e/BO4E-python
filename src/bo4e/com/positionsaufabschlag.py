@@ -27,7 +27,6 @@ class PositionsAufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
     #: Beschreibung zum Auf-/Abschlag

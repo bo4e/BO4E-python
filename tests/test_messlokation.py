@@ -59,10 +59,8 @@ class TestMeLo:
         """
 
         melo = Messlokation(
-            # required attributes
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
-            # optional attributes
             netzebene_messung=Netzebene.MSP,
             messgebietnr="664073",
             geraete=[

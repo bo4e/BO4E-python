@@ -42,7 +42,6 @@ class _LastgangBody(Geschaeftsobjekt):
     #: Definition der gemessenen Größe anhand ihrer Einheit
     messgroesse: Optional[Mengeneinheit] = None
 
-    # optional attributes
     #: Versionsnummer des Lastgangs
     version: Optional[str] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
@@ -59,7 +58,6 @@ class LastgangKompakt(_LastgangBody):
     Daher ist dieses BO nur zur Übertragung von äquidistanten Messwertverläufen geeignet.
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.LASTGANG_KOMPAKT
 
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
@@ -89,7 +87,6 @@ class Lastgang(_LastgangBody):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte

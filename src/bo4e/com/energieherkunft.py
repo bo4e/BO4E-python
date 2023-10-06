@@ -27,7 +27,6 @@ class Energieherkunft(COM):
 
     """
 
-    # required attributes
     #: Art der Erzeugung der Energie.
     erzeugungsart: Optional[Erzeugungsart] = None
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
