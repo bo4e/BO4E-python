@@ -7,6 +7,7 @@ from decimal import Decimal
 from typing import Optional
 
 from bo4e.com.com import COM
+from bo4e.com.zeitspanne import Zeitspanne
 from bo4e.enum.messwertstatus import Messwertstatus
 from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
 
@@ -26,12 +27,7 @@ class Zeitreihenwert(COM):
 
     """
 
-    datum_uhrzeit_von: Optional[
-        datetime
-    ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
-    datum_uhrzeit_bis: Optional[
-        datetime
-    ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
+    zeitspanne: Optional[Zeitspanne] = None  #: Zeitespanne für das Messintervall
 
     wert: Optional[Decimal] = None  #: Der im Zeitintervall gültige Wert.
 

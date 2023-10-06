@@ -52,4 +52,5 @@ class Lastgang(Geschaeftsobjekt):
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
     obis_kennzahl: Optional[constr(strict=True)] = None  # type: ignore[valid-type]
     zeit_intervall_laenge: Optional[Menge]
-    # todo: update Zeitreihenwert
+    # todo: update com Zeitreihenwert
+    # todo: remove enum zeiteinheit
