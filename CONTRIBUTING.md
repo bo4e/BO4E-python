@@ -83,31 +83,23 @@ class MeinBo(Geschaeftsobjekt):
     Es kommt nur bei meinem Strom-Lieferanten zum Einsatz und beschreibt dort all die tollen Eigenschaften, die mein Verbrauchsverhalten hat.
     """
 
-    bo_typ: BoTyp = BoTyp.MEINBO
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MEINBO
 
 
     #: Der Lieferbeginn beschreibt den Zeitpunkt ab dem (inklusiv) mich ein Versorger seinen Kunden nennen darf
-    lieferbeginn: datetime
+    lieferbeginn: Optional[datetime]
 
-    anzahl_freudenspruenge: int
+    anzahl_freudenspruenge: Optional[int]
     """
     Anzahl Freudensprünge beschreibt, wie oft der CEO des Stromkonzerns in die Luft gesprungen ist, als ich den Vertrag unterschrieben habe.
-    Dieser Wert sollte im Normalfall mindestens 5 sein.
     """
-    # pylint:disable=unused-argument, no-self-argument
-    @validator("anzahl_freudenspruenge")
-    def validate_freudenspruenge(cls, anzahl_freudenspruenge: int, values: Dict[str, Any]) -> int:
-        if anzahl_freudenspruenge <= 5:
-            raise ValueError("You are not hyped enough. Do more than 5 joyful leaps.")
-        return anzahl_freudenspruenge
+
+    #: Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte
+    freimenge: Optional[Menge] = None
 
     # we can help you with anything you might be missing or unable to implement.
     # ToDo comments are just fine.
     # You don't need to be a perfect programmer to contribute to bo4e :)
-
-
-    #: Optionale Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte
-    freimenge: Optional[Menge] = None
 
 ```
 
@@ -116,11 +108,7 @@ class MeinBo(Geschaeftsobjekt):
 Ideally provide unittests that show:
 
 - that the BO/COM can be instantiated
-  - with only the required attributes
-  - with all attributes
 - can be serialized and deserialized again
-  - with only the required attributes
-  - with all attributes
 
 Therefore, copy one of the existing "roundtrip" tests, see f.e. `TestTarifeinschraenkung`.
 
