@@ -44,6 +44,7 @@ class TestZaehler:
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
+        assert zaehler.zaehlwerke is not None
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
         json_string = zaehler.model_dump_json(by_alias=True)

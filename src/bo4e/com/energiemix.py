@@ -49,9 +49,9 @@ class Energiemix(COM):
     #: Höhe des erzeugten Atommülls in g/kWh
     atommuell: Optional[Decimal] = None
     #: Zertifikate für den Energiemix
-    oekozertifikate: list[Oekozertifikat] = None
+    oekozertifikate: Optional[list[Oekozertifikat]] = None
     #: Ökolabel für den Energiemix
-    oekolabel: list[Oekolabel] = None
+    oekolabel: Optional[list[Oekolabel]] = None
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
     oeko_top_ten: Optional[bool] = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
