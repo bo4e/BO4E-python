@@ -33,7 +33,7 @@ Pflichtfelder (nicht nullable Attributes)
 Der BO4E Standard soll (in Zukunft, Stand 2023-10-05) keine fachlichen Pflichtfelder mehr enthalten.
 Die Entscheidung, was in welchen Fällen ein Pflichtfeld ist, obliegt den Anwendungen, die den Standard nutzen.
 Entsprechend ist auch die Validierung der Pflichtfelder nicht Teil des BO4E Standards sondern anwendungsspezifisch.
-Davon ausgenommen sind technische Pflichtfelder.
+Davon ausgenommen sind technische Pflichtfelder, namentlich `_typ` und `_version`.
 BO4E gibt sinnvolle Datenstrukturen vor, wie diese in der Praxis genutzt werden können und wollen wir aber nicht vorschreiben.
 
 Verknüpfungen zwischen Objekten
