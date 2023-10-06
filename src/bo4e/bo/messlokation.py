@@ -31,14 +31,12 @@ class Messlokation(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.MESSLOKATION
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: Optional[str] = None
     #: Sparte der Messlokation, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
 
-    # optional attributes
     #: Spannungsebene der Messung
     netzebene_messung: Optional[Netzebene] = None
     #: Die Nummer des Messgebietes in der ene't-Datenbank

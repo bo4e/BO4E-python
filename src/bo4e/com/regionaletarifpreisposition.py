@@ -27,7 +27,6 @@ class RegionaleTarifpreisposition(COM):
 
     """
 
-    # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Optional[Preistyp] = None
     #: Einheit des Preises (z.B. EURO)
@@ -37,6 +36,5 @@ class RegionaleTarifpreisposition(COM):
     #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
     preisstaffeln: Optional[list[RegionalePreisstaffel]] = None
 
-    # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = None

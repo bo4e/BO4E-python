@@ -30,7 +30,6 @@ class Ausschreibung(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
@@ -60,7 +59,6 @@ class Ausschreibung(Geschaeftsobjekt):
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
     lose: Optional[list[Ausschreibungslos]] = None
 
-    # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale
     ausschreibungportal: Optional[Ausschreibungsportal] = None
     #: Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)

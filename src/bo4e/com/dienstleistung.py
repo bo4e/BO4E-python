@@ -23,7 +23,6 @@ class Dienstleistung(COM):
 
     """
 
-    # required attributes
     #: Kennzeichnung der Dienstleistung
     dienstleistungstyp: Optional[Dienstleistungstyp] = None
     #: Bezeichnung der Dienstleistung

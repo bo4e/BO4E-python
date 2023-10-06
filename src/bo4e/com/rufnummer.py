@@ -22,7 +22,6 @@ class Rufnummer(COM):
 
     """
 
-    # required attributes
     #: Ausprägung der Nummer
     nummerntyp: Optional[Rufnummernart] = None
     #: Die konkrete Nummer

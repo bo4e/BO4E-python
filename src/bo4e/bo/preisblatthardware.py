@@ -36,7 +36,6 @@ class PreisblattHardware(Preisblatt):
     #: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät
     basisgeraet: Optional[Geraeteeigenschaften] = None
 
-    # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
     inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
 

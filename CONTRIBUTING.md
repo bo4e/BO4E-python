@@ -85,7 +85,6 @@ class MeinBo(Geschaeftsobjekt):
 
     bo_typ: BoTyp = BoTyp.MEINBO
 
-    # required attributes
 
     #: Der Lieferbeginn beschreibt den Zeitpunkt ab dem (inklusiv) mich ein Versorger seinen Kunden nennen darf
     lieferbeginn: datetime
@@ -106,7 +105,6 @@ class MeinBo(Geschaeftsobjekt):
     # ToDo comments are just fine.
     # You don't need to be a perfect programmer to contribute to bo4e :)
 
-    # optional attributes
 
     #: Optionale Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte
     freimenge: Optional[Menge] = None

@@ -34,7 +34,6 @@ class Zaehler(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.ZAEHLER
     zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
     sparte: Optional[Sparte] = None  #: Strom oder Gas
@@ -43,7 +42,6 @@ class Zaehler(Geschaeftsobjekt):
     zaehlwerke: Optional[list[Zaehlwerk]] = None
     tarifart: Optional[Tarifart] = None  #: Spezifikation bezüglich unterstützter Tarifarten
 
-    # optional attributes
     zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
     eichung_bis: Optional[datetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.

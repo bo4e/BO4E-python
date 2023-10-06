@@ -23,6 +23,5 @@ class RegionalePreisgarantie(Preisgarantie):
 
     """
 
-    # required attributes
     #: Regionale Eingrenzung der Preisgarantie.
     regionale_gueltigkeit: Optional[RegionaleGueltigkeit] = None

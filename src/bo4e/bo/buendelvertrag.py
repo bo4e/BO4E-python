@@ -32,7 +32,6 @@ class Buendelvertrag(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
@@ -55,7 +54,6 @@ class Buendelvertrag(Geschaeftsobjekt):
     #: Beispiel "Vertrag zwischen Vertagspartner 1 und Vertragspartner 2"
     vertragspartner2: Optional[Geschaeftspartner] = None
 
-    # optional attributes
     #: Die Liste mit den Einzelverträgen zu den Abnahmestellen
     einzelvertraege: Optional[list[Vertrag]] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen

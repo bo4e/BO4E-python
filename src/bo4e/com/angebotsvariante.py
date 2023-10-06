@@ -27,7 +27,6 @@ class Angebotsvariante(COM):
 
     """
 
-    # required attributes
     #: Gibt den Status eines Angebotes an.
     angebotsstatus: Optional[Angebotsstatus] = None
 
@@ -44,7 +43,6 @@ class Angebotsvariante(COM):
     Eine Variante besteht mindestens aus einem Angebotsteil.
     """
 
-    # optional attributes
     #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
     gesamtmenge: Optional[Menge] = None
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320

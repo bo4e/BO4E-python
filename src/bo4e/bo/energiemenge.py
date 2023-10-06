@@ -26,7 +26,6 @@ class Energiemenge(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
     lokations_id: Optional[str] = None

@@ -30,7 +30,6 @@ class Tarifberechnungsparameter(COM):
     """
 
     # there are no required attributes
-    # optional attributes
 
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
     berechnungsmethode: Optional[Tarifkalkulationsmethode] = None

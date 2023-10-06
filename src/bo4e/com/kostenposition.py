@@ -25,7 +25,6 @@ class Kostenposition(COM):
 
     """
 
-    # required attributes
     #: Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt.
     positionstitel: Optional[str] = None
 
@@ -40,7 +39,6 @@ class Kostenposition(COM):
     #: Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.
     einzelpreis: Optional[Preis] = None
 
-    # optional attributes
     #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
     von: Optional[datetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe

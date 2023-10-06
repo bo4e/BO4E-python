@@ -32,7 +32,6 @@ class PreisblattDienstleistung(Preisblatt):
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
     basisdienstleistung: Optional[Dienstleistungstyp] = None
 
-    # optional attributes
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
     geraetedetails: Optional[Geraeteeigenschaften] = None
 

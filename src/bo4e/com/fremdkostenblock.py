@@ -25,11 +25,9 @@ class Fremdkostenblock(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
 
-    # optional attributes
     kostenpositionen: Optional[list[Fremdkostenposition]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:

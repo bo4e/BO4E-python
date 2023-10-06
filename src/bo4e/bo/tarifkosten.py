@@ -24,7 +24,6 @@ class Tarifkosten(Tarifinfo):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.TARIFKOSTEN
     kosten: Optional[Kosten] = None
     """

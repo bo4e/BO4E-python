@@ -34,7 +34,6 @@ class Preisblatt(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
     bezeichnung: Optional[str] = None
@@ -46,6 +45,5 @@ class Preisblatt(Geschaeftsobjekt):
     gueltigkeit: Optional[Zeitraum] = None
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
     preispositionen: Optional[list[Preisposition]] = None
-    # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
     herausgeber: Optional[Marktteilnehmer] = None

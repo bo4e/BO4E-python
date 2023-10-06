@@ -27,12 +27,10 @@ class Geschaeftsobjekt(BaseModel):
 
     """
 
-    # required attributes
     versionstruktur: str = "2"  #: Version der BO-Struktur aka "fachliche Versionierung"
     bo_typ: BoTyp = BoTyp.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
-    # optional attributes
     externe_referenzen: Optional[list[ExterneReferenz]] = None
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.

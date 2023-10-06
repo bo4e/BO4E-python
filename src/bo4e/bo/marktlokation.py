@@ -38,7 +38,6 @@ class Marktlokation(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
@@ -55,7 +54,6 @@ class Marktlokation(Geschaeftsobjekt):
     Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.
     """
 
-    # optional attributes
     #: Verbrauchsart der Marktlokation.
     verbrauchsart: Optional[Verbrauchsart] = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt

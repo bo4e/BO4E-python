@@ -35,7 +35,6 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.VERTRAG
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
@@ -69,7 +68,6 @@ class Vertrag(Geschaeftsobjekt):
     (Markt- oder Messlokation) festzulegen.
     """
 
-    # optional attributes
     #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen

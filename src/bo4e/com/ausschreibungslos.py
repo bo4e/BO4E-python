@@ -29,7 +29,6 @@ class Ausschreibungslos(COM):
 
     """
 
-    # required attributes
     #: Laufende Nummer des Loses
     losnummer: Optional[str] = None
     #: Bezeichnung der Ausschreibung
@@ -54,7 +53,6 @@ class Ausschreibungslos(COM):
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
     lieferzeitraum: Optional[Zeitraum] = None
 
-    # optional attributes
     #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
     #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an

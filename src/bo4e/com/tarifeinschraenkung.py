@@ -24,7 +24,6 @@ class Tarifeinschraenkung(COM):
 
     """
 
-    # optional attributes
     #: Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können
     zusatzprodukte: Optional[list[str]] = None
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann

@@ -33,7 +33,6 @@ class Rechnung(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.RECHNUNG
     storno: Optional[bool] = None
     """
@@ -65,7 +64,6 @@ class Rechnung(Geschaeftsobjekt):
     #: Die Rechnungspositionen
     rechnungspositionen: Optional[list[Rechnungsposition]] = None
 
-    # optional attributes
     #: Bezeichnung für die vorliegende Rechnung
     rechnungstitel: Optional[str] = None
     #: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes

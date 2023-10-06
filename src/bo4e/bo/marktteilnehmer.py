@@ -28,7 +28,6 @@ class Marktteilnehmer(Geschaeftspartner):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Optional[Marktrolle] = None
@@ -39,6 +38,5 @@ class Marktteilnehmer(Geschaeftspartner):
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
 
-    # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
     makoadresse: Optional[str] = None

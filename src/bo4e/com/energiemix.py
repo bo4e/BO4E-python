@@ -29,7 +29,6 @@ class Energiemix(COM):
 
     """
 
-    # required attributes
     #: Eindeutige Nummer zur Identifizierung des Energiemixes
     energiemixnummer: Optional[int] = None
     #: Strom oder Gas etc.
@@ -41,7 +40,6 @@ class Energiemix(COM):
     #: Anteile der jeweiligen Erzeugungsart
     anteil: Optional[list[Energieherkunft]] = None
 
-    # optional attributes
     #: Bemerkung zum Energiemix
     bemerkung: Optional[str] = None
     #: Höhe des erzeugten CO2-Ausstosses in g/kWh

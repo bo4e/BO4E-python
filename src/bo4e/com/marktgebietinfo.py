@@ -22,6 +22,5 @@ class MarktgebietInfo(COM):
 
     """
 
-    # required attributes
     marktgebiet: Optional[str] = None  #: Der Name des Marktgebietes
     marktgebietcode: Optional[str] = None  #: Die standardisierte Codenummer des Marktgebietes

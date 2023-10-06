@@ -31,7 +31,6 @@ class Tarif(Tarifinfo):
     """
 
     bo_typ: BoTyp = BoTyp.TARIF
-    # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
@@ -39,7 +38,6 @@ class Tarif(Tarifinfo):
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
     tarifpreise: Optional[list[TarifpreispositionProOrt]] = None
 
-    # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
     tarif_auf_abschlaege: Optional[list[AufAbschlagRegional]] = None
     # todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional

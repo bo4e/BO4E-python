@@ -24,7 +24,6 @@ class Vertragskonditionen(COM):
 
     """
 
-    # optional attributes
     #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
     beschreibung: Optional[str] = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12

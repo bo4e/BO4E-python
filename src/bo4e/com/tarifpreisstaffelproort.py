@@ -26,7 +26,6 @@ class TarifpreisstaffelProOrt(COM):
     # todo: decimal doesn't make sense here imo
     # https://github.com/Hochfrequenz/BO4E-python/issues/344
 
-    # required attributes
     #: Der Arbeitspreis in ct/kWh
     arbeitspreis: Optional[Decimal] = None
     #: Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh

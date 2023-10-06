@@ -30,7 +30,6 @@ class Zeitreihe(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     bo_typ: BoTyp = BoTyp.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
@@ -45,7 +44,6 @@ class Zeitreihe(Geschaeftsobjekt):
     #: Hier liegen jeweils die Werte
     werte: Optional[list[Zeitreihenwert]] = None
 
-    # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe
     beschreibung: Optional[str] = None
     #: Version der Zeitreihe

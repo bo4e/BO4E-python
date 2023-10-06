@@ -36,14 +36,12 @@ class RegionalerAufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
     staffeln: Optional[list[RegionalePreisstaffel]] = None
 
-    # optional attributes
     #: Beschreibung des Auf-/Abschlags
     beschreibung: Optional[str] = None
 
