@@ -6,11 +6,12 @@ import importlib
 import inspect
 import json
 import logging
-import pathlib
 import pkgutil
-from typing import Any, Literal
+from pathlib import Path
+from typing import Any, Literal, cast
 
 import click
+from pydantic import BaseModel
 
 _logger = logging.getLogger(__name__)
 
@@ -18,20 +19,18 @@ _logger = logging.getLogger(__name__)
 def delete_json_schemas(packages: list[str]) -> None:
     """delete all json schemas"""
     for pkg in packages:
-        for file in (pathlib.Path(__file__).parent / pkg).iterdir():
+        for file in (Path(__file__).parent / pkg).iterdir():
             file.unlink()
 
 
-def get_models(pkg) -> list[str]:
+def get_models(pkg: str) -> list[str]:
     """
     Get all models in a package
     """
-    return [
-        name for _, name, _ in pkgutil.iter_modules([str(pathlib.Path(__file__).parent.parent / "src" / "bo4e" / pkg)])
-    ]
+    return [name for _, name, _ in pkgutil.iter_modules([str(Path(__file__).parent.parent / "src" / "bo4e" / pkg)])]
 
 
-def get_classes(modl_name) -> list[tuple[str, type]]:
+def get_classes(modl_name: str) -> list[tuple[str, type]]:
     """
     Get all classes in a module
     """
@@ -39,7 +38,7 @@ def get_classes(modl_name) -> list[tuple[str, type]]:
     return inspect.getmembers(modl, lambda member: inspect.isclass(member) and member.__module__ == modl_name)
 
 
-def get_schema_json_dict(cls) -> dict[str, Any]:
+def get_schema_json_dict(cls: type[BaseModel]) -> dict[str, Any]:
     """
     Get the json schema for a class
     """
@@ -50,7 +49,7 @@ def get_schema_json_dict(cls) -> dict[str, Any]:
     return schema_json_dict
 
 
-def validate_schema(file_path, schema_json_dict, name) -> None:
+def validate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str) -> None:
     """
     Validate the schema for a class
     """
@@ -63,7 +62,7 @@ def validate_schema(file_path, schema_json_dict, name) -> None:
     _logger.debug("Schema for %s is consistent", name)
 
 
-def generate_schema(file_path, schema_json_dict, name) -> None:
+def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str) -> None:
     """
     Generate the schema for a class
     """
@@ -84,7 +83,7 @@ def generate_schema(file_path, schema_json_dict, name) -> None:
 def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> None:
     """generate json schemas for all BOs and COMs"""
     packages = ["bo", "com"]
-    this_directory = pathlib.Path(__file__).parent.absolute()
+    this_directory = Path(__file__).parent.absolute()
 
     if mode == "generate":
         delete_json_schemas(packages)
@@ -100,7 +99,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
                 _logger.info("Processing %s", name)
                 file_path = this_directory / pkg / (name + ".json")
 
-                schema_json_dict = get_schema_json_dict(cls)
+                schema_json_dict = get_schema_json_dict(cast(type[BaseModel], cls))
 
                 if mode == "validate":
                     validate_schema(file_path, schema_json_dict, name)
