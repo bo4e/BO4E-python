@@ -13,7 +13,9 @@ class TestGeraet:
     @pytest.mark.parametrize(
         "geraet, expected_json_dict",
         [
-            pytest.param(Geraet(), {"geraetenummer": None, "geraeteeigenschaften": None}, id="Minimal attributes"),
+            pytest.param(
+                Geraet(), {"geraetenummer": None, "geraeteeigenschaften": None, "_id": None}, id="Minimal attributes"
+            ),
             pytest.param(
                 Geraet(
                     geraetenummer="0815",
@@ -24,7 +26,12 @@ class TestGeraet:
                 ),
                 {
                     "geraetenummer": "0815",
-                    "geraeteeigenschaften": {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE},
+                    "geraeteeigenschaften": {
+                        "geraetemerkmal": "GAS_G1000",
+                        "geraetetyp": Geraetetyp.MULTIPLEXANLAGE,
+                        "_id": None,
+                    },
+                    "_id": None,
                 },
                 id="Maximal attributes",
             ),

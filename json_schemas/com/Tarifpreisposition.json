@@ -25,6 +25,18 @@
             "additionalProperties": true,
             "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "einheitspreis": {
                     "anyOf": [
                         {
@@ -142,6 +154,18 @@
                         }
                     ],
                     "title": "D"
+                },
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
                 }
             },
             "required": [
@@ -166,6 +190,18 @@
     "additionalProperties": true,
     "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tarifpreisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "bezugseinheit": {
             "$ref": "#/$defs/Mengeneinheit"
         },

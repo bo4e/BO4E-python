@@ -23,6 +23,7 @@ class TestStandorteigenschaftenStrom:
                     "regelzone": "Transnet BW",
                     "bilanzierungsgebietEic": "11YW-ALBSTADT--5",
                     "regelzoneEic": "10YDE-ENBW-----N",
+                    "_id": None,
                 },
             )
         ],

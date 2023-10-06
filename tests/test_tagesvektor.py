@@ -24,9 +24,10 @@ example_tagesvektor: Tagesvektor = Tagesvektor(
 example_tagesvektor_json = {
     "tag": datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
     "werte": [
-        {"wert": Decimal("40"), "statuszusatz": None, "status": None},
-        {"wert": Decimal("50"), "statuszusatz": None, "status": None},
+        {"wert": Decimal("40"), "statuszusatz": None, "status": None, "_id": None},
+        {"wert": Decimal("50"), "statuszusatz": None, "status": None, "_id": None},
     ],
+    "_id": None,
 }
 
 

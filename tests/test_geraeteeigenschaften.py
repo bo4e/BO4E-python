@@ -19,7 +19,7 @@ class TestGeraeteeigenschaften:
         [
             pytest.param(
                 example_geraeteeigenschaften,
-                {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE},
+                {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE, "_id": None},
             ),
         ],
     )
