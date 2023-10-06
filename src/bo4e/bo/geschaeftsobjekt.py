@@ -33,7 +33,7 @@ class Geschaeftsobjekt(BaseModel):
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes
-    externe_referenzen: Optional[List[ExterneReferenz]] = []
+    externe_referenzen: Optional[list[ExterneReferenz]] = None
 
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
     # pylint: disable=duplicate-code

@@ -34,11 +34,11 @@ class Tarifpreisblatt(Tarifinfo):
     bo_typ: BoTyp = BoTyp.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: datetime
+    preisstand: Optional[datetime] = None
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Annotated[list[Tarifpreisposition], Len(1)]
+    tarifpreise: Optional[list[Tarifpreisposition]] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Tarifberechnungsparameter
+    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
 
     # optional attributes
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
@@ -46,4 +46,4 @@ class Tarifpreisblatt(Tarifinfo):
     #: Festlegung von Garantien für bestimmte Preisanteile
     preisgarantie: Optional[Preisgarantie] = None
     #: Auf- und Abschläge auf die Preise oder Kosten
-    tarif_auf_abschlaege: Optional[List[AufAbschlag]] = None
+    tarif_auf_abschlaege: Optional[list[AufAbschlag]] = None

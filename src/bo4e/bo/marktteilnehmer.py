@@ -33,13 +33,13 @@ class Marktteilnehmer(Geschaeftspartner):
     # required attributes
     bo_typ: BoTyp = BoTyp.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
-    marktrolle: Marktrolle
+    marktrolle: Optional[Marktrolle] = None
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
+    rollencodenummer: Optional[str] = None
     #: Gibt den Typ des Codes an
-    rollencodetyp: Rollencodetyp
+    rollencodetyp: Optional[Rollencodetyp] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.

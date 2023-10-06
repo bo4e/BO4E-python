@@ -40,21 +40,21 @@ class Tarifinfo(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.TARIFINFO
     #: Name des Tarifs
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Der Name des Marktpartners, der den Tarif anbietet
-    anbietername: str
+    anbietername: Optional[str] = None
     #: Strom oder Gas, etc.
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
-    kundentypen: Annotated[list[Kundentyp], Len(1)]
+    kundentypen: Optional[list[Kundentyp]] = None
     #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
-    tarifart: Tarifart
+    tarifart: Optional[Tarifart] = None
     #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
-    tariftyp: Tariftyp
+    tariftyp: Optional[Tariftyp] = None
     #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
-    tarifmerkmale: Annotated[list[Tarifmerkmal], Len(1)]
+    tarifmerkmale: Optional[list[Tarifmerkmal]] = None
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
-    anbieter: Marktteilnehmer
+    anbieter: Optional[Marktteilnehmer] = None
 
     # optional attributes
     #: Internetseite auf dem der Tarif zu finden ist

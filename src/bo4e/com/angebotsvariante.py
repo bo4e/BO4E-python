@@ -31,15 +31,15 @@ class Angebotsvariante(COM):
 
     # required attributes
     #: Gibt den Status eines Angebotes an.
-    angebotsstatus: Angebotsstatus
+    angebotsstatus: Optional[Angebotsstatus] = None
 
     #: Datum der Erstellung der Angebotsvariante
-    erstellungsdatum: datetime
+    erstellungsdatum: Optional[datetime] = None
 
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
-    bindefrist: datetime
+    bindefrist: Optional[datetime] = None
 
-    teile: Annotated[list[Angebotsteil], Len(1)]
+    teile: Optional[list[Angebotsteil]] = None
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.

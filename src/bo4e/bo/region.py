@@ -29,11 +29,11 @@ class Region(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.REGION
     #: Bezeichnung der Region
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
 
     #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: Annotated[list[Regionskriterium], Len(1)]
+    positiv_liste: Optional[list[Regionskriterium]] = None
 
     # optional attributes
     #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: Optional[List[Regionskriterium]] = None
+    negativ_liste: Optional[list[Regionskriterium]] = None

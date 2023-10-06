@@ -39,17 +39,17 @@ class Angebot(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: Annotated[str, Field(strict=True, pattern=r"^\d+$")]
+    angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots
-    angebotsdatum: datetime
+    angebotsdatum: Optional[datetime] = None
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Ersteller des Angebots
-    angebotsgeber: Geschaeftspartner
+    angebotsgeber: Optional[Geschaeftspartner] = None
     #: Empfänger des Angebots
-    angebotsnehmer: Geschaeftspartner
+    angebotsnehmer: Optional[Geschaeftspartner] = None
 
-    varianten: Annotated[list[Angebotsvariante], Len(1)]
+    varianten: Optional[list[Angebotsvariante]] = None
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 

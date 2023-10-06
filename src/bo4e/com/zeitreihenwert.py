@@ -27,8 +27,12 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
     """
 
     # required attributes
-    datum_uhrzeit_von: datetime  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
-    datum_uhrzeit_bis: datetime  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
+    datum_uhrzeit_von: Optional[
+        datetime
+    ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
+    datum_uhrzeit_bis: Optional[
+        datetime
+    ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
     _bis_check = field_validator("datum_uhrzeit_bis")(check_bis_is_later_than_von)
 
     @staticmethod

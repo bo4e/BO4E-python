@@ -27,10 +27,10 @@ class Fremdkostenblock(COM):
 
     # required attributes
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
-    kostenblockbezeichnung: str
+    kostenblockbezeichnung: Optional[str] = None
 
     # optional attributes
-    kostenpositionen: Optional[List[Fremdkostenposition]] = None
+    kostenpositionen: Optional[list[Fremdkostenposition]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 2018-02-01, 2019-01-01, Arbeitspreis HT, 3.660 kWh,

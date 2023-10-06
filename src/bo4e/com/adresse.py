@@ -26,9 +26,9 @@ class Adresse(COM):
 
     # required attributes
     #: Die Postleitzahl; z.B: "41836"
-    postleitzahl: str
+    postleitzahl: Optional[str] = None
     #: Bezeichnung der Stadt; z.B. "Hückelhoven"
-    ort: str
+    ort: Optional[str] = None
 
     # optional attributes
     #: Bezeichnung des Ortsteils; z.B. "Mitte"
@@ -44,7 +44,7 @@ class Adresse(COM):
     #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
     co_ergaenzung: Optional[str] = None
     #: Offizieller ISO-Landescode
-    landescode: Landescode = Landescode.DE  # type:ignore
+    landescode: Optional[Landescode] = Landescode.DE  # type:ignore
 
     _strasse_xor_postfach = combinations_of_fields(
         "strasse",

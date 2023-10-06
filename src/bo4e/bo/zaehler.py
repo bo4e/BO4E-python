@@ -38,12 +38,12 @@ class Zaehler(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = BoTyp.ZAEHLER
-    zaehlernummer: str  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
-    sparte: Sparte  #: Strom oder Gas
-    zaehlerauspraegung: Zaehlerauspraegung  #: Spezifikation die Richtung des Zählers betreffend
-    zaehlertyp: Zaehlertyp  #: Typisierung des Zählers
-    zaehlwerke: Annotated[list[Zaehlwerk], Len(1)]
-    tarifart: Tarifart  #: Spezifikation bezüglich unterstützter Tarifarten
+    zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
+    sparte: Optional[Sparte] = None  #: Strom oder Gas
+    zaehlerauspraegung: Optional[Zaehlerauspraegung] = None  #: Spezifikation die Richtung des Zählers betreffend
+    zaehlertyp: Optional[Zaehlertyp] = None  #: Typisierung des Zählers
+    zaehlwerke: Optional[list[Zaehlwerk]] = None
+    tarifart: Optional[Tarifart] = None  #: Spezifikation bezüglich unterstützter Tarifarten
 
     # optional attributes
     zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler

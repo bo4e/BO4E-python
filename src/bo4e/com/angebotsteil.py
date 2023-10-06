@@ -37,12 +37,12 @@ class Angebotsteil(COM):
 
     # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: Annotated[list[Angebotsposition], Len(1)]
+    positionen: Optional[list[Angebotsposition]] = None
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
     anfrage_subreferenz: Optional[str] = None
-    lieferstellenangebotsteil: Optional[List[Marktlokation]] = None
+    lieferstellenangebotsteil: Optional[list[Marktlokation]] = None
     """
     Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
     Durch die Marktlokation ist auch die Lieferadresse festgelegt

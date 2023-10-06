@@ -30,9 +30,9 @@ class Fremdkosten(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum
+    gueltigkeit: Optional[Zeitraum] = None
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
     summe_kosten: Optional[Betrag] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[List[Fremdkostenblock]] = None
+    kostenbloecke: Optional[list[Fremdkostenblock]] = None

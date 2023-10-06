@@ -31,26 +31,26 @@ class Netznutzungsrechnung(Rechnung):
     # required attributes
     bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
-    sparte: Sparte
-    absendercodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
+    sparte: Optional[Sparte] = None
+    absendercodenummer: Optional[str] = None
     """
     Die Rollencodenummer des Absenders (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
-    empfaengercodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
+    empfaengercodenummer: Optional[str] = None
     """
     Die Rollencodenummer des Empfängers (siehe :class:`Marktteilnehmer`).
     Über die Nummer können weitere Informationen zum Marktteilnehmer ermittelt werden.
     """
     #: Aus der INVOIC entnommen
-    nnrechnungsart: NNRechnungsart
+    nnrechnungsart: Optional[NNRechnungsart] = None
     #: Aus der INVOIC entnommen
-    nnrechnungstyp: NNRechnungstyp
+    nnrechnungstyp: Optional[NNRechnungstyp] = None
 
     #: Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)
-    original: bool
+    original: Optional[bool] = None
     #: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt
-    simuliert: bool
+    simuliert: Optional[bool] = None
 
     # optional attributes
     lokations_id: Optional[str] = None

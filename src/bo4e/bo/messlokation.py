@@ -49,9 +49,9 @@ class Messlokation(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.MESSLOKATION
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
-    messlokations_id: Annotated[str, Field(pattern=_melo_id_pattern.pattern)]
+    messlokations_id: Optional[str] = None
     #: Sparte der Messlokation, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
 
     # optional attributes
     #: Spannungsebene der Messung
@@ -59,11 +59,11 @@ class Messlokation(Geschaeftsobjekt):
     #: Die Nummer des Messgebietes in der ene't-Datenbank
     messgebietnr: Optional[str] = None
     #: Liste der Hardware, die zu dieser Messstelle gehört
-    geraete: Optional[List[Hardware]] = None
+    geraete: Optional[list[Hardware]] = None
     #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
-    messdienstleistung: Optional[List[Dienstleistung]] = None  # todo: rename to plural
+    messdienstleistung: Optional[list[Dienstleistung]] = None  # todo: rename to plural
     #: Zähler, die zu dieser Messlokation gehören
-    messlokationszaehler: Optional[List[Zaehler]] = None
+    messlokationszaehler: Optional[list[Zaehler]] = None
 
     # only one of the following two optional codenr attributes can be set
     grundzustaendiger_msb_codenr: Optional[str] = None

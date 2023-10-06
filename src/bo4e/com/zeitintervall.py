@@ -24,11 +24,11 @@ class Zeitintervall(COM):
     """
 
     # required attributes
-    wert: int
+    wert: Optional[int] = None
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
     """
-    zeiteinheit: Zeiteinheit
+    zeiteinheit: Optional[Zeiteinheit] = None
     """
     Die Einheit des Zeitintervalls
     """

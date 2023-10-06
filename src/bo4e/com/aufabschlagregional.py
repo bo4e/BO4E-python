@@ -40,9 +40,9 @@ class AufAbschlagRegional(COM):
 
     # required attributess
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    betraege: Annotated[list[AufAbschlagProOrt], Len(1)]
+    betraege: Optional[list[AufAbschlagProOrt]] = None
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag
@@ -56,9 +56,9 @@ class AufAbschlagRegional(COM):
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
     website: Optional[str] = None
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
-    zusatzprodukte: Optional[List[str]] = None
+    zusatzprodukte: Optional[list[str]] = None
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
-    voraussetzungen: Optional[List[str]] = None
+    voraussetzungen: Optional[list[str]] = None
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten.
     tarifnamensaenderungen: Optional[str] = None
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann

@@ -24,6 +24,6 @@ class Hardware(COM):
 
     # required attributes
     #: Eindeutiger Typ der Hardware
-    geraetetyp: Geraetetyp
+    geraetetyp: Optional[Geraetetyp] = None
     #: Bezeichnung der Hardware
-    bezeichnung: str
+    bezeichnung: Optional[str] = None

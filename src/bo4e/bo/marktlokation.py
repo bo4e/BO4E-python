@@ -43,15 +43,15 @@ class Marktlokation(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str
+    marktlokations_id: Optional[str] = None
     _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
-    energierichtung: Energierichtung
+    energierichtung: Optional[Energierichtung] = None
     #: Die Bilanzierungsmethode, RLM oder SLP
-    bilanzierungsmethode: Bilanzierungsmethode
-    netzebene: Netzebene
+    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    netzebene: Optional[Netzebene] = None
     """
     Netzebene, in der der Bezug der Energie erfolgt.
     Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.

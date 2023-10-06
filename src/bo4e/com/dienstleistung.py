@@ -24,6 +24,6 @@ class Dienstleistung(COM):
 
     # required attributes
     #: Kennzeichnung der Dienstleistung
-    dienstleistungstyp: Dienstleistungstyp
+    dienstleistungstyp: Optional[Dienstleistungstyp] = None
     #: Bezeichnung der Dienstleistung
-    bezeichnung: str
+    bezeichnung: Optional[str] = None

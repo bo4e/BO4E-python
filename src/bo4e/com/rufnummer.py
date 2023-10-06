@@ -23,6 +23,6 @@ class Rufnummer(COM):
 
     # required attributes
     #: Ausprägung der Nummer
-    nummerntyp: Rufnummernart
+    nummerntyp: Optional[Rufnummernart] = None
     #: Die konkrete Nummer
-    rufnummer: str
+    rufnummer: Optional[str] = None

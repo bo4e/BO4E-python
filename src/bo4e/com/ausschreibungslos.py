@@ -33,28 +33,28 @@ class Ausschreibungslos(COM):
 
     # required attributes
     #: Laufende Nummer des Loses
-    losnummer: str
+    losnummer: Optional[str] = None
     #: Bezeichnung der Ausschreibung
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
-    preismodell: Preismodell
+    preismodell: Optional[Preismodell] = None
 
     #: Unterscheidungsmöglichkeiten für die Sparte
-    energieart: Sparte
+    energieart: Optional[Sparte] = None
     #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
-    wunsch_rechnungslegung: Rechnungslegung
+    wunsch_rechnungslegung: Optional[Rechnungslegung] = None
     #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
-    wunsch_vertragsform: Vertragsform
+    wunsch_vertragsform: Optional[Vertragsform] = None
     #: Name des Lizenzpartners
-    betreut_durch: str
+    betreut_durch: Optional[str] = None
     #: Anzahl der Lieferstellen in dieser Ausschreibung
-    anzahl_lieferstellen: int
+    anzahl_lieferstellen: Optional[int] = None
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: Annotated[list[Ausschreibungsdetail], Len(1)]
+    lieferstellen: Optional[list[Ausschreibungsdetail]] = None
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Zeitraum
+    lieferzeitraum: Optional[Zeitraum] = None
 
     # optional attributes
     #: Bemerkung des Kunden zum Los

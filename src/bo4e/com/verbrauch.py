@@ -31,13 +31,13 @@ class Verbrauch(COM):
 
     # required attributes
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
-    wertermittlungsverfahren: Wertermittlungsverfahren
+    wertermittlungsverfahren: Optional[Wertermittlungsverfahren] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:
-    obis_kennzahl: Annotated[str, Field(strict=True, pattern=OBIS_PATTERN)]
+    obis_kennzahl: Optional[str] = None
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal
+    wert: Optional[Decimal] = None
     #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Mengeneinheit
+    einheit: Optional[Mengeneinheit] = None
 
     # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird

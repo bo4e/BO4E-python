@@ -2,7 +2,7 @@
 Contains RegionaleGueltigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated
+from typing import Annotated, Optional
 
 from annotated_types import Len
 
@@ -28,7 +28,9 @@ class RegionaleGueltigkeit(COM):
     """
 
     # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    kriteriums_werte: Annotated[
-        list[KriteriumWert], Len(1)
-    ]  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
+    gueltigkeitstyp: Optional[
+        Gueltigkeitstyp
+    ] = None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
+    kriteriums_werte: Optional[
+        list[KriteriumWert]
+    ] = None  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen

@@ -61,4 +61,4 @@ class Tarifberechnungsparameter(COM):
     #: Mindestpreis für den Durchschnitts-Arbeitspreis
     mindestpreis: Optional[Preis] = None
     #: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise
-    zusatzpreise: Optional[List[Tarifpreis]] = None
+    zusatzpreise: Optional[list[Tarifpreis]] = None

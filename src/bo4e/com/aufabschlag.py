@@ -34,9 +34,9 @@ class AufAbschlag(COM):
 
     # required attributes
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge.
-    staffeln: List[Preisstaffel]
+    staffeln: Optional[list[Preisstaffel]] = None
 
     # optional attributes
     #: Beschreibung zum Auf-/Abschlag

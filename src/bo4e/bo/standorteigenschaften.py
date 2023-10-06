@@ -31,7 +31,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: Annotated[list[StandorteigenschaftenStrom], Len(1)]
+    eigenschaften_strom: Optional[list[StandorteigenschaftenStrom]] = None
 
     # optional attributes
     #: Eigenschaften zur Sparte Gas

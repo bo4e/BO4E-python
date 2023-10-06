@@ -22,5 +22,5 @@ class Geokoordinaten(COM):
 
     """
 
-    breitengrad: Decimal
-    laengengrad: Decimal
+    breitengrad: Optional[Decimal] = None
+    laengengrad: Optional[Decimal] = None

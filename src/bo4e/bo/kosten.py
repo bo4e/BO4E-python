@@ -33,12 +33,12 @@ class Kosten(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Kostenklasse
+    kostenklasse: Optional[Kostenklasse] = None
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum
+    gueltigkeit: Optional[Zeitraum] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Annotated[list[Kostenblock], Len(1)]
+    kostenbloecke: Optional[list[Kostenblock]] = None
 
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[List[Betrag]] = None
+    summe_kosten: Optional[list[Betrag]] = None

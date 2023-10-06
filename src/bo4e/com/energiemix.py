@@ -33,15 +33,15 @@ class Energiemix(COM):
 
     # required attributes
     #: Eindeutige Nummer zur Identifizierung des Energiemixes
-    energiemixnummer: int
+    energiemixnummer: Optional[int] = None
     #: Strom oder Gas etc.
-    energieart: Sparte
+    energieart: Optional[Sparte] = None
     #: Bezeichnung des Energiemix
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Jahr, für das der Energiemix gilt
-    gueltigkeitsjahr: int
+    gueltigkeitsjahr: Optional[int] = None
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: Annotated[list[Energieherkunft], Len(1)]
+    anteil: Optional[list[Energieherkunft]] = None
 
     # optional attributes
     #: Bemerkung zum Energiemix
@@ -51,9 +51,9 @@ class Energiemix(COM):
     #: Höhe des erzeugten Atommülls in g/kWh
     atommuell: Optional[Decimal] = None
     #: Zertifikate für den Energiemix
-    oekozertifikate: List[Oekozertifikat] = []
+    oekozertifikate: list[Oekozertifikat] = None
     #: Ökolabel für den Energiemix
-    oekolabel: List[Oekolabel] = []
+    oekolabel: list[Oekolabel] = None
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
     oeko_top_ten: Optional[bool] = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind

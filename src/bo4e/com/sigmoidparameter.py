@@ -24,10 +24,10 @@ class Sigmoidparameter(COM):
     """
 
     # required attributes
-    A: Decimal  #: Briefmarke Ortsverteilnetz (EUR/kWh)
-    B: Decimal  #: Wendepunkt für die bepreiste Menge (kW)
-    C: Decimal  #: Exponent (einheitenlos)
-    D: Decimal  #: Briefmarke Transportnetz (EUR/kWh)
+    A: Optional[Decimal] = None  #: Briefmarke Ortsverteilnetz (EUR/kWh)
+    B: Optional[Decimal] = None  #: Wendepunkt für die bepreiste Menge (kW)
+    C: Optional[Decimal] = None  #: Exponent (einheitenlos)
+    D: Optional[Decimal] = None  #: Briefmarke Transportnetz (EUR/kWh)
 
     def calculate(self, leistung: Decimal) -> Decimal:
         """

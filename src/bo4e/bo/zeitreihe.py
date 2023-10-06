@@ -35,17 +35,17 @@ class Zeitreihe(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
-    messgroesse: Messgroesse
+    messgroesse: Optional[Messgroesse] = None
     #: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
-    messart: Messart
+    messart: Optional[Messart] = None
     #: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
-    medium: Medium
+    medium: Optional[Medium] = None
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
-    einheit: Mengeneinheit
+    einheit: Optional[Mengeneinheit] = None
     #: Hier liegen jeweils die Werte
-    werte: Annotated[list[Zeitreihenwert], Len(1)]
+    werte: Optional[list[Zeitreihenwert]] = None
 
     # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe
