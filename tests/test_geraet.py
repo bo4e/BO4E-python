@@ -2,10 +2,10 @@ from typing import Any, Dict
 
 import pytest
 
-from bo4e.com.geraet import Geraet
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
-from bo4e.enum.geraetemerkmal import Geraetemerkmal
+from bo4e.bo.geraet import Geraet
+from bo4e.enum.geraeteklasse import Geraeteklasse
 from bo4e.enum.geraetetyp import Geraetetyp
+from bo4e.enum.typ import Typ
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -14,23 +14,34 @@ class TestGeraet:
         "geraet, expected_json_dict",
         [
             pytest.param(
-                Geraet(), {"geraetenummer": None, "geraeteeigenschaften": None, "_id": None}, id="Minimal attributes"
+                Geraet(),
+                {
+                    "versionstruktur": "2",
+                    "_typ": Typ.GERAET,
+                    "externeReferenzen": None,
+                    "geraetenummer": None,
+                    "bezeichnung": None,
+                    "geraeteklasse": None,
+                    "geraetetyp": None,
+                    "_id": None,
+                },
+                id="Minimal attributes",
             ),
             pytest.param(
                 Geraet(
                     geraetenummer="0815",
-                    geraeteeigenschaften=Geraeteeigenschaften(
-                        geraetemerkmal=Geraetemerkmal.GAS_G1000,
-                        geraetetyp=Geraetetyp.MULTIPLEXANLAGE,
-                    ),
+                    geraeteklasse=Geraeteklasse.WANDLER,
+                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
+                    bezeichnung="56k Modem",
                 ),
                 {
+                    "versionstruktur": "2",
+                    "_typ": Typ.GERAET,
+                    "externeReferenzen": None,
                     "geraetenummer": "0815",
-                    "geraeteeigenschaften": {
-                        "geraetemerkmal": "GAS_G1000",
-                        "geraetetyp": Geraetetyp.MULTIPLEXANLAGE,
-                        "_id": None,
-                    },
+                    "geraeteklasse": "WANDLER",
+                    "geraetetyp": "BLOCKSTROMWANDLER",
+                    "bezeichnung": "56k Modem",
                     "_id": None,
                 },
                 id="Maximal attributes",

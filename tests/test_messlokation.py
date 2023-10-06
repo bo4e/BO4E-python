@@ -6,17 +6,18 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
+from bo4e.bo.geraet import Geraet
 from bo4e.bo.messlokation import Messlokation
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.hardware import Hardware
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
+from bo4e.enum.geraeteklasse import Geraeteklasse
 from bo4e.enum.geraetetyp import Geraetetyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
@@ -64,8 +65,17 @@ class TestMeLo:
             netzebene_messung=Netzebene.MSP,
             messgebietnr="664073",
             geraete=[
-                Hardware(geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM, bezeichnung="intelligentes Messsystem"),
-                Hardware(geraetetyp=Geraetetyp.MODEM, bezeichnung="56k Modem"),
+                Geraet(
+                    geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM,
+                    bezeichnung="intelligentes Messsystem",
+                    geraetenummer="123",
+                ),
+                Geraet(
+                    geraeteklasse=Geraeteklasse.WANDLER,
+                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
+                    bezeichnung="56k Modem",
+                    geraetenummer="456",
+                ),
             ],
             messdienstleistung=[
                 Dienstleistung(
