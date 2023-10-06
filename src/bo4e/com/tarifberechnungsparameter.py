@@ -34,9 +34,9 @@ class Tarifberechnungsparameter(COM):
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
     berechnungsmethode: Optional[Tarifkalkulationsmethode] = None
     #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
-    messpreis_in_gp_enthalten: Optional[bool] = None
+    ist_messpreis_in_grundpreis_enthalten: Optional[bool] = None
 
-    messpreis_beruecksichtigen: Optional[bool] = None
+    ist_messpreis_zu_beruecksichtigen: Optional[bool] = None
     """
     True, falls bei der Bildung des Durchschnittspreises für die Höchst- und Mindestpreisbetrachtung der Messpreis mit
     berücksichtigt wird

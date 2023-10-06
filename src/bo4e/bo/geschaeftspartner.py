@@ -41,10 +41,10 @@ class Geschaeftspartner(Geschaeftsobjekt):
     # todo: replace name1/2/3 with something more readable. no one wants to deal with that. maybe serialize as name1/2/3
     # but resolve to readable python fields under the hood
 
-    gewerbekennzeichnung: Optional[bool] = None
+    ist_gewerbe: Optional[bool] = None
     """
-    Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)
-    oder eine Privatperson handelt. (gewerbeKennzeichnung = false)
+    Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (istGewerbe = true)
+    oder eine Privatperson handelt. (istGewerbe = false)
     """
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
     geschaeftspartnerrolle: Optional[list[Geschaeftspartnerrolle]] = None
