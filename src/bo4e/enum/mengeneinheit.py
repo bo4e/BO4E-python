@@ -17,8 +17,14 @@ class Mengeneinheit(StrEnum):
     MWH = "MWH"  #: Megawattstunde
     STUECK = "STUECK"  #: Stückzahl
     KUBIKMETER = "KUBIKMETER"  #: Kubikmeter (Gas)
+    SEKUNDE = "SEKUNDE"  #: Sekunde
+    MINUTE = "MINUTE"  #: Minute
     STUNDE = "STUNDE"  #: Stunde
-    TAG = "TAG"  #: Tage
+    VIERTEL_STUNDE = "VIERTEL_STUNDE"  #: Viertelstunde
+    TAG = "TAG"  #: Tag
+    WOCHE = "WOCHE"  #: Woche
     MONAT = "MONAT"  #: Monat
+    QUARTAL = "QUARTAL"  #: Quartal
+    HALBJAHR = "HALBJAHR"  #: Halbjahr
     JAHR = "JAHR"  #: Jahr
     PROZENT = "PROZENT"  #: Prozent
