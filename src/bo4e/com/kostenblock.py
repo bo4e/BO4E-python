@@ -23,11 +23,9 @@ class Kostenblock(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
 
-    # optional attributes
     #: Die Summe aller Kostenpositionen dieses Blocks
     summe_kostenblock: Optional[Betrag] = None
 

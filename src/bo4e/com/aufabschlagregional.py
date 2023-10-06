@@ -42,7 +42,6 @@ class AufAbschlagRegional(COM):
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
     betraege: Optional[list[AufAbschlagProOrt]] = None
 
-    # optional attributes
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #:Typ des Aufabschlages (z.B. absolut oder prozentual)

@@ -24,7 +24,6 @@ class AufAbschlagstaffelProOrt(COM):
 
     """
 
-    # required attributes
     #: Der Wert für den Auf- oder Abschlag.
     wert: Optional[Decimal] = None
     #: Unterer Wert, ab dem die Staffel gilt.

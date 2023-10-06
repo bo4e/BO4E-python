@@ -23,13 +23,11 @@ class Adresse(COM):
 
     """
 
-    # required attributes
     #: Die Postleitzahl; z.B: "41836"
     postleitzahl: Optional[str] = None
     #: Bezeichnung der Stadt; z.B. "Hückelhoven"
     ort: Optional[str] = None
 
-    # optional attributes
     #: Bezeichnung des Ortsteils; z.B. "Mitte"
     ortsteil: Optional[str] = None
     #: Bezeichnung der Straße; z.B. "Weserstraße"

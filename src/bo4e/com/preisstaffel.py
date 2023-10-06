@@ -24,7 +24,6 @@ class Preisstaffel(COM):
 
     """
 
-    # required attributes
     #: Preis pro abgerechneter Mengeneinheit
     einheitspreis: Optional[Decimal] = None
     #: Inklusiver unterer Wert, ab dem die Staffel gilt
@@ -32,6 +31,5 @@ class Preisstaffel(COM):
     #: Exklusiver oberer Wert, bis zu dem die Staffel gilt
     staffelgrenze_bis: Optional[Decimal] = None
 
-    # optional attributes
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter
     sigmoidparameter: Optional[Sigmoidparameter] = None

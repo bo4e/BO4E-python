@@ -22,7 +22,6 @@ class StandorteigenschaftenStrom(COM):
 
     """
 
-    # required attributes
     #: Die EIC-Nummer des Bilanzierungsgebietes
     bilanzierungsgebiet_eic: Optional[str] = None
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147

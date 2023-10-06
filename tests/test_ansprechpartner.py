@@ -18,7 +18,6 @@ class TestAnsprechpartner:
         Test de-/serialisation of Ansprechpartner only with required attributes
         """
         ansprechpartner = Ansprechpartner(
-            # required attributes
             nachname="Müller-Schmidt",
             geschaeftspartner=Geschaeftspartner(
                 anrede=Anrede.FRAU,
@@ -61,7 +60,6 @@ class TestAnsprechpartner:
         Test de-/serialisation of Ansprechpartner only with required attributes
         """
         ansprechpartner = Ansprechpartner(
-            # required attributes
             nachname="Müller-Schmidt",
             geschaeftspartner=Geschaeftspartner(
                 anrede=Anrede.FRAU,
@@ -84,7 +82,6 @@ class TestAnsprechpartner:
                     hausnummer="540a",
                 ),
             ),
-            # optional attributes
             anrede=Anrede.EHELEUTE,
             individuelle_anrede="Künstler",
             titel=Titel.PROF_DR,

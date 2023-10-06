@@ -23,7 +23,6 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
 
     """
 
-    # required attributes
     datum_uhrzeit_von: Optional[
         datetime
     ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)

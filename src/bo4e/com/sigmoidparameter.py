@@ -24,7 +24,6 @@ class Sigmoidparameter(COM):
 
     """
 
-    # required attributes
     A: Optional[Decimal] = None  #: Briefmarke Ortsverteilnetz (EUR/kWh)
     B: Optional[Decimal] = None  #: Wendepunkt für die bepreiste Menge (kW)
     C: Optional[Decimal] = None  #: Exponent (einheitenlos)

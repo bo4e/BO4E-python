@@ -30,7 +30,6 @@ class Zeitraum(COM):
 
     """
 
-    # optional attributes
     einheit: Optional[Zeiteinheit] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[datetime] = None

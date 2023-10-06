@@ -83,34 +83,24 @@ class MeinBo(Geschaeftsobjekt):
     Es kommt nur bei meinem Strom-Lieferanten zum Einsatz und beschreibt dort all die tollen Eigenschaften, die mein Verbrauchsverhalten hat.
     """
 
-    bo_typ: BoTyp = BoTyp.MEINBO
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MEINBO
 
-    # required attributes
 
     #: Der Lieferbeginn beschreibt den Zeitpunkt ab dem (inklusiv) mich ein Versorger seinen Kunden nennen darf
-    lieferbeginn: datetime
+    lieferbeginn: Optional[datetime] = None
 
-    anzahl_freudenspruenge: int
+    anzahl_freudenspruenge: Optional[int] = None
     """
     Anzahl Freudensprünge beschreibt, wie oft der CEO des Stromkonzerns in die Luft gesprungen ist, als ich den Vertrag unterschrieben habe.
-    Dieser Wert sollte im Normalfall mindestens 5 sein.
     """
 
-    # pylint:disable=unused-argument, no-self-argument
-    @validator("anzahl_freudenspruenge")
-    def validate_freudenspruenge(cls, anzahl_freudenspruenge: int, values: Dict[str, Any]) -> int:
-        if anzahl_freudenspruenge <= 5:
-            raise ValueError("You are not hyped enough. Do more than 5 joyful leaps.")
-        return anzahl_freudenspruenge
+    #: Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte
+    freimenge: Optional[Menge] = None
 
     # we can help you with anything you might be missing or unable to implement.
     # ToDo comments are just fine.
     # You don't need to be a perfect programmer to contribute to bo4e :)
 
-    # optional attributes
-
-    #: Optionale Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte
-    freimenge: Optional[Menge] = None
 
 ```
 
