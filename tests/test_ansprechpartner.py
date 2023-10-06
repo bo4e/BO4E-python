@@ -4,7 +4,7 @@ from bo4e.com.adresse import Adresse
 from bo4e.com.rufnummer import Rufnummer
 from bo4e.com.zustaendigkeit import Zustaendigkeit
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.rufnummernart import Rufnummernart
@@ -43,7 +43,7 @@ class TestAnsprechpartner:
             ),
         )
         assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert ansprechpartner.bo_typ is BoTyp.ANSPRECHPARTNER, "boTyp was not automatically set"
+        assert ansprechpartner.bo_typ is Typ.ANSPRECHPARTNER, "boTyp was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string
@@ -103,7 +103,7 @@ class TestAnsprechpartner:
             ),
         )
         assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert ansprechpartner.bo_typ is BoTyp.ANSPRECHPARTNER, "boTyp was not automatically set"
+        assert ansprechpartner.bo_typ is Typ.ANSPRECHPARTNER, "boTyp was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string

@@ -6,7 +6,7 @@ from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.verbrauch import Verbrauch
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.lokationstyp import Lokationstyp
 
 # pylint: disable=too-few-public-methods
@@ -27,7 +27,7 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.ENERGIEMENGE
+    typ: Typ = Typ.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
     lokations_id: Optional[str] = None
     # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp

@@ -10,7 +10,7 @@ from bo4e.com.adresse import Adresse
 from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.landescode import Landescode
@@ -78,7 +78,7 @@ class TestBuendelvertrag:
             "_id": None,
         },
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "boTyp": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "hrnummer": None,
         "amtsgericht": None,
@@ -102,7 +102,7 @@ class TestBuendelvertrag:
             "_id": None,
         },
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "boTyp": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "anrede": None,
         "name3": None,
@@ -140,7 +140,7 @@ class TestBuendelvertrag:
                     "vertragspartner1": _vertragspartner1_dict,
                     "vertragspartner2": _vertragspartner2_dict,
                     "versionstruktur": "2",
-                    "boTyp": BoTyp.BUENDELVERTRAG,
+                    "boTyp": Typ.BUENDELVERTRAG,
                     "externeReferenzen": None,
                     "einzelvertraege": None,
                     "vertragskonditionen": None,
@@ -169,7 +169,7 @@ class TestBuendelvertrag:
                 ),
                 {
                     "versionstruktur": "2",
-                    "boTyp": BoTyp.BUENDELVERTRAG,
+                    "boTyp": Typ.BUENDELVERTRAG,
                     "externeReferenzen": None,
                     "vertragsnummer": "1234567890",
                     "vertragsart": Vertragsart.NETZNUTZUNGSVERTRAG,

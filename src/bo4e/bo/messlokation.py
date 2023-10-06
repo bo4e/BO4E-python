@@ -11,7 +11,7 @@ from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
 from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 
@@ -32,7 +32,7 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.MESSLOKATION
+    typ: Typ = Typ.MESSLOKATION
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: Optional[str] = None
     #: Sparte der Messlokation, z.B. Gas oder Strom

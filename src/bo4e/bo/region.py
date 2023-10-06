@@ -5,7 +5,7 @@ from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.regionskriterium import Regionskriterium
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -25,7 +25,7 @@ class Region(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.REGION
+    typ: Typ = Typ.REGION
     #: Bezeichnung der Region
     bezeichnung: Optional[str] = None
 

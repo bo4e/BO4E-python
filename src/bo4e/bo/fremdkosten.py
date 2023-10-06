@@ -7,7 +7,7 @@ from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
 from bo4e.com.fremdkostenblock import Fremdkostenblock
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -28,7 +28,7 @@ class Fremdkosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.FREMDKOSTEN
+    typ: Typ = Typ.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Optional[Zeitraum] = None
     # optional attributes

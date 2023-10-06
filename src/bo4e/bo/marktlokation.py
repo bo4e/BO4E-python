@@ -13,7 +13,7 @@ from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.messlokationszuordnung import Messlokationszuordnung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.gasqualitaet import Gasqualitaet
 from bo4e.enum.gebiettyp import Gebiettyp
@@ -39,7 +39,7 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.MARKTLOKATION
+    typ: Typ = Typ.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom

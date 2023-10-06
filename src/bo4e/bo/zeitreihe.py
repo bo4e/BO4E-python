@@ -8,7 +8,7 @@ from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.medium import Medium
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart
@@ -31,7 +31,7 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.ZEITREIHE
+    typ: Typ = Typ.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)

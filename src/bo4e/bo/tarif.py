@@ -11,7 +11,7 @@ from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -30,7 +30,7 @@ class Tarif(Tarifinfo):
 
     """
 
-    typ: BoTyp = BoTyp.TARIF
+    typ: Typ = Typ.TARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None

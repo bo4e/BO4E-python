@@ -11,7 +11,7 @@ from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.preisposition import Preisposition
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.preisstatus import Preisstatus
 from bo4e.enum.sparte import Sparte
 
@@ -35,7 +35,7 @@ class Preisblatt(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.PREISBLATT
+    typ: Typ = Typ.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
     bezeichnung: Optional[str] = None
     #: Preisblatt gilt für angegebene Sparte

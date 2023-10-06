@@ -12,7 +12,7 @@ from typing import Optional
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
@@ -35,7 +35,7 @@ class Zaehler(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.ZAEHLER
+    typ: Typ = Typ.ZAEHLER
     zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
     sparte: Optional[Sparte] = None  #: Strom oder Gas
     zaehlerauspraegung: Optional[Zaehlerauspraegung] = None  #: Spezifikation die Richtung des Zählers betreffend

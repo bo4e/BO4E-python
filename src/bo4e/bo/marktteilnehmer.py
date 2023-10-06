@@ -9,7 +9,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
 from bo4e.enum.sparte import Sparte
@@ -29,7 +29,7 @@ class Marktteilnehmer(Geschaeftspartner):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.MARKTTEILNEHMER
+    typ: Typ = Typ.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Optional[Marktrolle] = None
     #: Gibt die Codenummer der Marktrolle an

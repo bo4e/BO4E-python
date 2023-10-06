@@ -12,7 +12,7 @@ from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.tagesvektor import Tagesvektor
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
 
@@ -55,7 +55,7 @@ class LastgangKompakt(_LastgangBody):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.LASTGANG_KOMPAKT
+    typ: Typ = Typ.LASTGANG_KOMPAKT
 
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
     zeitintervall: Optional[Zeitintervall] = None
@@ -85,7 +85,7 @@ class Lastgang(_LastgangBody):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.LASTGANG
+    typ: Typ = Typ.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
     werte: Optional[list[Zeitreihenwert]] = None

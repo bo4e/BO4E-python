@@ -12,7 +12,7 @@ from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.vertrag import Vertrag
 from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
@@ -33,7 +33,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.BUENDELVERTRAG
+    typ: Typ = Typ.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag

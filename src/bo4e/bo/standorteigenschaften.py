@@ -10,7 +10,7 @@ from typing import Optional
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
 from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 
 class Standorteigenschaften(Geschaeftsobjekt):
@@ -27,7 +27,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
+    typ: Typ = Typ.STANDORTEIGENSCHAFTEN
     #: Eigenschaften zur Sparte Strom
     eigenschaften_strom: Optional[list[StandorteigenschaftenStrom]] = None
 

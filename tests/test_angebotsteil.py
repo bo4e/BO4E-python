@@ -14,7 +14,7 @@ from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.landescode import Landescode
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -163,7 +163,7 @@ class TestAngebotsteil:
                             "zugehoerigeMesslokation": None,
                             "kundengruppen": None,
                             "externeReferenzen": None,
-                            "boTyp": BoTyp.MARKTLOKATION,
+                            "boTyp": Typ.MARKTLOKATION,
                             "_id": None,
                         }
                     ],

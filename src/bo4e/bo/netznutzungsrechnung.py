@@ -7,7 +7,7 @@ Contains Netznutzungsrechnung class and corresponding marshmallow schema for de-
 from typing import Optional
 
 from bo4e.bo.rechnung import Rechnung
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.nnrechnungsart import NNRechnungsart
 from bo4e.enum.nnrechnungstyp import NNRechnungstyp
 from bo4e.enum.sparte import Sparte
@@ -27,7 +27,7 @@ class Netznutzungsrechnung(Rechnung):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
+    typ: Typ = Typ.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Optional[Sparte] = None
     absendercodenummer: Optional[str] = None

@@ -7,7 +7,7 @@ from pydantic import ValidationError
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.landescode import Landescode
@@ -42,7 +42,7 @@ class TestGeschaeftspartner:
         )
 
         # test default value for bo_typ in Geschaeftspartner
-        assert gp.typ == BoTyp.GESCHAEFTSPARTNER
+        assert gp.typ == Typ.GESCHAEFTSPARTNER
 
         gp_json = gp.model_dump_json(by_alias=True)
 

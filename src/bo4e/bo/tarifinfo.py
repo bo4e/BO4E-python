@@ -13,7 +13,7 @@ from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.energiemix import Energiemix
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
@@ -36,7 +36,7 @@ class Tarifinfo(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.TARIFINFO
+    typ: Typ = Typ.TARIFINFO
     #: Name des Tarifs
     bezeichnung: Optional[str] = None
     #: Der Name des Marktpartners, der den Tarif anbietet

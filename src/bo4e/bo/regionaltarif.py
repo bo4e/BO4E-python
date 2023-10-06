@@ -11,7 +11,7 @@ from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag
 from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 # pylint: disable=too-few-public-methods, empty-docstring
 # pylint: disable=no-name-in-module
@@ -30,7 +30,7 @@ class Regionaltarif(Tarifinfo):
 
     """
 
-    typ: BoTyp = BoTyp.REGIONALTARIF
+    typ: Typ = Typ.REGIONALTARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None

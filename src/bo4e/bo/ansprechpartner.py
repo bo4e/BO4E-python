@@ -10,7 +10,7 @@ from bo4e.com.adresse import Adresse
 from bo4e.com.rufnummer import Rufnummer
 from bo4e.com.zustaendigkeit import Zustaendigkeit
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.titel import Titel
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -30,7 +30,7 @@ class Ansprechpartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.ANSPRECHPARTNER
+    typ: Typ = Typ.ANSPRECHPARTNER
     nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
     geschaeftspartner: Optional[
         Geschaeftspartner

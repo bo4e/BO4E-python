@@ -6,7 +6,7 @@ from typing import Optional
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 
 # pylint: disable=too-few-public-methods
@@ -25,7 +25,7 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    typ: BoTyp = BoTyp.PREISBLATTDIENSTLEISTUNG
+    typ: Typ = Typ.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional[Bilanzierungsmethode] = None

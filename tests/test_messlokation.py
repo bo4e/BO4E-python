@@ -15,7 +15,7 @@ from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -37,7 +37,7 @@ class TestMeLo:
             sparte=Sparte.STROM,
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ is Typ.MESSLOKATION, "boTyp was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
@@ -51,7 +51,7 @@ class TestMeLo:
         # but are **not** the same object.
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is Typ.MESSLOKATION
 
     def test_serialization_required_and_optional_attributes(self) -> None:
         """
@@ -106,7 +106,7 @@ class TestMeLo:
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ == Typ.MESSLOKATION, "boTyp was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
@@ -118,7 +118,7 @@ class TestMeLo:
 
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is Typ.MESSLOKATION
 
     def test_extension_data(self) -> None:
         """

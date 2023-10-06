@@ -2,7 +2,7 @@ import json
 
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.adresse import Adresse
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.marktrolle import Marktrolle
 from bo4e.enum.rollencodetyp import Rollencodetyp
@@ -32,7 +32,7 @@ class TestMarktteilnehmer:
         mt = example_marktteilnehmer
 
         assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert mt.typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
+        assert mt.typ == Typ.MARKTTEILNEHMER, "boTyp was not automatically set"
 
         json_string = mt.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
@@ -45,4 +45,4 @@ class TestMarktteilnehmer:
 
         assert mt.marktrolle is deserialized_mt.marktrolle
         # Test snakecase
-        assert deserialized_mt.typ is BoTyp.MARKTTEILNEHMER
+        assert deserialized_mt.typ is Typ.MARKTTEILNEHMER

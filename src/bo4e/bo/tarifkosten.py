@@ -6,7 +6,7 @@ from typing import Optional
 
 from bo4e.bo.kosten import Kosten
 from bo4e.bo.tarifinfo import Tarifinfo
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -25,7 +25,7 @@ class Tarifkosten(Tarifinfo):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.TARIFKOSTEN
+    typ: Typ = Typ.TARIFKOSTEN
     kosten: Optional[Kosten] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

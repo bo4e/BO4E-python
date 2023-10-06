@@ -5,7 +5,7 @@ from typing import Optional
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.kundengruppe import Kundengruppe
 from bo4e.enum.netzebene import Netzebene
 
@@ -25,7 +25,7 @@ class PreisblattNetznutzung(Preisblatt):
 
     """
 
-    typ: BoTyp = BoTyp.PREISBLATTNETZNUTZUNG
+    typ: Typ = Typ.PREISBLATTNETZNUTZUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional[Bilanzierungsmethode] = None

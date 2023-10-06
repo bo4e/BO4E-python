@@ -12,7 +12,7 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
 
@@ -34,7 +34,7 @@ class Rechnung(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.RECHNUNG
+    typ: Typ = Typ.RECHNUNG
     storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;

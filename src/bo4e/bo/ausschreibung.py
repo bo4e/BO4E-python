@@ -14,7 +14,7 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
 from bo4e.enum.ausschreibungstyp import Ausschreibungstyp
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.botyp import Typ
 
 
 class Ausschreibung(Geschaeftsobjekt):
@@ -31,7 +31,7 @@ class Ausschreibung(Geschaeftsobjekt):
     """
 
     # required attributes
-    typ: BoTyp = BoTyp.AUSSCHREIBUNG
+    typ: Typ = Typ.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
     #: Aufzählung für die Typisierung von Ausschreibungen
