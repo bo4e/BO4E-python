@@ -2,14 +2,12 @@
 Contains ExterenzeReferenz class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
-
-from bo4e.com.com import COM
+from typing import Any, Optional
 
 
 # pylint: disable=too-few-public-methods
 #
-class ZusatzAttribut(COM):
+class ZusatzAttribut:
     """
     Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.
     Beim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,
@@ -24,7 +22,5 @@ class ZusatzAttribut(COM):
 
     """
 
-    ex_ref_name: Optional[
-        str
-    ] = None  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
-    ex_ref_wert: Optional[str] = None  #: Wert der externen Referenz (z.B. "123456"; "4711")
+    name: Optional[str] = None  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
+    wert: Optional[Any] = None  #: Wert der externen Referenz (z.B. "123456"; "4711")

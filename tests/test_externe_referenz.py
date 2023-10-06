@@ -41,7 +41,7 @@ class TestExterneReferenz:
 
         deserialized_gp: Geschaeftspartner = Geschaeftspartner.model_validate_json(gp_json)
         assert len(deserialized_gp.zusatz_attribute) == 2
-        assert deserialized_gp.zusatz_attribute[0].ex_ref_name == "SAP GP Nummer"
+        assert deserialized_gp.zusatz_attribute[0].name == "SAP GP Nummer"
 
     def test_geschaeftspartner_with_no_externe_referenz(self) -> None:
         gp = Geschaeftspartner(
