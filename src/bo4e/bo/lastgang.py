@@ -23,6 +23,11 @@ class _LastgangBody(Geschaeftsobjekt):
     well as :class:`LastgangKompakt`.
     """
 
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = None
+    # I don't know why, but without this line mypy complains in LastgangKompakt about:
+    # Incompatible types in assignment (expression has type "Typ | None", base class "_LastgangBody" defined
+    # the type as "Typ")  [assignment]
+
     #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
     sparte: Optional[Sparte] = None
 
