@@ -5,9 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
-
 from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 
 # pylint: disable=too-few-public-methods

@@ -5,14 +5,12 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-# pylint: disable=too-few-public-methods
-# pylint: disable=no-name-in-module
-from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
-
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
+
+# pylint: disable=too-few-public-methods
+# pylint: disable=no-name-in-module
 
 
 class Verbrauch(COM):

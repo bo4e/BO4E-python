@@ -4,14 +4,12 @@ Contains Kostenposition and corresponding marshmallow schema for de-/serializati
 from datetime import datetime
 from typing import Optional
 
-# pylint: disable=too-few-public-methods, too-many-instance-attributes
-from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
-
 from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
+
+# pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
 class Kostenposition(COM):

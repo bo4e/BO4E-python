@@ -6,9 +6,6 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 from typing import Optional
 
-# pylint: disable=no-name-in-module
-from pydantic import field_validator
-
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
@@ -24,6 +21,8 @@ from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
+
+# pylint: disable=no-name-in-module
 
 
 class Marktlokation(Geschaeftsobjekt):
