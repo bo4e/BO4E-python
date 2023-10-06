@@ -26,11 +26,11 @@ class TestMaLo:
             netzebene=Netzebene.NSP,
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert malo.bo_typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
+        assert malo.typ is BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
 
-        assert "boTyp" in json_string, "No camel case serialization"
+        assert "_typ" in json_string, "No camel case serialization"
         assert "marktlokationsId" in json_string, "No camel case serialization"
 
         deserialized_malo: Marktlokation = Marktlokation.model_validate_json(json_string)
@@ -39,7 +39,7 @@ class TestMaLo:
         # but are **not** the same object.
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
-        assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
+        assert deserialized_malo.typ is BoTyp.MARKTLOKATION
 
     def test_serialization_required_and_optional_attributes(self) -> None:
         """
@@ -82,12 +82,12 @@ class TestMaLo:
 
         json_string = malo.model_dump_json(by_alias=True)
 
-        assert "boTyp" in json_string, "No camel case serialization"
+        assert "_typ" in json_string, "No camel case serialization"
         assert "marktlokationsId" in json_string, "No camel case serialization"
 
         deserialized_malo: Marktlokation = Marktlokation.model_validate_json(json_string)
 
         assert deserialized_malo.marktlokations_id == malo.marktlokations_id
         assert deserialized_malo.marktlokations_id is not malo.marktlokations_id
-        assert deserialized_malo.bo_typ is BoTyp.MARKTLOKATION
+        assert deserialized_malo.typ is BoTyp.MARKTLOKATION
         assert deserialized_malo.endkunde == gp

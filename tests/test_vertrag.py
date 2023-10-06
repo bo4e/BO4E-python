@@ -180,7 +180,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is BoTyp.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
@@ -235,7 +235,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is BoTyp.VERTRAG, "boTyp was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string

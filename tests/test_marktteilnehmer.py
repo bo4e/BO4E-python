@@ -38,11 +38,11 @@ class TestMarktteilnehmer:
         json_dict = json.loads(json_string)
 
         # Test camelcase
-        assert "boTyp" in json_dict
+        assert "_typ" in json_dict
         assert "marktrolle" in json_dict
 
         deserialized_mt: Marktteilnehmer = Marktteilnehmer.model_validate_json(json_string)
 
         assert mt.marktrolle is deserialized_mt.marktrolle
         # Test snakecase
-        assert deserialized_mt.bo_typ is BoTyp.MARKTTEILNEHMER
+        assert deserialized_mt.typ is BoTyp.MARKTTEILNEHMER

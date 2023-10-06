@@ -43,7 +43,7 @@ class TestZaehler:
             letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
+        assert zaehler.typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
         assert zaehler.zaehlwerke is not None
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW

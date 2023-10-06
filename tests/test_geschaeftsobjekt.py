@@ -32,7 +32,7 @@ class TestGeschaeftsobjekt:
         self, bo_typ: BoTyp, versionstruktur: str, externe_referenzen: Optional[List[ExterneReferenz]]
     ) -> None:
         go = Geschaeftsobjekt(
-            bo_typ=bo_typ,
+            typ=bo_typ,
             versionstruktur=versionstruktur,
             externe_referenzen=externe_referenzen,
         )
@@ -49,7 +49,7 @@ class TestGeschaeftsobjekt:
         assert go_deserialized.externe_referenzen == externe_referenzen
 
     def test_initialization_with_minimal_attributs(self) -> None:
-        go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)
+        go = Geschaeftsobjekt(typ=BoTyp.ANSPRECHPARTNER)
 
         assert go.externe_referenzen is None
         assert go.versionstruktur == "2"
@@ -57,7 +57,7 @@ class TestGeschaeftsobjekt:
     def test_no_list_in_externen_referenzen(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftsobjekt(
-                bo_typ=BoTyp.ENERGIEMENGE,
+                typ=BoTyp.ENERGIEMENGE,
                 externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
         assert "3 validation error" in str(excinfo.value)

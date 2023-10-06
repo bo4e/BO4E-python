@@ -37,12 +37,12 @@ class TestMeLo:
             sparte=Sparte.STROM,
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
@@ -51,7 +51,7 @@ class TestMeLo:
         # but are **not** the same object.
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is BoTyp.MESSLOKATION
 
     def test_serialization_required_and_optional_attributes(self) -> None:
         """
@@ -111,14 +111,14 @@ class TestMeLo:
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
 
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is BoTyp.MESSLOKATION
 
     def test_extension_data(self) -> None:
         """
