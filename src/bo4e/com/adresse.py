@@ -6,7 +6,6 @@ from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.landescode import Landescode
-from bo4e.validators import combinations_of_fields
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -45,26 +44,3 @@ class Adresse(COM):
     co_ergaenzung: Optional[str] = None
     #: Offizieller ISO-Landescode
     landescode: Optional[Landescode] = Landescode.DE  # type:ignore
-
-    _strasse_xor_postfach = combinations_of_fields(
-        "strasse",
-        "hausnummer",
-        "postfach",
-        valid_combinations={
-            (1, 1, 0),
-            (0, 0, 1),
-            (0, 0, 0),
-        },
-        custom_error_message='You have to define either "strasse" and "hausnummer" or "postfach".',
-    )
-    """
-    An address is valid if it contains a postfach XOR (a strasse AND hausnummer).
-    This functions checks for these conditions of a valid address.
-
-    Nur folgende Angabekombinationen sind (nach der Abfrage) möglich:
-    Straße           w   f   f
-    Hausnummer       w   f   f
-    Postfach         f   w   f
-    Postleitzahl     w   w   w
-    Ort              w   w   w
-    """

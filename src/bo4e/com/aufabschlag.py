@@ -43,7 +43,6 @@ class AufAbschlag(COM):
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
     auf_abschlagsziel: Optional[AufAbschlagsziel] = None
     einheit: Optional[Waehrungseinheit] = None
-    _einheit_check = field_validator("einheit")(einheit_only_for_abschlagstyp_absolut)
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.

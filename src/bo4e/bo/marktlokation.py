@@ -24,7 +24,6 @@ from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.validators import combinations_of_fields, validate_marktlokations_id
 
 
 class Marktlokation(Geschaeftsobjekt):
@@ -44,7 +43,6 @@ class Marktlokation(Geschaeftsobjekt):
     bo_typ: BoTyp = BoTyp.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
-    _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
     #: Sparte der Marktlokation, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
@@ -116,21 +114,3 @@ class Marktlokation(Geschaeftsobjekt):
 
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
-
-    # pylint: disable=duplicate-code
-    _validate_address_info = combinations_of_fields(
-        "lokationsadresse",
-        "geoadresse",
-        "katasterinformation",
-        valid_combinations={
-            (1, 0, 0),
-            (0, 1, 0),
-            (0, 0, 1),
-            (0, 0, 0),
-        },
-        custom_error_message=(
-            "More than one address information is given. "
-            'You have to chose either "lokationsadresse", "geoadresse" or "katasterinformation".'
-        ),
-    )
-    "Checks that if an address is given, that there is only one valid address given"

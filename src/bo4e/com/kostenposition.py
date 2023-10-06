@@ -12,7 +12,6 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.com import COM
 from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
-from bo4e.validators import check_bis_is_later_than_von
 
 
 class Kostenposition(COM):
@@ -48,7 +47,6 @@ class Kostenposition(COM):
     von: Optional[datetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
     bis: Optional[datetime] = None
-    _bis_check = field_validator("bis")(check_bis_is_later_than_von)
 
     #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
     menge: Optional[Menge] = None
@@ -61,11 +59,3 @@ class Kostenposition(COM):
 
     #: Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
     artikeldetail: Optional[str] = None
-
-    @staticmethod
-    def _get_inclusive_start(values: ValidationInfo) -> Optional[datetime]:
-        return values.data["von"]
-
-    # @staticmethod
-    # def _get_exclusive_end(values) -> Optional[datetime]:
-    #     return values['bis']
