@@ -8,7 +8,7 @@ import json
 import logging
 import pathlib
 import pkgutil
-from typing import Literal
+from typing import Any, Literal
 
 import click
 
@@ -22,7 +22,7 @@ def delete_json_schemas(packages: list[str]) -> None:
             file.unlink()
 
 
-def get_models(pkg):
+def get_models(pkg) -> list[str]:
     """
     Get all models in a package
     """
@@ -39,7 +39,7 @@ def get_classes(modl_name) -> list[tuple[str, type]]:
     return inspect.getmembers(modl, lambda member: inspect.isclass(member) and member.__module__ == modl_name)
 
 
-def get_schema_json_dict(cls) -> dict[str, str]:
+def get_schema_json_dict(cls) -> dict[str, Any]:
     """
     Get the json schema for a class
     """
@@ -50,7 +50,7 @@ def get_schema_json_dict(cls) -> dict[str, str]:
     return schema_json_dict
 
 
-def validate_schema(file_path, schema_json_dict, name):
+def validate_schema(file_path, schema_json_dict, name) -> None:
     """
     Validate the schema for a class
     """
@@ -63,7 +63,7 @@ def validate_schema(file_path, schema_json_dict, name):
     _logger.debug("Schema for %s is consistent", name)
 
 
-def generate_schema(file_path, schema_json_dict, name):
+def generate_schema(file_path, schema_json_dict, name) -> None:
     """
     Generate the schema for a class
     """
