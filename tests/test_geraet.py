@@ -8,6 +8,13 @@ from bo4e.enum.geraetetyp import Geraetetyp
 from bo4e.enum.typ import Typ
 from tests.serialization_helper import assert_serialization_roundtrip
 
+example_geraet = Geraet(
+    geraetenummer="0815",
+    geraeteklasse=Geraeteklasse.WANDLER,
+    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
+    bezeichnung="56k Modem",
+)
+
 
 class TestGeraet:
     @pytest.mark.parametrize(
@@ -28,12 +35,7 @@ class TestGeraet:
                 id="Minimal attributes",
             ),
             pytest.param(
-                Geraet(
-                    geraetenummer="0815",
-                    geraeteklasse=Geraeteklasse.WANDLER,
-                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
-                    bezeichnung="56k Modem",
-                ),
+                example_geraet,
                 {
                     "versionstruktur": "2",
                     "_typ": Typ.GERAET,
