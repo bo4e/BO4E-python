@@ -192,6 +192,18 @@
             "title": "BDEWArtikelnummer",
             "type": "string"
         },
+        "Befestigungsart": {
+            "description": "Befestigungsart von Zählern",
+            "enum": [
+                "STECKTECHNIK",
+                "DREIPUNKT",
+                "HUTSCHIENE",
+                "EINSTUTZEN",
+                "ZWEISTUTZEN"
+            ],
+            "title": "Befestigungsart",
+            "type": "string"
+        },
         "Bemessungsgroesse": {
             "description": "Zur Abbildung von Messgrössen und zur Verwendung in energiewirtschaftlichen Berechnungen.",
             "enum": [
@@ -1369,6 +1381,15 @@
             "title": "Mengeneinheit",
             "type": "string"
         },
+        "Messwerterfassung": {
+            "description": "Die Messwerterfassung des Zählers",
+            "enum": [
+                "FERNAUSLESBAR",
+                "MANUELL_AUSGELESENE"
+            ],
+            "title": "Messwerterfassung",
+            "type": "string"
+        },
         "Netzebene": {
             "description": "Auflistung möglicher Netzebenen innerhalb der Energiearten Strom und Gas.",
             "enum": [
@@ -1851,6 +1872,17 @@
                     ],
                     "default": "ZAEHLER"
                 },
+                "befestigungsart": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Befestigungsart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
                 "eichungBis": {
                     "anyOf": [
                         {
@@ -1879,6 +1911,33 @@
                     "default": null,
                     "title": "Externereferenzen"
                 },
+                "geraete": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geraet"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geraete"
+                },
+                "istFernschaltbar": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istfernschaltbar"
+                },
                 "letzteEichung": {
                     "anyOf": [
                         {
@@ -1891,6 +1950,17 @@
                     ],
                     "default": null,
                     "title": "Letzteeichung"
+                },
+                "messwerterfassung": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Messwerterfassung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "sparte": {
                     "anyOf": [
@@ -1923,6 +1993,17 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/Zaehlerauspraegung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zaehlergroesse": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zaehlergroesse"
                         },
                         {
                             "type": "null"
@@ -1979,6 +2060,17 @@
                     ],
                     "default": null
                 },
+                "zaehlertypSpezifikation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ZaehlertypSpezifikation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
                 "zaehlwerke": {
                     "anyOf": [
                         {
@@ -2007,6 +2099,34 @@
             "title": "Zaehlerauspraegung",
             "type": "string"
         },
+        "Zaehlergroesse": {
+            "description": "Auflistung möglicher Größen von Zählern",
+            "enum": [
+                "G2KOMMA5",
+                "G4",
+                "G6",
+                "G10",
+                "G16",
+                "G25",
+                "G40",
+                "G65",
+                "G100",
+                "G160",
+                "G250",
+                "G400",
+                "G650",
+                "G1000",
+                "G1600",
+                "G2500",
+                "G4000",
+                "G6500",
+                "G10000",
+                "G12500",
+                "G16000"
+            ],
+            "title": "Zaehlergroesse",
+            "type": "string"
+        },
         "Zaehlertyp": {
             "description": "Bei diesem Enum handelt es sich um die Abbildung von Zählertypen der Sparten Strom und Gas.",
             "enum": [
@@ -2021,6 +2141,18 @@
                 "WECHSELSTROMZAEHLER"
             ],
             "title": "Zaehlertyp",
+            "type": "string"
+        },
+        "ZaehlertypSpezifikation": {
+            "description": "Bei diesem Enum handelt es sich um die Abbildung von besonderen Zählertyp-Spezifikationen der Sparten Strom und Gas.",
+            "enum": [
+                "EDL40",
+                "EDL21",
+                "SONSTIGER_EHZ",
+                "MME_STANDARD",
+                "MME_MEDA"
+            ],
+            "title": "ZaehlertypSpezifikation",
             "type": "string"
         },
         "Zaehlwerk": {
