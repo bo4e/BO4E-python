@@ -20,8 +20,8 @@ from bo4e.enum.netznutzungrechnungsart import NetznutzungRechnungsart
 from bo4e.enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
-from bo4e.enum.typ import Typ
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes

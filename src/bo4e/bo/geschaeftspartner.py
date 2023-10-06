@@ -81,4 +81,4 @@ class Geschaeftspartner(Geschaeftsobjekt):
     website: Optional[str] = None
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
     partneradresse: Optional[Adresse] = None  # todo: is it plural or not? the docs are bad
-    #: Todooo: Optional Connection to markttielnehmer...
+    #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
