@@ -3,6 +3,7 @@ Contains Sigmoidparameter class and corresponding marshmallow schema for de-/ser
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 

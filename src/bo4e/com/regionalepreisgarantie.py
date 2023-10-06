@@ -2,7 +2,7 @@
 Contains RegionalePreisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
-
+from typing import Optional
 
 from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
