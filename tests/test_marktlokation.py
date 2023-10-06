@@ -1,13 +1,6 @@
-from decimal import Decimal
-from typing import Tuple
-
-import pytest
-from pydantic import ValidationError
-
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.adresse import Adresse
-from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.enum.anrede import Anrede
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
 from bo4e.enum.botyp import BoTyp
@@ -85,7 +78,7 @@ class TestMaLo:
             kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert malo.bo_typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
+        assert malo.typ == BoTyp.MARKTLOKATION, "boTyp was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
 

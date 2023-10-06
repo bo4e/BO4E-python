@@ -106,7 +106,7 @@ class TestMeLo:
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)

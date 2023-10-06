@@ -42,7 +42,7 @@ class TestGeschaeftspartner:
         )
 
         # test default value for bo_typ in Geschaeftspartner
-        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
+        assert gp.typ == BoTyp.GESCHAEFTSPARTNER
 
         gp_json = gp.model_dump_json(by_alias=True)
 
@@ -50,7 +50,7 @@ class TestGeschaeftspartner:
 
         gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
 
-        assert gp_deserialized.bo_typ == gp.bo_typ
+        assert gp_deserialized.typ == gp.bo_typ
         assert type(gp_deserialized.partneradresse) == Adresse
 
     def test_optional_attribute_partneradresse(self) -> None:

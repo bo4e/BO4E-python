@@ -32,7 +32,7 @@ class TestMarktteilnehmer:
         mt = example_marktteilnehmer
 
         assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert mt.bo_typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
+        assert mt.typ == BoTyp.MARKTTEILNEHMER, "boTyp was not automatically set"
 
         json_string = mt.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
