@@ -12,11 +12,11 @@ from tests.test_tarifpreis import example_tarifpreis
 
 example_tarifberechnungsparameter = Tarifberechnungsparameter(
     berechnungsmethode=Tarifkalkulationsmethode.ZONEN,
-    messpreis_in_gp_enthalten=True,
+    ist_messpreis_in_grundpreis_enthalten=True,
     kw_inklusive=Decimal(12.5),
     kw_weitere_mengen=Decimal(12.5),
     messpreistyp=Messpreistyp.MESSPREIS_G6,
-    messpreis_beruecksichtigen=True,
+    ist_messpreis_zu_beruecksichtigen=True,
     hoechstpreis_h_t=example_preis,
     hoechstpreis_n_t=example_preis,
     mindestpreis=example_preis,

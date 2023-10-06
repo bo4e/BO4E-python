@@ -26,13 +26,13 @@ class TestAngebot:
                     bindefrist=datetime(2019, 3, 2, tzinfo=timezone.utc),
                     angebotsgeber=Geschaeftspartner(
                         name1="Batman",
-                        gewerbekennzeichnung=True,
+                        ist_gewerbe=True,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
                         partneradresse=example_adresse,
                     ),
                     angebotsnehmer=Geschaeftspartner(
                         name1="Joker",
-                        gewerbekennzeichnung=False,
+                        ist_gewerbe=False,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
                         partneradresse=example_adresse,
                     ),
@@ -40,7 +40,7 @@ class TestAngebot:
                         nachname="Titans",
                         geschaeftspartner=Geschaeftspartner(
                             name1="Wonderwoman",
-                            gewerbekennzeichnung=False,
+                            ist_gewerbe=False,
                             geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
                             partneradresse=example_adresse,
                         ),
@@ -49,7 +49,7 @@ class TestAngebot:
                         nachname="Titans",
                         geschaeftspartner=Geschaeftspartner(
                             name1="Robin",
-                            gewerbekennzeichnung=False,
+                            ist_gewerbe=False,
                             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
                             partneradresse=example_adresse,
                         ),
@@ -65,13 +65,13 @@ class TestAngebot:
                     sparte=Sparte.GAS,
                     angebotsgeber=Geschaeftspartner(
                         name1="Batman",
-                        gewerbekennzeichnung=True,
+                        ist_gewerbe=True,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
                         partneradresse=example_adresse,
                     ),
                     angebotsnehmer=Geschaeftspartner(
                         name1="Joker",
-                        gewerbekennzeichnung=False,
+                        ist_gewerbe=False,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
                         partneradresse=example_adresse,
                     ),

@@ -41,7 +41,7 @@ class Ausschreibung(Geschaeftsobjekt):
     #: Bezeichnungen für die Ausschreibungsphasen
     ausschreibungsstatus: Optional[Ausschreibungsstatus] = None
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
-    kostenpflichtig: Optional[bool] = None
+    ist_kostenpflichtig: Optional[bool] = None
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
     veroeffentlichungszeitpunkt: Optional[datetime] = None
     ausschreibender: Optional[Geschaeftspartner] = None

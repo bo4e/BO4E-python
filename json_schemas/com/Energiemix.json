@@ -244,7 +244,7 @@
             "default": null,
             "title": "Gueltigkeitsjahr"
         },
-        "oekoTopTen": {
+        "istInOekoTopTen": {
             "anyOf": [
                 {
                     "type": "boolean"
@@ -254,7 +254,7 @@
                 }
             ],
             "default": null,
-            "title": "Oekotopten"
+            "title": "Istinoekotopten"
         },
         "oekolabel": {
             "anyOf": [

@@ -61,7 +61,7 @@ class Marktlokation(Geschaeftsobjekt):
     #: Verbrauchsart der Marktlokation.
     verbrauchsart: Optional[Verbrauchsart] = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
-    unterbrechbar: Optional[bool] = None
+    ist_unterbrechbar: Optional[bool] = None
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
     netzbetreibercodenr: Optional[str] = None
     #: Typ des Netzgebietes, z.B. Verteilnetz

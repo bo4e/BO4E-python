@@ -37,7 +37,7 @@ class Rechnung(Geschaeftsobjekt):
 
     # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.RECHNUNG
-    storno: Optional[bool] = None
+    ist_storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;
     im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.

@@ -89,7 +89,7 @@ class TestAusschreibungsdetail:
                     zaehlernummer="1YSK4234092304",
                     marktlokationsbezeichnung="Zentraler Einkauf, Hamburg",
                     zaehlertechnik=Zaehlertyp.LEISTUNGSZAEHLER,
-                    lastgang_vorhanden=True,
+                    ist_lastgang_vorhanden=True,
                     prognose_leistung=Menge(wert=Decimal(40), einheit=Mengeneinheit.KW),
                     prognose_arbeit_lieferzeitraum=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),
                     prognose_jahresarbeit=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),

@@ -27,7 +27,7 @@ class TestBuendelvertrag:
         name1="van der Waal",
         name2="Helga",
         name3=None,
-        gewerbekennzeichnung=True,
+        ist_gewerbe=True,
         kontaktweg=[Kontaktart.SMS],
         umsatzsteuer_id="DE267311963",
         glaeubiger_id="DE98ZZZ09999999999",
@@ -44,7 +44,7 @@ class TestBuendelvertrag:
     _vertragspartner2 = Geschaeftspartner(
         name1="Eckart",
         name2="Björn",
-        gewerbekennzeichnung=False,
+        ist_gewerbe=False,
         geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
         partneradresse=Adresse(
             postleitzahl="24211",
@@ -58,7 +58,7 @@ class TestBuendelvertrag:
         "name1": "van der Waal",
         "name2": "Helga",
         "name3": None,
-        "gewerbekennzeichnung": True,
+        "istGewerbe": True,
         "kontaktweg": [Kontaktart.SMS],
         "umsatzsteuerId": "DE267311963",
         "glaeubigerId": "DE98ZZZ09999999999",
@@ -87,7 +87,7 @@ class TestBuendelvertrag:
     _vertragspartner2_dict: Dict[str, Any] = {
         "name1": "Eckart",
         "name2": "Björn",
-        "gewerbekennzeichnung": False,
+        "istGewerbe": False,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
         "partneradresse": {
             "postleitzahl": "24211",

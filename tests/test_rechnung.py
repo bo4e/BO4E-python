@@ -24,13 +24,13 @@ from tests.test_steuerbetrag import example_steuerbetrag
 
 _rechnungsersteller = Geschaeftspartner(
     name1="Joachim",
-    gewerbekennzeichnung=False,
+    ist_gewerbe=False,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
 )
 
 _rechnungsempfaenger = Geschaeftspartner(
     name1="Helga",
-    gewerbekennzeichnung=False,
+    ist_gewerbe=False,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
 )
 
@@ -43,7 +43,7 @@ class TestRechnung:
                 Rechnung(
                     rechnungstitel="Hüpfburg",
                     rechnungsstatus=Rechnungsstatus.UNGEPRUEFT,
-                    storno=True,
+                    ist_storno=True,
                     rechnungsnummer="202201211701",
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),
@@ -83,7 +83,7 @@ class TestRechnung:
             ),
             pytest.param(
                 Rechnung(
-                    storno=True,
+                    ist_storno=True,
                     rechnungsnummer="202201211701",
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),
