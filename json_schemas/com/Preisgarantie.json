@@ -32,6 +32,18 @@
             "additionalProperties": true,
             "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -118,6 +130,18 @@
     "additionalProperties": true,
     "description": "Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisgarantie.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "beschreibung": {
             "anyOf": [
                 {
@@ -131,16 +155,28 @@
             "title": "Beschreibung"
         },
         "preisgarantietyp": {
-            "$ref": "#/$defs/Preisgarantietyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Preisgarantietyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zeitlicheGueltigkeit": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "preisgarantietyp",
-        "zeitlicheGueltigkeit"
-    ],
     "title": "Preisgarantie",
     "type": "object"
 }

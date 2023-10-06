@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
@@ -25,12 +26,11 @@ class Steuerbetrag(COM):
 
     """
 
-    # required attributes
     #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
-    steuerkennzeichen: Steuerkennzeichen
+    steuerkennzeichen: Optional[Steuerkennzeichen] = None
     #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
-    basiswert: Decimal
+    basiswert: Optional[Decimal] = None
     #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
-    steuerwert: Decimal
+    steuerwert: Optional[Decimal] = None
     #: Währung. Z.B. Euro.
-    waehrung: Waehrungscode
+    waehrung: Optional[Waehrungscode] = None

@@ -3,6 +3,7 @@ Contains Sigmoidparameter class and corresponding marshmallow schema for de-/ser
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -23,11 +24,10 @@ class Sigmoidparameter(COM):
 
     """
 
-    # required attributes
-    A: Decimal  #: Briefmarke Ortsverteilnetz (EUR/kWh)
-    B: Decimal  #: Wendepunkt für die bepreiste Menge (kW)
-    C: Decimal  #: Exponent (einheitenlos)
-    D: Decimal  #: Briefmarke Transportnetz (EUR/kWh)
+    A: Optional[Decimal] = None  #: Briefmarke Ortsverteilnetz (EUR/kWh)
+    B: Optional[Decimal] = None  #: Wendepunkt für die bepreiste Menge (kW)
+    C: Optional[Decimal] = None  #: Exponent (einheitenlos)
+    D: Optional[Decimal] = None  #: Briefmarke Transportnetz (EUR/kWh)
 
     def calculate(self, leistung: Decimal) -> Decimal:
         """
@@ -35,4 +35,6 @@ class Sigmoidparameter(COM):
         :param leistung: Leistung in Kilowatt
         :return: den Sigmoidparameter LP in EUR/kWh
         """
+        if self.A is None or self.B is None or self.C is None or self.D is None:
+            raise ValueError("Sigmoidparameter is not fully defined")
         return self.A / (1 + (leistung / self.B) ** self.C) + self.D

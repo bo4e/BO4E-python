@@ -23,6 +23,7 @@ class TestStandorteigenschaftenStrom:
                     "regelzone": "Transnet BW",
                     "bilanzierungsgebietEic": "11YW-ALBSTADT--5",
                     "regelzoneEic": "10YDE-ENBW-----N",
+                    "_id": None,
                 },
             )
         ],
@@ -31,9 +32,3 @@ class TestStandorteigenschaftenStrom:
         self, standorteigenschaften_strom: StandorteigenschaftenStrom, expected_json_dict: Dict[str, Any]
     ) -> None:
         assert_serialization_roundtrip(standorteigenschaften_strom, expected_json_dict)
-
-    def test_missing_required_attributes(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = StandorteigenschaftenStrom()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)

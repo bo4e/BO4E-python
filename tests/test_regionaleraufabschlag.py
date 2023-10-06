@@ -47,8 +47,3 @@ class TestRegionalerAufAbschlag:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(regionaler_auf_abschlag)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionalerAufAbschlag()  # type: ignore[call-arg]
-        assert "2 validation errors" in str(excinfo.value)

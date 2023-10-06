@@ -2,6 +2,7 @@
 Contains ExterenzeReferenz class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -23,6 +24,7 @@ class ExterneReferenz(COM):
 
     """
 
-    # required attributes
-    ex_ref_name: str  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
-    ex_ref_wert: str  #: Wert der externen Referenz (z.B. "123456"; "4711")
+    ex_ref_name: Optional[
+        str
+    ] = None  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
+    ex_ref_wert: Optional[str] = None  #: Wert der externen Referenz (z.B. "123456"; "4711")

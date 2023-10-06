@@ -11,8 +11,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -22,8 +26,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -33,8 +41,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -44,17 +56,27 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
+                },
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         }
@@ -62,6 +84,18 @@
     "additionalProperties": true,
     "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "einheitspreis": {
             "anyOf": [
                 {
@@ -69,8 +103,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Einheitspreis"
         },
         "sigmoidparameter": {
@@ -91,8 +129,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzebis"
         },
         "staffelgrenzeVon": {
@@ -102,16 +144,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzevon"
         }
     },
-    "required": [
-        "einheitspreis",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
     "title": "Preisstaffel",
     "type": "object"
 }

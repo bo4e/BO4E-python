@@ -21,18 +21,42 @@
     "additionalProperties": true,
     "description": "Abbildung für ein Zeitintervall. Die Abbildung eines Zeitintervalls.\nZ.B. zur Anwendung als Raster in äquidistanten Zeitreihen/Lastgängen, beispielsweise 15 Minuten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitintervall.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "wert": {
-            "title": "Wert",
-            "type": "integer"
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Wert"
         },
         "zeiteinheit": {
-            "$ref": "#/$defs/Zeiteinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeiteinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "wert",
-        "zeiteinheit"
-    ],
     "title": "Zeitintervall",
     "type": "object"
 }

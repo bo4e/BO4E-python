@@ -23,10 +23,8 @@ class Tarifpreis(Preis):
 
     """
 
-    # required attributes
     #:  Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Preistyp
+    preistyp: Optional[Preistyp] = None
 
-    # optional attributes
     #:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler".
     beschreibung: Optional[str] = None

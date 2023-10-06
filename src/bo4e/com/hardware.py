@@ -2,6 +2,7 @@
 Contains Hardware class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -22,8 +23,7 @@ class Hardware(COM):
 
     """
 
-    # required attributes
     #: Eindeutiger Typ der Hardware
-    geraetetyp: Geraetetyp
+    geraetetyp: Optional[Geraetetyp] = None
     #: Bezeichnung der Hardware
-    bezeichnung: str
+    bezeichnung: Optional[str] = None

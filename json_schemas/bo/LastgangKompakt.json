@@ -1,62 +1,46 @@
 {
     "$defs": {
-        "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
-            "enum": [
-                "ANGEBOT",
-                "ANSPRECHPARTNER",
-                "AUSSCHREIUNG",
-                "BUENDELVERTRAG",
-                "ENERGIEMENGE",
-                "FREMDKOSTEN",
-                "GESCHAEFTSOBJEKT",
-                "GESCHAEFTSPARTNER",
-                "KOSTEN",
-                "LASTGANG",
-                "LASTGANG_KOMPAKT",
-                "MARKTLOKATION",
-                "MESSLOKATION",
-                "MARKTTEILNEHMER",
-                "NETZNUTZUNGSRECHNUNG",
-                "PREISBLATT",
-                "PREISBLATTDIENSTLEISTUNG",
-                "PREISBLATTHARDWARE",
-                "PREISBLATTKONZESSIONSABGABE",
-                "PREISBLATTMESSUNG",
-                "PREISBLATTNETZNUTZUNG",
-                "PREISBLATTUMLAGEN",
-                "RECHNUNG",
-                "REGION",
-                "REGIONALTARIF",
-                "STANDORTEIGENSCHAFTEN",
-                "TARIF",
-                "TARIFINFO",
-                "TARIFKOSTEN",
-                "TARIFPREISBLATT",
-                "VERTRAG",
-                "ZAEHLER",
-                "ZEITREIHE"
-            ],
-            "title": "BoTyp",
-            "type": "string"
-        },
         "ExterneReferenz": {
             "additionalProperties": true,
             "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -160,26 +144,89 @@
             "additionalProperties": true,
             "description": "Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "tag": {
-                    "format": "date-time",
-                    "title": "Tag",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Tag"
                 },
                 "werte": {
-                    "items": {
-                        "$ref": "#/$defs/Zeitreihenwertkompakt"
-                    },
-                    "minItems": 1,
-                    "title": "Werte",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Zeitreihenwertkompakt"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Werte"
                 }
             },
-            "required": [
-                "tag",
-                "werte"
-            ],
             "title": "Tagesvektor",
             "type": "object"
+        },
+        "Typ": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "Typ",
+            "type": "string"
         },
         "Zeiteinheit": {
             "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
@@ -202,18 +249,42 @@
             "additionalProperties": true,
             "description": "Abbildung für ein Zeitintervall. Die Abbildung eines Zeitintervalls.\nZ.B. zur Anwendung als Raster in äquidistanten Zeitreihen/Lastgängen, beispielsweise 15 Minuten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitintervall.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitintervall JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitintervall.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "wert": {
-                    "title": "Wert",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 },
                 "zeiteinheit": {
-                    "$ref": "#/$defs/Zeiteinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeiteinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "wert",
-                "zeiteinheit"
-            ],
             "title": "Zeitintervall",
             "type": "object"
         },
@@ -221,6 +292,18 @@
             "additionalProperties": true,
             "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "status": {
                     "anyOf": [
                         {
@@ -250,14 +333,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert"
-            ],
             "title": "Zeitreihenwertkompakt",
             "type": "object"
         }
@@ -265,10 +349,25 @@
     "additionalProperties": true,
     "description": "Modell zur Abbildung eines kompakten Lastganges.\nIn diesem Modell werden die Messwerte in Form von Tagesvektoren mit fester Anzahl von Werten übertragen.\nDaher ist dieses BO nur zur Übertragung von äquidistanten Messwertverläufen geeignet.",
     "properties": {
-        "boTyp": {
-            "allOf": [
+        "_id": {
+            "anyOf": [
                 {
-                    "$ref": "#/$defs/BoTyp"
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
+        "_typ": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Typ"
+                },
+                {
+                    "type": "null"
                 }
             ],
             "default": "LASTGANG_KOMPAKT"
@@ -285,24 +384,47 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "lokationsId": {
-            "title": "Lokationsid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationsid"
         },
         "lokationstyp": {
-            "title": "Lokationstyp",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationstyp"
         },
         "messgroesse": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "obisKennzahl": {
             "anyOf": [
                 {
-                    "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
                     "type": "string"
                 },
                 {
@@ -313,14 +435,30 @@
             "title": "Obiskennzahl"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tagesvektoren": {
-            "items": {
-                "$ref": "#/$defs/Tagesvektor"
-            },
-            "title": "Tagesvektoren",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Tagesvektor"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tagesvektoren"
         },
         "version": {
             "anyOf": [
@@ -340,17 +478,17 @@
             "type": "string"
         },
         "zeitintervall": {
-            "$ref": "#/$defs/Zeitintervall"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitintervall"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "sparte",
-        "lokationsId",
-        "lokationstyp",
-        "messgroesse",
-        "zeitintervall",
-        "tagesvektoren"
-    ],
     "title": "LastgangKompakt",
     "type": "object"
 }

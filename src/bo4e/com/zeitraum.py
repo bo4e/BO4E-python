@@ -9,7 +9,6 @@ from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
-from bo4e.validators import combinations_of_fields
 
 # pylint: disable=too-few-public-methods
 
@@ -31,36 +30,9 @@ class Zeitraum(COM):
 
     """
 
-    # optional attributes
     einheit: Optional[Zeiteinheit] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[datetime] = None
     enddatum: Optional[datetime] = None
     startzeitpunkt: Optional[datetime] = None
     endzeitpunkt: Optional[datetime] = None
-
-    _time_range_possibilities = combinations_of_fields(
-        "einheit",
-        "dauer",
-        "startdatum",
-        "enddatum",
-        "startzeitpunkt",
-        "endzeitpunkt",
-        valid_combinations={
-            (1, 1, 0, 0, 0, 0),
-            (0, 0, 1, 1, 0, 0),
-            (0, 0, 0, 0, 1, 1),
-        },
-        custom_error_message="""
-        Please choose from one of the three possibilities to specify the timerange:
-        - einheit and dauer
-        - startdatum and enddatum
-        - startzeitpunkt and endzeitpunkt
-        """,
-    )
-    """
-    Validator that ensures that exactly one of the three possibilities to specify the timerange is chosen.
-        - einheit and dauer
-        - startdatum and enddatum
-        - startzeitpunkt and endzeitpunkt
-    """

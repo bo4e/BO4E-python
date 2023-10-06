@@ -2,6 +2,18 @@
     "additionalProperties": true,
     "description": "Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "staffelgrenzeBis": {
             "anyOf": [
                 {
@@ -9,8 +21,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzebis"
         },
         "staffelgrenzeVon": {
@@ -20,8 +36,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzevon"
         },
         "wert": {
@@ -31,16 +51,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wert"
         }
     },
-    "required": [
-        "wert",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
     "title": "AufAbschlagstaffelProOrt",
     "type": "object"
 }

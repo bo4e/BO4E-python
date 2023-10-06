@@ -26,9 +26,16 @@ class TestPreisstaffel:
                 ),
                 {
                     "einheitspreis": Decimal("40"),
-                    "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                    "sigmoidparameter": {
+                        "A": Decimal("1"),
+                        "B": Decimal("2"),
+                        "C": Decimal("3"),
+                        "D": Decimal("4"),
+                        "_id": None,
+                    },
                     "staffelgrenzeVon": Decimal("12.5"),
                     "staffelgrenzeBis": Decimal("25"),
+                    "_id": None,
                 },
                 id="all attributes",
             ),
@@ -39,6 +46,7 @@ class TestPreisstaffel:
                     "staffelgrenzeVon": Decimal("12.5"),
                     "staffelgrenzeBis": Decimal("25"),
                     "sigmoidparameter": None,
+                    "_id": None,
                 },
                 id="only required params",
             ),
@@ -49,12 +57,6 @@ class TestPreisstaffel:
         Test de-/serialisation of Preisstaffel.
         """
         assert_serialization_roundtrip(preisstaffel, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preisstaffel()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "not_a_sigmoid_parameter",

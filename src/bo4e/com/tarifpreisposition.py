@@ -5,9 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -29,16 +27,14 @@ class Tarifpreisposition(COM):
 
     """
 
-    # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Preistyp
+    preistyp: Optional[Preistyp] = None
     #: Einheit des Preises (z.B. EURO)
-    einheit: Waehrungseinheit
+    einheit: Optional[Waehrungseinheit] = None
     #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
-    bezugseinheit: Mengeneinheit
+    bezugseinheit: Optional[Mengeneinheit] = None
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Annotated[list[Preisstaffel], Len(1)]
+    preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = None

@@ -76,27 +76,3 @@ class TestRegionaltarif:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(regionaltarif)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Regionaltarif()  # type: ignore[call-arg]
-        assert "11 validation error" in str(excinfo.value)  # 3 from regionaltarif + 8 from tarifinfo
-
-    def test_failing_validation_list_length_at_least_one(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Regionaltarif(
-                preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                berechnungsparameter=example_tarifberechnungsparameter,
-                tarifpreise=[],
-                bezeichnung="foo",
-                anbietername="der beste stromanbieter",
-                sparte=Sparte.STROM,
-                kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                tarifart=Tarifart.MEHRTARIF,
-                tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
-                tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
-                anbieter=example_marktteilnehmer,
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

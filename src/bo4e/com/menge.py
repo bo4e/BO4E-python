@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -24,8 +25,7 @@ class Menge(COM):
 
     """
 
-    # required attributes
     #: Gibt den absoluten Wert der Menge an
-    wert: Decimal
+    wert: Optional[Decimal] = None
     #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Mengeneinheit
+    einheit: Optional[Mengeneinheit] = None

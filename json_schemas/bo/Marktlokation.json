@@ -4,6 +4,18 @@
             "additionalProperties": true,
             "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -41,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -77,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -93,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -135,46 +162,6 @@
             "title": "Bilanzierungsmethode",
             "type": "string"
         },
-        "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
-            "enum": [
-                "ANGEBOT",
-                "ANSPRECHPARTNER",
-                "AUSSCHREIUNG",
-                "BUENDELVERTRAG",
-                "ENERGIEMENGE",
-                "FREMDKOSTEN",
-                "GESCHAEFTSOBJEKT",
-                "GESCHAEFTSPARTNER",
-                "KOSTEN",
-                "LASTGANG",
-                "LASTGANG_KOMPAKT",
-                "MARKTLOKATION",
-                "MESSLOKATION",
-                "MARKTTEILNEHMER",
-                "NETZNUTZUNGSRECHNUNG",
-                "PREISBLATT",
-                "PREISBLATTDIENSTLEISTUNG",
-                "PREISBLATTHARDWARE",
-                "PREISBLATTKONZESSIONSABGABE",
-                "PREISBLATTMESSUNG",
-                "PREISBLATTNETZNUTZUNG",
-                "PREISBLATTUMLAGEN",
-                "RECHNUNG",
-                "REGION",
-                "REGIONALTARIF",
-                "STANDORTEIGENSCHAFTEN",
-                "TARIF",
-                "TARIFINFO",
-                "TARIFKOSTEN",
-                "TARIFPREISBLATT",
-                "VERTRAG",
-                "ZAEHLER",
-                "ZEITREIHE"
-            ],
-            "title": "BoTyp",
-            "type": "string"
-        },
         "Energierichtung": {
             "description": "Spezifiziert die Energierichtung einer Markt- und/oder Messlokation",
             "enum": [
@@ -188,19 +175,43 @@
             "additionalProperties": true,
             "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -233,6 +244,18 @@
             "additionalProperties": true,
             "description": "This component provides the geo-coordinates for a location.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geokoordinaten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geokoordinaten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geokoordinaten.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "breitengrad": {
                     "anyOf": [
                         {
@@ -240,8 +263,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Breitengrad"
                 },
                 "laengengrad": {
@@ -251,15 +278,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Laengengrad"
                 }
             },
-            "required": [
-                "breitengrad",
-                "laengengrad"
-            ],
             "title": "Geokoordinaten",
             "type": "object"
         },
@@ -267,6 +294,29 @@
             "additionalProperties": true,
             "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_typ": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Typ"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "GESCHAEFTSPARTNER"
+                },
                 "amtsgericht": {
                     "anyOf": [
                         {
@@ -289,14 +339,6 @@
                         }
                     ],
                     "default": null
-                },
-                "boTyp": {
-                    "allOf": [
-                        {
-                            "$ref": "#/$defs/BoTyp"
-                        }
-                    ],
-                    "default": "GESCHAEFTSPARTNER"
                 },
                 "eMailAdresse": {
                     "anyOf": [
@@ -322,19 +364,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -372,12 +430,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -444,11 +510,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -468,19 +529,43 @@
             "additionalProperties": true,
             "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "flurstueck": {
-                    "title": "Flurstueck",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Flurstueck"
                 },
                 "gemarkungFlur": {
-                    "title": "Gemarkungflur",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gemarkungflur"
                 }
             },
-            "required": [
-                "gemarkungFlur",
-                "flurstueck"
-            ],
             "title": "Katasteradresse",
             "type": "object"
         },
@@ -778,8 +863,28 @@
             "additionalProperties": true,
             "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "arithmetik": {
-                    "$ref": "#/$defs/ArithmetischeOperation"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ArithmetischeOperation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "gueltigBis": {
                     "anyOf": [
@@ -808,14 +913,18 @@
                     "title": "Gueltigseit"
                 },
                 "messlokationsId": {
-                    "title": "Messlokationsid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messlokationsid"
                 }
             },
-            "required": [
-                "messlokationsId",
-                "arithmetik"
-            ],
             "title": "Messlokationszuordnung",
             "type": "object"
         },
@@ -850,6 +959,46 @@
             "title": "Sparte",
             "type": "string"
         },
+        "Typ": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "Typ",
+            "type": "string"
+        },
         "Verbrauchsart": {
             "description": "Verbrauchsart einer Marktlokation.",
             "enum": [
@@ -866,6 +1015,29 @@
     "additionalProperties": true,
     "description": "Object containing information about a Marktlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Marktlokation.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
+        "_typ": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Typ"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "MARKTLOKATION"
+        },
         "bilanzierungsgebiet": {
             "anyOf": [
                 {
@@ -879,15 +1051,15 @@
             "title": "Bilanzierungsgebiet"
         },
         "bilanzierungsmethode": {
-            "$ref": "#/$defs/Bilanzierungsmethode"
-        },
-        "boTyp": {
-            "allOf": [
+            "anyOf": [
                 {
-                    "$ref": "#/$defs/BoTyp"
+                    "$ref": "#/$defs/Bilanzierungsmethode"
+                },
+                {
+                    "type": "null"
                 }
             ],
-            "default": "MARKTLOKATION"
+            "default": null
         },
         "endkunde": {
             "anyOf": [
@@ -901,7 +1073,15 @@
             "default": null
         },
         "energierichtung": {
-            "$ref": "#/$defs/Energierichtung"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Energierichtung"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "externeReferenzen": {
             "anyOf": [
@@ -915,7 +1095,7 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "gasqualitaet": {
@@ -1001,8 +1181,16 @@
             "default": null
         },
         "marktlokationsId": {
-            "title": "Marktlokationsid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktlokationsid"
         },
         "netzbetreibercodenr": {
             "anyOf": [
@@ -1017,7 +1205,15 @@
             "title": "Netzbetreibercodenr"
         },
         "netzebene": {
-            "$ref": "#/$defs/Netzebene"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Netzebene"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "netzgebietsnr": {
             "anyOf": [
@@ -1032,7 +1228,15 @@
             "title": "Netzgebietsnr"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "unterbrechbar": {
             "anyOf": [
@@ -1074,13 +1278,6 @@
             "default": null
         }
     },
-    "required": [
-        "marktlokationsId",
-        "sparte",
-        "energierichtung",
-        "bilanzierungsmethode",
-        "netzebene"
-    ],
     "title": "Marktlokation",
     "type": "object"
 }

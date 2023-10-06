@@ -208,6 +208,18 @@
     "additionalProperties": true,
     "description": "Abbildung eines Steuerbetrages.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "basiswert": {
             "anyOf": [
                 {
@@ -215,12 +227,24 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Basiswert"
         },
         "steuerkennzeichen": {
-            "$ref": "#/$defs/Steuerkennzeichen"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Steuerkennzeichen"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "steuerwert": {
             "anyOf": [
@@ -229,20 +253,26 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Steuerwert"
         },
         "waehrung": {
-            "$ref": "#/$defs/Waehrungscode"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waehrungscode"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "steuerkennzeichen",
-        "basiswert",
-        "steuerwert",
-        "waehrung"
-    ],
     "title": "Steuerbetrag",
     "type": "object"
 }

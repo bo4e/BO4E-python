@@ -2,19 +2,43 @@
     "additionalProperties": true,
     "description": "Informationen zum Marktgebiet im Gas.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/MarktgebietInfo.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "marktgebiet": {
-            "title": "Marktgebiet",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktgebiet"
         },
         "marktgebietcode": {
-            "title": "Marktgebietcode",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktgebietcode"
         }
     },
-    "required": [
-        "marktgebiet",
-        "marktgebietcode"
-    ],
     "title": "MarktgebietInfo",
     "type": "object"
 }

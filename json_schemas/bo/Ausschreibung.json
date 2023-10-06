@@ -4,6 +4,18 @@
             "additionalProperties": true,
             "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -41,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -77,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -93,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -116,6 +143,18 @@
             "additionalProperties": true,
             "description": "Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines\nAusschreibungsloses abzubilden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Ausschreibungsdetail.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungsdetail.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "kunde": {
                     "anyOf": [
                         {
@@ -141,14 +180,38 @@
                     "title": "Lastgangvorhanden"
                 },
                 "lieferzeitraum": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "marktlokationsId": {
-                    "title": "Marktlokationsid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktlokationsid"
                 },
                 "marktlokationsadresse": {
-                    "$ref": "#/$defs/Adresse"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Adresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "marktlokationsbezeichnung": {
                     "anyOf": [
@@ -175,12 +238,28 @@
                     "title": "Netzbetreiber"
                 },
                 "netzebeneLieferung": {
-                    "title": "Netzebenelieferung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzebenelieferung"
                 },
                 "netzebeneMessung": {
-                    "title": "Netzebenemessung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzebenemessung"
                 },
                 "prognoseArbeitLieferzeitraum": {
                     "anyOf": [
@@ -250,13 +329,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "marktlokationsId",
-                "netzebeneLieferung",
-                "netzebeneMessung",
-                "marktlokationsadresse",
-                "lieferzeitraum"
-            ],
             "title": "Ausschreibungsdetail",
             "type": "object"
         },
@@ -264,9 +336,29 @@
             "additionalProperties": true,
             "description": "Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Ausschreibungslos.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungslos.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "anzahlLieferstellen": {
-                    "title": "Anzahllieferstellen",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anzahllieferstellen"
                 },
                 "bemerkung": {
                     "anyOf": [
@@ -281,15 +373,39 @@
                     "title": "Bemerkung"
                 },
                 "betreutDurch": {
-                    "title": "Betreutdurch",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Betreutdurch"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "energieart": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "gesamtMenge": {
                     "anyOf": [
@@ -303,22 +419,53 @@
                     "default": null
                 },
                 "lieferstellen": {
-                    "items": {
-                        "$ref": "#/$defs/Ausschreibungsdetail"
-                    },
-                    "minItems": 1,
-                    "title": "Lieferstellen",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Ausschreibungsdetail"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Lieferstellen"
                 },
                 "lieferzeitraum": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "losnummer": {
-                    "title": "Losnummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Losnummer"
                 },
                 "preismodell": {
-                    "$ref": "#/$defs/Preismodell"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preismodell"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wiederholungsintervall": {
                     "anyOf": [
@@ -365,10 +512,26 @@
                     "default": null
                 },
                 "wunschRechnungslegung": {
-                    "$ref": "#/$defs/Rechnungslegung"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Rechnungslegung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wunschVertragsform": {
-                    "$ref": "#/$defs/Vertragsform"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Vertragsform"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wunschZahlungsziel": {
                     "anyOf": [
@@ -382,18 +545,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "losnummer",
-                "bezeichnung",
-                "preismodell",
-                "energieart",
-                "wunschRechnungslegung",
-                "wunschVertragsform",
-                "betreutDurch",
-                "anzahlLieferstellen",
-                "lieferstellen",
-                "lieferzeitraum"
-            ],
             "title": "Ausschreibungslos",
             "type": "object"
         },
@@ -435,63 +586,47 @@
             "title": "Ausschreibungstyp",
             "type": "string"
         },
-        "BoTyp": {
-            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
-            "enum": [
-                "ANGEBOT",
-                "ANSPRECHPARTNER",
-                "AUSSCHREIUNG",
-                "BUENDELVERTRAG",
-                "ENERGIEMENGE",
-                "FREMDKOSTEN",
-                "GESCHAEFTSOBJEKT",
-                "GESCHAEFTSPARTNER",
-                "KOSTEN",
-                "LASTGANG",
-                "LASTGANG_KOMPAKT",
-                "MARKTLOKATION",
-                "MESSLOKATION",
-                "MARKTTEILNEHMER",
-                "NETZNUTZUNGSRECHNUNG",
-                "PREISBLATT",
-                "PREISBLATTDIENSTLEISTUNG",
-                "PREISBLATTHARDWARE",
-                "PREISBLATTKONZESSIONSABGABE",
-                "PREISBLATTMESSUNG",
-                "PREISBLATTNETZNUTZUNG",
-                "PREISBLATTUMLAGEN",
-                "RECHNUNG",
-                "REGION",
-                "REGIONALTARIF",
-                "STANDORTEIGENSCHAFTEN",
-                "TARIF",
-                "TARIFINFO",
-                "TARIFKOSTEN",
-                "TARIFPREISBLATT",
-                "VERTRAG",
-                "ZAEHLER",
-                "ZEITREIHE"
-            ],
-            "title": "BoTyp",
-            "type": "string"
-        },
         "ExterneReferenz": {
             "additionalProperties": true,
             "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -499,6 +634,29 @@
             "additionalProperties": true,
             "description": "Mit diesem Objekt können Geschäftspartner übertragen werden.\nSowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.\nHinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.\nHier sollte daher keine Zuordnung zu Marktrollen erfolgen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geschaeftspartner.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_typ": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Typ"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "GESCHAEFTSPARTNER"
+                },
                 "amtsgericht": {
                     "anyOf": [
                         {
@@ -521,14 +679,6 @@
                         }
                     ],
                     "default": null
-                },
-                "boTyp": {
-                    "allOf": [
-                        {
-                            "$ref": "#/$defs/BoTyp"
-                        }
-                    ],
-                    "default": "GESCHAEFTSPARTNER"
                 },
                 "eMailAdresse": {
                     "anyOf": [
@@ -554,19 +704,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -604,12 +770,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -676,11 +850,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -968,8 +1137,28 @@
             "additionalProperties": true,
             "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -978,15 +1167,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -1046,6 +1235,46 @@
             "title": "Sparte",
             "type": "string"
         },
+        "Typ": {
+            "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
+            "enum": [
+                "ANGEBOT",
+                "ANSPRECHPARTNER",
+                "AUSSCHREIUNG",
+                "BUENDELVERTRAG",
+                "ENERGIEMENGE",
+                "FREMDKOSTEN",
+                "GESCHAEFTSOBJEKT",
+                "GESCHAEFTSPARTNER",
+                "KOSTEN",
+                "LASTGANG",
+                "LASTGANG_KOMPAKT",
+                "MARKTLOKATION",
+                "MESSLOKATION",
+                "MARKTTEILNEHMER",
+                "NETZNUTZUNGSRECHNUNG",
+                "PREISBLATT",
+                "PREISBLATTDIENSTLEISTUNG",
+                "PREISBLATTHARDWARE",
+                "PREISBLATTKONZESSIONSABGABE",
+                "PREISBLATTMESSUNG",
+                "PREISBLATTNETZNUTZUNG",
+                "PREISBLATTUMLAGEN",
+                "RECHNUNG",
+                "REGION",
+                "REGIONALTARIF",
+                "STANDORTEIGENSCHAFTEN",
+                "TARIF",
+                "TARIFINFO",
+                "TARIFKOSTEN",
+                "TARIFPREISBLATT",
+                "VERTRAG",
+                "ZAEHLER",
+                "ZEITREIHE"
+            ],
+            "title": "Typ",
+            "type": "string"
+        },
         "Vertragsform": {
             "description": "Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen.",
             "enum": [
@@ -1093,6 +1322,18 @@
             "additionalProperties": true,
             "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -1179,11 +1420,50 @@
     "additionalProperties": true,
     "description": "Das BO Ausschreibung dient zur detaillierten Darstellung von ausgeschriebenen Energiemengen in der Energiewirtschaft\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Ausschreibung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Ausschreibung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Ausschreibung.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
+        "_typ": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Typ"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "AUSSCHREIUNG"
+        },
         "abgabefrist": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "ausschreibender": {
-            "$ref": "#/$defs/Geschaeftspartner"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geschaeftspartner"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "ausschreibungportal": {
             "anyOf": [
@@ -1197,25 +1477,49 @@
             "default": null
         },
         "ausschreibungsnummer": {
-            "title": "Ausschreibungsnummer",
-            "type": "string"
-        },
-        "ausschreibungsstatus": {
-            "$ref": "#/$defs/Ausschreibungsstatus"
-        },
-        "ausschreibungstyp": {
-            "$ref": "#/$defs/Ausschreibungstyp"
-        },
-        "bindefrist": {
-            "$ref": "#/$defs/Zeitraum"
-        },
-        "boTyp": {
-            "allOf": [
+            "anyOf": [
                 {
-                    "$ref": "#/$defs/BoTyp"
+                    "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
-            "default": "AUSSCHREIUNG"
+            "default": null,
+            "title": "Ausschreibungsnummer"
+        },
+        "ausschreibungsstatus": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Ausschreibungsstatus"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "ausschreibungstyp": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Ausschreibungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "bindefrist": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "externeReferenzen": {
             "anyOf": [
@@ -1229,25 +1533,48 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "kostenpflichtig": {
-            "title": "Kostenpflichtig",
-            "type": "boolean"
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Kostenpflichtig"
         },
         "lose": {
-            "items": {
-                "$ref": "#/$defs/Ausschreibungslos"
-            },
-            "minItems": 1,
-            "title": "Lose",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Ausschreibungslos"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lose"
         },
         "veroeffentlichungszeitpunkt": {
-            "format": "date-time",
-            "title": "Veroeffentlichungszeitpunkt",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Veroeffentlichungszeitpunkt"
         },
         "versionstruktur": {
             "default": "2",
@@ -1267,17 +1594,6 @@
             "title": "Webseite"
         }
     },
-    "required": [
-        "ausschreibungsnummer",
-        "ausschreibungstyp",
-        "ausschreibungsstatus",
-        "kostenpflichtig",
-        "veroeffentlichungszeitpunkt",
-        "ausschreibender",
-        "abgabefrist",
-        "bindefrist",
-        "lose"
-    ],
     "title": "Ausschreibung",
     "type": "object"
 }

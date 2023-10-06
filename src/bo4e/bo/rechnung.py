@@ -4,7 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -12,9 +14,9 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -33,39 +35,37 @@ class Rechnung(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.RECHNUNG
-    storno: bool
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.RECHNUNG
+    storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;
     im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
     """
     #: Eine im Verwendungskontext eindeutige Nummer für die Rechnung
-    rechnungsnummer: str
+    rechnungsnummer: Optional[str] = None
     #: Ausstellungsdatum der Rechnung
-    rechnungsdatum: datetime
+    rechnungsdatum: Optional[datetime] = None
     #: Zu diesem Datum ist die Zahlung fällig
-    faelligkeitsdatum: datetime
+    faelligkeitsdatum: Optional[datetime] = None
     #: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung
-    rechnungstyp: Rechnungstyp
+    rechnungstyp: Optional[Rechnungstyp] = None
     #: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung
-    rechnungsperiode: Zeitraum
+    rechnungsperiode: Optional[Zeitraum] = None
     #: Der Aussteller der Rechnung
-    rechnungsersteller: Geschaeftspartner
+    rechnungsersteller: Optional[Geschaeftspartner] = None
     #: Der Aussteller der Rechnung
-    rechnungsempfaenger: Geschaeftspartner
+    rechnungsempfaenger: Optional[Geschaeftspartner] = None
     #: Die Summe der Nettobeträge der Rechnungsteile
-    gesamtnetto: Betrag
+    gesamtnetto: Optional[Betrag] = None
     #: Die Summe der Steuerbeträge der Rechnungsteile
-    gesamtsteuer: Betrag
+    gesamtsteuer: Optional[Betrag] = None
     #: Die Summe aus Netto- und Steuerbetrag
-    gesamtbrutto: Betrag
+    gesamtbrutto: Optional[Betrag] = None
     #: Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt
-    zuzahlen: Betrag
+    zuzahlen: Optional[Betrag] = None
     #: Die Rechnungspositionen
-    rechnungspositionen: List[Rechnungsposition]
+    rechnungspositionen: Optional[list[Rechnungsposition]] = None
 
-    # optional attributes
     #: Bezeichnung für die vorliegende Rechnung
     rechnungstitel: Optional[str] = None
     #: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes
@@ -76,7 +76,7 @@ class Rechnung(Geschaeftsobjekt):
     vorausgezahlt: Optional[Betrag] = None
     #: Gesamtrabatt auf den Bruttobetrag
     rabatt_brutto: Optional[Betrag] = None
-    steuerbetraege: Optional[List[Steuerbetrag]] = None
+    steuerbetraege: Optional[list[Steuerbetrag]] = None
     """
     Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
     die Summe dieser Beträge ergibt den Wert für gesamtsteuer.

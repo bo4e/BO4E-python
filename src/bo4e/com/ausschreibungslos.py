@@ -4,9 +4,7 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
 from bo4e.com.com import COM
@@ -31,32 +29,30 @@ class Ausschreibungslos(COM):
 
     """
 
-    # required attributes
     #: Laufende Nummer des Loses
-    losnummer: str
+    losnummer: Optional[str] = None
     #: Bezeichnung der Ausschreibung
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
-    preismodell: Preismodell
+    preismodell: Optional[Preismodell] = None
 
     #: Unterscheidungsmöglichkeiten für die Sparte
-    energieart: Sparte
+    energieart: Optional[Sparte] = None
     #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
-    wunsch_rechnungslegung: Rechnungslegung
+    wunsch_rechnungslegung: Optional[Rechnungslegung] = None
     #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
-    wunsch_vertragsform: Vertragsform
+    wunsch_vertragsform: Optional[Vertragsform] = None
     #: Name des Lizenzpartners
-    betreut_durch: str
+    betreut_durch: Optional[str] = None
     #: Anzahl der Lieferstellen in dieser Ausschreibung
-    anzahl_lieferstellen: int
+    anzahl_lieferstellen: Optional[int] = None
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: Annotated[list[Ausschreibungsdetail], Len(1)]
+    lieferstellen: Optional[list[Ausschreibungsdetail]] = None
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Zeitraum
+    lieferzeitraum: Optional[Zeitraum] = None
 
-    # optional attributes
     #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
     #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an

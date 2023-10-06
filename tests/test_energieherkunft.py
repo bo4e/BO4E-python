@@ -18,10 +18,7 @@ class TestEnergieherkunft:
         [
             pytest.param(
                 example_energieherkunft,
-                {
-                    "erzeugungsart": Erzeugungsart.BIOMASSE,
-                    "anteilProzent": Decimal("25.5"),
-                },
+                {"erzeugungsart": Erzeugungsart.BIOMASSE, "anteilProzent": Decimal("25.5"), "_id": None},
             ),
         ],
     )
@@ -32,23 +29,3 @@ class TestEnergieherkunft:
         Test de-/serialisation of Energieherkunft with minimal attributes.
         """
         assert_serialization_roundtrip(energieherkunft, expected_json_dict)
-
-    def test_energieherkunft_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Energieherkunft()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    @pytest.mark.parametrize(
-        "failing_percentage",
-        [
-            pytest.param(100.1),
-            pytest.param(-2),
-        ],
-    )
-    def test_energieherkunft_failing_validation(self, failing_percentage: float) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = (Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(failing_percentage)),)
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "should be less than 100" in str(excinfo.value) or "should be greater than 0" in str(excinfo.value)

@@ -10,11 +10,11 @@ from bo4e.com.adresse import Adresse
 from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.landescode import Landescode
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -75,12 +75,14 @@ class TestBuendelvertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "_typ": Typ.GESCHAEFTSPARTNER,
+        "externeReferenzen": None,
         "hrnummer": None,
         "amtsgericht": None,
+        "_id": None,
     }
     _vertragspartner2_dict: Dict[str, Any] = {
         "name1": "Eckart",
@@ -97,19 +99,21 @@ class TestBuendelvertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "_typ": Typ.GESCHAEFTSPARTNER,
+        "externeReferenzen": None,
         "anrede": None,
         "name3": None,
         "hrnummer": None,
         "amtsgericht": None,
-        "kontaktweg": [],
+        "kontaktweg": None,
         "umsatzsteuerId": None,
         "glaeubigerId": None,
         "eMailAdresse": None,
         "website": None,
+        "_id": None,
     }
 
     @pytest.mark.parametrize(
@@ -136,13 +140,14 @@ class TestBuendelvertrag:
                     "vertragspartner1": _vertragspartner1_dict,
                     "vertragspartner2": _vertragspartner2_dict,
                     "versionstruktur": "2",
-                    "boTyp": BoTyp.BUENDELVERTRAG,
-                    "externeReferenzen": [],
-                    "einzelvertraege": [],
-                    "vertragskonditionen": [],
-                    "unterzeichnervp1": [],
-                    "unterzeichnervp2": [],
+                    "_typ": Typ.BUENDELVERTRAG,
+                    "externeReferenzen": None,
+                    "einzelvertraege": None,
+                    "vertragskonditionen": None,
+                    "unterzeichnervp1": None,
+                    "unterzeichnervp2": None,
                     "beschreibung": None,
+                    "_id": None,
                 },
                 id="minimal fields",
             ),
@@ -164,8 +169,8 @@ class TestBuendelvertrag:
                 ),
                 {
                     "versionstruktur": "2",
-                    "boTyp": BoTyp.BUENDELVERTRAG,
-                    "externeReferenzen": [],
+                    "_typ": Typ.BUENDELVERTRAG,
+                    "externeReferenzen": None,
                     "vertragsnummer": "1234567890",
                     "vertragsart": Vertragsart.NETZNUTZUNGSVERTRAG,
                     "vertragsstatus": Vertragsstatus.AKTIV,
@@ -183,14 +188,16 @@ class TestBuendelvertrag:
                             "kuendigungsfrist": None,
                             "vertragsverlaengerung": None,
                             "abschlagszyklus": None,
+                            "_id": None,
                         }
                     ],
-                    "unterzeichnervp1": [{"name": "Helga van der Waal", "ort": None, "datum": None}],
+                    "unterzeichnervp1": [{"name": "Helga van der Waal", "ort": None, "datum": None, "_id": None}],
                     "unterzeichnervp2": [
-                        {"name": "Björn oder so", "ort": None, "datum": None},
-                        {"name": "Zweiter Typ", "ort": None, "datum": None},
+                        {"name": "Björn oder so", "ort": None, "datum": None, "_id": None},
+                        {"name": "Zweiter Typ", "ort": None, "datum": None, "_id": None},
                     ],
                     "beschreibung": "Das ist ein Bündelvertrag mit allen optionalen Feldern ausgefüllt.",
+                    "_id": None,
                 },
                 id="maximal fields",
             ),
@@ -198,9 +205,3 @@ class TestBuendelvertrag:
     )
     def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag, expected_dict: Dict[str, Any]) -> None:
         assert_serialization_roundtrip(buendelvertrag, expected_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Buendelvertrag()  # type: ignore[call-arg]
-
-        assert "8 validation errors" in str(excinfo.value)

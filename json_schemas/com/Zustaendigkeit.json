@@ -70,6 +70,18 @@
     "additionalProperties": true,
     "description": "Enthält die zeitliche Zuordnung eines Ansprechpartners zu Abteilungen und Zuständigkeiten.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zustaendigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zustaendigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zustaendigkeit.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "abteilung": {
             "anyOf": [
                 {
@@ -95,12 +107,17 @@
             "title": "Jobtitel"
         },
         "themengebiet": {
-            "$ref": "#/$defs/Themengebiet"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Themengebiet"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "themengebiet"
-    ],
     "title": "Zustaendigkeit",
     "type": "object"
 }

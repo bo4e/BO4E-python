@@ -1,11 +1,13 @@
 """
 Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization
 """
+from typing import Annotated, Optional
 
+from pydantic import Field
 
 from bo4e.bo.preisblatt import Preisblatt
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kundengruppeka import KundengruppeKA
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -23,9 +25,9 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.PREISBLATTKONZESSIONSABGABE
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTKONZESSIONSABGABE
     # required attributes (additional to those of Preisblatt)
     #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
-    kundengruppe_k_a: KundengruppeKA
+    kundengruppe_k_a: Optional[KundengruppeKA] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

@@ -56,18 +56,42 @@
     "additionalProperties": true,
     "description": "Abbildung einer abrechenbaren Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "geraetetyp": {
-            "$ref": "#/$defs/Geraetetyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geraetetyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "geraetetyp",
-        "bezeichnung"
-    ],
     "title": "Hardware",
     "type": "object"
 }

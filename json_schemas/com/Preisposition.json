@@ -159,6 +159,18 @@
             "additionalProperties": true,
             "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisstaffel.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "einheitspreis": {
                     "anyOf": [
                         {
@@ -166,8 +178,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Einheitspreis"
                 },
                 "sigmoidparameter": {
@@ -188,8 +204,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -199,16 +219,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "einheitspreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "Preisstaffel",
             "type": "object"
         },
@@ -223,8 +242,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -234,8 +257,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -245,8 +272,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -256,17 +287,27 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
+                },
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         },
@@ -310,6 +351,18 @@
     "additionalProperties": true,
     "description": "Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Preisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "bdewArtikelnummer": {
             "anyOf": [
                 {
@@ -322,10 +375,26 @@
             "default": null
         },
         "berechnungsmethode": {
-            "$ref": "#/$defs/Kalkulationsmethode"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Kalkulationsmethode"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "bezugsgroesse": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "freimengeBlindarbeit": {
             "anyOf": [
@@ -370,22 +439,53 @@
             "title": "Gruppenartikelid"
         },
         "leistungsbezeichnung": {
-            "title": "Leistungsbezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Leistungsbezeichnung"
         },
         "leistungstyp": {
-            "$ref": "#/$defs/Leistungstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Leistungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "preiseinheit": {
-            "$ref": "#/$defs/Waehrungseinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waehrungseinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "preisstaffeln": {
-            "items": {
-                "$ref": "#/$defs/Preisstaffel"
-            },
-            "minItems": 1,
-            "title": "Preisstaffeln",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Preisstaffel"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preisstaffeln"
         },
         "tarifzeit": {
             "anyOf": [
@@ -421,14 +521,6 @@
             "default": null
         }
     },
-    "required": [
-        "berechnungsmethode",
-        "leistungstyp",
-        "leistungsbezeichnung",
-        "preiseinheit",
-        "bezugsgroesse",
-        "preisstaffeln"
-    ],
     "title": "Preisposition",
     "type": "object"
 }

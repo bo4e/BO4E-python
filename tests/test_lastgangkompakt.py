@@ -36,13 +36,14 @@ class TestLastgangKompakt:
                     "sparte": Sparte.STROM,
                     "lokationstyp": Lokationstyp.MELO,
                     "messgroesse": Mengeneinheit.KWH,
-                    "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1},
+                    "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1, "_id": None},
                     "tagesvektoren": [example_tagesvektor_json],
                     "versionstruktur": "2",
-                    "externeReferenzen": [],
+                    "externeReferenzen": None,
                     "lokationsId": "DE0000011111222223333344444555556",
-                    "boTyp": "LASTGANG_KOMPAKT",
+                    "_typ": "LASTGANG_KOMPAKT",
                     "obisKennzahl": "1-0:1.8.1",
+                    "_id": None,
                 },
             ),
         ],
@@ -54,9 +55,3 @@ class TestLastgangKompakt:
         Test de-/serialisation of LastgangKompakt.
         """
         assert_serialization_roundtrip(lastgang_kompakt, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = LastgangKompakt()  # type: ignore[call-arg]
-
-        assert "6 validation errors" in str(excinfo.value)

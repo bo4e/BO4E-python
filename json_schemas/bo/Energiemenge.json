@@ -1,6 +1,80 @@
 {
     "$defs": {
-        "BoTyp": {
+        "ExterneReferenz": {
+            "additionalProperties": true,
+            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "exRefName": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
+                },
+                "exRefWert": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
+                }
+            },
+            "title": "ExterneReferenz",
+            "type": "object"
+        },
+        "Lokationstyp": {
+            "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt.",
+            "enum": [
+                "MALO",
+                "MELO"
+            ],
+            "title": "Lokationstyp",
+            "type": "string"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Typ": {
             "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
             "enum": [
                 "ANGEBOT",
@@ -37,65 +111,35 @@
                 "ZAEHLER",
                 "ZEITREIHE"
             ],
-            "title": "BoTyp",
-            "type": "string"
-        },
-        "ExterneReferenz": {
-            "additionalProperties": true,
-            "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
-            "properties": {
-                "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
-                },
-                "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
-                }
-            },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
-            "title": "ExterneReferenz",
-            "type": "object"
-        },
-        "Lokationstyp": {
-            "description": "Gibt an, ob es sich um eine Markt- oder Messlokation handelt.",
-            "enum": [
-                "MALO",
-                "MELO"
-            ],
-            "title": "Lokationstyp",
-            "type": "string"
-        },
-        "Mengeneinheit": {
-            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
-            "enum": [
-                "W",
-                "WH",
-                "KW",
-                "KWH",
-                "KVARH",
-                "MW",
-                "MWH",
-                "STUECK",
-                "KUBIKMETER",
-                "STUNDE",
-                "TAG",
-                "MONAT",
-                "JAHR",
-                "PROZENT"
-            ],
-            "title": "Mengeneinheit",
+            "title": "Typ",
             "type": "string"
         },
         "Verbrauch": {
             "additionalProperties": true,
             "description": "Abbildung eines zeitlich abgegrenzten Verbrauchs\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verbrauch.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verbrauch.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "enddatum": {
                     "anyOf": [
@@ -111,9 +155,16 @@
                     "title": "Enddatum"
                 },
                 "obisKennzahl": {
-                    "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-                    "title": "Obiskennzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Obiskennzahl"
                 },
                 "startdatum": {
                     "anyOf": [
@@ -135,20 +186,26 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 },
                 "wertermittlungsverfahren": {
-                    "$ref": "#/$defs/Wertermittlungsverfahren"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Wertermittlungsverfahren"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "wertermittlungsverfahren",
-                "obisKennzahl",
-                "wert",
-                "einheit"
-            ],
             "title": "Verbrauch",
             "type": "object"
         },
@@ -165,21 +222,43 @@
     "additionalProperties": true,
     "description": "Abbildung von Mengen, die Lokationen zugeordnet sind\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Energiemenge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Energiemenge.json>`_",
     "properties": {
-        "boTyp": {
-            "allOf": [
+        "_id": {
+            "anyOf": [
                 {
-                    "$ref": "#/$defs/BoTyp"
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
+        "_typ": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Typ"
+                },
+                {
+                    "type": "null"
                 }
             ],
             "default": "ENERGIEMENGE"
         },
         "energieverbrauch": {
-            "items": {
-                "$ref": "#/$defs/Verbrauch"
-            },
-            "minItems": 1,
-            "title": "Energieverbrauch",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Verbrauch"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Energieverbrauch"
         },
         "externeReferenzen": {
             "anyOf": [
@@ -193,15 +272,31 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "lokationsId": {
-            "title": "Lokationsid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationsid"
         },
         "lokationstyp": {
-            "$ref": "#/$defs/Lokationstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Lokationstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "versionstruktur": {
             "default": "2",
@@ -209,11 +304,6 @@
             "type": "string"
         }
     },
-    "required": [
-        "lokationsId",
-        "lokationstyp",
-        "energieverbrauch"
-    ],
     "title": "Energiemenge",
     "type": "object"
 }

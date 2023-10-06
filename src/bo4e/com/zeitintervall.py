@@ -2,6 +2,7 @@
 Contains Zeitintervall class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.zeiteinheit import Zeiteinheit
@@ -23,12 +24,11 @@ class Zeitintervall(COM):
 
     """
 
-    # required attributes
-    wert: int
+    wert: Optional[int] = None
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
     """
-    zeiteinheit: Zeiteinheit
+    zeiteinheit: Optional[Zeiteinheit] = None
     """
     Die Einheit des Zeitintervalls
     """

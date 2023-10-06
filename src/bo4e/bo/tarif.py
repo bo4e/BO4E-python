@@ -3,9 +3,9 @@ Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import datetime
-from typing import Annotated, List, Optional
+from typing import Annotated, Optional
 
-from annotated_types import Len
+from pydantic import Field
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlagregional import AufAbschlagRegional
@@ -13,7 +13,7 @@ from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -32,18 +32,16 @@ class Tarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.TARIF
-    # required attributes
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: datetime
+    preisstand: Optional[datetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Tarifberechnungsparameter
+    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Annotated[list[TarifpreispositionProOrt], Len(1)]
+    tarifpreise: Optional[list[TarifpreispositionProOrt]] = None
 
-    # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
-    tarif_auf_abschlaege: Optional[List[AufAbschlagRegional]] = None
+    tarif_auf_abschlaege: Optional[list[AufAbschlagRegional]] = None
     # todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional
     # https://github.com/Hochfrequenz/BO4E-python/issues/345
 
