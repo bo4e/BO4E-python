@@ -504,6 +504,17 @@
                     "default": null,
                     "title": "Externereferenzen"
                 },
+                "geraeteklasse": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraeteklasse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
                 "geraetemerkmal": {
                     "anyOf": [
                         {
@@ -546,6 +557,20 @@
             },
             "title": "Geraet",
             "type": "object"
+        },
+        "Geraeteklasse": {
+            "description": "Auflistung möglicher übergreifenden Geräteklassen.",
+            "enum": [
+                "WANDLER",
+                "KOMMUNIKATIONSEINRICHTUNG",
+                "TECHNISCHE_STEUEREINRICHTUNG",
+                "MENGENUMWERTER",
+                "SMARTMETER_GATEWAY",
+                "STEUERBOX",
+                "ZAEHLEINRICHTUNG"
+            ],
+            "title": "Geraeteklasse",
+            "type": "string"
         },
         "Geraetemerkmal": {
             "description": "Auflistung möglicher abzurechnender Gerätetypen.",

@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.enum.geraeteklasse import Geraeteklasse
 from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 
@@ -28,7 +29,9 @@ class Geraet(Geschaeftsobjekt):
     geraetenummer: Optional[str] = None
     #: Bezeichnung des Geräts
     bezeichnung: Optional[str] = None
-    #: Der Typ eines Gerätes, beispielsweise Drehstromzähler
+    #: Die übergreifende Klasse eines Geräts, beispielsweise Wandler
+    geraeteklasse: Optional[Geraeteklasse] = None
+    #: Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
     geraetetyp: Optional[Geraetetyp] = None
     #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..
     geraetemerkmal: Optional[Geraetemerkmal] = None
