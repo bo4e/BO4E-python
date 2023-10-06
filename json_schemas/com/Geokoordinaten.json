@@ -21,8 +21,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Breitengrad"
         },
         "laengengrad": {
@@ -32,15 +36,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Laengengrad"
         }
     },
-    "required": [
-        "breitengrad",
-        "laengengrad"
-    ],
     "title": "Geokoordinaten",
     "type": "object"
 }

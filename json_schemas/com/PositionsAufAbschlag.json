@@ -35,10 +35,26 @@
             "title": " Id"
         },
         "aufAbschlagstyp": {
-            "$ref": "#/$defs/AufAbschlagstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/AufAbschlagstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "aufAbschlagswaehrung": {
-            "$ref": "#/$defs/Waehrungseinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waehrungseinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "aufAbschlagswert": {
             "anyOf": [
@@ -47,8 +63,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Aufabschlagswert"
         },
         "beschreibung": {
@@ -64,16 +84,18 @@
             "title": "Beschreibung"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         }
     },
-    "required": [
-        "bezeichnung",
-        "aufAbschlagstyp",
-        "aufAbschlagswert",
-        "aufAbschlagswaehrung"
-    ],
     "title": "PositionsAufAbschlag",
     "type": "object"
 }

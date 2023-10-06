@@ -1,7 +1,7 @@
 """
 Contains PreisblattHardware class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Optional
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
@@ -29,16 +29,16 @@ class PreisblattHardware(Preisblatt):
     bo_typ: BoTyp = BoTyp.PREISBLATTHARDWARE
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Bilanzierungsmethode
+    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
-    messebene: Netzebene
+    messebene: Optional[Netzebene] = None
 
     #: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät
-    basisgeraet: Geraeteeigenschaften
+    basisgeraet: Optional[Geraeteeigenschaften] = None
 
     # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
-    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = None
+    inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: Optional[List[Geraeteeigenschaften]] = None
+    inklusive_geraete: Optional[list[Geraeteeigenschaften]] = None

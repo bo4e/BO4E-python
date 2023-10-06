@@ -51,17 +51,6 @@ class TestTarifpreis:
         assert "wert" in str(excinfo.value)
         assert "type=decimal_parsing" in str(excinfo.value)
 
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreis(  # type: ignore[call-arg]
-                wert=Decimal(3.50),
-                einheit=Waehrungseinheit.EUR,
-                status=Preisstatus.ENDGUELTIG,
-                bezugswert=Mengeneinheit.KWH,
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-
     def test_optional_attribute(self) -> None:
         tarifpreis = Tarifpreis(
             wert=Decimal(3.50),

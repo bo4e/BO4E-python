@@ -47,19 +47,50 @@
             "title": " Id"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "einheit": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "obisKennzahl": {
-            "pattern": "(?:(1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2}))|(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-            "title": "Obiskennzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Obiskennzahl"
         },
         "richtung": {
-            "$ref": "#/$defs/Energierichtung"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Energierichtung"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wandlerfaktor": {
             "anyOf": [
@@ -68,23 +99,27 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wandlerfaktor"
         },
         "zaehlwerkId": {
-            "title": "Zaehlwerkid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Zaehlwerkid"
         }
     },
-    "required": [
-        "zaehlwerkId",
-        "bezeichnung",
-        "richtung",
-        "obisKennzahl",
-        "wandlerfaktor",
-        "einheit"
-    ],
     "title": "Zaehlwerk",
     "type": "object"
 }

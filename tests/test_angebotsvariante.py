@@ -74,9 +74,3 @@ class TestAngebotsvariante:
         Test de-/serialisation roundtrip.
         """
         assert_serialization_roundtrip(angebotsvariante, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Angebotsvariante()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

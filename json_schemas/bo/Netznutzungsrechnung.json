@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -194,7 +209,15 @@
                     "title": " Id"
                 },
                 "waehrung": {
-                    "$ref": "#/$defs/Waehrungscode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungscode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -203,15 +226,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "waehrung"
-            ],
             "title": "Betrag",
             "type": "object"
         },
@@ -272,18 +295,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -358,19 +393,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -408,12 +459,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -480,11 +539,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -785,7 +839,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -794,15 +856,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -869,10 +931,26 @@
                     "title": " Id"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -892,16 +970,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert"
-            ],
             "title": "Preis",
             "type": "object"
         },
@@ -954,17 +1031,41 @@
                     "default": null
                 },
                 "einzelpreis": {
-                    "$ref": "#/$defs/Preis"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "lieferungBis": {
-                    "format": "date-time",
-                    "title": "Lieferungbis",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Lieferungbis"
                 },
                 "lieferungVon": {
-                    "format": "date-time",
-                    "title": "Lieferungvon",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Lieferungvon"
                 },
                 "lokationsId": {
                     "anyOf": [
@@ -979,15 +1080,39 @@
                     "title": "Lokationsid"
                 },
                 "positionsMenge": {
-                    "$ref": "#/$defs/Menge"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Menge"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "positionsnummer": {
-                    "title": "Positionsnummer",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Positionsnummer"
                 },
                 "positionstext": {
-                    "title": "Positionstext",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Positionstext"
                 },
                 "teilrabattNetto": {
                     "anyOf": [
@@ -1001,10 +1126,26 @@
                     "default": null
                 },
                 "teilsummeNetto": {
-                    "$ref": "#/$defs/Betrag"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Betrag"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "teilsummeSteuer": {
-                    "$ref": "#/$defs/Steuerbetrag"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Steuerbetrag"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "zeitbezogeneMenge": {
                     "anyOf": [
@@ -1029,16 +1170,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "positionsnummer",
-                "lieferungVon",
-                "lieferungBis",
-                "positionstext",
-                "positionsMenge",
-                "einzelpreis",
-                "teilsummeNetto",
-                "teilsummeSteuer"
-            ],
             "title": "Rechnungsposition",
             "type": "object"
         },
@@ -1104,12 +1235,24 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Basiswert"
                 },
                 "steuerkennzeichen": {
-                    "$ref": "#/$defs/Steuerkennzeichen"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Steuerkennzeichen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "steuerwert": {
                     "anyOf": [
@@ -1118,20 +1261,26 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Steuerwert"
                 },
                 "waehrung": {
-                    "$ref": "#/$defs/Waehrungscode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungscode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "steuerkennzeichen",
-                "basiswert",
-                "steuerwert",
-                "waehrung"
-            ],
             "title": "Steuerbetrag",
             "type": "object"
         },
@@ -1480,9 +1629,16 @@
             "title": " Id"
         },
         "absendercodenummer": {
-            "pattern": "^\\d{13}$",
-            "title": "Absendercodenummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Absendercodenummer"
         },
         "boTyp": {
             "allOf": [
@@ -1493,9 +1649,16 @@
             "default": "NETZNUTZUNGSRECHNUNG"
         },
         "empfaengercodenummer": {
-            "pattern": "^\\d{13}$",
-            "title": "Empfaengercodenummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Empfaengercodenummer"
         },
         "externeReferenzen": {
             "anyOf": [
@@ -1509,22 +1672,54 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "faelligkeitsdatum": {
-            "format": "date-time",
-            "title": "Faelligkeitsdatum",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Faelligkeitsdatum"
         },
         "gesamtbrutto": {
-            "$ref": "#/$defs/Betrag"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Betrag"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "gesamtnetto": {
-            "$ref": "#/$defs/Betrag"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Betrag"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "gesamtsteuer": {
-            "$ref": "#/$defs/Betrag"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Betrag"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "lokationsId": {
             "anyOf": [
@@ -1539,14 +1734,38 @@
             "title": "Lokationsid"
         },
         "nnrechnungsart": {
-            "$ref": "#/$defs/NNRechnungsart"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/NNRechnungsart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "nnrechnungstyp": {
-            "$ref": "#/$defs/NNRechnungstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/NNRechnungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "original": {
-            "title": "Original",
-            "type": "boolean"
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Original"
         },
         "originalRechnungsnummer": {
             "anyOf": [
@@ -1572,29 +1791,77 @@
             "default": null
         },
         "rechnungsdatum": {
-            "format": "date-time",
-            "title": "Rechnungsdatum",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Rechnungsdatum"
         },
         "rechnungsempfaenger": {
-            "$ref": "#/$defs/Geschaeftspartner"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geschaeftspartner"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "rechnungsersteller": {
-            "$ref": "#/$defs/Geschaeftspartner"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geschaeftspartner"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "rechnungsnummer": {
-            "title": "Rechnungsnummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Rechnungsnummer"
         },
         "rechnungsperiode": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "rechnungspositionen": {
-            "items": {
-                "$ref": "#/$defs/Rechnungsposition"
-            },
-            "title": "Rechnungspositionen",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Rechnungsposition"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Rechnungspositionen"
         },
         "rechnungsstatus": {
             "anyOf": [
@@ -1620,14 +1887,38 @@
             "title": "Rechnungstitel"
         },
         "rechnungstyp": {
-            "$ref": "#/$defs/Rechnungstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Rechnungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "simuliert": {
-            "title": "Simuliert",
-            "type": "boolean"
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Simuliert"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "steuerbetraege": {
             "anyOf": [
@@ -1645,8 +1936,16 @@
             "title": "Steuerbetraege"
         },
         "storno": {
-            "title": "Storno",
-            "type": "boolean"
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Storno"
         },
         "versionstruktur": {
             "default": "2",
@@ -1665,31 +1964,17 @@
             "default": null
         },
         "zuzahlen": {
-            "$ref": "#/$defs/Betrag"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Betrag"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "storno",
-        "rechnungsnummer",
-        "rechnungsdatum",
-        "faelligkeitsdatum",
-        "rechnungstyp",
-        "rechnungsperiode",
-        "rechnungsersteller",
-        "rechnungsempfaenger",
-        "gesamtnetto",
-        "gesamtsteuer",
-        "gesamtbrutto",
-        "zuzahlen",
-        "rechnungspositionen",
-        "sparte",
-        "absendercodenummer",
-        "empfaengercodenummer",
-        "nnrechnungsart",
-        "nnrechnungstyp",
-        "original",
-        "simuliert"
-    ],
     "title": "Netznutzungsrechnung",
     "type": "object"
 }

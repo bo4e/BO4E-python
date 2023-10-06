@@ -30,9 +30,3 @@ class TestTarifpreisstaffelProOrt:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifpreisstaffelproort)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = TarifpreisstaffelProOrt()  # type: ignore[call-arg]
-
-        assert "5 validation errors" in str(excinfo.value)

@@ -51,7 +51,7 @@ class TestGeschaeftsobjekt:
     def test_initialization_with_minimal_attributs(self) -> None:
         go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)
 
-        assert go.externe_referenzen == []
+        assert go.externe_referenzen is None
         assert go.versionstruktur == "2"
 
     def test_no_list_in_externen_referenzen(self) -> None:

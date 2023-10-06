@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.waehrungscode import Waehrungscode
@@ -26,5 +27,5 @@ class Betrag(COM):
     """
 
     # required attributes
-    wert: Decimal  #: Gibt den Betrag des Preises an.
-    waehrung: Waehrungscode  #: Die entsprechende Waehrung
+    wert: Optional[Decimal] = None  #: Gibt den Betrag des Preises an.
+    waehrung: Optional[Waehrungscode] = None  #: Die entsprechende Waehrung

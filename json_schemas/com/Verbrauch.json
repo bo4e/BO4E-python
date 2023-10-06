@@ -47,7 +47,15 @@
             "title": " Id"
         },
         "einheit": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "enddatum": {
             "anyOf": [
@@ -63,9 +71,16 @@
             "title": "Enddatum"
         },
         "obisKennzahl": {
-            "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-            "title": "Obiskennzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Obiskennzahl"
         },
         "startdatum": {
             "anyOf": [
@@ -87,20 +102,26 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wert"
         },
         "wertermittlungsverfahren": {
-            "$ref": "#/$defs/Wertermittlungsverfahren"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Wertermittlungsverfahren"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "wertermittlungsverfahren",
-        "obisKennzahl",
-        "wert",
-        "einheit"
-    ],
     "title": "Verbrauch",
     "type": "object"
 }

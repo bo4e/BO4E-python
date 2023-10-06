@@ -17,7 +17,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -26,15 +34,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -121,20 +129,32 @@
             "default": null
         },
         "vertragsteilbeginn": {
-            "format": "date-time",
-            "title": "Vertragsteilbeginn",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Vertragsteilbeginn"
         },
         "vertragsteilende": {
-            "format": "date-time",
-            "title": "Vertragsteilende",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Vertragsteilende"
         }
     },
-    "required": [
-        "vertragsteilbeginn",
-        "vertragsteilende"
-    ],
     "title": "Vertragsteil",
     "type": "object"
 }

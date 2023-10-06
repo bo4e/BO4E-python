@@ -34,9 +34,3 @@ class TestAufAbschlagstaffelProOrt:
         Test de-/serialisation of AufAbschlagstaffelProOrt with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlagstaffelproort, expected_json_dict)
-
-    def test_aufabschlagstaffelproort_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlagstaffelProOrt()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)

@@ -94,9 +94,3 @@ class TestKostenblock:
         Test de-/serialisation of kostenblock.
         """
         assert_serialization_roundtrip(kostenblock, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Kostenblock()  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)

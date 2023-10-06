@@ -38,12 +38,12 @@ class TestEnergiemix:
                     "bezeichnung": "foo",
                     "gueltigkeitsjahr": 2021,
                     "anteil": [{"erzeugungsart": Erzeugungsart.BIOGAS, "anteilProzent": Decimal("40"), "_id": None}],
-                    "oekolabel": [],
+                    "oekolabel": None,
                     "bemerkung": None,
                     "co2Emission": None,
                     "atommuell": None,
                     "website": None,
-                    "oekozertifikate": [],
+                    "oekozertifikate": None,
                     "oekoTopTen": None,
                     "_id": None,
                 },
@@ -105,22 +105,3 @@ class TestEnergiemix:
         Test de-/serialisation of Energiehermix with minimal attributes.
         """
         assert_serialization_roundtrip(energiemix, expected_json_dict)
-
-    def test_energiemix_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Energiemix()  # type: ignore[call-arg]
-
-        assert "5 validation errors" in str(excinfo.value)
-
-    def test_energiemix_anteil_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Energiemix(
-                energiemixnummer=2,
-                energieart=Sparte.STROM,
-                bezeichnung="foo",
-                gueltigkeitsjahr=2021,
-                anteil=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

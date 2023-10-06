@@ -23,8 +23,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Arbeitspreis"
                 },
                 "arbeitspreisNT": {
@@ -34,8 +38,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Arbeitspreisnt"
                 },
                 "grundpreis": {
@@ -45,8 +53,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Grundpreis"
                 },
                 "staffelgrenzeBis": {
@@ -56,8 +68,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -67,18 +83,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "arbeitspreis",
-                "arbeitspreisNT",
-                "grundpreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "TarifpreisstaffelProOrt",
             "type": "object"
         }
@@ -99,33 +112,57 @@
             "title": " Id"
         },
         "netznr": {
-            "title": "Netznr",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Netznr"
         },
         "ort": {
-            "title": "Ort",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ort"
         },
         "postleitzahl": {
-            "pattern": "^\\d{5}$",
-            "title": "Postleitzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Postleitzahl"
         },
         "preisstaffeln": {
-            "items": {
-                "$ref": "#/$defs/TarifpreisstaffelProOrt"
-            },
-            "minItems": 1,
-            "title": "Preisstaffeln",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/TarifpreisstaffelProOrt"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preisstaffeln"
         }
     },
-    "required": [
-        "postleitzahl",
-        "ort",
-        "netznr",
-        "preisstaffeln"
-    ],
     "title": "TarifpreispositionProOrt",
     "type": "object"
 }

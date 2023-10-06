@@ -5,9 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
@@ -31,7 +29,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: Annotated[list[StandorteigenschaftenStrom], Len(1)]
+    eigenschaften_strom: Optional[list[StandorteigenschaftenStrom]] = None
 
     # optional attributes
     #: Eigenschaften zur Sparte Gas

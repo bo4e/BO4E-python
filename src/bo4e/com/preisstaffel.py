@@ -26,11 +26,11 @@ class Preisstaffel(COM):
 
     # required attributes
     #: Preis pro abgerechneter Mengeneinheit
-    einheitspreis: Decimal
+    einheitspreis: Optional[Decimal] = None
     #: Inklusiver unterer Wert, ab dem die Staffel gilt
-    staffelgrenze_von: Decimal
+    staffelgrenze_von: Optional[Decimal] = None
     #: Exklusiver oberer Wert, bis zu dem die Staffel gilt
-    staffelgrenze_bis: Decimal
+    staffelgrenze_bis: Optional[Decimal] = None
 
     # optional attributes
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter

@@ -1,7 +1,7 @@
 """
 Contains PreisblattDienstleistung class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Optional
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
@@ -28,13 +28,13 @@ class PreisblattDienstleistung(Preisblatt):
     bo_typ: BoTyp = BoTyp.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Bilanzierungsmethode
+    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
-    basisdienstleistung: Dienstleistungstyp
+    basisdienstleistung: Optional[Dienstleistungstyp] = None
 
     # optional attributes
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
     geraetedetails: Optional[Geraeteeigenschaften] = None
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
-    inklusive_dienstleistungen: Optional[List[Dienstleistungstyp]] = None
+    inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None

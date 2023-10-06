@@ -106,14 +106,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wert"
         }
     },
-    "required": [
-        "wert"
-    ],
     "title": "Zeitreihenwertkompakt",
     "type": "object"
 }

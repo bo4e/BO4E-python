@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -129,8 +144,16 @@
                     "title": " Id"
                 },
                 "positionsbezeichnung": {
-                    "title": "Positionsbezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Positionsbezeichnung"
                 },
                 "positionskosten": {
                     "anyOf": [
@@ -155,13 +178,17 @@
                     "default": null
                 },
                 "positionspreis": {
-                    "$ref": "#/$defs/Preis"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "positionsbezeichnung",
-                "positionspreis"
-            ],
             "title": "Angebotsposition",
             "type": "object"
         },
@@ -258,17 +285,21 @@
                     "default": null
                 },
                 "positionen": {
-                    "items": {
-                        "$ref": "#/$defs/Angebotsposition"
-                    },
-                    "minItems": 1,
-                    "title": "Positionen",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Angebotsposition"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Positionen"
                 }
             },
-            "required": [
-                "positionen"
-            ],
             "title": "Angebotsteil",
             "type": "object"
         },
@@ -312,7 +343,15 @@
                     "title": " Id"
                 },
                 "waehrung": {
-                    "$ref": "#/$defs/Waehrungscode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungscode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -321,15 +360,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "waehrung"
-            ],
             "title": "Betrag",
             "type": "object"
         },
@@ -411,18 +450,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -474,8 +525,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Breitengrad"
                 },
                 "laengengrad": {
@@ -485,15 +540,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Laengengrad"
                 }
             },
-            "required": [
-                "breitengrad",
-                "laengengrad"
-            ],
             "title": "Geokoordinaten",
             "type": "object"
         },
@@ -568,19 +623,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -618,12 +689,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -690,11 +769,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -727,18 +801,30 @@
                     "title": " Id"
                 },
                 "flurstueck": {
-                    "title": "Flurstueck",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Flurstueck"
                 },
                 "gemarkungFlur": {
-                    "title": "Gemarkungflur",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gemarkungflur"
                 }
             },
-            "required": [
-                "gemarkungFlur",
-                "flurstueck"
-            ],
             "title": "Katasteradresse",
             "type": "object"
         },
@@ -1061,7 +1147,15 @@
                     "title": "Bilanzierungsgebiet"
                 },
                 "bilanzierungsmethode": {
-                    "$ref": "#/$defs/Bilanzierungsmethode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Bilanzierungsmethode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "boTyp": {
                     "allOf": [
@@ -1083,7 +1177,15 @@
                     "default": null
                 },
                 "energierichtung": {
-                    "$ref": "#/$defs/Energierichtung"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Energierichtung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "externeReferenzen": {
                     "anyOf": [
@@ -1097,7 +1199,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "gasqualitaet": {
@@ -1183,8 +1285,16 @@
                     "default": null
                 },
                 "marktlokationsId": {
-                    "title": "Marktlokationsid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktlokationsid"
                 },
                 "netzbetreibercodenr": {
                     "anyOf": [
@@ -1199,7 +1309,15 @@
                     "title": "Netzbetreibercodenr"
                 },
                 "netzebene": {
-                    "$ref": "#/$defs/Netzebene"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Netzebene"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "netzgebietsnr": {
                     "anyOf": [
@@ -1214,7 +1332,15 @@
                     "title": "Netzgebietsnr"
                 },
                 "sparte": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "unterbrechbar": {
                     "anyOf": [
@@ -1256,13 +1382,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "marktlokationsId",
-                "sparte",
-                "energierichtung",
-                "bilanzierungsmethode",
-                "netzebene"
-            ],
             "title": "Marktlokation",
             "type": "object"
         },
@@ -1283,7 +1402,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -1292,15 +1419,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -1342,7 +1469,15 @@
                     "title": " Id"
                 },
                 "arithmetik": {
-                    "$ref": "#/$defs/ArithmetischeOperation"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ArithmetischeOperation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "gueltigBis": {
                     "anyOf": [
@@ -1371,14 +1506,18 @@
                     "title": "Gueltigseit"
                 },
                 "messlokationsId": {
-                    "title": "Messlokationsid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messlokationsid"
                 }
             },
-            "required": [
-                "messlokationsId",
-                "arithmetik"
-            ],
             "title": "Messlokationszuordnung",
             "type": "object"
         },
@@ -1416,10 +1555,26 @@
                     "title": " Id"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -1439,16 +1594,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert"
-            ],
             "title": "Preis",
             "type": "object"
         },
@@ -1817,17 +1971,41 @@
             "title": " Id"
         },
         "angebotsstatus": {
-            "$ref": "#/$defs/Angebotsstatus"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Angebotsstatus"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "bindefrist": {
-            "format": "date-time",
-            "title": "Bindefrist",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bindefrist"
         },
         "erstellungsdatum": {
-            "format": "date-time",
-            "title": "Erstellungsdatum",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Erstellungsdatum"
         },
         "gesamtkosten": {
             "anyOf": [
@@ -1852,20 +2030,21 @@
             "default": null
         },
         "teile": {
-            "items": {
-                "$ref": "#/$defs/Angebotsteil"
-            },
-            "minItems": 1,
-            "title": "Teile",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Angebotsteil"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Teile"
         }
     },
-    "required": [
-        "angebotsstatus",
-        "erstellungsdatum",
-        "bindefrist",
-        "teile"
-    ],
     "title": "Angebotsvariante",
     "type": "object"
 }

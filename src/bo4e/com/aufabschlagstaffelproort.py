@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -25,8 +26,8 @@ class AufAbschlagstaffelProOrt(COM):
 
     # required attributes
     #: Der Wert für den Auf- oder Abschlag.
-    wert: Decimal
+    wert: Optional[Decimal] = None
     #: Unterer Wert, ab dem die Staffel gilt.
-    staffelgrenze_von: Decimal
+    staffelgrenze_von: Optional[Decimal] = None
     #: Oberer Wert, bis zu dem die Staffel gilt.
-    staffelgrenze_bis: Decimal
+    staffelgrenze_bis: Optional[Decimal] = None

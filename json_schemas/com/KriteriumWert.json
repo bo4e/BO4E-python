@@ -29,17 +29,29 @@
             "title": " Id"
         },
         "kriterium": {
-            "$ref": "#/$defs/Tarifregionskriterium"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tarifregionskriterium"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wert": {
-            "title": "Wert",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Wert"
         }
     },
-    "required": [
-        "kriterium",
-        "wert"
-    ],
     "title": "KriteriumWert",
     "type": "object"
 }

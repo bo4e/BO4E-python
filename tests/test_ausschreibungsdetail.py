@@ -158,10 +158,3 @@ class TestAusschreibungsdetail:
         Test de-/serialisation of Ausschreibungsdetail
         """
         assert_serialization_roundtrip(ausschreibungsdetail, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungsdetail()  # type: ignore[call-arg]
-
-        assert "5 validation errors" in str(excinfo.value)
-        # 'lokations_id', 'netzebene_lieferung', 'netzebene_messung', 'lokationsadresse', and 'lieferzeitraum'

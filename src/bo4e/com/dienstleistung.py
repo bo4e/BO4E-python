@@ -2,6 +2,7 @@
 Contains Dienstleistung class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
@@ -24,6 +25,6 @@ class Dienstleistung(COM):
 
     # required attributes
     #: Kennzeichnung der Dienstleistung
-    dienstleistungstyp: Dienstleistungstyp
+    dienstleistungstyp: Optional[Dienstleistungstyp] = None
     #: Bezeichnung der Dienstleistung
-    bezeichnung: str
+    bezeichnung: Optional[str] = None

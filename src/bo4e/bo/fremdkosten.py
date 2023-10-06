@@ -1,7 +1,7 @@
 """
 Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
@@ -30,9 +30,9 @@ class Fremdkosten(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum
+    gueltigkeit: Optional[Zeitraum] = None
     # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
     summe_kosten: Optional[Betrag] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[List[Fremdkostenblock]] = None
+    kostenbloecke: Optional[list[Fremdkostenblock]] = None

@@ -2,6 +2,7 @@
 Contains Marktgebietinfo class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -22,5 +23,5 @@ class MarktgebietInfo(COM):
     """
 
     # required attributes
-    marktgebiet: str  #: Der Name des Marktgebietes
-    marktgebietcode: str  #: Die standardisierte Codenummer des Marktgebietes
+    marktgebiet: Optional[str] = None  #: Der Name des Marktgebietes
+    marktgebietcode: Optional[str] = None  #: Die standardisierte Codenummer des Marktgebietes

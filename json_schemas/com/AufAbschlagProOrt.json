@@ -23,8 +23,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -34,8 +38,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 },
                 "wert": {
@@ -45,16 +53,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "AufAbschlagstaffelProOrt",
             "type": "object"
         }
@@ -75,32 +82,57 @@
             "title": " Id"
         },
         "netznr": {
-            "title": "Netznr",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Netznr"
         },
         "ort": {
-            "title": "Ort",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ort"
         },
         "postleitzahl": {
-            "title": "Postleitzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Postleitzahl"
         },
         "staffeln": {
-            "items": {
-                "$ref": "#/$defs/AufAbschlagstaffelProOrt"
-            },
-            "minItems": 1,
-            "title": "Staffeln",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/AufAbschlagstaffelProOrt"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Staffeln"
         }
     },
-    "required": [
-        "postleitzahl",
-        "ort",
-        "netznr",
-        "staffeln"
-    ],
     "title": "AufAbschlagProOrt",
     "type": "object"
 }

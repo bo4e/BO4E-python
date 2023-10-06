@@ -2,9 +2,7 @@
 Contains AufAbschlagProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from bo4e.com.com import COM
@@ -29,10 +27,10 @@ class AufAbschlagProOrt(COM):
 
     # required attributes
     #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
-    postleitzahl: str
+    postleitzahl: Optional[str] = None
     #: Der Ort für den der Aufschlag gilt.
-    ort: str
+    ort: Optional[str] = None
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
-    netznr: str
+    netznr: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: Annotated[list[AufAbschlagstaffelProOrt], Len(1)]
+    staffeln: Optional[list[AufAbschlagstaffelProOrt]] = None

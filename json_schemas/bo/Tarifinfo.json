@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -183,24 +198,30 @@
                 "anteilProzent": {
                     "anyOf": [
                         {
-                            "exclusiveMaximum": 100.0,
-                            "exclusiveMinimum": 0.0,
                             "type": "number"
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Anteilprozent"
                 },
                 "erzeugungsart": {
-                    "$ref": "#/$defs/Erzeugungsart"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Erzeugungsart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "erzeugungsart",
-                "anteilProzent"
-            ],
             "title": "Energieherkunft",
             "type": "object"
         },
@@ -221,12 +242,19 @@
                     "title": " Id"
                 },
                 "anteil": {
-                    "items": {
-                        "$ref": "#/$defs/Energieherkunft"
-                    },
-                    "minItems": 1,
-                    "title": "Anteil",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Energieherkunft"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anteil"
                 },
                 "atommuell": {
                     "anyOf": [
@@ -256,8 +284,16 @@
                     "title": "Bemerkung"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "co2Emission": {
                     "anyOf": [
@@ -275,15 +311,39 @@
                     "title": "Co2Emission"
                 },
                 "energieart": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "energiemixnummer": {
-                    "title": "Energiemixnummer",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Energiemixnummer"
                 },
                 "gueltigkeitsjahr": {
-                    "title": "Gueltigkeitsjahr",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gueltigkeitsjahr"
                 },
                 "oekoTopTen": {
                     "anyOf": [
@@ -298,20 +358,34 @@
                     "title": "Oekotopten"
                 },
                 "oekolabel": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekolabel"
-                    },
-                    "title": "Oekolabel",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Oekolabel"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Oekolabel"
                 },
                 "oekozertifikate": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekozertifikat"
-                    },
-                    "title": "Oekozertifikate",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Oekozertifikat"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Oekozertifikate"
                 },
                 "website": {
                     "anyOf": [
@@ -326,13 +400,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "energiemixnummer",
-                "energieart",
-                "bezeichnung",
-                "gueltigkeitsjahr",
-                "anteil"
-            ],
             "title": "Energiemix",
             "type": "object"
         },
@@ -374,18 +441,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -783,19 +862,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -833,7 +928,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "makoadresse": {
@@ -849,11 +944,27 @@
                     "title": "Makoadresse"
                 },
                 "marktrolle": {
-                    "$ref": "#/$defs/Marktrolle"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Marktrolle"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -891,15 +1002,38 @@
                     "default": null
                 },
                 "rollencodenummer": {
-                    "pattern": "^\\d{13}$",
-                    "title": "Rollencodenummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Rollencodenummer"
                 },
                 "rollencodetyp": {
-                    "$ref": "#/$defs/Rollencodetyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Rollencodetyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "sparte": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "umsatzsteuerId": {
                     "anyOf": [
@@ -931,15 +1065,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle",
-                "marktrolle",
-                "rollencodenummer",
-                "rollencodetyp",
-                "sparte"
-            ],
             "title": "Marktteilnehmer",
             "type": "object"
         },
@@ -1272,11 +1397,27 @@
             "title": " Id"
         },
         "anbieter": {
-            "$ref": "#/$defs/Marktteilnehmer"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Marktteilnehmer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "anbietername": {
-            "title": "Anbietername",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Anbietername"
         },
         "anwendungVon": {
             "anyOf": [
@@ -1304,8 +1445,16 @@
             "title": "Bemerkung"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "boTyp": {
             "allOf": [
@@ -1338,33 +1487,71 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "kundentypen": {
-            "items": {
-                "$ref": "#/$defs/Kundentyp"
-            },
-            "minItems": 1,
-            "title": "Kundentypen",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Kundentyp"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Kundentypen"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tarifart": {
-            "$ref": "#/$defs/Tarifart"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tarifart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tarifmerkmale": {
-            "items": {
-                "$ref": "#/$defs/Tarifmerkmal"
-            },
-            "minItems": 1,
-            "title": "Tarifmerkmale",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Tarifmerkmal"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tarifmerkmale"
         },
         "tariftyp": {
-            "$ref": "#/$defs/Tariftyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tariftyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "versionstruktur": {
             "default": "2",
@@ -1406,16 +1593,6 @@
             "default": null
         }
     },
-    "required": [
-        "bezeichnung",
-        "anbietername",
-        "sparte",
-        "kundentypen",
-        "tarifart",
-        "tariftyp",
-        "tarifmerkmale",
-        "anbieter"
-    ],
     "title": "Tarifinfo",
     "type": "object"
 }

@@ -176,12 +176,12 @@ class TestAufAbschlagRegional:
                         "anteil": [
                             {"erzeugungsart": Erzeugungsart.BIOGAS, "anteilProzent": Decimal("40"), "_id": None}
                         ],
-                        "oekolabel": [],
+                        "oekolabel": None,
                         "bemerkung": None,
                         "co2Emission": None,
                         "atommuell": None,
                         "website": None,
-                        "oekozertifikate": [],
+                        "oekozertifikate": None,
                         "oekoTopTen": None,
                         "_id": None,
                     },
@@ -228,21 +228,3 @@ class TestAufAbschlagRegional:
         Test de-/serialisation of AufAbschlagRegional with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlagregional, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlagRegional()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    def test_aufabschlagregional_betraege_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = (
-                AufAbschlagRegional(
-                    bezeichnung="foo",
-                    betraege=[],
-                ),
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

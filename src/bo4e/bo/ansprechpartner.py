@@ -31,8 +31,10 @@ class Ansprechpartner(Geschaeftsobjekt):
 
     # required attributes
     bo_typ: BoTyp = BoTyp.ANSPRECHPARTNER
-    nachname: str  #: Nachname (Familienname) des Ansprechpartners
-    geschaeftspartner: Geschaeftspartner  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
+    nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
+    geschaeftspartner: Optional[
+        Geschaeftspartner
+    ] = None  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
     # optional attributes
     anrede: Optional[Anrede] = None  #: Mögliche Anrede des Ansprechpartners

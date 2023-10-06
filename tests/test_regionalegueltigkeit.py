@@ -40,19 +40,3 @@ class TestRegionaleGueltigkeit:
         Test de-/serialisation of RegionaleGueltigkeit with minimal attributes.
         """
         assert_serialization_roundtrip(regionalegueltigkeit, expected_json_dict)
-
-    def test_regionalegueltigkeit_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleGueltigkeit()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    def test_regionalegueltigkeit_kriteriumswerte_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleGueltigkeit(
-                gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
-                kriteriums_werte=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

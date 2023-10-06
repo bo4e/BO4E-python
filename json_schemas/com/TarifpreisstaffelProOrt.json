@@ -21,8 +21,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Arbeitspreis"
         },
         "arbeitspreisNT": {
@@ -32,8 +36,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Arbeitspreisnt"
         },
         "grundpreis": {
@@ -43,8 +51,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Grundpreis"
         },
         "staffelgrenzeBis": {
@@ -54,8 +66,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzebis"
         },
         "staffelgrenzeVon": {
@@ -65,18 +81,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzevon"
         }
     },
-    "required": [
-        "arbeitspreis",
-        "arbeitspreisNT",
-        "grundpreis",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
     "title": "TarifpreisstaffelProOrt",
     "type": "object"
 }

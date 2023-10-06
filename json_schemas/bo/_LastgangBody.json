@@ -57,18 +57,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -143,24 +155,47 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "lokationsId": {
-            "title": "Lokationsid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationsid"
         },
         "lokationstyp": {
-            "title": "Lokationstyp",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationstyp"
         },
         "messgroesse": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "obisKennzahl": {
             "anyOf": [
                 {
-                    "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
                     "type": "string"
                 },
                 {
@@ -171,7 +206,15 @@
             "title": "Obiskennzahl"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "version": {
             "anyOf": [
@@ -191,12 +234,6 @@
             "type": "string"
         }
     },
-    "required": [
-        "sparte",
-        "lokationsId",
-        "lokationstyp",
-        "messgroesse"
-    ],
     "title": "_LastgangBody",
     "type": "object"
 }

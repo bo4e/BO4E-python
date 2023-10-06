@@ -106,14 +106,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert"
-            ],
             "title": "Zeitreihenwertkompakt",
             "type": "object"
         }
@@ -134,23 +135,34 @@
             "title": " Id"
         },
         "tag": {
-            "format": "date-time",
-            "title": "Tag",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tag"
         },
         "werte": {
-            "items": {
-                "$ref": "#/$defs/Zeitreihenwertkompakt"
-            },
-            "minItems": 1,
-            "title": "Werte",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Zeitreihenwertkompakt"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Werte"
         }
     },
-    "required": [
-        "tag",
-        "werte"
-    ],
     "title": "Tagesvektor",
     "type": "object"
 }

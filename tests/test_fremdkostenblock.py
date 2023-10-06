@@ -97,8 +97,3 @@ class TestFremdkostenblock:
         Test de-/serialisation of Fremdkostenblock
         """
         assert_serialization_roundtrip(fremdkostenblock, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Fremdkostenblock()  # type: ignore[call-arg]
-        assert "1 validation error" in str(excinfo.value)

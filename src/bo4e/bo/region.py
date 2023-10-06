@@ -1,9 +1,7 @@
 """
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.regionskriterium import Regionskriterium
@@ -29,11 +27,11 @@ class Region(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.REGION
     #: Bezeichnung der Region
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
 
     #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: Annotated[list[Regionskriterium], Len(1)]
+    positiv_liste: Optional[list[Regionskriterium]] = None
 
     # optional attributes
     #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: Optional[List[Regionskriterium]] = None
+    negativ_liste: Optional[list[Regionskriterium]] = None

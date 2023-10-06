@@ -11,8 +11,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -22,8 +26,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -33,8 +41,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -44,8 +56,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
                 },
                 "_id": {
@@ -61,12 +77,6 @@
                     "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         }
@@ -93,8 +103,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Einheitspreis"
         },
         "sigmoidparameter": {
@@ -115,8 +129,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzebis"
         },
         "staffelgrenzeVon": {
@@ -126,16 +144,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzevon"
         }
     },
-    "required": [
-        "einheitspreis",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
     "title": "Preisstaffel",
     "type": "object"
 }

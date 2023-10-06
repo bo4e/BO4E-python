@@ -17,7 +17,15 @@
                     "title": " Id"
                 },
                 "waehrung": {
-                    "$ref": "#/$defs/Waehrungscode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungscode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -26,15 +34,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "waehrung"
-            ],
             "title": "Betrag",
             "type": "object"
         },
@@ -95,18 +103,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -127,8 +147,16 @@
                     "title": " Id"
                 },
                 "kostenblockbezeichnung": {
-                    "title": "Kostenblockbezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kostenblockbezeichnung"
                 },
                 "kostenpositionen": {
                     "anyOf": [
@@ -157,9 +185,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "kostenblockbezeichnung"
-            ],
             "title": "Fremdkostenblock",
             "type": "object"
         },
@@ -180,8 +205,16 @@
                     "title": " Id"
                 },
                 "artikelbezeichnung": {
-                    "title": "Artikelbezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Artikelbezeichnung"
                 },
                 "artikeldetail": {
                     "anyOf": [
@@ -196,7 +229,15 @@
                     "title": "Artikeldetail"
                 },
                 "betragKostenposition": {
-                    "$ref": "#/$defs/Betrag"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Betrag"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "bis": {
                     "anyOf": [
@@ -212,7 +253,15 @@
                     "title": "Bis"
                 },
                 "einzelpreis": {
-                    "$ref": "#/$defs/Preis"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preis"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "gebietcodeEic": {
                     "anyOf": [
@@ -274,8 +323,16 @@
                     "default": null
                 },
                 "positionstitel": {
-                    "title": "Positionstitel",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Positionstitel"
                 },
                 "von": {
                     "anyOf": [
@@ -302,12 +359,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "positionstitel",
-                "betragKostenposition",
-                "artikelbezeichnung",
-                "einzelpreis"
-            ],
             "title": "Fremdkostenposition",
             "type": "object"
         },
@@ -328,7 +379,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -337,15 +396,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -387,10 +446,26 @@
                     "title": " Id"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -410,16 +485,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert"
-            ],
             "title": "Preis",
             "type": "object"
         },
@@ -781,11 +855,19 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "gueltigkeit": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "kostenbloecke": {
             "anyOf": [
@@ -819,9 +901,6 @@
             "type": "string"
         }
     },
-    "required": [
-        "gueltigkeit"
-    ],
     "title": "Fremdkosten",
     "type": "object"
 }

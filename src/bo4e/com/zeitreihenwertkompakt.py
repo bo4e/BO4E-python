@@ -26,7 +26,7 @@ class Zeitreihenwertkompakt(COM):
     """
 
     # required attributes
-    wert: Decimal  #: Der im Zeitintervall gültige Wert.
+    wert: Optional[Decimal] = None  #: Der im Zeitintervall gültige Wert.
 
     # optional attributes
 

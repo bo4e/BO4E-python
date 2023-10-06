@@ -29,8 +29,3 @@ class TestBetrag:
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
         assert_serialization_roundtrip(betrag, expected_json_dict)
-
-    def test_regionskriterium_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Betrag()  # type: ignore[call-arg]
-        assert "2 validation errors" in str(excinfo.value)

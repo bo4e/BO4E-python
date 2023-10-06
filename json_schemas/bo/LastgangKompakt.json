@@ -57,18 +57,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -185,23 +197,34 @@
                     "title": " Id"
                 },
                 "tag": {
-                    "format": "date-time",
-                    "title": "Tag",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Tag"
                 },
                 "werte": {
-                    "items": {
-                        "$ref": "#/$defs/Zeitreihenwertkompakt"
-                    },
-                    "minItems": 1,
-                    "title": "Werte",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Zeitreihenwertkompakt"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Werte"
                 }
             },
-            "required": [
-                "tag",
-                "werte"
-            ],
             "title": "Tagesvektor",
             "type": "object"
         },
@@ -239,17 +262,29 @@
                     "title": " Id"
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 },
                 "zeiteinheit": {
-                    "$ref": "#/$defs/Zeiteinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeiteinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "wert",
-                "zeiteinheit"
-            ],
             "title": "Zeitintervall",
             "type": "object"
         },
@@ -298,14 +333,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert"
-            ],
             "title": "Zeitreihenwertkompakt",
             "type": "object"
         }
@@ -345,24 +381,47 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "lokationsId": {
-            "title": "Lokationsid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationsid"
         },
         "lokationstyp": {
-            "title": "Lokationstyp",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lokationstyp"
         },
         "messgroesse": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "obisKennzahl": {
             "anyOf": [
                 {
-                    "pattern": "((1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2})|(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
                     "type": "string"
                 },
                 {
@@ -373,14 +432,30 @@
             "title": "Obiskennzahl"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tagesvektoren": {
-            "items": {
-                "$ref": "#/$defs/Tagesvektor"
-            },
-            "title": "Tagesvektoren",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Tagesvektor"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tagesvektoren"
         },
         "version": {
             "anyOf": [
@@ -400,17 +475,17 @@
             "type": "string"
         },
         "zeitintervall": {
-            "$ref": "#/$defs/Zeitintervall"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitintervall"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "sparte",
-        "lokationsId",
-        "lokationstyp",
-        "messgroesse",
-        "zeitintervall",
-        "tagesvektoren"
-    ],
     "title": "LastgangKompakt",
     "type": "object"
 }

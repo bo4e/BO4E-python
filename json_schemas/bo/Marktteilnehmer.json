@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -181,18 +196,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -592,19 +619,35 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "geschaeftspartnerrolle": {
-            "items": {
-                "$ref": "#/$defs/Geschaeftspartnerrolle"
-            },
-            "title": "Geschaeftspartnerrolle",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Geschaeftspartnerrolle"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Geschaeftspartnerrolle"
         },
         "gewerbekennzeichnung": {
-            "title": "Gewerbekennzeichnung",
-            "type": "boolean"
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gewerbekennzeichnung"
         },
         "glaeubigerId": {
             "anyOf": [
@@ -642,7 +685,7 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Kontaktweg"
         },
         "makoadresse": {
@@ -658,11 +701,27 @@
             "title": "Makoadresse"
         },
         "marktrolle": {
-            "$ref": "#/$defs/Marktrolle"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Marktrolle"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "name1": {
-            "title": "Name1",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Name1"
         },
         "name2": {
             "anyOf": [
@@ -700,15 +759,38 @@
             "default": null
         },
         "rollencodenummer": {
-            "pattern": "^\\d{13}$",
-            "title": "Rollencodenummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Rollencodenummer"
         },
         "rollencodetyp": {
-            "$ref": "#/$defs/Rollencodetyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Rollencodetyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "umsatzsteuerId": {
             "anyOf": [
@@ -740,15 +822,6 @@
             "title": "Website"
         }
     },
-    "required": [
-        "name1",
-        "gewerbekennzeichnung",
-        "geschaeftspartnerrolle",
-        "marktrolle",
-        "rollencodenummer",
-        "rollencodetyp",
-        "sparte"
-    ],
     "title": "Marktteilnehmer",
     "type": "object"
 }

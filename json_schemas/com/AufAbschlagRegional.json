@@ -17,32 +17,57 @@
                     "title": " Id"
                 },
                 "netznr": {
-                    "title": "Netznr",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netznr"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "staffeln": {
-                    "items": {
-                        "$ref": "#/$defs/AufAbschlagstaffelProOrt"
-                    },
-                    "minItems": 1,
-                    "title": "Staffeln",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/AufAbschlagstaffelProOrt"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Staffeln"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort",
-                "netznr",
-                "staffeln"
-            ],
             "title": "AufAbschlagProOrt",
             "type": "object"
         },
@@ -69,8 +94,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -80,8 +109,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 },
                 "wert": {
@@ -91,16 +124,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "AufAbschlagstaffelProOrt",
             "type": "object"
         },
@@ -145,24 +177,30 @@
                 "anteilProzent": {
                     "anyOf": [
                         {
-                            "exclusiveMaximum": 100.0,
-                            "exclusiveMinimum": 0.0,
                             "type": "number"
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Anteilprozent"
                 },
                 "erzeugungsart": {
-                    "$ref": "#/$defs/Erzeugungsart"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Erzeugungsart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "erzeugungsart",
-                "anteilProzent"
-            ],
             "title": "Energieherkunft",
             "type": "object"
         },
@@ -183,12 +221,19 @@
                     "title": " Id"
                 },
                 "anteil": {
-                    "items": {
-                        "$ref": "#/$defs/Energieherkunft"
-                    },
-                    "minItems": 1,
-                    "title": "Anteil",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Energieherkunft"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anteil"
                 },
                 "atommuell": {
                     "anyOf": [
@@ -218,8 +263,16 @@
                     "title": "Bemerkung"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "co2Emission": {
                     "anyOf": [
@@ -237,15 +290,39 @@
                     "title": "Co2Emission"
                 },
                 "energieart": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "energiemixnummer": {
-                    "title": "Energiemixnummer",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Energiemixnummer"
                 },
                 "gueltigkeitsjahr": {
-                    "title": "Gueltigkeitsjahr",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gueltigkeitsjahr"
                 },
                 "oekoTopTen": {
                     "anyOf": [
@@ -260,20 +337,34 @@
                     "title": "Oekotopten"
                 },
                 "oekolabel": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekolabel"
-                    },
-                    "title": "Oekolabel",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Oekolabel"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Oekolabel"
                 },
                 "oekozertifikate": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekozertifikat"
-                    },
-                    "title": "Oekozertifikate",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Oekozertifikat"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Oekozertifikate"
                 },
                 "website": {
                     "anyOf": [
@@ -288,13 +379,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "energiemixnummer",
-                "energieart",
-                "bezeichnung",
-                "gueltigkeitsjahr",
-                "anteil"
-            ],
             "title": "Energiemix",
             "type": "object"
         },
@@ -390,12 +474,17 @@
                     "default": null
                 },
                 "geraetetyp": {
-                    "$ref": "#/$defs/Geraetetyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraetetyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "geraetetyp"
-            ],
             "title": "Geraeteeigenschaften",
             "type": "object"
         },
@@ -513,7 +602,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -522,15 +619,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -627,16 +724,28 @@
                     "title": "Beschreibung"
                 },
                 "preisgarantietyp": {
-                    "$ref": "#/$defs/Preisgarantietyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preisgarantietyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "zeitlicheGueltigkeit": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "preisgarantietyp",
-                "zeitlicheGueltigkeit"
-            ],
             "title": "Preisgarantie",
             "type": "object"
         },
@@ -1057,16 +1166,31 @@
             "title": "Beschreibung"
         },
         "betraege": {
-            "items": {
-                "$ref": "#/$defs/AufAbschlagProOrt"
-            },
-            "minItems": 1,
-            "title": "Betraege",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/AufAbschlagProOrt"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Betraege"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "einheit": {
             "anyOf": [
@@ -1189,10 +1313,6 @@
             "title": "Zusatzprodukte"
         }
     },
-    "required": [
-        "bezeichnung",
-        "betraege"
-    ],
     "title": "AufAbschlagRegional",
     "type": "object"
 }

@@ -79,7 +79,7 @@ class TestBuendelvertrag:
         },
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "externeReferenzen": None,
         "hrnummer": None,
         "amtsgericht": None,
         "_id": None,
@@ -103,12 +103,12 @@ class TestBuendelvertrag:
         },
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "externeReferenzen": None,
         "anrede": None,
         "name3": None,
         "hrnummer": None,
         "amtsgericht": None,
-        "kontaktweg": [],
+        "kontaktweg": None,
         "umsatzsteuerId": None,
         "glaeubigerId": None,
         "eMailAdresse": None,
@@ -141,11 +141,11 @@ class TestBuendelvertrag:
                     "vertragspartner2": _vertragspartner2_dict,
                     "versionstruktur": "2",
                     "boTyp": BoTyp.BUENDELVERTRAG,
-                    "externeReferenzen": [],
-                    "einzelvertraege": [],
-                    "vertragskonditionen": [],
-                    "unterzeichnervp1": [],
-                    "unterzeichnervp2": [],
+                    "externeReferenzen": None,
+                    "einzelvertraege": None,
+                    "vertragskonditionen": None,
+                    "unterzeichnervp1": None,
+                    "unterzeichnervp2": None,
                     "beschreibung": None,
                     "_id": None,
                 },
@@ -170,7 +170,7 @@ class TestBuendelvertrag:
                 {
                     "versionstruktur": "2",
                     "boTyp": BoTyp.BUENDELVERTRAG,
-                    "externeReferenzen": [],
+                    "externeReferenzen": None,
                     "vertragsnummer": "1234567890",
                     "vertragsart": Vertragsart.NETZNUTZUNGSVERTRAG,
                     "vertragsstatus": Vertragsstatus.AKTIV,
@@ -205,9 +205,3 @@ class TestBuendelvertrag:
     )
     def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag, expected_dict: Dict[str, Any]) -> None:
         assert_serialization_roundtrip(buendelvertrag, expected_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Buendelvertrag()  # type: ignore[call-arg]
-
-        assert "8 validation errors" in str(excinfo.value)

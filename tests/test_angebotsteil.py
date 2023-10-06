@@ -162,7 +162,7 @@ class TestAngebotsteil:
                             "gasqualitaet": None,
                             "zugehoerigeMesslokation": None,
                             "kundengruppen": None,
-                            "externeReferenzen": [],
+                            "externeReferenzen": None,
                             "boTyp": BoTyp.MARKTLOKATION,
                             "_id": None,
                         }
@@ -199,15 +199,3 @@ class TestAngebotsteil:
         Test de-/serialisation of Angebotsteil with minimal attributes.
         """
         assert_serialization_roundtrip(angebotsteil, expected_json_dict)
-
-    def test_angebotsteil_positionen_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Angebotsteil(positionen=[])
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Angebotsteil()  # type: ignore[call-arg]
-        assert "1 validation error" in str(excinfo.value)

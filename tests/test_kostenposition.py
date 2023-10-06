@@ -111,30 +111,3 @@ class TestKostenposition:
         Test de-/serialisation of Kostenposition
         """
         assert_serialization_roundtrip(kostenposition, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Kostenposition()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)
-
-    def test_von_bis_validation_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Kostenposition(
-                positionstitel="Mudders Preisstaffel",
-                artikelbezeichnung="Dei Mudder ihr Preisstaffel",
-                einzelpreis=Preis(
-                    wert=Decimal(3.50),
-                    einheit=Waehrungseinheit.EUR,
-                    bezugswert=Mengeneinheit.KWH,
-                    status=Preisstatus.ENDGUELTIG,
-                ),
-                betrag_kostenposition=Betrag(
-                    waehrung=Waehrungscode.EUR,
-                    wert=Decimal(12.5),
-                ),
-                von=datetime(2014, 5, 1, tzinfo=timezone.utc),
-                bis=datetime(2013, 5, 1, tzinfo=timezone.utc),
-            )
-
-        assert "has to be later than the start" in str(excinfo.value)

@@ -79,9 +79,3 @@ class TestRegionaleTarifpreisPosition:
         self, regionale_tarifpreis_position: RegionaleTarifpreisposition, expected_json_dict: Dict[str, Any]
     ) -> None:
         assert_serialization_roundtrip(regionale_tarifpreis_position, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleTarifpreisposition()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

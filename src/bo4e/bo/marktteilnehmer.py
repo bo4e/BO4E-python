@@ -6,9 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from pydantic import Field
+from typing import Optional
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.enum.botyp import BoTyp
@@ -33,13 +31,13 @@ class Marktteilnehmer(Geschaeftspartner):
     # required attributes
     bo_typ: BoTyp = BoTyp.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
-    marktrolle: Marktrolle
+    marktrolle: Optional[Marktrolle] = None
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: Annotated[str, Field(strict=True, pattern=r"^\d{13}$")]
+    rollencodenummer: Optional[str] = None
     #: Gibt den Typ des Codes an
-    rollencodetyp: Rollencodetyp
+    rollencodetyp: Optional[Rollencodetyp] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
 
     # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
