@@ -43,7 +43,7 @@ class TestAnsprechpartner:
             ),
         )
         assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "boTyp was not automatically set"
+        assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "_typ was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string
@@ -103,7 +103,7 @@ class TestAnsprechpartner:
             ),
         )
         assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "boTyp was not automatically set"
+        assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "_typ was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string

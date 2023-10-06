@@ -66,7 +66,7 @@ class TestVertrag:
     ]
     _vertragspartner1_dict: Dict[str, Any] = {
         "versionstruktur": "2",
-        "boTyp": Typ.GESCHAEFTSPARTNER,
+        "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "name1": "von Sinnen",
         "gewerbekennzeichnung": True,
@@ -97,7 +97,7 @@ class TestVertrag:
     }
     _vertragspartner2_dict: Dict[str, Any] = {
         "versionstruktur": "2",
-        "boTyp": Typ.GESCHAEFTSPARTNER,
+        "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "name1": "Eckart",
         "gewerbekennzeichnung": False,
@@ -163,7 +163,7 @@ class TestVertrag:
             "vertragspartner2": self._vertragspartner2_dict,
             "vertragsteile": self._vertragsteile_dict,
             "versionstruktur": "2",
-            "boTyp": Typ.VERTRAG,
+            "_typ": Typ.VERTRAG,
             "externeReferenzen": None,
             "beschreibung": None,
             "vertragskonditionen": None,
@@ -180,7 +180,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.typ is Typ.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is Typ.VERTRAG, "_typ was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
@@ -235,7 +235,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.typ is Typ.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is Typ.VERTRAG, "_typ was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string

@@ -163,7 +163,7 @@ class TestAngebotsteil:
                             "zugehoerigeMesslokation": None,
                             "kundengruppen": None,
                             "externeReferenzen": None,
-                            "boTyp": Typ.MARKTLOKATION,
+                            "_typ": Typ.MARKTLOKATION,
                             "_id": None,
                         }
                     ],

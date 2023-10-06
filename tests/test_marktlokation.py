@@ -33,11 +33,11 @@ class TestMaLo:
             netzebene=Netzebene.NSP,
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert malo.typ is Typ.MARKTLOKATION, "boTyp was not automatically set"
+        assert malo.typ is Typ.MARKTLOKATION, "_typ was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
 
-        assert "boTyp" in json_string, "No camel case serialization"
+        assert "_typ" in json_string, "No camel case serialization"
         assert "marktlokationsId" in json_string, "No camel case serialization"
 
         deserialized_malo: Marktlokation = Marktlokation.model_validate_json(json_string)
@@ -85,11 +85,11 @@ class TestMaLo:
             kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
         )
         assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert malo.typ == Typ.MARKTLOKATION, "boTyp was not automatically set"
+        assert malo.typ == Typ.MARKTLOKATION, "_typ was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
 
-        assert "boTyp" in json_string, "No camel case serialization"
+        assert "_typ" in json_string, "No camel case serialization"
         assert "marktlokationsId" in json_string, "No camel case serialization"
 
         deserialized_malo: Marktlokation = Marktlokation.model_validate_json(json_string)

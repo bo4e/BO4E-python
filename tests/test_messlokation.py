@@ -37,12 +37,12 @@ class TestMeLo:
             sparte=Sparte.STROM,
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.typ is Typ.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ is Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
@@ -106,12 +106,12 @@ class TestMeLo:
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.typ == Typ.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ == Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
