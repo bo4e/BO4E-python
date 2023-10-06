@@ -10,6 +10,8 @@ from humps.main import camelize
 # pylint: disable=no-name-in-module
 from pydantic import BaseModel, ConfigDict, Field
 
+from bo4e.com.zusatzattribut import ZusatzAttribut
+
 
 # pylint: disable=too-few-public-methods
 #
@@ -33,6 +35,8 @@ class COM(BaseModel):
     Eine generische ID, die für eigene Zwecke genutzt werden kann.
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
+
+    zusatz_attribute: Optional[list[ZusatzAttribut]] = None
 
     # pylint: disable=duplicate-code
     model_config = ConfigDict(
