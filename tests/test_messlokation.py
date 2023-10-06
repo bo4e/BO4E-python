@@ -10,11 +10,11 @@ from bo4e.bo.messlokation import Messlokation
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
-from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
+from bo4e.com.zusatzattribut import ZusatzAttribut
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -96,7 +96,7 @@ class TestMeLo:
                     tarifart=Tarifart.ZWEITARIF,
                     zaehlerkonstante=Decimal(0.9),
                     eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
-                    externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+                    externe_referenzen=[ZusatzAttribut(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
                     letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
                 )
             ],
