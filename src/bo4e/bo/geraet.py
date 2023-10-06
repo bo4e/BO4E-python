@@ -2,11 +2,14 @@
 Contains Geraet class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.enum.geraeteklasse import Geraeteklasse
 from bo4e.enum.geraetetyp import Geraetetyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -23,6 +26,8 @@ class Geraet(Geschaeftsobjekt):
         `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geraet.json>`_
 
     """
+
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GERAET
 
     #: Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
     geraetenummer: Optional[str] = None

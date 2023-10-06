@@ -334,7 +334,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": "GESCHAEFTSOBJEKT"
+                    "default": "GERAET"
                 },
                 "bezeichnung": {
                     "anyOf": [
@@ -1522,6 +1522,7 @@
                 "BUENDELVERTRAG",
                 "ENERGIEMENGE",
                 "FREMDKOSTEN",
+                "GERAET",
                 "GESCHAEFTSOBJEKT",
                 "GESCHAEFTSPARTNER",
                 "KOSTEN",
