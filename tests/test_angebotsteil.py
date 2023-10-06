@@ -42,14 +42,16 @@ example_angebotsteil_json = {
     "positionen": [
         {
             "positionsbezeichnung": "teststring",
-            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
-            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
+            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH, "_id": None},
+            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240"), "_id": None},
             "positionspreis": {
                 "bezugswert": Mengeneinheit.KWH,
                 "status": None,
                 "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                 "einheit": Waehrungseinheit.EUR,
+                "_id": None,
             },
+            "_id": None,
         },
     ],
     "anfrageSubreferenz": None,
@@ -57,6 +59,7 @@ example_angebotsteil_json = {
     "gesamtmengeangebotsteil": None,
     "gesamtkostenangebotsteil": None,
     "lieferzeitraum": None,
+    "_id": None,
 }
 
 
@@ -110,14 +113,20 @@ class TestAngebotsteil:
                     "positionen": [
                         {
                             "positionsbezeichnung": "testtring",
-                            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
-                            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
+                            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH, "_id": None},
+                            "positionskosten": {
+                                "waehrung": Waehrungseinheit.EUR,
+                                "wert": Decimal("98240"),
+                                "_id": None,
+                            },
                             "positionspreis": {
                                 "bezugswert": Mengeneinheit.KWH,
                                 "status": None,
                                 "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                                 "einheit": Waehrungseinheit.EUR,
+                                "_id": None,
                             },
+                            "_id": None,
                         },
                     ],
                     "lieferstellenangebotsteil": [
@@ -134,6 +143,7 @@ class TestAngebotsteil:
                                 "coErgaenzung": None,
                                 "ortsteil": None,
                                 "landescode": Landescode.DE,  # type: ignore[attr-defined]
+                                "_id": None,
                             },
                             "energierichtung": Energierichtung.EINSP,
                             "bilanzierungsmethode": Bilanzierungsmethode.PAUSCHAL,
@@ -154,10 +164,15 @@ class TestAngebotsteil:
                             "kundengruppen": None,
                             "externeReferenzen": [],
                             "boTyp": BoTyp.MARKTLOKATION,
+                            "_id": None,
                         }
                     ],
-                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
-                    "gesamtkostenangebotsteil": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
+                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH, "_id": None},
+                    "gesamtkostenangebotsteil": {
+                        "waehrung": Waehrungseinheit.EUR,
+                        "wert": Decimal("98240"),
+                        "_id": None,
+                    },
                     "anfrageSubreferenz": "teststring",
                     "lieferzeitraum": {
                         "startdatum": datetime(2020, 1, 1, tzinfo=timezone.utc),
@@ -166,7 +181,9 @@ class TestAngebotsteil:
                         "enddatum": datetime(2020, 4, 1, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
+                        "_id": None,
                     },
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),

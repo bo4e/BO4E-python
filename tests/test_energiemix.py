@@ -37,12 +37,7 @@ class TestEnergiemix:
                     "energieart": Sparte.STROM,
                     "bezeichnung": "foo",
                     "gueltigkeitsjahr": 2021,
-                    "anteil": [
-                        {
-                            "erzeugungsart": Erzeugungsart.BIOGAS,
-                            "anteilProzent": Decimal("40"),
-                        }
-                    ],
+                    "anteil": [{"erzeugungsart": Erzeugungsart.BIOGAS, "anteilProzent": Decimal("40"), "_id": None}],
                     "oekolabel": [],
                     "bemerkung": None,
                     "co2Emission": None,
@@ -50,6 +45,7 @@ class TestEnergiemix:
                     "website": None,
                     "oekozertifikate": [],
                     "oekoTopTen": None,
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -86,14 +82,8 @@ class TestEnergiemix:
                     "bezeichnung": "foo",
                     "gueltigkeitsjahr": 2021,
                     "anteil": [
-                        {
-                            "erzeugungsart": Erzeugungsart.BIOGAS,
-                            "anteilProzent": Decimal("40"),
-                        },
-                        {
-                            "erzeugungsart": Erzeugungsart.GEOTHERMIE,
-                            "anteilProzent": Decimal("60"),
-                        },
+                        {"erzeugungsart": Erzeugungsart.BIOGAS, "anteilProzent": Decimal("40"), "_id": None},
+                        {"erzeugungsart": Erzeugungsart.GEOTHERMIE, "anteilProzent": Decimal("60"), "_id": None},
                     ],
                     "oekolabel": ["GASGREEN", "GRUENER_STROM_GOLD"],
                     "bemerkung": "bar",
@@ -102,6 +92,7 @@ class TestEnergiemix:
                     "website": "foobar.de",
                     "oekozertifikate": ["FRAUNHOFER", "FREIBERG"],
                     "oekoTopTen": True,
+                    "_id": None,
                 },
                 id="required and optional attributes",
             ),

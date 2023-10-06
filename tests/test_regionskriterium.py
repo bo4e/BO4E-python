@@ -25,6 +25,7 @@ class TestRegionskriterium:
                     "gueltigkeitstyp": "NICHT_IN",
                     "regionskriteriumtyp": "REGELGEBIET_NAME",
                     "wert": "Was ist ein Regionskriterium?",
+                    "_id": None,
                 },
             ),
         ],

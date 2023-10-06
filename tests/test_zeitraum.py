@@ -19,6 +19,7 @@ example_zeitraum_dict = {
     "einheit": Zeiteinheit.TAG,
     "enddatum": None,
     "startzeitpunkt": None,
+    "_id": None,
 }
 
 
