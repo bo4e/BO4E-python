@@ -6,7 +6,6 @@ from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.enum.geraeteklasse import Geraeteklasse
-from bo4e.enum.geraetemerkmal import Geraetemerkmal
 from bo4e.enum.geraetetyp import Geraetetyp
 
 # pylint: disable=too-few-public-methods
@@ -33,5 +32,3 @@ class Geraet(Geschaeftsobjekt):
     geraeteklasse: Optional[Geraeteklasse] = None
     #: Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
     geraetetyp: Optional[Geraetetyp] = None
-    #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..
-    geraetemerkmal: Optional[Geraetemerkmal] = None
