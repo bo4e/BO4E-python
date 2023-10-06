@@ -65,7 +65,6 @@ class TestVertrag:
         )
     ]
     _vertragspartner1_dict: Dict[str, Any] = {
-        "versionstruktur": "2",
         "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "name1": "von Sinnen",
@@ -96,7 +95,6 @@ class TestVertrag:
         "_id": None,
     }
     _vertragspartner2_dict: Dict[str, Any] = {
-        "versionstruktur": "2",
         "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "name1": "Eckart",
@@ -162,7 +160,6 @@ class TestVertrag:
             "vertragspartner1": self._vertragspartner1_dict,
             "vertragspartner2": self._vertragspartner2_dict,
             "vertragsteile": self._vertragsteile_dict,
-            "versionstruktur": "2",
             "_typ": Typ.VERTRAG,
             "externeReferenzen": None,
             "beschreibung": None,

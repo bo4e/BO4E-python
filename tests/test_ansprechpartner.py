@@ -41,7 +41,7 @@ class TestAnsprechpartner:
                 ),
             ),
         )
-        assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert ansprechpartner.version is not None, "versionstruktur was not automatically set"
         assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "_typ was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
@@ -99,7 +99,7 @@ class TestAnsprechpartner:
                 themengebiet=Themengebiet.MARKTKOMMUNIKATION, jobtitel="Schatzmeister", abteilung="unten rechts"
             ),
         )
-        assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert ansprechpartner.version is not None, "versionstruktur was not automatically set"
         assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "_typ was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
