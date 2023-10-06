@@ -242,7 +242,7 @@ class TestAddress:
 
         assert deserialized_address == adresse
 
-    def test_id(self):
+    def test_id(self) -> None:
         adresse = Adresse(
             id=str(uuid.uuid4()),
             ort="Grünwald",

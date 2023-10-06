@@ -43,7 +43,7 @@ class TestRegion:
         assert "1 validation error" in str(excinfo.value)
         assert "too_short" in str(excinfo.value)
 
-    def test_region_id(self):
+    def test_region_id(self) -> None:
         region = Region(
             bezeichnung="Bikini Bottom",
             id="foo",
