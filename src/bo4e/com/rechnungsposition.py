@@ -15,7 +15,7 @@ from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.validators import check_bis_is_later_than_von
 
 
@@ -62,7 +62,7 @@ class Rechnungsposition(COM):
 
     # optional attributes
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Zeiteinheit] = None
+    zeiteinheit: Optional[Mengeneinheit] = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
     artikelnummer: Optional[BDEWArtikelnummer] = None

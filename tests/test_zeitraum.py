@@ -6,17 +6,17 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e.enum.mengeneinheit import Mengeneinheit
 
 example_zeitraum = Zeitraum(
-    einheit=Zeiteinheit.TAG,
+    einheit=Mengeneinheit.TAG,
     dauer=Decimal(5),
 )
 example_zeitraum_dict = {
     "dauer": Decimal("5"),
     "startdatum": None,
     "endzeitpunkt": None,
-    "einheit": Zeiteinheit.TAG,
+    "einheit": Mengeneinheit.TAG,
     "enddatum": None,
     "startzeitpunkt": None,
 }
@@ -27,7 +27,7 @@ class TestZeitraum:
         """
         Test de-/serialisation of Zeitraum (only has optional attributes) with option dauer and einheit.
         """
-        zeitraum = Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21))
+        zeitraum = Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(21))
 
         json_string = zeitraum.model_dump_json(by_alias=True)
 
@@ -36,8 +36,8 @@ class TestZeitraum:
 
         zeitraum_deserialized = Zeitraum.model_validate_json(json_string)
 
-        assert isinstance(zeitraum_deserialized.einheit, Zeiteinheit)
-        assert zeitraum_deserialized.einheit == Zeiteinheit.TAG
+        assert isinstance(zeitraum_deserialized.einheit, Mengeneinheit)
+        assert zeitraum_deserialized.einheit == Mengeneinheit.TAG
         assert isinstance(zeitraum_deserialized.dauer, Decimal)
         assert zeitraum_deserialized.dauer == Decimal(21)
 

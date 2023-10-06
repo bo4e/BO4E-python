@@ -11,7 +11,6 @@ from bo4e.enum.leistungstyp import Leistungstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.tarifzeit import Tarifzeit
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_preisstaffel import example_preisstaffel
 
@@ -21,7 +20,7 @@ example_preisposition = Preisposition(
     leistungsbezeichnung="Foo",
     preiseinheit=Waehrungseinheit.EUR,
     bezugsgroesse=Mengeneinheit.KVARH,
-    zeitbasis=Zeiteinheit.HALBJAHR,
+    zeitbasis=Mengeneinheit.HALBJAHR,
     tarifzeit=Tarifzeit.TZ_HT,
     bdew_artikelnummer=BDEWArtikelnummer.AUSGLEICHSENERGIE_UNTERDECKUNG,
     zonungsgroesse=Bemessungsgroesse.BENUTZUNGSDAUER,

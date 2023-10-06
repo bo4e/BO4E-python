@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from bo4e.com.com import COM
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e.enum.mengeneinheit import Mengeneinheit
 
 # pylint: disable=too-few-public-methods
 
@@ -28,7 +28,7 @@ class Zeitintervall(COM):
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
     """
-    zeiteinheit: Zeiteinheit
+    zeiteinheit: Mengeneinheit
     """
     Die Einheit des Zeitintervalls
     """

@@ -10,7 +10,6 @@ from bo4e.enum.landescode import Landescode
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.zaehlertyp import Zaehlertyp
-from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
 from tests.test_zeitraum import example_zeitraum
@@ -33,7 +32,7 @@ example_ausschreibungsdetail_dict = {
         "startdatum": None,
         "endzeitpunkt": None,
         "enddatum": None,
-        "einheit": Zeiteinheit.TAG,
+        "einheit": Mengeneinheit.TAG,
         "startzeitpunkt": None,
     },
     "marktlokationsadresse": {
@@ -96,7 +95,7 @@ class TestAusschreibungsdetail:
                     "lieferzeitraum": {
                         "enddatum": None,
                         "startdatum": None,
-                        "einheit": Zeiteinheit.TAG,
+                        "einheit": Mengeneinheit.TAG,
                         "endzeitpunkt": None,
                         "dauer": Decimal("5"),
                         "startzeitpunkt": None,

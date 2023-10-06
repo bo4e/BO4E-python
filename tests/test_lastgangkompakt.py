@@ -8,7 +8,6 @@ from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.enum.lokationstyp import Lokationstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
-from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_tagesvektor import example_tagesvektor, example_tagesvektor_json
 
@@ -27,7 +26,7 @@ class TestLastgangKompakt:
                     messgroesse=Mengeneinheit.KWH,
                     zeitintervall=Zeitintervall(
                         wert=1,
-                        zeiteinheit=Zeiteinheit.VIERTEL_STUNDE,
+                        zeiteinheit=Mengeneinheit.VIERTEL_STUNDE,
                     ),
                     tagesvektoren=[example_tagesvektor],
                 ),

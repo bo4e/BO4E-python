@@ -8,7 +8,7 @@ from decimal import Decimal
 from typing import Optional
 
 from bo4e.com.com import COM
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.validators import combinations_of_fields
 
 # pylint: disable=too-few-public-methods
@@ -32,7 +32,7 @@ class Zeitraum(COM):
     """
 
     # optional attributes
-    einheit: Optional[Zeiteinheit] = None
+    einheit: Optional[Mengeneinheit] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[datetime] = None
     enddatum: Optional[datetime] = None
