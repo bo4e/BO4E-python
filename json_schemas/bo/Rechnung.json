@@ -139,6 +139,17 @@
             "title": "Anrede",
             "type": "string"
         },
+        "ArithmetischeOperation": {
+            "description": "Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.",
+            "enum": [
+                "ADDITION",
+                "SUBTRAKTION",
+                "MULTIPLIKATION",
+                "DIVISION"
+            ],
+            "title": "ArithmetischeOperation",
+            "type": "string"
+        },
         "BDEWArtikelnummer": {
             "description": "BDEW Artikelnummern",
             "enum": [
@@ -238,6 +249,112 @@
             "title": "Betrag",
             "type": "object"
         },
+        "Bilanzierungsmethode": {
+            "description": "Mit dieser Aufzählung kann zwischen den Bilanzierungsmethoden bzw. -grundlagen unterschieden werden.",
+            "enum": [
+                "RLM",
+                "SLP",
+                "TLP_GEMEINSAM",
+                "TLP_GETRENNT",
+                "PAUSCHAL"
+            ],
+            "title": "Bilanzierungsmethode",
+            "type": "string"
+        },
+        "Dienstleistung": {
+            "additionalProperties": true,
+            "description": "Abbildung einer abrechenbaren Dienstleistung.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Dienstleistung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Dienstleistung.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "bezeichnung": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
+                },
+                "dienstleistungstyp": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Dienstleistungstyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "title": "Dienstleistung",
+            "type": "object"
+        },
+        "Dienstleistungstyp": {
+            "description": "Auflistung möglicher abzurechnender Dienstleistungen.",
+            "enum": [
+                "DATENBEREITSTELLUNG_TAEGLICH",
+                "DATENBEREITSTELLUNG_WOECHENTLICH",
+                "DATENBEREITSTELLUNG_MONATLICH",
+                "DATENBEREITSTELLUNG_JAEHRLICH",
+                "DATENBEREITSTELLUNG_HISTORISCHE_LG",
+                "DATENBEREITSTELLUNG_STUENDLICH",
+                "DATENBEREITSTELLUNG_VIERTELJAEHRLICH",
+                "DATENBEREITSTELLUNG_HALBJAEHRLICH",
+                "DATENBEREITSTELLUNG_MONATLICH_ZUSAETZLICH",
+                "DATENBEREITSTELLUNG_EINMALIG",
+                "AUSLESUNG_2X_TAEGLICH_FERNAUSLESUNG",
+                "AUSLESUNG_TAEGLICH_FERNAUSLESUNG",
+                "AUSLESUNG_MANUELL_MSB",
+                "AUSLESUNG_MONATLICH_FERNAUSLESUNG",
+                "AUSLESUNG_JAEHRLICH_FERNAUSLESUNG",
+                "AUSLESUNG_MDE",
+                "ABLESUNG_MONATLICH",
+                "ABLESUNG_VIERTELJAEHRLICH",
+                "ABLESUNG_HALBJAEHRLICH",
+                "ABLESUNG_JAEHRLICH",
+                "AUSLESUNG_FERNAUSLESUNG",
+                "ABLESUNG_ZUSAETZLICH_MSB",
+                "ABLESUNG_ZUSAETZLICH_KUNDE",
+                "AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB",
+                "AUSLESUNG_MOATLICH_FERNAUSLESUNG",
+                "AUSLESUNG_STUENDLICH_FERNAUSLESUNG",
+                "AUSLESUNG_TEMPERATURMENGENUMWERTER",
+                "AUSLESUNG_ZUSTANDSMENGENUMWERTER",
+                "AUSLESUNG_SYSTEMMENGENUMWERTER",
+                "AUSLESUNG_VORGANG",
+                "AUSLESUNG_KOMPAKTMENGENUMWERTER",
+                "SPERRUNG",
+                "ENTSPERRUNG",
+                "MAHNKOSTEN",
+                "INKASSOKOSTEN"
+            ],
+            "title": "Dienstleistungstyp",
+            "type": "string"
+        },
+        "Energierichtung": {
+            "description": "Spezifiziert die Energierichtung einer Markt- und/oder Messlokation",
+            "enum": [
+                "AUSSP",
+                "EINSP"
+            ],
+            "title": "Energierichtung",
+            "type": "string"
+        },
         "ExterneReferenz": {
             "additionalProperties": true,
             "description": "Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.\nBeim Austausch von Datenobjekten zwischen verschiedenen Systemen ist es daher hilfreich,\nsich die eindeutigen IDs der anzubindenden Systeme zu merken.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/ExterneReferenz.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_",
@@ -281,6 +398,133 @@
             },
             "title": "ExterneReferenz",
             "type": "object"
+        },
+        "Gasqualitaet": {
+            "description": "Unterscheidung für hoch- und niedrig-kalorisches Gas.",
+            "enum": [
+                "H_GAS",
+                "L_GAS"
+            ],
+            "title": "Gasqualitaet",
+            "type": "string"
+        },
+        "Gebiettyp": {
+            "description": "List of possible Gebiettypen.",
+            "enum": [
+                "REGELZONE",
+                "MARKTGEBIET",
+                "BILANZIERUNGSGEBIET",
+                "VERTEILNETZ",
+                "TRANSPORTNETZ",
+                "REGIONALNETZ",
+                "AREALNETZ",
+                "GRUNDVERSORGUNGSGEBIET",
+                "VERSORGUNGSGEBIET"
+            ],
+            "title": "Gebiettyp",
+            "type": "string"
+        },
+        "Geokoordinaten": {
+            "additionalProperties": true,
+            "description": "This component provides the geo-coordinates for a location.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geokoordinaten.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geokoordinaten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geokoordinaten.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "breitengrad": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Breitengrad"
+                },
+                "laengengrad": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Laengengrad"
+                }
+            },
+            "title": "Geokoordinaten",
+            "type": "object"
+        },
+        "Geraetetyp": {
+            "description": "Auflistung möglicher abzurechnender Gerätetypen.",
+            "enum": [
+                "WECHSELSTROMZAEHLER",
+                "DREHSTROMZAEHLER",
+                "ZWEIRICHTUNGSZAEHLER",
+                "RLM_ZAEHLER",
+                "BALGENGASZAEHLER",
+                "MAXIMUMZAEHLER",
+                "MULTIPLEXANLAGE",
+                "PAUSCHALANLAGE",
+                "VERSTAERKERANLAGE",
+                "SUMMATIONSGERAET",
+                "IMPULSGEBER",
+                "EDL_21_ZAEHLERAUFSATZ",
+                "VIER_QUADRANTEN_LASTGANGZAEHLER",
+                "MENGENUMWERTER",
+                "STROMWANDLER",
+                "SPANNUNGSWANDLER",
+                "KOMBIMESSWANDLER",
+                "BLOCKSTROMWANDLER",
+                "DATENLOGGER",
+                "KOMMUNIKATIONSANSCHLUSS",
+                "MODEM",
+                "TELEKOMMUNIKATIONSEINRICHTUNG",
+                "DREHKOLBENGASZAEHLER",
+                "TURBINENRADGASZAEHLER",
+                "ULTRASCHALLZAEHLER",
+                "WIRBELGASZAEHLER",
+                "MODERNE_MESSEINRICHTUNG",
+                "INTELLIGENTES_MESSYSTEM",
+                "ELEKTRONISCHER_HAUSHALTSZAEHLER",
+                "STEUEREINRICHTUNG",
+                "TARIFSCHALTGERAET",
+                "RUNDSTEUEREMPFAENGER",
+                "OPTIONALE_ZUS_ZAEHLEINRICHTUNG",
+                "MESSWANDLERSATZ_IMS_MME",
+                "KOMBIMESSWANDLER_IMS_MME",
+                "TARIFSCHALTGERAET_IMS_MME",
+                "RUNDSTEUEREMPFAENGER_IMS_MME",
+                "TEMPERATUR_KOMPENSATION",
+                "HOECHSTBELASTUNGS_ANZEIGER",
+                "SONSTIGES_GERAET",
+                "PREPAYMENTZAEHLER",
+                "EDL_21",
+                "96_H_ZAEHLER",
+                "EDL_40_ZAEHLERAUFSATZ",
+                "EDL_40"
+            ],
+            "title": "Geraetetyp",
+            "type": "string"
         },
         "Geschaeftspartner": {
             "additionalProperties": true,
@@ -517,6 +761,93 @@
             "title": "Geschaeftspartnerrolle",
             "type": "string"
         },
+        "Hardware": {
+            "additionalProperties": true,
+            "description": "Abbildung einer abrechenbaren Hardware\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Hardware.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Hardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Hardware.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "bezeichnung": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
+                },
+                "geraetetyp": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraetetyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "title": "Hardware",
+            "type": "object"
+        },
+        "Katasteradresse": {
+            "additionalProperties": true,
+            "description": "Dient der Adressierung über die Liegenschafts-Information.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Katasteradresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Katasteradresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Katasteradresse.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "flurstueck": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Flurstueck"
+                },
+                "gemarkungFlur": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gemarkungflur"
+                }
+            },
+            "title": "Katasteradresse",
+            "type": "object"
+        },
         "Kontaktart": {
             "description": "Art des Kontaktes zwischen Geschäftspartnern.",
             "enum": [
@@ -527,6 +858,28 @@
                 "SMS"
             ],
             "title": "Kontaktart",
+            "type": "string"
+        },
+        "Kundentyp": {
+            "description": "Auflistung der Typen von Endkunden. Daraus kann das Verbrauchsprofil abgeleitet werden.",
+            "enum": [
+                "GEWERBE",
+                "PRIVAT",
+                "LANDWIRT",
+                "SONSTIGE",
+                "HAUSHALT",
+                "DIREKTHEIZUNG",
+                "GEMEINSCHAFT_MFH",
+                "KIRCHE",
+                "KWK",
+                "LADESAEULE",
+                "BELEUCHTUNG_OEFFENTLICH",
+                "BELEUCHTUNG_STRASSE",
+                "SPEICHERHEIZUNG",
+                "UNTERBR_EINRICHTUNG",
+                "WAERMEPUMPE"
+            ],
+            "title": "Kundentyp",
             "type": "string"
         },
         "Landescode": {
@@ -785,6 +1138,276 @@
             "title": "Landescode",
             "type": "string"
         },
+        "Marktlokation": {
+            "additionalProperties": true,
+            "description": "Object containing information about a Marktlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Marktlokation.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_typ": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Typ"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "MARKTLOKATION"
+                },
+                "bilanzierungsgebiet": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bilanzierungsgebiet"
+                },
+                "bilanzierungsmethode": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Bilanzierungsmethode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "endkunde": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geschaeftspartner"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "energierichtung": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Energierichtung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "externeReferenzen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/ExterneReferenz"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Externereferenzen"
+                },
+                "gasqualitaet": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Gasqualitaet"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "gebietstyp": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Gebiettyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "geoadresse": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geokoordinaten"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "grundversorgercodenr": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Grundversorgercodenr"
+                },
+                "istUnterbrechbar": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istunterbrechbar"
+                },
+                "katasterinformation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Katasteradresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "kundengruppen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Kundentyp"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kundengruppen"
+                },
+                "lokationsadresse": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Adresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "marktlokationsId": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktlokationsid"
+                },
+                "netzbetreibercodenr": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzbetreibercodenr"
+                },
+                "netzebene": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Netzebene"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "netzgebietsnr": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzgebietsnr"
+                },
+                "sparte": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "verbrauchsart": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Verbrauchsart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "versionstruktur": {
+                    "default": "2",
+                    "title": "Versionstruktur",
+                    "type": "string"
+                },
+                "zugehoerigeMesslokation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Messlokationszuordnung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "title": "Marktlokation",
+            "type": "object"
+        },
         "Menge": {
             "additionalProperties": true,
             "description": "Abbildung einer Menge mit Wert und Einheit.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Menge.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Menge.json>`_",
@@ -850,6 +1473,316 @@
                 "PROZENT"
             ],
             "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Messlokation": {
+            "additionalProperties": true,
+            "description": "Object containing information about a Messlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Messlokation.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Messlokation.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_typ": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Typ"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "MESSLOKATION"
+                },
+                "externeReferenzen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/ExterneReferenz"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Externereferenzen"
+                },
+                "geoadresse": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geokoordinaten"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "geraete": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Hardware"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geraete"
+                },
+                "grundzustaendigerMsbCodenr": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Grundzustaendigermsbcodenr"
+                },
+                "grundzustaendigerMsbimCodenr": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Grundzustaendigermsbimcodenr"
+                },
+                "katasterinformation": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Katasteradresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "messadresse": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Adresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "messdienstleistung": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Dienstleistung"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messdienstleistung"
+                },
+                "messgebietnr": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messgebietnr"
+                },
+                "messlokationsId": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messlokationsid"
+                },
+                "messlokationszaehler": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Zaehler"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messlokationszaehler"
+                },
+                "netzebeneMessung": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Netzebene"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "sparte": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "versionstruktur": {
+                    "default": "2",
+                    "title": "Versionstruktur",
+                    "type": "string"
+                }
+            },
+            "title": "Messlokation",
+            "type": "object"
+        },
+        "Messlokationszuordnung": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.\nDabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,\nmit der die Messlokation zum Verbrauch der Marktlokation beiträgt.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Messlokationszuordnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Messlokationszuordnung.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "arithmetik": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/ArithmetischeOperation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "gueltigBis": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gueltigbis"
+                },
+                "gueltigSeit": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gueltigseit"
+                },
+                "messlokationsId": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Messlokationsid"
+                }
+            },
+            "title": "Messlokationszuordnung",
+            "type": "object"
+        },
+        "Netzebene": {
+            "description": "Auflistung möglicher Netzebenen innerhalb der Energiearten Strom und Gas.",
+            "enum": [
+                "NSP",
+                "MSP",
+                "HSP",
+                "HSS",
+                "MSP_NSP_UMSP",
+                "HSP_MSP_UMSP",
+                "HSS_HSP_UMSP",
+                "HD",
+                "MD",
+                "ND"
+            ],
+            "title": "Netzebene",
+            "type": "string"
+        },
+        "NetznutzungRechnungsart": {
+            "description": "Abbildung verschiedener in der INVOIC angegebenen Rechnungsarten.",
+            "enum": [
+                "HANDELSRECHNUNG",
+                "SELBSTAUSGESTELLT"
+            ],
+            "title": "NetznutzungRechnungsart",
+            "type": "string"
+        },
+        "NetznutzungRechnungstyp": {
+            "description": "Abbildung verschiedener in der INVOIC angegebenen Rechnungstypen.",
+            "enum": [
+                "ABSCHLUSSRECHNUNG",
+                "ABSCHLAGSRECHNUNG",
+                "TURNUSRECHNUNG",
+                "MONATSRECHNUNG",
+                "WIMRECHNUNG",
+                "ZWISCHENRECHNUNG",
+                "INTEGRIERTE_13TE_RECHNUNG",
+                "ZUSAETZLICHE_13TE_RECHNUNG",
+                "MEHRMINDERMENGENRECHNUNG"
+            ],
+            "title": "NetznutzungRechnungstyp",
             "type": "string"
         },
         "Preis": {
@@ -1136,6 +2069,20 @@
             "title": "Rechnungstyp",
             "type": "string"
         },
+        "Sparte": {
+            "description": "Unterscheidungsmöglichkeiten für die Sparte.",
+            "enum": [
+                "STROM",
+                "GAS",
+                "FERNWAERME",
+                "NAHWAERME",
+                "WASSER",
+                "ABWASSER",
+                "STROM_UND_GAS"
+            ],
+            "title": "Sparte",
+            "type": "string"
+        },
         "Steuerbetrag": {
             "additionalProperties": true,
             "description": "Abbildung eines Steuerbetrages.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Steuerbetrag.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_",
@@ -1223,6 +2170,18 @@
             "title": "Steuerkennzeichen",
             "type": "string"
         },
+        "Tarifart": {
+            "description": "Die Tarifart wird verwendet zur Charakterisierung von Zählern und daraus resultierenden Tarifen.",
+            "enum": [
+                "EINTARIF",
+                "ZWEITARIF",
+                "MEHRTARIF",
+                "SMART_METER",
+                "LEISTUNGSGEMESSEN"
+            ],
+            "title": "Tarifart",
+            "type": "string"
+        },
         "Typ": {
             "description": "Auflistung sämtlicher existierender Geschäftsobjekte.",
             "enum": [
@@ -1261,6 +2220,18 @@
                 "ZEITREIHE"
             ],
             "title": "Typ",
+            "type": "string"
+        },
+        "Verbrauchsart": {
+            "description": "Verbrauchsart einer Marktlokation.",
+            "enum": [
+                "KL",
+                "KLW",
+                "KLWS",
+                "W",
+                "WS"
+            ],
+            "title": "Verbrauchsart",
             "type": "string"
         },
         "Waehrungscode": {
@@ -1461,6 +2432,298 @@
             "title": "Waehrungseinheit",
             "type": "string"
         },
+        "Zaehler": {
+            "additionalProperties": true,
+            "description": "Object containing information about a meter/\"Zaehler\".\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Zaehler.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zaehler.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_typ": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Typ"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "ZAEHLER"
+                },
+                "eichungBis": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Eichungbis"
+                },
+                "externeReferenzen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/ExterneReferenz"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Externereferenzen"
+                },
+                "letzteEichung": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Letzteeichung"
+                },
+                "sparte": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "tarifart": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Tarifart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "versionstruktur": {
+                    "default": "2",
+                    "title": "Versionstruktur",
+                    "type": "string"
+                },
+                "zaehlerauspraegung": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zaehlerauspraegung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zaehlerhersteller": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geschaeftspartner"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zaehlerkonstante": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlerkonstante"
+                },
+                "zaehlernummer": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlernummer"
+                },
+                "zaehlertyp": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zaehlertyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zaehlwerke": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Zaehlwerk"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlwerke"
+                }
+            },
+            "title": "Zaehler",
+            "type": "object"
+        },
+        "Zaehlerauspraegung": {
+            "description": "Gibt an, ob es sich um einen Einrichtungs- oder Zweirichtungszähler handelt.",
+            "enum": [
+                "EINRICHTUNGSZAEHLER",
+                "ZWEIRICHTUNGSZAEHLER"
+            ],
+            "title": "Zaehlerauspraegung",
+            "type": "string"
+        },
+        "Zaehlertyp": {
+            "description": "Bei diesem Enum handelt es sich um die Abbildung von Zählertypen der Sparten Strom und Gas.",
+            "enum": [
+                "DREHSTROMZAEHLER",
+                "BALGENGASZAEHLER",
+                "DREHKOLBENZAEHLER",
+                "SMARTMETER",
+                "LEISTUNGSZAEHLER",
+                "MAXIMUMZAEHLER",
+                "TURBINENRADGASZAEHLER",
+                "ULTRASCHALLGASZAEHLER",
+                "WECHSELSTROMZAEHLER"
+            ],
+            "title": "Zaehlertyp",
+            "type": "string"
+        },
+        "Zaehlwerk": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlwerk.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "bezeichnung": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
+                },
+                "einheit": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "obisKennzahl": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Obiskennzahl"
+                },
+                "richtung": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Energierichtung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "wandlerfaktor": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wandlerfaktor"
+                },
+                "zaehlwerkId": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlwerkid"
+                }
+            },
+            "title": "Zaehlwerk",
+            "type": "object"
+        },
         "Zeiteinheit": {
             "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
             "enum": [
@@ -1578,7 +2841,7 @@
         }
     },
     "additionalProperties": true,
-    "description": "Modell für die Abbildung von Rechnungen im Kontext der Energiewirtschaft;\nAusgehend von diesem Basismodell werden weitere spezifische Formen abgeleitet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Rechnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Rechnung.json>`_",
+    "description": "Modell für die Abbildung von Rechnungen und Netznutzungsrechnungen im Kontext der Energiewirtschaft;\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Rechnung.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Rechnung.json>`_",
     "properties": {
         "_id": {
             "anyOf": [
@@ -1664,6 +2927,30 @@
             ],
             "default": null
         },
+        "istOriginal": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istoriginal"
+        },
+        "istSimuliert": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istsimuliert"
+        },
         "istStorno": {
             "anyOf": [
                 {
@@ -1675,6 +2962,50 @@
             ],
             "default": null,
             "title": "Iststorno"
+        },
+        "marktlokation": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Marktlokation"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "messlokation": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Messlokation"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "netznutzungrechnungsart": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/NetznutzungRechnungsart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "netznutzungrechnungstyp": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/NetznutzungRechnungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "originalRechnungsnummer": {
             "anyOf": [
@@ -1806,6 +3137,17 @@
             ],
             "default": null
         },
+        "sparte": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
         "steuerbetraege": {
             "anyOf": [
                 {
@@ -1837,7 +3179,7 @@
             ],
             "default": null
         },
-        "zuzahlen": {
+        "zuZahlen": {
             "anyOf": [
                 {
                     "$ref": "#/$defs/Betrag"
