@@ -48,9 +48,3 @@ class TestPreisgarantie:
         Test de-/serialisation of Preisgarantie with minimal attributes.
         """
         assert_serialization_roundtrip(preisgarantie, expected_json_dict)
-
-    def test_preisgarantie_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preisgarantie()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)

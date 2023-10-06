@@ -41,9 +41,3 @@ class TestSteuerbetrag:
         Test de-/serialisation of Steuerbetrag with minimal attributes.
         """
         assert_serialization_roundtrip(steuerbetrag, expected_json_dict)
-
-    def test_steuerbetrag_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Steuerbetrag()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

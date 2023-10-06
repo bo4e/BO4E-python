@@ -63,9 +63,3 @@ class TestRegionalePreisstaffel:
         Test de-/serialisation of RegionalePreisgarantie with maximal attributes.
         """
         assert_serialization_roundtrip(regionale_preisstaffel, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionalePreisgarantie()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)

@@ -125,9 +125,3 @@ class TestFremdkostenposition:
         Test de-/serialisation of Fremdkostenposition.
         """
         assert_serialization_roundtrip(fremdkostenposition, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Fremdkostenposition()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

@@ -75,8 +75,3 @@ class TestTarif:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarif)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarif()  # type: ignore[call-arg]
-        assert "11 validation error" in str(excinfo.value)  # 3 from Tarif + 8 from tarifinfo

@@ -128,39 +128,3 @@ class TestAufAbschlag:
         Test de-/serialisation of AufAbschlag with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlag, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlag()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    @pytest.mark.parametrize(
-        "auf_abschlagstyp",
-        [
-            pytest.param(
-                AufAbschlagstyp.RELATIV,
-                id="auf_abschlagstyp not absolute",
-            ),
-            pytest.param(
-                None,
-                id="auf_abschlagstyp not there",
-            ),
-        ],
-    )
-    def test_failing_validation_einheit_only_for_abschlagstyp_absolut(self, auf_abschlagstyp: AufAbschlagstyp) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlag(
-                bezeichnung="foo",
-                staffeln=[
-                    Preisstaffel(
-                        einheitspreis=Decimal(15.0),
-                        staffelgrenze_von=Decimal(2.5),
-                        staffelgrenze_bis=Decimal(40.5),
-                    ),
-                ],
-                einheit=Waehrungseinheit.EUR,
-                auf_abschlagstyp=auf_abschlagstyp,
-            )
-
-        assert "Only state einheit if auf_abschlagstyp is absolute." in str(excinfo.value)

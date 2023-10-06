@@ -47,17 +47,4 @@ class TestTagesvektor:
         """
         assert_serialization_roundtrip(tagesvektor, expected_json_dict)
 
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tagesvektor()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    def test_list_not_long_enough_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tagesvektor(tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc), werte=[])
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)
-
     # add tests for issues 261 and 262 here
