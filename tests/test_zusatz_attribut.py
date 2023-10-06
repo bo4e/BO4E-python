@@ -8,7 +8,7 @@ from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 
 class TestZusatzAttribut:
     def test_serialization(self) -> None:
-        er = ZusatzAttribut(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")
+        er = ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345")
 
         er_json = er.model_dump_json(by_alias=True)
 
@@ -21,8 +21,8 @@ class TestZusatzAttribut:
     def test_list_of_externe_referenz(self) -> None:
         gp = Geschaeftspartner(
             externe_referenzen=[
-                ZusatzAttribut(ex_ref_name="SAP GP Nummer", ex_ref_wert="0123456789"),
-                ZusatzAttribut(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
+                ZusatzAttribut(name="SAP GP Nummer", wert="0123456789"),
+                ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
             ],
             # just some dummy data to make the GP valid
             name1="Duck",
@@ -68,7 +68,7 @@ class TestZusatzAttribut:
         """
         tests the behaviour of the json extension data (`extra="allow"`)
         """
-        er = ZusatzAttribut(ex_ref_name="foo.bar", ex_ref_wert="12345")
+        er = ZusatzAttribut(name="foo.bar", wert="12345")
         er_json: Dict[str, Any] = er.model_dump()
         er_json["additional_key"] = "additional_value"
         deserialized_er: ZusatzAttribut = ZusatzAttribut.model_validate(er_json)

@@ -16,14 +16,14 @@ class TestGeschaeftsobjekt:
                 Typ.ENERGIEMENGE,
                 "2",
                 [
-                    ZusatzAttribut(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"),
-                    ZusatzAttribut(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
+                    ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345"),
+                    ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
                 ],
             ),
             (
                 Typ.ENERGIEMENGE,
                 "2",
-                [ZusatzAttribut(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")],
+                [ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345")],
             ),
             (Typ.ENERGIEMENGE, "2", []),
         ],
@@ -58,7 +58,7 @@ class TestGeschaeftsobjekt:
         with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftsobjekt(
                 typ=Typ.ENERGIEMENGE,
-                externe_referenzen=ZusatzAttribut(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),  # type: ignore[arg-type]
+                externe_referenzen=ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
         assert "3 validation error" in str(excinfo.value)
         assert "type=model_type" in str(excinfo.value)

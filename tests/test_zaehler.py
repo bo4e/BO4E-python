@@ -39,7 +39,7 @@ class TestZaehler:
             tarifart=Tarifart.ZWEITARIF,
             zaehlerkonstante=Decimal(0.9),
             eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
-            externe_referenzen=[ZusatzAttribut(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+            externe_referenzen=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
             letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
