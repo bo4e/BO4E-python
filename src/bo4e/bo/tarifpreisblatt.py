@@ -2,9 +2,9 @@
 Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Annotated, List, Optional
+from typing import Annotated, Optional
 
-from annotated_types import Len
+from pydantic import Field
 
 from bo4e.bo.tarifinfo import Tarifinfo
 from bo4e.com.aufabschlag import AufAbschlag
@@ -12,7 +12,7 @@ from bo4e.com.preisgarantie import Preisgarantie
 from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
 from bo4e.com.tarifpreisposition import Tarifpreisposition
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -31,14 +31,14 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.TARIFPREISBLATT
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: datetime
+    preisstand: Optional[datetime] = None
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Annotated[list[Tarifpreisposition], Len(1)]
+    tarifpreise: Optional[list[Tarifpreisposition]] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Tarifberechnungsparameter
+    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
 
     # optional attributes
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
@@ -46,4 +46,4 @@ class Tarifpreisblatt(Tarifinfo):
     #: Festlegung von Garantien für bestimmte Preisanteile
     preisgarantie: Optional[Preisgarantie] = None
     #: Auf- und Abschläge auf die Preise oder Kosten
-    tarif_auf_abschlaege: Optional[List[AufAbschlag]] = None
+    tarif_auf_abschlaege: Optional[list[AufAbschlag]] = None

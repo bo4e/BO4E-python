@@ -14,18 +14,42 @@
             "additionalProperties": true,
             "description": "Mit dieser Komponente können Kriterien und deren Werte definiert werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/KriteriumWert.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/KriteriumWert.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "kriterium": {
-                    "$ref": "#/$defs/Tarifregionskriterium"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Tarifregionskriterium"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 }
             },
-            "required": [
-                "kriterium",
-                "wert"
-            ],
             "title": "KriteriumWert",
             "type": "object"
         },
@@ -71,22 +95,45 @@
             "additionalProperties": true,
             "description": "Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleGueltigkeit.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleGueltigkeit JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleGueltigkeit.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "gueltigkeitstyp": {
-                    "$ref": "#/$defs/Gueltigkeitstyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Gueltigkeitstyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "kriteriumsWerte": {
-                    "items": {
-                        "$ref": "#/$defs/KriteriumWert"
-                    },
-                    "minItems": 1,
-                    "title": "Kriteriumswerte",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/KriteriumWert"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kriteriumswerte"
                 }
             },
-            "required": [
-                "gueltigkeitstyp",
-                "kriteriumsWerte"
-            ],
             "title": "RegionaleGueltigkeit",
             "type": "object"
         },
@@ -94,6 +141,18 @@
             "additionalProperties": true,
             "description": "Abbildung einer Preisstaffel mit regionaler Abgrenzung\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionalePreisstaffel.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionalePreisstaffel JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionalePreisstaffel.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "einheitspreis": {
                     "anyOf": [
                         {
@@ -101,12 +160,24 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Einheitspreis"
                 },
                 "regionaleGueltigkeit": {
-                    "$ref": "#/$defs/RegionaleGueltigkeit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RegionaleGueltigkeit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "sigmoidparameter": {
                     "anyOf": [
@@ -126,8 +197,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -137,17 +212,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "einheitspreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis",
-                "regionaleGueltigkeit"
-            ],
             "title": "RegionalePreisstaffel",
             "type": "object"
         },
@@ -162,8 +235,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -173,8 +250,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -184,8 +265,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -195,17 +280,27 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
+                },
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         },
@@ -234,11 +329,39 @@
     "additionalProperties": true,
     "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet\nwerden.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/RegionaleTarifpreisposition.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreisposition.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "bezugseinheit": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "einheit": {
-            "$ref": "#/$defs/Waehrungseinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waehrungseinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "mengeneinheitstaffel": {
             "anyOf": [
@@ -252,23 +375,32 @@
             "default": null
         },
         "preisstaffeln": {
-            "items": {
-                "$ref": "#/$defs/RegionalePreisstaffel"
-            },
-            "minItems": 1,
-            "title": "Preisstaffeln",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/RegionalePreisstaffel"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preisstaffeln"
         },
         "preistyp": {
-            "$ref": "#/$defs/Preistyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Preistyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "preistyp",
-        "einheit",
-        "bezugseinheit",
-        "preisstaffeln"
-    ],
     "title": "RegionaleTarifpreisposition",
     "type": "object"
 }

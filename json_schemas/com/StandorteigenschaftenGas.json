@@ -4,19 +4,43 @@
             "additionalProperties": true,
             "description": "Informationen zum Marktgebiet im Gas.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/MarktgebietInfo.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "marktgebiet": {
-                    "title": "Marktgebiet",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebiet"
                 },
                 "marktgebietcode": {
-                    "title": "Marktgebietcode",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebietcode"
                 }
             },
-            "required": [
-                "marktgebiet",
-                "marktgebietcode"
-            ],
             "title": "MarktgebietInfo",
             "type": "object"
         }
@@ -24,27 +48,49 @@
     "additionalProperties": true,
     "description": "Standorteigenschaften der Sparte Gas\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/StandorteigenschaftenGas.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `StandorteigenschaftenGas JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenGas.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "marktgebiete": {
-            "items": {
-                "$ref": "#/$defs/MarktgebietInfo"
-            },
-            "title": "Marktgebiete",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/MarktgebietInfo"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktgebiete"
         },
         "netzkontonummern": {
-            "items": {
-                "type": "string"
-            },
-            "maxItems": 2,
-            "minItems": 1,
-            "title": "Netzkontonummern",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Netzkontonummern"
         }
     },
-    "required": [
-        "netzkontonummern",
-        "marktgebiete"
-    ],
     "title": "StandorteigenschaftenGas",
     "type": "object"
 }

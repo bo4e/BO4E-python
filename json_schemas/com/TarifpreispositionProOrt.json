@@ -4,6 +4,18 @@
             "additionalProperties": true,
             "description": "Gibt die Staffelgrenzen der jeweiligen Preise an\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreisstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreisstaffelProOrt.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "arbeitspreis": {
                     "anyOf": [
                         {
@@ -11,8 +23,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Arbeitspreis"
                 },
                 "arbeitspreisNT": {
@@ -22,8 +38,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Arbeitspreisnt"
                 },
                 "grundpreis": {
@@ -33,8 +53,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Grundpreis"
                 },
                 "staffelgrenzeBis": {
@@ -44,8 +68,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -55,18 +83,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "arbeitspreis",
-                "arbeitspreisNT",
-                "grundpreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "TarifpreisstaffelProOrt",
             "type": "object"
         }
@@ -74,34 +99,70 @@
     "additionalProperties": true,
     "description": "Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/TarifpreispositionProOrt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreispositionProOrt.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "netznr": {
-            "title": "Netznr",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Netznr"
         },
         "ort": {
-            "title": "Ort",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ort"
         },
         "postleitzahl": {
-            "pattern": "^\\d{5}$",
-            "title": "Postleitzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Postleitzahl"
         },
         "preisstaffeln": {
-            "items": {
-                "$ref": "#/$defs/TarifpreisstaffelProOrt"
-            },
-            "minItems": 1,
-            "title": "Preisstaffeln",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/TarifpreisstaffelProOrt"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preisstaffeln"
         }
     },
-    "required": [
-        "postleitzahl",
-        "ort",
-        "netznr",
-        "preisstaffeln"
-    ],
     "title": "TarifpreispositionProOrt",
     "type": "object"
 }

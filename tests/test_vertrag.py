@@ -11,11 +11,11 @@ from bo4e.com.unterschrift import Unterschrift
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.com.vertragsteil import Vertragsteil
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
 from bo4e.enum.landescode import Landescode
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 from bo4e.enum.vertragsart import Vertragsart
 from bo4e.enum.vertragsstatus import Vertragsstatus
 
@@ -66,8 +66,8 @@ class TestVertrag:
     ]
     _vertragspartner1_dict: Dict[str, Any] = {
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "_typ": Typ.GESCHAEFTSPARTNER,
+        "externeReferenzen": None,
         "name1": "von Sinnen",
         "gewerbekennzeichnung": True,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
@@ -91,12 +91,14 @@ class TestVertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
+        "_id": None,
     }
     _vertragspartner2_dict: Dict[str, Any] = {
         "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "_typ": Typ.GESCHAEFTSPARTNER,
+        "externeReferenzen": None,
         "name1": "Eckart",
         "gewerbekennzeichnung": False,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
@@ -105,7 +107,7 @@ class TestVertrag:
         "name3": None,
         "hrnummer": None,
         "amtsgericht": None,
-        "kontaktweg": [],
+        "kontaktweg": None,
         "umsatzsteuerId": None,
         "glaeubigerId": None,
         "eMailAdresse": None,
@@ -120,7 +122,9 @@ class TestVertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
+        "_id": None,
     }
     _vertragsteile_dict: List[Dict[str, Any]] = [
         {
@@ -130,6 +134,7 @@ class TestVertrag:
             "vertraglichFixierteMenge": None,
             "minimaleAbnahmemenge": None,
             "maximaleAbnahmemenge": None,
+            "_id": None,
         }
     ]
 
@@ -158,12 +163,13 @@ class TestVertrag:
             "vertragspartner2": self._vertragspartner2_dict,
             "vertragsteile": self._vertragsteile_dict,
             "versionstruktur": "2",
-            "boTyp": BoTyp.VERTRAG,
-            "externeReferenzen": [],
+            "_typ": Typ.VERTRAG,
+            "externeReferenzen": None,
             "beschreibung": None,
             "vertragskonditionen": None,
             "unterzeichnervp1": None,
             "unterzeichnervp2": None,
+            "_id": None,
         }
 
     def test_serialisation_only_required_attributes(self) -> None:
@@ -174,7 +180,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is Typ.VERTRAG, "_typ was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
@@ -229,7 +235,7 @@ class TestVertrag:
 
         json_string = vertrag.model_dump_json(by_alias=True)
 
-        assert vertrag.bo_typ is BoTyp.VERTRAG, "boTyp was not automatically set"
+        assert vertrag.typ is Typ.VERTRAG, "_typ was not automatically set"
         assert self._vertragsnummer in json_string
         assert "BILANZIERUNGSVERTRAG" in json_string
         assert "AKTIV" in json_string
@@ -270,29 +276,3 @@ class TestVertrag:
         assert vertrag_deserialized.vertragskonditionen == Vertragskonditionen(beschreibung="Beschreibung")
         assert vertrag_deserialized.unterzeichnervp1 == [Unterschrift(name="Foo")]
         assert vertrag_deserialized.unterzeichnervp2 == [Unterschrift(name="Bar"), Unterschrift(name="Dr.No")]
-
-    def test_missing_required_attributes(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Vertrag()  # type: ignore[call-arg]
-
-        assert "9 validation errors" in str(excinfo.value)
-
-    def test_serialization_fails_for_empty_vertragsteile(self) -> None:
-        """
-        Test serialisation of Zaehler fails if there are no vertragsteile.
-        """
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Vertrag(
-                vertragsnummer=self._vertragsnummer,
-                vertragsart=self._vertragsart,
-                vertragsstatus=self._vertragsstatus,
-                sparte=self._sparte,
-                vertragsbeginn=self._vertragsbeginn,
-                vertragsende=self._vertragsende,
-                vertragspartner1=self._vertragspartner1,
-                vertragspartner2=self._vertragspartner2,
-                vertragsteile=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

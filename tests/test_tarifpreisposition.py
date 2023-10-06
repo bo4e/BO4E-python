@@ -41,9 +41,11 @@ class TestTarifpreisposition:
                             "sigmoidparameter": None,
                             "staffelgrenzeBis": Decimal("25"),
                             "staffelgrenzeVon": Decimal("12.5"),
+                            "_id": None,
                         }
                     ],
                     "mengeneinheitstaffel": None,
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -71,9 +73,11 @@ class TestTarifpreisposition:
                             "sigmoidparameter": None,
                             "staffelgrenzeBis": Decimal("25"),
                             "staffelgrenzeVon": Decimal("12.5"),
+                            "_id": None,
                         }
                     ],
                     "mengeneinheitstaffel": Mengeneinheit.STUECK,
+                    "_id": None,
                 },
                 id="optional and required attributes",
             ),
@@ -86,21 +90,3 @@ class TestTarifpreisposition:
         Test de-/serialisation of Tarifpreisposition.
         """
         assert_serialization_roundtrip(tarifpreisposition, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreisposition()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)
-
-    def test_tarifpreisposition_betraege_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreisposition(
-                preistyp=Preistyp.ENTGELT_ABLESUNG,
-                einheit=Waehrungseinheit.EUR,
-                bezugseinheit=Mengeneinheit.KWH,
-                preisstaffeln=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

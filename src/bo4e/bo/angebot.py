@@ -8,15 +8,14 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Len
 from pydantic import Field
 
 from bo4e.bo.ansprechpartner import Ansprechpartner
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.angebotsvariante import Angebotsvariante
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 
 
 class Angebot(Geschaeftsobjekt):
@@ -36,20 +35,20 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.ANGEBOT
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: Annotated[str, Field(strict=True, pattern=r"^\d+$")]
+    angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots
-    angebotsdatum: datetime
+    angebotsdatum: Optional[datetime] = None
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Ersteller des Angebots
-    angebotsgeber: Geschaeftspartner
+    angebotsgeber: Optional[Geschaeftspartner] = None
     #: Empfänger des Angebots
-    angebotsnehmer: Geschaeftspartner
+    angebotsnehmer: Optional[Geschaeftspartner] = None
 
-    varianten: Annotated[list[Angebotsvariante], Len(1)]
+    varianten: Optional[list[Angebotsvariante]] = None
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 

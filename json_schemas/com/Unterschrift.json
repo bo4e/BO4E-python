@@ -2,6 +2,18 @@
     "additionalProperties": true,
     "description": "Modellierung einer Unterschrift, z.B. für Verträge, Angebote etc.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Unterschrift.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Unterschrift.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "datum": {
             "anyOf": [
                 {
@@ -16,8 +28,16 @@
             "title": "Datum"
         },
         "name": {
-            "title": "Name",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Name"
         },
         "ort": {
             "anyOf": [
@@ -32,9 +52,6 @@
             "title": "Ort"
         }
     },
-    "required": [
-        "name"
-    ],
     "title": "Unterschrift",
     "type": "object"
 }

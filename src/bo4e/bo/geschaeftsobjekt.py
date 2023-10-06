@@ -1,14 +1,14 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import List, Optional
+from typing import Annotated, Optional
 
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -29,11 +29,19 @@ class Geschaeftsobjekt(BaseModel):
 
     # required attributes
     versionstruktur: str = "2"  #: Version der BO-Struktur aka "fachliche Versionierung"
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes
-    externe_referenzen: Optional[List[ExterneReferenz]] = []
+    externe_referenzen: Optional[list[ExterneReferenz]] = None
+
+    # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
+    # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
+    id: Annotated[Optional[str], Field(alias="_id")] = None
+    """
+    Eine generische ID, die für eigene Zwecke genutzt werden kann.
+    Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
+    """
 
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
     # pylint: disable=duplicate-code

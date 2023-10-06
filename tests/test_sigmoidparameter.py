@@ -22,7 +22,7 @@ class TestSigmoidparameter:
         [
             pytest.param(
                 example_sigmoidparameter,
-                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4"), "_id": None},
             ),
         ],
     )
@@ -33,11 +33,6 @@ class TestSigmoidparameter:
         Test de-/serialisation of Sigmoidparameter with minimal attributes.
         """
         assert_serialization_roundtrip(sigmoidparameter, expected_json_dict)
-
-    def test_sigmoidparameter_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Sigmoidparameter()  # type: ignore[call-arg]
-        assert "4 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "sigmoidparameter, leistung, expected_lp",

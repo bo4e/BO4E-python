@@ -260,6 +260,18 @@
     "additionalProperties": true,
     "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "adresszusatz": {
             "anyOf": [
                 {
@@ -297,16 +309,27 @@
             "title": "Hausnummer"
         },
         "landescode": {
-            "allOf": [
+            "anyOf": [
                 {
                     "$ref": "#/$defs/Landescode"
+                },
+                {
+                    "type": "null"
                 }
             ],
             "default": "DE"
         },
         "ort": {
-            "title": "Ort",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ort"
         },
         "ortsteil": {
             "anyOf": [
@@ -333,8 +356,16 @@
             "title": "Postfach"
         },
         "postleitzahl": {
-            "title": "Postleitzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Postleitzahl"
         },
         "strasse": {
             "anyOf": [
@@ -349,10 +380,6 @@
             "title": "Strasse"
         }
     },
-    "required": [
-        "postleitzahl",
-        "ort"
-    ],
     "title": "Adresse",
     "type": "object"
 }

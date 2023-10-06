@@ -3,14 +3,16 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import List, Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.adresse import Adresse
 from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.enum.kontaktart import Kontaktart
+from bo4e.enum.typ import Typ
 
 
 class Geschaeftspartner(Geschaeftsobjekt):
@@ -30,8 +32,8 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
-    name1: str
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
+    name1: Optional[str] = None
     """
     Erster Teil des Namens.
     Hier kann der Firmenname oder bei Privatpersonen beispielsweise der Nachname dagestellt werden.
@@ -40,13 +42,13 @@ class Geschaeftspartner(Geschaeftsobjekt):
     # todo: replace name1/2/3 with something more readable. no one wants to deal with that. maybe serialize as name1/2/3
     # but resolve to readable python fields under the hood
 
-    gewerbekennzeichnung: bool
+    gewerbekennzeichnung: Optional[bool] = None
     """
     Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)
     oder eine Privatperson handelt. (gewerbeKennzeichnung = false)
     """
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
-    geschaeftspartnerrolle: List[Geschaeftspartnerrolle]
+    geschaeftspartnerrolle: Optional[list[Geschaeftspartnerrolle]] = None
     # todo: rename to plural
 
     # optional attributes
@@ -70,7 +72,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
     amtsgericht: Optional[str] = None
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: Optional[List[Kontaktart]] = []
+    kontaktweg: Optional[list[Kontaktart]] = None
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
     umsatzsteuer_id: Optional[str] = None
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"

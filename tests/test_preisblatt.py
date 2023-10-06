@@ -31,8 +31,3 @@ class TestPreisblatt:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(preisblatt)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preisblatt()  # type: ignore[call-arg]
-        assert "5 validation errors" in str(excinfo.value)

@@ -62,9 +62,3 @@ class TestVertragsteil:
         assert vertragsteil_deserialized.lokation == "Bar"
         assert isinstance(vertragsteil_deserialized.minimale_abnahmemenge, Menge)
         assert vertragsteil_deserialized.minimale_abnahmemenge == Menge(wert=Decimal(2000), einheit=Mengeneinheit.KWH)
-
-    def test_vertragsteil_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Vertragsteil(vertragsteilende=datetime(2007, 11, 27, tzinfo=timezone.utc))  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)

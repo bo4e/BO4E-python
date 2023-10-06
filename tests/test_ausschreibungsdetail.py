@@ -35,6 +35,7 @@ example_ausschreibungsdetail_dict = {
         "enddatum": None,
         "einheit": Zeiteinheit.TAG,
         "startzeitpunkt": None,
+        "_id": None,
     },
     "marktlokationsadresse": {
         "landescode": Landescode.DE,  # type: ignore[attr-defined]
@@ -46,6 +47,7 @@ example_ausschreibungsdetail_dict = {
         "postfach": None,
         "coErgaenzung": None,
         "ortsteil": None,
+        "_id": None,
     },
     "rechnungsadresse": {
         "landescode": Landescode.DE,  # type: ignore[attr-defined]
@@ -57,6 +59,7 @@ example_ausschreibungsdetail_dict = {
         "postfach": None,
         "coErgaenzung": None,
         "ortsteil": None,
+        "_id": None,
     },
     "netzbetreiber": None,
     "netzebeneLieferung": Netzebene.MSP,
@@ -66,6 +69,7 @@ example_ausschreibungsdetail_dict = {
     "lastgangVorhanden": None,
     "prognoseJahresarbeit": None,
     "marktlokationsId": "56789012345",
+    "_id": None,
 }
 
 
@@ -100,6 +104,7 @@ class TestAusschreibungsdetail:
                         "endzeitpunkt": None,
                         "dauer": Decimal("5"),
                         "startzeitpunkt": None,
+                        "_id": None,
                     },
                     "zaehlertechnik": Zaehlertyp.LEISTUNGSZAEHLER,
                     "kunde": "Dei Mudder ihr Kunde",
@@ -114,6 +119,7 @@ class TestAusschreibungsdetail:
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
                         "ortsteil": None,
+                        "_id": None,
                     },
                     "rechnungsadresse": {
                         "hausnummer": "27A",
@@ -125,15 +131,21 @@ class TestAusschreibungsdetail:
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
                         "ortsteil": None,
+                        "_id": None,
                     },
                     "zaehlernummer": "1YSK4234092304",
-                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
+                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH, "_id": None},
                     "netzebeneLieferung": Netzebene.MSP,
                     "marktlokationsId": "56789012345",
-                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW},
+                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW, "_id": None},
                     "lastgangVorhanden": True,
                     "netzebeneMessung": Netzebene.NSP,
-                    "prognoseArbeitLieferzeitraum": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
+                    "prognoseArbeitLieferzeitraum": {
+                        "wert": Decimal("2500"),
+                        "einheit": Mengeneinheit.KWH,
+                        "_id": None,
+                    },
+                    "_id": None,
                 },
             ),
             pytest.param(example_ausschreibungsdetail, example_ausschreibungsdetail_dict),
@@ -146,10 +158,3 @@ class TestAusschreibungsdetail:
         Test de-/serialisation of Ausschreibungsdetail
         """
         assert_serialization_roundtrip(ausschreibungsdetail, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungsdetail()  # type: ignore[call-arg]
-
-        assert "5 validation errors" in str(excinfo.value)
-        # 'lokations_id', 'netzebene_lieferung', 'netzebene_messung', 'lokationsadresse', and 'lieferzeitraum'

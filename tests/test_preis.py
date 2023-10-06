@@ -40,12 +40,6 @@ class TestPreis:
         assert "wert" in str(excinfo.value)
         assert "type=decimal_parsing" in str(excinfo.value)
 
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
-
     def test_optional_attribute(self) -> None:
         preis = Preis(
             wert=Decimal(3.50),

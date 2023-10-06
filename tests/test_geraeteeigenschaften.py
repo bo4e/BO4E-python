@@ -19,7 +19,7 @@ class TestGeraeteeigenschaften:
         [
             pytest.param(
                 example_geraeteeigenschaften,
-                {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE},
+                {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE, "_id": None},
             ),
         ],
     )
@@ -30,12 +30,6 @@ class TestGeraeteeigenschaften:
         Test de-/serialisation of Geraeteeigenschaften
         """
         assert_serialization_roundtrip(geraeteeigenschaften, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Geraeteeigenschaften()  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "not_a_geraetetyp",

@@ -65,6 +65,18 @@
             "additionalProperties": true,
             "description": "Abbildung eines kompakten Zeitreihenwertes in dem ausschliesslich der Wert und Statusinformationen stehen.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitreihenwertkompakt.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitreihenwertkompakt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwertkompakt.json>`_",
             "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
                 "status": {
                     "anyOf": [
                         {
@@ -94,14 +106,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert"
-            ],
             "title": "Zeitreihenwertkompakt",
             "type": "object"
         }
@@ -109,24 +122,47 @@
     "additionalProperties": true,
     "description": "Abbildung eines Tagesvektors eines beliebigen äquidistanten Zeitrasters\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Tagesvektor.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Tagesvektor JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tagesvektor.json>`_",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "tag": {
-            "format": "date-time",
-            "title": "Tag",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tag"
         },
         "werte": {
-            "items": {
-                "$ref": "#/$defs/Zeitreihenwertkompakt"
-            },
-            "minItems": 1,
-            "title": "Werte",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Zeitreihenwertkompakt"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Werte"
         }
     },
-    "required": [
-        "tag",
-        "werte"
-    ],
     "title": "Tagesvektor",
     "type": "object"
 }

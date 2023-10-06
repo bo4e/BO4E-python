@@ -2,14 +2,14 @@
 Contains Energiemenge class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated
+from typing import Annotated, Optional
 
-from annotated_types import Len
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.verbrauch import Verbrauch
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.lokationstyp import Lokationstyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -29,13 +29,13 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.ENERGIEMENGE
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
-    lokations_id: str
+    lokations_id: Optional[str] = None
     # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp
     #: Gibt an, ob es sich um eine Markt- oder Messlokation handelt
-    lokationstyp: Lokationstyp
+    lokationstyp: Optional[Lokationstyp] = None
 
     #: Gibt den Verbrauch in einer Zeiteinheit an
-    energieverbrauch: Annotated[list[Verbrauch], Len(1)]
+    energieverbrauch: Optional[list[Verbrauch]] = None
     # there are no optional attributes
