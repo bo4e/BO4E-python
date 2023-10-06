@@ -43,6 +43,14 @@ class Geschaeftsobjekt(BaseModel):
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
+    # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
+    # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
+    id: Optional[str] = Field(alias="_id", default=None)
+    """
+    Eine generische ID, die für eigene Zwecke genutzt werden kann.
+    Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
+    """
+
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
     # pylint: disable=duplicate-code
     model_config = ConfigDict(
