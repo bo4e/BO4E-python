@@ -1,3 +1,4 @@
+import uuid
 from pathlib import Path
 from typing import Dict, Optional
 
@@ -5,7 +6,6 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e.com.adresse import Adresse
-from bo4e.enum import landescode
 from bo4e.enum.landescode import Landescode
 from tests.utils import parse_file
 
@@ -241,3 +241,16 @@ class TestAddress:
         deserialized_address = Adresse.model_validate_json(address_json)
 
         assert deserialized_address == adresse
+
+    def test_id(self):
+        adresse = Adresse(
+            id=str(uuid.uuid4()),
+            ort="Grünwald",
+            landescode=Landescode.DE,  # type: ignore[attr-defined]
+            hausnummer="27A",
+            strasse="Nördliche Münchner Straße",
+            postleitzahl="82031",
+        )
+        adresse_json = adresse.model_dump(by_alias=True)
+        assert "_id" in adresse_json, "The json serialization shall contain the leading underscore"
+        assert Adresse.model_validate(adresse_json) == adresse

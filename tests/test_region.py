@@ -42,3 +42,14 @@ class TestRegion:
 
         assert "1 validation error" in str(excinfo.value)
         assert "too_short" in str(excinfo.value)
+
+    def test_region_id(self):
+        region = Region(
+            bezeichnung="Bikini Bottom",
+            id="foo",
+            positiv_liste=[example_regionskriterium],
+            negativ_liste=[example_regionskriterium],
+        )
+        region_dict = region.model_dump(by_alias=True)
+        assert "_id" in region_dict
+        assert Region.model_validate(region_dict) == region
