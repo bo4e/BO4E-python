@@ -9,8 +9,8 @@ from bo4e.com.externereferenz import ExterneReferenz
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e.enum.registeranzahl import Registeranzahl
 from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
@@ -30,7 +30,7 @@ example_zaehler = Zaehler(
         )
     ],
     zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-    tarifart=Tarifart.ZWEITARIF,
+    tarifart=Registeranzahl.ZWEITARIF,
     zaehlerkonstante=Decimal(0.9),
     eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
     externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],

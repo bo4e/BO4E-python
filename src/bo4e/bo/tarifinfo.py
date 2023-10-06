@@ -16,8 +16,8 @@ from bo4e.com.energiemix import Energiemix
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.kundentyp import Kundentyp
+from bo4e.enum.registeranzahl import Registeranzahl
 from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.tarifmerkmal import Tarifmerkmal
 from bo4e.enum.tariftyp import Tariftyp
 from bo4e.enum.typ import Typ
@@ -47,7 +47,7 @@ class Tarifinfo(Geschaeftsobjekt):
     #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
     kundentypen: Optional[list[Kundentyp]] = None
     #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
-    tarifart: Optional[Tarifart] = None
+    tarifart: Optional[Registeranzahl] = None
     #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
     tariftyp: Optional[Tariftyp] = None
     #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse

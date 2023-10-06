@@ -1669,6 +1669,16 @@
             "title": "Preisstatus",
             "type": "string"
         },
+        "Registeranzahl": {
+            "description": "Die Registeranzahl wird verwendet zur Charakterisierung von Zählern und daraus resultierenden Tarifen.",
+            "enum": [
+                "EINTARIF",
+                "ZWEITARIF",
+                "MEHRTARIF"
+            ],
+            "title": "Registeranzahl",
+            "type": "string"
+        },
         "Rollencodetyp": {
             "description": "Gibt den Codetyp einer Rolle, beispielsweise einer Marktrolle, an.",
             "enum": [
@@ -1771,18 +1781,6 @@
                 "STROM_UND_GAS"
             ],
             "title": "Sparte",
-            "type": "string"
-        },
-        "Tarifart": {
-            "description": "Die Tarifart wird verwendet zur Charakterisierung von Zählern und daraus resultierenden Tarifen.",
-            "enum": [
-                "EINTARIF",
-                "ZWEITARIF",
-                "MEHRTARIF",
-                "SMART_METER",
-                "LEISTUNGSGEMESSEN"
-            ],
-            "title": "Tarifart",
             "type": "string"
         },
         "Tarifzeit": {
@@ -1962,10 +1960,10 @@
                     ],
                     "default": null
                 },
-                "sparte": {
+                "registeranzahl": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Sparte"
+                            "$ref": "#/$defs/Registeranzahl"
                         },
                         {
                             "type": "null"
@@ -1973,10 +1971,10 @@
                     ],
                     "default": null
                 },
-                "tarifart": {
+                "sparte": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Tarifart"
+                            "$ref": "#/$defs/Sparte"
                         },
                         {
                             "type": "null"

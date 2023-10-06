@@ -17,8 +17,8 @@ from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.zaehlwerk import Zaehlwerk
 from bo4e.enum.Befestigungsart import Befestigungsart
 from bo4e.enum.messwerterfassung import Messwerterfassung
+from bo4e.enum.registeranzahl import Registeranzahl
 from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlergroesse import Zaehlergroesse
@@ -47,7 +47,7 @@ class Zaehler(Geschaeftsobjekt):
     zaehlerauspraegung: Optional[Zaehlerauspraegung] = None  #: Spezifikation die Richtung des Zählers betreffend
     zaehlertyp: Optional[Zaehlertyp] = None  #: Typisierung des Zählers
     zaehlwerke: Optional[list[Zaehlwerk]] = None
-    tarifart: Optional[Tarifart] = None  #: Spezifikation bezüglich unterstützter Tarifarten
+    registeranzahl: Optional[Registeranzahl] = None  #: Spezifikation bezüglich unterstützter Tarif
     zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
     eichung_bis: Optional[datetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[datetime] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
