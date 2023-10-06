@@ -67,7 +67,7 @@ class TestVertrag:
     _vertragspartner1_dict: Dict[str, Any] = {
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "externeReferenzen": None,
         "name1": "von Sinnen",
         "gewerbekennzeichnung": True,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
@@ -98,7 +98,7 @@ class TestVertrag:
     _vertragspartner2_dict: Dict[str, Any] = {
         "versionstruktur": "2",
         "boTyp": BoTyp.GESCHAEFTSPARTNER,
-        "externeReferenzen": [],
+        "externeReferenzen": None,
         "name1": "Eckart",
         "gewerbekennzeichnung": False,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
@@ -107,7 +107,7 @@ class TestVertrag:
         "name3": None,
         "hrnummer": None,
         "amtsgericht": None,
-        "kontaktweg": [],
+        "kontaktweg": None,
         "umsatzsteuerId": None,
         "glaeubigerId": None,
         "eMailAdresse": None,
@@ -164,7 +164,7 @@ class TestVertrag:
             "vertragsteile": self._vertragsteile_dict,
             "versionstruktur": "2",
             "boTyp": BoTyp.VERTRAG,
-            "externeReferenzen": [],
+            "externeReferenzen": None,
             "beschreibung": None,
             "vertragskonditionen": None,
             "unterzeichnervp1": None,
@@ -276,29 +276,3 @@ class TestVertrag:
         assert vertrag_deserialized.vertragskonditionen == Vertragskonditionen(beschreibung="Beschreibung")
         assert vertrag_deserialized.unterzeichnervp1 == [Unterschrift(name="Foo")]
         assert vertrag_deserialized.unterzeichnervp2 == [Unterschrift(name="Bar"), Unterschrift(name="Dr.No")]
-
-    def test_missing_required_attributes(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Vertrag()  # type: ignore[call-arg]
-
-        assert "9 validation errors" in str(excinfo.value)
-
-    def test_serialization_fails_for_empty_vertragsteile(self) -> None:
-        """
-        Test serialisation of Zaehler fails if there are no vertragsteile.
-        """
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Vertrag(
-                vertragsnummer=self._vertragsnummer,
-                vertragsart=self._vertragsart,
-                vertragsstatus=self._vertragsstatus,
-                sparte=self._sparte,
-                vertragsbeginn=self._vertragsbeginn,
-                vertragsende=self._vertragsende,
-                vertragspartner1=self._vertragspartner1,
-                vertragspartner2=self._vertragspartner2,
-                vertragsteile=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

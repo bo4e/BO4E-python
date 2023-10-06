@@ -41,9 +41,3 @@ class TestMenge:
             _ = Menge(wert="hallo", einheit=Mengeneinheit.MWH)  # type: ignore[arg-type]
 
         assert "wert" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Menge(wert=Decimal(3.14))  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)

@@ -69,10 +69,26 @@
                     "title": " Id"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -92,16 +108,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert"
-            ],
             "title": "Preis",
             "type": "object"
         },
@@ -172,13 +187,37 @@
                     "title": "Beschreibung"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "preistyp": {
-                    "$ref": "#/$defs/Preistyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preistyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -198,17 +237,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert",
-                "preistyp"
-            ],
             "title": "Tarifpreis",
             "type": "object"
         },

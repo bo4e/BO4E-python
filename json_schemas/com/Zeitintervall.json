@@ -34,17 +34,29 @@
             "title": " Id"
         },
         "wert": {
-            "title": "Wert",
-            "type": "integer"
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Wert"
         },
         "zeiteinheit": {
-            "$ref": "#/$defs/Zeiteinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeiteinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "wert",
-        "zeiteinheit"
-    ],
     "title": "Zeitintervall",
     "type": "object"
 }

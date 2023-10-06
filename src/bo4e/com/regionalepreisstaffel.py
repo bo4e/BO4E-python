@@ -1,7 +1,7 @@
 """
 Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization
 """
-
+from typing import Optional
 
 from bo4e.com.preisstaffel import Preisstaffel
 from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
@@ -24,4 +24,4 @@ class RegionalePreisstaffel(Preisstaffel):
 
     # required attributes
     #: Regionale Eingrenzung der Preisstaffel
-    regionale_gueltigkeit: RegionaleGueltigkeit
+    regionale_gueltigkeit: Optional[RegionaleGueltigkeit] = None

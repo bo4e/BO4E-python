@@ -1,7 +1,7 @@
 """
 Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization
 """
-
+from typing import Optional
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.enum.botyp import BoTyp
@@ -26,6 +26,6 @@ class PreisblattKonzessionsabgabe(Preisblatt):
     bo_typ: BoTyp = BoTyp.PREISBLATTKONZESSIONSABGABE
     # required attributes (additional to those of Preisblatt)
     #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
-    kundengruppe_k_a: KundengruppeKA
+    kundengruppe_k_a: Optional[KundengruppeKA] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

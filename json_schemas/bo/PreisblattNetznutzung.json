@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -265,18 +280,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -756,19 +783,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -806,7 +849,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "makoadresse": {
@@ -822,11 +865,27 @@
                     "title": "Makoadresse"
                 },
                 "marktrolle": {
-                    "$ref": "#/$defs/Marktrolle"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Marktrolle"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -864,15 +923,38 @@
                     "default": null
                 },
                 "rollencodenummer": {
-                    "pattern": "^\\d{13}$",
-                    "title": "Rollencodenummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Rollencodenummer"
                 },
                 "rollencodetyp": {
-                    "$ref": "#/$defs/Rollencodetyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Rollencodetyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "sparte": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "umsatzsteuerId": {
                     "anyOf": [
@@ -904,15 +986,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle",
-                "marktrolle",
-                "rollencodenummer",
-                "rollencodetyp",
-                "sparte"
-            ],
             "title": "Marktteilnehmer",
             "type": "object"
         },
@@ -982,10 +1055,26 @@
                     "default": null
                 },
                 "berechnungsmethode": {
-                    "$ref": "#/$defs/Kalkulationsmethode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Kalkulationsmethode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "bezugsgroesse": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "freimengeBlindarbeit": {
                     "anyOf": [
@@ -1030,22 +1119,53 @@
                     "title": "Gruppenartikelid"
                 },
                 "leistungsbezeichnung": {
-                    "title": "Leistungsbezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Leistungsbezeichnung"
                 },
                 "leistungstyp": {
-                    "$ref": "#/$defs/Leistungstyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Leistungstyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "preiseinheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "preisstaffeln": {
-                    "items": {
-                        "$ref": "#/$defs/Preisstaffel"
-                    },
-                    "minItems": 1,
-                    "title": "Preisstaffeln",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Preisstaffel"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Preisstaffeln"
                 },
                 "tarifzeit": {
                     "anyOf": [
@@ -1081,14 +1201,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "berechnungsmethode",
-                "leistungstyp",
-                "leistungsbezeichnung",
-                "preiseinheit",
-                "bezugsgroesse",
-                "preisstaffeln"
-            ],
             "title": "Preisposition",
             "type": "object"
         },
@@ -1115,8 +1227,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Einheitspreis"
                 },
                 "sigmoidparameter": {
@@ -1137,8 +1253,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -1148,16 +1268,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "einheitspreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "Preisstaffel",
             "type": "object"
         },
@@ -1191,8 +1310,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -1202,8 +1325,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -1213,8 +1340,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -1224,8 +1355,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
                 },
                 "_id": {
@@ -1241,12 +1376,6 @@
                     "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         },
@@ -1415,11 +1544,27 @@
             "title": " Id"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "bilanzierungsmethode": {
-            "$ref": "#/$defs/Bilanzierungsmethode"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Bilanzierungsmethode"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "boTyp": {
             "allOf": [
@@ -1441,11 +1586,19 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "gueltigkeit": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "herausgeber": {
             "anyOf": [
@@ -1459,24 +1612,63 @@
             "default": null
         },
         "kundengruppe": {
-            "$ref": "#/$defs/Kundengruppe"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Kundengruppe"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "netzebene": {
-            "$ref": "#/$defs/Netzebene"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Netzebene"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "preispositionen": {
-            "items": {
-                "$ref": "#/$defs/Preisposition"
-            },
-            "minItems": 1,
-            "title": "Preispositionen",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Preisposition"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preispositionen"
         },
         "preisstatus": {
-            "$ref": "#/$defs/Preisstatus"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Preisstatus"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "versionstruktur": {
             "default": "2",
@@ -1484,16 +1676,6 @@
             "type": "string"
         }
     },
-    "required": [
-        "bezeichnung",
-        "sparte",
-        "preisstatus",
-        "gueltigkeit",
-        "preispositionen",
-        "bilanzierungsmethode",
-        "netzebene",
-        "kundengruppe"
-    ],
     "title": "PreisblattNetznutzung",
     "type": "object"
 }

@@ -15,18 +15,30 @@
             "title": " Id"
         },
         "marktgebiet": {
-            "title": "Marktgebiet",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktgebiet"
         },
         "marktgebietcode": {
-            "title": "Marktgebietcode",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktgebietcode"
         }
     },
-    "required": [
-        "marktgebiet",
-        "marktgebietcode"
-    ],
     "title": "MarktgebietInfo",
     "type": "object"
 }

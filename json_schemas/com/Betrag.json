@@ -206,7 +206,15 @@
             "title": " Id"
         },
         "waehrung": {
-            "$ref": "#/$defs/Waehrungscode"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waehrungscode"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wert": {
             "anyOf": [
@@ -215,15 +223,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wert"
         }
     },
-    "required": [
-        "wert",
-        "waehrung"
-    ],
     "title": "Betrag",
     "type": "object"
 }

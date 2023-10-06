@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -190,18 +205,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -276,19 +303,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -326,12 +369,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -398,11 +449,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -775,19 +821,50 @@
                     "title": " Id"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "obisKennzahl": {
-                    "pattern": "(?:(1)-((?:[0-5]?[0-9])|(?:6[0-5])):((?:[1-8]|99))\\.((?:6|8|9|29))\\.([0-9]{1,2}))|(?:(7)-((?:[0-5]?[0-9])|(?:6[0-5])):(.{1,2})\\.(.{1,2})\\.([0-9]{1,2}))",
-                    "title": "Obiskennzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Obiskennzahl"
                 },
                 "richtung": {
-                    "$ref": "#/$defs/Energierichtung"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Energierichtung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wandlerfaktor": {
                     "anyOf": [
@@ -796,23 +873,27 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wandlerfaktor"
                 },
                 "zaehlwerkId": {
-                    "title": "Zaehlwerkid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlwerkid"
                 }
             },
-            "required": [
-                "zaehlwerkId",
-                "bezeichnung",
-                "richtung",
-                "obisKennzahl",
-                "wandlerfaktor",
-                "einheit"
-            ],
             "title": "Zaehlwerk",
             "type": "object"
         }
@@ -865,7 +946,7 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "letzteEichung": {
@@ -882,10 +963,26 @@
             "title": "Letzteeichung"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tarifart": {
-            "$ref": "#/$defs/Tarifart"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tarifart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "versionstruktur": {
             "default": "2",
@@ -893,7 +990,15 @@
             "type": "string"
         },
         "zaehlerauspraegung": {
-            "$ref": "#/$defs/Zaehlerauspraegung"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zaehlerauspraegung"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zaehlerhersteller": {
             "anyOf": [
@@ -922,29 +1027,44 @@
             "title": "Zaehlerkonstante"
         },
         "zaehlernummer": {
-            "title": "Zaehlernummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Zaehlernummer"
         },
         "zaehlertyp": {
-            "$ref": "#/$defs/Zaehlertyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zaehlertyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zaehlwerke": {
-            "items": {
-                "$ref": "#/$defs/Zaehlwerk"
-            },
-            "minItems": 1,
-            "title": "Zaehlwerke",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Zaehlwerk"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Zaehlwerke"
         }
     },
-    "required": [
-        "zaehlernummer",
-        "sparte",
-        "zaehlerauspraegung",
-        "zaehlertyp",
-        "zaehlwerke",
-        "tarifart"
-    ],
     "title": "Zaehler",
     "type": "object"
 }

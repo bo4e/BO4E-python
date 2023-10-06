@@ -5,9 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
@@ -39,15 +37,15 @@ class Preisblatt(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Preisblatt gilt für angegebene Sparte
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
-    preisstatus: Preisstatus
+    preisstatus: Optional[Preisstatus] = None
     #: Der Zeitraum für den der Preis festgelegt ist
-    gueltigkeit: Zeitraum
+    gueltigkeit: Optional[Zeitraum] = None
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
-    preispositionen: Annotated[list[Preisposition], Len(1)]
+    preispositionen: Optional[list[Preisposition]] = None
     # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
     herausgeber: Optional[Marktteilnehmer] = None

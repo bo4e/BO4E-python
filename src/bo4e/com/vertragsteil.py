@@ -26,11 +26,11 @@ class Vertragsteil(COM):
     """
 
     # required attributes
-    vertragsteilbeginn: datetime
+    vertragsteilbeginn: Optional[datetime] = None
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: datetime
+    vertragsteilende: Optional[datetime] = None
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """

@@ -44,6 +44,7 @@ class TestZaehler:
         )
         assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
         assert zaehler.bo_typ is BoTyp.ZAEHLER, "boTyp was not automatically set"
+        assert zaehler.zaehlwerke is not None
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP
         assert zaehler.zaehlwerke[0].einheit == Mengeneinheit.KW
         json_string = zaehler.model_dump_json(by_alias=True)
@@ -51,45 +52,3 @@ class TestZaehler:
         assert "einheit" in json_string, "Zaehlwerk->einheit was not serialized"
         deserialized_zaehler = Zaehler.model_validate_json(json_string)
         assert deserialized_zaehler == zaehler
-
-    def test_serialization_fails_for_invalid_obis(self) -> None:
-        """
-        Test serialisation of Zaehler fails if OBIS is wrong.
-        """
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zaehler(
-                zaehlernummer="000111222",
-                sparte=Sparte.STROM,
-                zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
-                zaehlwerke=[
-                    Zaehlwerk(
-                        zaehlwerk_id="98765",
-                        einheit=Mengeneinheit.KW,
-                        richtung=Energierichtung.EINSP,
-                        bezeichnung="my zaehlwerk",
-                        obis_kennzahl="foo",  # <-- this is not a valid obis. it triggered the value error
-                        wandlerfaktor=Decimal(0.95),
-                    )
-                ],
-                zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-                tarifart=Tarifart.ZWEITARIF,
-            )
-        assert "1 validation error" in str(excinfo.value)
-        assert "obis_kennzahl" in str(excinfo.value)
-        assert "should match pattern" in str(excinfo.value)
-
-    def test_serialization_fails_for_empty_zaehlwerke(self) -> None:
-        """
-        Test serialisation of Zaehler fails if there are no zaehlwerke.
-        """
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zaehler(
-                zaehlernummer="000111222",
-                sparte=Sparte.STROM,
-                zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
-                zaehlwerke=[],
-                zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-                tarifart=Tarifart.ZWEITARIF,
-            )
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

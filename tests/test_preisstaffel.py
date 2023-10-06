@@ -58,12 +58,6 @@ class TestPreisstaffel:
         """
         assert_serialization_roundtrip(preisstaffel, expected_json_dict)
 
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preisstaffel()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)
-
     @pytest.mark.parametrize(
         "not_a_sigmoid_parameter",
         [

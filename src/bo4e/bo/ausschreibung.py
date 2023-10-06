@@ -5,9 +5,7 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -35,32 +33,32 @@ class Ausschreibung(Geschaeftsobjekt):
     # required attributes
     bo_typ: BoTyp = BoTyp.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
-    ausschreibungsnummer: str
+    ausschreibungsnummer: Optional[str] = None
     #: Aufzählung für die Typisierung von Ausschreibungen
-    ausschreibungstyp: Ausschreibungstyp
+    ausschreibungstyp: Optional[Ausschreibungstyp] = None
     #: Bezeichnungen für die Ausschreibungsphasen
-    ausschreibungsstatus: Ausschreibungsstatus
+    ausschreibungsstatus: Optional[Ausschreibungsstatus] = None
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
-    kostenpflichtig: bool
+    kostenpflichtig: Optional[bool] = None
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
-    veroeffentlichungszeitpunkt: datetime
-    ausschreibender: Geschaeftspartner
+    veroeffentlichungszeitpunkt: Optional[datetime] = None
+    ausschreibender: Optional[Geschaeftspartner] = None
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein
     """
-    abgabefrist: Zeitraum
+    abgabefrist: Optional[Zeitraum] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
-    bindefrist: Zeitraum
+    bindefrist: Optional[Zeitraum] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
-    lose: Annotated[list[Ausschreibungslos], Len(1)]
+    lose: Optional[list[Ausschreibungslos]] = None
 
     # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale

@@ -17,18 +17,30 @@
                     "title": " Id"
                 },
                 "marktgebiet": {
-                    "title": "Marktgebiet",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebiet"
                 },
                 "marktgebietcode": {
-                    "title": "Marktgebietcode",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebietcode"
                 }
             },
-            "required": [
-                "marktgebiet",
-                "marktgebietcode"
-            ],
             "title": "MarktgebietInfo",
             "type": "object"
         }
@@ -49,26 +61,36 @@
             "title": " Id"
         },
         "marktgebiete": {
-            "items": {
-                "$ref": "#/$defs/MarktgebietInfo"
-            },
-            "title": "Marktgebiete",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/MarktgebietInfo"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Marktgebiete"
         },
         "netzkontonummern": {
-            "items": {
-                "type": "string"
-            },
-            "maxItems": 2,
-            "minItems": 1,
-            "title": "Netzkontonummern",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "type": "string"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Netzkontonummern"
         }
     },
-    "required": [
-        "netzkontonummern",
-        "marktgebiete"
-    ],
     "title": "StandorteigenschaftenGas",
     "type": "object"
 }

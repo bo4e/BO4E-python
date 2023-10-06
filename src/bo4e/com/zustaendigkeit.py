@@ -24,7 +24,7 @@ class Zustaendigkeit(COM):
     """
 
     # required attributes
-    themengebiet: Themengebiet
+    themengebiet: Optional[Themengebiet] = None
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners angegeben werden
     """

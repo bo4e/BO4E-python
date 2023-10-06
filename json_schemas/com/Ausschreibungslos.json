@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -153,14 +168,38 @@
                     "title": "Lastgangvorhanden"
                 },
                 "lieferzeitraum": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "marktlokationsId": {
-                    "title": "Marktlokationsid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktlokationsid"
                 },
                 "marktlokationsadresse": {
-                    "$ref": "#/$defs/Adresse"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Adresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "marktlokationsbezeichnung": {
                     "anyOf": [
@@ -187,12 +226,28 @@
                     "title": "Netzbetreiber"
                 },
                 "netzebeneLieferung": {
-                    "title": "Netzebenelieferung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzebenelieferung"
                 },
                 "netzebeneMessung": {
-                    "title": "Netzebenemessung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzebenemessung"
                 },
                 "prognoseArbeitLieferzeitraum": {
                     "anyOf": [
@@ -262,13 +317,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "marktlokationsId",
-                "netzebeneLieferung",
-                "netzebeneMessung",
-                "marktlokationsadresse",
-                "lieferzeitraum"
-            ],
             "title": "Ausschreibungsdetail",
             "type": "object"
         },
@@ -545,7 +593,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -554,15 +610,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -780,8 +836,16 @@
             "title": " Id"
         },
         "anzahlLieferstellen": {
-            "title": "Anzahllieferstellen",
-            "type": "integer"
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Anzahllieferstellen"
         },
         "bemerkung": {
             "anyOf": [
@@ -796,15 +860,39 @@
             "title": "Bemerkung"
         },
         "betreutDurch": {
-            "title": "Betreutdurch",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Betreutdurch"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "energieart": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "gesamtMenge": {
             "anyOf": [
@@ -818,22 +906,53 @@
             "default": null
         },
         "lieferstellen": {
-            "items": {
-                "$ref": "#/$defs/Ausschreibungsdetail"
-            },
-            "minItems": 1,
-            "title": "Lieferstellen",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Ausschreibungsdetail"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lieferstellen"
         },
         "lieferzeitraum": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "losnummer": {
-            "title": "Losnummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Losnummer"
         },
         "preismodell": {
-            "$ref": "#/$defs/Preismodell"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Preismodell"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wiederholungsintervall": {
             "anyOf": [
@@ -880,10 +999,26 @@
             "default": null
         },
         "wunschRechnungslegung": {
-            "$ref": "#/$defs/Rechnungslegung"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Rechnungslegung"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wunschVertragsform": {
-            "$ref": "#/$defs/Vertragsform"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Vertragsform"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wunschZahlungsziel": {
             "anyOf": [
@@ -897,18 +1032,6 @@
             "default": null
         }
     },
-    "required": [
-        "losnummer",
-        "bezeichnung",
-        "preismodell",
-        "energieart",
-        "wunschRechnungslegung",
-        "wunschVertragsform",
-        "betreutDurch",
-        "anzahlLieferstellen",
-        "lieferstellen",
-        "lieferzeitraum"
-    ],
     "title": "Ausschreibungslos",
     "type": "object"
 }

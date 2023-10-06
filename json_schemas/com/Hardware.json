@@ -69,17 +69,29 @@
             "title": " Id"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "geraetetyp": {
-            "$ref": "#/$defs/Geraetetyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geraetetyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "geraetetyp",
-        "bezeichnung"
-    ],
     "title": "Hardware",
     "type": "object"
 }

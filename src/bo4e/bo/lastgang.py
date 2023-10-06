@@ -2,9 +2,7 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -17,7 +15,6 @@ from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.botyp import BoTyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
-from bo4e.validators import OBIS_PATTERN
 
 
 class _LastgangBody(Geschaeftsobjekt):
@@ -27,24 +24,24 @@ class _LastgangBody(Geschaeftsobjekt):
     """
 
     #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
 
     #: Eindeutige Nummer der Marktlokation bzw der Messlokation, zu der der Lastgang gehört
-    lokations_id: str
+    lokations_id: Optional[str] = None
 
     #: Marktlokation oder Messlokation
-    lokationstyp: str
+    lokationstyp: Optional[str] = None
     # todo: implement a lokations-id + lokationstyp cross check (such that lokationstyp malo checks for valid malo id)
     # https://github.com/Hochfrequenz/BO4E-python/issues/321
 
     #: Definition der gemessenen Größe anhand ihrer Einheit
-    messgroesse: Mengeneinheit
+    messgroesse: Optional[Mengeneinheit] = None
 
     # optional attributes
     #: Versionsnummer des Lastgangs
     version: Optional[str] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: Optional[constr(strict=True, pattern=OBIS_PATTERN)] = None  # type: ignore[valid-type]
+    obis_kennzahl: Optional[constr(strict=True)] = None  # type: ignore[valid-type]
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -61,12 +58,12 @@ class LastgangKompakt(_LastgangBody):
     bo_typ: BoTyp = BoTyp.LASTGANG_KOMPAKT
 
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
-    zeitintervall: Zeitintervall
+    zeitintervall: Optional[Zeitintervall] = None
     # todo: implement a cross check that this zeitintervall is actually the one used in tagesvektoren
     # https://github.com/Hochfrequenz/BO4E-python/issues/322
 
     #: Die im Lastgang enthaltenen Messwerte in Form von Tagesvektoren
-    tagesvektoren: List[Tagesvektor]
+    tagesvektoren: Optional[list[Tagesvektor]] = None
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -91,4 +88,4 @@ class Lastgang(_LastgangBody):
     bo_typ: BoTyp = BoTyp.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
-    werte: Annotated[list[Zeitreihenwert], Len(1)]
+    werte: Optional[list[Zeitreihenwert]] = None

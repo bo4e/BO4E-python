@@ -155,16 +155,28 @@
             "title": "Beschreibung"
         },
         "preisgarantietyp": {
-            "$ref": "#/$defs/Preisgarantietyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Preisgarantietyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zeitlicheGueltigkeit": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "preisgarantietyp",
-        "zeitlicheGueltigkeit"
-    ],
     "title": "Preisgarantie",
     "type": "object"
 }

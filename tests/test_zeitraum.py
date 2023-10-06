@@ -82,28 +82,3 @@ class TestZeitraum:
         assert zeitraum_deserialized.startzeitpunkt == datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc)
         assert isinstance(zeitraum_deserialized.endzeitpunkt, datetime)
         assert zeitraum_deserialized.endzeitpunkt == datetime(2021, 7, 30, tzinfo=timezone.utc)
-
-    @pytest.mark.parametrize(
-        "arguments",
-        [
-            pytest.param({"startdatum": datetime(2013, 5, 1, tzinfo=timezone.utc)}),
-            pytest.param(
-                {
-                    "startdatum": datetime(2013, 5, 1, tzinfo=timezone.utc),
-                    "startzeitpunkt": datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
-                    "endzeitpunkt": datetime(2021, 7, 30, tzinfo=timezone.utc),
-                }
-            ),
-            pytest.param({}),
-            pytest.param(
-                {
-                    "startdatum": datetime(2013, 5, 1, tzinfo=timezone.utc),
-                    "endzeitpunkt": datetime(2021, 7, 30, tzinfo=timezone.utc),
-                }
-            ),
-        ],
-    )
-    def test_validator_time_range_possibilities(self, arguments: Dict[str, datetime]) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitraum(**arguments)  # type: ignore[arg-type]
-        assert "Please choose from one of the three possibilities to specify the timerange:" in str(excinfo.value)

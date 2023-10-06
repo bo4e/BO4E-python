@@ -2,11 +2,14 @@
 Contains Energieherkunft class
 and corresponding marshmallow schema for de-/serialization
 """
-# pylint: disable=no-name-in-module
-from pydantic import condecimal
+from decimal import Decimal
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.erzeugungsart import Erzeugungsart
+
+# pylint: disable=no-name-in-module
+
 
 # pylint: disable=too-few-public-methods
 
@@ -26,6 +29,6 @@ class Energieherkunft(COM):
 
     # required attributes
     #: Art der Erzeugung der Energie.
-    erzeugungsart: Erzeugungsart
+    erzeugungsart: Optional[Erzeugungsart] = None
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
-    anteil_prozent: condecimal(gt=0, lt=100)  # type: ignore[valid-type]
+    anteil_prozent: Optional[Decimal] = None

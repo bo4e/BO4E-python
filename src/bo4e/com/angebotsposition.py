@@ -31,9 +31,9 @@ class Angebotsposition(COM):
 
     # required attributes
     #: Bezeichnung der jeweiligen Position des Angebotsteils
-    positionsbezeichnung: str
+    positionsbezeichnung: Optional[str] = None
     #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Preis
+    positionspreis: Optional[Preis] = None
 
     # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition

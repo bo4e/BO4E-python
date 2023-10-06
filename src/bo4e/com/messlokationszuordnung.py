@@ -27,11 +27,11 @@ class Messlokationszuordnung(COM):
     """
 
     # required attributes
-    messlokations_id: str
+    messlokations_id: Optional[str] = None
     """
     ID der zugeordneten Messlokation
     """
-    arithmetik: ArithmetischeOperation
+    arithmetik: Optional[ArithmetischeOperation] = None
 
     # optional attributes
     gueltig_seit: Optional[datetime] = None

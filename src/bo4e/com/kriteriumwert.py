@@ -2,6 +2,7 @@
 Contains KriteriumWert class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -24,6 +25,6 @@ class KriteriumWert(COM):
 
     # required attributes
     #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
-    kriterium: Tarifregionskriterium
+    kriterium: Optional[Tarifregionskriterium] = None
     #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
-    wert: str
+    wert: Optional[str] = None

@@ -70,7 +70,15 @@
                     "title": " Id"
                 },
                 "waehrung": {
-                    "$ref": "#/$defs/Waehrungscode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungscode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -79,15 +87,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "waehrung"
-            ],
             "title": "Betrag",
             "type": "object"
         },
@@ -108,7 +116,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -117,15 +133,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -167,10 +183,26 @@
                     "title": " Id"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -190,16 +222,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert"
-            ],
             "title": "Preis",
             "type": "object"
         },
@@ -235,12 +266,24 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Basiswert"
                 },
                 "steuerkennzeichen": {
-                    "$ref": "#/$defs/Steuerkennzeichen"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Steuerkennzeichen"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "steuerwert": {
                     "anyOf": [
@@ -249,20 +292,26 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Steuerwert"
                 },
                 "waehrung": {
-                    "$ref": "#/$defs/Waehrungscode"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungscode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "steuerkennzeichen",
-                "basiswert",
-                "steuerwert",
-                "waehrung"
-            ],
             "title": "Steuerbetrag",
             "type": "object"
         },
@@ -536,17 +585,41 @@
             "default": null
         },
         "einzelpreis": {
-            "$ref": "#/$defs/Preis"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Preis"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "lieferungBis": {
-            "format": "date-time",
-            "title": "Lieferungbis",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lieferungbis"
         },
         "lieferungVon": {
-            "format": "date-time",
-            "title": "Lieferungvon",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lieferungvon"
         },
         "lokationsId": {
             "anyOf": [
@@ -561,15 +634,39 @@
             "title": "Lokationsid"
         },
         "positionsMenge": {
-            "$ref": "#/$defs/Menge"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Menge"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "positionsnummer": {
-            "title": "Positionsnummer",
-            "type": "integer"
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Positionsnummer"
         },
         "positionstext": {
-            "title": "Positionstext",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Positionstext"
         },
         "teilrabattNetto": {
             "anyOf": [
@@ -583,10 +680,26 @@
             "default": null
         },
         "teilsummeNetto": {
-            "$ref": "#/$defs/Betrag"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Betrag"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "teilsummeSteuer": {
-            "$ref": "#/$defs/Steuerbetrag"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Steuerbetrag"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "zeitbezogeneMenge": {
             "anyOf": [
@@ -611,16 +724,6 @@
             "default": null
         }
     },
-    "required": [
-        "positionsnummer",
-        "lieferungVon",
-        "lieferungBis",
-        "positionstext",
-        "positionsMenge",
-        "einzelpreis",
-        "teilsummeNetto",
-        "teilsummeSteuer"
-    ],
     "title": "Rechnungsposition",
     "type": "object"
 }

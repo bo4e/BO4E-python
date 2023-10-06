@@ -31,12 +31,6 @@ class TestGeraeteeigenschaften:
         """
         assert_serialization_roundtrip(geraeteeigenschaften, expected_json_dict)
 
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Geraeteeigenschaften()  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
-
     @pytest.mark.parametrize(
         "not_a_geraetetyp",
         [

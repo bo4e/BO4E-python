@@ -67,21 +67,40 @@
             "title": " Id"
         },
         "gueltigkeitstyp": {
-            "$ref": "#/$defs/Gueltigkeitstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Gueltigkeitstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "regionskriteriumtyp": {
-            "$ref": "#/$defs/Regionskriteriumtyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Regionskriteriumtyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "wert": {
-            "title": "Wert",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Wert"
         }
     },
-    "required": [
-        "gueltigkeitstyp",
-        "regionskriteriumtyp",
-        "wert"
-    ],
     "title": "Regionskriterium",
     "type": "object"
 }

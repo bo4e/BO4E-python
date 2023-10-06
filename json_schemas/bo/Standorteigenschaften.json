@@ -57,18 +57,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -89,18 +101,30 @@
                     "title": " Id"
                 },
                 "marktgebiet": {
-                    "title": "Marktgebiet",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebiet"
                 },
                 "marktgebietcode": {
-                    "title": "Marktgebietcode",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebietcode"
                 }
             },
-            "required": [
-                "marktgebiet",
-                "marktgebietcode"
-            ],
             "title": "MarktgebietInfo",
             "type": "object"
         },
@@ -121,26 +145,36 @@
                     "title": " Id"
                 },
                 "marktgebiete": {
-                    "items": {
-                        "$ref": "#/$defs/MarktgebietInfo"
-                    },
-                    "title": "Marktgebiete",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/MarktgebietInfo"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktgebiete"
                 },
                 "netzkontonummern": {
-                    "items": {
-                        "type": "string"
-                    },
-                    "maxItems": 2,
-                    "minItems": 1,
-                    "title": "Netzkontonummern",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzkontonummern"
                 }
             },
-            "required": [
-                "netzkontonummern",
-                "marktgebiete"
-            ],
             "title": "StandorteigenschaftenGas",
             "type": "object"
         },
@@ -161,23 +195,42 @@
                     "title": " Id"
                 },
                 "bilanzierungsgebietEic": {
-                    "title": "Bilanzierungsgebieteic",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bilanzierungsgebieteic"
                 },
                 "regelzone": {
-                    "title": "Regelzone",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Regelzone"
                 },
                 "regelzoneEic": {
-                    "title": "Regelzoneeic",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Regelzoneeic"
                 }
             },
-            "required": [
-                "bilanzierungsgebietEic",
-                "regelzone",
-                "regelzoneEic"
-            ],
             "title": "StandorteigenschaftenStrom",
             "type": "object"
         }
@@ -217,12 +270,19 @@
             "default": null
         },
         "eigenschaftenStrom": {
-            "items": {
-                "$ref": "#/$defs/StandorteigenschaftenStrom"
-            },
-            "minItems": 1,
-            "title": "Eigenschaftenstrom",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/StandorteigenschaftenStrom"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Eigenschaftenstrom"
         },
         "externeReferenzen": {
             "anyOf": [
@@ -236,7 +296,7 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "versionstruktur": {
@@ -245,9 +305,6 @@
             "type": "string"
         }
     },
-    "required": [
-        "eigenschaftenStrom"
-    ],
     "title": "Standorteigenschaften",
     "type": "object"
 }

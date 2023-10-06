@@ -62,7 +62,7 @@ class TestExterneReferenz:
 
         deserialized_gp: Geschaeftspartner = Geschaeftspartner.model_validate_json(gp_json)
 
-        assert deserialized_gp.externe_referenzen == []
+        assert deserialized_gp.externe_referenzen is None
 
     def test_extension_data(self) -> None:
         """

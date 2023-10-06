@@ -2,6 +2,7 @@
 Contains Katasteradresse class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 
@@ -21,5 +22,5 @@ class Katasteradresse(COM):
 
     """
 
-    gemarkung_flur: str
-    flurstueck: str
+    gemarkung_flur: Optional[str] = None
+    flurstueck: Optional[str] = None

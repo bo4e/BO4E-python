@@ -3,9 +3,7 @@ Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.com.angebotsposition import Angebotsposition
@@ -37,12 +35,12 @@ class Angebotsteil(COM):
 
     # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: Annotated[list[Angebotsposition], Len(1)]
+    positionen: Optional[list[Angebotsposition]] = None
 
     # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
     anfrage_subreferenz: Optional[str] = None
-    lieferstellenangebotsteil: Optional[List[Marktlokation]] = None
+    lieferstellenangebotsteil: Optional[list[Marktlokation]] = None
     """
     Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
     Durch die Marktlokation ist auch die Lieferadresse festgelegt

@@ -2,7 +2,7 @@
 Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
-
+from typing import Optional
 
 from bo4e.bo.kosten import Kosten
 from bo4e.bo.tarifinfo import Tarifinfo
@@ -26,7 +26,7 @@ class Tarifkosten(Tarifinfo):
 
     # required attributes
     bo_typ: BoTyp = BoTyp.TARIFKOSTEN
-    kosten: Kosten
+    kosten: Optional[Kosten] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung
     des Tarifs auf eine Abnahmesituation berechnet wurden

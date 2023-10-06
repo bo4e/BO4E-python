@@ -21,8 +21,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzebis"
         },
         "staffelgrenzeVon": {
@@ -32,8 +36,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzevon"
         },
         "wert": {
@@ -43,16 +51,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wert"
         }
     },
-    "required": [
-        "wert",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis"
-    ],
     "title": "AufAbschlagstaffelProOrt",
     "type": "object"
 }

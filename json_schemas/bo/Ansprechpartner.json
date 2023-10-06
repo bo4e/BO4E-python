@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -181,18 +196,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -267,19 +294,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -317,12 +360,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -389,11 +440,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -694,17 +740,29 @@
                     "title": " Id"
                 },
                 "nummerntyp": {
-                    "$ref": "#/$defs/Rufnummernart"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Rufnummernart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "rufnummer": {
-                    "title": "Rufnummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Rufnummer"
                 }
             },
-            "required": [
-                "nummerntyp",
-                "rufnummer"
-            ],
             "title": "Rufnummer",
             "type": "object"
         },
@@ -841,12 +899,17 @@
                     "title": "Jobtitel"
                 },
                 "themengebiet": {
-                    "$ref": "#/$defs/Themengebiet"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Themengebiet"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "themengebiet"
-            ],
             "title": "Zustaendigkeit",
             "type": "object"
         }
@@ -920,11 +983,19 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "geschaeftspartner": {
-            "$ref": "#/$defs/Geschaeftspartner"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geschaeftspartner"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "individuelleAnrede": {
             "anyOf": [
@@ -951,8 +1022,16 @@
             "title": "Kommentar"
         },
         "nachname": {
-            "title": "Nachname",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Nachname"
         },
         "rufnummer": {
             "anyOf": [
@@ -1005,10 +1084,6 @@
             "default": null
         }
     },
-    "required": [
-        "nachname",
-        "geschaeftspartner"
-    ],
     "title": "Ansprechpartner",
     "type": "object"
 }

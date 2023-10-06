@@ -28,8 +28,16 @@
             "title": "Datum"
         },
         "name": {
-            "title": "Name",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Name"
         },
         "ort": {
             "anyOf": [
@@ -44,9 +52,6 @@
             "title": "Ort"
         }
     },
-    "required": [
-        "name"
-    ],
     "title": "Unterschrift",
     "type": "object"
 }

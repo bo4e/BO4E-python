@@ -28,8 +28,3 @@ class TestKriteriumWert:
         Test de-/serialisation of KriteriumWert with minimal attributes.
         """
         assert_serialization_roundtrip(kriteriumwert, expected_json_dict)
-
-    def test_kriteriumwert_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = KriteriumWert()  # type: ignore[call-arg]
-        assert "2 validation errors" in str(excinfo.value)
