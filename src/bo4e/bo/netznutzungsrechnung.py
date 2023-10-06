@@ -28,7 +28,6 @@ class Netznutzungsrechnung(Rechnung):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Optional[Sparte] = None
@@ -52,7 +51,6 @@ class Netznutzungsrechnung(Rechnung):
     #: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt
     simuliert: Optional[bool] = None
 
-    # optional attributes
     lokations_id: Optional[str] = None
     """
     Die Markt- oder Messlokations-Identifikation (als Malo/Melo-Id) der Lokation, auf die sich die Rechnung bezieht

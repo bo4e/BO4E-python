@@ -26,7 +26,6 @@ class Tarifkosten(Tarifinfo):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFKOSTEN
     kosten: Optional[Kosten] = None
     """

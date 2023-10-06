@@ -25,7 +25,6 @@ class RegionaleGueltigkeit(COM):
 
     """
 
-    # required attributes
     gueltigkeitstyp: Optional[
         Gueltigkeitstyp
     ] = None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird

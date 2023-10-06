@@ -24,7 +24,6 @@ class Zeitintervall(COM):
 
     """
 
-    # required attributes
     wert: Optional[int] = None
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls

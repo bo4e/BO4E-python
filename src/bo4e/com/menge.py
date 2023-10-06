@@ -25,7 +25,6 @@ class Menge(COM):
 
     """
 
-    # required attributes
     #: Gibt den absoluten Wert der Menge an
     wert: Optional[Decimal] = None
     #: Gibt die Einheit zum jeweiligen Wert an

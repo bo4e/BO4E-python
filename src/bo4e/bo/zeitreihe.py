@@ -32,7 +32,6 @@ class Zeitreihe(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
@@ -47,7 +46,6 @@ class Zeitreihe(Geschaeftsobjekt):
     #: Hier liegen jeweils die Werte
     werte: Optional[list[Zeitreihenwert]] = None
 
-    # optional attributes
     #: Beschreibt die Verwendung der Zeitreihe
     beschreibung: Optional[str] = None
     #: Version der Zeitreihe

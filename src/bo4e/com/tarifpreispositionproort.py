@@ -24,7 +24,6 @@ class TarifpreispositionProOrt(COM):
 
     """
 
-    # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
     postleitzahl: Optional[str] = None
     #: Ort für den der Preis gilt

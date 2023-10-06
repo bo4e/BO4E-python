@@ -25,10 +25,7 @@ class Zeitreihenwertkompakt(COM):
 
     """
 
-    # required attributes
     wert: Optional[Decimal] = None  #: Der im Zeitintervall gültige Wert.
-
-    # optional attributes
 
     #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
     status: Optional[Messwertstatus] = None

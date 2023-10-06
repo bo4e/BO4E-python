@@ -40,7 +40,6 @@ class Tarifpreisblatt(Tarifinfo):
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Optional[Tarifberechnungsparameter] = None
 
-    # optional attributes
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
     tarifeinschraenkung: Optional[Tarifeinschraenkung] = None
     #: Festlegung von Garantien für bestimmte Preisanteile

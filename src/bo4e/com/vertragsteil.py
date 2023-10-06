@@ -25,7 +25,6 @@ class Vertragsteil(COM):
 
     """
 
-    # required attributes
     vertragsteilbeginn: Optional[datetime] = None
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
@@ -35,7 +34,6 @@ class Vertragsteil(COM):
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
-    # optional attributes
     lokation: Optional[str] = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.

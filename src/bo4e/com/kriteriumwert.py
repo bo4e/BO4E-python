@@ -23,7 +23,6 @@ class KriteriumWert(COM):
 
     """
 
-    # required attributes
     #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
     kriterium: Optional[Tarifregionskriterium] = None
     #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.

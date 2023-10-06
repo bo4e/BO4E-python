@@ -39,7 +39,6 @@ class PreisblattMessung(Preisblatt):
     zaehler: Optional[Geraeteeigenschaften] = None
     # todo: https://github.com/Hochfrequenz/BO4E-python/issues/333
 
-    # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
     inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
 
