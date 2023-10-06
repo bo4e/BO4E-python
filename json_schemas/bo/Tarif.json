@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -155,6 +167,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "netznr": {
                     "anyOf": [
                         {
@@ -225,6 +249,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "aufAbschlagstyp": {
                     "anyOf": [
@@ -427,6 +463,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "staffelgrenzeBis": {
                     "anyOf": [
                         {
@@ -514,6 +562,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "anteilProzent": {
                     "anyOf": [
                         {
@@ -559,6 +619,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "anteil": {
                     "anyOf": [
@@ -759,6 +831,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -803,6 +887,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "geraeteeigenschaften": {
                     "anyOf": [
                         {
@@ -845,6 +941,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "geraetemerkmal": {
                     "anyOf": [
@@ -1319,6 +1427,18 @@
                     ],
                     "default": "MARKTTEILNEHMER"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "amtsgericht": {
                     "anyOf": [
                         {
@@ -1551,11 +1671,6 @@
                     "default": null,
                     "title": "Umsatzsteuerid"
                 },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
-                },
                 "website": {
                     "anyOf": [
                         {
@@ -1587,6 +1702,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "einheit": {
                     "anyOf": [
@@ -1729,6 +1856,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "bezugswert": {
                     "anyOf": [
                         {
@@ -1796,6 +1935,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "beschreibung": {
                     "anyOf": [
@@ -1923,6 +2074,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "berechnungsmethode": {
                     "anyOf": [
@@ -2068,6 +2231,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "einschraenkungleistung": {
                     "anyOf": [
                         {
@@ -2176,6 +2351,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "beschreibung": {
                     "anyOf": [
                         {
@@ -2267,6 +2454,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "netznr": {
                     "anyOf": [
                         {
@@ -2337,6 +2536,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "arbeitspreis": {
                     "anyOf": [
@@ -2483,6 +2694,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "abschlagszyklus": {
                     "anyOf": [
@@ -2647,6 +2870,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -2755,6 +2990,18 @@
                 }
             ],
             "default": "TARIF"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.5.11.dev17+gcdb5aaa",
+            "title": " Version"
         },
         "anbieter": {
             "anyOf": [
@@ -2980,11 +3227,6 @@
                 }
             ],
             "default": null
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         },
         "vertragskonditionen": {
             "anyOf": [

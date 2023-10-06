@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -60,6 +72,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "marktgebiet": {
                     "anyOf": [
                         {
@@ -103,6 +127,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "marktgebiete": {
                     "anyOf": [
@@ -153,6 +189,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "bilanzierungsgebietEic": {
                     "anyOf": [
@@ -261,6 +309,18 @@
             ],
             "default": "STANDORTEIGENSCHAFTEN"
         },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.5.11.dev17+gcdb5aaa",
+            "title": " Version"
+        },
         "eigenschaftenGas": {
             "anyOf": [
                 {
@@ -301,11 +361,6 @@
             ],
             "default": null,
             "title": "Externereferenzen"
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         }
     },
     "title": "Standorteigenschaften",

@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -238,6 +250,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "exRefName": {
                     "anyOf": [
@@ -699,6 +723,18 @@
                     ],
                     "default": "MARKTTEILNEHMER"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "amtsgericht": {
                     "anyOf": [
                         {
@@ -931,11 +967,6 @@
                     "default": null,
                     "title": "Umsatzsteuerid"
                 },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
-                },
                 "website": {
                     "anyOf": [
                         {
@@ -1005,6 +1036,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "bdewArtikelnummer": {
                     "anyOf": [
@@ -1183,6 +1226,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "einheitspreis": {
                     "anyOf": [
                         {
@@ -1337,6 +1392,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 }
             },
             "title": "Sigmoidparameter",
@@ -1448,6 +1515,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -1556,6 +1635,18 @@
                 }
             ],
             "default": "PREISBLATTNETZNUTZUNG"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.5.11.dev17+gcdb5aaa",
+            "title": " Version"
         },
         "bezeichnung": {
             "anyOf": [
@@ -1675,11 +1766,6 @@
                 }
             ],
             "default": null
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         }
     },
     "title": "PreisblattNetznutzung",

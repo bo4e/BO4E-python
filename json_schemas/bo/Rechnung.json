@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -208,6 +220,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "waehrung": {
                     "anyOf": [
                         {
@@ -253,6 +277,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "exRefName": {
                     "anyOf": [
@@ -308,6 +344,18 @@
                         }
                     ],
                     "default": "GESCHAEFTSPARTNER"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "amtsgericht": {
                     "anyOf": [
@@ -483,11 +531,6 @@
                     ],
                     "default": null,
                     "title": "Umsatzsteuerid"
-                },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
                 },
                 "website": {
                     "anyOf": [
@@ -801,6 +844,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "einheit": {
                     "anyOf": [
                         {
@@ -867,6 +922,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "bezugswert": {
                     "anyOf": [
@@ -944,6 +1011,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "artikelId": {
                     "anyOf": [
@@ -1151,6 +1230,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "basiswert": {
                     "anyOf": [
@@ -1494,6 +1585,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -1602,6 +1705,18 @@
                 }
             ],
             "default": "RECHNUNG"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.5.11.dev17+gcdb5aaa",
+            "title": " Version"
         },
         "externeReferenzen": {
             "anyOf": [
@@ -1820,11 +1935,6 @@
             ],
             "default": null,
             "title": "Storno"
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         },
         "vorausgezahlt": {
             "anyOf": [

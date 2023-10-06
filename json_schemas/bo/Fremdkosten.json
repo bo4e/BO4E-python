@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "waehrung": {
                     "anyOf": [
                         {
@@ -62,6 +74,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -105,6 +129,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "kostenblockbezeichnung": {
                     "anyOf": [
@@ -163,6 +199,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "artikelbezeichnung": {
                     "anyOf": [
@@ -338,6 +386,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "einheit": {
                     "anyOf": [
                         {
@@ -404,6 +464,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
                 },
                 "bezugswert": {
                     "anyOf": [
@@ -737,6 +809,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.5.11.dev17+gcdb5aaa",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -846,6 +930,18 @@
             ],
             "default": "FREMDKOSTEN"
         },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.5.11.dev17+gcdb5aaa",
+            "title": " Version"
+        },
         "externeReferenzen": {
             "anyOf": [
                 {
@@ -897,11 +993,6 @@
                 }
             ],
             "default": null
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         }
     },
     "title": "Fremdkosten",
