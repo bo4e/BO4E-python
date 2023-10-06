@@ -66,7 +66,7 @@ example_ausschreibungsdetail_dict = {
     "prognoseArbeitLieferzeitraum": None,
     "netzebeneMessung": Netzebene.NSP,
     "prognoseLeistung": None,
-    "lastgangVorhanden": None,
+    "istLastgangVorhanden": None,
     "prognoseJahresarbeit": None,
     "marktlokationsId": "56789012345",
     "_id": None,
@@ -138,7 +138,7 @@ class TestAusschreibungsdetail:
                     "netzebeneLieferung": Netzebene.MSP,
                     "marktlokationsId": "56789012345",
                     "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW, "_id": None},
-                    "lastgangVorhanden": True,
+                    "istLastgangVorhanden": True,
                     "netzebeneMessung": Netzebene.NSP,
                     "prognoseArbeitLieferzeitraum": {
                         "wert": Decimal("2500"),
