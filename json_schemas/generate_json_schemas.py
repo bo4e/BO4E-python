@@ -25,7 +25,14 @@ _logger = logging.getLogger(__name__)
 )
 def generate_json_schemas(mode: Literal["validate", "generate"]) -> None:
     """generate json schemas for all BOs and COMs"""
-    for pkg in ["bo", "com"]:
+    packages = ["bo", "com"]
+
+    if mode == "generate":
+        for pkg in packages:
+            # delete all existing json schemas before generating new ones to see when a class is removed
+            for file in (pathlib.Path(__file__).parent / pkg).iterdir():
+                file.unlink()
+    for pkg in packages:
         modls = [
             name
             for _, name, _ in pkgutil.iter_modules([str(pathlib.Path(__file__).parent.parent / "src" / "bo4e" / pkg)])
