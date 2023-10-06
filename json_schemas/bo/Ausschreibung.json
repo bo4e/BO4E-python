@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -165,14 +180,38 @@
                     "title": "Lastgangvorhanden"
                 },
                 "lieferzeitraum": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "marktlokationsId": {
-                    "title": "Marktlokationsid",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Marktlokationsid"
                 },
                 "marktlokationsadresse": {
-                    "$ref": "#/$defs/Adresse"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Adresse"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "marktlokationsbezeichnung": {
                     "anyOf": [
@@ -199,12 +238,28 @@
                     "title": "Netzbetreiber"
                 },
                 "netzebeneLieferung": {
-                    "title": "Netzebenelieferung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzebenelieferung"
                 },
                 "netzebeneMessung": {
-                    "title": "Netzebenemessung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Netzebenemessung"
                 },
                 "prognoseArbeitLieferzeitraum": {
                     "anyOf": [
@@ -274,13 +329,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "marktlokationsId",
-                "netzebeneLieferung",
-                "netzebeneMessung",
-                "marktlokationsadresse",
-                "lieferzeitraum"
-            ],
             "title": "Ausschreibungsdetail",
             "type": "object"
         },
@@ -301,8 +349,16 @@
                     "title": " Id"
                 },
                 "anzahlLieferstellen": {
-                    "title": "Anzahllieferstellen",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anzahllieferstellen"
                 },
                 "bemerkung": {
                     "anyOf": [
@@ -317,15 +373,39 @@
                     "title": "Bemerkung"
                 },
                 "betreutDurch": {
-                    "title": "Betreutdurch",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Betreutdurch"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "energieart": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "gesamtMenge": {
                     "anyOf": [
@@ -339,22 +419,53 @@
                     "default": null
                 },
                 "lieferstellen": {
-                    "items": {
-                        "$ref": "#/$defs/Ausschreibungsdetail"
-                    },
-                    "minItems": 1,
-                    "title": "Lieferstellen",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Ausschreibungsdetail"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Lieferstellen"
                 },
                 "lieferzeitraum": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "losnummer": {
-                    "title": "Losnummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Losnummer"
                 },
                 "preismodell": {
-                    "$ref": "#/$defs/Preismodell"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preismodell"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wiederholungsintervall": {
                     "anyOf": [
@@ -401,10 +512,26 @@
                     "default": null
                 },
                 "wunschRechnungslegung": {
-                    "$ref": "#/$defs/Rechnungslegung"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Rechnungslegung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wunschVertragsform": {
-                    "$ref": "#/$defs/Vertragsform"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Vertragsform"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wunschZahlungsziel": {
                     "anyOf": [
@@ -418,18 +545,6 @@
                     "default": null
                 }
             },
-            "required": [
-                "losnummer",
-                "bezeichnung",
-                "preismodell",
-                "energieart",
-                "wunschRechnungslegung",
-                "wunschVertragsform",
-                "betreutDurch",
-                "anzahlLieferstellen",
-                "lieferstellen",
-                "lieferzeitraum"
-            ],
             "title": "Ausschreibungslos",
             "type": "object"
         },
@@ -528,18 +643,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -614,19 +741,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -664,12 +807,20 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -736,11 +887,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle"
-            ],
             "title": "Geschaeftspartner",
             "type": "object"
         },
@@ -1041,7 +1187,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -1050,15 +1204,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -1276,10 +1430,26 @@
             "title": " Id"
         },
         "abgabefrist": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "ausschreibender": {
-            "$ref": "#/$defs/Geschaeftspartner"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geschaeftspartner"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "ausschreibungportal": {
             "anyOf": [
@@ -1293,17 +1463,49 @@
             "default": null
         },
         "ausschreibungsnummer": {
-            "title": "Ausschreibungsnummer",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ausschreibungsnummer"
         },
         "ausschreibungsstatus": {
-            "$ref": "#/$defs/Ausschreibungsstatus"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Ausschreibungsstatus"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "ausschreibungstyp": {
-            "$ref": "#/$defs/Ausschreibungstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Ausschreibungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "bindefrist": {
-            "$ref": "#/$defs/Zeitraum"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zeitraum"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "boTyp": {
             "allOf": [
@@ -1325,25 +1527,48 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "kostenpflichtig": {
-            "title": "Kostenpflichtig",
-            "type": "boolean"
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Kostenpflichtig"
         },
         "lose": {
-            "items": {
-                "$ref": "#/$defs/Ausschreibungslos"
-            },
-            "minItems": 1,
-            "title": "Lose",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Ausschreibungslos"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Lose"
         },
         "veroeffentlichungszeitpunkt": {
-            "format": "date-time",
-            "title": "Veroeffentlichungszeitpunkt",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Veroeffentlichungszeitpunkt"
         },
         "versionstruktur": {
             "default": "2",
@@ -1363,17 +1588,6 @@
             "title": "Webseite"
         }
     },
-    "required": [
-        "ausschreibungsnummer",
-        "ausschreibungstyp",
-        "ausschreibungsstatus",
-        "kostenpflichtig",
-        "veroeffentlichungszeitpunkt",
-        "ausschreibender",
-        "abgabefrist",
-        "bindefrist",
-        "lose"
-    ],
     "title": "Ausschreibung",
     "type": "object"
 }

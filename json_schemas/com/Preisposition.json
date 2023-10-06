@@ -178,8 +178,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Einheitspreis"
                 },
                 "sigmoidparameter": {
@@ -200,8 +204,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -211,16 +219,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "einheitspreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis"
-            ],
             "title": "Preisstaffel",
             "type": "object"
         },
@@ -235,8 +242,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -246,8 +257,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -257,8 +272,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -268,8 +287,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
                 },
                 "_id": {
@@ -285,12 +308,6 @@
                     "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         },
@@ -358,10 +375,26 @@
             "default": null
         },
         "berechnungsmethode": {
-            "$ref": "#/$defs/Kalkulationsmethode"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Kalkulationsmethode"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "bezugsgroesse": {
-            "$ref": "#/$defs/Mengeneinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "freimengeBlindarbeit": {
             "anyOf": [
@@ -406,22 +439,53 @@
             "title": "Gruppenartikelid"
         },
         "leistungsbezeichnung": {
-            "title": "Leistungsbezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Leistungsbezeichnung"
         },
         "leistungstyp": {
-            "$ref": "#/$defs/Leistungstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Leistungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "preiseinheit": {
-            "$ref": "#/$defs/Waehrungseinheit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waehrungseinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "preisstaffeln": {
-            "items": {
-                "$ref": "#/$defs/Preisstaffel"
-            },
-            "minItems": 1,
-            "title": "Preisstaffeln",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Preisstaffel"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preisstaffeln"
         },
         "tarifzeit": {
             "anyOf": [
@@ -457,14 +521,6 @@
             "default": null
         }
     },
-    "required": [
-        "berechnungsmethode",
-        "leistungstyp",
-        "leistungsbezeichnung",
-        "preiseinheit",
-        "bezugsgroesse",
-        "preisstaffeln"
-    ],
     "title": "Preisposition",
     "type": "object"
 }

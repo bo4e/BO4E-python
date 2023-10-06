@@ -309,16 +309,27 @@
             "title": "Hausnummer"
         },
         "landescode": {
-            "allOf": [
+            "anyOf": [
                 {
                     "$ref": "#/$defs/Landescode"
+                },
+                {
+                    "type": "null"
                 }
             ],
             "default": "DE"
         },
         "ort": {
-            "title": "Ort",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Ort"
         },
         "ortsteil": {
             "anyOf": [
@@ -345,8 +356,16 @@
             "title": "Postfach"
         },
         "postleitzahl": {
-            "title": "Postleitzahl",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Postleitzahl"
         },
         "strasse": {
             "anyOf": [
@@ -361,10 +380,6 @@
             "title": "Strasse"
         }
     },
-    "required": [
-        "postleitzahl",
-        "ort"
-    ],
     "title": "Adresse",
     "type": "object"
 }

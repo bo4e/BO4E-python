@@ -15,18 +15,30 @@
             "title": " Id"
         },
         "flurstueck": {
-            "title": "Flurstueck",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Flurstueck"
         },
         "gemarkungFlur": {
-            "title": "Gemarkungflur",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Gemarkungflur"
         }
     },
-    "required": [
-        "gemarkungFlur",
-        "flurstueck"
-    ],
     "title": "Katasteradresse",
     "type": "object"
 }

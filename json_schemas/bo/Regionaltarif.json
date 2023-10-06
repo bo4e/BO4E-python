@@ -53,16 +53,27 @@
                     "title": "Hausnummer"
                 },
                 "landescode": {
-                    "allOf": [
+                    "anyOf": [
                         {
                             "$ref": "#/$defs/Landescode"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
                     "default": "DE"
                 },
                 "ort": {
-                    "title": "Ort",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ort"
                 },
                 "ortsteil": {
                     "anyOf": [
@@ -89,8 +100,16 @@
                     "title": "Postfach"
                 },
                 "postleitzahl": {
-                    "title": "Postleitzahl",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Postleitzahl"
                 },
                 "strasse": {
                     "anyOf": [
@@ -105,10 +124,6 @@
                     "title": "Strasse"
                 }
             },
-            "required": [
-                "postleitzahl",
-                "ort"
-            ],
             "title": "Adresse",
             "type": "object"
         },
@@ -205,24 +220,30 @@
                 "anteilProzent": {
                     "anyOf": [
                         {
-                            "exclusiveMaximum": 100.0,
-                            "exclusiveMinimum": 0.0,
                             "type": "number"
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Anteilprozent"
                 },
                 "erzeugungsart": {
-                    "$ref": "#/$defs/Erzeugungsart"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Erzeugungsart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "erzeugungsart",
-                "anteilProzent"
-            ],
             "title": "Energieherkunft",
             "type": "object"
         },
@@ -243,12 +264,19 @@
                     "title": " Id"
                 },
                 "anteil": {
-                    "items": {
-                        "$ref": "#/$defs/Energieherkunft"
-                    },
-                    "minItems": 1,
-                    "title": "Anteil",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Energieherkunft"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anteil"
                 },
                 "atommuell": {
                     "anyOf": [
@@ -278,8 +306,16 @@
                     "title": "Bemerkung"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "co2Emission": {
                     "anyOf": [
@@ -297,15 +333,39 @@
                     "title": "Co2Emission"
                 },
                 "energieart": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "energiemixnummer": {
-                    "title": "Energiemixnummer",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Energiemixnummer"
                 },
                 "gueltigkeitsjahr": {
-                    "title": "Gueltigkeitsjahr",
-                    "type": "integer"
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gueltigkeitsjahr"
                 },
                 "oekoTopTen": {
                     "anyOf": [
@@ -320,20 +380,34 @@
                     "title": "Oekotopten"
                 },
                 "oekolabel": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekolabel"
-                    },
-                    "title": "Oekolabel",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Oekolabel"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Oekolabel"
                 },
                 "oekozertifikate": {
-                    "default": [],
-                    "items": {
-                        "$ref": "#/$defs/Oekozertifikat"
-                    },
-                    "title": "Oekozertifikate",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Oekozertifikat"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Oekozertifikate"
                 },
                 "website": {
                     "anyOf": [
@@ -348,13 +422,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "energiemixnummer",
-                "energieart",
-                "bezeichnung",
-                "gueltigkeitsjahr",
-                "anteil"
-            ],
             "title": "Energiemix",
             "type": "object"
         },
@@ -396,18 +463,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -482,12 +561,17 @@
                     "default": null
                 },
                 "geraetetyp": {
-                    "$ref": "#/$defs/Geraetetyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraetetyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "geraetetyp"
-            ],
             "title": "Geraeteeigenschaften",
             "type": "object"
         },
@@ -639,17 +723,29 @@
                     "title": " Id"
                 },
                 "kriterium": {
-                    "$ref": "#/$defs/Tarifregionskriterium"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Tarifregionskriterium"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 }
             },
-            "required": [
-                "kriterium",
-                "wert"
-            ],
             "title": "KriteriumWert",
             "type": "object"
         },
@@ -1023,19 +1119,35 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Externereferenzen"
                 },
                 "geschaeftspartnerrolle": {
-                    "items": {
-                        "$ref": "#/$defs/Geschaeftspartnerrolle"
-                    },
-                    "title": "Geschaeftspartnerrolle",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Geschaeftspartnerrolle"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Geschaeftspartnerrolle"
                 },
                 "gewerbekennzeichnung": {
-                    "title": "Gewerbekennzeichnung",
-                    "type": "boolean"
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Gewerbekennzeichnung"
                 },
                 "glaeubigerId": {
                     "anyOf": [
@@ -1073,7 +1185,7 @@
                             "type": "null"
                         }
                     ],
-                    "default": [],
+                    "default": null,
                     "title": "Kontaktweg"
                 },
                 "makoadresse": {
@@ -1089,11 +1201,27 @@
                     "title": "Makoadresse"
                 },
                 "marktrolle": {
-                    "$ref": "#/$defs/Marktrolle"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Marktrolle"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "name1": {
-                    "title": "Name1",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Name1"
                 },
                 "name2": {
                     "anyOf": [
@@ -1131,15 +1259,38 @@
                     "default": null
                 },
                 "rollencodenummer": {
-                    "pattern": "^\\d{13}$",
-                    "title": "Rollencodenummer",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Rollencodenummer"
                 },
                 "rollencodetyp": {
-                    "$ref": "#/$defs/Rollencodetyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Rollencodetyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "sparte": {
-                    "$ref": "#/$defs/Sparte"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Sparte"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "umsatzsteuerId": {
                     "anyOf": [
@@ -1171,15 +1322,6 @@
                     "title": "Website"
                 }
             },
-            "required": [
-                "name1",
-                "gewerbekennzeichnung",
-                "geschaeftspartnerrolle",
-                "marktrolle",
-                "rollencodenummer",
-                "rollencodetyp",
-                "sparte"
-            ],
             "title": "Marktteilnehmer",
             "type": "object"
         },
@@ -1200,7 +1342,15 @@
                     "title": " Id"
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
                     "anyOf": [
@@ -1209,15 +1359,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit"
-            ],
             "title": "Menge",
             "type": "object"
         },
@@ -1333,10 +1483,26 @@
                     "title": " Id"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -1356,16 +1522,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert"
-            ],
             "title": "Preis",
             "type": "object"
         },
@@ -1398,16 +1563,28 @@
                     "title": "Beschreibung"
                 },
                 "preisgarantietyp": {
-                    "$ref": "#/$defs/Preisgarantietyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preisgarantietyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "zeitlicheGueltigkeit": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "preisgarantietyp",
-                "zeitlicheGueltigkeit"
-            ],
             "title": "Preisgarantie",
             "type": "object"
         },
@@ -1465,21 +1642,32 @@
                     "title": " Id"
                 },
                 "gueltigkeitstyp": {
-                    "$ref": "#/$defs/Gueltigkeitstyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Gueltigkeitstyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "kriteriumsWerte": {
-                    "items": {
-                        "$ref": "#/$defs/KriteriumWert"
-                    },
-                    "minItems": 1,
-                    "title": "Kriteriumswerte",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/KriteriumWert"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kriteriumswerte"
                 }
             },
-            "required": [
-                "gueltigkeitstyp",
-                "kriteriumsWerte"
-            ],
             "title": "RegionaleGueltigkeit",
             "type": "object"
         },
@@ -1512,20 +1700,39 @@
                     "title": "Beschreibung"
                 },
                 "preisgarantietyp": {
-                    "$ref": "#/$defs/Preisgarantietyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preisgarantietyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "regionaleGueltigkeit": {
-                    "$ref": "#/$defs/RegionaleGueltigkeit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RegionaleGueltigkeit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "zeitlicheGueltigkeit": {
-                    "$ref": "#/$defs/Zeitraum"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitraum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "preisgarantietyp",
-                "zeitlicheGueltigkeit",
-                "regionaleGueltigkeit"
-            ],
             "title": "RegionalePreisgarantie",
             "type": "object"
         },
@@ -1552,12 +1759,24 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Einheitspreis"
                 },
                 "regionaleGueltigkeit": {
-                    "$ref": "#/$defs/RegionaleGueltigkeit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/RegionaleGueltigkeit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "sigmoidparameter": {
                     "anyOf": [
@@ -1577,8 +1796,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzebis"
                 },
                 "staffelgrenzeVon": {
@@ -1588,17 +1811,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Staffelgrenzevon"
                 }
             },
-            "required": [
-                "einheitspreis",
-                "staffelgrenzeVon",
-                "staffelgrenzeBis",
-                "regionaleGueltigkeit"
-            ],
             "title": "RegionalePreisstaffel",
             "type": "object"
         },
@@ -1619,10 +1840,26 @@
                     "title": " Id"
                 },
                 "bezugseinheit": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "mengeneinheitstaffel": {
                     "anyOf": [
@@ -1636,23 +1873,32 @@
                     "default": null
                 },
                 "preisstaffeln": {
-                    "items": {
-                        "$ref": "#/$defs/RegionalePreisstaffel"
-                    },
-                    "minItems": 1,
-                    "title": "Preisstaffeln",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/RegionalePreisstaffel"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Preisstaffeln"
                 },
                 "preistyp": {
-                    "$ref": "#/$defs/Preistyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preistyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
-            "required": [
-                "preistyp",
-                "einheit",
-                "bezugseinheit",
-                "preisstaffeln"
-            ],
             "title": "RegionaleTarifpreisposition",
             "type": "object"
         },
@@ -1707,8 +1953,16 @@
                     "title": "Beschreibung"
                 },
                 "bezeichnung": {
-                    "title": "Bezeichnung",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Bezeichnung"
                 },
                 "einheit": {
                     "anyOf": [
@@ -1766,12 +2020,19 @@
                     "default": null
                 },
                 "staffeln": {
-                    "items": {
-                        "$ref": "#/$defs/RegionalePreisstaffel"
-                    },
-                    "minItems": 1,
-                    "title": "Staffeln",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/RegionalePreisstaffel"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Staffeln"
                 },
                 "tarifnamensaenderungen": {
                     "anyOf": [
@@ -1839,10 +2100,6 @@
                     "title": "Zusatzprodukte"
                 }
             },
-            "required": [
-                "bezeichnung",
-                "staffeln"
-            ],
             "title": "RegionalerAufAbschlag",
             "type": "object"
         },
@@ -1867,8 +2124,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -1878,8 +2139,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -1889,8 +2154,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -1900,8 +2169,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
                 },
                 "_id": {
@@ -1917,12 +2190,6 @@
                     "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         },
@@ -2233,13 +2500,37 @@
                     "title": "Beschreibung"
                 },
                 "bezugswert": {
-                    "$ref": "#/$defs/Mengeneinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Mengeneinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "einheit": {
-                    "$ref": "#/$defs/Waehrungseinheit"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waehrungseinheit"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "preistyp": {
-                    "$ref": "#/$defs/Preistyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Preistyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "status": {
                     "anyOf": [
@@ -2259,17 +2550,15 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "Wert"
                 }
             },
-            "required": [
-                "wert",
-                "einheit",
-                "bezugswert",
-                "preistyp"
-            ],
             "title": "Tarifpreis",
             "type": "object"
         },
@@ -2574,11 +2863,27 @@
             "title": " Id"
         },
         "anbieter": {
-            "$ref": "#/$defs/Marktteilnehmer"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Marktteilnehmer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "anbietername": {
-            "title": "Anbietername",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Anbietername"
         },
         "anwendungVon": {
             "anyOf": [
@@ -2606,11 +2911,27 @@
             "title": "Bemerkung"
         },
         "berechnungsparameter": {
-            "$ref": "#/$defs/Tarifberechnungsparameter"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tarifberechnungsparameter"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "boTyp": {
             "allOf": [
@@ -2643,16 +2964,23 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "kundentypen": {
-            "items": {
-                "$ref": "#/$defs/Kundentyp"
-            },
-            "minItems": 1,
-            "title": "Kundentypen",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Kundentyp"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Kundentypen"
         },
         "preisgarantien": {
             "anyOf": [
@@ -2670,12 +2998,28 @@
             "title": "Preisgarantien"
         },
         "preisstand": {
-            "format": "date-time",
-            "title": "Preisstand",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Preisstand"
         },
         "sparte": {
-            "$ref": "#/$defs/Sparte"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Sparte"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tarifAufAbschlaege": {
             "anyOf": [
@@ -2693,7 +3037,15 @@
             "title": "Tarifaufabschlaege"
         },
         "tarifart": {
-            "$ref": "#/$defs/Tarifart"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tarifart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "tarifeinschraenkung": {
             "anyOf": [
@@ -2707,23 +3059,45 @@
             "default": null
         },
         "tarifmerkmale": {
-            "items": {
-                "$ref": "#/$defs/Tarifmerkmal"
-            },
-            "minItems": 1,
-            "title": "Tarifmerkmale",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Tarifmerkmal"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tarifmerkmale"
         },
         "tarifpreise": {
-            "items": {
-                "$ref": "#/$defs/RegionaleTarifpreisposition"
-            },
-            "minItems": 1,
-            "title": "Tarifpreise",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/RegionaleTarifpreisposition"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Tarifpreise"
         },
         "tariftyp": {
-            "$ref": "#/$defs/Tariftyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Tariftyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "versionstruktur": {
             "default": "2",
@@ -2765,19 +3139,6 @@
             "default": null
         }
     },
-    "required": [
-        "bezeichnung",
-        "anbietername",
-        "sparte",
-        "kundentypen",
-        "tarifart",
-        "tariftyp",
-        "tarifmerkmale",
-        "anbieter",
-        "preisstand",
-        "berechnungsparameter",
-        "tarifpreise"
-    ],
     "title": "Regionaltarif",
     "type": "object"
 }

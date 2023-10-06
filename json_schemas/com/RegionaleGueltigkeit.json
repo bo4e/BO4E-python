@@ -27,17 +27,29 @@
                     "title": " Id"
                 },
                 "kriterium": {
-                    "$ref": "#/$defs/Tarifregionskriterium"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Tarifregionskriterium"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 }
             },
-            "required": [
-                "kriterium",
-                "wert"
-            ],
             "title": "KriteriumWert",
             "type": "object"
         },
@@ -70,21 +82,32 @@
             "title": " Id"
         },
         "gueltigkeitstyp": {
-            "$ref": "#/$defs/Gueltigkeitstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Gueltigkeitstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "kriteriumsWerte": {
-            "items": {
-                "$ref": "#/$defs/KriteriumWert"
-            },
-            "minItems": 1,
-            "title": "Kriteriumswerte",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/KriteriumWert"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Kriteriumswerte"
         }
     },
-    "required": [
-        "gueltigkeitstyp",
-        "kriteriumsWerte"
-    ],
     "title": "RegionaleGueltigkeit",
     "type": "object"
 }

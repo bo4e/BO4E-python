@@ -27,17 +27,29 @@
                     "title": " Id"
                 },
                 "kriterium": {
-                    "$ref": "#/$defs/Tarifregionskriterium"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Tarifregionskriterium"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 }
             },
-            "required": [
-                "kriterium",
-                "wert"
-            ],
             "title": "KriteriumWert",
             "type": "object"
         },
@@ -58,21 +70,32 @@
                     "title": " Id"
                 },
                 "gueltigkeitstyp": {
-                    "$ref": "#/$defs/Gueltigkeitstyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Gueltigkeitstyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "kriteriumsWerte": {
-                    "items": {
-                        "$ref": "#/$defs/KriteriumWert"
-                    },
-                    "minItems": 1,
-                    "title": "Kriteriumswerte",
-                    "type": "array"
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/KriteriumWert"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kriteriumswerte"
                 }
             },
-            "required": [
-                "gueltigkeitstyp",
-                "kriteriumsWerte"
-            ],
             "title": "RegionaleGueltigkeit",
             "type": "object"
         },
@@ -87,8 +110,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "A"
                 },
                 "B": {
@@ -98,8 +125,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "B"
                 },
                 "C": {
@@ -109,8 +140,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "C"
                 },
                 "D": {
@@ -120,8 +155,12 @@
                         },
                         {
                             "type": "string"
+                        },
+                        {
+                            "type": "null"
                         }
                     ],
+                    "default": null,
                     "title": "D"
                 },
                 "_id": {
@@ -137,12 +176,6 @@
                     "title": " Id"
                 }
             },
-            "required": [
-                "A",
-                "B",
-                "C",
-                "D"
-            ],
             "title": "Sigmoidparameter",
             "type": "object"
         },
@@ -181,12 +214,24 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Einheitspreis"
         },
         "regionaleGueltigkeit": {
-            "$ref": "#/$defs/RegionaleGueltigkeit"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/RegionaleGueltigkeit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "sigmoidparameter": {
             "anyOf": [
@@ -206,8 +251,12 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzebis"
         },
         "staffelgrenzeVon": {
@@ -217,17 +266,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Staffelgrenzevon"
         }
     },
-    "required": [
-        "einheitspreis",
-        "staffelgrenzeVon",
-        "staffelgrenzeBis",
-        "regionaleGueltigkeit"
-    ],
     "title": "RegionalePreisstaffel",
     "type": "object"
 }

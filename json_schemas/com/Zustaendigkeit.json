@@ -107,12 +107,17 @@
             "title": "Jobtitel"
         },
         "themengebiet": {
-            "$ref": "#/$defs/Themengebiet"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Themengebiet"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "themengebiet"
-    ],
     "title": "Zustaendigkeit",
     "type": "object"
 }

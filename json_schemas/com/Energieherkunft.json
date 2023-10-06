@@ -40,24 +40,30 @@
         "anteilProzent": {
             "anyOf": [
                 {
-                    "exclusiveMaximum": 100.0,
-                    "exclusiveMinimum": 0.0,
                     "type": "number"
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Anteilprozent"
         },
         "erzeugungsart": {
-            "$ref": "#/$defs/Erzeugungsart"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Erzeugungsart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "erzeugungsart",
-        "anteilProzent"
-    ],
     "title": "Energieherkunft",
     "type": "object"
 }

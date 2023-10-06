@@ -78,14 +78,30 @@
             "title": " Id"
         },
         "datumUhrzeitBis": {
-            "format": "date-time",
-            "title": "Datumuhrzeitbis",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Datumuhrzeitbis"
         },
         "datumUhrzeitVon": {
-            "format": "date-time",
-            "title": "Datumuhrzeitvon",
-            "type": "string"
+            "anyOf": [
+                {
+                    "format": "date-time",
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Datumuhrzeitvon"
         },
         "status": {
             "anyOf": [
@@ -116,16 +132,15 @@
                 },
                 {
                     "type": "string"
+                },
+                {
+                    "type": "null"
                 }
             ],
+            "default": null,
             "title": "Wert"
         }
     },
-    "required": [
-        "wert",
-        "datumUhrzeitVon",
-        "datumUhrzeitBis"
-    ],
     "title": "Zeitreihenwert",
     "type": "object"
 }

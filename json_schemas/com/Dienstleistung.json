@@ -59,17 +59,29 @@
             "title": " Id"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "dienstleistungstyp": {
-            "$ref": "#/$defs/Dienstleistungstyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Dienstleistungstyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "dienstleistungstyp",
-        "bezeichnung"
-    ],
     "title": "Dienstleistung",
     "type": "object"
 }

@@ -125,12 +125,17 @@
             "default": null
         },
         "geraetetyp": {
-            "$ref": "#/$defs/Geraetetyp"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Geraetetyp"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         }
     },
-    "required": [
-        "geraetetyp"
-    ],
     "title": "Geraeteeigenschaften",
     "type": "object"
 }

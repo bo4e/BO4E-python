@@ -28,7 +28,15 @@
             "title": " Id"
         },
         "arithmetik": {
-            "$ref": "#/$defs/ArithmetischeOperation"
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/ArithmetischeOperation"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
         },
         "gueltigBis": {
             "anyOf": [
@@ -57,14 +65,18 @@
             "title": "Gueltigseit"
         },
         "messlokationsId": {
-            "title": "Messlokationsid",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Messlokationsid"
         }
     },
-    "required": [
-        "messlokationsId",
-        "arithmetik"
-    ],
     "title": "Messlokationszuordnung",
     "type": "object"
 }

@@ -57,18 +57,30 @@
                     "title": " Id"
                 },
                 "exRefName": {
-                    "title": "Exrefname",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefname"
                 },
                 "exRefWert": {
-                    "title": "Exrefwert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Exrefwert"
                 }
             },
-            "required": [
-                "exRefName",
-                "exRefWert"
-            ],
             "title": "ExterneReferenz",
             "type": "object"
         },
@@ -99,21 +111,40 @@
                     "title": " Id"
                 },
                 "gueltigkeitstyp": {
-                    "$ref": "#/$defs/Gueltigkeitstyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Gueltigkeitstyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "regionskriteriumtyp": {
-                    "$ref": "#/$defs/Regionskriteriumtyp"
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Regionskriteriumtyp"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 },
                 "wert": {
-                    "title": "Wert",
-                    "type": "string"
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Wert"
                 }
             },
-            "required": [
-                "gueltigkeitstyp",
-                "regionskriteriumtyp",
-                "wert"
-            ],
             "title": "Regionskriterium",
             "type": "object"
         },
@@ -174,8 +205,16 @@
             "title": " Id"
         },
         "bezeichnung": {
-            "title": "Bezeichnung",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
         },
         "boTyp": {
             "allOf": [
@@ -197,7 +236,7 @@
                     "type": "null"
                 }
             ],
-            "default": [],
+            "default": null,
             "title": "Externereferenzen"
         },
         "negativListe": {
@@ -216,12 +255,19 @@
             "title": "Negativliste"
         },
         "positivListe": {
-            "items": {
-                "$ref": "#/$defs/Regionskriterium"
-            },
-            "minItems": 1,
-            "title": "Positivliste",
-            "type": "array"
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Regionskriterium"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Positivliste"
         },
         "versionstruktur": {
             "default": "2",
@@ -229,10 +275,6 @@
             "type": "string"
         }
     },
-    "required": [
-        "bezeichnung",
-        "positivListe"
-    ],
     "title": "Region",
     "type": "object"
 }

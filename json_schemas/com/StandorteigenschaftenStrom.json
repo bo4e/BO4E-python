@@ -15,23 +15,42 @@
             "title": " Id"
         },
         "bilanzierungsgebietEic": {
-            "title": "Bilanzierungsgebieteic",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bilanzierungsgebieteic"
         },
         "regelzone": {
-            "title": "Regelzone",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Regelzone"
         },
         "regelzoneEic": {
-            "title": "Regelzoneeic",
-            "type": "string"
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Regelzoneeic"
         }
     },
-    "required": [
-        "bilanzierungsgebietEic",
-        "regelzone",
-        "regelzoneEic"
-    ],
     "title": "StandorteigenschaftenStrom",
     "type": "object"
 }
