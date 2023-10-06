@@ -16,11 +16,11 @@ from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.com.zeitraum import Zeitraum
+from bo4e.enum.netznutzungrechnungsart import NetznutzungRechnungsart
+from bo4e.enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
 from bo4e.enum.rechnungstyp import Rechnungstyp
 from bo4e.enum.typ import Typ
-from bo4e.enum.netznutzungrechnungsart import NetznutzungRechnungsart
-from bo4e.enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from bo4e.enum.sparte import Sparte
 
 

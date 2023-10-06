@@ -5,9 +5,9 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.rechnung import Rechnung
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.bo.messlokation import Messlokation
+from bo4e.bo.rechnung import Rechnung
 from bo4e.com.betrag import Betrag
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
@@ -89,11 +89,11 @@ class TestRechnung:
                     ist_original=True,
                     ist_simuliert=True,
                     marktlokation=Marktlokation(
-                         marktlokations_id="51238696781",
+                        marktlokations_id="51238696781",
                     ),
                     messlokation=Messlokation(
                         messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
-                    )
+                    ),
                 ),
                 id="maximal attributes",
             ),
@@ -130,11 +130,11 @@ class TestRechnung:
                     ist_original=True,
                     ist_simuliert=True,
                     marktlokation=Marktlokation(
-                         marktlokations_id="51238696781",
+                        marktlokations_id="51238696781",
                     ),
                     messlokation=Messlokation(
                         messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
-                    )
+                    ),
                 ),
                 id="minimal attributes",
             ),
