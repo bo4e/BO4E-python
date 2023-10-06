@@ -11,7 +11,7 @@ from pydantic import constr
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktlokation import Marktlokation
 from bo4e.bo.messlokation import Messlokation
-from bo4e.com.tagesvektor import Tagesvektor
+from bo4e.com.menge import Menge
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.com.zeitreihenwert import Zeitreihenwert
 from bo4e.enum.botyp import BoTyp
@@ -52,6 +52,6 @@ class Lastgang(Geschaeftsobjekt):
     version: Optional[str] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
     obis_kennzahl: Optional[constr(strict=True)] = None  # type: ignore[valid-type]
-    # todo:add zeit_intervall_laenge
+    zeit_intervall_laenge: Optional[Menge]
     # todo: add COMS Zeitspanne und Menge delete Zeitintervall
     # todo:delete tagesvektor
