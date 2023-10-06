@@ -14,12 +14,12 @@ from bo4e.com.menge import Menge
 from bo4e.com.preis import Preis
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.landescode import Landescode
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 from bo4e.enum.waehrungscode import Waehrungscode
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -163,7 +163,7 @@ class TestAngebotsteil:
                             "zugehoerigeMesslokation": None,
                             "kundengruppen": None,
                             "externeReferenzen": None,
-                            "boTyp": BoTyp.MARKTLOKATION,
+                            "_typ": Typ.MARKTLOKATION,
                             "_id": None,
                         }
                     ],

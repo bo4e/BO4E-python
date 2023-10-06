@@ -8,7 +8,7 @@ from humps.main import camelize
 from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -29,7 +29,7 @@ class Geschaeftsobjekt(BaseModel):
 
     # required attributes
     versionstruktur: str = "2"  #: Version der BO-Struktur aka "fachliche Versionierung"
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes

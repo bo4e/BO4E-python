@@ -73,7 +73,7 @@ from typing import Optional, Dict, Any
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.menge import Menge
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import BoTyp
 
 
 # pylint: disable=too-few-public-methods
@@ -95,6 +95,7 @@ class MeinBo(Geschaeftsobjekt):
     Anzahl Freudensprünge beschreibt, wie oft der CEO des Stromkonzerns in die Luft gesprungen ist, als ich den Vertrag unterschrieben habe.
     Dieser Wert sollte im Normalfall mindestens 5 sein.
     """
+
     # pylint:disable=unused-argument, no-self-argument
     @validator("anzahl_freudenspruenge")
     def validate_freudenspruenge(cls, anzahl_freudenspruenge: int, values: Dict[str, Any]) -> int:

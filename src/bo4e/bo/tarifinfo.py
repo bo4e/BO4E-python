@@ -6,19 +6,21 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.marktteilnehmer import Marktteilnehmer
 from bo4e.com.energiemix import Energiemix
 from bo4e.com.vertragskonditionen import Vertragskonditionen
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.tarifmerkmal import Tarifmerkmal
 from bo4e.enum.tariftyp import Tariftyp
+from bo4e.enum.typ import Typ
 
 
 class Tarifinfo(Geschaeftsobjekt):
@@ -36,7 +38,7 @@ class Tarifinfo(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.TARIFINFO
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFINFO
     #: Name des Tarifs
     bezeichnung: Optional[str] = None
     #: Der Name des Marktpartners, der den Tarif anbietet

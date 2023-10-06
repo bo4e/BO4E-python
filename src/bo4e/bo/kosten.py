@@ -1,14 +1,16 @@
 """
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.betrag import Betrag
 from bo4e.com.kostenblock import Kostenblock
 from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.kostenklasse import Kostenklasse
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -29,7 +31,7 @@ class Kosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.KOSTEN
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
     kostenklasse: Optional[Kostenklasse] = None
     #: Für diesen Zeitraum wurden die Kosten ermittelt

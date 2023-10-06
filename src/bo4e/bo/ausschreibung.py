@@ -5,7 +5,9 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -14,7 +16,7 @@ from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
 from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
 from bo4e.enum.ausschreibungstyp import Ausschreibungstyp
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 
 class Ausschreibung(Geschaeftsobjekt):
@@ -31,7 +33,7 @@ class Ausschreibung(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.AUSSCHREIBUNG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
     #: Aufzählung für die Typisierung von Ausschreibungen

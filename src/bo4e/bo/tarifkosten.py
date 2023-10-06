@@ -2,11 +2,13 @@
 Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.kosten import Kosten
 from bo4e.bo.tarifinfo import Tarifinfo
-from bo4e.enum.botyp import BoTyp
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -25,7 +27,7 @@ class Tarifkosten(Tarifinfo):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.TARIFKOSTEN
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFKOSTEN
     kosten: Optional[Kosten] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

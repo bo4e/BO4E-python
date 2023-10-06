@@ -4,7 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
@@ -13,13 +15,13 @@ from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.messlokationszuordnung import Messlokationszuordnung
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.gasqualitaet import Gasqualitaet
 from bo4e.enum.gebiettyp import Gebiettyp
 from bo4e.enum.kundentyp import Kundentyp
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 from bo4e.enum.verbrauchsart import Verbrauchsart
 
 # pylint: disable=no-name-in-module
@@ -39,7 +41,7 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.MARKTLOKATION
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom

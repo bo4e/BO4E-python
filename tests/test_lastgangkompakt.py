@@ -41,7 +41,7 @@ class TestLastgangKompakt:
                     "versionstruktur": "2",
                     "externeReferenzen": None,
                     "lokationsId": "DE0000011111222223333344444555556",
-                    "boTyp": "LASTGANG_KOMPAKT",
+                    "_typ": "LASTGANG_KOMPAKT",
                     "obisKennzahl": "1-0:1.8.1",
                     "_id": None,
                 },

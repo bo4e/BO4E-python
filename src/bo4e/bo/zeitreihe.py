@@ -4,15 +4,17 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.medium import Medium
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.messart import Messart
 from bo4e.enum.messgroesse import Messgroesse
+from bo4e.enum.typ import Typ
 from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
 
 
@@ -31,7 +33,7 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.ZEITREIHE
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)

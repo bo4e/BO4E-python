@@ -1,14 +1,16 @@
 """
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
 
 from bo4e.bo.preisblatt import Preisblatt
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.netzebene import Netzebene
+from bo4e.enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -26,7 +28,7 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.PREISBLATTMESSUNG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTMESSUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional[Bilanzierungsmethode] = None

@@ -2,19 +2,19 @@
 Contains Lastgang and LastgangKompakt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import constr
+from pydantic import Field, constr
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.com.tagesvektor import Tagesvektor
 from bo4e.com.zeitintervall import Zeitintervall
 from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
+from bo4e.enum.typ import Typ
 
 
 class _LastgangBody(Geschaeftsobjekt):
@@ -22,6 +22,11 @@ class _LastgangBody(Geschaeftsobjekt):
     The LastgangBody is a mixin that contains the "body" of a Lastgang that is used in both the :class:`Lastgang` as
     well as :class:`LastgangKompakt`.
     """
+
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = None
+    # I don't know why, but without this line mypy complains in LastgangKompakt about:
+    # Incompatible types in assignment (expression has type "Typ | None", base class "_LastgangBody" defined
+    # the type as "Typ")  [assignment]
 
     #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
     sparte: Optional[Sparte] = None
@@ -55,7 +60,7 @@ class LastgangKompakt(_LastgangBody):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.LASTGANG_KOMPAKT
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.LASTGANG_KOMPAKT
 
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
     zeitintervall: Optional[Zeitintervall] = None
@@ -85,7 +90,7 @@ class Lastgang(_LastgangBody):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.LASTGANG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
     werte: Optional[list[Zeitreihenwert]] = None

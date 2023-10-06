@@ -15,7 +15,6 @@ from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.botyp import BoTyp
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -23,6 +22,7 @@ from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.tarifart import Tarifart
+from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
 
@@ -37,12 +37,12 @@ class TestMeLo:
             sparte=Sparte.STROM,
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ is Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
@@ -51,7 +51,7 @@ class TestMeLo:
         # but are **not** the same object.
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is Typ.MESSLOKATION
 
     def test_serialization_required_and_optional_attributes(self) -> None:
         """
@@ -106,19 +106,19 @@ class TestMeLo:
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
         assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.typ == Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
 
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is Typ.MESSLOKATION
 
     def test_extension_data(self) -> None:
         """
