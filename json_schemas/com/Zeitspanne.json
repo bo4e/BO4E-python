@@ -2,6 +2,18 @@
     "additionalProperties": true,
     "description": "Eine Zeitspanne ist definiert aus Start und/oder Ende.\nDer Unterschied zur Zeitmenge ist, dass konkrete Start- und Endzeitpunkt angegeben werden.\nDie Zeitspanne ist aus dem COM Zeitraum hervorgegangen, das in Zeitspanne und Zeitmenge aufgeteilt wurde.",
     "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
         "ende": {
             "anyOf": [
                 {
@@ -12,6 +24,7 @@
                     "type": "null"
                 }
             ],
+            "default": null,
             "title": "Ende"
         },
         "start": {
@@ -24,13 +37,10 @@
                     "type": "null"
                 }
             ],
+            "default": null,
             "title": "Start"
         }
     },
-    "required": [
-        "start",
-        "ende"
-    ],
     "title": "Zeitspanne",
     "type": "object"
 }

@@ -13,7 +13,6 @@
                 "GESCHAEFTSPARTNER",
                 "KOSTEN",
                 "LASTGANG",
-                "LASTGANG_KOMPAKT",
                 "MARKTLOKATION",
                 "MESSLOKATION",
                 "MARKTTEILNEHMER",
@@ -107,9 +106,15 @@
                 "MWH",
                 "STUECK",
                 "KUBIKMETER",
+                "SEKUNDE",
+                "MINUTE",
                 "STUNDE",
+                "VIERTEL_STUNDE",
                 "TAG",
+                "WOCHE",
                 "MONAT",
+                "QUARTAL",
+                "HALBJAHR",
                 "JAHR",
                 "PROZENT"
             ],
@@ -232,32 +237,6 @@
                     "default": null,
                     "title": " Id"
                 },
-                "datumUhrzeitBis": {
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Datumuhrzeitbis"
-                },
-                "datumUhrzeitVon": {
-                    "anyOf": [
-                        {
-                            "format": "date-time",
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Datumuhrzeitvon"
-                },
                 "status": {
                     "anyOf": [
                         {
@@ -294,9 +273,66 @@
                     ],
                     "default": null,
                     "title": "Wert"
+                },
+                "zeitspanne": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zeitspanne"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
                 }
             },
             "title": "Zeitreihenwert",
+            "type": "object"
+        },
+        "Zeitspanne": {
+            "additionalProperties": true,
+            "description": "Eine Zeitspanne ist definiert aus Start und/oder Ende.\nDer Unterschied zur Zeitmenge ist, dass konkrete Start- und Endzeitpunkt angegeben werden.\nDie Zeitspanne ist aus dem COM Zeitraum hervorgegangen, das in Zeitspanne und Zeitmenge aufgeteilt wurde.",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "ende": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Ende"
+                },
+                "start": {
+                    "anyOf": [
+                        {
+                            "format": "date-time",
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Start"
+                }
+            },
+            "title": "Zeitspanne",
             "type": "object"
         }
     },
