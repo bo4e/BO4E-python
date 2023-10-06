@@ -6,8 +6,11 @@ from decimal import Decimal
 from typing import Optional
 
 from bo4e.com.com import COM
+from bo4e.com.verwendungszweck import Verwendungszweck
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e.enum.verbrauchsart import Verbrauchsart
+from bo4e.enum.waermenutzung import Waermenutzung
 
 # pylint: disable=no-name-in-module
 # pylint: disable=no-name-in-module
@@ -41,3 +44,8 @@ class Zaehlwerk(COM):
     ] = None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
     # zu kommen.
     einheit: Optional[Mengeneinheit] = None  # Die Einheit der gemessenen Größe, z.B. kWh
+    ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeint
+    verwendungszwecke: Optional[list[Verwendungszweck]] = None  #: Verwendungungszweck der Werte Marktlokation
+    verbrauchsart: Optional[Verbrauchsart] = None  #: Stromverbrauchsart/Verbrauchsart Marktlokation
+    ist_unterbrechbar: Optional[bool] = None  #: Unterbrechbarkeit Marktlokation
+    waermenutzung: Optional[Waermenutzung] = None  #: Wärmenutzung Marktlokation
