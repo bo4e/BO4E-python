@@ -329,12 +329,50 @@
         },
         "Geraet": {
             "additionalProperties": true,
-            "description": "Mit dieser Komponente werden alle Geräte modelliert, die keine Zähler sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraet.json>`_",
+            "description": "Mit diesem BO werden alle Geräte modelliert, die keine Zähler sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/bo/Geraet.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geraet.json>`_",
             "properties": {
-                "geraeteeigenschaften": {
+                "_id": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geraeteeigenschaften"
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_typ": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Typ"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "GESCHAEFTSOBJEKT"
+                },
+                "externeReferenzen": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/ExterneReferenz"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Externereferenzen"
+                },
+                "geraetemerkmal": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Geraetemerkmal"
                         },
                         {
                             "type": "null"
@@ -353,19 +391,11 @@
                     ],
                     "default": null,
                     "title": "Geraetenummer"
-                }
-            },
-            "title": "Geraet",
-            "type": "object"
-        },
-        "Geraeteeigenschaften": {
-            "additionalProperties": true,
-            "description": "Mit dieser Komponente werden die Eigenschaften eines Gerätes in Bezug auf den Typ und weitere Merkmale modelliert\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Geraeteeigenschaften.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Geraeteeigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Geraeteeigenschaften.json>`_",
-            "properties": {
-                "geraetemerkmal": {
+                },
+                "geraetetyp": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Geraetemerkmal"
+                            "$ref": "#/$defs/Geraetetyp"
                         },
                         {
                             "type": "null"
@@ -373,14 +403,13 @@
                     ],
                     "default": null
                 },
-                "geraetetyp": {
-                    "$ref": "#/$defs/Geraetetyp"
+                "versionstruktur": {
+                    "default": "2",
+                    "title": "Versionstruktur",
+                    "type": "string"
                 }
             },
-            "required": [
-                "geraetetyp"
-            ],
-            "title": "Geraeteeigenschaften",
+            "title": "Geraet",
             "type": "object"
         },
         "Geraetemerkmal": {

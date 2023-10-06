@@ -3,8 +3,8 @@ Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
+from bo4e.bo.geraet import Geraet
 from bo4e.com.com import COM
-from bo4e.com.geraet import Geraet
 from bo4e.com.menge import Menge
 from bo4e.enum.voraussetzungen import Voraussetzungen
 

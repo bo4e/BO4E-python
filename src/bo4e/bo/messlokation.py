@@ -6,12 +6,12 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from bo4e.bo.geraet import Geraet
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.geraet import Geraet
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte

@@ -3,7 +3,7 @@ from typing import Any, Dict
 
 import pytest
 
-from bo4e.com.geraet import Geraet
+from bo4e.bo.geraet import Geraet
 from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
 from bo4e.com.menge import Menge
 from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
