@@ -11,7 +11,7 @@ from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
 from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.hardware import Hardware
+from bo4e.com.geraet import Geraet
 from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.enum.netzebene import Netzebene
 from bo4e.enum.sparte import Sparte
@@ -43,8 +43,8 @@ class Messlokation(Geschaeftsobjekt):
     netzebene_messung: Optional[Netzebene] = None
     #: Die Nummer des Messgebietes in der ene't-Datenbank
     messgebietnr: Optional[str] = None
-    #: Liste der Hardware, die zu dieser Messstelle gehört
-    geraete: Optional[list[Hardware]] = None
+    #: Liste der Geräte, die zu dieser Messstelle gehört
+    geraete: Optional[list[Geraet]] = None
     #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
     messdienstleistung: Optional[list[Dienstleistung]] = None  # todo: rename to plural
     #: Zähler, die zu dieser Messlokation gehören
