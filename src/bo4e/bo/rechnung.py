@@ -34,7 +34,7 @@ class Rechnung(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.RECHNUNG
+    typ: BoTyp = BoTyp.RECHNUNG
     storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;

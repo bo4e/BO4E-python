@@ -36,7 +36,7 @@ class Vertrag(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.VERTRAG
+    typ: BoTyp = BoTyp.VERTRAG
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: Optional[str] = None

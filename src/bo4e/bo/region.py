@@ -25,7 +25,7 @@ class Region(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.REGION
+    typ: BoTyp = BoTyp.REGION
     #: Bezeichnung der Region
     bezeichnung: Optional[str] = None
 

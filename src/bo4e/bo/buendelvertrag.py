@@ -33,7 +33,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.BUENDELVERTRAG
+    typ: BoTyp = BoTyp.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag

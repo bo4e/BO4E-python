@@ -30,7 +30,7 @@ class Regionaltarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.REGIONALTARIF
+    typ: BoTyp = BoTyp.REGIONALTARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None

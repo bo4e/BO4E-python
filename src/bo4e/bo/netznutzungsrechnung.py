@@ -27,7 +27,7 @@ class Netznutzungsrechnung(Rechnung):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
+    typ: BoTyp = BoTyp.NETZNUTZUNGSRECHNUNG
     #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Optional[Sparte] = None
     absendercodenummer: Optional[str] = None

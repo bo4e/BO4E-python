@@ -25,7 +25,7 @@ class Tarifkosten(Tarifinfo):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.TARIFKOSTEN
+    typ: BoTyp = BoTyp.TARIFKOSTEN
     kosten: Optional[Kosten] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

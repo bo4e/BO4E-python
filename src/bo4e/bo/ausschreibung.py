@@ -31,7 +31,7 @@ class Ausschreibung(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.AUSSCHREIBUNG
+    typ: BoTyp = BoTyp.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
     #: Aufzählung für die Typisierung von Ausschreibungen

@@ -27,7 +27,7 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.ENERGIEMENGE
+    typ: BoTyp = BoTyp.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
     lokations_id: Optional[str] = None
     # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp

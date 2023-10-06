@@ -23,7 +23,7 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.PREISBLATTKONZESSIONSABGABE
+    typ: BoTyp = BoTyp.PREISBLATTKONZESSIONSABGABE
     # required attributes (additional to those of Preisblatt)
     #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
     kundengruppe_k_a: Optional[KundengruppeKA] = None

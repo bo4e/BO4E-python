@@ -36,7 +36,7 @@ class Tarifinfo(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.TARIFINFO
+    typ: BoTyp = BoTyp.TARIFINFO
     #: Name des Tarifs
     bezeichnung: Optional[str] = None
     #: Der Name des Marktpartners, der den Tarif anbietet

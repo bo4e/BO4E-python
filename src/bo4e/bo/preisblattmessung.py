@@ -26,7 +26,7 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.PREISBLATTMESSUNG
+    typ: BoTyp = BoTyp.PREISBLATTMESSUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional[Bilanzierungsmethode] = None

@@ -55,7 +55,7 @@ class LastgangKompakt(_LastgangBody):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.LASTGANG_KOMPAKT
+    typ: BoTyp = BoTyp.LASTGANG_KOMPAKT
 
     #: Angabe des Rasters innerhalb aller Tagesvektoren dieses Lastgangs
     zeitintervall: Optional[Zeitintervall] = None
@@ -85,7 +85,7 @@ class Lastgang(_LastgangBody):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.LASTGANG
+    typ: BoTyp = BoTyp.LASTGANG
 
     #: Die im Lastgang enthaltenen Messwerte
     werte: Optional[list[Zeitreihenwert]] = None

@@ -29,7 +29,7 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.TARIFPREISBLATT
+    typ: BoTyp = BoTyp.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None

@@ -32,7 +32,7 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.MESSLOKATION
+    typ: BoTyp = BoTyp.MESSLOKATION
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: Optional[str] = None
     #: Sparte der Messlokation, z.B. Gas oder Strom

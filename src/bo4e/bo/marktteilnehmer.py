@@ -29,7 +29,7 @@ class Marktteilnehmer(Geschaeftspartner):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.MARKTTEILNEHMER
+    typ: BoTyp = BoTyp.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
     marktrolle: Optional[Marktrolle] = None
     #: Gibt die Codenummer der Marktrolle an

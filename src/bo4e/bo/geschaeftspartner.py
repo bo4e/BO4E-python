@@ -30,7 +30,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
+    typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
     name1: Optional[str] = None
     """
     Erster Teil des Namens.

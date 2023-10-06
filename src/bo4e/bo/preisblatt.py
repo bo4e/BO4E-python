@@ -35,7 +35,7 @@ class Preisblatt(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.PREISBLATT
+    typ: BoTyp = BoTyp.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
     bezeichnung: Optional[str] = None
     #: Preisblatt gilt für angegebene Sparte

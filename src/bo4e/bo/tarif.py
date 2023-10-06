@@ -30,7 +30,7 @@ class Tarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.TARIF
+    typ: BoTyp = BoTyp.TARIF
     # required attributes
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[datetime] = None

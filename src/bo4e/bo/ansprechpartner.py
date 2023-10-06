@@ -30,7 +30,7 @@ class Ansprechpartner(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.ANSPRECHPARTNER
+    typ: BoTyp = BoTyp.ANSPRECHPARTNER
     nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
     geschaeftspartner: Optional[
         Geschaeftspartner

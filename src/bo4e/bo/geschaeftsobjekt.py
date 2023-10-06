@@ -29,7 +29,7 @@ class Geschaeftsobjekt(BaseModel):
 
     # required attributes
     versionstruktur: str = "2"  #: Version der BO-Struktur aka "fachliche Versionierung"
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
+    typ: BoTyp = Field(alias="_typ", default=BoTyp.GESCHAEFTSOBJEKT)  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     # optional attributes

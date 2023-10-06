@@ -35,7 +35,7 @@ class Zaehler(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.ZAEHLER
+    typ: BoTyp = BoTyp.ZAEHLER
     zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
     sparte: Optional[Sparte] = None  #: Strom oder Gas
     zaehlerauspraegung: Optional[Zaehlerauspraegung] = None  #: Spezifikation die Richtung des Zählers betreffend

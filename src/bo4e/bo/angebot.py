@@ -33,7 +33,7 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.ANGEBOT
+    typ: BoTyp = BoTyp.ANGEBOT
     # required attributes
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None

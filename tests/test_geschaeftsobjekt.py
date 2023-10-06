@@ -44,7 +44,7 @@ class TestGeschaeftsobjekt:
 
         go_deserialized = Geschaeftsobjekt.model_validate_json(go_json)
 
-        assert go_deserialized.bo_typ is bo_typ
+        assert go_deserialized.typ is bo_typ
         assert go_deserialized.versionstruktur == versionstruktur
         assert go_deserialized.externe_referenzen == externe_referenzen
 

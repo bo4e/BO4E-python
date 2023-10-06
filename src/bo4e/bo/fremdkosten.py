@@ -28,7 +28,7 @@ class Fremdkosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.FREMDKOSTEN
+    typ: BoTyp = BoTyp.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Optional[Zeitraum] = None
     # optional attributes

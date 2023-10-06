@@ -29,7 +29,7 @@ class Kosten(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.KOSTEN
+    typ: BoTyp = BoTyp.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
     kostenklasse: Optional[Kostenklasse] = None
     #: Für diesen Zeitraum wurden die Kosten ermittelt

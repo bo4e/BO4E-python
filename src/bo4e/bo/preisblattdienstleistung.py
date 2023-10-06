@@ -25,7 +25,7 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.PREISBLATTDIENSTLEISTUNG
+    typ: BoTyp = BoTyp.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional[Bilanzierungsmethode] = None

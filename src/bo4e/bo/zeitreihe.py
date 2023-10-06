@@ -31,7 +31,7 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     # required attributes
-    bo_typ: BoTyp = BoTyp.ZEITREIHE
+    typ: BoTyp = BoTyp.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
