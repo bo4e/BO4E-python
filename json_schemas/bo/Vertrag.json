@@ -922,23 +922,6 @@
             "title": "Vertragsteil",
             "type": "object"
         },
-        "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
-            "enum": [
-                "SEKUNDE",
-                "MINUTE",
-                "STUNDE",
-                "VIERTEL_STUNDE",
-                "TAG",
-                "WOCHE",
-                "MONAT",
-                "QUARTAL",
-                "HALBJAHR",
-                "JAHR"
-            ],
-            "title": "Zeiteinheit",
-            "type": "string"
-        },
         "Zeitraum": {
             "additionalProperties": true,
             "description": "Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.\nEs muss daher eine der drei Möglichkeiten angegeben sein:\n- Einheit und Dauer oder\n- Zeitraum: Startdatum bis Enddatum oder\n- Zeitraum: Startzeitpunkt (Datum und Uhrzeit) bis Endzeitpunkt (Datum und Uhrzeit)\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zeitraum.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_",
@@ -961,7 +944,7 @@
                 "einheit": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Zeiteinheit"
+                            "$ref": "#/$defs/Mengeneinheit"
                         },
                         {
                             "type": "null"

@@ -1,8 +1,17 @@
 {
     "$defs": {
-        "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
             "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
                 "SEKUNDE",
                 "MINUTE",
                 "STUNDE",
@@ -12,9 +21,10 @@
                 "MONAT",
                 "QUARTAL",
                 "HALBJAHR",
-                "JAHR"
+                "JAHR",
+                "PROZENT"
             ],
-            "title": "Zeiteinheit",
+            "title": "Mengeneinheit",
             "type": "string"
         }
     },
@@ -26,7 +36,7 @@
             "type": "integer"
         },
         "zeiteinheit": {
-            "$ref": "#/$defs/Zeiteinheit"
+            "$ref": "#/$defs/Mengeneinheit"
         }
     },
     "required": [

@@ -1,19 +1,17 @@
 {
     "$defs": {
-        "Preisgarantietyp": {
-            "description": "Aufzählung der Möglichkeiten für die Vergabe von Preisgarantien",
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
             "enum": [
-                "ALLE_PREISBESTANDTEILE_BRUTTO",
-                "ALLE_PREISBESTANDTEILE_NETTO",
-                "PREISBESTANDTEILE_OHNE_ABGABEN",
-                "NUR_ENERGIEPREIS"
-            ],
-            "title": "Preisgarantietyp",
-            "type": "string"
-        },
-        "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
-            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
                 "SEKUNDE",
                 "MINUTE",
                 "STUNDE",
@@ -23,9 +21,21 @@
                 "MONAT",
                 "QUARTAL",
                 "HALBJAHR",
-                "JAHR"
+                "JAHR",
+                "PROZENT"
             ],
-            "title": "Zeiteinheit",
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Preisgarantietyp": {
+            "description": "Aufzählung der Möglichkeiten für die Vergabe von Preisgarantien",
+            "enum": [
+                "ALLE_PREISBESTANDTEILE_BRUTTO",
+                "ALLE_PREISBESTANDTEILE_NETTO",
+                "PREISBESTANDTEILE_OHNE_ABGABEN",
+                "NUR_ENERGIEPREIS"
+            ],
+            "title": "Preisgarantietyp",
             "type": "string"
         },
         "Zeitraum": {
@@ -50,7 +60,7 @@
                 "einheit": {
                     "anyOf": [
                         {
-                            "$ref": "#/$defs/Zeiteinheit"
+                            "$ref": "#/$defs/Mengeneinheit"
                         },
                         {
                             "type": "null"
