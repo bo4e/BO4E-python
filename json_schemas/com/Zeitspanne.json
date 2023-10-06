@@ -12,6 +12,7 @@
                     "type": "null"
                 }
             ],
+            "default": null,
             "title": "Ende"
         },
         "start": {
@@ -24,13 +25,10 @@
                     "type": "null"
                 }
             ],
+            "default": null,
             "title": "Start"
         }
     },
-    "required": [
-        "start",
-        "ende"
-    ],
     "title": "Zeitspanne",
     "type": "object"
 }
