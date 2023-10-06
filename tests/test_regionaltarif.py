@@ -1,7 +1,6 @@
 from datetime import datetime, timezone
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e.bo.regionaltarif import Regionaltarif
 from bo4e.enum.kundentyp import Kundentyp
