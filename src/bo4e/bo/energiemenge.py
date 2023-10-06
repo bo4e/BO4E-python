@@ -28,7 +28,6 @@ class Energiemenge(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
     lokations_id: Optional[str] = None

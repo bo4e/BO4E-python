@@ -37,7 +37,6 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.VERTRAG
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
@@ -71,7 +70,6 @@ class Vertrag(Geschaeftsobjekt):
     (Markt- oder Messlokation) festzulegen.
     """
 
-    # optional attributes
     #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen

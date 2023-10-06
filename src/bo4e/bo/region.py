@@ -26,7 +26,6 @@ class Region(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGION
     #: Bezeichnung der Region
     bezeichnung: Optional[str] = None
@@ -34,6 +33,5 @@ class Region(Geschaeftsobjekt):
     #: Positivliste der Kriterien zur Definition der Region
     positiv_liste: Optional[list[Regionskriterium]] = None
 
-    # optional attributes
     #: Negativliste der Kriterien zur Definition der Region
     negativ_liste: Optional[list[Regionskriterium]] = None

@@ -25,7 +25,6 @@ class AufAbschlagProOrt(COM):
 
     """
 
-    # required attributes
     #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
     postleitzahl: Optional[str] = None
     #: Der Ort für den der Aufschlag gilt.

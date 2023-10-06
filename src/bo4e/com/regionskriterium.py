@@ -23,7 +23,6 @@ class Regionskriterium(COM):
 
     """
 
-    # required attributes
     gueltigkeitstyp: Optional[
         Gueltigkeitstyp
     ] = None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.

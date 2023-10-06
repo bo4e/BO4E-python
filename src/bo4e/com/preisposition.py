@@ -33,7 +33,6 @@ class Preisposition(COM):
 
     """
 
-    # required attributes
     #: Das Modell, das der Preisbildung zugrunde liegt
     berechnungsmethode: Optional[Kalkulationsmethode] = None
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
@@ -47,7 +46,6 @@ class Preisposition(COM):
     #: Preisstaffeln, die zu dieser Preisposition gehören
     preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     zeitbasis: Optional[Zeiteinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.

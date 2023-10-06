@@ -29,13 +29,11 @@ class AufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge.
     staffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).

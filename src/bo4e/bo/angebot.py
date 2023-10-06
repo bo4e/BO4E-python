@@ -36,7 +36,6 @@ class Angebot(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANGEBOT
-    # required attributes
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots
@@ -52,7 +51,6 @@ class Angebot(Geschaeftsobjekt):
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 
-    # optional attributes
     anfragereferenz: Optional[str] = None
     """	Referenz auf eine Anfrage oder Ausschreibung;
     Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""

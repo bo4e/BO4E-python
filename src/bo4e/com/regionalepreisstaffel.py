@@ -22,6 +22,5 @@ class RegionalePreisstaffel(Preisstaffel):
 
     """
 
-    # required attributes
     #: Regionale Eingrenzung der Preisstaffel
     regionale_gueltigkeit: Optional[RegionaleGueltigkeit] = None

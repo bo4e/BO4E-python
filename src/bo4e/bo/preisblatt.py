@@ -36,7 +36,6 @@ class Preisblatt(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATT
     #: Eine Bezeichnung für das Preisblatt
     bezeichnung: Optional[str] = None
@@ -48,6 +47,5 @@ class Preisblatt(Geschaeftsobjekt):
     gueltigkeit: Optional[Zeitraum] = None
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
     preispositionen: Optional[list[Preisposition]] = None
-    # optional attributes
     #: Der Netzbetreiber, der die Preise veröffentlicht hat
     herausgeber: Optional[Marktteilnehmer] = None

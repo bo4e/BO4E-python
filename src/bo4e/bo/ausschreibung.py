@@ -32,7 +32,6 @@ class Ausschreibung(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
@@ -62,7 +61,6 @@ class Ausschreibung(Geschaeftsobjekt):
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
     lose: Optional[list[Ausschreibungslos]] = None
 
-    # optional attributes
     #: Aufzählung der unterstützten Ausschreibungsportale
     ausschreibungportal: Optional[Ausschreibungsportal] = None
     #: Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)

@@ -37,7 +37,6 @@ class Tarifinfo(Geschaeftsobjekt):
 
     """
 
-    # required attributes
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFINFO
     #: Name des Tarifs
     bezeichnung: Optional[str] = None
@@ -56,7 +55,6 @@ class Tarifinfo(Geschaeftsobjekt):
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
     anbieter: Optional[Marktteilnehmer] = None
 
-    # optional attributes
     #: Internetseite auf dem der Tarif zu finden ist
     website: Optional[str] = None
     #: Freitext

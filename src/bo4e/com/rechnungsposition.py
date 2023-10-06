@@ -29,7 +29,6 @@ class Rechnungsposition(COM):
 
     """
 
-    # required attributes
     #: Fortlaufende Nummer für die Rechnungsposition
     positionsnummer: Optional[int] = None
 
@@ -55,7 +54,6 @@ class Rechnungsposition(COM):
     #: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag
     teilsumme_steuer: Optional[Steuerbetrag] = None
 
-    # optional attributes
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
     zeiteinheit: Optional[Zeiteinheit] = None
 
