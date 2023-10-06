@@ -2133,12 +2133,14 @@
                 "DREHSTROMZAEHLER",
                 "BALGENGASZAEHLER",
                 "DREHKOLBENZAEHLER",
-                "SMARTMETER",
                 "LEISTUNGSZAEHLER",
                 "MAXIMUMZAEHLER",
                 "TURBINENRADGASZAEHLER",
                 "ULTRASCHALLGASZAEHLER",
-                "WECHSELSTROMZAEHLER"
+                "WECHSELSTROMZAEHLER",
+                "MODERNE_MESSEINRICHTUNG",
+                "INTELLIGENTES_MESSSYSTEM",
+                "ELEKTRONISCHER_ZAEHLER"
             ],
             "title": "Zaehlertyp",
             "type": "string"
