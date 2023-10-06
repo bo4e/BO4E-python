@@ -38,6 +38,7 @@ class TestVerbrauch:
                     "enddatum": datetime(2021, 12, 2, 0, 0, tzinfo=timezone.utc),
                     "wertermittlungsverfahren": Wertermittlungsverfahren.MESSUNG,
                     "obisKennzahl": "1-0:1.8.1",
+                    "_id": None,
                 },
             ),
             pytest.param(
@@ -49,6 +50,7 @@ class TestVerbrauch:
                     "startdatum": None,
                     "enddatum": None,
                     "obisKennzahl": "1-0:1.8.1",
+                    "_id": None,
                 },
             ),
         ],

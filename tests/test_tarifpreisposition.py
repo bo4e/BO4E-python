@@ -41,9 +41,11 @@ class TestTarifpreisposition:
                             "sigmoidparameter": None,
                             "staffelgrenzeBis": Decimal("25"),
                             "staffelgrenzeVon": Decimal("12.5"),
+                            "_id": None,
                         }
                     ],
                     "mengeneinheitstaffel": None,
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -71,9 +73,11 @@ class TestTarifpreisposition:
                             "sigmoidparameter": None,
                             "staffelgrenzeBis": Decimal("25"),
                             "staffelgrenzeVon": Decimal("12.5"),
+                            "_id": None,
                         }
                     ],
                     "mengeneinheitstaffel": Mengeneinheit.STUECK,
+                    "_id": None,
                 },
                 id="optional and required attributes",
             ),

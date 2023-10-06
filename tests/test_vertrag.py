@@ -91,7 +91,9 @@ class TestVertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
+        "_id": None,
     }
     _vertragspartner2_dict: Dict[str, Any] = {
         "versionstruktur": "2",
@@ -120,7 +122,9 @@ class TestVertrag:
             "coErgaenzung": None,
             "landescode": Landescode.DE,  # type:ignore[attr-defined]
             "ortsteil": None,
+            "_id": None,
         },
+        "_id": None,
     }
     _vertragsteile_dict: List[Dict[str, Any]] = [
         {
@@ -130,6 +134,7 @@ class TestVertrag:
             "vertraglichFixierteMenge": None,
             "minimaleAbnahmemenge": None,
             "maximaleAbnahmemenge": None,
+            "_id": None,
         }
     ]
 
@@ -164,6 +169,7 @@ class TestVertrag:
             "vertragskonditionen": None,
             "unterzeichnervp1": None,
             "unterzeichnervp2": None,
+            "_id": None,
         }
 
     def test_serialisation_only_required_attributes(self) -> None:

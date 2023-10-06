@@ -18,10 +18,7 @@ class TestEnergieherkunft:
         [
             pytest.param(
                 example_energieherkunft,
-                {
-                    "erzeugungsart": Erzeugungsart.BIOMASSE,
-                    "anteilProzent": Decimal("25.5"),
-                },
+                {"erzeugungsart": Erzeugungsart.BIOMASSE, "anteilProzent": Decimal("25.5"), "_id": None},
             ),
         ],
     )

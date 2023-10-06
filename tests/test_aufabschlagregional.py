@@ -59,8 +59,10 @@ class TestAufAbschlagRegional:
                                     "wert": Decimal("2.5"),
                                     "staffelgrenzeVon": Decimal("1"),
                                     "staffelgrenzeBis": Decimal("5"),
+                                    "_id": None,
                                 }
                             ],
+                            "_id": None,
                         },
                     ],
                     "beschreibung": None,
@@ -76,6 +78,7 @@ class TestAufAbschlagRegional:
                     "vertagskonditionsaenderung": None,
                     "garantieaenderung": None,
                     "einschraenkungsaenderung": None,
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -142,8 +145,10 @@ class TestAufAbschlagRegional:
                                     "wert": Decimal("2.5"),
                                     "staffelgrenzeVon": Decimal("1"),
                                     "staffelgrenzeBis": Decimal("5"),
+                                    "_id": None,
                                 }
                             ],
+                            "_id": None,
                         },
                     ],
                     "beschreibung": "bar",
@@ -161,6 +166,7 @@ class TestAufAbschlagRegional:
                         "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
+                        "_id": None,
                     },
                     "energiemixaenderung": {
                         "energiemixnummer": 2,
@@ -168,10 +174,7 @@ class TestAufAbschlagRegional:
                         "bezeichnung": "foo",
                         "gueltigkeitsjahr": 2021,
                         "anteil": [
-                            {
-                                "erzeugungsart": Erzeugungsart.BIOGAS,
-                                "anteilProzent": Decimal("40"),
-                            }
+                            {"erzeugungsart": Erzeugungsart.BIOGAS, "anteilProzent": Decimal("40"), "_id": None}
                         ],
                         "oekolabel": [],
                         "bemerkung": None,
@@ -180,6 +183,7 @@ class TestAufAbschlagRegional:
                         "website": None,
                         "oekozertifikate": [],
                         "oekoTopTen": None,
+                        "_id": None,
                     },
                     "vertagskonditionsaenderung": {
                         "beschreibung": None,
@@ -188,6 +192,7 @@ class TestAufAbschlagRegional:
                         "kuendigungsfrist": None,
                         "vertragsverlaengerung": None,
                         "abschlagszyklus": None,
+                        "_id": None,
                     },
                     "garantieaenderung": {
                         "beschreibung": None,
@@ -199,14 +204,18 @@ class TestAufAbschlagRegional:
                             "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                             "startzeitpunkt": None,
                             "dauer": None,
+                            "_id": None,
                         },
+                        "_id": None,
                     },
                     "einschraenkungsaenderung": {
                         "zusatzprodukte": None,
                         "voraussetzungen": None,
                         "einschraenkungzaehler": None,
                         "einschraenkungleistung": None,
+                        "_id": None,
                     },
+                    "_id": None,
                 },
                 id="required and optional attributes",
             ),

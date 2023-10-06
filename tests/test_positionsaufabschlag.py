@@ -28,6 +28,7 @@ class TestPositionsAufAbschlag:
                     "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
                     "aufAbschlagswert": Decimal("4.25"),
                     "aufAbschlagswaehrung": Waehrungseinheit.EUR,
+                    "_id": None,
                 },
             ),
         ],

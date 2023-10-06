@@ -34,12 +34,22 @@ class TestRegionalePreisstaffel:
                 {
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
+                        "kriteriumsWerte": [
+                            {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
+                        ],
+                        "_id": None,
                     },
                     "einheitspreis": Decimal("40"),
-                    "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                    "sigmoidparameter": {
+                        "A": Decimal("1"),
+                        "B": Decimal("2"),
+                        "C": Decimal("3"),
+                        "D": Decimal("4"),
+                        "_id": None,
+                    },
                     "staffelgrenzeVon": Decimal("12.5"),
                     "staffelgrenzeBis": Decimal("25"),
+                    "_id": None,
                 },
                 id="maximal attributes"
                 # the messing sigmoidparameter is tested in the Preisstaffel tests
