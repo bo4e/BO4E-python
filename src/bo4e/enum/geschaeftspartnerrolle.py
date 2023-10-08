@@ -13,3 +13,4 @@ class Geschaeftspartnerrolle(StrEnum):
     KUNDE = "KUNDE"  #: Kunde
     INTERESSENT = "INTERESSENT"  #: Interessent
     MARKTPARTNER = "MARKTPARTNER"  #: Marktpartner
+    EINE_NEUE_ROLLE = "EINE_NEUE_ROLLE"  #: Test only, do not merge
