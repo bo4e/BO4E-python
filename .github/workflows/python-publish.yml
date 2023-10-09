@@ -59,7 +59,7 @@ jobs:
           destination-repository-name: "BO4E-Schemas"
           user-email: bo4e-schemas@hochfrequenz.de
           target-branch: main
-          commit-message: "Update JSON-Schemas - BO4E {{ github.ref_name }}"
+          commit-message: "Update JSON-Schemas - BO4E ${{ github.ref_name }}"
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-latest
