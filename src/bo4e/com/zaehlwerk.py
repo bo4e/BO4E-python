@@ -6,7 +6,9 @@ from decimal import Decimal
 from typing import Optional
 
 from bo4e.com.com import COM
+from bo4e.com.konzessionsabgabe import Konzessionsabgabe
 from bo4e.com.verwendungszweck import Verwendungszweck
+from bo4e.com.zaehlzeitregister import Zaehlzeitregister
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.verbrauchsart import Verbrauchsart
@@ -44,8 +46,15 @@ class Zaehlwerk(COM):
     ] = None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
     # zu kommen.
     einheit: Optional[Mengeneinheit] = None  # Die Einheit der gemessenen Größe, z.B. kWh
-    ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeint
+    ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit
     verwendungszwecke: Optional[list[Verwendungszweck]] = None  #: Verwendungungszweck der Werte Marktlokation
     verbrauchsart: Optional[Verbrauchsart] = None  #: Stromverbrauchsart/Verbrauchsart Marktlokation
     ist_unterbrechbar: Optional[bool] = None  #: Unterbrechbarkeit Marktlokation
     waermenutzung: Optional[Waermenutzung] = None  #: Wärmenutzung Marktlokation
+    konzessionsabgabe: Optional[Konzessionsabgabe] = None  #: Konzessionsabgabe
+    ist_steuerbefreit: Optional[bool] = None  #: Steuerbefreiung
+    vorkommastelle: Optional[int] = None  #: Anzahl der Vorkommastellen
+    nachkommastelle: Optional[int] = None  #: Anzahl der Nachkommastellen
+    ist_abrechnungsrelevant: Optional[bool] = None  #: Abrechnungsrelevant
+    anzahlAblesungen: Optional[int] = None  #: Anzahl Ablesungen pro Jahr
+    zaehlzeitregister: Optional[Zaehlzeitregister]  #: Erweiterte Definition der Zählzeit in Bezug auf ein Register
