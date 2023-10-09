@@ -9,7 +9,6 @@ from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.validators import combinations_of_fields
 
 # pylint: disable=too-few-public-methods
 

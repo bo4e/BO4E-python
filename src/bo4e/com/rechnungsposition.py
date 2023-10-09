@@ -13,7 +13,6 @@ from bo4e.com.preis import Preis
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
 from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.validators import check_bis_is_later_than_von
 
 
 class Rechnungsposition(COM):

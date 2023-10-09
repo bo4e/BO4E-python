@@ -56,9 +56,9 @@ class TestZeitreihenwert:
         zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.model_validate_json(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
 
-        assert isinstance( zeitreihenwert_deserialized.wert, Decimal)
-        assert isinstance( zeitreihenwert_deserialized.status, Messwertstatus)
-        assert isinstance( zeitreihenwert_deserialized.statuszusatz, Messwertstatuszusatz)
+        assert isinstance(zeitreihenwert_deserialized.wert, Decimal)
+        assert isinstance(zeitreihenwert_deserialized.status, Messwertstatus)
+        assert isinstance(zeitreihenwert_deserialized.statuszusatz, Messwertstatuszusatz)
 
     def test_wrong_datatype(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

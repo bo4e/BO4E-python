@@ -1,4 +1,5 @@
 import pytest
+from _decimal import Decimal
 from pydantic import ValidationError
 
 from bo4e.bo.lastgang import Lastgang
@@ -41,7 +42,7 @@ class TestLastgang:
                         messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                         sparte=Sparte.STROM,
                     ),
-                    zeit_intervall_laenge=Menge(wert="1", einheit=Mengeneinheit.VIERTEL_STUNDE),
+                    zeit_intervall_laenge=Menge(wert=Decimal(1.0), einheit=Mengeneinheit.VIERTEL_STUNDE),
                 ),
             ),
         ],
