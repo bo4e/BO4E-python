@@ -57,4 +57,6 @@ class Zaehlwerk(COM):
     nachkommastelle: Optional[int] = None  #: Anzahl der Nachkommastellen
     ist_abrechnungsrelevant: Optional[bool] = None  #: Abrechnungsrelevant
     anzahlAblesungen: Optional[int] = None  #: Anzahl Ablesungen pro Jahr
-    zaehlzeitregister: Optional[Zaehlzeitregister]  #: Erweiterte Definition der Zählzeit in Bezug auf ein Register
+    zaehlzeitregister: Optional[
+        Zaehlzeitregister
+    ] = None  #: Erweiterte Definition der Zählzeit in Bezug auf ein Register
