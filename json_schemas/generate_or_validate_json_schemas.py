@@ -8,7 +8,7 @@ import json
 import logging
 import pkgutil
 from pathlib import Path
-from typing import Any, Literal, cast
+from typing import Any, Iterator, Literal, cast
 
 import click
 from pydantic import BaseModel
@@ -19,15 +19,17 @@ _logger = logging.getLogger(__name__)
 def delete_json_schemas(packages: list[str]) -> None:
     """delete all json schemas"""
     for pkg in packages:
-        for file in (Path(__file__).parent / pkg).iterdir():
-            file.unlink()
+        to_delete = Path(__file__).parent / pkg
+        if to_delete.exists():
+            for file in to_delete.iterdir():
+                file.unlink()
 
 
-def get_models(pkg: str) -> list[str]:
+def get_models(pkg: str) -> Iterator[str]:
     """
     Get all models in a package
     """
-    return [name for _, name, _ in pkgutil.iter_modules([str(Path(__file__).parent.parent / "src" / "bo4e" / pkg)])]
+    yield from (name for _, name, _ in pkgutil.iter_modules([str(Path(__file__).parent.parent / "src" / "bo4e" / pkg)]))
 
 
 def get_classes(modl_name: str) -> list[tuple[str, type]]:
@@ -91,9 +93,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
         delete_json_schemas(packages)
 
     for pkg in packages:
-        modls = get_models(pkg)
-
-        for model in modls:
+        for model in get_models(pkg):
             modl_name = f"bo4e.{pkg}.{model}"
             cls_list = get_classes(modl_name)
 
