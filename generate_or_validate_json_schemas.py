@@ -16,6 +16,8 @@ from pydantic import BaseModel
 
 logging.basicConfig(level=logging.NOTSET, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
+root_directory = Path(__file__).parent
+output_directory = root_directory / "json_schemas"
 
 
 def delete_json_schemas(packages: list[str]) -> None:
@@ -113,6 +115,4 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
 
 
 if __name__ == "__main__":
-    root_directory = Path(__file__).parent
-    output_directory = root_directory / "json_schemas"
     generate_or_validate_json_schemas()  # pylint:disable=no-value-for-parameter
