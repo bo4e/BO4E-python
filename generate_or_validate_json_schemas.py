@@ -7,12 +7,14 @@ import inspect
 import json
 import logging
 import pkgutil
+import sys
 from pathlib import Path
 from typing import Any, Iterator, Literal, cast
 
 import click
 from pydantic import BaseModel
 
+logging.basicConfig(level=logging.NOTSET, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
 
 
@@ -29,7 +31,7 @@ def get_models(pkg: str) -> Iterator[str]:
     """
     Get all models in a package
     """
-    yield from (name for _, name, _ in pkgutil.iter_modules([str(Path(__file__).parent.parent / "src" / "bo4e" / pkg)]))
+    yield from (name for _, name, _ in pkgutil.iter_modules([str(root_directory / "src" / "bo4e" / pkg)]))
 
 
 def get_classes(modl_name: str) -> list[tuple[str, type]]:
@@ -111,5 +113,6 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
 
 
 if __name__ == "__main__":
-    output_directory = Path(__file__).parent.absolute() / "json_schemas"
+    root_directory = Path(__file__).parent
+    output_directory = root_directory / "json_schemas"
     generate_or_validate_json_schemas()  # pylint:disable=no-value-for-parameter
