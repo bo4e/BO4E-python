@@ -57,7 +57,7 @@ class TestMaLo:
             name1="von Sinnen",
             name2="Helga",
             name3=None,
-            gewerbekennzeichnung=True,
+            ist_gewerbe=True,
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht München",
             kontaktweg=[Kontaktart.E_MAIL],
@@ -79,7 +79,7 @@ class TestMaLo:
             lokationsadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
             energierichtung=Energierichtung.EINSP,
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
-            unterbrechbar=True,  # optional attribute
+            ist_unterbrechbar=True,  # optional attribute
             netzebene=Netzebene.NSP,
             endkunde=gp,
             kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],

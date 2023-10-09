@@ -167,6 +167,18 @@
                     "default": "0.5.11.dev17+gcdb5aaa",
                     "title": " Version"
                 },
+                "istLastgangVorhanden": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istlastgangvorhanden"
+                },
                 "kunde": {
                     "anyOf": [
                         {
@@ -178,18 +190,6 @@
                     ],
                     "default": null,
                     "title": "Kunde"
-                },
-                "lastgangVorhanden": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Lastgangvorhanden"
                 },
                 "lieferzeitraum": {
                     "anyOf": [

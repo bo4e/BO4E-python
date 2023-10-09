@@ -565,18 +565,6 @@
                     "default": null,
                     "title": "Geschaeftspartnerrolle"
                 },
-                "gewerbekennzeichnung": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Gewerbekennzeichnung"
-                },
                 "glaeubigerId": {
                     "anyOf": [
                         {
@@ -600,6 +588,18 @@
                     ],
                     "default": null,
                     "title": "Hrnummer"
+                },
+                "istGewerbe": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istgewerbe"
                 },
                 "kontaktweg": {
                     "anyOf": [
@@ -1193,6 +1193,18 @@
                     "default": null,
                     "title": "Grundversorgercodenr"
                 },
+                "istUnterbrechbar": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istunterbrechbar"
+                },
                 "katasterinformation": {
                     "anyOf": [
                         {
@@ -1287,18 +1299,6 @@
                         }
                     ],
                     "default": null
-                },
-                "unterbrechbar": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Unterbrechbar"
                 },
                 "verbrauchsart": {
                     "anyOf": [

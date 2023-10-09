@@ -16,7 +16,7 @@ example_marktteilnehmer = Marktteilnehmer(
     sparte=Sparte.STROM,
     # required attributes inherited from Geschaeftspartner
     name1="Netze BW GmbH",
-    gewerbekennzeichnung=True,
+    ist_gewerbe=True,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
     partneradresse=Adresse(
         strasse="Schelmenwasenstraße",

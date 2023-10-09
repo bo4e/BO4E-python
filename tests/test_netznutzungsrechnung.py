@@ -27,13 +27,13 @@ from tests.test_steuerbetrag import example_steuerbetrag
 
 _rechnungsersteller = Geschaeftspartner(
     name1="Joachim",
-    gewerbekennzeichnung=False,
+    ist_gewerbe=False,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
 )
 
 _rechnungsempfaenger = Geschaeftspartner(
     name1="Helga",
-    gewerbekennzeichnung=False,
+    ist_gewerbe=False,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
 )
 
@@ -49,14 +49,14 @@ class TestNetznutzungsrechnung:
                     empfaengercodenummer="0123456789012",
                     nnrechnungsart=NNRechnungsart.SELBSTAUSGESTELLT,
                     nnrechnungstyp=NNRechnungstyp.TURNUSRECHNUNG,
-                    original=True,
-                    simuliert=True,
+                    ist_original=True,
+                    ist_simuliert=True,
                     lokations_id="56789012345",
                     # ^^ above are the original Netznutzungsrechnung attributes
                     # vv below are the fields inherited from Rechnung
                     rechnungstitel="Hüpfburg",
                     rechnungsstatus=Rechnungsstatus.UNGEPRUEFT,
-                    storno=True,
+                    ist_storno=True,
                     rechnungsnummer="202201211701",
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),
@@ -101,11 +101,11 @@ class TestNetznutzungsrechnung:
                     empfaengercodenummer="0123456789012",
                     nnrechnungsart=NNRechnungsart.SELBSTAUSGESTELLT,
                     nnrechnungstyp=NNRechnungstyp.TURNUSRECHNUNG,
-                    original=True,
-                    simuliert=True,
+                    ist_original=True,
+                    ist_simuliert=True,
                     # ^^ above are the original Netznutzungsrechnung attributes
                     # vv below are the fields inherited from Rechnung
-                    storno=True,
+                    ist_storno=True,
                     rechnungsnummer="202201211701",
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),

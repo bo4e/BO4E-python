@@ -95,7 +95,7 @@ class TestAngebotsteil:
                             ),
                             energierichtung=Energierichtung.EINSP,
                             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
-                            unterbrechbar=True,
+                            ist_unterbrechbar=True,
                             netzebene=Netzebene.NSP,
                         )
                     ],
@@ -147,7 +147,7 @@ class TestAngebotsteil:
                             },
                             "energierichtung": Energierichtung.EINSP,
                             "bilanzierungsmethode": Bilanzierungsmethode.PAUSCHAL,
-                            "unterbrechbar": True,
+                            "istUnterbrechbar": True,
                             "netzebene": Netzebene.NSP,
                             "netzgebietsnr": None,
                             "katasterinformation": None,

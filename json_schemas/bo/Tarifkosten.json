@@ -399,7 +399,7 @@
                     "default": null,
                     "title": "Gueltigkeitsjahr"
                 },
-                "oekoTopTen": {
+                "istInOekoTopTen": {
                     "anyOf": [
                         {
                             "type": "boolean"
@@ -409,7 +409,7 @@
                         }
                     ],
                     "default": null,
-                    "title": "Oekotopten"
+                    "title": "Istinoekotopten"
                 },
                 "oekolabel": {
                     "anyOf": [
@@ -1291,18 +1291,6 @@
                     "default": null,
                     "title": "Geschaeftspartnerrolle"
                 },
-                "gewerbekennzeichnung": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Gewerbekennzeichnung"
-                },
                 "glaeubigerId": {
                     "anyOf": [
                         {
@@ -1326,6 +1314,18 @@
                     ],
                     "default": null,
                     "title": "Hrnummer"
+                },
+                "istGewerbe": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istgewerbe"
                 },
                 "kontaktweg": {
                     "anyOf": [

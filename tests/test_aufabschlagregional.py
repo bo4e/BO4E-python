@@ -182,7 +182,7 @@ class TestAufAbschlagRegional:
                         "atommuell": None,
                         "website": None,
                         "oekozertifikate": None,
-                        "oekoTopTen": None,
+                        "istInOekoTopTen": None,
                         "_id": None,
                     },
                     "vertagskonditionsaenderung": {

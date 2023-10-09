@@ -51,6 +51,6 @@ class Energiemix(COM):
     #: Ökolabel für den Energiemix
     oekolabel: Optional[list[Oekolabel]] = None
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
-    oeko_top_ten: Optional[bool] = None
+    ist_in_oeko_top_ten: Optional[bool] = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
     website: Optional[str] = None
