@@ -19,7 +19,7 @@ _logger = logging.getLogger(__name__)
 def delete_json_schemas(packages: list[str]) -> None:
     """delete all json schemas"""
     for pkg in packages:
-        to_delete = Path(__file__).parent / pkg
+        to_delete = output_directory / pkg
         if to_delete.exists():
             for file in to_delete.iterdir():
                 file.unlink()
@@ -87,7 +87,6 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
 def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> None:
     """generate json schemas for all BOs and COMs"""
     packages = ["bo", "com"]
-    this_directory = Path(__file__).parent.absolute()
 
     if mode == "generate":
         delete_json_schemas(packages)
@@ -99,7 +98,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
 
             for name, cls in cls_list:
                 _logger.info("Processing %s", name)
-                file_path = this_directory / pkg / (name + ".json")
+                file_path = output_directory / pkg / (name + ".json")
 
                 schema_json_dict = get_schema_json_dict(cast(type[BaseModel], cls))
 
@@ -112,4 +111,5 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
 
 
 if __name__ == "__main__":
+    output_directory = Path(__file__).parent.absolute() / "json_schemas"
     generate_or_validate_json_schemas()  # pylint:disable=no-value-for-parameter
