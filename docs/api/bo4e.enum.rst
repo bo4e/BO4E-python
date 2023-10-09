@@ -4,6 +4,14 @@ bo4e.enum package
 Submodules
 ----------
 
+bo4e.enum.abgabeart module
+--------------------------
+
+.. automodule:: bo4e.enum.abgabeart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.angebotsstatus module
 -------------------------------
 
@@ -84,6 +92,14 @@ bo4e.enum.bdewartikelnummer module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.befestigungsart module
+--------------------------------
+
+.. automodule:: bo4e.enum.befestigungsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.bemessungsgroesse module
 ----------------------------------
 
@@ -96,14 +112,6 @@ bo4e.enum.bilanzierungsmethode module
 -------------------------------------
 
 .. automodule:: bo4e.enum.bilanzierungsmethode
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.enum.botyp module
-----------------------
-
-.. automodule:: bo4e.enum.botyp
    :members:
    :undoc-members:
    :show-inheritance:
@@ -148,10 +156,10 @@ bo4e.enum.gebiettyp module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.geraetemerkmal module
--------------------------------
+bo4e.enum.geraeteklasse module
+------------------------------
 
-.. automodule:: bo4e.enum.geraetemerkmal
+.. automodule:: bo4e.enum.geraeteklasse
    :members:
    :undoc-members:
    :show-inheritance:
@@ -308,6 +316,14 @@ bo4e.enum.messpreistyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.messwerterfassung module
+----------------------------------
+
+.. automodule:: bo4e.enum.messwerterfassung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.messwertstatus module
 -------------------------------
 
@@ -428,6 +444,14 @@ bo4e.enum.regionskriteriumtyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.registeranzahl module
+-------------------------------
+
+.. automodule:: bo4e.enum.registeranzahl
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.rollencodetyp module
 ------------------------------
 
@@ -464,14 +488,6 @@ bo4e.enum.strenum module
 ------------------------
 
 .. automodule:: bo4e.enum.strenum
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.enum.tarifart module
--------------------------
-
-.. automodule:: bo4e.enum.tarifart
    :members:
    :undoc-members:
    :show-inheritance:
@@ -532,6 +548,14 @@ bo4e.enum.titel module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.typ module
+--------------------
+
+.. automodule:: bo4e.enum.typ
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.verbrauchsart module
 ------------------------------
 
@@ -564,6 +588,14 @@ bo4e.enum.vertragsstatus module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.verwendungszweck module
+---------------------------------
+
+.. automodule:: bo4e.enum.verwendungszweck
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.voraussetzungen module
 --------------------------------
 
@@ -588,6 +620,14 @@ bo4e.enum.waehrungseinheit module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.waermenutzung module
+------------------------------
+
+.. automodule:: bo4e.enum.waermenutzung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.wertermittlungsverfahren module
 -----------------------------------------
 
@@ -604,10 +644,26 @@ bo4e.enum.zaehlerauspraegung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.zaehlergroesse module
+-------------------------------
+
+.. automodule:: bo4e.enum.zaehlergroesse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.zaehlertyp module
 ---------------------------
 
 .. automodule:: bo4e.enum.zaehlertyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zaehlertypspezifikation module
+----------------------------------------
+
+.. automodule:: bo4e.enum.zaehlertypspezifikation
    :members:
    :undoc-members:
    :show-inheritance:

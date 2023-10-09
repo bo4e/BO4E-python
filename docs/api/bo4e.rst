@@ -12,17 +12,6 @@ Subpackages
    bo4e.enum
    bo4e.utils
 
-Submodules
-----------
-
-bo4e.validators module
-----------------------
-
-.. automodule:: bo4e.validators
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module contents
 ---------------
 
