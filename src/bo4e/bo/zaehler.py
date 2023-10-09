@@ -15,7 +15,7 @@ from bo4e.bo.geraet import Geraet
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.Befestigungsart import Befestigungsart
+from bo4e.enum.befestigungsart import Befestigungsart
 from bo4e.enum.messwerterfassung import Messwerterfassung
 from bo4e.enum.registeranzahl import Registeranzahl
 from bo4e.enum.sparte import Sparte

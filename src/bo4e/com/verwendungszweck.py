@@ -5,8 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from bo4e.com.com import COM
-from bo4e.enum import verwendungszweck
 from bo4e.enum.marktrolle import Marktrolle
+from bo4e.enum.verwendungszweck import Verwendungszweck
 
 # pylint: disable=too-few-public-methods
 
@@ -28,7 +28,7 @@ class Verwendungszweck(COM):
     """
     Rollencodenummer der Marktrolle
     """
-    Zwecke: Optional[list[verwendungszweck]] = None
+    Zwecke: Optional[list[Verwendungszweck]] = None
     """
     Verwendungszwecke
     """

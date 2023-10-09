@@ -1,5 +1,21 @@
 {
     "$defs": {
+        "AbgabeArt": {
+            "description": "Art der Konzessionsabgabe",
+            "enum": [
+                "KAS",
+                "SA",
+                "SAS",
+                "TA",
+                "TAS",
+                "TK",
+                "TKS",
+                "TS",
+                "TSS"
+            ],
+            "title": "AbgabeArt",
+            "type": "string"
+        },
         "Adresse": {
             "additionalProperties": true,
             "description": "Contains an address that can be used for most purposes.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Adresse.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_",
@@ -763,6 +779,64 @@
             ],
             "title": "Kontaktart",
             "type": "string"
+        },
+        "Konzessionsabgabe": {
+            "additionalProperties": true,
+            "description": "Diese Komponente wird zur Übertagung der Details zu einer Konzessionsabgabe verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Konzessionsabgabe.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Konzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Konzessionsabgabe.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "kategorie": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kategorie"
+                },
+                "kosten": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kosten"
+                },
+                "satz": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AbgabeArt"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "title": "Konzessionsabgabe",
+            "type": "object"
         },
         "Landescode": {
             "enum": [
@@ -1834,6 +1908,18 @@
             "title": "Typ",
             "type": "string"
         },
+        "Verbrauchsart": {
+            "description": "Verbrauchsart einer Marktlokation.",
+            "enum": [
+                "KL",
+                "KLW",
+                "KLWS",
+                "W",
+                "WS"
+            ],
+            "title": "Verbrauchsart",
+            "type": "string"
+        },
         "Waehrungseinheit": {
             "description": "In diesem Enum werden die Währungen und ihre Untereinheiten definiert, beispielsweise für die Verwendung in Preisen.",
             "enum": [
@@ -1841,6 +1927,16 @@
                 "CT"
             ],
             "title": "Waehrungseinheit",
+            "type": "string"
+        },
+        "Waermenutzung": {
+            "description": "Wärmenutzung Marktlokation",
+            "enum": [
+                "SPEICHERHEIZUNG",
+                "WAERMEPUMPE",
+                "DIREKTHEIZUNG"
+            ],
+            "title": "Waermenutzung",
             "type": "string"
         },
         "Zaehler": {
@@ -2171,6 +2267,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "anzahlAblesungen": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Anzahlablesungen"
+                },
                 "bezeichnung": {
                     "anyOf": [
                         {
@@ -2194,6 +2302,77 @@
                     ],
                     "default": null
                 },
+                "istAbrechnungsrelevant": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istabrechnungsrelevant"
+                },
+                "istSchwachlastfaehig": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istschwachlastfaehig"
+                },
+                "istSteuerbefreit": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Iststeuerbefreit"
+                },
+                "istUnterbrechbar": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istunterbrechbar"
+                },
+                "konzessionsabgabe": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Konzessionsabgabe"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "nachkommastelle": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Nachkommastelle"
+                },
                 "obisKennzahl": {
                     "anyOf": [
                         {
@@ -2210,6 +2389,55 @@
                     "anyOf": [
                         {
                             "$ref": "#/$defs/Energierichtung"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "verbrauchsart": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Verbrauchsart"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "verwendungszwecke": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/bo4e__com__verwendungszweck__Verwendungszweck"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Verwendungszwecke"
+                },
+                "vorkommastelle": {
+                    "anyOf": [
+                        {
+                            "type": "integer"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Vorkommastelle"
+                },
+                "waermenutzung": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Waermenutzung"
                         },
                         {
                             "type": "null"
@@ -2243,9 +2471,78 @@
                     ],
                     "default": null,
                     "title": "Zaehlwerkid"
+                },
+                "zaehlzeitregister": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Zaehlzeitregister"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
                 }
             },
+            "required": [
+                "zaehlzeitregister"
+            ],
             "title": "Zaehlwerk",
+            "type": "object"
+        },
+        "Zaehlzeitregister": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente werden Zählzeitregister modelliert. Ein Zählzeitregister beschreibt eine erweiterte Definition der Zählzeit\nin Bezug auf ein Register. Dabei werden alle Codes dazu vom Netzbetreiber vergeben.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlzeitregister.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlzeitregister JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlzeitregister.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "istSchwachlastfaehig": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istschwachlastfaehig"
+                },
+                "register": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Register"
+                },
+                "zaehlzeitDefinition": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlzeitdefinition"
+                }
+            },
+            "title": "Zaehlzeitregister",
             "type": "object"
         },
         "Zeiteinheit": {
@@ -2362,6 +2659,65 @@
             },
             "title": "Zeitraum",
             "type": "object"
+        },
+        "bo4e__com__verwendungszweck__Verwendungszweck": {
+            "additionalProperties": true,
+            "description": "Verwendungungszweck der Werte Marktlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verwendungszweck.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verwendungszweck.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "marktrolle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Marktrolle"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zwecke": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/bo4e__enum__verwendungszweck__Verwendungszweck"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zwecke"
+                }
+            },
+            "title": "Verwendungszweck",
+            "type": "object"
+        },
+        "bo4e__enum__verwendungszweck__Verwendungszweck": {
+            "description": "Verwendungungszweck der Werte Marktlokation",
+            "enum": [
+                "NETZNUTZUNGSABRECHNUNG",
+                "BILANZKREISABRECHNUNG",
+                "MEHRMINDERMENGENABRECHNUNG",
+                "ENDKUNDENABRECHNUNG",
+                "UEBERMITTLUNG_AN_DAS_HKNR",
+                "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+            ],
+            "title": "Verwendungszweck",
+            "type": "string"
         }
     },
     "additionalProperties": true,
