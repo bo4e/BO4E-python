@@ -66,6 +66,8 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
     """
     Generate the schema for a class
     """
+    if not file_path.parent.exists():
+        file_path.parent.mkdir(parents=True)
     with open(file_path, "w+", encoding="utf-8") as json_schema_file:
         json_schema_file.write(json.dumps(schema_json_dict, indent=4, sort_keys=True, ensure_ascii=False))
         json_schema_file.write("\n")
