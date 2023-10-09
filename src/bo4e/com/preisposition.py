@@ -15,7 +15,6 @@ from bo4e.enum.leistungstyp import Leistungstyp
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.tarifzeit import Tarifzeit
 from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.enum.zeiteinheit import Zeiteinheit
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -48,7 +47,7 @@ class Preisposition(COM):
     preisstaffeln: Optional[list[Preisstaffel]] = None
 
     # optional attributes
-    zeitbasis: Optional[Zeiteinheit] = None
+    zeitbasis: Optional[Mengeneinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird

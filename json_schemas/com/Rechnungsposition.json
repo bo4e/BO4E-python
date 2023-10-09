@@ -533,23 +533,6 @@
             ],
             "title": "Waehrungseinheit",
             "type": "string"
-        },
-        "Zeiteinheit": {
-            "description": "Auflistung möglicher Einheiten zur Verwendung in zeitbezogenen Angaben.",
-            "enum": [
-                "SEKUNDE",
-                "MINUTE",
-                "STUNDE",
-                "VIERTEL_STUNDE",
-                "TAG",
-                "WOCHE",
-                "MONAT",
-                "QUARTAL",
-                "HALBJAHR",
-                "JAHR"
-            ],
-            "title": "Zeiteinheit",
-            "type": "string"
         }
     },
     "additionalProperties": true,
@@ -721,7 +704,7 @@
         "zeiteinheit": {
             "anyOf": [
                 {
-                    "$ref": "#/$defs/Zeiteinheit"
+                    "$ref": "#/$defs/Mengeneinheit"
                 },
                 {
                     "type": "null"

@@ -11,6 +11,7 @@ from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.com.steuerbetrag import Steuerbetrag
 from bo4e.com.zeitraum import Zeitraum
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.nnrechnungsart import NNRechnungsart
 from bo4e.enum.nnrechnungstyp import NNRechnungstyp
 from bo4e.enum.rechnungsstatus import Rechnungsstatus
@@ -18,7 +19,6 @@ from bo4e.enum.rechnungstyp import Rechnungstyp
 from bo4e.enum.sparte import Sparte
 from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
 from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.zeiteinheit import Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge
@@ -62,7 +62,7 @@ class TestNetznutzungsrechnung:
                     faelligkeitsdatum=datetime.today(),
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
-                    rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
+                    rechnungsperiode=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(21)),
                     rechnungsersteller=_rechnungsersteller,
                     rechnungsempfaenger=_rechnungsempfaenger,
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
@@ -111,7 +111,7 @@ class TestNetznutzungsrechnung:
                     faelligkeitsdatum=datetime.today(),
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
-                    rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
+                    rechnungsperiode=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(21)),
                     rechnungsersteller=_rechnungsersteller,
                     rechnungsempfaenger=_rechnungsempfaenger,
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),

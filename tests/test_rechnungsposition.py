@@ -5,7 +5,7 @@ from pydantic import ValidationError
 
 from bo4e.com.rechnungsposition import Rechnungsposition
 from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e.enum.mengeneinheit import Mengeneinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge
@@ -23,7 +23,7 @@ class TestRechnungsposition:
                     lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
                     lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
                     positionstext="Besonders wertvolle Rechnungsposition",
-                    zeiteinheit=Zeiteinheit.JAHR,
+                    zeiteinheit=Mengeneinheit.JAHR,
                     artikelnummer=BDEWArtikelnummer.AUSGLEICHSENERGIE_UNTERDECKUNG,
                     lokations_id="51238696781",
                     positions_menge=example_menge,

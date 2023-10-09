@@ -14,5 +14,6 @@ class Zeitspanne(COM):
     Die Zeitspanne ist aus dem COM Zeitraum hervorgegangen, das in Zeitspanne und Zeitmenge aufgeteilt wurde.
     """
 
+    # I made those _not_ optional because the entire instance of Zeitmenge is pointless if one of the two is missing
     start: Optional[datetime] = None  #: inklusiver Beginn
     ende: Optional[datetime] = None  #: exklusives Ende
