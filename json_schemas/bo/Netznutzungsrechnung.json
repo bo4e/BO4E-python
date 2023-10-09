@@ -374,18 +374,6 @@
                     "default": null,
                     "title": "Geschaeftspartnerrolle"
                 },
-                "gewerbekennzeichnung": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Gewerbekennzeichnung"
-                },
                 "glaeubigerId": {
                     "anyOf": [
                         {
@@ -409,6 +397,18 @@
                     ],
                     "default": null,
                     "title": "Hrnummer"
+                },
+                "istGewerbe": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istgewerbe"
                 },
                 "kontaktweg": {
                     "anyOf": [
@@ -1728,6 +1728,42 @@
             ],
             "default": null
         },
+        "istOriginal": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istoriginal"
+        },
+        "istSimuliert": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istsimuliert"
+        },
+        "istStorno": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Iststorno"
+        },
         "lokationsId": {
             "anyOf": [
                 {
@@ -1761,18 +1797,6 @@
                 }
             ],
             "default": null
-        },
-        "original": {
-            "anyOf": [
-                {
-                    "type": "boolean"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Original"
         },
         "originalRechnungsnummer": {
             "anyOf": [
@@ -1904,18 +1928,6 @@
             ],
             "default": null
         },
-        "simuliert": {
-            "anyOf": [
-                {
-                    "type": "boolean"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Simuliert"
-        },
         "sparte": {
             "anyOf": [
                 {
@@ -1941,18 +1953,6 @@
             ],
             "default": null,
             "title": "Steuerbetraege"
-        },
-        "storno": {
-            "anyOf": [
-                {
-                    "type": "boolean"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Storno"
         },
         "versionstruktur": {
             "default": "2",

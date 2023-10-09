@@ -599,6 +599,18 @@
             "default": null,
             "title": " Id"
         },
+        "istLastgangVorhanden": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istlastgangvorhanden"
+        },
         "kunde": {
             "anyOf": [
                 {
@@ -610,18 +622,6 @@
             ],
             "default": null,
             "title": "Kunde"
-        },
-        "lastgangVorhanden": {
-            "anyOf": [
-                {
-                    "type": "boolean"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Lastgangvorhanden"
         },
         "lieferzeitraum": {
             "anyOf": [

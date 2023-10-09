@@ -442,7 +442,7 @@
                     "default": null,
                     "title": "Gueltigkeitsjahr"
                 },
-                "oekoTopTen": {
+                "istInOekoTopTen": {
                     "anyOf": [
                         {
                             "type": "boolean"
@@ -452,7 +452,7 @@
                         }
                     ],
                     "default": null,
-                    "title": "Oekotopten"
+                    "title": "Istinoekotopten"
                 },
                 "oekolabel": {
                     "anyOf": [
@@ -1144,18 +1144,6 @@
                     "default": null,
                     "title": "Geschaeftspartnerrolle"
                 },
-                "gewerbekennzeichnung": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Gewerbekennzeichnung"
-                },
                 "glaeubigerId": {
                     "anyOf": [
                         {
@@ -1179,6 +1167,18 @@
                     ],
                     "default": null,
                     "title": "Hrnummer"
+                },
+                "istGewerbe": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istgewerbe"
                 },
                 "kontaktweg": {
                     "anyOf": [
@@ -1871,6 +1871,30 @@
                     ],
                     "default": null
                 },
+                "istMesspreisInGrundpreisEnthalten": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istmesspreisingrundpreisenthalten"
+                },
+                "istMesspreisZuBeruecksichtigen": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istmesspreiszuberuecksichtigen"
+                },
                 "kwInklusive": {
                     "anyOf": [
                         {
@@ -1900,30 +1924,6 @@
                     ],
                     "default": null,
                     "title": "Kwweiteremengen"
-                },
-                "messpreisBeruecksichtigen": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Messpreisberuecksichtigen"
-                },
-                "messpreisInGpEnthalten": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Messpreisingpenthalten"
                 },
                 "messpreistyp": {
                     "anyOf": [

@@ -48,7 +48,7 @@ class Ausschreibungsdetail(COM):
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
     zaehlertechnik: Optional[Zaehlertyp] = None
-    lastgang_vorhanden: Optional[bool] = None
+    ist_lastgang_vorhanden: Optional[bool] = None
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden

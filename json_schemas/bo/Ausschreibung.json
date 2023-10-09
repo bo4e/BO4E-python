@@ -155,6 +155,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "istLastgangVorhanden": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istlastgangvorhanden"
+                },
                 "kunde": {
                     "anyOf": [
                         {
@@ -166,18 +178,6 @@
                     ],
                     "default": null,
                     "title": "Kunde"
-                },
-                "lastgangVorhanden": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Lastgangvorhanden"
                 },
                 "lieferzeitraum": {
                     "anyOf": [
@@ -722,18 +722,6 @@
                     "default": null,
                     "title": "Geschaeftspartnerrolle"
                 },
-                "gewerbekennzeichnung": {
-                    "anyOf": [
-                        {
-                            "type": "boolean"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Gewerbekennzeichnung"
-                },
                 "glaeubigerId": {
                     "anyOf": [
                         {
@@ -757,6 +745,18 @@
                     ],
                     "default": null,
                     "title": "Hrnummer"
+                },
+                "istGewerbe": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istgewerbe"
                 },
                 "kontaktweg": {
                     "anyOf": [
@@ -1539,7 +1539,7 @@
             "default": null,
             "title": "Externereferenzen"
         },
-        "kostenpflichtig": {
+        "istKostenpflichtig": {
             "anyOf": [
                 {
                     "type": "boolean"
@@ -1549,7 +1549,7 @@
                 }
             ],
             "default": null,
-            "title": "Kostenpflichtig"
+            "title": "Istkostenpflichtig"
         },
         "lose": {
             "anyOf": [

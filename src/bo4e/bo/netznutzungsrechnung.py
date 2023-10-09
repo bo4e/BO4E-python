@@ -47,9 +47,9 @@ class Netznutzungsrechnung(Rechnung):
     nnrechnungstyp: Optional[NNRechnungstyp] = None
 
     #: Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)
-    original: Optional[bool] = None
+    ist_original: Optional[bool] = None
     #: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt
-    simuliert: Optional[bool] = None
+    ist_simuliert: Optional[bool] = None
 
     lokations_id: Optional[str] = None
     """
