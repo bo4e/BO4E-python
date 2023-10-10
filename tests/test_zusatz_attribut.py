@@ -8,19 +8,19 @@ from bo4e.zusatzattribut import ZusatzAttribut
 
 class TestZusatzAttribut:
     def test_serialization(self) -> None:
-        er = ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345")
+        za = ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345")
 
-        er_json = er.model_dump_json(by_alias=True)
+        za_json = za.model_dump_json(by_alias=True)
 
-        assert "exRefName" in er_json
+        assert "name" in za_json
 
-        deserialized_er: ZusatzAttribut = ZusatzAttribut.model_validate_json(er_json)
+        deserialized_er: ZusatzAttribut = ZusatzAttribut.model_validate_json(za_json)
         assert isinstance(deserialized_er, ZusatzAttribut)
-        assert deserialized_er == er
+        assert deserialized_er == za
 
-    def test_list_of_externe_referenz(self) -> None:
+    def test_list_of_zusatz_attribut(self) -> None:
         gp = Geschaeftspartner(
-            externe_referenzen=[
+            zusatz_attribute=[
                 ZusatzAttribut(name="SAP GP Nummer", wert="0123456789"),
                 ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
             ],
