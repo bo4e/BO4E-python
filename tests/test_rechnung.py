@@ -8,10 +8,15 @@ from bo4e import (
     Betrag,
     Geschaeftspartner,
     Geschaeftspartnerrolle,
+    Marktlokation,
+    Messlokation,
+    NetznutzungRechnungsart,
+    NetznutzungRechnungstyp,
     Rechnung,
     Rechnungsposition,
     Rechnungsstatus,
     Rechnungstyp,
+    Sparte,
     Steuerbetrag,
     Steuerkennzeichen,
     Waehrungscode,
@@ -59,7 +64,7 @@ class TestRechnung:
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     vorausgezahlt=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     rabatt_brutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    zuzahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    zu_zahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     steuerbetraege=[
                         Steuerbetrag(
                             steuerkennzeichen=Steuerkennzeichen.UST_19,
@@ -80,6 +85,17 @@ class TestRechnung:
                             teilsumme_steuer=example_steuerbetrag,
                         )
                     ],
+                    sparte=Sparte.STROM,
+                    netznutzungrechnungsart=NetznutzungRechnungsart.SELBSTAUSGESTELLT,
+                    netznutzungrechnungstyp=NetznutzungRechnungstyp.TURNUSRECHNUNG,
+                    ist_original=True,
+                    ist_simuliert=True,
+                    marktlokation=Marktlokation(
+                        marktlokations_id="51238696781",
+                    ),
+                    messlokation=Messlokation(
+                        messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
+                    ),
                 ),
                 id="maximal attributes",
             ),
@@ -97,7 +113,7 @@ class TestRechnung:
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    zuzahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    zu_zahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     rechnungspositionen=[
                         Rechnungsposition(
                             positionsnummer=1,
@@ -110,6 +126,17 @@ class TestRechnung:
                             teilsumme_steuer=example_steuerbetrag,
                         )
                     ],
+                    sparte=Sparte.STROM,
+                    netznutzungrechnungsart=NetznutzungRechnungsart.SELBSTAUSGESTELLT,
+                    netznutzungrechnungstyp=NetznutzungRechnungstyp.TURNUSRECHNUNG,
+                    ist_original=True,
+                    ist_simuliert=True,
+                    marktlokation=Marktlokation(
+                        marktlokations_id="51238696781",
+                    ),
+                    messlokation=Messlokation(
+                        messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
+                    ),
                 ),
                 id="minimal attributes",
             ),
