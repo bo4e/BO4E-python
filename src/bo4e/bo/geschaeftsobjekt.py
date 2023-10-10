@@ -37,6 +37,7 @@ class Geschaeftsobjekt(BaseModel):
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
     zusatz_attribute: Optional[list[ZusatzAttribut]] = None
+    # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
