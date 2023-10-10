@@ -28,9 +28,7 @@ class TestGeschaeftsobjekt:
             (Typ.ENERGIEMENGE, "2", []),
         ],
     )
-    def test_serialisation(
-        self, typ: Typ, versionstruktur: str, externe_referenzen: Optional[List[ZusatzAttribut]]
-    ) -> None:
+    def test_serialisation(self, typ: Typ, version: str, externe_referenzen: Optional[List[ZusatzAttribut]]) -> None:
         go = Geschaeftsobjekt(
             typ=typ,
             version=version,
