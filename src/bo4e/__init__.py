@@ -22,7 +22,6 @@ __all__ = [
     "Marktlokation",
     "Marktteilnehmer",
     "Messlokation",
-    "Netznutzungsrechnung",
     "Preisblatt",
     "PreisblattDienstleistung",
     "PreisblattHardware",
@@ -143,8 +142,8 @@ __all__ = [
     "Messwertstatus",
     "Messwertstatuszusatz",
     "Netzebene",
-    "NNRechnungsart",
-    "NNRechnungstyp",
+    "NetznutzungRechnungsart",
+    "NetznutzungRechnungstyp",
     "Oekolabel",
     "Oekozertifikat",
     "Preisgarantietyp",
@@ -197,7 +196,6 @@ from .bo.lastgang import Lastgang, LastgangKompakt
 from .bo.marktlokation import Marktlokation
 from .bo.marktteilnehmer import Marktteilnehmer
 from .bo.messlokation import Messlokation
-from .bo.netznutzungsrechnung import Netznutzungsrechnung
 from .bo.preisblatt import Preisblatt
 from .bo.preisblattdienstleistung import PreisblattDienstleistung
 from .bo.preisblatthardware import PreisblattHardware
@@ -322,8 +320,8 @@ from .enum.messpreistyp import Messpreistyp
 from .enum.messwertstatus import Messwertstatus
 from .enum.messwertstatuszusatz import Messwertstatuszusatz
 from .enum.netzebene import Netzebene
-from .enum.nnrechnungsart import NNRechnungsart
-from .enum.nnrechnungstyp import NNRechnungstyp
+from .enum.netznutzungrechnungsart import NetznutzungRechnungsart
+from .enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from .enum.oekolabel import Oekolabel
 from .enum.oekozertifikat import Oekozertifikat
 from .enum.preisgarantietyp import Preisgarantietyp
