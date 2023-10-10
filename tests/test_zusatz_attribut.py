@@ -2,8 +2,8 @@ from typing import Any, Dict
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.com.adresse import Adresse
-from bo4e.com.zusatzattribut import ZusatzAttribut
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestZusatzAttribut:

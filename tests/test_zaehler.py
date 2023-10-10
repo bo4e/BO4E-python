@@ -1,12 +1,8 @@
 from datetime import datetime
 from decimal import Decimal
 
-import pytest
-from pydantic import ValidationError
-
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.com.zusatzattribut import ZusatzAttribut
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
 from bo4e.enum.sparte import Sparte
@@ -14,6 +10,7 @@ from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestZaehler:

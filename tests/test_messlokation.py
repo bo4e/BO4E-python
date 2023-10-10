@@ -3,18 +3,12 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Any, Dict
 
-import pytest
-from pydantic import ValidationError
-
 from bo4e.bo.messlokation import Messlokation
 from bo4e.bo.zaehler import Zaehler
 from bo4e.com.adresse import Adresse
 from bo4e.com.dienstleistung import Dienstleistung
-from bo4e.com.geokoordinaten import Geokoordinaten
 from bo4e.com.hardware import Hardware
-from bo4e.com.katasteradresse import Katasteradresse
 from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.com.zusatzattribut import ZusatzAttribut
 from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.geraetetyp import Geraetetyp
@@ -25,6 +19,7 @@ from bo4e.enum.tarifart import Tarifart
 from bo4e.enum.typ import Typ
 from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
 from bo4e.enum.zaehlertyp import Zaehlertyp
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestMeLo:

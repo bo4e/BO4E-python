@@ -4,8 +4,8 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.zusatzattribut import ZusatzAttribut
 from bo4e.enum.typ import Typ
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestGeschaeftsobjekt:
