@@ -38,7 +38,6 @@ class TestLastgangKompakt:
                     "messgroesse": Mengeneinheit.KWH,
                     "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1, "_id": None},
                     "tagesvektoren": [example_tagesvektor_json],
-                    "versionstruktur": "2",
                     "externeReferenzen": None,
                     "lokationsId": "DE0000011111222223333344444555556",
                     "_typ": "LASTGANG_KOMPAKT",

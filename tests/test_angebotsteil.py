@@ -150,7 +150,6 @@ class TestAngebotsteil:
                             "istUnterbrechbar": True,
                             "netzebene": Netzebene.NSP,
                             "netzgebietsnr": None,
-                            "versionstruktur": "2",
                             "katasterinformation": None,
                             "bilanzierungsgebiet": None,
                             "grundversorgercodenr": None,
