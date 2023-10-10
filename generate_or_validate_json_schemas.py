@@ -7,27 +7,33 @@ import inspect
 import json
 import logging
 import pkgutil
+import sys
 from pathlib import Path
-from typing import Any, Literal, cast
+from typing import Any, Iterator, Literal, cast
 
 import click
 from pydantic import BaseModel
 
+logging.basicConfig(level=logging.NOTSET, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
+root_directory = Path(__file__).parent
+output_directory = root_directory / "json_schemas"
 
 
 def delete_json_schemas(packages: list[str]) -> None:
     """delete all json schemas"""
     for pkg in packages:
-        for file in (Path(__file__).parent / pkg).iterdir():
-            file.unlink()
+        to_delete = output_directory / pkg
+        if to_delete.exists():
+            for file in to_delete.iterdir():
+                file.unlink()
 
 
-def get_models(pkg: str) -> list[str]:
+def get_models(pkg: str) -> Iterator[str]:
     """
     Get all models in a package
     """
-    return [name for _, name, _ in pkgutil.iter_modules([str(Path(__file__).parent.parent / "src" / "bo4e" / pkg)])]
+    yield from (name for _, name, _ in pkgutil.iter_modules([str(root_directory / "src" / "bo4e" / pkg)]))
 
 
 def get_classes(modl_name: str) -> list[tuple[str, type]]:
@@ -66,6 +72,8 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
     """
     Generate the schema for a class
     """
+    if not file_path.parent.exists():
+        file_path.parent.mkdir(parents=True)
     with open(file_path, "w+", encoding="utf-8") as json_schema_file:
         json_schema_file.write(json.dumps(schema_json_dict, indent=4, sort_keys=True, ensure_ascii=False))
         json_schema_file.write("\n")
@@ -83,21 +91,18 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
 def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> None:
     """generate json schemas for all BOs and COMs"""
     packages = ["bo", "com"]
-    this_directory = Path(__file__).parent.absolute()
 
     if mode == "generate":
         delete_json_schemas(packages)
 
     for pkg in packages:
-        modls = get_models(pkg)
-
-        for model in modls:
+        for model in get_models(pkg):
             modl_name = f"bo4e.{pkg}.{model}"
             cls_list = get_classes(modl_name)
 
             for name, cls in cls_list:
                 _logger.info("Processing %s", name)
-                file_path = this_directory / pkg / (name + ".json")
+                file_path = output_directory / pkg / (name + ".json")
 
                 schema_json_dict = get_schema_json_dict(cast(type[BaseModel], cls))
 

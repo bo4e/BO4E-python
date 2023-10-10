@@ -31,7 +31,7 @@ class TestMarktteilnehmer:
     def test_serialization(self) -> None:
         mt = example_marktteilnehmer
 
-        assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert mt.version is not None, "versionstruktur was not automatically set"
         assert mt.typ == Typ.MARKTTEILNEHMER, "_typ was not automatically set"
 
         json_string = mt.model_dump_json(by_alias=True)

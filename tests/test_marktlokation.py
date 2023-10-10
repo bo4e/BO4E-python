@@ -32,7 +32,7 @@ class TestMaLo:
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             netzebene=Netzebene.NSP,
         )
-        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert malo.version is not None, "versionstruktur was not automatically set"
         assert malo.typ is Typ.MARKTLOKATION, "_typ was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
@@ -84,7 +84,7 @@ class TestMaLo:
             endkunde=gp,
             kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
         )
-        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert malo.version is not None, "versionstruktur was not automatically set"
         assert malo.typ == Typ.MARKTLOKATION, "_typ was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
