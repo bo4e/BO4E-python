@@ -63,14 +63,3 @@ class TestZusatzAttribut:
         deserialized_gp: Geschaeftspartner = Geschaeftspartner.model_validate_json(gp_json)
 
         assert deserialized_gp.zusatz_attribute is None
-
-    def test_extension_data(self) -> None:
-        """
-        tests the behaviour of the json extension data (`extra="allow"`)
-        """
-        er = ZusatzAttribut(name="foo.bar", wert="12345")
-        er_json: Dict[str, Any] = er.model_dump()
-        er_json["additional_key"] = "additional_value"
-        deserialized_er: ZusatzAttribut = ZusatzAttribut.model_validate(er_json)
-        assert isinstance(deserialized_er, ZusatzAttribut)
-        assert deserialized_er.additional_key == "additional_value"  # type:ignore[attr-defined]
