@@ -26,8 +26,3 @@ class TestFremdkosten:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(fremdkosten)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Fremdkosten()  # type: ignore[call-arg]
-        assert "1 validation error" in str(excinfo.value)

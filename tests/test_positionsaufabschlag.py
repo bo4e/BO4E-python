@@ -28,6 +28,7 @@ class TestPositionsAufAbschlag:
                     "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
                     "aufAbschlagswert": Decimal("4.25"),
                     "aufAbschlagswaehrung": Waehrungseinheit.EUR,
+                    "_id": None,
                 },
             ),
         ],
@@ -39,9 +40,3 @@ class TestPositionsAufAbschlag:
         Test de-/serialisation of PositionsAufAbschlag
         """
         assert_serialization_roundtrip(positionsaufabschlag, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = PositionsAufAbschlag()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

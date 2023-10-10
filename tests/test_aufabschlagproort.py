@@ -35,8 +35,10 @@ class TestAufAbschlagProOrt:
                             "wert": Decimal("2.5"),
                             "staffelgrenzeVon": Decimal("1"),
                             "staffelgrenzeBis": Decimal("5"),
+                            "_id": None,
                         }
                     ],
+                    "_id": None,
                 },
             )
         ],
@@ -48,21 +50,3 @@ class TestAufAbschlagProOrt:
         Test de-/serialisation of AufAbschlagProOrt with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlagproort, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlagProOrt()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)
-
-    def test_failing_validation_list_length_at_least_one(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlagProOrt(
-                postleitzahl="01187",
-                ort="Dresden",
-                netznr="2",
-                staffeln=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

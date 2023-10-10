@@ -34,12 +34,22 @@ class TestRegionalePreisstaffel:
                 {
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
+                        "kriteriumsWerte": [
+                            {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
+                        ],
+                        "_id": None,
                     },
                     "einheitspreis": Decimal("40"),
-                    "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                    "sigmoidparameter": {
+                        "A": Decimal("1"),
+                        "B": Decimal("2"),
+                        "C": Decimal("3"),
+                        "D": Decimal("4"),
+                        "_id": None,
+                    },
                     "staffelgrenzeVon": Decimal("12.5"),
                     "staffelgrenzeBis": Decimal("25"),
+                    "_id": None,
                 },
                 id="maximal attributes"
                 # the messing sigmoidparameter is tested in the Preisstaffel tests
@@ -53,9 +63,3 @@ class TestRegionalePreisstaffel:
         Test de-/serialisation of RegionalePreisgarantie with maximal attributes.
         """
         assert_serialization_roundtrip(regionale_preisstaffel, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionalePreisgarantie()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)

@@ -23,10 +23,8 @@ class Unterschrift(COM):
 
     """
 
-    # required attributes
     #: Name des Unterschreibers
-    name: str
+    name: Optional[str] = None
 
-    # optional attributes
     ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
     datum: Optional[datetime] = None  #: Datum der Unterschrift

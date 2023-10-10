@@ -2,10 +2,7 @@
 Contains TarifpreispositionProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated
-
-from annotated_types import Len
-from pydantic import Field
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
@@ -27,13 +24,12 @@ class TarifpreispositionProOrt(COM):
 
     """
 
-    # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: Annotated[str, Field(strict=True, pattern=r"^\d{5}$")]
+    postleitzahl: Optional[str] = None
     #: Ort für den der Preis gilt
-    ort: str
+    ort: Optional[str] = None
     #: ene't-Netznummer des Netzes in dem der Preis gilt
-    netznr: str
+    netznr: Optional[str] = None
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Annotated[list[TarifpreisstaffelProOrt], Len(1)]
+    preisstaffeln: Optional[list[TarifpreisstaffelProOrt]] = None
     # there are no optional attributes

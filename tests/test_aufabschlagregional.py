@@ -59,8 +59,10 @@ class TestAufAbschlagRegional:
                                     "wert": Decimal("2.5"),
                                     "staffelgrenzeVon": Decimal("1"),
                                     "staffelgrenzeBis": Decimal("5"),
+                                    "_id": None,
                                 }
                             ],
+                            "_id": None,
                         },
                     ],
                     "beschreibung": None,
@@ -76,6 +78,7 @@ class TestAufAbschlagRegional:
                     "vertagskonditionsaenderung": None,
                     "garantieaenderung": None,
                     "einschraenkungsaenderung": None,
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -142,8 +145,10 @@ class TestAufAbschlagRegional:
                                     "wert": Decimal("2.5"),
                                     "staffelgrenzeVon": Decimal("1"),
                                     "staffelgrenzeBis": Decimal("5"),
+                                    "_id": None,
                                 }
                             ],
+                            "_id": None,
                         },
                     ],
                     "beschreibung": "bar",
@@ -161,6 +166,7 @@ class TestAufAbschlagRegional:
                         "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
+                        "_id": None,
                     },
                     "energiemixaenderung": {
                         "energiemixnummer": 2,
@@ -168,18 +174,16 @@ class TestAufAbschlagRegional:
                         "bezeichnung": "foo",
                         "gueltigkeitsjahr": 2021,
                         "anteil": [
-                            {
-                                "erzeugungsart": Erzeugungsart.BIOGAS,
-                                "anteilProzent": Decimal("40"),
-                            }
+                            {"erzeugungsart": Erzeugungsart.BIOGAS, "anteilProzent": Decimal("40"), "_id": None}
                         ],
-                        "oekolabel": [],
+                        "oekolabel": None,
                         "bemerkung": None,
                         "co2Emission": None,
                         "atommuell": None,
                         "website": None,
-                        "oekozertifikate": [],
-                        "oekoTopTen": None,
+                        "oekozertifikate": None,
+                        "istInOekoTopTen": None,
+                        "_id": None,
                     },
                     "vertagskonditionsaenderung": {
                         "beschreibung": None,
@@ -188,6 +192,7 @@ class TestAufAbschlagRegional:
                         "kuendigungsfrist": None,
                         "vertragsverlaengerung": None,
                         "abschlagszyklus": None,
+                        "_id": None,
                     },
                     "garantieaenderung": {
                         "beschreibung": None,
@@ -199,14 +204,18 @@ class TestAufAbschlagRegional:
                             "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
                             "startzeitpunkt": None,
                             "dauer": None,
+                            "_id": None,
                         },
+                        "_id": None,
                     },
                     "einschraenkungsaenderung": {
                         "zusatzprodukte": None,
                         "voraussetzungen": None,
                         "einschraenkungzaehler": None,
                         "einschraenkungleistung": None,
+                        "_id": None,
                     },
+                    "_id": None,
                 },
                 id="required and optional attributes",
             ),
@@ -219,21 +228,3 @@ class TestAufAbschlagRegional:
         Test de-/serialisation of AufAbschlagRegional with minimal attributes.
         """
         assert_serialization_roundtrip(aufabschlagregional, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = AufAbschlagRegional()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    def test_aufabschlagregional_betraege_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = (
-                AufAbschlagRegional(
-                    bezeichnung="foo",
-                    betraege=[],
-                ),
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)

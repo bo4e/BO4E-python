@@ -44,9 +44,3 @@ class TestTarifkosten:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifkosten)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifkosten()  # type: ignore[call-arg]
-
-        assert "9 validation errors" in str(excinfo.value)

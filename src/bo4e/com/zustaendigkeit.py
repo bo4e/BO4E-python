@@ -23,12 +23,10 @@ class Zustaendigkeit(COM):
 
     """
 
-    # required attributes
-    themengebiet: Themengebiet
+    themengebiet: Optional[Themengebiet] = None
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners angegeben werden
     """
 
-    # optional attributes
     jobtitel: Optional[str] = None  #: Berufliche Rolle des Ansprechpartners
     abteilung: Optional[str] = None  #: Abteilung, in der der Ansprechpartner tätig ist

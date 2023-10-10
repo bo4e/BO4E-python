@@ -23,10 +23,8 @@ class Geraeteeigenschaften(COM):
 
     """
 
-    # required attributes
     #: Der Typ eines Gerätes, beispielsweise Drehstromzähler
-    geraetetyp: Geraetetyp
+    geraetetyp: Optional[Geraetetyp] = None
 
-    # optional attributes
     #: Weitere Merkmale des Geräts, zum Beispiel Mehrtarif, Eintarif etc..
     geraetemerkmal: Optional[Geraetemerkmal] = None

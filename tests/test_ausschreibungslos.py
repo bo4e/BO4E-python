@@ -58,6 +58,7 @@ class TestAusschreibungslos:
                     "wunschRechnungslegung": Rechnungslegung.MONATSRECHN,
                     "wunschMindestmenge": example_menge_dict,
                     "betreutDurch": "Max Mustermann",
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),
@@ -70,28 +71,3 @@ class TestAusschreibungslos:
         Test de-/serialisation of Ausschreibungslos
         """
         assert_serialization_roundtrip(ausschreibungslos, expected_json_dict)
-
-    def test_ausschreibungslos_lieferstellen_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungslos(
-                losnummer="foo",
-                bezeichnung="bar",
-                bemerkung="asd",
-                preismodell=Preismodell.FESTPREIS,
-                energieart=Sparte.STROM,
-                wunsch_rechnungslegung=Rechnungslegung.MONATSRECHN,
-                wunsch_vertragsform=Vertragsform.DIREKT,
-                betreut_durch="Max Mustermann",
-                anzahl_lieferstellen=17,
-                lieferzeitraum=example_zeitraum,
-                ## ^^ above is just clutter
-                lieferstellen=[],  # the important line
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "too_short" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungslos()  # type: ignore[call-arg]
-        assert "10 validation errors" in str(excinfo.value)

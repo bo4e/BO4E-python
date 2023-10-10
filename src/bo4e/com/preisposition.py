@@ -4,9 +4,7 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.preisstaffel import Preisstaffel
@@ -35,21 +33,19 @@ class Preisposition(COM):
 
     """
 
-    # required attributes
     #: Das Modell, das der Preisbildung zugrunde liegt
-    berechnungsmethode: Kalkulationsmethode
+    berechnungsmethode: Optional[Kalkulationsmethode] = None
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
-    leistungstyp: Leistungstyp  #
+    leistungstyp: Optional[Leistungstyp] = None  #
     #: Bezeichnung für die in der Position abgebildete Leistungserbringung
-    leistungsbezeichnung: str
+    leistungsbezeichnung: Optional[str] = None
     #: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
-    preiseinheit: Waehrungseinheit
+    preiseinheit: Optional[Waehrungseinheit] = None
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
-    bezugsgroesse: Mengeneinheit
+    bezugsgroesse: Optional[Mengeneinheit] = None
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: Annotated[list[Preisstaffel], Len(1)]
+    preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     zeitbasis: Optional[Zeiteinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.

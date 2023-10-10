@@ -31,9 +31,3 @@ class TestZeitintervall:
         assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
         assert "should be a valid integer" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitintervall(wert=3)  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)

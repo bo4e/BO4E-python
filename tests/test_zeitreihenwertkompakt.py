@@ -35,12 +35,6 @@ class TestZeitreihenwertkompakt:
 
         assert "wert" in str(excinfo.value)
 
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwertkompakt(status=Messwertstatus.ABGELESEN)  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
-
     def test_only_required(self) -> None:
         zrwk = Zeitreihenwertkompakt(
             wert=Decimal(1.5),

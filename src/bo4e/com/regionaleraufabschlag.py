@@ -2,9 +2,7 @@
 Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, List, Optional
-
-from annotated_types import Len
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.energiemix import Energiemix
@@ -38,14 +36,12 @@ class RegionalerAufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    staffeln: Annotated[list[RegionalePreisstaffel], Len(1)]
+    staffeln: Optional[list[RegionalePreisstaffel]] = None
 
-    # optional attributes
     #: Beschreibung des Auf-/Abschlags
     beschreibung: Optional[str] = None
 
@@ -62,10 +58,10 @@ class RegionalerAufAbschlag(COM):
     website: Optional[str] = None
 
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
-    zusatzprodukte: Optional[List[str]] = None
+    zusatzprodukte: Optional[list[str]] = None
 
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
-    voraussetzungen: Optional[List[str]] = None
+    voraussetzungen: Optional[list[str]] = None
 
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten
     tarifnamensaenderungen: Optional[str] = None

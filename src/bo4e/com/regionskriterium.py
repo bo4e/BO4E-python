@@ -1,6 +1,7 @@
 """
 Contains Regionskriterium class and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
@@ -22,10 +23,13 @@ class Regionskriterium(COM):
 
     """
 
-    # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
-    regionskriteriumtyp: Regionskriteriumtyp  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
-    wert: str
+    gueltigkeitstyp: Optional[
+        Gueltigkeitstyp
+    ] = None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
+    regionskriteriumtyp: Optional[
+        Regionskriteriumtyp
+    ] = None  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
+    wert: Optional[str] = None
     """
     Der Wert, den das Kriterium annehmen kann, z.B. NRW.
     Im Falle des Regionskriteriumstyp BUNDESWEIT spielt dieser Wert keine Rolle.

@@ -3,7 +3,7 @@ Contains Tarifberechnungsparameter class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
-from typing import List, Optional
+from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.preis import Preis
@@ -30,14 +30,13 @@ class Tarifberechnungsparameter(COM):
     """
 
     # there are no required attributes
-    # optional attributes
 
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
     berechnungsmethode: Optional[Tarifkalkulationsmethode] = None
     #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
-    messpreis_in_gp_enthalten: Optional[bool] = None
+    ist_messpreis_in_grundpreis_enthalten: Optional[bool] = None
 
-    messpreis_beruecksichtigen: Optional[bool] = None
+    ist_messpreis_zu_beruecksichtigen: Optional[bool] = None
     """
     True, falls bei der Bildung des Durchschnittspreises für die Höchst- und Mindestpreisbetrachtung der Messpreis mit
     berücksichtigt wird
@@ -61,4 +60,4 @@ class Tarifberechnungsparameter(COM):
     #: Mindestpreis für den Durchschnitts-Arbeitspreis
     mindestpreis: Optional[Preis] = None
     #: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise
-    zusatzpreise: Optional[List[Tarifpreis]] = None
+    zusatzpreise: Optional[list[Tarifpreis]] = None
