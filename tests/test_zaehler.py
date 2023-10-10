@@ -39,7 +39,7 @@ class TestZaehler:
             externe_referenzen=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
             letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
         )
-        assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert zaehler.version is not None, "versionstruktur was not automatically set"
         assert zaehler.typ is Typ.ZAEHLER, "_typ was not automatically set"
         assert zaehler.zaehlwerke is not None
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP

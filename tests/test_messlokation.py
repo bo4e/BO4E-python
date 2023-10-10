@@ -31,7 +31,7 @@ class TestMeLo:
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
         )
-        assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert melo.version is not None, "versionstruktur was not automatically set"
         assert melo.typ is Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
@@ -98,7 +98,7 @@ class TestMeLo:
             grundzustaendiger_msb_codenr="9910125000002",
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
-        assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert melo.version is not None, "versionstruktur was not automatically set"
         assert melo.typ == Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)

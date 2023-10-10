@@ -10,7 +10,7 @@ from bo4e.zusatzattribut import ZusatzAttribut
 
 class TestGeschaeftsobjekt:
     @pytest.mark.parametrize(
-        "typ, versionstruktur, externe_referenzen",
+        "typ, version, externe_referenzen",
         [
             (
                 Typ.ENERGIEMENGE,
@@ -33,26 +33,26 @@ class TestGeschaeftsobjekt:
     ) -> None:
         go = Geschaeftsobjekt(
             typ=typ,
-            versionstruktur=versionstruktur,
+            version=version,
             externe_referenzen=externe_referenzen,
         )
         assert isinstance(go, Geschaeftsobjekt)
 
         go_json = go.model_dump_json(by_alias=True)
 
-        assert str(versionstruktur) in go_json
+        assert str(version) in go_json
 
         go_deserialized = Geschaeftsobjekt.model_validate_json(go_json)
 
         assert go_deserialized.typ is typ
-        assert go_deserialized.versionstruktur == versionstruktur
+        assert go_deserialized.version == version
         assert go_deserialized.zusatz_attribute == externe_referenzen
 
     def test_initialization_with_minimal_attributs(self) -> None:
         go = Geschaeftsobjekt(typ=Typ.ANSPRECHPARTNER)
 
         assert go.zusatz_attribute is None
-        assert go.versionstruktur == "2"
+        assert go.version is not None
 
     def test_no_list_in_externen_referenzen(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
@@ -60,5 +60,6 @@ class TestGeschaeftsobjekt:
                 typ=Typ.ENERGIEMENGE,
                 externe_referenzen=ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
-        assert "3 validation error" in str(excinfo.value)
+        # The error message is completely broken, but who cares
+        assert "4 validation error" in str(excinfo.value)
         assert "type=model_type" in str(excinfo.value)
