@@ -3,10 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
+from bo4e import Gueltigkeitstyp, KriteriumWert, RegionaleGueltigkeit, Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

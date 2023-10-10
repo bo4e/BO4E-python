@@ -8,11 +8,11 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.rechnung import Rechnung
-from bo4e.enum.nnrechnungsart import NNRechnungsart
-from bo4e.enum.nnrechnungstyp import NNRechnungstyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..enum.nnrechnungsart import NNRechnungsart
+from ..enum.nnrechnungstyp import NNRechnungstyp
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .rechnung import Rechnung
 
 
 class Netznutzungsrechnung(Rechnung):

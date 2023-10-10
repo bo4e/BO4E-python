@@ -4,10 +4,10 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 

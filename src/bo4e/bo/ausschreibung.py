@@ -9,14 +9,14 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.ausschreibungslos import Ausschreibungslos
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.ausschreibungsportal import Ausschreibungsportal
-from bo4e.enum.ausschreibungsstatus import Ausschreibungsstatus
-from bo4e.enum.ausschreibungstyp import Ausschreibungstyp
-from bo4e.enum.typ import Typ
+from ..com.ausschreibungslos import Ausschreibungslos
+from ..com.zeitraum import Zeitraum
+from ..enum.ausschreibungsportal import Ausschreibungsportal
+from ..enum.ausschreibungsstatus import Ausschreibungsstatus
+from ..enum.ausschreibungstyp import Ausschreibungstyp
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 
 class Ausschreibung(Geschaeftsobjekt):

@@ -6,14 +6,14 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.preismodell import Preismodell
-from bo4e.enum.rechnungslegung import Rechnungslegung
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsform import Vertragsform
+from ..enum.preismodell import Preismodell
+from ..enum.rechnungslegung import Rechnungslegung
+from ..enum.sparte import Sparte
+from ..enum.vertragsform import Vertragsform
+from .ausschreibungsdetail import Ausschreibungsdetail
+from .com import COM
+from .menge import Menge
+from .zeitraum import Zeitraum
 
 
 class Ausschreibungslos(COM):

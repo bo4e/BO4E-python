@@ -1,9 +1,6 @@
 from typing import Any, Dict
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e import Adresse, ExterneReferenz, Geschaeftspartner, Geschaeftspartnerrolle
 
 
 class TestExterneReferenz:

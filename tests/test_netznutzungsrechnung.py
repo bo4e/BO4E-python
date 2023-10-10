@@ -4,21 +4,23 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.netznutzungsrechnung import Netznutzungsrechnung
-from bo4e.com.betrag import Betrag
-from bo4e.com.rechnungsposition import Rechnungsposition
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.nnrechnungsart import NNRechnungsart
-from bo4e.enum.nnrechnungstyp import NNRechnungstyp
-from bo4e.enum.rechnungsstatus import Rechnungsstatus
-from bo4e.enum.rechnungstyp import Rechnungstyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e import (
+    Betrag,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Netznutzungsrechnung,
+    NNRechnungsart,
+    NNRechnungstyp,
+    Rechnungsposition,
+    Rechnungsstatus,
+    Rechnungstyp,
+    Sparte,
+    Steuerbetrag,
+    Steuerkennzeichen,
+    Waehrungscode,
+    Zeiteinheit,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge

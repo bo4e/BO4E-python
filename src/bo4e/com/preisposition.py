@@ -6,16 +6,16 @@ from decimal import Decimal
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
-from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
-from bo4e.enum.leistungstyp import Leistungstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.tarifzeit import Tarifzeit
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from ..enum.bdewartikelnummer import BDEWArtikelnummer
+from ..enum.bemessungsgroesse import Bemessungsgroesse
+from ..enum.kalkulationsmethode import Kalkulationsmethode
+from ..enum.leistungstyp import Leistungstyp
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.tarifzeit import Tarifzeit
+from ..enum.waehrungseinheit import Waehrungseinheit
+from ..enum.zeiteinheit import Zeiteinheit
+from .com import COM
+from .preisstaffel import Preisstaffel
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

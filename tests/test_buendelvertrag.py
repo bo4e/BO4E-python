@@ -4,19 +4,21 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.buendelvertrag import Buendelvertrag
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
+from bo4e import (
+    Adresse,
+    Anrede,
+    Buendelvertrag,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Kontaktart,
+    Landescode,
+    Sparte,
+    Typ,
+    Unterschrift,
+    Vertragsart,
+    Vertragskonditionen,
+    Vertragsstatus,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_vertrag import TestVertrag
 

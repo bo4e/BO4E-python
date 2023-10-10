@@ -5,8 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
+from .com import COM
+from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 

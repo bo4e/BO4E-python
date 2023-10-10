@@ -7,11 +7,11 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from bo4e.com.angebotsteil import Angebotsteil
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.enum.angebotsstatus import Angebotsstatus
+from ..enum.angebotsstatus import Angebotsstatus
+from .angebotsteil import Angebotsteil
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
 
 
 class Angebotsvariante(COM):

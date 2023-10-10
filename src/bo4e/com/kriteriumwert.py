@@ -4,10 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-
 # pylint: disable=too-few-public-methods
-from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
+from ..enum.tarifregionskriterium import Tarifregionskriterium
+from .com import COM
 
 
 class KriteriumWert(COM):

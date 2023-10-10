@@ -5,21 +5,23 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.aufabschlagregional import AufAbschlagRegional
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
-from bo4e.com.energieherkunft import Energieherkunft
-from bo4e.com.energiemix import Energiemix
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.erzeugungsart import Erzeugungsart
-from bo4e.enum.preisgarantietyp import Preisgarantietyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import (
+    AufAbschlagProOrt,
+    AufAbschlagRegional,
+    AufAbschlagstaffelProOrt,
+    AufAbschlagstyp,
+    AufAbschlagsziel,
+    Energieherkunft,
+    Energiemix,
+    Erzeugungsart,
+    Preisgarantie,
+    Preisgarantietyp,
+    Sparte,
+    Tarifeinschraenkung,
+    Vertragskonditionen,
+    Waehrungseinheit,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_aufabschlagregional = AufAbschlagRegional(

@@ -4,9 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.preisgarantietyp import Preisgarantietyp
+from bo4e import Preisgarantie, Preisgarantietyp, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_preisgarantie = Preisgarantie(

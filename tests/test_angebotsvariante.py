@@ -5,9 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.angebotsvariante import Angebotsvariante
-from bo4e.enum.angebotsstatus import Angebotsstatus
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e import Angebotsstatus, Angebotsvariante, Mengeneinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json
 from tests.test_betrag import example_betrag, example_betrag_json

@@ -2,10 +2,7 @@ from typing import Any, Dict
 
 import pytest
 
-from bo4e.com.geraet import Geraet
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
-from bo4e.enum.geraetemerkmal import Geraetemerkmal
-from bo4e.enum.geraetetyp import Geraetetyp
+from bo4e import Geraet, Geraeteeigenschaften, Geraetemerkmal, Geraetetyp
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

@@ -1,8 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.zeitintervall import Zeitintervall
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e import Zeiteinheit, Zeitintervall
 
 
 class TestZeitintervall:

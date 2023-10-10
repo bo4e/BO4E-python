@@ -4,11 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.tarifpreisposition import Tarifpreisposition
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Mengeneinheit, Preisstaffel, Preistyp, Tarifpreisposition, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_tarifpreisposition = Tarifpreisposition(
