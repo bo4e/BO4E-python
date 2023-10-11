@@ -13,12 +13,9 @@ class TestGeraet:
             pytest.param(
                 Geraet(
                     geraetenummer="0815",
-                    geraeteeigenschaften=Geraeteeigenschaften(
-                        geraetemerkmal=Geraetemerkmal.GAS_G1000,
-                        geraetetyp=Geraetetyp.MULTIPLEXANLAGE,
-                    ),
+                    geraeteeigenschaften=Geraeteeigenschaften(),
                 ),
-                id="Maximal attributes",
+                id="all attributes at first level",
             ),
         ],
     )
