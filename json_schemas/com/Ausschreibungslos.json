@@ -701,7 +701,8 @@
                 "WECHSELSTROMZAEHLER",
                 "MODERNE_MESSEINRICHTUNG",
                 "INTELLIGENTES_MESSSYSTEM",
-                "ELEKTRONISCHER_ZAEHLER"
+                "ELEKTRONISCHER_ZAEHLER",
+                "WIRBELGASZAEHLER"
             ],
             "title": "Zaehlertyp",
             "type": "string"

@@ -19,3 +19,4 @@ class Zaehlertyp(StrEnum):
     MODERNE_MESSEINRICHTUNG = "MODERNE_MESSEINRICHTUNG"  #: Moderne Messeinrichtung
     INTELLIGENTES_MESSSYSTEM = "INTELLIGENTES_MESSSYSTEM"  #: Intelligentes Messsystem
     ELEKTRONISCHER_ZAEHLER = "ELEKTRONISCHER_ZAEHLER"  #: Elektronischer Zähler
+    WIRBELGASZAEHLER = "WIRBELGASZAEHLER"  #: Wirbelgaszähler
