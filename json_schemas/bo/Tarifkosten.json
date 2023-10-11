@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -155,6 +167,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "waehrung": {
                     "anyOf": [
                         {
@@ -201,6 +225,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "anteilProzent": {
                     "anyOf": [
                         {
@@ -246,6 +282,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "anteil": {
                     "anyOf": [
@@ -446,6 +494,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -525,6 +585,18 @@
                     ],
                     "default": "KOSTEN"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "externeReferenzen": {
                     "anyOf": [
                         {
@@ -591,11 +663,6 @@
                     ],
                     "default": null,
                     "title": "Summekosten"
-                },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
                 }
             },
             "title": "Kosten",
@@ -616,6 +683,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "kostenblockbezeichnung": {
                     "anyOf": [
@@ -686,6 +765,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "artikelbezeichnung": {
                     "anyOf": [
@@ -1123,6 +1214,18 @@
                     ],
                     "default": "MARKTTEILNEHMER"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "amtsgericht": {
                     "anyOf": [
                         {
@@ -1355,11 +1458,6 @@
                     "default": null,
                     "title": "Umsatzsteuerid"
                 },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
-                },
                 "website": {
                     "anyOf": [
                         {
@@ -1391,6 +1489,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "einheit": {
                     "anyOf": [
@@ -1501,6 +1611,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "bezugswert": {
                     "anyOf": [
@@ -1680,6 +1802,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "abschlagszyklus": {
                     "anyOf": [
@@ -1987,6 +2121,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -2095,6 +2241,18 @@
                 }
             ],
             "default": "TARIFKOSTEN"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.6.1.dev41+g6bc6774.d20231011",
+            "title": " Version"
         },
         "anbieter": {
             "anyOf": [
@@ -2208,10 +2366,10 @@
             "default": null,
             "title": "Kundentypen"
         },
-        "sparte": {
+        "registeranzahl": {
             "anyOf": [
                 {
-                    "$ref": "#/$defs/Sparte"
+                    "$ref": "#/$defs/Registeranzahl"
                 },
                 {
                     "type": "null"
@@ -2219,10 +2377,10 @@
             ],
             "default": null
         },
-        "tarifart": {
+        "sparte": {
             "anyOf": [
                 {
-                    "$ref": "#/$defs/Registeranzahl"
+                    "$ref": "#/$defs/Sparte"
                 },
                 {
                     "type": "null"
@@ -2255,11 +2413,6 @@
                 }
             ],
             "default": null
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         },
         "vertragskonditionen": {
             "anyOf": [

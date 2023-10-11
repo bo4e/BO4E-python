@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -231,11 +243,6 @@
             ],
             "default": null,
             "title": "Version"
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         }
     },
     "title": "_LastgangBody",

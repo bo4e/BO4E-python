@@ -11,12 +11,17 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from ..bo.geraet import Geraet
 from ..com.zaehlwerk import Zaehlwerk
+from ..enum.befestigungsart import Befestigungsart
+from ..enum.messwerterfassung import Messwerterfassung
+from ..enum.registeranzahl import Registeranzahl
 from ..enum.sparte import Sparte
-from ..enum.tarifart import Tarifart
 from ..enum.typ import Typ
 from ..enum.zaehlerauspraegung import Zaehlerauspraegung
+from ..enum.zaehlergroesse import Zaehlergroesse
 from ..enum.zaehlertyp import Zaehlertyp
+from ..enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 

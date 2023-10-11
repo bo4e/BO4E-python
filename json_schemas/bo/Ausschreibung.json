@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -154,6 +166,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "istLastgangVorhanden": {
                     "anyOf": [
@@ -347,6 +371,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "anzahlLieferstellen": {
                     "anyOf": [
@@ -602,6 +638,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -656,6 +704,18 @@
                         }
                     ],
                     "default": "GESCHAEFTSPARTNER"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "amtsgericht": {
                     "anyOf": [
@@ -831,11 +891,6 @@
                     ],
                     "default": null,
                     "title": "Umsatzsteuerid"
-                },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
                 },
                 "website": {
                     "anyOf": [
@@ -1149,6 +1204,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "einheit": {
                     "anyOf": [
                         {
@@ -1338,6 +1405,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -1446,6 +1525,18 @@
                 }
             ],
             "default": "AUSSCHREIUNG"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.6.1.dev41+g6bc6774.d20231011",
+            "title": " Version"
         },
         "abgabefrist": {
             "anyOf": [
@@ -1579,11 +1670,6 @@
             ],
             "default": null,
             "title": "Veroeffentlichungszeitpunkt"
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         },
         "webseite": {
             "anyOf": [

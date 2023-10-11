@@ -16,6 +16,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "adresszusatz": {
                     "anyOf": [
                         {
@@ -281,6 +293,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "exRefName": {
                     "anyOf": [
                         {
@@ -335,6 +359,18 @@
                         }
                     ],
                     "default": "GERAET"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "bezeichnung": {
                     "anyOf": [
@@ -396,11 +432,6 @@
                         }
                     ],
                     "default": null
-                },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
                 }
             },
             "title": "Geraet",
@@ -863,6 +894,18 @@
                     ],
                     "default": "MARKTTEILNEHMER"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "amtsgericht": {
                     "anyOf": [
                         {
@@ -1095,11 +1138,6 @@
                     "default": null,
                     "title": "Umsatzsteuerid"
                 },
-                "versionstruktur": {
-                    "default": "2",
-                    "title": "Versionstruktur",
-                    "type": "string"
-                },
                 "website": {
                     "anyOf": [
                         {
@@ -1152,6 +1190,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 },
                 "bdewArtikelnummer": {
                     "anyOf": [
@@ -1330,6 +1380,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "einheitspreis": {
                     "anyOf": [
                         {
@@ -1484,6 +1546,18 @@
                     ],
                     "default": null,
                     "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
                 }
             },
             "title": "Sigmoidparameter",
@@ -1596,6 +1670,18 @@
                     "default": null,
                     "title": " Id"
                 },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
                 "dauer": {
                     "anyOf": [
                         {
@@ -1704,6 +1790,18 @@
                 }
             ],
             "default": "PREISBLATTDIENSTLEISTUNG"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.6.1.dev41+g6bc6774.d20231011",
+            "title": " Version"
         },
         "basisdienstleistung": {
             "anyOf": [
@@ -1838,11 +1936,6 @@
                 }
             ],
             "default": null
-        },
-        "versionstruktur": {
-            "default": "2",
-            "title": "Versionstruktur",
-            "type": "string"
         }
     },
     "title": "PreisblattDienstleistung",

@@ -6,10 +6,10 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.enum.geraeteklasse import Geraeteklasse
-from bo4e.enum.geraetetyp import Geraetetyp
-from bo4e.enum.typ import Typ
+from ..enum.geraeteklasse import Geraeteklasse
+from ..enum.geraetetyp import Geraetetyp
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 

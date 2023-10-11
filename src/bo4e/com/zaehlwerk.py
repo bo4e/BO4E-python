@@ -5,8 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
+from ..com.konzessionsabgabe import Konzessionsabgabe
+from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
+from ..com.zaehlzeitregister import Zaehlzeitregister
 from ..enum.energierichtung import Energierichtung
 from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.verbrauchsart import Verbrauchsart
+from ..enum.waermenutzung import Waermenutzung
 from .com import COM
 
 # pylint: disable=no-name-in-module

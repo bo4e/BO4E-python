@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Sparte, Tarifart, Tarifinfo, Tarifmerkmal, Tariftyp
+from bo4e import Kundentyp, Registeranzahl, Sparte, Tarifinfo, Tarifmerkmal, Tariftyp
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
 from tests.test_marktteilnehmer import example_marktteilnehmer
@@ -21,7 +21,7 @@ class TestTarifinfo:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Registeranzahl.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",

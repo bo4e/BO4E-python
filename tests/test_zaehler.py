@@ -8,8 +8,8 @@ from bo4e import (
     Energierichtung,
     ExterneReferenz,
     Mengeneinheit,
+    Registeranzahl,
     Sparte,
-    Tarifart,
     Typ,
     Zaehler,
     Zaehlerauspraegung,
@@ -60,7 +60,7 @@ class TestZaehler:
                 )
             ],
             zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-            tarifart=Tarifart.ZWEITARIF,
+            registeranzahl=Registeranzahl.ZWEITARIF,
             zaehlerkonstante=Decimal(0.9),
             eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
             externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],

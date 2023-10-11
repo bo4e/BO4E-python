@@ -5,7 +5,7 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from ..com.geraeteeigenschaften import Geraeteeigenschaften
+from ..bo.geraet import Geraet
 from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..enum.typ import Typ

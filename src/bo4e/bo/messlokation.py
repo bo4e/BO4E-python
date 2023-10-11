@@ -6,10 +6,10 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from ..bo.geraet import Geraet
 from ..com.adresse import Adresse
 from ..com.dienstleistung import Dienstleistung
 from ..com.geokoordinaten import Geokoordinaten
-from ..com.hardware import Hardware
 from ..com.katasteradresse import Katasteradresse
 from ..enum.netzebene import Netzebene
 from ..enum.sparte import Sparte

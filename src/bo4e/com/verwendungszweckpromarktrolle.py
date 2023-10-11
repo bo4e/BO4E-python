@@ -4,9 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.marktrolle import Marktrolle
-from bo4e.enum.verwendungszweck import Verwendungszweck
+from ..com.com import COM
+from ..enum.marktrolle import Marktrolle
+from ..enum.verwendungszweck import Verwendungszweck
 
 # pylint: disable=too-few-public-methods
 

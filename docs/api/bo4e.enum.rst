@@ -348,18 +348,18 @@ bo4e.enum.netzebene module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.nnrechnungsart module
--------------------------------
+bo4e.enum.netznutzungrechnungsart module
+----------------------------------------
 
-.. automodule:: bo4e.enum.nnrechnungsart
+.. automodule:: bo4e.enum.netznutzungrechnungsart
    :members:
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.nnrechnungstyp module
--------------------------------
+bo4e.enum.netznutzungrechnungstyp module
+----------------------------------------
 
-.. automodule:: bo4e.enum.nnrechnungstyp
+.. automodule:: bo4e.enum.netznutzungrechnungstyp
    :members:
    :undoc-members:
    :show-inheritance:

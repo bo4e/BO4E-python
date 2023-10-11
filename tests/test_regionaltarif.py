@@ -2,7 +2,8 @@ from datetime import datetime, timezone
 
 import pytest
 
-from bo4e import Kundentyp, Regionaltarif, Sparte, Tarifart, Tarifmerkmal, Tariftyp
+from bo4e import Kundentyp, Regionaltarif, Sparte, Tarifmerkmal, Tariftyp
+from bo4e.enum.registeranzahl import Registeranzahl
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
 from tests.test_marktteilnehmer import example_marktteilnehmer
@@ -33,7 +34,7 @@ class TestRegionaltarif:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Registeranzahl.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
@@ -56,7 +57,7 @@ class TestRegionaltarif:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Registeranzahl.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     anbieter=example_marktteilnehmer,

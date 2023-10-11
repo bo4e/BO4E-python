@@ -4,8 +4,8 @@ Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serializ
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.abgabeart import AbgabeArt
+from ..com.com import COM
+from ..enum.abgabeart import AbgabeArt
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
