@@ -8,13 +8,20 @@ from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestGeokoordinaten:
-    def test_serialization_roundtrip(self) -> None:
-        geo = Geokoordinaten(
-            breitengrad=Decimal(52.52149200439453),
-            laengengrad=Decimal(13.404866218566895),
-        )
-
-        assert_serialization_roundtrip(geo)
+    @pytest.mark.parametrize(
+        "geokoordinaten",
+        [
+            pytest.param(
+                Geokoordinaten(
+                    breitengrad=Decimal(52.52149200439453),
+                    laengengrad=Decimal(13.404866218566895),
+                ),
+                id="all attributes at first level",
+            ),
+        ],
+    )
+    def test_serialization_roundtrip(self, geokoordinaten) -> None:
+        assert_serialization_roundtrip(geokoordinaten)
 
     def test_wrong_datatype(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
