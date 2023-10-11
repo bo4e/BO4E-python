@@ -230,7 +230,6 @@ from .com.com import COM
 from .com.dienstleistung import Dienstleistung
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
-from .com.externereferenz import ExterneReferenz
 from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten

@@ -3,7 +3,8 @@ from typing import List, Optional
 import pytest
 from pydantic import ValidationError
 
-from bo4e import ExterneReferenz, Geschaeftsobjekt, Typ
+from bo4e import Geschaeftsobjekt, Typ
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestGeschaeftsobjekt:

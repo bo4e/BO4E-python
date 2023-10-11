@@ -6,7 +6,6 @@ from pydantic import ValidationError
 
 from bo4e import (
     Energierichtung,
-    ExterneReferenz,
     Mengeneinheit,
     Sparte,
     Tarifart,
@@ -16,6 +15,7 @@ from bo4e import (
     Zaehlertyp,
     Zaehlwerk,
 )
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestZaehler:

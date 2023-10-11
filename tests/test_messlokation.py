@@ -11,7 +11,6 @@ from bo4e import (
     Dienstleistung,
     Dienstleistungstyp,
     Energierichtung,
-    ExterneReferenz,
     Geokoordinaten,
     Geraetetyp,
     Hardware,
@@ -27,6 +26,7 @@ from bo4e import (
     Zaehlertyp,
     Zaehlwerk,
 )
+from bo4e.zusatzattribut import ZusatzAttribut
 
 
 class TestMeLo:
