@@ -5,7 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Angebotsstatus, Angebotsvariante, Mengeneinheit
+from bo4e import Angebotsstatus, Angebotsteil, Angebotsvariante, Betrag, Menge, Mengeneinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json
 from tests.test_betrag import example_betrag, example_betrag_json
@@ -29,11 +29,11 @@ class TestAngebotsvariante:
                     angebotsstatus=Angebotsstatus.NACHGEFASST,
                     bindefrist=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                     erstellungsdatum=datetime(2021, 12, 22, 0, 0, 0, tzinfo=timezone.utc),
-                    teile=[example_angebotsteil],
-                    gesamtmenge=example_menge,
-                    gesamtkosten=example_betrag,
+                    teile=[Angebotsteil()],
+                    gesamtmenge=Menge(),
+                    gesamtkosten=Betrag(),
                 ),
-                id="max attributes",  # = min + menge and betrag
+                id="all attributes at first level",  # = min + menge and betrag
             ),
         ],
     )
