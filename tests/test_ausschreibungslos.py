@@ -3,7 +3,16 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Ausschreibungslos, Preismodell, Rechnungslegung, Sparte, Vertragsform
+from bo4e import (
+    Ausschreibungsdetail,
+    Ausschreibungslos,
+    Menge,
+    Preismodell,
+    Rechnungslegung,
+    Sparte,
+    Vertragsform,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_ausschreibungsdetail import example_ausschreibungsdetail, example_ausschreibungsdetail_dict
 from tests.test_menge import example_menge, example_menge_dict
@@ -19,14 +28,14 @@ example_ausschreibungslos = Ausschreibungslos(
     wunsch_vertragsform=Vertragsform.DIREKT,
     betreut_durch="Max Mustermann",
     anzahl_lieferstellen=17,
-    lieferstellen=[example_ausschreibungsdetail],
-    gesamt_menge=example_menge,
-    wunsch_mindestmenge=example_menge,
-    wunsch_maximalmenge=example_menge,
-    lieferzeitraum=example_zeitraum,
-    wunsch_kuendingungsfrist=example_zeitraum,
-    wunsch_zahlungsziel=example_zeitraum,
-    wiederholungsintervall=example_zeitraum,
+    lieferstellen=[Ausschreibungsdetail()],
+    gesamt_menge=Menge(),
+    wunsch_mindestmenge=Menge(),
+    wunsch_maximalmenge=Menge(),
+    lieferzeitraum=Zeitraum(),
+    wunsch_kuendingungsfrist=Zeitraum(),
+    wunsch_zahlungsziel=Zeitraum(),
+    wiederholungsintervall=Zeitraum(),
 )
 
 
