@@ -7,8 +7,8 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from ..enum.zeiteinheit import Zeiteinheit
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 

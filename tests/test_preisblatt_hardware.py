@@ -1,12 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.preisblatthardware import PreisblattHardware
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
+from bo4e import Bilanzierungsmethode, Dienstleistungstyp, Netzebene, PreisblattHardware, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_geraeteeigenschaften import example_geraeteeigenschaften
 from tests.test_marktteilnehmer import example_marktteilnehmer

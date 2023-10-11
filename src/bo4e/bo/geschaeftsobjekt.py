@@ -7,9 +7,10 @@ from humps.main import camelize
 # pylint: disable=no-name-in-module
 from pydantic import BaseModel, ConfigDict, Field
 
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.typ import Typ
 from bo4e.version import __version__
+
+from ..com.externereferenz import ExterneReferenz
+from ..enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 

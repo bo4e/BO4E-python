@@ -9,13 +9,13 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
-from bo4e.com.preisposition import Preisposition
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..com.preisposition import Preisposition
+from ..com.zeitraum import Zeitraum
+from ..enum.preisstatus import Preisstatus
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .marktteilnehmer import Marktteilnehmer
 
 
 class Preisblatt(Geschaeftsobjekt):

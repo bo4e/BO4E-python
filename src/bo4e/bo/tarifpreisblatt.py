@@ -6,13 +6,13 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.tarifinfo import Tarifinfo
-from bo4e.com.aufabschlag import AufAbschlag
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.com.tarifpreisposition import Tarifpreisposition
-from bo4e.enum.typ import Typ
+from ..com.aufabschlag import AufAbschlag
+from ..com.preisgarantie import Preisgarantie
+from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
+from ..com.tarifeinschraenkung import Tarifeinschraenkung
+from ..com.tarifpreisposition import Tarifpreisposition
+from ..enum.typ import Typ
+from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

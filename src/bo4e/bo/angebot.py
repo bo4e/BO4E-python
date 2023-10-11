@@ -10,12 +10,12 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.ansprechpartner import Ansprechpartner
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.angebotsvariante import Angebotsvariante
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..com.angebotsvariante import Angebotsvariante
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .ansprechpartner import Ansprechpartner
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 
 class Angebot(Geschaeftsobjekt):

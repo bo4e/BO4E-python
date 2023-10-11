@@ -7,12 +7,12 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.adresse import Adresse
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.typ import Typ
+from ..com.adresse import Adresse
+from ..enum.anrede import Anrede
+from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from ..enum.kontaktart import Kontaktart
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 class Geschaeftspartner(Geschaeftsobjekt):

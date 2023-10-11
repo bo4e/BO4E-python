@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
+from .zeitreihenwertkompakt import Zeitreihenwertkompakt
 
 # pylint: disable=too-few-public-methods
 

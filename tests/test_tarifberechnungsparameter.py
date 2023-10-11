@@ -2,10 +2,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e.com.fremdkostenposition import Fremdkostenposition
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
-from bo4e.enum.messpreistyp import Messpreistyp
-from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from bo4e import Fremdkostenposition, Messpreistyp, Tarifberechnungsparameter, Tarifkalkulationsmethode
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_preis import example_preis
 from tests.test_tarifpreis import example_tarifpreis

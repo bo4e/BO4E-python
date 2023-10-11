@@ -5,9 +5,9 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.regionskriterium import Regionskriterium
-from bo4e.enum.typ import Typ
+from ..com.regionskriterium import Regionskriterium
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

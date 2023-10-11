@@ -7,15 +7,15 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.vertragsteil import Vertragsteil
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
+from ..com.unterschrift import Unterschrift
+from ..com.vertragskonditionen import Vertragskonditionen
+from ..com.vertragsteil import Vertragsteil
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.vertragsart import Vertragsart
+from ..enum.vertragsstatus import Vertragsstatus
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module

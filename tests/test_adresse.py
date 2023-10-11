@@ -5,8 +5,7 @@ from typing import Dict, Optional
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.adresse import Adresse
-from bo4e.enum.landescode import Landescode
+from bo4e import Adresse, Landescode
 from tests.utils import parse_file
 
 # import pydantic

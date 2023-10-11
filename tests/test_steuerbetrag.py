@@ -4,10 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Steuerbetrag, Steuerkennzeichen, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_steuerbetrag = Steuerbetrag(

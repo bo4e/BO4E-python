@@ -4,9 +4,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.messwertstatus import Messwertstatus
-from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
+from bo4e import Messwertstatus, Messwertstatuszusatz, Zeitreihenwert
 
 example_zeitreihenwert = Zeitreihenwert(
     wert=Decimal(2.5),

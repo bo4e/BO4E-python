@@ -4,16 +4,16 @@ Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serial
 
 from typing import Optional
 
-from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.com import COM
-from bo4e.com.energiemix import Energiemix
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.aufabschlagstyp import AufAbschlagstyp
+from ..enum.aufabschlagsziel import AufAbschlagsziel
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .aufabschlagproort import AufAbschlagProOrt
+from .com import COM
+from .energiemix import Energiemix
+from .preisgarantie import Preisgarantie
+from .tarifeinschraenkung import Tarifeinschraenkung
+from .vertragskonditionen import Vertragskonditionen
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module

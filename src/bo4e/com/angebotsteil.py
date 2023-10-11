@@ -2,15 +2,14 @@
 Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
-
 from typing import Optional
 
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.zeitraum import Zeitraum
+from ..bo.marktlokation import Marktlokation
+from .angebotsposition import Angebotsposition
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

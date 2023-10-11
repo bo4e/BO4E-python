@@ -4,9 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.positionsaufabschlag import PositionsAufAbschlag
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import AufAbschlagstyp, PositionsAufAbschlag, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

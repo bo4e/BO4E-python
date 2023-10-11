@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.unterschrift import Unterschrift
+from bo4e import Unterschrift
 
 
 class TestUnterschrift:

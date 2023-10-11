@@ -6,14 +6,14 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.rufnummer import Rufnummer
-from bo4e.com.zustaendigkeit import Zustaendigkeit
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.titel import Titel
-from bo4e.enum.typ import Typ
+from ..com.adresse import Adresse
+from ..com.rufnummer import Rufnummer
+from ..com.zustaendigkeit import Zustaendigkeit
+from ..enum.anrede import Anrede
+from ..enum.titel import Titel
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 

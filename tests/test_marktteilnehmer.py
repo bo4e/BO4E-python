@@ -1,12 +1,6 @@
 import json
 
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
-from bo4e.com.adresse import Adresse
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.marktrolle import Marktrolle
-from bo4e.enum.rollencodetyp import Rollencodetyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from bo4e import Adresse, Geschaeftspartnerrolle, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte, Typ
 
 example_marktteilnehmer = Marktteilnehmer(
     # required attributes of Marktteilnehmer only

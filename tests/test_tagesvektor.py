@@ -5,8 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.tagesvektor import Tagesvektor
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
+from bo4e import Tagesvektor, Zeitreihenwertkompakt
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_sigmoidparameter import example_sigmoidparameter
 

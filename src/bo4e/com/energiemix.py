@@ -6,11 +6,11 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.energieherkunft import Energieherkunft
-from bo4e.enum.oekolabel import Oekolabel
-from bo4e.enum.oekozertifikat import Oekozertifikat
-from bo4e.enum.sparte import Sparte
+from ..enum.oekolabel import Oekolabel
+from ..enum.oekozertifikat import Oekozertifikat
+from ..enum.sparte import Sparte
+from .com import COM
+from .energieherkunft import Energieherkunft
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
