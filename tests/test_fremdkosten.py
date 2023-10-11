@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Fremdkosten, Fremdkostenblock
+from bo4e import Betrag, Fremdkosten, Fremdkostenblock, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_zeitraum import example_zeitraum
@@ -13,10 +13,11 @@ class TestFremdkosten:
         [
             pytest.param(
                 Fremdkosten(
-                    gueltigkeit=example_zeitraum,
-                    summe_kosten=example_betrag,
-                    kostenbloecke=[Fremdkostenblock(kostenblockbezeichnung="teststring")],
-                )
+                    gueltigkeit=Zeitraum(),
+                    summe_kosten=Betrag(),
+                    kostenbloecke=[Fremdkostenblock()],
+                ),
+                id="all attributes at first level",
             ),
         ],
     )
