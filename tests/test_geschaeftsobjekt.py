@@ -5,51 +5,33 @@ from pydantic import ValidationError
 
 from bo4e import Geschaeftsobjekt, Typ
 from bo4e.zusatzattribut import ZusatzAttribut
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestGeschaeftsobjekt:
     @pytest.mark.parametrize(
-        "typ, version, zusatz_attribute",
+        "geschaeftsobjekt",
         [
-            (
-                Typ.ENERGIEMENGE,
-                "2",
-                [
+            Geschaeftsobjekt(
+                typ=Typ.ENERGIEMENGE,
+                version="2",
+                zusatz_attribute=[
                     ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345"),
                     ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
                 ],
             ),
-            (
-                Typ.ENERGIEMENGE,
-                "2",
-                [ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345")],
+            Geschaeftsobjekt(
+                typ=Typ.ENERGIEMENGE,
+                version="2",
+                zusatz_attribute=[],
             ),
-            (Typ.ENERGIEMENGE, "2", []),
         ],
     )
-    def test_serialisation(self, typ: Typ, version: str, zusatz_attribute: Optional[List[ZusatzAttribut]]) -> None:
-        go = Geschaeftsobjekt(
-            typ=typ,
-            version=version,
-            zusatz_attribute=zusatz_attribute,
-        )
-        assert isinstance(go, Geschaeftsobjekt)
-
-        go_json = go.model_dump_json(by_alias=True)
-
-        assert str(version) in go_json
-
-        go_deserialized = Geschaeftsobjekt.model_validate_json(go_json)
-
-        assert go_deserialized.typ is typ
-        assert go_deserialized.version == version
-        assert go_deserialized.zusatz_attribute == zusatz_attribute
-
-    def test_initialization_with_minimal_attributs(self) -> None:
-        go = Geschaeftsobjekt(typ=Typ.ANSPRECHPARTNER)
-
-        assert go.zusatz_attribute is None
-        assert go.version is not None
+    def test_serialization_roundtrip(self, geschaeftsobjekt: Geschaeftsobjekt) -> None:
+        """
+        Test de-/serialisation of Geschaeftsobjekt
+        """
+        assert_serialization_roundtrip(geschaeftsobjekt)
 
     def test_no_list_in_externen_referenzen(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
