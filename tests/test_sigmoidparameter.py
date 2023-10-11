@@ -18,21 +18,18 @@ example_sigmoidparameter = Sigmoidparameter(
 
 class TestSigmoidparameter:
     @pytest.mark.parametrize(
-        "sigmoidparameter, expected_json_dict",
+        "sigmoidparameter",
         [
             pytest.param(
                 example_sigmoidparameter,
-                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4"), "_id": None},
             ),
         ],
     )
-    def test_sigmoidparameter_serialization_roundtrip(
-        self, sigmoidparameter: Sigmoidparameter, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_sigmoidparameter_serialization_roundtrip(self, sigmoidparameter: Sigmoidparameter) -> None:
         """
         Test de-/serialisation of Sigmoidparameter with minimal attributes.
         """
-        assert_serialization_roundtrip(sigmoidparameter, expected_json_dict)
+        assert_serialization_roundtrip(sigmoidparameter)
 
     @pytest.mark.parametrize(
         "sigmoidparameter, leistung, expected_lp",

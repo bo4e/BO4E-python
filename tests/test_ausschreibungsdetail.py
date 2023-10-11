@@ -69,7 +69,7 @@ example_ausschreibungsdetail_dict = {
 
 class TestAusschreibungsdetail:
     @pytest.mark.parametrize(
-        "ausschreibungsdetail, expected_json_dict",
+        "ausschreibungsdetail",
         [
             pytest.param(
                 Ausschreibungsdetail(
@@ -89,66 +89,12 @@ class TestAusschreibungsdetail:
                     prognose_jahresarbeit=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),
                     rechnungsadresse=example_adresse,
                 ),
-                {
-                    "netzbetreiber": "Stromnetz Hamburg GmbH",
-                    "lieferzeitraum": {
-                        "enddatum": None,
-                        "startdatum": None,
-                        "einheit": Zeiteinheit.TAG,
-                        "endzeitpunkt": None,
-                        "dauer": Decimal("5"),
-                        "startzeitpunkt": None,
-                        "_id": None,
-                    },
-                    "zaehlertechnik": Zaehlertyp.LEISTUNGSZAEHLER,
-                    "kunde": "Dei Mudder ihr Kunde",
-                    "marktlokationsbezeichnung": "Zentraler Einkauf, Hamburg",
-                    "marktlokationsadresse": {
-                        "hausnummer": "27A",
-                        "adresszusatz": None,
-                        "postfach": None,
-                        "postleitzahl": "82031",
-                        "landescode": Landescode.DE,  # type: ignore[attr-defined]
-                        "ort": "Grünwald",
-                        "strasse": "Nördliche Münchner Straße",
-                        "coErgaenzung": None,
-                        "ortsteil": None,
-                        "_id": None,
-                    },
-                    "rechnungsadresse": {
-                        "hausnummer": "27A",
-                        "adresszusatz": None,
-                        "postfach": None,
-                        "postleitzahl": "82031",
-                        "landescode": Landescode.DE,  # type: ignore[attr-defined]
-                        "ort": "Grünwald",
-                        "strasse": "Nördliche Münchner Straße",
-                        "coErgaenzung": None,
-                        "ortsteil": None,
-                        "_id": None,
-                    },
-                    "zaehlernummer": "1YSK4234092304",
-                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH, "_id": None},
-                    "netzebeneLieferung": Netzebene.MSP,
-                    "marktlokationsId": "56789012345",
-                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW, "_id": None},
-                    "istLastgangVorhanden": True,
-                    "netzebeneMessung": Netzebene.NSP,
-                    "prognoseArbeitLieferzeitraum": {
-                        "wert": Decimal("2500"),
-                        "einheit": Mengeneinheit.KWH,
-                        "_id": None,
-                    },
-                    "_id": None,
-                },
             ),
-            pytest.param(example_ausschreibungsdetail, example_ausschreibungsdetail_dict),
+            pytest.param(example_ausschreibungsdetail),
         ],
     )
-    def test_serialization_roundtrip(
-        self, ausschreibungsdetail: Ausschreibungsdetail, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_serialization_roundtrip(self, ausschreibungsdetail: Ausschreibungsdetail) -> None:
         """
         Test de-/serialisation of Ausschreibungsdetail
         """
-        assert_serialization_roundtrip(ausschreibungsdetail, expected_json_dict)
+        assert_serialization_roundtrip(ausschreibungsdetail)

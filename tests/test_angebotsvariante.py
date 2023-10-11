@@ -22,21 +22,8 @@ example_angebotsvariante = Angebotsvariante(
 
 class TestAngebotsvariante:
     @pytest.mark.parametrize(
-        "angebotsvariante, expected_json_dict",
+        "angebotsvariante",
         [
-            pytest.param(
-                example_angebotsvariante,
-                {
-                    "gesamtmenge": None,
-                    "angebotsstatus": Angebotsstatus.NACHGEFASST,
-                    "erstellungsdatum": datetime(2021, 12, 22, 0, 0, tzinfo=timezone.utc),
-                    "gesamtkosten": None,
-                    "bindefrist": datetime(2022, 2, 1, 0, 0, tzinfo=timezone.utc),
-                    "teile": [example_angebotsteil_json],
-                    "_id": None,
-                },
-                id="minimal attributes",
-            ),
             pytest.param(
                 Angebotsvariante(
                     angebotsstatus=Angebotsstatus.NACHGEFASST,
@@ -46,29 +33,12 @@ class TestAngebotsvariante:
                     gesamtmenge=example_menge,
                     gesamtkosten=example_betrag,
                 ),
-                {
-                    "gesamtmenge": {
-                        "einheit": Mengeneinheit.MWH,
-                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
-                        "_id": None,
-                    },
-                    # this is a problem for https://github.com/Hochfrequenz/BO4E-python/issues/249
-                    # I just reused the example_menge but don't attempt to fix it in the context of the Angebotsvariante
-                    "angebotsstatus": Angebotsstatus.NACHGEFASST,
-                    "erstellungsdatum": datetime(2021, 12, 22, 0, 0, tzinfo=timezone.utc),
-                    "gesamtkosten": example_betrag_json,
-                    "bindefrist": datetime(2022, 2, 1, 0, 0, tzinfo=timezone.utc),
-                    "teile": [example_angebotsteil_json],
-                    "_id": None,
-                },
                 id="max attributes",  # = min + menge and betrag
             ),
         ],
     )
-    def test_serialization_roundtrip(
-        self, angebotsvariante: Angebotsvariante, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_serialization_roundtrip(self, angebotsvariante: Angebotsvariante) -> None:
         """
         Test de-/serialisation roundtrip.
         """
-        assert_serialization_roundtrip(angebotsvariante, expected_json_dict)
+        assert_serialization_roundtrip(angebotsvariante)

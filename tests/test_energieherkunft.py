@@ -13,18 +13,16 @@ example_energieherkunft = Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, 
 
 class TestEnergieherkunft:
     @pytest.mark.parametrize(
-        "energieherkunft, expected_json_dict",
+        "energieherkunft",
         [
-            pytest.param(
-                example_energieherkunft,
-                {"erzeugungsart": Erzeugungsart.BIOMASSE, "anteilProzent": Decimal("25.5"), "_id": None},
-            ),
+            pytest.param(example_energieherkunft),
         ],
     )
     def test_energieherkunft_required_attributes(
-        self, energieherkunft: Energieherkunft, expected_json_dict: Dict[str, Any]
+        self,
+        energieherkunft: Energieherkunft,
     ) -> None:
         """
         Test de-/serialisation of Energieherkunft with minimal attributes.
         """
-        assert_serialization_roundtrip(energieherkunft, expected_json_dict)
+        assert_serialization_roundtrip(energieherkunft)

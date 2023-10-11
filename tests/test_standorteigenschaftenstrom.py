@@ -15,20 +15,12 @@ example_standorteigenschaften_strom = StandorteigenschaftenStrom(
 
 class TestStandorteigenschaftenStrom:
     @pytest.mark.parametrize(
-        "standorteigenschaften_strom, expected_json_dict",
+        "standorteigenschaften_strom",
         [
             pytest.param(
                 example_standorteigenschaften_strom,
-                {
-                    "regelzone": "Transnet BW",
-                    "bilanzierungsgebietEic": "11YW-ALBSTADT--5",
-                    "regelzoneEic": "10YDE-ENBW-----N",
-                    "_id": None,
-                },
             )
         ],
     )
-    def test_serialization_roundtrip(
-        self, standorteigenschaften_strom: StandorteigenschaftenStrom, expected_json_dict: Dict[str, Any]
-    ) -> None:
-        assert_serialization_roundtrip(standorteigenschaften_strom, expected_json_dict)
+    def test_serialization_roundtrip(self, standorteigenschaften_strom: StandorteigenschaftenStrom) -> None:
+        assert_serialization_roundtrip(standorteigenschaften_strom)

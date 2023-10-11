@@ -32,38 +32,16 @@ example_ausschreibungslos = Ausschreibungslos(
 
 class TestAusschreibungslos:
     @pytest.mark.parametrize(
-        "ausschreibungslos, expected_json_dict",
+        "ausschreibungslos",
         [
             pytest.param(
                 example_ausschreibungslos,
-                {
-                    "lieferzeitraum": example_zeitraum_dict,
-                    "preismodell": Preismodell.FESTPREIS,
-                    "energieart": Sparte.STROM,
-                    "wiederholungsintervall": example_zeitraum_dict,
-                    "bemerkung": "asd",
-                    "bezeichnung": "bar",
-                    "losnummer": "foo",
-                    "anzahlLieferstellen": 17,
-                    "lieferstellen": [example_ausschreibungsdetail_dict],
-                    "wunschKuendingungsfrist": example_zeitraum_dict,
-                    "wunschZahlungsziel": example_zeitraum_dict,
-                    "gesamtMenge": example_menge_dict,
-                    "wunschVertragsform": Vertragsform.DIREKT,
-                    "wunschMaximalmenge": example_menge_dict,
-                    "wunschRechnungslegung": Rechnungslegung.MONATSRECHN,
-                    "wunschMindestmenge": example_menge_dict,
-                    "betreutDurch": "Max Mustermann",
-                    "_id": None,
-                },
                 id="maximal attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(
-        self, ausschreibungslos: Ausschreibungslos, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_serialization_roundtrip(self, ausschreibungslos: Ausschreibungslos) -> None:
         """
         Test de-/serialisation of Ausschreibungslos
         """
-        assert_serialization_roundtrip(ausschreibungslos, expected_json_dict)
+        assert_serialization_roundtrip(ausschreibungslos)

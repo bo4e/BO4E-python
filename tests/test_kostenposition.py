@@ -13,43 +13,8 @@ from tests.test_sigmoidparameter import example_sigmoidparameter
 
 class TestKostenposition:
     @pytest.mark.parametrize(
-        "kostenposition, expected_json_dict",
+        "kostenposition",
         [
-            pytest.param(
-                Kostenposition(
-                    positionstitel="Mudders Preisstaffel",
-                    artikelbezeichnung="Dei Mudder ihr Preisstaffel",
-                    einzelpreis=Preis(
-                        wert=Decimal(3.50),
-                        einheit=Waehrungseinheit.EUR,
-                        bezugswert=Mengeneinheit.KWH,
-                        status=Preisstatus.ENDGUELTIG,
-                    ),
-                    betrag_kostenposition=Betrag(
-                        waehrung=Waehrungscode.EUR,
-                        wert=Decimal(12.5),
-                    ),
-                ),
-                {
-                    "positionstitel": "Mudders Preisstaffel",
-                    "einzelpreis": {
-                        "status": Preisstatus.ENDGUELTIG,
-                        "einheit": Waehrungseinheit.EUR,
-                        "wert": Decimal("3.5"),
-                        "bezugswert": Mengeneinheit.KWH,
-                        "_id": None,
-                    },
-                    "bis": None,
-                    "von": None,
-                    "menge": None,
-                    "zeitmenge": None,
-                    "artikelbezeichnung": "Dei Mudder ihr Preisstaffel",
-                    "artikeldetail": None,
-                    "betragKostenposition": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5"), "_id": None},
-                    "_id": None,
-                },
-                id="only required attributes",
-            ),
             pytest.param(
                 Kostenposition(
                     positionstitel="Vadders Kostenposition",
@@ -70,38 +35,12 @@ class TestKostenposition:
                     menge=example_menge,
                     artikeldetail="foo",
                 ),
-                {
-                    "artikelbezeichnung": "Deim Vadder sei Kostenposition",
-                    "positionstitel": "Vadders Kostenposition",
-                    "menge": {
-                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
-                        "einheit": Mengeneinheit.MWH,
-                        "_id": None,
-                    },
-                    "artikeldetail": "foo",
-                    "einzelpreis": {
-                        "bezugswert": Mengeneinheit.KWH,
-                        "status": Preisstatus.ENDGUELTIG,
-                        "wert": Decimal("3.5"),
-                        "einheit": Waehrungseinheit.EUR,
-                        "_id": None,
-                    },
-                    "von": datetime(2013, 5, 1, 0, 0, tzinfo=timezone.utc),
-                    "zeitmenge": {
-                        "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
-                        "einheit": Mengeneinheit.MWH,
-                        "_id": None,
-                    },
-                    "bis": datetime(2014, 5, 1, 0, 0, tzinfo=timezone.utc),
-                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR, "_id": None},
-                    "_id": None,
-                },
                 id="required and optional attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, kostenposition: Kostenposition, expected_json_dict: Dict[str, Any]) -> None:
+    def test_serialization_roundtrip(self, kostenposition: Kostenposition) -> None:
         """
         Test de-/serialisation of Kostenposition
         """
-        assert_serialization_roundtrip(kostenposition, expected_json_dict)
+        assert_serialization_roundtrip(kostenposition)

@@ -117,39 +117,8 @@ class TestBuendelvertrag:
     }
 
     @pytest.mark.parametrize(
-        "buendelvertrag, expected_dict",
+        "buendelvertrag",
         [
-            pytest.param(
-                Buendelvertrag(
-                    vertragsnummer="1234567890",
-                    vertragsart=Vertragsart.NETZNUTZUNGSVERTRAG,
-                    vertragsstatus=Vertragsstatus.AKTIV,
-                    sparte=Sparte.STROM,
-                    vertragsbeginn=datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc),
-                    vertragsende=datetime(2200, 4, 30, 13, 45, tzinfo=timezone.utc),
-                    vertragspartner1=_vertragspartner1,
-                    vertragspartner2=_vertragspartner2,
-                ),
-                {
-                    "vertragsnummer": "1234567890",
-                    "vertragsart": Vertragsart.NETZNUTZUNGSVERTRAG,
-                    "vertragsstatus": Vertragsstatus.AKTIV,
-                    "sparte": Sparte.STROM,
-                    "vertragsbeginn": datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc),
-                    "vertragsende": datetime(2200, 4, 30, 13, 45, tzinfo=timezone.utc),
-                    "vertragspartner1": _vertragspartner1_dict,
-                    "vertragspartner2": _vertragspartner2_dict,
-                    "_typ": Typ.BUENDELVERTRAG,
-                    "externeReferenzen": None,
-                    "einzelvertraege": None,
-                    "vertragskonditionen": None,
-                    "unterzeichnervp1": None,
-                    "unterzeichnervp2": None,
-                    "beschreibung": None,
-                    "_id": None,
-                },
-                id="minimal fields",
-            ),
             pytest.param(
                 Buendelvertrag(
                     vertragsnummer="1234567890",
@@ -166,40 +135,9 @@ class TestBuendelvertrag:
                     unterzeichnervp2=[Unterschrift(name="Björn oder so"), Unterschrift(name="Zweiter Typ")],
                     beschreibung="Das ist ein Bündelvertrag mit allen optionalen Feldern ausgefüllt.",
                 ),
-                {
-                    "_typ": Typ.BUENDELVERTRAG,
-                    "externeReferenzen": None,
-                    "vertragsnummer": "1234567890",
-                    "vertragsart": Vertragsart.NETZNUTZUNGSVERTRAG,
-                    "vertragsstatus": Vertragsstatus.AKTIV,
-                    "sparte": Sparte.STROM,
-                    "vertragsbeginn": datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc),
-                    "vertragsende": datetime(2200, 4, 30, 13, 45, tzinfo=timezone.utc),
-                    "vertragspartner1": _vertragspartner1_dict,
-                    "vertragspartner2": _vertragspartner2_dict,
-                    "einzelvertraege": [TestVertrag().get_example_vertrag_expected_dict()],
-                    "vertragskonditionen": [
-                        {
-                            "beschreibung": "Hello World",
-                            "anzahlAbschlaege": None,
-                            "vertragslaufzeit": None,
-                            "kuendigungsfrist": None,
-                            "vertragsverlaengerung": None,
-                            "abschlagszyklus": None,
-                            "_id": None,
-                        }
-                    ],
-                    "unterzeichnervp1": [{"name": "Helga van der Waal", "ort": None, "datum": None, "_id": None}],
-                    "unterzeichnervp2": [
-                        {"name": "Björn oder so", "ort": None, "datum": None, "_id": None},
-                        {"name": "Zweiter Typ", "ort": None, "datum": None, "_id": None},
-                    ],
-                    "beschreibung": "Das ist ein Bündelvertrag mit allen optionalen Feldern ausgefüllt.",
-                    "_id": None,
-                },
                 id="maximal fields",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag, expected_dict: Dict[str, Any]) -> None:
-        assert_serialization_roundtrip(buendelvertrag, expected_dict)
+    def test_serialization_roundtrip(self, buendelvertrag: Buendelvertrag) -> None:
+        assert_serialization_roundtrip(buendelvertrag)

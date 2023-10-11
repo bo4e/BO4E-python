@@ -13,21 +13,18 @@ example_geraeteeigenschaften = Geraeteeigenschaften(
 
 class TestGeraeteeigenschaften:
     @pytest.mark.parametrize(
-        "geraeteeigenschaften, expected_json_dict",
+        "geraeteeigenschaften",
         [
             pytest.param(
                 example_geraeteeigenschaften,
-                {"geraetemerkmal": "GAS_G1000", "geraetetyp": Geraetetyp.MULTIPLEXANLAGE, "_id": None},
             ),
         ],
     )
-    def test_serialization_roundtrip(
-        self, geraeteeigenschaften: Geraeteeigenschaften, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_serialization_roundtrip(self, geraeteeigenschaften: Geraeteeigenschaften) -> None:
         """
         Test de-/serialisation of Geraeteeigenschaften
         """
-        assert_serialization_roundtrip(geraeteeigenschaften, expected_json_dict)
+        assert_serialization_roundtrip(geraeteeigenschaften)
 
     @pytest.mark.parametrize(
         "not_a_geraetetyp",

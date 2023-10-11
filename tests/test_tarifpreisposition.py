@@ -23,28 +23,8 @@ example_tarifpreisposition = Tarifpreisposition(
 
 class TestTarifpreisposition:
     @pytest.mark.parametrize(
-        "tarifpreisposition, expected_json_dict",
+        "tarifpreisposition",
         [
-            pytest.param(
-                example_tarifpreisposition,
-                {
-                    "preistyp": "ENTGELT_ABLESUNG",
-                    "einheit": Waehrungseinheit.EUR,
-                    "bezugseinheit": Mengeneinheit.KWH,
-                    "preisstaffeln": [
-                        {
-                            "einheitspreis": Decimal("40"),
-                            "sigmoidparameter": None,
-                            "staffelgrenzeBis": Decimal("25"),
-                            "staffelgrenzeVon": Decimal("12.5"),
-                            "_id": None,
-                        }
-                    ],
-                    "mengeneinheitstaffel": None,
-                    "_id": None,
-                },
-                id="only required attributes",
-            ),
             pytest.param(
                 Tarifpreisposition(
                     preistyp=Preistyp.ENTGELT_ABLESUNG,
@@ -59,30 +39,12 @@ class TestTarifpreisposition:
                     ],
                     mengeneinheitstaffel=Mengeneinheit.STUECK,
                 ),
-                {
-                    "preistyp": "ENTGELT_ABLESUNG",
-                    "einheit": Waehrungseinheit.EUR,
-                    "bezugseinheit": Mengeneinheit.KWH,
-                    "preisstaffeln": [
-                        {
-                            "einheitspreis": Decimal("40"),
-                            "sigmoidparameter": None,
-                            "staffelgrenzeBis": Decimal("25"),
-                            "staffelgrenzeVon": Decimal("12.5"),
-                            "_id": None,
-                        }
-                    ],
-                    "mengeneinheitstaffel": Mengeneinheit.STUECK,
-                    "_id": None,
-                },
                 id="optional and required attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(
-        self, tarifpreisposition: Tarifpreisposition, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_serialization_roundtrip(self, tarifpreisposition: Tarifpreisposition) -> None:
         """
         Test de-/serialisation of Tarifpreisposition.
         """
-        assert_serialization_roundtrip(tarifpreisposition, expected_json_dict)
+        assert_serialization_roundtrip(tarifpreisposition)

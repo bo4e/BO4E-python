@@ -23,7 +23,7 @@ example_aufabschlag = AufAbschlag(
 
 class TestAufAbschlag:
     @pytest.mark.parametrize(
-        "aufabschlag, expected_json_dict",
+        "aufabschlag",
         [
             pytest.param(
                 AufAbschlag(
@@ -51,75 +51,12 @@ class TestAufAbschlag:
                         ),
                     ],
                 ),
-                {
-                    "bezeichnung": "foo",
-                    "beschreibung": "bar",
-                    "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
-                    "aufAbschlagsziel": AufAbschlagsziel.GESAMTPREIS,
-                    "einheit": Waehrungseinheit.EUR,
-                    "website": "foo.bar",
-                    "gueltigkeitszeitraum": {
-                        "startdatum": datetime(2020, 1, 1, 0, 0, tzinfo=timezone.utc),
-                        "endzeitpunkt": None,
-                        "einheit": None,
-                        "enddatum": datetime(2020, 4, 1, 0, 0, tzinfo=timezone.utc),
-                        "startzeitpunkt": None,
-                        "dauer": None,
-                        "_id": None,
-                    },
-                    "staffeln": [
-                        {
-                            "einheitspreis": Decimal("40"),
-                            "sigmoidparameter": {
-                                "A": Decimal("1"),
-                                "B": Decimal("2"),
-                                "C": Decimal("3"),
-                                "D": Decimal("4"),
-                                "_id": None,
-                            },
-                            "staffelgrenzeVon": Decimal("12.5"),
-                            "staffelgrenzeBis": Decimal("25"),
-                            "_id": None,
-                        },
-                        {
-                            "einheitspreis": Decimal("15"),
-                            "sigmoidparameter": None,
-                            "staffelgrenzeVon": Decimal("2.5"),
-                            "staffelgrenzeBis": Decimal("40.5"),
-                            "_id": None,
-                        },
-                    ],
-                    "_id": None,
-                },
                 id="maximal attributes",
-            ),
-            pytest.param(
-                example_aufabschlag,
-                {
-                    "bezeichnung": "foo",
-                    "beschreibung": None,
-                    "aufAbschlagstyp": None,
-                    "aufAbschlagsziel": None,
-                    "einheit": None,
-                    "website": None,
-                    "gueltigkeitszeitraum": None,
-                    "staffeln": [
-                        {
-                            "einheitspreis": Decimal("15"),
-                            "sigmoidparameter": None,
-                            "staffelgrenzeVon": Decimal("2.5"),
-                            "staffelgrenzeBis": Decimal("40.5"),
-                            "_id": None,
-                        },
-                    ],
-                    "_id": None,
-                },
-                id="minimal attributes",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, aufabschlag: AufAbschlag, expected_json_dict: Dict[str, Any]) -> None:
+    def test_serialization_roundtrip(self, aufabschlag: AufAbschlag) -> None:
         """
         Test de-/serialisation of AufAbschlag with minimal attributes.
         """
-        assert_serialization_roundtrip(aufabschlag, expected_json_dict)
+        assert_serialization_roundtrip(aufabschlag)

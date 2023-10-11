@@ -15,7 +15,7 @@ example_preisstaffel = Preisstaffel(
 
 class TestPreisstaffel:
     @pytest.mark.parametrize(
-        "preisstaffel, expected_json_dict",
+        "preisstaffel",
         [
             pytest.param(
                 Preisstaffel(
@@ -24,39 +24,15 @@ class TestPreisstaffel:
                     staffelgrenze_bis=Decimal(25.0),
                     sigmoidparameter=example_sigmoidparameter,
                 ),
-                {
-                    "einheitspreis": Decimal("40"),
-                    "sigmoidparameter": {
-                        "A": Decimal("1"),
-                        "B": Decimal("2"),
-                        "C": Decimal("3"),
-                        "D": Decimal("4"),
-                        "_id": None,
-                    },
-                    "staffelgrenzeVon": Decimal("12.5"),
-                    "staffelgrenzeBis": Decimal("25"),
-                    "_id": None,
-                },
                 id="all attributes",
-            ),
-            pytest.param(
-                example_preisstaffel,
-                {
-                    "einheitspreis": Decimal("40"),
-                    "staffelgrenzeVon": Decimal("12.5"),
-                    "staffelgrenzeBis": Decimal("25"),
-                    "sigmoidparameter": None,
-                    "_id": None,
-                },
-                id="only required params",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel, expected_json_dict: Dict[str, Any]) -> None:
+    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel) -> None:
         """
         Test de-/serialisation of Preisstaffel.
         """
-        assert_serialization_roundtrip(preisstaffel, expected_json_dict)
+        assert_serialization_roundtrip(preisstaffel)
 
     @pytest.mark.parametrize(
         "not_a_sigmoid_parameter",

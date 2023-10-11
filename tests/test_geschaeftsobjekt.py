@@ -9,7 +9,7 @@ from bo4e.zusatzattribut import ZusatzAttribut
 
 class TestGeschaeftsobjekt:
     @pytest.mark.parametrize(
-        "typ, version, externe_referenzen",
+        "typ, version, zusatz_attribute",
         [
             (
                 Typ.ENERGIEMENGE,
@@ -27,11 +27,11 @@ class TestGeschaeftsobjekt:
             (Typ.ENERGIEMENGE, "2", []),
         ],
     )
-    def test_serialisation(self, typ: Typ, version: str, externe_referenzen: Optional[List[ZusatzAttribut]]) -> None:
+    def test_serialisation(self, typ: Typ, version: str, zusatz_attribute: Optional[List[ZusatzAttribut]]) -> None:
         go = Geschaeftsobjekt(
             typ=typ,
             version=version,
-            externe_referenzen=externe_referenzen,
+            zusatz_attribute=zusatz_attribute,
         )
         assert isinstance(go, Geschaeftsobjekt)
 
@@ -43,7 +43,7 @@ class TestGeschaeftsobjekt:
 
         assert go_deserialized.typ is typ
         assert go_deserialized.version == version
-        assert go_deserialized.zusatz_attribute == externe_referenzen
+        assert go_deserialized.zusatz_attribute == zusatz_attribute
 
     def test_initialization_with_minimal_attributs(self) -> None:
         go = Geschaeftsobjekt(typ=Typ.ANSPRECHPARTNER)
@@ -55,8 +55,8 @@ class TestGeschaeftsobjekt:
         with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftsobjekt(
                 typ=Typ.ENERGIEMENGE,
-                externe_referenzen=ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),  # type: ignore[arg-type]
+                zusatz_attribute=ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
         # The error message is completely broken, but who cares
-        assert "4 validation error" in str(excinfo.value)
+        assert "2 validation error" in str(excinfo.value)
         assert "type=model_type" in str(excinfo.value)

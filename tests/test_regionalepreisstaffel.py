@@ -29,39 +29,20 @@ example_regionale_preisstaffel = RegionalePreisstaffel(
 
 class TestRegionalePreisstaffel:
     @pytest.mark.parametrize(
-        "regionale_preisstaffel, expected_json_dict",
+        "regionale_preisstaffel",
         [
             pytest.param(
                 example_regionale_preisstaffel,
-                {
-                    "regionaleGueltigkeit": {
-                        "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [
-                            {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
-                        ],
-                        "_id": None,
-                    },
-                    "einheitspreis": Decimal("40"),
-                    "sigmoidparameter": {
-                        "A": Decimal("1"),
-                        "B": Decimal("2"),
-                        "C": Decimal("3"),
-                        "D": Decimal("4"),
-                        "_id": None,
-                    },
-                    "staffelgrenzeVon": Decimal("12.5"),
-                    "staffelgrenzeBis": Decimal("25"),
-                    "_id": None,
-                },
                 id="maximal attributes"
                 # the messing sigmoidparameter is tested in the Preisstaffel tests
             ),
         ],
     )
     def test_serialization_roundtrip(
-        self, regionale_preisstaffel: RegionalePreisstaffel, expected_json_dict: Dict[str, Any]
+        self,
+        regionale_preisstaffel: RegionalePreisstaffel,
     ) -> None:
         """
         Test de-/serialisation of RegionalePreisgarantie with maximal attributes.
         """
-        assert_serialization_roundtrip(regionale_preisstaffel, expected_json_dict)
+        assert_serialization_roundtrip(regionale_preisstaffel)

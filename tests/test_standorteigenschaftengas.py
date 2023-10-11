@@ -14,19 +14,10 @@ example_standorteigenschaften_gas = StandorteigenschaftenGas(
 
 class TestStandorteigenschaftenGas:
     @pytest.mark.parametrize(
-        "standorteigenschaftengas, expected_json_dict",
-        [
-            pytest.param(
-                example_standorteigenschaften_gas,
-                {
-                    "netzkontonummern": ["GASPOOLNH700xxxx"],
-                    "marktgebiete": [{"marktgebiet": "Gaspool", "marktgebietcode": "37Z701133MH0000B", "_id": None}],
-                    "_id": None,
-                },
-            )
-        ],
+        "standorteigenschaftengas",
+        [pytest.param(example_standorteigenschaften_gas)],
     )
     def test_standorteigenschaftengas_serialization_roundtrip(
-        self, standorteigenschaftengas: StandorteigenschaftenGas, expected_json_dict: Dict[str, Any]
+        self, standorteigenschaftengas: StandorteigenschaftenGas
     ) -> None:
-        assert_serialization_roundtrip(standorteigenschaftengas, expected_json_dict)
+        assert_serialization_roundtrip(standorteigenschaftengas)

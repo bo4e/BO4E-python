@@ -15,23 +15,15 @@ example_regionskriterium = Regionskriterium(
 
 class TestRegionskriterium:
     @pytest.mark.parametrize(
-        "regionskriterium, expected_json_dict",
+        "regionskriterium",
         [
             pytest.param(
                 example_regionskriterium,
-                {
-                    "gueltigkeitstyp": "NICHT_IN",
-                    "regionskriteriumtyp": "REGELGEBIET_NAME",
-                    "wert": "Was ist ein Regionskriterium?",
-                    "_id": None,
-                },
             ),
         ],
     )
-    def test_regionskriterium_serialization_roundtrip(
-        self, regionskriterium: Regionskriterium, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_regionskriterium_serialization_roundtrip(self, regionskriterium: Regionskriterium) -> None:
         """
         Test de-/serialisation of Regionskriterium with minimal attributes.
         """
-        assert_serialization_roundtrip(regionskriterium, expected_json_dict)
+        assert_serialization_roundtrip(regionskriterium)

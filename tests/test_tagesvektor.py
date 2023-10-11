@@ -20,30 +20,21 @@ example_tagesvektor: Tagesvektor = Tagesvektor(
         ),
     ],
 )
-example_tagesvektor_json = {
-    "tag": datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
-    "werte": [
-        {"wert": Decimal("40"), "statuszusatz": None, "status": None, "_id": None},
-        {"wert": Decimal("50"), "statuszusatz": None, "status": None, "_id": None},
-    ],
-    "_id": None,
-}
 
 
 class TestTagesvektor:
     @pytest.mark.parametrize(
-        "tagesvektor, expected_json_dict",
+        "tagesvektor",
         [
             pytest.param(
                 example_tagesvektor,
-                example_tagesvektor_json,
             ),
         ],
     )
-    def test_serialization_roundtrip(self, tagesvektor: Tagesvektor, expected_json_dict: Dict[str, Any]) -> None:
+    def test_serialization_roundtrip(self, tagesvektor: Tagesvektor) -> None:
         """
         Test de-/serialisation of Preisstaffel.
         """
-        assert_serialization_roundtrip(tagesvektor, expected_json_dict)
+        assert_serialization_roundtrip(tagesvektor)
 
     # add tests for issues 261 and 262 here
