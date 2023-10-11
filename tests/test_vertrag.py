@@ -68,7 +68,7 @@ class TestVertrag:
     ]
     _vertragspartner1_dict: Dict[str, Any] = {
         "_typ": Typ.GESCHAEFTSPARTNER,
-        "externeReferenzen": None,
+        "zusatzAttribute": None,
         "name1": "von Sinnen",
         "istGewerbe": True,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],

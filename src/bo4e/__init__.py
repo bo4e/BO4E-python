@@ -54,7 +54,6 @@ __all__ = [
     "Dienstleistung",
     "Energieherkunft",
     "Energiemix",
-    "ExterneReferenz",
     "Fremdkostenblock",
     "Fremdkostenposition",
     "Geokoordinaten",
