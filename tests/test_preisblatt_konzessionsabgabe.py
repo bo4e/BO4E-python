@@ -1,10 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe
-from bo4e.enum.kundengruppeka import KundengruppeKA
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
+from bo4e import KundengruppeKA, PreisblattKonzessionsabgabe, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisposition import example_preisposition

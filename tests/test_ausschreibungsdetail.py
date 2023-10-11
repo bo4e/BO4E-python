@@ -4,13 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
-from bo4e.com.menge import Menge
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.zaehlertyp import Zaehlertyp
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e import Ausschreibungsdetail, Landescode, Menge, Mengeneinheit, Netzebene, Zaehlertyp, Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
 from tests.test_zeitraum import example_zeitraum

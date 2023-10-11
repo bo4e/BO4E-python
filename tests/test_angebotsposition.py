@@ -4,13 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.betrag import Betrag
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Angebotsposition, Betrag, Menge, Mengeneinheit, Preis, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

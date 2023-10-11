@@ -10,11 +10,11 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.enum.marktrolle import Marktrolle
-from bo4e.enum.rollencodetyp import Rollencodetyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..enum.marktrolle import Marktrolle
+from ..enum.rollencodetyp import Rollencodetyp
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .geschaeftspartner import Geschaeftspartner
 
 
 class Marktteilnehmer(Geschaeftspartner):

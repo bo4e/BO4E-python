@@ -199,6 +199,20 @@ html_favicon = "./_static/bo4e-python-favicon.png"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
+# This flag ignores the `__all__` variable. Without this, the `__all__` variable
+# in `bo4e.__init__.py` would disable sphinx-autodoc from resolving the
+# ambiguous definitions of the classes. It would lead to the following error:
+#
+# docstring of bo4e.bo.angebot.Angebot.externe_referenzen:1:
+# more than one target found for cross-reference 'ExterneReferenz':
+# bo4e.ExterneReferenz, bo4e.com.externereferenz.ExterneReferenz
+#
+# This flag is not well documented.
+# https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_default_options
+# It is better to take a look at the PR and the corresponding issue directly:
+# https://github.com/sphinx-doc/sphinx/pull/4328
+autodoc_default_options = {"ignore-module-all": True}
+
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
 # html_last_updated_fmt = '%b %d, %Y'

@@ -5,9 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.verbrauch import Verbrauch
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from bo4e import Mengeneinheit, Verbrauch, Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_verbrauch = Verbrauch(

@@ -5,9 +5,9 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

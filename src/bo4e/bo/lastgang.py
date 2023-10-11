@@ -8,13 +8,13 @@ from typing import Annotated, Optional
 # pylint: disable=no-name-in-module
 from pydantic import Field, constr
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.tagesvektor import Tagesvektor
-from bo4e.com.zeitintervall import Zeitintervall
-from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..com.tagesvektor import Tagesvektor
+from ..com.zeitintervall import Zeitintervall
+from ..com.zeitreihenwert import Zeitreihenwert
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 class _LastgangBody(Geschaeftsobjekt):

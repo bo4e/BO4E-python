@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.geraetetyp import Geraetetyp
+from ..enum.geraetetyp import Geraetetyp
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 

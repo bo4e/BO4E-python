@@ -3,11 +3,11 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 """
 from typing import Optional
 
-from bo4e.com.adresse import Adresse
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.zaehlertyp import Zaehlertyp
+from ..enum.zaehlertyp import Zaehlertyp
+from .adresse import Adresse
+from .com import COM
+from .menge import Menge
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

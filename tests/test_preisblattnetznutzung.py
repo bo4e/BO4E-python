@@ -1,12 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.preisblattnetznutzung import PreisblattNetznutzung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.kundengruppe import Kundengruppe
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
+from bo4e import Bilanzierungsmethode, Kundengruppe, Netzebene, PreisblattNetznutzung, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisposition import example_preisposition

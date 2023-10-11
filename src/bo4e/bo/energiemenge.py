@@ -6,10 +6,10 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.verbrauch import Verbrauch
-from bo4e.enum.lokationstyp import Lokationstyp
-from bo4e.enum.typ import Typ
+from ..com.verbrauch import Verbrauch
+from ..enum.lokationstyp import Lokationstyp
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

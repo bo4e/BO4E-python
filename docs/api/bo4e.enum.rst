@@ -100,14 +100,6 @@ bo4e.enum.bilanzierungsmethode module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.botyp module
-----------------------
-
-.. automodule:: bo4e.enum.botyp
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.enum.dienstleistungstyp module
 -----------------------------------
 
@@ -528,6 +520,14 @@ bo4e.enum.titel module
 ----------------------
 
 .. automodule:: bo4e.enum.titel
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.typ module
+--------------------
+
+.. automodule:: bo4e.enum.typ
    :members:
    :undoc-members:
    :show-inheritance:

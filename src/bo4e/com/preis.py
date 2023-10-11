@@ -6,10 +6,10 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.preisstatus import Preisstatus
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 

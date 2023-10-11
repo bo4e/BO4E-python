@@ -4,8 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+from bo4e import AufAbschlagProOrt, AufAbschlagstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

@@ -8,20 +8,20 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.bo.messlokation import Messlokation
-from bo4e.com.betrag import Betrag
-from bo4e.com.rechnungsposition import Rechnungsposition
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.netznutzungrechnungsart import NetznutzungRechnungsart
-from bo4e.enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
-from bo4e.enum.rechnungsstatus import Rechnungsstatus
-from bo4e.enum.rechnungstyp import Rechnungstyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..com.betrag import Betrag
+from ..com.rechnungsposition import Rechnungsposition
+from ..com.steuerbetrag import Steuerbetrag
+from ..com.zeitraum import Zeitraum
+from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
+from ..enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
+from ..enum.rechnungsstatus import Rechnungsstatus
+from ..enum.rechnungstyp import Rechnungstyp
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
+from .marktlokation import Marktlokation
+from .messlokation import Messlokation
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

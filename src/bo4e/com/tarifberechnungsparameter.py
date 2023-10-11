@@ -5,11 +5,11 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preis import Preis
-from bo4e.com.tarifpreis import Tarifpreis
-from bo4e.enum.messpreistyp import Messpreistyp
-from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from ..enum.messpreistyp import Messpreistyp
+from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from .com import COM
+from .preis import Preis
+from .tarifpreis import Tarifpreis
 
 # yes. there is no description in the official docs.
 # https://github.com/Hochfrequenz/BO4E-python/issues/328

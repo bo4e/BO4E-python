@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
+from ..enum.dienstleistungstyp import Dienstleistungstyp
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
