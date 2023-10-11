@@ -26,18 +26,6 @@
             "default": null,
             "title": "Istschwachlastfaehig"
         },
-        "register": {
-            "anyOf": [
-                {
-                    "type": "string"
-                },
-                {
-                    "type": "null"
-                }
-            ],
-            "default": null,
-            "title": "Register"
-        },
         "zaehlzeitDefinition": {
             "anyOf": [
                 {
@@ -49,6 +37,18 @@
             ],
             "default": null,
             "title": "Zaehlzeitdefinition"
+        },
+        "zaehlzeitRegister": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Zaehlzeitregister"
         }
     },
     "title": "Zaehlzeitregister",
