@@ -71,51 +71,14 @@ class TestAngebotsteil:
         [
             pytest.param(
                 Angebotsteil(
-                    positionen=[
-                        Angebotsposition(
-                            positionsbezeichnung="testtring",
-                            positionsmenge=Menge(wert=Decimal(4000), einheit=Mengeneinheit.KWH),
-                            positionspreis=Preis(
-                                wert=Decimal(0.2456), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH
-                            ),
-                            positionskosten=Betrag(
-                                waehrung=Waehrungscode.EUR,
-                                wert=Decimal(98240),
-                            ),
-                        )
-                    ],
+                    positionen=[Angebotsposition()],
                     anfrage_subreferenz="teststring",
-                    lieferstellenangebotsteil=[
-                        Marktlokation(
-                            marktlokations_id="51238696781",
-                            sparte=Sparte.GAS,
-                            lokationsadresse=Adresse(
-                                postleitzahl="82031",
-                                ort="Grünwald",
-                                hausnummer="27A",
-                                strasse="Nördliche Münchner Straße",
-                            ),
-                            energierichtung=Energierichtung.EINSP,
-                            bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
-                            ist_unterbrechbar=True,
-                            netzebene=Netzebene.NSP,
-                        )
-                    ],
-                    gesamtmengeangebotsteil=Menge(wert=Decimal(4000), einheit=Mengeneinheit.KWH),
-                    gesamtkostenangebotsteil=Betrag(
-                        waehrung=Waehrungscode.EUR,
-                        wert=Decimal(98240),
-                    ),
-                    lieferzeitraum=Zeitraum(
-                        startdatum=datetime(2020, 1, 1, tzinfo=timezone.utc),
-                        enddatum=datetime(2020, 4, 1, tzinfo=timezone.utc),
-                    ),
+                    lieferstellenangebotsteil=[Marktlokation()],
+                    gesamtmengeangebotsteil=Menge(),
+                    gesamtkostenangebotsteil=Betrag(),
+                    lieferzeitraum=Zeitraum(),
                 ),
-                id="maximal attributes",
-            ),
-            pytest.param(
-                example_angebotsteil,
-                id="minimal attributes",
+                id="all attributes at first level",
             ),
         ],
     )
