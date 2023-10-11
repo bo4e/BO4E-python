@@ -12,12 +12,7 @@ example_energiemix = Energiemix(
     energieart=Sparte.STROM,
     bezeichnung="foo",
     gueltigkeitsjahr=2021,
-    anteil=[
-        Energieherkunft(
-            erzeugungsart=Erzeugungsart.BIOGAS,
-            anteil_prozent=Decimal(40),
-        ),
-    ],
+    anteil=[Energieherkunft()],
 )
 
 
@@ -32,14 +27,8 @@ class TestEnergiemix:
                     bezeichnung="foo",
                     gueltigkeitsjahr=2021,
                     anteil=[
-                        Energieherkunft(
-                            erzeugungsart=Erzeugungsart.BIOGAS,
-                            anteil_prozent=Decimal(40),
-                        ),
-                        Energieherkunft(
-                            erzeugungsart=Erzeugungsart.GEOTHERMIE,
-                            anteil_prozent=Decimal(60),
-                        ),
+                        Energieherkunft(),
+                        Energieherkunft(),
                     ],
                     oekolabel=[
                         Oekolabel.GASGREEN,
@@ -52,7 +41,7 @@ class TestEnergiemix:
                     oekozertifikate=[Oekozertifikat.FRAUNHOFER, Oekozertifikat.FREIBERG],
                     ist_in_oeko_top_ten=True,
                 ),
-                id="required and optional attributes",
+                id="all attributes at first level",
             ),
         ],
     )
