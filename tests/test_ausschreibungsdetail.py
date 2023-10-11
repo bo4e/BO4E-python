@@ -4,7 +4,17 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Ausschreibungsdetail, Landescode, Menge, Mengeneinheit, Netzebene, Zaehlertyp, Zeiteinheit
+from bo4e import (
+    Adresse,
+    Ausschreibungsdetail,
+    Landescode,
+    Menge,
+    Mengeneinheit,
+    Netzebene,
+    Zaehlertyp,
+    Zeiteinheit,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
 from tests.test_zeitraum import example_zeitraum
@@ -13,9 +23,9 @@ example_ausschreibungsdetail = Ausschreibungsdetail(
     marktlokations_id="56789012345",
     netzebene_lieferung=Netzebene.MSP,
     netzebene_messung=Netzebene.NSP,
-    marktlokationsadresse=example_adresse,
-    lieferzeitraum=example_zeitraum,
-    rechnungsadresse=example_adresse,
+    marktlokationsadresse=Adresse(),
+    lieferzeitraum=Zeitraum(),
+    rechnungsadresse=Adresse(),
 )
 example_ausschreibungsdetail_dict = {
     "zaehlernummer": None,
@@ -84,13 +94,13 @@ class TestAusschreibungsdetail:
                     marktlokationsbezeichnung="Zentraler Einkauf, Hamburg",
                     zaehlertechnik=Zaehlertyp.LEISTUNGSZAEHLER,
                     ist_lastgang_vorhanden=True,
-                    prognose_leistung=Menge(wert=Decimal(40), einheit=Mengeneinheit.KW),
-                    prognose_arbeit_lieferzeitraum=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),
-                    prognose_jahresarbeit=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),
-                    rechnungsadresse=example_adresse,
+                    prognose_jahresarbeit=Menge(),
+                    prognose_arbeit_lieferzeitraum=Menge(),
+                    prognose_leistung=Menge(),
+                    rechnungsadresse=Adresse(),
                 ),
+                id="all attributes at first level",
             ),
-            pytest.param(example_ausschreibungsdetail),
         ],
     )
     def test_serialization_roundtrip(self, ausschreibungsdetail: Ausschreibungsdetail) -> None:
