@@ -21,7 +21,7 @@ class TestRegionaleGueltigkeit:
                         ),
                     ],
                 ),
-                id="all attributes",
+                id="all attributes at first level",
             ),
         ],
     )
