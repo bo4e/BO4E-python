@@ -51,7 +51,7 @@ class TestGeschaeftspartner:
             ),
         ],
     )
-    def test_serializable(self, geschaeftspartner: Geschaeftspartner) -> None:
+    def test_serialization_roundtrip(self, geschaeftspartner: Geschaeftspartner) -> None:
         """
         Test de-/serialisation of Geschaeftspartner.
         """
