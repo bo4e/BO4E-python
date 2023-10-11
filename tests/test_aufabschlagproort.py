@@ -17,13 +17,7 @@ class TestAufAbschlagProOrt:
                     postleitzahl="01187",
                     ort="Dresden",
                     netznr="2",
-                    staffeln=[
-                        AufAbschlagstaffelProOrt(
-                            wert=Decimal(2.5),
-                            staffelgrenze_von=Decimal(1),
-                            staffelgrenze_bis=Decimal(5),
-                        )
-                    ],
+                    staffeln=[AufAbschlagstaffelProOrt()],
                 ),
             )
         ],
@@ -33,6 +27,6 @@ class TestAufAbschlagProOrt:
         aufabschlagproort: AufAbschlagProOrt,
     ) -> None:
         """
-        Test de-/serialisation of AufAbschlagProOrt with minimal attributes.
+        Test de-/serialisation of AufAbschlagProOrt.
         """
         assert_serialization_roundtrip(aufabschlagproort)
