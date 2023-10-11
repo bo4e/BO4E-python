@@ -8,7 +8,7 @@ from pydantic import ValidationError
 from bo4e import Angebotsstatus, Angebotsteil, Angebotsvariante, Betrag, Menge, Mengeneinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_angebotsteil import example_angebotsteil, example_angebotsteil_json
-from tests.test_betrag import example_betrag, example_betrag_json
+from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge
 
 # can be imported by other tests
