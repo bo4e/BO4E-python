@@ -24,28 +24,10 @@ class TestFremdkostenblock:
             pytest.param(
                 Fremdkostenblock(
                     kostenblockbezeichnung="teststring",
-                    kostenpositionen=[
-                        Fremdkostenposition(
-                            positionstitel="fremdkostenblocktitel",
-                            artikelbezeichnung="bsp",
-                            einzelpreis=Preis(
-                                wert=Decimal(3.50),
-                                einheit=Waehrungseinheit.EUR,
-                                bezugswert=Mengeneinheit.KWH,
-                                status=Preisstatus.ENDGUELTIG,
-                            ),
-                            betrag_kostenposition=Betrag(
-                                waehrung=Waehrungscode.EUR,
-                                wert=Decimal(12.5),
-                            ),
-                        )
-                    ],
-                    summe_kostenblock=Betrag(
-                        waehrung=Waehrungscode.EUR,
-                        wert=Decimal(98240),
-                    ),
+                    kostenpositionen=[Fremdkostenposition()],
+                    summe_kostenblock=Betrag(),
                 ),
-                id="maximal attributes",
+                id="all attributes at first level",
             ),
         ],
     )
