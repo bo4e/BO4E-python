@@ -25,6 +25,6 @@ class TestAufAbschlagstaffelProOrt:
         self, aufabschlagstaffelproort: AufAbschlagstaffelProOrt
     ) -> None:
         """
-        Test de-/serialisation of AufAbschlagstaffelProOrt with minimal attributes.
+        Test de-/serialisation of AufAbschlagstaffelProOrt.
         """
         assert_serialization_roundtrip(aufabschlagstaffelproort)
