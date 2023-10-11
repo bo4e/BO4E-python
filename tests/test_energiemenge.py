@@ -13,7 +13,8 @@ class TestEnergiemenge:
                     lokations_id="DE0123456789012345678901234567890",
                     lokationstyp=Lokationstyp.MELO,
                     energieverbrauch=[Verbrauch()],
-                )
+                ),
+                id="all attributes at first level",
             ),
         ],
     )
