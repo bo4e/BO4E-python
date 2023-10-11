@@ -37,16 +37,16 @@ Davon sind auch technische Pflichtfelder, namentlich `_typ` und `_version` nicht
 Ob sie anzugeben sind, entscheidet die Anwendung.
 BO4E gibt sinnvolle Datenstrukturen vor, wie diese in der Praxis genutzt werden können und wollen wir aber nicht vorschreiben.
 
-Verknüpfungen zwischen Objekten
+Verweise zwischen Objekten
 -------------------------------
 Viele Objekte verweisen aufeinander und sind miteinander verknüpft.
 Dabei sind unsere Designentscheidungen:
 
-* Alle Verknüpfungen sind optional.
-* Verknüpfungen sind, wo sie naheliegend sind, im BO4E Standard vordefiniert (z.B. 1 Messlokation hat n Zähler).
-* Aber wir haben nicht jede theoretisch denkbare Verknüpfungen implementiert (z.B. allein dass User Zähler unter Angabe einer Email-Adresse suchen können, heißt nicht, dass der Zähler eine optionale Eigenschaft `emailAdresse` haben muss.)
-* Generell sollen zwischen zwei BOs bi-direktional sein, zwischen BOs und COMs aber nur unidirektional (z.B. soll jeder Zähler wissen zu welcher Messlokation er gehört aber eine Adresse muss nicht wissen, welchem Geschäftspartner, welcher Messlokation oder welcher Rechnung sie zugeordnet ist).
-* Zwischen COMs sollen keine Verknüpfungen bestehen (d.h. es sollen keine COMs in COMs eingebettet werden).
+* Alle Verweise sind optional.
+* Verweise sind, wo sie naheliegend sind, im BO4E Standard vordefiniert (z.B. 1 Messlokation hat n Zähler).
+* Aber wir haben nicht jede theoretisch denkbare Verweise implementiert (z.B. allein dass User Zähler unter Angabe einer Email-Adresse suchen können, heißt nicht, dass der Zähler eine optionale Eigenschaft `emailAdresse` haben muss.)
+* Generell sollen Verweise zwischen zwei BOs bi-direktional sein, zwischen BOs und COMs aber nur unidirektional (z.B. soll jeder Zähler wissen zu welcher Messlokation er gehört aber eine Adresse muss nicht wissen, welchem Geschäftspartner, welcher Messlokation oder welcher Rechnung sie zugeordnet ist).
+* Zwischen COMs sollen keine Verweise bestehen (d.h. COMs aus verschiedenen BOs sollen nicht aufeinander verweisen).
 
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
 ==========================================================
