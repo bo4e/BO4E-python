@@ -11,9 +11,9 @@ from bo4e.enum.verwendungszweck import Verwendungszweck
 # pylint: disable=too-few-public-methods
 
 
-class Verwendungszweck(COM):
+class VerwendungszweckProMarktrolle(COM):
     """
-    Verwendungungszweck der Werte Marktlokation
+    Dient zur Identifizierung des Verwendungszwecks der Marktrolle an der Marktlokation, der die Werte zu übermitteln sind.
 
     .. raw:: html
 
@@ -26,7 +26,7 @@ class Verwendungszweck(COM):
 
     marktrolle: Optional[Marktrolle] = None
     """
-    Rollencodenummer der Marktrolle
+    Marktrolle, für die die Daten relevant sind
     """
     Zwecke: Optional[list[Verwendungszweck]] = None
     """

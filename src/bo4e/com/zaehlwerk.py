@@ -7,7 +7,7 @@ from typing import Optional
 
 from bo4e.com.com import COM
 from bo4e.com.konzessionsabgabe import Konzessionsabgabe
-from bo4e.com.verwendungszweck import Verwendungszweck
+from bo4e.com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from bo4e.com.zaehlzeitregister import Zaehlzeitregister
 from bo4e.enum.energierichtung import Energierichtung
 from bo4e.enum.mengeneinheit import Mengeneinheit
@@ -47,7 +47,9 @@ class Zaehlwerk(COM):
     # zu kommen.
     einheit: Optional[Mengeneinheit] = None  # Die Einheit der gemessenen Größe, z.B. kWh
     ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit
-    verwendungszwecke: Optional[list[Verwendungszweck]] = None  #: Verwendungungszweck der Werte Marktlokation
+    verwendungszwecke: Optional[
+        list[VerwendungszweckProMarktrolle]
+    ] = None  #: Verwendungungszweck der Werte Marktlokation
     verbrauchsart: Optional[Verbrauchsart] = None  #: Stromverbrauchsart/Verbrauchsart Marktlokation
     ist_unterbrechbar: Optional[bool] = None  #: Unterbrechbarkeit Marktlokation
     waermenutzung: Optional[Waermenutzung] = None  #: Wärmenutzung Marktlokation

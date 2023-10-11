@@ -137,6 +137,65 @@
             "title": "Verbrauchsart",
             "type": "string"
         },
+        "Verwendungszweck": {
+            "description": "Verwendungszweck der Werte Marktlokation",
+            "enum": [
+                "NETZNUTZUNGSABRECHNUNG",
+                "BILANZKREISABRECHNUNG",
+                "MEHRMINDERMENGENABRECHNUNG",
+                "ENDKUNDENABRECHNUNG",
+                "UEBERMITTLUNG_AN_DAS_HKNR",
+                "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+            ],
+            "title": "Verwendungszweck",
+            "type": "string"
+        },
+        "VerwendungszweckProMarktrolle": {
+            "additionalProperties": true,
+            "description": "Dient zur Identifizierung des Verwendungszwecks der Marktrolle an der Marktlokation, der die Werte zu übermitteln sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verwendungszweck.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verwendungszweck.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "marktrolle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Marktrolle"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zwecke": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Verwendungszweck"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zwecke"
+                }
+            },
+            "title": "VerwendungszweckProMarktrolle",
+            "type": "object"
+        },
         "Waermenutzung": {
             "description": "Wärmenutzung Marktlokation",
             "enum": [
@@ -202,65 +261,6 @@
             },
             "title": "Zaehlzeitregister",
             "type": "object"
-        },
-        "bo4e__com__verwendungszweck__Verwendungszweck": {
-            "additionalProperties": true,
-            "description": "Verwendungungszweck der Werte Marktlokation\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verwendungszweck.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verwendungszweck.json>`_",
-            "properties": {
-                "_id": {
-                    "anyOf": [
-                        {
-                            "type": "string"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": " Id"
-                },
-                "marktrolle": {
-                    "anyOf": [
-                        {
-                            "$ref": "#/$defs/Marktrolle"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null
-                },
-                "zwecke": {
-                    "anyOf": [
-                        {
-                            "items": {
-                                "$ref": "#/$defs/bo4e__enum__verwendungszweck__Verwendungszweck"
-                            },
-                            "type": "array"
-                        },
-                        {
-                            "type": "null"
-                        }
-                    ],
-                    "default": null,
-                    "title": "Zwecke"
-                }
-            },
-            "title": "Verwendungszweck",
-            "type": "object"
-        },
-        "bo4e__enum__verwendungszweck__Verwendungszweck": {
-            "description": "Verwendungungszweck der Werte Marktlokation",
-            "enum": [
-                "NETZNUTZUNGSABRECHNUNG",
-                "BILANZKREISABRECHNUNG",
-                "MEHRMINDERMENGENABRECHNUNG",
-                "ENDKUNDENABRECHNUNG",
-                "UEBERMITTLUNG_AN_DAS_HKNR",
-                "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
-            ],
-            "title": "Verwendungszweck",
-            "type": "string"
         }
     },
     "additionalProperties": true,
@@ -422,7 +422,7 @@
             "anyOf": [
                 {
                     "items": {
-                        "$ref": "#/$defs/bo4e__com__verwendungszweck__Verwendungszweck"
+                        "$ref": "#/$defs/VerwendungszweckProMarktrolle"
                     },
                     "type": "array"
                 },
@@ -491,12 +491,10 @@
                 {
                     "type": "null"
                 }
-            ]
+            ],
+            "default": null
         }
     },
-    "required": [
-        "zaehlzeitregister"
-    ],
     "title": "Zaehlwerk",
     "type": "object"
 }

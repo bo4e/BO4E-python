@@ -5,7 +5,7 @@ from bo4e.enum.strenum import StrEnum
 
 class Verwendungszweck(StrEnum):
     """
-    Verwendungungszweck der Werte Marktlokation
+    Verwendungszweck der Werte Marktlokation
     """
 
     NETZNUTZUNGSABRECHNUNG = "NETZNUTZUNGSABRECHNUNG"  #: Netznutzungsabrechnung
