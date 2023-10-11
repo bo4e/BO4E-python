@@ -6,17 +6,13 @@ from pydantic import ValidationError
 from bo4e import Geraeteeigenschaften, Geraetemerkmal, Geraetetyp
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_geraeteeigenschaften = Geraeteeigenschaften(
-    geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=Geraetetyp.MULTIPLEXANLAGE
-)
-
 
 class TestGeraeteeigenschaften:
     @pytest.mark.parametrize(
         "geraeteeigenschaften",
         [
             pytest.param(
-                example_geraeteeigenschaften,
+                Geraeteeigenschaften(geraetemerkmal=Geraetemerkmal.GAS_G1000, geraetetyp=Geraetetyp.MULTIPLEXANLAGE),
             ),
         ],
     )
