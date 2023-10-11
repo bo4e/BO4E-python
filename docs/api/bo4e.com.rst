@@ -444,10 +444,10 @@ bo4e.com.vertragsteil module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.verwendungszweck module
---------------------------------
+bo4e.com.verwendungszweckpromarktrolle module
+---------------------------------------------
 
-.. automodule:: bo4e.com.verwendungszweck
+.. automodule:: bo4e.com.verwendungszweckpromarktrolle
    :members:
    :undoc-members:
    :show-inheritance:
