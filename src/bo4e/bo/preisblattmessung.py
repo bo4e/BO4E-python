@@ -5,13 +5,12 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geraet import Geraet
-from bo4e.bo.preisblatt import Preisblatt
-from bo4e.bo.zaehler import Zaehler
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.typ import Typ
+from ..com.geraeteeigenschaften import Geraeteeigenschaften
+from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+from ..enum.dienstleistungstyp import Dienstleistungstyp
+from ..enum.netzebene import Netzebene
+from ..enum.typ import Typ
+from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 

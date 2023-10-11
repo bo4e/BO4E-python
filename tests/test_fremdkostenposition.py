@@ -5,13 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenposition import Fremdkostenposition
-from bo4e.com.preis import Preis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Betrag, Fremdkostenposition, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_menge import example_menge
 from tests.test_sigmoidparameter import example_sigmoidparameter

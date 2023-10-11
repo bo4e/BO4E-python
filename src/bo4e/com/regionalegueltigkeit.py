@@ -4,9 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
+from ..enum.gueltigkeitstyp import Gueltigkeitstyp
+from .com import COM
+from .kriteriumwert import KriteriumWert
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

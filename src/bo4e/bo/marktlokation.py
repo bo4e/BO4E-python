@@ -8,21 +8,21 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.com.messlokationszuordnung import Messlokationszuordnung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.gasqualitaet import Gasqualitaet
-from bo4e.enum.gebiettyp import Gebiettyp
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.verbrauchsart import Verbrauchsart
+from ..com.adresse import Adresse
+from ..com.geokoordinaten import Geokoordinaten
+from ..com.katasteradresse import Katasteradresse
+from ..com.messlokationszuordnung import Messlokationszuordnung
+from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+from ..enum.energierichtung import Energierichtung
+from ..enum.gasqualitaet import Gasqualitaet
+from ..enum.gebiettyp import Gebiettyp
+from ..enum.kundentyp import Kundentyp
+from ..enum.netzebene import Netzebene
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.verbrauchsart import Verbrauchsart
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=no-name-in-module
 

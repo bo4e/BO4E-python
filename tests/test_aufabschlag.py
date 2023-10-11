@@ -5,12 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.aufabschlag import AufAbschlag
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import AufAbschlag, AufAbschlagstyp, AufAbschlagsziel, Preisstaffel, Waehrungseinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_sigmoidparameter import example_sigmoidparameter
 

@@ -11,19 +11,14 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geraet import Geraet
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.befestigungsart import Befestigungsart
-from bo4e.enum.messwerterfassung import Messwerterfassung
-from bo4e.enum.registeranzahl import Registeranzahl
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
-from bo4e.enum.zaehlergroesse import Zaehlergroesse
-from bo4e.enum.zaehlertyp import Zaehlertyp
-from bo4e.enum.zaehlertypspezifikation import ZaehlertypSpezifikation
+from ..com.zaehlwerk import Zaehlwerk
+from ..enum.sparte import Sparte
+from ..enum.tarifart import Tarifart
+from ..enum.typ import Typ
+from ..enum.zaehlerauspraegung import Zaehlerauspraegung
+from ..enum.zaehlertyp import Zaehlertyp
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 

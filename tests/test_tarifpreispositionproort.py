@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
+from bo4e import TarifpreispositionProOrt
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_tarifpreisstaffelproort import example_tarifpreisstaffelproort
 

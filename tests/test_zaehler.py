@@ -4,16 +4,18 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.zaehler import Zaehler
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.registeranzahl import Registeranzahl
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
-from bo4e.enum.zaehlertyp import Zaehlertyp
+from bo4e import (
+    Energierichtung,
+    ExterneReferenz,
+    Mengeneinheit,
+    Sparte,
+    Tarifart,
+    Typ,
+    Zaehler,
+    Zaehlerauspraegung,
+    Zaehlertyp,
+    Zaehlwerk,
+)
 
 example_zaehler = Zaehler(
     zaehlernummer="000111222",
@@ -43,8 +45,28 @@ class TestZaehler:
         """
         Test de-/serialisation of Zaehler only with required attributes
         """
-        zaehler = example_zaehler
-        assert zaehler.versionstruktur == "2", "versionstruktur was not automatically set"
+        zaehler = Zaehler(
+            zaehlernummer="000111222",
+            sparte=Sparte.STROM,
+            zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
+            zaehlwerke=[
+                Zaehlwerk(
+                    zaehlwerk_id="98765",
+                    einheit=Mengeneinheit.KW,
+                    richtung=Energierichtung.EINSP,
+                    bezeichnung="my zaehlwerk",
+                    obis_kennzahl="1-0:1.8.1",
+                    wandlerfaktor=Decimal(0.95),
+                )
+            ],
+            zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
+            tarifart=Tarifart.ZWEITARIF,
+            zaehlerkonstante=Decimal(0.9),
+            eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
+            externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+            letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
+        )
+        assert zaehler.version is not None, "versionstruktur was not automatically set"
         assert zaehler.typ is Typ.ZAEHLER, "_typ was not automatically set"
         assert zaehler.zaehlwerke is not None
         assert zaehler.zaehlwerke[0].richtung == Energierichtung.EINSP

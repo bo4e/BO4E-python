@@ -1,10 +1,6 @@
 import pytest
 
-from bo4e.bo.preisblattdienstleistung import PreisblattDienstleistung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
+from bo4e import Bilanzierungsmethode, Dienstleistungstyp, PreisblattDienstleistung, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_geraet import example_geraet
 from tests.test_marktteilnehmer import example_marktteilnehmer

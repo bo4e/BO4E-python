@@ -5,14 +5,9 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.konzessionsabgabe import Konzessionsabgabe
-from bo4e.com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
-from bo4e.com.zaehlzeitregister import Zaehlzeitregister
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.enum.waermenutzung import Waermenutzung
+from ..enum.energierichtung import Energierichtung
+from ..enum.mengeneinheit import Mengeneinheit
+from .com import COM
 
 # pylint: disable=no-name-in-module
 # pylint: disable=no-name-in-module

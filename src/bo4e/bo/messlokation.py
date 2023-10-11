@@ -6,16 +6,16 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geraet import Geraet
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.zaehler import Zaehler
-from bo4e.com.adresse import Adresse
-from bo4e.com.dienstleistung import Dienstleistung
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from ..com.adresse import Adresse
+from ..com.dienstleistung import Dienstleistung
+from ..com.geokoordinaten import Geokoordinaten
+from ..com.hardware import Hardware
+from ..com.katasteradresse import Katasteradresse
+from ..enum.netzebene import Netzebene
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .zaehler import Zaehler
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 

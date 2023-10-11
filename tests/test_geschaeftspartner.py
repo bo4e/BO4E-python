@@ -4,13 +4,7 @@ from pathlib import Path
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.typ import Typ
+from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontaktart, Landescode, Typ
 
 
 class TestGeschaeftspartner:

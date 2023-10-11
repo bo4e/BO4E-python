@@ -3,10 +3,10 @@ Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
-from bo4e.bo.geraet import Geraet
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.enum.voraussetzungen import Voraussetzungen
+from ..enum.voraussetzungen import Voraussetzungen
+from .com import COM
+from .geraet import Geraet
+from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 

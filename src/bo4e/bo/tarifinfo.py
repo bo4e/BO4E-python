@@ -10,17 +10,17 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
-from bo4e.com.energiemix import Energiemix
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.registeranzahl import Registeranzahl
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifmerkmal import Tarifmerkmal
-from bo4e.enum.tariftyp import Tariftyp
-from bo4e.enum.typ import Typ
+from ..com.energiemix import Energiemix
+from ..com.vertragskonditionen import Vertragskonditionen
+from ..com.zeitraum import Zeitraum
+from ..enum.kundentyp import Kundentyp
+from ..enum.sparte import Sparte
+from ..enum.tarifart import Tarifart
+from ..enum.tarifmerkmal import Tarifmerkmal
+from ..enum.tariftyp import Tariftyp
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .marktteilnehmer import Marktteilnehmer
 
 
 class Tarifinfo(Geschaeftsobjekt):

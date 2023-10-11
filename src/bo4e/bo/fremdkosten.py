@@ -5,11 +5,11 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenblock import Fremdkostenblock
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.typ import Typ
+from ..com.betrag import Betrag
+from ..com.fremdkostenblock import Fremdkostenblock
+from ..com.zeitraum import Zeitraum
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 

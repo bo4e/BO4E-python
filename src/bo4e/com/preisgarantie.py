@@ -4,9 +4,9 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.preisgarantietyp import Preisgarantietyp
+from ..enum.preisgarantietyp import Preisgarantietyp
+from .com import COM
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 

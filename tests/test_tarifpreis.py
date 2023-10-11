@@ -3,11 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.tarifpreis import Tarifpreis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Mengeneinheit, Preisstatus, Preistyp, Tarifpreis, Waehrungseinheit
 
 example_tarifpreis = Tarifpreis(
     wert=Decimal(12.5),

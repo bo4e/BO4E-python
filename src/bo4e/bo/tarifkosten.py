@@ -6,9 +6,9 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.kosten import Kosten
-from bo4e.bo.tarifinfo import Tarifinfo
-from bo4e.enum.typ import Typ
+from ..enum.typ import Typ
+from .kosten import Kosten
+from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 

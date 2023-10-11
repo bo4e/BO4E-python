@@ -1,12 +1,6 @@
 import json
 
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
-from bo4e.com.adresse import Adresse
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.marktrolle import Marktrolle
-from bo4e.enum.rollencodetyp import Rollencodetyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from bo4e import Adresse, Geschaeftspartnerrolle, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte, Typ
 
 example_marktteilnehmer = Marktteilnehmer(
     # required attributes of Marktteilnehmer only
@@ -31,7 +25,7 @@ class TestMarktteilnehmer:
     def test_serialization(self) -> None:
         mt = example_marktteilnehmer
 
-        assert mt.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert mt.version is not None, "versionstruktur was not automatically set"
         assert mt.typ == Typ.MARKTTEILNEHMER, "_typ was not automatically set"
 
         json_string = mt.model_dump_json(by_alias=True)

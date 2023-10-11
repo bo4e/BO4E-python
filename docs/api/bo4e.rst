@@ -12,6 +12,17 @@ Subpackages
    bo4e.enum
    bo4e.utils
 
+Submodules
+----------
+
+bo4e.version module
+-------------------
+
+.. automodule:: bo4e.version
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

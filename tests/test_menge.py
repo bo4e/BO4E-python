@@ -3,8 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.menge import Menge
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e import Menge, Mengeneinheit
 
 example_menge = Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH)
 # see issue https://github.com/Hochfrequenz/BO4E-python/issues/249

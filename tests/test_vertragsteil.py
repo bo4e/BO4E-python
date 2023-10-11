@@ -4,9 +4,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.menge import Menge
-from bo4e.com.vertragsteil import Vertragsteil
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e import Menge, Mengeneinheit, Vertragsteil
 
 
 class TestVertragsteil:

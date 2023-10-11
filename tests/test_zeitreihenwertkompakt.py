@@ -3,9 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
-from bo4e.enum.messwertstatus import Messwertstatus
-from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
+from bo4e import Messwertstatus, Messwertstatuszusatz, Zeitreihenwertkompakt
 
 
 class TestZeitreihenwertkompakt:

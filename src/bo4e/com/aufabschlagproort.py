@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
-from bo4e.com.com import COM
+from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

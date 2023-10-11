@@ -4,19 +4,21 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.buendelvertrag import Buendelvertrag
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
+from bo4e import (
+    Adresse,
+    Anrede,
+    Buendelvertrag,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Kontaktart,
+    Landescode,
+    Sparte,
+    Typ,
+    Unterschrift,
+    Vertragsart,
+    Vertragskonditionen,
+    Vertragsstatus,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_vertrag import TestVertrag
 
@@ -77,7 +79,6 @@ class TestBuendelvertrag:
             "ortsteil": None,
             "_id": None,
         },
-        "versionstruktur": "2",
         "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "hrnummer": None,
@@ -101,7 +102,6 @@ class TestBuendelvertrag:
             "ortsteil": None,
             "_id": None,
         },
-        "versionstruktur": "2",
         "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "anrede": None,
@@ -139,7 +139,6 @@ class TestBuendelvertrag:
                     "vertragsende": datetime(2200, 4, 30, 13, 45, tzinfo=timezone.utc),
                     "vertragspartner1": _vertragspartner1_dict,
                     "vertragspartner2": _vertragspartner2_dict,
-                    "versionstruktur": "2",
                     "_typ": Typ.BUENDELVERTRAG,
                     "externeReferenzen": None,
                     "einzelvertraege": None,
@@ -168,7 +167,6 @@ class TestBuendelvertrag:
                     beschreibung="Das ist ein Bündelvertrag mit allen optionalen Feldern ausgefüllt.",
                 ),
                 {
-                    "versionstruktur": "2",
                     "_typ": Typ.BUENDELVERTRAG,
                     "externeReferenzen": None,
                     "vertragsnummer": "1234567890",

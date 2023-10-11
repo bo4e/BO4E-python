@@ -6,26 +6,27 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.geraet import Geraet
-from bo4e.bo.messlokation import Messlokation
-from bo4e.bo.zaehler import Zaehler
-from bo4e.com.adresse import Adresse
-from bo4e.com.dienstleistung import Dienstleistung
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.geraeteklasse import Geraeteklasse
-from bo4e.enum.geraetetyp import Geraetetyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.registeranzahl import Registeranzahl
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
-from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
-from bo4e.enum.zaehlertyp import Zaehlertyp
+from bo4e import (
+    Adresse,
+    Dienstleistung,
+    Dienstleistungstyp,
+    Energierichtung,
+    ExterneReferenz,
+    Geokoordinaten,
+    Geraetetyp,
+    Hardware,
+    Katasteradresse,
+    Mengeneinheit,
+    Messlokation,
+    Netzebene,
+    Sparte,
+    Tarifart,
+    Typ,
+    Zaehler,
+    Zaehlerauspraegung,
+    Zaehlertyp,
+    Zaehlwerk,
+)
 
 
 class TestMeLo:
@@ -37,7 +38,7 @@ class TestMeLo:
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
         )
-        assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert melo.version is not None, "versionstruktur was not automatically set"
         assert melo.typ is Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
@@ -113,7 +114,7 @@ class TestMeLo:
             grundzustaendiger_msb_codenr="9910125000002",
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
-        assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert melo.version is not None, "versionstruktur was not automatically set"
         assert melo.typ == Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)

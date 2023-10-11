@@ -4,19 +4,21 @@ from typing import Tuple
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.com.adresse import Adresse
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.typ import Typ
+from bo4e import (
+    Adresse,
+    Anrede,
+    Bilanzierungsmethode,
+    Energierichtung,
+    Geokoordinaten,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Kontaktart,
+    Kundentyp,
+    Marktlokation,
+    Netzebene,
+    Sparte,
+    Typ,
+)
 
 
 class TestMaLo:
@@ -32,7 +34,7 @@ class TestMaLo:
             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
             netzebene=Netzebene.NSP,
         )
-        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert malo.version is not None, "versionstruktur was not automatically set"
         assert malo.typ is Typ.MARKTLOKATION, "_typ was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
@@ -84,7 +86,7 @@ class TestMaLo:
             endkunde=gp,
             kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
         )
-        assert malo.versionstruktur == "2", "versionstruktur was not automatically set"
+        assert malo.version is not None, "versionstruktur was not automatically set"
         assert malo.typ == Typ.MARKTLOKATION, "_typ was not automatically set"
 
         json_string = malo.model_dump_json(by_alias=True)
