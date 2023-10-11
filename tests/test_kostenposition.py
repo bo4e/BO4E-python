@@ -35,7 +35,7 @@ class TestKostenposition:
                     menge=example_menge,
                     artikeldetail="foo",
                 ),
-                id="required and optional attributes",
+                id="all attributes at first level",
             ),
         ],
     )
