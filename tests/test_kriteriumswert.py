@@ -19,11 +19,8 @@ class TestKriteriumWert:
             ),
         ],
     )
-    def test_kriteriumwert_serialization_roundtrip(
-        self,
-        kriteriumwert: KriteriumWert,
-    ) -> None:
+    def test_kriteriumwert_serialization_roundtrip(self, kriteriumwert: KriteriumWert) -> None:
         """
-        Test de-/serialisation of KriteriumWert with minimal attributes.
+        Test de-/serialisation of KriteriumWert.
         """
         assert_serialization_roundtrip(kriteriumwert)
