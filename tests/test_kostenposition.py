@@ -41,6 +41,6 @@ class TestKostenposition:
     )
     def test_serialization_roundtrip(self, kostenposition: Kostenposition) -> None:
         """
-        Test de-/serialisation of Kostenposition
+        Test de-/serialisation of Kostenposition.
         """
         assert_serialization_roundtrip(kostenposition)
