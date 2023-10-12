@@ -1,12 +1,9 @@
 from decimal import Decimal
-from typing import Any, Dict
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Betrag, Kostenblock, Kostenposition, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_sigmoidparameter import example_sigmoidparameter
 
 
 class TestKostenblock:
@@ -37,7 +34,7 @@ class TestKostenblock:
                         ),
                     ],
                 ),
-                id="maximal",
+                id="all attributes at first level",
             ),
         ],
     )
