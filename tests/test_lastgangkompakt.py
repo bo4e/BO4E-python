@@ -1,11 +1,7 @@
-from typing import Any, Dict
-
 import pytest
-from pydantic import ValidationError
 
-from bo4e import LastgangKompakt, Lokationstyp, Mengeneinheit, Sparte, Tagesvektor, Zeiteinheit, Zeitintervall
+from bo4e import LastgangKompakt, Lokationstyp, Mengeneinheit, Sparte, Tagesvektor, Zeitintervall
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_tagesvektor import example_tagesvektor
 
 
 class TestLastgangKompakt:
