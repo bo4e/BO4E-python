@@ -1,9 +1,7 @@
 import pytest
-from pydantic import ValidationError
 
-from bo4e import Lastgang, Lokationstyp, Mengeneinheit, Sparte
+from bo4e import Lastgang, Lokationstyp, Mengeneinheit, Sparte, Zeitreihenwert
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_zeitreihenwert import example_zeitreihenwert
 
 
 class TestLastgang:
@@ -18,13 +16,13 @@ class TestLastgang:
                     obis_kennzahl="1-0:1.8.1",
                     lokationstyp=Lokationstyp.MELO,
                     messgroesse=Mengeneinheit.KWH,
-                    werte=[example_zeitreihenwert],
+                    werte=[Zeitreihenwert()],
                 ),
             ),
         ],
     )
     def test_serialization_roundtrip(self, lastgang_kompakt: Lastgang) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation of Lastgang Kompakt.
         """
         assert_serialization_roundtrip(lastgang_kompakt)
