@@ -8,7 +8,7 @@ class Zaehlergroesse(StrEnum):
     Auflistung möglicher Größen von Zählern
     """
 
-    GKOMMAP5 = "G2KOMMA5"  #: Gaszähler Größe G2.5
+    G2KOMMAP5 = "G2KOMMA5"  #: Gaszähler Größe G2.5
     G4 = "G4"  #: Gaszähler Größe G4
     G6 = "G6"  #: Gaszähler Größe G6
     G10 = "G10"  #: Gaszähler Größe G10
