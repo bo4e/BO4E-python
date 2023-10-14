@@ -3,7 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import LastgangKompakt, Lokationstyp, Mengeneinheit, Sparte, Zeiteinheit, Zeitintervall
+from bo4e import LastgangKompakt, Lokationstyp, Mengeneinheit, Sparte, Tagesvektor, Zeiteinheit, Zeitintervall
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_tagesvektor import example_tagesvektor
 
@@ -20,11 +20,8 @@ class TestLastgangKompakt:
                     obis_kennzahl="1-0:1.8.1",
                     lokationstyp=Lokationstyp.MELO,
                     messgroesse=Mengeneinheit.KWH,
-                    zeitintervall=Zeitintervall(
-                        wert=1,
-                        zeiteinheit=Zeiteinheit.VIERTEL_STUNDE,
-                    ),
-                    tagesvektoren=[example_tagesvektor],
+                    zeitintervall=Zeitintervall(),
+                    tagesvektoren=[Tagesvektor()],
                 ),
             ),
         ],
