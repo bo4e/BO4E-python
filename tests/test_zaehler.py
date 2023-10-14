@@ -8,13 +8,35 @@ from bo4e import (
     Energierichtung,
     ExterneReferenz,
     Mengeneinheit,
+    Registeranzahl,
     Sparte,
-    Tarifart,
     Typ,
     Zaehler,
     Zaehlerauspraegung,
     Zaehlertyp,
     Zaehlwerk,
+)
+
+example_zaehler = Zaehler(
+    zaehlernummer="000111222",
+    sparte=Sparte.STROM,
+    zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
+    zaehlwerke=[
+        Zaehlwerk(
+            zaehlwerk_id="98765",
+            einheit=Mengeneinheit.KW,
+            richtung=Energierichtung.EINSP,
+            bezeichnung="my zaehlwerk",
+            obis_kennzahl="1-0:1.8.1",
+            wandlerfaktor=Decimal(0.95),
+        )
+    ],
+    zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
+    registeranzahl=Registeranzahl.ZWEITARIF,
+    zaehlerkonstante=Decimal(0.9),
+    eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
+    externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
+    letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
 )
 
 
@@ -38,7 +60,7 @@ class TestZaehler:
                 )
             ],
             zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-            tarifart=Tarifart.ZWEITARIF,
+            registeranzahl=Registeranzahl.ZWEITARIF,
             zaehlerkonstante=Decimal(0.9),
             eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
             externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],

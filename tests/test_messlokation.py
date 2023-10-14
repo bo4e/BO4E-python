@@ -12,15 +12,14 @@ from bo4e import (
     Dienstleistungstyp,
     Energierichtung,
     ExterneReferenz,
-    Geokoordinaten,
+    Geraet,
+    Geraeteklasse,
     Geraetetyp,
-    Hardware,
-    Katasteradresse,
     Mengeneinheit,
     Messlokation,
     Netzebene,
+    Registeranzahl,
     Sparte,
-    Tarifart,
     Typ,
     Zaehler,
     Zaehlerauspraegung,
@@ -66,8 +65,17 @@ class TestMeLo:
             netzebene_messung=Netzebene.MSP,
             messgebietnr="664073",
             geraete=[
-                Hardware(geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM, bezeichnung="intelligentes Messsystem"),
-                Hardware(geraetetyp=Geraetetyp.MODEM, bezeichnung="56k Modem"),
+                Geraet(
+                    geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM,
+                    bezeichnung="intelligentes Messsystem",
+                    geraetenummer="123",
+                ),
+                Geraet(
+                    geraeteklasse=Geraeteklasse.WANDLER,
+                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
+                    bezeichnung="56k Modem",
+                    geraetenummer="456",
+                ),
             ],
             messdienstleistung=[
                 Dienstleistung(
@@ -95,7 +103,7 @@ class TestMeLo:
                         )
                     ],
                     zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-                    tarifart=Tarifart.ZWEITARIF,
+                    registeranzahl=Registeranzahl.ZWEITARIF,
                     zaehlerkonstante=Decimal(0.9),
                     eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
                     externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],

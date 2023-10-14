@@ -1,0 +1,548 @@
+{
+    "$defs": {
+        "AbgabeArt": {
+            "description": "Art der Konzessionsabgabe",
+            "enum": [
+                "KAS",
+                "SA",
+                "SAS",
+                "TA",
+                "TAS",
+                "TK",
+                "TKS",
+                "TS",
+                "TSS"
+            ],
+            "title": "AbgabeArt",
+            "type": "string"
+        },
+        "Energierichtung": {
+            "description": "Spezifiziert die Energierichtung einer Markt- und/oder Messlokation",
+            "enum": [
+                "AUSSP",
+                "EINSP"
+            ],
+            "title": "Energierichtung",
+            "type": "string"
+        },
+        "Konzessionsabgabe": {
+            "additionalProperties": true,
+            "description": "Diese Komponente wird zur Übertagung der Details zu einer Konzessionsabgabe verwendet.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Konzessionsabgabe.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Konzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Konzessionsabgabe.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
+                "kategorie": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kategorie"
+                },
+                "kosten": {
+                    "anyOf": [
+                        {
+                            "type": "number"
+                        },
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Kosten"
+                },
+                "satz": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/AbgabeArt"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                }
+            },
+            "title": "Konzessionsabgabe",
+            "type": "object"
+        },
+        "Marktrolle": {
+            "description": "Diese Rollen kann ein Marktteilnehmer einnehmen.",
+            "enum": [
+                "NB",
+                "LF",
+                "MSB",
+                "DL",
+                "BKV",
+                "BKO",
+                "UENB",
+                "KUNDE_SELBST_NN",
+                "MGV",
+                "EIV",
+                "RB",
+                "KUNDE",
+                "INTERESSENT",
+                "BTR"
+            ],
+            "title": "Marktrolle",
+            "type": "string"
+        },
+        "Mengeneinheit": {
+            "description": "Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.",
+            "enum": [
+                "W",
+                "WH",
+                "KW",
+                "KWH",
+                "KVARH",
+                "MW",
+                "MWH",
+                "STUECK",
+                "KUBIKMETER",
+                "STUNDE",
+                "TAG",
+                "MONAT",
+                "JAHR",
+                "PROZENT"
+            ],
+            "title": "Mengeneinheit",
+            "type": "string"
+        },
+        "Verbrauchsart": {
+            "description": "Verbrauchsart einer Marktlokation.",
+            "enum": [
+                "KL",
+                "KLW",
+                "KLWS",
+                "W",
+                "WS"
+            ],
+            "title": "Verbrauchsart",
+            "type": "string"
+        },
+        "Verwendungszweck": {
+            "description": "Verwendungszweck der Werte Marktlokation",
+            "enum": [
+                "NETZNUTZUNGSABRECHNUNG",
+                "BILANZKREISABRECHNUNG",
+                "MEHRMINDERMENGENABRECHNUNG",
+                "ENDKUNDENABRECHNUNG",
+                "UEBERMITTLUNG_AN_DAS_HKNR",
+                "ERMITTLUNG_AUSGEGLICHENHEIT_BILANZKREIS"
+            ],
+            "title": "Verwendungszweck",
+            "type": "string"
+        },
+        "VerwendungszweckProMarktrolle": {
+            "additionalProperties": true,
+            "description": "Dient zur Identifizierung des Verwendungszwecks der Marktrolle an der Marktlokation, der die Werte zu übermitteln sind.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Verwendungszweck.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Verwendungszweck.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
+                "marktrolle": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Marktrolle"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null
+                },
+                "zwecke": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Verwendungszweck"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zwecke"
+                }
+            },
+            "title": "VerwendungszweckProMarktrolle",
+            "type": "object"
+        },
+        "Waermenutzung": {
+            "description": "Wärmenutzung Marktlokation",
+            "enum": [
+                "SPEICHERHEIZUNG",
+                "WAERMEPUMPE",
+                "DIREKTHEIZUNG"
+            ],
+            "title": "Waermenutzung",
+            "type": "string"
+        },
+        "Zaehlzeitregister": {
+            "additionalProperties": true,
+            "description": "Mit dieser Komponente werden Zählzeitregister modelliert. Ein Zählzeitregister beschreibt eine erweiterte Definition der Zählzeit\nin Bezug auf ein Register. Dabei werden alle Codes dazu vom Netzbetreiber vergeben.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlzeitregister.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlzeitregister JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlzeitregister.json>`_",
+            "properties": {
+                "_id": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": " Id"
+                },
+                "_version": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": "0.6.1.dev41+g6bc6774.d20231011",
+                    "title": " Version"
+                },
+                "istSchwachlastfaehig": {
+                    "anyOf": [
+                        {
+                            "type": "boolean"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Istschwachlastfaehig"
+                },
+                "zaehlzeitDefinition": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlzeitdefinition"
+                },
+                "zaehlzeitRegister": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "title": "Zaehlzeitregister"
+                }
+            },
+            "title": "Zaehlzeitregister",
+            "type": "object"
+        }
+    },
+    "additionalProperties": true,
+    "description": "Mit dieser Komponente werden Zählwerke modelliert.\n\n.. raw:: html\n\n    <object data=\"../_static/images/bo4e/com/Zaehlwerk.svg\" type=\"image/svg+xml\"></object>\n\n.. HINT::\n    `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlwerk.json>`_",
+    "properties": {
+        "_id": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": " Id"
+        },
+        "_version": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": "0.6.1.dev41+g6bc6774.d20231011",
+            "title": " Version"
+        },
+        "anzahlAblesungen": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Anzahlablesungen"
+        },
+        "bezeichnung": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Bezeichnung"
+        },
+        "einheit": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Mengeneinheit"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "istAbrechnungsrelevant": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istabrechnungsrelevant"
+        },
+        "istSchwachlastfaehig": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istschwachlastfaehig"
+        },
+        "istSteuerbefreit": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Iststeuerbefreit"
+        },
+        "istUnterbrechbar": {
+            "anyOf": [
+                {
+                    "type": "boolean"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Istunterbrechbar"
+        },
+        "konzessionsabgabe": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Konzessionsabgabe"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "nachkommastelle": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Nachkommastelle"
+        },
+        "obisKennzahl": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Obiskennzahl"
+        },
+        "richtung": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Energierichtung"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "verbrauchsart": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Verbrauchsart"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "verwendungszwecke": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/VerwendungszweckProMarktrolle"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Verwendungszwecke"
+        },
+        "vorkommastelle": {
+            "anyOf": [
+                {
+                    "type": "integer"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Vorkommastelle"
+        },
+        "waermenutzung": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Waermenutzung"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        },
+        "wandlerfaktor": {
+            "anyOf": [
+                {
+                    "type": "number"
+                },
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Wandlerfaktor"
+        },
+        "zaehlwerkId": {
+            "anyOf": [
+                {
+                    "type": "string"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "title": "Zaehlwerkid"
+        },
+        "zaehlzeitregister": {
+            "anyOf": [
+                {
+                    "$ref": "#/$defs/Zaehlzeitregister"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null
+        }
+    },
+    "title": "Zaehlwerk",
+    "type": "object"
+}
