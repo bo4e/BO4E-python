@@ -6,7 +6,7 @@ from tests.serialization_helper import assert_serialization_roundtrip
 
 class TestLastgang:
     @pytest.mark.parametrize(
-        "lastgang_kompakt",
+        "lastgang",
         [
             pytest.param(
                 Lastgang(
@@ -21,8 +21,8 @@ class TestLastgang:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, lastgang_kompakt: Lastgang) -> None:
+    def test_serialization_roundtrip(self, lastgang: Lastgang) -> None:
         """
-        Test de-/serialisation of Lastgang Kompakt.
+        Test de-/serialisation of Lastgang.
         """
-        assert_serialization_roundtrip(lastgang_kompakt)
+        assert_serialization_roundtrip(lastgang)
