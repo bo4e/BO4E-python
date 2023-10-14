@@ -1,14 +1,21 @@
+import pytest
+
 from bo4e import MarktgebietInfo
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestMarktgebietinfo:
-    def test_serialization(self) -> None:
-        mgi = MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")
+    @pytest.mark.parametrize(
+        "marktgebietinfo",
+        [
+            pytest.param(
+                MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B"),
+            ),
+        ],
+    )
+    def test_serialization(self, marktgebietinfo: MarktgebietInfo) -> None:
+        """
+        Test de-/serialisation of Marktgebietinfo.
+        """
 
-        json_string = mgi.model_dump_json(by_alias=True)
-
-        assert "marktgebiet" in json_string, "No camel case serialization"
-
-        deserialized_mgi: MarktgebietInfo = MarktgebietInfo.model_validate_json(json_string)
-
-        assert mgi == deserialized_mgi
+        assert_serialization_roundtrip(marktgebietinfo)
