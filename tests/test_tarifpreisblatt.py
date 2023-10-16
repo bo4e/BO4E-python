@@ -5,6 +5,7 @@ from pydantic import ValidationError
 
 from bo4e import (
     Kundentyp,
+    Marktteilnehmer,
     Sparte,
     Tarifart,
     Tarifberechnungsparameter,
@@ -16,7 +17,6 @@ from bo4e import (
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlag import example_aufabschlag
 from tests.test_energiemix import example_energiemix
-from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisgarantie import example_preisgarantie
 from tests.test_tarifpreisposition import example_tarifpreisposition
 from tests.test_vertragskonditionen import example_vertragskonditionen
@@ -41,7 +41,7 @@ class TestTarifpreisblatt:
                     vertragskonditionen=example_vertragskonditionen,
                     zeitliche_gueltigkeit=example_zeitraum,
                     energiemix=example_energiemix,
-                    anbieter=example_marktteilnehmer,
+                    anbieter=Marktteilnehmer(),
                     # ^^ above is all copy pasted from Tarifinfo BO
                     # vv below are the attributes of tarifpreisblatt
                     preisstand=datetime.datetime(2022, 1, 1, 0, 0, 0, tzinfo=datetime.timezone.utc),
@@ -56,6 +56,6 @@ class TestTarifpreisblatt:
     )
     def test_serialization_roundtrip(self, tarifpreisblatt: Tarifpreisblatt) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation Tarifpreisblatt.
         """
         assert_serialization_roundtrip(tarifpreisblatt)

@@ -3,10 +3,9 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Sparte, Tarifart, Tarifinfo, Tarifmerkmal, Tariftyp
+from bo4e import Kundentyp, Marktteilnehmer, Sparte, Tarifart, Tarifinfo, Tarifmerkmal, Tariftyp
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
-from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_vertragskonditionen import example_vertragskonditionen
 from tests.test_zeitraum import example_zeitraum
 
@@ -29,7 +28,7 @@ class TestTarifinfo:
                     vertragskonditionen=example_vertragskonditionen,
                     zeitliche_gueltigkeit=example_zeitraum,
                     energiemix=example_energiemix,
-                    anbieter=example_marktteilnehmer,
+                    anbieter=Marktteilnehmer(),
                     anwendung_von=datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
                 )
             ),
@@ -37,6 +36,6 @@ class TestTarifinfo:
     )
     def test_serialization_roundtrip(self, tarifinfo: Tarifinfo) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation Tarifinfo.
         """
         assert_serialization_roundtrip(tarifinfo)

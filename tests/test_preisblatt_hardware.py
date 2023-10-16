@@ -5,13 +5,13 @@ from bo4e import (
     Bilanzierungsmethode,
     Dienstleistungstyp,
     Geraeteeigenschaften,
+    Marktteilnehmer,
     Netzebene,
     PreisblattHardware,
     Preisstatus,
     Sparte,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisposition import example_preisposition
 from tests.test_zeitraum import example_zeitraum
 
@@ -27,7 +27,7 @@ class TestPreisblattHardware:
                     preisstatus=Preisstatus.ENDGUELTIG,
                     preispositionen=[example_preisposition],
                     gueltigkeit=example_zeitraum,
-                    herausgeber=example_marktteilnehmer,
+                    herausgeber=Marktteilnehmer(),
                     bilanzierungsmethode=Bilanzierungsmethode.TLP_GEMEINSAM,
                     messebene=Netzebene.MSP,
                     inklusive_dienstleistungen=[Dienstleistungstyp.AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB],
@@ -39,6 +39,6 @@ class TestPreisblattHardware:
     )
     def test_serialization_roundtrip(self, preisblatt_hardware: PreisblattHardware) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation Preisblatt-Hardware.
         """
         assert_serialization_roundtrip(preisblatt_hardware)

@@ -3,10 +3,9 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Regionaltarif, Sparte, Tarifart, Tarifmerkmal, Tariftyp
+from bo4e import Kundentyp, Marktteilnehmer, Regionaltarif, Sparte, Tarifart, Tarifmerkmal, Tariftyp
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
-from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_regionalepreisgarantie import example_regionale_preisgarantie
 from tests.test_regionaleraufabschlag import example_regionaler_auf_abschlag
 from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
@@ -42,7 +41,7 @@ class TestRegionaltarif:
                     vertragskonditionen=example_vertragskonditionen,
                     zeitliche_gueltigkeit=example_zeitraum,
                     energiemix=example_energiemix,
-                    anbieter=example_marktteilnehmer,
+                    anbieter=Marktteilnehmer(),
                 ),
                 id="required and optional attributes",
             ),
@@ -60,7 +59,7 @@ class TestRegionaltarif:
                     tarifart=Tarifart.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
-                    anbieter=example_marktteilnehmer,
+                    anbieter=Marktteilnehmer(),
                 ),
                 id="required attributes",
             ),

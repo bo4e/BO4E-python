@@ -1,9 +1,8 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Preisblatt, Preisstatus, Sparte
+from bo4e import Marktteilnehmer, Preisblatt, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisposition import example_preisposition
 from tests.test_zeitraum import example_zeitraum
 
@@ -19,13 +18,13 @@ class TestPreisblatt:
                     preisstatus=Preisstatus.ENDGUELTIG,
                     preispositionen=[example_preisposition],
                     gueltigkeit=example_zeitraum,
-                    herausgeber=example_marktteilnehmer,
+                    herausgeber=Marktteilnehmer(),
                 )
             ),
         ],
     )
     def test_serialization_roundtrip(self, preisblatt: Preisblatt) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation of Preisblatt.
         """
         assert_serialization_roundtrip(preisblatt)
