@@ -16,7 +16,14 @@ example_menge_dict = {
 
 
 class TestMenge:
-    @pytest.mark.parametrize("menge", [pytest.param(Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH))])
+    @pytest.mark.parametrize(
+        "menge",
+        [
+            pytest.param(
+                Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH),
+            )
+        ],
+    )
     def test_serialization_roundtrip(self, menge: Menge) -> None:
         """
         Test de-/serialisation of Menge.
