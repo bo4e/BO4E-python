@@ -1,124 +1,42 @@
-import json
-from datetime import datetime
-from decimal import Decimal
 from typing import Any, Dict
 
 import pytest
-from pydantic import ValidationError
 
-from bo4e import (
-    Adresse,
-    Dienstleistung,
-    Dienstleistungstyp,
-    Energierichtung,
-    Geokoordinaten,
-    Geraetetyp,
-    Hardware,
-    Katasteradresse,
-    Mengeneinheit,
-    Messlokation,
-    Netzebene,
-    Sparte,
-    Tarifart,
-    Typ,
-    Zaehler,
-    Zaehlerauspraegung,
-    Zaehlertyp,
-    Zaehlwerk,
-)
-from bo4e.zusatzattribut import ZusatzAttribut
+from bo4e import Adresse, Dienstleistung, Hardware, Messlokation, Netzebene, Sparte, Zaehler
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestMeLo:
-    def test_serialisation_only_required_attributes(self) -> None:
-        """
-        Test serialisation of Messlokation only with required attributes
-        """
-        melo = Messlokation(
-            messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
-            sparte=Sparte.STROM,
-        )
-        assert melo.version is not None, "versionstruktur was not automatically set"
-        assert melo.typ is Typ.MESSLOKATION, "_typ was not automatically set"
-
-        json_string = melo.model_dump_json(by_alias=True)
-        json_dict = json.loads(json_string)
-
-        assert "_typ" in json_dict, "No camel case serialization"
-        assert "messlokationsId" in json_dict, "No camel case serialization"
-
-        deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
-
-        # check that `deserialized_malo.marktlokations_id` and `malo.marktlokations_id` have the same value
-        # but are **not** the same object.
-        assert deserialized_melo.messlokations_id == melo.messlokations_id
-        assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.typ is Typ.MESSLOKATION
-
-    def test_serialization_required_and_optional_attributes(self) -> None:
-        """
-        Test serialisation of Messlokation with required attributes and optional attributes
-        """
-
-        melo = Messlokation(
-            messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
-            sparte=Sparte.STROM,
-            netzebene_messung=Netzebene.MSP,
-            messgebietnr="664073",
-            geraete=[
-                Hardware(geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM, bezeichnung="intelligentes Messsystem"),
-                Hardware(geraetetyp=Geraetetyp.MODEM, bezeichnung="56k Modem"),
-            ],
-            messdienstleistung=[
-                Dienstleistung(
-                    dienstleistungstyp=Dienstleistungstyp.AUSLESUNG_TAEGLICH_FERNAUSLESUNG,
-                    bezeichnung="fernauslesung_taeglich",
-                ),
-                Dienstleistung(
-                    dienstleistungstyp=Dienstleistungstyp.ENTSPERRUNG,
-                    bezeichnung="entsperrung",
-                ),
-            ],
-            messlokationszaehler=[
-                Zaehler(
-                    zaehlernummer="000111222",
+    @pytest.mark.parametrize(
+        "melo",
+        [
+            pytest.param(
+                Messlokation(
+                    messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
                     sparte=Sparte.STROM,
-                    zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
-                    zaehlwerke=[
-                        Zaehlwerk(
-                            zaehlwerk_id="98765",
-                            einheit=Mengeneinheit.KW,
-                            richtung=Energierichtung.EINSP,
-                            bezeichnung="my zaehlwerk",
-                            obis_kennzahl="1-0:1.8.1",
-                            wandlerfaktor=Decimal(0.95),
-                        )
+                    netzebene_messung=Netzebene.MSP,
+                    messgebietnr="664073",
+                    geraete=[
+                        Hardware(),
+                        Hardware(),
                     ],
-                    zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-                    tarifart=Tarifart.ZWEITARIF,
-                    zaehlerkonstante=Decimal(0.9),
-                    eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
-                    zusatz_attribute=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
-                    letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
+                    messdienstleistung=[
+                        Dienstleistung(),
+                        Dienstleistung(),
+                    ],
+                    messlokationszaehler=[Zaehler()],
+                    grundzustaendiger_msb_codenr="9910125000002",
+                    messadresse=Adresse(),
                 )
-            ],
-            grundzustaendiger_msb_codenr="9910125000002",
-            messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
-        )
-        assert melo.version is not None, "versionstruktur was not automatically set"
-        assert melo.typ == Typ.MESSLOKATION, "_typ was not automatically set"
+            )
+        ],
+    )
+    def test_serialization_roundtrip(self, melo: Messlokation) -> None:
+        """
+        Test de-/serialisation of Messlokation.
+        """
 
-        json_string = melo.model_dump_json(by_alias=True)
-        json_dict = json.loads(json_string)
-
-        assert "_typ" in json_dict, "No camel case serialization"
-        assert "messlokationsId" in json_dict, "No camel case serialization"
-
-        deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
-
-        assert deserialized_melo.messlokations_id == melo.messlokations_id
-        assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.typ is Typ.MESSLOKATION
+        assert_serialization_roundtrip(melo)
 
     def test_extension_data(self) -> None:
         """
