@@ -23,7 +23,7 @@ from bo4e.enum.sparte import Sparte
 class Lastgang(Geschaeftsobjekt):
     """
     Modell zur Abbildung eines Lastganges;
-    #todo:update docstring
+In diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall angegeben und es bietet daher eine hohe Flexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.
 
     .. raw:: html
 
