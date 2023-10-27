@@ -105,7 +105,7 @@ def validate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
     _logger.debug("Schema for %s is consistent", name)
 
 
-def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str) -> None:
+def generate_schema(file_path: Path, schema_json_dict: dict[str, Any]) -> None:
     """
     Generate the schema for a class
     """
@@ -185,7 +185,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
         if mode == "validate":
             validate_schema(file_path, schema_json_dict, name)
         elif mode == "generate":
-            generate_schema(file_path, schema_json_dict, name)
+            generate_schema(file_path, schema_json_dict)
             _logger.info("Generated schema for %s", name)
         else:
             raise ValueError(f"Unknown mode '{mode}'")
