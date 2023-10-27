@@ -67,7 +67,7 @@ jobs:
       # For this, we use the lightweight tool jq (https://stedolan.github.io/jq/) to parse the JSON
       # response from the API.
       - name: Tag and release the new version in BO4E-Schemas
-        run: ./bo4e_schemas_create_release.sh
+        run: python bo4e_schemas_create_release.py
         env:
           GITHUB_TOKEN: ${{ secrets.BO4E_PYTHON_GENERATE_SCHEMAS }} # this token expires on 2024-10-09
           VERSION: ${{ github.ref_name }}
