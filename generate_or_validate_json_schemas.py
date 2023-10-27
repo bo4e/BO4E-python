@@ -22,7 +22,7 @@ root_directory = Path(__file__).parent
 output_directory = root_directory / "json_schemas"
 
 NEW_REF_TEMPLATE = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/main/src/bo4e_schemas/{pkg}/{model}.json"
+    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
 )
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
 
@@ -116,7 +116,9 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
         json_schema_file.write("\n")
 
 
-def replace_refs(schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]]) -> None:
+def replace_refs(
+    schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]], target_version: str
+) -> None:
     """
     Replace the definition of a class with an online reference to the definition
     """
@@ -141,7 +143,9 @@ def replace_refs(schema_json_dict: dict[str, Any], namespace: dict[str, tuple[st
                 ref_model = match.group("model")
                 if ref_model not in namespace:
                     raise ValueError(f"Unknown referenced model {ref_model}")
-                obj["$ref"] = NEW_REF_TEMPLATE.format(pkg=namespace[ref_model][0], model=ref_model)
+                obj["$ref"] = NEW_REF_TEMPLATE.format(
+                    pkg=namespace[ref_model][0], model=ref_model, version=target_version
+                )
 
     traverse_dict(schema_json_dict)
 
@@ -154,7 +158,16 @@ def replace_refs(schema_json_dict: dict[str, Any], namespace: dict[str, tuple[st
     required=True,
     type=click.Choice(["validate", "generate"]),
 )
-def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> None:
+@click.option(
+    "--target-version",
+    "-t",
+    help="the tagged version known inside the release workflow",
+    required=False,
+    type=click.STRING,
+    envvar="TARGET_VERSION",
+    default="v0.0.0",
+)
+def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str) -> None:
     """generate json schemas for all BOs and COMs"""
     packages = ["bo", "com", "enum"]
 
@@ -167,7 +180,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"]) -> 
         file_path = output_directory / pkg / (name + ".json")
 
         schema_json_dict = get_schema_json_dict(cls)
-        replace_refs(schema_json_dict, namespace)
+        replace_refs(schema_json_dict, namespace, target_version)
 
         if mode == "validate":
             validate_schema(file_path, schema_json_dict, name)
