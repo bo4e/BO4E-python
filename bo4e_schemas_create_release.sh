@@ -50,7 +50,7 @@ if ! release=$(curl --fail -X POST \
   -d '{
     "tag_name": "'$VERSION'",
     "name": '$(echo $release_infos | jq ".name")',
-    "body": '"$(echo $release_infos | jq ".body |= @sh")"',
+    "body": '"$(echo $release_infos | jq ".body")"',
     "draft": false,
     "prerelease": '$(echo $release_infos | jq -r ".prerelease")',
     "make_latest": "'$IS_LATEST'",
