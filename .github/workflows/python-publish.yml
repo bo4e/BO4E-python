@@ -71,7 +71,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.BO4E_PYTHON_GENERATE_SCHEMAS }} # this token expires on 2024-10-09
           VERSION: ${{ github.ref_name }}
-          TAG_SHA: ${{ github.sha }}
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-latest
