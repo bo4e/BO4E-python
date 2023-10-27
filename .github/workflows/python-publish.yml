@@ -73,10 +73,12 @@ jobs:
           curl -X POST \
             -H "Authorization: token YOUR_TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            https://api.github.com/repos/Hochfrequenz/BO4E-Schemas/git/refs \
+            https://api.github.com/repos/Hochfrequenz/BO4E-Schemas/git/tags \
             -d '{
-              "ref": "refs/tags/${{ github.ref_name }}",
-              "sha": "$COMMIT_SHA"
+              "tag": "${{ github.ref_name }}",
+              "object": "$COMMIT_SHA",
+              "message": "BO4E ${{ github.ref_name }}",
+              "type": "commit"
             }'
         env:
           GITHUB_TOKEN: ${{ secrets.BO4E_PYTHON_GENERATE_SCHEMAS }} # this token expires on 2024-10-09
