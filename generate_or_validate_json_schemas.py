@@ -86,9 +86,6 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
         raise ValueError(f"Class {cls} is neither a pydantic BaseModel nor an enum.")
     if "$defs" in schema_json_dict:
         del schema_json_dict["$defs"]
-    # if "definitions" in schema_json_dict:
-    #     for definition in schema_json_dict["definitions"].values():
-    #         definition["description"] = definition["description"].strip()
     return schema_json_dict
 
 
