@@ -20,7 +20,7 @@ class TestGeokoordinaten:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, geokoordinaten) -> None:
+    def test_serialization_roundtrip(self, geokoordinaten: Geokoordinaten) -> None:
         assert_serialization_roundtrip(geokoordinaten)
 
     def test_wrong_datatype(self) -> None:

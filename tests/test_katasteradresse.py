@@ -13,7 +13,7 @@ class TestKatasteradresse:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, katasteradresse) -> None:
+    def test_serialization_roundtrip(self, katasteradresse: Katasteradresse) -> None:
         """
         Test de-/serialisation of Katasteradresse.
         """
