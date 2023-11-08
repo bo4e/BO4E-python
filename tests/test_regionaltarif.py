@@ -8,6 +8,7 @@ from bo4e import (
     Marktteilnehmer,
     RegionalePreisgarantie,
     RegionalerAufAbschlag,
+    RegionaleTarifpreisposition,
     Regionaltarif,
     Sparte,
     Tarifart,
@@ -17,7 +18,6 @@ from bo4e import (
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
-from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
 from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
 from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
 from tests.test_zeitraum import example_zeitraum
@@ -32,7 +32,7 @@ class TestRegionaltarif:
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                     berechnungsparameter=example_tarifberechnungsparameter,
                     tarif_auf_abschlaege=[RegionalerAufAbschlag()],
-                    tarifpreise=[example_regionale_tarifpreisposition],
+                    tarifpreise=[RegionaleTarifpreisposition()],
                     preisgarantien=[RegionalePreisgarantie()],
                     tarifeinschraenkung=example_tarifeinschraenkung,
                     # ^^ above are the attributes of Regionaltarif
@@ -57,7 +57,7 @@ class TestRegionaltarif:
                 Regionaltarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                     berechnungsparameter=example_tarifberechnungsparameter,
-                    tarifpreise=[example_regionale_tarifpreisposition],
+                    tarifpreise=[RegionaleTarifpreisposition()],
                     # ^^ above are the attributes of Regionaltarif
                     # vv below is all copy pasted from Tarifinfo test
                     bezeichnung="foo",

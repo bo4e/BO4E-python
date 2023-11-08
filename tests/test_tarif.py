@@ -7,6 +7,7 @@ from bo4e import (
     Kundentyp,
     Marktteilnehmer,
     Preisgarantie,
+    RegionaleTarifpreisposition,
     Sparte,
     Tarif,
     Tarifart,
@@ -17,7 +18,6 @@ from bo4e import (
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlagregional import example_aufabschlagregional
 from tests.test_energiemix import example_energiemix
-from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
 from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
 from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
 from tests.test_tarifpreispositionproort import example_tarifpreispositionproort
