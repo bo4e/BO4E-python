@@ -8,25 +8,23 @@ from pydantic import ValidationError
 from bo4e import Tagesvektor, Zeitreihenwertkompakt
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_tagesvektor: Tagesvektor = Tagesvektor(
-    tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
-    werte=[
-        Zeitreihenwertkompakt(
-            wert=Decimal(40),
-        ),
-        Zeitreihenwertkompakt(
-            wert=Decimal(50),
-        ),
-    ],
-)
-
 
 class TestTagesvektor:
     @pytest.mark.parametrize(
         "tagesvektor",
         [
             pytest.param(
-                example_tagesvektor,
+                Tagesvektor(
+                    tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
+                    werte=[
+                        Zeitreihenwertkompakt(
+                            wert=Decimal(40),
+                        ),
+                        Zeitreihenwertkompakt(
+                            wert=Decimal(50),
+                        ),
+                    ],
+                ),
             ),
         ],
     )
