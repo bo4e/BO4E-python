@@ -3,12 +3,11 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import BDEWArtikelnummer, Rechnungsposition, Zeiteinheit
+from bo4e import BDEWArtikelnummer, Rechnungsposition, Steuerbetrag, Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge
 from tests.test_preis import example_preis
-from tests.test_steuerbetrag import example_steuerbetrag
 
 
 class TestRechnungsposition:
@@ -29,7 +28,7 @@ class TestRechnungsposition:
                     einzelpreis=example_preis,
                     teilsumme_netto=example_betrag,
                     teilrabatt_netto=example_betrag,
-                    teilsumme_steuer=example_steuerbetrag,
+                    teilsumme_steuer=Steuerbetrag(),
                     artikel_id="7-8-9",
                 ),
                 id="maximal attributes",

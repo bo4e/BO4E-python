@@ -26,7 +26,6 @@ from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge
 from tests.test_preis import example_preis
-from tests.test_steuerbetrag import example_steuerbetrag
 
 
 class TestRechnung:
@@ -69,7 +68,7 @@ class TestRechnung:
                             positions_menge=example_menge,
                             einzelpreis=example_preis,
                             teilsumme_netto=example_betrag,
-                            teilsumme_steuer=example_steuerbetrag,
+                            teilsumme_steuer=Steuerbetrag(),
                         )
                     ],
                     sparte=Sparte.STROM,
@@ -110,7 +109,7 @@ class TestRechnung:
                             positions_menge=example_menge,
                             einzelpreis=example_preis,
                             teilsumme_netto=example_betrag,
-                            teilsumme_steuer=example_steuerbetrag,
+                            teilsumme_steuer=Steuerbetrag(),
                         )
                     ],
                     sparte=Sparte.STROM,

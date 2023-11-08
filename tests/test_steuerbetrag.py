@@ -7,20 +7,18 @@ from pydantic import ValidationError
 from bo4e import Steuerbetrag, Steuerkennzeichen, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_steuerbetrag = Steuerbetrag(
-    steuerkennzeichen=Steuerkennzeichen.UST_7,
-    basiswert=Decimal(100),
-    steuerwert=Decimal(19),
-    waehrung=Waehrungscode.EUR,
-)
-
 
 class TestSteuerbetrag:
     @pytest.mark.parametrize(
         "steuerbetrag",
         [
             pytest.param(
-                example_steuerbetrag,
+                Steuerbetrag(
+                    steuerkennzeichen=Steuerkennzeichen.UST_7,
+                    basiswert=Decimal(100),
+                    steuerwert=Decimal(19),
+                    waehrung=Waehrungscode.EUR,
+                ),
             ),
         ],
     )
