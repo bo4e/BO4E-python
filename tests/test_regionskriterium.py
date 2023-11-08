@@ -18,7 +18,11 @@ class TestRegionskriterium:
         "regionskriterium",
         [
             pytest.param(
-                example_regionskriterium,
+                Regionskriterium(
+                    regionskriteriumtyp=Regionskriteriumtyp.REGELGEBIET_NAME,
+                    gueltigkeitstyp=Gueltigkeitstyp.NICHT_IN,
+                    wert="Was ist ein Regionskriterium?",
+                ),
             ),
         ],
     )
