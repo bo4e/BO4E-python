@@ -8,13 +8,6 @@ from pydantic import ValidationError
 from bo4e import Mengeneinheit, Verbrauch, Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_verbrauch = Verbrauch(
-    wert=Decimal(40),
-    obis_kennzahl="1-0:1.8.1",
-    einheit=Mengeneinheit.KWH,
-    wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
-)
-
 
 class TestVerbrauch:
     @pytest.mark.parametrize(
@@ -30,7 +23,14 @@ class TestVerbrauch:
                     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
                 )
             ),
-            pytest.param(example_verbrauch),
+            pytest.param(
+                Verbrauch(
+                    wert=Decimal(40),
+                    obis_kennzahl="1-0:1.8.1",
+                    einheit=Mengeneinheit.KWH,
+                    wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+                ),
+            ),
         ],
     )
     def test_serialization_roundtrip(self, verbrauch: Verbrauch) -> None:
