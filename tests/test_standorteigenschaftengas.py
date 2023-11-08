@@ -15,7 +15,14 @@ example_standorteigenschaften_gas = StandorteigenschaftenGas(
 class TestStandorteigenschaftenGas:
     @pytest.mark.parametrize(
         "standorteigenschaftengas",
-        [pytest.param(example_standorteigenschaften_gas)],
+        [
+            pytest.param(
+                StandorteigenschaftenGas(
+                    netzkontonummern=["GASPOOLNH700xxxx"],
+                    marktgebiete=[MarktgebietInfo(marktgebiet="Gaspool", marktgebietcode="37Z701133MH0000B")],
+                ),
+            )
+        ],
     )
     def test_standorteigenschaftengas_serialization_roundtrip(
         self, standorteigenschaftengas: StandorteigenschaftenGas
