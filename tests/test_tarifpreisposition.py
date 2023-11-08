@@ -7,19 +7,6 @@ from pydantic import ValidationError
 from bo4e import Mengeneinheit, Preisstaffel, Preistyp, Tarifpreisposition, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_tarifpreisposition = Tarifpreisposition(
-    preistyp=Preistyp.ENTGELT_ABLESUNG,
-    einheit=Waehrungseinheit.EUR,
-    bezugseinheit=Mengeneinheit.KWH,
-    preisstaffeln=[
-        Preisstaffel(
-            einheitspreis=Decimal(40.0),
-            staffelgrenze_von=Decimal(12.5),
-            staffelgrenze_bis=Decimal(25.0),
-        ),
-    ],
-)
-
 
 class TestTarifpreisposition:
     @pytest.mark.parametrize(
