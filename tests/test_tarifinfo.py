@@ -3,10 +3,19 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Marktteilnehmer, Sparte, Tarifart, Tarifinfo, Tarifmerkmal, Tariftyp, Vertragskonditionen
+from bo4e import (
+    Energiemix,
+    Kundentyp,
+    Marktteilnehmer,
+    Sparte,
+    Tarifart,
+    Tarifinfo,
+    Tarifmerkmal,
+    Tariftyp,
+    Vertragskonditionen,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_energiemix import example_energiemix
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestTarifinfo:
@@ -25,8 +34,8 @@ class TestTarifinfo:
                     website="https://foo.inv",
                     bemerkung="super billig aber auch super dreckig",
                     vertragskonditionen=Vertragskonditionen(),
-                    zeitliche_gueltigkeit=example_zeitraum,
-                    energiemix=example_energiemix,
+                    zeitliche_gueltigkeit=Zeitraum(),
+                    energiemix=Energiemix(),
                     anbieter=Marktteilnehmer(),
                     anwendung_von=datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
                 )
