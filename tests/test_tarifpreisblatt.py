@@ -6,6 +6,7 @@ from pydantic import ValidationError
 from bo4e import (
     Kundentyp,
     Marktteilnehmer,
+    Preisgarantie,
     Sparte,
     Tarifart,
     Tarifberechnungsparameter,
@@ -18,7 +19,6 @@ from bo4e import (
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlag import example_aufabschlag
 from tests.test_energiemix import example_energiemix
-from tests.test_preisgarantie import example_preisgarantie
 from tests.test_tarifpreisposition import example_tarifpreisposition
 from tests.test_zeitraum import example_zeitraum
 
@@ -48,7 +48,7 @@ class TestTarifpreisblatt:
                     berechnungsparameter=Tarifberechnungsparameter(),
                     tarif_auf_abschlaege=[example_aufabschlag],
                     tarifpreise=[example_tarifpreisposition],
-                    preisgarantie=example_preisgarantie,
+                    preisgarantie=Preisgarantie(),
                     tarifeinschraenkung=Tarifeinschraenkung(),
                 )
             ),

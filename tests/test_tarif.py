@@ -3,11 +3,20 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Marktteilnehmer, Sparte, Tarif, Tarifart, Tarifmerkmal, Tariftyp, Vertragskonditionen
+from bo4e import (
+    Kundentyp,
+    Marktteilnehmer,
+    Preisgarantie,
+    Sparte,
+    Tarif,
+    Tarifart,
+    Tarifmerkmal,
+    Tariftyp,
+    Vertragskonditionen,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlagregional import example_aufabschlagregional
 from tests.test_energiemix import example_energiemix
-from tests.test_preisgarantie import example_preisgarantie
 from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
 from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
 from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
@@ -25,7 +34,7 @@ class TestTarif:
                     berechnungsparameter=example_tarifberechnungsparameter,
                     tarif_auf_abschlaege=[example_aufabschlagregional],
                     tarifpreise=[example_tarifpreispositionproort],
-                    preisgarantie=example_preisgarantie,
+                    preisgarantie=Preisgarantie(),
                     tarifeinschraenkung=example_tarifeinschraenkung,
                     # below are the attributes of tarifinfo
                     bezeichnung="foo",
