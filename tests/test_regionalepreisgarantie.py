@@ -15,26 +15,23 @@ from bo4e import (
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_regionale_preisgarantie = RegionalePreisgarantie(
-    preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
-    zeitliche_gueltigkeit=Zeitraum(
-        startzeitpunkt=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
-        endzeitpunkt=datetime(2021, 7, 30, tzinfo=timezone.utc),
-    ),
-    regionale_gueltigkeit=RegionaleGueltigkeit(
-        gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
-        kriteriums_werte=[KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")],
-    ),
-)
-
 
 class TestRegionalePreisgarantie:
     @pytest.mark.parametrize(
         "regionale_preisgarantie",
         [
             pytest.param(
-                example_regionale_preisgarantie,
-                id="only required attributes",
+                RegionalePreisgarantie(
+                    preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
+                    zeitliche_gueltigkeit=Zeitraum(
+                        startzeitpunkt=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
+                        endzeitpunkt=datetime(2021, 7, 30, tzinfo=timezone.utc),
+                    ),
+                    regionale_gueltigkeit=RegionaleGueltigkeit(
+                        gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
+                        kriteriums_werte=[KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")],
+                    ),
+                ),
             ),
         ],
     )

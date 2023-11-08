@@ -6,6 +6,7 @@ from pydantic import ValidationError
 from bo4e import (
     Kundentyp,
     Marktteilnehmer,
+    RegionalePreisgarantie,
     Regionaltarif,
     Sparte,
     Tarifart,
@@ -15,7 +16,6 @@ from bo4e import (
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
-from tests.test_regionalepreisgarantie import example_regionale_preisgarantie
 from tests.test_regionaleraufabschlag import example_regionaler_auf_abschlag
 from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
 from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
@@ -33,7 +33,7 @@ class TestRegionaltarif:
                     berechnungsparameter=example_tarifberechnungsparameter,
                     tarif_auf_abschlaege=[example_regionaler_auf_abschlag],
                     tarifpreise=[example_regionale_tarifpreisposition],
-                    preisgarantien=[example_regionale_preisgarantie],
+                    preisgarantien=[RegionalePreisgarantie()],
                     tarifeinschraenkung=example_tarifeinschraenkung,
                     # ^^ above are the attributes of Regionaltarif
                     # vv below is all copy pasted from Tarifinfo test
