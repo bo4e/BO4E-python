@@ -4,24 +4,23 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e import (
+    AufAbschlagRegional,
+    Energiemix,
     Kundentyp,
     Marktteilnehmer,
     Preisgarantie,
-    RegionaleTarifpreisposition,
     Sparte,
     Tarif,
     Tarifart,
+    Tarifberechnungsparameter,
+    Tarifeinschraenkung,
     Tarifmerkmal,
+    TarifpreispositionProOrt,
     Tariftyp,
     Vertragskonditionen,
+    Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_aufabschlagregional import example_aufabschlagregional
-from tests.test_energiemix import example_energiemix
-from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
-from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
-from tests.test_tarifpreispositionproort import example_tarifpreispositionproort
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestTarif:
@@ -31,11 +30,11 @@ class TestTarif:
             pytest.param(
                 Tarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=example_tarifberechnungsparameter,
-                    tarif_auf_abschlaege=[example_aufabschlagregional],
-                    tarifpreise=[example_tarifpreispositionproort],
+                    berechnungsparameter=Tarifberechnungsparameter(),
+                    tarif_auf_abschlaege=[AufAbschlagRegional()],
+                    tarifpreise=[TarifpreispositionProOrt()],
                     preisgarantie=Preisgarantie(),
-                    tarifeinschraenkung=example_tarifeinschraenkung,
+                    tarifeinschraenkung=Tarifeinschraenkung(),
                     # below are the attributes of tarifinfo
                     bezeichnung="foo",
                     anbietername="der beste stromanbieter",
@@ -47,8 +46,8 @@ class TestTarif:
                     website="https://foo.inv",
                     bemerkung="super billig aber auch super dreckig",
                     vertragskonditionen=Vertragskonditionen(),
-                    zeitliche_gueltigkeit=example_zeitraum,
-                    energiemix=example_energiemix,
+                    zeitliche_gueltigkeit=Zeitraum(),
+                    energiemix=Energiemix(),
                     anbieter=Marktteilnehmer(),
                 ),
                 id="required and optional attributes",
@@ -56,8 +55,8 @@ class TestTarif:
             pytest.param(
                 Tarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=example_tarifberechnungsparameter,
-                    tarifpreise=[example_tarifpreispositionproort],
+                    berechnungsparameter=Tarifberechnungsparameter(),
+                    tarifpreise=[TarifpreispositionProOrt()],
                     # below are the attributes of tarifinfo
                     bezeichnung="foo",
                     anbietername="der beste stromanbieter",
