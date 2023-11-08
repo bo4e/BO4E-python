@@ -1,12 +1,18 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e import AufAbschlagstyp, AufAbschlagsziel, RegionalerAufAbschlag, Tarifeinschraenkung, Waehrungseinheit
+from bo4e import (
+    AufAbschlagstyp,
+    AufAbschlagsziel,
+    RegionalerAufAbschlag,
+    Tarifeinschraenkung,
+    Vertragskonditionen,
+    Waehrungseinheit,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
 from tests.test_preisgarantie import example_preisgarantie
 from tests.test_regionalepreisstaffel import example_regionale_preisstaffel
-from tests.test_vertragskonditionen import example_vertragskonditionen
 from tests.test_zeitraum import example_zeitraum
 
 example_regionaler_auf_abschlag = RegionalerAufAbschlag(
@@ -22,7 +28,7 @@ example_regionaler_auf_abschlag = RegionalerAufAbschlag(
     staffeln=[example_regionale_preisstaffel],
     gueltigkeitszeitraum=example_zeitraum,
     energiemixaenderung=example_energiemix,
-    vertagskonditionsaenderung=example_vertragskonditionen,
+    vertagskonditionsaenderung=Vertragskonditionen(),
     garantieaenderung=example_preisgarantie,
     einschraenkungsaenderung=Tarifeinschraenkung(),
 )
