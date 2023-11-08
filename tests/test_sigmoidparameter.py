@@ -7,21 +7,18 @@ from pydantic import ValidationError
 from bo4e import Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip
 
-# this sigmoid parameter can be imported by other tests
-example_sigmoidparameter = Sigmoidparameter(
-    A=Decimal(1),
-    B=Decimal(2),
-    C=Decimal(3),
-    D=Decimal(4),
-)
-
 
 class TestSigmoidparameter:
     @pytest.mark.parametrize(
         "sigmoidparameter",
         [
             pytest.param(
-                example_sigmoidparameter,
+                Sigmoidparameter(
+                    A=Decimal(1),
+                    B=Decimal(2),
+                    C=Decimal(3),
+                    D=Decimal(4),
+                ),
             ),
         ],
     )

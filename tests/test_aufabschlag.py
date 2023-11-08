@@ -7,7 +7,6 @@ from pydantic import ValidationError
 
 from bo4e import AufAbschlag, AufAbschlagstyp, AufAbschlagsziel, Preisstaffel, Waehrungseinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_sigmoidparameter import example_sigmoidparameter
 
 example_aufabschlag = AufAbschlag(
     bezeichnung="foo",

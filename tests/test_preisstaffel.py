@@ -4,9 +4,8 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Preisstaffel
+from bo4e import Preisstaffel, Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_sigmoidparameter import example_sigmoidparameter
 
 
 class TestPreisstaffel:
@@ -18,7 +17,7 @@ class TestPreisstaffel:
                     einheitspreis=Decimal(40.0),
                     staffelgrenze_von=Decimal(12.5),
                     staffelgrenze_bis=Decimal(25.0),
-                    sigmoidparameter=example_sigmoidparameter,
+                    sigmoidparameter=Sigmoidparameter(),
                 ),
                 id="all attributes",
             ),

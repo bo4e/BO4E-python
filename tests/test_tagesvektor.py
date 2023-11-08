@@ -7,7 +7,6 @@ from pydantic import ValidationError
 
 from bo4e import Tagesvektor, Zeitreihenwertkompakt
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_sigmoidparameter import example_sigmoidparameter
 
 example_tagesvektor: Tagesvektor = Tagesvektor(
     tag=datetime(2021, 12, 15, 5, 0, tzinfo=timezone.utc),
