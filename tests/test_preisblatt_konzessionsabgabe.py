@@ -1,9 +1,8 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e import KundengruppeKA, Marktteilnehmer, PreisblattKonzessionsabgabe, Preisstatus, Sparte
+from bo4e import KundengruppeKA, Marktteilnehmer, PreisblattKonzessionsabgabe, Preisposition, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_preisposition import example_preisposition
 from tests.test_zeitraum import example_zeitraum
 
 
@@ -16,7 +15,7 @@ class TestPreisblatt:
                     bezeichnung="foo",
                     sparte=Sparte.STROM,
                     preisstatus=Preisstatus.ENDGUELTIG,
-                    preispositionen=[example_preisposition],
+                    preispositionen=[Preisposition()],
                     gueltigkeit=example_zeitraum,
                     herausgeber=Marktteilnehmer(),
                     kundengruppe_k_a=KundengruppeKA.G_SONDERKUNDE,

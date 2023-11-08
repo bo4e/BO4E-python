@@ -7,11 +7,11 @@ from bo4e import (
     Geraeteeigenschaften,
     Marktteilnehmer,
     PreisblattDienstleistung,
+    Preisposition,
     Preisstatus,
     Sparte,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_preisposition import example_preisposition
 from tests.test_zeitraum import example_zeitraum
 
 
@@ -24,7 +24,7 @@ class TestPreisblattDienstleistung:
                     bezeichnung="foo",
                     sparte=Sparte.STROM,
                     preisstatus=Preisstatus.ENDGUELTIG,
-                    preispositionen=[example_preisposition],
+                    preispositionen=[Preisposition()],
                     gueltigkeit=example_zeitraum,
                     herausgeber=Marktteilnehmer(),
                     bilanzierungsmethode=Bilanzierungsmethode.TLP_GEMEINSAM,
