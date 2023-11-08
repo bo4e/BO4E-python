@@ -15,31 +15,29 @@ from tests.test_energiemix import example_energiemix
 from tests.test_regionalepreisstaffel import example_regionale_preisstaffel
 from tests.test_zeitraum import example_zeitraum
 
-example_regionaler_auf_abschlag = RegionalerAufAbschlag(
-    bezeichnung="Foo",
-    beschreibung="Bar",
-    auf_abschlagstyp=AufAbschlagstyp.RELATIV,
-    auf_abschlagsziel=AufAbschlagsziel.ARBEITSPREIS_HT,
-    einheit=Waehrungseinheit.CT,
-    website="https://www.hochfrequenz.de",
-    zusatzprodukte=["ein standmixer", "ein thermomix"],
-    voraussetzungen=["lecker essen", "mit ökostrom gekocht"],
-    tarifnamensaenderungen="Super-Duper Tarif",
-    staffeln=[example_regionale_preisstaffel],
-    gueltigkeitszeitraum=example_zeitraum,
-    energiemixaenderung=example_energiemix,
-    vertagskonditionsaenderung=Vertragskonditionen(),
-    garantieaenderung=Preisgarantie(),
-    einschraenkungsaenderung=Tarifeinschraenkung(),
-)
-
 
 class TestRegionalerAufAbschlag:
     @pytest.mark.parametrize(
         "regionaler_auf_abschlag",
         [
             pytest.param(
-                example_regionaler_auf_abschlag,
+                RegionalerAufAbschlag(
+                    bezeichnung="Foo",
+                    beschreibung="Bar",
+                    auf_abschlagstyp=AufAbschlagstyp.RELATIV,
+                    auf_abschlagsziel=AufAbschlagsziel.ARBEITSPREIS_HT,
+                    einheit=Waehrungseinheit.CT,
+                    website="https://www.hochfrequenz.de",
+                    zusatzprodukte=["ein standmixer", "ein thermomix"],
+                    voraussetzungen=["lecker essen", "mit ökostrom gekocht"],
+                    tarifnamensaenderungen="Super-Duper Tarif",
+                    staffeln=[example_regionale_preisstaffel],
+                    gueltigkeitszeitraum=example_zeitraum,
+                    energiemixaenderung=example_energiemix,
+                    vertagskonditionsaenderung=Vertragskonditionen(),
+                    garantieaenderung=Preisgarantie(),
+                    einschraenkungsaenderung=Tarifeinschraenkung(),
+                ),
                 id="maximal attributes",
             ),
         ],
