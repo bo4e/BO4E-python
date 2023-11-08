@@ -10,12 +10,12 @@ from bo4e import (
     Leistungstyp,
     Mengeneinheit,
     Preisposition,
+    Preisstaffel,
     Tarifzeit,
     Waehrungseinheit,
     Zeiteinheit,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_preisstaffel import example_preisstaffel
 
 
 class TestPreisposition:
@@ -35,7 +35,7 @@ class TestPreisposition:
                     zonungsgroesse=Bemessungsgroesse.BENUTZUNGSDAUER,
                     freimenge_blindarbeit=Decimal(50),  # %
                     freimenge_leistungsfaktor=Decimal(1.0),
-                    preisstaffeln=[example_preisstaffel],
+                    preisstaffeln=[Preisstaffel()],
                     gruppenartikel_id="1-2-3",
                 )
             ),

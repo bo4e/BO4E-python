@@ -8,10 +8,6 @@ from bo4e import Preisstaffel
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_sigmoidparameter import example_sigmoidparameter
 
-example_preisstaffel = Preisstaffel(
-    einheitspreis=Decimal(40.0), staffelgrenze_von=Decimal(12.5), staffelgrenze_bis=Decimal(25.0)
-)
-
 
 class TestPreisstaffel:
     @pytest.mark.parametrize(
