@@ -7,7 +7,6 @@ from pydantic import ValidationError
 from bo4e import (
     Betrag,
     Geschaeftspartner,
-    Geschaeftspartnerrolle,
     Marktlokation,
     Messlokation,
     NetznutzungRechnungsart,
@@ -29,18 +28,6 @@ from tests.test_menge import example_menge
 from tests.test_preis import example_preis
 from tests.test_steuerbetrag import example_steuerbetrag
 
-_rechnungsersteller = Geschaeftspartner(
-    name1="Joachim",
-    ist_gewerbe=False,
-    geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
-)
-
-_rechnungsempfaenger = Geschaeftspartner(
-    name1="Helga",
-    ist_gewerbe=False,
-    geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
-)
-
 
 class TestRechnung:
     @pytest.mark.parametrize(
@@ -57,8 +44,8 @@ class TestRechnung:
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
                     rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
-                    rechnungsersteller=_rechnungsersteller,
-                    rechnungsempfaenger=_rechnungsempfaenger,
+                    rechnungsersteller=Geschaeftspartner(),
+                    rechnungsempfaenger=Geschaeftspartner(),
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
@@ -108,8 +95,8 @@ class TestRechnung:
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
                     rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
-                    rechnungsersteller=_rechnungsersteller,
-                    rechnungsempfaenger=_rechnungsempfaenger,
+                    rechnungsersteller=Geschaeftspartner(),
+                    rechnungsempfaenger=Geschaeftspartner(),
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
