@@ -1,7 +1,10 @@
 from datetime import datetime, timezone
 from decimal import Decimal
 
+import pytest
+
 from bo4e import Vertragskonditionen, Zeiteinheit, Zeitraum
+from tests.serialization_helper import assert_serialization_roundtrip
 
 example_vertragskonditionen = Vertragskonditionen(
     beschreibung="Foobar",
@@ -17,40 +20,23 @@ example_vertragskonditionen = Vertragskonditionen(
 
 
 class TestVertragskonditionen:
-    def test_vertragskonditionen_with_optional_attributes(self) -> None:
+    @pytest.mark.parametrize(
+        "vertragskonditionen",
+        [
+            pytest.param(
+                Vertragskonditionen(
+                    example_vertragskonditionen,
+                ),
+            ),
+            pytest.param(
+                Vertragskonditionen(
+                    Vertragskonditionen(),
+                ),
+            ),
+        ],
+    )
+    def test_serialization_roundtrip(self, vertragskonditionen: Vertragskonditionen) -> None:
         """
-        Test de-/serialisation of Vertragskonditionen (only has optional attributes).
+        Test de-/serialisation of Vertragskonditionen.
         """
-        vertragskonditionen = example_vertragskonditionen
-
-        json_string = vertragskonditionen.model_dump_json(by_alias=True)
-
-        assert "Foobar" in json_string
-        assert "3" in json_string
-        assert "2013-10-11T00:00:00Z" in json_string
-        assert "WOCHE" in json_string
-        assert "TAG" in json_string
-        assert "14" in json_string
-
-        vertragskonditionen_deserialized = Vertragskonditionen.model_validate_json(json_string)
-
-        assert isinstance(vertragskonditionen_deserialized.beschreibung, str)
-        assert vertragskonditionen_deserialized.beschreibung == "Foobar"
-        assert isinstance(vertragskonditionen_deserialized.anzahl_abschlaege, Decimal)
-        assert vertragskonditionen_deserialized.anzahl_abschlaege == Decimal(3)
-        assert isinstance(vertragskonditionen_deserialized.vertragslaufzeit, Zeitraum)
-        assert vertragskonditionen_deserialized.vertragslaufzeit == Zeitraum(
-            startdatum=datetime(2012, 9, 21, tzinfo=timezone.utc), enddatum=datetime(2013, 10, 11, tzinfo=timezone.utc)
-        )
-        assert isinstance(vertragskonditionen_deserialized.vertragsverlaengerung, Zeitraum)
-        assert vertragskonditionen_deserialized.vertragsverlaengerung == Zeitraum(
-            einheit=Zeiteinheit.TAG, dauer=Decimal(14)
-        )
-
-    def test_vertragskonditionen_empty(self) -> None:
-        """
-        Test empty Vertragskonditionen (only has optional attributes).
-        """
-        empty_vertragskonditionen = Vertragskonditionen()
-
-        assert isinstance(empty_vertragskonditionen, Vertragskonditionen)
+        assert_serialization_roundtrip(vertragskonditionen)
