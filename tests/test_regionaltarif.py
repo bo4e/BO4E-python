@@ -4,6 +4,7 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e import (
+    Energiemix,
     Kundentyp,
     Marktteilnehmer,
     RegionalePreisgarantie,
@@ -12,15 +13,14 @@ from bo4e import (
     Regionaltarif,
     Sparte,
     Tarifart,
+    Tarifberechnungsparameter,
+    Tarifeinschraenkung,
     Tarifmerkmal,
     Tariftyp,
     Vertragskonditionen,
+    Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_energiemix import example_energiemix
-from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
-from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestRegionaltarif:
@@ -30,11 +30,11 @@ class TestRegionaltarif:
             pytest.param(
                 Regionaltarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=example_tarifberechnungsparameter,
+                    berechnungsparameter=Tarifberechnungsparameter(),
                     tarif_auf_abschlaege=[RegionalerAufAbschlag()],
                     tarifpreise=[RegionaleTarifpreisposition()],
                     preisgarantien=[RegionalePreisgarantie()],
-                    tarifeinschraenkung=example_tarifeinschraenkung,
+                    tarifeinschraenkung=Tarifeinschraenkung(),
                     # ^^ above are the attributes of Regionaltarif
                     # vv below is all copy pasted from Tarifinfo test
                     bezeichnung="foo",
@@ -47,8 +47,8 @@ class TestRegionaltarif:
                     website="https://foo.inv",
                     bemerkung="super billig aber auch super dreckig",
                     vertragskonditionen=Vertragskonditionen(),
-                    zeitliche_gueltigkeit=example_zeitraum,
-                    energiemix=example_energiemix,
+                    zeitliche_gueltigkeit=Zeitraum(),
+                    energiemix=Energiemix(),
                     anbieter=Marktteilnehmer(),
                 ),
                 id="required and optional attributes",
@@ -56,7 +56,7 @@ class TestRegionaltarif:
             pytest.param(
                 Regionaltarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=example_tarifberechnungsparameter,
+                    berechnungsparameter=Tarifberechnungsparameter(),
                     tarifpreise=[RegionaleTarifpreisposition()],
                     # ^^ above are the attributes of Regionaltarif
                     # vv below is all copy pasted from Tarifinfo test
