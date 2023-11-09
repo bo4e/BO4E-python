@@ -4,16 +4,16 @@ from pydantic import ValidationError
 from bo4e import (
     AufAbschlagstyp,
     AufAbschlagsziel,
+    Energiemix,
     Preisgarantie,
+    RegionalePreisstaffel,
     RegionalerAufAbschlag,
     Tarifeinschraenkung,
     Vertragskonditionen,
     Waehrungseinheit,
+    Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_energiemix import example_energiemix
-from tests.test_regionalepreisstaffel import example_regionale_preisstaffel
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestRegionalerAufAbschlag:
@@ -31,9 +31,9 @@ class TestRegionalerAufAbschlag:
                     zusatzprodukte=["ein standmixer", "ein thermomix"],
                     voraussetzungen=["lecker essen", "mit ökostrom gekocht"],
                     tarifnamensaenderungen="Super-Duper Tarif",
-                    staffeln=[example_regionale_preisstaffel],
-                    gueltigkeitszeitraum=example_zeitraum,
-                    energiemixaenderung=example_energiemix,
+                    staffeln=[RegionalePreisstaffel()],
+                    gueltigkeitszeitraum=Zeitraum(),
+                    energiemixaenderung=Energiemix(),
                     vertagskonditionsaenderung=Vertragskonditionen(),
                     garantieaenderung=Preisgarantie(),
                     einschraenkungsaenderung=Tarifeinschraenkung(),
