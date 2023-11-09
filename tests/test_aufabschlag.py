@@ -8,11 +8,6 @@ from pydantic import ValidationError
 from bo4e import AufAbschlag, AufAbschlagstyp, AufAbschlagsziel, Preisstaffel, Waehrungseinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_aufabschlag = AufAbschlag(
-    bezeichnung="foo",
-    staffeln=[Preisstaffel()],
-)
-
 
 class TestAufAbschlag:
     @pytest.mark.parametrize(
