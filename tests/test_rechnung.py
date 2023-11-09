@@ -8,9 +8,11 @@ from bo4e import (
     Betrag,
     Geschaeftspartner,
     Marktlokation,
+    Menge,
     Messlokation,
     NetznutzungRechnungsart,
     NetznutzungRechnungstyp,
+    Preis,
     Rechnung,
     Rechnungsposition,
     Rechnungsstatus,
@@ -23,9 +25,6 @@ from bo4e import (
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_betrag import example_betrag
-from tests.test_menge import example_menge
-from tests.test_preis import example_preis
 
 
 class TestRechnung:
@@ -65,9 +64,9 @@ class TestRechnung:
                             lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
                             lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
                             positionstext="Besonders wertvolle Rechnungsposition",
-                            positions_menge=example_menge,
-                            einzelpreis=example_preis,
-                            teilsumme_netto=example_betrag,
+                            positions_menge=Menge(),
+                            einzelpreis=Preis(),
+                            teilsumme_netto=Betrag(),
                             teilsumme_steuer=Steuerbetrag(),
                         )
                     ],
@@ -106,9 +105,9 @@ class TestRechnung:
                             lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
                             lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
                             positionstext="Besonders wertvolle Rechnungsposition",
-                            positions_menge=example_menge,
-                            einzelpreis=example_preis,
-                            teilsumme_netto=example_betrag,
+                            positions_menge=Menge(),
+                            einzelpreis=Preis(),
+                            teilsumme_netto=Betrag(),
                             teilsumme_steuer=Steuerbetrag(),
                         )
                     ],

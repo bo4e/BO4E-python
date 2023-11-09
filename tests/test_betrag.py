@@ -4,20 +4,20 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Betrag, Waehrungscode, Waehrungseinheit
+from bo4e import Betrag, Waehrungscode
 from tests.serialization_helper import assert_serialization_roundtrip
-
-example_betrag = Betrag(
-    waehrung=Waehrungscode.EUR,
-    wert=Decimal(12.5),
-)
 
 
 class TestBetrag:
     @pytest.mark.parametrize(
         "betrag",
         [
-            pytest.param(example_betrag),
+            pytest.param(
+                Betrag(
+                    waehrung=Waehrungscode.EUR,
+                    wert=Decimal(12.5),
+                ),
+            ),
         ],
     )
     def test_regionskriterium_serialization_roundtrip(self, betrag: Betrag) -> None:

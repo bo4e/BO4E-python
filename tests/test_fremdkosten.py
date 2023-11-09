@@ -3,8 +3,6 @@ from pydantic import ValidationError
 
 from bo4e import Betrag, Fremdkosten, Fremdkostenblock, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_betrag import example_betrag
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestFremdkosten:
