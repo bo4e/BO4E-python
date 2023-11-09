@@ -8,20 +8,6 @@ from pydantic import ValidationError
 from bo4e import Zeiteinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_zeitraum = Zeitraum(
-    einheit=Zeiteinheit.TAG,
-    dauer=Decimal(5),
-)
-example_zeitraum_dict = {
-    "dauer": Decimal("5"),
-    "startdatum": None,
-    "endzeitpunkt": None,
-    "einheit": Zeiteinheit.TAG,
-    "enddatum": None,
-    "startzeitpunkt": None,
-    "_id": None,
-}
-
 
 class TestZeitraum:
     @pytest.mark.parametrize(
