@@ -8,14 +8,6 @@ from pydantic import ValidationError
 from bo4e import Angebotsstatus, Angebotsteil, Angebotsvariante, Betrag, Menge
 from tests.serialization_helper import assert_serialization_roundtrip
 
-# can be imported by other tests
-example_angebotsvariante = Angebotsvariante(
-    angebotsstatus=Angebotsstatus.NACHGEFASST,
-    bindefrist=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-    erstellungsdatum=datetime(2021, 12, 22, 0, 0, 0, tzinfo=timezone.utc),
-    teile=[Angebotsteil()],
-)
-
 
 class TestAngebotsvariante:
     @pytest.mark.parametrize(
