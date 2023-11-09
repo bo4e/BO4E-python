@@ -6,8 +6,6 @@ from pydantic import ValidationError
 from bo4e import Mengeneinheit, Preis, Preisstatus, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_preis = Preis(wert=Decimal(12.5), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
-
 
 class TestPreis:
     def test_wrong_datatype(self) -> None:
