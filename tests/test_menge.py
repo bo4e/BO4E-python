@@ -6,14 +6,6 @@ from pydantic import ValidationError
 from bo4e import Menge, Mengeneinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
-example_menge = Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH)
-# see issue https://github.com/Hochfrequenz/BO4E-python/issues/249
-example_menge_dict = {
-    "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
-    "einheit": Mengeneinheit.MWH,
-    "_id": None,
-}
-
 
 class TestMenge:
     @pytest.mark.parametrize(

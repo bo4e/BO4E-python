@@ -5,9 +5,8 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Betrag, Fremdkostenposition, Menge, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
+from bo4e import Betrag, Fremdkostenposition, Menge, Preis
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_menge import example_menge
 
 
 class TestFremdkostenposition:

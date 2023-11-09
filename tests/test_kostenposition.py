@@ -5,9 +5,8 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Betrag, Kostenposition, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
+from bo4e import Betrag, Kostenposition, Menge, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_menge import example_menge
 
 
 class TestKostenposition:
@@ -20,7 +19,7 @@ class TestKostenposition:
                     von=datetime(2013, 5, 1, tzinfo=timezone.utc),
                     bis=datetime(2014, 5, 1, tzinfo=timezone.utc),
                     artikelbezeichnung="Deim Vadder sei Kostenposition",
-                    zeitmenge=example_menge,
+                    zeitmenge=Menge(),
                     einzelpreis=Preis(
                         wert=Decimal(3.50),
                         einheit=Waehrungseinheit.EUR,
@@ -31,7 +30,7 @@ class TestKostenposition:
                         waehrung=Waehrungscode.EUR,
                         wert=Decimal(12.5),
                     ),
-                    menge=example_menge,
+                    menge=Menge(),
                     artikeldetail="foo",
                 ),
                 id="all attributes at first level",
