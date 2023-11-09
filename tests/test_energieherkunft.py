@@ -7,18 +7,20 @@ from pydantic import ValidationError
 from bo4e import Energieherkunft, Erzeugungsart
 from tests.serialization_helper import assert_serialization_roundtrip
 
-# this can be imported by other tests
-example_energieherkunft = Energieherkunft(erzeugungsart=Erzeugungsart.BIOMASSE, anteil_prozent=Decimal(25.5))
-
 
 class TestEnergieherkunft:
     @pytest.mark.parametrize(
         "energieherkunft",
         [
-            pytest.param(example_energieherkunft),
+            pytest.param(
+                Energieherkunft(
+                    erzeugungsart=Erzeugungsart.BIOMASSE,
+                    anteil_prozent=Decimal(25.5),
+                ),
+            ),
         ],
     )
-    def test_energieherkunft_required_attributes(
+    def test_serialization_roundtrip(
         self,
         energieherkunft: Energieherkunft,
     ) -> None:
