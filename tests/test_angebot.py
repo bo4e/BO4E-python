@@ -3,10 +3,8 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Angebot, Angebotsvariante, Ansprechpartner, Geschaeftspartner, Geschaeftspartnerrolle, Sparte
+from bo4e import Angebot, Ansprechpartner, Geschaeftspartner, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_adresse import example_adresse
-from tests.test_angebotsvariante import example_angebotsvariante
 
 
 class TestAngebot:
@@ -32,6 +30,6 @@ class TestAngebot:
     )
     def test_serialization_roundtrip(self, angebot: Angebot) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation of Angebot
         """
         assert_serialization_roundtrip(angebot)

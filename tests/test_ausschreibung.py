@@ -14,9 +14,6 @@ from bo4e import (
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_adresse import example_adresse
-from tests.test_ausschreibungslos import example_ausschreibungslos
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestAusschreibung:
@@ -42,4 +39,7 @@ class TestAusschreibung:
         ],
     )
     def test_serialization_roundtrip(self, ausschreibung: Ausschreibung) -> None:
+        """
+        Test de-/serialisation of Ausschreibung.
+        """
         assert_serialization_roundtrip(ausschreibung)

@@ -4,20 +4,8 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import (
-    Adresse,
-    Ausschreibungsdetail,
-    Landescode,
-    Menge,
-    Mengeneinheit,
-    Netzebene,
-    Zaehlertyp,
-    Zeiteinheit,
-    Zeitraum,
-)
+from bo4e import Adresse, Ausschreibungsdetail, Landescode, Menge, Netzebene, Zaehlertyp, Zeiteinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_adresse import example_adresse
-from tests.test_zeitraum import example_zeitraum
 
 example_ausschreibungsdetail = Ausschreibungsdetail(
     marktlokations_id="56789012345",
@@ -86,8 +74,8 @@ class TestAusschreibungsdetail:
                     marktlokations_id="56789012345",
                     netzebene_lieferung=Netzebene.MSP,
                     netzebene_messung=Netzebene.NSP,
-                    marktlokationsadresse=example_adresse,
-                    lieferzeitraum=example_zeitraum,
+                    marktlokationsadresse=Adresse(),
+                    lieferzeitraum=Zeitraum(),
                     netzbetreiber="Stromnetz Hamburg GmbH",
                     kunde="Dei Mudder ihr Kunde",
                     zaehlernummer="1YSK4234092304",

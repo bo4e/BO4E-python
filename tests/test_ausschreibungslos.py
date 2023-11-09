@@ -14,9 +14,6 @@ from bo4e import (
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_ausschreibungsdetail import example_ausschreibungsdetail, example_ausschreibungsdetail_dict
-from tests.test_menge import example_menge, example_menge_dict
-from tests.test_zeitraum import example_zeitraum, example_zeitraum_dict
 
 example_ausschreibungslos = Ausschreibungslos(
     losnummer="foo",
