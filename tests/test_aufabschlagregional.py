@@ -8,26 +8,16 @@ from pydantic import ValidationError
 from bo4e import (
     AufAbschlagProOrt,
     AufAbschlagRegional,
-    AufAbschlagstaffelProOrt,
     AufAbschlagstyp,
     AufAbschlagsziel,
-    Energieherkunft,
     Energiemix,
-    Erzeugungsart,
     Preisgarantie,
-    Preisgarantietyp,
-    Sparte,
     Tarifeinschraenkung,
     Vertragskonditionen,
     Waehrungseinheit,
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-
-example_aufabschlagregional = AufAbschlagRegional(
-    bezeichnung="foo",
-    betraege=[AufAbschlagProOrt()],
-)
 
 
 class TestAufAbschlagRegional:
