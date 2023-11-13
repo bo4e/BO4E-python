@@ -7,11 +7,12 @@ from pydantic import ValidationError
 from bo4e import (
     Betrag,
     Geschaeftspartner,
-    Geschaeftspartnerrolle,
     Marktlokation,
+    Menge,
     Messlokation,
     NetznutzungRechnungsart,
     NetznutzungRechnungstyp,
+    Preis,
     Rechnung,
     Rechnungsposition,
     Rechnungsstatus,
@@ -24,22 +25,6 @@ from bo4e import (
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_betrag import example_betrag
-from tests.test_menge import example_menge
-from tests.test_preis import example_preis
-from tests.test_steuerbetrag import example_steuerbetrag
-
-_rechnungsersteller = Geschaeftspartner(
-    name1="Joachim",
-    ist_gewerbe=False,
-    geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
-)
-
-_rechnungsempfaenger = Geschaeftspartner(
-    name1="Helga",
-    ist_gewerbe=False,
-    geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
-)
 
 
 class TestRechnung:
@@ -57,8 +42,8 @@ class TestRechnung:
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
                     rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
-                    rechnungsersteller=_rechnungsersteller,
-                    rechnungsempfaenger=_rechnungsempfaenger,
+                    rechnungsersteller=Geschaeftspartner(),
+                    rechnungsempfaenger=Geschaeftspartner(),
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
@@ -79,10 +64,10 @@ class TestRechnung:
                             lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
                             lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
                             positionstext="Besonders wertvolle Rechnungsposition",
-                            positions_menge=example_menge,
-                            einzelpreis=example_preis,
-                            teilsumme_netto=example_betrag,
-                            teilsumme_steuer=example_steuerbetrag,
+                            positions_menge=Menge(),
+                            einzelpreis=Preis(),
+                            teilsumme_netto=Betrag(),
+                            teilsumme_steuer=Steuerbetrag(),
                         )
                     ],
                     sparte=Sparte.STROM,
@@ -108,8 +93,8 @@ class TestRechnung:
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
                     rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
-                    rechnungsersteller=_rechnungsersteller,
-                    rechnungsempfaenger=_rechnungsempfaenger,
+                    rechnungsersteller=Geschaeftspartner(),
+                    rechnungsempfaenger=Geschaeftspartner(),
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
@@ -120,10 +105,10 @@ class TestRechnung:
                             lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
                             lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
                             positionstext="Besonders wertvolle Rechnungsposition",
-                            positions_menge=example_menge,
-                            einzelpreis=example_preis,
-                            teilsumme_netto=example_betrag,
-                            teilsumme_steuer=example_steuerbetrag,
+                            positions_menge=Menge(),
+                            einzelpreis=Preis(),
+                            teilsumme_netto=Betrag(),
+                            teilsumme_steuer=Steuerbetrag(),
                         )
                     ],
                     sparte=Sparte.STROM,

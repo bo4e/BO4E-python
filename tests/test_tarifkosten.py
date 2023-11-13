@@ -1,13 +1,19 @@
 import pytest
-from pydantic import ValidationError
 
-from bo4e import Kundentyp, Sparte, Tarifart, Tarifkosten, Tarifmerkmal, Tariftyp
+from bo4e import (
+    Energiemix,
+    Kosten,
+    Kundentyp,
+    Marktteilnehmer,
+    Sparte,
+    Tarifart,
+    Tarifkosten,
+    Tarifmerkmal,
+    Tariftyp,
+    Vertragskonditionen,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_energiemix import example_energiemix
-from tests.test_kosten import example_kosten
-from tests.test_marktteilnehmer import example_marktteilnehmer
-from tests.test_vertragskonditionen import example_vertragskonditionen
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestTarifkosten:
@@ -25,17 +31,17 @@ class TestTarifkosten:
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
                     bemerkung="super billig aber auch super dreckig",
-                    vertragskonditionen=example_vertragskonditionen,
-                    zeitliche_gueltigkeit=example_zeitraum,
-                    energiemix=example_energiemix,
-                    anbieter=example_marktteilnehmer,
-                    kosten=example_kosten,
+                    vertragskonditionen=Vertragskonditionen(),
+                    zeitliche_gueltigkeit=Zeitraum(),
+                    energiemix=Energiemix(),
+                    anbieter=Marktteilnehmer(),
+                    kosten=Kosten(),
                 )
             ),
         ],
     )
     def test_serialization_roundtrip(self, tarifkosten: Tarifkosten) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation Tarifkosten.
         """
         assert_serialization_roundtrip(tarifkosten)

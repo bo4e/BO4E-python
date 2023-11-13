@@ -3,17 +3,24 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Regionaltarif, Sparte, Tarifart, Tarifmerkmal, Tariftyp
+from bo4e import (
+    Energiemix,
+    Kundentyp,
+    Marktteilnehmer,
+    RegionalePreisgarantie,
+    RegionalerAufAbschlag,
+    RegionaleTarifpreisposition,
+    Regionaltarif,
+    Sparte,
+    Tarifart,
+    Tarifberechnungsparameter,
+    Tarifeinschraenkung,
+    Tarifmerkmal,
+    Tariftyp,
+    Vertragskonditionen,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_energiemix import example_energiemix
-from tests.test_marktteilnehmer import example_marktteilnehmer
-from tests.test_regionalepreisgarantie import example_regionale_preisgarantie
-from tests.test_regionaleraufabschlag import example_regionaler_auf_abschlag
-from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
-from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
-from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
-from tests.test_vertragskonditionen import example_vertragskonditionen
-from tests.test_zeitraum import example_zeitraum
 
 
 class TestRegionaltarif:
@@ -23,11 +30,11 @@ class TestRegionaltarif:
             pytest.param(
                 Regionaltarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=example_tarifberechnungsparameter,
-                    tarif_auf_abschlaege=[example_regionaler_auf_abschlag],
-                    tarifpreise=[example_regionale_tarifpreisposition],
-                    preisgarantien=[example_regionale_preisgarantie],
-                    tarifeinschraenkung=example_tarifeinschraenkung,
+                    berechnungsparameter=Tarifberechnungsparameter(),
+                    tarif_auf_abschlaege=[RegionalerAufAbschlag()],
+                    tarifpreise=[RegionaleTarifpreisposition()],
+                    preisgarantien=[RegionalePreisgarantie()],
+                    tarifeinschraenkung=Tarifeinschraenkung(),
                     # ^^ above are the attributes of Regionaltarif
                     # vv below is all copy pasted from Tarifinfo test
                     bezeichnung="foo",
@@ -39,18 +46,18 @@ class TestRegionaltarif:
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
                     bemerkung="super billig aber auch super dreckig",
-                    vertragskonditionen=example_vertragskonditionen,
-                    zeitliche_gueltigkeit=example_zeitraum,
-                    energiemix=example_energiemix,
-                    anbieter=example_marktteilnehmer,
+                    vertragskonditionen=Vertragskonditionen(),
+                    zeitliche_gueltigkeit=Zeitraum(),
+                    energiemix=Energiemix(),
+                    anbieter=Marktteilnehmer(),
                 ),
                 id="required and optional attributes",
             ),
             pytest.param(
                 Regionaltarif(
                     preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=example_tarifberechnungsparameter,
-                    tarifpreise=[example_regionale_tarifpreisposition],
+                    berechnungsparameter=Tarifberechnungsparameter(),
+                    tarifpreise=[RegionaleTarifpreisposition()],
                     # ^^ above are the attributes of Regionaltarif
                     # vv below is all copy pasted from Tarifinfo test
                     bezeichnung="foo",
@@ -60,7 +67,7 @@ class TestRegionaltarif:
                     tarifart=Tarifart.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
-                    anbieter=example_marktteilnehmer,
+                    anbieter=Marktteilnehmer(),
                 ),
                 id="required attributes",
             ),

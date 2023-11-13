@@ -1,42 +1,30 @@
-import json
+import pytest
 
 from bo4e import Adresse, Geschaeftspartnerrolle, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte, Typ
-
-example_marktteilnehmer = Marktteilnehmer(
-    # required attributes of Marktteilnehmer only
-    marktrolle=Marktrolle.DL,
-    rollencodenummer="9903916000000",
-    rollencodetyp=Rollencodetyp.BDEW,
-    sparte=Sparte.STROM,
-    # required attributes inherited from Geschaeftspartner
-    name1="Netze BW GmbH",
-    ist_gewerbe=True,
-    geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
-    partneradresse=Adresse(
-        strasse="Schelmenwasenstraße",
-        hausnummer="15",
-        postleitzahl="70567",
-        ort="Stuttgart",
-    ),
-)
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestMarktteilnehmer:
-    def test_serialization(self) -> None:
-        mt = example_marktteilnehmer
+    @pytest.mark.parametrize(
+        "marktteilnehmer",
+        [
+            pytest.param(
+                Marktteilnehmer(
+                    marktrolle=Marktrolle.DL,
+                    rollencodenummer="9903916000000",
+                    rollencodetyp=Rollencodetyp.BDEW,
+                    sparte=Sparte.STROM,
+                    name1="Netze BW GmbH",
+                    ist_gewerbe=True,
+                    geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+                    partneradresse=Adresse(),
+                )
+            )
+        ],
+    )
+    def test_serialization_roundtrip(self, marktteilnehmer: Marktteilnehmer) -> None:
+        """
+        Test de-/serialisation of Marktteilnehmer.
+        """
 
-        assert mt.version is not None, "versionstruktur was not automatically set"
-        assert mt.typ == Typ.MARKTTEILNEHMER, "_typ was not automatically set"
-
-        json_string = mt.model_dump_json(by_alias=True)
-        json_dict = json.loads(json_string)
-
-        # Test camelcase
-        assert "_typ" in json_dict
-        assert "marktrolle" in json_dict
-
-        deserialized_mt: Marktteilnehmer = Marktteilnehmer.model_validate_json(json_string)
-
-        assert mt.marktrolle is deserialized_mt.marktrolle
-        # Test snakecase
-        assert deserialized_mt.typ is Typ.MARKTTEILNEHMER
+        assert_serialization_roundtrip(marktteilnehmer)

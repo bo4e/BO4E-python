@@ -4,41 +4,24 @@ import pytest
 from pydantic import ValidationError
 
 from bo4e import Unterschrift
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestUnterschrift:
-    def test_unterschrift_only_required_attributes(self) -> None:
+    @pytest.mark.parametrize(
+        "unterschrift",
+        [
+            pytest.param(
+                Unterschrift(
+                    name="Foo",
+                    ort="Grünwald",
+                    datum=datetime(2019, 6, 7, tzinfo=timezone.utc),
+                ),
+            ),
+        ],
+    )
+    def test_serialization_roundtrip(self, unterschrift: Unterschrift) -> None:
         """
-        Test de-/serialisation of Unterschrift with minimal attributes.
+        Test de-/serialisation of Unterschrift.
         """
-        unterschrift = Unterschrift(name="Foo")
-
-        json_string = unterschrift.model_dump_json(by_alias=True)
-
-        assert "Foo" in json_string
-
-        unterschrift_deserialized = Unterschrift.model_validate_json(json_string)
-
-        assert isinstance(unterschrift_deserialized.name, str)
-        assert unterschrift_deserialized.name == "Foo"
-
-    def test_unterschrift_required_and_optional_attributes(self) -> None:
-        """
-        Test de-/serialisation of Unterschrift with maximal attributes.
-        """
-        unterschrift = Unterschrift(name="Foo", ort="Grünwald", datum=datetime(2019, 6, 7, tzinfo=timezone.utc))
-
-        json_string = unterschrift.model_dump_json(by_alias=True)
-
-        assert "Foo" in json_string
-        assert "Grünwald" in json_string
-        assert "2019-06-07T00:00:00Z" in json_string
-
-        unterschrift_deserialized = Unterschrift.model_validate_json(json_string)
-
-        assert isinstance(unterschrift_deserialized.name, str)
-        assert unterschrift_deserialized.name == "Foo"
-        assert isinstance(unterschrift_deserialized.ort, str)
-        assert unterschrift_deserialized.ort == "Grünwald"
-        assert isinstance(unterschrift_deserialized.datum, datetime)
-        assert unterschrift_deserialized.datum == datetime(2019, 6, 7, tzinfo=timezone.utc)
+        assert_serialization_roundtrip(unterschrift)

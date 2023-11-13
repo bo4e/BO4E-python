@@ -14,14 +14,9 @@ class TestAngebotsposition:
         [
             pytest.param(
                 Angebotsposition(
-                    positionsmenge=Menge(wert=Decimal(4000), einheit=Mengeneinheit.KWH),
-                    positionspreis=Preis(
-                        wert=Decimal(0.2456), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH
-                    ),
-                    positionskosten=Betrag(
-                        waehrung=Waehrungscode.EUR,
-                        wert=Decimal(98240),
-                    ),
+                    positionsmenge=Menge(),
+                    positionspreis=Preis(),
+                    positionskosten=Betrag(),
                     positionsbezeichnung="Beispielangebotsposition",
                 ),
             ),

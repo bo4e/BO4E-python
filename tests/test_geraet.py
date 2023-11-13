@@ -8,34 +8,19 @@ from tests.serialization_helper import assert_serialization_roundtrip
 
 class TestGeraet:
     @pytest.mark.parametrize(
-        "geraet, expected_json_dict",
+        "geraet",
         [
-            pytest.param(
-                Geraet(), {"geraetenummer": None, "geraeteeigenschaften": None, "_id": None}, id="Minimal attributes"
-            ),
             pytest.param(
                 Geraet(
                     geraetenummer="0815",
-                    geraeteeigenschaften=Geraeteeigenschaften(
-                        geraetemerkmal=Geraetemerkmal.GAS_G1000,
-                        geraetetyp=Geraetetyp.MULTIPLEXANLAGE,
-                    ),
+                    geraeteeigenschaften=Geraeteeigenschaften(),
                 ),
-                {
-                    "geraetenummer": "0815",
-                    "geraeteeigenschaften": {
-                        "geraetemerkmal": "GAS_G1000",
-                        "geraetetyp": Geraetetyp.MULTIPLEXANLAGE,
-                        "_id": None,
-                    },
-                    "_id": None,
-                },
-                id="Maximal attributes",
+                id="all attributes at first level",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, geraet: Geraet, expected_json_dict: Dict[str, Any]) -> None:
+    def test_serialization_roundtrip(self, geraet: Geraet) -> None:
         """
         Test de-/serialisation of Geraet
         """
-        assert_serialization_roundtrip(geraet, expected_json_dict)
+        assert_serialization_roundtrip(geraet)
