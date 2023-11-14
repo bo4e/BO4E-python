@@ -1,5 +1,3 @@
-from typing import Any, Dict
-
 import pytest
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner

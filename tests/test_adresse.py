@@ -1,9 +1,6 @@
 import uuid
-from pathlib import Path
-from typing import Dict, Optional
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Adresse, Landescode
 from tests.serialization_helper import assert_serialization_roundtrip

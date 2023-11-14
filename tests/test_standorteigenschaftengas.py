@@ -1,7 +1,4 @@
-from typing import Any, Dict, List
-
 import pytest
-from pydantic import ValidationError
 
 from bo4e import MarktgebietInfo, StandorteigenschaftenGas
 from tests.serialization_helper import assert_serialization_roundtrip

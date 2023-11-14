@@ -1,7 +1,4 @@
-from typing import Any, Dict
-
 import pytest
-from pydantic import ValidationError
 
 from bo4e import (
     Ausschreibungsdetail,

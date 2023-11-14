@@ -3,17 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import (
-    Energierichtung,
-    Mengeneinheit,
-    Registeranzahl,
-    Sparte,
-    Typ,
-    Zaehler,
-    Zaehlerauspraegung,
-    Zaehlertyp,
-    Zaehlwerk,
-)
+from bo4e import Registeranzahl, Sparte, Zaehler, Zaehlerauspraegung, Zaehlertyp, Zaehlwerk
 from bo4e.zusatzattribut import ZusatzAttribut
 from tests.serialization_helper import assert_serialization_roundtrip
 

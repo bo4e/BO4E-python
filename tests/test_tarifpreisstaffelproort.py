@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import TarifpreisstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip

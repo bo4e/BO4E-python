@@ -1,5 +1,4 @@
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Standorteigenschaften, StandorteigenschaftenGas, StandorteigenschaftenStrom
 from tests.serialization_helper import assert_serialization_roundtrip

@@ -1,5 +1,4 @@
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Marktteilnehmer, Preisblatt, Preisposition, Preisstatus, Sparte, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip

@@ -1,8 +1,6 @@
 from datetime import datetime, timezone
-from typing import Any, Dict, List
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import (
     Adresse,
@@ -10,9 +8,7 @@ from bo4e import (
     Geschaeftspartner,
     Geschaeftspartnerrolle,
     Kontaktart,
-    Landescode,
     Sparte,
-    Typ,
     Unterschrift,
     Vertrag,
     Vertragsart,

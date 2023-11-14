@@ -1,7 +1,6 @@
 from decimal import Decimal
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import (
     BDEWArtikelnummer,

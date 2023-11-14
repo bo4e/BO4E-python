@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Geschaeftspartnerrolle, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte, Typ
+from bo4e import Adresse, Geschaeftspartnerrolle, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

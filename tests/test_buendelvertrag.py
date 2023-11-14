@@ -1,19 +1,11 @@
 from datetime import datetime, timezone
-from typing import Any, Dict
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import (
-    Adresse,
-    Anrede,
     Buendelvertrag,
     Geschaeftspartner,
-    Geschaeftspartnerrolle,
-    Kontaktart,
-    Landescode,
     Sparte,
-    Typ,
     Unterschrift,
     Vertrag,
     Vertragsart,
@@ -21,7 +13,6 @@ from bo4e import (
     Vertragsstatus,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_vertrag import TestVertrag
 
 
 class TestBuendelvertrag:

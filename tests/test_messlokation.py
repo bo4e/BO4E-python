@@ -1,5 +1,3 @@
-from typing import Any, Dict
-
 import pytest
 
 from bo4e import Adresse, Dienstleistung, Geraet, Messlokation, Netzebene, Sparte, Zaehler

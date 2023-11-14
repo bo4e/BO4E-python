@@ -1,10 +1,6 @@
-import json
-from pathlib import Path
-
 import pytest
-from pydantic import ValidationError
 
-from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontaktart, Landescode, Typ
+from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontaktart, Landescode
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

@@ -1,10 +1,6 @@
-from decimal import Decimal
-from typing import Any, Dict
-
 import pytest
-from pydantic import ValidationError
 
-from bo4e import Angebotsposition, Betrag, Menge, Mengeneinheit, Preis, Waehrungscode, Waehrungseinheit
+from bo4e import Angebotsposition, Betrag, Menge, Preis
 from tests.serialization_helper import assert_serialization_roundtrip
 
 

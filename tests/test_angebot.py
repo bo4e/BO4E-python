@@ -1,7 +1,6 @@
 from datetime import datetime, timezone
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Angebot, Ansprechpartner, Geschaeftspartner, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip

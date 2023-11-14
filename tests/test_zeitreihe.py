@@ -1,5 +1,4 @@
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Medium, Mengeneinheit, Messart, Messgroesse, Wertermittlungsverfahren, Zeitreihe
 from tests.serialization_helper import assert_serialization_roundtrip

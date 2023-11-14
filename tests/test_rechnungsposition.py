@@ -1,7 +1,6 @@
 from datetime import datetime, timezone
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import BDEWArtikelnummer, Betrag, Menge, Preis, Rechnungsposition, Steuerbetrag, Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip

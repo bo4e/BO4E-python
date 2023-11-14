@@ -1,9 +1,6 @@
-from datetime import datetime, timezone
 from decimal import Decimal
-from typing import Dict
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Zeiteinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
