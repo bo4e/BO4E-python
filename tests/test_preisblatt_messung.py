@@ -3,13 +3,14 @@ import pytest
 from bo4e import (
     Bilanzierungsmethode,
     Dienstleistungstyp,
-    Geraeteeigenschaften,
+    Geraet,
     Marktteilnehmer,
     Netzebene,
     PreisblattMessung,
     Preisposition,
     Preisstatus,
     Sparte,
+    Zaehler,
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -30,8 +31,8 @@ class TestPreisblattMessung:
                     bilanzierungsmethode=Bilanzierungsmethode.TLP_GEMEINSAM,
                     messebene=Netzebene.MSP,
                     inklusive_dienstleistungen=[Dienstleistungstyp.AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB],
-                    zaehler=Geraeteeigenschaften(),
-                    inklusive_geraete=[Geraeteeigenschaften()],
+                    zaehler=Zaehler(),
+                    inklusive_geraete=[Geraet()],
                 )
             ),
         ],

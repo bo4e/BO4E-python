@@ -2,7 +2,7 @@ from typing import Any, Dict
 
 import pytest
 
-from bo4e import Adresse, Dienstleistung, Hardware, Messlokation, Netzebene, Sparte, Zaehler
+from bo4e import Adresse, Dienstleistung, Geraet, Messlokation, Netzebene, Sparte, Zaehler
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -17,8 +17,8 @@ class TestMeLo:
                     netzebene_messung=Netzebene.MSP,
                     messgebietnr="664073",
                     geraete=[
-                        Hardware(),
-                        Hardware(),
+                        Geraet(),
+                        Geraet(),
                     ],
                     messdienstleistung=[
                         Dienstleistung(),

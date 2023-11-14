@@ -3,7 +3,7 @@ import pytest
 from bo4e import (
     Bilanzierungsmethode,
     Dienstleistungstyp,
-    Geraeteeigenschaften,
+    Geraet,
     Marktteilnehmer,
     Netzebene,
     PreisblattHardware,
@@ -30,8 +30,8 @@ class TestPreisblattHardware:
                     bilanzierungsmethode=Bilanzierungsmethode.TLP_GEMEINSAM,
                     messebene=Netzebene.MSP,
                     inklusive_dienstleistungen=[Dienstleistungstyp.AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB],
-                    basisgeraet=Geraeteeigenschaften(),  # TODO warum sind hier keine Gerate?
-                    inklusive_geraete=[Geraeteeigenschaften()],
+                    basisgeraet=Geraet(),
+                    inklusive_geraete=[Geraet()],
                 )
             ),
         ],

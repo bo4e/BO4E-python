@@ -3,7 +3,7 @@ import pytest
 from bo4e import (
     Bilanzierungsmethode,
     Dienstleistungstyp,
-    Geraeteeigenschaften,
+    Geraet,
     Marktteilnehmer,
     PreisblattDienstleistung,
     Preisposition,
@@ -29,7 +29,7 @@ class TestPreisblattDienstleistung:
                     bilanzierungsmethode=Bilanzierungsmethode.TLP_GEMEINSAM,
                     basisdienstleistung=Dienstleistungstyp.ABLESUNG_MONATLICH,
                     inklusive_dienstleistungen=[Dienstleistungstyp.AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB],
-                    geraetedetails=Geraeteeigenschaften(),
+                    geraetedetails=Geraet(),
                 )
             ),
         ],

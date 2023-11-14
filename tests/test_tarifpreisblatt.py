@@ -9,6 +9,7 @@ from bo4e import (
     Kundentyp,
     Marktteilnehmer,
     Preisgarantie,
+    Registeranzahl,
     Sparte,
     Tarifberechnungsparameter,
     Tarifeinschraenkung,

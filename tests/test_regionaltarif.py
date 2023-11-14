@@ -10,8 +10,8 @@ from bo4e import (
     RegionalerAufAbschlag,
     RegionaleTarifpreisposition,
     Regionaltarif,
+    Registeranzahl,
     Sparte,
-    Tarifart,
     Tarifberechnungsparameter,
     Tarifeinschraenkung,
     Tarifmerkmal,
@@ -50,26 +50,8 @@ class TestRegionaltarif:
                     energiemix=Energiemix(),
                     anbieter=Marktteilnehmer(),
                 ),
-                id="required and optional attributes",
-            ),
-            pytest.param(
-                Regionaltarif(
-                    preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    berechnungsparameter=Tarifberechnungsparameter(),
-                    tarifpreise=[RegionaleTarifpreisposition()],
-                    # ^^ above are the attributes of Regionaltarif
-                    # vv below is all copy pasted from Tarifinfo test
-                    bezeichnung="foo",
-                    anbietername="der beste stromanbieter",
-                    sparte=Sparte.STROM,
-                    kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    registeranzahl=Registeranzahl.MEHRTARIF,
-                    tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
-                    tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
-                    anbieter=Marktteilnehmer(),
-                ),
-                id="required attributes",
-            ),
+                id="all attributes",
+            )
         ],
     )
     def test_serialization_roundtrip(self, regionaltarif: Regionaltarif) -> None:

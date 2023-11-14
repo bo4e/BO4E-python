@@ -18,7 +18,9 @@ class TestGeraet:
             pytest.param(
                 Geraet(
                     geraetenummer="0815",
-                    geraeteeigenschaften=Geraeteeigenschaften(),
+                    bezeichnung="56k Modem",
+                    geraeteklasse=Geraeteklasse.WANDLER,
+                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
                 ),
                 id="all attributes at first level",
             ),
