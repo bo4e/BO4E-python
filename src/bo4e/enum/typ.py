@@ -13,6 +13,7 @@ class Typ(StrEnum):
     BUENDELVERTRAG = "BUENDELVERTRAG"
     ENERGIEMENGE = "ENERGIEMENGE"
     FREMDKOSTEN = "FREMDKOSTEN"
+    GERAET = "GERAET"
     # It is practical to use the BoTyp Enum as discriminator in the database.
     # Therefore, we added one additional entry for GESCHAEFTSOBJEKT
     # This is not defined by the documentation!

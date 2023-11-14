@@ -71,9 +71,9 @@ from pydantic import validator
 from datetime import datetime
 from typing import Optional, Dict, Any
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.menge import Menge
-from bo4e.enum.typ import BoTyp
+from ..bo.geschaeftsobjekt import Geschaeftsobjekt
+from ..com.menge import Menge
+from ..enum.typ import BoTyp
 
 
 # pylint: disable=too-few-public-methods

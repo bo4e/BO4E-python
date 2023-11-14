@@ -3,13 +3,12 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Kundentyp, Sparte, Tarif, Tarifart, Tarifmerkmal, Tariftyp
+from bo4e import Kundentyp, Registeranzahl, Sparte, Tarif, Tarifmerkmal, Tariftyp
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlagregional import example_aufabschlagregional
 from tests.test_energiemix import example_energiemix
 from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisgarantie import example_preisgarantie
-from tests.test_regionaletarifpreisposition import example_regionale_tarifpreisposition
 from tests.test_tarifberechnungsparameter import example_tarifberechnungsparameter
 from tests.test_tarifeinschraenkung import example_tarifeinschraenkung
 from tests.test_tarifpreispositionproort import example_tarifpreispositionproort
@@ -34,7 +33,7 @@ class TestTarif:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Tarifart.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
@@ -56,7 +55,7 @@ class TestTarif:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Tarifart.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     anbieter=example_marktteilnehmer,
