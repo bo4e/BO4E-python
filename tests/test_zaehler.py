@@ -19,7 +19,7 @@ class TestZaehler:
                     zaehlerauspraegung=Zaehlerauspraegung.EINRICHTUNGSZAEHLER,
                     zaehlwerke=[Zaehlwerk()],
                     zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-                    tarifart=Registeranzahl.ZWEITARIF,
+                    registeranzahl=Registeranzahl.ZWEITARIF,
                     zaehlerkonstante=Decimal(0.9),
                     eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
                     zusatz_attribute=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
