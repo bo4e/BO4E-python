@@ -1,7 +1,6 @@
 import datetime
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import (
     AufAbschlag,
