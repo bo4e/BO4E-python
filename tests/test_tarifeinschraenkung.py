@@ -1,19 +1,10 @@
 from decimal import Decimal
-from typing import Any, Dict
 
 import pytest
 
-from bo4e import (
-    Geraet,
-    Geraeteeigenschaften,
-    Geraetemerkmal,
-    Geraetetyp,
-    Menge,
-    Mengeneinheit,
-    Tarifeinschraenkung,
-    Voraussetzungen,
-)
+from bo4e import Geraet, Menge, Mengeneinheit, Tarifeinschraenkung, Voraussetzungen
 from tests.serialization_helper import assert_serialization_roundtrip
+from tests.test_geraet import example_geraet
 
 
 class TestTarifeinschraenkung:
@@ -25,13 +16,7 @@ class TestTarifeinschraenkung:
                     zusatzprodukte=["foo", "bar"],
                     voraussetzungen=[Voraussetzungen.ALTVERTRAG, Voraussetzungen.DIREKTVERTRIEB],
                     einschraenkungzaehler=[
-                        Geraet(
-                            geraetenummer="0815",
-                            geraeteeigenschaften=Geraeteeigenschaften(
-                                geraetemerkmal=Geraetemerkmal.GAS_G1000,
-                                geraetetyp=Geraetetyp.MULTIPLEXANLAGE,
-                            ),
-                        ),
+                        example_geraet,
                         Geraet(geraetenummer="197foo"),
                     ],
                     einschraenkungleistung=[

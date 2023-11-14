@@ -14,6 +14,7 @@ __all__ = [
     "Buendelvertrag",
     "Energiemenge",
     "Fremdkosten",
+    "Geraet",
     "Geschaeftsobjekt",
     "Geschaeftspartner",
     "Kosten",
@@ -57,10 +58,8 @@ __all__ = [
     "Fremdkostenblock",
     "Fremdkostenposition",
     "Geokoordinaten",
-    "Geraet",
-    "Geraeteeigenschaften",
-    "Hardware",
     "Katasteradresse",
+    "Konzessionsabgabe",
     "Kostenblock",
     "Kostenposition",
     "KriteriumWert",
@@ -95,12 +94,15 @@ __all__ = [
     "Verbrauch",
     "Vertragskonditionen",
     "Vertragsteil",
+    "VerwendungszweckProMarktrolle",
     "Zaehlwerk",
+    "Zaehlzeitregister",
     "Zeitintervall",
     "Zeitraum",
     "Zeitreihenwert",
     "Zeitreihenwertkompakt",
     "Zustaendigkeit",
+    "AbgabeArt",
     "Angebotsstatus",
     "Anrede",
     "ArithmetischeOperation",
@@ -111,6 +113,7 @@ __all__ = [
     "Ausschreibungsstatus",
     "Ausschreibungstyp",
     "BDEWArtikelnummer",
+    "Befestigungsart",
     "Bemessungsgroesse",
     "Bilanzierungsmethode",
     "Dienstleistungstyp",
@@ -118,7 +121,7 @@ __all__ = [
     "Erzeugungsart",
     "Gasqualitaet",
     "Gebiettyp",
-    "Geraetemerkmal",
+    "Geraeteklasse",
     "Geraetetyp",
     "Geschaeftspartnerrolle",
     "Gueltigkeitstyp",
@@ -153,12 +156,12 @@ __all__ = [
     "Rechnungsstatus",
     "Rechnungstyp",
     "Regionskriteriumtyp",
+    "Registeranzahl",
     "Rollencodetyp",
     "Rufnummernart",
     "Sparte",
     "Steuerkennzeichen",
     "StrEnum",
-    "Tarifart",
     "Tarifkalkulationsmethode",
     "Tarifmerkmal",
     "Tarifregionskriterium",
@@ -171,12 +174,16 @@ __all__ = [
     "Vertragsart",
     "Vertragsform",
     "Vertragsstatus",
+    "Verwendungszweck",
     "Voraussetzungen",
     "Waehrungscode",
     "Waehrungseinheit",
+    "Waermenutzung",
     "Wertermittlungsverfahren",
     "Zaehlerauspraegung",
+    "Zaehlergroesse",
     "Zaehlertyp",
+    "ZaehlertypSpezifikation",
     "Zeiteinheit",
     "__version__",
 ]
@@ -188,6 +195,7 @@ from .bo.ausschreibung import Ausschreibung
 from .bo.buendelvertrag import Buendelvertrag
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
+from .bo.geraet import Geraet
 from .bo.geschaeftsobjekt import Geschaeftsobjekt
 from .bo.geschaeftspartner import Geschaeftspartner
 from .bo.kosten import Kosten
@@ -232,10 +240,8 @@ from .com.energiemix import Energiemix
 from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
-from .com.geraet import Geraet
-from .com.geraeteeigenschaften import Geraeteeigenschaften
-from .com.hardware import Hardware
 from .com.katasteradresse import Katasteradresse
+from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition
 from .com.kriteriumwert import KriteriumWert
@@ -270,7 +276,9 @@ from .com.unterschrift import Unterschrift
 from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
+from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.zaehlwerk import Zaehlwerk
+from .com.zaehlzeitregister import Zaehlzeitregister
 from .com.zeitintervall import Zeitintervall
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
@@ -278,6 +286,7 @@ from .com.zeitreihenwertkompakt import Zeitreihenwertkompakt
 from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
+from .enum.abgabeart import AbgabeArt
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
 from .enum.arithmetische_operation import ArithmetischeOperation
@@ -288,6 +297,7 @@ from .enum.ausschreibungsportal import Ausschreibungsportal
 from .enum.ausschreibungsstatus import Ausschreibungsstatus
 from .enum.ausschreibungstyp import Ausschreibungstyp
 from .enum.bdewartikelnummer import BDEWArtikelnummer
+from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
 from .enum.dienstleistungstyp import Dienstleistungstyp
@@ -295,7 +305,7 @@ from .enum.energierichtung import Energierichtung
 from .enum.erzeugungsart import Erzeugungsart
 from .enum.gasqualitaet import Gasqualitaet
 from .enum.gebiettyp import Gebiettyp
-from .enum.geraetemerkmal import Geraetemerkmal
+from .enum.geraeteklasse import Geraeteklasse
 from .enum.geraetetyp import Geraetetyp
 from .enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from .enum.gueltigkeitstyp import Gueltigkeitstyp
@@ -330,12 +340,12 @@ from .enum.rechnungslegung import Rechnungslegung
 from .enum.rechnungsstatus import Rechnungsstatus
 from .enum.rechnungstyp import Rechnungstyp
 from .enum.regionskriteriumtyp import Regionskriteriumtyp
+from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.rufnummernart import Rufnummernart
 from .enum.sparte import Sparte
 from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
-from .enum.tarifart import Tarifart
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from .enum.tarifmerkmal import Tarifmerkmal
 from .enum.tarifregionskriterium import Tarifregionskriterium
@@ -348,11 +358,15 @@ from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
 from .enum.vertragsstatus import Vertragsstatus
+from .enum.verwendungszweck import Verwendungszweck
 from .enum.voraussetzungen import Voraussetzungen
 from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
+from .enum.waermenutzung import Waermenutzung
 from .enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from .enum.zaehlerauspraegung import Zaehlerauspraegung
+from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
+from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .enum.zeiteinheit import Zeiteinheit
 from .version import __version__

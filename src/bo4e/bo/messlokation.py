@@ -6,10 +6,10 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from ..bo.geraet import Geraet
 from ..com.adresse import Adresse
 from ..com.dienstleistung import Dienstleistung
 from ..com.geokoordinaten import Geokoordinaten
-from ..com.hardware import Hardware
 from ..com.katasteradresse import Katasteradresse
 from ..enum.netzebene import Netzebene
 from ..enum.sparte import Sparte
@@ -43,8 +43,8 @@ class Messlokation(Geschaeftsobjekt):
     netzebene_messung: Optional[Netzebene] = None
     #: Die Nummer des Messgebietes in der ene't-Datenbank
     messgebietnr: Optional[str] = None
-    #: Liste der Hardware, die zu dieser Messstelle gehört
-    geraete: Optional[list[Hardware]] = None
+    #: Liste der Geräte, die zu dieser Messstelle gehört
+    geraete: Optional[list[Geraet]] = None
     #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
     messdienstleistung: Optional[list[Dienstleistung]] = None  # todo: rename to plural
     #: Zähler, die zu dieser Messlokation gehören
