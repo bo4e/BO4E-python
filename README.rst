@@ -47,7 +47,7 @@ Dabei sind unsere Designentscheidungen:
 * Aber wir haben nicht jede theoretisch denkbare Verweise implementiert (z.B. allein dass User Zähler unter Angabe einer Email-Adresse suchen können, heißt nicht, dass der Zähler eine optionale Eigenschaft `emailAdresse` haben muss.)
 * Generell sollen Verweise zwischen zwei BOs bi-direktional sein, zwischen BOs und COMs aber nur unidirektional (z.B. soll jeder Zähler wissen zu welcher Messlokation er gehört aber eine Adresse muss nicht wissen, welchem Geschäftspartner, welcher Messlokation oder welcher Rechnung sie zugeordnet ist).
 * COMs können zwar weitere COMs beinhalten, jedoch sollte dies nicht dafür genutzt werden von einem COM eines BOs auf das COM eines anderen BOs zu verweisen.
-Bsp.: Die Adresse in Ansprechpartner ist identisch zur Lokationsadresse in der Marktlokation. Dann sollen beide Adressen als vollständiges COM dargestellt werden, statt nur als Verweis von einer Adresse auf die andere.
+  Bsp.: Die Adresse in Ansprechpartner ist identisch zur Lokationsadresse in der Marktlokation. Dann sollen beide Adressen als vollständiges COM dargestellt werden, statt nur als Verweis von einer Adresse auf die andere.
 * Oder anders formuliert: wir können aus einem BO oder einem COM auf ein anderes BO verweisen.
 
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
