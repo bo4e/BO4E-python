@@ -185,6 +185,7 @@ __all__ = [
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
     "Zeiteinheit",
+    "ZusatzAttribut",
     "__version__",
 ]
 
@@ -370,3 +371,4 @@ from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .enum.zeiteinheit import Zeiteinheit
 from .version import __version__
+from .zusatzattribut import ZusatzAttribut
