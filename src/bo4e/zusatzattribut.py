@@ -17,10 +17,10 @@ class ZusatzAttribut(BaseModel):
 
     .. raw:: html
 
-        <object data="../_static/images/bo4e/com/ExterneReferenz.svg" type="image/svg+xml"></object>
+        <object data="../_static/images/bo4e/com/ZusatzAttribut.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `ExterneReferenz JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ExterneReferenz.json>`_
+        `ZusatzAttribute JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ZusatzAttribute.json>`_
 
     """
 
