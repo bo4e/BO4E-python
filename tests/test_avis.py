@@ -17,7 +17,7 @@ from tests.serialization_helper import assert_serialization_roundtrip
 
 class TestAvis:
     @pytest.mark.parametrize(
-        "avis, expected_json_dict",
+        "avis",
         [
             pytest.param(
                 Avis(
