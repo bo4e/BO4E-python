@@ -28,3 +28,4 @@ class Mengeneinheit(StrEnum):
     HALBJAHR = "HALBJAHR"  #: Halbjahr
     JAHR = "JAHR"  #: Jahr
     PROZENT = "PROZENT"  #: Prozent
+    KVAR = "KVAR"  #: Kilovar
