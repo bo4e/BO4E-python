@@ -1,12 +1,8 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.tarifkosten import Tarifkosten
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
-from bo4e.enum.tarifmerkmal import Tarifmerkmal
-from bo4e.enum.tariftyp import Tariftyp
+from bo4e import Kundentyp, Sparte, Tarifkosten, Tarifmerkmal, Tariftyp
+from bo4e.enum.registeranzahl import Registeranzahl
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
 from tests.test_kosten import example_kosten
@@ -25,7 +21,7 @@ class TestTarifkosten:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Tarifart.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
@@ -44,9 +40,3 @@ class TestTarifkosten:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifkosten)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifkosten()  # type: ignore[call-arg]
-
-        assert "9 validation errors" in str(excinfo.value)

@@ -1,7 +1,6 @@
 from datetime import datetime
 
-from bo4e.com.messlokationszuordnung import Messlokationszuordnung
-from bo4e.enum.arithmetische_operation import ArithmetischeOperation
+from bo4e import ArithmetischeOperation, Messlokationszuordnung
 
 
 class TestMesslokationszuordnung:

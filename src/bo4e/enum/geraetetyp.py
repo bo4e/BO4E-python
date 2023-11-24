@@ -9,19 +9,11 @@ class Geraetetyp(StrEnum):
     Auflistung möglicher abzurechnender Gerätetypen.
     """
 
-    WECHSELSTROMZAEHLER = "WECHSELSTROMZAEHLER"  #: Wechselstromzähler
-    DREHSTROMZAEHLER = "DREHSTROMZAEHLER"  #: Drehstromzähler
-    ZWEIRICHTUNGSZAEHLER = "ZWEIRICHTUNGSZAEHLER"  #: Zweirichtungszähler
-    RLM_ZAEHLER = "RLM_ZAEHLER"  #: RLM-Zähler
-    BALGENGASZAEHLER = "BALGENGASZAEHLER"  #: Balgengaszähler
-    MAXIMUMZAEHLER = "MAXIMUMZAEHLER"  #: Maximumzähler (Schleppzähler)
     MULTIPLEXANLAGE = "MULTIPLEXANLAGE"  #: Multiplexeranlage
     PAUSCHALANLAGE = "PAUSCHALANLAGE"  #: Pauschalanlagen
     VERSTAERKERANLAGE = "VERSTAERKERANLAGE"  #: Verstärkeranlage
     SUMMATIONSGERAET = "SUMMATIONSGERAET"  #: Summationsgerät
     IMPULSGEBER = "IMPULSGEBER"  #: Impulsgeber
-    EDL_21_ZAEHLERAUFSATZ = "EDL_21_ZAEHLERAUFSATZ"  #: EDL 21 Zähleraufsatz für Zähler
-    VIER_QUADRANTEN_LASTGANGZAEHLER = "VIER_QUADRANTEN_LASTGANGZAEHLER"  #: Vier-Quadranten-Lastgangzähler
     MENGENUMWERTER = "MENGENUMWERTER"  #: Mengenumwerter
     STROMWANDLER = "STROMWANDLER"  #: Stromwandler
     SPANNUNGSWANDLER = "SPANNUNGSWANDLER"  #: Spannungs-Wandler
@@ -31,13 +23,8 @@ class Geraetetyp(StrEnum):
     KOMMUNIKATIONSANSCHLUSS = "KOMMUNIKATIONSANSCHLUSS"  #: Kommunikationsanschluss
     MODEM = "MODEM"  #: Modem
     TELEKOMMUNIKATIONSEINRICHTUNG = "TELEKOMMUNIKATIONSEINRICHTUNG"  #: vom Messstellenbetreiber beigestellte Telekommunikationseinrichtung (Telefonanschluss)
-    DREHKOLBENGASZAEHLER = "DREHKOLBENGASZAEHLER"  #: Drehkolbengaszähler
-    TURBINENRADGASZAEHLER = "TURBINENRADGASZAEHLER"  #: Turbinenradgaszähler
-    ULTRASCHALLZAEHLER = "ULTRASCHALLZAEHLER"  #: Ultraschallzähler
-    WIRBELGASZAEHLER = "WIRBELGASZAEHLER"  #: Wirbelgaszähler
     MODERNE_MESSEINRICHTUNG = "MODERNE_MESSEINRICHTUNG"  #: moderne Messeinrichtung
     INTELLIGENTES_MESSYSTEM = "INTELLIGENTES_MESSYSTEM"  #: Intelligentes Messystem
-    ELEKTRONISCHER_HAUSHALTSZAEHLER = "ELEKTRONISCHER_HAUSHALTSZAEHLER"  #: elektronischer Haushaltszähler
     STEUEREINRICHTUNG = "STEUEREINRICHTUNG"  #: Steuereinrichtung
     TARIFSCHALTGERAET = "TARIFSCHALTGERAET"  #: Tarifschaltgerät
     RUNDSTEUEREMPFAENGER = "RUNDSTEUEREMPFAENGER"  #: Rundsteuerempfänger
@@ -49,8 +36,22 @@ class Geraetetyp(StrEnum):
     TEMPERATUR_KOMPENSATION = "TEMPERATUR_KOMPENSATION"  #: Temperaturkompensation
     HOECHSTBELASTUNGS_ANZEIGER = "HOECHSTBELASTUNGS_ANZEIGER"  #: Höchsbelastungsanzeiger
     SONSTIGES_GERAET = "SONSTIGES_GERAET"  #: Sonstiges Gerät
-    PREPAYMENTZAEHLER = "PREPAYMENTZAEHLER"  #: Prepaymentzähler
     EDL_21 = "EDL_21"  #: EDL21
-    _96_H_ZAEHLER = "96_H_ZAEHLER"  #: 96 h Zähler
     EDL_40_ZAEHLERAUFSATZ = "EDL_40_ZAEHLERAUFSATZ"  #: EDL 40 Zähleraufsatz für Zähler
     EDL_40 = "EDL_40"  #: EDL 40
+    TELEFONANSCHLUSS = "TELEFONANSCHLUSS"  #: Telefonanschluss
+    MODEM_GSM = "MODEM_GSM"  #: Modem-GSM
+    MODEM_GPRS = "MODEM_GPRS"  #: Modem-GPRS
+    MODEM_FUNK = "MODEM_FUNK"  #: Modem-Funk
+    MODEM_GSM_O_LG = "MODEM_GSM_O_LG"  #: vom Messstellenbetreiber beigestelltes GSM-Modem ohne Lastgangmessung
+    MODEM_GSM_M_LG = "MODEM_GSM_M_LG"  #: vom Messstellenbetreiber beigestelltes GSM-Modem mit Lastgangmessung
+    MODEM_FESTNETZ = "MODEM_FESTNETZ"  #: vom Messstellenbetreiber beigestelltes Festnetz-Modem
+    MODEM_GPRS_M_LG = "MODEM_GPRS_M_LG"  #: vom Messstellenbetreiber bereitgestelltes GPRS-Modem Lastgangmessung
+    PLC_KOM = "PLC_KOM"  #: PLC-Kom.-Einrichtung (Powerline Communication)
+    ETHERNET_KOM = "ETHERNET_KOM"  #: Ethernet-Kom.-Einricht. LAN/WLAN
+    DSL_KOM = "DSL_KOM"  #: DSL-Kommunikationseinrichtung
+    LTE_KOM = "LTE_KOM"  #: LTE-Kommunikationseinrichtung
+    KOMPAKT_MU = "KOMPAKT_MU"  #: Kompaktmengenumwerter
+    SYSTEM_MU = "SYSTEM_MU"  #: Systemmengenumwerter
+    TEMPERATUR_MU = "TEMPERATUR_MU"  #: Temperaturmengenumwerter
+    ZUSTANDS_MU = "ZUSTANDS_MU"  #: Zustandsmengenumwerter
