@@ -31,10 +31,8 @@ class Energiemenge(Geschaeftsobjekt):
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ENERGIEMENGE
     #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
     lokations_id: Optional[str] = None
-    # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp
     #: Gibt an, ob es sich um eine Markt- oder Messlokation handelt
     lokationstyp: Optional[Lokationstyp] = None
-
     #: Gibt den Verbrauch in einer Zeiteinheit an
     energieverbrauch: Optional[list[Verbrauch]] = None
     # there are no optional attributes
