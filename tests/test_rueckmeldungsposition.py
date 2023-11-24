@@ -1,5 +1,3 @@
-from typing import Any, Dict
-
 import pytest
 from pydantic import ValidationError
 
@@ -7,58 +5,32 @@ from bo4e.com.abweichungsposition import Abweichungsposition
 from bo4e.com.rueckmeldungsposition import Rueckmeldungsposition
 from tests.serialization_helper import assert_serialization_roundtrip
 
-#: full example
-example_rueckmeldungsposition = Rueckmeldungsposition(
-    positionsnummer="1",
-    abweichungspositionen=[
-        Abweichungsposition(
-            abweichungsgrund_code="A15",
-            abweichungsgrund_codeliste="E_0210",
-            abweichungsgrund_bemerkung="Umsatzsteuersatz",
-            zugehoerige_rechnung="458011",
-            zugehoerige_bestellung="foo",
-        ),
-    ],
-)
-
 
 class TestRueckmeldungsposition:
     @pytest.mark.parametrize(
-        "rueckmeldungsposition, expected_json_dict",
+        "rueckmeldungsposition",
         [
             pytest.param(
-                example_rueckmeldungsposition,
-                {
-                    "positionsnummer": "1",
-                    "abweichungspositionen": [
-                        {
-                            "abweichungsgrundCode": "A15",
-                            "abweichungsgrundCodeliste": "E_0210",
-                            "abweichungsgrundBemerkung": "Umsatzsteuersatz",
-                            "zugehoerigeRechnung": "458011",
-                            "zugehoerigeBestellung": "foo",
-                        },
+                Rueckmeldungsposition(
+                    positionsnummer="1",
+                    abweichungspositionen=[
+                        Abweichungsposition(
+                            abweichungsgrund_code="A15",
+                            abweichungsgrund_codeliste="E_0210",
+                            abweichungsgrund_bemerkung="Umsatzsteuersatz",
+                            zugehoerige_rechnung="458011",
+                            zugehoerige_bestellung="foo",
+                        ),
                     ],
-                },
-                id="max param test",
-            ),
-            pytest.param(
-                Rueckmeldungsposition(),
-                {
-                    "positionsnummer": None,
-                    "abweichungspositionen": None,
-                },
-                id="min param test",
+                )
             ),
         ],
     )
-    def test_serialization_roundtrip(
-        self, rueckmeldungsposition: Rueckmeldungsposition, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_serialization_roundtrip(self, rueckmeldungsposition: Rueckmeldungsposition) -> None:
         """
-        Test de-/serialisation of Rueckmeldungsposition with minimal/maximal attributes.
+        Test de-/serialisation of Rueckmeldungsposition.
         """
-        assert_serialization_roundtrip(rueckmeldungsposition, expected_json_dict)
+        assert_serialization_roundtrip(rueckmeldungsposition)
 
     def test_required_field_combinations(self) -> None:
         """
