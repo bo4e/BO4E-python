@@ -2,15 +2,18 @@
 Contains Zeitreihenwert class
 and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
+from decimal import Decimal
 from typing import Optional
 
-from .zeitreihenwertkompakt import Zeitreihenwertkompakt
+from ..com.zeitspanne import Zeitspanne
+from ..enum.messwertstatus import Messwertstatus
+from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
-class Zeitreihenwert(Zeitreihenwertkompakt):
+class Zeitreihenwert(COM):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
 
@@ -23,9 +26,12 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
 
     """
 
-    datum_uhrzeit_von: Optional[
-        datetime
-    ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
-    datum_uhrzeit_bis: Optional[
-        datetime
-    ] = None  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
+    zeitspanne: Optional[Zeitspanne] = None  #: Zeitespanne für das Messintervall
+
+    wert: Optional[Decimal] = None  #: Der in der Zeitspanne gültige Wert.
+
+    #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
+    status: Optional[Messwertstatus] = None
+
+    #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
+    statuszusatz: Optional[Messwertstatuszusatz] = None
