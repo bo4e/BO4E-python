@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -26,7 +26,6 @@ class TarifpreisstaffelProOrt(COM):
     # todo: decimal doesn't make sense here imo
     # https://github.com/Hochfrequenz/BO4E-python/issues/344
 
-    # required attributes
     #: Der Arbeitspreis in ct/kWh
     arbeitspreis: Optional[Decimal] = None
     #: Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh

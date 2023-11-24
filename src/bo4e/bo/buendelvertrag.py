@@ -5,17 +5,19 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.vertrag import Vertrag
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
+from pydantic import Field
+
+from ..com.unterschrift import Unterschrift
+from ..com.vertragskonditionen import Vertragskonditionen
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.vertragsart import Vertragsart
+from ..enum.vertragsstatus import Vertragsstatus
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
+from .vertrag import Vertrag
 
 
 class Buendelvertrag(Geschaeftsobjekt):
@@ -32,8 +34,7 @@ class Buendelvertrag(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.BUENDELVERTRAG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
@@ -55,7 +56,6 @@ class Buendelvertrag(Geschaeftsobjekt):
     #: Beispiel "Vertrag zwischen Vertagspartner 1 und Vertragspartner 2"
     vertragspartner2: Optional[Geschaeftspartner] = None
 
-    # optional attributes
     #: Die Liste mit den Einzelverträgen zu den Abnahmestellen
     einzelvertraege: Optional[list[Vertrag]] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen

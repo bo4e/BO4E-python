@@ -1,11 +1,13 @@
 """
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.regionskriterium import Regionskriterium
-from bo4e.enum.botyp import BoTyp
+from pydantic import Field
+
+from ..com.regionskriterium import Regionskriterium
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -24,14 +26,12 @@ class Region(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.REGION
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGION
     #: Bezeichnung der Region
     bezeichnung: Optional[str] = None
 
     #: Positivliste der Kriterien zur Definition der Region
     positiv_liste: Optional[list[Regionskriterium]] = None
 
-    # optional attributes
     #: Negativliste der Kriterien zur Definition der Region
     negativ_liste: Optional[list[Regionskriterium]] = None

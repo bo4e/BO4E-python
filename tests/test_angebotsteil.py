@@ -5,23 +5,25 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.com.adresse import Adresse
-from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.angebotsteil import Angebotsteil
-from bo4e.com.betrag import Betrag
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import (
+    Adresse,
+    Angebotsposition,
+    Angebotsteil,
+    Betrag,
+    Bilanzierungsmethode,
+    Energierichtung,
+    Landescode,
+    Marktlokation,
+    Menge,
+    Mengeneinheit,
+    Netzebene,
+    Preis,
+    Sparte,
+    Typ,
+    Waehrungscode,
+    Waehrungseinheit,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_angebotsteil: Angebotsteil = Angebotsteil(
@@ -95,7 +97,7 @@ class TestAngebotsteil:
                             ),
                             energierichtung=Energierichtung.EINSP,
                             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
-                            unterbrechbar=True,
+                            ist_unterbrechbar=True,
                             netzebene=Netzebene.NSP,
                         )
                     ],
@@ -147,10 +149,9 @@ class TestAngebotsteil:
                             },
                             "energierichtung": Energierichtung.EINSP,
                             "bilanzierungsmethode": Bilanzierungsmethode.PAUSCHAL,
-                            "unterbrechbar": True,
+                            "istUnterbrechbar": True,
                             "netzebene": Netzebene.NSP,
                             "netzgebietsnr": None,
-                            "versionstruktur": "2",
                             "katasterinformation": None,
                             "bilanzierungsgebiet": None,
                             "grundversorgercodenr": None,
@@ -163,7 +164,7 @@ class TestAngebotsteil:
                             "zugehoerigeMesslokation": None,
                             "kundengruppen": None,
                             "externeReferenzen": None,
-                            "boTyp": BoTyp.MARKTLOKATION,
+                            "_typ": Typ.MARKTLOKATION,
                             "_id": None,
                         }
                     ],

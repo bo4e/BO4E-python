@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.themengebiet import Themengebiet
+from ..enum.themengebiet import Themengebiet
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -23,12 +23,10 @@ class Zustaendigkeit(COM):
 
     """
 
-    # required attributes
     themengebiet: Optional[Themengebiet] = None
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners angegeben werden
     """
 
-    # optional attributes
     jobtitel: Optional[str] = None  #: Berufliche Rolle des Ansprechpartners
     abteilung: Optional[str] = None  #: Abteilung, in der der Ansprechpartner tätig ist

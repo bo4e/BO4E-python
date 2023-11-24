@@ -3,17 +3,19 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.vertragsteil import Vertragsteil
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
+from pydantic import Field
+
+from ..com.unterschrift import Unterschrift
+from ..com.vertragskonditionen import Vertragskonditionen
+from ..com.vertragsteil import Vertragsteil
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.vertragsart import Vertragsart
+from ..enum.vertragsstatus import Vertragsstatus
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
@@ -35,8 +37,7 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.VERTRAG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.VERTRAG
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: Optional[str] = None
@@ -69,7 +70,6 @@ class Vertrag(Geschaeftsobjekt):
     (Markt- oder Messlokation) festzulegen.
     """
 
-    # optional attributes
     #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen

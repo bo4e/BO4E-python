@@ -4,18 +4,25 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.bo.rechnung import Rechnung
-from bo4e.com.betrag import Betrag
-from bo4e.com.rechnungsposition import Rechnungsposition
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.rechnungsstatus import Rechnungsstatus
-from bo4e.enum.rechnungstyp import Rechnungstyp
-from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
-from bo4e.enum.waehrungscode import Waehrungscode
+from bo4e import (
+    Betrag,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Marktlokation,
+    Mengeneinheit,
+    Messlokation,
+    NetznutzungRechnungsart,
+    NetznutzungRechnungstyp,
+    Rechnung,
+    Rechnungsposition,
+    Rechnungsstatus,
+    Rechnungstyp,
+    Sparte,
+    Steuerbetrag,
+    Steuerkennzeichen,
+    Waehrungscode,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge
@@ -24,13 +31,13 @@ from tests.test_steuerbetrag import example_steuerbetrag
 
 _rechnungsersteller = Geschaeftspartner(
     name1="Joachim",
-    gewerbekennzeichnung=False,
+    ist_gewerbe=False,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
 )
 
 _rechnungsempfaenger = Geschaeftspartner(
     name1="Helga",
-    gewerbekennzeichnung=False,
+    ist_gewerbe=False,
     geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
 )
 
@@ -43,7 +50,7 @@ class TestRechnung:
                 Rechnung(
                     rechnungstitel="Hüpfburg",
                     rechnungsstatus=Rechnungsstatus.UNGEPRUEFT,
-                    storno=True,
+                    ist_storno=True,
                     rechnungsnummer="202201211701",
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),
@@ -57,7 +64,7 @@ class TestRechnung:
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     vorausgezahlt=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     rabatt_brutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    zuzahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    zu_zahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     steuerbetraege=[
                         Steuerbetrag(
                             steuerkennzeichen=Steuerkennzeichen.UST_19,
@@ -78,12 +85,23 @@ class TestRechnung:
                             teilsumme_steuer=example_steuerbetrag,
                         )
                     ],
+                    sparte=Sparte.STROM,
+                    netznutzungrechnungsart=NetznutzungRechnungsart.SELBSTAUSGESTELLT,
+                    netznutzungrechnungstyp=NetznutzungRechnungstyp.TURNUSRECHNUNG,
+                    ist_original=True,
+                    ist_simuliert=True,
+                    marktlokation=Marktlokation(
+                        marktlokations_id="51238696781",
+                    ),
+                    messlokation=Messlokation(
+                        messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
+                    ),
                 ),
                 id="maximal attributes",
             ),
             pytest.param(
                 Rechnung(
-                    storno=True,
+                    ist_storno=True,
                     rechnungsnummer="202201211701",
                     rechnungsdatum=datetime.today(),
                     faelligkeitsdatum=datetime.today(),
@@ -95,7 +113,7 @@ class TestRechnung:
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    zuzahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    zu_zahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     rechnungspositionen=[
                         Rechnungsposition(
                             positionsnummer=1,
@@ -108,6 +126,17 @@ class TestRechnung:
                             teilsumme_steuer=example_steuerbetrag,
                         )
                     ],
+                    sparte=Sparte.STROM,
+                    netznutzungrechnungsart=NetznutzungRechnungsart.SELBSTAUSGESTELLT,
+                    netznutzungrechnungstyp=NetznutzungRechnungstyp.TURNUSRECHNUNG,
+                    ist_original=True,
+                    ist_simuliert=True,
+                    marktlokation=Marktlokation(
+                        marktlokations_id="51238696781",
+                    ),
+                    messlokation=Messlokation(
+                        messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
+                    ),
                 ),
                 id="minimal attributes",
             ),

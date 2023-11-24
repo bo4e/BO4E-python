@@ -3,8 +3,8 @@ Contains Zeitintervall class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from bo4e.com.com import COM
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from ..com.com import COM
+from ..enum.mengeneinheit import Mengeneinheit
 
 # pylint: disable=too-few-public-methods
 
@@ -23,8 +23,7 @@ class Zeitintervall(COM):
 
     """
 
-    # required attributes
-    wert: int
+    wert: Optional[int] = None
     """
     Die Anzahl der Zeiteinheiten innerhalb  des Intervalls
     """

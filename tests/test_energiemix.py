@@ -4,12 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.energieherkunft import Energieherkunft
-from bo4e.com.energiemix import Energiemix
-from bo4e.enum.erzeugungsart import Erzeugungsart
-from bo4e.enum.oekolabel import Oekolabel
-from bo4e.enum.oekozertifikat import Oekozertifikat
-from bo4e.enum.sparte import Sparte
+from bo4e import Energieherkunft, Energiemix, Erzeugungsart, Oekolabel, Oekozertifikat, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_energiemix = Energiemix(
@@ -44,7 +39,7 @@ class TestEnergiemix:
                     "atommuell": None,
                     "website": None,
                     "oekozertifikate": None,
-                    "oekoTopTen": None,
+                    "istInOekoTopTen": None,
                     "_id": None,
                 },
                 id="only required attributes",
@@ -74,7 +69,7 @@ class TestEnergiemix:
                     atommuell=Decimal(5),
                     website="foobar.de",
                     oekozertifikate=[Oekozertifikat.FRAUNHOFER, Oekozertifikat.FREIBERG],
-                    oeko_top_ten=True,
+                    ist_in_oeko_top_ten=True,
                 ),
                 {
                     "energiemixnummer": 2,
@@ -91,7 +86,7 @@ class TestEnergiemix:
                     "atommuell": Decimal("5"),
                     "website": "foobar.de",
                     "oekozertifikate": ["FRAUNHOFER", "FREIBERG"],
-                    "oekoTopTen": True,
+                    "istInOekoTopTen": True,
                     "_id": None,
                 },
                 id="required and optional attributes",

@@ -3,10 +3,10 @@ Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.geraet import Geraet
-from bo4e.com.menge import Menge
-from bo4e.enum.voraussetzungen import Voraussetzungen
+from ..bo.geraet import Geraet
+from ..enum.voraussetzungen import Voraussetzungen
+from .com import COM
+from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 
@@ -24,7 +24,6 @@ class Tarifeinschraenkung(COM):
 
     """
 
-    # optional attributes
     #: Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können
     zusatzprodukte: Optional[list[str]] = None
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann

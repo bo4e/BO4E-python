@@ -6,15 +6,15 @@ from decimal import Decimal
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
-from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
-from bo4e.enum.leistungstyp import Leistungstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.tarifzeit import Tarifzeit
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.bdewartikelnummer import BDEWArtikelnummer
+from ..enum.bemessungsgroesse import Bemessungsgroesse
+from ..enum.kalkulationsmethode import Kalkulationsmethode
+from ..enum.leistungstyp import Leistungstyp
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.tarifzeit import Tarifzeit
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .preisstaffel import Preisstaffel
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -32,7 +32,6 @@ class Preisposition(COM):
 
     """
 
-    # required attributes
     #: Das Modell, das der Preisbildung zugrunde liegt
     berechnungsmethode: Optional[Kalkulationsmethode] = None
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
@@ -46,7 +45,6 @@ class Preisposition(COM):
     #: Preisstaffeln, die zu dieser Preisposition gehören
     preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     zeitbasis: Optional[Mengeneinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.

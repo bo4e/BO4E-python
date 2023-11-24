@@ -3,9 +3,9 @@ Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.kostenposition import Kostenposition
+from .betrag import Betrag
+from .com import COM
+from .kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods
 
@@ -23,11 +23,9 @@ class Kostenblock(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
 
-    # optional attributes
     #: Die Summe aller Kostenpositionen dieses Blocks
     summe_kostenblock: Optional[Betrag] = None
 

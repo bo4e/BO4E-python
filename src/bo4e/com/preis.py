@@ -6,10 +6,10 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.preisstatus import Preisstatus
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -27,7 +27,6 @@ class Preis(COM):
 
     """
 
-    # required attributes
     #: Gibt die nominale Höhe des Preises an.
     wert: Optional[Decimal] = None
     #: Währungseinheit für den Preis, z.B. Euro oder Ct.
@@ -35,6 +34,5 @@ class Preis(COM):
     #: Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
     bezugswert: Optional[Mengeneinheit] = None
 
-    # optional attributes
     #: Gibt den Status des veröffentlichten Preises an
     status: Optional[Preisstatus] = None

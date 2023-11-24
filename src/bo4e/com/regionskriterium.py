@@ -3,9 +3,9 @@ Contains Regionskriterium class and corresponding marshmallow schema for de-/ser
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from bo4e.enum.regionskriteriumtyp import Regionskriteriumtyp
+from ..enum.gueltigkeitstyp import Gueltigkeitstyp
+from ..enum.regionskriteriumtyp import Regionskriteriumtyp
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -23,7 +23,6 @@ class Regionskriterium(COM):
 
     """
 
-    # required attributes
     gueltigkeitstyp: Optional[
         Gueltigkeitstyp
     ] = None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.

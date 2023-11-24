@@ -4,7 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.sigmoidparameter import Sigmoidparameter
+from bo4e import Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip
 
 # this sigmoid parameter can be imported by other tests

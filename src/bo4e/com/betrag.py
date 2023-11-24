@@ -6,8 +6,8 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.waehrungscode import Waehrungscode
+from ..enum.waehrungscode import Waehrungscode
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -26,6 +26,5 @@ class Betrag(COM):
 
     """
 
-    # required attributes
     wert: Optional[Decimal] = None  #: Gibt den Betrag des Preises an.
     waehrung: Optional[Waehrungscode] = None  #: Die entsprechende Waehrung

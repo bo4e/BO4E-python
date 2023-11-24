@@ -3,14 +3,16 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.adresse import Adresse
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
+from pydantic import Field
+
+from ..com.adresse import Adresse
+from ..enum.anrede import Anrede
+from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from ..enum.kontaktart import Kontaktart
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 class Geschaeftspartner(Geschaeftsobjekt):
@@ -29,8 +31,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
     name1: Optional[str] = None
     """
     Erster Teil des Namens.
@@ -40,16 +41,15 @@ class Geschaeftspartner(Geschaeftsobjekt):
     # todo: replace name1/2/3 with something more readable. no one wants to deal with that. maybe serialize as name1/2/3
     # but resolve to readable python fields under the hood
 
-    gewerbekennzeichnung: Optional[bool] = None
+    ist_gewerbe: Optional[bool] = None
     """
-    Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)
-    oder eine Privatperson handelt. (gewerbeKennzeichnung = false)
+    Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (istGewerbe = true)
+    oder eine Privatperson handelt. (istGewerbe = false)
     """
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
     geschaeftspartnerrolle: Optional[list[Geschaeftspartnerrolle]] = None
     # todo: rename to plural
 
-    # optional attributes
     #: Die Anrede für den GePa, Z.B. "Herr"
     anrede: Optional[Anrede] = None
     name2: Optional[str] = None
@@ -81,3 +81,4 @@ class Geschaeftspartner(Geschaeftsobjekt):
     website: Optional[str] = None
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
     partneradresse: Optional[Adresse] = None  # todo: is it plural or not? the docs are bad
+    #: Todo: Add optional connection to marktteilnehmer as discussed in workshop

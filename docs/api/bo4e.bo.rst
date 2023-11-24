@@ -52,6 +52,14 @@ bo4e.bo.fremdkosten module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.geraet module
+---------------------
+
+.. automodule:: bo4e.bo.geraet
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.geschaeftsobjekt module
 -------------------------------
 
@@ -104,14 +112,6 @@ bo4e.bo.messlokation module
 ---------------------------
 
 .. automodule:: bo4e.bo.messlokation
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.bo.netznutzungsrechnung module
------------------------------------
-
-.. automodule:: bo4e.bo.netznutzungsrechnung
    :members:
    :undoc-members:
    :show-inheritance:

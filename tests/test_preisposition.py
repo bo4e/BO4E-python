@@ -3,14 +3,16 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.preisposition import Preisposition
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
-from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
-from bo4e.enum.leistungstyp import Leistungstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.tarifzeit import Tarifzeit
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import (
+    BDEWArtikelnummer,
+    Bemessungsgroesse,
+    Kalkulationsmethode,
+    Leistungstyp,
+    Mengeneinheit,
+    Preisposition,
+    Tarifzeit,
+    Waehrungseinheit,
+    )
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_preisstaffel import example_preisstaffel
 

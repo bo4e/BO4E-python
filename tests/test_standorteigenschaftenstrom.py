@@ -3,7 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
+from bo4e import StandorteigenschaftenStrom
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_standorteigenschaften_strom = StandorteigenschaftenStrom(

@@ -4,11 +4,10 @@ Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/seria
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-
 # pylint: disable=too-few-public-methods
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.aufabschlagstyp import AufAbschlagstyp
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
 
 
 class PositionsAufAbschlag(COM):
@@ -27,7 +26,6 @@ class PositionsAufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
     #: Beschreibung zum Auf-/Abschlag

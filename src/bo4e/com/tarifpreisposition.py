@@ -7,11 +7,11 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.preistyp import Preistyp
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .preisstaffel import Preisstaffel
 
 
 class Tarifpreisposition(COM):
@@ -27,7 +27,6 @@ class Tarifpreisposition(COM):
 
     """
 
-    # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Optional[Preistyp] = None
     #: Einheit des Preises (z.B. EURO)
@@ -37,6 +36,5 @@ class Tarifpreisposition(COM):
     #: Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = None

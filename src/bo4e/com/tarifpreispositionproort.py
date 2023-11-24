@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
+from .com import COM
+from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -24,7 +24,6 @@ class TarifpreispositionProOrt(COM):
 
     """
 
-    # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
     postleitzahl: Optional[str] = None
     #: Ort für den der Preis gilt

@@ -5,8 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.erzeugungsart import Erzeugungsart
+from ..enum.erzeugungsart import Erzeugungsart
+from .com import COM
 
 # pylint: disable=no-name-in-module
 
@@ -27,7 +27,6 @@ class Energieherkunft(COM):
 
     """
 
-    # required attributes
     #: Art der Erzeugung der Energie.
     erzeugungsart: Optional[Erzeugungsart] = None
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.

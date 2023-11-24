@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.preis import Preis
-from bo4e.enum.preistyp import Preistyp
+from ..enum.preistyp import Preistyp
+from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 
@@ -23,10 +23,8 @@ class Tarifpreis(Preis):
 
     """
 
-    # required attributes
     #:  Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Optional[Preistyp] = None
 
-    # optional attributes
     #:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler".
     beschreibung: Optional[str] = None

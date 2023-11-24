@@ -1,14 +1,16 @@
 """
 Contains PreisblattHardware class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.preisblatt import Preisblatt
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.netzebene import Netzebene
+from pydantic import Field
+
+from ..bo.geraet import Geraet
+from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+from ..enum.dienstleistungstyp import Dienstleistungstyp
+from ..enum.netzebene import Netzebene
+from ..enum.typ import Typ
+from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
@@ -26,7 +28,7 @@ class PreisblattHardware(Preisblatt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.PREISBLATTHARDWARE
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTHARDWARE
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
@@ -34,11 +36,10 @@ class PreisblattHardware(Preisblatt):
     messebene: Optional[Netzebene] = None
 
     #: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät
-    basisgeraet: Optional[Geraeteeigenschaften] = None
+    basisgeraet: Optional[Geraet] = None
 
-    # optional attributes
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
     inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: Optional[list[Geraeteeigenschaften]] = None
+    inklusive_geraete: Optional[list[Geraet]] = None

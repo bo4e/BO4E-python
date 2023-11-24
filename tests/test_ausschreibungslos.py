@@ -3,11 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.ausschreibungslos import Ausschreibungslos
-from bo4e.enum.preismodell import Preismodell
-from bo4e.enum.rechnungslegung import Rechnungslegung
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsform import Vertragsform
+from bo4e import Ausschreibungslos, Preismodell, Rechnungslegung, Sparte, Vertragsform
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_ausschreibungsdetail import example_ausschreibungsdetail, example_ausschreibungsdetail_dict
 from tests.test_menge import example_menge, example_menge_dict

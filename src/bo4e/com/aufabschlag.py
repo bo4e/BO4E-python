@@ -5,12 +5,12 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.aufabschlagstyp import AufAbschlagstyp
+from ..enum.aufabschlagsziel import AufAbschlagsziel
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .preisstaffel import Preisstaffel
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -29,13 +29,11 @@ class AufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge.
     staffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).

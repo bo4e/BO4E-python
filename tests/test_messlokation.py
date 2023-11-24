@@ -6,25 +6,26 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.messlokation import Messlokation
-from bo4e.bo.zaehler import Zaehler
-from bo4e.com.adresse import Adresse
-from bo4e.com.dienstleistung import Dienstleistung
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.hardware import Hardware
-from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.com.zaehlwerk import Zaehlwerk
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.geraetetyp import Geraetetyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
-from bo4e.enum.zaehlerauspraegung import Zaehlerauspraegung
-from bo4e.enum.zaehlertyp import Zaehlertyp
+from bo4e import (
+    Adresse,
+    Dienstleistung,
+    Dienstleistungstyp,
+    Energierichtung,
+    ExterneReferenz,
+    Geraet,
+    Geraeteklasse,
+    Geraetetyp,
+    Mengeneinheit,
+    Messlokation,
+    Netzebene,
+    Registeranzahl,
+    Sparte,
+    Typ,
+    Zaehler,
+    Zaehlerauspraegung,
+    Zaehlertyp,
+    Zaehlwerk,
+)
 
 
 class TestMeLo:
@@ -36,13 +37,13 @@ class TestMeLo:
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
         )
-        assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ is BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.version is not None, "versionstruktur was not automatically set"
+        assert melo.typ is Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
@@ -51,7 +52,7 @@ class TestMeLo:
         # but are **not** the same object.
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is Typ.MESSLOKATION
 
     def test_serialization_required_and_optional_attributes(self) -> None:
         """
@@ -59,15 +60,22 @@ class TestMeLo:
         """
 
         melo = Messlokation(
-            # required attributes
             messlokations_id="DE00056266802AO6G56M11SN51G21M24S",
             sparte=Sparte.STROM,
-            # optional attributes
             netzebene_messung=Netzebene.MSP,
             messgebietnr="664073",
             geraete=[
-                Hardware(geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM, bezeichnung="intelligentes Messsystem"),
-                Hardware(geraetetyp=Geraetetyp.MODEM, bezeichnung="56k Modem"),
+                Geraet(
+                    geraetetyp=Geraetetyp.INTELLIGENTES_MESSYSTEM,
+                    bezeichnung="intelligentes Messsystem",
+                    geraetenummer="123",
+                ),
+                Geraet(
+                    geraeteklasse=Geraeteklasse.WANDLER,
+                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
+                    bezeichnung="56k Modem",
+                    geraetenummer="456",
+                ),
             ],
             messdienstleistung=[
                 Dienstleistung(
@@ -95,7 +103,7 @@ class TestMeLo:
                         )
                     ],
                     zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
-                    tarifart=Tarifart.ZWEITARIF,
+                    registeranzahl=Registeranzahl.ZWEITARIF,
                     zaehlerkonstante=Decimal(0.9),
                     eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
                     externe_referenzen=[ExterneReferenz(ex_ref_name="zaehler im anderen system", ex_ref_wert="7890")],
@@ -105,20 +113,20 @@ class TestMeLo:
             grundzustaendiger_msb_codenr="9910125000002",
             messadresse=Adresse(postleitzahl="04177", ort="Leipzig", hausnummer="1", strasse="Jahnalle"),
         )
-        assert melo.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert melo.bo_typ == BoTyp.MESSLOKATION, "boTyp was not automatically set"
+        assert melo.version is not None, "versionstruktur was not automatically set"
+        assert melo.typ == Typ.MESSLOKATION, "_typ was not automatically set"
 
         json_string = melo.model_dump_json(by_alias=True)
         json_dict = json.loads(json_string)
 
-        assert "boTyp" in json_dict, "No camel case serialization"
+        assert "_typ" in json_dict, "No camel case serialization"
         assert "messlokationsId" in json_dict, "No camel case serialization"
 
         deserialized_melo: Messlokation = Messlokation.model_validate_json(json_string)
 
         assert deserialized_melo.messlokations_id == melo.messlokations_id
         assert deserialized_melo.messlokations_id is not melo.messlokations_id
-        assert deserialized_melo.bo_typ is BoTyp.MESSLOKATION
+        assert deserialized_melo.typ is Typ.MESSLOKATION
 
     def test_extension_data(self) -> None:
         """

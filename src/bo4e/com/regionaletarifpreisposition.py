@@ -6,11 +6,11 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.preistyp import Preistyp
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .regionalepreisstaffel import RegionalePreisstaffel
 
 
 class RegionaleTarifpreisposition(COM):
@@ -27,7 +27,6 @@ class RegionaleTarifpreisposition(COM):
 
     """
 
-    # required attributes
     #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Optional[Preistyp] = None
     #: Einheit des Preises (z.B. EURO)
@@ -37,6 +36,5 @@ class RegionaleTarifpreisposition(COM):
     #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
     preisstaffeln: Optional[list[RegionalePreisstaffel]] = None
 
-    # optional attributes
     #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional[Mengeneinheit] = None

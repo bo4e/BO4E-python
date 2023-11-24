@@ -7,8 +7,8 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from .com import COM
+from ..enum.mengeneinheit import Mengeneinheit
 
 # pylint: disable=too-few-public-methods
 
@@ -30,7 +30,6 @@ class Zeitraum(COM):
 
     """
 
-    # optional attributes
     einheit: Optional[Mengeneinheit] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[datetime] = None

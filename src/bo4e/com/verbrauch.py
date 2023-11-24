@@ -5,9 +5,10 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.messwertstatus import Messwertstatus
+from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -26,7 +27,6 @@ class Verbrauch(COM):
 
     """
 
-    # required attributes
     #: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt
     wertermittlungsverfahren: Optional[Wertermittlungsverfahren] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:
@@ -36,8 +36,9 @@ class Verbrauch(COM):
     #: Gibt die Einheit zum jeweiligen Wert an
     einheit: Optional[Mengeneinheit] = None
 
-    # optional attributes
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
     startdatum: Optional[datetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
     enddatum: Optional[datetime] = None
+    #: Messwertstatus includes the plausibility of the value
+    messwertstatus: Optional[Messwertstatus] = None

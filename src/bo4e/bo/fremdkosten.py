@@ -1,13 +1,15 @@
 """
 Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenblock import Fremdkostenblock
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
+from pydantic import Field
+
+from ..com.betrag import Betrag
+from ..com.fremdkostenblock import Fremdkostenblock
+from ..com.zeitraum import Zeitraum
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 
@@ -27,11 +29,9 @@ class Fremdkosten(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.FREMDKOSTEN
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
     gueltigkeit: Optional[Zeitraum] = None
-    # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
     summe_kosten: Optional[Betrag] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc

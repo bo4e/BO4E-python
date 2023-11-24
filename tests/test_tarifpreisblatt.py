@@ -3,14 +3,16 @@ import datetime
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.tarifpreisblatt import Tarifpreisblatt
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
-from bo4e.enum.tarifmerkmal import Tarifmerkmal
-from bo4e.enum.tariftyp import Tariftyp
+from bo4e import (
+    Kundentyp,
+    Registeranzahl,
+    Sparte,
+    Tarifberechnungsparameter,
+    Tarifeinschraenkung,
+    Tarifmerkmal,
+    Tarifpreisblatt,
+    Tariftyp,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlag import example_aufabschlag
 from tests.test_energiemix import example_energiemix
@@ -31,7 +33,7 @@ class TestTarifpreisblatt:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Tarifart.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",

@@ -4,19 +4,21 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.buendelvertrag import Buendelvertrag
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
+from bo4e import (
+    Adresse,
+    Anrede,
+    Buendelvertrag,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Kontaktart,
+    Landescode,
+    Sparte,
+    Typ,
+    Unterschrift,
+    Vertragsart,
+    Vertragskonditionen,
+    Vertragsstatus,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_vertrag import TestVertrag
 
@@ -27,7 +29,7 @@ class TestBuendelvertrag:
         name1="van der Waal",
         name2="Helga",
         name3=None,
-        gewerbekennzeichnung=True,
+        ist_gewerbe=True,
         kontaktweg=[Kontaktart.SMS],
         umsatzsteuer_id="DE267311963",
         glaeubiger_id="DE98ZZZ09999999999",
@@ -44,7 +46,7 @@ class TestBuendelvertrag:
     _vertragspartner2 = Geschaeftspartner(
         name1="Eckart",
         name2="Björn",
-        gewerbekennzeichnung=False,
+        ist_gewerbe=False,
         geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
         partneradresse=Adresse(
             postleitzahl="24211",
@@ -58,7 +60,7 @@ class TestBuendelvertrag:
         "name1": "van der Waal",
         "name2": "Helga",
         "name3": None,
-        "gewerbekennzeichnung": True,
+        "istGewerbe": True,
         "kontaktweg": [Kontaktart.SMS],
         "umsatzsteuerId": "DE267311963",
         "glaeubigerId": "DE98ZZZ09999999999",
@@ -77,8 +79,7 @@ class TestBuendelvertrag:
             "ortsteil": None,
             "_id": None,
         },
-        "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "hrnummer": None,
         "amtsgericht": None,
@@ -87,7 +88,7 @@ class TestBuendelvertrag:
     _vertragspartner2_dict: Dict[str, Any] = {
         "name1": "Eckart",
         "name2": "Björn",
-        "gewerbekennzeichnung": False,
+        "istGewerbe": False,
         "geschaeftspartnerrolle": [Geschaeftspartnerrolle.DIENSTLEISTER],
         "partneradresse": {
             "postleitzahl": "24211",
@@ -101,8 +102,7 @@ class TestBuendelvertrag:
             "ortsteil": None,
             "_id": None,
         },
-        "versionstruktur": "2",
-        "boTyp": BoTyp.GESCHAEFTSPARTNER,
+        "_typ": Typ.GESCHAEFTSPARTNER,
         "externeReferenzen": None,
         "anrede": None,
         "name3": None,
@@ -139,8 +139,7 @@ class TestBuendelvertrag:
                     "vertragsende": datetime(2200, 4, 30, 13, 45, tzinfo=timezone.utc),
                     "vertragspartner1": _vertragspartner1_dict,
                     "vertragspartner2": _vertragspartner2_dict,
-                    "versionstruktur": "2",
-                    "boTyp": BoTyp.BUENDELVERTRAG,
+                    "_typ": Typ.BUENDELVERTRAG,
                     "externeReferenzen": None,
                     "einzelvertraege": None,
                     "vertragskonditionen": None,
@@ -168,8 +167,7 @@ class TestBuendelvertrag:
                     beschreibung="Das ist ein Bündelvertrag mit allen optionalen Feldern ausgefüllt.",
                 ),
                 {
-                    "versionstruktur": "2",
-                    "boTyp": BoTyp.BUENDELVERTRAG,
+                    "_typ": Typ.BUENDELVERTRAG,
                     "externeReferenzen": None,
                     "vertragsnummer": "1234567890",
                     "vertragsart": Vertragsart.NETZNUTZUNGSVERTRAG,

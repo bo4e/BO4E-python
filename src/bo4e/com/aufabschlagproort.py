@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
-from bo4e.com.com import COM
+from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -25,7 +25,6 @@ class AufAbschlagProOrt(COM):
 
     """
 
-    # required attributes
     #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
     postleitzahl: Optional[str] = None
     #: Der Ort für den der Aufschlag gilt.

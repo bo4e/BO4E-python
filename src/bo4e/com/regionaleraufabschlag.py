@@ -4,16 +4,16 @@ Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de
 
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.energiemix import Energiemix
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from ..enum.aufabschlagstyp import AufAbschlagstyp
+from ..enum.aufabschlagsziel import AufAbschlagsziel
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .energiemix import Energiemix
+from .preisgarantie import Preisgarantie
+from .regionalepreisstaffel import RegionalePreisstaffel
+from .tarifeinschraenkung import Tarifeinschraenkung
+from .vertragskonditionen import Vertragskonditionen
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -36,14 +36,12 @@ class RegionalerAufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
     staffeln: Optional[list[RegionalePreisstaffel]] = None
 
-    # optional attributes
     #: Beschreibung des Auf-/Abschlags
     beschreibung: Optional[str] = None
 

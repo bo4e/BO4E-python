@@ -5,10 +5,10 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.zeitspanne import Zeitspanne
-from bo4e.enum.messwertstatus import Messwertstatus
-from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
+from .com import COM
+from ..com.zeitspanne import Zeitspanne
+from ..enum.messwertstatus import Messwertstatus
+from ..enum.messwertstatuszusatz import Messwertstatuszusatz
 
 # pylint: disable=too-few-public-methods
 

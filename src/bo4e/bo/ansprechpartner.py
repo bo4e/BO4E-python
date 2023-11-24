@@ -2,16 +2,18 @@
 Contains Ansprechpartner class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.rufnummer import Rufnummer
-from bo4e.com.zustaendigkeit import Zustaendigkeit
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.titel import Titel
+from pydantic import Field
+
+from ..com.adresse import Adresse
+from ..com.rufnummer import Rufnummer
+from ..com.zustaendigkeit import Zustaendigkeit
+from ..enum.anrede import Anrede
+from ..enum.titel import Titel
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -29,14 +31,12 @@ class Ansprechpartner(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.ANSPRECHPARTNER
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANSPRECHPARTNER
     nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
     geschaeftspartner: Optional[
         Geschaeftspartner
     ] = None  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
-    # optional attributes
     anrede: Optional[Anrede] = None  #: Mögliche Anrede des Ansprechpartners
     individuelle_anrede: Optional[str] = None
     """

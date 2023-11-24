@@ -6,19 +6,21 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
 from datetime import datetime
-from typing import Optional
+from typing import Annotated, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
-from bo4e.com.energiemix import Energiemix
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
-from bo4e.enum.tarifmerkmal import Tarifmerkmal
-from bo4e.enum.tariftyp import Tariftyp
+from pydantic import Field
+
+from ..com.energiemix import Energiemix
+from ..com.vertragskonditionen import Vertragskonditionen
+from ..com.zeitraum import Zeitraum
+from ..enum.kundentyp import Kundentyp
+from ..enum.registeranzahl import Registeranzahl
+from ..enum.sparte import Sparte
+from ..enum.tarifmerkmal import Tarifmerkmal
+from ..enum.tariftyp import Tariftyp
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .marktteilnehmer import Marktteilnehmer
 
 
 class Tarifinfo(Geschaeftsobjekt):
@@ -35,8 +37,7 @@ class Tarifinfo(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.TARIFINFO
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFINFO
     #: Name des Tarifs
     bezeichnung: Optional[str] = None
     #: Der Name des Marktpartners, der den Tarif anbietet
@@ -46,7 +47,7 @@ class Tarifinfo(Geschaeftsobjekt):
     #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
     kundentypen: Optional[list[Kundentyp]] = None
     #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
-    tarifart: Optional[Tarifart] = None
+    registeranzahl: Optional[Registeranzahl] = None
     #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
     tariftyp: Optional[Tariftyp] = None
     #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
@@ -54,7 +55,6 @@ class Tarifinfo(Geschaeftsobjekt):
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
     anbieter: Optional[Marktteilnehmer] = None
 
-    # optional attributes
     #: Internetseite auf dem der Tarif zu finden ist
     website: Optional[str] = None
     #: Freitext

@@ -3,7 +3,7 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
-from bo4e.com.kostenposition import Kostenposition
+from .kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

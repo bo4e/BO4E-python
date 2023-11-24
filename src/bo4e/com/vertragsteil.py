@@ -5,8 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
+from .com import COM
+from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 
@@ -25,7 +25,6 @@ class Vertragsteil(COM):
 
     """
 
-    # required attributes
     vertragsteilbeginn: Optional[datetime] = None
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
@@ -35,7 +34,6 @@ class Vertragsteil(COM):
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
-    # optional attributes
     lokation: Optional[str] = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.

@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.landescode import Landescode
+from ..enum.landescode import Landescode
+from .com import COM
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -23,13 +23,11 @@ class Adresse(COM):
 
     """
 
-    # required attributes
     #: Die Postleitzahl; z.B: "41836"
     postleitzahl: Optional[str] = None
     #: Bezeichnung der Stadt; z.B. "Hückelhoven"
     ort: Optional[str] = None
 
-    # optional attributes
     #: Bezeichnung des Ortsteils; z.B. "Mitte"
     ortsteil: Optional[str] = None
     #: Bezeichnung der Straße; z.B. "Weserstraße"

@@ -4,10 +4,10 @@ Contains Kostenposition and corresponding marshmallow schema for de-/serializati
 from datetime import datetime
 from typing import Optional
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .preis import Preis
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -25,7 +25,6 @@ class Kostenposition(COM):
 
     """
 
-    # required attributes
     #: Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt.
     positionstitel: Optional[str] = None
 
@@ -40,7 +39,6 @@ class Kostenposition(COM):
     #: Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.
     einzelpreis: Optional[Preis] = None
 
-    # optional attributes
     #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
     von: Optional[datetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe

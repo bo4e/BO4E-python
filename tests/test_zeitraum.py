@@ -5,8 +5,7 @@ from typing import Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from bo4e import Mengeneinheit, Zeitraum
 
 example_zeitraum = Zeitraum(
     einheit=Mengeneinheit.TAG,
