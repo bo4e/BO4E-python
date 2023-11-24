@@ -28,7 +28,7 @@ class Zeitreihenwert(COM):
 
     zeitspanne: Optional[Zeitspanne] = None  #: Zeitespanne für das Messintervall
 
-    wert: Optional[Decimal] = None  #: Der im Zeitintervall gültige Wert.
+    wert: Optional[Decimal] = None  #: Der in der Zeitspanne gültige Wert.
 
     #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
     status: Optional[Messwertstatus] = None

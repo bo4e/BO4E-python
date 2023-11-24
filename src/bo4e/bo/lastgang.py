@@ -23,7 +23,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 class Lastgang(Geschaeftsobjekt):
     """
     Modell zur Abbildung eines Lastganges;
-    In diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall angegeben und es bietet daher eine hohe Flexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.
+    In diesem Modell werden die Messwerte mit einem vollständigen Zeitintervall (zeit_intervall_laenge) angegeben und es bietet daher eine hohe Flexibilität in der Übertragung jeglicher zeitlich veränderlicher Messgrössen.
 
     .. raw:: html
 
