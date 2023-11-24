@@ -3,12 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.tarifinfo import Tarifinfo
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
-from bo4e.enum.tarifmerkmal import Tarifmerkmal
-from bo4e.enum.tariftyp import Tariftyp
+from bo4e import Kundentyp, Registeranzahl, Sparte, Tarifinfo, Tarifmerkmal, Tariftyp
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
 from tests.test_marktteilnehmer import example_marktteilnehmer
@@ -26,7 +21,7 @@ class TestTarifinfo:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Tarifart.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
@@ -45,9 +40,3 @@ class TestTarifinfo:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifinfo)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifinfo()  # type: ignore[call-arg]
-
-        assert "8 validation errors" in str(excinfo.value)

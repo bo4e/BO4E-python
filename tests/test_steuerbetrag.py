@@ -4,10 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Steuerbetrag, Steuerkennzeichen, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_steuerbetrag = Steuerbetrag(
@@ -29,6 +26,7 @@ class TestSteuerbetrag:
                     "basiswert": Decimal("100"),
                     "steuerwert": Decimal("19"),
                     "waehrung": Waehrungseinheit.EUR,
+                    "_id": None,
                 },
             ),
         ],
@@ -40,9 +38,3 @@ class TestSteuerbetrag:
         Test de-/serialisation of Steuerbetrag with minimal attributes.
         """
         assert_serialization_roundtrip(steuerbetrag, expected_json_dict)
-
-    def test_steuerbetrag_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Steuerbetrag()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

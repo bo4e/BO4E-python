@@ -15,10 +15,10 @@ Subpackages
 Submodules
 ----------
 
-bo4e.validators module
-----------------------
+bo4e.version module
+-------------------
 
-.. automodule:: bo4e.validators
+.. automodule:: bo4e.version
    :members:
    :undoc-members:
    :show-inheritance:

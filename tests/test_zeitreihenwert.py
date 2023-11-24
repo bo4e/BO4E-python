@@ -4,9 +4,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.messwertstatus import Messwertstatus
-from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
+from bo4e import Messwertstatus, Messwertstatuszusatz, Zeitreihenwert
 
 example_zeitreihenwert = Zeitreihenwert(
     wert=Decimal(2.5),
@@ -52,20 +50,3 @@ class TestZeitreihenwert:
 
         zeitreihenwert_deserialized: Zeitreihenwert = Zeitreihenwert.model_validate_json(json_string)
         assert zeitreihenwert_deserialized == zeitreihenwert
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwert(datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc), wert=Decimal(1.5))  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
-
-    def test_von_later_than_bis(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwert(
-                datum_uhrzeit_von=datetime(2007, 11, 27, tzinfo=timezone.utc),
-                datum_uhrzeit_bis=datetime(2006, 11, 27, tzinfo=timezone.utc),
-                wert=Decimal(1.5),
-            )
-
-        assert "start" in str(excinfo.value)
-        assert "end" in str(excinfo.value)

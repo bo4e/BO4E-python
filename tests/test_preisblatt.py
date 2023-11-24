@@ -1,9 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.preisblatt import Preisblatt
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
+from bo4e import Preisblatt, Preisstatus, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisposition import example_preisposition
@@ -31,8 +29,3 @@ class TestPreisblatt:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(preisblatt)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preisblatt()  # type: ignore[call-arg]
-        assert "5 validation errors" in str(excinfo.value)

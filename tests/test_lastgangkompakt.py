@@ -3,12 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.lastgang import LastgangKompakt
-from bo4e.com.zeitintervall import Zeitintervall
-from bo4e.enum.lokationstyp import Lokationstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e import LastgangKompakt, Lokationstyp, Mengeneinheit, Sparte, Zeiteinheit, Zeitintervall
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_tagesvektor import example_tagesvektor, example_tagesvektor_json
 
@@ -36,13 +31,13 @@ class TestLastgangKompakt:
                     "sparte": Sparte.STROM,
                     "lokationstyp": Lokationstyp.MELO,
                     "messgroesse": Mengeneinheit.KWH,
-                    "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1},
+                    "zeitintervall": {"zeiteinheit": "VIERTEL_STUNDE", "wert": 1, "_id": None},
                     "tagesvektoren": [example_tagesvektor_json],
-                    "versionstruktur": "2",
-                    "externeReferenzen": [],
+                    "externeReferenzen": None,
                     "lokationsId": "DE0000011111222223333344444555556",
-                    "boTyp": "LASTGANG_KOMPAKT",
+                    "_typ": "LASTGANG_KOMPAKT",
                     "obisKennzahl": "1-0:1.8.1",
+                    "_id": None,
                 },
             ),
         ],
@@ -54,9 +49,3 @@ class TestLastgangKompakt:
         Test de-/serialisation of LastgangKompakt.
         """
         assert_serialization_roundtrip(lastgang_kompakt, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = LastgangKompakt()  # type: ignore[call-arg]
-
-        assert "6 validation errors" in str(excinfo.value)

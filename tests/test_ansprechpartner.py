@@ -1,15 +1,17 @@
-from bo4e.bo.ansprechpartner import Ansprechpartner
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.rufnummer import Rufnummer
-from bo4e.com.zustaendigkeit import Zustaendigkeit
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.rufnummernart import Rufnummernart
-from bo4e.enum.themengebiet import Themengebiet
-from bo4e.enum.titel import Titel
+from bo4e import (
+    Adresse,
+    Anrede,
+    Ansprechpartner,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Kontaktart,
+    Rufnummer,
+    Rufnummernart,
+    Themengebiet,
+    Titel,
+    Typ,
+    Zustaendigkeit,
+)
 
 
 class TestAnsprechpartner:
@@ -18,14 +20,13 @@ class TestAnsprechpartner:
         Test de-/serialisation of Ansprechpartner only with required attributes
         """
         ansprechpartner = Ansprechpartner(
-            # required attributes
             nachname="Müller-Schmidt",
             geschaeftspartner=Geschaeftspartner(
                 anrede=Anrede.FRAU,
                 name1="von Sinnen",
                 name2="Helga",
                 name3=None,
-                gewerbekennzeichnung=True,
+                ist_gewerbe=True,
                 hrnummer="HRB 254466",
                 amtsgericht="Amtsgericht München",
                 kontaktweg=[Kontaktart.E_MAIL],
@@ -42,8 +43,8 @@ class TestAnsprechpartner:
                 ),
             ),
         )
-        assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert ansprechpartner.bo_typ is BoTyp.ANSPRECHPARTNER, "boTyp was not automatically set"
+        assert ansprechpartner.version is not None, "versionstruktur was not automatically set"
+        assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "_typ was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string
@@ -61,14 +62,13 @@ class TestAnsprechpartner:
         Test de-/serialisation of Ansprechpartner only with required attributes
         """
         ansprechpartner = Ansprechpartner(
-            # required attributes
             nachname="Müller-Schmidt",
             geschaeftspartner=Geschaeftspartner(
                 anrede=Anrede.FRAU,
                 name1="von Sinnen",
                 name2="Helga",
                 name3=None,
-                gewerbekennzeichnung=True,
+                ist_gewerbe=True,
                 hrnummer="HRB 254466",
                 amtsgericht="Amtsgericht München",
                 kontaktweg=[Kontaktart.E_MAIL],
@@ -84,7 +84,6 @@ class TestAnsprechpartner:
                     hausnummer="540a",
                 ),
             ),
-            # optional attributes
             anrede=Anrede.EHELEUTE,
             individuelle_anrede="Künstler",
             titel=Titel.PROF_DR,
@@ -102,8 +101,8 @@ class TestAnsprechpartner:
                 themengebiet=Themengebiet.MARKTKOMMUNIKATION, jobtitel="Schatzmeister", abteilung="unten rechts"
             ),
         )
-        assert ansprechpartner.versionstruktur == "2", "versionstruktur was not automatically set"
-        assert ansprechpartner.bo_typ is BoTyp.ANSPRECHPARTNER, "boTyp was not automatically set"
+        assert ansprechpartner.version is not None, "versionstruktur was not automatically set"
+        assert ansprechpartner.typ is Typ.ANSPRECHPARTNER, "_typ was not automatically set"
 
         json_string = ansprechpartner.model_dump_json(by_alias=True)
         assert "Müller-Schmidt" in json_string

@@ -3,9 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
-from bo4e.enum.messwertstatus import Messwertstatus
-from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
+from bo4e import Messwertstatus, Messwertstatuszusatz, Zeitreihenwertkompakt
 
 
 class TestZeitreihenwertkompakt:
@@ -34,12 +32,6 @@ class TestZeitreihenwertkompakt:
             _ = Zeitreihenwertkompakt(wert="helloooo")  # type: ignore[arg-type]
 
         assert "wert" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Zeitreihenwertkompakt(status=Messwertstatus.ABGELESEN)  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
 
     def test_only_required(self) -> None:
         zrwk = Zeitreihenwertkompakt(

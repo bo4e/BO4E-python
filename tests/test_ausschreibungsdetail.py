@@ -4,13 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
-from bo4e.com.menge import Menge
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.zaehlertyp import Zaehlertyp
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e import Ausschreibungsdetail, Landescode, Menge, Mengeneinheit, Netzebene, Zaehlertyp, Zeiteinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
 from tests.test_zeitraum import example_zeitraum
@@ -35,6 +29,7 @@ example_ausschreibungsdetail_dict = {
         "enddatum": None,
         "einheit": Zeiteinheit.TAG,
         "startzeitpunkt": None,
+        "_id": None,
     },
     "marktlokationsadresse": {
         "landescode": Landescode.DE,  # type: ignore[attr-defined]
@@ -46,6 +41,7 @@ example_ausschreibungsdetail_dict = {
         "postfach": None,
         "coErgaenzung": None,
         "ortsteil": None,
+        "_id": None,
     },
     "rechnungsadresse": {
         "landescode": Landescode.DE,  # type: ignore[attr-defined]
@@ -57,15 +53,17 @@ example_ausschreibungsdetail_dict = {
         "postfach": None,
         "coErgaenzung": None,
         "ortsteil": None,
+        "_id": None,
     },
     "netzbetreiber": None,
     "netzebeneLieferung": Netzebene.MSP,
     "prognoseArbeitLieferzeitraum": None,
     "netzebeneMessung": Netzebene.NSP,
     "prognoseLeistung": None,
-    "lastgangVorhanden": None,
+    "istLastgangVorhanden": None,
     "prognoseJahresarbeit": None,
     "marktlokationsId": "56789012345",
+    "_id": None,
 }
 
 
@@ -85,7 +83,7 @@ class TestAusschreibungsdetail:
                     zaehlernummer="1YSK4234092304",
                     marktlokationsbezeichnung="Zentraler Einkauf, Hamburg",
                     zaehlertechnik=Zaehlertyp.LEISTUNGSZAEHLER,
-                    lastgang_vorhanden=True,
+                    ist_lastgang_vorhanden=True,
                     prognose_leistung=Menge(wert=Decimal(40), einheit=Mengeneinheit.KW),
                     prognose_arbeit_lieferzeitraum=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),
                     prognose_jahresarbeit=Menge(wert=Decimal(2500), einheit=Mengeneinheit.KWH),
@@ -100,6 +98,7 @@ class TestAusschreibungsdetail:
                         "endzeitpunkt": None,
                         "dauer": Decimal("5"),
                         "startzeitpunkt": None,
+                        "_id": None,
                     },
                     "zaehlertechnik": Zaehlertyp.LEISTUNGSZAEHLER,
                     "kunde": "Dei Mudder ihr Kunde",
@@ -114,6 +113,7 @@ class TestAusschreibungsdetail:
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
                         "ortsteil": None,
+                        "_id": None,
                     },
                     "rechnungsadresse": {
                         "hausnummer": "27A",
@@ -125,15 +125,21 @@ class TestAusschreibungsdetail:
                         "strasse": "Nördliche Münchner Straße",
                         "coErgaenzung": None,
                         "ortsteil": None,
+                        "_id": None,
                     },
                     "zaehlernummer": "1YSK4234092304",
-                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
+                    "prognoseJahresarbeit": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH, "_id": None},
                     "netzebeneLieferung": Netzebene.MSP,
                     "marktlokationsId": "56789012345",
-                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW},
-                    "lastgangVorhanden": True,
+                    "prognoseLeistung": {"wert": Decimal("40"), "einheit": Mengeneinheit.KW, "_id": None},
+                    "istLastgangVorhanden": True,
                     "netzebeneMessung": Netzebene.NSP,
-                    "prognoseArbeitLieferzeitraum": {"wert": Decimal("2500"), "einheit": Mengeneinheit.KWH},
+                    "prognoseArbeitLieferzeitraum": {
+                        "wert": Decimal("2500"),
+                        "einheit": Mengeneinheit.KWH,
+                        "_id": None,
+                    },
+                    "_id": None,
                 },
             ),
             pytest.param(example_ausschreibungsdetail, example_ausschreibungsdetail_dict),
@@ -146,10 +152,3 @@ class TestAusschreibungsdetail:
         Test de-/serialisation of Ausschreibungsdetail
         """
         assert_serialization_roundtrip(ausschreibungsdetail, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungsdetail()  # type: ignore[call-arg]
-
-        assert "5 validation errors" in str(excinfo.value)
-        # 'lokations_id', 'netzebene_lieferung', 'netzebene_messung', 'lokationsadresse', and 'lieferzeitraum'

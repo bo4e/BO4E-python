@@ -1,10 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.lastgang import Lastgang
-from bo4e.enum.lokationstyp import Lokationstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.sparte import Sparte
+from bo4e import Lastgang, Lokationstyp, Mengeneinheit, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_zeitreihenwert import example_zeitreihenwert
 
@@ -31,9 +28,3 @@ class TestLastgang:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(lastgang_kompakt)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Lastgang()  # type: ignore[call-arg]
-
-        assert "5 validation errors" in str(excinfo.value)

@@ -3,8 +3,9 @@ Contains TarifpreisstaffelProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
 from decimal import Decimal
+from typing import Optional
 
-from bo4e.com.com import COM
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -25,16 +26,15 @@ class TarifpreisstaffelProOrt(COM):
     # todo: decimal doesn't make sense here imo
     # https://github.com/Hochfrequenz/BO4E-python/issues/344
 
-    # required attributes
     #: Der Arbeitspreis in ct/kWh
-    arbeitspreis: Decimal
+    arbeitspreis: Optional[Decimal] = None
     #: Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh
-    arbeitspreis_n_t: Decimal
+    arbeitspreis_n_t: Optional[Decimal] = None
     #: Der Grundpreis in Euro/Jahr
-    grundpreis: Decimal
+    grundpreis: Optional[Decimal] = None
     #: Unterer Wert, ab dem die Staffel gilt (inklusive)
-    staffelgrenze_von: Decimal
+    staffelgrenze_von: Optional[Decimal] = None
     #: Oberer Wert, bis zu dem die Staffel gilt (exklusive)
-    staffelgrenze_bis: Decimal
+    staffelgrenze_bis: Optional[Decimal] = None
 
     # there are no optional attributes

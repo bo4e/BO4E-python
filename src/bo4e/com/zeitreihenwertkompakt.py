@@ -5,9 +5,9 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.messwertstatus import Messwertstatus
-from bo4e.enum.messwertstatuszusatz import Messwertstatuszusatz
+from ..enum.messwertstatus import Messwertstatus
+from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -25,10 +25,7 @@ class Zeitreihenwertkompakt(COM):
 
     """
 
-    # required attributes
-    wert: Decimal  #: Der im Zeitintervall gültige Wert.
-
-    # optional attributes
+    wert: Optional[Decimal] = None  #: Der im Zeitintervall gültige Wert.
 
     #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
     status: Optional[Messwertstatus] = None

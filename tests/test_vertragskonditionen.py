@@ -1,9 +1,7 @@
 from datetime import datetime, timezone
 from decimal import Decimal
 
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from bo4e import Vertragskonditionen, Zeiteinheit, Zeitraum
 
 example_vertragskonditionen = Vertragskonditionen(
     beschreibung="Foobar",

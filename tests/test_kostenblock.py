@@ -4,14 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.kostenblock import Kostenblock
-from bo4e.com.kostenposition import Kostenposition
-from bo4e.com.preis import Preis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Betrag, Kostenblock, Kostenposition, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_sigmoidparameter import example_sigmoidparameter
 
@@ -28,6 +21,7 @@ class TestKostenblock:
                     "kostenblockbezeichnung": "Mein Kostenblock",
                     "summeKostenblock": None,
                     "kostenpositionen": None,
+                    "_id": None,
                 },
                 id="minimal",
             ),
@@ -65,6 +59,7 @@ class TestKostenblock:
                                 "status": Preisstatus.ENDGUELTIG,
                                 "bezugswert": Mengeneinheit.KWH,
                                 "wert": Decimal("3.5"),
+                                "_id": None,
                             },
                             "menge": None,
                             "zeitmenge": None,
@@ -72,10 +67,16 @@ class TestKostenblock:
                             "artikelbezeichnung": "Dei Mudder ihr kostenposition",
                             "artikeldetail": None,
                             "bis": None,
-                            "betragKostenposition": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
+                            "betragKostenposition": {
+                                "waehrung": Waehrungseinheit.EUR,
+                                "wert": Decimal("12.5"),
+                                "_id": None,
+                            },
+                            "_id": None,
                         }
                     ],
-                    "summeKostenblock": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5")},
+                    "summeKostenblock": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("12.5"), "_id": None},
+                    "_id": None,
                 },
                 id="maximal",
             ),
@@ -86,9 +87,3 @@ class TestKostenblock:
         Test de-/serialisation of kostenblock.
         """
         assert_serialization_roundtrip(kostenblock, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Kostenblock()  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)

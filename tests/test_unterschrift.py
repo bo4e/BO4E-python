@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.unterschrift import Unterschrift
+from bo4e import Unterschrift
 
 
 class TestUnterschrift:
@@ -42,9 +42,3 @@ class TestUnterschrift:
         assert unterschrift_deserialized.ort == "Grünwald"
         assert isinstance(unterschrift_deserialized.datum, datetime)
         assert unterschrift_deserialized.datum == datetime(2019, 6, 7, tzinfo=timezone.utc)
-
-    def test_unterschrift_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Unterschrift()  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
