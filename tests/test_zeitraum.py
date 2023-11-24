@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Zeiteinheit, Zeitraum
+from bo4e import Mengeneinheit, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -12,7 +12,7 @@ class TestZeitraum:
         [
             pytest.param(
                 Zeitraum(
-                    einheit=Zeiteinheit.TAG,
+                    einheit=Mengeneinheit.TAG,
                     dauer=Decimal(21),
                 ),
             ),

@@ -19,7 +19,6 @@ __all__ = [
     "Geschaeftspartner",
     "Kosten",
     "Lastgang",
-    "LastgangKompakt",
     "Marktlokation",
     "Marktteilnehmer",
     "Messlokation",
@@ -83,7 +82,6 @@ __all__ = [
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
     "Steuerbetrag",
-    "Tagesvektor",
     "Tarifberechnungsparameter",
     "Tarifeinschraenkung",
     "Tarifpreis",
@@ -97,10 +95,9 @@ __all__ = [
     "VerwendungszweckProMarktrolle",
     "Zaehlwerk",
     "Zaehlzeitregister",
-    "Zeitintervall",
     "Zeitraum",
     "Zeitreihenwert",
-    "Zeitreihenwertkompakt",
+    "Zeitspanne",
     "Zustaendigkeit",
     "AbgabeArt",
     "Angebotsstatus",
@@ -184,7 +181,6 @@ __all__ = [
     "Zaehlergroesse",
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
-    "Zeiteinheit",
     "ZusatzAttribut",
     "__version__",
 ]
@@ -200,7 +196,7 @@ from .bo.geraet import Geraet
 from .bo.geschaeftsobjekt import Geschaeftsobjekt
 from .bo.geschaeftspartner import Geschaeftspartner
 from .bo.kosten import Kosten
-from .bo.lastgang import Lastgang, LastgangKompakt
+from .bo.lastgang import Lastgang
 from .bo.marktlokation import Marktlokation
 from .bo.marktteilnehmer import Marktteilnehmer
 from .bo.messlokation import Messlokation
@@ -266,7 +262,6 @@ from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from .com.steuerbetrag import Steuerbetrag
-from .com.tagesvektor import Tagesvektor
 from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
@@ -280,10 +275,9 @@ from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
-from .com.zeitintervall import Zeitintervall
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
-from .com.zeitreihenwertkompakt import Zeitreihenwertkompakt
+from .com.zeitspanne import Zeitspanne
 from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
@@ -369,6 +363,5 @@ from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
-from .enum.zeiteinheit import Zeiteinheit
 from .version import __version__
 from .zusatzattribut import ZusatzAttribut

@@ -8,6 +8,7 @@ from bo4e import (
     Geschaeftspartner,
     Marktlokation,
     Menge,
+    Mengeneinheit,
     Messlokation,
     NetznutzungRechnungsart,
     NetznutzungRechnungstyp,
@@ -20,7 +21,6 @@ from bo4e import (
     Steuerbetrag,
     Steuerkennzeichen,
     Waehrungscode,
-    Zeiteinheit,
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -40,7 +40,7 @@ class TestRechnung:
                     faelligkeitsdatum=datetime.today(),
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
-                    rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
+                    rechnungsperiode=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(21)),
                     rechnungsersteller=Geschaeftspartner(),
                     rechnungsempfaenger=Geschaeftspartner(),
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
@@ -91,7 +91,7 @@ class TestRechnung:
                     faelligkeitsdatum=datetime.today(),
                     rechnungstyp=Rechnungstyp.ENDKUNDENRECHNUNG,
                     original_rechnungsnummer="RE-2022-01-21_1701",
-                    rechnungsperiode=Zeitraum(einheit=Zeiteinheit.TAG, dauer=Decimal(21)),
+                    rechnungsperiode=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(21)),
                     rechnungsersteller=Geschaeftspartner(),
                     rechnungsempfaenger=Geschaeftspartner(),
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),

@@ -12,7 +12,6 @@ from bo4e import (
     Preisstaffel,
     Tarifzeit,
     Waehrungseinheit,
-    Zeiteinheit,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -28,7 +27,7 @@ class TestPreisposition:
                     leistungsbezeichnung="Foo",
                     preiseinheit=Waehrungseinheit.EUR,
                     bezugsgroesse=Mengeneinheit.KVARH,
-                    zeitbasis=Zeiteinheit.HALBJAHR,
+                    zeitbasis=Mengeneinheit.HALBJAHR,
                     tarifzeit=Tarifzeit.TZ_HT,
                     bdew_artikelnummer=BDEWArtikelnummer.AUSGLEICHSENERGIE_UNTERDECKUNG,
                     zonungsgroesse=Bemessungsgroesse.BENUTZUNGSDAUER,

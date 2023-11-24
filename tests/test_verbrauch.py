@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Mengeneinheit, Verbrauch, Wertermittlungsverfahren
+from bo4e import Mengeneinheit, Messwertstatus, Verbrauch, Wertermittlungsverfahren
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -19,6 +19,7 @@ class TestVerbrauch:
                     obis_kennzahl="1-0:1.8.1",
                     einheit=Mengeneinheit.KWH,
                     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+                    messwertstatus=Messwertstatus.ABGELESEN,
                 )
             ),
             pytest.param(
@@ -27,6 +28,7 @@ class TestVerbrauch:
                     obis_kennzahl="1-0:1.8.1",
                     einheit=Mengeneinheit.KWH,
                     wertermittlungsverfahren=Wertermittlungsverfahren.MESSUNG,
+                    messwertstatus=Messwertstatus.ABGELESEN,
                 ),
             ),
         ],

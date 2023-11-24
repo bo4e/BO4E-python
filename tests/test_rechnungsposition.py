@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from bo4e import BDEWArtikelnummer, Betrag, Menge, Preis, Rechnungsposition, Steuerbetrag, Zeiteinheit
+from bo4e import BDEWArtikelnummer, Betrag, Menge, Mengeneinheit, Preis, Rechnungsposition, Steuerbetrag
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -16,7 +16,7 @@ class TestRechnungsposition:
                     lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
                     lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
                     positionstext="Besonders wertvolle Rechnungsposition",
-                    zeiteinheit=Zeiteinheit.JAHR,
+                    zeiteinheit=Mengeneinheit.JAHR,
                     artikelnummer=BDEWArtikelnummer.AUSGLEICHSENERGIE_UNTERDECKUNG,
                     lokations_id="51238696781",
                     positions_menge=Menge(),

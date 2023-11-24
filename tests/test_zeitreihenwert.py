@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Messwertstatus, Messwertstatuszusatz, Zeitreihenwert
+from bo4e import Messwertstatus, Messwertstatuszusatz, Zeitreihenwert, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -13,8 +13,9 @@ class TestZeitreihenwert:
         [
             pytest.param(
                 Zeitreihenwert(
-                    datum_uhrzeit_von=datetime(2001, 3, 15, tzinfo=timezone.utc),
-                    datum_uhrzeit_bis=datetime(2007, 11, 27, tzinfo=timezone.utc),
+                    zeitspanne=Zeitspanne(
+                        start=datetime(2013, 5, 1, tzinfo=timezone.utc), ende=datetime(2022, 1, 28, tzinfo=timezone.utc)
+                    ),
                     wert=Decimal(2.5),
                     status=Messwertstatus.ABGELESEN,
                     statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL,
