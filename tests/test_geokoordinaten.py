@@ -3,7 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.geokoordinaten import Geokoordinaten
+from bo4e import Geokoordinaten
 
 
 class TestGeokoordinaten:

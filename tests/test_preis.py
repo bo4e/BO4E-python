@@ -3,10 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.preis import Preis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Mengeneinheit, Preis, Preisstatus, Waehrungseinheit
 
 example_preis = Preis(wert=Decimal(12.5), einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)
 
@@ -36,18 +33,9 @@ class TestPreis:
         with pytest.raises(ValidationError) as excinfo:
             _ = Preis(wert="lululululu", einheit=Waehrungseinheit.EUR, bezugswert=Mengeneinheit.KWH)  # type: ignore[arg-type]
 
-        # I don't really know why there are now two validation errors.
-        # I created an issue for this: https://github.com/pydantic/pydantic/issues/6805
-        assert "2 validation errors" in str(excinfo.value)
+        assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
         assert "type=decimal_parsing" in str(excinfo.value)
-        assert "type=is_instance_of" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preis(wert=Decimal(3.50), einheit=Waehrungseinheit.EUR, status=Preisstatus.ENDGUELTIG)  # type: ignore[call-arg]
-
-        assert "1 validation error" in str(excinfo.value)
 
     def test_optional_attribute(self) -> None:
         preis = Preis(

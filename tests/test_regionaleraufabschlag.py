@@ -1,11 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import AufAbschlagstyp, AufAbschlagsziel, RegionalerAufAbschlag, Tarifeinschraenkung, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_energiemix import example_energiemix
 from tests.test_preisgarantie import example_preisgarantie
@@ -47,8 +43,3 @@ class TestRegionalerAufAbschlag:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(regionaler_auf_abschlag)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionalerAufAbschlag()  # type: ignore[call-arg]
-        assert "2 validation errors" in str(excinfo.value)

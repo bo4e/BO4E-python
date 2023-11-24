@@ -2,12 +2,10 @@
 Contains StandorteigenschaftenGas class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, List
+from typing import Optional
 
-from annotated_types import Len
-
-from bo4e.com.com import COM
-from bo4e.com.marktgebietinfo import MarktgebietInfo
+from .com import COM
+from .marktgebietinfo import MarktgebietInfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -26,6 +24,5 @@ class StandorteigenschaftenGas(COM):
 
     """
 
-    # required attributes
-    netzkontonummern: Annotated[list[str], Len(1, 2)]  #: Netzkontonummern der Gasnetze
-    marktgebiete: List[MarktgebietInfo]  #: Die Informationen zu Marktgebieten in dem Netz.
+    netzkontonummern: Optional[list[str]] = None  #: Netzkontonummern der Gasnetze
+    marktgebiete: Optional[list[MarktgebietInfo]] = None  #: Die Informationen zu Marktgebieten in dem Netz.

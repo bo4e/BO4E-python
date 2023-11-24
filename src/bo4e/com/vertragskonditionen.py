@@ -5,8 +5,8 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.zeitraum import Zeitraum
+from .com import COM
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
@@ -24,7 +24,6 @@ class Vertragskonditionen(COM):
 
     """
 
-    # optional attributes
     #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
     beschreibung: Optional[str] = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12

@@ -4,9 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.positionsaufabschlag import PositionsAufAbschlag
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import AufAbschlagstyp, PositionsAufAbschlag, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -28,6 +26,7 @@ class TestPositionsAufAbschlag:
                     "aufAbschlagstyp": AufAbschlagstyp.ABSOLUT,
                     "aufAbschlagswert": Decimal("4.25"),
                     "aufAbschlagswaehrung": Waehrungseinheit.EUR,
+                    "_id": None,
                 },
             ),
         ],
@@ -39,9 +38,3 @@ class TestPositionsAufAbschlag:
         Test de-/serialisation of PositionsAufAbschlag
         """
         assert_serialization_roundtrip(positionsaufabschlag, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = PositionsAufAbschlag()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

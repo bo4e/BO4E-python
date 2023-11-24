@@ -4,14 +4,16 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenblock import Fremdkostenblock
-from bo4e.com.fremdkostenposition import Fremdkostenposition
-from bo4e.com.preis import Preis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import (
+    Betrag,
+    Fremdkostenblock,
+    Fremdkostenposition,
+    Mengeneinheit,
+    Preis,
+    Preisstatus,
+    Waehrungscode,
+    Waehrungseinheit,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -54,6 +56,7 @@ class TestFremdkostenblock:
                                 "einheit": Waehrungseinheit.EUR,
                                 "bezugswert": Mengeneinheit.KWH,
                                 "status": Preisstatus.ENDGUELTIG,
+                                "_id": None,
                             },
                             "bis": None,
                             "menge": None,
@@ -63,11 +66,17 @@ class TestFremdkostenblock:
                             "artikeldetail": None,
                             "von": None,
                             "linkPreisblatt": None,
-                            "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
+                            "betragKostenposition": {
+                                "wert": Decimal("12.5"),
+                                "waehrung": Waehrungseinheit.EUR,
+                                "_id": None,
+                            },
                             "gebietcodeEic": None,
+                            "_id": None,
                         }
                     ],
-                    "summeKostenblock": {"wert": Decimal("98240"), "waehrung": Waehrungseinheit.EUR},
+                    "summeKostenblock": {"wert": Decimal("98240"), "waehrung": Waehrungseinheit.EUR, "_id": None},
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),
@@ -77,6 +86,7 @@ class TestFremdkostenblock:
                     "kostenblockbezeichnung": "teststring",
                     "kostenpositionen": None,
                     "summeKostenblock": None,
+                    "_id": None,
                 },
                 id="minimal attributes",
             ),
@@ -89,8 +99,3 @@ class TestFremdkostenblock:
         Test de-/serialisation of Fremdkostenblock
         """
         assert_serialization_roundtrip(fremdkostenblock, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Fremdkostenblock()  # type: ignore[call-arg]
-        assert "1 validation error" in str(excinfo.value)

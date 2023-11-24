@@ -9,5 +9,5 @@ class Rollencodetyp(StrEnum):
     """
 
     BDEW = "BDEW"  #: Bundesverband der Energie- u. Wasserwirtschaft
-    DVG = "DVG"  #: Deutscher Verein des Gas- und Wasserfaches
+    DVGW = "DVGW"  #: Deutscher Verein des Gas- und Wasserfaches
     GLN = "GLN"  #: Global Location Number
