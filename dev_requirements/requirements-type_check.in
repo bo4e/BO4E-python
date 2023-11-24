@@ -1,0 +1,5 @@
+# specific requirements for the tox type_check environment
+mypy
+types-requests
+networkx-stubs
+pytest

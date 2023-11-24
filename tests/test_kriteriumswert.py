@@ -3,8 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
+from bo4e import KriteriumWert, Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -17,7 +16,7 @@ class TestKriteriumWert:
                     kriterium=Tarifregionskriterium.ORT,
                     wert="Grünwald",
                 ),
-                {"kriterium": Tarifregionskriterium.ORT, "wert": "Grünwald"},
+                {"kriterium": Tarifregionskriterium.ORT, "wert": "Grünwald", "_id": None},
             ),
         ],
     )
@@ -28,8 +27,3 @@ class TestKriteriumWert:
         Test de-/serialisation of KriteriumWert with minimal attributes.
         """
         assert_serialization_roundtrip(kriteriumwert, expected_json_dict)
-
-    def test_kriteriumwert_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = KriteriumWert()  # type: ignore[call-arg]
-        assert "2 validation errors" in str(excinfo.value)

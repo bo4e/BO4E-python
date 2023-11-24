@@ -5,13 +5,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.fremdkostenposition import Fremdkostenposition
-from bo4e.com.preis import Preis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Betrag, Fremdkostenposition, Mengeneinheit, Preis, Preisstatus, Waehrungscode, Waehrungseinheit
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_menge import example_menge
 from tests.test_sigmoidparameter import example_sigmoidparameter
@@ -44,6 +38,7 @@ class TestFremdkostenposition:
                         "einheit": Waehrungseinheit.EUR,
                         "bezugswert": Mengeneinheit.KWH,
                         "status": Preisstatus.ENDGUELTIG,
+                        "_id": None,
                     },
                     "bis": None,
                     "menge": None,
@@ -53,8 +48,9 @@ class TestFremdkostenposition:
                     "artikeldetail": None,
                     "von": None,
                     "linkPreisblatt": None,
-                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR, "_id": None},
                     "gebietcodeEic": None,
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -91,22 +87,26 @@ class TestFremdkostenposition:
                         "status": Preisstatus.ENDGUELTIG,
                         "wert": Decimal("3.5"),
                         "einheit": Waehrungseinheit.EUR,
+                        "_id": None,
                     },
                     "menge": {
                         "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
                         "einheit": Mengeneinheit.MWH,
+                        "_id": None,
                     },
                     "zeitmenge": {
                         "wert": Decimal("3.410000000000000142108547152020037174224853515625"),
                         "einheit": Mengeneinheit.MWH,
+                        "_id": None,
                     },
                     "marktpartnercode": "986543210123",
                     "bis": datetime(2014, 5, 1, 0, 0, tzinfo=timezone.utc),
                     "positionstitel": "Vadders Preisstaffel",
                     "von": datetime(2013, 5, 1, 0, 0, tzinfo=timezone.utc),
-                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR},
+                    "betragKostenposition": {"wert": Decimal("12.5"), "waehrung": Waehrungseinheit.EUR, "_id": None},
                     "gebietcodeEic": "not an eic code but validation will follow in ticket 146",
                     "linkPreisblatt": "http://foo.bar/",
+                    "_id": None,
                 },
                 id="required and optional attributes",
             ),
@@ -119,9 +119,3 @@ class TestFremdkostenposition:
         Test de-/serialisation of Fremdkostenposition.
         """
         assert_serialization_roundtrip(fremdkostenposition, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Fremdkostenposition()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

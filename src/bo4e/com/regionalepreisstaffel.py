@@ -1,10 +1,10 @@
 """
 Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
-
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
+from .preisstaffel import Preisstaffel
+from .regionalegueltigkeit import RegionaleGueltigkeit
 
 # pylint: disable=too-few-public-methods
 
@@ -22,6 +22,5 @@ class RegionalePreisstaffel(Preisstaffel):
 
     """
 
-    # required attributes
     #: Regionale Eingrenzung der Preisstaffel
-    regionale_gueltigkeit: RegionaleGueltigkeit
+    regionale_gueltigkeit: Optional[RegionaleGueltigkeit] = None

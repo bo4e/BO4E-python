@@ -2,12 +2,10 @@
 Contains AufAbschlagProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated
+from typing import Optional
 
-from annotated_types import Len
-
-from bo4e.com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
-from bo4e.com.com import COM
+from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -27,12 +25,11 @@ class AufAbschlagProOrt(COM):
 
     """
 
-    # required attributes
     #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
-    postleitzahl: str
+    postleitzahl: Optional[str] = None
     #: Der Ort für den der Aufschlag gilt.
-    ort: str
+    ort: Optional[str] = None
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
-    netznr: str
+    netznr: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: Annotated[list[AufAbschlagstaffelProOrt], Len(1)]
+    staffeln: Optional[list[AufAbschlagstaffelProOrt]] = None

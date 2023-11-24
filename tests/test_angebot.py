@@ -3,11 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.angebot import Angebot
-from bo4e.bo.ansprechpartner import Ansprechpartner
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.sparte import Sparte
+from bo4e import Angebot, Ansprechpartner, Geschaeftspartner, Geschaeftspartnerrolle, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
 from tests.test_angebotsvariante import example_angebotsvariante
@@ -26,13 +22,13 @@ class TestAngebot:
                     bindefrist=datetime(2019, 3, 2, tzinfo=timezone.utc),
                     angebotsgeber=Geschaeftspartner(
                         name1="Batman",
-                        gewerbekennzeichnung=True,
+                        ist_gewerbe=True,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
                         partneradresse=example_adresse,
                     ),
                     angebotsnehmer=Geschaeftspartner(
                         name1="Joker",
-                        gewerbekennzeichnung=False,
+                        ist_gewerbe=False,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
                         partneradresse=example_adresse,
                     ),
@@ -40,7 +36,7 @@ class TestAngebot:
                         nachname="Titans",
                         geschaeftspartner=Geschaeftspartner(
                             name1="Wonderwoman",
-                            gewerbekennzeichnung=False,
+                            ist_gewerbe=False,
                             geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
                             partneradresse=example_adresse,
                         ),
@@ -49,7 +45,7 @@ class TestAngebot:
                         nachname="Titans",
                         geschaeftspartner=Geschaeftspartner(
                             name1="Robin",
-                            gewerbekennzeichnung=False,
+                            ist_gewerbe=False,
                             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
                             partneradresse=example_adresse,
                         ),
@@ -65,13 +61,13 @@ class TestAngebot:
                     sparte=Sparte.GAS,
                     angebotsgeber=Geschaeftspartner(
                         name1="Batman",
-                        gewerbekennzeichnung=True,
+                        ist_gewerbe=True,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.LIEFERANT],
                         partneradresse=example_adresse,
                     ),
                     angebotsnehmer=Geschaeftspartner(
                         name1="Joker",
-                        gewerbekennzeichnung=False,
+                        ist_gewerbe=False,
                         geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
                         partneradresse=example_adresse,
                     ),
@@ -86,8 +82,3 @@ class TestAngebot:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(angebot)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Angebot()  # type: ignore[call-arg]
-        assert "6 validation errors" in str(excinfo.value)

@@ -1,9 +1,10 @@
 """
 Contains Rufnummer class and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.rufnummernart import Rufnummernart
+from ..enum.rufnummernart import Rufnummernart
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -21,8 +22,7 @@ class Rufnummer(COM):
 
     """
 
-    # required attributes
     #: Ausprägung der Nummer
-    nummerntyp: Rufnummernart
+    nummerntyp: Optional[Rufnummernart] = None
     #: Die konkrete Nummer
-    rufnummer: str
+    rufnummer: Optional[str] = None

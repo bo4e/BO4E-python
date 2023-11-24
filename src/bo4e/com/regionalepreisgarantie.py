@@ -2,10 +2,10 @@
 Contains RegionalePreisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
-
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
+from .preisgarantie import Preisgarantie
+from .regionalegueltigkeit import RegionaleGueltigkeit
 
 # pylint: disable=too-few-public-methods
 
@@ -23,6 +23,5 @@ class RegionalePreisgarantie(Preisgarantie):
 
     """
 
-    # required attributes
     #: Regionale Eingrenzung der Preisgarantie.
-    regionale_gueltigkeit: RegionaleGueltigkeit
+    regionale_gueltigkeit: Optional[RegionaleGueltigkeit] = None

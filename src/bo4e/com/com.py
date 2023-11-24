@@ -3,12 +3,14 @@ Contains base class for all components
 """
 
 from decimal import Decimal
-from typing import Type, TypeVar
+from typing import Annotated, Optional, Type, TypeVar
 
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
+
+from bo4e.version import __version__
 
 
 # pylint: disable=too-few-public-methods
@@ -24,6 +26,18 @@ class COM(BaseModel):
     .. HINT::
         `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/COM.json>`_
 
+    """
+
+    version: Annotated[
+        Optional[str], Field(alias="_version")
+    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+
+    # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
+    # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
+    id: Annotated[Optional[str], Field(alias="_id")] = None
+    """
+    Eine generische ID, die für eigene Zwecke genutzt werden kann.
+    Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
     # pylint: disable=duplicate-code
