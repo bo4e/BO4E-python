@@ -7,12 +7,12 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
-from annotated_types import Len
+from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
-from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
-from bo4e.enum.botyp import BoTyp
+from ..com.standorteigenschaftengas import StandorteigenschaftenGas
+from ..com.standorteigenschaftenstrom import StandorteigenschaftenStrom
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 class Standorteigenschaften(Geschaeftsobjekt):
@@ -28,11 +28,9 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.STANDORTEIGENSCHAFTEN
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: Annotated[list[StandorteigenschaftenStrom], Len(1)]
+    eigenschaften_strom: Optional[list[StandorteigenschaftenStrom]] = None
 
-    # optional attributes
     #: Eigenschaften zur Sparte Gas
     eigenschaften_gas: Optional[StandorteigenschaftenGas] = None

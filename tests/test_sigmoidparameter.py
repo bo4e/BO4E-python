@@ -4,7 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.sigmoidparameter import Sigmoidparameter
+from bo4e import Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip
 
 # this sigmoid parameter can be imported by other tests
@@ -22,7 +22,7 @@ class TestSigmoidparameter:
         [
             pytest.param(
                 example_sigmoidparameter,
-                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
+                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4"), "_id": None},
             ),
         ],
     )
@@ -33,11 +33,6 @@ class TestSigmoidparameter:
         Test de-/serialisation of Sigmoidparameter with minimal attributes.
         """
         assert_serialization_roundtrip(sigmoidparameter, expected_json_dict)
-
-    def test_sigmoidparameter_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Sigmoidparameter()  # type: ignore[call-arg]
-        assert "4 validation errors" in str(excinfo.value)
 
     @pytest.mark.parametrize(
         "sigmoidparameter, leistung, expected_lp",

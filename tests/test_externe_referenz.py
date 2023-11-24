@@ -1,9 +1,6 @@
 from typing import Any, Dict
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from bo4e import Adresse, ExterneReferenz, Geschaeftspartner, Geschaeftspartnerrolle
 
 
 class TestExterneReferenz:
@@ -27,7 +24,7 @@ class TestExterneReferenz:
             # just some dummy data to make the GP valid
             name1="Duck",
             name2="Donald",
-            gewerbekennzeichnung=False,
+            ist_gewerbe=False,
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
@@ -48,7 +45,7 @@ class TestExterneReferenz:
             # just some dummy data to make the GP valid
             name1="Duck",
             name2="Donald",
-            gewerbekennzeichnung=False,
+            ist_gewerbe=False,
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
@@ -62,7 +59,7 @@ class TestExterneReferenz:
 
         deserialized_gp: Geschaeftspartner = Geschaeftspartner.model_validate_json(gp_json)
 
-        assert deserialized_gp.externe_referenzen == []
+        assert deserialized_gp.externe_referenzen is None
 
     def test_extension_data(self) -> None:
         """

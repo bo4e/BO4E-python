@@ -3,11 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.tarifpreis import Tarifpreis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Mengeneinheit, Preisstatus, Preistyp, Tarifpreis, Waehrungseinheit
 
 example_tarifpreis = Tarifpreis(
     wert=Decimal(12.5),
@@ -50,17 +46,6 @@ class TestTarifpreis:
         assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
         assert "type=decimal_parsing" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreis(  # type: ignore[call-arg]
-                wert=Decimal(3.50),
-                einheit=Waehrungseinheit.EUR,
-                status=Preisstatus.ENDGUELTIG,
-                bezugswert=Mengeneinheit.KWH,
-            )
-
-        assert "1 validation error" in str(excinfo.value)
 
     def test_optional_attribute(self) -> None:
         tarifpreis = Tarifpreis(
