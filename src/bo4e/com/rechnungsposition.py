@@ -4,18 +4,15 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import Any, Dict, Optional
+from typing import Optional
 
-from pydantic import validator
-
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.zeiteinheit import Zeiteinheit
-from bo4e.validators import check_bis_is_later_than_von
+from ..enum.bdewartikelnummer import BDEWArtikelnummer
+from ..enum.mengeneinheit import Mengeneinheit
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .preis import Preis
+from .steuerbetrag import Steuerbetrag
 
 
 class Rechnungsposition(COM):
@@ -32,23 +29,21 @@ class Rechnungsposition(COM):
 
     """
 
-    # required attributes
     #: Fortlaufende Nummer für die Rechnungsposition
-    positionsnummer: int
+    positionsnummer: Optional[int] = None
 
-    lieferung_von: datetime  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
-    lieferung_bis: datetime  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
-    _bis_check = validator("lieferung_bis", always=True, allow_reuse=True)(check_bis_is_later_than_von)
+    lieferung_von: Optional[datetime] = None  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
+    lieferung_bis: Optional[datetime] = None  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
 
     #: Bezeichung für die abgerechnete Position
-    positionstext: str
+    positionstext: Optional[str] = None
 
     #: Die abgerechnete Menge mit Einheit
-    positions_menge: Menge
+    positions_menge: Optional[Menge] = None
     #: Der Preis für eine Einheit der energetischen Menge
-    einzelpreis: Preis
+    einzelpreis: Optional[Preis] = None
 
-    teilsumme_netto: Betrag
+    teilsumme_netto: Optional[Betrag] = None
     """
     Das Ergebnis der Multiplikation aus einzelpreis * positionsMenge * (Faktor aus zeitbezogeneMenge).
     Z.B. 12,60€ * 120 kW * 3/12 (für 3 Monate).
@@ -57,11 +52,10 @@ class Rechnungsposition(COM):
     # see https://github.com/Hochfrequenz/BO4E-python/issues/126
 
     #: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag
-    teilsumme_steuer: Steuerbetrag
+    teilsumme_steuer: Optional[Steuerbetrag] = None
 
-    # optional attributes
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Zeiteinheit] = None
+    zeiteinheit: Optional[Mengeneinheit] = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
     artikelnummer: Optional[BDEWArtikelnummer] = None
@@ -79,12 +73,3 @@ class Rechnungsposition(COM):
 
     #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
     artikel_id: Optional[str] = None
-
-    @staticmethod
-    def _get_inclusive_start(values: Dict[str, Any]) -> datetime:
-        """return the inclusive start (used in the validator)"""
-        return values["lieferung_von"]
-
-    # def _get_exclusive_end(self) -> datetime:
-    #     """return the exclusive end (used in the validator)"""
-    #     return self.lieferung_bis

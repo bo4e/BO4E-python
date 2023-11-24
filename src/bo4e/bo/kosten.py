@@ -1,18 +1,19 @@
 """
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import List, Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
+
+from ..com.betrag import Betrag
+from ..com.kostenblock import Kostenblock
+from ..com.zeitraum import Zeitraum
+from ..enum.kostenklasse import Kostenklasse
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import conlist
-
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.betrag import Betrag
-from bo4e.com.kostenblock import Kostenblock
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.kostenklasse import Kostenklasse
 
 
 class Kosten(Geschaeftsobjekt):
@@ -29,15 +30,13 @@ class Kosten(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.KOSTEN
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Kostenklasse
+    kostenklasse: Optional[Kostenklasse] = None
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Zeitraum
+    gueltigkeit: Optional[Zeitraum] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: conlist(Kostenblock, min_items=1)  # type: ignore[valid-type]
+    kostenbloecke: Optional[list[Kostenblock]] = None
 
-    # optional attributes
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[List[Betrag]] = None
+    summe_kosten: Optional[list[Betrag]] = None

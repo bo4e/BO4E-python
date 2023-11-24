@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
-from bo4e.com.com import COM
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -23,10 +23,8 @@ class Unterschrift(COM):
 
     """
 
-    # required attributes
     #: Name des Unterschreibers
-    name: str
+    name: Optional[str] = None
 
-    # optional attributes
     ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
     datum: Optional[datetime] = None  #: Datum der Unterschrift

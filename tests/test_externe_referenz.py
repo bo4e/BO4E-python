@@ -1,18 +1,17 @@
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from typing import Any, Dict
+
+from bo4e import Adresse, ExterneReferenz, Geschaeftspartner, Geschaeftspartnerrolle
 
 
 class TestExterneReferenz:
     def test_serialization(self) -> None:
         er = ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")
 
-        er_json = er.json(by_alias=True, ensure_ascii=False)
+        er_json = er.model_dump_json(by_alias=True)
 
         assert "exRefName" in er_json
 
-        deserialized_er: ExterneReferenz = ExterneReferenz.parse_raw(er_json)
+        deserialized_er: ExterneReferenz = ExterneReferenz.model_validate_json(er_json)
         assert isinstance(deserialized_er, ExterneReferenz)
         assert deserialized_er == er
 
@@ -25,7 +24,7 @@ class TestExterneReferenz:
             # just some dummy data to make the GP valid
             name1="Duck",
             name2="Donald",
-            gewerbekennzeichnung=False,
+            ist_gewerbe=False,
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
@@ -35,18 +34,18 @@ class TestExterneReferenz:
             ),
         )
 
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
+        gp_json = gp.model_dump_json(by_alias=True)
 
-        deserialized_gp: Geschaeftspartner = Geschaeftspartner.parse_raw(gp_json)
-        assert len(deserialized_gp.externe_referenzen) == 2  # type: ignore[arg-type]
-        assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"  # type: ignore[index]
+        deserialized_gp: Geschaeftspartner = Geschaeftspartner.model_validate_json(gp_json)
+        assert len(deserialized_gp.externe_referenzen) == 2
+        assert deserialized_gp.externe_referenzen[0].ex_ref_name == "SAP GP Nummer"
 
     def test_geschaeftspartner_with_no_externe_referenz(self) -> None:
         gp = Geschaeftspartner(
             # just some dummy data to make the GP valid
             name1="Duck",
             name2="Donald",
-            gewerbekennzeichnung=False,
+            ist_gewerbe=False,
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
             partneradresse=Adresse(
                 strasse="Am Geldspeicher",
@@ -56,8 +55,19 @@ class TestExterneReferenz:
             ),
         )
 
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
+        gp_json = gp.model_dump_json(by_alias=True)
 
-        deserialized_gp: Geschaeftspartner = Geschaeftspartner.parse_raw(gp_json)
+        deserialized_gp: Geschaeftspartner = Geschaeftspartner.model_validate_json(gp_json)
 
-        assert deserialized_gp.externe_referenzen == []
+        assert deserialized_gp.externe_referenzen is None
+
+    def test_extension_data(self) -> None:
+        """
+        tests the behaviour of the json extension data (`extra="allow"`)
+        """
+        er = ExterneReferenz(ex_ref_name="foo.bar", ex_ref_wert="12345")
+        er_json: Dict[str, Any] = er.model_dump()
+        er_json["additional_key"] = "additional_value"
+        deserialized_er: ExterneReferenz = ExterneReferenz.model_validate(er_json)
+        assert isinstance(deserialized_er, ExterneReferenz)
+        assert deserialized_er.additional_key == "additional_value"  # type:ignore[attr-defined]

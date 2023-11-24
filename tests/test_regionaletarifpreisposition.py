@@ -4,15 +4,17 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import (
+    Gueltigkeitstyp,
+    KriteriumWert,
+    Mengeneinheit,
+    Preistyp,
+    RegionaleGueltigkeit,
+    RegionalePreisstaffel,
+    RegionaleTarifpreisposition,
+    Tarifregionskriterium,
+    Waehrungseinheit,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_sigmoidparameter import example_sigmoidparameter
 
@@ -48,7 +50,10 @@ class TestRegionaleTarifpreisPosition:
                         {
                             "regionaleGueltigkeit": {
                                 "gueltigkeitstyp": "NUR_IN",
-                                "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
+                                "kriteriumsWerte": [
+                                    {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
+                                ],
+                                "_id": None,
                             },
                             "einheitspreis": Decimal("40"),
                             "sigmoidparameter": {
@@ -56,14 +61,17 @@ class TestRegionaleTarifpreisPosition:
                                 "B": Decimal("2"),
                                 "C": Decimal("3"),
                                 "D": Decimal("4"),
+                                "_id": None,
                             },
                             "staffelgrenzeVon": Decimal("12.5"),
                             "staffelgrenzeBis": Decimal("25"),
+                            "_id": None,
                         }
                     ],
                     "einheit": Waehrungseinheit.EUR,
                     "mengeneinheitstaffel": Mengeneinheit.WH,
                     "preistyp": "ARBEITSPREIS_NT",
+                    "_id": None,
                 },
                 id="all attributes",
             ),
@@ -73,9 +81,3 @@ class TestRegionaleTarifpreisPosition:
         self, regionale_tarifpreis_position: RegionaleTarifpreisposition, expected_json_dict: Dict[str, Any]
     ) -> None:
         assert_serialization_roundtrip(regionale_tarifpreis_position, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleTarifpreisposition()  # type: ignore[call-arg]
-
-        assert "4 validation errors" in str(excinfo.value)

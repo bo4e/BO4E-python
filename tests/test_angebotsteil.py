@@ -5,23 +5,25 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.com.adresse import Adresse
-from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.angebotsteil import Angebotsteil
-from bo4e.com.betrag import Betrag
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.landescode import Landescode
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.waehrungscode import Waehrungscode
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import (
+    Adresse,
+    Angebotsposition,
+    Angebotsteil,
+    Betrag,
+    Bilanzierungsmethode,
+    Energierichtung,
+    Landescode,
+    Marktlokation,
+    Menge,
+    Mengeneinheit,
+    Netzebene,
+    Preis,
+    Sparte,
+    Typ,
+    Waehrungscode,
+    Waehrungseinheit,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_angebotsteil: Angebotsteil = Angebotsteil(
@@ -42,14 +44,16 @@ example_angebotsteil_json = {
     "positionen": [
         {
             "positionsbezeichnung": "teststring",
-            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
-            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
+            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH, "_id": None},
+            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240"), "_id": None},
             "positionspreis": {
                 "bezugswert": Mengeneinheit.KWH,
                 "status": None,
                 "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                 "einheit": Waehrungseinheit.EUR,
+                "_id": None,
             },
+            "_id": None,
         },
     ],
     "anfrageSubreferenz": None,
@@ -57,6 +61,7 @@ example_angebotsteil_json = {
     "gesamtmengeangebotsteil": None,
     "gesamtkostenangebotsteil": None,
     "lieferzeitraum": None,
+    "_id": None,
 }
 
 
@@ -92,7 +97,7 @@ class TestAngebotsteil:
                             ),
                             energierichtung=Energierichtung.EINSP,
                             bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
-                            unterbrechbar=True,
+                            ist_unterbrechbar=True,
                             netzebene=Netzebene.NSP,
                         )
                     ],
@@ -110,14 +115,20 @@ class TestAngebotsteil:
                     "positionen": [
                         {
                             "positionsbezeichnung": "testtring",
-                            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
-                            "positionskosten": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
+                            "positionsmenge": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH, "_id": None},
+                            "positionskosten": {
+                                "waehrung": Waehrungseinheit.EUR,
+                                "wert": Decimal("98240"),
+                                "_id": None,
+                            },
                             "positionspreis": {
                                 "bezugswert": Mengeneinheit.KWH,
                                 "status": None,
                                 "wert": Decimal("0.2456000000000000127453603226967970840632915496826171875"),
                                 "einheit": Waehrungseinheit.EUR,
+                                "_id": None,
                             },
+                            "_id": None,
                         },
                     ],
                     "lieferstellenangebotsteil": [
@@ -132,14 +143,15 @@ class TestAngebotsteil:
                                 "adresszusatz": None,
                                 "postfach": None,
                                 "coErgaenzung": None,
+                                "ortsteil": None,
                                 "landescode": Landescode.DE,  # type: ignore[attr-defined]
+                                "_id": None,
                             },
                             "energierichtung": Energierichtung.EINSP,
                             "bilanzierungsmethode": Bilanzierungsmethode.PAUSCHAL,
-                            "unterbrechbar": True,
+                            "istUnterbrechbar": True,
                             "netzebene": Netzebene.NSP,
                             "netzgebietsnr": None,
-                            "versionstruktur": "2",
                             "katasterinformation": None,
                             "bilanzierungsgebiet": None,
                             "grundversorgercodenr": None,
@@ -151,12 +163,17 @@ class TestAngebotsteil:
                             "gasqualitaet": None,
                             "zugehoerigeMesslokation": None,
                             "kundengruppen": None,
-                            "externeReferenzen": [],
-                            "boTyp": BoTyp.MARKTLOKATION,
+                            "externeReferenzen": None,
+                            "_typ": Typ.MARKTLOKATION,
+                            "_id": None,
                         }
                     ],
-                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH},
-                    "gesamtkostenangebotsteil": {"waehrung": Waehrungseinheit.EUR, "wert": Decimal("98240")},
+                    "gesamtmengeangebotsteil": {"wert": Decimal("4000"), "einheit": Mengeneinheit.KWH, "_id": None},
+                    "gesamtkostenangebotsteil": {
+                        "waehrung": Waehrungseinheit.EUR,
+                        "wert": Decimal("98240"),
+                        "_id": None,
+                    },
                     "anfrageSubreferenz": "teststring",
                     "lieferzeitraum": {
                         "startdatum": datetime(2020, 1, 1, tzinfo=timezone.utc),
@@ -165,7 +182,9 @@ class TestAngebotsteil:
                         "enddatum": datetime(2020, 4, 1, tzinfo=timezone.utc),
                         "startzeitpunkt": None,
                         "dauer": None,
+                        "_id": None,
                     },
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),
@@ -181,15 +200,3 @@ class TestAngebotsteil:
         Test de-/serialisation of Angebotsteil with minimal attributes.
         """
         assert_serialization_roundtrip(angebotsteil, expected_json_dict)
-
-    def test_angebotsteil_positionen_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Angebotsteil(positionen=[])
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Angebotsteil()  # type: ignore[call-arg]
-        assert "1 validation error" in str(excinfo.value)

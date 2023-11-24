@@ -4,27 +4,27 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Any, Dict, Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
+
+from ..com.adresse import Adresse
+from ..com.geokoordinaten import Geokoordinaten
+from ..com.katasteradresse import Katasteradresse
+from ..com.messlokationszuordnung import Messlokationszuordnung
+from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+from ..enum.energierichtung import Energierichtung
+from ..enum.gasqualitaet import Gasqualitaet
+from ..enum.gebiettyp import Gebiettyp
+from ..enum.kundentyp import Kundentyp
+from ..enum.netzebene import Netzebene
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.verbrauchsart import Verbrauchsart
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=no-name-in-module
-from pydantic import conlist, validator
-
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.com.messlokationszuordnung import Messlokationszuordnung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.gasqualitaet import Gasqualitaet
-from bo4e.enum.gebiettyp import Gebiettyp
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.validators import validate_marktlokations_id
 
 
 class Marktlokation(Geschaeftsobjekt):
@@ -40,29 +40,26 @@ class Marktlokation(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.MARKTLOKATION
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str
-    _marktlokations_id_check = validator("marktlokations_id", allow_reuse=True)(validate_marktlokations_id)
+    marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
-    energierichtung: Energierichtung
+    energierichtung: Optional[Energierichtung] = None
     #: Die Bilanzierungsmethode, RLM oder SLP
-    bilanzierungsmethode: Bilanzierungsmethode
-    netzebene: Netzebene
+    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    netzebene: Optional[Netzebene] = None
     """
     Netzebene, in der der Bezug der Energie erfolgt.
     Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.
     Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.
     """
 
-    # optional attributes
     #: Verbrauchsart der Marktlokation.
     verbrauchsart: Optional[Verbrauchsart] = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
-    unterbrechbar: Optional[bool] = None
+    ist_unterbrechbar: Optional[bool] = None
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
     netzbetreibercodenr: Optional[str] = None
     #: Typ des Netzgebietes, z.B. Verteilnetz
@@ -114,21 +111,5 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: conlist(Kundentyp, min_items=0) = None  # type: ignore[valid-type]
+    kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
-
-    # pylint:disable=unused-argument, no-self-argument
-    @validator("katasterinformation", always=True)
-    def validate_address_info(
-        cls, katasterinformation: Optional[Katasteradresse], values: Dict[str, Any]
-    ) -> Optional[Katasteradresse]:
-        """Checks that there is one and only one valid adress given."""
-        all_address_attributes = [
-            values["lokationsadresse"],
-            values["geoadresse"],
-            katasterinformation,
-        ]
-        amount_of_given_address_infos = len([i for i in all_address_attributes if i is not None])
-        if amount_of_given_address_infos != 1:
-            raise ValueError("No or more than one address information is given.")
-        return katasterinformation

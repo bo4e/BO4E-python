@@ -3,11 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.ausschreibungslos import Ausschreibungslos
-from bo4e.enum.preismodell import Preismodell
-from bo4e.enum.rechnungslegung import Rechnungslegung
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsform import Vertragsform
+from bo4e import Ausschreibungslos, Preismodell, Rechnungslegung, Sparte, Vertragsform
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_ausschreibungsdetail import example_ausschreibungsdetail, example_ausschreibungsdetail_dict
 from tests.test_menge import example_menge, example_menge_dict
@@ -58,6 +54,7 @@ class TestAusschreibungslos:
                     "wunschRechnungslegung": Rechnungslegung.MONATSRECHN,
                     "wunschMindestmenge": example_menge_dict,
                     "betreutDurch": "Max Mustermann",
+                    "_id": None,
                 },
                 id="maximal attributes",
             ),
@@ -70,28 +67,3 @@ class TestAusschreibungslos:
         Test de-/serialisation of Ausschreibungslos
         """
         assert_serialization_roundtrip(ausschreibungslos, expected_json_dict)
-
-    def test_ausschreibungslos_lieferstellen_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungslos(
-                losnummer="foo",
-                bezeichnung="bar",
-                bemerkung="asd",
-                preismodell=Preismodell.FESTPREIS,
-                energieart=Sparte.STROM,
-                wunsch_rechnungslegung=Rechnungslegung.MONATSRECHN,
-                wunsch_vertragsform=Vertragsform.DIREKT,
-                betreut_durch="Max Mustermann",
-                anzahl_lieferstellen=17,
-                lieferzeitraum=example_zeitraum,
-                ## ^^ above is just clutter
-                lieferstellen=[],  # the important line
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Ausschreibungslos()  # type: ignore[call-arg]
-        assert "10 validation errors" in str(excinfo.value)

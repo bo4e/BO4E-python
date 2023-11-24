@@ -6,15 +6,15 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import constr
+from pydantic import Field
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.marktrolle import Marktrolle
-from bo4e.enum.rollencodetyp import Rollencodetyp
-from bo4e.enum.sparte import Sparte
+from ..enum.marktrolle import Marktrolle
+from ..enum.rollencodetyp import Rollencodetyp
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .geschaeftspartner import Geschaeftspartner
 
 
 class Marktteilnehmer(Geschaeftspartner):
@@ -30,17 +30,15 @@ class Marktteilnehmer(Geschaeftspartner):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.MARKTTEILNEHMER
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
-    marktrolle: Marktrolle
+    marktrolle: Optional[Marktrolle] = None
     #: Gibt die Codenummer der Marktrolle an
-    rollencodenummer: constr(strict=True, regex=r"^\d{13}$")  # type: ignore[valid-type]
+    rollencodenummer: Optional[str] = None
     #: Gibt den Typ des Codes an
-    rollencodetyp: Rollencodetyp
+    rollencodetyp: Optional[Rollencodetyp] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
 
-    # optional attributes
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
     makoadresse: Optional[str] = None

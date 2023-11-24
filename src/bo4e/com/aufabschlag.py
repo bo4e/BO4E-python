@@ -3,17 +3,14 @@ Contains AufAbschlag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Optional
 
-from pydantic import validator
-
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.validators import einheit_only_for_abschlagstyp_absolut
+from ..enum.aufabschlagstyp import AufAbschlagstyp
+from ..enum.aufabschlagsziel import AufAbschlagsziel
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .preisstaffel import Preisstaffel
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -32,13 +29,11 @@ class AufAbschlag(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge.
-    staffeln: List[Preisstaffel]
+    staffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).
@@ -46,7 +41,6 @@ class AufAbschlag(COM):
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
     auf_abschlagsziel: Optional[AufAbschlagsziel] = None
     einheit: Optional[Waehrungseinheit] = None
-    _einheit_check = validator("einheit", allow_reuse=True)(einheit_only_for_abschlagstyp_absolut)
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.

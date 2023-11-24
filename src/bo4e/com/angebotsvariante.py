@@ -7,13 +7,11 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from pydantic import conlist
-
-from bo4e.com.angebotsteil import Angebotsteil
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.enum.angebotsstatus import Angebotsstatus
+from ..enum.angebotsstatus import Angebotsstatus
+from .angebotsteil import Angebotsteil
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
 
 
 class Angebotsvariante(COM):
@@ -29,24 +27,22 @@ class Angebotsvariante(COM):
 
     """
 
-    # required attributes
     #: Gibt den Status eines Angebotes an.
-    angebotsstatus: Angebotsstatus
+    angebotsstatus: Optional[Angebotsstatus] = None
 
     #: Datum der Erstellung der Angebotsvariante
-    erstellungsdatum: datetime
+    erstellungsdatum: Optional[datetime] = None
 
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
-    bindefrist: datetime
+    bindefrist: Optional[datetime] = None
 
-    teile: conlist(Angebotsteil, min_items=1)  # type: ignore[valid-type]
+    teile: Optional[list[Angebotsteil]] = None
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
     Eine Variante besteht mindestens aus einem Angebotsteil.
     """
 
-    # optional attributes
     #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
     gesamtmenge: Optional[Menge] = None
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320

@@ -1,21 +1,15 @@
 import json
+from pathlib import Path
 
 import pytest
-from py._path.local import LocalPath  # type:ignore[import]
 from pydantic import ValidationError
 
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
-from bo4e.enum.landescode import Landescode
+from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontaktart, Landescode, Typ
 
 
 class TestGeschaeftspartner:
     @pytest.mark.datafiles("./tests/test_data/test_data_adresse/test_data_adresse_only_required_fields.json")
-    def test_serializable(self, datafiles: LocalPath) -> None:
+    def test_serializable(self, datafiles: Path) -> None:
         with open(datafiles / "test_data_adresse_only_required_fields.json", encoding="utf-8") as json_file:
             address_test_data = json.load(json_file)
 
@@ -24,7 +18,7 @@ class TestGeschaeftspartner:
             name1="von Sinnen",
             name2="Helga",
             name3=None,
-            gewerbekennzeichnung=True,
+            ist_gewerbe=True,
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht München",
             kontaktweg=[Kontaktart.E_MAIL],
@@ -41,16 +35,16 @@ class TestGeschaeftspartner:
             ),
         )
 
-        # test default value for bo_typ in Geschaeftspartner
-        assert gp.bo_typ == BoTyp.GESCHAEFTSPARTNER
+        # test default value for typ in Geschaeftspartner
+        assert gp.typ == Typ.GESCHAEFTSPARTNER
 
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
+        gp_json = gp.model_dump_json(by_alias=True)
 
         assert "Helga" in gp_json
 
-        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
 
-        assert gp_deserialized.bo_typ == gp.bo_typ
+        assert gp_deserialized.typ == gp.typ
         assert type(gp_deserialized.partneradresse) == Adresse
 
     def test_optional_attribute_partneradresse(self) -> None:
@@ -66,7 +60,7 @@ class TestGeschaeftspartner:
             name1="von Sinnen",
             name2="Helga",
             name3=None,
-            gewerbekennzeichnung=True,
+            ist_gewerbe=True,
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht München",
             kontaktweg=[Kontaktart.E_MAIL],
@@ -77,8 +71,8 @@ class TestGeschaeftspartner:
             geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
         )
 
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
-        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        gp_json = gp.model_dump_json(by_alias=True)
+        gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
 
         assert gp_deserialized.partneradresse is None
 
@@ -97,7 +91,7 @@ class TestGeschaeftspartner:
                 name1="von Sinnen",
                 name2="Helga",
                 name3=None,
-                gewerbekennzeichnung=True,
+                ist_gewerbe=True,
                 hrnummer="HRB 254466",
                 amtsgericht="Amtsgericht München",
                 kontaktweg=[Kontaktart.E_MAIL],
@@ -115,7 +109,7 @@ class TestGeschaeftspartner:
             )
 
         assert "1 validation error" in str(excinfo.value)
-        assert "value is not a valid list" in str(excinfo.value)
+        assert "type=list_type" in str(excinfo.value)
 
     def test_serialization_of_non_german_address(self) -> None:
         """
@@ -126,7 +120,7 @@ class TestGeschaeftspartner:
             name1="Kurz",
             name2="Sebastian",
             name3=None,
-            gewerbekennzeichnung=True,
+            ist_gewerbe=True,
             hrnummer="HRB 254466",
             amtsgericht="Amtsgericht Ibiza",
             kontaktweg=[Kontaktart.E_MAIL],
@@ -136,6 +130,6 @@ class TestGeschaeftspartner:
                 postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
             ),
         )
-        gp_json = gp.json(by_alias=True, ensure_ascii=False)
-        gp_deserialized = Geschaeftspartner.parse_raw(gp_json)
+        gp_json = gp.model_dump_json(by_alias=True)
+        gp_deserialized = Geschaeftspartner.model_validate_json(gp_json)
         assert gp_deserialized.partneradresse.landescode == Landescode.AT  # type: ignore[attr-defined, union-attr]

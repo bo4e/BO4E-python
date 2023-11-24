@@ -3,21 +3,22 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
+
+from ..com.unterschrift import Unterschrift
+from ..com.vertragskonditionen import Vertragskonditionen
+from ..com.vertragsteil import Vertragsteil
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.vertragsart import Vertragsart
+from ..enum.vertragsstatus import Vertragsstatus
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
-from pydantic import conlist
-
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.unterschrift import Unterschrift
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.vertragsteil import Vertragsteil
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsart import Vertragsart
-from bo4e.enum.vertragsstatus import Vertragsstatus
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -36,46 +37,44 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.VERTRAG
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.VERTRAG
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
-    vertragsnummer: str
+    vertragsnummer: Optional[str] = None
     #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt.
-    vertragsart: Vertragsart
+    vertragsart: Optional[Vertragsart] = None
     #: Gibt den Status des Vertrags an
-    vertragsstatus: Vertragsstatus
+    vertragsstatus: Optional[Vertragsstatus] = None
     #: Unterscheidungsmöglichkeiten für die Sparte
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Gibt an, wann der Vertrag beginnt (inklusiv)
-    vertragsbeginn: datetime
+    vertragsbeginn: Optional[datetime] = None
     #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
-    vertragsende: datetime
+    vertragsende: Optional[datetime] = None
     # todo: add von/bis validator
-    vertragspartner1: Geschaeftspartner
+    vertragspartner1: Optional[Geschaeftspartner] = None
     """
     Der "erstgenannte" Vertragspartner.
     In der Regel der Aussteller des Vertrags.
     Beispiel: "Vertrag zwischen Vertragspartner 1 ..."
     """
-    vertragspartner2: Geschaeftspartner
+    vertragspartner2: Optional[Geschaeftspartner] = None
     """
     Der "zweitgenannte" Vertragspartner.
     In der Regel der Empfänger des Vertrags.
     Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
     """
-    vertragsteile: conlist(Vertragsteil, min_items=1)  # type: ignore[valid-type]
+    vertragsteile: Optional[list[Vertragsteil]] = None
     """
     Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
     (Markt- oder Messlokation) festzulegen.
     """
 
-    # optional attributes
     #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen
     vertragskonditionen: Optional[Vertragskonditionen] = None
     #: Unterzeichner des Vertragspartners 1
-    unterzeichnervp1: Optional[List[Unterschrift]] = None
+    unterzeichnervp1: Optional[list[Unterschrift]] = None
     #: Unterzeichner des Vertragspartners 2
-    unterzeichnervp2: Optional[List[Unterschrift]] = None
+    unterzeichnervp2: Optional[list[Unterschrift]] = None

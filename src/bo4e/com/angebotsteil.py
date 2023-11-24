@@ -2,19 +2,17 @@
 Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
-from typing import List, Optional
+from ..bo.marktlokation import Marktlokation
+from .angebotsposition import Angebotsposition
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import conlist
-
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.com.angebotsposition import Angebotsposition
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.zeitraum import Zeitraum
 
 
 class Angebotsteil(COM):
@@ -34,14 +32,12 @@ class Angebotsteil(COM):
 
     """
 
-    # required attributes
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: conlist(Angebotsposition, min_items=1)  # type: ignore[valid-type]
+    positionen: Optional[list[Angebotsposition]] = None
 
-    # optional attributes
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
     anfrage_subreferenz: Optional[str] = None
-    lieferstellenangebotsteil: Optional[List[Marktlokation]] = None
+    lieferstellenangebotsteil: Optional[list[Marktlokation]] = None
     """
     Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
     Durch die Marktlokation ist auch die Lieferadresse festgelegt

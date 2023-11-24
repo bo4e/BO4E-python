@@ -3,11 +3,7 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.tarifpreis import Tarifpreis
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+from bo4e import Mengeneinheit, Preisstatus, Preistyp, Tarifpreis, Waehrungseinheit
 
 example_tarifpreis = Tarifpreis(
     wert=Decimal(12.5),
@@ -24,12 +20,12 @@ class TestTarifpreis:
         """
         tarifpreis = example_tarifpreis
 
-        json_string = tarifpreis.json(by_alias=True, ensure_ascii=False)
+        json_string = tarifpreis.model_dump_json(by_alias=True)
 
         assert "ARBEITSPREIS_HT" in json_string
         assert "null" in json_string
 
-        tarifpreis_deserialized = Tarifpreis.parse_raw(json_string)
+        tarifpreis_deserialized = Tarifpreis.model_validate_json(json_string)
 
         assert isinstance(tarifpreis_deserialized.wert, Decimal)
         assert isinstance(tarifpreis_deserialized.einheit, Waehrungseinheit)
@@ -49,18 +45,7 @@ class TestTarifpreis:
 
         assert "1 validation error" in str(excinfo.value)
         assert "wert" in str(excinfo.value)
-        assert "value is not a valid decimal" in str(excinfo.value)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreis(  # type: ignore[call-arg]
-                wert=Decimal(3.50),
-                einheit=Waehrungseinheit.EUR,
-                status=Preisstatus.ENDGUELTIG,
-                bezugswert=Mengeneinheit.KWH,
-            )
-
-        assert "1 validation error" in str(excinfo.value)
+        assert "type=decimal_parsing" in str(excinfo.value)
 
     def test_optional_attribute(self) -> None:
         tarifpreis = Tarifpreis(
@@ -72,11 +57,11 @@ class TestTarifpreis:
             beschreibung="Das ist ein HT Arbeitspreis",
         )
 
-        json_string = tarifpreis.json(by_alias=True, ensure_ascii=False)
+        json_string = tarifpreis.model_dump_json(by_alias=True)
 
         assert "Das ist ein HT Arbeitspreis" in json_string
 
-        tarifpreis_deserialized = Tarifpreis.parse_raw(json_string)
+        tarifpreis_deserialized = Tarifpreis.model_validate_json(json_string)
 
         assert isinstance(tarifpreis_deserialized.beschreibung, str)
         assert tarifpreis_deserialized.beschreibung == "Das ist ein HT Arbeitspreis"

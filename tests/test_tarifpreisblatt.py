@@ -3,21 +3,21 @@ import datetime
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.tarifpreisblatt import Tarifpreisblatt
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.tarifart import Tarifart
-from bo4e.enum.tarifmerkmal import Tarifmerkmal
-from bo4e.enum.tariftyp import Tariftyp
+from bo4e import (
+    Kundentyp,
+    Registeranzahl,
+    Sparte,
+    Tarifberechnungsparameter,
+    Tarifeinschraenkung,
+    Tarifmerkmal,
+    Tarifpreisblatt,
+    Tariftyp,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_aufabschlag import example_aufabschlag
 from tests.test_energiemix import example_energiemix
-from tests.test_geraeteeigenschaften import example_geraeteeigenschaften
 from tests.test_marktteilnehmer import example_marktteilnehmer
 from tests.test_preisgarantie import example_preisgarantie
-from tests.test_preisposition import example_preisposition
 from tests.test_tarifpreisposition import example_tarifpreisposition
 from tests.test_vertragskonditionen import example_vertragskonditionen
 from tests.test_zeitraum import example_zeitraum
@@ -33,7 +33,7 @@ class TestTarifpreisblatt:
                     anbietername="der beste stromanbieter",
                     sparte=Sparte.STROM,
                     kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
-                    tarifart=Tarifart.MEHRTARIF,
+                    registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
                     website="https://foo.inv",
@@ -59,8 +59,3 @@ class TestTarifpreisblatt:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarifpreisblatt)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Tarifpreisblatt()  # type: ignore[call-arg]
-        assert "11 validation error" in str(excinfo.value)  # 8 from tarifinfo + 3 from tarifpreisblatt

@@ -5,8 +5,8 @@ from typing import List, Optional, TypeVar
 
 import pytest
 
+from bo4e import StrEnum
 from bo4e.enum import anrede
-from bo4e.enum.strenum import StrEnum
 
 
 class TestEnums:

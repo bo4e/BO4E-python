@@ -2,13 +2,13 @@
 Contains TarifpreispositionProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
+
+from .com import COM
+from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import conlist, constr
-
-from bo4e.com.com import COM
-from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
 
 class TarifpreispositionProOrt(COM):
@@ -24,13 +24,12 @@ class TarifpreispositionProOrt(COM):
 
     """
 
-    # required attributes
     #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: constr(strict=True, regex=r"^\d{5}$")  # type: ignore[valid-type]
+    postleitzahl: Optional[str] = None
     #: Ort für den der Preis gilt
-    ort: str
+    ort: Optional[str] = None
     #: ene't-Netznummer des Netzes in dem der Preis gilt
-    netznr: str
+    netznr: Optional[str] = None
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: conlist(TarifpreisstaffelProOrt, min_items=1)  # type: ignore[valid-type]
+    preisstaffeln: Optional[list[TarifpreisstaffelProOrt]] = None
     # there are no optional attributes

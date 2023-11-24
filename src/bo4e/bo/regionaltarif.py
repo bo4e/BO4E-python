@@ -3,19 +3,20 @@ Contains Regionaltarif class and corresponding marshmallow schema for de-/serial
 """
 
 from datetime import datetime
-from typing import List, Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
+
+from ..com.regionalepreisgarantie import RegionalePreisgarantie
+from ..com.regionaleraufabschlag import RegionalerAufAbschlag
+from ..com.regionaletarifpreisposition import RegionaleTarifpreisposition
+from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
+from ..com.tarifeinschraenkung import Tarifeinschraenkung
+from ..enum.typ import Typ
+from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods, empty-docstring
 # pylint: disable=no-name-in-module
-from pydantic import conlist
-
-from bo4e.bo.tarifinfo import Tarifinfo
-from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
-from bo4e.com.regionaleraufabschlag import RegionalerAufAbschlag
-from bo4e.com.regionaletarifpreisposition import RegionaleTarifpreisposition
-from bo4e.com.tarifberechnungsparameter import Tarifberechnungsparameter
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.enum.botyp import BoTyp
 
 
 class Regionaltarif(Tarifinfo):
@@ -31,19 +32,17 @@ class Regionaltarif(Tarifinfo):
 
     """
 
-    bo_typ: BoTyp = BoTyp.REGIONALTARIF
-    # required attributes
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGIONALTARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: datetime
+    preisstand: Optional[datetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Tarifberechnungsparameter
+    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: conlist(RegionaleTarifpreisposition, min_items=1)  # type: ignore[valid-type]
+    tarifpreise: Optional[list[RegionaleTarifpreisposition]] = None
 
-    # optional attributes
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
-    tarif_auf_abschlaege: Optional[List[RegionalerAufAbschlag]] = None
+    tarif_auf_abschlaege: Optional[list[RegionalerAufAbschlag]] = None
     #: Festlegung von Garantien für bestimmte Preisanteile
-    preisgarantien: Optional[List[RegionalePreisgarantie]] = None
+    preisgarantien: Optional[list[RegionalePreisgarantie]] = None
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
     tarifeinschraenkung: Optional[Tarifeinschraenkung] = None

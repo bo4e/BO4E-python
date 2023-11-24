@@ -6,18 +6,15 @@ from decimal import Decimal
 # pylint: disable=no-name-in-module
 from typing import Optional
 
-from pydantic import conlist
-
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.bemessungsgroesse import Bemessungsgroesse
-from bo4e.enum.kalkulationsmethode import Kalkulationsmethode
-from bo4e.enum.leistungstyp import Leistungstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.tarifzeit import Tarifzeit
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from ..enum.bdewartikelnummer import BDEWArtikelnummer
+from ..enum.bemessungsgroesse import Bemessungsgroesse
+from ..enum.kalkulationsmethode import Kalkulationsmethode
+from ..enum.leistungstyp import Leistungstyp
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.tarifzeit import Tarifzeit
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .com import COM
+from .preisstaffel import Preisstaffel
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -35,22 +32,20 @@ class Preisposition(COM):
 
     """
 
-    # required attributes
     #: Das Modell, das der Preisbildung zugrunde liegt
-    berechnungsmethode: Kalkulationsmethode
+    berechnungsmethode: Optional[Kalkulationsmethode] = None
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
-    leistungstyp: Leistungstyp  #
+    leistungstyp: Optional[Leistungstyp] = None  #
     #: Bezeichnung für die in der Position abgebildete Leistungserbringung
-    leistungsbezeichnung: str
+    leistungsbezeichnung: Optional[str] = None
     #: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
-    preiseinheit: Waehrungseinheit
+    preiseinheit: Optional[Waehrungseinheit] = None
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
-    bezugsgroesse: Mengeneinheit
+    bezugsgroesse: Optional[Mengeneinheit] = None
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: conlist(Preisstaffel, min_items=1)  # type: ignore[valid-type]
+    preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    # optional attributes
-    zeitbasis: Optional[Zeiteinheit] = None
+    zeitbasis: Optional[Mengeneinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird

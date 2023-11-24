@@ -3,10 +3,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
+from bo4e import Gueltigkeitstyp, KriteriumWert, RegionaleGueltigkeit, Tarifregionskriterium
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -26,12 +23,8 @@ class TestRegionaleGueltigkeit:
                 ),
                 {
                     "gueltigkeitstyp": "NUR_IN",
-                    "kriteriumsWerte": [
-                        {
-                            "kriterium": "NETZ_NUMMER",
-                            "wert": "12345",
-                        }
-                    ],
+                    "kriteriumsWerte": [{"kriterium": "NETZ_NUMMER", "wert": "12345", "_id": None}],
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -44,19 +37,3 @@ class TestRegionaleGueltigkeit:
         Test de-/serialisation of RegionaleGueltigkeit with minimal attributes.
         """
         assert_serialization_roundtrip(regionalegueltigkeit, expected_json_dict)
-
-    def test_regionalegueltigkeit_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleGueltigkeit()  # type: ignore[call-arg]
-
-        assert "2 validation errors" in str(excinfo.value)
-
-    def test_regionalegueltigkeit_kriteriumswerte_required(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionaleGueltigkeit(
-                gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
-                kriteriums_werte=[],
-            )
-
-        assert "1 validation error" in str(excinfo.value)
-        assert "ensure this value has at least 1 item" in str(excinfo.value)

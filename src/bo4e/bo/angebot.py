@@ -6,16 +6,16 @@ from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import Annotated, Optional
 
-from pydantic import conlist, constr
+from pydantic import Field
 
-from bo4e.bo.ansprechpartner import Ansprechpartner
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.angebotsvariante import Angebotsvariante
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.sparte import Sparte
+from ..com.angebotsvariante import Angebotsvariante
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from .ansprechpartner import Ansprechpartner
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 
 class Angebot(Geschaeftsobjekt):
@@ -35,24 +35,22 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    bo_typ: BoTyp = BoTyp.ANGEBOT
-    # required attributes
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANGEBOT
     #: Eindeutige Nummer des Angebotes
-    angebotsnummer: constr(strict=True, regex=r"^\d+$")  # type: ignore[valid-type]
+    angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots
-    angebotsdatum: datetime
+    angebotsdatum: Optional[datetime] = None
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Ersteller des Angebots
-    angebotsgeber: Geschaeftspartner
+    angebotsgeber: Optional[Geschaeftspartner] = None
     #: Empfänger des Angebots
-    angebotsnehmer: Geschaeftspartner
+    angebotsnehmer: Optional[Geschaeftspartner] = None
 
-    varianten: conlist(Angebotsvariante, min_items=1)  # type: ignore[valid-type]
+    varianten: Optional[list[Angebotsvariante]] = None
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 
-    # optional attributes
     anfragereferenz: Optional[str] = None
     """	Referenz auf eine Anfrage oder Ausschreibung;
     Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""

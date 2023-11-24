@@ -2,14 +2,14 @@
 Contains RegionaleGueltigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
+
+from ..enum.gueltigkeitstyp import Gueltigkeitstyp
+from .com import COM
+from .kriteriumwert import KriteriumWert
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import conlist
-
-from bo4e.com.com import COM
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
 
 
 class RegionaleGueltigkeit(COM):
@@ -25,8 +25,9 @@ class RegionaleGueltigkeit(COM):
 
     """
 
-    # required attributes
-    gueltigkeitstyp: Gueltigkeitstyp  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    kriteriums_werte: conlist(  # type: ignore[valid-type]
-        KriteriumWert, min_items=1
-    )  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
+    gueltigkeitstyp: Optional[
+        Gueltigkeitstyp
+    ] = None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
+    kriteriums_werte: Optional[
+        list[KriteriumWert]
+    ] = None  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen

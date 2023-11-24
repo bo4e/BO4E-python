@@ -2,22 +2,21 @@
 Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import List, Optional
+from typing import Optional
+
+from ..enum.aufabschlagstyp import AufAbschlagstyp
+from ..enum.aufabschlagsziel import AufAbschlagsziel
+from ..enum.waehrungseinheit import Waehrungseinheit
+from .aufabschlagproort import AufAbschlagProOrt
+from .com import COM
+from .energiemix import Energiemix
+from .preisgarantie import Preisgarantie
+from .tarifeinschraenkung import Tarifeinschraenkung
+from .vertragskonditionen import Vertragskonditionen
+from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from pydantic import conlist
-
-from bo4e.com.aufabschlagproort import AufAbschlagProOrt
-from bo4e.com.com import COM
-from bo4e.com.energiemix import Energiemix
-from bo4e.com.preisgarantie import Preisgarantie
-from bo4e.com.tarifeinschraenkung import Tarifeinschraenkung
-from bo4e.com.vertragskonditionen import Vertragskonditionen
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.aufabschlagstyp import AufAbschlagstyp
-from bo4e.enum.aufabschlagsziel import AufAbschlagsziel
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
 
 
 # pylint: disable=R0801
@@ -39,11 +38,10 @@ class AufAbschlagRegional(COM):
 
     # required attributess
     #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: str
+    bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    betraege: conlist(AufAbschlagProOrt, min_items=1)  # type: ignore[valid-type]
+    betraege: Optional[list[AufAbschlagProOrt]] = None
 
-    # optional attributes
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #:Typ des Aufabschlages (z.B. absolut oder prozentual)
@@ -55,9 +53,9 @@ class AufAbschlagRegional(COM):
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
     website: Optional[str] = None
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
-    zusatzprodukte: Optional[List[str]] = None
+    zusatzprodukte: Optional[list[str]] = None
     #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
-    voraussetzungen: Optional[List[str]] = None
+    voraussetzungen: Optional[list[str]] = None
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten.
     tarifnamensaenderungen: Optional[str] = None
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
