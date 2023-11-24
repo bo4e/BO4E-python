@@ -12,7 +12,7 @@ from bo4e import (
     Preisposition,
     Tarifzeit,
     Waehrungseinheit,
-    )
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_preisstaffel import example_preisstaffel
 

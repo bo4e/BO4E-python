@@ -15,7 +15,6 @@ from .preis import Preis
 from .steuerbetrag import Steuerbetrag
 
 
-
 class Rechnungsposition(COM):
     """
     Über Rechnungspositionen werden Rechnungen strukturiert.
