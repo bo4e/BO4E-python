@@ -4,13 +4,15 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.kriteriumwert import KriteriumWert
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
-from bo4e.com.regionalepreisgarantie import RegionalePreisgarantie
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.gueltigkeitstyp import Gueltigkeitstyp
-from bo4e.enum.preisgarantietyp import Preisgarantietyp
-from bo4e.enum.tarifregionskriterium import Tarifregionskriterium
+from bo4e import (
+    Gueltigkeitstyp,
+    KriteriumWert,
+    Preisgarantietyp,
+    RegionaleGueltigkeit,
+    RegionalePreisgarantie,
+    Tarifregionskriterium,
+    Zeitraum,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 example_regionale_preisgarantie = RegionalePreisgarantie(
@@ -37,7 +39,10 @@ class TestRegionalePreisgarantie:
                     "preisgarantietyp": "NUR_ENERGIEPREIS",
                     "regionaleGueltigkeit": {
                         "gueltigkeitstyp": "NUR_IN",
-                        "kriteriumsWerte": [{"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069"}],
+                        "kriteriumsWerte": [
+                            {"kriterium": Tarifregionskriterium.POSTLEITZAHL, "wert": "01069", "_id": None}
+                        ],
+                        "_id": None,
                     },
                     "zeitlicheGueltigkeit": {
                         "startdatum": None,
@@ -46,7 +51,9 @@ class TestRegionalePreisgarantie:
                         "dauer": None,
                         "endzeitpunkt": datetime(2021, 7, 30, 0, 0, tzinfo=timezone.utc),
                         "startzeitpunkt": datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
+                        "_id": None,
                     },
+                    "_id": None,
                 },
                 id="only required attributes",
             ),
@@ -59,9 +66,3 @@ class TestRegionalePreisgarantie:
         Test de-/serialisation of RegionalePreisgarantie with minimal attributes.
         """
         assert_serialization_roundtrip(regionale_preisgarantie, expected_json_dict)
-
-    def test_regionalepreisgarantie_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = RegionalePreisgarantie()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)

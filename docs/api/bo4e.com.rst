@@ -156,34 +156,18 @@ bo4e.com.geokoordinaten module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.geraet module
-----------------------
-
-.. automodule:: bo4e.com.geraet
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.com.geraeteeigenschaften module
-------------------------------------
-
-.. automodule:: bo4e.com.geraeteeigenschaften
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.com.hardware module
-------------------------
-
-.. automodule:: bo4e.com.hardware
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.katasteradresse module
 -------------------------------
 
 .. automodule:: bo4e.com.katasteradresse
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.konzessionsabgabe module
+---------------------------------
+
+.. automodule:: bo4e.com.konzessionsabgabe
    :members:
    :undoc-members:
    :show-inheritance:
@@ -460,10 +444,26 @@ bo4e.com.vertragsteil module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.verwendungszweckpromarktrolle module
+---------------------------------------------
+
+.. automodule:: bo4e.com.verwendungszweckpromarktrolle
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.zaehlwerk module
 -------------------------
 
 .. automodule:: bo4e.com.zaehlwerk
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.zaehlzeitregister module
+---------------------------------
+
+.. automodule:: bo4e.com.zaehlzeitregister
    :members:
    :undoc-members:
    :show-inheritance:

@@ -4,27 +4,27 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import Optional
+from typing import Annotated, Optional
+
+from pydantic import Field
+
+from ..com.adresse import Adresse
+from ..com.geokoordinaten import Geokoordinaten
+from ..com.katasteradresse import Katasteradresse
+from ..com.messlokationszuordnung import Messlokationszuordnung
+from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+from ..enum.energierichtung import Energierichtung
+from ..enum.gasqualitaet import Gasqualitaet
+from ..enum.gebiettyp import Gebiettyp
+from ..enum.kundentyp import Kundentyp
+from ..enum.netzebene import Netzebene
+from ..enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..enum.verbrauchsart import Verbrauchsart
+from .geschaeftsobjekt import Geschaeftsobjekt
+from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=no-name-in-module
-from pydantic import field_validator
-
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.geschaeftspartner import Geschaeftspartner
-from bo4e.com.adresse import Adresse
-from bo4e.com.geokoordinaten import Geokoordinaten
-from bo4e.com.katasteradresse import Katasteradresse
-from bo4e.com.messlokationszuordnung import Messlokationszuordnung
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.gasqualitaet import Gasqualitaet
-from bo4e.enum.gebiettyp import Gebiettyp
-from bo4e.enum.kundentyp import Kundentyp
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.verbrauchsart import Verbrauchsart
-from bo4e.validators import combinations_of_fields, validate_marktlokations_id
 
 
 class Marktlokation(Geschaeftsobjekt):
@@ -40,29 +40,26 @@ class Marktlokation(Geschaeftsobjekt):
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.MARKTLOKATION
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
-    marktlokations_id: str
-    _marktlokations_id_check = field_validator("marktlokations_id")(validate_marktlokations_id)
+    marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom
-    sparte: Sparte
+    sparte: Optional[Sparte] = None
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
-    energierichtung: Energierichtung
+    energierichtung: Optional[Energierichtung] = None
     #: Die Bilanzierungsmethode, RLM oder SLP
-    bilanzierungsmethode: Bilanzierungsmethode
-    netzebene: Netzebene
+    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    netzebene: Optional[Netzebene] = None
     """
     Netzebene, in der der Bezug der Energie erfolgt.
     Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.
     Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.
     """
 
-    # optional attributes
     #: Verbrauchsart der Marktlokation.
     verbrauchsart: Optional[Verbrauchsart] = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
-    unterbrechbar: Optional[bool] = None
+    ist_unterbrechbar: Optional[bool] = None
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
     netzbetreibercodenr: Optional[str] = None
     #: Typ des Netzgebietes, z.B. Verteilnetz
@@ -116,21 +113,3 @@ class Marktlokation(Geschaeftsobjekt):
 
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
-
-    # pylint: disable=duplicate-code
-    _validate_address_info = combinations_of_fields(
-        "lokationsadresse",
-        "geoadresse",
-        "katasterinformation",
-        valid_combinations={
-            (1, 0, 0),
-            (0, 1, 0),
-            (0, 0, 1),
-            (0, 0, 0),
-        },
-        custom_error_message=(
-            "More than one address information is given. "
-            'You have to chose either "lokationsadresse", "geoadresse" or "katasterinformation".'
-        ),
-    )
-    "Checks that if an address is given, that there is only one valid address given"
