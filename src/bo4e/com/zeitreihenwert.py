@@ -5,10 +5,10 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from .com import COM
 from ..com.zeitspanne import Zeitspanne
 from ..enum.messwertstatus import Messwertstatus
 from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 

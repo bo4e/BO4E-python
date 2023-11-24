@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from pydantic import ValidationError
 
-from bo4e import BDEWArtikelnummer, Rechnungsposition, Mengeneinheit
+from bo4e import BDEWArtikelnummer, Mengeneinheit, Rechnungsposition
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_betrag import example_betrag
 from tests.test_menge import example_menge

@@ -7,8 +7,8 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from .com import COM
 from ..enum.mengeneinheit import Mengeneinheit
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
