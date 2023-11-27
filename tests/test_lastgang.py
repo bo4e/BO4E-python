@@ -1,25 +1,25 @@
 import pytest
 from _decimal import Decimal
-from pydantic import ValidationError
 
-from bo4e.bo.lastgang import Lastgang
-from bo4e.bo.marktlokation import Marktlokation
-from bo4e.bo.messlokation import Messlokation
-from bo4e.com.adresse import Adresse
-from bo4e.com.menge import Menge
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.lokationstyp import Lokationstyp
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.netzebene import Netzebene
-from bo4e.enum.sparte import Sparte
+from bo4e import (
+    Adresse,
+    Bilanzierungsmethode,
+    Energierichtung,
+    Lastgang,
+    Marktlokation,
+    Menge,
+    Mengeneinheit,
+    Messlokation,
+    Netzebene,
+    Sparte,
+    Zeitreihenwert,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_zeitreihenwert import example_zeitreihenwert
 
 
 class TestLastgang:
     @pytest.mark.parametrize(
-        "lastgang_kompakt",
+        "lastgang",
         [
             pytest.param(
                 Lastgang(
@@ -27,7 +27,7 @@ class TestLastgang:
                     sparte=Sparte.STROM,
                     obis_kennzahl="1-0:1.8.1",
                     messgroesse=Mengeneinheit.KWH,
-                    werte=[example_zeitreihenwert],
+                    werte=[Zeitreihenwert()],
                     marktlokation=Marktlokation(
                         marktlokations_id="51238696781",
                         sparte=Sparte.GAS,
@@ -47,8 +47,8 @@ class TestLastgang:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, lastgang_kompakt: Lastgang) -> None:
+    def test_serialization_roundtrip(self, lastgang: Lastgang) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation of Lastgang.
         """
-        assert_serialization_roundtrip(lastgang_kompakt)
+        assert_serialization_roundtrip(lastgang)

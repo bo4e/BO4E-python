@@ -3,8 +3,6 @@ import re
 from pathlib import Path
 from typing import List, Optional, TypeVar
 
-import pytest
-
 from bo4e import StrEnum
 from bo4e.enum import anrede
 

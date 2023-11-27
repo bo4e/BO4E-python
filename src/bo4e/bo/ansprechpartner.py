@@ -32,25 +32,30 @@ class Ansprechpartner(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANSPRECHPARTNER
-    nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
-    geschaeftspartner: Optional[
-        Geschaeftspartner
-    ] = None  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
 
-    anrede: Optional[Anrede] = None  #: Mögliche Anrede des Ansprechpartners
     individuelle_anrede: Optional[str] = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Sehr geehrte Frau Müller, sehr geehrter Herr Dr. Müller"
     """
-
+    anrede: Optional[Anrede] = None  #: Mögliche Anrede des Ansprechpartners
     titel: Optional[Titel] = None  #: Möglicher Titel des Ansprechpartners
     vorname: Optional[str] = None  #: Vorname des Ansprechpartners
+    nachname: Optional[str] = None  #: Nachname (Familienname) des Ansprechpartners
+
     e_mail_adresse: Optional[str] = None  #: E-Mail Adresse
-    kommentar: Optional[str] = None  #: Weitere Informationen zum Ansprechpartner
+
+    geschaeftspartner: Optional[
+        Geschaeftspartner
+    ] = None  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
+
     #: Adresse des Ansprechpartners, falls diese von der Adresse des Geschäftspartners abweicht
     adresse: Optional[Adresse] = None
+
     #: Liste der Telefonnummern, unter denen der Ansprechpartner erreichbar ist
     rufnummer: Optional[Rufnummer] = None  # todo: make this a list and rename to rufnummern
+
+    kommentar: Optional[str] = None  #: Weitere Informationen zum Ansprechpartner
+
     #: Liste der Abteilungen und Zuständigkeiten des Ansprechpartners
     zustaendigkeit: Optional[Zustaendigkeit] = None  # todo: make this a list and rename to "zustaendigkeiten"
