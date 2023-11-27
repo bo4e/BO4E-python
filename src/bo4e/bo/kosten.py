@@ -5,12 +5,12 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.betrag import Betrag
-from bo4e.com.kostenblock import Kostenblock
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.kostenklasse import Kostenklasse
-from bo4e.enum.typ import Typ
+from ..com.betrag import Betrag
+from ..com.kostenblock import Kostenblock
+from ..com.zeitraum import Zeitraum
+from ..enum.kostenklasse import Kostenklasse
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module

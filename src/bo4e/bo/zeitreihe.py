@@ -8,14 +8,14 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.medium import Medium
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.messart import Messart
-from bo4e.enum.messgroesse import Messgroesse
-from bo4e.enum.typ import Typ
-from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from ..com.zeitreihenwert import Zeitreihenwert
+from ..enum.medium import Medium
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.messart import Messart
+from ..enum.messgroesse import Messgroesse
+from ..enum.typ import Typ
+from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 class Zeitreihe(Geschaeftsobjekt):

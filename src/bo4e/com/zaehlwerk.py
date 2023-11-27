@@ -5,9 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.energierichtung import Energierichtung
-from bo4e.enum.mengeneinheit import Mengeneinheit
+from ..com.konzessionsabgabe import Konzessionsabgabe
+from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
+from ..com.zaehlzeitregister import Zaehlzeitregister
+from ..enum.energierichtung import Energierichtung
+from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.verbrauchsart import Verbrauchsart
+from ..enum.waermenutzung import Waermenutzung
+from .com import COM
 
 # pylint: disable=no-name-in-module
 # pylint: disable=no-name-in-module
@@ -41,3 +46,19 @@ class Zaehlwerk(COM):
     ] = None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
     # zu kommen.
     einheit: Optional[Mengeneinheit] = None  # Die Einheit der gemessenen Größe, z.B. kWh
+    ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit
+    verwendungszwecke: Optional[
+        list[VerwendungszweckProMarktrolle]
+    ] = None  #: Verwendungungszweck der Werte Marktlokation
+    verbrauchsart: Optional[Verbrauchsart] = None  #: Stromverbrauchsart/Verbrauchsart Marktlokation
+    ist_unterbrechbar: Optional[bool] = None  #: Unterbrechbarkeit Marktlokation
+    waermenutzung: Optional[Waermenutzung] = None  #: Wärmenutzung Marktlokation
+    konzessionsabgabe: Optional[Konzessionsabgabe] = None  #: Konzessionsabgabe
+    ist_steuerbefreit: Optional[bool] = None  #: Steuerbefreiung
+    vorkommastelle: Optional[int] = None  #: Anzahl der Vorkommastellen
+    nachkommastelle: Optional[int] = None  #: Anzahl der Nachkommastellen
+    ist_abrechnungsrelevant: Optional[bool] = None  #: Abrechnungsrelevant
+    anzahlAblesungen: Optional[int] = None  #: Anzahl Ablesungen pro Jahr
+    zaehlzeitregister: Optional[
+        Zaehlzeitregister
+    ] = None  #: Erweiterte Definition der Zählzeit in Bezug auf ein Register

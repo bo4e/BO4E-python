@@ -5,11 +5,11 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preis import Preis
-from bo4e.com.tarifpreis import Tarifpreis
-from bo4e.enum.messpreistyp import Messpreistyp
-from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from ..enum.messpreistyp import Messpreistyp
+from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from .com import COM
+from .preis import Preis
+from .tarifpreis import Tarifpreis
 
 # yes. there is no description in the official docs.
 # https://github.com/Hochfrequenz/BO4E-python/issues/328
@@ -34,9 +34,9 @@ class Tarifberechnungsparameter(COM):
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
     berechnungsmethode: Optional[Tarifkalkulationsmethode] = None
     #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
-    messpreis_in_gp_enthalten: Optional[bool] = None
+    ist_messpreis_in_grundpreis_enthalten: Optional[bool] = None
 
-    messpreis_beruecksichtigen: Optional[bool] = None
+    ist_messpreis_zu_beruecksichtigen: Optional[bool] = None
     """
     True, falls bei der Bildung des Durchschnittspreises für die Höchst- und Mindestpreisbetrachtung der Messpreis mit
     berücksichtigt wird

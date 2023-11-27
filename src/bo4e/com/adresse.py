@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.landescode import Landescode
+from ..enum.landescode import Landescode
+from .com import COM
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 

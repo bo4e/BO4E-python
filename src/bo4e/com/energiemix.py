@@ -6,11 +6,11 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
-from bo4e.com.com import COM
-from bo4e.com.energieherkunft import Energieherkunft
-from bo4e.enum.oekolabel import Oekolabel
-from bo4e.enum.oekozertifikat import Oekozertifikat
-from bo4e.enum.sparte import Sparte
+from ..enum.oekolabel import Oekolabel
+from ..enum.oekozertifikat import Oekozertifikat
+from ..enum.sparte import Sparte
+from .com import COM
+from .energieherkunft import Energieherkunft
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -51,6 +51,6 @@ class Energiemix(COM):
     #: Ökolabel für den Energiemix
     oekolabel: Optional[list[Oekolabel]] = None
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
-    oeko_top_ten: Optional[bool] = None
+    ist_in_oeko_top_ten: Optional[bool] = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind
     website: Optional[str] = None

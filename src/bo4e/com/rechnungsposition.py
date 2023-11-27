@@ -6,13 +6,13 @@ from datetime import datetime
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 from typing import Optional
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.zeiteinheit import Zeiteinheit
+from ..enum.bdewartikelnummer import BDEWArtikelnummer
+from ..enum.mengeneinheit import Mengeneinheit
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .preis import Preis
+from .steuerbetrag import Steuerbetrag
 
 
 class Rechnungsposition(COM):
@@ -55,7 +55,7 @@ class Rechnungsposition(COM):
     teilsumme_steuer: Optional[Steuerbetrag] = None
 
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Zeiteinheit] = None
+    zeiteinheit: Optional[Mengeneinheit] = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
     artikelnummer: Optional[BDEWArtikelnummer] = None

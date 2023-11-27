@@ -1,23 +1,7 @@
 import pytest
-from pydantic import ValidationError
 
-from bo4e.bo.kosten import Kosten
-from bo4e.com.kostenblock import Kostenblock
-from bo4e.enum.kostenklasse import Kostenklasse
+from bo4e import Betrag, Kosten, Kostenblock, Kostenklasse, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_betrag import example_betrag
-from tests.test_zeitraum import example_zeitraum
-
-example_kosten = Kosten(
-    kostenklasse=Kostenklasse.FREMDKOSTEN,
-    gueltigkeit=example_zeitraum,
-    kostenbloecke=[
-        Kostenblock(
-            kostenblockbezeichnung="Mein Kostenblock",
-        )
-    ],
-    summe_kosten=[example_betrag],
-)
 
 
 class TestKosten:
@@ -25,13 +9,18 @@ class TestKosten:
         "kosten",
         [
             pytest.param(
-                example_kosten,
-                id="maximal attributes",
+                Kosten(
+                    kostenklasse=Kostenklasse.FREMDKOSTEN,
+                    gueltigkeit=Zeitraum(),
+                    kostenbloecke=[Kostenblock()],
+                    summe_kosten=[Betrag()],
+                ),
+                id="all attributes at first level",
             )
         ],
     )
     def test_serialization_roundtrip(self, kosten: Kosten) -> None:
         """
-        Test de-/serialisation
+        Test de-/serialisation of Kosten.
         """
         assert_serialization_roundtrip(kosten)

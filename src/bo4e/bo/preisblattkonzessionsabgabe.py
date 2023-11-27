@@ -5,9 +5,9 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.preisblatt import Preisblatt
-from bo4e.enum.kundengruppeka import KundengruppeKA
-from bo4e.enum.typ import Typ
+from ..enum.kundengruppeka import KundengruppeKA
+from ..enum.typ import Typ
+from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 

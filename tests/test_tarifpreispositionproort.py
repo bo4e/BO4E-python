@@ -1,16 +1,7 @@
 import pytest
-from pydantic import ValidationError
 
-from bo4e.com.tarifpreispositionproort import TarifpreispositionProOrt
+from bo4e import TarifpreispositionProOrt, TarifpreisstaffelProOrt
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_tarifpreisstaffelproort import example_tarifpreisstaffelproort
-
-example_tarifpreispositionproort = TarifpreispositionProOrt(
-    postleitzahl="82031",
-    ort="Grünwald",
-    netznr="0815",
-    preisstaffeln=[example_tarifpreisstaffelproort],
-)
 
 
 class TestTarifpreispositionProOrt:
@@ -18,7 +9,12 @@ class TestTarifpreispositionProOrt:
         "tarifpreispositionproort",
         [
             pytest.param(
-                example_tarifpreispositionproort,
+                TarifpreispositionProOrt(
+                    postleitzahl="82031",
+                    ort="Grünwald",
+                    netznr="0815",
+                    preisstaffeln=[TarifpreisstaffelProOrt()],
+                ),
                 id="minimal and maximal attributes",
             ),
         ],

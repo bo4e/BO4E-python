@@ -9,10 +9,10 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.standorteigenschaftengas import StandorteigenschaftenGas
-from bo4e.com.standorteigenschaftenstrom import StandorteigenschaftenStrom
-from bo4e.enum.typ import Typ
+from ..com.standorteigenschaftengas import StandorteigenschaftenGas
+from ..com.standorteigenschaftenstrom import StandorteigenschaftenStrom
+from ..enum.typ import Typ
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 class Standorteigenschaften(Geschaeftsobjekt):

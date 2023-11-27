@@ -3,8 +3,8 @@ Contains RegionalePreisstaffel class and corresponding marshmallow schema for de
 """
 from typing import Optional
 
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.com.regionalegueltigkeit import RegionaleGueltigkeit
+from .preisstaffel import Preisstaffel
+from .regionalegueltigkeit import RegionaleGueltigkeit
 
 # pylint: disable=too-few-public-methods
 

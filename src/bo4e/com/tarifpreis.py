@@ -4,8 +4,8 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.preis import Preis
-from bo4e.enum.preistyp import Preistyp
+from ..enum.preistyp import Preistyp
+from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 

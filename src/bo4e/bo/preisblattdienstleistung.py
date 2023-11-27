@@ -5,11 +5,11 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.bo.preisblatt import Preisblatt
-from bo4e.com.geraeteeigenschaften import Geraeteeigenschaften
-from bo4e.enum.bilanzierungsmethode import Bilanzierungsmethode
-from bo4e.enum.dienstleistungstyp import Dienstleistungstyp
-from bo4e.enum.typ import Typ
+from ..bo.geraet import Geraet
+from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+from ..enum.dienstleistungstyp import Dienstleistungstyp
+from ..enum.typ import Typ
+from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
@@ -35,7 +35,7 @@ class PreisblattDienstleistung(Preisblatt):
     basisdienstleistung: Optional[Dienstleistungstyp] = None
 
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
-    geraetedetails: Optional[Geraeteeigenschaften] = None
+    geraetedetails: Optional[Geraet] = None
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
     inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
