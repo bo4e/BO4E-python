@@ -54,7 +54,6 @@ __all__ = [
     "Dienstleistung",
     "Energieherkunft",
     "Energiemix",
-    "ExterneReferenz",
     "Fremdkostenblock",
     "Fremdkostenposition",
     "Geokoordinaten",
@@ -182,6 +181,7 @@ __all__ = [
     "Zaehlergroesse",
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
+    "ZusatzAttribut",
     "__version__",
 ]
 
@@ -234,7 +234,6 @@ from .com.com import COM
 from .com.dienstleistung import Dienstleistung
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
-from .com.externereferenz import ExterneReferenz
 from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
@@ -365,3 +364,4 @@ from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .version import __version__
+from .zusatzattribut import ZusatzAttribut
