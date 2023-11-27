@@ -3,7 +3,7 @@ A module that simplifies assertions for json serialization
 """
 from typing import Any, Dict, Optional, TypeVar
 
-from dictdiffer import diff  # type: ignore[import]
+from dictdiffer import diff  # type:ignore[import-not-found]
 from pydantic import BaseModel
 
 T = TypeVar("T", bound=BaseModel)
