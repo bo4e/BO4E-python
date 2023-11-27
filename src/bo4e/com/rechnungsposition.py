@@ -7,7 +7,7 @@ from datetime import datetime
 from typing import Optional
 
 from ..enum.bdewartikelnummer import BDEWArtikelnummer
-from ..enum.zeiteinheit import Zeiteinheit
+from ..enum.mengeneinheit import Mengeneinheit
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
@@ -55,7 +55,7 @@ class Rechnungsposition(COM):
     teilsumme_steuer: Optional[Steuerbetrag] = None
 
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Zeiteinheit] = None
+    zeiteinheit: Optional[Mengeneinheit] = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
     artikelnummer: Optional[BDEWArtikelnummer] = None
