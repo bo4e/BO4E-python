@@ -6,6 +6,7 @@ from decimal import Decimal
 from typing import Optional
 
 from ..enum.mengeneinheit import Mengeneinheit
+from ..enum.messwertstatus import Messwertstatus
 from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from .com import COM
 
@@ -39,3 +40,5 @@ class Verbrauch(COM):
     startdatum: Optional[datetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
     enddatum: Optional[datetime] = None
+    #: Messwertstatus includes the plausibility of the value
+    messwertstatus: Optional[Messwertstatus] = None

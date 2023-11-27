@@ -204,8 +204,8 @@ html_static_path = ["_static"]
 # ambiguous definitions of the classes. It would lead to the following error:
 #
 # docstring of bo4e.bo.angebot.Angebot.externe_referenzen:1:
-# more than one target found for cross-reference 'ExterneReferenz':
-# bo4e.ExterneReferenz, bo4e.com.externereferenz.ExterneReferenz
+# more than one target found for cross-reference 'ZusatzAttribute':
+# bo4e.ZusatzAttribute, bo4e.com.zusatzattribute.ZusatzAttribute
 #
 # This flag is not well documented.
 # https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autodoc_default_options
