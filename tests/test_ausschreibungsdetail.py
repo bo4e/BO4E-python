@@ -4,7 +4,7 @@ from typing import Any, Dict
 import pytest
 from pydantic import ValidationError
 
-from bo4e import Ausschreibungsdetail, Landescode, Menge, Mengeneinheit, Netzebene, Zaehlertyp, Zeiteinheit
+from bo4e import Ausschreibungsdetail, Landescode, Menge, Mengeneinheit, Netzebene, Zaehlertyp
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_adresse import example_adresse
 from tests.test_zeitraum import example_zeitraum
@@ -27,7 +27,7 @@ example_ausschreibungsdetail_dict = {
         "startdatum": None,
         "endzeitpunkt": None,
         "enddatum": None,
-        "einheit": Zeiteinheit.TAG,
+        "einheit": Mengeneinheit.TAG,
         "startzeitpunkt": None,
         "_id": None,
     },
@@ -94,7 +94,7 @@ class TestAusschreibungsdetail:
                     "lieferzeitraum": {
                         "enddatum": None,
                         "startdatum": None,
-                        "einheit": Zeiteinheit.TAG,
+                        "einheit": Mengeneinheit.TAG,
                         "endzeitpunkt": None,
                         "dauer": Decimal("5"),
                         "startzeitpunkt": None,
