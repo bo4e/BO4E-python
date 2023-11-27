@@ -64,9 +64,13 @@ rich==13.5.3
     # via twine
 secretstorage==3.3.3
     # via keyring
+tomli==2.0.1
+    # via
+    #   build
+    #   pyproject-hooks
 twine==4.0.2
     # via -r requirements-packaging.in
-urllib3==2.0.6
+urllib3==2.0.7
     # via
     #   requests
     #   twine
