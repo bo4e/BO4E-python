@@ -16,12 +16,13 @@ class TestGeraet:
         "geraet",
         [
             pytest.param(
-                Geraet(),
-                id="Minimal attributes",
-            ),
-            pytest.param(
-                example_geraet,
-                id="Maximal attributes",
+                Geraet(
+                    geraetenummer="0815",
+                    bezeichnung="56k Modem",
+                    geraeteklasse=Geraeteklasse.WANDLER,
+                    geraetetyp=Geraetetyp.BLOCKSTROMWANDLER,
+                ),
+                id="all attributes at first level",
             ),
         ],
     )

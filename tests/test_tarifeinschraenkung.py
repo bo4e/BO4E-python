@@ -6,19 +6,6 @@ from bo4e import Geraet, Menge, Mengeneinheit, Tarifeinschraenkung, Voraussetzun
 from tests.serialization_helper import assert_serialization_roundtrip
 from tests.test_geraet import example_geraet
 
-example_tarifeinschraenkung = Tarifeinschraenkung(
-    zusatzprodukte=["foo", "bar"],
-    voraussetzungen=[Voraussetzungen.ALTVERTRAG, Voraussetzungen.DIREKTVERTRIEB],
-    einschraenkungzaehler=[
-        example_geraet,
-        Geraet(geraetenummer="197foo"),
-    ],
-    einschraenkungleistung=[
-        Menge(wert=Decimal(12.5), einheit=Mengeneinheit.MWH),
-        Menge(wert=Decimal(30), einheit=Mengeneinheit.KWH),
-    ],
-)
-
 
 class TestTarifeinschraenkung:
     @pytest.mark.parametrize(
