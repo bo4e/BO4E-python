@@ -13,7 +13,6 @@ from ..enum.leistungstyp import Leistungstyp
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.tarifzeit import Tarifzeit
 from ..enum.waehrungseinheit import Waehrungseinheit
-from ..enum.zeiteinheit import Zeiteinheit
 from .com import COM
 from .preisstaffel import Preisstaffel
 
@@ -46,7 +45,7 @@ class Preisposition(COM):
     #: Preisstaffeln, die zu dieser Preisposition gehören
     preisstaffeln: Optional[list[Preisstaffel]] = None
 
-    zeitbasis: Optional[Zeiteinheit] = None
+    zeitbasis: Optional[Mengeneinheit] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird

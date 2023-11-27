@@ -46,6 +46,8 @@ jobs:
           pip install tox
       - name: Build JSON Schemas
         run: tox -e generate_json_schemas
+        env:
+          TARGET_VERSION: ${{ github.ref_name }}
       - name: Push schemas to BO4E-Schemas repo
         uses: cpina/github-action-push-to-another-repository@v1.7.2
         env:
@@ -60,6 +62,15 @@ jobs:
           user-email: bo4e-schemas@hochfrequenz.de
           target-branch: main
           commit-message: "Update JSON-Schemas - BO4E ${{ github.ref_name }}"
+      # This step uses the github API to automatically create a release with the same version tag
+      # in the BO4E-Schemas repo. For this we have to retrieve the commits SHA via the API first.
+      # For this, we use the lightweight tool jq (https://stedolan.github.io/jq/) to parse the JSON
+      # response from the API.
+      - name: Tag and release the new version in BO4E-Schemas
+        run: python bo4e_schemas_create_release.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.BO4E_PYTHON_GENERATE_SCHEMAS }} # this token expires on 2024-10-09
+          VERSION: ${{ github.ref_name }}
   build-n-publish:
     name: Build and publish Python 🐍 distributions 📦 to PyPI and TestPyPI
     runs-on: ubuntu-latest
