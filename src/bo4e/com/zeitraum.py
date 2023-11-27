@@ -7,7 +7,7 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
-from ..enum.zeiteinheit import Zeiteinheit
+from ..enum.mengeneinheit import Mengeneinheit
 from .com import COM
 
 # pylint: disable=too-few-public-methods
@@ -30,7 +30,7 @@ class Zeitraum(COM):
 
     """
 
-    einheit: Optional[Zeiteinheit] = None
+    einheit: Optional[Mengeneinheit] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[datetime] = None
     enddatum: Optional[datetime] = None
