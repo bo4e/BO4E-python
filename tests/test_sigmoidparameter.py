@@ -1,38 +1,30 @@
 from decimal import Decimal
-from typing import Any, Dict
 
 import pytest
-from pydantic import ValidationError
 
 from bo4e import Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip
 
-# this sigmoid parameter can be imported by other tests
-example_sigmoidparameter = Sigmoidparameter(
-    A=Decimal(1),
-    B=Decimal(2),
-    C=Decimal(3),
-    D=Decimal(4),
-)
-
 
 class TestSigmoidparameter:
     @pytest.mark.parametrize(
-        "sigmoidparameter, expected_json_dict",
+        "sigmoidparameter",
         [
             pytest.param(
-                example_sigmoidparameter,
-                {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4"), "_id": None},
+                Sigmoidparameter(
+                    A=Decimal(1),
+                    B=Decimal(2),
+                    C=Decimal(3),
+                    D=Decimal(4),
+                ),
             ),
         ],
     )
-    def test_sigmoidparameter_serialization_roundtrip(
-        self, sigmoidparameter: Sigmoidparameter, expected_json_dict: Dict[str, Any]
-    ) -> None:
+    def test_sigmoidparameter_serialization_roundtrip(self, sigmoidparameter: Sigmoidparameter) -> None:
         """
         Test de-/serialisation of Sigmoidparameter with minimal attributes.
         """
-        assert_serialization_roundtrip(sigmoidparameter, expected_json_dict)
+        assert_serialization_roundtrip(sigmoidparameter)
 
     @pytest.mark.parametrize(
         "sigmoidparameter, leistung, expected_lp",

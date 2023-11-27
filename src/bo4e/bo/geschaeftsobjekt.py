@@ -8,8 +8,8 @@ from humps.main import camelize
 from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.version import __version__
+from bo4e.zusatzattribut import ZusatzAttribut
 
-from ..com.externereferenz import ExterneReferenz
 from ..enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
@@ -37,7 +37,8 @@ class Geschaeftsobjekt(BaseModel):
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
-    externe_referenzen: Optional[list[ExterneReferenz]] = None
+    zusatz_attribute: Optional[list[ZusatzAttribut]] = None
+    # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
