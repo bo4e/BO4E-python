@@ -4,14 +4,12 @@
 #
 #    pip-compile '.\requirements-formatting.in'
 #
-black==23.9.1
-    # via -r .\requirements-formatting.in
+black==23.11.0
+    # via -r requirements-formatting.in
 click==8.1.7
     # via black
-colorama==0.4.6
-    # via click
 isort==5.12.0
-    # via -r .\requirements-formatting.in
+    # via -r requirements-formatting.in
 mypy-extensions==1.0.0
     # via black
 packaging==23.1
@@ -19,4 +17,8 @@ packaging==23.1
 pathspec==0.11.2
     # via black
 platformdirs==3.10.0
+    # via black
+tomli==2.0.1
+    # via black
+typing-extensions==4.8.0
     # via black

@@ -1,14 +1,16 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import List, Optional
+from typing import Annotated, Optional
 
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.botyp import BoTyp
+from bo4e.version import __version__
+from bo4e.zusatzattribut import ZusatzAttribut
+
+from ..enum.typ import Typ
 
 # pylint: disable=too-few-public-methods
 
@@ -28,12 +30,23 @@ class Geschaeftsobjekt(BaseModel):
     """
 
     # required attributes
-    versionstruktur: str = "2"  #: Version der BO-Struktur aka "fachliche Versionierung"
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
+    version: Annotated[
+        Optional[str], Field(alias="_version")
+    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    # src/_bo4e_python_version.py
+    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
 
-    # optional attributes
-    externe_referenzen: Optional[List[ExterneReferenz]] = []
+    zusatz_attribute: Optional[list[ZusatzAttribut]] = None
+    # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
+
+    # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
+    # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
+    id: Annotated[Optional[str], Field(alias="_id")] = None
+    """
+    Eine generische ID, die für eigene Zwecke genutzt werden kann.
+    Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
+    """
 
     #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
     # pylint: disable=duplicate-code

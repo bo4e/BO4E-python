@@ -2,8 +2,9 @@
 Contains StandorteigenschaftenStrom class
 and corresponding marshmallow schema for de-/serialization
 """
+from typing import Optional
 
-from bo4e.com.com import COM
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
@@ -21,14 +22,13 @@ class StandorteigenschaftenStrom(COM):
 
     """
 
-    # required attributes
     #: Die EIC-Nummer des Bilanzierungsgebietes
-    bilanzierungsgebiet_eic: str
+    bilanzierungsgebiet_eic: Optional[str] = None
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147
 
     #: Der Name der Regelzone
-    regelzone: str
+    regelzone: Optional[str] = None
 
     #: De EIC-Nummer der Regelzone
-    regelzone_eic: str
+    regelzone_eic: Optional[str] = None
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147

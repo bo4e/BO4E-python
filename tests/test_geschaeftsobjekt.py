@@ -1,64 +1,42 @@
-from typing import List, Optional
-
 import pytest
 from pydantic import ValidationError
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.botyp import BoTyp
+from bo4e import Geschaeftsobjekt, Typ
+from bo4e.zusatzattribut import ZusatzAttribut
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestGeschaeftsobjekt:
     @pytest.mark.parametrize(
-        "bo_typ, versionstruktur, externe_referenzen",
+        "geschaeftsobjekt",
         [
-            (
-                BoTyp.ENERGIEMENGE,
-                "2",
-                [
-                    ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345"),
-                    ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),
+            Geschaeftsobjekt(
+                typ=Typ.ENERGIEMENGE,
+                version="2",
+                zusatz_attribute=[
+                    ZusatzAttribut(name="HOCHFREQUENZ_HFSAP_100", wert="12345"),
+                    ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
                 ],
             ),
-            (
-                BoTyp.ENERGIEMENGE,
-                "2",
-                [ExterneReferenz(ex_ref_name="HOCHFREQUENZ_HFSAP_100", ex_ref_wert="12345")],
+            Geschaeftsobjekt(
+                typ=Typ.ENERGIEMENGE,
+                version="2",
+                zusatz_attribute=[],
             ),
-            (BoTyp.ENERGIEMENGE, "2", []),
         ],
     )
-    def test_serialisation(
-        self, bo_typ: BoTyp, versionstruktur: str, externe_referenzen: Optional[List[ExterneReferenz]]
-    ) -> None:
-        go = Geschaeftsobjekt(
-            bo_typ=bo_typ,
-            versionstruktur=versionstruktur,
-            externe_referenzen=externe_referenzen,
-        )
-        assert isinstance(go, Geschaeftsobjekt)
-
-        go_json = go.model_dump_json(by_alias=True)
-
-        assert str(versionstruktur) in go_json
-
-        go_deserialized = Geschaeftsobjekt.model_validate_json(go_json)
-
-        assert go_deserialized.bo_typ is bo_typ
-        assert go_deserialized.versionstruktur == versionstruktur
-        assert go_deserialized.externe_referenzen == externe_referenzen
-
-    def test_initialization_with_minimal_attributs(self) -> None:
-        go = Geschaeftsobjekt(bo_typ=BoTyp.ANSPRECHPARTNER)
-
-        assert go.externe_referenzen == []
-        assert go.versionstruktur == "2"
+    def test_serialization_roundtrip(self, geschaeftsobjekt: Geschaeftsobjekt) -> None:
+        """
+        Test de-/serialisation of Geschaeftsobjekt
+        """
+        assert_serialization_roundtrip(geschaeftsobjekt)
 
     def test_no_list_in_externen_referenzen(self) -> None:
         with pytest.raises(ValidationError) as excinfo:
             _ = Geschaeftsobjekt(
-                bo_typ=BoTyp.ENERGIEMENGE,
-                externe_referenzen=ExterneReferenz(ex_ref_name="Schufa-ID", ex_ref_wert="aksdlakoeuhn"),  # type: ignore[arg-type]
+                typ=Typ.ENERGIEMENGE,
+                zusatz_attribute=ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),  # type: ignore[arg-type]
             )
+        # The error message is completely broken, but who cares
         assert "2 validation error" in str(excinfo.value)
         assert "type=model_type" in str(excinfo.value)

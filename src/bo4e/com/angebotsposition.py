@@ -4,10 +4,10 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
+from .betrag import Betrag
+from .com import COM
+from .menge import Menge
+from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 
@@ -29,13 +29,11 @@ class Angebotsposition(COM):
 
     """
 
-    # required attributes
     #: Bezeichnung der jeweiligen Position des Angebotsteils
-    positionsbezeichnung: str
+    positionsbezeichnung: Optional[str] = None
     #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Preis
+    positionspreis: Optional[Preis] = None
 
-    # optional attributes
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
     positionsmenge: Optional[Menge] = None
     #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
