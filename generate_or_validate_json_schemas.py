@@ -6,7 +6,6 @@ import importlib
 import inspect
 import json
 import logging
-import pathlib
 import pkgutil
 import re
 import sys
