@@ -11,4 +11,6 @@ class Anrede(StrEnum):
     FRAU = "FRAU"  #: Frau
     EHELEUTE = "EHELEUTE"  #: Eheleute
     FIRMA = "FIRMA"  #: Firma
-    INDIVIDUELL = "INDIVIDUELL"  #: Individuell (z.B. "Profx")
+    FAMILIE = "FAMILIE"  #: Familie
+    ERBENGEMEINSCHAFT = "ERBENGEMEINSCHAFT"  #: Erbengemeinschaft
+    GRUNDSTUECKSGEMEINSCHAFT = "GRUNDSTUECKSGEMEINSCHAFT"  #: Grundstücksgemeinschaft
