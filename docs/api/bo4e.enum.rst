@@ -668,14 +668,6 @@ bo4e.enum.zaehlertypspezifikation module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.zeiteinheit module
-----------------------------
-
-.. automodule:: bo4e.enum.zeiteinheit
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 Module contents
 ---------------
 
