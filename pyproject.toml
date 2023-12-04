@@ -7,7 +7,13 @@ name = "bo4e"
 description = "Python Library that implements the BO4E Standard."
 license = { text = "MIT" }
 requires-python = ">=3.10"
-authors = [{ name = "Kevin Krechan", email = "kevin.krechan@hochfrequenz.de" }]
+authors = [
+  { name = "Kevin Krechan", email = "kevin.krechan@hochfrequenz.de" },
+  { name = "Leon Haffmans", email = "leon.haffmans@hochfrequenz.de" },
+  { name = "Annika Schlögl", email = "annika.schloegl@hochfrequenz.de" },
+  { name = "Franziska Vesely", email = "franziska.vesely@hochfrequenz.de" },
+  { name = "Konstantin Klein", email = "konstantin.klein@hochfrequenz.de" },
+]
 keywords = ["bo4e", "bdew", "edi@energy"]
 classifiers = [
   "Development Status :: 4 - Beta",
@@ -20,11 +26,7 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
 ]
 # This list must be in synq with the ./requirements.in file!
-dependencies = [
-  "iso3166",
-  "pydantic>=2.0.0",
-  "pyhumps",
-]
+dependencies = ["iso3166", "pydantic>=2.0.0", "pyhumps"]
 dynamic = ["readme", "version"]
 
 [project.urls]
@@ -69,9 +71,7 @@ line_length = 120
 profile = "black"
 
 [tool.mypy]
-plugins = [
-  "pydantic.mypy"
-]
+plugins = ["pydantic.mypy"]
 follow_imports = "silent"
 warn_redundant_casts = true
 warn_unused_ignores = true
