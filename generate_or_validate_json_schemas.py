@@ -16,6 +16,8 @@ from typing import Any, Iterator, Literal, cast
 import click
 from pydantic import BaseModel, TypeAdapter
 
+from bo4e import ZusatzAttribut
+
 logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
 root_directory = Path(__file__).parent
@@ -172,9 +174,15 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
         delete_json_schemas(packages)
 
     namespace = get_namespace(packages)
+    namespace[ZusatzAttribut.__name__] = ("", "zusatzattribut", ZusatzAttribut)
+
     for name, (pkg, _, cls) in namespace.items():
         _logger.debug("Processing %s", name)
-        file_path = output_directory / pkg / (name + ".json")
+
+        if pkg == "":
+            file_path = output_directory / (name + ".json")
+        else:
+            file_path = output_directory / pkg / (name + ".json")
 
         schema_json_dict = get_schema_json_dict(cls)
         replace_refs(schema_json_dict, namespace, target_version)
