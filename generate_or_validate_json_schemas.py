@@ -26,6 +26,9 @@ output_directory = root_directory / "json_schemas"
 NEW_REF_TEMPLATE = (
     "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
 )
+NEW_REF_TEMPLATE_ROOT = (
+    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
+)
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
@@ -142,9 +145,12 @@ def replace_refs(
                 ref_model = match.group("model")
                 if ref_model not in namespace:
                     raise ValueError(f"Unknown referenced model {ref_model}")
-                obj["$ref"] = NEW_REF_TEMPLATE.format(
-                    pkg=namespace[ref_model][0], model=ref_model, version=target_version
-                )
+                if namespace[ref_model][0] == "":
+                    obj["$ref"] = NEW_REF_TEMPLATE_ROOT.format(model=ref_model, version=target_version)
+                else:
+                    obj["$ref"] = NEW_REF_TEMPLATE.format(
+                        pkg=namespace[ref_model][0], model=ref_model, version=target_version
+                    )
 
     traverse_dict(schema_json_dict)
 
