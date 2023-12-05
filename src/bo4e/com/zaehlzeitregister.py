@@ -4,11 +4,13 @@ Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/se
 from typing import Optional
 
 from ..com.com import COM
+from ..utils import postprocess_docstring
 
 # pylint: disable=no-name-in-module
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Zaehlzeitregister(COM):
     """
     Mit dieser Komponente werden Zählzeitregister modelliert. Ein Zählzeitregister beschreibt eine erweiterte Definition der Zählzeit

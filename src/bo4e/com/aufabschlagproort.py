@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com import COM
 
@@ -11,6 +12,7 @@ from .com import COM
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class AufAbschlagProOrt(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang

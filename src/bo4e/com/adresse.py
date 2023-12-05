@@ -5,11 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.landescode import Landescode
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Adresse(COM):
     """
     Contains an address that can be used for most purposes.

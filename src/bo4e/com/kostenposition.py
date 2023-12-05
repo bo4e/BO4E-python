@@ -4,6 +4,7 @@ Contains Kostenposition and corresponding marshmallow schema for de-/serializati
 from datetime import datetime
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
@@ -12,6 +13,7 @@ from .preis import Preis
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Kostenposition(COM):
     """
     Diese Komponente wird zur Übertagung der Details zu einer Kostenposition verwendet.

@@ -21,12 +21,14 @@ from ..enum.netzebene import Netzebene
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..enum.verbrauchsart import Verbrauchsart
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation

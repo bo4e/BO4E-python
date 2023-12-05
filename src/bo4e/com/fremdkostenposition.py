@@ -3,11 +3,13 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Fremdkostenposition(Kostenposition):
     """
     Eine Kostenposition im Bereich der Fremdkosten

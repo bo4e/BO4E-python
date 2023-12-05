@@ -6,6 +6,7 @@ from decimal import Decimal
 from typing import Optional
 
 from ..enum.erzeugungsart import Erzeugungsart
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=no-name-in-module
@@ -14,6 +15,7 @@ from .com import COM
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Energieherkunft(COM):
     """
     Abbildung einer Energieherkunft

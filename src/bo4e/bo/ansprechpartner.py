@@ -12,12 +12,14 @@ from ..com.zustaendigkeit import Zustaendigkeit
 from ..enum.anrede import Anrede
 from ..enum.titel import Titel
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Ansprechpartner(Geschaeftsobjekt):
     """
     Object containing information about a Ansprechpartner

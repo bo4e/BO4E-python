@@ -3,6 +3,7 @@ Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .kostenposition import Kostenposition
@@ -10,6 +11,7 @@ from .kostenposition import Kostenposition
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Kostenblock(COM):
     """
     Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.

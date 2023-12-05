@@ -8,6 +8,7 @@ from typing import Optional
 
 from ..enum.bdewartikelnummer import BDEWArtikelnummer
 from ..enum.mengeneinheit import Mengeneinheit
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
@@ -15,6 +16,7 @@ from .preis import Preis
 from .steuerbetrag import Steuerbetrag
 
 
+@postprocess_docstring
 class Rechnungsposition(COM):
     """
     Über Rechnungspositionen werden Rechnungen strukturiert.

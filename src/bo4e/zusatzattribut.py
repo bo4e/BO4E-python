@@ -6,9 +6,12 @@ from typing import Any, Optional
 
 from pydantic import BaseModel
 
-
 # pylint: disable=too-few-public-methods
 #
+from .utils import postprocess_docstring
+
+
+@postprocess_docstring
 class ZusatzAttribut(BaseModel):
     """
     Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.

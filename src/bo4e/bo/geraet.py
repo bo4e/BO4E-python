@@ -9,11 +9,13 @@ from pydantic import Field
 from ..enum.geraeteklasse import Geraeteklasse
 from ..enum.geraetetyp import Geraetetyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Geraet(Geschaeftsobjekt):
     """
     Mit diesem BO werden alle Geräte modelliert, die keine Zähler sind.

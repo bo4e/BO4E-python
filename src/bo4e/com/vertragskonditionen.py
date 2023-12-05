@@ -5,12 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.

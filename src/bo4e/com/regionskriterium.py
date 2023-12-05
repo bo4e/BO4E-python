@@ -5,11 +5,13 @@ from typing import Optional
 
 from ..enum.gueltigkeitstyp import Gueltigkeitstyp
 from ..enum.regionskriteriumtyp import Regionskriteriumtyp
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Regionskriterium(COM):
     """
     Komponente zur Abbildung eines Regionskriteriums

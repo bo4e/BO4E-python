@@ -9,11 +9,13 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.preisstatus import Preisstatus
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Preis(COM):
     """
     Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.

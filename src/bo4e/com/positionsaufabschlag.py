@@ -7,9 +7,11 @@ from typing import Optional
 # pylint: disable=too-few-public-methods
 from ..enum.aufabschlagstyp import AufAbschlagstyp
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 
 
+@postprocess_docstring
 class PositionsAufAbschlag(COM):
     """
     Differenzierung der zu betrachtenden Produkte anhand der preiserhöhenden (Aufschlag)

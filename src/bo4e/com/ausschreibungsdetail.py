@@ -4,6 +4,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 from typing import Optional
 
 from ..enum.zaehlertyp import Zaehlertyp
+from ..utils import postprocess_docstring
 from .adresse import Adresse
 from .com import COM
 from .menge import Menge
@@ -12,6 +13,7 @@ from .zeitraum import Zeitraum
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Ausschreibungsdetail(COM):
     """
     Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines

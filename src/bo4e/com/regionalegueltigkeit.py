@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.gueltigkeitstyp import Gueltigkeitstyp
+from ..utils import postprocess_docstring
 from .com import COM
 from .kriteriumwert import KriteriumWert
 
@@ -12,6 +13,7 @@ from .kriteriumwert import KriteriumWert
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class RegionaleGueltigkeit(COM):
     """
     Mit dieser Komponente können regionale Gültigkeiten, z.B. für Tarife, Zu- und Abschläge und Preise definiert werden.

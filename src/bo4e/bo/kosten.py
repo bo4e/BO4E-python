@@ -10,12 +10,14 @@ from ..com.kostenblock import Kostenblock
 from ..com.zeitraum import Zeitraum
 from ..enum.kostenklasse import Kostenklasse
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Kosten(Geschaeftsobjekt):
     """
     Dieses BO wird zur Übertagung von hierarchischen Kostenstrukturen verwendet.

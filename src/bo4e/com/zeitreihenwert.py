@@ -8,11 +8,13 @@ from typing import Optional
 from ..com.zeitspanne import Zeitspanne
 from ..enum.messwertstatus import Messwertstatus
 from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Zeitreihenwert(COM):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.

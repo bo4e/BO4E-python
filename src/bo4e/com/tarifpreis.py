@@ -5,11 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.preistyp import Preistyp
+from ..utils import postprocess_docstring
 from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Tarifpreis(Preis):
     """
     Abbildung eines Tarifpreises mit Preistyp und Beschreibung abgeleitet von COM Preis.

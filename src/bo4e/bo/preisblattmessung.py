@@ -11,11 +11,13 @@ from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattMessung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise des Messstellenbetriebs und damit verbundener Leistungen

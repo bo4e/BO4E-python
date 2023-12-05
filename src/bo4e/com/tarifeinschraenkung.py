@@ -5,12 +5,14 @@ from typing import Optional
 
 from ..bo.geraet import Geraet
 from ..enum.voraussetzungen import Voraussetzungen
+from ..utils import postprocess_docstring
 from .com import COM
 from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Tarifeinschraenkung(COM):
     """
     Mit dieser Komponente werden Einschränkungen für die Anwendung von Tarifen modelliert.

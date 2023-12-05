@@ -15,11 +15,13 @@ from ..com.zeitreihenwert import Zeitreihenwert
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Lastgang(Geschaeftsobjekt):
     """
     Modell zur Abbildung eines Lastganges;

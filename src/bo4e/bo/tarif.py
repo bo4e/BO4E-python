@@ -13,12 +13,14 @@ from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
 from ..com.tarifeinschraenkung import Tarifeinschraenkung
 from ..com.tarifpreispositionproort import TarifpreispositionProOrt
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Tarif(Tarifinfo):
     """
     Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen

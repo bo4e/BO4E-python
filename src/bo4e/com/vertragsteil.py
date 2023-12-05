@@ -5,12 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,

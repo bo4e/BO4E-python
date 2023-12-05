@@ -6,11 +6,13 @@ from datetime import datetime
 from typing import Optional
 
 from ..enum.arithmetische_operation import ArithmetischeOperation
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Messlokationszuordnung(COM):
     """
     Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.

@@ -13,9 +13,12 @@ from pydantic import BaseModel, ConfigDict, Field
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
-
 # pylint: disable=too-few-public-methods
 #
+from ..utils import postprocess_docstring
+
+
+@postprocess_docstring
 class COM(BaseModel):
     """
     base class for all components

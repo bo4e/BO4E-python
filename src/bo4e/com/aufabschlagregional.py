@@ -7,6 +7,9 @@ from typing import Optional
 from ..enum.aufabschlagstyp import AufAbschlagstyp
 from ..enum.aufabschlagsziel import AufAbschlagsziel
 from ..enum.waehrungseinheit import Waehrungseinheit
+
+# pylint: disable=R0801
+from ..utils import postprocess_docstring
 from .aufabschlagproort import AufAbschlagProOrt
 from .com import COM
 from .energiemix import Energiemix
@@ -19,7 +22,7 @@ from .zeitraum import Zeitraum
 # pylint: disable=no-name-in-module
 
 
-# pylint: disable=R0801
+@postprocess_docstring
 class AufAbschlagRegional(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen

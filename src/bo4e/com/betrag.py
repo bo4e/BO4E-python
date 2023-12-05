@@ -7,11 +7,13 @@ from decimal import Decimal
 from typing import Optional
 
 from ..enum.waehrungscode import Waehrungscode
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Betrag(COM):
     """
     Die Komponente wird dazu verwendet, Summenbeträge (beispielsweise in Angeboten und Rechnungen) als Geldbeträge

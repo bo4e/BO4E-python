@@ -8,11 +8,13 @@ from decimal import Decimal
 from typing import Optional
 
 from ..enum.mengeneinheit import Mengeneinheit
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Zeitraum(COM):
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.

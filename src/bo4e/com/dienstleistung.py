@@ -5,11 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.dienstleistungstyp import Dienstleistungstyp
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Dienstleistung(COM):
     """
     Abbildung einer abrechenbaren Dienstleistung.

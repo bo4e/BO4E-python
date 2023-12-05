@@ -7,6 +7,7 @@ from typing import Optional
 
 from ..enum.messpreistyp import Messpreistyp
 from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from ..utils import postprocess_docstring
 from .com import COM
 from .preis import Preis
 from .tarifpreis import Tarifpreis
@@ -17,6 +18,7 @@ from .tarifpreis import Tarifpreis
 # pylint: disable=too-few-public-methods, empty-docstring, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Tarifberechnungsparameter(COM):
     """
     In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten zusammengefasst.

@@ -9,6 +9,7 @@ from typing import Optional
 from ..enum.oekolabel import Oekolabel
 from ..enum.oekozertifikat import Oekozertifikat
 from ..enum.sparte import Sparte
+from ..utils import postprocess_docstring
 from .com import COM
 from .energieherkunft import Energieherkunft
 
@@ -16,6 +17,7 @@ from .energieherkunft import Energieherkunft
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Energiemix(COM):
     """
     Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.

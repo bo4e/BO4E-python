@@ -5,12 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.preisgarantietyp import Preisgarantietyp
+from ..utils import postprocess_docstring
 from .com import COM
 from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Preisgarantie(COM):
     """
     Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.

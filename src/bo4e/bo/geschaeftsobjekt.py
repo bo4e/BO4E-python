@@ -11,10 +11,12 @@ from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Geschaeftsobjekt(BaseModel):
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.

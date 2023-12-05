@@ -7,12 +7,14 @@ from typing import Annotated, Optional
 from pydantic import Field
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .kosten import Kosten
 from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Tarifkosten(Tarifinfo):
     """
     Objekt zur Kommunikation von Kosten, die im Rahmen der Tarifanwendung entstehen

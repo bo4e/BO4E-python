@@ -12,9 +12,11 @@ from pydantic import Field
 from ..com.standorteigenschaftengas import StandorteigenschaftenGas
 from ..com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 
+@postprocess_docstring
 class Standorteigenschaften(Geschaeftsobjekt):
     """
     Modelliert die regionalen und spartenspezifischen Eigenschaften einer gegebenen Adresse.

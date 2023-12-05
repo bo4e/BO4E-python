@@ -9,12 +9,14 @@ from pydantic import Field
 from ..com.verbrauch import Verbrauch
 from ..enum.lokationstyp import Lokationstyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Energiemenge(Geschaeftsobjekt):
     """
     Abbildung von Mengen, die Lokationen zugeordnet sind

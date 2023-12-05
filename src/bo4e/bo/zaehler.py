@@ -22,12 +22,14 @@ from ..enum.zaehlerauspraegung import Zaehlerauspraegung
 from ..enum.zaehlergroesse import Zaehlergroesse
 from ..enum.zaehlertyp import Zaehlertyp
 from ..enum.zaehlertypspezifikation import ZaehlertypSpezifikation
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Zaehler(Geschaeftsobjekt):
     """
     Object containing information about a meter/"Zaehler".

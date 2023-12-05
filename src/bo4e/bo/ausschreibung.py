@@ -15,10 +15,12 @@ from ..enum.ausschreibungsportal import Ausschreibungsportal
 from ..enum.ausschreibungsstatus import Ausschreibungsstatus
 from ..enum.ausschreibungstyp import Ausschreibungstyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 
+@postprocess_docstring
 class Ausschreibung(Geschaeftsobjekt):
     """
     Das BO Ausschreibung dient zur detaillierten Darstellung von ausgeschriebenen Energiemengen in der Energiewirtschaft

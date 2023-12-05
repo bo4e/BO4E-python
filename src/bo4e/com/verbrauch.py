@@ -8,12 +8,14 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.messwertstatus import Messwertstatus
 from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Verbrauch(COM):
     """
     Abbildung eines zeitlich abgegrenzten Verbrauchs

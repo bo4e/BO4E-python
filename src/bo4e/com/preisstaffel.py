@@ -5,12 +5,14 @@ Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 from .sigmoidparameter import Sigmoidparameter
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Preisstaffel(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an

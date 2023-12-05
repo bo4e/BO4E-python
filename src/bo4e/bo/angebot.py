@@ -13,11 +13,13 @@ from pydantic import Field
 from ..com.angebotsvariante import Angebotsvariante
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .ansprechpartner import Ansprechpartner
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 
+@postprocess_docstring
 class Angebot(Geschaeftsobjekt):
     """
     Mit diesem BO kann ein Versorgungsangebot zur Strom- oder Gasversorgung oder die Teilnahme an einer Ausschreibung

@@ -12,6 +12,7 @@ from ..enum.energierichtung import Energierichtung
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.verbrauchsart import Verbrauchsart
 from ..enum.waermenutzung import Waermenutzung
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=no-name-in-module
@@ -20,6 +21,7 @@ from .com import COM
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Zaehlwerk(COM):
     """
     Mit dieser Komponente werden Zählwerke modelliert.

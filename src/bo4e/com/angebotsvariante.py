@@ -8,12 +8,14 @@ from datetime import datetime
 from typing import Optional
 
 from ..enum.angebotsstatus import Angebotsstatus
+from ..utils import postprocess_docstring
 from .angebotsteil import Angebotsteil
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
 
 
+@postprocess_docstring
 class Angebotsvariante(COM):
     """
     Führt die verschiedenen Ausprägungen der Angebotsberechnung auf

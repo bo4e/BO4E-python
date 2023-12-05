@@ -5,11 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class TarifpreisstaffelProOrt(COM):
     """
     Gibt die Staffelgrenzen der jeweiligen Preise an

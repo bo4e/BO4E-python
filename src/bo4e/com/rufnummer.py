@@ -4,11 +4,13 @@ Contains Rufnummer class and corresponding marshmallow schema for de-/serializat
 from typing import Optional
 
 from ..enum.rufnummernart import Rufnummernart
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Rufnummer(COM):
     """
     Contains information to call or fax someone

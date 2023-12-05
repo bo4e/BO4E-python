@@ -4,11 +4,13 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Katasteradresse(COM):
     """
     Dient der Adressierung über die Liegenschafts-Information.

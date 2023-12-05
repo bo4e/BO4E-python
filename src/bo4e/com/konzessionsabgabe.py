@@ -6,10 +6,12 @@ from typing import Optional
 
 from ..com.com import COM
 from ..enum.abgabeart import AbgabeArt
+from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Konzessionsabgabe(COM):
     """
     Diese Komponente wird zur Übertagung der Details zu einer Konzessionsabgabe verwendet.

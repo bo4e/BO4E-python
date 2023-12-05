@@ -15,11 +15,13 @@ from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..enum.vertragsart import Vertragsart
 from ..enum.vertragsstatus import Vertragsstatus
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 from .vertrag import Vertrag
 
 
+@postprocess_docstring
 class Buendelvertrag(Geschaeftsobjekt):
     """
     Abbildung eines Bündelvertrags.

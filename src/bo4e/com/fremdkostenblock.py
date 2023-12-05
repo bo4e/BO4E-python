@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .fremdkostenposition import Fremdkostenposition
@@ -12,6 +13,7 @@ from .fremdkostenposition import Fremdkostenposition
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Fremdkostenblock(COM):
     """
     Komponente zur Abbildung eines Kostenblocks in den Fremdkosten

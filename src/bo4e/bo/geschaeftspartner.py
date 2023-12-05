@@ -12,9 +12,11 @@ from ..enum.anrede import Anrede
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from ..enum.kontaktart import Kontaktart
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 
+@postprocess_docstring
 class Geschaeftspartner(Geschaeftsobjekt):
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.

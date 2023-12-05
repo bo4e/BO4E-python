@@ -8,11 +8,13 @@ from typing import Optional
 
 from ..enum.steuerkennzeichen import Steuerkennzeichen
 from ..enum.waehrungscode import Waehrungscode
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Steuerbetrag(COM):
     """
     Abbildung eines Steuerbetrages.

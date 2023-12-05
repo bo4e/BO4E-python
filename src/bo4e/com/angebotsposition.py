@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
@@ -12,6 +13,7 @@ from .preis import Preis
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Angebotsposition(COM):
     """
     Unterhalb von Angebotsteilen sind die Angebotspositionen eingebunden.

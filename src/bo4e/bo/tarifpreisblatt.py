@@ -12,12 +12,14 @@ from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
 from ..com.tarifeinschraenkung import Tarifeinschraenkung
 from ..com.tarifpreisposition import Tarifpreisposition
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Tarifpreisblatt(Tarifinfo):
     """
     Tarifinformation mit Preisen, Aufschlägen und Berechnungssystematik

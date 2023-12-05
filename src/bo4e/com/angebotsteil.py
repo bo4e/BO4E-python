@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..bo.marktlokation import Marktlokation
+from ..utils import postprocess_docstring
 from .angebotsposition import Angebotsposition
 from .betrag import Betrag
 from .com import COM
@@ -15,6 +16,7 @@ from .zeitraum import Zeitraum
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Angebotsteil(COM):
     """
     Mit dieser Komponente wird ein Teil einer Angebotsvariante abgebildet.

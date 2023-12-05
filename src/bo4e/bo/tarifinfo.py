@@ -19,10 +19,12 @@ from ..enum.sparte import Sparte
 from ..enum.tarifmerkmal import Tarifmerkmal
 from ..enum.tariftyp import Tariftyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .marktteilnehmer import Marktteilnehmer
 
 
+@postprocess_docstring
 class Tarifinfo(Geschaeftsobjekt):
     """
     Das BO Tarifinfo liefert die Merkmale, die einen Endkundentarif identifizierbar machen.

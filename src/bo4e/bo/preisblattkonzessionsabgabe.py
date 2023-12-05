@@ -7,11 +7,13 @@ from pydantic import Field
 
 from ..enum.kundengruppeka import KundengruppeKA
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattKonzessionsabgabe(Preisblatt):
     """
     Die Variante des Preisblattmodells zur Abbildung von allgemeinen Abgaben

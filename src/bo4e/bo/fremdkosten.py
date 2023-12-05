@@ -9,11 +9,13 @@ from ..com.betrag import Betrag
 from ..com.fremdkostenblock import Fremdkostenblock
 from ..com.zeitraum import Zeitraum
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Fremdkosten(Geschaeftsobjekt):
     """
     Mit diesem BO werden die Fremdkosten, beispielsweise für eine Angebotserstellung oder eine Rechnungsprüfung,

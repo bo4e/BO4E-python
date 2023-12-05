@@ -9,10 +9,12 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.preistyp import Preistyp
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 from .regionalepreisstaffel import RegionalePreisstaffel
 
 
+@postprocess_docstring
 class RegionaleTarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet

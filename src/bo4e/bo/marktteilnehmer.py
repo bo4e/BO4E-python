@@ -14,9 +14,11 @@ from ..enum.marktrolle import Marktrolle
 from ..enum.rollencodetyp import Rollencodetyp
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftspartner import Geschaeftspartner
 
 
+@postprocess_docstring
 class Marktteilnehmer(Geschaeftspartner):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer

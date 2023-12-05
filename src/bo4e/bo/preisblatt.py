@@ -14,10 +14,12 @@ from ..com.zeitraum import Zeitraum
 from ..enum.preisstatus import Preisstatus
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .marktteilnehmer import Marktteilnehmer
 
 
+@postprocess_docstring
 class Preisblatt(Geschaeftsobjekt):
     """
     Das allgemeine Modell zur Abbildung von Preisen;

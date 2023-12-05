@@ -10,10 +10,12 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.preistyp import Preistyp
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 from .preisstaffel import Preisstaffel
 
 
+@postprocess_docstring
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.

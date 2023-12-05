@@ -6,9 +6,11 @@ from typing import Optional
 
 # pylint: disable=too-few-public-methods
 from ..enum.tarifregionskriterium import Tarifregionskriterium
+from ..utils import postprocess_docstring
 from .com import COM
 
 
+@postprocess_docstring
 class KriteriumWert(COM):
     """
     Mit dieser Komponente können Kriterien und deren Werte definiert werden

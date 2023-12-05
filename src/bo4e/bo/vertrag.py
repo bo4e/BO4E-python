@@ -14,6 +14,7 @@ from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..enum.vertragsart import Vertragsart
 from ..enum.vertragsstatus import Vertragsstatus
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
@@ -23,6 +24,7 @@ from .geschaeftspartner import Geschaeftspartner
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Vertrag(Geschaeftsobjekt):
     """
     Modell für die Abbildung von Vertragsbeziehungen;

@@ -7,10 +7,12 @@ from typing import Optional
 from ..com.com import COM
 from ..enum.marktrolle import Marktrolle
 from ..enum.verwendungszweck import Verwendungszweck
+from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class VerwendungszweckProMarktrolle(COM):
     """
     Dient zur Identifizierung des Verwendungszwecks der Marktrolle an der Marktlokation, der die Werte zu übermitteln sind.

@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
@@ -11,6 +12,7 @@ from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class TarifpreispositionProOrt(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden

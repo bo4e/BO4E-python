@@ -14,12 +14,14 @@ from ..com.katasteradresse import Katasteradresse
 from ..enum.netzebene import Netzebene
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .zaehler import Zaehler
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Messlokation(Geschaeftsobjekt):
     """
     Object containing information about a Messlokation

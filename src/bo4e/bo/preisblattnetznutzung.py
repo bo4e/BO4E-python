@@ -9,11 +9,13 @@ from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.kundengruppe import Kundengruppe
 from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattNetznutzung(Preisblatt):
     """
     Die Variante des Preisblattmodells zur Abbildung der Netznutzungspreise
