@@ -17,7 +17,7 @@ class Fremdkostenposition(Kostenposition):
         <object data="../_static/images/bo4e/com/Fremdkostenposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenposition.json>`_
+        `Fremdkostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Fremdkostenposition.json>`_
 
     """
 

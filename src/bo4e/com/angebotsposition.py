@@ -25,7 +25,7 @@ class Angebotsposition(COM):
         <object data="../_static/images/bo4e/com/Angebotsposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsposition.json>`_
+        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Angebotsposition.json>`_
 
     """
 

@@ -25,7 +25,7 @@ class Rechnungsposition(COM):
         <object data="../_static/images/bo4e/com/Rechnungsposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_
+        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Rechnungsposition.json>`_
 
     """
 

@@ -23,7 +23,7 @@ class Tarifpreisposition(COM):
         <object data="../_static/images/bo4e/com/Tarifpreisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifpreisposition.json>`_
 
     """
 

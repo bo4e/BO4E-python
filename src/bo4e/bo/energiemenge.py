@@ -24,7 +24,7 @@ class Energiemenge(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Energiemenge.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Energiemenge.json>`_
+        `Energiemenge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Energiemenge.json>`_
 
     """
 

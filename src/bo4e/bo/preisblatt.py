@@ -32,7 +32,7 @@ class Preisblatt(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Preisblatt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Preisblatt.json>`_
+        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Preisblatt.json>`_
 
     """
 

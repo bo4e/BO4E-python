@@ -21,7 +21,7 @@ class Kostenposition(COM):
         <object data="../_static/images/bo4e/com/Kostenposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_
+        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Kostenposition.json>`_
 
     """
 

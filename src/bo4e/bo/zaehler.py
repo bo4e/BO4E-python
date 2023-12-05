@@ -37,7 +37,7 @@ class Zaehler(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Zaehler.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zaehler.json>`_
+        `Zaehler JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Zaehler.json>`_
 
     """
 

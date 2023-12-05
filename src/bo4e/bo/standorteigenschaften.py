@@ -24,7 +24,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Standorteigenschaften.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Standorteigenschaften.json>`_
+        `Standorteigenschaften JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Standorteigenschaften.json>`_
 
     """
 

@@ -25,7 +25,7 @@ class Fremdkosten(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Fremdkosten.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Fremdkosten.json>`_
+        `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Fremdkosten.json>`_
 
     """
 

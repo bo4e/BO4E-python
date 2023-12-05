@@ -30,7 +30,7 @@ class Lastgang(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Lastgang.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Lastgang.json>`_
+        `Lastgang JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Lastgang.json>`_
 
     """
 
