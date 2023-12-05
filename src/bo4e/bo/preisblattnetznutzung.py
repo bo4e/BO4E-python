@@ -9,11 +9,13 @@ from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.kundengruppe import Kundengruppe
 from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattNetznutzung(Preisblatt):
     """
     Die Variante des Preisblattmodells zur Abbildung der Netznutzungspreise
@@ -23,7 +25,7 @@ class PreisblattNetznutzung(Preisblatt):
         <object data="../_static/images/bo4e/bo/PreisblattNetznutzung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `PreisblattNetznutzung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattNetznutzung.json>`_
+        `PreisblattNetznutzung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattNetznutzung.json>`_
 
     """
 

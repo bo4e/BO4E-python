@@ -4,6 +4,7 @@ Contains Kostenposition and corresponding marshmallow schema for de-/serializati
 from datetime import datetime
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
@@ -12,6 +13,7 @@ from .preis import Preis
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Kostenposition(COM):
     """
     Diese Komponente wird zur Übertagung der Details zu einer Kostenposition verwendet.
@@ -21,7 +23,7 @@ class Kostenposition(COM):
         <object data="../_static/images/bo4e/com/Kostenposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenposition.json>`_
+        `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Kostenposition.json>`_
 
     """
 

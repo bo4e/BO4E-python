@@ -15,10 +15,12 @@ from ..enum.ausschreibungsportal import Ausschreibungsportal
 from ..enum.ausschreibungsstatus import Ausschreibungsstatus
 from ..enum.ausschreibungstyp import Ausschreibungstyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 
+@postprocess_docstring
 class Ausschreibung(Geschaeftsobjekt):
     """
     Das BO Ausschreibung dient zur detaillierten Darstellung von ausgeschriebenen Energiemengen in der Energiewirtschaft
@@ -28,7 +30,7 @@ class Ausschreibung(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Ausschreibung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Ausschreibung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Ausschreibung.json>`_
+        `Ausschreibung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Ausschreibung.json>`_
 
     """
 

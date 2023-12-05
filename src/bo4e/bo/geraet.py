@@ -9,11 +9,13 @@ from pydantic import Field
 from ..enum.geraeteklasse import Geraeteklasse
 from ..enum.geraetetyp import Geraetetyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Geraet(Geschaeftsobjekt):
     """
     Mit diesem BO werden alle Geräte modelliert, die keine Zähler sind.
@@ -23,7 +25,7 @@ class Geraet(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Geraet.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geraet.json>`_
+        `Geraet JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Geraet.json>`_
 
     """
 

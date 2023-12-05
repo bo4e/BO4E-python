@@ -5,6 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .fremdkostenposition import Fremdkostenposition
@@ -12,6 +13,7 @@ from .fremdkostenposition import Fremdkostenposition
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Fremdkostenblock(COM):
     """
     Komponente zur Abbildung eines Kostenblocks in den Fremdkosten
@@ -21,7 +23,7 @@ class Fremdkostenblock(COM):
         <object data="../_static/images/bo4e/com/Fremdkostenblock.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Fremdkostenblock.json>`_
+        `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Fremdkostenblock.json>`_
 
     """
 

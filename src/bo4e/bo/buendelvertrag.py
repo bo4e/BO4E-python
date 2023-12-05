@@ -15,11 +15,13 @@ from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..enum.vertragsart import Vertragsart
 from ..enum.vertragsstatus import Vertragsstatus
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 from .vertrag import Vertrag
 
 
+@postprocess_docstring
 class Buendelvertrag(Geschaeftsobjekt):
     """
     Abbildung eines Bündelvertrags.
@@ -30,7 +32,7 @@ class Buendelvertrag(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Buendelvertrag.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Buendelvertrag.json>`_
+        `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Buendelvertrag.json>`_
 
     """
 

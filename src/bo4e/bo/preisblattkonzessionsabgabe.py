@@ -7,11 +7,13 @@ from pydantic import Field
 
 from ..enum.kundengruppeka import KundengruppeKA
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattKonzessionsabgabe(Preisblatt):
     """
     Die Variante des Preisblattmodells zur Abbildung von allgemeinen Abgaben
@@ -21,7 +23,7 @@ class PreisblattKonzessionsabgabe(Preisblatt):
         <object data="../_static/images/bo4e/bo/PreisblattKonzessionsabgabe.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `PreisblattKonzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattKonzessionsabgabe.json>`_
+        `PreisblattKonzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattKonzessionsabgabe.json>`_
 
     """
 

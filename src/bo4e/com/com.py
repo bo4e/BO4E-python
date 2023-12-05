@@ -13,9 +13,12 @@ from pydantic import BaseModel, ConfigDict, Field
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
-
 # pylint: disable=too-few-public-methods
 #
+from ..utils import postprocess_docstring
+
+
+@postprocess_docstring
 class COM(BaseModel):
     """
     base class for all components
@@ -25,7 +28,7 @@ class COM(BaseModel):
         <object data="../_static/images/bo4e/com/COM.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/COM.json>`_
+        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/COM.json>`_
 
     """
 

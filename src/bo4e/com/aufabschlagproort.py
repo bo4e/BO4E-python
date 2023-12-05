@@ -4,6 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com import COM
 
@@ -11,6 +12,7 @@ from .com import COM
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class AufAbschlagProOrt(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen im Zusammenhang
@@ -21,7 +23,7 @@ class AufAbschlagProOrt(COM):
         <object data="../_static/images/bo4e/com/AufAbschlagProOrt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagProOrt.json>`_
+        `AufAbschlagProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/AufAbschlagProOrt.json>`_
 
     """
 

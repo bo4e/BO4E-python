@@ -8,6 +8,7 @@ from typing import Optional
 
 from ..enum.bdewartikelnummer import BDEWArtikelnummer
 from ..enum.mengeneinheit import Mengeneinheit
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
@@ -15,6 +16,7 @@ from .preis import Preis
 from .steuerbetrag import Steuerbetrag
 
 
+@postprocess_docstring
 class Rechnungsposition(COM):
     """
     Über Rechnungspositionen werden Rechnungen strukturiert.
@@ -25,7 +27,7 @@ class Rechnungsposition(COM):
         <object data="../_static/images/bo4e/com/Rechnungsposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_
+        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Rechnungsposition.json>`_
 
     """
 

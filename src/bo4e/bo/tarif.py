@@ -13,12 +13,14 @@ from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
 from ..com.tarifeinschraenkung import Tarifeinschraenkung
 from ..com.tarifpreispositionproort import TarifpreispositionProOrt
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Tarif(Tarifinfo):
     """
     Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen
@@ -28,7 +30,7 @@ class Tarif(Tarifinfo):
         <object data="../_static/images/bo4e/bo/Tarif.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarif.json>`_
+        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarif.json>`_
 
     """
 

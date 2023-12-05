@@ -18,6 +18,7 @@ from ..enum.rechnungsstatus import Rechnungsstatus
 from ..enum.rechnungstyp import Rechnungstyp
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 from .marktlokation import Marktlokation
@@ -26,6 +27,7 @@ from .messlokation import Messlokation
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Rechnung(Geschaeftsobjekt):
     """
     Modell für die Abbildung von Rechnungen und Netznutzungsrechnungen im Kontext der Energiewirtschaft;
@@ -35,7 +37,7 @@ class Rechnung(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Rechnung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Rechnung.json>`_
+        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Rechnung.json>`_
 
     """
 

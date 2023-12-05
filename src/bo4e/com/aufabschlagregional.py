@@ -7,6 +7,9 @@ from typing import Optional
 from ..enum.aufabschlagstyp import AufAbschlagstyp
 from ..enum.aufabschlagsziel import AufAbschlagsziel
 from ..enum.waehrungseinheit import Waehrungseinheit
+
+# pylint: disable=R0801
+from ..utils import postprocess_docstring
 from .aufabschlagproort import AufAbschlagProOrt
 from .com import COM
 from .energiemix import Energiemix
@@ -19,7 +22,7 @@ from .zeitraum import Zeitraum
 # pylint: disable=no-name-in-module
 
 
-# pylint: disable=R0801
+@postprocess_docstring
 class AufAbschlagRegional(COM):
     """
     Mit dieser Komponente können Auf- und Abschläge verschiedener Typen
@@ -32,7 +35,7 @@ class AufAbschlagRegional(COM):
         <object data="../_static/images/bo4e/com/AufAbschlagRegional.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagRegional.json>`_
+        `AufAbschlagRegional JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/AufAbschlagRegional.json>`_
 
     """
 

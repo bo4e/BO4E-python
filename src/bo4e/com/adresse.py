@@ -5,11 +5,13 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.landescode import Landescode
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Adresse(COM):
     """
     Contains an address that can be used for most purposes.
@@ -19,7 +21,7 @@ class Adresse(COM):
         <object data="../_static/images/bo4e/com/Adresse.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Adresse.json>`_
+        `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Adresse.json>`_
 
     """
 

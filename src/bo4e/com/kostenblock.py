@@ -3,6 +3,7 @@ Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .betrag import Betrag
 from .com import COM
 from .kostenposition import Kostenposition
@@ -10,6 +11,7 @@ from .kostenposition import Kostenposition
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Kostenblock(COM):
     """
     Mit dieser Komponente werden mehrere Kostenpositionen zusammengefasst.
@@ -19,7 +21,7 @@ class Kostenblock(COM):
         <object data="../_static/images/bo4e/com/Kostenblock.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Kostenblock.json>`_
+        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Kostenblock.json>`_
 
     """
 

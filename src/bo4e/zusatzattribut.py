@@ -6,9 +6,12 @@ from typing import Any, Optional
 
 from pydantic import BaseModel
 
-
 # pylint: disable=too-few-public-methods
 #
+from .utils import postprocess_docstring
+
+
+@postprocess_docstring
 class ZusatzAttribut(BaseModel):
     """
     Viele Datenobjekte weisen in unterschiedlichen Systemen eine eindeutige ID (Kundennummer, GP-Nummer etc.) auf.
@@ -20,7 +23,7 @@ class ZusatzAttribut(BaseModel):
         <object data="../_static/images/bo4e/com/ZusatzAttribut.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `ZusatzAttribute JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/ZusatzAttribute.json>`_
+        `ZusatzAttribut JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/ZusatzAttribut.json>`_
 
     """
 

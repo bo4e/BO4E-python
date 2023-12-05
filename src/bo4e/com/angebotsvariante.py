@@ -8,12 +8,14 @@ from datetime import datetime
 from typing import Optional
 
 from ..enum.angebotsstatus import Angebotsstatus
+from ..utils import postprocess_docstring
 from .angebotsteil import Angebotsteil
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
 
 
+@postprocess_docstring
 class Angebotsvariante(COM):
     """
     Führt die verschiedenen Ausprägungen der Angebotsberechnung auf
@@ -23,7 +25,7 @@ class Angebotsvariante(COM):
         <object data="../_static/images/bo4e/com/Angebotsvariante.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsvariante.json>`_
+        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Angebotsvariante.json>`_
 
     """
 
