@@ -14,7 +14,7 @@ Contents
 
    License <license>
    Authors <authors>
-   Version <versioning>
+   Versioning <versioning>
    Changelog <changelog>
    Module Reference <api/modules>
 

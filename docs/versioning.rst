@@ -1,6 +1,6 @@
-==========
+===============
 BO4E Versioning
-==========
+===============
 
 The BO4E data model uses a unique versioning system to track changes and updates.
 This system is easy to understand once you're familiar with its format and rationale.
