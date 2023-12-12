@@ -16,7 +16,7 @@ build:
     # golang: "1.17"
   jobs:
     pre_build:
-      - pip install -r dev_requirements/requirements-packaging.txt
+      - python -m pip install -r dev_requirements/requirements-packaging.txt
       - python -m build
 
 # Build documentation in the docs/ directory with Sphinx
