@@ -24,7 +24,7 @@ sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
 from uml import PlantUMLNetwork, build_network, compile_files_kroki, write_class_umls
 
-# import package ahbicht and subpackage to clarify namespaces and prevent circular import errors
+# import package bo4e to clarify namespaces and prevent circular import errors
 from bo4e import *
 
 # -- Run sphinx-apidoc ------------------------------------------------------
