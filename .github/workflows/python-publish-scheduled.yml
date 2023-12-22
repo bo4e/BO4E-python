@@ -1,15 +1,16 @@
 # This workflows will upload a Python Package using Twine when a release is created
 # For more information see: https://help.github.com/en/actions/language-and-framework-guides/using-python-with-github-actions#publishing-to-package-registries
 
-name: Upload Python Package
+name: Upload Python Package Scheduled
 
 on:
-  release:
-    types: [created, edited]
+  schedule:
+    # At 01:23 on 1st January and every 6 months afterward
+    - cron: '23 1 1 1/6 *'
+
 
 jobs:
   tests:
-    if: startsWith(github.ref, 'refs/tags/v')
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -28,6 +29,24 @@ jobs:
       - name: Run the Tests
         run: |
           tox -e tests
+  tag_and_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Calculate Tag Name
+        id: calc_tag
+        run: |
+          CURRENT_YEAR=$(date +%Y)
+          CURRENT_MONTH=$(date +%m)
+          TAG="${CURRENT_YEAR}${TAG_MONTH}.0.0"
+          echo "Calculated tag $TAG"
+          echo "::set-output name=tag::$TAG"
+      - name: Create and Push Tag
+        run: |
+          TAG=${{ steps.calc_tag.outputs.tag }}
+          git tag $TAG
+          git push origin $TAG
   generate:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
