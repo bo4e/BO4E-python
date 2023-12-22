@@ -8,7 +8,6 @@ on:
     # At 01:23 on 1st January and every 6 months afterward
     - cron: '23 1 1 1/6 *'
 
-
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
