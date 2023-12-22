@@ -26,9 +26,6 @@ from uml import PlantUMLNetwork, build_network, compile_files_kroki, write_class
 
 # import package ahbicht and subpackage to clarify namespaces and prevent circular import errors
 from bo4e import *
-from bo4e.com import *
-from bo4e.enum import *
-from bo4e.bo import *
 
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
