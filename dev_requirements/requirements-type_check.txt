@@ -4,9 +4,11 @@
 #
 #    pip-compile '.\requirements-type_check.in'
 #
+exceptiongroup==1.2.0
+    # via pytest
 iniconfig==2.0.0
     # via pytest
-mypy==1.7.1
+mypy==1.8.0
     # via -r requirements-type_check.in
 mypy-extensions==1.0.0
     # via mypy
@@ -20,6 +22,10 @@ pluggy==1.3.0
     # via pytest
 pytest==7.4.3
     # via -r requirements-type_check.in
+tomli==2.0.1
+    # via
+    #   mypy
+    #   pytest
 types-requests==2.31.0.10
     # via -r requirements-type_check.in
 typing-extensions==4.8.0
