@@ -8,7 +8,7 @@ astroid==3.0.1
     # via pylint
 dill==0.3.7
     # via pylint
-isort==5.12.0
+isort==5.13.2
     # via pylint
 mccabe==0.7.0
     # via pylint
@@ -16,5 +16,9 @@ platformdirs==3.10.0
     # via pylint
 pylint==3.0.3
     # via -r requirements-linting.in
+tomli==2.0.1
+    # via pylint
 tomlkit==0.12.1
     # via pylint
+typing-extensions==4.9.0
+    # via astroid
