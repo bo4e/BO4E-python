@@ -34,7 +34,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
-    ansprechpartner: Optional[list[Person]]
+    ansprechpartner: Optional[list[Person]] = None
     ist_gewerbe: Optional[bool] = None
     """
     Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (istGewerbe = true)

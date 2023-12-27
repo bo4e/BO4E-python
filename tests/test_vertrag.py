@@ -4,10 +4,10 @@ import pytest
 
 from bo4e import (
     Adresse,
-    Anrede,
     Geschaeftspartner,
     Geschaeftspartnerrolle,
-    Kontaktart,
+    Kontakt,
+    Person,
     Sparte,
     Unterschrift,
     Vertrag,
@@ -32,17 +32,13 @@ class TestVertrag:
                     vertragsbeginn=datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc),
                     vertragsende=datetime(2021, 6, 5, 16, 30, tzinfo=timezone.utc),
                     vertragspartner1=Geschaeftspartner(
-                        anrede=Anrede.FRAU,
-                        name1="von Sinnen",
-                        name2="Helga",
-                        name3=None,
+                        ansprechpartner=[Person(), Person()],
                         ist_gewerbe=True,
-                        kontaktweg=[Kontaktart.E_MAIL],
+                        kontaktwege=[Kontakt()],
                         umsatzsteuer_id="DE267311963",
                         glaeubiger_id="DE98ZZZ09999999999",
-                        e_mail_adresse="test@bo4e.de",
                         website="bo4e.de",
-                        geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+                        geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                         partneradresse=Adresse(
                             postleitzahl="24306",
                             ort="Plön",
@@ -51,10 +47,9 @@ class TestVertrag:
                         ),
                     ),
                     vertragspartner2=Geschaeftspartner(
-                        name1="Eckart",
-                        name2="Björn",
+                        ansprechpartner=[Person(), Person()],
                         ist_gewerbe=False,
-                        geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+                        geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                         partneradresse=Adresse(
                             postleitzahl="24211",
                             ort="Preetz",

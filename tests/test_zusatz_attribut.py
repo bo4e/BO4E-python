@@ -1,6 +1,7 @@
 import pytest
 
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
+from bo4e.bo.person import Person
 from bo4e.com.adresse import Adresse
 from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from bo4e.zusatzattribut import ZusatzAttribut
@@ -18,6 +19,7 @@ class TestZusatzAttribut:
                         ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
                     ],
                     # just some dummy data to make the GP valid
+                    ansprechpartner=[Person(), Person()],
                     ist_gewerbe=False,
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.KUNDE],
                     partneradresse=Adresse(
