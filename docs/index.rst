@@ -1,8 +1,9 @@
 =============
-bo4e
+BO4E
 =============
 
-This is the documentation of **bo4e** python package.
+This is the official documentation of **BO4E** datamodel.
+Cause of the fact that the datamodel is written in Python, it is also the Python documentation.
 
 
 Contents
@@ -13,6 +14,7 @@ Contents
 
    License <license>
    Authors <authors>
+   Versioning <versioning>
    Changelog <changelog>
    Module Reference <api/modules>
 
