@@ -24,6 +24,9 @@ sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
 from uml import PlantUMLNetwork, build_network, compile_files_kroki, write_class_umls
 
+# import package bo4e to clarify namespaces and prevent circular import errors
+from bo4e import *
+
 # -- Run sphinx-apidoc ------------------------------------------------------
 # This hack is necessary since RTD does not issue `sphinx-apidoc` before running
 # `sphinx-build -b html . _build/html`. See Issue:
