@@ -28,7 +28,8 @@ class Kontakt(COM):
 
     """
 
-    kontaktart: Optional[Kontaktart] = None  #: Gibt die Kontaktart des Kontaktes an.
+    #: Gibt die Kontaktart des Kontaktes an.
+    kontaktart: Optional[Kontaktart] = None
     #: E-Mail-Adresse des  bzw der Person an. Z.B. "info@hochfrequenz.de"
     e_mail_adresse: Optional[str] = None
     #: Liste der Telefonnummern, unter denen der Person erreichbar ist

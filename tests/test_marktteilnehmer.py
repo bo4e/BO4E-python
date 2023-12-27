@@ -15,7 +15,7 @@ class TestMarktteilnehmer:
                     rollencodetyp=Rollencodetyp.BDEW,
                     sparte=Sparte.STROM,
                     makoadresse="stringadressewarum",
-                    # geschaeftspartner=Geschaeftspartner(), why does this not work?
+                    geschaeftspartner=Geschaeftspartner(),
                 )
             )
         ],
