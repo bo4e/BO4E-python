@@ -8,11 +8,13 @@ from typing import Optional
 
 from ..enum.steuerkennzeichen import Steuerkennzeichen
 from ..enum.waehrungscode import Waehrungscode
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Steuerbetrag(COM):
     """
     Abbildung eines Steuerbetrages.
@@ -22,7 +24,7 @@ class Steuerbetrag(COM):
         <object data="../_static/images/bo4e/com/Steuerbetrag.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_
+        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Steuerbetrag.json>`_
 
     """
 

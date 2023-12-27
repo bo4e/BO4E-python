@@ -19,10 +19,12 @@ from ..enum.sparte import Sparte
 from ..enum.tarifmerkmal import Tarifmerkmal
 from ..enum.tariftyp import Tariftyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .marktteilnehmer import Marktteilnehmer
 
 
+@postprocess_docstring
 class Tarifinfo(Geschaeftsobjekt):
     """
     Das BO Tarifinfo liefert die Merkmale, die einen Endkundentarif identifizierbar machen.
@@ -33,7 +35,7 @@ class Tarifinfo(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Tarifinfo.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarifinfo.json>`_
+        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifinfo.json>`_
 
     """
 

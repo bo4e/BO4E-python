@@ -4,11 +4,13 @@ Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/se
 from typing import Optional
 
 from ..com.com import COM
+from ..utils import postprocess_docstring
 
 # pylint: disable=no-name-in-module
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Zaehlzeitregister(COM):
     """
     Mit dieser Komponente werden Zählzeitregister modelliert. Ein Zählzeitregister beschreibt eine erweiterte Definition der Zählzeit
@@ -19,7 +21,7 @@ class Zaehlzeitregister(COM):
         <object data="../_static/images/bo4e/com/Zaehlzeitregister.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zaehlzeitregister JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zaehlzeitregister.json>`_
+        `Zaehlzeitregister JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlzeitregister.json>`_
 
     """
 

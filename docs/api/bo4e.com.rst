@@ -124,14 +124,6 @@ bo4e.com.energiemix module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.externereferenz module
--------------------------------
-
-.. automodule:: bo4e.com.externereferenz
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.fremdkostenblock module
 --------------------------------
 
@@ -356,14 +348,6 @@ bo4e.com.steuerbetrag module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.tagesvektor module
----------------------------
-
-.. automodule:: bo4e.com.tagesvektor
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.tarifberechnungsparameter module
 -----------------------------------------
 
@@ -468,14 +452,6 @@ bo4e.com.zaehlzeitregister module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.zeitintervall module
------------------------------
-
-.. automodule:: bo4e.com.zeitintervall
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.zeitraum module
 ------------------------
 
@@ -492,10 +468,10 @@ bo4e.com.zeitreihenwert module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.zeitreihenwertkompakt module
--------------------------------------
+bo4e.com.zeitspanne module
+--------------------------
 
-.. automodule:: bo4e.com.zeitreihenwertkompakt
+.. automodule:: bo4e.com.zeitspanne
    :members:
    :undoc-members:
    :show-inheritance:

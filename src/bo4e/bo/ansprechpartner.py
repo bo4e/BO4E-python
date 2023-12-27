@@ -12,12 +12,14 @@ from ..com.zustaendigkeit import Zustaendigkeit
 from ..enum.anrede import Anrede
 from ..enum.titel import Titel
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
 
+@postprocess_docstring
 class Ansprechpartner(Geschaeftsobjekt):
     """
     Object containing information about a Ansprechpartner
@@ -27,7 +29,7 @@ class Ansprechpartner(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Ansprechpartner.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Ansprechpartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Ansprechpartner.json>`_
+        `Ansprechpartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Ansprechpartner.json>`_
 
     """
 

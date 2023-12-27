@@ -190,6 +190,7 @@ __all__ = [
     "ZaehlertypSpezifikation",
     "ZusatzAttribut",
     "__version__",
+    "__gh_version__",
 ]
 
 # Import BOs
@@ -377,5 +378,5 @@ from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
-from .version import __version__
+from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut

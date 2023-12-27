@@ -12,12 +12,14 @@ from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
 from ..com.tarifeinschraenkung import Tarifeinschraenkung
 from ..com.tarifpreisposition import Tarifpreisposition
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Tarifpreisblatt(Tarifinfo):
     """
     Tarifinformation mit Preisen, Aufschlägen und Berechnungssystematik
@@ -27,7 +29,7 @@ class Tarifpreisblatt(Tarifinfo):
         <object data="../_static/images/bo4e/bo/Tarifpreisblatt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Tarifpreisblatt.json>`_
+        `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifpreisblatt.json>`_
 
     """
 

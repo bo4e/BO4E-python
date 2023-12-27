@@ -11,11 +11,13 @@ from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattMessung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise des Messstellenbetriebs und damit verbundener Leistungen
@@ -25,7 +27,7 @@ class PreisblattMessung(Preisblatt):
         <object data="../_static/images/bo4e/bo/PreisblattMessung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `PreisblattMessung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattMessung.json>`_
+        `PreisblattMessung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattMessung.json>`_
 
     """
 

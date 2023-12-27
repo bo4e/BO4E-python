@@ -10,12 +10,14 @@ from ..enum.preismodell import Preismodell
 from ..enum.rechnungslegung import Rechnungslegung
 from ..enum.sparte import Sparte
 from ..enum.vertragsform import Vertragsform
+from ..utils import postprocess_docstring
 from .ausschreibungsdetail import Ausschreibungsdetail
 from .com import COM
 from .menge import Menge
 from .zeitraum import Zeitraum
 
 
+@postprocess_docstring
 class Ausschreibungslos(COM):
     """
     Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung
@@ -25,7 +27,7 @@ class Ausschreibungslos(COM):
         <object data="../_static/images/bo4e/com/Ausschreibungslos.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungslos.json>`_
+        `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Ausschreibungslos.json>`_
 
     """
 

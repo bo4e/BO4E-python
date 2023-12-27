@@ -9,10 +9,12 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.preistyp import Preistyp
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 from .regionalepreisstaffel import RegionalePreisstaffel
 
 
+@postprocess_docstring
 class RegionaleTarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet
@@ -23,7 +25,7 @@ class RegionaleTarifpreisposition(COM):
         <object data="../_static/images/bo4e/com/RegionaleTarifpreisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreisposition.json>`_
+        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/RegionaleTarifpreisposition.json>`_
 
     """
 

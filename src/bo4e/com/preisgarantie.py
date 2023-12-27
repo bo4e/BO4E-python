@@ -5,12 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 from ..enum.preisgarantietyp import Preisgarantietyp
+from ..utils import postprocess_docstring
 from .com import COM
 from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Preisgarantie(COM):
     """
     Definition für eine Preisgarantie mit der Möglichkeit verschiedener Ausprägungen.
@@ -20,7 +22,7 @@ class Preisgarantie(COM):
         <object data="../_static/images/bo4e/com/Preisgarantie.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisgarantie.json>`_
+        `Preisgarantie JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preisgarantie.json>`_
 
     """
 

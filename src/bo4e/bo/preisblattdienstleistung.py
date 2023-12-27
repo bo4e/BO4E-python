@@ -9,11 +9,13 @@ from ..bo.geraet import Geraet
 from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattDienstleistung(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für wahlfreie Dienstleistungen
@@ -23,7 +25,7 @@ class PreisblattDienstleistung(Preisblatt):
         <object data="../_static/images/bo4e/bo/PreisblattDienstleistung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `PreisblattDienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattDienstleistung.json>`_
+        `PreisblattDienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattDienstleistung.json>`_
 
     """
 

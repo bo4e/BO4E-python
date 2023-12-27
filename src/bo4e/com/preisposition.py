@@ -13,12 +13,14 @@ from ..enum.leistungstyp import Leistungstyp
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.tarifzeit import Tarifzeit
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 from .preisstaffel import Preisstaffel
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Preisposition(COM):
     """
     Preis für eine definierte Lieferung oder Leistung innerhalb eines Preisblattes
@@ -28,7 +30,7 @@ class Preisposition(COM):
         <object data="../_static/images/bo4e/com/Preisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preisposition.json>`_
+        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preisposition.json>`_
 
     """
 

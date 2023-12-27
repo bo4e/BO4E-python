@@ -15,9 +15,11 @@ from ..enum.messart import Messart
 from ..enum.messgroesse import Messgroesse
 from ..enum.typ import Typ
 from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 
+@postprocess_docstring
 class Zeitreihe(Geschaeftsobjekt):
     """
     Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
@@ -28,7 +30,7 @@ class Zeitreihe(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Zeitreihe.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zeitreihe.json>`_
+        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Zeitreihe.json>`_
 
     """
 
