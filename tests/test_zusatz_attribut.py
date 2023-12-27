@@ -18,10 +18,8 @@ class TestZusatzAttribut:
                         ZusatzAttribut(name="Schufa-ID", wert="aksdlakoeuhn"),
                     ],
                     # just some dummy data to make the GP valid
-                    name1="Duck",
-                    name2="Donald",
                     ist_gewerbe=False,
-                    geschaeftspartnerrolle=[Geschaeftspartnerrolle.KUNDE],
+                    geschaeftspartnerrollen=[Geschaeftspartnerrolle.KUNDE],
                     partneradresse=Adresse(
                         strasse="Am Geldspeicher",
                         hausnummer="17",
