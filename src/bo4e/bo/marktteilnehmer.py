@@ -15,11 +15,12 @@ from ..enum.rollencodetyp import Rollencodetyp
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 
 @postprocess_docstring
-class Marktteilnehmer(Geschaeftspartner):
+class Marktteilnehmer(Geschaeftsobjekt):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
 
@@ -41,6 +42,7 @@ class Marktteilnehmer(Geschaeftspartner):
     rollencodetyp: Optional[Rollencodetyp] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
-
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
     makoadresse: Optional[str] = None
+    #: Der zu diesem Marktteilnehmer gehörende Geschäftspartner
+    geschaeftspartner: Optional[Geschaeftspartner] = None

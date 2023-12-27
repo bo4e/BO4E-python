@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontaktart, Landescode
+from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontakt, Landescode, Person
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -10,35 +10,28 @@ class TestGeschaeftspartner:
         [
             pytest.param(
                 Geschaeftspartner(
-                    anrede=Anrede.FRAU,
-                    name1="von Sinnen",
-                    name2="Helga",
-                    name3=None,
+                    ansprechpartner=[Person(), Person()],
                     ist_gewerbe=True,
-                    hrnummer="HRB 254466",
+                    handelsregisternummer="HRB 254466",
                     amtsgericht="Amtsgericht München",
-                    kontaktweg=[Kontaktart.E_MAIL],
+                    kontaktwege=[Kontakt()],
                     umsatzsteuer_id="DE267311963",
                     glaeubiger_id="DE98ZZZ09999999999",
-                    e_mail_adresse="test@bo4e.de",
                     website="bo4e.de",
-                    geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+                    geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                     partneradresse=Adresse(),
                 ),
                 id="all attributes at first level",
             ),
             pytest.param(
                 Geschaeftspartner(
-                    anrede=Anrede.FRAU,
-                    name1="Kurz",
-                    name2="Sebastian",
-                    name3=None,
+                    ansprechpartner=[Person(), Person()],
                     ist_gewerbe=True,
-                    hrnummer="HRB 254466",
+                    handelsregisternummer="HRB 254466",
                     amtsgericht="Amtsgericht Ibiza",
-                    kontaktweg=[Kontaktart.E_MAIL],
+                    kontaktwege=[Kontakt()],
                     umsatzsteuer_id="AT12345",
-                    geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
+                    geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                     partneradresse=Adresse(
                         postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
                     ),

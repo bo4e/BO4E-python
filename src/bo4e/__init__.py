@@ -9,7 +9,6 @@ The BO4E version can be queried using `bo4e.__version__`.
 """
 __all__ = [
     "Angebot",
-    "Ansprechpartner",
     "Ausschreibung",
     "Buendelvertrag",
     "Energiemenge",
@@ -22,6 +21,7 @@ __all__ = [
     "Marktlokation",
     "Marktteilnehmer",
     "Messlokation",
+    "Person",
     "Preisblatt",
     "PreisblattDienstleistung",
     "PreisblattHardware",
@@ -58,6 +58,7 @@ __all__ = [
     "Fremdkostenposition",
     "Geokoordinaten",
     "Katasteradresse",
+    "Kontakt",
     "Konzessionsabgabe",
     "Kostenblock",
     "Kostenposition",
@@ -188,7 +189,6 @@ __all__ = [
 
 # Import BOs
 from .bo.angebot import Angebot
-from .bo.ansprechpartner import Ansprechpartner
 from .bo.ausschreibung import Ausschreibung
 from .bo.buendelvertrag import Buendelvertrag
 from .bo.energiemenge import Energiemenge
@@ -201,6 +201,7 @@ from .bo.lastgang import Lastgang
 from .bo.marktlokation import Marktlokation
 from .bo.marktteilnehmer import Marktteilnehmer
 from .bo.messlokation import Messlokation
+from .bo.person import Person
 from .bo.preisblatt import Preisblatt
 from .bo.preisblattdienstleistung import PreisblattDienstleistung
 from .bo.preisblatthardware import PreisblattHardware
@@ -239,6 +240,7 @@ from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
 from .com.katasteradresse import Katasteradresse
+from .com.kontakt import Kontakt
 from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition

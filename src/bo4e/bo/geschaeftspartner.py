@@ -8,12 +8,12 @@ from typing import Annotated, Optional
 from pydantic import Field
 
 from ..com.adresse import Adresse
-from ..enum.anrede import Anrede
+from ..com.kontakt import Kontakt
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from ..enum.kontaktart import Kontaktart
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+from .person import Person
 
 
 @postprocess_docstring
@@ -34,53 +34,29 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
-    name1: Optional[str] = None
-    """
-    Erster Teil des Namens.
-    Hier kann der Firmenname oder bei Privatpersonen beispielsweise der Nachname dagestellt werden.
-    Beispiele: Yellow Strom GmbH oder Hagen
-    """
-    # todo: replace name1/2/3 with something more readable. no one wants to deal with that. maybe serialize as name1/2/3
-    # but resolve to readable python fields under the hood
-
+    ansprechpartner: Optional[list[Person]]
     ist_gewerbe: Optional[bool] = None
     """
     Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (istGewerbe = true)
     oder eine Privatperson handelt. (istGewerbe = false)
     """
+    #: Name der Firma, wenn Gewerbe
+    firmenname: Optional[str] = None
+    #: Bevorzugte Kontaktwege des Geschäftspartners
+    kontaktwege: Optional[list[Kontakt]] = None
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
-    geschaeftspartnerrolle: Optional[list[Geschaeftspartnerrolle]] = None
-    # todo: rename to plural
-
-    #: Die Anrede für den GePa, Z.B. "Herr"
-    anrede: Optional[Anrede] = None
-    name2: Optional[str] = None
-    """
-    Zweiter Teil des Namens.
-    Hier kann der eine Erweiterung zum Firmennamen oder bei Privatpersonen beispielsweise der Vorname dagestellt werden.
-    Beispiele: Bereich Süd oder Nina
-    """
-
-    name3: Optional[str] = None
-    """
-    Dritter Teil des Namens.
-    Hier können weitere Ergänzungen zum Firmennamen oder bei Privatpersonen Zusätze zum Namen dagestellt werden.
-    Beispiele: und Afrika oder Sängerin
-    """
+    geschaeftspartnerrollen: Optional[list[Geschaeftspartnerrolle]] = None
     #: Handelsregisternummer des Geschäftspartners
-    hrnummer: Optional[str] = None
+    handelsregisternummer: Optional[str] = None
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
     amtsgericht: Optional[str] = None
-    #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: Optional[list[Kontaktart]] = None
     #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
     umsatzsteuer_id: Optional[str] = None
     #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
     glaeubiger_id: Optional[str] = None
-    #: E-Mail-Adresse des Ansprechpartners. Z.B. "info@hochfrequenz.de"
-    e_mail_adresse: Optional[str] = None
     #: Internetseite des Marktpartners
     website: Optional[str] = None
     #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
     partneradresse: Optional[Adresse] = None  # todo: is it plural or not? the docs are bad
     #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
+    #: not clear what is the best solution here - circular import marktteilnehmer or adresse in kontakt?
