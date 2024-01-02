@@ -6,7 +6,7 @@ name: Upload Python Package Scheduled
 on:
   schedule:
     # At 01:23 on 1st January and every 6 months afterward
-    - cron: '23 1 1 1/6 *'
+    - cron: '23 1 1 1,7 *'
 
 jobs:
   tests:
