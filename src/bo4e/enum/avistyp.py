@@ -6,9 +6,6 @@ class AvisTyp(StrEnum):
     """
     Gibt den Typ des Avis an. (REMADV BGM 1001)
     """
+
     ABGELEHNTE_FORDERUNG = "ABGELEHNTE_FORDERUNG"
     ZAHLUNGSAVIS = "ZAHLUNGSAVIS"
-
-
-
-
