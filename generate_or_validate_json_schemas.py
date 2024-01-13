@@ -51,8 +51,7 @@ class GenerateJsonSchema(_GenerateJsonSchema):
         """
         json_schema = self.str_schema(core_schema.str_schema())
         if self.mode == "validation":
-            raise NotImplementedError("validation mode not supported for decimal")
-        json_schema["format"] = "decimal"
+            json_schema["format"] = "decimal"
         return json_schema
 
 
