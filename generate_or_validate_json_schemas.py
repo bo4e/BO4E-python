@@ -15,6 +15,9 @@ from typing import Any, Iterator, Literal, cast
 
 import click
 from pydantic import BaseModel, TypeAdapter
+from pydantic.json_schema import GenerateJsonSchema as _GenerateJsonSchema
+from pydantic.json_schema import JsonSchemaValue
+from pydantic_core import core_schema
 
 logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
@@ -27,6 +30,25 @@ NEW_REF_TEMPLATE = (
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
+
+
+class GenerateJsonSchema(_GenerateJsonSchema):
+    """
+    This class is a copy of pydantic.json_schema.GenerateJsonSchema with the only difference that the
+    decimal_schema method is overwritten to generate a JSON schema that can be used by the
+    BO4E-Python-Generator.
+    """
+
+    def decimal_schema(self, schema: core_schema.DecimalSchema) -> JsonSchemaValue:
+        """
+        Generates a JSON schema that matches a decimal value.
+        The output format is changed to work well with BO4E-Python-Generator.
+        """
+        json_schema = self.str_schema(core_schema.str_schema())
+        if self.mode == "validation":
+            raise NotImplementedError("validation mode not supported for decimal")
+        json_schema["format"] = "decimal"
+        return json_schema
 
 
 def delete_json_schemas(packages: list[str]) -> None:
@@ -79,9 +101,9 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
     Get the json schema for a class
     """
     if issubclass(cls, BaseModel):
-        schema_json_dict = cls.model_json_schema()
+        schema_json_dict = cls.model_json_schema(schema_generator=GenerateJsonSchema)
     elif issubclass(cls, Enum):
-        schema_json_dict = TypeAdapter(cls).json_schema()
+        schema_json_dict = TypeAdapter(cls).json_schema(schema_generator=GenerateJsonSchema)
     else:
         raise ValueError(f"Class {cls} is neither a pydantic BaseModel nor an enum.")
     if "$defs" in schema_json_dict:
