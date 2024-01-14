@@ -41,7 +41,7 @@ class GenerateJsonSchema(_GenerateJsonSchema):
     """
     This class is a copy of pydantic.json_schema.GenerateJsonSchema with the only difference that the
     decimal_schema method is overwritten to generate a JSON schema that can be used by the
-    BO4E-Python-Generator.
+    BO4E-Python-Generator (https://github.com/bo4e/BO4E-Python-Generator).
     """
 
     def decimal_schema(self, schema: core_schema.DecimalSchema) -> JsonSchemaValue:
