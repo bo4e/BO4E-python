@@ -2,6 +2,7 @@
 Contains class Bilanzierung
 """
 from datetime import datetime
+from decimal import Decimal
 from typing import Annotated, Optional
 
 from pydantic import Field
@@ -34,7 +35,7 @@ class Bilanzierung(Geschaeftsobjekt):
     jahresverbrauchsprognose: Optional[Menge] = None  #: Jahresverbrauchsprognose
     temperatur_arbeit: Optional[Menge] = None  #: Temperatur Arbeit
     kundenwert: Optional[Menge] = None  #: Kundenwert
-    verbrauchsaufteilung: Optional[float] = None
+    verbrauchsaufteilung: Optional[Decimal] = None
     """
           Verbrauchsaufteilung in % zwischen SLP und TLP-Profil.
 

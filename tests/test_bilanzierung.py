@@ -49,7 +49,7 @@ class TestBilanzierung:
                     temperatur_arbeit=Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH),
                     # todo: check einheiten
                     kundenwert=Menge(wert=Decimal(3.41), einheit=Mengeneinheit.MWH),
-                    verbrauchsaufteilung=1.5,
+                    verbrauchsaufteilung=Decimal(1.5),
                     zeitreihentyp=Zeitreihentyp.EGS,
                     aggregationsverantwortung=Aggregationsverantwortung.VNB,
                     prognosegrundlage=Prognosegrundlage.WERTE,
