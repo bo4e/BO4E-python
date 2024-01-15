@@ -13,5 +13,6 @@ class Steuerkennzeichen(StrEnum):
     UST_7 = "UST_7"  #: Umsatzsteuer 7%
     VST_0 = "VST_0"  #: Keine Vorsteuer, bzw. nicht steuerbar.
     VST_19 = "VST_19"  #: Vorsteuer 19%
+    VST_16 = "VST_16"  #: Vorsteuer 16%
     VST_7 = "VST_7"  #: Vorsteuer 7%
     RCV = "RCV"  #: Reverse Charge Verfahren (Umkehrung der Steuerpflicht)
