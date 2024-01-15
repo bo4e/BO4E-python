@@ -9,6 +9,7 @@ from typing import Optional
 from ..enum.oekolabel import Oekolabel
 from ..enum.oekozertifikat import Oekozertifikat
 from ..enum.sparte import Sparte
+from ..utils import postprocess_docstring
 from .com import COM
 from .energieherkunft import Energieherkunft
 
@@ -16,6 +17,7 @@ from .energieherkunft import Energieherkunft
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Energiemix(COM):
     """
     Zusammensetzung der gelieferten Energie aus den verschiedenen Primärenergieformen.
@@ -25,7 +27,7 @@ class Energiemix(COM):
         <object data="../_static/images/bo4e/com/Energiemix.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energiemix.json>`_
+        `Energiemix JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Energiemix.json>`_
 
     """
 

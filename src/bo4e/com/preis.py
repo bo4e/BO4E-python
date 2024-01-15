@@ -9,11 +9,13 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.preisstatus import Preisstatus
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Preis(COM):
     """
     Abbildung eines Preises mit Wert, Einheit, Bezugswert und Status.
@@ -23,7 +25,7 @@ class Preis(COM):
         <object data="../_static/images/bo4e/com/Preis.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Preis.json>`_
+        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preis.json>`_
 
     """
 

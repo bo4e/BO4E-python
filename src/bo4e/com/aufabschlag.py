@@ -8,6 +8,7 @@ from typing import Optional
 from ..enum.aufabschlagstyp import AufAbschlagstyp
 from ..enum.aufabschlagsziel import AufAbschlagsziel
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 from .preisstaffel import Preisstaffel
 from .zeitraum import Zeitraum
@@ -15,6 +16,7 @@ from .zeitraum import Zeitraum
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class AufAbschlag(COM):
     """
     Modell für die preiserhöhenden (Aufschlag) bzw. preisvermindernden (Abschlag) Zusatzvereinbarungen,
@@ -25,7 +27,7 @@ class AufAbschlag(COM):
         <object data="../_static/images/bo4e/com/AufAbschlag.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlag.json>`_
+        `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/AufAbschlag.json>`_
 
     """
 

@@ -23,6 +23,14 @@ bo4e.version module
    :undoc-members:
    :show-inheritance:
 
+bo4e.zusatzattribut module
+--------------------------
+
+.. automodule:: bo4e.zusatzattribut
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 Module contents
 ---------------
 

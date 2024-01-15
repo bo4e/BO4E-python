@@ -21,12 +21,14 @@ from ..enum.netzebene import Netzebene
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..enum.verbrauchsart import Verbrauchsart
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Marktlokation(Geschaeftsobjekt):
     """
     Object containing information about a Marktlokation
@@ -36,7 +38,7 @@ class Marktlokation(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Marktlokation.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Marktlokation.json>`_
+        `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Marktlokation.json>`_
 
     """
 

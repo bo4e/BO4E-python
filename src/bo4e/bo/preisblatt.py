@@ -14,10 +14,12 @@ from ..com.zeitraum import Zeitraum
 from ..enum.preisstatus import Preisstatus
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .marktteilnehmer import Marktteilnehmer
 
 
+@postprocess_docstring
 class Preisblatt(Geschaeftsobjekt):
     """
     Das allgemeine Modell zur Abbildung von Preisen;
@@ -32,7 +34,7 @@ class Preisblatt(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Preisblatt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Preisblatt.json>`_
+        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Preisblatt.json>`_
 
     """
 

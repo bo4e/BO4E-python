@@ -10,10 +10,12 @@ from typing import Optional
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.preistyp import Preistyp
 from ..enum.waehrungseinheit import Waehrungseinheit
+from ..utils import postprocess_docstring
 from .com import COM
 from .preisstaffel import Preisstaffel
 
 
+@postprocess_docstring
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
@@ -23,7 +25,7 @@ class Tarifpreisposition(COM):
         <object data="../_static/images/bo4e/com/Tarifpreisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifpreisposition.json>`_
 
     """
 

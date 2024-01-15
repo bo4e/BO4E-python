@@ -10,11 +10,13 @@ from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class PreisblattHardware(Preisblatt):
     """
     Variante des Preisblattmodells zur Abbildung der Preise für zusätzliche Hardware
@@ -24,7 +26,7 @@ class PreisblattHardware(Preisblatt):
         <object data="../_static/images/bo4e/bo/PreisblattHardware.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/PreisblattHardware.json>`_
+        `PreisblattHardware JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattHardware.json>`_
 
     """
 

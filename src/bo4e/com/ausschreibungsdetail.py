@@ -4,6 +4,7 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 from typing import Optional
 
 from ..enum.zaehlertyp import Zaehlertyp
+from ..utils import postprocess_docstring
 from .adresse import Adresse
 from .com import COM
 from .menge import Menge
@@ -12,6 +13,7 @@ from .zeitraum import Zeitraum
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Ausschreibungsdetail(COM):
     """
     Die Komponente Ausschreibungsdetail wird verwendet um die Informationen zu einer Abnahmestelle innerhalb eines
@@ -22,7 +24,7 @@ class Ausschreibungsdetail(COM):
         <object data="../_static/images/bo4e/com/Ausschreibungsdetail.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungsdetail.json>`_
+        `Ausschreibungsdetail JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Ausschreibungsdetail.json>`_
 
     """
 

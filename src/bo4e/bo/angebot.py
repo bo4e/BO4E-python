@@ -13,11 +13,13 @@ from pydantic import Field
 from ..com.angebotsvariante import Angebotsvariante
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .ansprechpartner import Ansprechpartner
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 
+@postprocess_docstring
 class Angebot(Geschaeftsobjekt):
     """
     Mit diesem BO kann ein Versorgungsangebot zur Strom- oder Gasversorgung oder die Teilnahme an einer Ausschreibung
@@ -30,7 +32,7 @@ class Angebot(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Angebot.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Angebot.json>`_
+        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Angebot.json>`_
 
 
     """

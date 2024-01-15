@@ -5,12 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 from decimal import Decimal
 from typing import Optional
 
+from ..utils import postprocess_docstring
 from .com import COM
 from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Vertragskonditionen(COM):
     """
     Abbildung für Vertragskonditionen. Die Komponente wird sowohl im Vertrag als auch im Tarif verwendet.
@@ -20,7 +22,7 @@ class Vertragskonditionen(COM):
         <object data="../_static/images/bo4e/com/Vertragskonditionen.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Vertragskonditionen.json>`_
+        `Vertragskonditionen JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Vertragskonditionen.json>`_
 
     """
 
