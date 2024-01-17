@@ -16,6 +16,9 @@ Contents
    Authors <authors>
    Versioning <versioning>
    Changelog <changelog>
+   BOs <api/bo4e.bo>
+   COMs <api/bo4e.com>
+   ENUMs <api/bo4e.enum>
    Module Reference <api/modules>
 
 
