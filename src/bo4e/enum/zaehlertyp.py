@@ -8,7 +8,7 @@ class Zaehlertyp(StrEnum):
     Bei diesem Enum handelt es sich um die Abbildung von Zählertypen der Sparten Strom und Gas.
     """
 
-    DREHSTROMZAEHLER = "DREHSTROMZAEHLER"  #: Drehstromzähler
+    DREHSTROMZAEHLER = "DREHSTROMZAEHLER"  #: Drehstromzähler - dieser Zählertyp wird für Ferraris-Zähler verwendet
     BALGENGASZAEHLER = "BALGENGASZAEHLER"  #: Balgengaszähler
     DREHKOLBENZAEHLER = "DREHKOLBENZAEHLER"  #: Drehkolbengaszähler
     LEISTUNGSZAEHLER = "LEISTUNGSZAEHLER"  #: leistungsmessender Zähler
