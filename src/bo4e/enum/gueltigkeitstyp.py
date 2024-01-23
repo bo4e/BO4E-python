@@ -9,6 +9,5 @@ class Gueltigkeitstyp(StrEnum):
 
     NUR_IN = "NUR_IN"  #: Ein so eingeschränktes Merkmal gilt nur mit den angebenen Werten
     NICHT_IN = "NICHT_IN"  #: Ein so eingeschränktes Merkmal gilt nicht mit den angebenen Werten
-    NUR_IN_KOMBINATION_MIT = (
-        "NUR_IN_KOMBINATION_MIT"  #: Die Kriterien mit diesem Gültigkeitstyp werden miteinander kombiniert
-    )
+    #: Die Kriterien mit diesem Gültigkeitstyp werden miteinander kombiniert
+    NUR_IN_KOMBINATION_MIT = "NUR_IN_KOMBINATION_MIT"
