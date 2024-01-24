@@ -1,6 +1,6 @@
-===============
+================
 Release Workflow
-===============
+================
 
 BO4E Data Model Release Workflow
 ================================
@@ -11,28 +11,28 @@ Step-by-Step Guide
 ------------------
 
 1. Python Package Implementation
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    * **Starting Point:** The journey begins with the implementation of the BO4E data model as a Python package.
 
 2. Release and Schema Generation
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    * **Automatic Generation:** Upon releasing a new version of this Python package, a GitHub action automatically triggers.
    * **JSON Schemas Creation:** This action generates JSON schemas, which are essential blueprints of the data model.
    * **Storage:** These schemas are then stored in a dedicated repository, known as the BO4E-Schemas Repository.
 
 3. Optional Customization (BO4E-Schema-Tool)
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    * **Flexibility in Data Fields:** Initially, the JSON schemas contain only optional fields.
    * **Setting Required Fields:** If you need to designate certain fields as mandatory, you can use the BO4E-Schema-Tool Repository.
    * **Tool Functionality:** This repository houses a command-line interface (CLI) tool that assists in updating the JSON schema files to define required fields.
 
 4. Code Generation (BO4E-Python-Generator)
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
    * **Finalizing JSON Schemas:** Once you have the final version of the JSON schema files, it's time to generate code.
    * **Pydantic Classes Creation:** Utilize tools like the BO4E-Python-Generator, another CLI tool, to create Pydantic classes from the JSON schemas.
 
 5. Ready to Use
-   ^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^
    * **Integration:** With these steps complete, the BO4E data model is now ready for use in your favorite programming language.
    * **Seamless Application:** Implement the data model seamlessly in your projects and enjoy the efficiency it brings to your workflow.
 
