@@ -9,21 +9,18 @@ class Leistungstyp(StrEnum):
 
     ARBEITSPREIS_WIRKARBEIT = "ARBEITSPREIS_WIRKARBEIT"  #: Arbeitspreis zur Abrechnung der Wirkarbeit
     LEISTUNGSPREIS_WIRKLEISTUNG = "LEISTUNGSPREIS_WIRKLEISTUNG"  #: Leistungspreis zur Abrechnung der Wirkleistung
-    ARBEITSPREIS_BLINDARBEIT_IND = (
-        "ARBEITSPREIS_BLINDARBEIT_IND"  #: Arbeitspreis zur Abrechnung der Blindarbeit induktiv
-    )
-    ARBEITSPREIS_BLINDARBEIT_KAP = (
-        "ARBEITSPREIS_BLINDARBEIT_KAP"  #: Arbeitspreis zur Abrechnung der Blindarbeit kapazitiv
-    )
+    #: Arbeitspreis zur Abrechnung der Blindarbeit induktiv
+    ARBEITSPREIS_BLINDARBEIT_IND = "ARBEITSPREIS_BLINDARBEIT_IND"
+    #: Arbeitspreis zur Abrechnung der Blindarbeit kapazitiv
+    ARBEITSPREIS_BLINDARBEIT_KAP = "ARBEITSPREIS_BLINDARBEIT_KAP"
     GRUNDPREIS = "GRUNDPREIS"  #: Grundpreis (pro Zeiteinheit)
     GRUNDPREIS_ARBEIT = "GRUNDPREIS_ARBEIT"  #: Grundpreis, der auf die Arbeit berechnet wird (bei RLM)
     GRUNDPREIS_LEISTUNG = "GRUNDPREIS_LEISTUNG"  #: Grundpreis, der auf die Leistung berechnet wird (bei RLM)
     MEHRMINDERMENGE = "MEHRMINDERMENGE"  #: Mehr- oder Mindermenge
     MESSSTELLENBETRIEB = "MESSSTELLENBETRIEB"  #: Preis pro Zeiteinheit
     MESSDIENSTLEISTUNG = "MESSDIENSTLEISTUNG"  #: Preis pro Zeiteinheit
-    MESSDIENSTLEISTUNG_INKL_MESSUNG = (
-        "MESSDIENSTLEISTUNG_INKL_MESSUNG"  #: MDL inklusive der Messung (ab 2017), Preis pro Zeiteinheit
-    )
+    #: MDL inklusive der Messung (ab 2017), Preis pro Zeiteinheit
+    MESSDIENSTLEISTUNG_INKL_MESSUNG = "MESSDIENSTLEISTUNG_INKL_MESSUNG"
     ABRECHNUNG = "ABRECHNUNG"  #: Preis pro Zeiteinheit
     KONZESSIONS_ABGABE = "KONZESSIONS_ABGABE"  #: Konzessionsabgabe
     KWK_UMLAGE = "KWK_UMLAGE"  #: KWK-Umlage
