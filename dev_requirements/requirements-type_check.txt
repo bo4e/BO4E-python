@@ -26,7 +26,7 @@ tomli==2.0.1
     # via
     #   mypy
     #   pytest
-types-requests==2.31.0.20240106
+types-requests==2.31.0.20240125
     # via -r requirements-type_check.in
 typing-extensions==4.8.0
     # via mypy
