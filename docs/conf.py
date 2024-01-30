@@ -318,5 +318,5 @@ print(_network)
 write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
 print("Created uml files.")
 
-compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images")
+compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images", locally_hosted=True)
 print(f"Compiled uml files into svg using kroki.")
