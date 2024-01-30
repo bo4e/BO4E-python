@@ -83,8 +83,8 @@ def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLA
     """
     Builds a dictionary with the classnames as keys and their module as tuples in the values. E.g.:
     {
-        "Geschaeftsobjekt": ("bo", "geschaeftsobjekt"),
-        "COM": ("com", "com"),
+        "Angebot": ("bo", "angebot"),
+        "Adresse": ("com", "adresse"),
         ...
     }
     This function filters out all classes which names begin with an underscore.
@@ -202,6 +202,8 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
 
     namespace = get_namespace(packages)
     namespace[ZusatzAttribut.__name__] = ("", "zusatzattribut", ZusatzAttribut)
+    del namespace["Geschaeftsobjekt"]
+    del namespace["COM"]
 
     for name, (pkg, _, cls) in namespace.items():
         _logger.debug("Processing %s", name)
