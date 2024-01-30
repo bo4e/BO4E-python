@@ -49,7 +49,7 @@ class GenerateJsonSchema(_GenerateJsonSchema):
         Generates a JSON schema that matches a decimal value.
         The output format is changed to work well with BO4E-Python-Generator.
         """
-        json_schema = self.str_schema(core_schema.str_schema())
+        json_schema = self.float_schema(core_schema.float_schema())
         if self.mode == "validation":
             json_schema["format"] = "decimal"
         return json_schema
