@@ -17,8 +17,8 @@ How Does it Work?
 =================
 
 1. **Base Structure**: Think of the version number as a date followed by two additional numbers, like 202312.1.2. Here, 202312 tells you the release date, 1 is the functional number, and 2 is the technical number.
-2. **Technical Changes**: If we fix a typo or a small bug, we only change the technical number. So, after a minor fix, the version might change from 202312.1.2 to 202312.1.3.
-3. **Functional Changes**: For bigger changes, like adding a new business object, we update the functional number and reset the technical number to zero. For instance, if we add a significant feature to the 202312.1.2 version, it becomes 202312.2.0.
+2. **Functional Changes**: For bigger changes, like adding a new business object, we update the functional number and reset the technical number to zero. For instance, if we add a significant feature to the 202312.1.2 version, it becomes 202312.2.0.
+3. **Technical Changes**: If we fix a typo or a small bug, we only change the technical number. So, after a minor fix, the version might change from 202312.1.2 to 202312.1.3.
 
 Yearly Reset: With the start of a new year, we reset both the functional and technical numbers.
 So, if we're moving from December 2023 (202312.2.0) to January 2024, the new version would be 202401.0.0.
