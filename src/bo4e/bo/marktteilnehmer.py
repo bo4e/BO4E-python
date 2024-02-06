@@ -43,6 +43,6 @@ class Marktteilnehmer(Geschaeftsobjekt):
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
-    makoadresse: Optional[str] = None
+    makoadresse: Optional[list[str]] = None
     #: Der zu diesem Marktteilnehmer gehörende Geschäftspartner
     geschaeftspartner: Optional[Geschaeftspartner] = None
