@@ -3,6 +3,7 @@ BO4E
 =============
 
 This is the official documentation of **BO4E** datamodel.
+
 Cause of the fact that the datamodel is written in Python, it is also the Python documentation.
 
 
@@ -12,7 +13,6 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   Module Reference <api/modules>
    Geschäftsobjekte <api/bo4e.bo>
    Komponenten <api/bo4e.com>
    Enumerationen <api/bo4e.enum>
