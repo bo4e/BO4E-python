@@ -146,6 +146,7 @@ __all__ = [
     "NetznutzungRechnungstyp",
     "Oekolabel",
     "Oekozertifikat",
+    "Organisationstyp",
     "Preisgarantietyp",
     "Preismodell",
     "Preisstatus",
@@ -330,6 +331,7 @@ from .enum.netznutzungrechnungsart import NetznutzungRechnungsart
 from .enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from .enum.oekolabel import Oekolabel
 from .enum.oekozertifikat import Oekozertifikat
+from .enum.organisationstyp import Organisationstyp
 from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
 from .enum.preisstatus import Preisstatus

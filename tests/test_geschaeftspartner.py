@@ -1,6 +1,16 @@
 import pytest
 
-from bo4e import Adresse, Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontakt, Landescode, Person
+from bo4e import (
+    Adresse,
+    Anrede,
+    Geschaeftspartner,
+    Geschaeftspartnerrolle,
+    Kontakt,
+    Landescode,
+    Organisationstyp,
+    Person,
+    Titel,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -11,7 +21,12 @@ class TestGeschaeftspartner:
             pytest.param(
                 Geschaeftspartner(
                     ansprechpartner=[Person(), Person()],
-                    ist_gewerbe=True,
+                    anrede=Anrede.EHELEUTE,
+                    individuelle_anrede="Künstler",
+                    titel=Titel.PROF_DR,
+                    vorname="Hans",
+                    nachname="Müller-Schmidt",
+                    organisationstyp=Organisationstyp.UNTERNEHMEN,
                     handelsregisternummer="HRB 254466",
                     amtsgericht="Amtsgericht München",
                     kontaktwege=[Kontakt()],
@@ -26,7 +41,12 @@ class TestGeschaeftspartner:
             pytest.param(
                 Geschaeftspartner(
                     ansprechpartner=[Person(), Person()],
-                    ist_gewerbe=True,
+                    anrede=Anrede.EHELEUTE,
+                    individuelle_anrede="Künstler",
+                    titel=Titel.PROF_DR,
+                    vorname="Hans",
+                    nachname="Müller-Schmidt",
+                    organisationstyp=Organisationstyp.UNTERNEHMEN,
                     handelsregisternummer="HRB 254466",
                     amtsgericht="Amtsgericht Ibiza",
                     kontaktwege=[Kontakt()],
