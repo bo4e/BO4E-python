@@ -19,8 +19,8 @@ Contents
    Versionierung <versioning>
    Änderungshistorie <changelog>
    Autoren <authors>
-   Lizenz <license>
    Release Workflow <release_workflow>
+   Lizenz <license>
 
 Indices and tables
 ==================
