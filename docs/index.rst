@@ -12,15 +12,14 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   Lizenz <license>
-   Autoren <authors>
-   Versionierung <versioning>
-   Änderungshistorie <changelog>
+   Module Reference <api/modules>
    Geschäftsobjekte <api/bo4e.bo>
    Komponenten <api/bo4e.com>
    Enumerationen <api/bo4e.enum>
-   Module Reference <api/modules>
-
+   Versionierung <versioning>
+   Änderungshistorie <changelog>
+   Autoren <authors>
+   Lizenz <license>
 
 Indices and tables
 ==================
