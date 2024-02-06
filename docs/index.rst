@@ -17,6 +17,7 @@ Contents
    Versioning <versioning>
    Changelog <changelog>
    Module Reference <api/modules>
+   Release Workflow <release_workflow>
 
 
 Indices and tables

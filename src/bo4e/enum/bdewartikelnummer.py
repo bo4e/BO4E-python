@@ -19,9 +19,8 @@ class BDEWArtikelnummer(StrEnum):
     ZUSAETZLICHE_ABLESUNG = "ZUSAETZLICHE_ABLESUNG"  #: Zusätzliche Ablesung
     PRUEFGEBUEHREN_AUSSERPLANMAESSIG = "PRUEFGEBUEHREN_AUSSERPLANMAESSIG"  #: Prüfgebühren (außerplanmäßig)
     WIRKARBEIT = "WIRKARBEIT"  #: Wirkarbeit
-    SINGULAER_GENUTZTE_BETRIEBSMITTEL = (
-        "SINGULAER_GENUTZTE_BETRIEBSMITTEL"  #: singulär genutzte Betriebsmittel (z. B. Trafomiete, Leitungen)
-    )
+    #: singulär genutzte Betriebsmittel (z. B. Trafomiete, Leitungen)
+    SINGULAER_GENUTZTE_BETRIEBSMITTEL = "SINGULAER_GENUTZTE_BETRIEBSMITTEL"
     ABGABE_KWKG = "ABGABE_KWKG"  #: Abgabe KWKG
     ABSCHLAG = "ABSCHLAG"  #: Abschlag
     KONZESSIONSABGABE = "KONZESSIONSABGABE"  #: Konzessionsabgabe
@@ -36,9 +35,8 @@ class BDEWArtikelnummer(StrEnum):
     INKASSOKOSTEN = "INKASSOKOSTEN"  #: Inkassokosten
     BLINDMEHRLEISTUNG = "BLINDMEHRLEISTUNG"  #: Blindmehrleistung
     ENTGELT_MESSUNG_ABLESUNG = "ENTGELT_MESSUNG_ABLESUNG"  #: Entgelt für Messung und Ablesung
-    ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK = (
-        "ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK"  #: Entgelt für Einbau, Betrieb und Wartung der Messtechnik
-    )
+    #: Entgelt für Einbau, Betrieb und Wartung der Messtechnik
+    ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK = "ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK"
     AUSGLEICHSENERGIE = "AUSGLEICHSENERGIE"  #: Ausgleichsenergie
     ZAEHLEINRICHTUNG = "ZAEHLEINRICHTUNG"  #: Zähleinrichtung
     WANDLER_MENGENUMWERTER = "WANDLER_MENGENUMWERTER"  #: Wandler/Mengenumwerter
