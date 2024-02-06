@@ -19,20 +19,17 @@ class Regionskriteriumtyp(StrEnum):
     NETZBETREIBER_NUMMER_GAS = "NETZBETREIBER_NUMMER_GAS"  #: offizielle Netzbetreiber-Codenummer Gas
     NETZBETREIBER_NAME_STROM = "NETZBETREIBER_NAME_STROM"  #: Netzbetreiber Name Strom
     NETZBETREIBER_NAME_GAS = "NETZBETREIBER_NAME_GAS"  #: Netzbetreiber Name Gas
-    BILANZIERUNGS_GEBIET_NUMMER = (
-        "BILANZIERUNGS_GEBIET_NUMMER"  #: Strom: Bilanzierungsgebietsnummer, Gas: Netzkontonummer
-    )
+    #: Strom: Bilanzierungsgebietsnummer, Gas: Netzkontonummer
+    BILANZIERUNGS_GEBIET_NUMMER = "BILANZIERUNGS_GEBIET_NUMMER"
     MSB_NUMMER = "MSB_NUMMER"  #: offizielle Messstellenbetreiber-Codenummer
     MSB_NAME = "MSB_NAME"  #: Name des MSB
     VERSORGER_NUMMER = "VERSORGER_NUMMER"  #: offizielle Lieferanten-Codenummer eines Versorgers
     VERSORGER_NAME = "VERSORGER_NAME"  #: Name eines Versorgers
-    GRUNDVERSORGER_NUMMER_STROM = (
-        "GRUNDVERSORGER_NUMMER_STROM"  #: offizielle Lieferanten-Codenummer des Strom-Grundversorgers
-    )
+    #: offizielle Lieferanten-Codenummer des Strom-Grundversorgers
+    GRUNDVERSORGER_NUMMER_STROM = "GRUNDVERSORGER_NUMMER_STROM"
     GRUNDVERSORGER_NAME_STROM = "GRUNDVERSORGER_NAME_STROM"  #: Name des Strom-Grundversorgers
-    GRUNDVERSORGER_NUMMER_GAS = (
-        "GRUNDVERSORGER_NUMMER_GAS"  #: offizielle Lieferanten-Codenummer des Gas-Grundversorgers
-    )
+    #: offizielle Lieferanten-Codenummer des Gas-Grundversorgers
+    GRUNDVERSORGER_NUMMER_GAS = "GRUNDVERSORGER_NUMMER_GAS"
     GRUNDVERSORGER_NAME_GAS = "GRUNDVERSORGER_NAME_GAS"  #: Name des Gas-Grundversorgers
     KREIS_NAME = "KREIS_NAME"  #: Kreis
     KREISKENNZIFFER = "KREISKENNZIFFER"  #: offizielle Kreiskennziffer

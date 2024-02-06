@@ -20,6 +20,7 @@ Contents
    Änderungshistorie <changelog>
    Autoren <authors>
    Lizenz <license>
+   Release Workflow <release_workflow>
 
 Indices and tables
 ==================
