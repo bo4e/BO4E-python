@@ -3,7 +3,7 @@ Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
 
-# pylint: disable=too-many-instance-attributes, too-few-public-methods
+# pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
 from typing import Annotated, Optional
 
 from pydantic import Field

@@ -16,7 +16,7 @@ from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
-# pylint: disable=too-many-instance-attributes, too-few-public-methods
+# pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
 
 
 @postprocess_docstring
