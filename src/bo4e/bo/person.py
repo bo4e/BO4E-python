@@ -2,12 +2,12 @@
 Contains Person class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from datetime import datetime
 from typing import Annotated, Optional
 
 from pydantic import Field
 
-from ..com.adresse import Adresse
 from ..com.kontakt import Kontakt
 from ..com.zustaendigkeit import Zustaendigkeit
 from ..enum.anrede import Anrede

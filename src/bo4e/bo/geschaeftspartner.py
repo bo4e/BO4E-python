@@ -12,7 +12,6 @@ from bo4e.enum.anrede import Anrede
 from bo4e.enum.organisationstyp import Organisationstyp
 from bo4e.enum.titel import Titel
 
-from ..com.adresse import Adresse
 from ..com.kontakt import Kontakt
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from ..enum.typ import Typ
