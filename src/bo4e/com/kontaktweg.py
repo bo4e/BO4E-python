@@ -1,5 +1,5 @@
 """
-Contains Kontakt class
+Contains Kontaktweg class
 and corresponding marshmallow schema for de-/serialization
 """
 

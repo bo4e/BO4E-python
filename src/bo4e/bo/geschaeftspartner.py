@@ -9,7 +9,7 @@ from typing import Annotated, Optional
 from pydantic import Field
 
 from ..com.adresse import Adresse
-from ..com.kontakt import Kontaktweg
+from ..com.kontaktweg import Kontaktweg
 from ..enum.anrede import Anrede
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from ..enum.organisationstyp import Organisationstyp
