@@ -42,7 +42,7 @@ class Marktteilnehmer(Geschaeftsobjekt):
     rollencodetyp: Optional[Rollencodetyp] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
-    #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
+    #: Die 1:1-Kommunikationsadresse des Marktteilnehmers. Diese wird in der Marktkommunikation verwendet. Konkret kann dies eine eMail-Adresse oder ein AS4-Endpunkt sein.
     makoadresse: Optional[list[str]] = None
     #: Der zu diesem Marktteilnehmer gehörende Geschäftspartner
     geschaeftspartner: Optional[Geschaeftspartner] = None
