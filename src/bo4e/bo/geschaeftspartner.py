@@ -8,12 +8,12 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.organisationstyp import Organisationstyp
-from bo4e.enum.titel import Titel
-
+from ..com.adresse import Adresse
 from ..com.kontakt import Kontakt
+from ..enum.anrede import Anrede
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+from ..enum.organisationstyp import Organisationstyp
+from ..enum.titel import Titel
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
@@ -43,7 +43,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     individuelle_anrede: Optional[str] = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
-    Beispiel: "Sehr geehrte Frau Müller, sehr geehrter Herr Dr. Müller"
+    Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
     #: Möglicher Titel der Person
     titel: Optional[Titel] = None
@@ -55,11 +55,11 @@ class Geschaeftspartner(Geschaeftsobjekt):
     ansprechpartner: Optional[list[Person]] = None
     organisationstyp: Optional[Organisationstyp] = None
     """
-    Kennzeichnung ob es sich um einen Gewerbe/Unternehmen, eine Privatperson oder eine andere Art von Organisation handelt.
+    Kennzeichnung ob es sich um ein Gewerbe/Unternehmen, eine Privatperson oder eine andere Art von Organisation handelt.
     """
     organisationsname: Optional[str] = None
     """
-    Name der Firma, wenn Gewerbe oder andere Organisation. Nur auszufüllen wenn es sich nicht um eine Privatperson handelt
+    Name der Firma, wenn Gewerbe oder andere Organisation.
     """
     #: Bevorzugte Kontaktwege des Geschäftspartners
     kontaktwege: Optional[list[Kontakt]] = None
@@ -75,6 +75,8 @@ class Geschaeftspartner(Geschaeftsobjekt):
     glaeubiger_id: Optional[str] = None
     #: Internetseite des Marktpartners
     website: Optional[str] = None
+    #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
+    partneradresse: Optional[Adresse] = None  # todo: is it plural or not? the docs are bad
     #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
     #: not clear what is the best solution here - circular import marktteilnehmer?
     #: discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let's figure out a solution somehow.

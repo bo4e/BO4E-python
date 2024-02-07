@@ -8,6 +8,7 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from ..com.adresse import Adresse
 from ..com.kontakt import Kontakt
 from ..com.zustaendigkeit import Zustaendigkeit
 from ..enum.anrede import Anrede
@@ -39,7 +40,7 @@ class Person(Geschaeftsobjekt):
     individuelle_anrede: Optional[str] = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
-    Beispiel: "Sehr geehrte Frau Müller, sehr geehrter Herr Dr. Müller"
+    Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
     #: Möglicher Titel der Person
     titel: Optional[Titel] = None
@@ -55,3 +56,5 @@ class Person(Geschaeftsobjekt):
     kommentar: Optional[str] = None
     #: Liste der Abteilungen und Zuständigkeiten der Person
     zustaendigkeiten: Optional[list[Zustaendigkeit]] = None
+    #: Adresse der Person, falls diese von der Adresse des Geschäftspartners abweicht
+    adresse: Optional[Adresse] = None
