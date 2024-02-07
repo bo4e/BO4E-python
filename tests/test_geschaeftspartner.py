@@ -34,7 +34,7 @@ class TestGeschaeftspartner:
                     glaeubiger_id="DE98ZZZ09999999999",
                     website="bo4e.de",
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                    partneradresse=Adresse(),
+                    adresse=Adresse(),
                 ),
                 id="all attributes at first level",
             ),
@@ -52,7 +52,7 @@ class TestGeschaeftspartner:
                     kontaktwege=[Kontaktweg()],
                     umsatzsteuer_id="AT12345",
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                    partneradresse=Adresse(
+                    adresse=Adresse(
                         postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
                     ),
                 ),

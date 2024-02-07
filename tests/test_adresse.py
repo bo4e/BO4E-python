@@ -47,7 +47,7 @@ class TestVertrag:
                         glaeubiger_id="DE98ZZZ09999999999",
                         website="bo4e.de",
                         geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                        partneradresse=Adresse(
+                        adresse=Adresse(
                             postleitzahl="24306",
                             ort="Plön",
                             strasse="Kirchstraße",
@@ -59,7 +59,7 @@ class TestVertrag:
                         organisationstyp=Organisationstyp.UNTERNEHMEN,
                         organisationsname="Hochfrequenz",
                         geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                        partneradresse=Adresse(
+                        adresse=Adresse(
                             postleitzahl="24211",
                             ort="Preetz",
                             strasse="Am Markt",

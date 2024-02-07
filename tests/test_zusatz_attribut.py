@@ -28,7 +28,7 @@ class TestZusatzAttribut:
                     nachname="Müller-Schmidt",
                     organisationstyp=Organisationstyp.PRIVATPERSON,
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.KUNDE],
-                    partneradresse=Adresse(
+                    adresse=Adresse(
                         strasse="Am Geldspeicher",
                         hausnummer="17",
                         postleitzahl="88101",
