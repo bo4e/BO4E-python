@@ -10,8 +10,7 @@ class TestPerson:
         [
             pytest.param(
                 Person(
-                    anrede=Anrede.EHELEUTE,
-                    individuelle_anrede="Künstler",
+                    anrede=Anrede.HERR,
                     titel=Titel.PROF_DR,
                     vorname="Hans",
                     nachname="Müller-Schmidt",
