@@ -1,6 +1,5 @@
 """
 Contains AufAbschlagstaffelProOrt class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal

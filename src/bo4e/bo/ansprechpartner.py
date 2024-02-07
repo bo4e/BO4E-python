@@ -1,7 +1,7 @@
 """
 Contains Ansprechpartner class
-and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field
@@ -47,9 +47,8 @@ class Ansprechpartner(Geschaeftsobjekt):
 
     e_mail_adresse: Optional[str] = None  #: E-Mail Adresse
 
-    geschaeftspartner: Optional[
-        Geschaeftspartner
-    ] = None  #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
+    #: Der Geschäftspartner, für den dieser Ansprechpartner modelliert wird
+    geschaeftspartner: Optional[Geschaeftspartner] = None
 
     #: Adresse des Ansprechpartners, falls diese von der Adresse des Geschäftspartners abweicht
     adresse: Optional[Adresse] = None

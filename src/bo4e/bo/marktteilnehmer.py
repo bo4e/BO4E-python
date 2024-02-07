@@ -1,8 +1,6 @@
 """
 Contains Marktteilnehmer class
-and corresponding marshmallow schema for de-/serialization
 """
-
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

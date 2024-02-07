@@ -1,7 +1,7 @@
 """
 Contains RegionaleGueltigkeit class
-and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..enum.gueltigkeitstyp import Gueltigkeitstyp
@@ -27,9 +27,7 @@ class RegionaleGueltigkeit(COM):
 
     """
 
-    gueltigkeitstyp: Optional[
-        Gueltigkeitstyp
-    ] = None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    kriteriums_werte: Optional[
-        list[KriteriumWert]
-    ] = None  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
+    #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
+    gueltigkeitstyp: Optional[Gueltigkeitstyp] = None
+    #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
+    kriteriums_werte: Optional[list[KriteriumWert]] = None
