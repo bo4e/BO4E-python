@@ -9,7 +9,7 @@ from typing import Annotated, Optional
 from pydantic import Field
 
 from ..com.adresse import Adresse
-from ..com.kontakt import Kontakt
+from ..com.kontakt import Kontaktweg
 from ..com.zustaendigkeit import Zustaendigkeit
 from ..enum.anrede import Anrede
 from ..enum.titel import Titel
@@ -49,7 +49,7 @@ class Person(Geschaeftsobjekt):
     #: Nachname (Familienname) der Person
     nachname: Optional[str] = None
     #: Bevorzugte Kontaktwege der Person
-    kontaktwege: Optional[list[Kontakt]] = None
+    kontaktwege: Optional[list[Kontaktweg]] = None
     #: Geburtsdatum der Person
     geburtsdatum: Optional[datetime] = None
     #: Weitere Informationen zur Person

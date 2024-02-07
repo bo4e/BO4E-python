@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Kontakt, Kontaktart
+from bo4e import Adresse, Kontaktart, Kontaktweg
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -9,7 +9,7 @@ class TestKontakt:
         "kontakt",
         [
             pytest.param(
-                Kontakt(
+                Kontaktweg(
                     kontaktart=Kontaktart.E_MAIL,
                     e_mail_adresse="test@bo4e.de",
                     adresse=Adresse(),
@@ -18,7 +18,7 @@ class TestKontakt:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, kontakt: Kontakt) -> None:
+    def test_serialization_roundtrip(self, kontakt: Kontaktweg) -> None:
         """
         Test de-/serialisation of Kontakt.
         """

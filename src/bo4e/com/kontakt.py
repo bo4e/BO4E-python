@@ -13,7 +13,7 @@ from .com import COM
 
 
 @postprocess_docstring
-class Kontakt(COM):
+class Kontaktweg(COM):
     """
     Die Komponente wird dazu verwendet, die Kontaktwege innerhalb des BOs Person darzustellen
 

@@ -9,7 +9,7 @@ from typing import Annotated, Optional
 from pydantic import Field
 
 from ..com.adresse import Adresse
-from ..com.kontakt import Kontakt
+from ..com.kontakt import Kontaktweg
 from ..enum.anrede import Anrede
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from ..enum.organisationstyp import Organisationstyp
@@ -62,7 +62,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Name der Firma, wenn Gewerbe oder andere Organisation.
     """
     #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktwege: Optional[list[Kontakt]] = None
+    kontaktwege: Optional[list[Kontaktweg]] = None
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
     geschaeftspartnerrollen: Optional[list[Geschaeftspartnerrolle]] = None
     #: Handelsregisternummer des Geschäftspartners

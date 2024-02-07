@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Anrede, Kontakt, Person, Titel, Zustaendigkeit
+from bo4e import Adresse, Anrede, Kontaktweg, Person, Titel, Zustaendigkeit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -15,7 +15,7 @@ class TestPerson:
                     titel=Titel.PROF_DR,
                     vorname="Hans",
                     nachname="Müller-Schmidt",
-                    kontaktwege=[Kontakt(), Kontakt()],
+                    kontaktwege=[Kontaktweg(), Kontaktweg()],
                     kommentar="does this thing work?",
                     adresse=Adresse(),
                     zustaendigkeiten=[Zustaendigkeit()],
