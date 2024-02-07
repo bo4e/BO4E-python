@@ -4,11 +4,14 @@ import pytest
 
 from bo4e import (
     Adresse,
+    Anrede,
     Geschaeftspartner,
     Geschaeftspartnerrolle,
     Kontakt,
+    Organisationstyp,
     Person,
     Sparte,
+    Titel,
     Unterschrift,
     Vertrag,
     Vertragsart,
@@ -33,7 +36,12 @@ class TestVertrag:
                     vertragsende=datetime(2021, 6, 5, 16, 30, tzinfo=timezone.utc),
                     vertragspartner1=Geschaeftspartner(
                         ansprechpartner=[Person(), Person()],
-                        ist_gewerbe=True,
+                        anrede=Anrede.EHELEUTE,
+                        individuelle_anrede="Künstler",
+                        titel=Titel.PROF_DR,
+                        vorname="Hans",
+                        nachname="Müller-Schmidt",
+                        organisationstyp=Organisationstyp.PRIVATPERSON,
                         kontaktwege=[Kontakt()],
                         umsatzsteuer_id="DE267311963",
                         glaeubiger_id="DE98ZZZ09999999999",
@@ -48,7 +56,8 @@ class TestVertrag:
                     ),
                     vertragspartner2=Geschaeftspartner(
                         ansprechpartner=[Person(), Person()],
-                        ist_gewerbe=False,
+                        organisationstyp=Organisationstyp.UNTERNEHMEN,
+                        organisationsname="Hochfrequenz",
                         geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                         partneradresse=Adresse(
                             postleitzahl="24211",

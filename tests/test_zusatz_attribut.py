@@ -1,5 +1,6 @@
 import pytest
 
+from bo4e import Anrede, Organisationstyp, Titel
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.person import Person
 from bo4e.com.adresse import Adresse
@@ -20,7 +21,12 @@ class TestZusatzAttribut:
                     ],
                     # just some dummy data to make the GP valid
                     ansprechpartner=[Person(), Person()],
-                    ist_gewerbe=False,
+                    anrede=Anrede.EHELEUTE,
+                    individuelle_anrede="Künstler",
+                    titel=Titel.PROF_DR,
+                    vorname="Hans",
+                    nachname="Müller-Schmidt",
+                    organisationstyp=Organisationstyp.PRIVATPERSON,
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.KUNDE],
                     partneradresse=Adresse(
                         strasse="Am Geldspeicher",
