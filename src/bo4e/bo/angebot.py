@@ -1,5 +1,5 @@
 """
-Contains Angebot class and corresponding marshmallow schema for de-/serialization
+Contains Angebot class
 """
 
 from datetime import datetime

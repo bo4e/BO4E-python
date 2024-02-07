@@ -1,6 +1,7 @@
 """
-Contains PreisblattHardware class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattHardware class
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field

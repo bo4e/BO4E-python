@@ -1,6 +1,7 @@
 """
-Contains Kostenposition and corresponding marshmallow schema for de-/serialization
+Contains Kostenposition
 """
+
 from datetime import datetime
 from typing import Optional
 

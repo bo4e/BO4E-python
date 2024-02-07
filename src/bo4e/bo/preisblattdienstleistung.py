@@ -1,6 +1,7 @@
 """
-Contains PreisblattDienstleistung class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattDienstleistung class
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field

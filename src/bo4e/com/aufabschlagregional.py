@@ -1,5 +1,5 @@
 """
-Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serialization
+Contains AufAbschlagRegional
 """
 
 from typing import Optional

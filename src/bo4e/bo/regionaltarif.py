@@ -1,5 +1,5 @@
 """
-Contains Regionaltarif class and corresponding marshmallow schema for de-/serialization
+Contains Regionaltarif class
 """
 
 from datetime import datetime

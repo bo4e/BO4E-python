@@ -1,6 +1,7 @@
 """
-Contains PreisblattNetnutzung class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattNetnutzung class
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field

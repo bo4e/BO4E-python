@@ -1,6 +1,7 @@
 """
-Contains Regionskriterium class and corresponding marshmallow schema for de-/serialization
+Contains Regionskriterium class
 """
+
 from typing import Optional
 
 from ..enum.gueltigkeitstyp import Gueltigkeitstyp
@@ -25,12 +26,10 @@ class Regionskriterium(COM):
 
     """
 
-    gueltigkeitstyp: Optional[
-        Gueltigkeitstyp
-    ] = None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
-    regionskriteriumtyp: Optional[
-        Regionskriteriumtyp
-    ] = None  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
+    #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
+    gueltigkeitstyp: Optional[Gueltigkeitstyp] = None
+    #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
+    regionskriteriumtyp: Optional[Regionskriteriumtyp] = None
     wert: Optional[str] = None
     """
     Der Wert, den das Kriterium annehmen kann, z.B. NRW.

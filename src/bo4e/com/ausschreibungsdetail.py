@@ -1,6 +1,7 @@
 """
-Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-/serialization
+Contains class Ausschreibungsdetail
 """
+
 from typing import Optional
 
 from ..enum.zaehlertyp import Zaehlertyp

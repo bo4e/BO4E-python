@@ -1,6 +1,7 @@
 """
-Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serialization
+Contains Tarifeinschraenkung
 """
+
 from typing import Optional
 
 from ..bo.geraet import Geraet

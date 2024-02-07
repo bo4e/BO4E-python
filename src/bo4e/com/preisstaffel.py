@@ -1,5 +1,5 @@
 """
-Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
+Contains Preisstaffel
 """
 
 from decimal import Decimal

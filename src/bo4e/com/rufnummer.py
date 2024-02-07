@@ -1,6 +1,7 @@
 """
-Contains Rufnummer class and corresponding marshmallow schema for de-/serialization
+Contains Rufnummer class
 """
+
 from typing import Optional
 
 from ..enum.rufnummernart import Rufnummernart

@@ -1,6 +1,7 @@
 """
-Contains Verbrauch and corresponding marshmallow schema for de-/serialization
+Contains Verbrauch
 """
+
 from datetime import datetime
 from decimal import Decimal
 from typing import Optional

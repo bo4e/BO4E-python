@@ -1,6 +1,7 @@
 """
-Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
+Contains Fremdkosten class
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field

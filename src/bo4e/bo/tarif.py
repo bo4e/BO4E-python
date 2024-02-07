@@ -1,5 +1,5 @@
 """
-Contains Tarif class and corresponding marshmallow schema for de-/serialization
+Contains Tarif class
 """
 
 from datetime import datetime

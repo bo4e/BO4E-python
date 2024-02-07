@@ -1,6 +1,7 @@
 """
-Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
+Contains Tarifpreisblatt class
 """
+
 from datetime import datetime
 from typing import Annotated, Optional
 

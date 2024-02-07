@@ -1,6 +1,7 @@
 """
-Contains Region class and corresponding marshmallow schema for de-/serialization
+Contains Region class
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field
