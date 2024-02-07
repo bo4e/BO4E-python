@@ -48,7 +48,7 @@ class Person(Geschaeftsobjekt):
     vorname: Optional[str] = None
     #: Nachname (Familienname) der Person
     nachname: Optional[str] = None
-    #: Bevorzugte Kontaktwege der Person
+    #: Kontaktwege der Person
     kontaktwege: Optional[list[Kontaktweg]] = None
     #: Geburtsdatum der Person
     geburtsdatum: Optional[datetime] = None

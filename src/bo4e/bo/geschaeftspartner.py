@@ -61,7 +61,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
     Name der Firma, wenn Gewerbe oder andere Organisation.
     """
-    #: Bevorzugte Kontaktwege des Geschäftspartners
+    #: Kontaktwege des Geschäftspartners
     kontaktwege: Optional[list[Kontaktweg]] = None
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
     geschaeftspartnerrollen: Optional[list[Geschaeftspartnerrolle]] = None
