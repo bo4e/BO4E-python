@@ -1,16 +1,6 @@
 import pytest
 
-from bo4e import (
-    Adresse,
-    Anrede,
-    Geschaeftspartner,
-    Geschaeftspartnerrolle,
-    Kontakt,
-    Landescode,
-    Organisationstyp,
-    Person,
-    Titel,
-)
+from bo4e import Anrede, Geschaeftspartner, Geschaeftspartnerrolle, Kontakt, Organisationstyp, Person, Titel
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -34,7 +24,6 @@ class TestGeschaeftspartner:
                     glaeubiger_id="DE98ZZZ09999999999",
                     website="bo4e.de",
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                    partneradresse=Adresse(),
                 ),
                 id="all attributes at first level",
             ),
@@ -52,9 +41,6 @@ class TestGeschaeftspartner:
                     kontaktwege=[Kontakt()],
                     umsatzsteuer_id="AT12345",
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                    partneradresse=Adresse(
-                        postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
-                    ),
                 ),
                 id="Landescode!=DE, DE is default",
             ),

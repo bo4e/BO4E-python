@@ -55,5 +55,3 @@ class Person(Geschaeftsobjekt):
     kommentar: Optional[str] = None
     #: Liste der Abteilungen und Zuständigkeiten der Person
     zustaendigkeiten: Optional[list[Zustaendigkeit]] = None
-    #: Adresse der Person, falls diese von der Adresse des Geschäftspartners abweicht
-    adresse: Optional[Adresse] = None

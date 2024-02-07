@@ -3,7 +3,6 @@ from datetime import datetime, timezone
 import pytest
 
 from bo4e import (
-    Adresse,
     Anrede,
     Geschaeftspartner,
     Geschaeftspartnerrolle,
@@ -47,24 +46,12 @@ class TestVertrag:
                         glaeubiger_id="DE98ZZZ09999999999",
                         website="bo4e.de",
                         geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                        partneradresse=Adresse(
-                            postleitzahl="24306",
-                            ort="Plön",
-                            strasse="Kirchstraße",
-                            hausnummer="3",
-                        ),
                     ),
                     vertragspartner2=Geschaeftspartner(
                         ansprechpartner=[Person(), Person()],
                         organisationstyp=Organisationstyp.UNTERNEHMEN,
                         organisationsname="Hochfrequenz",
                         geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                        partneradresse=Adresse(
-                            postleitzahl="24211",
-                            ort="Preetz",
-                            strasse="Am Markt",
-                            hausnummer="67",
-                        ),
                     ),
                     vertragsteile=[
                         Vertragsteil(

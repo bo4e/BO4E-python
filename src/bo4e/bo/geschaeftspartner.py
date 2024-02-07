@@ -76,8 +76,6 @@ class Geschaeftspartner(Geschaeftsobjekt):
     glaeubiger_id: Optional[str] = None
     #: Internetseite des Marktpartners
     website: Optional[str] = None
-    #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
-    partneradresse: Optional[Adresse] = None  # todo: is it plural or not? the docs are bad
     #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
-    #: not clear what is the best solution here - circular import marktteilnehmer or adresse in kontakt?
+    #: not clear what is the best solution here - circular import marktteilnehmer?
     #: discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let's figure out a solution somehow.
