@@ -30,5 +30,5 @@ class Zustaendigkeit(COM):
     Hier kann eine thematische Zuordnung des Ansprechpartners bzw. der Person angegeben werden
     """
 
-    jobtitel: Optional[str] = None  #: Berufliche Rolle des Ansprechpartners/ der Person
+    position: Optional[str] = None  #: Berufliche Rolle des Ansprechpartners/ der Person
     abteilung: Optional[str] = None  #: Abteilung, in der der Ansprechpartner/ die Person tätig ist
