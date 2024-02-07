@@ -1,6 +1,7 @@
 """
 Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..enum.zaehlertyp import Zaehlertyp
@@ -8,7 +9,7 @@ from ..utils import postprocess_docstring
 from .adresse import Adresse
 from .com import COM
 from .menge import Menge
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -37,8 +38,7 @@ class Ausschreibungsdetail(COM):
     #: Die Adresse an der die Marktlokation sich befindet
     marktlokationsadresse: Optional[Adresse] = None
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
-    lieferzeitraum: Optional[Zeitraum] = None
-
+    lieferzeitraum: Optional[Zeitspanne] = None
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
     netzbetreiber: Optional[str] = None
     #: Bezeichnung des Kunden, der die Marktlokation nutzt
@@ -47,7 +47,6 @@ class Ausschreibungsdetail(COM):
     zaehlernummer: Optional[str] = None
     #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
     marktlokationsbezeichnung: Optional[str] = None
-
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
     zaehlertechnik: Optional[Zaehlertyp] = None
     ist_lastgang_vorhanden: Optional[bool] = None
@@ -55,7 +54,6 @@ class Ausschreibungsdetail(COM):
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden
     """
-
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
     prognose_jahresarbeit: Optional[Menge] = None
     #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation

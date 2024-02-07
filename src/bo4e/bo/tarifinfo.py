@@ -12,7 +12,7 @@ from pydantic import Field
 
 from ..com.energiemix import Energiemix
 from ..com.vertragskonditionen import Vertragskonditionen
-from ..com.zeitraum import Zeitraum
+from ..com.zeitspanne import Zeitspanne
 from ..enum.kundentyp import Kundentyp
 from ..enum.registeranzahl import Registeranzahl
 from ..enum.sparte import Sparte
@@ -56,14 +56,12 @@ class Tarifinfo(Geschaeftsobjekt):
     tarifmerkmale: Optional[list[Tarifmerkmal]] = None
     #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
     anbieter: Optional[Marktteilnehmer] = None
-
     #: Internetseite auf dem der Tarif zu finden ist
     website: Optional[str] = None
     #: Freitext
     bemerkung: Optional[str] = None
-
-    #: Angabe, in welchem Zeitraum der Tarif gültig ist
-    zeitliche_gueltigkeit: Optional[Zeitraum] = None
+    #: Angabe, in welcher Zeitspanne der Tarif gültig ist
+    zeitliche_gueltigkeit: Optional[Zeitspanne] = None
     #: Der Energiemix, der für diesen Tarif gilt
     energiemix: Optional[Energiemix] = None
     #: Mindestlaufzeiten und Kündigungsfristen zusammengefasst

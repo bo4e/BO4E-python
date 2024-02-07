@@ -1,6 +1,7 @@
 """
 Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
+
 from datetime import datetime
 from decimal import Decimal
 from typing import Optional
@@ -10,6 +11,7 @@ from ..enum.messwertstatus import Messwertstatus
 from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from ..utils import postprocess_docstring
 from .com import COM
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -37,10 +39,7 @@ class Verbrauch(COM):
     wert: Optional[Decimal] = None
     #: Gibt die Einheit zum jeweiligen Wert an
     einheit: Optional[Mengeneinheit] = None
-
-    #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: Optional[datetime] = None
-    #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: Optional[datetime] = None
+    #: Zeitraumes, für den der Verbrauch angegeben wird
+    zeitraum: Optional[Zeitspanne] = None
     #: Messwertstatus includes the plausibility of the value
     messwertstatus: Optional[Messwertstatus] = None

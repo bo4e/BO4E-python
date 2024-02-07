@@ -2,6 +2,7 @@
 Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..bo.marktlokation import Marktlokation
@@ -10,7 +11,7 @@ from .angebotsposition import Angebotsposition
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -36,7 +37,6 @@ class Angebotsteil(COM):
 
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
     positionen: Optional[list[Angebotsposition]] = None
-
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
     anfrage_subreferenz: Optional[str] = None
     lieferstellenangebotsteil: Optional[list[Marktlokation]] = None
@@ -49,4 +49,4 @@ class Angebotsteil(COM):
     #: Summe der Jahresenergiekosten aller in diesem Angebotsteil enthaltenen Lieferstellen
     gesamtkostenangebotsteil: Optional[Betrag] = None
     #: Hier kann der Belieferungszeitraum angegeben werden, für den dieser Angebotsteil gilt
-    lieferzeitraum: Optional[Zeitraum] = None
+    lieferzeitraum: Optional[Zeitspanne] = None

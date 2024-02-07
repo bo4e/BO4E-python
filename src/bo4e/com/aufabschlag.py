@@ -11,7 +11,7 @@ from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
 from .com import COM
 from .preisstaffel import Preisstaffel
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -35,7 +35,6 @@ class AufAbschlag(COM):
     bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge.
     staffeln: Optional[list[Preisstaffel]] = None
-
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #: Typ des Aufabschlages (z.B. absolut oder prozentual).
@@ -47,5 +46,5 @@ class AufAbschlag(COM):
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
     website: Optional[str] = None
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    gueltigkeitszeitraum: Optional[Zeitraum] = None
+    #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann.
+    gueltigkeitszeitraum: Optional[Zeitspanne] = None

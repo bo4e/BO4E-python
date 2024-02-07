@@ -5,7 +5,7 @@ from bo4e.enum.strenum import StrEnum
 # pylint:disable=empty-docstring
 # no docstring in official docs as of 2021-12-01
 class Leistungstyp(StrEnum):
-    """ """
+    """Auflistung möglicher abzurechnender Dienstleistungen."""
 
     ARBEITSPREIS_WIRKARBEIT = "ARBEITSPREIS_WIRKARBEIT"  #: Arbeitspreis zur Abrechnung der Wirkarbeit
     LEISTUNGSPREIS_WIRKLEISTUNG = "LEISTUNGSPREIS_WIRKLEISTUNG"  #: Leistungspreis zur Abrechnung der Wirkleistung
@@ -31,7 +31,7 @@ class Leistungstyp(StrEnum):
     BILANZIERUNG_UMLAGE = "BILANZIERUNG_UMLAGE"  #: Bilanzierungsumlage
     AUSLESUNG_ZUSAETZLICH = "AUSLESUNG_ZUSAETZLICH"  #: Zusätzliche Auslesung (pro Vorgang)
     ABLESUNG_ZUSAETZLICH = "ABLESUNG_ZUSAETZLICH"  #: Zusätzliche Ablesung (pro Vorgang)
-    ABRECHNUNG_ZUSAETZLICH = "ABRECHNUNG_ZUSAETZLICH"  #: Zusätzliche Abresung (pro Vorgang)
+    ABRECHNUNG_ZUSAETZLICH = "ABRECHNUNG_ZUSAETZLICH"  #: Zusätzliche Abrechnung (pro Vorgang)
     SPERRUNG = "SPERRUNG"  #: Sperrung einer Abnahmestelle
     ENTSPERRUNG = "ENTSPERRUNG"  #: Entsperrung einer Abnahmestelle
     MAHNKOSTEN = "MAHNKOSTEN"  #: Mahnkosten

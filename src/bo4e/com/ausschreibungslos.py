@@ -14,7 +14,7 @@ from ..utils import postprocess_docstring
 from .ausschreibungsdetail import Ausschreibungsdetail
 from .com import COM
 from .menge import Menge
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 
 @postprocess_docstring
@@ -37,7 +37,6 @@ class Ausschreibungslos(COM):
     bezeichnung: Optional[str] = None
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
     preismodell: Optional[Preismodell] = None
-
     #: Unterscheidungsmöglichkeiten für die Sparte
     energieart: Optional[Sparte] = None
     #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
@@ -48,13 +47,10 @@ class Ausschreibungslos(COM):
     betreut_durch: Optional[str] = None
     #: Anzahl der Lieferstellen in dieser Ausschreibung
     anzahl_lieferstellen: Optional[int] = None
-
     #: Die ausgeschriebenen Lieferstellen
     lieferstellen: Optional[list[Ausschreibungsdetail]] = None
-
-    #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Optional[Zeitraum] = None
-
+    #: Zeitspanne, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
+    lieferzeitraum: Optional[Zeitspanne] = None
     #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
     #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an
@@ -63,14 +59,12 @@ class Ausschreibungslos(COM):
     wunsch_mindestmenge: Optional[Menge] = None
     #: Maximalmenge Toleranzband (kWh, %)
     wunsch_maximalmenge: Optional[Menge] = None
-
-    wiederholungsintervall: Optional[Zeitraum] = None
+    wiederholungsintervall: Optional[Zeitspanne] = None
     """
     In welchem Intervall die Angebotsabgabe wiederholt werden darf.
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
-
     #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
-    wunsch_kuendingungsfrist: Optional[Zeitraum] = None
+    wunsch_kuendingungsfrist: Optional[Zeitspanne] = None  # TODO FRAGE wäre hier nicht ein datetime besser?
     #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
-    wunsch_zahlungsziel: Optional[Zeitraum] = None
+    wunsch_zahlungsziel: Optional[Zeitspanne] = None  # TODO FRAGE wäre hier nicht ein datetime besser?
