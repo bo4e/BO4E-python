@@ -78,7 +78,6 @@ __all__ = [
     "RegionalerAufAbschlag",
     "RegionaleTarifpreisposition",
     "Regionskriterium",
-    "Rufnummer",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -157,7 +156,6 @@ __all__ = [
     "Regionskriteriumtyp",
     "Registeranzahl",
     "Rollencodetyp",
-    "Rufnummernart",
     "Sparte",
     "Steuerkennzeichen",
     "StrEnum",
@@ -261,7 +259,6 @@ from .com.regionalepreisstaffel import RegionalePreisstaffel
 from .com.regionaleraufabschlag import RegionalerAufAbschlag
 from .com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from .com.regionskriterium import Regionskriterium
-from .com.rufnummer import Rufnummer
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
@@ -342,7 +339,6 @@ from .enum.rechnungstyp import Rechnungstyp
 from .enum.regionskriteriumtyp import Regionskriteriumtyp
 from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
-from .enum.rufnummernart import Rufnummernart
 from .enum.sparte import Sparte
 from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum

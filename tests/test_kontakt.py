@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Kontakt, Kontaktart, Rufnummer
+from bo4e import Adresse, Kontakt, Kontaktart
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -12,7 +12,6 @@ class TestKontakt:
                 Kontakt(
                     kontaktart=Kontaktart.E_MAIL,
                     e_mail_adresse="test@bo4e.de",
-                    rufnummern=[Rufnummer(), Rufnummer()],
                     adresse=Adresse(),
                 ),
                 id="all attributes at first level",
