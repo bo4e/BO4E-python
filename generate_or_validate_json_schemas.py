@@ -49,7 +49,7 @@ class GenerateJsonSchema(_GenerateJsonSchema):
         Generates a JSON schema that matches a decimal value.
         The output format is changed to work well with BO4E-Python-Generator.
         """
-        json_schema = self.str_schema(core_schema.str_schema())
+        json_schema = self.float_schema(core_schema.float_schema())
         if self.mode == "validation":
             json_schema["format"] = "decimal"
         return json_schema
@@ -83,8 +83,8 @@ def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLA
     """
     Builds a dictionary with the classnames as keys and their module as tuples in the values. E.g.:
     {
-        "Geschaeftsobjekt": ("bo", "geschaeftsobjekt"),
-        "COM": ("com", "com"),
+        "Angebot": ("bo", "angebot"),
+        "Adresse": ("com", "adresse"),
         ...
     }
     This function filters out all classes which names begin with an underscore.
@@ -202,6 +202,8 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
 
     namespace = get_namespace(packages)
     namespace[ZusatzAttribut.__name__] = ("", "zusatzattribut", ZusatzAttribut)
+    del namespace["Geschaeftsobjekt"]
+    del namespace["COM"]
 
     for name, (pkg, _, cls) in namespace.items():
         _logger.debug("Processing %s", name)

@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Geschaeftspartnerrolle, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte
+from bo4e import Geschaeftspartner, Marktrolle, Marktteilnehmer, Rollencodetyp, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -14,10 +14,8 @@ class TestMarktteilnehmer:
                     rollencodenummer="9903916000000",
                     rollencodetyp=Rollencodetyp.BDEW,
                     sparte=Sparte.STROM,
-                    name1="Netze BW GmbH",
-                    ist_gewerbe=True,
-                    geschaeftspartnerrolle=[Geschaeftspartnerrolle.DIENSTLEISTER],
-                    partneradresse=Adresse(),
+                    makoadresse=["stringadressewarum", "as4adresse"],
+                    geschaeftspartner=Geschaeftspartner(),
                 )
             )
         ],
