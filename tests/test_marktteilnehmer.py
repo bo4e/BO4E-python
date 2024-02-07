@@ -14,7 +14,7 @@ class TestMarktteilnehmer:
                     rollencodenummer="9903916000000",
                     rollencodetyp=Rollencodetyp.BDEW,
                     sparte=Sparte.STROM,
-                    makoadresse="stringadressewarum",
+                    makoadresse=["stringadressewarum", "as4adresse"],
                     geschaeftspartner=Geschaeftspartner(),
                 )
             )
