@@ -5,8 +5,6 @@ and corresponding marshmallow schema for de-/serialization
 
 from typing import Optional
 
-from ..com.adresse import Adresse
-from ..com.rufnummer import Rufnummer
 from ..enum.kontaktart import Kontaktart
 from ..utils import postprocess_docstring
 from .com import COM
@@ -30,9 +28,9 @@ class Kontakt(COM):
 
     #: Gibt die Kontaktart des Kontaktes an.
     kontaktart: Optional[Kontaktart] = None
-    #: E-Mail-Adresse des  bzw der Person an. Z.B. "info@hochfrequenz.de"
-    e_mail_adresse: Optional[str] = None
-    #: Liste der Telefonnummern, unter denen der Person erreichbar ist
-    rufnummern: Optional[list[Rufnummer]] = None
-    #: Adresse des Kontakts
-    adresse: Optional[Adresse] = None
+    #: Spezifikation, beispielsweise "Durchwahl", "Sammelnummer" etc.
+    beschreibung: Optional[str] = None
+    #: Die Nummer oder E-Mail-Adresse.
+    kontaktwert: Optional[str] = None
+    #: Gibt an, ob es sich um den bevorzugten Kontaktweg handelt.
+    ist_bevorzugter_kontaktweg: Optional[bool] = None
