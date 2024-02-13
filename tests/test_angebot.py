@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from bo4e import Angebot, Ansprechpartner, Geschaeftspartner, Sparte
+from bo4e import Angebot, Geschaeftspartner, Person, Sparte
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -19,8 +19,8 @@ class TestAngebot:
                     bindefrist=datetime(2019, 3, 2, tzinfo=timezone.utc),
                     angebotsgeber=Geschaeftspartner(),
                     angebotsnehmer=Geschaeftspartner(),
-                    unterzeichner_angebotsnehmer=Ansprechpartner(),
-                    unterzeichner_angebotsgeber=Ansprechpartner(),
+                    unterzeichner_angebotsnehmer=Person(),
+                    unterzeichner_angebotsgeber=Person(),
                     varianten=[],
                 ),
                 id="all attributes at first level",
