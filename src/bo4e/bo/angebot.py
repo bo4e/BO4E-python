@@ -14,9 +14,9 @@ from ..com.angebotsvariante import Angebotsvariante
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
-from .ansprechpartner import Ansprechpartner
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
+from .person import Person
 
 
 @postprocess_docstring
@@ -59,6 +59,6 @@ class Angebot(Geschaeftsobjekt):
     #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
     bindefrist: Optional[datetime] = None
     #: Person, die als Angebotsnehmer das Angebot angenommen hat
-    unterzeichner_angebotsnehmer: Optional[Ansprechpartner] = None
+    unterzeichner_angebotsnehmer: Optional[Person] = None
     #: Person, die als Angebotsgeber das Angebots ausgestellt hat
-    unterzeichner_angebotsgeber: Optional[Ansprechpartner] = None
+    unterzeichner_angebotsgeber: Optional[Person] = None
