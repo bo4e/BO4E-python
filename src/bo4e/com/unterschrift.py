@@ -2,6 +2,7 @@
 Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from datetime import datetime
 from typing import Optional
 
