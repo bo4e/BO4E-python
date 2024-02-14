@@ -1,6 +1,7 @@
 """
 Der ISO-Landescode als Enumeration.
 """
+
 from enum import Enum
 
 from iso3166 import countries

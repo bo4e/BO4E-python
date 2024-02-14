@@ -2,6 +2,7 @@
 Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..enum.preisgarantietyp import Preisgarantietyp

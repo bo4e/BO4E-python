@@ -2,6 +2,7 @@
 Contains RegionaleGueltigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..enum.gueltigkeitstyp import Gueltigkeitstyp

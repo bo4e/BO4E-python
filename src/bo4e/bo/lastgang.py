@@ -2,6 +2,7 @@
 Contains Lastgang class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Annotated, Optional
 
 # pylint: disable=too-few-public-methods

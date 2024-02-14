@@ -1,6 +1,7 @@
 """
 Version information for the bo4e package.
 """
+
 import re
 from importlib.metadata import PackageNotFoundError, version
 

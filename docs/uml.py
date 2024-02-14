@@ -4,6 +4,7 @@ Currently, the only supported parser is for Plantuml. The generated `.puml` file
 `compile_files_kroki(...)`.
 It is designed to work together with `pydantic` and only is tested in this project so far.
 """
+
 import importlib
 import inspect
 import json
@@ -113,12 +114,14 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         super().add_node(
             node,
             cls=cls,
-            fields={
-                field_name: {"model_field": model_field, "card": None}
-                for field_name, model_field in cls.model_fields.items()
-            }
-            if hasattr(cls, "model_fields")
-            else {},
+            fields=(
+                {
+                    field_name: {"model_field": model_field, "card": None}
+                    for field_name, model_field in cls.model_fields.items()
+                }
+                if hasattr(cls, "model_fields")
+                else {}
+            ),
         )
 
     def add_extension(self, node1: str, node2: str) -> None:
