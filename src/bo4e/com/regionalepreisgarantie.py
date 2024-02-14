@@ -2,6 +2,7 @@
 Contains RegionalePreisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..utils import postprocess_docstring

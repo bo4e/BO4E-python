@@ -2,6 +2,7 @@
 Contains Zaehler class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from datetime import datetime
 from decimal import Decimal
 

@@ -2,6 +2,7 @@
 Contains KriteriumWert class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 # pylint: disable=too-few-public-methods

@@ -2,6 +2,7 @@
 Contains Tarifpreis class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..enum.preistyp import Preistyp

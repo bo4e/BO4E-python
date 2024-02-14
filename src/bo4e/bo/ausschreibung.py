@@ -1,6 +1,7 @@
 """
 Contains Ausschreibung class and corresponding marshmallow schema for de-/serialization
 """
+
 from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
