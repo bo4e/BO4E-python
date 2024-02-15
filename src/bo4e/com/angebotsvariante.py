@@ -2,11 +2,11 @@
 Contains Angebotsvariante and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from typing import Optional
+
+import pydantic
 
 from ..enum.angebotsstatus import Angebotsstatus
 from ..utils import postprocess_docstring
@@ -34,10 +34,10 @@ class Angebotsvariante(COM):
     angebotsstatus: Optional[Angebotsstatus] = None
 
     #: Datum der Erstellung der Angebotsvariante
-    erstellungsdatum: Optional[datetime] = None
+    erstellungsdatum: Optional[pydantic.AwareDatetime] = None
 
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
-    bindefrist: Optional[datetime] = None
+    bindefrist: Optional[pydantic.AwareDatetime] = None
 
     teile: Optional[list[Angebotsteil]] = None
     """

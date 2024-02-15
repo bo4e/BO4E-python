@@ -3,9 +3,10 @@ Contains Zeitraum class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from decimal import Decimal
 from typing import Optional
+
+import pydantic
 
 from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
@@ -34,7 +35,7 @@ class Zeitraum(COM):
 
     einheit: Optional[Mengeneinheit] = None
     dauer: Optional[Decimal] = None
-    startdatum: Optional[datetime] = None
-    enddatum: Optional[datetime] = None
-    startzeitpunkt: Optional[datetime] = None
-    endzeitpunkt: Optional[datetime] = None
+    startdatum: Optional[pydantic.AwareDatetime] = None
+    enddatum: Optional[pydantic.AwareDatetime] = None
+    startzeitpunkt: Optional[pydantic.AwareDatetime] = None
+    endzeitpunkt: Optional[pydantic.AwareDatetime] = None
