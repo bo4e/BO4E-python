@@ -8,6 +8,8 @@ from datetime import datetime
 # pylint: disable=no-name-in-module
 from typing import Optional
 
+import pydantic
+
 from ..enum.angebotsstatus import Angebotsstatus
 from ..utils import postprocess_docstring
 from .angebotsteil import Angebotsteil
