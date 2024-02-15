@@ -2,7 +2,6 @@
 Contains Kostenposition and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Optional
 
 import pydantic

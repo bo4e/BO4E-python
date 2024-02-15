@@ -2,8 +2,6 @@
 Contains Angebot class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional

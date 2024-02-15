@@ -2,8 +2,6 @@
 Contains Angebotsvariante and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from typing import Optional
