@@ -2,8 +2,9 @@
 Contains Kostenposition and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Optional
+
+import pydantic
 
 from ..utils import postprocess_docstring
 from .betrag import Betrag
@@ -43,9 +44,9 @@ class Kostenposition(COM):
     einzelpreis: Optional[Preis] = None
 
     #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
-    von: Optional[datetime] = None
+    von: Optional[pydantic.AwareDatetime] = None
     #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
-    bis: Optional[datetime] = None
+    bis: Optional[pydantic.AwareDatetime] = None
 
     #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
     menge: Optional[Menge] = None

@@ -2,12 +2,11 @@
 Contains Angebot class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.angebotsvariante import Angebotsvariante
@@ -41,7 +40,7 @@ class Angebot(Geschaeftsobjekt):
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots
-    angebotsdatum: Optional[datetime] = None
+    angebotsdatum: Optional[pydantic.AwareDatetime] = None
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
     sparte: Optional[Sparte] = None
     #: Ersteller des Angebots
@@ -57,7 +56,7 @@ class Angebot(Geschaeftsobjekt):
     """	Referenz auf eine Anfrage oder Ausschreibung;
     Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""
     #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
-    bindefrist: Optional[datetime] = None
+    bindefrist: Optional[pydantic.AwareDatetime] = None
     #: Person, die als Angebotsnehmer das Angebot angenommen hat
     unterzeichner_angebotsnehmer: Optional[Person] = None
     #: Person, die als Angebotsgeber das Angebots ausgestellt hat

@@ -2,12 +2,11 @@
 Contains Ausschreibung class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.ausschreibungslos import Ausschreibungslos
@@ -45,7 +44,7 @@ class Ausschreibung(Geschaeftsobjekt):
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
     ist_kostenpflichtig: Optional[bool] = None
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
-    veroeffentlichungszeitpunkt: Optional[datetime] = None
+    veroeffentlichungszeitpunkt: Optional[pydantic.AwareDatetime] = None
     ausschreibender: Optional[Geschaeftspartner] = None
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.

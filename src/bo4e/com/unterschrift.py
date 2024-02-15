@@ -3,8 +3,9 @@ Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Optional
+
+import pydantic
 
 from ..utils import postprocess_docstring
 from .com import COM
@@ -30,4 +31,4 @@ class Unterschrift(COM):
     name: Optional[str] = None
 
     ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
-    datum: Optional[datetime] = None  #: Datum der Unterschrift
+    datum: Optional[pydantic.AwareDatetime] = None  #: Datum der Unterschrift

@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 
 import pytest
 
@@ -14,8 +14,8 @@ class TestMesslokationszuordnung:
                 Messlokationszuordnung(
                     messlokations_id="DE0010688516810000000000000012345",
                     arithmetik=ArithmetischeOperation.ADDITION,
-                    gueltig_seit=datetime(year=2021, month=1, day=13),
-                    gueltig_bis=datetime(year=2021, month=5, day=4),
+                    gueltig_seit=datetime(year=2021, month=1, day=13).replace(tzinfo=timezone.utc),
+                    gueltig_bis=datetime(year=2021, month=5, day=4).replace(tzinfo=timezone.utc),
                 )
             )
         ],

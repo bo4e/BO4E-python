@@ -3,8 +3,9 @@ Contains Vertragsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Optional
+
+import pydantic
 
 from ..utils import postprocess_docstring
 from .com import COM
@@ -28,11 +29,11 @@ class Vertragsteil(COM):
 
     """
 
-    vertragsteilbeginn: Optional[datetime] = None
+    vertragsteilbeginn: Optional[pydantic.AwareDatetime] = None
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: Optional[datetime] = None
+    vertragsteilende: Optional[pydantic.AwareDatetime] = None
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """

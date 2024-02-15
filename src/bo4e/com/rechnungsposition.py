@@ -2,10 +2,10 @@
 Contains Rechnungsposition class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 from typing import Optional
+
+import pydantic
 
 from ..enum.bdewartikelnummer import BDEWArtikelnummer
 from ..enum.mengeneinheit import Mengeneinheit
@@ -35,8 +35,12 @@ class Rechnungsposition(COM):
     #: Fortlaufende Nummer für die Rechnungsposition
     positionsnummer: Optional[int] = None
 
-    lieferung_von: Optional[datetime] = None  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
-    lieferung_bis: Optional[datetime] = None  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
+    lieferung_von: Optional[
+        pydantic.AwareDatetime
+    ] = None  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
+    lieferung_bis: Optional[
+        pydantic.AwareDatetime
+    ] = None  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
 
     #: Bezeichung für die abgerechnete Position
     positionstext: Optional[str] = None
