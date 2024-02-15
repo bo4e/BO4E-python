@@ -6,6 +6,7 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.adresse import Adresse
@@ -51,7 +52,7 @@ class Person(Geschaeftsobjekt):
     #: Kontaktwege der Person
     kontaktwege: Optional[list[Kontaktweg]] = None
     #: Geburtsdatum der Person
-    geburtsdatum: Optional[datetime] = None
+    geburtsdatum: Optional[pydantic.AwareDatetime] = None
     #: Weitere Informationen zur Person
     kommentar: Optional[str] = None
     #: Liste der Abteilungen und Zuständigkeiten der Person

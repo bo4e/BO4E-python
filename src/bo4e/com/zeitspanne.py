@@ -5,6 +5,8 @@ contains the COM Zeitspanne
 from datetime import datetime
 from typing import Optional
 
+import pydantic
+
 from bo4e.com.com import COM
 
 from ..utils import postprocess_docstring
@@ -26,5 +28,5 @@ class Zeitspanne(COM):
 
     """
 
-    start: Optional[datetime] = None  #: inklusiver Beginn
-    ende: Optional[datetime] = None  #: exklusives Ende
+    start: Optional[pydantic.AwareDatetime] = None  #: inklusiver Beginn
+    ende: Optional[pydantic.AwareDatetime] = None  #: exklusives Ende

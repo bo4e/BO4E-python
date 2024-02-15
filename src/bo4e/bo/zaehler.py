@@ -10,6 +10,7 @@ from decimal import Decimal
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..bo.geraet import Geraet
@@ -52,8 +53,10 @@ class Zaehler(Geschaeftsobjekt):
     zaehlwerke: Optional[list[Zaehlwerk]] = None
     registeranzahl: Optional[Registeranzahl] = None  #: Spezifikation bezüglich unterstützter Tarif
     zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[datetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
-    letzte_eichung: Optional[datetime] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    eichung_bis: Optional[pydantic.AwareDatetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
+    letzte_eichung: Optional[
+        pydantic.AwareDatetime
+    ] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
     zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers
     ist_fernschaltbar: Optional[bool] = None  #: Fernschaltung
     messwerterfassung: Optional[Messwerterfassung] = None  #: Messwerterfassung des Zählers

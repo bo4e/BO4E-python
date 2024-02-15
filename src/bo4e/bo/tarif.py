@@ -5,6 +5,7 @@ Contains Tarif class and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.aufabschlagregional import AufAbschlagRegional
@@ -36,7 +37,7 @@ class Tarif(Tarifinfo):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: Optional[datetime] = None
+    preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Optional[Tarifberechnungsparameter] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.

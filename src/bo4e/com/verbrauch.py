@@ -6,6 +6,8 @@ from datetime import datetime
 from decimal import Decimal
 from typing import Optional
 
+import pydantic
+
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.messwertstatus import Messwertstatus
 from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
@@ -40,8 +42,8 @@ class Verbrauch(COM):
     einheit: Optional[Mengeneinheit] = None
 
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: Optional[datetime] = None
+    startdatum: Optional[pydantic.AwareDatetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: Optional[datetime] = None
+    enddatum: Optional[pydantic.AwareDatetime] = None
     #: Messwertstatus includes the plausibility of the value
     messwertstatus: Optional[Messwertstatus] = None

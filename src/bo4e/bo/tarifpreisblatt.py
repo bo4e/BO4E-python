@@ -5,6 +5,7 @@ Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/seri
 from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.aufabschlag import AufAbschlag
@@ -37,7 +38,7 @@ class Tarifpreisblatt(Tarifinfo):
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: Optional[datetime] = None
+    preisstand: Optional[pydantic.AwareDatetime] = None
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
     tarifpreise: Optional[list[Tarifpreisposition]] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen

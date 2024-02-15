@@ -5,6 +5,7 @@ Contains Regionaltarif class and corresponding marshmallow schema for de-/serial
 from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.regionalepreisgarantie import RegionalePreisgarantie
@@ -34,7 +35,7 @@ class Regionaltarif(Tarifinfo):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGIONALTARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: Optional[datetime] = None
+    preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Optional[Tarifberechnungsparameter] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung, z.B. für Arbeitspreis, Grundpreis etc.

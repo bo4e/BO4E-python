@@ -34,10 +34,10 @@ class Angebotsvariante(COM):
     angebotsstatus: Optional[Angebotsstatus] = None
 
     #: Datum der Erstellung der Angebotsvariante
-    erstellungsdatum: Optional[datetime] = None
+    erstellungsdatum: Optional[pydantic.AwareDatetime] = None
 
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
-    bindefrist: Optional[datetime] = None
+    bindefrist: Optional[pydantic.AwareDatetime] = None
 
     teile: Optional[list[Angebotsteil]] = None
     """

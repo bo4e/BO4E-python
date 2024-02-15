@@ -6,6 +6,8 @@ and corresponding marshmallow schema for de-/serialization
 from datetime import datetime
 from typing import Optional
 
+import pydantic
+
 from ..enum.arithmetische_operation import ArithmetischeOperation
 from ..utils import postprocess_docstring
 from .com import COM
@@ -35,11 +37,11 @@ class Messlokationszuordnung(COM):
     """
     arithmetik: Optional[ArithmetischeOperation] = None
 
-    gueltig_seit: Optional[datetime] = None
+    gueltig_seit: Optional[pydantic.AwareDatetime] = None
     """
     inklusives Beginndatum
     """
-    gueltig_bis: Optional[datetime] = None
+    gueltig_bis: Optional[pydantic.AwareDatetime] = None
     """
     exklusives Endedatum
     """
