@@ -3,5 +3,6 @@ class TestImport:
         """
         checks that importing an enum works
         """
-        from bo4e import Vertragsstatus # pylint: disable=import-outside-toplevel,unused-import
+        from bo4e import Vertragsstatus  # pylint: disable=import-outside-toplevel,unused-import
+
         assert True
