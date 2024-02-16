@@ -177,11 +177,15 @@ html_theme_options = {
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
 try:
-    from bo4e import __version__ as version
+    from bo4e import __gh_version__ as version
+
+    print(f"Got version {version} from __gh_version__")
 except ImportError:
     pass
 else:
     release = version
+
+print(f"Using version {release} for documentation")
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
