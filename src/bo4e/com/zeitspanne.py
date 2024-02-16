@@ -23,7 +23,7 @@ class Zeitspanne(COM):
         <object data="../_static/images/bo4e/com/Zeitspanne.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitspanne JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitspanne.json>`_
+        `Zeitspanne JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitspanne.json>`_
 
     """
 

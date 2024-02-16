@@ -23,7 +23,7 @@ class Unterschrift(COM):
         <object data="../_static/images/bo4e/com/Unterschrift.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Unterschrift.json>`_
+        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Unterschrift.json>`_
 
     """
 

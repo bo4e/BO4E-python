@@ -32,7 +32,7 @@ class Zaehlwerk(COM):
         <object data="../_static/images/bo4e/com/Zaehlwerk.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlwerk.json>`_
+        `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlwerk.json>`_
 
     """
 
