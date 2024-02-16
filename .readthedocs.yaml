@@ -17,6 +17,7 @@ build:
   jobs:
     pre_build:
       - python -m build
+      - cat src/_bo4e_python_version.py
       # This ensures that before trying to build the documentation, the package will have information about the
       # version tag. This is necessary for the documentation to build the links correctly.
 
