@@ -26,12 +26,8 @@ _logger = logging.getLogger(__name__)
 root_directory = Path(__file__).parent
 output_directory = root_directory / "json_schemas"
 
-NEW_REF_TEMPLATE = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
-)
-NEW_REF_TEMPLATE_ROOT = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
-)
+NEW_REF_TEMPLATE = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
+NEW_REF_TEMPLATE_ROOT = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]

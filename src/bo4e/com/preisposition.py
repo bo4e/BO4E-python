@@ -31,7 +31,7 @@ class Preisposition(COM):
         <object data="../_static/images/bo4e/com/Preisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preisposition.json>`_
+        `Preisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preisposition.json>`_
 
     """
 

@@ -22,7 +22,7 @@ class Kostenblock(COM):
         <object data="../_static/images/bo4e/com/Kostenblock.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Kostenblock.json>`_
+        `Kostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Kostenblock.json>`_
 
     """
 

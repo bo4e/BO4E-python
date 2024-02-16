@@ -33,7 +33,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Geschaeftspartner.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Geschaeftspartner.json>`_
+        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Geschaeftspartner.json>`_
 
     """
 

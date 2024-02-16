@@ -29,7 +29,7 @@ class Kosten(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Kosten.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Kosten.json>`_
+        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Kosten.json>`_
 
     """
 

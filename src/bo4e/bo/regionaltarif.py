@@ -28,7 +28,7 @@ class Regionaltarif(Tarifinfo):
         <object data="../_static/images/bo4e/bo/Regionaltarif.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Regionaltarif.json>`_
+        `Regionaltarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Regionaltarif.json>`_
 
     """
 

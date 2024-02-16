@@ -29,7 +29,7 @@ class Zeitraum(COM):
         <object data="../_static/images/bo4e/com/Zeitraum.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
 
     """
 
