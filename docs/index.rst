@@ -3,6 +3,7 @@ BO4E
 =============
 
 This is the official documentation of **BO4E** datamodel.
+
 Cause of the fact that the datamodel is written in Python, it is also the Python documentation.
 
 
@@ -12,13 +13,14 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   License <license>
-   Authors <authors>
-   Versioning <versioning>
-   Changelog <changelog>
-   Module Reference <api/modules>
+   Geschäftsobjekte <api/bo4e.bo>
+   Komponenten <api/bo4e.com>
+   Enumerationen <api/bo4e.enum>
+   Versionierung <versioning>
+   Änderungshistorie <changelog>
+   Autoren <authors>
    Release Workflow <release_workflow>
-
+   Lizenz <license>
 
 Indices and tables
 ==================
