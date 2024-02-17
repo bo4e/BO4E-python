@@ -1,4 +1,3 @@
--r ../dev_requirements/requirements-packaging.in
 iso3166
 networkx
 pydantic
@@ -7,3 +6,5 @@ requests
 Sphinx
 sphinx_rtd_theme
 typeguard
+# any dependency here should also be a dependency in the docs section of tox.ini
+# see issue https://github.com/bo4e/BO4E-python/issues/474 for a real fix that does not require manual adaptions
