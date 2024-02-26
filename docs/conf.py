@@ -22,7 +22,7 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
-from uml import PlantUMLNetwork, build_network, compile_files_kroki, write_class_umls
+import uml
 
 # import package bo4e to clarify namespaces and prevent circular import errors
 from bo4e import *
@@ -49,14 +49,12 @@ except FileNotFoundError:
 
 try:
     import sphinx
-    from pkg_resources import parse_version
 
     cmd_line_template = "sphinx-apidoc -f -o {outputdir} {moduledir}"
     cmd_line = cmd_line_template.format(outputdir=output_dir, moduledir=module_dir)
 
     args = cmd_line.split(" ")
-    if parse_version(sphinx.__version__) >= parse_version("1.7"):
-        args = args[1:]
+    args = args[1:]
 
     apidoc.main(args)
 except Exception as e:
@@ -178,12 +176,11 @@ html_theme_options = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-try:
-    from bo4e import __version__ as version
-except ImportError:
-    pass
-else:
-    release = version
+from bo4e import __gh_version__ as release
+from bo4e import __version__ as version
+
+print(f"Got version = {version} from __version__")
+print(f"Got release = {release} from __gh_version__")
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 # html_short_title = None
@@ -312,11 +309,12 @@ intersphinx_mapping = {
 
 # Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
 # See docs/uml.py for more details.
+uml.LINK_URI_BASE = f"https://bo4e-python.readthedocs.io/en/{release}"
 _exec_plantuml = Path(__location__) / "plantuml.jar"
-_network, _namespaces_to_parse = build_network(Path(module_dir), PlantUMLNetwork)
+_network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
 print(_network)
-write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
+uml.write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
 print("Created uml files.")
 
-compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images")
+uml.compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images")
 print(f"Compiled uml files into svg using kroki.")

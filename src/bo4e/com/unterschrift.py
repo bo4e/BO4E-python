@@ -3,8 +3,9 @@ Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Optional
+
+import pydantic
 
 from ..utils import postprocess_docstring
 from .com import COM
@@ -22,7 +23,7 @@ class Unterschrift(COM):
         <object data="../_static/images/bo4e/com/Unterschrift.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Unterschrift.json>`_
+        `Unterschrift JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Unterschrift.json>`_
 
     """
 
@@ -30,4 +31,4 @@ class Unterschrift(COM):
     name: Optional[str] = None
 
     ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
-    datum: Optional[datetime] = None  #: Datum der Unterschrift
+    datum: Optional[pydantic.AwareDatetime] = None  #: Datum der Unterschrift

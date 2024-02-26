@@ -2,9 +2,9 @@
 Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.aufabschlag import AufAbschlag
@@ -30,14 +30,14 @@ class Tarifpreisblatt(Tarifinfo):
         <object data="../_static/images/bo4e/bo/Tarifpreisblatt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifpreisblatt.json>`_
+        `Tarifpreisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifpreisblatt.json>`_
 
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: Optional[datetime] = None
+    preisstand: Optional[pydantic.AwareDatetime] = None
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
     tarifpreise: Optional[list[Tarifpreisposition]] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen

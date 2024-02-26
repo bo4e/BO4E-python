@@ -3,9 +3,9 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.unterschrift import Unterschrift
@@ -36,7 +36,7 @@ class Vertrag(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Vertrag.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Vertrag.json>`_
+        `Vertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Vertrag.json>`_
 
     """
 
@@ -51,9 +51,9 @@ class Vertrag(Geschaeftsobjekt):
     #: Unterscheidungsmöglichkeiten für die Sparte
     sparte: Optional[Sparte] = None
     #: Gibt an, wann der Vertrag beginnt (inklusiv)
-    vertragsbeginn: Optional[datetime] = None
+    vertragsbeginn: Optional[pydantic.AwareDatetime] = None
     #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
-    vertragsende: Optional[datetime] = None
+    vertragsende: Optional[pydantic.AwareDatetime] = None
     # todo: add von/bis validator
     vertragspartner1: Optional[Geschaeftspartner] = None
     """

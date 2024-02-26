@@ -22,7 +22,7 @@ class Regionskriterium(COM):
         <object data="../_static/images/bo4e/com/Regionskriterium.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Regionskriterium.json>`_
+        `Regionskriterium JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Regionskriterium.json>`_
 
     """
 

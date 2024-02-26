@@ -3,9 +3,9 @@ Contains Person class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.adresse import Adresse
@@ -30,7 +30,7 @@ class Person(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Person.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Person JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Person.json>`_
+        `Person JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Person.json>`_
 
     """
 
@@ -51,7 +51,7 @@ class Person(Geschaeftsobjekt):
     #: Kontaktwege der Person
     kontaktwege: Optional[list[Kontaktweg]] = None
     #: Geburtsdatum der Person
-    geburtsdatum: Optional[datetime] = None
+    geburtsdatum: Optional[pydantic.AwareDatetime] = None
     #: Weitere Informationen zur Person
     kommentar: Optional[str] = None
     #: Liste der Abteilungen und Zuständigkeiten der Person

@@ -3,8 +3,9 @@ Contains Messlokationszuordnung class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Optional
+
+import pydantic
 
 from ..enum.arithmetische_operation import ArithmetischeOperation
 from ..utils import postprocess_docstring
@@ -25,7 +26,7 @@ class Messlokationszuordnung(COM):
         <object data="../_static/images/bo4e/com/Messlokationszuordnung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Messlokationszuordnung.json>`_
+        `Messlokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Messlokationszuordnung.json>`_
 
     """
 
@@ -35,11 +36,11 @@ class Messlokationszuordnung(COM):
     """
     arithmetik: Optional[ArithmetischeOperation] = None
 
-    gueltig_seit: Optional[datetime] = None
+    gueltig_seit: Optional[pydantic.AwareDatetime] = None
     """
     inklusives Beginndatum
     """
-    gueltig_bis: Optional[datetime] = None
+    gueltig_bis: Optional[pydantic.AwareDatetime] = None
     """
     exklusives Endedatum
     """
