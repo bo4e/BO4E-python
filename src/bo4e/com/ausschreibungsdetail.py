@@ -59,7 +59,7 @@ class Ausschreibungsdetail(COM):
 
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
     prognose_jahresarbeit: Optional[Menge] = None
-    #: Ein Prognosewert für die Arbeit innerhalb des angefragten lieferzeitraums der ausgeschriebenen Lokation
+    #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
     prognose_arbeit_lieferzeitraum: Optional[Menge] = None
     #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
     prognose_leistung: Optional[Menge] = None
