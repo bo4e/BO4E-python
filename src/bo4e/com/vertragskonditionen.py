@@ -32,7 +32,7 @@ class Vertragskonditionen(COM):
     beschreibung: Optional[str] = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
     anzahl_abschlaege: Optional[Decimal] = None
-    #: Über diesen Zeitspanne läuft der Vertrag
+    #: Über diese Zeitspanne läuft der Vertrag
     vertragslaufzeit: Optional[Zeitspanne] = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
     kuendigungsfrist: Optional[Menge] = None
