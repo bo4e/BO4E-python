@@ -70,7 +70,7 @@ class RegionalerAufAbschlag(COM):
     tarifnamensaenderungen: Optional[str] = None
 
     #: Zeitspanne, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitsZeitspanne: Optional[Zeitspanne] = None
+    gueltigkeitszeitspanne: Optional[Zeitspanne] = None
 
     energiemixaenderung: Optional[Energiemix] = None
     """
