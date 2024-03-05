@@ -31,7 +31,7 @@ class TestRegionalerAufAbschlag:
                     voraussetzungen=["lecker essen", "mit ökostrom gekocht"],
                     tarifnamensaenderungen="Super-Duper Tarif",
                     staffeln=[RegionalePreisstaffel()],
-                    gueltigkeitsZeitspanne=Zeitspanne(),
+                    gueltigkeitszeitspanne=Zeitspanne(),
                     energiemixaenderung=Energiemix(),
                     vertagskonditionsaenderung=Vertragskonditionen(),
                     garantieaenderung=Preisgarantie(),
