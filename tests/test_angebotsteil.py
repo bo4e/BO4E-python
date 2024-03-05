@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Angebotsposition, Angebotsteil, Betrag, Marktlokation, Menge, Zeitraum
+from bo4e import Angebotsposition, Angebotsteil, Betrag, Marktlokation, Menge, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -15,7 +15,7 @@ class TestAngebotsteil:
                     lieferstellenangebotsteil=[Marktlokation()],
                     gesamtmengeangebotsteil=Menge(),
                     gesamtkostenangebotsteil=Betrag(),
-                    lieferzeitraum=Zeitraum(),
+                    lieferzeitraum=Zeitspanne(),
                 ),
                 id="all attributes at first level",
             ),

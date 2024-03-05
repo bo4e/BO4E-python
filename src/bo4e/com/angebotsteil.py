@@ -11,7 +11,7 @@ from .angebotsposition import Angebotsposition
 from .betrag import Betrag
 from .com import COM
 from .menge import Menge
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -49,5 +49,5 @@ class Angebotsteil(COM):
     gesamtmengeangebotsteil: Optional[Menge] = None
     #: Summe der Jahresenergiekosten aller in diesem Angebotsteil enthaltenen Lieferstellen
     gesamtkostenangebotsteil: Optional[Betrag] = None
-    #: Hier kann der Belieferungszeitraum angegeben werden, für den dieser Angebotsteil gilt
-    lieferzeitraum: Optional[Zeitraum] = None
+    #: Hier kann der BelieferungsZeitspanne angegeben werden, für den dieser Angebotsteil gilt
+    lieferzeitraum: Optional[Zeitspanne] = None

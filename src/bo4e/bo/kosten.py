@@ -8,7 +8,7 @@ from pydantic import Field
 
 from ..com.betrag import Betrag
 from ..com.kostenblock import Kostenblock
-from ..com.zeitraum import Zeitraum
+from ..com.zeitspanne import Zeitspanne
 from ..enum.kostenklasse import Kostenklasse
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
@@ -36,8 +36,8 @@ class Kosten(Geschaeftsobjekt):
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
     kostenklasse: Optional[Kostenklasse] = None
-    #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitraum] = None
+    #: Für diesen Zeitspanne wurden die Kosten ermittelt
+    gueltigkeit: Optional[Zeitspanne] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
     kostenbloecke: Optional[list[Kostenblock]] = None
 

@@ -8,7 +8,7 @@ from bo4e import (
     Rechnungslegung,
     Sparte,
     Vertragsform,
-    Zeitraum,
+    Zeitspanne,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -32,10 +32,10 @@ class TestAusschreibungslos:
                     gesamt_menge=Menge(),
                     wunsch_mindestmenge=Menge(),
                     wunsch_maximalmenge=Menge(),
-                    lieferzeitraum=Zeitraum(),
-                    wunsch_kuendingungsfrist=Zeitraum(),
-                    wunsch_zahlungsziel=Zeitraum(),
-                    wiederholungsintervall=Zeitraum(),
+                    lieferzeitraum=Zeitspanne(),
+                    wunsch_kuendingungsfrist=Zeitspanne(),
+                    wunsch_zahlungsziel=Zeitspanne(),
+                    wiederholungsintervall=Zeitspanne(),
                 ),
                 id="maximal attributes",
             ),

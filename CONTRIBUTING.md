@@ -19,7 +19,7 @@ Feel free to open an issue if you run into any kind of problems.
   - pytest for unittests
   - Sphinx and Plantuml (and kroki web service) for documentation
 - Technical Documentation is in English; For example: "Don't use the builtin validator here because …"
-- But data model docstrings are in German; For example: "Ist das Ende nicht gesetzt, so ist der Zeitraum als offen zu verstehen."
+- But data model docstrings are in German; For example: "Ist das Ende nicht gesetzt, so ist der Zeitspanne als offen zu verstehen."
 - Docstrings should not be trivial/useless
   - Bad: "Energiemenge ist eine Klasse zur Abbildung von Energiemengen." ❌ (no shit sherlock)
   - Good: "Eine Energiemenge ordnet einer :class:`Marktlokation` oder :class:`Messlokation`, die über die `lokations_id` referenziert werden, einen oder mehrere Energieverbräuche zu." ✔

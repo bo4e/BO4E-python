@@ -8,7 +8,7 @@ from pydantic import Field
 
 from ..com.betrag import Betrag
 from ..com.fremdkostenblock import Fremdkostenblock
-from ..com.zeitraum import Zeitraum
+from ..com.zeitspanne import Zeitspanne
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
@@ -33,8 +33,8 @@ class Fremdkosten(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.FREMDKOSTEN
-    #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitraum] = None
+    #: Für diesen Zeitspanne wurden die Kosten ermittelt
+    gueltigkeit: Optional[Zeitspanne] = None
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
     summe_kosten: Optional[Betrag] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc

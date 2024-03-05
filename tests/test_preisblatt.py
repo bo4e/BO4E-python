@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Marktteilnehmer, Preisblatt, Preisposition, Preisstatus, Sparte, Zeitraum
+from bo4e import Marktteilnehmer, Preisblatt, Preisposition, Preisstatus, Sparte, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -14,7 +14,7 @@ class TestPreisblatt:
                     sparte=Sparte.STROM,
                     preisstatus=Preisstatus.ENDGUELTIG,
                     preispositionen=[Preisposition()],
-                    gueltigkeit=Zeitraum(),
+                    gueltigkeit=Zeitspanne(),
                     herausgeber=Marktteilnehmer(),
                 )
             ),

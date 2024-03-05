@@ -8,7 +8,8 @@ from typing import Optional
 
 from ..utils import postprocess_docstring
 from .com import COM
-from .zeitraum import Zeitraum
+from .menge import Menge
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods
 
@@ -31,11 +32,11 @@ class Vertragskonditionen(COM):
     beschreibung: Optional[str] = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
     anzahl_abschlaege: Optional[Decimal] = None
-    #: Über diesen Zeitraum läuft der Vertrag
-    vertragslaufzeit: Optional[Zeitraum] = None
+    #: Über diesen Zeitspanne läuft der Vertrag
+    vertragslaufzeit: Optional[Zeitspanne] = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Optional[Zeitraum] = None
+    kuendigungsfrist: Optional[Menge] = None
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Optional[Zeitraum] = None
+    vertragsverlaengerung: Optional[Menge] = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Optional[Zeitraum] = None
+    abschlagszyklus: Optional[Menge] = None

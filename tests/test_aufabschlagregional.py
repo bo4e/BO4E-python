@@ -10,7 +10,7 @@ from bo4e import (
     Tarifeinschraenkung,
     Vertragskonditionen,
     Waehrungseinheit,
-    Zeitraum,
+    Zeitspanne,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -31,7 +31,7 @@ class TestAufAbschlagRegional:
                     zusatzprodukte=["Asterix", "Obelix"],
                     voraussetzungen=["Petterson", "Findus"],
                     tarifnamensaenderungen="foobar",
-                    gueltigkeitszeitraum=Zeitraum(),
+                    gueltigkeitsZeitspanne=Zeitspanne(),
                     energiemixaenderung=Energiemix(),
                     vertagskonditionsaenderung=Vertragskonditionen(),
                     garantieaenderung=Preisgarantie(),

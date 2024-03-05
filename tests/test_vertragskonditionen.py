@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Mengeneinheit, Vertragskonditionen, Zeitraum
+from bo4e import Menge, Mengeneinheit, Vertragskonditionen, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -15,13 +15,13 @@ class TestVertragskonditionen:
                 Vertragskonditionen(
                     beschreibung="Foobar",
                     anzahl_abschlaege=Decimal(3),
-                    vertragslaufzeit=Zeitraum(
-                        startdatum=datetime(2012, 9, 21, tzinfo=timezone.utc),
-                        enddatum=datetime(2013, 10, 11, tzinfo=timezone.utc),
+                    vertragslaufzeit=Zeitspanne(
+                        start=datetime(2012, 9, 21, tzinfo=timezone.utc),
+                        ende=datetime(2013, 10, 11, tzinfo=timezone.utc),
                     ),
-                    kuendigungsfrist=Zeitraum(einheit=Mengeneinheit.WOCHE, dauer=Decimal(3)),
-                    vertragsverlaengerung=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(14)),
-                    abschlagszyklus=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(5)),
+                    kuendigungsfrist=Menge(einheit=Mengeneinheit.WOCHE, wert=Decimal(3)),
+                    vertragsverlaengerung=Menge(einheit=Mengeneinheit.TAG, wert=Decimal(14)),
+                    abschlagszyklus=Menge(einheit=Mengeneinheit.TAG, wert=Decimal(5)),
                 ),
             ),
             pytest.param(

@@ -46,7 +46,7 @@ class Zaehlwerk(COM):
     # Nur Zählwerkstände mit dieser OBIS-Kennzahl werden an diesem Zählwerk registriert.
     wandlerfaktor: Optional[
         Decimal
-    ] = None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
+    ] = None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitspanne
     # zu kommen.
     einheit: Optional[Mengeneinheit] = None  # Die Einheit der gemessenen Größe, z.B. kWh
     ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit

@@ -9,7 +9,7 @@ from bo4e import (
     RegionaleGueltigkeit,
     RegionalePreisgarantie,
     Tarifregionskriterium,
-    Zeitraum,
+    Zeitspanne,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -21,9 +21,9 @@ class TestRegionalePreisgarantie:
             pytest.param(
                 RegionalePreisgarantie(
                     preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
-                    zeitliche_gueltigkeit=Zeitraum(
-                        startzeitpunkt=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
-                        endzeitpunkt=datetime(2021, 7, 30, tzinfo=timezone.utc),
+                    zeitliche_gueltigkeit=Zeitspanne(
+                        start=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
+                        ende=datetime(2021, 7, 30, tzinfo=timezone.utc),
                     ),
                     regionale_gueltigkeit=RegionaleGueltigkeit(
                         gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
