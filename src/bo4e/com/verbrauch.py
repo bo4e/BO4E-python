@@ -42,7 +42,7 @@ class Verbrauch(COM):
 
     #: Inklusiver Beginn der Zeitspanne, für den der Verbrauch angegeben wird
     startdatum: Optional[pydantic.AwareDatetime] = None
-    #: Exklusives Ende des Zeitspannees, für den der Verbrauch angegeben wird
+    #: Exklusives Ende der Zeitspanne, für den der Verbrauch angegeben wird
     enddatum: Optional[pydantic.AwareDatetime] = None
     #: Messwertstatus includes the plausibility of the value
     messwertstatus: Optional[Messwertstatus] = None
