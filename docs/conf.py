@@ -7,7 +7,6 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-
 import inspect
 import os
 import shutil
@@ -22,7 +21,9 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
+sys.path.insert(0, os.path.join(__location__, "../docs/compatibility"))
 import uml
+from compatibility.__main__ import create_tables_for_doc
 
 # import package bo4e to clarify namespaces and prevent circular import errors
 from bo4e import *
@@ -318,3 +319,8 @@ print("Created uml files.")
 
 uml.compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images")
 print(f"Compiled uml files into svg using kroki.")
+
+# Create compatibility matrix
+compatibility_matrix_output_file = Path(__file__).parent / "compatibility_matrix.csv"
+gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN")
+create_tables_for_doc(compatibility_matrix_output_file, __gh_version__, last_n_versions=2, gh_token=gh_token)
