@@ -17,7 +17,9 @@ build:
   jobs:
     pre_build:
       - python -m pip install -e .
-      - python -c "import bo4e; print(bo4e.__gh_version__)"
+      - gh_version = $(python -c "import bo4e; print(bo4e.__gh_version__)")
+      - echo "The version of the package is $gh_version"
+      - env TARGET_VERSION="$gh_version" tox -e generate_json_schemas
       # This ensures that before trying to build the documentation, the package will have information about the
       # version tag. This is necessary for the documentation to build the links correctly.
 
@@ -33,3 +35,5 @@ sphinx:
 python:
   install:
     - requirements: docs/requirements.txt
+    - method: pip
+      path: tox
