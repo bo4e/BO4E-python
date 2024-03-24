@@ -19,8 +19,11 @@ build:
       - python -m pip install -e .
       # This ensures that before trying to build the documentation, the package will have information about the
       # version tag. This is necessary for the documentation to build the links correctly.
-      - $TARGET_VERSION=$(python -c "import bo4e; print(bo4e.__gh_version__)")
+      - python -c "import bo4e; print(bo4e.__gh_version__)"
+      - TARGET_VERSION=$(python -c "import bo4e; print(bo4e.__gh_version__)")
+      - echo $TARGET_VERSION
       - echo "The version of the package is $TARGET_VERSION"
+      - echo $(python -c "import bo4e; print(bo4e.__gh_version__)")
       - python generate_or_validate_json_schemas.py --mode generate --target-version $TARGET_VERSION
 
 # Build documentation in the docs/ directory with Sphinx
