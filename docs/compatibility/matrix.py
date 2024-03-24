@@ -61,7 +61,7 @@ def create_compatibility_matrix_csv(
 
         for class_path in sorted(all_classes, key=lambda cls: tuple(cls_part.lower() for cls_part in cls)):
             row = [class_path[-1]]
-            class_path_str = "/".join(class_path)
+            class_path_str = "/".join(class_path) + "#"
             for version_old, version_new in itertools.pairwise(versions):
                 changes_related_to_class = [
                     change
