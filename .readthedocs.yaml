@@ -20,7 +20,7 @@ build:
       # This ensures that before trying to build the documentation, the package will have information about the
       # version tag. This is necessary for the documentation to build the links correctly.
       - python -c "import bo4e; print(bo4e.__gh_version__)"
-      - test="Hallo"
+      - export test="Hallo"
       - echo $test
       - TARGET_VERSION=$(python -c "import bo4e;print(bo4e.__gh_version__)")
       - echo $TARGET_VERSION
