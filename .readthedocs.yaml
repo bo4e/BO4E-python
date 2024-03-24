@@ -19,7 +19,7 @@ build:
       - python -m pip install -e .
       - gh_version = $(python -c "import bo4e; print(bo4e.__gh_version__)")
       - echo "The version of the package is $gh_version"
-      - env TARGET_VERSION="$gh_version" tox -e generate_json_schemas
+      - env TARGET_VERSION="$gh_version" python generate_or_validate_json_schemas.py --mode generate
       # This ensures that before trying to build the documentation, the package will have information about the
       # version tag. This is necessary for the documentation to build the links correctly.
 
@@ -35,5 +35,5 @@ sphinx:
 python:
   install:
     - requirements: docs/requirements.txt
-    - method: pip
-      path: tox
+    - requirements: dev_requirements/requirements-json_schemas.txt
+    - requirements: requirements.txt
