@@ -11,7 +11,7 @@ from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
 from .com import COM
 from .preisstaffel import Preisstaffel
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -48,4 +48,4 @@ class AufAbschlag(COM):
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
     website: Optional[str] = None
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    gueltigkeitszeitraum: Optional[Zeitraum] = None
+    gueltigkeitsZeitspanne: Optional[Zeitspanne] = None

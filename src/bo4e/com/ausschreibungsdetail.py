@@ -9,7 +9,7 @@ from ..utils import postprocess_docstring
 from .adresse import Adresse
 from .com import COM
 from .menge import Menge
-from .zeitraum import Zeitraum
+from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -37,8 +37,8 @@ class Ausschreibungsdetail(COM):
     netzebene_messung: Optional[str] = None
     #: Die Adresse an der die Marktlokation sich befindet
     marktlokationsadresse: Optional[Adresse] = None
-    #: Angefragter Zeitraum für die ausgeschriebene Belieferung
-    lieferzeitraum: Optional[Zeitraum] = None
+    #: Angefragter Zeitspanne für die ausgeschriebene Belieferung
+    lieferzeitraum: Optional[Zeitspanne] = None
 
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
     netzbetreiber: Optional[str] = None

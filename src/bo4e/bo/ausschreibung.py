@@ -10,7 +10,7 @@ import pydantic
 from pydantic import Field
 
 from ..com.ausschreibungslos import Ausschreibungslos
-from ..com.zeitraum import Zeitraum
+from ..com.zeitspanne import Zeitspanne
 from ..enum.ausschreibungsportal import Ausschreibungsportal
 from ..enum.ausschreibungsstatus import Ausschreibungsstatus
 from ..enum.ausschreibungstyp import Ausschreibungstyp
@@ -50,15 +50,15 @@ class Ausschreibung(Geschaeftsobjekt):
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein
     """
-    abgabefrist: Optional[Zeitraum] = None
+    abgabefrist: Optional[Zeitspanne] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
-    Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
+    Es muss daher entweder eine Dauer oder ein Zeitspanne in Form von Start und Ende angegeben sein
     """
-    bindefrist: Optional[Zeitraum] = None
+    bindefrist: Optional[Zeitspanne] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
-    Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
+    Es muss daher entweder eine Dauer oder ein Zeitspanne in Form von Start und Ende angegeben sein
     """
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
     lose: Optional[list[Ausschreibungslos]] = None

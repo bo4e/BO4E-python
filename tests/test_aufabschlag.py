@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import AufAbschlag, AufAbschlagstyp, AufAbschlagsziel, Preisstaffel, Waehrungseinheit, Zeitraum
+from bo4e import AufAbschlag, AufAbschlagstyp, AufAbschlagsziel, Preisstaffel, Waehrungseinheit, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -16,7 +16,7 @@ class TestAufAbschlag:
                     auf_abschlagsziel=AufAbschlagsziel.GESAMTPREIS,
                     einheit=Waehrungseinheit.EUR,
                     website="foo.bar",
-                    gueltigkeitszeitraum=Zeitraum(),
+                    gueltigkeitsZeitspanne=Zeitspanne(),
                     staffeln=[Preisstaffel()],
                 ),
                 id="all attributes at first level",
