@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from ..version import __gh_version__
 
 T = TypeVar("T", bound=BaseModel)
-REGEX_CLASS_START = re.compile(r"class \w+\(.*\):\s+\"{3}(?:(?:\"?\"?[^\"])*)\"{3}\n")
+REGEX_CLASS_START = re.compile(r"class \w+\(.*\):\s+\"{3}(?:(?:\"{0,2}[^\"])*)\"{3}\n")
 
 
 def add_comments_to_description(cls: type[T]) -> type[T]:
@@ -25,7 +25,7 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
     fields_code = split_result[1]
     regex_comment_above = r"#: ?(?P<comment>[^\n]*)\n\s+{field_name}:"
     regex_comment_inline = r"{field_name}:[^:]*#: ?(?P<comment>[^\n]*)\n"
-    regex_comment_below = r"{field_name}:[^:]*\n(?P<indent> +)\"\"\"(?P<comment>(?:\"?\"?[^\"])*)\"\"\""
+    regex_comment_below = r"{field_name}:[^:]*\n(?P<indent> +)\"{3}(?P<comment>(?:\"{0,2}[^\"])*)\"{3}"
 
     for field_name, field_info in cls.model_fields.items():
         if field_info.description is not None:
@@ -41,7 +41,7 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
             field_info.description = match.group("comment").strip()
             continue
         # search for (multi line) comments below the field
-        match = re.search(regex_comment_below.format(field_name=field_name), fields_code)
+        match = re.search(regex_comment_below.replace("{field_name}", field_name), fields_code)
         if match is not None:
             field_info.description = match.group("comment").strip().replace("\n" + match.group("indent"), "\n")
             continue
