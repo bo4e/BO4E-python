@@ -12,6 +12,7 @@ from ..version import __gh_version__
 
 T = TypeVar("T", bound=BaseModel)
 REGEX_CLASS_START = re.compile(r"class \w+\(.*\):\s+\"{3}(?:(?:\"{0,2}[^\"])*)\"{3}\n")
+# https://regex101.com/r/dQPi06/1
 
 
 def add_comments_to_description(cls: type[T]) -> type[T]:
@@ -24,8 +25,11 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
     assert len(split_result) == 2, "The class source code structure is not as expected."
     fields_code = split_result[1]
     regex_comment_above = r"#: ?(?P<comment>[^\n]*)\n\s+{field_name}:"
+    # https://regex101.com/r/aJrvol/1
     regex_comment_inline = r"{field_name}:[^:]*#: ?(?P<comment>[^\n]*)\n"
+    # https://regex101.com/r/0PaUmw/1
     regex_comment_below = r"{field_name}:[^:]*\n(?P<indent> +)\"{3}(?P<comment>(?:\"{0,2}[^\"])*)\"{3}"
+    # https://regex101.com/r/9HhOlD/1
 
     for field_name, field_info in cls.model_fields.items():
         if field_info.description is not None:
