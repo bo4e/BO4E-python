@@ -1,3 +1,7 @@
+"""
+Contains Lokationszuordnung class
+"""
+
 from typing import Annotated, Optional
 
 from pydantic import Field
@@ -7,8 +11,6 @@ from ..enum.arithmetische_operation import ArithmetischeOperation
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
-
-# pylint: disable=no-name-in-module
 
 
 @postprocess_docstring
