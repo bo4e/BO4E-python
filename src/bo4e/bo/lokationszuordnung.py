@@ -2,17 +2,16 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from .geschaeftsobjekt import Geschaeftsobjekt
-from ..enum.typ import Typ
 from ..com.zeitspanne import Zeitspanne
 from ..enum.arithmetische_operation import ArithmetischeOperation
+from ..enum.typ import Typ
 from ..utils import postprocess_docstring
-
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 # pylint: disable=no-name-in-module
 
-@postprocess_docstring
 
+@postprocess_docstring
 class Lokationszuordnung(Geschaeftsobjekt):
     """
     Modell für die Abbildung der Referenz auf die Lokationsbündelstruktur. Diese gibt an welche Marktlokationen,
@@ -37,4 +36,3 @@ class Lokationszuordnung(Geschaeftsobjekt):
     arithmetik: Optional[ArithmetischeOperation] = None
     #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist
     zuordnungstyp: Optional[str] = None
-
