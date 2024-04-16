@@ -3,9 +3,10 @@ Contains Zeitraum class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from decimal import Decimal
 from typing import Optional
+
+import pydantic
 
 from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
@@ -28,13 +29,13 @@ class Zeitraum(COM):
         <object data="../_static/images/bo4e/com/Zeitraum.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
 
     """
 
     einheit: Optional[Mengeneinheit] = None
     dauer: Optional[Decimal] = None
-    startdatum: Optional[datetime] = None
-    enddatum: Optional[datetime] = None
-    startzeitpunkt: Optional[datetime] = None
-    endzeitpunkt: Optional[datetime] = None
+    startdatum: Optional[pydantic.AwareDatetime] = None
+    enddatum: Optional[pydantic.AwareDatetime] = None
+    startzeitpunkt: Optional[pydantic.AwareDatetime] = None
+    endzeitpunkt: Optional[pydantic.AwareDatetime] = None

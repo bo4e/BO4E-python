@@ -3,7 +3,6 @@ Contains Marktteilnehmer class
 and corresponding marshmallow schema for de-/serialization
 """
 
-
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from typing import Annotated, Optional
@@ -15,11 +14,12 @@ from ..enum.rollencodetyp import Rollencodetyp
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
 
 
 @postprocess_docstring
-class Marktteilnehmer(Geschaeftspartner):
+class Marktteilnehmer(Geschaeftsobjekt):
     """
     Objekt zur Aufnahme der Information zu einem Marktteilnehmer
 
@@ -28,7 +28,7 @@ class Marktteilnehmer(Geschaeftspartner):
         <object data="../_static/images/bo4e/bo/Marktteilnehmer.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Marktteilnehmer.json>`_
+        `Marktteilnehmer JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Marktteilnehmer.json>`_
 
     """
 
@@ -41,6 +41,7 @@ class Marktteilnehmer(Geschaeftspartner):
     rollencodetyp: Optional[Rollencodetyp] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
     sparte: Optional[Sparte] = None
-
-    #: Die 1:1-Kommunikationsadresse des Marktteilnehmers; Diese wird in der Marktkommunikation verwendet.
-    makoadresse: Optional[str] = None
+    #: Die 1:1-Kommunikationsadresse des Marktteilnehmers. Diese wird in der Marktkommunikation verwendet. Konkret kann dies eine eMail-Adresse oder ein AS4-Endpunkt sein.
+    makoadresse: Optional[list[str]] = None
+    #: Der zu diesem Marktteilnehmer gehörende Geschäftspartner
+    geschaeftspartner: Optional[Geschaeftspartner] = None

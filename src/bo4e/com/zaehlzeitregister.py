@@ -1,6 +1,7 @@
 """
 Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..com.com import COM
@@ -21,7 +22,7 @@ class Zaehlzeitregister(COM):
         <object data="../_static/images/bo4e/com/Zaehlzeitregister.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zaehlzeitregister JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlzeitregister.json>`_
+        `Zaehlzeitregister JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlzeitregister.json>`_
 
     """
 

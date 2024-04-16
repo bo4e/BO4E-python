@@ -1,6 +1,7 @@
 """
 Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serialization
 """
+
 from decimal import Decimal
 from typing import Optional
 
@@ -21,7 +22,7 @@ class Konzessionsabgabe(COM):
         <object data="../_static/images/bo4e/com/Konzessionsabgabe.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Konzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Konzessionsabgabe.json>`_
+        `Konzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Konzessionsabgabe.json>`_
 
     """
 

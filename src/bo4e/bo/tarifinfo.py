@@ -5,9 +5,9 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
-from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.energiemix import Energiemix
@@ -35,7 +35,7 @@ class Tarifinfo(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Tarifinfo.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifinfo.json>`_
+        `Tarifinfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifinfo.json>`_
 
     """
 
@@ -68,7 +68,7 @@ class Tarifinfo(Geschaeftsobjekt):
     energiemix: Optional[Energiemix] = None
     #: Mindestlaufzeiten und Kündigungsfristen zusammengefasst
     vertragskonditionen: Optional[Vertragskonditionen] = None
-    anwendung_von: Optional[datetime] = None
+    anwendung_von: Optional[pydantic.AwareDatetime] = None
     """
     Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird,
     z.B. "2021-07-20T18:31:48Z"

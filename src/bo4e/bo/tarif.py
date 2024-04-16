@@ -2,9 +2,9 @@
 Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.aufabschlagregional import AufAbschlagRegional
@@ -30,13 +30,13 @@ class Tarif(Tarifinfo):
         <object data="../_static/images/bo4e/bo/Tarif.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarif.json>`_
+        `Tarif JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarif.json>`_
 
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
-    preisstand: Optional[datetime] = None
+    preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
     berechnungsparameter: Optional[Tarifberechnungsparameter] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
