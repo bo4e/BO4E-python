@@ -23,7 +23,6 @@ from ..enum.netzebene import Netzebene
 from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..enum.verbrauchsart import Verbrauchsart
-from ..enum.zeitreihentyp import Zeitreihentyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 from .geschaeftspartner import Geschaeftspartner
@@ -123,7 +122,6 @@ class Marktlokation(Geschaeftsobjekt):
         str
     ] = None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
     marktgebiet: Optional[str] = None  #: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
-    zeitreihentyp: Optional[Zeitreihentyp] = None
     zaehlwerke: Optional[list[Zaehlwerk]] = None
     verbrauchsmengen: Optional[list[Verbrauch]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list[Zaehlwerk]] = None
