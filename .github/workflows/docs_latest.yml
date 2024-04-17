@@ -2,7 +2,7 @@ name: Build documentation /latest
 
 on:
   push:
-    branches: [main,gh-pages-prep-patch]
+    branches: [main,gh_pages_prep_patch]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
