@@ -93,6 +93,9 @@ jobs:
         run: |
           echo -e "version = release = \"${{ github.ref_name }}\"\n" | cat - docs/conf.py > /tmp/conf.py
           mv /tmp/conf.py docs/conf.py
+      - name: Run kroki with docker
+        run: |
+          docker compose up -d
       - name: Build the documentation
         uses: sphinx-notes/pages@v2
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
