@@ -28,7 +28,7 @@ jobs:
       - name: Run the Tests
         run: |
           tox -e tests
-  generate_json_schemas:
+  json_schemas:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
     needs: tests
@@ -123,7 +123,7 @@ jobs:
     permissions:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
-    needs: [tests, generate, docs]
+    needs: [tests, json_schemas, docs]
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
