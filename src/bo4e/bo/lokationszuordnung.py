@@ -6,8 +6,10 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
+from ..bo.marktlokation import Marktlokation
+from ..bo.messlokation import Messlokation
+from ..bo.netzlokation import Netzlokation
 from ..com.zeitspanne import Zeitspanne
-from ..enum.arithmetische_operation import ArithmetischeOperation
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
@@ -29,19 +31,19 @@ class Lokationszuordnung(Geschaeftsobjekt):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.LOKATIONSZUORDNUNG
 
-    #: Liste mit IDs der referenzierten Marktlokationen
-    marktlokationen: Optional[list[str]] = None
-    #: Liste mit IDs der referenzierten Messlokationen
-    messlokationen: Optional[list[str]] = None
-    #: Liste mit IDs der referenzierten Netzlokationen
-    netzlokationen: Optional[list[str]] = None
-    #: Liste mit IDs der referenzierten technischen Ressourcen
+    #: Liste mit referenzierten Marktlokationen
+    marktlokationen: Optional[list[Marktlokation]] = None
+    #: Liste mit referenzierten Messlokationen
+    messlokationen: Optional[list[Messlokation]] = None
+    #: Liste mit referenzierten Netzlokationen
+    netzlokationen: Optional[list[Netzlokation]] = None
+    #: Liste mit referenzierten technischen Ressourcen
     technische_ressourcen: Optional[list[str]] = None
-    #: Liste mit IDs der referenzierten steuerbaren Ressourcen
+    #: Liste mit referenzierten steuerbaren Ressourcen
     steuerbare_ressourcen: Optional[list[str]] = None
     #: Zeitspanne der Gültigkeit
     gueltigkeit: Optional[Zeitspanne] = None
-    #: Angabe einer arithmetischen Operation
-    arithmetik: Optional[ArithmetischeOperation] = None
-    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist
+    #:
     zuordnungstyp: Optional[str] = None
+    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist
+    lokationsbuendelcode: Optional[str] = None
