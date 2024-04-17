@@ -89,6 +89,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
         # Note: The sphinx action below can only install a single requirements file.
+      - name: Write version to conf.py
+        run: |
+          echo -e "version = release = \"${{ github.ref_name }}\"\n" | cat - docs/conf.py > /tmp/conf.py
+          mv /tmp/conf.py docs/conf.py
       - name: Build the documentation
         uses: sphinx-notes/pages@v2
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
