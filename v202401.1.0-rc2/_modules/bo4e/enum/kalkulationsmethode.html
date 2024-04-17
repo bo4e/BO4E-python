@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.kalkulationsmethode &mdash; bo4e v202401.1.0-rc2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=4fe9950c"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.1.0-rc2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.kalkulationsmethode</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.kalkulationsmethode</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint: disable=missing-module-docstring, line-too-long</span>
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="Kalkulationsmethode">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.kalkulationsmethode.Kalkulationsmethode">[docs]</a>
+<span class="k">class</span> <span class="nc">Kalkulationsmethode</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Auflistung der verschiedenen Berechnungsmethoden für ein Preisblatt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">STUFEN</span> <span class="o">=</span> <span class="s2">&quot;STUFEN&quot;</span>  <span class="c1">#: Stufenmodell, d.h. die Gesamtmenge wird in eine Stufe eingeordnet und für die gesamte Menge gilt der so ermittelte Preis</span>
+    <span class="n">ZONEN</span> <span class="o">=</span> <span class="s2">&quot;ZONEN&quot;</span>  <span class="c1">#: Zonenmodell, d.h. die Gesamtmenge wird auf die Zonen aufgeteilt und für die Teilmengen gilt der jeweilige Preis der Zone.</span>
+    <span class="n">VORZONEN_GP</span> <span class="o">=</span> <span class="s2">&quot;VORZONEN_GP&quot;</span>  <span class="c1">#: Vorzonengrundpreis</span>
+    <span class="n">SIGMOID</span> <span class="o">=</span> <span class="s2">&quot;SIGMOID&quot;</span>  <span class="c1">#: Sigmoidfunktion</span>
+    <span class="n">BLINDARBEIT_GT_50_PROZENT</span> <span class="o">=</span> <span class="s2">&quot;BLINDARBEIT_GT_50_PROZENT&quot;</span>  <span class="c1">#: Blindarbeit oberhalb 50% der Wirkarbeit</span>
+    <span class="n">BLINDARBEIT_GT_40_PROZENT</span> <span class="o">=</span> <span class="s2">&quot;BLINDARBEIT_GT_40_PROZENT&quot;</span>  <span class="c1">#: Blindarbeit oberhalb 40% der Wirkarbeit</span>
+    <span class="n">BLINDARBEIT_MIT_FREIMENGE</span> <span class="o">=</span> <span class="s2">&quot;BLINDARBEIT_MIT_FREIMENGE&quot;</span>  <span class="c1">#: Blindarbeit. Freimenge ist durch cos phi oder prozentualem Anteil der Wirkarbeit angegeben.</span>
+    <span class="n">AP_GP_ZONEN</span> <span class="o">=</span> <span class="s2">&quot;AP_GP_ZONEN&quot;</span>  <span class="c1">#: Arbeits- und Grundpreis gezont</span>
+    <span class="n">LP_INSTALL_LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;LP_INSTALL_LEISTUNG&quot;</span>  <span class="c1">#: Leistungsentgelt auf Grundlage der installierten Leistung</span>
+    <span class="n">AP_TRANSPORT_ODER_VERTEILNETZ</span> <span class="o">=</span> <span class="s2">&quot;AP_TRANSPORT_ODER_VERTEILNETZ&quot;</span>  <span class="c1">#: AP auf Grundlage Transport- oder Verteilnetz</span>
+    <span class="n">AP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID</span> <span class="o">=</span> <span class="s2">&quot;AP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID&quot;</span>  <span class="c1">#: AP auf Grundlage Transport- oder Verteilnetz, Ortsverteilnetz über Sigmoid</span>
+    <span class="n">LP_JAHRESVERBRAUCH</span> <span class="o">=</span> <span class="s2">&quot;LP_JAHRESVERBRAUCH&quot;</span>  <span class="c1">#: Leistungsentgelt auf Grundlage des Jahresverbrauchs</span>
+    <span class="n">LP_TRANSPORT_ODER_VERTEILNETZ</span> <span class="o">=</span> <span class="s2">&quot;LP_TRANSPORT_ODER_VERTEILNETZ&quot;</span>  <span class="c1">#: LP auf Grundlage Transport- oder Verteilnetz</span>
+    <span class="n">LP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID</span> <span class="o">=</span> <span class="s2">&quot;LP_TRANSPORT_ODER_VERTEILNETZ_ORTSVERTEILNETZ_SIGMOID&quot;</span>  <span class="c1">#: LP auf Grundlage Transport- oder Verteilnetz, Ortsverteilnetz über Sigmoid</span>
+    <span class="n">FUNKTIONEN</span> <span class="o">=</span> <span class="s2">&quot;FUNKTIONEN&quot;</span>  <span class="c1">#: Funktionsbezogene Leistungsermittlung bei Verbräuchen oberhalb der SLP Grenze. (ähnlich Sigmoid)</span>
+    <span class="n">VERBRAUCH_UEBER_SLP_GRENZE_FUNKTIONSBEZOGEN_WEITERE_BERECHNUNG_ALS_LGK</span> <span class="o">=</span> <span class="s2">&quot;VERBRAUCH_UEBER_SLP_GRENZE_FUNKTIONSBEZOGEN_WEITERE_BERECHNUNG_ALS_LGK&quot;</span>  <span class="c1">#: Bei einem Verbrauch über der SLP-Grenze (letzte Staffelgrenze überschritten) erfolgt die Berechnung funktionsbezogen (s.o.) als LGK.</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+bo4e.utils package
+==================
+
+Module contents
+---------------
+
+.. automodule:: bo4e.utils
+   :members:
+   :undoc-members:
+   :show-inheritance:

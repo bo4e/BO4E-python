@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.themengebiet &mdash; bo4e v202401.1.0-rc2 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=4fe9950c"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.1.0-rc2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.themengebiet</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.themengebiet</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint:disable=missing-module-docstring</span>
+
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="Themengebiet">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.themengebiet.Themengebiet">[docs]</a>
+<span class="k">class</span> <span class="nc">Themengebiet</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Über dieses ENUM kann eine thematische Zuordnung, beispielsweise eines Ansprechpartners, vorgenommen werden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ALLGEMEINER_INFORMATIONSAUSTAUSCH</span> <span class="o">=</span> <span class="s2">&quot;ALLGEMEINER_INFORMATIONSAUSTAUSCH&quot;</span>  <span class="c1">#: Allgemeiner Informationsaustausch</span>
+    <span class="n">AN_UND_ABMELDUNG</span> <span class="o">=</span> <span class="s2">&quot;AN_UND_ABMELDUNG&quot;</span>  <span class="c1">#: An- und Abmeldung</span>
+    <span class="n">ANSPRECHPARTNER_ALLGEMEIN</span> <span class="o">=</span> <span class="s2">&quot;ANSPRECHPARTNER_ALLGEMEIN&quot;</span>  <span class="c1">#: Ansprechpartner Allgemein</span>
+    <span class="n">ANSPRECHPARTNER_BDEW_DVGW</span> <span class="o">=</span> <span class="s2">&quot;ANSPRECHPARTNER_BDEW_DVGW&quot;</span>  <span class="c1">#: Ansprechpartner BDEW/DVGW</span>
+    <span class="n">ANSPRECHPARTNER_IT_TECHNIK</span> <span class="o">=</span> <span class="s2">&quot;ANSPRECHPARTNER_IT_TECHNIK&quot;</span>  <span class="c1">#: Ansprechpartner IT/Technik</span>
+    <span class="n">BILANZIERUNG</span> <span class="o">=</span> <span class="s2">&quot;BILANZIERUNG&quot;</span>  <span class="c1">#: Bilanzierung</span>
+    <span class="n">BILANZKREISKOORDINATOR</span> <span class="o">=</span> <span class="s2">&quot;BILANZKREISKOORDINATOR&quot;</span>  <span class="c1">#: Bilanzkreiskoordinator</span>
+    <span class="n">BILANZKREISVERANTWORTLICHER</span> <span class="o">=</span> <span class="s2">&quot;BILANZKREISVERANTWORTLICHER&quot;</span>  <span class="c1">#: Bilanzkreisverantwortlicher</span>
+    <span class="c1">#: Datenformate, Zertifikate, Verschlüsselungen</span>
+    <span class="n">DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN</span> <span class="o">=</span> <span class="s2">&quot;DATENFORMATE_ZERTIFIKATE_VERSCHLUESSELUNGEN&quot;</span>
+    <span class="n">DEBITORENMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;DEBITORENMANAGEMENT&quot;</span>  <span class="c1">#: Debitorenmanagement</span>
+    <span class="n">DEMAND_SIDE_MANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;DEMAND_SIDE_MANAGEMENT&quot;</span>  <span class="c1">#: Demand-Side-Management</span>
+    <span class="n">EDI_VEREINBARUNG</span> <span class="o">=</span> <span class="s2">&quot;EDI_VEREINBARUNG&quot;</span>  <span class="c1">#: EDI-Vereinbarung</span>
+    <span class="n">EDIFACT</span> <span class="o">=</span> <span class="s2">&quot;EDIFACT&quot;</span>  <span class="c1">#: EDIFACT</span>
+    <span class="n">ENERGIEDATENMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;ENERGIEDATENMANAGEMENT&quot;</span>  <span class="c1">#: Energiedatenmanagement</span>
+    <span class="n">FAHRPLANMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;FAHRPLANMANAGEMENT&quot;</span>  <span class="c1">#: Fahrplanmanagement</span>
+    <span class="n">ALOCAT</span> <span class="o">=</span> <span class="s2">&quot;ALOCAT&quot;</span>  <span class="c1">#: Format:ALOCAT</span>
+    <span class="n">APERAK</span> <span class="o">=</span> <span class="s2">&quot;APERAK&quot;</span>  <span class="c1">#: Format:APERAK</span>
+    <span class="n">CONTRL</span> <span class="o">=</span> <span class="s2">&quot;CONTRL&quot;</span>  <span class="c1">#: Format:CONTRL</span>
+    <span class="n">INVOIC</span> <span class="o">=</span> <span class="s2">&quot;INVOIC&quot;</span>  <span class="c1">#: Format:INVOIC</span>
+    <span class="n">MSCONS</span> <span class="o">=</span> <span class="s2">&quot;MSCONS&quot;</span>  <span class="c1">#: Format:MSCONS</span>
+    <span class="n">ORDERS</span> <span class="o">=</span> <span class="s2">&quot;ORDERS&quot;</span>  <span class="c1">#: Format:ORDERS</span>
+    <span class="n">ORDERSP</span> <span class="o">=</span> <span class="s2">&quot;ORDERSP&quot;</span>  <span class="c1">#: Format:ORDERSP</span>
+    <span class="n">REMADV</span> <span class="o">=</span> <span class="s2">&quot;REMADV&quot;</span>  <span class="c1">#: Format:REMADV</span>
+    <span class="n">UTILMD</span> <span class="o">=</span> <span class="s2">&quot;UTILMD&quot;</span>  <span class="c1">#: Format:UTILMD</span>
+    <span class="n">GABI</span> <span class="o">=</span> <span class="s2">&quot;GABI&quot;</span>  <span class="c1">#: GaBi Gas</span>
+    <span class="n">GELI</span> <span class="o">=</span> <span class="s2">&quot;GELI&quot;</span>  <span class="c1">#: GeLi Gas</span>
+    <span class="n">GERAETERUECKGABE</span> <span class="o">=</span> <span class="s2">&quot;GERAETERUECKGABE&quot;</span>  <span class="c1">#: Geräterückgabe</span>
+    <span class="n">GERAETEWECHSEL</span> <span class="o">=</span> <span class="s2">&quot;GERAETEWECHSEL&quot;</span>  <span class="c1">#: Gerätewechsel</span>
+    <span class="n">GPKE</span> <span class="o">=</span> <span class="s2">&quot;GPKE&quot;</span>  <span class="c1">#: GPKE</span>
+    <span class="n">INBETRIEBNAHME</span> <span class="o">=</span> <span class="s2">&quot;INBETRIEBNAHME&quot;</span>  <span class="c1">#: Inbetriebnahme</span>
+    <span class="n">KAPAZITAETSMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;KAPAZITAETSMANAGEMENT&quot;</span>  <span class="c1">#: Kapazitätsmanagement</span>
+    <span class="n">KLAERFAELLE</span> <span class="o">=</span> <span class="s2">&quot;KLAERFAELLE&quot;</span>  <span class="c1">#: Klärfälle</span>
+    <span class="n">LASTGAENGE_RLM</span> <span class="o">=</span> <span class="s2">&quot;LASTGAENGE_RLM&quot;</span>  <span class="c1">#: Lastgänge RLM</span>
+    <span class="n">LIEFERANTENRAHMENVERTRAG</span> <span class="o">=</span> <span class="s2">&quot;LIEFERANTENRAHMENVERTRAG&quot;</span>  <span class="c1">#: Lieferantenrahmenvertrag</span>
+    <span class="n">LIEFERANTENWECHSEL</span> <span class="o">=</span> <span class="s2">&quot;LIEFERANTENWECHSEL&quot;</span>  <span class="c1">#: Lieferantenwechsel</span>
+    <span class="n">MABIS</span> <span class="o">=</span> <span class="s2">&quot;MABIS&quot;</span>  <span class="c1">#: MaBiS</span>
+    <span class="n">MAHNWESEN</span> <span class="o">=</span> <span class="s2">&quot;MAHNWESEN&quot;</span>  <span class="c1">#: Mahnwesen</span>
+    <span class="n">MARKTGEBIETSVERANTWORTLICHER</span> <span class="o">=</span> <span class="s2">&quot;MARKTGEBIETSVERANTWORTLICHER&quot;</span>  <span class="c1">#: Marktgebietsverantwortlicher</span>
+    <span class="n">MARKTKOMMUNIKATION</span> <span class="o">=</span> <span class="s2">&quot;MARKTKOMMUNIKATION&quot;</span>  <span class="c1">#: Marktkommunikation</span>
+    <span class="n">MEHR_MINDERMENGEN</span> <span class="o">=</span> <span class="s2">&quot;MEHR_MINDERMENGEN&quot;</span>  <span class="c1">#: Mehr- Mindermengen</span>
+    <span class="n">MSB_MDL</span> <span class="o">=</span> <span class="s2">&quot;MSB_MDL&quot;</span>  <span class="c1">#: MSB - MDL</span>
+    <span class="n">NETZABRECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;NETZABRECHNUNG&quot;</span>  <span class="c1">#: Netzabrechnung</span>
+    <span class="n">NETZENTGELTE</span> <span class="o">=</span> <span class="s2">&quot;NETZENTGELTE&quot;</span>  <span class="c1">#: Netzentgelte</span>
+    <span class="n">NETZMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;NETZMANAGEMENT&quot;</span>  <span class="c1">#: Netzmanagement</span>
+    <span class="n">RECHT</span> <span class="o">=</span> <span class="s2">&quot;RECHT&quot;</span>  <span class="c1">#: Recht</span>
+    <span class="n">REGULIERUNGSMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;REGULIERUNGSMANAGEMENT&quot;</span>  <span class="c1">#: Regulierungsmanagement</span>
+    <span class="n">REKLAMATIONEN</span> <span class="o">=</span> <span class="s2">&quot;REKLAMATIONEN&quot;</span>  <span class="c1">#: Reklamationen</span>
+    <span class="n">SPERREN_ENTSPERREN_INKASSO</span> <span class="o">=</span> <span class="s2">&quot;SPERREN_ENTSPERREN_INKASSO&quot;</span>  <span class="c1">#: Sperren/Entsperren/Inkasso</span>
+    <span class="n">STAMMDATEN</span> <span class="o">=</span> <span class="s2">&quot;STAMMDATEN&quot;</span>  <span class="c1">#: Stammdaten</span>
+    <span class="n">STOERUNGSFAELLE</span> <span class="o">=</span> <span class="s2">&quot;STOERUNGSFAELLE&quot;</span>  <span class="c1">#: Übermittlung_Störungsfälle</span>
+    <span class="n">TECHNISCHE_FRAGEN</span> <span class="o">=</span> <span class="s2">&quot;TECHNISCHE_FRAGEN&quot;</span>  <span class="c1">#: Technische Fragen</span>
+    <span class="n">UMSTELLUNG_INVOIC</span> <span class="o">=</span> <span class="s2">&quot;UMSTELLUNG_INVOIC&quot;</span>  <span class="c1">#: Umstellung INVOIC</span>
+    <span class="n">VERSCHLUESSELUNG_SIGNATUR</span> <span class="o">=</span> <span class="s2">&quot;VERSCHLUESSELUNG_SIGNATUR&quot;</span>  <span class="c1">#: Verschlüsselung/Signatur</span>
+    <span class="n">VERTRAGSMANAGEMENT</span> <span class="o">=</span> <span class="s2">&quot;VERTRAGSMANAGEMENT&quot;</span>  <span class="c1">#: Vertragsmanagement</span>
+    <span class="n">VERTRIEB</span> <span class="o">=</span> <span class="s2">&quot;VERTRIEB&quot;</span>  <span class="c1">#: Vertrieb</span>
+    <span class="n">WIM</span> <span class="o">=</span> <span class="s2">&quot;WIM&quot;</span>  <span class="c1">#: WiM</span>
+    <span class="n">ZAEHLERSTAENDE_SLP</span> <span class="o">=</span> <span class="s2">&quot;ZAEHLERSTAENDE_SLP&quot;</span>  <span class="c1">#: Zählerstände SLP</span>
+    <span class="n">ZAHLUNGSVERKEHR</span> <span class="o">=</span> <span class="s2">&quot;ZAHLUNGSVERKEHR&quot;</span>  <span class="c1">#: Zahlungsverkehr</span>
+    <span class="n">ZUORDNUNGSVEREINBARUNG</span> <span class="o">=</span> <span class="s2">&quot;ZUORDNUNGSVEREINBARUNG&quot;</span>  <span class="c1">#: Zuordnungsvereinbarung</span>
+    <span class="n">EINSPEISUNG</span> <span class="o">=</span> <span class="s2">&quot;EINSPEISUNG&quot;</span>  <span class="c1">#: Einspeisung</span>
+    <span class="n">BEWEGUNGSDATEN</span> <span class="o">=</span> <span class="s2">&quot;BEWEGUNGSDATEN&quot;</span>  <span class="c1">#: Bewegungsdaten</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
