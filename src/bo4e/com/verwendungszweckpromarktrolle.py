@@ -2,6 +2,7 @@
 Contains Verwendungszweck class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..com.com import COM
@@ -22,7 +23,7 @@ class VerwendungszweckProMarktrolle(COM):
         <object data="../_static/images/bo4e/com/Verwendungszweck.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verwendungszweck.json>`_
+        `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verwendungszweck.json>`_
 
     """
 

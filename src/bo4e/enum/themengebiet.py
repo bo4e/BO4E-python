@@ -68,3 +68,5 @@ class Themengebiet(StrEnum):
     ZAEHLERSTAENDE_SLP = "ZAEHLERSTAENDE_SLP"  #: Zählerstände SLP
     ZAHLUNGSVERKEHR = "ZAHLUNGSVERKEHR"  #: Zahlungsverkehr
     ZUORDNUNGSVEREINBARUNG = "ZUORDNUNGSVEREINBARUNG"  #: Zuordnungsvereinbarung
+    EINSPEISUNG = "EINSPEISUNG"  #: Einspeisung
+    BEWEGUNGSDATEN = "BEWEGUNGSDATEN"  #: Bewegungsdaten

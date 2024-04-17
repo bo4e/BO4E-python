@@ -2,6 +2,7 @@
 Contains ExterenzeReferenz class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Any, Optional
 
 from pydantic import BaseModel
@@ -23,7 +24,7 @@ class ZusatzAttribut(BaseModel):
         <object data="../_static/images/bo4e/com/ZusatzAttribut.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `ZusatzAttribut JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/ZusatzAttribut.json>`_
+        `ZusatzAttribut JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/ZusatzAttribut.json>`_
 
     """
 

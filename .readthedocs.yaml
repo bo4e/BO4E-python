@@ -16,6 +16,10 @@ build:
     # golang: "1.17"
   jobs:
     pre_build:
+      - python -m pip install -e .
+      - python -c "import bo4e; print(bo4e.__gh_version__)"
+      # This ensures that before trying to build the documentation, the package will have information about the
+      # version tag. This is necessary for the documentation to build the links correctly.
       - docker-compose up -d
 
 # Build documentation in the docs/ directory with Sphinx

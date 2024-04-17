@@ -1,9 +1,11 @@
 """
 Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
+
 from decimal import Decimal
 from typing import Optional
+
+import pydantic
 
 from ..enum.mengeneinheit import Mengeneinheit
 from ..enum.messwertstatus import Messwertstatus
@@ -25,7 +27,7 @@ class Verbrauch(COM):
         <object data="../_static/images/bo4e/com/Verbrauch.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verbrauch.json>`_
+        `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verbrauch.json>`_
 
     """
 
@@ -39,8 +41,8 @@ class Verbrauch(COM):
     einheit: Optional[Mengeneinheit] = None
 
     #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
-    startdatum: Optional[datetime] = None
+    startdatum: Optional[pydantic.AwareDatetime] = None
     #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
-    enddatum: Optional[datetime] = None
+    enddatum: Optional[pydantic.AwareDatetime] = None
     #: Messwertstatus includes the plausibility of the value
     messwertstatus: Optional[Messwertstatus] = None
