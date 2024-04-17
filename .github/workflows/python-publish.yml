@@ -103,7 +103,14 @@ jobs:
           target_path: ${{ github.ref_name }}
           target_branch: gh-pages
           sphinx_options: -W -j auto
-      - name: Redirect stable to new release
+      - id: latest_bo4e
+        name: Get latest BO4E release tag
+        uses: pozetroninc/github-action-get-latest-release@master
+        with:
+          repository: ${{ github.repository }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Redirect stable to new release if the new release is marked as latest
+        if: steps.latest_bo4e.outputs.release == github.ref_name
         run: |
           echo "Redirecting stable to new version ${{ github.ref_name }}"
           rm -rf stable
