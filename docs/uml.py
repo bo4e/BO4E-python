@@ -79,11 +79,8 @@ being inherited by all classes in this project. Therefore, their namespace start
 #: Define shorthand for Cardinality type since none of the values have to be provided.
 Cardinality = tuple[str, str]
 
-#: Define the link base URI used in svg links
-LINK_URI_BASE = "https://bo4e-python.readthedocs.io/en/latest"
-
-# link domain to test links only local.
-# LINK_URI_BASE = f"file:///{Path.cwd().parent}/.tox/docs/tmp/html"
+#: Define the link base URI used in svg links. Will be overridden by conf.py.
+LINK_URI_BASE = f"file:///{Path(__file__).parents[1]}/.tox/docs/tmp/html"
 
 
 class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):

@@ -176,8 +176,12 @@ html_theme_options = {
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-from bo4e import __gh_version__ as release
-from bo4e import __version__ as version
+# Note: For the deployment to GitHub Pages the release and version values will
+# be set by the action. This is to support things like /latest or /stable.
+if "release" not in globals():
+    from bo4e import __gh_version__ as release
+if "version" not in globals():
+    from bo4e import __version__ as version
 
 print(f"Got version = {version} from __version__")
 print(f"Got release = {release} from __gh_version__")
@@ -309,7 +313,7 @@ intersphinx_mapping = {
 
 # Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
 # See docs/uml.py for more details.
-uml.LINK_URI_BASE = f"https://bo4e-python.readthedocs.io/en/{release}"
+uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
 print(_network)
