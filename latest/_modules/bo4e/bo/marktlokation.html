@@ -92,6 +92,8 @@
 <span class="kn">from</span> <span class="nn">..com.geokoordinaten</span> <span class="kn">import</span> <span class="n">Geokoordinaten</span>
 <span class="kn">from</span> <span class="nn">..com.katasteradresse</span> <span class="kn">import</span> <span class="n">Katasteradresse</span>
 <span class="kn">from</span> <span class="nn">..com.messlokationszuordnung</span> <span class="kn">import</span> <span class="n">Messlokationszuordnung</span>
+<span class="kn">from</span> <span class="nn">..com.verbrauch</span> <span class="kn">import</span> <span class="n">Verbrauch</span>
+<span class="kn">from</span> <span class="nn">..com.zaehlwerk</span> <span class="kn">import</span> <span class="n">Zaehlwerk</span>
 <span class="kn">from</span> <span class="nn">..enum.bilanzierungsmethode</span> <span class="kn">import</span> <span class="n">Bilanzierungsmethode</span>
 <span class="kn">from</span> <span class="nn">..enum.energierichtung</span> <span class="kn">import</span> <span class="n">Energierichtung</span>
 <span class="kn">from</span> <span class="nn">..enum.gasqualitaet</span> <span class="kn">import</span> <span class="n">Gasqualitaet</span>
@@ -195,9 +197,17 @@
 <span class="sd">    Flurstück erfolgen.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">kundengruppen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Kundentyp</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
-
+    <span class="n">kundengruppen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Kundentyp</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Kundengruppen der Marktlokation</span>
+
+    <span class="n">regelzone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="nb">str</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/</span>
+    <span class="n">marktgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list</span>
+    <span class="n">zaehlwerke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Zaehlwerk</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">verbrauchsmengen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Verbrauch</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zaehlwerke_der_beteiligten_marktrolle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Zaehlwerk</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
 </pre></div>
 
            </div>
