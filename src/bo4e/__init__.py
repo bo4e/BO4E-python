@@ -66,7 +66,6 @@ __all__ = [
     "KriteriumWert",
     "MarktgebietInfo",
     "Menge",
-    "Messlokationszuordnung",
     "PositionsAufAbschlag",
     "Preis",
     "Preisgarantie",
@@ -198,9 +197,11 @@ from .bo.geschaeftsobjekt import Geschaeftsobjekt
 from .bo.geschaeftspartner import Geschaeftspartner
 from .bo.kosten import Kosten
 from .bo.lastgang import Lastgang
+from .bo.lokationszuordnung import Lokationszuordnung
 from .bo.marktlokation import Marktlokation
 from .bo.marktteilnehmer import Marktteilnehmer
 from .bo.messlokation import Messlokation
+from .bo.netzlokation import Netzlokation
 from .bo.person import Person
 from .bo.preisblatt import Preisblatt
 from .bo.preisblattdienstleistung import PreisblattDienstleistung
@@ -212,10 +213,12 @@ from .bo.rechnung import Rechnung
 from .bo.region import Region
 from .bo.regionaltarif import Regionaltarif
 from .bo.standorteigenschaften import Standorteigenschaften
+from .bo.steuerbareressource import SteuerbareRessource
 from .bo.tarif import Tarif
 from .bo.tarifinfo import Tarifinfo
 from .bo.tarifkosten import Tarifkosten
 from .bo.tarifpreisblatt import Tarifpreisblatt
+from .bo.technischeressource import TechnischeRessource
 from .bo.vertrag import Vertrag
 from .bo.zaehler import Zaehler
 from .bo.zeitreihe import Zeitreihe
@@ -240,6 +243,7 @@ from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
 from .com.katasteradresse import Katasteradresse
+from .com.konfigurationsprodukt import Konfigurationsprodukt
 from .com.kontaktweg import Kontaktweg
 from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
@@ -297,6 +301,7 @@ from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
 from .enum.dienstleistungstyp import Dienstleistungstyp
+from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
 from .enum.erzeugungsart import Erzeugungsart
 from .enum.gasqualitaet import Gasqualitaet
@@ -340,6 +345,8 @@ from .enum.regionskriteriumtyp import Regionskriteriumtyp
 from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
+from .enum.speicherart import Speicherart
+from .enum.steuerkanalsleistungsbeschreibung import SteuerkanalsLeistungsbeschreibung
 from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
@@ -347,6 +354,8 @@ from .enum.tarifmerkmal import Tarifmerkmal
 from .enum.tarifregionskriterium import Tarifregionskriterium
 from .enum.tariftyp import Tariftyp
 from .enum.tarifzeit import Tarifzeit
+from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
+from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
 from .enum.typ import Typ
