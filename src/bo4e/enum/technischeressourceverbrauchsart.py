@@ -3,7 +3,9 @@ from bo4e.enum.strenum import StrEnum
 
 
 class TechnischeRessourceVerbrauchsart(StrEnum):
-    """ """
+    """
+    Verbrauchsart der technischen Ressource
+    """
 
     KRAFT_LICHT = "KRAFT_LICHT"
     WAERME = "WAERME"
