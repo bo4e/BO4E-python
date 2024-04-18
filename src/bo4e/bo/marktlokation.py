@@ -98,9 +98,9 @@ class Marktlokation(Geschaeftsobjekt):
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
 
-    regelzone: Optional[
-        str
-    ] = None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
+    regelzone: Optional[str] = (
+        None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
+    )
     marktgebiet: Optional[str] = None  #: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
     zaehlwerke: Optional[list[Zaehlwerk]] = None
     verbrauchsmengen: Optional[list[Verbrauch]] = None
