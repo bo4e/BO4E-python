@@ -32,9 +32,9 @@ class Geschaeftsobjekt(BaseModel):
     """
 
     # required attributes
-    version: Annotated[Optional[str], Field(alias="_version")] = (
-        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
-    )
+    version: Annotated[
+        Optional[str], Field(alias="_version")
+    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
     # src/_bo4e_python_version.py
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization
