@@ -565,12 +565,15 @@ def _recursive_add_class(
     # ------------------------------------------------------------------------------------------------------------------
 
 
-def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
+def compile_files_kroki(input_dir: Path, output_dir: Path, locally_hosted: bool = False) -> None:
     """
     Compiles all plantuml files inside `input_dir` (recursive) to svg's in `output_dir` with the same subpath as in
     `input_dir`. Files are compiled using web service of [kroki](https://kroki.io)
     """
-    url = "https://kroki.io"
+    if locally_hosted:
+        url = "http://localhost:8000"
+    else:
+        url = "https://kroki.io"
     for root, _, files in os.walk(input_dir):
         for file in files:
             with open(os.path.join(root, file), "r", encoding="utf-8") as uml_file:
