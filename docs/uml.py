@@ -571,7 +571,7 @@ def compile_files_kroki(input_dir: Path, output_dir: Path, locally_hosted: bool 
     `input_dir`. Files are compiled using web service of [kroki](https://kroki.io)
     """
     if locally_hosted:
-        url = "localhost:8000"
+        url = "http://localhost:8000"
     else:
         url = "https://kroki.io"
     for root, _, files in os.walk(input_dir):
