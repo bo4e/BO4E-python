@@ -32,9 +32,9 @@ class COM(BaseModel):
 
     """
 
-    version: Annotated[
-        Optional[str], Field(alias="_version")
-    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    version: Annotated[Optional[str], Field(alias="_version")] = (
+        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    )
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.

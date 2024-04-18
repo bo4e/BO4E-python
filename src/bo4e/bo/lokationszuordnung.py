@@ -45,5 +45,5 @@ class Lokationszuordnung(Geschaeftsobjekt):
     gueltigkeit: Optional[Zeitspanne] = None
     #:
     zuordnungstyp: Optional[str] = None
-    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist
+    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (evtl. TODO: Enum erstellen für alle Fälle der Codeliste)
     lokationsbuendelcode: Optional[str] = None

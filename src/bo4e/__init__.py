@@ -247,7 +247,6 @@ from .com.kostenposition import Kostenposition
 from .com.kriteriumwert import KriteriumWert
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
-from .com.messlokationszuordnung import Messlokationszuordnung
 from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
