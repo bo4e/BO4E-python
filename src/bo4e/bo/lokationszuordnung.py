@@ -9,6 +9,8 @@ from pydantic import Field
 from ..bo.marktlokation import Marktlokation
 from ..bo.messlokation import Messlokation
 from ..bo.netzlokation import Netzlokation
+from ..bo.steuerbareressource import SteuerbareRessource
+from ..bo.technischeressource import TechnischeRessource
 from ..com.zeitspanne import Zeitspanne
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
@@ -38,9 +40,9 @@ class Lokationszuordnung(Geschaeftsobjekt):
     #: Liste mit referenzierten Netzlokationen
     netzlokationen: Optional[list[Netzlokation]] = None
     #: Liste mit referenzierten technischen Ressourcen
-    technische_ressourcen: Optional[list[str]] = None
+    technische_ressourcen: Optional[list[TechnischeRessource]] = None
     #: Liste mit referenzierten steuerbaren Ressourcen
-    steuerbare_ressourcen: Optional[list[str]] = None
+    steuerbare_ressourcen: Optional[list[SteuerbareRessource]] = None
     #: Zeitspanne der Gültigkeit
     gueltigkeit: Optional[Zeitspanne] = None
     #:
