@@ -8,7 +8,7 @@ from typing import Annotated, Optional
 
 from pydantic import Field
 
-from ..bo.lokationszuordnung import Lokationszuordnung
+# from ..bo.lokationszuordnung import Lokationszuordnung
 from ..com.adresse import Adresse
 from ..com.geokoordinaten import Geokoordinaten
 from ..com.katasteradresse import Katasteradresse
@@ -79,7 +79,8 @@ class Marktlokation(Geschaeftsobjekt):
     #: Geschäftspartner, dem diese Marktlokation gehört
     endkunde: Optional[Geschaeftspartner] = None
 
-    lokationszuordnung: Optional[Lokationszuordnung] = None
+    # TODO: cyclic import
+    # lokationszuordnung: Optional[Lokationszuordnung] = None
 
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
