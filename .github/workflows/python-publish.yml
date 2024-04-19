@@ -97,7 +97,7 @@ jobs:
         run: |
           docker compose up -d
       - name: Build the documentation
-        uses: sphinx-notes/pages@v2
+        uses: sphinx-notes/pages@v3
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
         # We need that in order to be able to store (and deploy) multiple versions of the documentation.
         with:
