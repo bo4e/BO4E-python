@@ -10,7 +10,7 @@ annotated-types==0.5.0
     # via pydantic
 babel==2.12.1
     # via sphinx
-bo4e-schema-tool==0.0.6
+bo4e-schema-tool==0.0.7
     # via -r .\docs\requirements.in
 certifi==2023.7.22
     # via requests
