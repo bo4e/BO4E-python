@@ -28,8 +28,13 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
+          pip install tox
           pip install -r requirements.txt
         # Note: The sphinx action below can only install a single requirements file.
+      - name: Build JSON Schemas
+        run: tox -e generate_json_schemas
+        env:
+          TARGET_VERSION: latest
       - name: Write version to conf.py
         run: |
           echo -e "version = release = \"latest\"\n" | cat - docs/conf.py > /tmp/conf.py && mv /tmp/conf.py docs/conf.py
