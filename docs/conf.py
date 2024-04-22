@@ -318,4 +318,4 @@ print(f"Compiled uml files into svg using kroki.")
 # Create compatibility matrix
 compatibility_matrix_output_file = Path(__file__).parent / "compatibility_matrix.csv"
 gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN")
-create_tables_for_doc(compatibility_matrix_output_file, __gh_version__, last_n_versions=2, gh_token=gh_token)
+create_tables_for_doc(compatibility_matrix_output_file, release, last_n_versions=2, gh_token=gh_token)
