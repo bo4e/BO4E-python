@@ -182,7 +182,11 @@ def create_tables_for_doc(
     )
 
 
-if __name__ == "__main__":
+def test_create_tables_for_doc():
+    """
+    Test the create_tables_for_doc function locally without building the entire documentation.
+    Needs the JSON schemas to be present in /json_schemas with TARGET_VERSION set to "latest".
+    """
     create_tables_for_doc(
         Path(__file__).parents[1] / "compatibility_matrix.csv",
         "latest",
