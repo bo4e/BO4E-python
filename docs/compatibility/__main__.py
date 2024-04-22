@@ -147,7 +147,7 @@ def _monkey_patch_bost_regex_if_local_testing(version: str):
     if not regex_expected_version.fullmatch(version):
         bost.operations.REF_ONLINE_REGEX = re.compile(
             rf"^https://raw\.githubusercontent\.com/(?:{OWNER.upper()}|{OWNER.lower()}|Hochfrequenz)/{REPO}/"
-            r"(?P<version>v\d+\.\d+\.\d+(?:rc\d+)?(?:\.dev\d+\+[\w\d\.]+)?)/"
+            rf"(?P<version>{version})/"
             r"src/bo4e_schemas/(?P<sub_path>(?:\w+/)*)(?P<model>\w+)\.json#?$"
         )
 
