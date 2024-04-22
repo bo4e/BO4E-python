@@ -27,7 +27,7 @@ Legend:
 |      | | Data model was removed in this version             |
 +------+------------------------------------------------------+
 | \-   | | Data model not existent in this version            |
-|      | | was removed before                                 |
+|      | | was removed before or will be added in future      |
 +------+------------------------------------------------------+
 
 .. csv-table:: Compatibility matrix
