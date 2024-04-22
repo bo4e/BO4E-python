@@ -185,6 +185,6 @@ def create_tables_for_doc(
 if __name__ == "__main__":
     create_tables_for_doc(
         Path(__file__).parents[1] / "compatibility_matrix.csv",
-        "v202401.1.0rc2.dev16+g0791509b.d20240323",
+        "latest",
         last_n_versions=3,
     )
