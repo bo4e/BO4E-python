@@ -79,11 +79,8 @@ being inherited by all classes in this project. Therefore, their namespace start
 #: Define shorthand for Cardinality type since none of the values have to be provided.
 Cardinality = tuple[str, str]
 
-#: Define the link base URI used in svg links
-LINK_URI_BASE = "https://bo4e-python.readthedocs.io/en/latest"
-
-# link domain to test links only local.
-# LINK_URI_BASE = f"file:///{Path.cwd().parent}/.tox/docs/tmp/html"
+#: Define the link base URI used in svg links. Will be overridden by conf.py.
+LINK_URI_BASE = f"file:///{Path(__file__).parents[1]}/.tox/docs/tmp/html"
 
 
 class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
@@ -568,12 +565,15 @@ def _recursive_add_class(
     # ------------------------------------------------------------------------------------------------------------------
 
 
-def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
+def compile_files_kroki(input_dir: Path, output_dir: Path, locally_hosted: bool = False) -> None:
     """
     Compiles all plantuml files inside `input_dir` (recursive) to svg's in `output_dir` with the same subpath as in
     `input_dir`. Files are compiled using web service of [kroki](https://kroki.io)
     """
-    url = "https://kroki.io"
+    if locally_hosted:
+        url = "http://localhost:8000"
+    else:
+        url = "https://kroki.io"
     for root, _, files in os.walk(input_dir):
         for file in files:
             with open(os.path.join(root, file), "r", encoding="utf-8") as uml_file:
