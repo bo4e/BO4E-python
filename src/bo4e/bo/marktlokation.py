@@ -12,6 +12,8 @@ from ..com.adresse import Adresse
 from ..com.geokoordinaten import Geokoordinaten
 from ..com.katasteradresse import Katasteradresse
 from ..com.messlokationszuordnung import Messlokationszuordnung
+from ..com.verbrauch import Verbrauch
+from ..com.zaehlwerk import Zaehlwerk
 from ..enum.bilanzierungsmethode import Bilanzierungsmethode
 from ..enum.energierichtung import Energierichtung
 from ..enum.gasqualitaet import Gasqualitaet
@@ -38,7 +40,7 @@ class Marktlokation(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Marktlokation.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Marktlokation.json>`_
+        `Marktlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Marktlokation.json>`_
 
     """
 
@@ -115,3 +117,11 @@ class Marktlokation(Geschaeftsobjekt):
 
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
+
+    regelzone: Optional[
+        str
+    ] = None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
+    marktgebiet: Optional[str] = None  #: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
+    zaehlwerke: Optional[list[Zaehlwerk]] = None
+    verbrauchsmengen: Optional[list[Verbrauch]] = None
+    zaehlwerke_der_beteiligten_marktrolle: Optional[list[Zaehlwerk]] = None

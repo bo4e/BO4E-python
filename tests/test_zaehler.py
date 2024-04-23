@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest
@@ -21,9 +21,9 @@ class TestZaehler:
                     zaehlertyp=Zaehlertyp.DREHSTROMZAEHLER,
                     registeranzahl=Registeranzahl.ZWEITARIF,
                     zaehlerkonstante=Decimal(0.9),
-                    eichung_bis=datetime(2022, 1, 1, 0, 0, 0),
+                    eichung_bis=datetime(2022, 1, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
                     zusatz_attribute=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
-                    letzte_eichung=datetime(2019, 6, 30, 0, 0, 0),
+                    letzte_eichung=datetime(2019, 6, 30, 0, 0, 0).replace(tzinfo=timezone.utc),
                 ),
             ),
         ],

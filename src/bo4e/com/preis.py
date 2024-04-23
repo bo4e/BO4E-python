@@ -25,7 +25,7 @@ class Preis(COM):
         <object data="../_static/images/bo4e/com/Preis.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preis.json>`_
+        `Preis JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Preis.json>`_
 
     """
 

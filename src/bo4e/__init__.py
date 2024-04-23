@@ -7,6 +7,7 @@ license.
 
 The BO4E version can be queried using `bo4e.__version__`.
 """
+
 __all__ = [
     "Angebot",
     "Ausschreibung",
