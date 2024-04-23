@@ -74,7 +74,7 @@ sphinxcontrib-serializinghtml==1.1.9
     # via sphinx
 typeguard==4.1.5
     # via -r requirements.in
-typing-extensions==4.8.0
+typing-extensions==4.11.0
     # via
     #   pydantic
     #   pydantic-core
