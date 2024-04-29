@@ -68,6 +68,8 @@ def pull_or_reuse_bo4e_version(version: str, gh_token: str | None = None, from_l
                 "No local json schemas found in /json_schemas. "
                 "Please ensure that the json schemas are build on beforehand."
             )
+        if bo4e_dir.exists():
+            shutil.rmtree(bo4e_dir)
         shutil.copytree(LOCAL_JSON_SCHEMA_DIR, bo4e_dir)
         update_references(bo4e_dir, version)
     elif any(bo4e_dir.rglob("*.json")):
