@@ -41,9 +41,6 @@ jobs:
         run: tox -e generate_json_schemas
         env:
           TARGET_VERSION: ${{ env.REF_NAME }}
-#      - name: Write version to conf.py
-#        run: |
-#          echo -e "version = release = \"$REF_NAME\"\n" | cat - docs/conf.py > /tmp/conf.py && mv /tmp/conf.py docs/conf.py
       - name: Run kroki with docker
         run: |
           docker compose up -d
