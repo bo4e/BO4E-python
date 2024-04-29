@@ -46,9 +46,9 @@ markupsafe==2.1.3
     # via jinja2
 more-itertools==10.2.0
     # via bo4e-schema-tool
-networkx==3.2
+networkx==3.3
     # via -r .\docs\requirements.in
-packaging==23.1
+packaging==24.0
     # via sphinx
 pycparser==2.21
     # via cffi
@@ -104,12 +104,12 @@ sphinxcontrib-serializinghtml==1.1.9
     # via sphinx
 typeguard==4.1.5
     # via -r .\docs\requirements.in
-typing-extensions==4.8.0
+typing-extensions==4.11.0
     # via
     #   pydantic
     #   pydantic-core
     #   pygithub
-urllib3==2.0.7
+urllib3==2.2.1
     # via
     #   pygithub
     #   requests
