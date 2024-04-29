@@ -309,7 +309,8 @@ intersphinx_mapping = {
 
 # Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
 # See docs/uml.py for more details.
-uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
+if release != "local":
+    uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
 print(_network)
