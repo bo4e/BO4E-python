@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.bdewartikelnummer &mdash; bo4e test-227744 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=b1a2fc90"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                test-227744
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.bdewartikelnummer</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.bdewartikelnummer</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint: disable=missing-module-docstring</span>
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="BDEWArtikelnummer">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.bdewartikelnummer.BDEWArtikelnummer">[docs]</a>
+<span class="k">class</span> <span class="nc">BDEWArtikelnummer</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    BDEW Artikelnummern</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;LEISTUNG&quot;</span>  <span class="c1">#: Leistung</span>
+    <span class="n">LEISTUNG_PAUSCHAL</span> <span class="o">=</span> <span class="s2">&quot;LEISTUNG_PAUSCHAL&quot;</span>  <span class="c1">#: Leistung pauschal</span>
+    <span class="n">GRUNDPREIS</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS&quot;</span>  <span class="c1">#: Grundpreis</span>
+    <span class="n">REGELENERGIE_ARBEIT</span> <span class="o">=</span> <span class="s2">&quot;REGELENERGIE_ARBEIT&quot;</span>  <span class="c1">#: Regelenergie Arbeit</span>
+    <span class="n">REGELENERGIE_LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;REGELENERGIE_LEISTUNG&quot;</span>  <span class="c1">#: Regelenergie Leistung</span>
+    <span class="n">NOTSTROMLIEFERUNG_ARBEIT</span> <span class="o">=</span> <span class="s2">&quot;NOTSTROMLIEFERUNG_ARBEIT&quot;</span>  <span class="c1">#: Notstromlieferung Arbeit</span>
+    <span class="n">NOTSTROMLIEFERUNG_LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;NOTSTROMLIEFERUNG_LEISTUNG&quot;</span>  <span class="c1">#: Notstromlieferung Leistung</span>
+    <span class="n">RESERVENETZKAPAZITAET</span> <span class="o">=</span> <span class="s2">&quot;RESERVENETZKAPAZITAET&quot;</span>  <span class="c1">#: Reservenetzkapazität</span>
+    <span class="n">RESERVELEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;RESERVELEISTUNG&quot;</span>  <span class="c1">#: Reserveleistung</span>
+    <span class="n">ZUSAETZLICHE_ABLESUNG</span> <span class="o">=</span> <span class="s2">&quot;ZUSAETZLICHE_ABLESUNG&quot;</span>  <span class="c1">#: Zusätzliche Ablesung</span>
+    <span class="n">PRUEFGEBUEHREN_AUSSERPLANMAESSIG</span> <span class="o">=</span> <span class="s2">&quot;PRUEFGEBUEHREN_AUSSERPLANMAESSIG&quot;</span>  <span class="c1">#: Prüfgebühren (außerplanmäßig)</span>
+    <span class="n">WIRKARBEIT</span> <span class="o">=</span> <span class="s2">&quot;WIRKARBEIT&quot;</span>  <span class="c1">#: Wirkarbeit</span>
+    <span class="c1">#: singulär genutzte Betriebsmittel (z. B. Trafomiete, Leitungen)</span>
+    <span class="n">SINGULAER_GENUTZTE_BETRIEBSMITTEL</span> <span class="o">=</span> <span class="s2">&quot;SINGULAER_GENUTZTE_BETRIEBSMITTEL&quot;</span>
+    <span class="n">ABGABE_KWKG</span> <span class="o">=</span> <span class="s2">&quot;ABGABE_KWKG&quot;</span>  <span class="c1">#: Abgabe KWKG</span>
+    <span class="n">ABSCHLAG</span> <span class="o">=</span> <span class="s2">&quot;ABSCHLAG&quot;</span>  <span class="c1">#: Abschlag</span>
+    <span class="n">KONZESSIONSABGABE</span> <span class="o">=</span> <span class="s2">&quot;KONZESSIONSABGABE&quot;</span>  <span class="c1">#: Konzessionsabgabe</span>
+    <span class="n">ENTGELT_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;ENTGELT_FERNAUSLESUNG&quot;</span>  <span class="c1">#: Entgelt für Fernauslesung</span>
+    <span class="n">UNTERMESSUNG</span> <span class="o">=</span> <span class="s2">&quot;UNTERMESSUNG&quot;</span>  <span class="c1">#: Untermessung</span>
+    <span class="n">BLINDMEHRARBEIT</span> <span class="o">=</span> <span class="s2">&quot;BLINDMEHRARBEIT&quot;</span>  <span class="c1">#: Blindmehrarbeit</span>
+    <span class="n">ENTGELT_ABRECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;ENTGELT_ABRECHNUNG&quot;</span>  <span class="c1">#: Entgelt für Abrechnung</span>
+    <span class="n">SPERRKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;SPERRKOSTEN&quot;</span>  <span class="c1">#: Sperrkosten</span>
+    <span class="n">ENTSPERRKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;ENTSPERRKOSTEN&quot;</span>  <span class="c1">#: Entsperrkosten</span>
+    <span class="n">MAHNKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;MAHNKOSTEN&quot;</span>  <span class="c1">#: Mahnkosten</span>
+    <span class="n">MEHR_MINDERMENGEN</span> <span class="o">=</span> <span class="s2">&quot;MEHR_MINDERMENGEN&quot;</span>  <span class="c1">#: Mehr- und Mindermenge</span>
+    <span class="n">INKASSOKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;INKASSOKOSTEN&quot;</span>  <span class="c1">#: Inkassokosten</span>
+    <span class="n">BLINDMEHRLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;BLINDMEHRLEISTUNG&quot;</span>  <span class="c1">#: Blindmehrleistung</span>
+    <span class="n">ENTGELT_MESSUNG_ABLESUNG</span> <span class="o">=</span> <span class="s2">&quot;ENTGELT_MESSUNG_ABLESUNG&quot;</span>  <span class="c1">#: Entgelt für Messung und Ablesung</span>
+    <span class="c1">#: Entgelt für Einbau, Betrieb und Wartung der Messtechnik</span>
+    <span class="n">ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK</span> <span class="o">=</span> <span class="s2">&quot;ENTGELT_EINBAU_BETRIEB_WARTUNG_MESSTECHNIK&quot;</span>
+    <span class="n">AUSGLEICHSENERGIE</span> <span class="o">=</span> <span class="s2">&quot;AUSGLEICHSENERGIE&quot;</span>  <span class="c1">#: Ausgleichsenergie</span>
+    <span class="n">ZAEHLEINRICHTUNG</span> <span class="o">=</span> <span class="s2">&quot;ZAEHLEINRICHTUNG&quot;</span>  <span class="c1">#: Zähleinrichtung</span>
+    <span class="n">WANDLER_MENGENUMWERTER</span> <span class="o">=</span> <span class="s2">&quot;WANDLER_MENGENUMWERTER&quot;</span>  <span class="c1">#: Wandler/Mengenumwerter</span>
+    <span class="n">KOMMUNIKATIONSEINRICHTUNG</span> <span class="o">=</span> <span class="s2">&quot;KOMMUNIKATIONSEINRICHTUNG&quot;</span>  <span class="c1">#: Kommunikationseinrichtung</span>
+    <span class="n">TECHNISCHE_STEUEREINRICHTUNG</span> <span class="o">=</span> <span class="s2">&quot;TECHNISCHE_STEUEREINRICHTUNG&quot;</span>  <span class="c1">#: Technische Steuereinrichtung</span>
+    <span class="n">PARAGRAF_19_STROM_NEV_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;PARAGRAF_19_STROM_NEV_UMLAGE&quot;</span>  <span class="c1">#: § 19 StromNEV Umlage</span>
+    <span class="n">BEFESTIGUNGSEINRICHTUNG</span> <span class="o">=</span> <span class="s2">&quot;BEFESTIGUNGSEINRICHTUNG&quot;</span>  <span class="c1">#: Befestigungseinrichtung (z. B. Zählertafel)</span>
+    <span class="n">OFFSHORE_HAFTUNGSUMLAGE</span> <span class="o">=</span> <span class="s2">&quot;OFFSHORE_HAFTUNGSUMLAGE&quot;</span>  <span class="c1">#: Offshore-Haftungsumlage</span>
+    <span class="n">FIXE_ARBEITSENTGELTKOMPONENTE</span> <span class="o">=</span> <span class="s2">&quot;FIXE_ARBEITSENTGELTKOMPONENTE&quot;</span>  <span class="c1">#: Fixe Arbeitsentgeltkomponente</span>
+    <span class="n">FIXE_LEISTUNGSENTGELTKOMPONENTE</span> <span class="o">=</span> <span class="s2">&quot;FIXE_LEISTUNGSENTGELTKOMPONENTE&quot;</span>  <span class="c1">#: Fixe Leistungsentgeltkomponente</span>
+    <span class="n">UMLAGE_ABSCHALTBARE_LASTEN</span> <span class="o">=</span> <span class="s2">&quot;UMLAGE_ABSCHALTBARE_LASTEN&quot;</span>  <span class="c1">#: Umlage abschaltbare Lasten</span>
+    <span class="n">MEHRMENGE</span> <span class="o">=</span> <span class="s2">&quot;MEHRMENGE&quot;</span>  <span class="c1">#: Mehrmenge</span>
+    <span class="n">MINDERMENGE</span> <span class="o">=</span> <span class="s2">&quot;MINDERMENGE&quot;</span>  <span class="c1">#: Mindermenge</span>
+    <span class="n">ENERGIESTEUER</span> <span class="o">=</span> <span class="s2">&quot;ENERGIESTEUER&quot;</span>  <span class="c1">#: Energiesteuer</span>
+    <span class="n">SMARTMETER_GATEWAY</span> <span class="o">=</span> <span class="s2">&quot;SMARTMETER_GATEWAY&quot;</span>  <span class="c1">#: Smartmeter-Gateway</span>
+    <span class="n">STEUERBOX</span> <span class="o">=</span> <span class="s2">&quot;STEUERBOX&quot;</span>  <span class="c1">#: Steuerbox</span>
+    <span class="n">MSB_INKL_MESSUNG</span> <span class="o">=</span> <span class="s2">&quot;MSB_INKL_MESSUNG&quot;</span>  <span class="c1">#: Messtellenbetrieb inklusive Messung</span>
+    <span class="n">AUSGLEICHSENERGIE_UNTERDECKUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSGLEICHSENERGIE_UNTERDECKUNG&quot;</span>  <span class="c1">#: AusgleichsenergieUnterdeckung</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
