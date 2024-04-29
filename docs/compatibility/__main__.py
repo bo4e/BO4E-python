@@ -61,8 +61,6 @@ def pull_or_reuse_bo4e_version(version: str, gh_token: str | None = None, from_l
     schemas in /json_schemas.
     """
     bo4e_dir = BO4E_BASE_DIR / version
-    if any(bo4e_dir.rglob("*.json")):
-        return bo4e_dir
 
     if from_local:
         if not any(LOCAL_JSON_SCHEMA_DIR.rglob("*.json")):
@@ -72,6 +70,8 @@ def pull_or_reuse_bo4e_version(version: str, gh_token: str | None = None, from_l
             )
         shutil.copytree(LOCAL_JSON_SCHEMA_DIR, bo4e_dir)
         update_references(bo4e_dir, version)
+    elif any(bo4e_dir.rglob("*.json")):
+        return bo4e_dir
     else:
         pull_bo4e_version(version, bo4e_dir, gh_token)
     return bo4e_dir
