@@ -171,9 +171,13 @@ html_theme_options = {
 # Note: For the deployment to GitHub Pages the release and version values will
 # be set by the action. This is to support things like /latest or /stable.
 if "release" not in globals():
-    from bo4e import __gh_version__ as release
+    release = os.getenv("SPHINX_DOCS_RELEASE")
+    if release is None:
+        from bo4e import __gh_version__ as release
 if "version" not in globals():
-    from bo4e import __version__ as version
+    version = os.getenv("SPHINX_DOCS_VERSION")
+    if version is None:
+        from bo4e import __version__ as version
 
 print(f"Got version = {version} from __version__")
 print(f"Got release = {release} from __gh_version__")

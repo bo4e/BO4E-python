@@ -41,9 +41,9 @@ jobs:
         run: tox -e generate_json_schemas
         env:
           TARGET_VERSION: ${{ env.REF_NAME }}
-      - name: Write version to conf.py
-        run: |
-          echo -e "version = release = \"$REF_NAME\"\n" | cat - docs/conf.py > /tmp/conf.py && mv /tmp/conf.py docs/conf.py
+#      - name: Write version to conf.py
+#        run: |
+#          echo -e "version = release = \"$REF_NAME\"\n" | cat - docs/conf.py > /tmp/conf.py && mv /tmp/conf.py docs/conf.py
       - name: Run kroki with docker
         run: |
           docker compose up -d
@@ -57,6 +57,9 @@ jobs:
           target_path: ${{ env.REF_NAME }}
           target_branch: gh-pages
           sphinx_options: -W -j auto
+        env:
+          SPHINX_DOCS_RELEASE: ${{ env.REF_NAME }}
+          SPHINX_DOCS_VERSION: ${{ env.REF_NAME }}
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
