@@ -5,14 +5,12 @@
 #
 #    pip-compile-multi
 #
-black==24.4.0
-    # via -r dev_requirements\requirements-formatting.in
+black==24.4.2
+    # via -r requirements-formatting.in
 click==8.1.7
     # via black
-colorama==0.4.6
-    # via click
 isort==5.13.2
-    # via -r dev_requirements\requirements-formatting.in
+    # via -r requirements-formatting.in
 mypy-extensions==1.0.0
     # via black
 packaging==24.0
