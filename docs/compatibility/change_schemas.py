@@ -1,10 +1,11 @@
-from abc import ABC
+"""
+Contains the classes to model changes between two BO4E versions.
+"""
+
 from enum import StrEnum
-from types import NoneType
-from typing import Any, Generic, Iterable, Literal, TypeGuard, TypeVar
+from typing import Any, Iterable
 
 from pydantic import BaseModel
-from typeguard import check_type
 
 
 class ChangeType(StrEnum):
@@ -34,18 +35,14 @@ class ChangeType(StrEnum):
     ENUM_VALUE_REMOVED = "enum_value_removed"
 
 
-OldT = TypeVar("OldT")
-NewT = TypeVar("NewT")
-
-
-class Change(BaseModel, Generic[OldT, NewT]):
+class Change(BaseModel):
     """
     This pydantic class models a single change between two BO4E versions.
     """
 
     type: ChangeType
-    old: OldT
-    new: NewT
+    old: Any
+    new: Any
     old_trace: str
     new_trace: str
 
@@ -53,16 +50,7 @@ class Change(BaseModel, Generic[OldT, NewT]):
         return f"{self.type}: {self.old} -> {self.new}"
 
 
-def change_is_of_type(
-    change: Change[Any, Any], old_type: type[OldT], new_type: type[NewT]
-) -> TypeGuard[Change[OldT, NewT]]:
-    """
-    This function checks if a change is of a specific type.
-    """
-    return check_type(change.old, old_type) and check_type(change.new, new_type)
-
-
-def is_change_critical(change: Change[Any, Any]) -> bool:
+def is_change_critical(change: Change) -> bool:
     """
     This function checks if a change is critical i.e. if the new value is incompatible to the old value.
     """
@@ -81,7 +69,7 @@ def is_change_critical(change: Change[Any, Any]) -> bool:
     )
 
 
-def filter_non_crit(changes: Iterable[Change[Any, Any]]) -> Iterable[Change[Any, Any]]:
+def filter_non_crit(changes: Iterable[Change]) -> Iterable[Change]:
     """
     This function filters out all non-critical changes.
     """

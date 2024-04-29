@@ -1,3 +1,11 @@
+"""
+This module provides functions to compare the BO4E JSON schemas of different versions.
+It also contains functions to query GitHub for the latest BO4E versions to compare with the schemas of the current
+work tree.
+Additionally, it implements a little cache functionality to avoid multiple downloads of the same versions e.g.
+if you're testing locally.
+"""
+
 import itertools
 import logging
 import re
@@ -7,20 +15,18 @@ from typing import Any as _Any
 from typing import Iterable
 
 import bost.operations
-import change_schemas
-import diff
-import loader
-import matrix
 from bost import main as bost_main
 from bost.operations import update_references as bost_update_references
 from bost.pull import OWNER, REPO, SchemaMetadata, get_source_repo
+
+from . import change_schemas, diff, loader, matrix
 
 BO4E_BASE_DIR = Path(__file__).parents[2] / "tmp/bo4e_json_schemas"
 LOCAL_JSON_SCHEMA_DIR = Path(__file__).parents[2] / "json_schemas"
 logger = logging.getLogger(__name__)
 
 
-def pull_bo4e_version(version: str, output: Path, gh_token: str | None = None):
+def pull_bo4e_version(version: str, output: Path, gh_token: str | None = None) -> None:
     """
     Pull the BO4E version from the given version string.
     """
@@ -34,7 +40,7 @@ def pull_bo4e_version(version: str, output: Path, gh_token: str | None = None):
     )
 
 
-def update_references(path: Path, version: str):
+def update_references(path: Path, version: str) -> None:
     """
     Update the references in the given path. This step is needed for the local build.
     """
@@ -81,7 +87,7 @@ def pull_or_reuse_bo4e_version(version: str, gh_token: str | None = None, from_l
 
 def compare_bo4e_versions(
     version_old: str, version_new: str, gh_token: str | None = None, from_local: bool = False
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     Compare the old version with the new version.
     If version_new is None use the BO4E version of the checkout working directory by assuming the compiled json
@@ -95,7 +101,7 @@ def compare_bo4e_versions(
 
 def compare_bo4e_versions_iteratively(
     versions: Iterable[str], cur_version: str | None = None, gh_token: str | None = None
-) -> dict[tuple[str, str], Iterable[change_schemas.Change[_Any, _Any]]]:
+) -> dict[tuple[str, str], Iterable[change_schemas.Change]]:
     """
     Compare the versions iteratively. Each version at index i will be compared to the version at index i+1.
     Additionally, if cur_version is provided, the last version in the list will be compared to the version
@@ -164,7 +170,7 @@ def get_all_release_versions_since_20240100(include_rc: bool = False, gh_token: 
     logger.warning("Threshold version %s not found. Returned all matching releases.", version_threshold)
 
 
-def _monkey_patch_bost_regex_if_local_testing(version: str):
+def _monkey_patch_bost_regex_if_local_testing(version: str) -> None:
     regex_expected_version = re.compile(r"^v\d+\.\d+\.\d+(?:-rc\d+)?$")
     if not regex_expected_version.fullmatch(version):
         bost.operations.REF_ONLINE_REGEX = re.compile(
@@ -180,7 +186,7 @@ def create_tables_for_doc(
     *,
     gh_token: str | None = None,
     last_n_versions: int = 2,
-):
+) -> None:
     """
     Creates the compatibility matrix for the documentation. The output is a csv file. This can be referenced
     inside Sphinx documentation. See https://sublime-and-sphinx-guide.readthedocs.io/en/latest/tables.html#csv-files
@@ -209,13 +215,13 @@ def create_tables_for_doc(
     )
 
 
-def test_create_tables_for_doc():
+def test_create_tables_for_doc() -> None:
     """
     Test the create_tables_for_doc function locally without building the entire documentation.
-    Needs the JSON schemas to be present in /json_schemas with TARGET_VERSION set to "latest".
+    Needs the JSON schemas to be present in /json_schemas with TARGET_VERSION set to "local".
     """
     create_tables_for_doc(
         Path(__file__).parents[1] / "compatibility_matrix.csv",
-        "latest",
+        "local",
         last_n_versions=3,
     )

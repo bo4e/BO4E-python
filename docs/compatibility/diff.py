@@ -1,18 +1,22 @@
+"""
+Contains the logic to detect the different changes between two BO4E versions.
+"""
+
 import re
 from pathlib import Path
 from typing import Any as _Any
 from typing import Iterable
 
-import change_schemas
-import loader
 from bost.schema import AllOf, AnyOf, Array, Object, Reference, SchemaRootType, SchemaType, StrEnum, String, TypeBase
+
+from . import change_schemas, loader
 
 REGEX_IGNORE_VERSION = re.compile(r"v\d+\.\d+\.\d+(-rc\d+)?")
 
 
 def _diff_type_base(
     schema_old: TypeBase, schema_new: TypeBase, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two type base schemas and yields the changes.
     """
@@ -45,7 +49,7 @@ def _diff_type_base(
 
 def _diff_enum_schemas(
     schema_old: StrEnum, schema_new: StrEnum, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two enum schemas and yields the changes.
     """
@@ -73,7 +77,7 @@ def _diff_enum_schemas(
 
 def _diff_object_schemas(
     schema_old: Object, schema_new: Object, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two object schemas and yields the changes.
     """
@@ -109,7 +113,7 @@ def _diff_object_schemas(
 
 def _diff_ref_schemas(
     schema_old: Reference, schema_new: Reference, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two reference schemas and yields a change if the references are different.
     Even if the referenced schema only got renamed or moved, the reference will be treated as different
@@ -127,7 +131,7 @@ def _diff_ref_schemas(
 
 def _diff_array_schemas(
     schema_old: Array, schema_new: Array, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two array schemas and yields the changes.
     """
@@ -136,12 +140,12 @@ def _diff_array_schemas(
 
 def _diff_any_of_or_all_of_schemas(
     schema_old: AnyOf | AllOf, schema_new: AnyOf | AllOf, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two anyOf or allOf schemas and yields the changes.
     """
     assert type(schema_old) is type(schema_new), "Internal error: This function should only be called for equal types"
-    if type(schema_old) is AnyOf:
+    if isinstance(schema_old, AnyOf):
         query_str = "any_of"
     else:
         query_str = "all_of"
@@ -165,7 +169,7 @@ def _diff_any_of_or_all_of_schemas(
             yield change_schemas.Change(
                 type=(
                     change_schemas.ChangeType.FIELD_ANY_OF_TYPE_REMOVED
-                    if type(schema_old) is AnyOf
+                    if isinstance(schema_old, AnyOf)
                     else change_schemas.ChangeType.FIELD_ALL_OF_TYPE_REMOVED
                 ),
                 old=old_type,
@@ -178,7 +182,7 @@ def _diff_any_of_or_all_of_schemas(
         yield change_schemas.Change(
             type=(
                 change_schemas.ChangeType.FIELD_ANY_OF_TYPE_ADDED
-                if type(schema_old) is AnyOf
+                if isinstance(schema_old, AnyOf)
                 else change_schemas.ChangeType.FIELD_ALL_OF_TYPE_ADDED
             ),
             old=None,
@@ -190,7 +194,7 @@ def _diff_any_of_or_all_of_schemas(
 
 def _diff_string_schemas(
     schema_old: String, schema_new: String, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two string schemas and yields the changes.
     """
@@ -206,7 +210,7 @@ def _diff_string_schemas(
 
 def _diff_schema_differing_types(
     schema_old: SchemaType, schema_new: SchemaType, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two differing schema types and yields the changes.
     """
@@ -247,7 +251,7 @@ def _diff_schema_differing_types(
 
 def _diff_schema_type(
     schema_old: SchemaType, schema_new: SchemaType, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two schema types and yields the changes.
     """
@@ -257,28 +261,34 @@ def _diff_schema_type(
     # Even if the types are equal on this shallow level, we must do some more checks for certain
     # types.
     elif isinstance(schema_new, StrEnum):
-        yield from _diff_enum_schemas(schema_old, schema_new, old_trace, new_trace)
+        yield from _diff_enum_schemas(schema_old, schema_new, old_trace, new_trace)  # type: ignore[arg-type]
+        # mypy isn't able to know that type(schema_new) is type(schema_old) here (and in the following)
     elif isinstance(schema_new, Object):
-        yield from _diff_object_schemas(schema_old, schema_new, old_trace, new_trace)
+        yield from _diff_object_schemas(schema_old, schema_new, old_trace, new_trace)  # type: ignore[arg-type]
     elif isinstance(schema_new, Reference):
-        yield from _diff_ref_schemas(schema_old, schema_new, old_trace, new_trace)
+        yield from _diff_ref_schemas(schema_old, schema_new, old_trace, new_trace)  # type: ignore[arg-type]
     elif isinstance(schema_new, Array):
-        yield from _diff_array_schemas(schema_old, schema_new, old_trace, new_trace)
-    elif isinstance(schema_new, AnyOf) or isinstance(schema_new, AllOf):
-        yield from _diff_any_of_or_all_of_schemas(schema_old, schema_new, old_trace, new_trace)
+        yield from _diff_array_schemas(schema_old, schema_new, old_trace, new_trace)  # type: ignore[arg-type]
+    elif isinstance(schema_new, (AnyOf, AllOf)):
+        yield from _diff_any_of_or_all_of_schemas(
+            schema_old,  # type: ignore[arg-type]
+            schema_new,
+            old_trace,
+            new_trace,
+        )
     # Any other types are definitely equal at this point
 
 
 def _diff_root_schemas(
     schema_old: SchemaRootType, schema_new: SchemaRootType, old_trace: str, new_trace: str
-) -> Iterable[change_schemas.Change[_Any, _Any]]:
+) -> Iterable[change_schemas.Change]:
     """
     This function compares two root schemas and yields the changes.
     """
     yield from _diff_schema_type(schema_old, schema_new, old_trace, new_trace)
 
 
-def diff_schemas(schemas_old: Path, schemas_new: Path) -> Iterable[change_schemas.Change[_Any, _Any]]:
+def diff_schemas(schemas_old: Path, schemas_new: Path) -> Iterable[change_schemas.Change]:
     """
     This function compares two BO4E versions and yields the changes.
     Note: The paths to the old and the new schemas should correspond to the same root node of the tree structure.

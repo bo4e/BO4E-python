@@ -1,11 +1,15 @@
+"""
+This module contains the logic to create the compatibility matrix from a list of changes.
+"""
+
 import csv
 import itertools
 from enum import StrEnum
 from pathlib import Path
 from typing import Any as _Any
-from typing import Iterable, Sequence
+from typing import Mapping, Sequence
 
-import change_schemas
+from . import change_schemas
 
 
 class ChangeSymbol(StrEnum):
@@ -22,7 +26,7 @@ class ChangeSymbol(StrEnum):
 
 
 def determine_symbol(
-    changes: Sequence[change_schemas.Change[_Any, _Any]], namespace: Sequence[tuple[str, ...]], cls: tuple[str, ...]
+    changes: Sequence[change_schemas.Change], namespace: Sequence[tuple[str, ...]], cls: tuple[str, ...]
 ) -> ChangeSymbol:
     """
     Determine the symbol of a change.
@@ -47,10 +51,10 @@ def determine_symbol(
 
 def create_compatibility_matrix_csv(
     output: Path,
-    versions: Iterable[str],
-    namespaces: dict[str, Sequence[tuple[str, ...]]],
-    changes: dict[tuple[str, str], Sequence[change_schemas.Change[_Any, _Any]]],
-):
+    versions: Sequence[str],
+    namespaces: Mapping[str, Sequence[tuple[str, ...]]],
+    changes: Mapping[tuple[str, str], Sequence[change_schemas.Change]],
+) -> None:
     """
     Create a compatibility matrix csv file from the given changes.
     """
