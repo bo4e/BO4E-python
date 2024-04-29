@@ -141,7 +141,27 @@ def get_last_n_release_versions(n: int, include_rc: bool = False, gh_token: str 
         if counter >= n:
             return
 
-    logger.warning(f"Only {counter} matching releases found. Returning all releases.")
+    logger.warning("Only %d matching releases found. Returning all releases.", counter)
+
+
+def get_all_release_versions_since_20240100(include_rc: bool = False, gh_token: str | None = None) -> Iterable[str]:
+    """
+    Get all release versions since v202401.0.0 from the BO4E repository.
+    """
+    repo = get_source_repo(gh_token)
+    releases = repo.get_releases()
+    version_threshold = "v202401.0.0"
+
+    for release in releases:
+        if not REGEX_RELEASE_VERSION.fullmatch(release.tag_name) and (
+            not include_rc or not REGEX_RELEASE_CANDIDATE_VERSION.fullmatch(release.tag_name)
+        ):
+            continue
+        yield release.tag_name
+        if release.tag_name == version_threshold:
+            return
+
+    logger.warning("Threshold version %s not found. Returned all matching releases.", version_threshold)
 
 
 def _monkey_patch_bost_regex_if_local_testing(version: str):
@@ -167,11 +187,16 @@ def create_tables_for_doc(
     for more information.
     If you have problems with rate limiting, please set gh_token.
     The compatibility matrix will be built for last_n_versions + the current version in the checkout working directory.
+    If you set last_n_versions = 0 all versions since v202401.0.0 will be compared.
     Note: The matrix will never contain the first version as column. Each column is a comparison to the version before.
+    Note: Release candidates are excluded.
     """
     _monkey_patch_bost_regex_if_local_testing(gh_version)
     logger.info("Retrieving the last %d release versions", last_n_versions)
-    versions = list(reversed(list(get_last_n_release_versions(last_n_versions, gh_token=gh_token))))
+    if last_n_versions > 0:
+        versions = list(reversed(list(get_last_n_release_versions(last_n_versions, gh_token=gh_token))))
+    else:
+        versions = list(reversed(list(get_all_release_versions_since_20240100(gh_token=gh_token))))
     logger.info("Comparing versions iteratively: %s", " -> ".join([*versions, gh_version]))
     changes_iterables = compare_bo4e_versions_iteratively(versions, gh_version, gh_token=gh_token)
     logger.info("Building namespaces")
