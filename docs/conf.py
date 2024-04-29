@@ -7,7 +7,6 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
-
 import inspect
 import os
 import shutil
@@ -22,7 +21,9 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
+sys.path.insert(0, os.path.join(__location__, "../docs/compatibility"))
 import uml
+from compatibility.__main__ import create_tables_for_doc
 
 # import package bo4e to clarify namespaces and prevent circular import errors
 from bo4e import *
@@ -170,9 +171,13 @@ html_theme_options = {
 # Note: For the deployment to GitHub Pages the release and version values will
 # be set by the action. This is to support things like /latest or /stable.
 if "release" not in globals():
-    from bo4e import __gh_version__ as release
+    release = os.getenv("SPHINX_DOCS_RELEASE")
+    if release is None:
+        from bo4e import __gh_version__ as release
 if "version" not in globals():
-    from bo4e import __version__ as version
+    version = os.getenv("SPHINX_DOCS_VERSION")
+    if version is None:
+        from bo4e import __version__ as version
 
 print(f"Got version = {version} from __version__")
 print(f"Got release = {release} from __gh_version__")
@@ -304,7 +309,8 @@ intersphinx_mapping = {
 
 # Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
 # See docs/uml.py for more details.
-uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
+if release != "local":
+    uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
 print(_network)
@@ -313,3 +319,8 @@ print("Created uml files.")
 
 uml.compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images", locally_hosted=True)
 print(f"Compiled uml files into svg using kroki.")
+
+# Create compatibility matrix
+compatibility_matrix_output_file = Path(__file__).parent / "compatibility_matrix.csv"
+gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN")
+create_tables_for_doc(compatibility_matrix_output_file, release, last_n_versions=0, gh_token=gh_token)
