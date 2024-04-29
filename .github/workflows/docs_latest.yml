@@ -5,6 +5,10 @@ on:
     branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
+  # If the workflow is triggered (manually, through workflow_dispatch) on another branch than the main-branch,
+  # then it will be published not under /latest but under test-XXXXXX where the X's are a 6-digit random number
+  # (starting with non-zero).
+  # You should remember to delete the generated test-XXXXXX folder on the gh-pages branch after you are done with them.
   workflow_dispatch:
 
 jobs:

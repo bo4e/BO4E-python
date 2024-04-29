@@ -65,6 +65,7 @@ def pull_or_reuse_bo4e_version(version: str, gh_token: str | None = None, from_l
     Pull the BO4E version from the given version string or reuse the version if it was already pulled before.
     If version is None use the BO4E version of the checkout working directory by assuming the compiled json
     schemas in /json_schemas.
+    Returns the path of the bo4e directory.
     """
     bo4e_dir = BO4E_BASE_DIR / version
 
