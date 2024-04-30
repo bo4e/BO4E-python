@@ -20,4 +20,4 @@ updates:
     schedule:
       interval: "daily"
     ignore:
-      - dependency-name: "spinx-notes/pages"
+      - dependency-name: "sphinx-notes/pages"
