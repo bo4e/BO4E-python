@@ -1,6 +1,9 @@
 """
 A module that simplifies assertions for json serialization
 """
+
+from __future__ import annotations
+
 from typing import Any, Dict, Optional, TypeVar
 
 from dictdiffer import diff  # type:ignore[import-not-found]

@@ -26,12 +26,8 @@ _logger = logging.getLogger(__name__)
 root_directory = Path(__file__).parent
 output_directory = root_directory / "json_schemas"
 
-NEW_REF_TEMPLATE = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
-)
-NEW_REF_TEMPLATE_ROOT = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
-)
+NEW_REF_TEMPLATE = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
+NEW_REF_TEMPLATE_ROOT = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
@@ -49,7 +45,7 @@ class GenerateJsonSchema(_GenerateJsonSchema):
         Generates a JSON schema that matches a decimal value.
         The output format is changed to work well with BO4E-Python-Generator.
         """
-        json_schema = self.str_schema(core_schema.str_schema())
+        json_schema = self.float_schema(core_schema.float_schema())
         if self.mode == "validation":
             json_schema["format"] = "decimal"
         return json_schema
@@ -83,8 +79,8 @@ def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLA
     """
     Builds a dictionary with the classnames as keys and their module as tuples in the values. E.g.:
     {
-        "Geschaeftsobjekt": ("bo", "geschaeftsobjekt"),
-        "COM": ("com", "com"),
+        "Angebot": ("bo", "angebot"),
+        "Adresse": ("com", "adresse"),
         ...
     }
     This function filters out all classes which names begin with an underscore.
@@ -195,6 +191,7 @@ def replace_refs(
 )
 def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str) -> None:
     """generate json schemas for all BOs and COMs"""
+    _logger.debug("Mode: %s, target version: %s", mode, target_version)
     packages = ["bo", "com", "enum"]
 
     if mode == "generate":
@@ -202,6 +199,8 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
 
     namespace = get_namespace(packages)
     namespace[ZusatzAttribut.__name__] = ("", "zusatzattribut", ZusatzAttribut)
+    del namespace["Geschaeftsobjekt"]
+    del namespace["COM"]
 
     for name, (pkg, _, cls) in namespace.items():
         _logger.debug("Processing %s", name)

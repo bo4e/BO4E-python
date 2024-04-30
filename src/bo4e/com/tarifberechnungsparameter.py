@@ -2,6 +2,7 @@
 Contains Tarifberechnungsparameter class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from decimal import Decimal
 from typing import Optional
 
@@ -27,7 +28,7 @@ class Tarifberechnungsparameter(COM):
         <object data="../_static/images/bo4e/com/Tarifberechnungsparameter.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifberechnungsparameter.json>`_
+        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifberechnungsparameter.json>`_
 
     """
 

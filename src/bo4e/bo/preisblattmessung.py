@@ -1,6 +1,7 @@
 """
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field
@@ -27,7 +28,7 @@ class PreisblattMessung(Preisblatt):
         <object data="../_static/images/bo4e/bo/PreisblattMessung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `PreisblattMessung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattMessung.json>`_
+        `PreisblattMessung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/PreisblattMessung.json>`_
 
     """
 

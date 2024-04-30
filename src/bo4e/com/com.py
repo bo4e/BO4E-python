@@ -28,7 +28,7 @@ class COM(BaseModel):
         <object data="../_static/images/bo4e/com/COM.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/COM.json>`_
+        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/COM.json>`_
 
     """
 

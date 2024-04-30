@@ -2,6 +2,7 @@
 Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field
@@ -31,7 +32,7 @@ class Messlokation(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Messlokation.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Messlokation.json>`_
+        `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Messlokation.json>`_
 
     """
 

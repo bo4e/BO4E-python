@@ -2,6 +2,7 @@
 Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Annotated, Optional
 
 from pydantic import Field
@@ -24,7 +25,7 @@ class Tarifkosten(Tarifinfo):
         <object data="../_static/images/bo4e/bo/Tarifkosten.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifkosten.json>`_
+        `Tarifkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarifkosten.json>`_
 
     """
 
