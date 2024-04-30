@@ -272,7 +272,6 @@ from .com.regionaleraufabschlag import RegionalerAufAbschlag
 from .com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from .com.regionskriterium import Regionskriterium
 from .com.rueckmeldungsposition import Rueckmeldungsposition
-from .com.rufnummer import Rufnummer
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
