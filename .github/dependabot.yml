@@ -21,4 +21,3 @@ updates:
       interval: "daily"
     ignore:
       - dependency-name: "spinx-notes/pages"
-        versions: ["v3"]
