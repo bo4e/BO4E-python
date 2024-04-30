@@ -113,14 +113,16 @@ jobs:
         env:
           SPHINX_DOCS_RELEASE: ${{ github.ref_name }}
           SPHINX_DOCS_VERSION: ${{ github.ref_name }}
-      - id: latest_bo4e
-        name: Get latest BO4E release tag
-        uses: pozetroninc/github-action-get-latest-release@master
-        with:
-          repository: ${{ github.repository }}
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Export LATEST_TAG
+        run: |
+          echo "LATEST_TAG=$(curl -qsSL \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "${{ github.api_url }}/repos/${{ github.repository }}/releases/latest" \
+          | jq -r .tag_name)" >> $GITHUB_ENV
       - name: Redirect stable to new release if the new release is marked as latest
-        if: steps.latest_bo4e.outputs.release == github.ref_name
+        if: ${{ env.LATEST_TAG == github.ref_name }}
         run: |
           echo "Redirecting stable to new version ${{ github.ref_name }}"
           rm -rf stable
