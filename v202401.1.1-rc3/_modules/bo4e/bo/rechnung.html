@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.bo.rechnung &mdash; bo4e v202401.1.1-rc3 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=16e12e53"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.1.1-rc3
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.bo.rechnung</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.bo.rechnung</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Contains Rechnung class</span>
+<span class="sd">and corresponding marshmallow schema for de-/serialization</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">import</span> <span class="nn">pydantic</span>
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
+
+<span class="kn">from</span> <span class="nn">..com.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
+<span class="kn">from</span> <span class="nn">..com.rechnungsposition</span> <span class="kn">import</span> <span class="n">Rechnungsposition</span>
+<span class="kn">from</span> <span class="nn">..com.steuerbetrag</span> <span class="kn">import</span> <span class="n">Steuerbetrag</span>
+<span class="kn">from</span> <span class="nn">..com.zeitraum</span> <span class="kn">import</span> <span class="n">Zeitraum</span>
+<span class="kn">from</span> <span class="nn">..enum.netznutzungrechnungsart</span> <span class="kn">import</span> <span class="n">NetznutzungRechnungsart</span>
+<span class="kn">from</span> <span class="nn">..enum.netznutzungrechnungstyp</span> <span class="kn">import</span> <span class="n">NetznutzungRechnungstyp</span>
+<span class="kn">from</span> <span class="nn">..enum.rechnungsstatus</span> <span class="kn">import</span> <span class="n">Rechnungsstatus</span>
+<span class="kn">from</span> <span class="nn">..enum.rechnungstyp</span> <span class="kn">import</span> <span class="n">Rechnungstyp</span>
+<span class="kn">from</span> <span class="nn">..enum.sparte</span> <span class="kn">import</span> <span class="n">Sparte</span>
+<span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
+<span class="kn">from</span> <span class="nn">.geschaeftsobjekt</span> <span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
+<span class="kn">from</span> <span class="nn">.geschaeftspartner</span> <span class="kn">import</span> <span class="n">Geschaeftspartner</span>
+<span class="kn">from</span> <span class="nn">.marktlokation</span> <span class="kn">import</span> <span class="n">Marktlokation</span>
+<span class="kn">from</span> <span class="nn">.messlokation</span> <span class="kn">import</span> <span class="n">Messlokation</span>
+
+<span class="c1"># pylint: disable=too-few-public-methods, too-many-instance-attributes</span>
+
+
+<div class="viewcode-block" id="Rechnung">
+<a class="viewcode-back" href="../../../api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung">[docs]</a>
+<span class="nd">@postprocess_docstring</span>
+<span class="k">class</span> <span class="nc">Rechnung</span><span class="p">(</span><span class="n">Geschaeftsobjekt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Modell für die Abbildung von Rechnungen und Netznutzungsrechnungen im Kontext der Energiewirtschaft;</span>
+
+<span class="sd">    .. raw:: html</span>
+
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/bo/Rechnung.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+
+<span class="sd">    .. HINT::</span>
+<span class="sd">        `Rechnung JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Rechnung.json&gt;`_</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">RECHNUNG</span>
+    <span class="n">ist_storno</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Kennzeichnung, ob es sich um eine Stornorechnung handelt;</span>
+<span class="sd">    im Falle &quot;true&quot; findet sich im Attribut &quot;originalrechnungsnummer&quot; die Nummer der Originalrechnung.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#: Eine im Verwendungskontext eindeutige Nummer für die Rechnung</span>
+    <span class="n">rechnungsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Ausstellungsdatum der Rechnung</span>
+    <span class="n">rechnungsdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Zu diesem Datum ist die Zahlung fällig</span>
+    <span class="n">faelligkeitsdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung</span>
+    <span class="n">rechnungstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Rechnungstyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung</span>
+    <span class="n">rechnungsperiode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitraum</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer</span>
+    <span class="n">rechnungsersteller</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Geschaeftspartner</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer</span>
+    <span class="n">rechnungsempfaenger</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Geschaeftspartner</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Summe der Nettobeträge der Rechnungsteile</span>
+    <span class="n">gesamtnetto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Summe der Steuerbeträge der Rechnungsteile</span>
+    <span class="n">gesamtsteuer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Summe aus Netto- und Steuerbetrag</span>
+    <span class="n">gesamtbrutto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt</span>
+    <span class="n">zu_zahlen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Rechnungspositionen</span>
+    <span class="n">rechnungspositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Rechnungsposition</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Bezeichnung für die vorliegende Rechnung</span>
+    <span class="n">rechnungstitel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes</span>
+    <span class="n">rechnungsstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Rechnungsstatus</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung</span>
+    <span class="n">original_rechnungsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert</span>
+    <span class="n">vorausgezahlt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Gesamtrabatt auf den Bruttobetrag</span>
+    <span class="n">rabatt_brutto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">steuerbetraege</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Steuerbetrag</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;</span>
+<span class="sd">    die Summe dieser Beträge ergibt den Wert für gesamtsteuer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1">#: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist</span>
+    <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sparte</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt</span>
+    <span class="n">netznutzungrechnungsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NetznutzungRechnungsart</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt</span>
+    <span class="n">netznutzungrechnungstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">NetznutzungRechnungstyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)</span>
+    <span class="n">ist_original</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt</span>
+    <span class="n">ist_simuliert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Marktlokation, auf die sich die Rechnung bezieht</span>
+    <span class="n">marktlokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Marktlokation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Messlokation, auf die sich die Rechnung bezieht</span>
+    <span class="n">messlokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Messlokation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
