@@ -45,7 +45,7 @@ class Lokationszuordnung(Geschaeftsobjekt):
     steuerbare_ressourcen: Optional[list[SteuerbareRessource]] = None
     #: Zeitspanne der Gültigkeit
     gueltigkeit: Optional[Zeitspanne] = None
-    #:
+    #: Verknüpfungsrichtung z.B. Malo-Melo
     zuordnungstyp: Optional[str] = None
-    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (evtl. TODO: Enum erstellen für alle Fälle der Codeliste)
+    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (zu finden unter "Codeliste der Lokationsbündelstrukturen" auf https://www.edi-energy.de/index.php?id=38)
     lokationsbuendelcode: Optional[str] = None

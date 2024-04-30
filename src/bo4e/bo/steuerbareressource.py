@@ -33,8 +33,8 @@ class SteuerbareRessource(Geschaeftsobjekt):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.STEUERBARERESSOURCE
 
-    id: Optional[str] = None
-    steuerkanalsLeistungsbeschreibung: Optional[SteuerkanalsLeistungsbeschreibung] = None
-    zugeordnetemsbcodenr: Optional[str] = None
+    steuerbare_ressource_id: Optional[str] = None
+    steuerkanals_leistungsbeschreibung: Optional[SteuerkanalsLeistungsbeschreibung] = None
+    zugeordnete_msb_codenr: Optional[str] = None
     konfigurationsprodukte: Optional[list[Konfigurationsprodukt]] = None
     eigenschaft_msb_lokation: Optional[Marktrolle] = None

@@ -37,7 +37,7 @@ class TechnischeRessource(Geschaeftsobjekt):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TECHNISCHERESSOURCE
 
-    id: Optional[str] = None
+    technische_ressource_id: Optional[str] = None
     vorgelagerte_messlokation_id: Optional[str] = None
     zugeordnete_marktlokation_id: Optional[str] = None
     nennleistungaufnahme: Optional[Menge] = None
