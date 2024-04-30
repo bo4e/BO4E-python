@@ -37,15 +37,14 @@ class Bilanzierung(Geschaeftsobjekt):
     kundenwert: Optional[Menge] = None  #: Kundenwert
     verbrauchsaufteilung: Optional[Decimal] = None
     """
-          Verbrauchsaufteilung in % zwischen SLP und TLP-Profil.
+    Verbrauchsaufteilung in % zwischen SLP und TLP-Profil.
 
-          1. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] * [Verbrauchsaufteilung in % / 100%]
-             = [zu verlagernde Energiemenge]
-          2. [Gemessene Energiemenge der OBIS "Schwachlast"] - [zu verlagernde Energiemenge]
-             = [Ermittelte Energiemenge für Schwachlast]
-          3. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] + [zu verlagernde Energiemenge]
-             = [Ermittelte Energiemenge für nicht Schwachlast]
-
+    1. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] * [Verbrauchsaufteilung in % / 100%]
+    = [zu verlagernde Energiemenge]
+    2. [Gemessene Energiemenge der OBIS "Schwachlast"] - [zu verlagernde Energiemenge]
+    = [Ermittelte Energiemenge für Schwachlast]
+    3. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] + [zu verlagernde Energiemenge]
+    = [Ermittelte Energiemenge für nicht Schwachlast]
     """
     zeitreihentyp: Optional[Zeitreihentyp] = None  #: Zeitreihentyp (SLS, TLS, etc.)
     aggregationsverantwortung: Optional[Aggregationsverantwortung] = None  #: Aggregationsverantwortung
