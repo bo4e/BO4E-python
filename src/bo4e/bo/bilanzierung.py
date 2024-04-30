@@ -66,7 +66,7 @@ class Bilanzierung(Geschaeftsobjekt):
     prioritaet: Optional[int] = None  #: Priorität des Bilanzkreises (für Gas)
     grund_wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
     """
-        Grund Wahlrecht der Prognosegrundlage.
+    Grund Wahlrecht der Prognosegrundlage.
 
-            true=Wahlrecht beim Lieferanten vorhanden
+    true=Wahlrecht beim Lieferanten vorhanden
     """
