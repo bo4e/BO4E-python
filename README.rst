@@ -52,13 +52,15 @@ Dabei sind unsere Designentscheidungen:
 
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
 ==========================================================
-Die Dokumentation des Datenmodells befand sich früher auf `read the docs <https://bo4e-python.readthedocs.io/en/latest/api/modules.html>`_.
-Seit Version `v202401.0.3 <https://bo4e.github.io/BO4E-python/v202401.0.3>`_ wird diese jedoch mittels
-`GitHub Pages <https://bo4e.github.io/BO4E-python>`_ gehosted.
+Die Dokumentation ist verfügbar unter `<https://bo4e.github.io/BO4E-python/>`_.
+Die Doku wird erst seit Version `v202401.0.3 <https://bo4e.github.io/BO4E-python/v202401.0.3>`_ mittels
+GitHub Pages gehosted.
+Die früheren Versionen sind auf `read the docs <https://bo4e-python.readthedocs.io/en/latest/api/modules.html>`_
+einsehbar.
 
 Unter `/latest` findet sich die Dokumentation des aktuellen Stands des main-Branches. `/stable` zeigt immer auf die
 letzte veröffentlichte Version (Release candidates ausgeschlossen).
-Zusätzlich ist jede Version (auch Release candidates) unter `/v<version>` auffindbar.
+Zusätzlich ist jede Version (inklusive Release candidates) unter `/v<version>` auffindbar.
 
 Die Doku bietet eine Übersicht über alle Klassen und Attribute, die im BO4E Standard definiert sind. Außerdem
 werden alle Beziehungen zwischen den Klassen durch Diagramme visualisiert. Die JSON-Schemas sind ebenfalls verlinkt.
