@@ -11,7 +11,15 @@ from bo4e.enum.profilverfahren import Profilverfahren
 
 class Lastprofil(COM):
     """
-    Lastprofil
+    Informationen zum Lastprofil.
+
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Lastprofil.svg" type="image/svg+xml"></object>
+
+    .. HINT::
+        `Lastprofil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Lastprofil.json>`_
+
     """
 
     bezeichnung: Optional[str] = None  #: Bezeichnung des Profils, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)

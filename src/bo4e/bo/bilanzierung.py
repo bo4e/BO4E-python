@@ -22,7 +22,15 @@ from ..enum.typ import Typ
 
 class Bilanzierung(Geschaeftsobjekt):
     """
-    Bilanzierungs BO
+    Das BO Bilanzierung erfasst alle relevanten Informationen zur Bilanzierung.
+
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/bo/Bilanzierung.svg" type="image/svg+xml"></object>
+
+    .. HINT::
+        `Lastprofil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Bilanzierung.json>`_
+
     """
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.BILANZIERUNG
