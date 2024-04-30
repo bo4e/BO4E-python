@@ -19,12 +19,7 @@ class Lastprofil(COM):
         str
     ] = None  #: Bezeichnung der Profilschar, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
     verfahren: Optional[Profilverfahren] = None  #: Verfahren des Profils (analytisch oder synthetisch)
-    einspeisung: Optional[bool] = None
-    """
-        Einspeiseprofil:
-
-            True/False
-    """
+    einspeisung: Optional[bool] = None  #: Einspeiseprofil: True/False
     tagesparameter: Optional[Tagesparameter] = None  #: Klimazone / Temperaturmessstelle
     profilart: Optional[Profilart] = None  #: Profilart des Lastprofils, e.g. ART_STANDARDLASTPROFIL
     herausgeber: Optional[str] = None  #: Herausgeber des Lastprofil-Codes, e.g. BDEW
