@@ -191,6 +191,7 @@ def replace_refs(
 )
 def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str) -> None:
     """generate json schemas for all BOs and COMs"""
+    _logger.debug("Mode: %s, target version: %s", mode, target_version)
     packages = ["bo", "com", "enum"]
 
     if mode == "generate":

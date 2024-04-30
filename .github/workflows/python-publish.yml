@@ -89,15 +89,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
         # Note: The sphinx action below can only install a single requirements file.
-      - name: Write version to conf.py
-        run: |
-          echo -e "version = release = \"${{ github.ref_name }}\"\n" | cat - docs/conf.py > /tmp/conf.py
-          mv /tmp/conf.py docs/conf.py
       - name: Run kroki with docker
         run: |
           docker compose up -d
       - name: Build the documentation
-        uses: sphinx-notes/pages@v2
+        uses: sphinx-notes/pages@v3
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
         # We need that in order to be able to store (and deploy) multiple versions of the documentation.
         with:
@@ -106,6 +102,9 @@ jobs:
           target_path: ${{ github.ref_name }}
           target_branch: gh-pages
           sphinx_options: -W -j auto
+        env:
+          SPHINX_DOCS_RELEASE: ${{ github.ref_name }}
+          SPHINX_DOCS_VERSION: ${{ github.ref_name }}
       - id: latest_bo4e
         name: Get latest BO4E release tag
         uses: pozetroninc/github-action-get-latest-release@master
