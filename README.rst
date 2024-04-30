@@ -52,7 +52,20 @@ Dabei sind unsere Designentscheidungen:
 
 Dokumentation / Fragen und Anregungen zum BO4E Datenmodell
 ==========================================================
-Eine Dokumentation des Datenmodells und JSON Schemata zur Erzeugung von Beispieldaten finden sich auf `read the docs <https://bo4e-python.readthedocs.io/en/latest/api/modules.html>`_.
+Die Dokumentation des Datenmodells befand sich früher auf `read the docs <https://bo4e-python.readthedocs.io/en/latest/api/modules.html>`_.
+Seit Version `v202401.0.3 <https://bo4e.github.io/BO4E-python/v202401.0.3>`_ wird diese jedoch mittels
+`GitHub Pages <https://bo4e.github.io/BO4E-python>`_ gehosted.
+
+Unter `/latest` findet sich die Dokumentation des aktuellen Stands des main-Branches. `/stable` zeigt immer auf die
+letzte veröffentlichte Version (Release candidates ausgeschlossen).
+Zusätzlich ist jede Version (auch Release candidates) unter `/v<version>` auffindbar.
+
+Die Doku bietet eine Übersicht über alle Klassen und Attribute, die im BO4E Standard definiert sind. Außerdem
+werden alle Beziehungen zwischen den Klassen durch Diagramme visualisiert. Die JSON-Schemas sind ebenfalls verlinkt.
+Alternativ können die JSON-Schemas auch direkt von GitHub heruntergeladen werden: `<https://github.com/bo4e/BO4E-Schemas>`_.
+Seit Version `v202401.1.1 <https://bo4e.github.io/BO4E-python/v202401.1.1>`_ gibt es zusätzlich eine
+`Kompatibilitätsmatrix <https://bo4e.github.io/BO4E-python/v202401.1.1/changelog.html>`_,
+die für jedes Objekt zeigt, zwischen welchen Versionen es einen "breaking change" gab.
 
 Bei Fragen oder Anregungen, bitte `einfach ein Issue in diesem Repo aufmachen <https://github.com/Hochfrequenz/BO4E-python/issues/new?assignees=&labels=BO4E+Enhancement+Proposal&template=funktionale-anforderung-an-den-bo4e-standard.md&title=Ein+aussagekr%C3%A4ftiger+Titel%3A+Hunde-+und+Katzentarife+k%C3%B6nnen+nicht+abgebildet+werden>`_.
 
