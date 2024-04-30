@@ -35,12 +35,21 @@ class Netzlokation(Geschaeftsobjekt):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.NETZLOKATION
 
+    #: Identifikationsnummer einer Netzlokation, an der Energie entweder verbraucht, oder erzeugt wird
     netzlokations_id: Optional[str] = None
+    #: Sparte der Netzlokation, z.B. Gas oder Strom.
     sparte: Optional[Sparte] = None
+    #: Netzanschlussleistungsmenge der Netzlokation
     netzanschlussleistung: Optional[Menge] = None
+    #: Codenummer des grundzuständigen Messstellenbetreibers, der für diese Netzlokation zuständig ist.
     grundzustaendiger_msb_codenr: Optional[str] = None
+    #: Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann. ZF2: Kein Steuerkanal vorhanden ZF3: Steuerkanal vorhanden
     steuerkanal: Optional[bool] = None
+    #: Die OBIS-Kennzahl für die Netzlokation
     obiskennzahl: Optional[str] = None
+    #: Verwendungungszweck der Werte Netzlokation
     verwendungszweck: Optional[VerwendungszweckProMarktrolle] = None
+    #: Produkt-Daten der Netzlokation
     konfigurationsprodukte: Optional[list[Konfigurationsprodukt]] = None
+    #: Eigenschaft des Messstellenbetreibers an der Lokation
     eigenschaft_msb_lokation: Optional[Marktrolle] = None

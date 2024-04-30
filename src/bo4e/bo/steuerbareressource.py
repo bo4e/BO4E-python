@@ -33,8 +33,13 @@ class SteuerbareRessource(Geschaeftsobjekt):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.STEUERBARERESSOURCE
 
+    #: Id der steuerbaren Ressource
     steuerbare_ressource_id: Optional[str] = None
+    #: Leistungsbeschreibung des Steuerkanals
     steuerkanals_leistungsbeschreibung: Optional[SteuerkanalsLeistungsbeschreibung] = None
+    #: Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist.
     zugeordnete_msb_codenr: Optional[str] = None
+    #: Produkt-Daten der Steuerbaren Ressource
     konfigurationsprodukte: Optional[list[Konfigurationsprodukt]] = None
+    #: Eigenschaft des Messstellenbetreibers an der Lokation
     eigenschaft_msb_lokation: Optional[Marktrolle] = None

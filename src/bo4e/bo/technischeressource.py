@@ -37,15 +37,29 @@ class TechnischeRessource(Geschaeftsobjekt):
 
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TECHNISCHERESSOURCE
 
+    #: Identifikationsnummer einer technischen Ressource
     technische_ressource_id: Optional[str] = None
+    #: Vorgelagerte Messlokation ID
     vorgelagerte_messlokation_id: Optional[str] = None
+    #: Referenz auf die der technischen Ressource zugeordneten Marktlokation
     zugeordnete_marktlokation_id: Optional[str] = None
+    #: Referenz auf die der technischen Ressource zugeordneten Steuerbaren Ressource
+    zugeordnete_steuerbare_ressource_id: Optional[str] = None
+    #: Nennleistung (Aufnahme)
     nennleistungaufnahme: Optional[Menge] = None
+    #: Nennleistung (Abgabe)
     nennleistungabgabe: Optional[Menge] = None
+    #: Speicherkapazität
     speicherkapazitaet: Optional[Menge] = None
+    #: Art und Nutzung der technischen Ressource
     technische_ressource_nutzung: Optional[TechnischeRessourceNutzung] = None
+    #: Verbrauchsart der technischen Ressource
     technische_ressource_verbrauchsart: Optional[TechnischeRessourceVerbrauchsart] = None
+    #: Wärmenutzung
     waermenutzung: Optional[Waermenutzung] = None
+    #: Art der E-Mobilität
     emobilitaetsart: Optional[EMobilitaetsart] = None
+    #: Art der Erzeugung der Energie
     erzeugungsart: Optional[Erzeugungsart] = None
+    #: Art des Speichers
     speicherart: Optional[Speicherart] = None
