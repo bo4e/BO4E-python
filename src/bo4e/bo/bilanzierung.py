@@ -58,9 +58,9 @@ class Bilanzierung(Geschaeftsobjekt):
     """
     wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
     """
-        Wahlrecht der Prognosegrundlage.
+    Wahlrecht der Prognosegrundlage.
 
-            true = Wahlrecht beim Lieferanten vorhanden
+    true = Wahlrecht beim Lieferanten vorhanden
     """
     fallgruppenzuordnung: Optional[Fallgruppenzuordnung] = None  #: Fallgruppenzuordnung (für gas RLM)
     prioritaet: Optional[int] = None  #: Priorität des Bilanzkreises (für Gas)
