@@ -65,6 +65,9 @@ jobs:
       # in the BO4E-Schemas repo. For this we have to retrieve the commits SHA via the API first.
       # For this, we use the lightweight tool jq (https://stedolan.github.io/jq/) to parse the JSON
       # response from the API.
+      - name: Install dependencies for creating release
+        run: |
+          pip install requests click
       - name: Tag and release the new version in BO4E-Schemas
         run: python bo4e_schemas_create_release.py
         env:
