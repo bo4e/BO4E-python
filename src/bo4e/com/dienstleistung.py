@@ -2,6 +2,7 @@
 Contains Dienstleistung class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..enum.dienstleistungstyp import Dienstleistungstyp
@@ -21,7 +22,7 @@ class Dienstleistung(COM):
         <object data="../_static/images/bo4e/com/Dienstleistung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Dienstleistung.json>`_
+        `Dienstleistung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Dienstleistung.json>`_
 
     """
 

@@ -3,9 +3,9 @@ Contains Rechnung class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from typing import Annotated, Optional
 
+import pydantic
 from pydantic import Field
 
 from ..com.betrag import Betrag
@@ -37,7 +37,7 @@ class Rechnung(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Rechnung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Rechnung.json>`_
+        `Rechnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Rechnung.json>`_
 
     """
 
@@ -50,9 +50,9 @@ class Rechnung(Geschaeftsobjekt):
     #: Eine im Verwendungskontext eindeutige Nummer für die Rechnung
     rechnungsnummer: Optional[str] = None
     #: Ausstellungsdatum der Rechnung
-    rechnungsdatum: Optional[datetime] = None
+    rechnungsdatum: Optional[pydantic.AwareDatetime] = None
     #: Zu diesem Datum ist die Zahlung fällig
-    faelligkeitsdatum: Optional[datetime] = None
+    faelligkeitsdatum: Optional[pydantic.AwareDatetime] = None
     #: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung
     rechnungstyp: Optional[Rechnungstyp] = None
     #: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung

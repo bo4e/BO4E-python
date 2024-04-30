@@ -39,7 +39,7 @@ class TestRegionalePreisstaffel:
                         kriteriums_werte=[KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")],
                     ),
                 ),
-                id="maximal attributes"
+                id="maximal attributes",
                 # the messing sigmoidparameter is tested in the Preisstaffel tests
             ),
         ],

@@ -2,6 +2,7 @@
 Contains TarifpreispositionProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
+
 from typing import Optional
 
 from ..utils import postprocess_docstring
@@ -22,7 +23,7 @@ class TarifpreispositionProOrt(COM):
         <object data="../_static/images/bo4e/com/TarifpreispositionProOrt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/TarifpreispositionProOrt.json>`_
+        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/TarifpreispositionProOrt.json>`_
 
     """
 

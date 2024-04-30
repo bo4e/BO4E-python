@@ -7,9 +7,9 @@ license.
 
 The BO4E version can be queried using `bo4e.__version__`.
 """
+
 __all__ = [
     "Angebot",
-    "Ansprechpartner",
     "Ausschreibung",
     "Avis",
     "Buendelvertrag",
@@ -23,6 +23,7 @@ __all__ = [
     "Marktlokation",
     "Marktteilnehmer",
     "Messlokation",
+    "Person",
     "Preisblatt",
     "PreisblattDienstleistung",
     "PreisblattHardware",
@@ -62,6 +63,7 @@ __all__ = [
     "Fremdkostenposition",
     "Geokoordinaten",
     "Katasteradresse",
+    "Kontaktweg",
     "Konzessionsabgabe",
     "Kostenblock",
     "Kostenposition",
@@ -82,7 +84,6 @@ __all__ = [
     "RegionaleTarifpreisposition",
     "Regionskriterium",
     "Rueckmeldungsposition",
-    "Rufnummer",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -152,6 +153,7 @@ __all__ = [
     "NetznutzungRechnungstyp",
     "Oekolabel",
     "Oekozertifikat",
+    "Organisationstyp",
     "Preisgarantietyp",
     "Preismodell",
     "Preisstatus",
@@ -162,7 +164,6 @@ __all__ = [
     "Regionskriteriumtyp",
     "Registeranzahl",
     "Rollencodetyp",
-    "Rufnummernart",
     "Sparte",
     "Steuerkennzeichen",
     "StrEnum",
@@ -195,7 +196,6 @@ __all__ = [
 
 # Import BOs
 from .bo.angebot import Angebot
-from .bo.ansprechpartner import Ansprechpartner
 from .bo.ausschreibung import Ausschreibung
 from .bo.avis import Avis
 from .bo.buendelvertrag import Buendelvertrag
@@ -209,6 +209,7 @@ from .bo.lastgang import Lastgang
 from .bo.marktlokation import Marktlokation
 from .bo.marktteilnehmer import Marktteilnehmer
 from .bo.messlokation import Messlokation
+from .bo.person import Person
 from .bo.preisblatt import Preisblatt
 from .bo.preisblattdienstleistung import PreisblattDienstleistung
 from .bo.preisblatthardware import PreisblattHardware
@@ -250,6 +251,7 @@ from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
 from .com.katasteradresse import Katasteradresse
+from .com.kontaktweg import Kontaktweg
 from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition
@@ -342,6 +344,7 @@ from .enum.netznutzungrechnungsart import NetznutzungRechnungsart
 from .enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from .enum.oekolabel import Oekolabel
 from .enum.oekozertifikat import Oekozertifikat
+from .enum.organisationstyp import Organisationstyp
 from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
 from .enum.preisstatus import Preisstatus
@@ -352,7 +355,6 @@ from .enum.rechnungstyp import Rechnungstyp
 from .enum.regionskriteriumtyp import Regionskriteriumtyp
 from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
-from .enum.rufnummernart import Rufnummernart
 from .enum.sparte import Sparte
 from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
