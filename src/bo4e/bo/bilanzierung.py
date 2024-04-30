@@ -51,10 +51,10 @@ class Bilanzierung(Geschaeftsobjekt):
     prognosegrundlage: Optional[Prognosegrundlage] = None  #: Prognosegrundlage
     details_prognosegrundlage: Optional[list[Profiltyp]] = None
     """
-         Prognosegrundlage.
+    Prognosegrundlage.
 
-            Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben,
-            so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.
+    Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben,
+    so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.
     """
     wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
     """
