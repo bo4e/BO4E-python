@@ -93,7 +93,7 @@ jobs:
       - name: Build JSON Schemas
         run: tox -e generate_json_schemas
         env:
-          TARGET_VERSION: ${{ env.REF_NAME }}
+          TARGET_VERSION: ${{ github.ref_name }}
       - name: Run kroki with docker
         run: |
           docker compose up -d
