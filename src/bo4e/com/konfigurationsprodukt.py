@@ -25,7 +25,7 @@ class Konfigurationsprodukt(COM):
         <object data="../_static/images/bo4e/bo/Konfigurationsprodukt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Messlokation JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Konfigurationsprodukt.json>`_
+        `Konfigurationsprodukt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Konfigurationsprodukt.json>`_
 
     """
 
