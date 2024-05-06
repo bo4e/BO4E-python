@@ -40,7 +40,7 @@ class Tarifberechnungsparameter(COM):
     # there are no required attributes
 
     #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
-    berechnungsmethode: Optional[Tarifkalkulationsmethode] = None
+    berechnungsmethode: Optional["Tarifkalkulationsmethode"] = None
     #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
     ist_messpreis_in_grundpreis_enthalten: Optional[bool] = None
 
@@ -51,7 +51,7 @@ class Tarifberechnungsparameter(COM):
     """
 
     #: Typ des Messpreises
-    messpreistyp: Optional[Messpreistyp] = None
+    messpreistyp: Optional["Messpreistyp"] = None
 
     #: Im Preis bereits eingeschlossene Leistung (für Gas)
     kw_inklusive: Optional[Decimal] = None
@@ -62,10 +62,10 @@ class Tarifberechnungsparameter(COM):
     # todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327
 
     #: Höchstpreis für den Durchschnitts-Arbeitspreis NT
-    hoechstpreis_n_t: Optional[Preis] = None
+    hoechstpreis_n_t: Optional["Preis"] = None
     #: Höchstpreis für den Durchschnitts-Arbeitspreis HT
-    hoechstpreis_h_t: Optional[Preis] = None
+    hoechstpreis_h_t: Optional["Preis"] = None
     #: Mindestpreis für den Durchschnitts-Arbeitspreis
-    mindestpreis: Optional[Preis] = None
+    mindestpreis: Optional["Preis"] = None
     #: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise
-    zusatzpreise: Optional[list[Tarifpreis]] = None
+    zusatzpreise: Optional[list["Tarifpreis"]] = None

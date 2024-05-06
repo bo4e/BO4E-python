@@ -41,32 +41,32 @@ class Preisposition(COM):
     """
 
     #: Das Modell, das der Preisbildung zugrunde liegt
-    berechnungsmethode: Optional[Kalkulationsmethode] = None
+    berechnungsmethode: Optional["Kalkulationsmethode"] = None
     #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
-    leistungstyp: Optional[Leistungstyp] = None  #
+    leistungstyp: Optional["Leistungstyp"] = None  #
     #: Bezeichnung für die in der Position abgebildete Leistungserbringung
     leistungsbezeichnung: Optional[str] = None
     #: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
-    preiseinheit: Optional[Waehrungseinheit] = None
+    preiseinheit: Optional["Waehrungseinheit"] = None
     #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
-    bezugsgroesse: Optional[Mengeneinheit] = None
+    bezugsgroesse: Optional["Mengeneinheit"] = None
     #: Preisstaffeln, die zu dieser Preisposition gehören
-    preisstaffeln: Optional[list[Preisstaffel]] = None
+    preisstaffeln: Optional[list["Preisstaffel"]] = None
 
-    zeitbasis: Optional[Mengeneinheit] = None
+    zeitbasis: Optional["Mengeneinheit"] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird
     """
     #: Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
-    tarifzeit: Optional[Tarifzeit] = None
-    bdew_artikelnummer: Optional[BDEWArtikelnummer] = None
+    tarifzeit: Optional["Tarifzeit"] = None
+    bdew_artikelnummer: Optional["BDEWArtikelnummer"] = None
     """
     Eine vom BDEW standardisierte Bezeichnug für die abgerechnete Leistungserbringung;
     Diese Artikelnummer wird auch im Rechnungsteil der INVOIC verwendet.
     """
     #: Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden
-    zonungsgroesse: Optional[Bemessungsgroesse] = None
+    zonungsgroesse: Optional["Bemessungsgroesse"] = None
     #: Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt
     freimenge_blindarbeit: Optional[Decimal] = None
     freimenge_leistungsfaktor: Optional[Decimal] = None

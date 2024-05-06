@@ -37,10 +37,10 @@ class Vertragskonditionen(COM):
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
     anzahl_abschlaege: Optional[Decimal] = None
     #: Über diesen Zeitraum läuft der Vertrag
-    vertragslaufzeit: Optional[Zeitraum] = None
+    vertragslaufzeit: Optional["Zeitraum"] = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Optional[Zeitraum] = None
+    kuendigungsfrist: Optional["Zeitraum"] = None
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Optional[Zeitraum] = None
+    vertragsverlaengerung: Optional["Zeitraum"] = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Optional[Zeitraum] = None
+    abschlagszyklus: Optional["Zeitraum"] = None

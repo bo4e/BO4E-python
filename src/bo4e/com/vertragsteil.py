@@ -48,15 +48,15 @@ class Vertragsteil(COM):
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
     """
-    vertraglich_fixierte_menge: Optional[Menge] = None
+    vertraglich_fixierte_menge: Optional["Menge"] = None
     """
     Für die Lokation festgeschriebene Abnahmemenge
     """
-    minimale_abnahmemenge: Optional[Menge] = None
+    minimale_abnahmemenge: Optional["Menge"] = None
     """
     Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)
     """
-    maximale_abnahmemenge: Optional[Menge] = None
+    maximale_abnahmemenge: Optional["Menge"] = None
     """
     Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)
     """

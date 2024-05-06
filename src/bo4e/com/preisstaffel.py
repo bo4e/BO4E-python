@@ -39,4 +39,4 @@ class Preisstaffel(COM):
     staffelgrenze_bis: Optional[Decimal] = None
 
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter
-    sigmoidparameter: Optional[Sigmoidparameter] = None
+    sigmoidparameter: Optional["Sigmoidparameter"] = None

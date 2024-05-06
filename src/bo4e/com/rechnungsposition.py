@@ -52,11 +52,11 @@ class Rechnungsposition(COM):
     positionstext: Optional[str] = None
 
     #: Die abgerechnete Menge mit Einheit
-    positions_menge: Optional[Menge] = None
+    positions_menge: Optional["Menge"] = None
     #: Der Preis für eine Einheit der energetischen Menge
-    einzelpreis: Optional[Preis] = None
+    einzelpreis: Optional["Preis"] = None
 
-    teilsumme_netto: Optional[Betrag] = None
+    teilsumme_netto: Optional["Betrag"] = None
     """
     Das Ergebnis der Multiplikation aus einzelpreis * positionsMenge * (Faktor aus zeitbezogeneMenge).
     Z.B. 12,60€ * 120 kW * 3/12 (für 3 Monate).
@@ -65,24 +65,24 @@ class Rechnungsposition(COM):
     # see https://github.com/Hochfrequenz/BO4E-python/issues/126
 
     #: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag
-    teilsumme_steuer: Optional[Steuerbetrag] = None
+    teilsumme_steuer: Optional["Steuerbetrag"] = None
 
     #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Mengeneinheit] = None
+    zeiteinheit: Optional["Mengeneinheit"] = None
 
     #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
-    artikelnummer: Optional[BDEWArtikelnummer] = None
+    artikelnummer: Optional["BDEWArtikelnummer"] = None
     #: Marktlokation, die zu dieser Position gehört
     lokations_id: Optional[str] = None
 
-    zeitbezogene_menge: Optional[Menge] = None
+    zeitbezogene_menge: Optional["Menge"] = None
     """
     Eine auf die Zeiteinheit bezogene Untermenge.
     Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage.
     Basierend darauf wird der Preis aufgeteilt.
     """
     #: Nettobetrag für den Rabatt dieser Position
-    teilrabatt_netto: Optional[Betrag] = None
+    teilrabatt_netto: Optional["Betrag"] = None
 
     #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
     artikel_id: Optional[str] = None

@@ -31,7 +31,7 @@ class Zustaendigkeit(COM):
 
     """
 
-    themengebiet: Optional[Themengebiet] = None
+    themengebiet: Optional["Themengebiet"] = None
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners bzw. der Person angegeben werden
     """

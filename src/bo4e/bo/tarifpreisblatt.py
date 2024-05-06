@@ -38,18 +38,18 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFPREISBLATT
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
     #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Optional[list[Tarifpreisposition]] = None
+    tarifpreise: Optional[list["Tarifpreisposition"]] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
+    berechnungsparameter: Optional["Tarifberechnungsparameter"] = None
 
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Optional[Tarifeinschraenkung] = None
+    tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None
     #: Festlegung von Garantien für bestimmte Preisanteile
-    preisgarantie: Optional[Preisgarantie] = None
+    preisgarantie: Optional["Preisgarantie"] = None
     #: Auf- und Abschläge auf die Preise oder Kosten
-    tarif_auf_abschlaege: Optional[list[AufAbschlag]] = None
+    tarif_auf_abschlaege: Optional[list["AufAbschlag"]] = None

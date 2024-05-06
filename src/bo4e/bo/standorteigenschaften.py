@@ -34,9 +34,9 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
     #: Eigenschaften zur Sparte Strom
-    eigenschaften_strom: Optional[list[StandorteigenschaftenStrom]] = None
+    eigenschaften_strom: Optional[list["StandorteigenschaftenStrom"]] = None
 
     #: Eigenschaften zur Sparte Gas
-    eigenschaften_gas: Optional[StandorteigenschaftenGas] = None
+    eigenschaften_gas: Optional["StandorteigenschaftenGas"] = None

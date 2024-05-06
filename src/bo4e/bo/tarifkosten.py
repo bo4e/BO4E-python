@@ -33,8 +33,8 @@ class Tarifkosten(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIFKOSTEN
-    kosten: Optional[Kosten] = None
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIFKOSTEN
+    kosten: Optional["Kosten"] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung
     des Tarifs auf eine Abnahmesituation berechnet wurden

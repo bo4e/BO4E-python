@@ -35,13 +35,13 @@ class Geraet(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GERAET
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GERAET
 
     #: Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
     geraetenummer: Optional[str] = None
     #: Bezeichnung des Geräts
     bezeichnung: Optional[str] = None
     #: Die übergreifende Klasse eines Geräts, beispielsweise Wandler
-    geraeteklasse: Optional[Geraeteklasse] = None
+    geraeteklasse: Optional["Geraeteklasse"] = None
     #: Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
-    geraetetyp: Optional[Geraetetyp] = None
+    geraetetyp: Optional["Geraetetyp"] = None

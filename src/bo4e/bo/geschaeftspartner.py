@@ -30,7 +30,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.
-    Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.
+    Hinweis: "Marktteilnehmer" haben ein eigenes BO, welches sich von diesem BO ableitet.
     Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.
 
     .. raw:: html
@@ -42,23 +42,23 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
     #: Mögliche Anrede der Person
-    anrede: Optional[Anrede] = None
+    anrede: Optional["Anrede"] = None
     individuelle_anrede: Optional[str] = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
     #: Möglicher Titel der Person
-    titel: Optional[Titel] = None
+    titel: Optional["Titel"] = None
     #: Vorname der Person
     vorname: Optional[str] = None
     #: Nachname (Familienname) der Person
     nachname: Optional[str] = None
 
-    ansprechpartner: Optional[list[Person]] = None
-    organisationstyp: Optional[Organisationstyp] = None
+    ansprechpartner: Optional[list["Person"]] = None
+    organisationstyp: Optional["Organisationstyp"] = None
     """
     Kennzeichnung ob es sich um ein Gewerbe/Unternehmen, eine Privatperson oder eine andere Art von Organisation handelt.
     """
@@ -67,9 +67,9 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Name der Firma, wenn Gewerbe oder andere Organisation.
     """
     #: Kontaktwege des Geschäftspartners
-    kontaktwege: Optional[list[Kontaktweg]] = None
+    kontaktwege: Optional[list["Kontaktweg"]] = None
     #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
-    geschaeftspartnerrollen: Optional[list[Geschaeftspartnerrolle]] = None
+    geschaeftspartnerrollen: Optional[list["Geschaeftspartnerrolle"]] = None
     #: Handelsregisternummer des Geschäftspartners
     handelsregisternummer: Optional[str] = None
     #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
@@ -81,7 +81,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
     #: Internetseite des Marktpartners
     website: Optional[str] = None
     #: Adresse des Geschäftspartners
-    adresse: Optional[Adresse] = None
+    adresse: Optional["Adresse"] = None
     #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
     #: not clear what is the best solution here - circular import marktteilnehmer?
     #: discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let's figure out a solution somehow.

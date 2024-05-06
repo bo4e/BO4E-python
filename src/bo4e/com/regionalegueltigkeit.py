@@ -33,9 +33,9 @@ class RegionaleGueltigkeit(COM):
 
     """
 
-    gueltigkeitstyp: Optional[Gueltigkeitstyp] = (
+    gueltigkeitstyp: Optional["Gueltigkeitstyp"] = (
         None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
     )
-    kriteriums_werte: Optional[list[KriteriumWert]] = (
+    kriteriums_werte: Optional[list["KriteriumWert"]] = (
         None  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
     )

@@ -34,10 +34,10 @@ class Steuerbetrag(COM):
     """
 
     #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
-    steuerkennzeichen: Optional[Steuerkennzeichen] = None
+    steuerkennzeichen: Optional["Steuerkennzeichen"] = None
     #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
     basiswert: Optional[Decimal] = None
     #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
     steuerwert: Optional[Decimal] = None
     #: Währung. Z.B. Euro.
-    waehrung: Optional[Waehrungscode] = None
+    waehrung: Optional["Waehrungscode"] = None

@@ -39,36 +39,36 @@ class Ausschreibung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
     #: Aufzählung für die Typisierung von Ausschreibungen
-    ausschreibungstyp: Optional[Ausschreibungstyp] = None
+    ausschreibungstyp: Optional["Ausschreibungstyp"] = None
     #: Bezeichnungen für die Ausschreibungsphasen
-    ausschreibungsstatus: Optional[Ausschreibungsstatus] = None
+    ausschreibungsstatus: Optional["Ausschreibungsstatus"] = None
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
     ist_kostenpflichtig: Optional[bool] = None
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
     veroeffentlichungszeitpunkt: Optional[pydantic.AwareDatetime] = None
-    ausschreibender: Optional[Geschaeftspartner] = None
+    ausschreibender: Optional["Geschaeftspartner"] = None
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein
     """
-    abgabefrist: Optional[Zeitraum] = None
+    abgabefrist: Optional["Zeitraum"] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
-    bindefrist: Optional[Zeitraum] = None
+    bindefrist: Optional["Zeitraum"] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
-    lose: Optional[list[Ausschreibungslos]] = None
+    lose: Optional[list["Ausschreibungslos"]] = None
 
     #: Aufzählung der unterstützten Ausschreibungsportale
-    ausschreibungportal: Optional[Ausschreibungsportal] = None
+    ausschreibungportal: Optional["Ausschreibungsportal"] = None
     #: Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)
     webseite: Optional[str] = None

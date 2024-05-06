@@ -45,16 +45,16 @@ class AufAbschlagRegional(COM):
     #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    betraege: Optional[list[AufAbschlagProOrt]] = None
+    betraege: Optional[list["AufAbschlagProOrt"]] = None
 
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #:Typ des Aufabschlages (z.B. absolut oder prozentual)
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = None
+    auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
-    auf_abschlagsziel: Optional[AufAbschlagsziel] = None
+    auf_abschlagsziel: Optional["AufAbschlagsziel"] = None
     #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct.
-    einheit: Optional[Waehrungseinheit] = None
+    einheit: Optional["Waehrungseinheit"] = None
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
     website: Optional[str] = None
     #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
@@ -64,16 +64,16 @@ class AufAbschlagRegional(COM):
     #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten.
     tarifnamensaenderungen: Optional[str] = None
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitszeitraum: Optional[Zeitraum] = None
-    energiemixaenderung: Optional[Energiemix] = None
+    gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    energiemixaenderung: Optional["Energiemix"] = None
     """ Der Energiemix kann sich durch einen AufAbschlag ändern (z.B. zwei Cent Aufschlag für Ökostrom:
     Sollte dies der Fall sein, wird hier die neue Zusammensetzung des Energiemix angegeben."""
-    vertagskonditionsaenderung: Optional[Vertragskonditionen] = None
+    vertagskonditionsaenderung: Optional["Vertragskonditionen"] = None
     """ Änderungen in den Vertragskonditionen. Falls in dieser Komponenten angegeben,
     werden die Tarifparameter hiermit überschrieben."""
-    garantieaenderung: Optional[Preisgarantie] = None
+    garantieaenderung: Optional["Preisgarantie"] = None
     """ Änderungen in den Garantievereinbarungen. Falls in dieser Komponenten angegeben,
     werden die Tarifparameter hiermit überschrieben."""
-    einschraenkungsaenderung: Optional[Tarifeinschraenkung] = None
+    einschraenkungsaenderung: Optional["Tarifeinschraenkung"] = None
     """ Änderungen in den Einschränkungen zum Tarif. Falls in dieser Komponenten angegeben,
     werden die Tarifparameter hiermit überschrieben."""

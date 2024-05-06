@@ -49,16 +49,16 @@ class Marktlokation(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MARKTLOKATION
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MARKTLOKATION
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom
-    sparte: Optional[Sparte] = None
+    sparte: Optional["Sparte"] = None
     #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
-    energierichtung: Optional[Energierichtung] = None
+    energierichtung: Optional["Energierichtung"] = None
     #: Die Bilanzierungsmethode, RLM oder SLP
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
-    netzebene: Optional[Netzebene] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
+    netzebene: Optional["Netzebene"] = None
     """
     Netzebene, in der der Bezug der Energie erfolgt.
     Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.
@@ -66,13 +66,13 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     #: Verbrauchsart der Marktlokation.
-    verbrauchsart: Optional[Verbrauchsart] = None
+    verbrauchsart: Optional["Verbrauchsart"] = None
     #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
     ist_unterbrechbar: Optional[bool] = None
     #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
     netzbetreibercodenr: Optional[str] = None
     #: Typ des Netzgebietes, z.B. Verteilnetz
-    gebietstyp: Optional[Gebiettyp] = None
+    gebietstyp: Optional["Gebiettyp"] = None
     #: Die ID des Gebietes in der ene't-Datenbank
     netzgebietsnr: Optional[str] = None  # todo: rename to "id" (see 2021-12-15 update)
     #: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
@@ -80,10 +80,10 @@ class Marktlokation(Geschaeftsobjekt):
     #: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
     grundversorgercodenr: Optional[str] = None
     #: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
-    gasqualitaet: Optional[Gasqualitaet] = None
+    gasqualitaet: Optional["Gasqualitaet"] = None
     #: Geschäftspartner, dem diese Marktlokation gehört
-    endkunde: Optional[Geschaeftspartner] = None
-    zugehoerige_messlokation: Optional[Messlokationszuordnung] = None  # todo: rename to plural
+    endkunde: Optional["Geschaeftspartner"] = None
+    zugehoerige_messlokation: Optional["Messlokationszuordnung"] = None  # todo: rename to plural
     """
     Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.
     Es können 3 verschiedene Konstrukte auftreten:
@@ -108,25 +108,25 @@ class Marktlokation(Geschaeftsobjekt):
 
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
-    lokationsadresse: Optional[Adresse] = None
-    geoadresse: Optional[Geokoordinaten] = None
+    lokationsadresse: Optional["Adresse"] = None
+    geoadresse: Optional["Geokoordinaten"] = None
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
     (z.B. zur Identifikation von Sendemasten).
     """
-    katasterinformation: Optional[Katasteradresse] = None
+    katasterinformation: Optional["Katasteradresse"] = None
     """
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
 
-    kundengruppen: Optional[list[Kundentyp]] = None
+    kundengruppen: Optional[list["Kundentyp"]] = None
     #: Kundengruppen der Marktlokation
 
     regelzone: Optional[str] = (
         None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
     )
     marktgebiet: Optional[str] = None  #: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
-    zaehlwerke: Optional[list[Zaehlwerk]] = None
-    verbrauchsmengen: Optional[list[Verbrauch]] = None
-    zaehlwerke_der_beteiligten_marktrolle: Optional[list[Zaehlwerk]] = None
+    zaehlwerke: Optional[list["Zaehlwerk"]] = None
+    verbrauchsmengen: Optional[list["Verbrauch"]] = None
+    zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None

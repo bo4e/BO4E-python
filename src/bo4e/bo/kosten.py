@@ -38,13 +38,13 @@ class Kosten(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Optional[Kostenklasse] = None
+    kostenklasse: Optional["Kostenklasse"] = None
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitraum] = None
+    gueltigkeit: Optional["Zeitraum"] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[list[Kostenblock]] = None
+    kostenbloecke: Optional[list["Kostenblock"]] = None
 
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[list[Betrag]] = None
+    summe_kosten: Optional[list["Betrag"]] = None

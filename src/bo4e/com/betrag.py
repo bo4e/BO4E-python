@@ -34,4 +34,4 @@ class Betrag(COM):
     """
 
     wert: Optional[Decimal] = None  #: Gibt den Betrag des Preises an.
-    waehrung: Optional[Waehrungscode] = None  #: Die entsprechende Waehrung
+    waehrung: Optional["Waehrungscode"] = None  #: Die entsprechende Waehrung

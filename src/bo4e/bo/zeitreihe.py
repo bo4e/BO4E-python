@@ -38,23 +38,23 @@ class Zeitreihe(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ZEITREIHE
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ZEITREIHE
     #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
     #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
-    messgroesse: Optional[Messgroesse] = None
+    messgroesse: Optional["Messgroesse"] = None
     #: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
-    messart: Optional[Messart] = None
+    messart: Optional["Messart"] = None
     #: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
-    medium: Optional[Medium] = None
+    medium: Optional["Medium"] = None
     #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
-    einheit: Optional[Mengeneinheit] = None
+    einheit: Optional["Mengeneinheit"] = None
     #: Hier liegen jeweils die Werte
-    werte: Optional[list[Zeitreihenwert]] = None
+    werte: Optional[list["Zeitreihenwert"]] = None
 
     #: Beschreibt die Verwendung der Zeitreihe
     beschreibung: Optional[str] = None
     #: Version der Zeitreihe
     version: Optional[str] = None
     #: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
-    wertherkunft: Optional[Wertermittlungsverfahren] = None
+    wertherkunft: Optional["Wertermittlungsverfahren"] = None

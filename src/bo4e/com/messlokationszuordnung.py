@@ -39,7 +39,7 @@ class Messlokationszuordnung(COM):
     """
     ID der zugeordneten Messlokation
     """
-    arithmetik: Optional[ArithmetischeOperation] = None
+    arithmetik: Optional["ArithmetischeOperation"] = None
 
     gueltig_seit: Optional[pydantic.AwareDatetime] = None
     """

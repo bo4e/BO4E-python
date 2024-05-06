@@ -45,34 +45,34 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.VERTRAG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.VERTRAG
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: Optional[str] = None
     #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt.
-    vertragsart: Optional[Vertragsart] = None
+    vertragsart: Optional["Vertragsart"] = None
     #: Gibt den Status des Vertrags an
-    vertragsstatus: Optional[Vertragsstatus] = None
+    vertragsstatus: Optional["Vertragsstatus"] = None
     #: Unterscheidungsmöglichkeiten für die Sparte
-    sparte: Optional[Sparte] = None
+    sparte: Optional["Sparte"] = None
     #: Gibt an, wann der Vertrag beginnt (inklusiv)
     vertragsbeginn: Optional[pydantic.AwareDatetime] = None
     #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
     vertragsende: Optional[pydantic.AwareDatetime] = None
     # todo: add von/bis validator
-    vertragspartner1: Optional[Geschaeftspartner] = None
+    vertragspartner1: Optional["Geschaeftspartner"] = None
     """
     Der "erstgenannte" Vertragspartner.
     In der Regel der Aussteller des Vertrags.
     Beispiel: "Vertrag zwischen Vertragspartner 1 ..."
     """
-    vertragspartner2: Optional[Geschaeftspartner] = None
+    vertragspartner2: Optional["Geschaeftspartner"] = None
     """
     Der "zweitgenannte" Vertragspartner.
     In der Regel der Empfänger des Vertrags.
     Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
     """
-    vertragsteile: Optional[list[Vertragsteil]] = None
+    vertragsteile: Optional[list["Vertragsteil"]] = None
     """
     Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
     (Markt- oder Messlokation) festzulegen.
@@ -81,8 +81,8 @@ class Vertrag(Geschaeftsobjekt):
     #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = None
     #: Festlegungen zu Laufzeiten und Kündigungsfristen
-    vertragskonditionen: Optional[Vertragskonditionen] = None
+    vertragskonditionen: Optional["Vertragskonditionen"] = None
     #: Unterzeichner des Vertragspartners 1
-    unterzeichnervp1: Optional[list[Unterschrift]] = None
+    unterzeichnervp1: Optional[list["Unterschrift"]] = None
     #: Unterzeichner des Vertragspartners 2
-    unterzeichnervp2: Optional[list[Unterschrift]] = None
+    unterzeichnervp2: Optional[list["Unterschrift"]] = None

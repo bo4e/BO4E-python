@@ -42,18 +42,18 @@ class Angebotsteil(COM):
     """
 
     #: Einzelne Positionen, die zu diesem Angebotsteil gehören
-    positionen: Optional[list[Angebotsposition]] = None
+    positionen: Optional[list["Angebotsposition"]] = None
 
     #: Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung
     anfrage_subreferenz: Optional[str] = None
-    lieferstellenangebotsteil: Optional[list[Marktlokation]] = None
+    lieferstellenangebotsteil: Optional[list["Marktlokation"]] = None
     """
     Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
     Durch die Marktlokation ist auch die Lieferadresse festgelegt
     """
     #: Summe der Verbräuche aller in diesem Angebotsteil eingeschlossenen Lieferstellen
-    gesamtmengeangebotsteil: Optional[Menge] = None
+    gesamtmengeangebotsteil: Optional["Menge"] = None
     #: Summe der Jahresenergiekosten aller in diesem Angebotsteil enthaltenen Lieferstellen
-    gesamtkostenangebotsteil: Optional[Betrag] = None
+    gesamtkostenangebotsteil: Optional["Betrag"] = None
     #: Hier kann der Belieferungszeitraum angegeben werden, für den dieser Angebotsteil gilt
-    lieferzeitraum: Optional[Zeitraum] = None
+    lieferzeitraum: Optional["Zeitraum"] = None

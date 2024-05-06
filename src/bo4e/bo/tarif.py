@@ -38,21 +38,21 @@ class Tarif(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIF
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
+    berechnungsparameter: Optional["Tarifberechnungsparameter"] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Optional[list[TarifpreispositionProOrt]] = None
+    tarifpreise: Optional[list["TarifpreispositionProOrt"]] = None
 
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
-    tarif_auf_abschlaege: Optional[list[AufAbschlagRegional]] = None
+    tarif_auf_abschlaege: Optional[list["AufAbschlagRegional"]] = None
     # todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional
     # https://github.com/Hochfrequenz/BO4E-python/issues/345
 
     #: Preisgarantie für diesen Tarif
-    preisgarantie: Optional[Preisgarantie] = None
+    preisgarantie: Optional["Preisgarantie"] = None
     # todo: fix inconsistency with regionaltarif https://github.com/Hochfrequenz/BO4E-python/issues/346
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Optional[Tarifeinschraenkung] = None
+    tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None

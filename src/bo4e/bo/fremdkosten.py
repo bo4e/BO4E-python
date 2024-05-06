@@ -37,10 +37,10 @@ class Fremdkosten(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.FREMDKOSTEN
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.FREMDKOSTEN
     #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitraum] = None
+    gueltigkeit: Optional["Zeitraum"] = None
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[Betrag] = None
+    summe_kosten: Optional["Betrag"] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[list[Fremdkostenblock]] = None
+    kostenbloecke: Optional[list["Fremdkostenblock"]] = None

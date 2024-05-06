@@ -49,4 +49,4 @@ class Adresse(COM):
     #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
     co_ergaenzung: Optional[str] = None
     #: Offizieller ISO-Landescode
-    landescode: Optional[Landescode] = Landescode.DE  # type:ignore
+    landescode: Optional["Landescode"] = Landescode.DE  # type:ignore

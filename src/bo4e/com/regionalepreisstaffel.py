@@ -30,4 +30,4 @@ class RegionalePreisstaffel(Preisstaffel):
     """
 
     #: Regionale Eingrenzung der Preisstaffel
-    regionale_gueltigkeit: Optional[RegionaleGueltigkeit] = None
+    regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None

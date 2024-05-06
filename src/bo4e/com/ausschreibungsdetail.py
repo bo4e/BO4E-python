@@ -42,9 +42,9 @@ class Ausschreibungsdetail(COM):
     #: In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung
     netzebene_messung: Optional[str] = None
     #: Die Adresse an der die Marktlokation sich befindet
-    marktlokationsadresse: Optional[Adresse] = None
+    marktlokationsadresse: Optional["Adresse"] = None
     #: Angefragter Zeitraum für die ausgeschriebene Belieferung
-    lieferzeitraum: Optional[Zeitraum] = None
+    lieferzeitraum: Optional["Zeitraum"] = None
 
     #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
     netzbetreiber: Optional[str] = None
@@ -56,7 +56,7 @@ class Ausschreibungsdetail(COM):
     marktlokationsbezeichnung: Optional[str] = None
 
     #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
-    zaehlertechnik: Optional[Zaehlertyp] = None
+    zaehlertechnik: Optional["Zaehlertyp"] = None
     ist_lastgang_vorhanden: Optional[bool] = None
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
@@ -64,10 +64,10 @@ class Ausschreibungsdetail(COM):
     """
 
     #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
-    prognose_jahresarbeit: Optional[Menge] = None
+    prognose_jahresarbeit: Optional["Menge"] = None
     #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
-    prognose_arbeit_lieferzeitraum: Optional[Menge] = None
+    prognose_arbeit_lieferzeitraum: Optional["Menge"] = None
     #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
-    prognose_leistung: Optional[Menge] = None
+    prognose_leistung: Optional["Menge"] = None
     #: Die (evtl. abweichende) Rechnungsadresse
-    rechnungsadresse: Optional[Adresse] = None
+    rechnungsadresse: Optional["Adresse"] = None

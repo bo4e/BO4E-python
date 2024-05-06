@@ -39,5 +39,5 @@ class TarifpreispositionProOrt(COM):
     #: ene't-Netznummer des Netzes in dem der Preis gilt
     netznr: Optional[str] = None
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Optional[list[TarifpreisstaffelProOrt]] = None
+    preisstaffeln: Optional[list["TarifpreisstaffelProOrt"]] = None
     # there are no optional attributes

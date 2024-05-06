@@ -37,7 +37,7 @@ class Angebotsvariante(COM):
     """
 
     #: Gibt den Status eines Angebotes an.
-    angebotsstatus: Optional[Angebotsstatus] = None
+    angebotsstatus: Optional["Angebotsstatus"] = None
 
     #: Datum der Erstellung der Angebotsvariante
     erstellungsdatum: Optional[pydantic.AwareDatetime] = None
@@ -45,7 +45,7 @@ class Angebotsvariante(COM):
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
     bindefrist: Optional[pydantic.AwareDatetime] = None
 
-    teile: Optional[list[Angebotsteil]] = None
+    teile: Optional[list["Angebotsteil"]] = None
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
@@ -53,7 +53,7 @@ class Angebotsvariante(COM):
     """
 
     #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
-    gesamtmenge: Optional[Menge] = None
+    gesamtmenge: Optional["Menge"] = None
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320
     #: Aufsummierte Kosten aller Angebotsteile
-    gesamtkosten: Optional[Betrag] = None
+    gesamtkosten: Optional["Betrag"] = None

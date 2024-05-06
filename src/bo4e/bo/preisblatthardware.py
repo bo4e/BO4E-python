@@ -35,18 +35,18 @@ class PreisblattHardware(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTHARDWARE
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTHARDWARE
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
-    messebene: Optional[Netzebene] = None
+    messebene: Optional["Netzebene"] = None
 
     #: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät
-    basisgeraet: Optional[Geraet] = None
+    basisgeraet: Optional["Geraet"] = None
 
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
-    inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
+    inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: Optional[list[Geraet]] = None
+    inklusive_geraete: Optional[list["Geraet"]] = None

@@ -42,41 +42,41 @@ class Ausschreibungslos(COM):
     #: Bezeichnung der Ausschreibung
     bezeichnung: Optional[str] = None
     #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
-    preismodell: Optional[Preismodell] = None
+    preismodell: Optional["Preismodell"] = None
 
     #: Unterscheidungsmöglichkeiten für die Sparte
-    energieart: Optional[Sparte] = None
+    energieart: Optional["Sparte"] = None
     #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
-    wunsch_rechnungslegung: Optional[Rechnungslegung] = None
+    wunsch_rechnungslegung: Optional["Rechnungslegung"] = None
     #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
-    wunsch_vertragsform: Optional[Vertragsform] = None
+    wunsch_vertragsform: Optional["Vertragsform"] = None
     #: Name des Lizenzpartners
     betreut_durch: Optional[str] = None
     #: Anzahl der Lieferstellen in dieser Ausschreibung
     anzahl_lieferstellen: Optional[int] = None
 
     #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: Optional[list[Ausschreibungsdetail]] = None
+    lieferstellen: Optional[list["Ausschreibungsdetail"]] = None
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Optional[Zeitraum] = None
+    lieferzeitraum: Optional["Zeitraum"] = None
 
     #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
     #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an
-    gesamt_menge: Optional[Menge] = None
+    gesamt_menge: Optional["Menge"] = None
     #: Mindesmenge Toleranzband (kWh, %)
-    wunsch_mindestmenge: Optional[Menge] = None
+    wunsch_mindestmenge: Optional["Menge"] = None
     #: Maximalmenge Toleranzband (kWh, %)
-    wunsch_maximalmenge: Optional[Menge] = None
+    wunsch_maximalmenge: Optional["Menge"] = None
 
-    wiederholungsintervall: Optional[Zeitraum] = None
+    wiederholungsintervall: Optional["Zeitraum"] = None
     """
     In welchem Intervall die Angebotsabgabe wiederholt werden darf.
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
 
     #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
-    wunsch_kuendingungsfrist: Optional[Zeitraum] = None
+    wunsch_kuendingungsfrist: Optional["Zeitraum"] = None
     #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
-    wunsch_zahlungsziel: Optional[Zeitraum] = None
+    wunsch_zahlungsziel: Optional["Zeitraum"] = None

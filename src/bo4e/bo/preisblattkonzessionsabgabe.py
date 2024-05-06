@@ -32,9 +32,9 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTKONZESSIONSABGABE
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTKONZESSIONSABGABE
     # required attributes (additional to those of Preisblatt)
     #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
-    kundengruppe_k_a: Optional[KundengruppeKA] = None
+    kundengruppe_k_a: Optional["KundengruppeKA"] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

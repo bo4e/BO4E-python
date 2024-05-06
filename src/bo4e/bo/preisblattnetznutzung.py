@@ -34,12 +34,12 @@ class PreisblattNetznutzung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTNETZNUTZUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTNETZNUTZUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     #: Die Preise gelten für Marktlokationen in der angebebenen Netzebene
-    netzebene: Optional[Netzebene] = None
-    kundengruppe: Optional[Kundengruppe] = None
+    netzebene: Optional["Netzebene"] = None
+    kundengruppe: Optional["Kundengruppe"] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

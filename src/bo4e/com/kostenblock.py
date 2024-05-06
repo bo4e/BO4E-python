@@ -36,9 +36,9 @@ class Kostenblock(COM):
     kostenblockbezeichnung: Optional[str] = None
 
     #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Optional[Betrag] = None
+    summe_kostenblock: Optional["Betrag"] = None
 
-    kostenpositionen: Optional[list[Kostenposition]] = None
+    kostenpositionen: Optional[list["Kostenposition"]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 01.02.2018, 31.12.2018, Arbeitspreis HT, 3.660 kWh, 5,8200 ct/kWh, 213,01 €

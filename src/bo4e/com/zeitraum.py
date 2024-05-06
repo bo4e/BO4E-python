@@ -38,7 +38,7 @@ class Zeitraum(COM):
 
     """
 
-    einheit: Optional[Mengeneinheit] = None
+    einheit: Optional["Mengeneinheit"] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[pydantic.AwareDatetime] = None
     enddatum: Optional[pydantic.AwareDatetime] = None

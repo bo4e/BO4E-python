@@ -31,7 +31,7 @@ class Konzessionsabgabe(COM):
     """
 
     #: Art der Abgabe
-    satz: Optional[AbgabeArt] = None
+    satz: Optional["AbgabeArt"] = None
 
     #: Konzessionsabgabe in E/kWh
     kosten: Optional[Decimal] = None

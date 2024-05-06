@@ -33,4 +33,4 @@ class StandorteigenschaftenGas(COM):
     """
 
     netzkontonummern: Optional[list[str]] = None  #: Netzkontonummern der Gasnetze
-    marktgebiete: Optional[list[MarktgebietInfo]] = None  #: Die Informationen zu Marktgebieten in dem Netz.
+    marktgebiete: Optional[list["MarktgebietInfo"]] = None  #: Die Informationen zu Marktgebieten in dem Netz.

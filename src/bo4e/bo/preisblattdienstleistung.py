@@ -34,15 +34,15 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTDIENSTLEISTUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
-    basisdienstleistung: Optional[Dienstleistungstyp] = None
+    basisdienstleistung: Optional["Dienstleistungstyp"] = None
 
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
-    geraetedetails: Optional[Geraet] = None
+    geraetedetails: Optional["Geraet"] = None
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
-    inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
+    inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None

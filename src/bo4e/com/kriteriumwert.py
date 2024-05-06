@@ -31,6 +31,6 @@ class KriteriumWert(COM):
     """
 
     #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
-    kriterium: Optional[Tarifregionskriterium] = None
+    kriterium: Optional["Tarifregionskriterium"] = None
     #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
     wert: Optional[str] = None

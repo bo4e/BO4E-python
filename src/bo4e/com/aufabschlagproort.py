@@ -41,4 +41,4 @@ class AufAbschlagProOrt(COM):
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
     netznr: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: Optional[list[AufAbschlagstaffelProOrt]] = None
+    staffeln: Optional[list["AufAbschlagstaffelProOrt"]] = None

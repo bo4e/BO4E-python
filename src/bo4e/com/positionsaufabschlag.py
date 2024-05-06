@@ -39,8 +39,8 @@ class PositionsAufAbschlag(COM):
     #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
     #: Typ des AufAbschlages
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = None
+    auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
     #: Höhe des Auf-/Abschlages
     auf_abschlagswert: Optional[Decimal] = None
     #: Einheit, in der der Auf-/Abschlag angegeben ist (z.B. ct/kWh).
-    auf_abschlagswaehrung: Optional[Waehrungseinheit] = None
+    auf_abschlagswaehrung: Optional["Waehrungseinheit"] = None
