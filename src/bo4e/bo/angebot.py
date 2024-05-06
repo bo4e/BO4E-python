@@ -8,14 +8,19 @@ from typing import Annotated, Optional
 
 import pydantic
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.angebotsvariante import Angebotsvariante
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
-from .person import Person
+
+if TYPE_CHECKING:
+    from ..com.angebotsvariante import Angebotsvariante
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+
+    from .geschaeftspartner import Geschaeftspartner
+    from .person import Person
 
 
 @postprocess_docstring

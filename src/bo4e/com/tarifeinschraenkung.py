@@ -3,12 +3,17 @@ Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serial
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..bo.geraet import Geraet
-from ..enum.voraussetzungen import Voraussetzungen
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .menge import Menge
+
+if TYPE_CHECKING:
+    from ..bo.geraet import Geraet
+    from ..enum.voraussetzungen import Voraussetzungen
+
+    from .menge import Menge
 
 # pylint: disable=too-few-public-methods
 

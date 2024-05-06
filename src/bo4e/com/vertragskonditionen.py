@@ -5,10 +5,15 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 

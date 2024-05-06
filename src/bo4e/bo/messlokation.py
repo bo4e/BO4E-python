@@ -6,18 +6,23 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..bo.geraet import Geraet
-from ..com.adresse import Adresse
-from ..com.dienstleistung import Dienstleistung
-from ..com.geokoordinaten import Geokoordinaten
-from ..com.katasteradresse import Katasteradresse
-from ..enum.netzebene import Netzebene
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .zaehler import Zaehler
+
+if TYPE_CHECKING:
+    from ..bo.geraet import Geraet
+    from ..com.adresse import Adresse
+    from ..com.dienstleistung import Dienstleistung
+    from ..com.geokoordinaten import Geokoordinaten
+    from ..com.katasteradresse import Katasteradresse
+    from ..enum.netzebene import Netzebene
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+
+    from .zaehler import Zaehler
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 

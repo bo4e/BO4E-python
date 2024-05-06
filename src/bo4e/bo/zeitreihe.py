@@ -7,16 +7,20 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.zeitreihenwert import Zeitreihenwert
-from ..enum.medium import Medium
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.messart import Messart
-from ..enum.messgroesse import Messgroesse
-from ..enum.typ import Typ
-from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.zeitreihenwert import Zeitreihenwert
+    from ..enum.medium import Medium
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.messart import Messart
+    from ..enum.messgroesse import Messgroesse
+    from ..enum.typ import Typ
+    from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 
 
 @postprocess_docstring

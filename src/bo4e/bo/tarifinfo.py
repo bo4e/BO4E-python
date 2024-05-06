@@ -9,19 +9,24 @@ from typing import Annotated, Optional
 
 import pydantic
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.energiemix import Energiemix
-from ..com.vertragskonditionen import Vertragskonditionen
-from ..com.zeitraum import Zeitraum
-from ..enum.kundentyp import Kundentyp
-from ..enum.registeranzahl import Registeranzahl
-from ..enum.sparte import Sparte
-from ..enum.tarifmerkmal import Tarifmerkmal
-from ..enum.tariftyp import Tariftyp
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .marktteilnehmer import Marktteilnehmer
+
+if TYPE_CHECKING:
+    from ..com.energiemix import Energiemix
+    from ..com.vertragskonditionen import Vertragskonditionen
+    from ..com.zeitraum import Zeitraum
+    from ..enum.kundentyp import Kundentyp
+    from ..enum.registeranzahl import Registeranzahl
+    from ..enum.sparte import Sparte
+    from ..enum.tarifmerkmal import Tarifmerkmal
+    from ..enum.tariftyp import Tariftyp
+    from ..enum.typ import Typ
+
+    from .marktteilnehmer import Marktteilnehmer
 
 
 @postprocess_docstring

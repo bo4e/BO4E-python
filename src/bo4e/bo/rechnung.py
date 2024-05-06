@@ -7,22 +7,27 @@ from typing import Annotated, Optional
 
 import pydantic
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.betrag import Betrag
-from ..com.rechnungsposition import Rechnungsposition
-from ..com.steuerbetrag import Steuerbetrag
-from ..com.zeitraum import Zeitraum
-from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
-from ..enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
-from ..enum.rechnungsstatus import Rechnungsstatus
-from ..enum.rechnungstyp import Rechnungstyp
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
-from .marktlokation import Marktlokation
-from .messlokation import Messlokation
+
+if TYPE_CHECKING:
+    from ..com.betrag import Betrag
+    from ..com.rechnungsposition import Rechnungsposition
+    from ..com.steuerbetrag import Steuerbetrag
+    from ..com.zeitraum import Zeitraum
+    from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
+    from ..enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
+    from ..enum.rechnungsstatus import Rechnungsstatus
+    from ..enum.rechnungstyp import Rechnungstyp
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+
+    from .geschaeftspartner import Geschaeftspartner
+    from .marktlokation import Marktlokation
+    from .messlokation import Messlokation
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

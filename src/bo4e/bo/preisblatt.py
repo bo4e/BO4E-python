@@ -8,15 +8,20 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.preisposition import Preisposition
-from ..com.zeitraum import Zeitraum
-from ..enum.preisstatus import Preisstatus
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .marktteilnehmer import Marktteilnehmer
+
+if TYPE_CHECKING:
+    from ..com.preisposition import Preisposition
+    from ..com.zeitraum import Zeitraum
+    from ..enum.preisstatus import Preisstatus
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+
+    from .marktteilnehmer import Marktteilnehmer
 
 
 @postprocess_docstring

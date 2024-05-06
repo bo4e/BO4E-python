@@ -5,11 +5,15 @@ Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema 
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..enum.kundengruppeka import KundengruppeKA
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
-from .preisblatt import Preisblatt
+
+if TYPE_CHECKING:
+    from ..enum.kundengruppeka import KundengruppeKA
+    from ..enum.typ import Typ
+
+    from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 

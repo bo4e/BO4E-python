@@ -6,8 +6,10 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 import pydantic
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+
 from .com import COM
 
 # pylint: disable=too-few-public-methods

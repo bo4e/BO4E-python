@@ -5,16 +5,22 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.preismodell import Preismodell
-from ..enum.rechnungslegung import Rechnungslegung
-from ..enum.sparte import Sparte
-from ..enum.vertragsform import Vertragsform
 from ..utils import postprocess_docstring
-from .ausschreibungsdetail import Ausschreibungsdetail
+
 from .com import COM
-from .menge import Menge
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..enum.preismodell import Preismodell
+    from ..enum.rechnungslegung import Rechnungslegung
+    from ..enum.sparte import Sparte
+    from ..enum.vertragsform import Vertragsform
+
+    from .ausschreibungsdetail import Ausschreibungsdetail
+
+    from .menge import Menge
+    from .zeitraum import Zeitraum
 
 
 @postprocess_docstring

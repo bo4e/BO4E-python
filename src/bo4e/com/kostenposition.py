@@ -5,12 +5,18 @@ Contains Kostenposition and corresponding marshmallow schema for de-/serializati
 from typing import Optional
 
 import pydantic
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
+
 from .com import COM
-from .menge import Menge
-from .preis import Preis
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+
+    from .menge import Menge
+    from .preis import Preis
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

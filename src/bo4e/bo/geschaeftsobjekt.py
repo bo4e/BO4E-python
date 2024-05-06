@@ -9,9 +9,13 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
+from typing import TYPE_CHECKING
 
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
+if TYPE_CHECKING:
+    from ..enum.typ import Typ
+
 
 # pylint: disable=too-few-public-methods
 
@@ -32,9 +36,9 @@ class Geschaeftsobjekt(BaseModel):
     """
 
     # required attributes
-    version: Annotated[
-        Optional[str], Field(alias="_version")
-    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    version: Annotated[Optional[str], Field(alias="_version")] = (
+        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    )
     # src/_bo4e_python_version.py
     typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
     # bo_typ is used as discriminator f.e. for databases or deserialization

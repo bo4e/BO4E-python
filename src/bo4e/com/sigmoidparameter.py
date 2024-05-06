@@ -4,8 +4,10 @@ Contains Sigmoidparameter class and corresponding marshmallow schema for de-/ser
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+
 from .com import COM
 
 # pylint:disable=invalid-name, too-few-public-methods

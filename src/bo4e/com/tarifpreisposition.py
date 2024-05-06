@@ -6,13 +6,18 @@ and corresponding marshmallow schema for de-/serialization
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.preistyp import Preistyp
-from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .preisstaffel import Preisstaffel
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.preistyp import Preistyp
+    from ..enum.waehrungseinheit import Waehrungseinheit
+
+    from .preisstaffel import Preisstaffel
 
 
 @postprocess_docstring

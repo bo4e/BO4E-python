@@ -5,8 +5,10 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+
 from .com import COM
 
 # pylint: disable=too-few-public-methods

@@ -4,10 +4,15 @@ Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .sigmoidparameter import Sigmoidparameter
+
+if TYPE_CHECKING:
+
+    from .sigmoidparameter import Sigmoidparameter
 
 # pylint: disable=too-few-public-methods
 

@@ -5,13 +5,18 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.oekolabel import Oekolabel
-from ..enum.oekozertifikat import Oekozertifikat
-from ..enum.sparte import Sparte
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .energieherkunft import Energieherkunft
+
+if TYPE_CHECKING:
+    from ..enum.oekolabel import Oekolabel
+    from ..enum.oekozertifikat import Oekozertifikat
+    from ..enum.sparte import Sparte
+
+    from .energieherkunft import Energieherkunft
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module

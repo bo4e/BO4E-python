@@ -7,25 +7,30 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.adresse import Adresse
-from ..com.geokoordinaten import Geokoordinaten
-from ..com.katasteradresse import Katasteradresse
-from ..com.messlokationszuordnung import Messlokationszuordnung
-from ..com.verbrauch import Verbrauch
-from ..com.zaehlwerk import Zaehlwerk
-from ..enum.bilanzierungsmethode import Bilanzierungsmethode
-from ..enum.energierichtung import Energierichtung
-from ..enum.gasqualitaet import Gasqualitaet
-from ..enum.gebiettyp import Gebiettyp
-from ..enum.kundentyp import Kundentyp
-from ..enum.netzebene import Netzebene
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
-from ..enum.verbrauchsart import Verbrauchsart
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
+
+if TYPE_CHECKING:
+    from ..com.adresse import Adresse
+    from ..com.geokoordinaten import Geokoordinaten
+    from ..com.katasteradresse import Katasteradresse
+    from ..com.messlokationszuordnung import Messlokationszuordnung
+    from ..com.verbrauch import Verbrauch
+    from ..com.zaehlwerk import Zaehlwerk
+    from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+    from ..enum.energierichtung import Energierichtung
+    from ..enum.gasqualitaet import Gasqualitaet
+    from ..enum.gebiettyp import Gebiettyp
+    from ..enum.kundentyp import Kundentyp
+    from ..enum.netzebene import Netzebene
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+    from ..enum.verbrauchsart import Verbrauchsart
+
+    from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=no-name-in-module
 
@@ -118,9 +123,9 @@ class Marktlokation(Geschaeftsobjekt):
     kundengruppen: Optional[list[Kundentyp]] = None
     #: Kundengruppen der Marktlokation
 
-    regelzone: Optional[
-        str
-    ] = None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
+    regelzone: Optional[str] = (
+        None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
+    )
     marktgebiet: Optional[str] = None  #: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
     zaehlwerke: Optional[list[Zaehlwerk]] = None
     verbrauchsmengen: Optional[list[Verbrauch]] = None

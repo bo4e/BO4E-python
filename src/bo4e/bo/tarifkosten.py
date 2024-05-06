@@ -6,11 +6,15 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
-from .kosten import Kosten
-from .tarifinfo import Tarifinfo
+
+if TYPE_CHECKING:
+    from ..enum.typ import Typ
+
+    from .kosten import Kosten
+    from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 

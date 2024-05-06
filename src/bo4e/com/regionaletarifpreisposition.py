@@ -5,13 +5,18 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.preistyp import Preistyp
-from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .regionalepreisstaffel import RegionalePreisstaffel
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.preistyp import Preistyp
+    from ..enum.waehrungseinheit import Waehrungseinheit
+
+    from .regionalepreisstaffel import RegionalePreisstaffel
 
 
 @postprocess_docstring

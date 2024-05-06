@@ -6,15 +6,21 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 from typing import Optional
 
 import pydantic
+from typing import TYPE_CHECKING
 
-from ..enum.bdewartikelnummer import BDEWArtikelnummer
-from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
-from .betrag import Betrag
+
 from .com import COM
-from .menge import Menge
-from .preis import Preis
-from .steuerbetrag import Steuerbetrag
+
+if TYPE_CHECKING:
+    from ..enum.bdewartikelnummer import BDEWArtikelnummer
+    from ..enum.mengeneinheit import Mengeneinheit
+
+    from .betrag import Betrag
+
+    from .menge import Menge
+    from .preis import Preis
+    from .steuerbetrag import Steuerbetrag
 
 
 @postprocess_docstring
@@ -35,12 +41,12 @@ class Rechnungsposition(COM):
     #: Fortlaufende Nummer für die Rechnungsposition
     positionsnummer: Optional[int] = None
 
-    lieferung_von: Optional[
-        pydantic.AwareDatetime
-    ] = None  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
-    lieferung_bis: Optional[
-        pydantic.AwareDatetime
-    ] = None  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
+    lieferung_von: Optional[pydantic.AwareDatetime] = (
+        None  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
+    )
+    lieferung_bis: Optional[pydantic.AwareDatetime] = (
+        None  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
+    )
 
     #: Bezeichung für die abgerechnete Position
     positionstext: Optional[str] = None

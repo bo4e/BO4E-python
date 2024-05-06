@@ -4,10 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.preistyp import Preistyp
 from ..utils import postprocess_docstring
-from .preis import Preis
+
+if TYPE_CHECKING:
+    from ..enum.preistyp import Preistyp
+
+    from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 

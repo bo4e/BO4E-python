@@ -3,20 +3,22 @@ Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.aufabschlagstyp import AufAbschlagstyp
-from ..enum.aufabschlagsziel import AufAbschlagsziel
-from ..enum.waehrungseinheit import Waehrungseinheit
+if TYPE_CHECKING:
+    from ..enum.aufabschlagstyp import AufAbschlagstyp
+    from ..enum.aufabschlagsziel import AufAbschlagsziel
+    from ..enum.waehrungseinheit import Waehrungseinheit
 
-# pylint: disable=R0801
-from ..utils import postprocess_docstring
-from .com import COM
-from .energiemix import Energiemix
-from .preisgarantie import Preisgarantie
-from .regionalepreisstaffel import RegionalePreisstaffel
-from .tarifeinschraenkung import Tarifeinschraenkung
-from .vertragskonditionen import Vertragskonditionen
-from .zeitraum import Zeitraum
+    # pylint: disable=R0801
+    from ..utils import postprocess_docstring
+    from .com import COM
+    from .energiemix import Energiemix
+    from .preisgarantie import Preisgarantie
+    from .regionalepreisstaffel import RegionalePreisstaffel
+    from .tarifeinschraenkung import Tarifeinschraenkung
+    from .vertragskonditionen import Vertragskonditionen
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module

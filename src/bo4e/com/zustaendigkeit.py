@@ -4,10 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.themengebiet import Themengebiet
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.themengebiet import Themengebiet
+
 
 # pylint: disable=too-few-public-methods
 

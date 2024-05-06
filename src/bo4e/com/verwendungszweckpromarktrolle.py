@@ -4,11 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..com.com import COM
-from ..enum.marktrolle import Marktrolle
-from ..enum.verwendungszweck import Verwendungszweck
 from ..utils import postprocess_docstring
+
+if TYPE_CHECKING:
+    from ..com.com import COM
+    from ..enum.marktrolle import Marktrolle
+    from ..enum.verwendungszweck import Verwendungszweck
+
 
 # pylint: disable=too-few-public-methods
 

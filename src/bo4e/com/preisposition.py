@@ -6,17 +6,22 @@ from decimal import Decimal
 
 # pylint: disable=no-name-in-module
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.bdewartikelnummer import BDEWArtikelnummer
-from ..enum.bemessungsgroesse import Bemessungsgroesse
-from ..enum.kalkulationsmethode import Kalkulationsmethode
-from ..enum.leistungstyp import Leistungstyp
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.tarifzeit import Tarifzeit
-from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .preisstaffel import Preisstaffel
+
+if TYPE_CHECKING:
+    from ..enum.bdewartikelnummer import BDEWArtikelnummer
+    from ..enum.bemessungsgroesse import Bemessungsgroesse
+    from ..enum.kalkulationsmethode import Kalkulationsmethode
+    from ..enum.leistungstyp import Leistungstyp
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.tarifzeit import Tarifzeit
+    from ..enum.waehrungseinheit import Waehrungseinheit
+
+    from .preisstaffel import Preisstaffel
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

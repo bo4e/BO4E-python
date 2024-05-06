@@ -5,12 +5,17 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.preisstatus import Preisstatus
-from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.preisstatus import Preisstatus
+    from ..enum.waehrungseinheit import Waehrungseinheit
+
 
 # pylint: disable=too-few-public-methods
 

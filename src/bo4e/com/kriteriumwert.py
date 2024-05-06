@@ -6,9 +6,14 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Optional
 
 # pylint: disable=too-few-public-methods
-from ..enum.tarifregionskriterium import Tarifregionskriterium
+from typing import TYPE_CHECKING
+
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.tarifregionskriterium import Tarifregionskriterium
 
 
 @postprocess_docstring

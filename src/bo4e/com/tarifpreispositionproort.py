@@ -4,10 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
+
+if TYPE_CHECKING:
+
+    from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

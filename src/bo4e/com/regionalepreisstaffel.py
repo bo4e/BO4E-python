@@ -3,10 +3,14 @@ Contains RegionalePreisstaffel class and corresponding marshmallow schema for de
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-from .preisstaffel import Preisstaffel
-from .regionalegueltigkeit import RegionaleGueltigkeit
+
+if TYPE_CHECKING:
+
+    from .preisstaffel import Preisstaffel
+    from .regionalegueltigkeit import RegionaleGueltigkeit
 
 # pylint: disable=too-few-public-methods
 

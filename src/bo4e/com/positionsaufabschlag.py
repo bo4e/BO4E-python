@@ -6,10 +6,15 @@ from decimal import Decimal
 from typing import Optional
 
 # pylint: disable=too-few-public-methods
-from ..enum.aufabschlagstyp import AufAbschlagstyp
-from ..enum.waehrungseinheit import Waehrungseinheit
+from typing import TYPE_CHECKING
+
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.aufabschlagstyp import AufAbschlagstyp
+    from ..enum.waehrungseinheit import Waehrungseinheit
 
 
 @postprocess_docstring

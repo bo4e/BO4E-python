@@ -7,13 +7,19 @@ Contains Angebotsvariante and corresponding marshmallow schema for de-/serializa
 from typing import Optional
 
 import pydantic
+from typing import TYPE_CHECKING
 
-from ..enum.angebotsstatus import Angebotsstatus
 from ..utils import postprocess_docstring
-from .angebotsteil import Angebotsteil
-from .betrag import Betrag
+
 from .com import COM
-from .menge import Menge
+
+if TYPE_CHECKING:
+    from ..enum.angebotsstatus import Angebotsstatus
+
+    from .angebotsteil import Angebotsteil
+    from .betrag import Betrag
+
+    from .menge import Menge
 
 
 @postprocess_docstring

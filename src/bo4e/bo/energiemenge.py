@@ -6,12 +6,17 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.verbrauch import Verbrauch
-from ..enum.lokationstyp import Lokationstyp
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.verbrauch import Verbrauch
+    from ..enum.lokationstyp import Lokationstyp
+    from ..enum.typ import Typ
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

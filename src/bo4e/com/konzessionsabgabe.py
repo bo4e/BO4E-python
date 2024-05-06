@@ -4,10 +4,14 @@ Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serializ
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..com.com import COM
-from ..enum.abgabeart import AbgabeArt
 from ..utils import postprocess_docstring
+
+if TYPE_CHECKING:
+    from ..com.com import COM
+    from ..enum.abgabeart import AbgabeArt
+
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

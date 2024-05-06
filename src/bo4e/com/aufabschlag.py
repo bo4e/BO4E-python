@@ -4,14 +4,19 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.aufabschlagstyp import AufAbschlagstyp
-from ..enum.aufabschlagsziel import AufAbschlagsziel
-from ..enum.waehrungseinheit import Waehrungseinheit
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .preisstaffel import Preisstaffel
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..enum.aufabschlagstyp import AufAbschlagstyp
+    from ..enum.aufabschlagsziel import AufAbschlagsziel
+    from ..enum.waehrungseinheit import Waehrungseinheit
+
+    from .preisstaffel import Preisstaffel
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

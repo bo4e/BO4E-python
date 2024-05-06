@@ -8,12 +8,16 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.standorteigenschaftengas import StandorteigenschaftenGas
-from ..com.standorteigenschaftenstrom import StandorteigenschaftenStrom
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.standorteigenschaftengas import StandorteigenschaftenGas
+    from ..com.standorteigenschaftenstrom import StandorteigenschaftenStrom
+    from ..enum.typ import Typ
 
 
 @postprocess_docstring

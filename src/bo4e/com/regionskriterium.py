@@ -3,11 +3,16 @@ Contains Regionskriterium class and corresponding marshmallow schema for de-/ser
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.gueltigkeitstyp import Gueltigkeitstyp
-from ..enum.regionskriteriumtyp import Regionskriteriumtyp
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.gueltigkeitstyp import Gueltigkeitstyp
+    from ..enum.regionskriteriumtyp import Regionskriteriumtyp
+
 
 # pylint: disable=too-few-public-methods
 
@@ -26,12 +31,12 @@ class Regionskriterium(COM):
 
     """
 
-    gueltigkeitstyp: Optional[
-        Gueltigkeitstyp
-    ] = None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
-    regionskriteriumtyp: Optional[
-        Regionskriteriumtyp
-    ] = None  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
+    gueltigkeitstyp: Optional[Gueltigkeitstyp] = (
+        None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
+    )
+    regionskriteriumtyp: Optional[Regionskriteriumtyp] = (
+        None  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
+    )
     wert: Optional[str] = None
     """
     Der Wert, den das Kriterium annehmen kann, z.B. NRW.

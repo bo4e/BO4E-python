@@ -3,13 +3,19 @@ Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.zaehlertyp import Zaehlertyp
 from ..utils import postprocess_docstring
-from .adresse import Adresse
+
 from .com import COM
-from .menge import Menge
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..enum.zaehlertyp import Zaehlertyp
+
+    from .adresse import Adresse
+
+    from .menge import Menge
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

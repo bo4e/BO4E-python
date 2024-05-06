@@ -3,9 +3,13 @@ Contains Fremdkostenposition and corresponding marshmallow schema for de-/serial
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-from .kostenposition import Kostenposition
+
+if TYPE_CHECKING:
+
+    from .kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 

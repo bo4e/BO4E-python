@@ -8,16 +8,21 @@ from typing import Annotated, Optional
 
 import pydantic
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.ausschreibungslos import Ausschreibungslos
-from ..com.zeitraum import Zeitraum
-from ..enum.ausschreibungsportal import Ausschreibungsportal
-from ..enum.ausschreibungsstatus import Ausschreibungsstatus
-from ..enum.ausschreibungstyp import Ausschreibungstyp
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
+
+if TYPE_CHECKING:
+    from ..com.ausschreibungslos import Ausschreibungslos
+    from ..com.zeitraum import Zeitraum
+    from ..enum.ausschreibungsportal import Ausschreibungsportal
+    from ..enum.ausschreibungsstatus import Ausschreibungsstatus
+    from ..enum.ausschreibungstyp import Ausschreibungstyp
+    from ..enum.typ import Typ
+
+    from .geschaeftspartner import Geschaeftspartner
 
 
 @postprocess_docstring

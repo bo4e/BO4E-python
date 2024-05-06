@@ -8,17 +8,22 @@ from typing import Annotated, Optional
 
 import pydantic
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.unterschrift import Unterschrift
-from ..com.vertragskonditionen import Vertragskonditionen
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
-from ..enum.vertragsart import Vertragsart
-from ..enum.vertragsstatus import Vertragsstatus
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
-from .vertrag import Vertrag
+
+if TYPE_CHECKING:
+    from ..com.unterschrift import Unterschrift
+    from ..com.vertragskonditionen import Vertragskonditionen
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+    from ..enum.vertragsart import Vertragsart
+    from ..enum.vertragsstatus import Vertragsstatus
+
+    from .geschaeftspartner import Geschaeftspartner
+    from .vertrag import Vertrag
 
 
 @postprocess_docstring

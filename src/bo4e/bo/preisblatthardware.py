@@ -5,14 +5,18 @@ Contains PreisblattHardware class and corresponding marshmallow schema for de-/s
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..bo.geraet import Geraet
-from ..enum.bilanzierungsmethode import Bilanzierungsmethode
-from ..enum.dienstleistungstyp import Dienstleistungstyp
-from ..enum.netzebene import Netzebene
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
-from .preisblatt import Preisblatt
+
+if TYPE_CHECKING:
+    from ..bo.geraet import Geraet
+    from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+    from ..enum.dienstleistungstyp import Dienstleistungstyp
+    from ..enum.netzebene import Netzebene
+    from ..enum.typ import Typ
+
+    from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 

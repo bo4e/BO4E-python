@@ -4,10 +4,16 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+
 from .com import COM
+
+if TYPE_CHECKING:
+
+    from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

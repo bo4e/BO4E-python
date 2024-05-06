@@ -5,13 +5,18 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.messpreistyp import Messpreistyp
-from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .preis import Preis
-from .tarifpreis import Tarifpreis
+
+if TYPE_CHECKING:
+    from ..enum.messpreistyp import Messpreistyp
+    from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+
+    from .preis import Preis
+    from .tarifpreis import Tarifpreis
 
 # yes. there is no description in the official docs.
 # https://github.com/Hochfrequenz/BO4E-python/issues/328

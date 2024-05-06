@@ -5,16 +5,21 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..com.konzessionsabgabe import Konzessionsabgabe
-from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
-from ..com.zaehlzeitregister import Zaehlzeitregister
-from ..enum.energierichtung import Energierichtung
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.verbrauchsart import Verbrauchsart
-from ..enum.waermenutzung import Waermenutzung
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..com.konzessionsabgabe import Konzessionsabgabe
+    from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
+    from ..com.zaehlzeitregister import Zaehlzeitregister
+    from ..enum.energierichtung import Energierichtung
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.verbrauchsart import Verbrauchsart
+    from ..enum.waermenutzung import Waermenutzung
+
 
 # pylint: disable=no-name-in-module
 # pylint: disable=no-name-in-module
@@ -40,19 +45,19 @@ class Zaehlwerk(COM):
     # Oftmals eine laufende Nummer hinter der Zählernummer. Z.B. 47110815_1
     bezeichnung: Optional[str] = None  # Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit.
     richtung: Optional[Energierichtung] = None  # Die Energierichtung, Einspeisung oder Ausspeisung.
-    obis_kennzahl: Optional[
-        str
-    ] = None  # Die OBIS-Kennzahl für das Zählwerk, die festlegt, welche auf die gemessene Größe mit dem Stand gemeldet wird.
+    obis_kennzahl: Optional[str] = (
+        None  # Die OBIS-Kennzahl für das Zählwerk, die festlegt, welche auf die gemessene Größe mit dem Stand gemeldet wird.
+    )
     # Nur Zählwerkstände mit dieser OBIS-Kennzahl werden an diesem Zählwerk registriert.
-    wandlerfaktor: Optional[
-        Decimal
-    ] = None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
+    wandlerfaktor: Optional[Decimal] = (
+        None  # Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
+    )
     # zu kommen.
     einheit: Optional[Mengeneinheit] = None  # Die Einheit der gemessenen Größe, z.B. kWh
     ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit
-    verwendungszwecke: Optional[
-        list[VerwendungszweckProMarktrolle]
-    ] = None  #: Verwendungungszweck der Werte Marktlokation
+    verwendungszwecke: Optional[list[VerwendungszweckProMarktrolle]] = (
+        None  #: Verwendungungszweck der Werte Marktlokation
+    )
     verbrauchsart: Optional[Verbrauchsart] = None  #: Stromverbrauchsart/Verbrauchsart Marktlokation
     ist_unterbrechbar: Optional[bool] = None  #: Unterbrechbarkeit Marktlokation
     waermenutzung: Optional[Waermenutzung] = None  #: Wärmenutzung Marktlokation
@@ -62,6 +67,6 @@ class Zaehlwerk(COM):
     nachkommastelle: Optional[int] = None  #: Anzahl der Nachkommastellen
     ist_abrechnungsrelevant: Optional[bool] = None  #: Abrechnungsrelevant
     anzahlAblesungen: Optional[int] = None  #: Anzahl Ablesungen pro Jahr
-    zaehlzeitregister: Optional[
-        Zaehlzeitregister
-    ] = None  #: Erweiterte Definition der Zählzeit in Bezug auf ein Register
+    zaehlzeitregister: Optional[Zaehlzeitregister] = (
+        None  #: Erweiterte Definition der Zählzeit in Bezug auf ein Register
+    )

@@ -4,11 +4,16 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..enum.preisgarantietyp import Preisgarantietyp
 from ..utils import postprocess_docstring
+
 from .com import COM
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..enum.preisgarantietyp import Preisgarantietyp
+
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 

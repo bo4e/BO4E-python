@@ -8,14 +8,19 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..enum.marktrolle import Marktrolle
-from ..enum.rollencodetyp import Rollencodetyp
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
+
+if TYPE_CHECKING:
+    from ..enum.marktrolle import Marktrolle
+    from ..enum.rollencodetyp import Rollencodetyp
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+
+    from .geschaeftspartner import Geschaeftspartner
 
 
 @postprocess_docstring

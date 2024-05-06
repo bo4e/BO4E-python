@@ -3,11 +3,17 @@ Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
+
 from .com import COM
-from .kostenposition import Kostenposition
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+
+    from .kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods
 

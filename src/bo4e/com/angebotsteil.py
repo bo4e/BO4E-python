@@ -4,14 +4,20 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..bo.marktlokation import Marktlokation
 from ..utils import postprocess_docstring
-from .angebotsposition import Angebotsposition
-from .betrag import Betrag
+
 from .com import COM
-from .menge import Menge
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..bo.marktlokation import Marktlokation
+
+    from .angebotsposition import Angebotsposition
+    from .betrag import Betrag
+
+    from .menge import Menge
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

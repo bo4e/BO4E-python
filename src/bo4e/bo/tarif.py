@@ -6,15 +6,19 @@ from typing import Annotated, Optional
 
 import pydantic
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.aufabschlagregional import AufAbschlagRegional
-from ..com.preisgarantie import Preisgarantie
-from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
-from ..com.tarifeinschraenkung import Tarifeinschraenkung
-from ..com.tarifpreispositionproort import TarifpreispositionProOrt
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
-from .tarifinfo import Tarifinfo
+
+if TYPE_CHECKING:
+    from ..com.aufabschlagregional import AufAbschlagRegional
+    from ..com.preisgarantie import Preisgarantie
+    from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
+    from ..com.tarifeinschraenkung import Tarifeinschraenkung
+    from ..com.tarifpreispositionproort import TarifpreispositionProOrt
+    from ..enum.typ import Typ
+
+    from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

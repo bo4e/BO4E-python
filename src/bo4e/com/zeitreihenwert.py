@@ -5,12 +5,17 @@ and corresponding marshmallow schema for de-/serialization
 
 from decimal import Decimal
 from typing import Optional
+from typing import TYPE_CHECKING
 
-from ..com.zeitspanne import Zeitspanne
-from ..enum.messwertstatus import Messwertstatus
-from ..enum.messwertstatuszusatz import Messwertstatuszusatz
 from ..utils import postprocess_docstring
+
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..com.zeitspanne import Zeitspanne
+    from ..enum.messwertstatus import Messwertstatus
+    from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+
 
 # pylint: disable=too-few-public-methods
 

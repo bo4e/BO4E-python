@@ -7,17 +7,22 @@ and corresponding marshmallow schema for de-/serialization
 from typing import Annotated, Optional
 
 from pydantic import Field
+from typing import TYPE_CHECKING
 
-from ..com.adresse import Adresse
-from ..com.kontaktweg import Kontaktweg
-from ..enum.anrede import Anrede
-from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from ..enum.organisationstyp import Organisationstyp
-from ..enum.titel import Titel
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .person import Person
+
+if TYPE_CHECKING:
+    from ..com.adresse import Adresse
+    from ..com.kontaktweg import Kontaktweg
+    from ..enum.anrede import Anrede
+    from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+    from ..enum.organisationstyp import Organisationstyp
+    from ..enum.titel import Titel
+    from ..enum.typ import Typ
+
+    from .person import Person
 
 
 @postprocess_docstring

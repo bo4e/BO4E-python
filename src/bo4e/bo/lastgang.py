@@ -8,16 +8,21 @@ from typing import Annotated, Optional
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from pydantic import Field, constr
+from typing import TYPE_CHECKING
 
-from ..bo.marktlokation import Marktlokation
-from ..bo.messlokation import Messlokation
-from ..com.menge import Menge
-from ..com.zeitreihenwert import Zeitreihenwert
-from ..enum.mengeneinheit import Mengeneinheit
-from ..enum.sparte import Sparte
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
+
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..bo.marktlokation import Marktlokation
+    from ..bo.messlokation import Messlokation
+    from ..com.menge import Menge
+    from ..com.zeitreihenwert import Zeitreihenwert
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.sparte import Sparte
+    from ..enum.typ import Typ
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
