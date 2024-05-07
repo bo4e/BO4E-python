@@ -187,6 +187,8 @@ __all__ = [
     "__gh_version__",
 ]
 
+from pydantic import BaseModel as _PydanticBaseModel
+
 # Import BOs
 from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
@@ -367,3 +369,9 @@ from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut
+
+for cls_name in __all__:
+    cls = globals().get(cls_name, None)
+    if cls is None or not issubclass(cls, _PydanticBaseModel):
+        continue
+    cls.model_rebuild(force=True)
