@@ -374,6 +374,6 @@ from .zusatzattribut import ZusatzAttribut
 
 for cls_name in __all__:
     cls = globals().get(cls_name, None)
-    if cls is None or not issubclass(cls, _PydanticBaseModel):
+    if cls is None or not isinstance(cls, type) or not issubclass(cls, _PydanticBaseModel):
         continue
     cls.model_rebuild(force=True)
