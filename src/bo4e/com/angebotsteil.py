@@ -3,19 +3,15 @@ Contains Angebotsteil class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
     from ..bo.marktlokation import Marktlokation
-
     from .angebotsposition import Angebotsposition
     from .betrag import Betrag
-
     from .menge import Menge
     from .zeitraum import Zeitraum
 

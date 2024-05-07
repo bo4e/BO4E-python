@@ -2,14 +2,12 @@
 Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
 if TYPE_CHECKING:

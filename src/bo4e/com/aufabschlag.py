@@ -3,18 +3,15 @@ Contains AufAbschlag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
     from ..enum.aufabschlagstyp import AufAbschlagstyp
     from ..enum.aufabschlagsziel import AufAbschlagsziel
     from ..enum.waehrungseinheit import Waehrungseinheit
-
     from .preisstaffel import Preisstaffel
     from .zeitraum import Zeitraum
 

@@ -4,21 +4,17 @@ Contains Angebotsvariante and corresponding marshmallow schema for de-/serializa
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pydantic
-from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
     from ..enum.angebotsstatus import Angebotsstatus
-
     from .angebotsteil import Angebotsteil
     from .betrag import Betrag
-
     from .menge import Menge
 
 

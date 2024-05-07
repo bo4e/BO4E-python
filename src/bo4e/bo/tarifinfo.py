@@ -5,17 +5,14 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.energiemix import Energiemix
@@ -26,7 +23,6 @@ if TYPE_CHECKING:
     from ..enum.sparte import Sparte
     from ..enum.tarifmerkmal import Tarifmerkmal
     from ..enum.tariftyp import Tariftyp
-
     from .marktteilnehmer import Marktteilnehmer
 
 

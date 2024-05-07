@@ -7,17 +7,14 @@ from decimal import Decimal
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
@@ -26,12 +23,10 @@ if TYPE_CHECKING:
     from ..enum.messwerterfassung import Messwerterfassung
     from ..enum.registeranzahl import Registeranzahl
     from ..enum.sparte import Sparte
-
     from ..enum.zaehlerauspraegung import Zaehlerauspraegung
     from ..enum.zaehlergroesse import Zaehlergroesse
     from ..enum.zaehlertyp import Zaehlertyp
     from ..enum.zaehlertypspezifikation import ZaehlertypSpezifikation
-
     from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

@@ -5,11 +5,9 @@ Contains Preisposition class and corresponding marshmallow schema for de-/serial
 from decimal import Decimal
 
 # pylint: disable=no-name-in-module
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
@@ -20,7 +18,6 @@ if TYPE_CHECKING:
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.tarifzeit import Tarifzeit
     from ..enum.waehrungseinheit import Waehrungseinheit
-
     from .preisstaffel import Preisstaffel
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes

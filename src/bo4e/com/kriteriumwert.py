@@ -3,13 +3,10 @@ Contains KriteriumWert class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-
 # pylint: disable=too-few-public-methods
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:

@@ -2,8 +2,7 @@
 Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 # pylint: disable=R0801
 from ..utils import postprocess_docstring
@@ -13,7 +12,6 @@ if TYPE_CHECKING:
     from ..enum.aufabschlagstyp import AufAbschlagstyp
     from ..enum.aufabschlagsziel import AufAbschlagsziel
     from ..enum.waehrungseinheit import Waehrungseinheit
-
     from .energiemix import Energiemix
     from .preisgarantie import Preisgarantie
     from .regionalepreisstaffel import RegionalePreisstaffel

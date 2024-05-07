@@ -3,14 +3,12 @@ Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
 if TYPE_CHECKING:

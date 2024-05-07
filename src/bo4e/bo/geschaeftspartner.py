@@ -4,16 +4,13 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.adresse import Adresse
@@ -22,7 +19,6 @@ if TYPE_CHECKING:
     from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
     from ..enum.organisationstyp import Organisationstyp
     from ..enum.titel import Titel
-
     from .person import Person
 
 

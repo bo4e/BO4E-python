@@ -3,18 +3,15 @@ Contains Lastgang class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 from pydantic import Field, constr
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.marktlokation import Marktlokation

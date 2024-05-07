@@ -3,21 +3,17 @@ Contains Rechnungsposition class and corresponding marshmallow schema for de-/se
 """
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pydantic
-from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
     from ..enum.bdewartikelnummer import BDEWArtikelnummer
     from ..enum.mengeneinheit import Mengeneinheit
-
     from .betrag import Betrag
-
     from .menge import Menge
     from .preis import Preis
     from .steuerbetrag import Steuerbetrag

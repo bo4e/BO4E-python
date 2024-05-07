@@ -3,17 +3,14 @@ Contains Fremdkostenblock class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
 
     from .betrag import Betrag
-
     from .fremdkostenposition import Fremdkostenposition
 
 # pylint: disable=too-few-public-methods

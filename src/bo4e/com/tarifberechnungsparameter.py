@@ -4,17 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
     from ..enum.messpreistyp import Messpreistyp
     from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
-
     from .preis import Preis
     from .tarifpreis import Tarifpreis
 

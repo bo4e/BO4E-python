@@ -3,17 +3,14 @@ Contains Person class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.adresse import Adresse

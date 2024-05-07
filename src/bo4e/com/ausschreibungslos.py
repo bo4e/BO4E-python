@@ -4,11 +4,9 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
@@ -16,9 +14,7 @@ if TYPE_CHECKING:
     from ..enum.rechnungslegung import Rechnungslegung
     from ..enum.sparte import Sparte
     from ..enum.vertragsform import Vertragsform
-
     from .ausschreibungsdetail import Ausschreibungsdetail
-
     from .menge import Menge
     from .zeitraum import Zeitraum
 

@@ -3,16 +3,13 @@ Contains Messlokation class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
@@ -22,7 +19,6 @@ if TYPE_CHECKING:
     from ..com.katasteradresse import Katasteradresse
     from ..enum.netzebene import Netzebene
     from ..enum.sparte import Sparte
-
     from .zaehler import Zaehler
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

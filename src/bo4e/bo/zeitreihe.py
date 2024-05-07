@@ -4,16 +4,13 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.zeitreihenwert import Zeitreihenwert
@@ -21,7 +18,6 @@ if TYPE_CHECKING:
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.messart import Messart
     from ..enum.messgroesse import Messgroesse
-
     from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 
 

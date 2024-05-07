@@ -2,8 +2,7 @@
 Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
 from .preisstaffel import Preisstaffel

@@ -3,16 +3,13 @@ Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-
 from .com import COM
 
 if TYPE_CHECKING:
     from ..enum.preisgarantietyp import Preisgarantietyp
-
     from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods

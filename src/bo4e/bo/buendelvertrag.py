@@ -4,26 +4,21 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.unterschrift import Unterschrift
     from ..com.vertragskonditionen import Vertragskonditionen
     from ..enum.sparte import Sparte
-
     from ..enum.vertragsart import Vertragsart
     from ..enum.vertragsstatus import Vertragsstatus
-
     from .geschaeftspartner import Geschaeftspartner
     from .vertrag import Vertrag
 

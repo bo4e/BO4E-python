@@ -4,17 +4,14 @@ Contains Ausschreibung class and corresponding marshmallow schema for de-/serial
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
-from typing import TYPE_CHECKING
-
-from ..utils import postprocess_docstring
-
-from .geschaeftsobjekt import Geschaeftsobjekt
 
 from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.ausschreibungslos import Ausschreibungslos
@@ -22,7 +19,6 @@ if TYPE_CHECKING:
     from ..enum.ausschreibungsportal import Ausschreibungsportal
     from ..enum.ausschreibungsstatus import Ausschreibungsstatus
     from ..enum.ausschreibungstyp import Ausschreibungstyp
-
     from .geschaeftspartner import Geschaeftspartner
 
 
