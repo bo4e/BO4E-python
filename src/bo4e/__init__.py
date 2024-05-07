@@ -372,6 +372,7 @@ from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut
 
+# Resolve all ForwardReferences. This design prevents circular import errors.
 for cls_name in __all__:
     cls = globals().get(cls_name, None)
     if cls is None or not isinstance(cls, type) or not issubclass(cls, _PydanticBaseModel):
