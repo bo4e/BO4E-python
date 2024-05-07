@@ -30,13 +30,3 @@ class Sigmoidparameter(COM):
     B: Optional[Decimal] = None  #: Wendepunkt für die bepreiste Menge (kW)
     C: Optional[Decimal] = None  #: Exponent (einheitenlos)
     D: Optional[Decimal] = None  #: Briefmarke Transportnetz (EUR/kWh)
-
-    def calculate(self, leistung: Decimal) -> Decimal:
-        """
-        calculates LP
-        :param leistung: Leistung in Kilowatt
-        :return: den Sigmoidparameter LP in EUR/kWh
-        """
-        if self.A is None or self.B is None or self.C is None or self.D is None:
-            raise ValueError("Sigmoidparameter is not fully defined")
-        return self.A / (1 + (leistung / self.B) ** self.C) + self.D
