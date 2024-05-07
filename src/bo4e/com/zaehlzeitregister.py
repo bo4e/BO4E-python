@@ -3,12 +3,9 @@ Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/se
 """
 
 from typing import Optional
-from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
-
-if TYPE_CHECKING:
-    from ..com.com import COM
+from .com import COM
 
 
 # pylint: disable=no-name-in-module

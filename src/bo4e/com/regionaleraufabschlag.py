@@ -5,14 +5,15 @@ Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de
 from typing import Optional
 from typing import TYPE_CHECKING
 
+# pylint: disable=R0801
+from ..utils import postprocess_docstring
+from .com import COM
+
 if TYPE_CHECKING:
     from ..enum.aufabschlagstyp import AufAbschlagstyp
     from ..enum.aufabschlagsziel import AufAbschlagsziel
     from ..enum.waehrungseinheit import Waehrungseinheit
 
-    # pylint: disable=R0801
-    from ..utils import postprocess_docstring
-    from .com import COM
     from .energiemix import Energiemix
     from .preisgarantie import Preisgarantie
     from .regionalepreisstaffel import RegionalePreisstaffel

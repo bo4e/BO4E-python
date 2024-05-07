@@ -7,9 +7,9 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+from .com import COM
 
 if TYPE_CHECKING:
-    from ..com.com import COM
     from ..enum.abgabeart import AbgabeArt
 
 

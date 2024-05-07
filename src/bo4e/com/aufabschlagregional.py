@@ -5,15 +5,16 @@ Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serial
 from typing import Optional
 from typing import TYPE_CHECKING
 
+# pylint: disable=R0801
+from .com import COM
+from ..utils import postprocess_docstring
+
 if TYPE_CHECKING:
     from ..enum.aufabschlagstyp import AufAbschlagstyp
     from ..enum.aufabschlagsziel import AufAbschlagsziel
     from ..enum.waehrungseinheit import Waehrungseinheit
 
-    # pylint: disable=R0801
-    from ..utils import postprocess_docstring
     from .aufabschlagproort import AufAbschlagProOrt
-    from .com import COM
     from .energiemix import Energiemix
     from .preisgarantie import Preisgarantie
     from .tarifeinschraenkung import Tarifeinschraenkung

@@ -7,10 +7,9 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+from .preisgarantie import Preisgarantie
 
 if TYPE_CHECKING:
-
-    from .preisgarantie import Preisgarantie
     from .regionalegueltigkeit import RegionaleGueltigkeit
 
 # pylint: disable=too-few-public-methods

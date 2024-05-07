@@ -6,10 +6,9 @@ from typing import Optional
 from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
+from .preisstaffel import Preisstaffel
 
 if TYPE_CHECKING:
-
-    from .preisstaffel import Preisstaffel
     from .regionalegueltigkeit import RegionaleGueltigkeit
 
 # pylint: disable=too-few-public-methods
