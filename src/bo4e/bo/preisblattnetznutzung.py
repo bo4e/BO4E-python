@@ -10,13 +10,13 @@ from typing import TYPE_CHECKING
 from ..utils import postprocess_docstring
 
 from ..enum.typ import Typ
+from .preisblatt import Preisblatt
 
 if TYPE_CHECKING:
     from ..enum.bilanzierungsmethode import Bilanzierungsmethode
     from ..enum.kundengruppe import Kundengruppe
     from ..enum.netzebene import Netzebene
 
-    from .preisblatt import Preisblatt
 
 # pylint: disable=too-few-public-methods
 

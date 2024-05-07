@@ -11,6 +11,7 @@ from typing import TYPE_CHECKING
 from ..utils import postprocess_docstring
 
 from ..enum.typ import Typ
+from .tarifinfo import Tarifinfo
 
 if TYPE_CHECKING:
     from ..com.aufabschlagregional import AufAbschlagRegional
@@ -19,7 +20,6 @@ if TYPE_CHECKING:
     from ..com.tarifeinschraenkung import Tarifeinschraenkung
     from ..com.tarifpreispositionproort import TarifpreispositionProOrt
 
-    from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module

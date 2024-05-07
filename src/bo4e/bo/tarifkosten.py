@@ -11,11 +11,11 @@ from typing import TYPE_CHECKING
 from ..utils import postprocess_docstring
 
 from ..enum.typ import Typ
+from .tarifinfo import Tarifinfo
 
 if TYPE_CHECKING:
 
     from .kosten import Kosten
-    from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods
 
