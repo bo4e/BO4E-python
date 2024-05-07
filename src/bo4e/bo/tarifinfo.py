@@ -15,6 +15,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.energiemix import Energiemix
     from ..com.vertragskonditionen import Vertragskonditionen
@@ -24,7 +26,6 @@ if TYPE_CHECKING:
     from ..enum.sparte import Sparte
     from ..enum.tarifmerkmal import Tarifmerkmal
     from ..enum.tariftyp import Tariftyp
-    from ..enum.typ import Typ
 
     from .marktteilnehmer import Marktteilnehmer
 

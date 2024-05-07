@@ -13,6 +13,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.betrag import Betrag
     from ..com.rechnungsposition import Rechnungsposition
@@ -23,7 +25,6 @@ if TYPE_CHECKING:
     from ..enum.rechnungsstatus import Rechnungsstatus
     from ..enum.rechnungstyp import Rechnungstyp
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
 
     from .geschaeftspartner import Geschaeftspartner
     from .marktlokation import Marktlokation

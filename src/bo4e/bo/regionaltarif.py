@@ -8,13 +8,15 @@ import pydantic
 from pydantic import Field
 from typing import TYPE_CHECKING
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.regionalepreisgarantie import RegionalePreisgarantie
     from ..com.regionaleraufabschlag import RegionalerAufAbschlag
     from ..com.regionaletarifpreisposition import RegionaleTarifpreisposition
     from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
     from ..com.tarifeinschraenkung import Tarifeinschraenkung
-    from ..enum.typ import Typ
+
     from .tarifinfo import Tarifinfo
 
 # pylint: disable=too-few-public-methods, empty-docstring

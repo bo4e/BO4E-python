@@ -14,6 +14,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..bo.marktlokation import Marktlokation
     from ..bo.messlokation import Messlokation
@@ -21,7 +23,6 @@ if TYPE_CHECKING:
     from ..com.zeitreihenwert import Zeitreihenwert
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

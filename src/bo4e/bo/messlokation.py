@@ -12,6 +12,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
     from ..com.adresse import Adresse
@@ -20,7 +22,6 @@ if TYPE_CHECKING:
     from ..com.katasteradresse import Katasteradresse
     from ..enum.netzebene import Netzebene
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
 
     from .zaehler import Zaehler
 

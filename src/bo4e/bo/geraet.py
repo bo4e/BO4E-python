@@ -12,10 +12,11 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..enum.geraeteklasse import Geraeteklasse
     from ..enum.geraetetyp import Geraetetyp
-    from ..enum.typ import Typ
 
 
 # pylint: disable=too-few-public-methods

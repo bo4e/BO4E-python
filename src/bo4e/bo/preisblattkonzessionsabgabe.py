@@ -9,9 +9,10 @@ from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..enum.kundengruppeka import KundengruppeKA
-    from ..enum.typ import Typ
 
     from .preisblatt import Preisblatt
 

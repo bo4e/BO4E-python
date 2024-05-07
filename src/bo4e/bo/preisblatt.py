@@ -14,12 +14,13 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.preisposition import Preisposition
     from ..com.zeitraum import Zeitraum
     from ..enum.preisstatus import Preisstatus
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
 
     from .marktteilnehmer import Marktteilnehmer
 

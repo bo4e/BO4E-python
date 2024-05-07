@@ -14,13 +14,14 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.ausschreibungslos import Ausschreibungslos
     from ..com.zeitraum import Zeitraum
     from ..enum.ausschreibungsportal import Ausschreibungsportal
     from ..enum.ausschreibungsstatus import Ausschreibungsstatus
     from ..enum.ausschreibungstyp import Ausschreibungstyp
-    from ..enum.typ import Typ
 
     from .geschaeftspartner import Geschaeftspartner
 

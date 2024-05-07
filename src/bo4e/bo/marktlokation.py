@@ -13,6 +13,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.adresse import Adresse
     from ..com.geokoordinaten import Geokoordinaten
@@ -27,7 +29,7 @@ if TYPE_CHECKING:
     from ..enum.kundentyp import Kundentyp
     from ..enum.netzebene import Netzebene
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
+
     from ..enum.verbrauchsart import Verbrauchsart
 
     from .geschaeftspartner import Geschaeftspartner

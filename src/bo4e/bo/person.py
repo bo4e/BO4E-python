@@ -13,13 +13,14 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.adresse import Adresse
     from ..com.kontaktweg import Kontaktweg
     from ..com.zustaendigkeit import Zustaendigkeit
     from ..enum.anrede import Anrede
     from ..enum.titel import Titel
-    from ..enum.typ import Typ
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code

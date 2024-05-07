@@ -13,13 +13,15 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.zeitreihenwert import Zeitreihenwert
     from ..enum.medium import Medium
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.messart import Messart
     from ..enum.messgroesse import Messgroesse
-    from ..enum.typ import Typ
+
     from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 
 

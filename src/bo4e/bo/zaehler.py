@@ -17,6 +17,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
     from ..com.zaehlwerk import Zaehlwerk
@@ -24,7 +26,7 @@ if TYPE_CHECKING:
     from ..enum.messwerterfassung import Messwerterfassung
     from ..enum.registeranzahl import Registeranzahl
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
+
     from ..enum.zaehlerauspraegung import Zaehlerauspraegung
     from ..enum.zaehlergroesse import Zaehlergroesse
     from ..enum.zaehlertyp import Zaehlertyp

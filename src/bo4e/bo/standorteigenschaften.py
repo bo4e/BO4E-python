@@ -14,10 +14,11 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.standorteigenschaftengas import StandorteigenschaftenGas
     from ..com.standorteigenschaftenstrom import StandorteigenschaftenStrom
-    from ..enum.typ import Typ
 
 
 @postprocess_docstring

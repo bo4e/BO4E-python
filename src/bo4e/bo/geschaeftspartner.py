@@ -13,6 +13,8 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.adresse import Adresse
     from ..com.kontaktweg import Kontaktweg
@@ -20,7 +22,6 @@ if TYPE_CHECKING:
     from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
     from ..enum.organisationstyp import Organisationstyp
     from ..enum.titel import Titel
-    from ..enum.typ import Typ
 
     from .person import Person
 

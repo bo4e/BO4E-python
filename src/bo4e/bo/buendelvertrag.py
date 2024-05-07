@@ -14,11 +14,13 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.unterschrift import Unterschrift
     from ..com.vertragskonditionen import Vertragskonditionen
     from ..enum.sparte import Sparte
-    from ..enum.typ import Typ
+
     from ..enum.vertragsart import Vertragsart
     from ..enum.vertragsstatus import Vertragsstatus
 

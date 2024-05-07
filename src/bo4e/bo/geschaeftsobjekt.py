@@ -9,12 +9,10 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
-from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
 
-if TYPE_CHECKING:
-    from ..enum.typ import Typ
+from ..enum.typ import Typ
 
 
 # pylint: disable=too-few-public-methods

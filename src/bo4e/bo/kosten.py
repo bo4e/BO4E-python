@@ -11,12 +11,13 @@ from ..utils import postprocess_docstring
 
 from .geschaeftsobjekt import Geschaeftsobjekt
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.betrag import Betrag
     from ..com.kostenblock import Kostenblock
     from ..com.zeitraum import Zeitraum
     from ..enum.kostenklasse import Kostenklasse
-    from ..enum.typ import Typ
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods

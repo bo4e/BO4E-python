@@ -10,13 +10,14 @@ from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..com.aufabschlag import AufAbschlag
     from ..com.preisgarantie import Preisgarantie
     from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
     from ..com.tarifeinschraenkung import Tarifeinschraenkung
     from ..com.tarifpreisposition import Tarifpreisposition
-    from ..enum.typ import Typ
 
     from .tarifinfo import Tarifinfo
 

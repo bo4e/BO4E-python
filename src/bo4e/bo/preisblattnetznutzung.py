@@ -9,11 +9,12 @@ from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
     from ..enum.bilanzierungsmethode import Bilanzierungsmethode
     from ..enum.kundengruppe import Kundengruppe
     from ..enum.netzebene import Netzebene
-    from ..enum.typ import Typ
 
     from .preisblatt import Preisblatt
 

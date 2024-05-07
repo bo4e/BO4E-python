@@ -10,8 +10,9 @@ from typing import TYPE_CHECKING
 
 from ..utils import postprocess_docstring
 
+from ..enum.typ import Typ
+
 if TYPE_CHECKING:
-    from ..enum.typ import Typ
 
     from .kosten import Kosten
     from .tarifinfo import Tarifinfo
