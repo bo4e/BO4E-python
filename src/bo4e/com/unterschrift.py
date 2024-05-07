@@ -3,7 +3,7 @@ Contains Unterschrift class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 import pydantic
 

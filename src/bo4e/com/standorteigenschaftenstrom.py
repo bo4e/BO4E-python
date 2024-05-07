@@ -3,7 +3,7 @@ Contains StandorteigenschaftenStrom class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 from ..utils import postprocess_docstring
 from .com import COM
