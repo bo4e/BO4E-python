@@ -117,9 +117,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">version</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span>
-        <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_version&quot;</span><span class="p">)</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="n">__version__</span>  <span class="c1">#: Version der BO-Struktur aka &quot;fachliche Versionierung&quot;</span>
+    <span class="n">version</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_version&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">__version__</span>  <span class="c1">#: Version der BO-Struktur aka &quot;fachliche Versionierung&quot;</span>
+    <span class="p">)</span>
 
     <span class="c1"># Python internal: The field is not named &#39;_id&#39; because leading underscores are not allowed in pydantic field names.</span>
     <span class="c1"># NameError: Fields must not use names with leading underscores; e.g., use &#39;id&#39; instead of &#39;_id&#39;.</span>
