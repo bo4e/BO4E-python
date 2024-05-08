@@ -121,10 +121,10 @@
         <span class="n">__version__</span>  <span class="c1">#: Version der BO-Struktur aka &quot;fachliche Versionierung&quot;</span>
     <span class="p">)</span>
     <span class="c1"># src/_bo4e_python_version.py</span>
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">GESCHAEFTSOBJEKT</span>  <span class="c1">#: Der Typ des Geschäftsobjektes</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Typ&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">GESCHAEFTSOBJEKT</span>  <span class="c1">#: Der Typ des Geschäftsobjektes</span>
     <span class="c1"># bo_typ is used as discriminator f.e. for databases or deserialization</span>
 
-    <span class="n">zusatz_attribute</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">ZusatzAttribut</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zusatz_attribute</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;ZusatzAttribut&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information</span>
 
     <span class="c1"># Python internal: The field is not named &#39;_id&#39; because leading underscores are not allowed in pydantic field names.</span>

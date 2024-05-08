@@ -86,21 +86,23 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
 
-<span class="kn">from</span> <span class="nn">..bo.geraet</span> <span class="kn">import</span> <span class="n">Geraet</span>
-<span class="kn">from</span> <span class="nn">..com.adresse</span> <span class="kn">import</span> <span class="n">Adresse</span>
-<span class="kn">from</span> <span class="nn">..com.dienstleistung</span> <span class="kn">import</span> <span class="n">Dienstleistung</span>
-<span class="kn">from</span> <span class="nn">..com.geokoordinaten</span> <span class="kn">import</span> <span class="n">Geokoordinaten</span>
-<span class="kn">from</span> <span class="nn">..com.katasteradresse</span> <span class="kn">import</span> <span class="n">Katasteradresse</span>
-<span class="kn">from</span> <span class="nn">..enum.netzebene</span> <span class="kn">import</span> <span class="n">Netzebene</span>
-<span class="kn">from</span> <span class="nn">..enum.sparte</span> <span class="kn">import</span> <span class="n">Sparte</span>
 <span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.geschaeftsobjekt</span> <span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
-<span class="kn">from</span> <span class="nn">.zaehler</span> <span class="kn">import</span> <span class="n">Zaehler</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..bo.geraet</span> <span class="kn">import</span> <span class="n">Geraet</span>
+    <span class="kn">from</span> <span class="nn">..com.adresse</span> <span class="kn">import</span> <span class="n">Adresse</span>
+    <span class="kn">from</span> <span class="nn">..com.dienstleistung</span> <span class="kn">import</span> <span class="n">Dienstleistung</span>
+    <span class="kn">from</span> <span class="nn">..com.geokoordinaten</span> <span class="kn">import</span> <span class="n">Geokoordinaten</span>
+    <span class="kn">from</span> <span class="nn">..com.katasteradresse</span> <span class="kn">import</span> <span class="n">Katasteradresse</span>
+    <span class="kn">from</span> <span class="nn">..enum.netzebene</span> <span class="kn">import</span> <span class="n">Netzebene</span>
+    <span class="kn">from</span> <span class="nn">..enum.sparte</span> <span class="kn">import</span> <span class="n">Sparte</span>
+    <span class="kn">from</span> <span class="nn">.zaehler</span> <span class="kn">import</span> <span class="n">Zaehler</span>
 
 <span class="c1"># pylint: disable=too-many-instance-attributes, too-few-public-methods</span>
 
@@ -121,22 +123,22 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">MESSLOKATION</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Typ&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">MESSLOKATION</span>
     <span class="c1">#: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung</span>
     <span class="n">messlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Sparte der Messlokation, z.B. Gas oder Strom</span>
-    <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sparte</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Spannungsebene der Messung</span>
-    <span class="n">netzebene_messung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Netzebene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">netzebene_messung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Netzebene&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Die Nummer des Messgebietes in der ene&#39;t-Datenbank</span>
     <span class="n">messgebietnr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Liste der Geräte, die zu dieser Messstelle gehört</span>
-    <span class="n">geraete</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Geraet</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">geraete</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Geraet&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Liste der Messdienstleistungen, die zu dieser Messstelle gehört</span>
-    <span class="n">messdienstleistung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Dienstleistung</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># todo: rename to plural</span>
+    <span class="n">messdienstleistung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Dienstleistung&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># todo: rename to plural</span>
     <span class="c1">#: Zähler, die zu dieser Messlokation gehören</span>
-    <span class="n">messlokationszaehler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Zaehler</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">messlokationszaehler</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehler&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1"># only one of the following two optional codenr attributes can be set</span>
     <span class="n">grundzustaendiger_msb_codenr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -151,17 +153,17 @@
 <span class="sd">    (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># only one of the following three optional address attributes can be set</span>
-    <span class="n">messadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Adresse</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">messadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Die Adresse, an der die Messeinrichtungen zu finden sind.</span>
 <span class="sd">    (Nur angeben, wenn diese von der Adresse der Marktlokation abweicht.)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">geoadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Geokoordinaten</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">geoadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geokoordinaten&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden</span>
 <span class="sd">    (z.B. zur Identifikation von Sendemasten).</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">katasterinformation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Katasteradresse</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">katasterinformation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Katasteradresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und</span>
 <span class="sd">    Flurstück erfolgen.</span>

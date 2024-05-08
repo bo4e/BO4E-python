@@ -85,12 +85,15 @@
 <span class="sd">Contains Kostenblock and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
-<span class="kn">from</span> <span class="nn">.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.kostenposition</span> <span class="kn">import</span> <span class="n">Kostenposition</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+
+    <span class="kn">from</span> <span class="nn">.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
+    <span class="kn">from</span> <span class="nn">.kostenposition</span> <span class="kn">import</span> <span class="n">Kostenposition</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -115,9 +118,9 @@
     <span class="n">kostenblockbezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Die Summe aller Kostenpositionen dieses Blocks</span>
-    <span class="n">summe_kostenblock</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">summe_kostenblock</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="n">kostenpositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Kostenposition</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kostenpositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Kostenposition&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:</span>
 <span class="sd">    Alliander Netz Heinsberg GmbH, 01.02.2018, 31.12.2018, Arbeitspreis HT, 3.660 kWh, 5,8200 ct/kWh, 213,01 €</span>

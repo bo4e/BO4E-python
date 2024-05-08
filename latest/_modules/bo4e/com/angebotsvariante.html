@@ -87,16 +87,18 @@
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 <span class="c1"># pylint: disable=no-name-in-module</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
 
-<span class="kn">from</span> <span class="nn">..enum.angebotsstatus</span> <span class="kn">import</span> <span class="n">Angebotsstatus</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
-<span class="kn">from</span> <span class="nn">.angebotsteil</span> <span class="kn">import</span> <span class="n">Angebotsteil</span>
-<span class="kn">from</span> <span class="nn">.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.angebotsstatus</span> <span class="kn">import</span> <span class="n">Angebotsstatus</span>
+    <span class="kn">from</span> <span class="nn">.angebotsteil</span> <span class="kn">import</span> <span class="n">Angebotsteil</span>
+    <span class="kn">from</span> <span class="nn">.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
+    <span class="kn">from</span> <span class="nn">.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
 
 
 <div class="viewcode-block" id="Angebotsvariante">
@@ -116,7 +118,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Gibt den Status eines Angebotes an.</span>
-    <span class="n">angebotsstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Angebotsstatus</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">angebotsstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Angebotsstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Datum der Erstellung der Angebotsvariante</span>
     <span class="n">erstellungsdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -124,7 +126,7 @@
     <span class="c1">#: Bis zu diesem Zeitpunkt gilt die Angebotsvariante</span>
     <span class="n">bindefrist</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="n">teile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Angebotsteil</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">teile</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Angebotsteil&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.</span>
 <span class="sd">    Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.</span>
@@ -132,10 +134,10 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Aufsummierte Wirkarbeitsmenge aller Angebotsteile</span>
-    <span class="n">gesamtmenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">gesamtmenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320</span>
     <span class="c1">#: Aufsummierte Kosten aller Angebotsteile</span>
-    <span class="n">gesamtkosten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">gesamtkosten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

@@ -87,12 +87,15 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..enum.steuerkennzeichen</span> <span class="kn">import</span> <span class="n">Steuerkennzeichen</span>
-<span class="kn">from</span> <span class="nn">..enum.waehrungscode</span> <span class="kn">import</span> <span class="n">Waehrungscode</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.steuerkennzeichen</span> <span class="kn">import</span> <span class="n">Steuerkennzeichen</span>
+    <span class="kn">from</span> <span class="nn">..enum.waehrungscode</span> <span class="kn">import</span> <span class="n">Waehrungscode</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -114,13 +117,13 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Kennzeichnung des Steuersatzes, bzw. Verfahrens.</span>
-    <span class="n">steuerkennzeichen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Steuerkennzeichen</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">steuerkennzeichen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Steuerkennzeichen&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100</span>
     <span class="n">basiswert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)</span>
     <span class="n">steuerwert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Währung. Z.B. Euro.</span>
-    <span class="n">waehrung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Waehrungscode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">waehrung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Waehrungscode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

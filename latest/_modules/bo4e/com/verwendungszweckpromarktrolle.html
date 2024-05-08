@@ -86,12 +86,15 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..com.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">..enum.marktrolle</span> <span class="kn">import</span> <span class="n">Marktrolle</span>
-<span class="kn">from</span> <span class="nn">..enum.verwendungszweck</span> <span class="kn">import</span> <span class="n">Verwendungszweck</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
+<span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.marktrolle</span> <span class="kn">import</span> <span class="n">Marktrolle</span>
+    <span class="kn">from</span> <span class="nn">..enum.verwendungszweck</span> <span class="kn">import</span> <span class="n">Verwendungszweck</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -112,11 +115,11 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">marktrolle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Marktrolle</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">marktrolle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Marktrolle&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Marktrolle, für die die Daten relevant sind</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">Zwecke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Verwendungszweck</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">Zwecke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Verwendungszweck&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Verwendungszwecke</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>

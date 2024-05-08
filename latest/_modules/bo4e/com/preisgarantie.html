@@ -86,12 +86,14 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..enum.preisgarantietyp</span> <span class="kn">import</span> <span class="n">Preisgarantietyp</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.zeitraum</span> <span class="kn">import</span> <span class="n">Zeitraum</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.preisgarantietyp</span> <span class="kn">import</span> <span class="n">Preisgarantietyp</span>
+    <span class="kn">from</span> <span class="nn">.zeitraum</span> <span class="kn">import</span> <span class="n">Zeitraum</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -113,8 +115,8 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.</span>
-    <span class="n">preisgarantietyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preisgarantietyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">zeitliche_gueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitraum</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">preisgarantietyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preisgarantietyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zeitliche_gueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum</span>
 <span class="sd">    oder als Laufzeit in Monaten. &quot;&quot;&quot;</span>
 

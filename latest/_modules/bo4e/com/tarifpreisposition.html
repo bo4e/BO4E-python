@@ -88,14 +88,16 @@
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 <span class="c1"># pylint: disable=no-name-in-module</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
-<span class="kn">from</span> <span class="nn">..enum.preistyp</span> <span class="kn">import</span> <span class="n">Preistyp</span>
-<span class="kn">from</span> <span class="nn">..enum.waehrungseinheit</span> <span class="kn">import</span> <span class="n">Waehrungseinheit</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.preisstaffel</span> <span class="kn">import</span> <span class="n">Preisstaffel</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
+    <span class="kn">from</span> <span class="nn">..enum.preistyp</span> <span class="kn">import</span> <span class="n">Preistyp</span>
+    <span class="kn">from</span> <span class="nn">..enum.waehrungseinheit</span> <span class="kn">import</span> <span class="n">Waehrungseinheit</span>
+    <span class="kn">from</span> <span class="nn">.preisstaffel</span> <span class="kn">import</span> <span class="n">Preisstaffel</span>
 
 
 <div class="viewcode-block" id="Tarifpreisposition">
@@ -115,16 +117,16 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Angabe des Preistypes (z.B. Grundpreis)</span>
-    <span class="n">preistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preistyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">preistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preistyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Einheit des Preises (z.B. EURO)</span>
-    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Waehrungseinheit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Waehrungseinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr</span>
-    <span class="n">bezugseinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mengeneinheit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">bezugseinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Hier sind die Staffeln mit ihren Preisenangaben definiert</span>
-    <span class="n">preisstaffeln</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Preisstaffel</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">preisstaffeln</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Preisstaffel&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)</span>
-    <span class="n">mengeneinheitstaffel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mengeneinheit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">mengeneinheitstaffel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

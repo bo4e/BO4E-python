@@ -85,17 +85,20 @@
 <span class="sd">Contains PreisblattHardware class and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
 
-<span class="kn">from</span> <span class="nn">..bo.geraet</span> <span class="kn">import</span> <span class="n">Geraet</span>
-<span class="kn">from</span> <span class="nn">..enum.bilanzierungsmethode</span> <span class="kn">import</span> <span class="n">Bilanzierungsmethode</span>
-<span class="kn">from</span> <span class="nn">..enum.dienstleistungstyp</span> <span class="kn">import</span> <span class="n">Dienstleistungstyp</span>
-<span class="kn">from</span> <span class="nn">..enum.netzebene</span> <span class="kn">import</span> <span class="n">Netzebene</span>
 <span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.preisblatt</span> <span class="kn">import</span> <span class="n">Preisblatt</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..bo.geraet</span> <span class="kn">import</span> <span class="n">Geraet</span>
+    <span class="kn">from</span> <span class="nn">..enum.bilanzierungsmethode</span> <span class="kn">import</span> <span class="n">Bilanzierungsmethode</span>
+    <span class="kn">from</span> <span class="nn">..enum.dienstleistungstyp</span> <span class="kn">import</span> <span class="n">Dienstleistungstyp</span>
+    <span class="kn">from</span> <span class="nn">..enum.netzebene</span> <span class="kn">import</span> <span class="n">Netzebene</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -116,21 +119,21 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">PREISBLATTHARDWARE</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Typ&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">PREISBLATTHARDWARE</span>
     <span class="c1"># required attributes (additional to those of Preisblatt)</span>
     <span class="c1">#: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode</span>
-    <span class="n">bilanzierungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Bilanzierungsmethode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">bilanzierungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Bilanzierungsmethode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Die Preise gelten für Messlokationen in der angebebenen Netzebene</span>
-    <span class="n">messebene</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Netzebene</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">messebene</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Netzebene&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät</span>
-    <span class="n">basisgeraet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Geraet</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">basisgeraet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geraet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung</span>
-    <span class="n">inklusive_dienstleistungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Dienstleistungstyp</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">inklusive_dienstleistungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Dienstleistungstyp&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler</span>
-    <span class="n">inklusive_geraete</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Geraet</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">inklusive_geraete</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Geraet&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

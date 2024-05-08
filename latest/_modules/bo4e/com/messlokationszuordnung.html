@@ -86,13 +86,16 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
 
-<span class="kn">from</span> <span class="nn">..enum.arithmetische_operation</span> <span class="kn">import</span> <span class="n">ArithmetischeOperation</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.arithmetische_operation</span> <span class="kn">import</span> <span class="n">ArithmetischeOperation</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -119,7 +122,7 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    ID der zugeordneten Messlokation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">arithmetik</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">ArithmetischeOperation</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">arithmetik</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ArithmetischeOperation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="n">gueltig_seit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>

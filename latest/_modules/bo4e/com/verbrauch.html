@@ -86,15 +86,18 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
 
-<span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
-<span class="kn">from</span> <span class="nn">..enum.messwertstatus</span> <span class="kn">import</span> <span class="n">Messwertstatus</span>
-<span class="kn">from</span> <span class="nn">..enum.wertermittlungsverfahren</span> <span class="kn">import</span> <span class="n">Wertermittlungsverfahren</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
+    <span class="kn">from</span> <span class="nn">..enum.messwertstatus</span> <span class="kn">import</span> <span class="n">Messwertstatus</span>
+    <span class="kn">from</span> <span class="nn">..enum.wertermittlungsverfahren</span> <span class="kn">import</span> <span class="n">Wertermittlungsverfahren</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 <span class="c1"># pylint: disable=no-name-in-module</span>
@@ -117,20 +120,20 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt</span>
-    <span class="n">wertermittlungsverfahren</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Wertermittlungsverfahren</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">wertermittlungsverfahren</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Wertermittlungsverfahren&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. &#39;1-0:</span>
     <span class="n">obis_kennzahl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Gibt den absoluten Wert der Menge an</span>
     <span class="n">wert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Gibt die Einheit zum jeweiligen Wert an</span>
-    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mengeneinheit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird</span>
     <span class="n">startdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird</span>
     <span class="n">enddatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Messwertstatus includes the plausibility of the value</span>
-    <span class="n">messwertstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Messwertstatus</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">messwertstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messwertstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

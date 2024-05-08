@@ -86,18 +86,20 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods, too-many-instance-attributes</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
 
-<span class="kn">from</span> <span class="nn">..enum.bdewartikelnummer</span> <span class="kn">import</span> <span class="n">BDEWArtikelnummer</span>
-<span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
-<span class="kn">from</span> <span class="nn">.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
-<span class="kn">from</span> <span class="nn">.preis</span> <span class="kn">import</span> <span class="n">Preis</span>
-<span class="kn">from</span> <span class="nn">.steuerbetrag</span> <span class="kn">import</span> <span class="n">Steuerbetrag</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.bdewartikelnummer</span> <span class="kn">import</span> <span class="n">BDEWArtikelnummer</span>
+    <span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
+    <span class="kn">from</span> <span class="nn">.betrag</span> <span class="kn">import</span> <span class="n">Betrag</span>
+    <span class="kn">from</span> <span class="nn">.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
+    <span class="kn">from</span> <span class="nn">.preis</span> <span class="kn">import</span> <span class="n">Preis</span>
+    <span class="kn">from</span> <span class="nn">.steuerbetrag</span> <span class="kn">import</span> <span class="n">Steuerbetrag</span>
 
 
 <div class="viewcode-block" id="Rechnungsposition">
@@ -131,11 +133,11 @@
     <span class="n">positionstext</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Die abgerechnete Menge mit Einheit</span>
-    <span class="n">positions_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">positions_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Der Preis für eine Einheit der energetischen Menge</span>
-    <span class="n">einzelpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">einzelpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="n">teilsumme_netto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">teilsumme_netto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Das Ergebnis der Multiplikation aus einzelpreis * positionsMenge * (Faktor aus zeitbezogeneMenge).</span>
 <span class="sd">    Z.B. 12,60€ * 120 kW * 3/12 (für 3 Monate).</span>
@@ -144,24 +146,24 @@
     <span class="c1"># see https://github.com/Hochfrequenz/BO4E-python/issues/126</span>
 
     <span class="c1">#: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag</span>
-    <span class="n">teilsumme_steuer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Steuerbetrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">teilsumme_steuer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Steuerbetrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit</span>
-    <span class="n">zeiteinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mengeneinheit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zeiteinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW</span>
-    <span class="n">artikelnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">BDEWArtikelnummer</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">artikelnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;BDEWArtikelnummer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Marktlokation, die zu dieser Position gehört</span>
     <span class="n">lokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="n">zeitbezogene_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zeitbezogene_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Eine auf die Zeiteinheit bezogene Untermenge.</span>
 <span class="sd">    Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage.</span>
 <span class="sd">    Basierend darauf wird der Preis aufgeteilt.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1">#: Nettobetrag für den Rabatt dieser Position</span>
-    <span class="n">teilrabatt_netto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Betrag</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">teilrabatt_netto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst</span>
     <span class="n">artikel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>

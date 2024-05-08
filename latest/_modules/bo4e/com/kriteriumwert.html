@@ -86,12 +86,14 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
-
 <span class="c1"># pylint: disable=too-few-public-methods</span>
-<span class="kn">from</span> <span class="nn">..enum.tarifregionskriterium</span> <span class="kn">import</span> <span class="n">Tarifregionskriterium</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
+
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.tarifregionskriterium</span> <span class="kn">import</span> <span class="n">Tarifregionskriterium</span>
 
 
 <div class="viewcode-block" id="KriteriumWert">
@@ -111,7 +113,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen</span>
-    <span class="n">kriterium</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tarifregionskriterium</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kriterium</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifregionskriterium&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.</span>
     <span class="n">wert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 

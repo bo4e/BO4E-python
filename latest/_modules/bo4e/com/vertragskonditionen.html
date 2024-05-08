@@ -87,11 +87,14 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.zeitraum</span> <span class="kn">import</span> <span class="n">Zeitraum</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+
+    <span class="kn">from</span> <span class="nn">.zeitraum</span> <span class="kn">import</span> <span class="n">Zeitraum</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -117,13 +120,13 @@
     <span class="c1">#: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12</span>
     <span class="n">anzahl_abschlaege</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Über diesen Zeitraum läuft der Vertrag</span>
-    <span class="n">vertragslaufzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitraum</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">vertragslaufzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Innerhalb dieser Frist kann der Vertrag gekündigt werden</span>
-    <span class="n">kuendigungsfrist</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitraum</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">kuendigungsfrist</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit</span>
-    <span class="n">vertragsverlaengerung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitraum</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">vertragsverlaengerung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.</span>
-    <span class="n">abschlagszyklus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitraum</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">abschlagszyklus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

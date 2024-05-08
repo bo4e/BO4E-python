@@ -87,17 +87,20 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..com.konzessionsabgabe</span> <span class="kn">import</span> <span class="n">Konzessionsabgabe</span>
-<span class="kn">from</span> <span class="nn">..com.verwendungszweckpromarktrolle</span> <span class="kn">import</span> <span class="n">VerwendungszweckProMarktrolle</span>
-<span class="kn">from</span> <span class="nn">..com.zaehlzeitregister</span> <span class="kn">import</span> <span class="n">Zaehlzeitregister</span>
-<span class="kn">from</span> <span class="nn">..enum.energierichtung</span> <span class="kn">import</span> <span class="n">Energierichtung</span>
-<span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
-<span class="kn">from</span> <span class="nn">..enum.verbrauchsart</span> <span class="kn">import</span> <span class="n">Verbrauchsart</span>
-<span class="kn">from</span> <span class="nn">..enum.waermenutzung</span> <span class="kn">import</span> <span class="n">Waermenutzung</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..com.konzessionsabgabe</span> <span class="kn">import</span> <span class="n">Konzessionsabgabe</span>
+    <span class="kn">from</span> <span class="nn">..com.verwendungszweckpromarktrolle</span> <span class="kn">import</span> <span class="n">VerwendungszweckProMarktrolle</span>
+    <span class="kn">from</span> <span class="nn">..com.zaehlzeitregister</span> <span class="kn">import</span> <span class="n">Zaehlzeitregister</span>
+    <span class="kn">from</span> <span class="nn">..enum.energierichtung</span> <span class="kn">import</span> <span class="n">Energierichtung</span>
+    <span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
+    <span class="kn">from</span> <span class="nn">..enum.verbrauchsart</span> <span class="kn">import</span> <span class="n">Verbrauchsart</span>
+    <span class="kn">from</span> <span class="nn">..enum.waermenutzung</span> <span class="kn">import</span> <span class="n">Waermenutzung</span>
+
 
 <span class="c1"># pylint: disable=no-name-in-module</span>
 <span class="c1"># pylint: disable=no-name-in-module</span>
@@ -124,7 +127,7 @@
     <span class="n">zaehlwerk_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Identifikation des Zählwerks (Registers) innerhalb des Zählers.</span>
     <span class="c1"># Oftmals eine laufende Nummer hinter der Zählernummer. Z.B. 47110815_1</span>
     <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit.</span>
-    <span class="n">richtung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Energierichtung</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Die Energierichtung, Einspeisung oder Ausspeisung.</span>
+    <span class="n">richtung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Energierichtung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Die Energierichtung, Einspeisung oder Ausspeisung.</span>
     <span class="n">obis_kennzahl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
         <span class="kc">None</span>  <span class="c1"># Die OBIS-Kennzahl für das Zählwerk, die festlegt, welche auf die gemessene Größe mit dem Stand gemeldet wird.</span>
     <span class="p">)</span>
@@ -133,21 +136,21 @@
         <span class="kc">None</span>  <span class="c1"># Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum</span>
     <span class="p">)</span>
     <span class="c1"># zu kommen.</span>
-    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Mengeneinheit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Die Einheit der gemessenen Größe, z.B. kWh</span>
+    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># Die Einheit der gemessenen Größe, z.B. kWh</span>
     <span class="n">ist_schwachlastfaehig</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Schwachlastfaehigkeit</span>
-    <span class="n">verwendungszwecke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">VerwendungszweckProMarktrolle</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">verwendungszwecke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;VerwendungszweckProMarktrolle&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">(</span>
         <span class="kc">None</span>  <span class="c1">#: Verwendungungszweck der Werte Marktlokation</span>
     <span class="p">)</span>
-    <span class="n">verbrauchsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Verbrauchsart</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Stromverbrauchsart/Verbrauchsart Marktlokation</span>
+    <span class="n">verbrauchsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Verbrauchsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Stromverbrauchsart/Verbrauchsart Marktlokation</span>
     <span class="n">ist_unterbrechbar</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Unterbrechbarkeit Marktlokation</span>
-    <span class="n">waermenutzung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Waermenutzung</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Wärmenutzung Marktlokation</span>
-    <span class="n">konzessionsabgabe</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Konzessionsabgabe</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Konzessionsabgabe</span>
+    <span class="n">waermenutzung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Waermenutzung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Wärmenutzung Marktlokation</span>
+    <span class="n">konzessionsabgabe</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Konzessionsabgabe&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Konzessionsabgabe</span>
     <span class="n">ist_steuerbefreit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Steuerbefreiung</span>
     <span class="n">vorkommastelle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Anzahl der Vorkommastellen</span>
     <span class="n">nachkommastelle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Anzahl der Nachkommastellen</span>
     <span class="n">ist_abrechnungsrelevant</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Abrechnungsrelevant</span>
     <span class="n">anzahlAblesungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Anzahl Ablesungen pro Jahr</span>
-    <span class="n">zaehlzeitregister</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zaehlzeitregister</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">zaehlzeitregister</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zaehlzeitregister&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
         <span class="kc">None</span>  <span class="c1">#: Erweiterte Definition der Zählzeit in Bezug auf ein Register</span>
     <span class="p">)</span></div>
 

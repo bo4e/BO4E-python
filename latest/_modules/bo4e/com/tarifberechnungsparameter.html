@@ -87,14 +87,16 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..enum.messpreistyp</span> <span class="kn">import</span> <span class="n">Messpreistyp</span>
-<span class="kn">from</span> <span class="nn">..enum.tarifkalkulationsmethode</span> <span class="kn">import</span> <span class="n">Tarifkalkulationsmethode</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.preis</span> <span class="kn">import</span> <span class="n">Preis</span>
-<span class="kn">from</span> <span class="nn">.tarifpreis</span> <span class="kn">import</span> <span class="n">Tarifpreis</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.messpreistyp</span> <span class="kn">import</span> <span class="n">Messpreistyp</span>
+    <span class="kn">from</span> <span class="nn">..enum.tarifkalkulationsmethode</span> <span class="kn">import</span> <span class="n">Tarifkalkulationsmethode</span>
+    <span class="kn">from</span> <span class="nn">.preis</span> <span class="kn">import</span> <span class="n">Preis</span>
+    <span class="kn">from</span> <span class="nn">.tarifpreis</span> <span class="kn">import</span> <span class="n">Tarifpreis</span>
 
 <span class="c1"># yes. there is no description in the official docs.</span>
 <span class="c1"># https://github.com/Hochfrequenz/BO4E-python/issues/328</span>
@@ -120,7 +122,7 @@
     <span class="c1"># there are no required attributes</span>
 
     <span class="c1">#: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind</span>
-    <span class="n">berechnungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Tarifkalkulationsmethode</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">berechnungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifkalkulationsmethode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: True, falls der Messpreis im Grundpreis (GP) enthalten ist</span>
     <span class="n">ist_messpreis_in_grundpreis_enthalten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
@@ -131,7 +133,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Typ des Messpreises</span>
-    <span class="n">messpreistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Messpreistyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">messpreistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messpreistyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Im Preis bereits eingeschlossene Leistung (für Gas)</span>
     <span class="n">kw_inklusive</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -142,13 +144,13 @@
     <span class="c1"># todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327</span>
 
     <span class="c1">#: Höchstpreis für den Durchschnitts-Arbeitspreis NT</span>
-    <span class="n">hoechstpreis_n_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">hoechstpreis_n_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Höchstpreis für den Durchschnitts-Arbeitspreis HT</span>
-    <span class="n">hoechstpreis_h_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">hoechstpreis_h_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Mindestpreis für den Durchschnitts-Arbeitspreis</span>
-    <span class="n">mindestpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preis</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">mindestpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise</span>
-    <span class="n">zusatzpreise</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Tarifpreis</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">zusatzpreise</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Tarifpreis&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

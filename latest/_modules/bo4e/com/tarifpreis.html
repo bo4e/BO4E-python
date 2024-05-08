@@ -86,11 +86,14 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..enum.preistyp</span> <span class="kn">import</span> <span class="n">Preistyp</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.preis</span> <span class="kn">import</span> <span class="n">Preis</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.preistyp</span> <span class="kn">import</span> <span class="n">Preistyp</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -112,7 +115,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#:  Angabe des Preistypes (z.B. Grundpreis)</span>
-    <span class="n">preistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Preistyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">preistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preistyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise &quot;Drehstromzähler&quot;.</span>
     <span class="n">beschreibung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>

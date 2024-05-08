@@ -85,11 +85,13 @@
 <span class="sd">Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.preisstaffel</span> <span class="kn">import</span> <span class="n">Preisstaffel</span>
-<span class="kn">from</span> <span class="nn">.regionalegueltigkeit</span> <span class="kn">import</span> <span class="n">RegionaleGueltigkeit</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">.regionalegueltigkeit</span> <span class="kn">import</span> <span class="n">RegionaleGueltigkeit</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -111,7 +113,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Regionale Eingrenzung der Preisstaffel</span>
-    <span class="n">regionale_gueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">RegionaleGueltigkeit</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">regionale_gueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;RegionaleGueltigkeit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 

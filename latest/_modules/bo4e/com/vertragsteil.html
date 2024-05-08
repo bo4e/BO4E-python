@@ -86,13 +86,16 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">import</span> <span class="nn">pydantic</span>
 
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+
+    <span class="kn">from</span> <span class="nn">.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
@@ -128,15 +131,15 @@
 <span class="sd">    Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.</span>
 <span class="sd">    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">vertraglich_fixierte_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">vertraglich_fixierte_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Für die Lokation festgeschriebene Abnahmemenge</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">minimale_abnahmemenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">minimale_abnahmemenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Für die Lokation festgelegte Mindestabnahmemenge (inklusiv)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">maximale_abnahmemenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">maximale_abnahmemenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Für die Lokation festgelegte maximale Abnahmemenge (exklusiv)</span>
 <span class="sd">    &quot;&quot;&quot;</span></div>

@@ -86,11 +86,14 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..com.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">..enum.abgabeart</span> <span class="kn">import</span> <span class="n">AbgabeArt</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
+<span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.abgabeart</span> <span class="kn">import</span> <span class="n">AbgabeArt</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods, too-many-instance-attributes</span>
 
@@ -112,7 +115,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1">#: Art der Abgabe</span>
-    <span class="n">satz</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">AbgabeArt</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">satz</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;AbgabeArt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Konzessionsabgabe in E/kWh</span>
     <span class="n">kosten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>

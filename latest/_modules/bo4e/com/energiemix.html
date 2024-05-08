@@ -87,14 +87,16 @@
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">from</span> <span class="nn">..enum.oekolabel</span> <span class="kn">import</span> <span class="n">Oekolabel</span>
-<span class="kn">from</span> <span class="nn">..enum.oekozertifikat</span> <span class="kn">import</span> <span class="n">Oekozertifikat</span>
-<span class="kn">from</span> <span class="nn">..enum.sparte</span> <span class="kn">import</span> <span class="n">Sparte</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
-<span class="kn">from</span> <span class="nn">.energieherkunft</span> <span class="kn">import</span> <span class="n">Energieherkunft</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..enum.oekolabel</span> <span class="kn">import</span> <span class="n">Oekolabel</span>
+    <span class="kn">from</span> <span class="nn">..enum.oekozertifikat</span> <span class="kn">import</span> <span class="n">Oekozertifikat</span>
+    <span class="kn">from</span> <span class="nn">..enum.sparte</span> <span class="kn">import</span> <span class="n">Sparte</span>
+    <span class="kn">from</span> <span class="nn">.energieherkunft</span> <span class="kn">import</span> <span class="n">Energieherkunft</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods, too-many-instance-attributes</span>
 <span class="c1"># pylint: disable=no-name-in-module</span>
@@ -119,13 +121,13 @@
     <span class="c1">#: Eindeutige Nummer zur Identifizierung des Energiemixes</span>
     <span class="n">energiemixnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Strom oder Gas etc.</span>
-    <span class="n">energieart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Sparte</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">energieart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Bezeichnung des Energiemix</span>
     <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Jahr, für das der Energiemix gilt</span>
     <span class="n">gueltigkeitsjahr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Anteile der jeweiligen Erzeugungsart</span>
-    <span class="n">anteil</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Energieherkunft</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">anteil</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Energieherkunft&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1">#: Bemerkung zum Energiemix</span>
     <span class="n">bemerkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -134,9 +136,9 @@
     <span class="c1">#: Höhe des erzeugten Atommülls in g/kWh</span>
     <span class="n">atommuell</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Zertifikate für den Energiemix</span>
-    <span class="n">oekozertifikate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Oekozertifikat</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">oekozertifikate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Oekozertifikat&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Ökolabel für den Energiemix</span>
-    <span class="n">oekolabel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Oekolabel</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">oekolabel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Oekolabel&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört</span>
     <span class="n">ist_in_oeko_top_ten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1">#: Internetseite, auf der die Strommixdaten veröffentlicht sind</span>
