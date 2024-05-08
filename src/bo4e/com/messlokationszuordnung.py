@@ -3,13 +3,16 @@ Contains Messlokationszuordnung class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pydantic
 
-from ..enum.arithmetische_operation import ArithmetischeOperation
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.arithmetische_operation import ArithmetischeOperation
+
 
 # pylint: disable=too-few-public-methods
 
@@ -34,7 +37,7 @@ class Messlokationszuordnung(COM):
     """
     ID der zugeordneten Messlokation
     """
-    arithmetik: Optional[ArithmetischeOperation] = None
+    arithmetik: Optional["ArithmetischeOperation"] = None
 
     gueltig_seit: Optional[pydantic.AwareDatetime] = None
     """

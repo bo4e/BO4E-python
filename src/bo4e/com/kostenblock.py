@@ -2,12 +2,15 @@
 Contains Kostenblock and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
 from .com import COM
-from .kostenposition import Kostenposition
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+    from .kostenposition import Kostenposition
 
 # pylint: disable=too-few-public-methods
 
@@ -30,9 +33,9 @@ class Kostenblock(COM):
     kostenblockbezeichnung: Optional[str] = None
 
     #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Optional[Betrag] = None
+    summe_kostenblock: Optional["Betrag"] = None
 
-    kostenpositionen: Optional[list[Kostenposition]] = None
+    kostenpositionen: Optional[list["Kostenposition"]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 01.02.2018, 31.12.2018, Arbeitspreis HT, 3.660 kWh, 5,8200 ct/kWh, 213,01 €

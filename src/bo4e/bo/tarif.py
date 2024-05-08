@@ -2,19 +2,22 @@
 Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
 
-from ..com.aufabschlagregional import AufAbschlagRegional
-from ..com.preisgarantie import Preisgarantie
-from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
-from ..com.tarifeinschraenkung import Tarifeinschraenkung
-from ..com.tarifpreispositionproort import TarifpreispositionProOrt
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
+
+if TYPE_CHECKING:
+    from ..com.aufabschlagregional import AufAbschlagRegional
+    from ..com.preisgarantie import Preisgarantie
+    from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
+    from ..com.tarifeinschraenkung import Tarifeinschraenkung
+    from ..com.tarifpreispositionproort import TarifpreispositionProOrt
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -34,21 +37,21 @@ class Tarif(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TARIF
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
-    berechnungsparameter: Optional[Tarifberechnungsparameter] = None
+    berechnungsparameter: Optional["Tarifberechnungsparameter"] = None
     #: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.
-    tarifpreise: Optional[list[TarifpreispositionProOrt]] = None
+    tarifpreise: Optional[list["TarifpreispositionProOrt"]] = None
 
     #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
-    tarif_auf_abschlaege: Optional[list[AufAbschlagRegional]] = None
+    tarif_auf_abschlaege: Optional[list["AufAbschlagRegional"]] = None
     # todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional
     # https://github.com/Hochfrequenz/BO4E-python/issues/345
 
     #: Preisgarantie für diesen Tarif
-    preisgarantie: Optional[Preisgarantie] = None
+    preisgarantie: Optional["Preisgarantie"] = None
     # todo: fix inconsistency with regionaltarif https://github.com/Hochfrequenz/BO4E-python/issues/346
     #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
-    tarifeinschraenkung: Optional[Tarifeinschraenkung] = None
+    tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None

@@ -4,13 +4,16 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..com.zeitspanne import Zeitspanne
-from ..enum.messwertstatus import Messwertstatus
-from ..enum.messwertstatuszusatz import Messwertstatuszusatz
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..com.zeitspanne import Zeitspanne
+    from ..enum.messwertstatus import Messwertstatus
+    from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+
 
 # pylint: disable=too-few-public-methods
 
@@ -29,12 +32,12 @@ class Zeitreihenwert(COM):
 
     """
 
-    zeitspanne: Optional[Zeitspanne] = None  #: Zeitespanne für das Messintervall
+    zeitspanne: Optional["Zeitspanne"] = None  #: Zeitespanne für das Messintervall
 
     wert: Optional[Decimal] = None  #: Der in der Zeitspanne gültige Wert.
 
     #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
-    status: Optional[Messwertstatus] = None
+    status: Optional["Messwertstatus"] = None
 
     #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
-    statuszusatz: Optional[Messwertstatuszusatz] = None
+    statuszusatz: Optional["Messwertstatuszusatz"] = None

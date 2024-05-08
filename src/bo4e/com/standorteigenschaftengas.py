@@ -3,11 +3,14 @@ Contains StandorteigenschaftenGas class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
 from .com import COM
-from .marktgebietinfo import MarktgebietInfo
+
+if TYPE_CHECKING:
+
+    from .marktgebietinfo import MarktgebietInfo
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -28,4 +31,4 @@ class StandorteigenschaftenGas(COM):
     """
 
     netzkontonummern: Optional[list[str]] = None  #: Netzkontonummern der Gasnetze
-    marktgebiete: Optional[list[MarktgebietInfo]] = None  #: Die Informationen zu Marktgebieten in dem Netz.
+    marktgebiete: Optional[list["MarktgebietInfo"]] = None  #: Die Informationen zu Marktgebieten in dem Netz.

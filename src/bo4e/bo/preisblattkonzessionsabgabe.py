@@ -2,14 +2,17 @@
 Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..enum.kundengruppeka import KundengruppeKA
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
+
+if TYPE_CHECKING:
+    from ..enum.kundengruppeka import KundengruppeKA
+
 
 # pylint: disable=too-few-public-methods
 
@@ -28,9 +31,9 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTKONZESSIONSABGABE
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTKONZESSIONSABGABE
     # required attributes (additional to those of Preisblatt)
     #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
-    kundengruppe_k_a: Optional[KundengruppeKA] = None
+    kundengruppe_k_a: Optional["KundengruppeKA"] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

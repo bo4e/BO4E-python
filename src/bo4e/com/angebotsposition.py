@@ -3,13 +3,16 @@ Contains Angebotsposition class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
 from .com import COM
-from .menge import Menge
-from .preis import Preis
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+    from .menge import Menge
+    from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 
@@ -35,12 +38,12 @@ class Angebotsposition(COM):
     #: Bezeichnung der jeweiligen Position des Angebotsteils
     positionsbezeichnung: Optional[str] = None
     #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Optional[Preis] = None
+    positionspreis: Optional["Preis"] = None
 
     #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Optional[Menge] = None
+    positionsmenge: Optional["Menge"] = None
     #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
-    positionskosten: Optional[Betrag] = None
+    positionskosten: Optional["Betrag"] = None
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126

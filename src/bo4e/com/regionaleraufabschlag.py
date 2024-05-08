@@ -2,21 +2,22 @@
 Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-
-from ..enum.aufabschlagstyp import AufAbschlagstyp
-from ..enum.aufabschlagsziel import AufAbschlagsziel
-from ..enum.waehrungseinheit import Waehrungseinheit
+from typing import TYPE_CHECKING, Optional
 
 # pylint: disable=R0801
 from ..utils import postprocess_docstring
 from .com import COM
-from .energiemix import Energiemix
-from .preisgarantie import Preisgarantie
-from .regionalepreisstaffel import RegionalePreisstaffel
-from .tarifeinschraenkung import Tarifeinschraenkung
-from .vertragskonditionen import Vertragskonditionen
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..enum.aufabschlagstyp import AufAbschlagstyp
+    from ..enum.aufabschlagsziel import AufAbschlagsziel
+    from ..enum.waehrungseinheit import Waehrungseinheit
+    from .energiemix import Energiemix
+    from .preisgarantie import Preisgarantie
+    from .regionalepreisstaffel import RegionalePreisstaffel
+    from .tarifeinschraenkung import Tarifeinschraenkung
+    from .vertragskonditionen import Vertragskonditionen
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -43,19 +44,19 @@ class RegionalerAufAbschlag(COM):
     bezeichnung: Optional[str] = None
 
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
-    staffeln: Optional[list[RegionalePreisstaffel]] = None
+    staffeln: Optional[list["RegionalePreisstaffel"]] = None
 
     #: Beschreibung des Auf-/Abschlags
     beschreibung: Optional[str] = None
 
     #: Typ des Aufabschlages (z.B. absolut oder prozentual)
-    auf_abschlagstyp: Optional[AufAbschlagstyp] = None
+    auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
 
     #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
-    auf_abschlagsziel: Optional[AufAbschlagsziel] = None
+    auf_abschlagsziel: Optional["AufAbschlagsziel"] = None
 
     #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird (nur im Falle absoluter Aufschlagstypen).
-    einheit: Optional[Waehrungseinheit] = None
+    einheit: Optional["Waehrungseinheit"] = None
 
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
     website: Optional[str] = None
@@ -70,27 +71,27 @@ class RegionalerAufAbschlag(COM):
     tarifnamensaenderungen: Optional[str] = None
 
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitszeitraum: Optional[Zeitraum] = None
+    gueltigkeitszeitraum: Optional["Zeitraum"] = None
 
-    energiemixaenderung: Optional[Energiemix] = None
+    energiemixaenderung: Optional["Energiemix"] = None
     """
     Der Energiemix kann sich durch einen AufAbschlag ändern (z.B. zwei Cent Aufschlag für Ökostrom).
     Sollte dies der Fall sein, wird hier die neue Zusammensetzung des Energiemix angegeben.
     """
 
-    vertagskonditionsaenderung: Optional[Vertragskonditionen] = None
+    vertagskonditionsaenderung: Optional["Vertragskonditionen"] = None
     """
     Änderungen in den Vertragskonditionen;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
 
-    garantieaenderung: Optional[Preisgarantie] = None
+    garantieaenderung: Optional["Preisgarantie"] = None
     """
     Änderungen in den Garantievereinbarungen;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.
     """
 
-    einschraenkungsaenderung: Optional[Tarifeinschraenkung] = None
+    einschraenkungsaenderung: Optional["Tarifeinschraenkung"] = None
     """
     Änderungen in den Einschränkungen zum Tarif;
     Falls in dieser Komponenten angegeben, werden die Tarifparameter hiermit überschrieben.

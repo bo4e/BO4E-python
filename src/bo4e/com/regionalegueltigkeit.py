@@ -3,12 +3,14 @@ Contains RegionaleGueltigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.gueltigkeitstyp import Gueltigkeitstyp
 from ..utils import postprocess_docstring
 from .com import COM
-from .kriteriumwert import KriteriumWert
+
+if TYPE_CHECKING:
+    from ..enum.gueltigkeitstyp import Gueltigkeitstyp
+    from .kriteriumwert import KriteriumWert
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -28,9 +30,9 @@ class RegionaleGueltigkeit(COM):
 
     """
 
-    gueltigkeitstyp: Optional[Gueltigkeitstyp] = (
+    gueltigkeitstyp: Optional["Gueltigkeitstyp"] = (
         None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
     )
-    kriteriums_werte: Optional[list[KriteriumWert]] = (
+    kriteriums_werte: Optional[list["KriteriumWert"]] = (
         None  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
     )

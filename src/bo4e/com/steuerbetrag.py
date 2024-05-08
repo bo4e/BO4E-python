@@ -4,12 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.steuerkennzeichen import Steuerkennzeichen
-from ..enum.waehrungscode import Waehrungscode
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.steuerkennzeichen import Steuerkennzeichen
+    from ..enum.waehrungscode import Waehrungscode
+
 
 # pylint: disable=too-few-public-methods
 
@@ -29,10 +32,10 @@ class Steuerbetrag(COM):
     """
 
     #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
-    steuerkennzeichen: Optional[Steuerkennzeichen] = None
+    steuerkennzeichen: Optional["Steuerkennzeichen"] = None
     #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
     basiswert: Optional[Decimal] = None
     #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
     steuerwert: Optional[Decimal] = None
     #: Währung. Z.B. Euro.
-    waehrung: Optional[Waehrungscode] = None
+    waehrung: Optional["Waehrungscode"] = None

@@ -3,12 +3,14 @@ Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.preisgarantietyp import Preisgarantietyp
 from ..utils import postprocess_docstring
 from .com import COM
-from .zeitraum import Zeitraum
+
+if TYPE_CHECKING:
+    from ..enum.preisgarantietyp import Preisgarantietyp
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
@@ -28,8 +30,8 @@ class Preisgarantie(COM):
     """
 
     #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
-    preisgarantietyp: Optional[Preisgarantietyp] = None
-    zeitliche_gueltigkeit: Optional[Zeitraum] = None
+    preisgarantietyp: Optional["Preisgarantietyp"] = None
+    zeitliche_gueltigkeit: Optional["Zeitraum"] = None
     """ Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum
     oder als Laufzeit in Monaten. """
 

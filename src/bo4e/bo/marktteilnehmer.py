@@ -5,17 +5,19 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..enum.marktrolle import Marktrolle
-from ..enum.rollencodetyp import Rollencodetyp
-from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
+
+if TYPE_CHECKING:
+    from ..enum.marktrolle import Marktrolle
+    from ..enum.rollencodetyp import Rollencodetyp
+    from ..enum.sparte import Sparte
+    from .geschaeftspartner import Geschaeftspartner
 
 
 @postprocess_docstring
@@ -32,16 +34,16 @@ class Marktteilnehmer(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MARKTTEILNEHMER
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MARKTTEILNEHMER
     #: Gibt im Klartext die Bezeichnung der Marktrolle an
-    marktrolle: Optional[Marktrolle] = None
+    marktrolle: Optional["Marktrolle"] = None
     #: Gibt die Codenummer der Marktrolle an
     rollencodenummer: Optional[str] = None
     #: Gibt den Typ des Codes an
-    rollencodetyp: Optional[Rollencodetyp] = None
+    rollencodetyp: Optional["Rollencodetyp"] = None
     #: Sparte des Marktteilnehmers, z.B. Gas oder Strom
-    sparte: Optional[Sparte] = None
+    sparte: Optional["Sparte"] = None
     #: Die 1:1-Kommunikationsadresse des Marktteilnehmers. Diese wird in der Marktkommunikation verwendet. Konkret kann dies eine eMail-Adresse oder ein AS4-Endpunkt sein.
     makoadresse: Optional[list[str]] = None
     #: Der zu diesem Marktteilnehmer gehörende Geschäftspartner
-    geschaeftspartner: Optional[Geschaeftspartner] = None
+    geschaeftspartner: Optional["Geschaeftspartner"] = None

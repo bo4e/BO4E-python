@@ -7,25 +7,27 @@ from decimal import Decimal
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
 
-from ..bo.geraet import Geraet
-from ..com.zaehlwerk import Zaehlwerk
-from ..enum.befestigungsart import Befestigungsart
-from ..enum.messwerterfassung import Messwerterfassung
-from ..enum.registeranzahl import Registeranzahl
-from ..enum.sparte import Sparte
 from ..enum.typ import Typ
-from ..enum.zaehlerauspraegung import Zaehlerauspraegung
-from ..enum.zaehlergroesse import Zaehlergroesse
-from ..enum.zaehlertyp import Zaehlertyp
-from ..enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
+
+if TYPE_CHECKING:
+    from ..bo.geraet import Geraet
+    from ..com.zaehlwerk import Zaehlwerk
+    from ..enum.befestigungsart import Befestigungsart
+    from ..enum.messwerterfassung import Messwerterfassung
+    from ..enum.registeranzahl import Registeranzahl
+    from ..enum.sparte import Sparte
+    from ..enum.zaehlerauspraegung import Zaehlerauspraegung
+    from ..enum.zaehlergroesse import Zaehlergroesse
+    from ..enum.zaehlertyp import Zaehlertyp
+    from ..enum.zaehlertypspezifikation import ZaehlertypSpezifikation
+    from .geschaeftspartner import Geschaeftspartner
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -44,22 +46,24 @@ class Zaehler(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ZAEHLER
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ZAEHLER
     zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
-    sparte: Optional[Sparte] = None  #: Strom oder Gas
-    zaehlerauspraegung: Optional[Zaehlerauspraegung] = None  #: Spezifikation die Richtung des Zählers betreffend
-    zaehlertyp: Optional[Zaehlertyp] = None  #: Typisierung des Zählers
-    zaehlwerke: Optional[list[Zaehlwerk]] = None
-    registeranzahl: Optional[Registeranzahl] = None  #: Spezifikation bezüglich unterstützter Tarif
+    sparte: Optional["Sparte"] = None  #: Strom oder Gas
+    zaehlerauspraegung: Optional["Zaehlerauspraegung"] = None  #: Spezifikation die Richtung des Zählers betreffend
+    zaehlertyp: Optional["Zaehlertyp"] = None  #: Typisierung des Zählers
+    zaehlwerke: Optional[list["Zaehlwerk"]] = None
+    registeranzahl: Optional["Registeranzahl"] = None  #: Spezifikation bezüglich unterstützter Tarif
     zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
     eichung_bis: Optional[pydantic.AwareDatetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
     letzte_eichung: Optional[pydantic.AwareDatetime] = (
         None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
     )
-    zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers
+    zaehlerhersteller: Optional["Geschaeftspartner"] = None  #: Der Hersteller des Zählers
     ist_fernschaltbar: Optional[bool] = None  #: Fernschaltung
-    messwerterfassung: Optional[Messwerterfassung] = None  #: Messwerterfassung des Zählers
-    zaehlertypSpezifikation: Optional[ZaehlertypSpezifikation] = None  #: Besondere Spezifikation des Zählers
-    befestigungsart: Optional[Befestigungsart] = None  #: Befestigungsart
-    zaehlergroesse: Optional[Zaehlergroesse] = None  #: Größe des Zählers
-    geraete: Optional[list[Geraet]] = None  #: Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway
+    messwerterfassung: Optional["Messwerterfassung"] = None  #: Messwerterfassung des Zählers
+    zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None  #: Besondere Spezifikation des Zählers
+    befestigungsart: Optional["Befestigungsart"] = None  #: Befestigungsart
+    zaehlergroesse: Optional["Zaehlergroesse"] = None  #: Größe des Zählers
+    geraete: Optional[list["Geraet"]] = (
+        None  #: Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway
+    )
