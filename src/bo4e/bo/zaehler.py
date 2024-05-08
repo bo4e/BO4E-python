@@ -53,9 +53,9 @@ class Zaehler(Geschaeftsobjekt):
     registeranzahl: Optional[Registeranzahl] = None  #: Spezifikation bezüglich unterstützter Tarif
     zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
     eichung_bis: Optional[pydantic.AwareDatetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
-    letzte_eichung: Optional[
-        pydantic.AwareDatetime
-    ] = None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    letzte_eichung: Optional[pydantic.AwareDatetime] = (
+        None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
+    )
     zaehlerhersteller: Optional[Geschaeftspartner] = None  #: Der Hersteller des Zählers
     ist_fernschaltbar: Optional[bool] = None  #: Fernschaltung
     messwerterfassung: Optional[Messwerterfassung] = None  #: Messwerterfassung des Zählers
