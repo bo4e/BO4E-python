@@ -97,6 +97,11 @@ jobs:
         run: tox -e generate_json_schemas
         env:
           TARGET_VERSION: ${{ github.ref_name }}
+      - name: Build BO4E package
+        # Note: This step necessary to correctly set the version in the JSON-Schema-links
+        run: |
+          pip install -e .
+          python -c "import bo4e; print(bo4e.__gh_version__)"
       - name: Run kroki with docker
         run: |
           docker compose up -d
