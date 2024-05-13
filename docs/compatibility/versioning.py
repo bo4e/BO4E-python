@@ -13,7 +13,7 @@ from bost.pull import get_source_repo
 from github.GitRelease import GitRelease
 from pydantic import BaseModel, ConfigDict
 
-from .__main__ import compare_bo4e_versions_iteratively
+from .__main__ import compare_bo4e_versions
 
 logger = logging.getLogger(__name__)
 
@@ -24,10 +24,12 @@ class Version(BaseModel):
     A class to represent a BO4E version number.
     """
 
-    version_pattern_with_rc: ClassVar[re.Pattern] = re.compile(
+    version_pattern_with_rc: ClassVar[re.Pattern[str]] = re.compile(
         r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)(?:-rc(?P<candidate>\d+))?$"
     )
-    version_pattern: ClassVar[re.Pattern] = re.compile(r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)$")
+    version_pattern: ClassVar[re.Pattern[str]] = re.compile(
+        r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)$"
+    )
 
     major: int
     functional: int
@@ -97,21 +99,21 @@ class Version(BaseModel):
         Return False if major, functional or technical bump is detected.
         Raises ValueError if one of the versions is not a candidate version.
         """
-        if not self.is_candidate() or not other.is_candidate():
+        if self.candidate is not None or other.candidate is not None:
             raise ValueError("Cannot compare candidate versions if one of them is not a candidate.")
         return not self.bumped_technical(other) and self.candidate > other.candidate
 
-    def __lt__(self, other):
+    def __gt__(self, other: "Version"):
         if not isinstance(other, Version):
             return NotImplemented
         return (
-            self.major < other.major
-            or self.functional < other.functional
-            or self.technical < other.technical
-            or (self.is_candidate() and (not other.is_candidate() or self.candidate < other.candidate))
+            self.major > other.major
+            or self.functional > other.functional
+            or self.technical > other.technical
+            or (self.is_candidate() and (not other.is_candidate() or self.candidate > other.candidate))
         )
 
-    def __eq__(self, other):
+    def __eq__(self, other: "Version"):
         if not isinstance(other, Version):
             return NotImplemented
         return (
@@ -133,8 +135,17 @@ def get_latest_release(gh_token: str | None = None) -> GitRelease:
     repo = get_source_repo(gh_token)
     latest_release = repo.get_latest_release()
     # Ensure that the latest release is on main branch
-    if latest_release.target_commitish != "main":
-        raise ValueError(f"Fatal Error: Latest release {latest_release.tag_name} is not on main branch.")
+    commit_id = subprocess.check_output(f"git rev-parse tags/{latest_release.tag_name}~0").decode().strip()
+    branches_containing_commit = [
+        line.lstrip("*").strip()
+        for line in subprocess.check_output(f"git branch --contains {commit_id}").decode().splitlines()
+    ]
+    if "main" not in branches_containing_commit:
+        raise ValueError(
+            f"Fatal Error: Latest release {latest_release.tag_name} is not on main branch "
+            f"(branches {branches_containing_commit} contain commit {commit_id} of the "
+            f"release {latest_release.tag_name})"
+        )
     return latest_release
 
 
@@ -202,10 +213,9 @@ def compare_work_tree_with_latest_version(gh_version: str, gh_token: str | None 
         logger.info("Major version bump detected. No further checks needed.")
         return
     logger.info("Comparing versions iteratively: %s -> %s", version_behind, version_ahead)
-    changes_iterables = compare_bo4e_versions_iteratively([version_behind.tag], version_ahead.tag, gh_token=gh_token)
-    assert len(changes_iterables) == 1, "Internal error: Expected exactly one comparison"
+    changes = list(compare_bo4e_versions(version_behind.tag, version_ahead.tag, gh_token=gh_token, from_local=True))
     logger.info("Check if functional or technical release bump is needed")
-    functional_changes = any(changes_iterables[version_behind.tag, version_ahead.tag])
+    functional_changes = any(changes)
     logger.info("%s release bump is needed", "Functional" if functional_changes else "Technical")
 
     if not functional_changes and version_ahead.bumped_functional(version_behind):
@@ -242,3 +252,7 @@ def compare_work_tree_with_latest_version_cli(gh_version: str, gh_token: str | N
 if __name__ == "__main__":
     # pylint: disable=no-value-for-parameter
     compare_work_tree_with_latest_version_cli()
+
+
+def test_compare_work_tree_with_latest_version():
+    compare_work_tree_with_latest_version("v202401.1.2-rc3", gh_token=None)
