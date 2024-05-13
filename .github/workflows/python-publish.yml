@@ -48,7 +48,7 @@ jobs:
         env:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Check version tag
-        run: (cd /docs && python -m compatibility.versioning --gh-version ${{ github.ref_name }} --gh-token ${{ secrets.GITHUB_TOKEN }})
+        run: python -m docs.compatibility.versioning --gh-version ${{ github.ref_name }} --gh-token ${{ secrets.GITHUB_TOKEN }}
   json_schemas:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
