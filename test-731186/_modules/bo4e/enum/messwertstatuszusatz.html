@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.messwertstatuszusatz &mdash; bo4e test-731186 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=1941fbac"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                test-731186
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.messwertstatuszusatz</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.messwertstatuszusatz</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint: disable=missing-module-docstring</span>
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="Messwertstatuszusatz">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.messwertstatuszusatz.Messwertstatuszusatz">[docs]</a>
+<span class="k">class</span> <span class="nc">Messwertstatuszusatz</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aufzählung von zusätzlichen Informationen zum Status, beispielsweise in Lastgängen oder Zählwerkständen.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">Z84_LEERSTAND</span> <span class="o">=</span> <span class="s2">&quot;Z84_LEERSTAND&quot;</span>  <span class="c1">#: Z84_LEERSTAND</span>
+    <span class="n">Z85_REALERZAEHLERUEBERLAUFGEPRUEFT</span> <span class="o">=</span> <span class="s2">&quot;Z85_REALERZAEHLERUEBERLAUFGEPRUEFT&quot;</span>  <span class="c1">#: Z85_REALERZAEHLERUEBERLAUFGEPRUEFT</span>
+    <span class="n">Z86_PLAUSIBELWGKONTROLLABLESUNG</span> <span class="o">=</span> <span class="s2">&quot;Z86_PLAUSIBELWGKONTROLLABLESUNG&quot;</span>  <span class="c1">#: Z86_PLAUSIBELWGKONTROLLABLESUNG</span>
+    <span class="n">Z87_PLAUSIBELWGKUNDENHINWEIS</span> <span class="o">=</span> <span class="s2">&quot;Z87_PLAUSIBELWGKUNDENHINWEIS&quot;</span>  <span class="c1">#: Z87_PLAUSIBELWGKUNDENHINWEIS</span>
+    <span class="n">ZC3_AUSTAUSCHDESERSATZWERTES</span> <span class="o">=</span> <span class="s2">&quot;ZC3_AUSTAUSCHDESERSATZWERTES&quot;</span>  <span class="c1">#: ZC3_AUSTAUSCHDESERSATZWERTES</span>
+    <span class="n">Z88_VERGLEICHSMESSUNG_GEEICHT</span> <span class="o">=</span> <span class="s2">&quot;Z88_VERGLEICHSMESSUNG(GEEICHT)&quot;</span>  <span class="c1">#: Z88_VERGLEICHSMESSUNG(GEEICHT)</span>
+    <span class="n">Z89_VERGLEICHSMESSUNG_NICHTGEEICHT</span> <span class="o">=</span> <span class="s2">&quot;Z89_VERGLEICHSMESSUNG(NICHTGEEICHT)&quot;</span>  <span class="c1">#: Z89_VERGLEICHSMESSUNG(NICHTGEEICHT)</span>
+    <span class="c1">#: Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN</span>
+    <span class="n">Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN</span> <span class="o">=</span> <span class="s2">&quot;Z90_MESSWERTNACHBILDUNGAUSGEEICHTENWERTEN&quot;</span>
+    <span class="c1">#: Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN</span>
+    <span class="n">Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN</span> <span class="o">=</span> <span class="s2">&quot;Z91_MESSWERTNACHBILDUNGAUSNICHTGEEICHTENWERTEN&quot;</span>
+    <span class="n">Z92_INTERPOLATION</span> <span class="o">=</span> <span class="s2">&quot;Z92_INTERPOLATION&quot;</span>  <span class="c1">#: Z92_INTERPOLATION</span>
+    <span class="n">Z93_HALTEWERT</span> <span class="o">=</span> <span class="s2">&quot;Z93_HALTEWERT&quot;</span>  <span class="c1">#: Z93_HALTEWERT</span>
+    <span class="n">Z94_BILANZIERUNGNETZABSCHNITT</span> <span class="o">=</span> <span class="s2">&quot;Z94_BILANZIERUNGNETZABSCHNITT&quot;</span>  <span class="c1">#: Z94_BILANZIERUNGNETZABSCHNITT</span>
+    <span class="n">Z95_HISTORISCHEMESSWERTE</span> <span class="o">=</span> <span class="s2">&quot;Z95_HISTORISCHEMESSWERTE&quot;</span>  <span class="c1">#: Z95_HISTORISCHEMESSWERTE</span>
+    <span class="n">ZJ2_STATISTISCHEMETHODE</span> <span class="o">=</span> <span class="s2">&quot;ZJ2_STATISTISCHEMETHODE&quot;</span>  <span class="c1">#: ZJ2_STATISTISCHEMETHODE</span>
+    <span class="n">Z74_KEINZUGANG</span> <span class="o">=</span> <span class="s2">&quot;Z74_KEINZUGANG&quot;</span>  <span class="c1">#: Z74_KEINZUGANG</span>
+    <span class="n">Z75_KOMMUNIKATIONSSTOERUNG</span> <span class="o">=</span> <span class="s2">&quot;Z75_KOMMUNIKATIONSSTOERUNG&quot;</span>  <span class="c1">#: Z75_KOMMUNIKATIONSSTOERUNG</span>
+    <span class="n">Z76_NETZAUSFALL</span> <span class="o">=</span> <span class="s2">&quot;Z76_NETZAUSFALL&quot;</span>  <span class="c1">#: Z76_NETZAUSFALL</span>
+    <span class="n">Z77_SPANNUNGSAUSFALL</span> <span class="o">=</span> <span class="s2">&quot;Z77_SPANNUNGSAUSFALL&quot;</span>  <span class="c1">#: Z77_SPANNUNGSAUSFALL</span>
+    <span class="n">Z78_GERAETEWECHSEL</span> <span class="o">=</span> <span class="s2">&quot;Z78_GERAETEWECHSEL&quot;</span>  <span class="c1">#: Z78_GERAETEWECHSEL</span>
+    <span class="n">Z79_KALIBRIERUNG</span> <span class="o">=</span> <span class="s2">&quot;Z79_KALIBRIERUNG&quot;</span>  <span class="c1">#: Z79_KALIBRIERUNG</span>
+    <span class="c1">#: Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN</span>
+    <span class="n">Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN</span> <span class="o">=</span> <span class="s2">&quot;Z80_GERAETARBEITETAUSSERHALBDERBETRIEBSBEDINGUNGEN&quot;</span>
+    <span class="n">Z81_MESSEINRICHTUNGGESTOERT_DEFEKT</span> <span class="o">=</span> <span class="s2">&quot;Z81_MESSEINRICHTUNGGESTOERT_DEFEKT&quot;</span>  <span class="c1">#: Z81_MESSEINRICHTUNGGESTOERT_DEFEKT</span>
+    <span class="n">Z82_UNSICHERHEITMESSUNG</span> <span class="o">=</span> <span class="s2">&quot;Z82_UNSICHERHEITMESSUNG&quot;</span>  <span class="c1">#: Z82_UNSICHERHEITMESSUNG</span>
+    <span class="c1">#: Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK</span>
+    <span class="n">Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK</span> <span class="o">=</span> <span class="s2">&quot;Z98_BERUECKSICHTIGUNGSTOERMENGENZAEHLWERK&quot;</span>
+    <span class="n">Z99_MENGENUMWERTUNGUNVOLLSTAENDIG</span> <span class="o">=</span> <span class="s2">&quot;Z99_MENGENUMWERTUNGUNVOLLSTAENDIG&quot;</span>  <span class="c1">#: Z99_MENGENUMWERTUNGUNVOLLSTAENDIG</span>
+    <span class="n">ZA0_UHRZEITGESTELLT_SYNCHRONISATION</span> <span class="o">=</span> <span class="s2">&quot;ZA0_UHRZEITGESTELLT_SYNCHRONISATION&quot;</span>  <span class="c1">#: ZA0_UHRZEITGESTELLT_SYNCHRONISATION</span>
+    <span class="n">ZA1_MESSWERTUNPLAUSIBEL</span> <span class="o">=</span> <span class="s2">&quot;ZA1_MESSWERTUNPLAUSIBEL&quot;</span>  <span class="c1">#: ZA1_MESSWERTUNPLAUSIBEL</span>
+    <span class="n">ZC2_TARIFSCHALTGERAETDEFEKT</span> <span class="o">=</span> <span class="s2">&quot;ZC2_TARIFSCHALTGERAETDEFEKT&quot;</span>  <span class="c1">#: ZC2_TARIFSCHALTGERAETDEFEKT</span>
+    <span class="c1">#: ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND</span>
+    <span class="n">ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND</span> <span class="o">=</span> <span class="s2">&quot;ZC4_IMPULSWERTIGKEITNICHTAUSREICHEND&quot;</span>
+    <span class="n">ZA3_FALSCHERWANDLERFAKTOR</span> <span class="o">=</span> <span class="s2">&quot;ZA3_FALSCHERWANDLERFAKTOR&quot;</span>  <span class="c1">#: ZA3_FALSCHERWANDLERFAKTOR</span>
+    <span class="n">ZA4_FEHLERHAFTEABLESUNG</span> <span class="o">=</span> <span class="s2">&quot;ZA4_FEHLERHAFTEABLESUNG&quot;</span>  <span class="c1">#: ZA4_FEHLERHAFTEABLESUNG</span>
+    <span class="n">ZA5_AENDERUNGDERBERECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;ZA5_AENDERUNGDERBERECHNUNG&quot;</span>  <span class="c1">#: ZA5_AENDERUNGDERBERECHNUNG</span>
+    <span class="n">ZA6_UMBAUDERMESSLOKATION</span> <span class="o">=</span> <span class="s2">&quot;ZA6_UMBAUDERMESSLOKATION&quot;</span>  <span class="c1">#: ZA6_UMBAUDERMESSLOKATION</span>
+    <span class="n">ZA7_DATENBEARBEITUNGSFEHLER</span> <span class="o">=</span> <span class="s2">&quot;ZA7_DATENBEARBEITUNGSFEHLER&quot;</span>  <span class="c1">#: ZA7_DATENBEARBEITUNGSFEHLER</span>
+    <span class="n">ZA8_BRENNWERTKORREKTUR</span> <span class="o">=</span> <span class="s2">&quot;ZA8_BRENNWERTKORREKTUR&quot;</span>  <span class="c1">#: ZA8_BRENNWERTKORREKTUR</span>
+    <span class="n">ZA9_Z_ZAHL_KORREKTUR</span> <span class="o">=</span> <span class="s2">&quot;ZA9_Z-ZAHL-KORREKTUR&quot;</span>  <span class="c1">#: ZA9_Z-ZAHL-KORREKTUR</span>
+    <span class="n">ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG</span> <span class="o">=</span> <span class="s2">&quot;ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG&quot;</span>  <span class="c1">#: ZB0_STOERUNG_DEFEKTMESSEINRICHTUNG</span>
+    <span class="n">ZB9_AENDERUNGTARIFSCHALTZEITEN</span> <span class="o">=</span> <span class="s2">&quot;ZB9_AENDERUNGTARIFSCHALTZEITEN&quot;</span>  <span class="c1">#: ZB9_AENDERUNGTARIFSCHALTZEITEN</span>
+    <span class="n">ZG3_UMSTELLUNGGASQUALITAET</span> <span class="o">=</span> <span class="s2">&quot;ZG3_UMSTELLUNGGASQUALITAET&quot;</span>  <span class="c1">#: ZG3_UMSTELLUNGGASQUALITAET</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
