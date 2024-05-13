@@ -139,6 +139,10 @@ def get_latest_release(gh_token: str | None = None) -> GitRelease:
 
 
 def determine_commits_ahead_behind(cur_version: Version, base_version: Version) -> tuple[int, int]:
+    """
+    Compares the commits of the version tags cur_version...base_version
+    Returns the number of commits ahead and behind the base_version as tuple.
+    """
     expected_output_pattern = re.compile(r"^\s*(\d+)\s+(\d+)\s*$")
     output = subprocess.check_output(f"git rev-list --left-right --count {cur_version}...{base_version}")
     match = expected_output_pattern.fullmatch(output.decode())
@@ -236,4 +240,5 @@ def compare_work_tree_with_latest_version_cli(gh_version: str, gh_token: str | N
 
 
 if __name__ == "__main__":
+    # pylint: disable=no-value-for-parameter
     compare_work_tree_with_latest_version_cli()
