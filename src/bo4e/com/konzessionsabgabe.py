@@ -3,11 +3,14 @@ Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serializ
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..com.com import COM
-from ..enum.abgabeart import AbgabeArt
 from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.abgabeart import AbgabeArt
+
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -27,7 +30,7 @@ class Konzessionsabgabe(COM):
     """
 
     #: Art der Abgabe
-    satz: Optional[AbgabeArt] = None
+    satz: Optional["AbgabeArt"] = None
 
     #: Konzessionsabgabe in E/kWh
     kosten: Optional[Decimal] = None

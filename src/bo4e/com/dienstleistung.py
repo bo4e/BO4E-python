@@ -3,11 +3,14 @@ Contains Dienstleistung class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.dienstleistungstyp import Dienstleistungstyp
+
 
 # pylint: disable=too-few-public-methods
 
@@ -27,6 +30,6 @@ class Dienstleistung(COM):
     """
 
     #: Kennzeichnung der Dienstleistung
-    dienstleistungstyp: Optional[Dienstleistungstyp] = None
+    dienstleistungstyp: Optional["Dienstleistungstyp"] = None
     #: Bezeichnung der Dienstleistung
     bezeichnung: Optional[str] = None

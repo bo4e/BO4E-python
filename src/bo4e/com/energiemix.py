@@ -4,14 +4,16 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.oekolabel import Oekolabel
-from ..enum.oekozertifikat import Oekozertifikat
-from ..enum.sparte import Sparte
 from ..utils import postprocess_docstring
 from .com import COM
-from .energieherkunft import Energieherkunft
+
+if TYPE_CHECKING:
+    from ..enum.oekolabel import Oekolabel
+    from ..enum.oekozertifikat import Oekozertifikat
+    from ..enum.sparte import Sparte
+    from .energieherkunft import Energieherkunft
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -34,13 +36,13 @@ class Energiemix(COM):
     #: Eindeutige Nummer zur Identifizierung des Energiemixes
     energiemixnummer: Optional[int] = None
     #: Strom oder Gas etc.
-    energieart: Optional[Sparte] = None
+    energieart: Optional["Sparte"] = None
     #: Bezeichnung des Energiemix
     bezeichnung: Optional[str] = None
     #: Jahr, für das der Energiemix gilt
     gueltigkeitsjahr: Optional[int] = None
     #: Anteile der jeweiligen Erzeugungsart
-    anteil: Optional[list[Energieherkunft]] = None
+    anteil: Optional[list["Energieherkunft"]] = None
 
     #: Bemerkung zum Energiemix
     bemerkung: Optional[str] = None
@@ -49,9 +51,9 @@ class Energiemix(COM):
     #: Höhe des erzeugten Atommülls in g/kWh
     atommuell: Optional[Decimal] = None
     #: Zertifikate für den Energiemix
-    oekozertifikate: Optional[list[Oekozertifikat]] = None
+    oekozertifikate: Optional[list["Oekozertifikat"]] = None
     #: Ökolabel für den Energiemix
-    oekolabel: Optional[list[Oekolabel]] = None
+    oekolabel: Optional[list["Oekolabel"]] = None
     #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
     ist_in_oeko_top_ten: Optional[bool] = None
     #: Internetseite, auf der die Strommixdaten veröffentlicht sind

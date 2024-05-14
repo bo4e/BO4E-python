@@ -2,16 +2,19 @@
 Contains PreisblattNetnutzung class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..enum.bilanzierungsmethode import Bilanzierungsmethode
-from ..enum.kundengruppe import Kundengruppe
-from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
+
+if TYPE_CHECKING:
+    from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+    from ..enum.kundengruppe import Kundengruppe
+    from ..enum.netzebene import Netzebene
+
 
 # pylint: disable=too-few-public-methods
 
@@ -30,12 +33,12 @@ class PreisblattNetznutzung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTNETZNUTZUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTNETZNUTZUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     #: Die Preise gelten für Marktlokationen in der angebebenen Netzebene
-    netzebene: Optional[Netzebene] = None
-    kundengruppe: Optional[Kundengruppe] = None
+    netzebene: Optional["Netzebene"] = None
+    kundengruppe: Optional["Kundengruppe"] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

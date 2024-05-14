@@ -4,13 +4,16 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pydantic
 
-from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+
 
 # pylint: disable=too-few-public-methods
 
@@ -33,7 +36,7 @@ class Zeitraum(COM):
 
     """
 
-    einheit: Optional[Mengeneinheit] = None
+    einheit: Optional["Mengeneinheit"] = None
     dauer: Optional[Decimal] = None
     startdatum: Optional[pydantic.AwareDatetime] = None
     enddatum: Optional[pydantic.AwareDatetime] = None

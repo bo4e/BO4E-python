@@ -4,8 +4,8 @@ Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/se
 
 from typing import Optional
 
-from ..com.com import COM
 from ..utils import postprocess_docstring
+from .com import COM
 
 # pylint: disable=no-name-in-module
 # pylint: disable=too-few-public-methods

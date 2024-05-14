@@ -4,18 +4,20 @@ Contains Angebot class and corresponding marshmallow schema for de-/serializatio
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
 
-from ..com.angebotsvariante import Angebotsvariante
-from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
-from .person import Person
+
+if TYPE_CHECKING:
+    from ..com.angebotsvariante import Angebotsvariante
+    from ..enum.sparte import Sparte
+    from .geschaeftspartner import Geschaeftspartner
+    from .person import Person
 
 
 @postprocess_docstring
@@ -36,19 +38,19 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANGEBOT
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ANGEBOT
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots
     angebotsdatum: Optional[pydantic.AwareDatetime] = None
     #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Optional[Sparte] = None
+    sparte: Optional["Sparte"] = None
     #: Ersteller des Angebots
-    angebotsgeber: Optional[Geschaeftspartner] = None
+    angebotsgeber: Optional["Geschaeftspartner"] = None
     #: Empfänger des Angebots
-    angebotsnehmer: Optional[Geschaeftspartner] = None
+    angebotsnehmer: Optional["Geschaeftspartner"] = None
 
-    varianten: Optional[list[Angebotsvariante]] = None
+    varianten: Optional[list["Angebotsvariante"]] = None
     """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
     Ein Angebot besteht mindestens aus einer Variante."""
 
@@ -58,6 +60,6 @@ class Angebot(Geschaeftsobjekt):
     #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
     bindefrist: Optional[pydantic.AwareDatetime] = None
     #: Person, die als Angebotsnehmer das Angebot angenommen hat
-    unterzeichner_angebotsnehmer: Optional[Person] = None
+    unterzeichner_angebotsnehmer: Optional["Person"] = None
     #: Person, die als Angebotsgeber das Angebots ausgestellt hat
-    unterzeichner_angebotsgeber: Optional[Person] = None
+    unterzeichner_angebotsgeber: Optional["Person"] = None

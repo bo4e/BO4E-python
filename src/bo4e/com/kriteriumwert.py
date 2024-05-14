@@ -3,12 +3,14 @@ Contains KriteriumWert class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
-
 # pylint: disable=too-few-public-methods
-from ..enum.tarifregionskriterium import Tarifregionskriterium
+from typing import TYPE_CHECKING, Optional
+
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.tarifregionskriterium import Tarifregionskriterium
 
 
 @postprocess_docstring
@@ -26,6 +28,6 @@ class KriteriumWert(COM):
     """
 
     #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
-    kriterium: Optional[Tarifregionskriterium] = None
+    kriterium: Optional["Tarifregionskriterium"] = None
     #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
     wert: Optional[str] = None

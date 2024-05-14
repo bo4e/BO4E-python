@@ -4,11 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.erzeugungsart import Erzeugungsart
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.erzeugungsart import Erzeugungsart
+
 
 # pylint: disable=no-name-in-module
 
@@ -31,6 +34,6 @@ class Energieherkunft(COM):
     """
 
     #: Art der Erzeugung der Energie.
-    erzeugungsart: Optional[Erzeugungsart] = None
+    erzeugungsart: Optional["Erzeugungsart"] = None
     #: Prozentualer Anteil der jeweiligen Erzeugungsart.
     anteil_prozent: Optional[Decimal] = None

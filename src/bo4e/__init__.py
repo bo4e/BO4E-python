@@ -138,6 +138,7 @@ __all__ = [
     "Messart",
     "Messgroesse",
     "Messpreistyp",
+    "Messwerterfassung",
     "Messwertstatus",
     "Messwertstatuszusatz",
     "Netzebene",
@@ -195,6 +196,8 @@ __all__ = [
     "__version__",
     "__gh_version__",
 ]
+
+from pydantic import BaseModel as _PydanticBaseModel
 
 # Import BOs
 from .bo.angebot import Angebot
@@ -336,6 +339,7 @@ from .enum.mengenoperator import Mengenoperator
 from .enum.messart import Messart
 from .enum.messgroesse import Messgroesse
 from .enum.messpreistyp import Messpreistyp
+from .enum.messwerterfassung import Messwerterfassung
 from .enum.messwertstatus import Messwertstatus
 from .enum.messwertstatuszusatz import Messwertstatuszusatz
 from .enum.netzebene import Netzebene
@@ -385,3 +389,10 @@ from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut
+
+# Resolve all ForwardReferences. This design prevents circular import errors.
+for cls_name in __all__:
+    cls = globals().get(cls_name, None)
+    if cls is None or not isinstance(cls, type) or not issubclass(cls, _PydanticBaseModel):
+        continue
+    cls.model_rebuild(force=True)
