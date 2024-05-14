@@ -4,8 +4,10 @@ This module provides a CLI to check if a version tag has the expected format we 
 
 import functools
 import logging
+import os
 import re
 import subprocess
+import sys
 from typing import ClassVar, Literal, Optional
 
 import click
@@ -242,7 +244,7 @@ def compare_work_tree_with_latest_version_cli(gh_version: str, gh_token: str | N
     the JSON-schemas are inconsistent with the version bump.
     """
     try:
-        logger.info("Testing git command: %s", subprocess.check_output("git --version").decode())
+        logger.info("Testing git command: %s", subprocess.check_output("git --version", env=os.environ.copy()).decode())
         compare_work_tree_with_latest_version(gh_version, gh_token)
     except Exception as error:
         logger.error("An error occurred.", exc_info=error)
@@ -256,4 +258,6 @@ if __name__ == "__main__":
 
 
 def test_compare_work_tree_with_latest_version():
+    logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
     compare_work_tree_with_latest_version("v202401.1.2-rc3", gh_token=None)
+    raise ValueError("Test not implemented")
