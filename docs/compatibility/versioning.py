@@ -242,6 +242,7 @@ def compare_work_tree_with_latest_version_cli(gh_version: str, gh_token: str | N
     the JSON-schemas are inconsistent with the version bump.
     """
     try:
+        logger.info("Testing git command: %s", subprocess.check_output("git --version").decode())
         compare_work_tree_with_latest_version(gh_version, gh_token)
     except Exception as error:
         logger.error("An error occurred.", exc_info=error)
