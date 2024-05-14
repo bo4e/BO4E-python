@@ -12,6 +12,10 @@ class Mengeneinheit(StrEnum):
     WH = "WH"  #: Wattstunde
     KW = "KW"  #: Kilowatt
     KWH = "KWH"  #: Kilowattstunde
+    KWHK = "KWHK"  #: Kilowattstunde pro Kelvin
+    VAR = "VAR"  #: Var
+    VARH = "VARH"  #: Varstunde
+    KVAR = "KVAR"  #: Kilovar
     KVARH = "KVARH"  #: Kilovarstunde
     MW = "MW"  #: Megawatt
     MWH = "MWH"  #: Megawattstunde
@@ -28,4 +32,3 @@ class Mengeneinheit(StrEnum):
     HALBJAHR = "HALBJAHR"  #: Halbjahr
     JAHR = "JAHR"  #: Jahr
     PROZENT = "PROZENT"  #: Prozent
-    KVAR = "KVAR"  #: Kilovar
