@@ -4,7 +4,6 @@ This module provides a CLI to check if a version tag has the expected format we 
 
 import functools
 import logging
-import os
 import re
 import subprocess
 import sys
@@ -137,10 +136,10 @@ def get_latest_release(gh_token: str | None = None) -> GitRelease:
     repo = get_source_repo(gh_token)
     latest_release = repo.get_latest_release()
     # Ensure that the latest release is on main branch
-    commit_id = subprocess.check_output(f"git rev-parse tags/{latest_release.tag_name}~0").decode().strip()
+    commit_id = subprocess.check_output(["git", "rev-parse", f"tags/{latest_release.tag_name}~0"]).decode().strip()
     branches_containing_commit = [
         line.lstrip("*").strip()
-        for line in subprocess.check_output(f"git branch --contains {commit_id}").decode().splitlines()
+        for line in subprocess.check_output(["git", "branch", "--contains", f"{commit_id}"]).decode().splitlines()
     ]
     if "main" not in branches_containing_commit:
         raise ValueError(
@@ -157,7 +156,7 @@ def determine_commits_ahead_behind(cur_version: Version, base_version: Version) 
     Returns the number of commits ahead and behind the base_version as tuple.
     """
     expected_output_pattern = re.compile(r"^\s*(\d+)\s+(\d+)\s*$")
-    output = subprocess.check_output(f"git rev-list --left-right --count {cur_version}...{base_version}")
+    output = subprocess.check_output(["git", "rev-list", "--left-right", "--count", f"{cur_version}...{base_version}"])
     match = expected_output_pattern.fullmatch(output.decode())
     if match is None:
         raise ValueError(f"Expected output to match {expected_output_pattern}, got {output}")
@@ -244,9 +243,6 @@ def compare_work_tree_with_latest_version_cli(gh_version: str, gh_token: str | N
     the JSON-schemas are inconsistent with the version bump.
     """
     try:
-        logger.info(
-            "Testing git command: %s", subprocess.check_output(["git", "--version"], env=os.environ.copy()).decode()
-        )
         compare_work_tree_with_latest_version(gh_version, gh_token)
     except Exception as error:
         logger.error("An error occurred.", exc_info=error)
@@ -262,4 +258,3 @@ if __name__ == "__main__":
 def test_compare_work_tree_with_latest_version():
     logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
     compare_work_tree_with_latest_version("v202401.1.2-rc3", gh_token=None)
-    raise ValueError("Test not implemented")
