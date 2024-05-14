@@ -3,11 +3,8 @@ Contains Konfigurationsprodukt class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Optional
 
-from pydantic import Field
-
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,8 +28,6 @@ class Konfigurationsprodukt(COM):
         `Konfigurationsprodukt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Konfigurationsprodukt.json>`_
 
     """
-
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KONFIGURATIONSPRODUKT
 
     produktcode: Optional[str] = None
     leistungskurvendefinition: Optional[str] = None
