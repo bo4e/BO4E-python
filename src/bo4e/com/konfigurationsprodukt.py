@@ -3,14 +3,17 @@ Contains Konfigurationsprodukt class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..bo.marktteilnehmer import Marktteilnehmer
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..bo.marktteilnehmer import Marktteilnehmer
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -34,4 +37,4 @@ class Konfigurationsprodukt(COM):
     produktcode: Optional[str]
     leistungskurvendefinition: Optional[str]
     schaltzeitdefinition: Optional[str]
-    marktpartner: Optional[Marktteilnehmer]
+    marktpartner: Optional["Marktteilnehmer"]

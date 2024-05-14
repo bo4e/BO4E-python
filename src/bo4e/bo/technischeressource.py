@@ -3,20 +3,22 @@ Contains technische Ressource class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..com.menge import Menge
-from ..enum.emobilitaetsart import EMobilitaetsart
-from ..enum.erzeugungsart import Erzeugungsart
-from ..enum.speicherart import Speicherart
-from ..enum.technischeressourcenutzung import TechnischeRessourceNutzung
-from ..enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from ..enum.typ import Typ
-from ..enum.waermenutzung import Waermenutzung
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.menge import Menge
+    from ..enum.emobilitaetsart import EMobilitaetsart
+    from ..enum.erzeugungsart import Erzeugungsart
+    from ..enum.speicherart import Speicherart
+    from ..enum.technischeressourcenutzung import TechnischeRessourceNutzung
+    from ..enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
+    from ..enum.waermenutzung import Waermenutzung
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -46,20 +48,20 @@ class TechnischeRessource(Geschaeftsobjekt):
     #: Referenz auf die der technischen Ressource zugeordneten Steuerbaren Ressource
     zugeordnete_steuerbare_ressource_id: Optional[str] = None
     #: Nennleistung (Aufnahme)
-    nennleistungaufnahme: Optional[Menge] = None
+    nennleistungaufnahme: Optional["Menge"] = None
     #: Nennleistung (Abgabe)
-    nennleistungabgabe: Optional[Menge] = None
+    nennleistungabgabe: Optional["Menge"] = None
     #: Speicherkapazität
-    speicherkapazitaet: Optional[Menge] = None
+    speicherkapazitaet: Optional["Menge"] = None
     #: Art und Nutzung der technischen Ressource
-    technische_ressource_nutzung: Optional[TechnischeRessourceNutzung] = None
+    technische_ressource_nutzung: Optional["TechnischeRessourceNutzung"] = None
     #: Verbrauchsart der technischen Ressource
-    technische_ressource_verbrauchsart: Optional[TechnischeRessourceVerbrauchsart] = None
+    technische_ressource_verbrauchsart: Optional["TechnischeRessourceVerbrauchsart"] = None
     #: Wärmenutzung
-    waermenutzung: Optional[Waermenutzung] = None
+    waermenutzung: Optional["Waermenutzung"] = None
     #: Art der E-Mobilität
-    emobilitaetsart: Optional[EMobilitaetsart] = None
+    emobilitaetsart: Optional["EMobilitaetsart"] = None
     #: Art der Erzeugung der Energie
-    erzeugungsart: Optional[Erzeugungsart] = None
+    erzeugungsart: Optional["Erzeugungsart"] = None
     #: Art des Speichers
-    speicherart: Optional[Speicherart] = None
+    speicherart: Optional["Speicherart"] = None

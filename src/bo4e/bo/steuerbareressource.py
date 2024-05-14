@@ -3,16 +3,18 @@ Contains steuerbare Ressource class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..com.konfigurationsprodukt import Konfigurationsprodukt
-from ..enum.marktrolle import Marktrolle
-from ..enum.steuerkanalsleistungsbeschreibung import SteuerkanalsLeistungsbeschreibung
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.konfigurationsprodukt import Konfigurationsprodukt
+    from ..enum.marktrolle import Marktrolle
+    from ..enum.steuerkanalsleistungsbeschreibung import SteuerkanalsLeistungsbeschreibung
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -36,10 +38,10 @@ class SteuerbareRessource(Geschaeftsobjekt):
     #: Id der steuerbaren Ressource
     steuerbare_ressource_id: Optional[str] = None
     #: Leistungsbeschreibung des Steuerkanals
-    steuerkanals_leistungsbeschreibung: Optional[SteuerkanalsLeistungsbeschreibung] = None
+    steuerkanals_leistungsbeschreibung: Optional["SteuerkanalsLeistungsbeschreibung"] = None
     #: Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist.
     zugeordnete_msb_codenr: Optional[str] = None
     #: Produkt-Daten der Steuerbaren Ressource
-    konfigurationsprodukte: Optional[list[Konfigurationsprodukt]] = None
+    konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
     #: Eigenschaft des Messstellenbetreibers an der Lokation
-    eigenschaft_msb_lokation: Optional[Marktrolle] = None
+    eigenschaft_msb_lokation: Optional["Marktrolle"] = None

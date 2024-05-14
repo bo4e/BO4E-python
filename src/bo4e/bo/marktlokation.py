@@ -28,6 +28,7 @@ if TYPE_CHECKING:
     from ..enum.sparte import Sparte
     from ..enum.verbrauchsart import Verbrauchsart
     from .geschaeftspartner import Geschaeftspartner
+    from .lokationszuordnung import Lokationszuordnung
 
 # pylint: disable=no-name-in-module
 
@@ -81,8 +82,6 @@ class Marktlokation(Geschaeftsobjekt):
     #: Geschäftspartner, dem diese Marktlokation gehört
     endkunde: Optional["Geschaeftspartner"] = None
 
-    # lokationszuordnung: Optional["Lokationszuordnung"] = None
-
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
     lokationsadresse: Optional["Adresse"] = None
@@ -107,3 +106,6 @@ class Marktlokation(Geschaeftsobjekt):
     zaehlwerke: Optional[list["Zaehlwerk"]] = None
     verbrauchsmengen: Optional[list["Verbrauch"]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
+
+    #: Lokationsbündelstruktur
+    lokationszuordnung: Optional["Lokationszuordnung"] = None
