@@ -16,7 +16,6 @@ if TYPE_CHECKING:
     from ..com.adresse import Adresse
     from ..com.geokoordinaten import Geokoordinaten
     from ..com.katasteradresse import Katasteradresse
-    from ..com.messlokationszuordnung import Messlokationszuordnung
     from ..com.verbrauch import Verbrauch
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.bilanzierungsmethode import Bilanzierungsmethode
