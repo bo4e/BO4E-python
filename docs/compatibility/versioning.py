@@ -11,6 +11,8 @@ from typing import ClassVar, Iterable, Literal, Optional
 
 import click
 from bost.pull import get_source_repo
+from github import Github
+from github.Auth import Token
 from github.GitRelease import GitRelease
 from more_itertools import one
 from pydantic import BaseModel, ConfigDict
@@ -130,7 +132,11 @@ def get_latest_version(gh_token: str | None = None) -> Version:
     """
     Get the release from BO4E-python repository which is marked as 'latest'.
     """
-    return Version.from_string(get_source_repo(gh_token).get_latest_release().tag_name)
+    if gh_token is not None:
+        gh = Github(auth=Token(gh_token))
+    else:
+        gh = Github()
+    return Version.from_string(gh.get_repo("bo4e/BO4E-python").get_latest_release().tag_name)
 
 
 def get_last_n_tags(n: int, *, on_branch: str = "main", exclude_candidates: bool = True) -> Iterable[str]:
