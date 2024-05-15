@@ -28,7 +28,7 @@ class Mengeneinheit(StrEnum):
     HALBJAHR = "HALBJAHR"  #: Halbjahr
     JAHR = "JAHR"  #: Jahr
     PROZENT = "PROZENT"  #: Prozent
+    KVAR = "KVAR"  #: Kilovar
     KWHK = "KWHK"  #: Kilowattstunde pro Kelvin
     VAR = "VAR"  #: Var
     VARH = "VARH"  #: Varstunde
-    KVAR = "KVAR"  #: Kilovar
