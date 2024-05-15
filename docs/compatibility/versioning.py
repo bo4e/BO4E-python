@@ -137,15 +137,13 @@ def get_latest_release(gh_token: str | None = None) -> GitRelease:
     latest_release = repo.get_latest_release()
     # Ensure that the latest release is on main branch
     commit_id = subprocess.check_output(["git", "rev-parse", f"tags/{latest_release.tag_name}~0"]).decode().strip()
-    branches_containing_commit = [
-        line.lstrip("*").strip()
-        for line in subprocess.check_output(["git", "branch", "--contains", f"{commit_id}"]).decode().splitlines()
-    ]
+    output = subprocess.check_output(["git", "branch", "--contains", f"{commit_id}"]).decode()
+    branches_containing_commit = [line.lstrip("*").strip() for line in output.splitlines()]
     if "main" not in branches_containing_commit:
         raise ValueError(
             f"Fatal Error: Latest release {latest_release.tag_name} is not on main branch "
-            f"(branches {branches_containing_commit} contain commit {commit_id} of the "
-            f"release {latest_release.tag_name})"
+            f"(branches {branches_containing_commit} contain commit {commit_id}).\n"
+            f"Output from git-command: {output}"
         )
     return latest_release
 

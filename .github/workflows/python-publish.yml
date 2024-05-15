@@ -45,8 +45,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install tox
           pip install -r requirements.txt -r docs/requirements.txt
-      - name: Test Git command
-        run: git rev-list --left-right --count ${{ github.ref_name }}...v202401.1.1
+      - name: Test Git commands
+        run: |
+          git rev-list --left-right --count ${{ github.ref_name }}...v202401.1.1
+          git branch --contains ${{ github.ref_name }}
+          git branch --contains 6ba7e7f0c8eeacca6b9d40e5bea05c018a1a8d6c
+          git branch --list
+          git rev-parse tags/${{ github.ref_name }}~0
+          git branch --contains $(git rev-parse tags/${{ github.ref_name }}~0)
       - name: Build JSON Schemas
         run: tox -e generate_json_schemas
         env:
