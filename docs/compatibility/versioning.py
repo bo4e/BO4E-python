@@ -53,7 +53,7 @@ class Version(BaseModel):
             candidate=int(match.group("candidate")) if match.group("candidate") is not None else None,
         )
         if not allow_candidate and inst.is_candidate():
-            raise ValueError("Expected a version without candidate, got a candidate version.")
+            raise ValueError(f"Expected a version without candidate, got a candidate version: {version}")
         return inst
 
     @property
