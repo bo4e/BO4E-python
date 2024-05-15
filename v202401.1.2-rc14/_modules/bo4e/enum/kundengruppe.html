@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.kundengruppe &mdash; bo4e v202401.1.2-rc14 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=c612a8fd"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.1.2-rc14
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.kundengruppe</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.kundengruppe</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint: disable=missing-module-docstring</span>
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="Kundengruppe">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.kundengruppe.Kundengruppe">[docs]</a>
+<span class="k">class</span> <span class="nc">Kundengruppe</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Kundengruppe für eine Marktlokation (orientiert sich an den Standard-Lastprofilen).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">RLM</span> <span class="o">=</span> <span class="s2">&quot;RLM&quot;</span>  <span class="c1">#: Kunde mit registrierender Leistungsmessung (kein SLP)</span>
+    <span class="n">RLM_KOMMUNAL</span> <span class="o">=</span> <span class="s2">&quot;RLM_KOMMUNAL&quot;</span>  <span class="c1">#: Kommunale Abnahmestelle leistungsgemessen</span>
+    <span class="n">SLP_KOMMUNAL</span> <span class="o">=</span> <span class="s2">&quot;SLP_KOMMUNAL&quot;</span>  <span class="c1">#: Kommunale Abnahmestelle nicht leistungsgemessen</span>
+    <span class="n">SLP_S_G0</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G0&quot;</span>  <span class="c1">#: Gewerbe allgemein</span>
+    <span class="n">SLP_S_G1</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G1&quot;</span>  <span class="c1">#: Werktags</span>
+    <span class="n">SLP_S_G2</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G2&quot;</span>  <span class="c1">#: Verbrauch in Abendstunden</span>
+    <span class="n">SLP_S_G3</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G3&quot;</span>  <span class="c1">#: Gewerbe durchlaufend</span>
+    <span class="n">SLP_S_G4</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G4&quot;</span>  <span class="c1">#: Laden, Friseur</span>
+    <span class="n">SLP_S_G5</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G5&quot;</span>  <span class="c1">#: Bäckerei mit Backstube</span>
+    <span class="n">SLP_S_G6</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G6&quot;</span>  <span class="c1">#: Wochenendbetrieb</span>
+    <span class="n">SLP_S_G7</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_G7&quot;</span>  <span class="c1">#: Mobilfunksendestation</span>
+    <span class="n">SLP_S_L0</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_L0&quot;</span>  <span class="c1">#: Landwirtschaft allgemein</span>
+    <span class="n">SLP_S_L1</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_L1&quot;</span>  <span class="c1">#: Landwirtschaft mit Milchwirtschaft/Nebenerwerbs-Tierzucht</span>
+    <span class="n">SLP_S_L2</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_L2&quot;</span>  <span class="c1">#: Übrige Landwirtschaftsbetriebe</span>
+    <span class="n">SLP_S_H0</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_H0&quot;</span>  <span class="c1">#: Haushalt allgemein</span>
+    <span class="n">SLP_S_SB</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_SB&quot;</span>  <span class="c1">#: Straßenbeleuchtung</span>
+    <span class="n">SLP_S_HZ</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_HZ&quot;</span>  <span class="c1">#: Nachtspeicherheizung</span>
+    <span class="n">SLP_S_WP</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_WP&quot;</span>  <span class="c1">#: Wärmepumpe</span>
+    <span class="n">SLP_S_EM</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_EM&quot;</span>  <span class="c1">#: Elektromobilität</span>
+    <span class="n">SLP_S_HZ_GEM</span> <span class="o">=</span> <span class="s2">&quot;SLP_S_HZ_GEM&quot;</span>  <span class="c1">#: Nachtspeicherheizung gemeinsame Messung</span>
+    <span class="n">SLP_G_GKO</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GKO&quot;</span>  <span class="c1">#: Gebietskörpersch., Kreditinst. u. Versich., Org. o. Erwerbszw. &amp; öff. Einr.</span>
+    <span class="n">SLP_G_STANDARD</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_STANDARD&quot;</span>  <span class="c1">#: Standardkundengruppe für Gas</span>
+    <span class="n">SLP_G_GHA</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GHA&quot;</span>  <span class="c1">#: Einzelhandel, Großhandel</span>
+    <span class="n">SLP_G_GMK</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GMK&quot;</span>  <span class="c1">#: Metall, Kfz</span>
+    <span class="n">SLP_G_GBD</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GBD&quot;</span>  <span class="c1">#: sonst. betr. Dienstleistungen</span>
+    <span class="n">SLP_G_GGA</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GGA&quot;</span>  <span class="c1">#: Beherbergung</span>
+    <span class="n">SLP_G_GBH</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GBH&quot;</span>  <span class="c1">#: Gaststätten</span>
+    <span class="n">SLP_G_GBA</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GBA&quot;</span>  <span class="c1">#: Bäckereien</span>
+    <span class="n">SLP_G_GWA</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GWA&quot;</span>  <span class="c1">#: Wäschereien</span>
+    <span class="n">SLP_G_GGB</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GGB&quot;</span>  <span class="c1">#: Gartenbau</span>
+    <span class="n">SLP_G_GPD</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GPD&quot;</span>  <span class="c1">#: Papier und Druck</span>
+    <span class="n">SLP_G_GMF</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_GMF&quot;</span>  <span class="c1">#: haushaltsähnliche Gewerbebetriebe</span>
+    <span class="n">SLP_G_HEF</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_HEF&quot;</span>  <span class="c1">#: Einfamilienhaushalt</span>
+    <span class="n">SLP_G_HMF</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_HMF&quot;</span>  <span class="c1">#: Mehrfamilienhaushalt</span>
+    <span class="n">SLP_G_HKO</span> <span class="o">=</span> <span class="s2">&quot;SLP_G_HKO&quot;</span>  <span class="c1">#: Kochgas</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
