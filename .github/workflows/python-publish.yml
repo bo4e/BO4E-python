@@ -48,11 +48,12 @@ jobs:
       - name: Test Git commands
         run: |
           git rev-list --left-right --count ${{ github.ref_name }}...v202401.1.1
-          git branch --contains ${{ github.ref_name }}
-          git branch --contains 6ba7e7f0c8eeacca6b9d40e5bea05c018a1a8d6c
-          git branch --list
-          git rev-parse tags/${{ github.ref_name }}~0
-          git branch --contains $(git rev-parse tags/${{ github.ref_name }}~0)
+          git branch -a --contains v202401.1.1
+          git branch -a --contains 6ba7e7f0c8eeacca6b9d40e5bea05c018a1a8d6c
+          git branch -a --list
+          git rev-parse tags/v202401.1.1~0
+          git branch -a --contains $(git rev-parse tags/v202401.1.1~0)
+          git rev-parse -a tags/v202401.1.1~0
       - name: Build JSON Schemas
         run: tox -e generate_json_schemas
         env:
