@@ -103,14 +103,14 @@ class Version(BaseModel):
             raise ValueError("Cannot compare candidate versions if one of them is not a candidate.")
         return not self.bumped_technical(other) and self.candidate > other.candidate
 
-    def __gt__(self, other: "Version"):
+    def __lt__(self, other: "Version"):
         if not isinstance(other, Version):
             return NotImplemented
         return (
-            self.major > other.major
-            or self.functional > other.functional
-            or self.technical > other.technical
-            or (self.is_candidate() and (not other.is_candidate() or self.candidate > other.candidate))
+            self.major < other.major
+            or self.functional < other.functional
+            or self.technical < other.technical
+            or (self.is_candidate() and (not other.is_candidate() or self.candidate < other.candidate))
         )
 
     def __eq__(self, other: "Version"):
