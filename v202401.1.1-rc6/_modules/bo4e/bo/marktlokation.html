@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.bo.marktlokation &mdash; bo4e v202401.1.1-rc6 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=4ee8b0ed"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.1.1-rc6
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.bo.marktlokation</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.bo.marktlokation</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Contains Marktlokation class</span>
+<span class="sd">and corresponding marshmallow schema for de-/serialization</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># pylint: disable=too-many-instance-attributes, too-few-public-methods</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
+
+<span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
+<span class="kn">from</span> <span class="nn">.geschaeftsobjekt</span> <span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..com.adresse</span> <span class="kn">import</span> <span class="n">Adresse</span>
+    <span class="kn">from</span> <span class="nn">..com.geokoordinaten</span> <span class="kn">import</span> <span class="n">Geokoordinaten</span>
+    <span class="kn">from</span> <span class="nn">..com.katasteradresse</span> <span class="kn">import</span> <span class="n">Katasteradresse</span>
+    <span class="kn">from</span> <span class="nn">..com.messlokationszuordnung</span> <span class="kn">import</span> <span class="n">Messlokationszuordnung</span>
+    <span class="kn">from</span> <span class="nn">..com.verbrauch</span> <span class="kn">import</span> <span class="n">Verbrauch</span>
+    <span class="kn">from</span> <span class="nn">..com.zaehlwerk</span> <span class="kn">import</span> <span class="n">Zaehlwerk</span>
+    <span class="kn">from</span> <span class="nn">..enum.bilanzierungsmethode</span> <span class="kn">import</span> <span class="n">Bilanzierungsmethode</span>
+    <span class="kn">from</span> <span class="nn">..enum.energierichtung</span> <span class="kn">import</span> <span class="n">Energierichtung</span>
+    <span class="kn">from</span> <span class="nn">..enum.gasqualitaet</span> <span class="kn">import</span> <span class="n">Gasqualitaet</span>
+    <span class="kn">from</span> <span class="nn">..enum.gebiettyp</span> <span class="kn">import</span> <span class="n">Gebiettyp</span>
+    <span class="kn">from</span> <span class="nn">..enum.kundentyp</span> <span class="kn">import</span> <span class="n">Kundentyp</span>
+    <span class="kn">from</span> <span class="nn">..enum.netzebene</span> <span class="kn">import</span> <span class="n">Netzebene</span>
+    <span class="kn">from</span> <span class="nn">..enum.sparte</span> <span class="kn">import</span> <span class="n">Sparte</span>
+    <span class="kn">from</span> <span class="nn">..enum.verbrauchsart</span> <span class="kn">import</span> <span class="n">Verbrauchsart</span>
+    <span class="kn">from</span> <span class="nn">.geschaeftspartner</span> <span class="kn">import</span> <span class="n">Geschaeftspartner</span>
+
+<span class="c1"># pylint: disable=no-name-in-module</span>
+
+
+<div class="viewcode-block" id="Marktlokation">
+<a class="viewcode-back" href="../../../api/bo4e.bo.html#bo4e.bo.marktlokation.Marktlokation">[docs]</a>
+<span class="nd">@postprocess_docstring</span>
+<span class="k">class</span> <span class="nc">Marktlokation</span><span class="p">(</span><span class="n">Geschaeftsobjekt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Object containing information about a Marktlokation</span>
+
+<span class="sd">    .. raw:: html</span>
+
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/bo/Marktlokation.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+
+<span class="sd">    .. HINT::</span>
+<span class="sd">        `Marktlokation JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Marktlokation.json&gt;`_</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Typ&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">MARKTLOKATION</span>
+    <span class="c1">#: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.</span>
+    <span class="n">marktlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Sparte der Marktlokation, z.B. Gas oder Strom</span>
+    <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird</span>
+    <span class="n">energierichtung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Energierichtung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Bilanzierungsmethode, RLM oder SLP</span>
+    <span class="n">bilanzierungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Bilanzierungsmethode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">netzebene</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Netzebene&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Netzebene, in der der Bezug der Energie erfolgt.</span>
+<span class="sd">    Bei Strom Spannungsebene der Lieferung, bei Gas Druckstufe.</span>
+<span class="sd">    Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: Verbrauchsart der Marktlokation.</span>
+    <span class="n">verbrauchsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Verbrauchsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt</span>
+    <span class="n">ist_unterbrechbar</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.</span>
+    <span class="n">netzbetreibercodenr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Typ des Netzgebietes, z.B. Verteilnetz</span>
+    <span class="n">gebietstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Gebiettyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die ID des Gebietes in der ene&#39;t-Datenbank</span>
+    <span class="n">netzgebietsnr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># todo: rename to &quot;id&quot; (see 2021-12-15 update)</span>
+    <span class="c1">#: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes</span>
+    <span class="n">bilanzierungsgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist</span>
+    <span class="n">grundversorgercodenr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes</span>
+    <span class="n">gasqualitaet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Gasqualitaet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Geschäftspartner, dem diese Marktlokation gehört</span>
+    <span class="n">endkunde</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zugehoerige_messlokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messlokationszuordnung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># todo: rename to plural</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.</span>
+<span class="sd">    Es können 3 verschiedene Konstrukte auftreten:</span>
+
+<span class="sd">    Beziehung 1 : 0 : Hier handelt es sich um Pauschalanlagen ohne Messung. D.h. die Verbrauchsdaten sind direkt über</span>
+<span class="sd">    die Marktlokation abgreifbar.</span>
+<span class="sd">    Beziehung 1 : 1 : Das ist die Standard-Beziehung für die meisten Fälle. In diesem Fall gibt es zu einer</span>
+<span class="sd">    Marktlokation genau eine Messlokation.</span>
+<span class="sd">    Beziehung 1 : N : Hier liegt beispielsweise eine Untermessung vor. Der Verbrauch einer Marklokation berechnet sich</span>
+<span class="sd">    hier aus mehreren Messungen.</span>
+
+<span class="sd">    Es gibt praktisch auch noch die Beziehung N : 1, beispielsweise bei einer Zweirichtungsmessung bei der durch eine</span>
+<span class="sd">    Messeinrichtung die Messung sowohl für die Einspreiseseite als auch für die Aussspeiseseite erfolgt.</span>
+<span class="sd">    Da Abrechnung und Bilanzierung jedoch für beide Marktlokationen getrennt erfolgt, werden nie beide Marktlokationen</span>
+<span class="sd">    gemeinsam betrachtet. Daher lässt sich dieses Konstrukt auf zwei 1:1-Beziehung zurückführen,</span>
+<span class="sd">    wobei die Messlokation in beiden Fällen die gleiche ist.</span>
+
+<span class="sd">    In den Zuordnungen sind ist die arithmetische Operation mit der der Verbrauch einer Messlokation zum Verbrauch einer</span>
+<span class="sd">    Marktlokation beitrögt mit aufgeführt.</span>
+<span class="sd">    Der Standard ist hier die Addition.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># only one of the following three optional attributes can be set</span>
+    <span class="c1">#: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt</span>
+    <span class="n">lokationsadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">geoadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geokoordinaten&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden</span>
+<span class="sd">    (z.B. zur Identifikation von Sendemasten).</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">katasterinformation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Katasteradresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und</span>
+<span class="sd">    Flurstück erfolgen.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">kundengruppen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Kundentyp&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Kundengruppen der Marktlokation</span>
+
+    <span class="n">regelzone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="kc">None</span>  <span class="c1">#: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/</span>
+    <span class="p">)</span>
+    <span class="n">marktgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list</span>
+    <span class="n">zaehlwerke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehlwerk&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">verbrauchsmengen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Verbrauch&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zaehlwerke_der_beteiligten_marktrolle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehlwerk&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
