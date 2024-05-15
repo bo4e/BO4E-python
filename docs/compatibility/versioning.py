@@ -7,11 +7,12 @@ import logging
 import re
 import subprocess
 import sys
-from typing import ClassVar, Literal, Optional
+from typing import ClassVar, Iterable, Literal, Optional
 
 import click
 from bost.pull import get_source_repo
 from github.GitRelease import GitRelease
+from more_itertools import one
 from pydantic import BaseModel, ConfigDict
 
 from .__main__ import compare_bo4e_versions
@@ -25,11 +26,8 @@ class Version(BaseModel):
     A class to represent a BO4E version number.
     """
 
-    version_pattern_with_rc: ClassVar[re.Pattern[str]] = re.compile(
-        r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)(?:-rc(?P<candidate>\d+))?$"
-    )
     version_pattern: ClassVar[re.Pattern[str]] = re.compile(
-        r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)$"
+        r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)(?:-rc(?P<candidate>\d+))?$"
     )
 
     major: int
@@ -45,22 +43,21 @@ class Version(BaseModel):
         Raises a ValueError if the version string does not match the expected pattern.
         Raises a ValueError if allow_candidate is False and the version string contains a candidate version.
         """
-        if allow_candidate:
-            pattern = cls.version_pattern_with_rc
-        else:
-            pattern = cls.version_pattern
-        match = pattern.fullmatch(version)
+        match = cls.version_pattern.fullmatch(version)
         if match is None:
-            raise ValueError(f"Expected version to match {pattern}, got {version}")
-        return cls(
+            raise ValueError(f"Expected version to match {cls.version_pattern}, got {version}")
+        inst = cls(
             major=int(match.group("major")),
             functional=int(match.group("functional")),
             technical=int(match.group("technical")),
-            candidate=int(match.group("candidate")) if allow_candidate else None,
+            candidate=int(match.group("candidate")) if match.group("candidate") is not None else None,
         )
+        if not allow_candidate and inst.is_candidate():
+            raise ValueError("Expected a version without candidate, got a candidate version.")
+        return inst
 
     @property
-    def tag(self) -> str:
+    def tag_name(self) -> str:
         """
         Return the tag name for this version.
         """
@@ -126,95 +123,125 @@ class Version(BaseModel):
         )
 
     def __str__(self):
-        return self.tag
+        return self.tag_name
 
 
-def get_latest_release(gh_token: str | None = None) -> GitRelease:
+def get_latest_version(gh_token: str | None = None) -> Version:
     """
     Get the release from BO4E-python repository which is marked as 'latest'.
     """
-    repo = get_source_repo(gh_token)
-    latest_release = repo.get_latest_release()
-    # Ensure that the latest release is on main branch
-    commit_id = subprocess.check_output(["git", "rev-parse", f"tags/{latest_release.tag_name}~0"]).decode().strip()
-    output = subprocess.check_output(["git", "branch", "--contains", f"{commit_id}"]).decode()
-    branches_containing_commit = [line.lstrip("*").strip() for line in output.splitlines()]
-    if "main" not in branches_containing_commit:
+    return Version.from_string(get_source_repo(gh_token).get_latest_release().tag_name)
+
+
+def get_last_n_tags(n: int, *, on_branch: str = "main", exclude_candidates: bool = True) -> Iterable[str]:
+    """
+    Get the last n tags from the repository.
+    """
+    try:
+        Version.from_string(on_branch, allow_candidate=True)
+    except ValueError:
+        reference = f"remotes/origin/{on_branch}"
+    else:
+        reference = f"tags/{on_branch}"
+    output = subprocess.check_output(["git", "tag", "--merged", reference, "--sort=-creatordate"]).decode().splitlines()
+    if reference.startswith("tags/"):
+        output = output[1:]  # Skip the reference tag
+
+    counter = 0
+    for tag in output:
+        if counter >= n:
+            return
+        version = Version.from_string(tag, allow_candidate=True)
+        if exclude_candidates and version.is_candidate():
+            continue
+        yield tag
+        counter += 1
+    if counter < n:
+        if reference.startswith("tags/"):
+            logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, on_branch, n)
+        else:
+            logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, on_branch, n)
+
+
+def get_last_version_before(version: Version) -> Version:
+    """
+    Get the last non-candidate version before the provided version following the commit history.
+    """
+    return Version.from_string(one(get_last_n_tags(1, on_branch=version.tag_name)))
+
+
+def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool):
+    """
+    Ensure that the latest release is on the main branch.
+    Will also be called if the currently tagged version is marked as `latest`.
+    In this case both versions are equal.
+
+    Note: This doesn't revert the release on GitHub. If you accidentally released on the wrong branch, you have to
+    manually mark an old or create a new release as `latest` on the main branch. Otherwise, the publish workflow
+    will fail here.
+    """
+    commit_id = subprocess.check_output(["git", "rev-parse", f"tags/{latest_version.tag_name}~0"]).decode().strip()
+    output = subprocess.check_output(["git", "branch", "-a", "--contains", f"{commit_id}"]).decode()
+    branches_containing_commit = [line.strip().lstrip("*").lstrip() for line in output.splitlines()]
+    if "remotes/origin/main" not in branches_containing_commit:
+        if is_cur_version_latest:
+            raise ValueError(
+                f"Tagged version {latest_version} is marked as latest but is not on main branch "
+                f"(branches {branches_containing_commit} contain commit {commit_id}).\n"
+                "Either tag on main branch or don't mark the release as latest.\n"
+                "If you accidentally marked the release as latest please remember to revert it. "
+                "Otherwise, the next publish workflow will fail as the latest version is assumed to be on main.\n"
+                f"Output from git-command: {output}"
+            )
         raise ValueError(
-            f"Fatal Error: Latest release {latest_release.tag_name} is not on main branch "
+            f"Fatal Error: Latest release {latest_version.tag_name} is not on main branch "
             f"(branches {branches_containing_commit} contain commit {commit_id}).\n"
+            "Please ensure that the latest release is on the main branch.\n"
             f"Output from git-command: {output}"
         )
-    return latest_release
 
 
-def determine_commits_ahead_behind(cur_version: Version, base_version: Version) -> tuple[int, int]:
-    """
-    Compares the commits of the version tags cur_version...base_version
-    Returns the number of commits ahead and behind the base_version as tuple.
-    """
-    expected_output_pattern = re.compile(r"^\s*(\d+)\s+(\d+)\s*$")
-    output = subprocess.check_output(["git", "rev-list", "--left-right", "--count", f"{cur_version}...{base_version}"])
-    match = expected_output_pattern.fullmatch(output.decode())
-    if match is None:
-        raise ValueError(f"Expected output to match {expected_output_pattern}, got {output}")
-    return int(match.group(1)), int(match.group(2))
-
-
-def check_version_consistent_with_commit_history(
-    cur_version: Version, latest_version: Version
-) -> Literal["behind", "ahead"]:
-    """
-    Check if the current version is consistent with the commit history.
-    Returns "behind" if the current version is behind the latest version.
-    Returns "ahead" if the current version is ahead of the latest version.
-    """
-    commits_ahead, commits_behind = determine_commits_ahead_behind(cur_version, latest_version)
-    if commits_behind == 0:
-        if cur_version < latest_version:
-            raise ValueError(
-                f"Current version is {commits_ahead} commits ahead and 0 commits behind the latest version "
-                f"but version number has decreased. {cur_version} < {latest_version}"
-            )
-        return "ahead"
-    # commits_behind > 0
-    if cur_version > latest_version:
-        raise ValueError(
-            f"Current version is {commits_ahead} commits ahead and {commits_behind} commits behind the latest version "
-            f"but version number has increased. {cur_version} > {latest_version}"
-        )
-    return "behind"
-
-
-def compare_work_tree_with_latest_version(gh_version: str, gh_token: str | None = None):
+def compare_work_tree_with_latest_version(
+    gh_version: str, gh_token: str | None = None, major_bump_allowed: bool = True
+):
     """
     Compare the work tree with the latest release from the BO4E repository.
     """
     logger.info("Github Access Token %s", "provided" if gh_token is not None else "not provided")
-    new_version = Version.from_string(gh_version, allow_candidate=True)
-    logger.info("Retrieving the latest release version")
-    latest_release = get_latest_release(gh_token).tag_name
-    latest_version = Version.from_string(latest_release, allow_candidate=False)
+    cur_version = Version.from_string(gh_version, allow_candidate=True)
+    logger.info("Tagged release version: %s", cur_version)
+    latest_version = get_latest_version(gh_token)
+    logger.info("Got latest release version from GitHub: %s", latest_version)
+    is_cur_version_latest = cur_version == latest_version
+    if is_cur_version_latest:
+        logger.info("Tagged version is marked as latest.")
+    ensure_latest_on_main(latest_version, is_cur_version_latest)
+    logger.info("Latest release is on main branch.")
 
-    if new_version == latest_version:
-        logger.info("Version is equal to the latest version %s. Skipping further checks.", latest_version)
-        return
-    mode = check_version_consistent_with_commit_history(new_version, latest_version)
-    if mode == "ahead":
-        version_ahead = new_version
-        version_behind = latest_version
-    else:
-        version_ahead = latest_version
-        version_behind = new_version
+    version_ahead = cur_version
+    version_behind = get_last_version_before(cur_version)
+    logger.info(
+        "Comparing with the version before the tagged release (excluding release candidates): %s",
+        version_behind,
+    )
 
-    logger.info("Mode '%s': Comparing versions: %s -> %s", mode, version_behind, version_ahead)
+    assert version_ahead > version_behind, f"Version did not increase: {version_ahead} <= {version_behind}"
+
+    logger.info(
+        "Current version is ahead of the compared version. Comparing versions: %s -> %s",
+        version_behind,
+        version_ahead,
+    )
     if version_ahead.bumped_major(version_behind):
+        if not major_bump_allowed:
+            raise ValueError("Major bump detected. Major bump is not allowed.")
         logger.info("Major version bump detected. No further checks needed.")
         return
-    logger.info("Comparing versions iteratively: %s -> %s", version_behind, version_ahead)
-    changes = list(compare_bo4e_versions(version_behind.tag, version_ahead.tag, gh_token=gh_token, from_local=True))
+    changes = list(
+        compare_bo4e_versions(version_behind.tag_name, version_ahead.tag_name, gh_token=gh_token, from_local=True)
+    )
     logger.info("Check if functional or technical release bump is needed")
-    functional_changes = any(changes)
+    functional_changes = len(changes) > 0
     logger.info("%s release bump is needed", "Functional" if functional_changes else "Technical")
 
     if not functional_changes and version_ahead.bumped_functional(version_behind):
@@ -225,7 +252,8 @@ def compare_work_tree_with_latest_version(gh_version: str, gh_token: str | None 
     if functional_changes and not version_ahead.bumped_functional(version_behind):
         raise ValueError(
             "No functional version bump detected but functional changes found. "
-            "Please bump the functional release count."
+            "Please bump the functional release count.\n"
+            f"Detected changes: {changes}"
         )
 
 
@@ -234,14 +262,23 @@ def compare_work_tree_with_latest_version(gh_version: str, gh_token: str | None 
 @click.option(
     "--gh-token", type=str, default=None, help="GitHub Access token. This helps to avoid rate limiting errors."
 )
-def compare_work_tree_with_latest_version_cli(gh_version: str, gh_token: str | None = None):
+@click.option(
+    "--major-bump-allowed/--major-bump-disallowed",
+    is_flag=True,
+    default=True,
+    help="Indicate if a major bump is allowed. "
+    "If it is not allowed, the script will exit with an error if a major bump is detected.",
+)
+def compare_work_tree_with_latest_version_cli(
+    gh_version: str, gh_token: str | None = None, major_bump_allowed: bool = True
+):
     """
     Check a version tag and compare the work tree with the latest release from the BO4E repository.
     Exits with status code 1 iff the version is inconsistent with the commit history or if the detected changes in
     the JSON-schemas are inconsistent with the version bump.
     """
     try:
-        compare_work_tree_with_latest_version(gh_version, gh_token)
+        compare_work_tree_with_latest_version(gh_version, gh_token, major_bump_allowed)
     except Exception as error:
         logger.error("An error occurred.", exc_info=error)
         raise click.exceptions.Exit(1)
