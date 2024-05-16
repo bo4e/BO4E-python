@@ -70,7 +70,7 @@ def create_release(
             "body": release_infos["body"],
             "draft": False,
             "prerelease": release_infos["prerelease"],
-            "make_latest": str(is_latest),
+            "make_latest": str(is_latest).lower(),
         },
     )
     ensure_status_code(response)
