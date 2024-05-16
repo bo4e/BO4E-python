@@ -139,7 +139,11 @@ def get_latest_version(gh_token: str | None = None) -> Version:
 
 def get_last_n_tags(n: int, *, on_branch: str = "main", exclude_candidates: bool = True) -> Iterable[str]:
     """
-    Get the last n tags from the repository.
+    Get the last n tags in chronological descending order starting from `on_branch`.
+    If `on_branch` is a branch, it will start from the current HEAD of the branch.
+    If `on_branch` is a tag, it will start from the tag itself. But the tag itself will not be included in the output.
+    If `exclude_candidates` is True, candidate versions will be excluded from the output.
+    If the number of found versions is less than `n`, a warning will be logged.
     """
     try:
         Version.from_string(on_branch, allow_candidate=True)
@@ -210,6 +214,7 @@ def compare_work_tree_with_latest_version(
 ) -> None:
     """
     Compare the work tree with the latest release from the BO4E repository.
+    If any inconsistency is detected, a Value- or an AssertionError will be raised.
     """
     logger.info("Github Access Token %s", "provided" if gh_token is not None else "not provided")
     cur_version = Version.from_string(gh_version, allow_candidate=True)
