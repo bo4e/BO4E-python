@@ -52,19 +52,16 @@ def create_tables_for_doc(
     _monkey_patch_bost_regex_if_local_testing(gh_version)
     logger.info("Retrieving the last %d release versions", last_n_versions)
     cur_version = versioning.Version.from_string(gh_version, allow_candidate=True)
-    if last_n_versions > 0:
-        versions = list(
-            reversed(
-                [
-                    version.tag_name
-                    for version in versioning.get_last_n_functional_releases(
-                        last_n_versions, cur_version, gh_token=gh_token
-                    )
-                ]
-            )
+    versions = list(
+        reversed(
+            [
+                version.tag_name
+                for version in versioning.get_last_n_functional_releases(
+                    last_n_versions, cur_version, gh_token=gh_token
+                )
+            ]
         )
-    else:
-        versions = list(reversed(list(versioning.get_last_n_functional_releases(0, cur_version, gh_token=gh_token))))
+    )
     logger.info("Comparing versions iteratively: %s", " -> ".join([*versions, gh_version]))
     changes_iterables = diff.compare_bo4e_versions_iteratively(versions, gh_version, gh_token=gh_token)
     logger.info("Building namespaces")
