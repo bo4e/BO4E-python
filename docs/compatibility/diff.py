@@ -2,9 +2,9 @@
 Contains the logic to detect the different changes between two BO4E versions.
 """
 
+import itertools
 import re
 from pathlib import Path
-from typing import Any as _Any
 from typing import Iterable
 
 from bost.schema import AllOf, AnyOf, Array, Object, Reference, SchemaRootType, SchemaType, StrEnum, String, TypeBase
@@ -320,3 +320,43 @@ def diff_schemas(schemas_old: Path, schemas_new: Path) -> Iterable[change_schema
             f"{'/'.join(schema_file.with_suffix('').parts)}#",
             f"{'/'.join(schema_file.with_suffix('').parts)}#",
         )
+
+
+def compare_bo4e_versions(
+    version_old: str, version_new: str, gh_token: str | None = None, from_local: bool = False
+) -> Iterable[change_schemas.Change]:
+    """
+    Compare the old version with the new version.
+    If version_new is None use the BO4E version of the checkout working directory by assuming the compiled json
+    schemas in /json_schemas.
+    """
+    dir_old_schemas = loader.pull_or_reuse_bo4e_version(version_old, gh_token)
+    dir_new_schemas = loader.pull_or_reuse_bo4e_version(version_new, gh_token, from_local=from_local)
+    print(f"Comparing {version_old} with {version_new}")
+    yield from diff_schemas(dir_old_schemas, dir_new_schemas)
+
+
+def compare_bo4e_versions_iteratively(
+    versions: Iterable[str], cur_version: str | None = None, gh_token: str | None = None
+) -> dict[tuple[str, str], Iterable[change_schemas.Change]]:
+    """
+    Compare the versions iteratively. Each version at index i will be compared to the version at index i+1.
+    Additionally, if cur_version is provided, the last version in the list will be compared to the version
+    in the checkout working directory. The value of cur_version will be used to set the key in the returned
+    dict.
+    Note:
+        - versions must contain at least one element.
+        - versions should be sorted in ascending order.
+        - if using cur_version, ensure that the json schemas of the checkout working directory
+          were build on beforehand. They should be located in /json_schemas.
+    """
+    print(f"Comparing versions {versions} with cur_version {cur_version}")
+    changes = {}
+    last_version: str = ""  # This value is never used but makes mypy and pylint happy
+    for version_old, version_new in itertools.pairwise(versions):
+        last_version = version_new
+        changes[version_old, version_new] = compare_bo4e_versions(version_old, version_new, gh_token)
+    if cur_version is not None:
+        changes[last_version, cur_version] = compare_bo4e_versions(last_version, cur_version, gh_token, from_local=True)
+    print("Comparisons finished.")
+    return changes

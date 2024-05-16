@@ -12,10 +12,11 @@ from typing import ClassVar, Iterable, Optional
 import click
 from github import Github
 from github.Auth import Token
+from github.Repository import Repository
 from more_itertools import one
 from pydantic import BaseModel, ConfigDict
 
-from .__main__ import compare_bo4e_versions
+from . import diff
 
 logger = logging.getLogger(__name__)
 
@@ -126,15 +127,22 @@ class Version(BaseModel):
         return self.tag_name
 
 
-def get_latest_version(gh_token: str | None = None) -> Version:
+def get_source_repo(gh_token: str | None = None) -> Repository:
     """
-    Get the release from BO4E-python repository which is marked as 'latest'.
+    Get the BO4E-python repository from GitHub.
     """
     if gh_token is not None:
         gh = Github(auth=Token(gh_token))
     else:
         gh = Github()
-    return Version.from_string(gh.get_repo("bo4e/BO4E-python").get_latest_release().tag_name)
+    return gh.get_repo("bo4e/BO4E-python")
+
+
+def get_latest_version(gh_token: str | None = None) -> Version:
+    """
+    Get the release from BO4E-python repository which is marked as 'latest'.
+    """
+    return Version.from_string(get_source_repo(gh_token).get_latest_release().tag_name)
 
 
 def get_last_n_tags(n: int, *, on_branch: str = "main", exclude_candidates: bool = True) -> Iterable[str]:
@@ -169,6 +177,47 @@ def get_last_n_tags(n: int, *, on_branch: str = "main", exclude_candidates: bool
             logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, on_branch, n)
         else:
             logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, on_branch, n)
+
+
+def get_last_n_functional_releases(n: int, from_version: Version, *, gh_token: str | None = None) -> Iterable[Version]:
+    """
+    Get the last n release versions with a functional release bump from the BO4E repository.
+    If n=0, all versions since v202401.0.0 will be returned.
+    From each functional release group, the highest technical release will be returned excluding release candidates.
+    """
+    repo = get_source_repo(gh_token)
+    releases = repo.get_releases()
+    counter = 0
+    last_version = from_version
+    version_threshold = "v202401.0.0"  # Is used if n=0
+    stop_iteration = False
+
+    for release in releases:
+        if 0 < n <= counter:
+            stop_iteration = True
+        if stop_iteration:
+            return
+        try:
+            version = Version.from_string(release.tag_name, allow_candidate=True)
+        except ValueError as error:
+            logger.warning("Version tag didn't match regex %s", release.tag_name, exc_info=error)
+            break
+        if n == 0 and version.tag_name == version_threshold:
+            stop_iteration = True
+        if (
+            version.is_candidate()
+            or not last_version.bumped_functional(version)
+            or not last_version.bumped_major(version)
+        ):
+            logger.debug("Skipping version %s", version)
+            continue
+        counter += 1
+        yield version
+
+    if n > 0 and counter < n:
+        logger.warning("Only %d matching releases found. Returning all releases.", counter)
+    if n == 0:
+        logger.warning("Threshold version %s not found. Returned all matching releases.", version_threshold)
 
 
 def get_last_version_before(version: Version) -> Version:
@@ -247,7 +296,7 @@ def compare_work_tree_with_latest_version(
         logger.info("Major version bump detected. No further checks needed.")
         return
     changes = list(
-        compare_bo4e_versions(version_behind.tag_name, version_ahead.tag_name, gh_token=gh_token, from_local=True)
+        diff.compare_bo4e_versions(version_behind.tag_name, version_ahead.tag_name, gh_token=gh_token, from_local=True)
     )
     logger.info("Check if functional or technical release bump is needed")
     functional_changes = len(changes) > 0
