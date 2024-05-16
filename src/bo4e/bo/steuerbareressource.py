@@ -40,7 +40,7 @@ class SteuerbareRessource(Geschaeftsobjekt):
     #: Leistungsbeschreibung des Steuerkanals
     steuerkanal_leistungsbeschreibung: Optional["SteuerkanalLeistungsbeschreibung"] = None
     #: Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist.
-    zugeordnete_msb_codenr: Optional[str] = None
+    zugeordnete_msb_codenummer: Optional[str] = None
     #: Produkt-Daten der Steuerbaren Ressource
     konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
     #: Eigenschaft des Messstellenbetreibers an der Lokation
