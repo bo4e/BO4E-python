@@ -46,7 +46,7 @@ class Netzlokation(Geschaeftsobjekt):
     netzanschlussleistung: Optional["Menge"] = None
     #: Codenummer des grundzuständigen Messstellenbetreibers, der für diese Netzlokation zuständig ist.
     grundzustaendiger_msb_codenr: Optional[str] = None
-    #: Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann. ZF2: Kein Steuerkanal vorhanden ZF3: Steuerkanal vorhanden
+    #: Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann.
     steuerkanal: Optional[bool] = None
     #: Die OBIS-Kennzahl für die Netzlokation
     obiskennzahl: Optional[str] = None
