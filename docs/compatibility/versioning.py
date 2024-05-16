@@ -99,21 +99,21 @@ class Version(BaseModel):
         Return False if major, functional or technical bump is detected.
         Raises ValueError if one of the versions is not a candidate version.
         """
-        if self.candidate is not None or other.candidate is not None:
+        if self.candidate is None or other.candidate is None:
             raise ValueError("Cannot compare candidate versions if one of them is not a candidate.")
         return not self.bumped_technical(other) and self.candidate > other.candidate
 
-    def __lt__(self, other: "Version"):
+    def __lt__(self, other: "Version") -> bool:
         if not isinstance(other, Version):
             return NotImplemented
         return (
             self.major < other.major
             or self.functional < other.functional
             or self.technical < other.technical
-            or (self.is_candidate() and (not other.is_candidate() or self.candidate < other.candidate))
+            or (self.candidate is not None and (other.candidate is None or self.candidate < other.candidate))
         )
 
-    def __eq__(self, other: "Version"):
+    def __eq__(self, other: object) -> bool:
         if not isinstance(other, Version):
             return NotImplemented
         return (
@@ -121,10 +121,10 @@ class Version(BaseModel):
             and self.functional == other.functional
             and self.technical == other.technical
             and self.is_candidate() == other.is_candidate()
-            and (not self.is_candidate() or self.candidate == other.candidate)
+            and (self.candidate is None or self.candidate == other.candidate)
         )
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.tag_name
 
 
@@ -176,7 +176,7 @@ def get_last_version_before(version: Version) -> Version:
     return Version.from_string(one(get_last_n_tags(1, on_branch=version.tag_name)))
 
 
-def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool):
+def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool) -> None:
     """
     Ensure that the latest release is on the main branch.
     Will also be called if the currently tagged version is marked as `latest`.
@@ -209,7 +209,7 @@ def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool):
 
 def compare_work_tree_with_latest_version(
     gh_version: str, gh_token: str | None = None, major_bump_allowed: bool = True
-):
+) -> None:
     """
     Compare the work tree with the latest release from the BO4E repository.
     """
@@ -277,7 +277,7 @@ def compare_work_tree_with_latest_version(
 )
 def compare_work_tree_with_latest_version_cli(
     gh_version: str, gh_token: str | None = None, major_bump_allowed: bool = True
-):
+) -> None:
     """
     Check a version tag and compare the work tree with the latest release from the BO4E repository.
     Exits with status code 1 iff the version is inconsistent with the commit history or if the detected changes in
@@ -296,6 +296,6 @@ if __name__ == "__main__":
     compare_work_tree_with_latest_version_cli()
 
 
-def test_compare_work_tree_with_latest_version():
+def test_compare_work_tree_with_latest_version() -> None:
     logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
     compare_work_tree_with_latest_version("v202401.1.2-rc3", gh_token=None)
