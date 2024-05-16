@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.dienstleistungstyp &mdash; bo4e v202401.1.2-rc15 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=626a2ce4"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.1.2-rc15
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#changelog">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Module Reference</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.dienstleistungstyp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.dienstleistungstyp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint:disable=missing-module-docstring</span>
+
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<span class="c1"># pylint: disable=line-too-long</span>
+<div class="viewcode-block" id="Dienstleistungstyp">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.dienstleistungstyp.Dienstleistungstyp">[docs]</a>
+<span class="k">class</span> <span class="nc">Dienstleistungstyp</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Auflistung möglicher abzurechnender Dienstleistungen.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">DATENBEREITSTELLUNG_TAEGLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_TAEGLICH&quot;</span>  <span class="c1">#: Datenbereitstellung täglich</span>
+    <span class="n">DATENBEREITSTELLUNG_WOECHENTLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_WOECHENTLICH&quot;</span>  <span class="c1">#: Datenbereitstellung wöchentlich</span>
+    <span class="n">DATENBEREITSTELLUNG_MONATLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_MONATLICH&quot;</span>  <span class="c1">#: Datenbereitstellung monatlich</span>
+    <span class="n">DATENBEREITSTELLUNG_JAEHRLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_JAEHRLICH&quot;</span>  <span class="c1">#: Datenbereitstellung jährlich</span>
+    <span class="n">DATENBEREITSTELLUNG_HISTORISCHE_LG</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_HISTORISCHE_LG&quot;</span>
+    <span class="c1"># Datenbereitstellung historischer Lastgänge</span>
+    <span class="n">DATENBEREITSTELLUNG_STUENDLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_STUENDLICH&quot;</span>  <span class="c1">#: Datenbereitstellung stündlich</span>
+    <span class="n">DATENBEREITSTELLUNG_VIERTELJAEHRLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_VIERTELJAEHRLICH&quot;</span>
+    <span class="c1"># Datenbereitstellung vierteljährlich</span>
+    <span class="n">DATENBEREITSTELLUNG_HALBJAEHRLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_HALBJAEHRLICH&quot;</span>  <span class="c1">#: Datenbereitstellung halbjährlich</span>
+    <span class="n">DATENBEREITSTELLUNG_MONATLICH_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_MONATLICH_ZUSAETZLICH&quot;</span>
+    <span class="c1"># Datenbereitstellung monatlich zusätzlich</span>
+    <span class="n">DATENBEREITSTELLUNG_EINMALIG</span> <span class="o">=</span> <span class="s2">&quot;DATENBEREITSTELLUNG_EINMALIG&quot;</span>  <span class="c1">#: Datenbereitstellung einmalig</span>
+    <span class="n">AUSLESUNG_2X_TAEGLICH_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_2X_TAEGLICH_FERNAUSLESUNG&quot;</span>
+    <span class="c1"># Auslesung 2x täglich mittels Fernauslesung</span>
+    <span class="n">AUSLESUNG_TAEGLICH_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_TAEGLICH_FERNAUSLESUNG&quot;</span>  <span class="c1">#: Auslesung täglich mittels Fernauslesung</span>
+    <span class="n">AUSLESUNG_MANUELL_MSB</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_MANUELL_MSB&quot;</span>  <span class="c1">#: Auslesung, manuell vom Messstellenbetreiber vorgenommen</span>
+    <span class="n">AUSLESUNG_MONATLICH_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_MONATLICH_FERNAUSLESUNG&quot;</span>
+    <span class="c1"># Auslesung monatlich bei mittels Fernauslesung</span>
+    <span class="n">AUSLESUNG_JAEHRLICH_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_JAEHRLICH_FERNAUSLESUNG&quot;</span>
+    <span class="c1"># Auslesung jährlich bei SLP mittels Fernauslesung</span>
+    <span class="n">AUSLESUNG_MDE</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_MDE&quot;</span>  <span class="c1">#: Auslesung mit mobiler Daten Erfassung (MDE)</span>
+    <span class="n">ABLESUNG_MONATLICH</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_MONATLICH&quot;</span>  <span class="c1">#: Ablesung monatlich</span>
+    <span class="n">ABLESUNG_VIERTELJAEHRLICH</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_VIERTELJAEHRLICH&quot;</span>  <span class="c1">#: Ablesung vierteljährlich</span>
+    <span class="n">ABLESUNG_HALBJAEHRLICH</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_HALBJAEHRLICH&quot;</span>  <span class="c1">#: Ablesung halbjährlich</span>
+    <span class="n">ABLESUNG_JAEHRLICH</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_JAEHRLICH&quot;</span>  <span class="c1">#: Ablesung jährlich</span>
+    <span class="n">AUSLESUNG_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_FERNAUSLESUNG&quot;</span>  <span class="c1">#: Auslesung mittels Fernauslesung</span>
+    <span class="n">ABLESUNG_ZUSAETZLICH_MSB</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_ZUSAETZLICH_MSB&quot;</span>  <span class="c1">#: Ablesung, zusätzlich vom Messstellenbetreiber vorgenommen</span>
+    <span class="n">ABLESUNG_ZUSAETZLICH_KUNDE</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_ZUSAETZLICH_KUNDE&quot;</span>  <span class="c1">#: Ablesung SLP, zusätzlich vom Kunden vorgenommen</span>
+    <span class="n">AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_FERNAUSLESUNG_ZUSAETZLICH_MSB&quot;</span>
+    <span class="c1"># Auslesung, mittels Fernauslesung, zusätzlich vom Messstellenbetreiber vorgenommen</span>
+    <span class="n">AUSLESUNG_MOATLICH_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_MOATLICH_FERNAUSLESUNG&quot;</span>  <span class="c1">#: Auslesung monatlich mittels Fernauslesung</span>
+    <span class="n">AUSLESUNG_STUENDLICH_FERNAUSLESUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_STUENDLICH_FERNAUSLESUNG&quot;</span>
+    <span class="c1"># Auslesung stündlich mittels Fernauslesung</span>
+    <span class="n">AUSLESUNG_TEMPERATURMENGENUMWERTER</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_TEMPERATURMENGENUMWERTER&quot;</span>  <span class="c1">#: Auslesung Temperaturmengenumwerter</span>
+    <span class="n">AUSLESUNG_ZUSTANDSMENGENUMWERTER</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_ZUSTANDSMENGENUMWERTER&quot;</span>  <span class="c1">#: Auslesung Zustandsmengenumwerter</span>
+    <span class="n">AUSLESUNG_SYSTEMMENGENUMWERTER</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_SYSTEMMENGENUMWERTER&quot;</span>  <span class="c1">#: Auslesung Systemmengenumwerter</span>
+    <span class="n">AUSLESUNG_VORGANG</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_VORGANG&quot;</span>  <span class="c1">#: Auslesung je Vorgang</span>
+    <span class="n">AUSLESUNG_KOMPAKTMENGENUMWERTER</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_KOMPAKTMENGENUMWERTER&quot;</span>  <span class="c1">#: Auslesung Kompaktmengenumwerter</span>
+    <span class="n">SPERRUNG</span> <span class="o">=</span> <span class="s2">&quot;SPERRUNG&quot;</span>  <span class="c1">#: Sperrung einer Abnahmestelle</span>
+    <span class="n">ENTSPERRUNG</span> <span class="o">=</span> <span class="s2">&quot;ENTSPERRUNG&quot;</span>  <span class="c1">#: Entsperrung einer Abnahmestelle</span>
+    <span class="n">MAHNKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;MAHNKOSTEN&quot;</span>  <span class="c1">#: Mahnkosten</span>
+    <span class="n">INKASSOKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;INKASSOKOSTEN&quot;</span>  <span class="c1">#: Inkassokosten</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Hochfrequenz GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
