@@ -51,16 +51,8 @@ def create_tables_for_doc(
     """
     _monkey_patch_bost_regex_if_local_testing(gh_version)
     logger.info("Retrieving the last %d release versions", last_n_versions)
-    cur_version = versioning.Version.from_string(gh_version, allow_candidate=True)
     versions = list(
-        reversed(
-            [
-                version.tag_name
-                for version in versioning.get_last_n_functional_releases(
-                    last_n_versions, cur_version, gh_token=gh_token
-                )
-            ]
-        )
+        reversed(list(versioning.get_last_n_tags(last_n_versions, on_branch=gh_version, exclude_technical_bumps=True)))
     )
     logger.info("Comparing versions iteratively: %s", " -> ".join([*versions, gh_version]))
     changes_iterables = diff.compare_bo4e_versions_iteratively(versions, gh_version, gh_token=gh_token)
@@ -82,5 +74,5 @@ def test_create_tables_for_doc() -> None:
     create_tables_for_doc(
         Path(__file__).parents[1] / "compatibility_matrix.csv",
         "local",
-        last_n_versions=3,
+        last_n_versions=0,
     )

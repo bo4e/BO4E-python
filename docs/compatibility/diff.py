@@ -5,7 +5,7 @@ Contains the logic to detect the different changes between two BO4E versions.
 import itertools
 import re
 from pathlib import Path
-from typing import Iterable
+from typing import Iterable, Sequence
 
 from bost.schema import AllOf, AnyOf, Array, Object, Reference, SchemaRootType, SchemaType, StrEnum, String, TypeBase
 
@@ -337,7 +337,7 @@ def compare_bo4e_versions(
 
 
 def compare_bo4e_versions_iteratively(
-    versions: Iterable[str], cur_version: str | None = None, gh_token: str | None = None
+    versions: Sequence[str], cur_version: str | None = None, gh_token: str | None = None
 ) -> dict[tuple[str, str], Iterable[change_schemas.Change]]:
     """
     Compare the versions iteratively. Each version at index i will be compared to the version at index i+1.
@@ -351,8 +351,11 @@ def compare_bo4e_versions_iteratively(
           were build on beforehand. They should be located in /json_schemas.
     """
     print(f"Comparing versions {versions} with cur_version {cur_version}")
+    if len(versions) == 0:
+        print("No versions to compare.")
+        return {}
     changes = {}
-    last_version: str = ""  # This value is never used but makes mypy and pylint happy
+    last_version: str = versions[0]  # This value is never used but makes mypy and pylint happy
     for version_old, version_new in itertools.pairwise(versions):
         last_version = version_new
         changes[version_old, version_new] = compare_bo4e_versions(version_old, version_new, gh_token)

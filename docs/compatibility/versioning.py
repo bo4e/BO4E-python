@@ -145,79 +145,101 @@ def get_latest_version(gh_token: str | None = None) -> Version:
     return Version.from_string(get_source_repo(gh_token).get_latest_release().tag_name)
 
 
-def get_last_n_tags(n: int, *, on_branch: str = "main", exclude_candidates: bool = True) -> Iterable[str]:
+def is_version_tag(value: str) -> bool:
+    """
+    Check if value is a valid version tag and exists in repository.
+    """
+    try:
+        Version.from_string(value, allow_candidate=True)
+        subprocess.check_call(["git", "show-ref", "--quiet", f"refs/tags/{value}"])
+    except (ValueError, subprocess.CalledProcessError):
+        return False
+    return True
+
+
+def is_branch(value: str) -> bool:
+    """
+    Check if a branch is a valid branch name and exists in repository.
+    """
+    try:
+        subprocess.check_call(["git", "show-ref", "--quiet", f"refs/remotes/origin/{value}"])
+        return True
+    except subprocess.CalledProcessError:
+        return False
+
+
+def get_last_n_tags(
+    n: int, *, on_branch: str = "main", exclude_candidates: bool = True, exclude_technical_bumps: bool = False
+) -> Iterable[str]:
     """
     Get the last n tags in chronological descending order starting from `on_branch`.
     If `on_branch` is a branch, it will start from the current HEAD of the branch.
     If `on_branch` is a tag, it will start from the tag itself. But the tag itself will not be included in the output.
+    If `on_branch` is neither nor, the main branch will be used as fallback.
     If `exclude_candidates` is True, candidate versions will be excluded from the output.
     If the number of found versions is less than `n`, a warning will be logged.
+    If n=0, all versions since v202401.0.0 will be taken into account.
+    If exclude_technical_bumps is True, from each functional release group,
+    the highest technical release will be returned.
     """
-    try:
-        Version.from_string(on_branch, allow_candidate=True)
-    except ValueError:
-        reference = f"remotes/origin/{on_branch}"
-    else:
-        reference = f"tags/{on_branch}"
-    output = subprocess.check_output(["git", "tag", "--merged", reference, "--sort=-creatordate"]).decode().splitlines()
-    if reference.startswith("tags/"):
-        output = output[1:]  # Skip the reference tag
-
-    counter = 0
-    for tag in output:
-        if counter >= n:
-            return
-        version = Version.from_string(tag, allow_candidate=True)
-        if exclude_candidates and version.is_candidate():
-            continue
-        yield tag
-        counter += 1
-    if counter < n:
-        if reference.startswith("tags/"):
-            logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, on_branch, n)
-        else:
-            logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, on_branch, n)
-
-
-def get_last_n_functional_releases(n: int, from_version: Version, *, gh_token: str | None = None) -> Iterable[Version]:
-    """
-    Get the last n release versions with a functional release bump from the BO4E repository.
-    If n=0, all versions since v202401.0.0 will be returned.
-    From each functional release group, the highest technical release will be returned excluding release candidates.
-    """
-    repo = get_source_repo(gh_token)
-    releases = repo.get_releases()
-    counter = 0
-    last_version = from_version
+    got_tag = False
     version_threshold = "v202401.0.0"  # Is used if n=0
-    stop_iteration = False
+    if is_version_tag(on_branch):
+        reference = f"tags/{on_branch}"
+        got_tag = True
+        logger.info("Get tags before tag %s", on_branch)
+    elif is_branch(on_branch):
+        reference = f"remotes/origin/{on_branch}"
+        logger.info("Get tags on branch %s", on_branch)
+    else:
+        reference = "remotes/origin/main"
+        logger.info("Supplied value is neither a tag nor a branch. Get tags on main branch (default)")
+    if n == 0:
+        logger.info("Get all tags since %s", version_threshold)
+    else:
+        logger.info("Get the last %d tags", n)
 
-    for release in releases:
-        if 0 < n <= counter:
+    logger.info("%s release candidates", "Exclude" if exclude_candidates else "Include")
+    logger.info("%s technical bumps", "Exclude" if exclude_technical_bumps else "Include")
+    output = subprocess.check_output(["git", "tag", "--merged", reference, "--sort=-creatordate"]).decode().splitlines()
+    if len(output) == 0:
+        logger.warning("No tags found.")
+        return
+    last_version = Version.from_string(output[0], allow_candidate=True)
+
+    counter = 0
+    stop_iteration = False
+    for ind, tag in enumerate(output):
+        if counter >= n > 0:
             stop_iteration = True
         if stop_iteration:
             return
-        try:
-            version = Version.from_string(release.tag_name, allow_candidate=True)
-        except ValueError as error:
-            logger.warning("Version tag didn't match regex %s", release.tag_name, exc_info=error)
-            break
-        if n == 0 and version.tag_name == version_threshold:
+        if n == 0 and tag == version_threshold:
             stop_iteration = True
+        version = Version.from_string(tag, allow_candidate=True)
         if (
-            version.is_candidate()
-            or not last_version.bumped_functional(version)
-            or not last_version.bumped_major(version)
+            exclude_candidates
+            and version.is_candidate()
+            or exclude_technical_bumps
+            and ind > 0
+            and not last_version.bumped_functional(version)
+            and not last_version.bumped_major(version)
+            or ind == 0
+            and got_tag
         ):
-            logger.debug("Skipping version %s", version)
+            logger.info("Skipping version %s", version)
             continue
+        logger.info("Yielding version %s", version)
+        yield tag
+        last_version = version
         counter += 1
-        yield version
-
-    if n > 0 and counter < n:
-        logger.warning("Only %d matching releases found. Returning all releases.", counter)
+    if counter < n and 0 < n:
+        if got_tag:
+            logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, on_branch, n)
+        else:
+            logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, on_branch, n)
     if n == 0:
-        logger.warning("Threshold version %s not found. Returned all matching releases.", version_threshold)
+        logger.warning("Threshold version %s not found. Returned all tags.", version_threshold)
 
 
 def get_last_version_before(version: Version) -> Version:
