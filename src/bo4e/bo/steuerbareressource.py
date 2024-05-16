@@ -38,7 +38,7 @@ class SteuerbareRessource(Geschaeftsobjekt):
     #: Id der steuerbaren Ressource
     steuerbare_ressource_id: Optional[str] = None
     #: Leistungsbeschreibung des Steuerkanals
-    steuerkanals_leistungsbeschreibung: Optional["SteuerkanalsLeistungsbeschreibung"] = None
+    steuerkanal_leistungsbeschreibung: Optional["SteuerkanalLeistungsbeschreibung"] = None
     #: Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist.
     zugeordnete_msb_codenr: Optional[str] = None
     #: Produkt-Daten der Steuerbaren Ressource
