@@ -7,13 +7,11 @@ import logging
 import re
 import subprocess
 import sys
-from typing import ClassVar, Iterable, Literal, Optional
+from typing import ClassVar, Iterable, Optional
 
 import click
-from bost.pull import get_source_repo
 from github import Github
 from github.Auth import Token
-from github.GitRelease import GitRelease
 from more_itertools import one
 from pydantic import BaseModel, ConfigDict
 
@@ -297,5 +295,8 @@ if __name__ == "__main__":
 
 
 def test_compare_work_tree_with_latest_version() -> None:
+    """
+    Little test function for local testing.
+    """
     logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
     compare_work_tree_with_latest_version("v202401.1.2-rc3", gh_token=None)
