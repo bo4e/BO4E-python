@@ -106,5 +106,5 @@ class Marktlokation(Geschaeftsobjekt):
     verbrauchsmengen: Optional[list["Verbrauch"]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
 
-    #: Lokationsbündelstruktur
+    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
     lokationszuordnung: Optional["Lokationszuordnung"] = None
