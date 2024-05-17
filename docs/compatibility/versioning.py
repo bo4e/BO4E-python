@@ -7,7 +7,7 @@ import logging
 import re
 import subprocess
 import sys
-from typing import ClassVar, Iterable, Optional
+from typing import ClassVar, Iterable, Literal, Optional
 
 import click
 from github import Github
@@ -168,11 +168,60 @@ def is_branch(value: str) -> bool:
         return False
 
 
+def get_branches_containing_commit(commit_id: str) -> Iterable[str]:
+    """
+    Get all branches containing the commit id.
+    If the commit id is not found, a subprocess.CalledProcessError will be raised.
+    If the commit exists but is not on any branch (e.g. only on tags), an empty Iterable will be returned.
+    """
+    cmd = ["git", "branch", "-a", "--contains", commit_id]
+    output = subprocess.check_output(cmd).decode().strip()
+    if output.startswith("error: no such commit"):
+        raise subprocess.CalledProcessError(1, cmd, output=output)
+    return (line.strip().lstrip("*").lstrip() for line in output.splitlines())
+
+
+def is_commit(value: str) -> bool:
+    """
+    Check if value is a valid commit id.
+    """
+    try:
+        if re.fullmatch(r"^[0-9a-f]{40}$", value) is None:
+            return False
+        _ = get_branches_containing_commit(value)
+        # If the commit ID doesn't exist, an error will be raised.
+    except subprocess.CalledProcessError:
+        return False
+    return True
+
+
 def get_checkout_commit_id() -> str:
     """
     Get the commit id of the current checkout.
     """
     return subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
+
+
+def _get_ref(ref: str) -> tuple[Literal["tag", "branch", "commit"], str]:
+    """
+    Get the type of reference and the reference itself.
+    """
+    if is_version_tag(ref):
+        logger.info("Get tags before tag %s", ref)
+        return "tag", ref
+    if is_branch(ref):
+        logger.info("Get tags on branch %s", ref)
+        return "branch", ref
+    if is_commit(ref):
+        logger.info("Get tags before commit %s", ref)
+        return "commit", ref
+    cur_commit = get_checkout_commit_id()
+    logger.info(
+        "Supplied value (%s) is neither a tag, a branch nor a commit. Get tags before current checkout commit %s",
+        ref,
+        cur_commit,
+    )
+    return "commit", cur_commit
 
 
 def get_last_n_tags(
@@ -189,20 +238,8 @@ def get_last_n_tags(
     If exclude_technical_bumps is True, from each functional release group,
     the highest technical release will be returned.
     """
-    got_tag = False
     version_threshold = "v202401.0.0"  # Is used if n=0
-    if is_version_tag(ref):
-        reference = f"tags/{ref}"
-        got_tag = True
-        logger.info("Get tags before tag %s", ref)
-    elif is_branch(ref):
-        reference = f"remotes/origin/{ref}"
-        logger.info("Get tags on branch %s", ref)
-    else:
-        reference = get_checkout_commit_id()
-        logger.info(
-            "Supplied value is neither a tag nor a branch. Get tags before current checkout commit %s", reference
-        )
+    ref_type, reference = _get_ref(ref)
     if n == 0:
         logger.info("Get all tags since %s", version_threshold)
     else:
@@ -231,6 +268,7 @@ def get_last_n_tags(
         if n == 0 and tag == version_threshold:
             stop_iteration = True
         version = Version.from_string(tag, allow_candidate=True)
+        # pylint: disable=too-many-boolean-expressions
         if (
             exclude_candidates
             and version.is_candidate()
@@ -239,7 +277,7 @@ def get_last_n_tags(
             and not last_version.bumped_functional(version)
             and not last_version.bumped_major(version)
             or ind == 0
-            and got_tag
+            and ref_type == "tag"
         ):
             logger.info("Skipping version %s", version)
             continue
@@ -248,7 +286,7 @@ def get_last_n_tags(
         last_version = version
         counter += 1
     if counter < n and 0 < n:
-        if got_tag:
+        if ref_type == "tag":
             logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, ref, n)
         else:
             logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, ref, n)
@@ -274,8 +312,7 @@ def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool) 
     will fail here.
     """
     commit_id = subprocess.check_output(["git", "rev-parse", f"tags/{latest_version.tag_name}~0"]).decode().strip()
-    output = subprocess.check_output(["git", "branch", "-a", "--contains", f"{commit_id}"]).decode()
-    branches_containing_commit = [line.strip().lstrip("*").lstrip() for line in output.splitlines()]
+    branches_containing_commit = get_branches_containing_commit(commit_id)
     if "remotes/origin/main" not in branches_containing_commit:
         if is_cur_version_latest:
             raise ValueError(
@@ -283,14 +320,12 @@ def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool) 
                 f"(branches {branches_containing_commit} contain commit {commit_id}).\n"
                 "Either tag on main branch or don't mark the release as latest.\n"
                 "If you accidentally marked the release as latest please remember to revert it. "
-                "Otherwise, the next publish workflow will fail as the latest version is assumed to be on main.\n"
-                f"Output from git-command: {output}"
+                "Otherwise, the next publish workflow will fail as the latest version is assumed to be on main."
             )
         raise ValueError(
             f"Fatal Error: Latest release {latest_version.tag_name} is not on main branch "
             f"(branches {branches_containing_commit} contain commit {commit_id}).\n"
-            "Please ensure that the latest release is on the main branch.\n"
-            f"Output from git-command: {output}"
+            "Please ensure that the latest release is on the main branch."
         )
 
 
