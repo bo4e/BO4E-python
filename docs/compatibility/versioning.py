@@ -429,17 +429,21 @@ def test_compare_work_tree_with_latest_version() -> None:
 
 
 def test_version() -> None:
+    """
+    Test the total ordering of the Version class.
+    """
+    # pylint: disable=unnecessary-negation
     assert Version.from_string("v202401.1.2") == Version(major=202401, functional=1, technical=2)
     assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) == Version(
         major=202401, functional=1, technical=2, candidate=3
     )
     assert Version.from_string("v202401.1.2") < Version.from_string("v202401.1.3")
     assert Version.from_string("v202401.1.2") < Version.from_string("v202401.2.0")
-    assert not (Version.from_string("v202401.2.0") < Version.from_string("v202401.1.2"))
+    assert not Version.from_string("v202401.2.0") < Version.from_string("v202401.1.2")
     assert Version.from_string("v202401.2.0") > Version.from_string("v202401.1.2")
     assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) < Version.from_string("v202401.1.2")
     assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) <= Version.from_string("v202401.1.2")
-    assert not (Version.from_string("v202401.1.2-rc3", allow_candidate=True) >= Version.from_string("v202401.1.2"))
+    assert not Version.from_string("v202401.1.2-rc3", allow_candidate=True) >= Version.from_string("v202401.1.2")
     assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) > Version.from_string("v202401.1.1")
     assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) > Version.from_string(
         "v202401.1.2-rc1", allow_candidate=True
