@@ -58,6 +58,7 @@ def create_compatibility_matrix_csv(
     """
     Create a compatibility matrix csv file from the given changes.
     """
+    output.parent.mkdir(parents=True, exist_ok=True)
     with open(output, "w", encoding="utf-8") as file:
         csv_writer = csv.writer(file, delimiter=",", lineterminator="\n", escapechar="/")
         csv_writer.writerow(("", *versions[1:]))
