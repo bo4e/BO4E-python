@@ -105,11 +105,12 @@ class Version(BaseModel):
     def __lt__(self, other: "Version") -> bool:
         if not isinstance(other, Version):
             return NotImplemented
+        self_int = int(f"{self.major}{self.functional}{self.technical}")
+        other_int = int(f"{other.major}{other.functional}{other.technical}")
         return (
-            self.major < other.major
-            or self.functional < other.functional
-            or self.technical < other.technical
-            or (self.candidate is not None and (other.candidate is None or self.candidate < other.candidate))
+            self_int < other_int
+            or self_int == other_int
+            and (self.candidate is not None and (other.candidate is None or self.candidate < other.candidate))
         )
 
     def __eq__(self, other: object) -> bool:
@@ -425,3 +426,21 @@ def test_compare_work_tree_with_latest_version() -> None:
     """
     logging.basicConfig(level=logging.DEBUG, stream=sys.stdout)
     compare_work_tree_with_latest_version("v202401.1.2-rc3", gh_token=None)
+
+
+def test_version() -> None:
+    assert Version.from_string("v202401.1.2") == Version(major=202401, functional=1, technical=2)
+    assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) == Version(
+        major=202401, functional=1, technical=2, candidate=3
+    )
+    assert Version.from_string("v202401.1.2") < Version.from_string("v202401.1.3")
+    assert Version.from_string("v202401.1.2") < Version.from_string("v202401.2.0")
+    assert not (Version.from_string("v202401.2.0") < Version.from_string("v202401.1.2"))
+    assert Version.from_string("v202401.2.0") > Version.from_string("v202401.1.2")
+    assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) < Version.from_string("v202401.1.2")
+    assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) <= Version.from_string("v202401.1.2")
+    assert not (Version.from_string("v202401.1.2-rc3", allow_candidate=True) >= Version.from_string("v202401.1.2"))
+    assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) > Version.from_string("v202401.1.1")
+    assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) > Version.from_string(
+        "v202401.1.2-rc1", allow_candidate=True
+    )
