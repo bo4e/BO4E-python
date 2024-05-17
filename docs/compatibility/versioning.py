@@ -168,14 +168,21 @@ def is_branch(value: str) -> bool:
         return False
 
 
+def get_checkout_commit_id() -> str:
+    """
+    Get the commit id of the current checkout.
+    """
+    return subprocess.check_output(["git", "rev-parse", "HEAD"]).decode().strip()
+
+
 def get_last_n_tags(
-    n: int, *, on_branch: str = "main", exclude_candidates: bool = True, exclude_technical_bumps: bool = False
+    n: int, *, ref: str = "main", exclude_candidates: bool = True, exclude_technical_bumps: bool = False
 ) -> Iterable[str]:
     """
-    Get the last n tags in chronological descending order starting from `on_branch`.
-    If `on_branch` is a branch, it will start from the current HEAD of the branch.
-    If `on_branch` is a tag, it will start from the tag itself. But the tag itself will not be included in the output.
-    If `on_branch` is neither nor, the main branch will be used as fallback.
+    Get the last n tags in chronological descending order starting from `ref`.
+    If `ref` is a branch, it will start from the current HEAD of the branch.
+    If `ref` is a tag, it will start from the tag itself. But the tag itself will not be included in the output.
+    If `ref` is neither nor, the main branch will be used as fallback.
     If `exclude_candidates` is True, candidate versions will be excluded from the output.
     If the number of found versions is less than `n`, a warning will be logged.
     If n=0, all versions since v202401.0.0 will be taken into account.
@@ -184,16 +191,18 @@ def get_last_n_tags(
     """
     got_tag = False
     version_threshold = "v202401.0.0"  # Is used if n=0
-    if is_version_tag(on_branch):
-        reference = f"tags/{on_branch}"
+    if is_version_tag(ref):
+        reference = f"tags/{ref}"
         got_tag = True
-        logger.info("Get tags before tag %s", on_branch)
-    elif is_branch(on_branch):
-        reference = f"remotes/origin/{on_branch}"
-        logger.info("Get tags on branch %s", on_branch)
+        logger.info("Get tags before tag %s", ref)
+    elif is_branch(ref):
+        reference = f"remotes/origin/{ref}"
+        logger.info("Get tags on branch %s", ref)
     else:
-        reference = "remotes/origin/main"
-        logger.info("Supplied value is neither a tag nor a branch. Get tags on main branch (default)")
+        reference = get_checkout_commit_id()
+        logger.info(
+            "Supplied value is neither a tag nor a branch. Get tags before current checkout commit %s", reference
+        )
     if n == 0:
         logger.info("Get all tags since %s", version_threshold)
     else:
@@ -201,7 +210,12 @@ def get_last_n_tags(
 
     logger.info("%s release candidates", "Exclude" if exclude_candidates else "Include")
     logger.info("%s technical bumps", "Exclude" if exclude_technical_bumps else "Include")
-    output = subprocess.check_output(["git", "tag", "--merged", reference, "--sort=-creatordate"]).decode().splitlines()
+    output = (
+        subprocess.check_output(["git", "tag", "--merged", reference, "--sort=-creatordate"])
+        .decode()
+        .strip()
+        .splitlines()
+    )
     if len(output) == 0:
         logger.warning("No tags found.")
         return
@@ -235,9 +249,9 @@ def get_last_n_tags(
         counter += 1
     if counter < n and 0 < n:
         if got_tag:
-            logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, on_branch, n)
+            logger.warning("Only found %d tags before tag %s, tried to retrieve %d", counter, ref, n)
         else:
-            logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, on_branch, n)
+            logger.warning("Only found %d tags on branch %s, tried to retrieve %d", counter, ref, n)
     if n == 0:
         logger.warning("Threshold version %s not found. Returned all tags.", version_threshold)
 
@@ -246,7 +260,7 @@ def get_last_version_before(version: Version) -> Version:
     """
     Get the last non-candidate version before the provided version following the commit history.
     """
-    return Version.from_string(one(get_last_n_tags(1, on_branch=version.tag_name)))
+    return Version.from_string(one(get_last_n_tags(1, ref=version.tag_name)))
 
 
 def ensure_latest_on_main(latest_version: Version, is_cur_version_latest: bool) -> None:

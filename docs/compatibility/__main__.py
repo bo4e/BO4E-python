@@ -52,7 +52,7 @@ def create_tables_for_doc(
     _monkey_patch_bost_regex_if_local_testing(gh_version)
     logger.info("Retrieving the last %d release versions", last_n_versions)
     versions = list(
-        reversed(list(versioning.get_last_n_tags(last_n_versions, on_branch=gh_version, exclude_technical_bumps=True)))
+        reversed(list(versioning.get_last_n_tags(last_n_versions, ref=gh_version, exclude_technical_bumps=True)))
     )
     logger.info("Comparing versions iteratively: %s", " -> ".join([*versions, gh_version]))
     changes_iterables = diff.compare_bo4e_versions_iteratively(versions, gh_version, gh_token=gh_token)
