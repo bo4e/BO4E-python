@@ -17,6 +17,7 @@ jobs:
     # This setup is inspired by
     # https://github.com/KernelTuner/kernel_tuner/blob/master/.github/workflows/docs-on-release.yml
     runs-on: ${{ matrix.os }}
+    concurrency: build-n-publish-docs
     strategy:
       matrix:
         python-version: ["3.12"]

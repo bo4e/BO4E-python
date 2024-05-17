@@ -57,6 +57,7 @@ jobs:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
     needs: [tests, check_version_tag]
+    concurrency: build-n-publish-json-schemas
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v4
@@ -104,6 +105,7 @@ jobs:
     # https://github.com/KernelTuner/kernel_tuner/blob/master/.github/workflows/docs-on-release.yml
     runs-on: ubuntu-latest
     needs: [tests, check_version_tag]
+    concurrency: build-n-publish-docs
     steps:
       - uses: actions/checkout@v4
         with:
@@ -173,6 +175,7 @@ jobs:
       # IMPORTANT: this permission is mandatory for trusted publishing
       id-token: write
     needs: [tests, json_schemas, docs]
+    concurrency: build-n-publish-distributions
     steps:
       - uses: actions/checkout@v4
       - name: Set up Python
