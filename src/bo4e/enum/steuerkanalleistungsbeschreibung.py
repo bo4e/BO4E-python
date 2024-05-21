@@ -2,7 +2,7 @@
 from bo4e.enum.strenum import StrEnum
 
 
-class SteuerkanalsLeistungsbeschreibung(StrEnum):
+class SteuerkanalLeistungsbeschreibung(StrEnum):
     """
     Beschreibung des Steuerkanals
     """

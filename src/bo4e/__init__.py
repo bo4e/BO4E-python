@@ -19,9 +19,11 @@ __all__ = [
     "Geschaeftspartner",
     "Kosten",
     "Lastgang",
+    "Lokationszuordnung",
     "Marktlokation",
     "Marktteilnehmer",
     "Messlokation",
+    "Netzlokation",
     "Person",
     "Preisblatt",
     "PreisblattDienstleistung",
@@ -33,10 +35,12 @@ __all__ = [
     "Region",
     "Regionaltarif",
     "Standorteigenschaften",
+    "SteuerbareRessource",
     "Tarif",
     "Tarifinfo",
     "Tarifkosten",
     "Tarifpreisblatt",
+    "TechnischeRessource",
     "Vertrag",
     "Zaehler",
     "Zeitreihe",
@@ -114,6 +118,7 @@ __all__ = [
     "Bemessungsgroesse",
     "Bilanzierungsmethode",
     "Dienstleistungstyp",
+    "EMobilitaetsart",
     "Energierichtung",
     "Erzeugungsart",
     "Gasqualitaet",
@@ -123,6 +128,7 @@ __all__ = [
     "Geschaeftspartnerrolle",
     "Gueltigkeitstyp",
     "Kalkulationsmethode",
+    "Konfigurationsprodukt",
     "Kontaktart",
     "Kostenklasse",
     "Kundengruppe",
@@ -158,6 +164,8 @@ __all__ = [
     "Registeranzahl",
     "Rollencodetyp",
     "Sparte",
+    "Speicherart",
+    "SteuerkanalLeistungsbeschreibung",
     "Steuerkennzeichen",
     "StrEnum",
     "Tarifkalkulationsmethode",
@@ -165,6 +173,8 @@ __all__ = [
     "Tarifregionskriterium",
     "Tariftyp",
     "Tarifzeit",
+    "TechnischeRessourceNutzung",
+    "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
     "Typ",
@@ -183,16 +193,6 @@ __all__ = [
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
     "ZusatzAttribut",
-    "Lokationszuordnung",
-    "Netzlokation",
-    "SteuerbareRessource",
-    "TechnischeRessource",
-    "Konfigurationsprodukt",
-    "EMobilitaetsart",
-    "Speicherart",
-    "SteuerkanalsLeistungsbeschreibung",
-    "TechnischeRessourceNutzung",
-    "TechnischeRessourceVerbrauchsart",
     "__version__",
     "__gh_version__",
 ]
@@ -360,7 +360,7 @@ from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
 from .enum.speicherart import Speicherart
-from .enum.steuerkanalsleistungsbeschreibung import SteuerkanalsLeistungsbeschreibung
+from .enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
 from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode

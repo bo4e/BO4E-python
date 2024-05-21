@@ -39,6 +39,7 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MESSLOKATION
+
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: Optional[str] = None
     #: Sparte der Messlokation, z.B. Gas oder Strom
@@ -83,3 +84,5 @@ class Messlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None

@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 class Lokationszuordnung(Geschaeftsobjekt):
     """
     Modell für die Abbildung der Referenz auf die Lokationsbündelstruktur. Diese gibt an welche Marktlokationen,
-    Messlokationen, Netzlokationen, technische/steuerbaren Ressourcen an einer Lokation vorhanden sind;
+    Messlokationen, Netzlokationen, technische/steuerbaren Ressourcen an einer Lokation vorhanden sind.
 
     .. raw:: html
 

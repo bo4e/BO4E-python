@@ -47,6 +47,7 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MARKTLOKATION
+
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom
@@ -108,3 +109,5 @@ class Marktlokation(Geschaeftsobjekt):
 
     #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
     lokationszuordnung: Optional["Lokationszuordnung"] = None
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None

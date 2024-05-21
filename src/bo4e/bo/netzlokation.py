@@ -56,3 +56,5 @@ class Netzlokation(Geschaeftsobjekt):
     konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
     #: Eigenschaft des Messstellenbetreibers an der Lokation
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None

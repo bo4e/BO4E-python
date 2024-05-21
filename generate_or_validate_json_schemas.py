@@ -114,7 +114,9 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
         # This is the case for schemas containing circular references
         reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
         reference_match = reference_pattern.fullmatch(schema_json_dict["allOf"][0]["$ref"])
-        assert reference_match is not None, "Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        assert (
+            reference_match is not None
+        ), "Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
         schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
         del schema_json_dict["allOf"]
         schema_json_dict.update(schema_json_dict_to_merge)

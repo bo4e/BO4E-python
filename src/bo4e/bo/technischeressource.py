@@ -65,3 +65,5 @@ class TechnischeRessource(Geschaeftsobjekt):
     erzeugungsart: Optional["Erzeugungsart"] = None
     #: Art des Speichers
     speicherart: Optional["Speicherart"] = None
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None

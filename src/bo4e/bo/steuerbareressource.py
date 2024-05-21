@@ -14,7 +14,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 if TYPE_CHECKING:
     from ..com.konfigurationsprodukt import Konfigurationsprodukt
     from ..enum.marktrolle import Marktrolle
-    from ..enum.steuerkanalsleistungsbeschreibung import SteuerkanalsLeistungsbeschreibung
+    from ..enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 
@@ -45,3 +45,5 @@ class SteuerbareRessource(Geschaeftsobjekt):
     konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
     #: Eigenschaft des Messstellenbetreibers an der Lokation
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None
