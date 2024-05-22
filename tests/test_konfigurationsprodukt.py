@@ -10,9 +10,9 @@ class TestKonfigurationsprodukt:
         [
             pytest.param(
                 Konfigurationsprodukt(
-                    produktcode="12121212",
-                    leistungskurvendefinition="qweoiuqwiue",
-                    schaltzeitdefinition="sdfkjhsdjfhkdskf",
+                    produktcode="1212121212",
+                    leistungskurvendefinition="",
+                    schaltzeitdefinition="",
                     marktpartner=Marktteilnehmer(),
                 ),
                 id="all attributes at first level",
