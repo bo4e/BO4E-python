@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 import pytest
 
 from bo4e import (
@@ -23,9 +25,9 @@ class TestTechnischeRessource:
                     vorgelagerte_messlokation_id="37846587343434",
                     zugeordnete_marktlokation_id="12242432423",
                     zugeordnete_steuerbare_ressource_id="281238912739",
-                    nennleistungaufnahme=Menge(wert=1000.0),
-                    nennleistungabgabe=Menge(wert=2000.0),
-                    speicherkapazitaet=Menge(wert=10000.0),
+                    nennleistungaufnahme=Menge(wert=Decimal(1000.0)),
+                    nennleistungabgabe=Menge(wert=Decimal(1000.0)),
+                    speicherkapazitaet=Menge(wert=Decimal(1000.0)),
                     technische_ressource_nutzung=TechnischeRessourceNutzung.SPEICHER,
                     technische_ressource_verbrauchsart=TechnischeRessourceVerbrauchsart.KRAFT_LICHT,
                     waermenutzung=Waermenutzung.SPEICHERHEIZUNG,
