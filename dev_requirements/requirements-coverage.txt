@@ -5,5 +5,5 @@
 #
 #    pip-compile-multi
 #
-coverage==7.5.2
+coverage==7.5.3
     # via -r dev_requirements/requirements-coverage.in
