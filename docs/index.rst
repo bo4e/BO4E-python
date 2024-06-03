@@ -2,8 +2,8 @@
 BO4E
 =============
 
-This is the official documentation of **BO4E** datamodel.
-Cause of the fact that the datamodel is written in Python, it is also the Python documentation.
+This is the official documentation of **BO4E** data model.
+Cause of the fact that the data model is written in Python, it is also the Python documentation.
 
 
 Contents
@@ -12,12 +12,13 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   License <license>
-   Authors <authors>
+   Introduction <introduction>
+   Data model <api/modules>
    Versioning <versioning>
-   Changelog <changelog>
-   Module Reference <api/modules>
    Release Workflow <release_workflow>
+   Changelog <changelog>
+   Authors <authors>
+   License <license>
 
 
 Indices and tables
