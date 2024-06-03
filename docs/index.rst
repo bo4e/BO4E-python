@@ -16,6 +16,7 @@ Contents
    Data model <api/modules>
    Versioning <versioning>
    Release Workflow <release_workflow>
+   Contributing <contributing_guide>
    Changelog <changelog>
    Authors <authors>
    License <license>
