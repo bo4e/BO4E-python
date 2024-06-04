@@ -2,6 +2,7 @@ import pytest
 
 from bo4e import (
     Konfigurationsprodukt,
+    Lokationszuordnung,
     Marktrolle,
     Menge,
     Netzlokation,
@@ -30,7 +31,8 @@ class TestNetzlokation:
                     ),
                     konfigurationsprodukte=[Konfigurationsprodukt()],
                     eigenschaft_msb_lokation=Marktrolle.LF,
-                    lokationsbuendel_objektcode="9283748327",
+                    lokationsbuendel_objektcode="9992 00000 125 6",
+                    lokationszuordnungen=[Lokationszuordnung()],
                 ),
             ),
         ],

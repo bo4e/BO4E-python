@@ -5,6 +5,7 @@ import pytest
 from bo4e import (
     EMobilitaetsart,
     Erzeugungsart,
+    Lokationszuordnung,
     Menge,
     Speicherart,
     TechnischeRessource,
@@ -35,6 +36,7 @@ class TestTechnischeRessource:
                     erzeugungsart=Erzeugungsart.WIND,
                     speicherart=Speicherart.WASSERSTOFFSPEICHER,
                     lokationsbuendel_objektcode="9992 00000 125 6",
+                    lokationszuordnungen=[Lokationszuordnung()],
                 ),
             ),
         ],

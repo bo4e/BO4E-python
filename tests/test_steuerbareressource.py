@@ -1,6 +1,7 @@
 import pytest
 
 from bo4e import Marktrolle, SteuerbareRessource
+from bo4e.bo.lokationszuordnung import Lokationszuordnung
 from bo4e.com.konfigurationsprodukt import Konfigurationsprodukt
 from bo4e.enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -18,6 +19,7 @@ class TestSteuerbareRessource:
                     konfigurationsprodukte=[Konfigurationsprodukt()],
                     eigenschaft_msb_lokation=Marktrolle.LF,
                     lokationsbuendel_objektcode="9992 00000 125 6",
+                    lokationszuordnungen=[Lokationszuordnung()],
                 ),
             ),
         ],

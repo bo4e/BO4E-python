@@ -6,6 +6,7 @@ from bo4e import (
     Energierichtung,
     Geschaeftspartner,
     Kundentyp,
+    Lokationszuordnung,
     Marktlokation,
     Netzebene,
     Sparte,
@@ -28,6 +29,8 @@ class TestMaLo:
                     netzebene=Netzebene.NSP,
                     endkunde=Geschaeftspartner(),
                     kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
+                    lokationsbuendelcode="9992 00000 125 6",
+                    lokationszuordnungen=[Lokationszuordnung()],
                 )
             )
         ],
