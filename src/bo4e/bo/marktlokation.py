@@ -108,6 +108,6 @@ class Marktlokation(Geschaeftsobjekt):
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
 
     #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
-    lokationszuordnung: Optional["Lokationszuordnung"] = None
+    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
     #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
     lokationsbuendel_objektcode: Optional[str] = None

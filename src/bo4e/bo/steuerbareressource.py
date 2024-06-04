@@ -45,5 +45,7 @@ class SteuerbareRessource(Geschaeftsobjekt):
     konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
     #: Eigenschaft des Messstellenbetreibers an der Lokation
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
+    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
+    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
     #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
     lokationsbuendel_objektcode: Optional[str] = None

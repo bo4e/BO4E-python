@@ -84,5 +84,7 @@ class Messlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
+    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
+    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
     #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
     lokationsbuendel_objektcode: Optional[str] = None
