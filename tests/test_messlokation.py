@@ -25,7 +25,7 @@ class TestMeLo:
                     messlokationszaehler=[Zaehler()],
                     grundzustaendiger_msb_codenr="9910125000002",
                     messadresse=Adresse(),
-                    lokationsbuendelcode="9992 00000 125 6",
+                    lokationsbuendel_objektcode="9992 00000 125 6",
                     lokationszuordnungen=[Lokationszuordnung()],
                 )
             )
