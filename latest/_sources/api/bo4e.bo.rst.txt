@@ -84,6 +84,14 @@ bo4e.bo.lastgang module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.lokationszuordnung module
+---------------------------------
+
+.. automodule:: bo4e.bo.lokationszuordnung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.marktlokation module
 ----------------------------
 
@@ -104,6 +112,14 @@ bo4e.bo.messlokation module
 ---------------------------
 
 .. automodule:: bo4e.bo.messlokation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.netzlokation module
+---------------------------
+
+.. automodule:: bo4e.bo.netzlokation
    :members:
    :undoc-members:
    :show-inheritance:
@@ -196,6 +212,14 @@ bo4e.bo.standorteigenschaften module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.steuerbareressource module
+----------------------------------
+
+.. automodule:: bo4e.bo.steuerbareressource
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.tarif module
 --------------------
 
@@ -224,6 +248,14 @@ bo4e.bo.tarifpreisblatt module
 ------------------------------
 
 .. automodule:: bo4e.bo.tarifpreisblatt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.bo.technischeressource module
+----------------------------------
+
+.. automodule:: bo4e.bo.technischeressource
    :members:
    :undoc-members:
    :show-inheritance:

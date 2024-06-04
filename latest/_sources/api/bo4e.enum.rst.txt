@@ -124,6 +124,14 @@ bo4e.enum.dienstleistungstyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.emobilitaetsart module
+--------------------------------
+
+.. automodule:: bo4e.enum.emobilitaetsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.energierichtung module
 --------------------------------
 
@@ -476,6 +484,22 @@ bo4e.enum.sparte module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.speicherart module
+----------------------------
+
+.. automodule:: bo4e.enum.speicherart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.steuerkanalleistungsbeschreibung module
+-------------------------------------------------
+
+.. automodule:: bo4e.enum.steuerkanalleistungsbeschreibung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.steuerkennzeichen module
 ----------------------------------
 
@@ -528,6 +552,22 @@ bo4e.enum.tarifzeit module
 --------------------------
 
 .. automodule:: bo4e.enum.tarifzeit
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.technischeressourcenutzung module
+-------------------------------------------
+
+.. automodule:: bo4e.enum.technischeressourcenutzung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.technischeressourceverbrauchsart module
+-------------------------------------------------
+
+.. automodule:: bo4e.enum.technischeressourceverbrauchsart
    :members:
    :undoc-members:
    :show-inheritance:

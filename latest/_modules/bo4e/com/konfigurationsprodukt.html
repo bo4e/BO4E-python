@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bo4e.com.messlokationszuordnung &mdash; bo4e latest documentation</title>
+  <title>bo4e.com.konfigurationsprodukt &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
@@ -71,7 +71,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">bo4e.com.messlokationszuordnung</li>
+      <li class="breadcrumb-item active">bo4e.com.konfigurationsprodukt</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -80,58 +80,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for bo4e.com.messlokationszuordnung</h1><div class="highlight"><pre>
+  <h1>Source code for bo4e.com.konfigurationsprodukt</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Contains Messlokationszuordnung class</span>
+<span class="sd">Contains Konfigurationsprodukt class</span>
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
 
-<span class="kn">import</span> <span class="nn">pydantic</span>
-
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">..enum.arithmetische_operation</span> <span class="kn">import</span> <span class="n">ArithmetischeOperation</span>
+    <span class="kn">from</span> <span class="nn">..bo.marktteilnehmer</span> <span class="kn">import</span> <span class="n">Marktteilnehmer</span>
 
 
-<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="c1"># pylint: disable=too-many-instance-attributes, too-few-public-methods</span>
 
 
-<div class="viewcode-block" id="Messlokationszuordnung">
-<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.messlokationszuordnung.Messlokationszuordnung">[docs]</a>
+<div class="viewcode-block" id="Konfigurationsprodukt">
+<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.konfigurationsprodukt.Konfigurationsprodukt">[docs]</a>
 <span class="nd">@postprocess_docstring</span>
-<span class="k">class</span> <span class="nc">Messlokationszuordnung</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Konfigurationsprodukt</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Mit dieser Komponente werden Messlokationen zu Marktlokationen zugeordnet.</span>
-<span class="sd">    Dabei kann eine arithmetische Operation (Addition, Subtraktion, Multiplikation, Division) angegeben werden,</span>
-<span class="sd">    mit der die Messlokation zum Verbrauch der Marktlokation beiträgt.</span>
+<span class="sd">    Object containing information about a Konfigurationsprodukt</span>
 
 <span class="sd">    .. raw:: html</span>
 
-<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/Messlokationszuordnung.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/bo/Konfigurationsprodukt.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
 
 <span class="sd">    .. HINT::</span>
-<span class="sd">        `Messlokationszuordnung JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Messlokationszuordnung.json&gt;`_</span>
+<span class="sd">        `Konfigurationsprodukt JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Konfigurationsprodukt.json&gt;`_</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">messlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ID der zugeordneten Messlokation</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">arithmetik</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ArithmetischeOperation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-
-    <span class="n">gueltig_seit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    inklusives Beginndatum</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">gueltig_bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    exklusives Endedatum</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="n">produktcode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">leistungskurvendefinition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">schaltzeitdefinition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">marktpartner</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Marktteilnehmer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 </pre></div>
 
