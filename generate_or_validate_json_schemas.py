@@ -237,5 +237,4 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
 
 
 if __name__ == "__main__":
-    cli_runner = CliRunner()
-    result = cli_runner.invoke(generate_or_validate_json_schemas, ["--mode", "generate", "--target-version", "local"])
+    generate_or_validate_json_schemas()  # pylint:disable=no-value-for-parameter
