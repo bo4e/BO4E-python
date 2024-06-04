@@ -13,6 +13,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
+    from ..bo.lokationszuordnung import Lokationszuordnung
     from ..com.adresse import Adresse
     from ..com.dienstleistung import Dienstleistung
     from ..com.geokoordinaten import Geokoordinaten
@@ -39,6 +40,7 @@ class Messlokation(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MESSLOKATION
+
     #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: Optional[str] = None
     #: Sparte der Messlokation, z.B. Gas oder Strom
@@ -83,3 +85,7 @@ class Messlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
+    #: Lokationszuordnung, um bspw. die zugehörigen Marktlokationen anzugeben
+    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None
