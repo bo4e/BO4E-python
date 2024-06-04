@@ -14,7 +14,6 @@ from pathlib import Path
 from typing import Any, Iterator, Literal, cast
 
 import click
-from click.testing import CliRunner
 from pydantic import BaseModel, TypeAdapter
 from pydantic.json_schema import GenerateJsonSchema as _GenerateJsonSchema
 from pydantic.json_schema import JsonSchemaValue
