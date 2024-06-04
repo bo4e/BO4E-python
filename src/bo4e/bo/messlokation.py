@@ -13,6 +13,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
+    from ..bo.lokationszuordnung import Lokationszuordnung
     from ..com.adresse import Adresse
     from ..com.dienstleistung import Dienstleistung
     from ..com.geokoordinaten import Geokoordinaten

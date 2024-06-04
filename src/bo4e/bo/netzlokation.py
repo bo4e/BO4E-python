@@ -12,6 +12,7 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
+    from ..bo.lokationszuordnung import Lokationszuordnung
     from ..com.konfigurationsprodukt import Konfigurationsprodukt
     from ..com.menge import Menge
     from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
