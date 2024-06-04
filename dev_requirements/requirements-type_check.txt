@@ -19,7 +19,7 @@ packaging==24.0
     # via pytest
 pluggy==1.5.0
     # via pytest
-pytest==8.2.1
+pytest==8.2.2
     # via -r dev_requirements/requirements-type_check.in
 types-requests==2.32.0.20240602
     # via -r dev_requirements/requirements-type_check.in
