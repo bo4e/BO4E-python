@@ -53,8 +53,8 @@ All Enums inherit from ``bo4e.enum.StrEnum``. The latter is just a usual Enum wi
        EIGENSCHAFT_0815 = "0815" #: manchmal heißen eigenschaften anders (EIGENSCHAFT_0815) als sie serialisiert werden ("0815")
        # this typically happens for annoying enum values that contains "-" or start with digits
 
-How to Define `COM`s or `BO`s
------------------------------
+How to Define COMs or BOs
+-------------------------
 
 All COMponents inherit from ``bo4e.com.com.COM``. All Business Objects inherit from ``bo4e.bo.geschaeftsobjekt.Geschaeftsobjekt``.
 
