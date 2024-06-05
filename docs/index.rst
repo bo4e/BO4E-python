@@ -30,29 +30,6 @@ Contents
 .. toctree::
    :maxdepth: 2
 
-   Introduction <introduction>
-   Data model <api/modules>
-   Versioning <versioning>
-   Release Workflow <release_workflow>
-   Contributing <contributing_guide>
-   Changelog <changelog>
-   Authors <authors>
-   License <license>
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
-Contents
-========
-
-.. toctree::
-   :maxdepth: 2
-
    Fundamentals <fundamentals>
    Data model <api/modules>
    Versioning <versioning>
