@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Dienstleistung, Geraet, Messlokation, Netzebene, Sparte, Zaehler
+from bo4e import Adresse, Dienstleistung, Geraet, Lokationszuordnung, Messlokation, Netzebene, Sparte, Zaehler
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -25,6 +25,8 @@ class TestMeLo:
                     messlokationszaehler=[Zaehler()],
                     grundzustaendiger_msb_codenr="9910125000002",
                     messadresse=Adresse(),
+                    lokationsbuendel_objektcode="9992 00000 125 6",
+                    lokationszuordnungen=[Lokationszuordnung()],
                 )
             )
         ],

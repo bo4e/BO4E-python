@@ -16,7 +16,6 @@ if TYPE_CHECKING:
     from ..com.adresse import Adresse
     from ..com.geokoordinaten import Geokoordinaten
     from ..com.katasteradresse import Katasteradresse
-    from ..com.messlokationszuordnung import Messlokationszuordnung
     from ..com.verbrauch import Verbrauch
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.bilanzierungsmethode import Bilanzierungsmethode
@@ -28,6 +27,7 @@ if TYPE_CHECKING:
     from ..enum.sparte import Sparte
     from ..enum.verbrauchsart import Verbrauchsart
     from .geschaeftspartner import Geschaeftspartner
+    from .lokationszuordnung import Lokationszuordnung
 
 # pylint: disable=no-name-in-module
 
@@ -47,6 +47,7 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MARKTLOKATION
+
     #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
     #: Sparte der Marktlokation, z.B. Gas oder Strom
@@ -80,28 +81,6 @@ class Marktlokation(Geschaeftsobjekt):
     gasqualitaet: Optional["Gasqualitaet"] = None
     #: Geschäftspartner, dem diese Marktlokation gehört
     endkunde: Optional["Geschaeftspartner"] = None
-    zugehoerige_messlokation: Optional["Messlokationszuordnung"] = None  # todo: rename to plural
-    """
-    Aufzählung der Messlokationen, die zu dieser Marktlokation gehören.
-    Es können 3 verschiedene Konstrukte auftreten:
-
-    Beziehung 1 : 0 : Hier handelt es sich um Pauschalanlagen ohne Messung. D.h. die Verbrauchsdaten sind direkt über
-    die Marktlokation abgreifbar.
-    Beziehung 1 : 1 : Das ist die Standard-Beziehung für die meisten Fälle. In diesem Fall gibt es zu einer
-    Marktlokation genau eine Messlokation.
-    Beziehung 1 : N : Hier liegt beispielsweise eine Untermessung vor. Der Verbrauch einer Marklokation berechnet sich
-    hier aus mehreren Messungen.
-
-    Es gibt praktisch auch noch die Beziehung N : 1, beispielsweise bei einer Zweirichtungsmessung bei der durch eine
-    Messeinrichtung die Messung sowohl für die Einspreiseseite als auch für die Aussspeiseseite erfolgt.
-    Da Abrechnung und Bilanzierung jedoch für beide Marktlokationen getrennt erfolgt, werden nie beide Marktlokationen
-    gemeinsam betrachtet. Daher lässt sich dieses Konstrukt auf zwei 1:1-Beziehung zurückführen,
-    wobei die Messlokation in beiden Fällen die gleiche ist.
-
-    In den Zuordnungen sind ist die arithmetische Operation mit der der Verbrauch einer Messlokation zum Verbrauch einer
-    Marktlokation beitrögt mit aufgeführt.
-    Der Standard ist hier die Addition.
-    """
 
     # only one of the following three optional attributes can be set
     #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
@@ -127,3 +106,8 @@ class Marktlokation(Geschaeftsobjekt):
     zaehlwerke: Optional[list["Zaehlwerk"]] = None
     verbrauchsmengen: Optional[list["Verbrauch"]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
+
+    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
+    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    lokationsbuendel_objektcode: Optional[str] = None
