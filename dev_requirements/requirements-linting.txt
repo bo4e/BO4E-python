@@ -15,7 +15,7 @@ mccabe==0.7.0
     # via pylint
 platformdirs==4.2.0
     # via pylint
-pylint==3.2.2
+pylint==3.2.3
     # via -r dev_requirements/requirements-linting.in
 tomlkit==0.12.4
     # via pylint
