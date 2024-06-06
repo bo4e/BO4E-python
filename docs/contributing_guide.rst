@@ -4,15 +4,16 @@ How to Contribute Code
 This document describes how the BO4E Python implementation is written and what to watch out for.
 
 Technical Setup in your IDE
-===========================
+---------------------------
 
 We're using tox. Please follow the instructions in our `Python Template Repository <https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine>`_. Feel free to open an issue if you run into any kind of problems.
 
 Coding Style and Guidelines
-===========================
+---------------------------
+
 
 General Rules
--------------
+^^^^^^^^^^^^^
 
 - We use (and enforce in the CI):
   - black for formatting
@@ -29,7 +30,7 @@ General Rules
 - We use ``snake_case`` internally but serialize as ``camelCase`` by overriding the ``data_key`` property of the schema fields.
 
 How to Define an ENUM?
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 All Enums inherit from ``bo4e.enum.StrEnum``. The latter is just a usual Enum with a ``str`` mixin (see `the official docs <https://docs.python.org/3/library/enum.html?highlight=strenum#others>`_ for details). This allows us to precisely define how an enum value will be serialized. All enum values have UPPER_CASE names.
 
@@ -54,7 +55,7 @@ All Enums inherit from ``bo4e.enum.StrEnum``. The latter is just a usual Enum wi
        # this typically happens for annoying enum values that contains "-" or start with digits
 
 How to Define COMs or BOs
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All COMponents inherit from ``bo4e.com.com.COM``. All Business Objects inherit from ``bo4e.bo.geschaeftsobjekt.Geschaeftsobjekt``.
 
@@ -100,7 +101,7 @@ For data validation and de/serialization we use `pydantic <https://pydantic-docs
        # You don't need to be a perfect programmer to contribute to bo4e :)
 
 Unittests
----------
+^^^^^^^^^
 
 Ideally provide unittests that show:
 
@@ -114,12 +115,12 @@ Ideally provide unittests that show:
 Therefore, copy one of the existing "roundtrip" tests, see f.e. ``TestTarifeinschraenkung``.
 
 Pull Request
-============
+------------
 
 Open a Pull Request against the main/default branch of this repository. We'd appreciate if you allowed maintainer edits.
 
 Release Workflow
-================
+----------------
 
 - Check with tox all tests and linting: ``tox``
 - Check with tox if the packaging works fine: ``tox -e test_packaging``
