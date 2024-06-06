@@ -1,8 +1,14 @@
 .. _changes:
 
-================
+=========
+Changelog
+=========
+
+You can find the changelog on the ` GitHub Release page<https://github.com/bo4e/BO4E-python/releases>`_.
+
+=============
 Compatibility
-================
+=============
 
 The table below shows the compatibility matrix of the last BO4E versions.
 You can also download the compatibility matrix as CSV file `here <_static/tables/compatibility_matrix.csv>`_.
@@ -34,5 +40,3 @@ Legend:
 .. csv-table:: Compatibility matrix
    :file: _static/tables/compatibility_matrix.csv
    :header-rows: 1
-
-.. include:: ../CHANGELOG.rst
