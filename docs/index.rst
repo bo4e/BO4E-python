@@ -31,7 +31,7 @@ Contents
    :maxdepth: 2
 
    Fundamentals <fundamentals>
-   Data model <api/modules>
+   Data Model <api/modules>
    Versioning <versioning>
    Release Workflow <release_workflow>
    Contributing <contributing_guide>
