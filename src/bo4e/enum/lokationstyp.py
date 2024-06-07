@@ -9,3 +9,5 @@ class Lokationstyp(StrEnum):
 
     MALO = "MALO"  #: Marktlokation
     MELO = "MELO"  #: Messlokation
+    NELO = "NELO"  #: Netzlokation
+    TR = "TR"  #: Technische Ressource
