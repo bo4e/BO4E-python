@@ -2,17 +2,20 @@
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..com.betrag import Betrag
-from ..com.kostenblock import Kostenblock
-from ..com.zeitspanne import Zeitspanne
-from ..enum.kostenklasse import Kostenklasse
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.betrag import Betrag
+    from ..com.kostenblock import Kostenblock
+    from ..com.zeitraum import Zeitraum
+    from ..enum.kostenklasse import Kostenklasse
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -33,13 +36,13 @@ class Kosten(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Optional[Kostenklasse] = None
-    #: Für diesen Zeitspanne wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitspanne] = None
+    kostenklasse: Optional["Kostenklasse"] = None
+    #: Für diesen Zeitraum wurden die Kosten ermittelt
+    gueltigkeit: Optional["Zeitraum"] = None
     #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[list[Kostenblock]] = None
+    kostenbloecke: Optional[list["Kostenblock"]] = None
 
     #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[list[Betrag]] = None
+    summe_kosten: Optional[list["Betrag"]] = None

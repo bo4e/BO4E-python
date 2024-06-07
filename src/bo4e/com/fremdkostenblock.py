@@ -3,12 +3,15 @@ Contains Fremdkostenblock class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
 from .com import COM
-from .fremdkostenposition import Fremdkostenposition
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+    from .fremdkostenposition import Fremdkostenposition
 
 # pylint: disable=too-few-public-methods
 
@@ -30,7 +33,7 @@ class Fremdkostenblock(COM):
     #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
 
-    kostenpositionen: Optional[list[Fremdkostenposition]] = None
+    kostenpositionen: Optional[list["Fremdkostenposition"]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 2018-02-01, 2019-01-01, Arbeitspreis HT, 3.660 kWh,
@@ -38,5 +41,5 @@ class Fremdkostenblock(COM):
     """
 
     #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Optional[Betrag] = None
+    summe_kostenblock: Optional["Betrag"] = None
     # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324

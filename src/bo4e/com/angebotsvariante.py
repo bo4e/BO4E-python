@@ -4,16 +4,18 @@ Contains Angebotsvariante and corresponding marshmallow schema for de-/serializa
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 import pydantic
 
-from ..enum.angebotsstatus import Angebotsstatus
 from ..utils import postprocess_docstring
-from .angebotsteil import Angebotsteil
-from .betrag import Betrag
 from .com import COM
-from .menge import Menge
+
+if TYPE_CHECKING:
+    from ..enum.angebotsstatus import Angebotsstatus
+    from .angebotsteil import Angebotsteil
+    from .betrag import Betrag
+    from .menge import Menge
 
 
 @postprocess_docstring
@@ -31,7 +33,7 @@ class Angebotsvariante(COM):
     """
 
     #: Gibt den Status eines Angebotes an.
-    angebotsstatus: Optional[Angebotsstatus] = None
+    angebotsstatus: Optional["Angebotsstatus"] = None
 
     #: Datum der Erstellung der Angebotsvariante
     erstellungsdatum: Optional[pydantic.AwareDatetime] = None
@@ -39,7 +41,7 @@ class Angebotsvariante(COM):
     #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
     bindefrist: Optional[pydantic.AwareDatetime] = None
 
-    teile: Optional[list[Angebotsteil]] = None
+    teile: Optional[list["Angebotsteil"]] = None
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
@@ -47,7 +49,7 @@ class Angebotsvariante(COM):
     """
 
     #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
-    gesamtmenge: Optional[Menge] = None
+    gesamtmenge: Optional["Menge"] = None
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320
     #: Aufsummierte Kosten aller Angebotsteile
-    gesamtkosten: Optional[Betrag] = None
+    gesamtkosten: Optional["Betrag"] = None

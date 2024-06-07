@@ -2,14 +2,17 @@
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..com.regionskriterium import Regionskriterium
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.regionskriterium import Regionskriterium
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -29,12 +32,12 @@ class Region(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGION
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.REGION
     #: Bezeichnung der Region
     bezeichnung: Optional[str] = None
 
     #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: Optional[list[Regionskriterium]] = None
+    positiv_liste: Optional[list["Regionskriterium"]] = None
 
     #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: Optional[list[Regionskriterium]] = None
+    negativ_liste: Optional[list["Regionskriterium"]] = None

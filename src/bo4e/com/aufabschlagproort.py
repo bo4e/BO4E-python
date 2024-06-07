@@ -3,11 +3,15 @@ Contains AufAbschlagProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com import COM
+
+if TYPE_CHECKING:
+
+    from .aufabschlagstaffelproort import AufAbschlagstaffelProOrt
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -35,4 +39,4 @@ class AufAbschlagProOrt(COM):
     #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
     netznr: Optional[str] = None
     #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
-    staffeln: Optional[list[AufAbschlagstaffelProOrt]] = None
+    staffeln: Optional[list["AufAbschlagstaffelProOrt"]] = None

@@ -4,11 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+
 
 # pylint: disable=too-few-public-methods
 
@@ -30,4 +33,4 @@ class Menge(COM):
     #: Gibt den absoluten Wert der Menge an
     wert: Optional[Decimal] = None
     #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Optional[Mengeneinheit] = None
+    einheit: Optional["Mengeneinheit"] = None

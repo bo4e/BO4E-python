@@ -2,16 +2,19 @@
 Contains PreisblattDienstleistung class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..bo.geraet import Geraet
-from ..enum.bilanzierungsmethode import Bilanzierungsmethode
-from ..enum.dienstleistungstyp import Dienstleistungstyp
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
+
+if TYPE_CHECKING:
+    from ..bo.geraet import Geraet
+    from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+    from ..enum.dienstleistungstyp import Dienstleistungstyp
+
 
 # pylint: disable=too-few-public-methods
 
@@ -30,15 +33,15 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTDIENSTLEISTUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTDIENSTLEISTUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
-    basisdienstleistung: Optional[Dienstleistungstyp] = None
+    basisdienstleistung: Optional["Dienstleistungstyp"] = None
 
     #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
-    geraetedetails: Optional[Geraet] = None
+    geraetedetails: Optional["Geraet"] = None
 
     #: Weitere Dienstleistungen, die im Preis enthalten sind
-    inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
+    inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None

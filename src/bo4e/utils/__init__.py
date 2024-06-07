@@ -65,9 +65,9 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
             field_info.description = description
             continue
 
-        print(f"Could not find a comment for field {field_name} in class {cls}")
-
-    cls.model_rebuild(force=True)
+    # cls.model_rebuild(force=True)
+    # Unnecessary here since the models will be rebuilt in __init__.py.
+    # Keeping this here as comment though.
     return cls
 
 

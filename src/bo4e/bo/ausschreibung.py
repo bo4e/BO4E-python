@@ -4,20 +4,22 @@ Contains Ausschreibung class and corresponding marshmallow schema for de-/serial
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 import pydantic
 from pydantic import Field
 
-from ..com.ausschreibungslos import Ausschreibungslos
-from ..com.zeitspanne import Zeitspanne
-from ..enum.ausschreibungsportal import Ausschreibungsportal
-from ..enum.ausschreibungsstatus import Ausschreibungsstatus
-from ..enum.ausschreibungstyp import Ausschreibungstyp
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
+
+if TYPE_CHECKING:
+    from ..com.ausschreibungslos import Ausschreibungslos
+    from ..com.zeitraum import Zeitraum
+    from ..enum.ausschreibungsportal import Ausschreibungsportal
+    from ..enum.ausschreibungsstatus import Ausschreibungsstatus
+    from ..enum.ausschreibungstyp import Ausschreibungstyp
+    from .geschaeftspartner import Geschaeftspartner
 
 
 @postprocess_docstring
@@ -34,36 +36,36 @@ class Ausschreibung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
     #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
     ausschreibungsnummer: Optional[str] = None
     #: Aufzählung für die Typisierung von Ausschreibungen
-    ausschreibungstyp: Optional[Ausschreibungstyp] = None
+    ausschreibungstyp: Optional["Ausschreibungstyp"] = None
     #: Bezeichnungen für die Ausschreibungsphasen
-    ausschreibungsstatus: Optional[Ausschreibungsstatus] = None
+    ausschreibungsstatus: Optional["Ausschreibungsstatus"] = None
     #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
     ist_kostenpflichtig: Optional[bool] = None
     #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
     veroeffentlichungszeitpunkt: Optional[pydantic.AwareDatetime] = None
-    ausschreibender: Optional[Geschaeftspartner] = None
+    ausschreibender: Optional["Geschaeftspartner"] = None
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein
     """
-    abgabefrist: Optional[Zeitspanne] = None
+    abgabefrist: Optional["Zeitraum"] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitspanne in Form von Start und Ende angegeben sein
     """
-    bindefrist: Optional[Zeitspanne] = None
+    bindefrist: Optional["Zeitraum"] = None
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitspanne in Form von Start und Ende angegeben sein
     """
     #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
-    lose: Optional[list[Ausschreibungslos]] = None
+    lose: Optional[list["Ausschreibungslos"]] = None
 
     #: Aufzählung der unterstützten Ausschreibungsportale
-    ausschreibungportal: Optional[Ausschreibungsportal] = None
+    ausschreibungportal: Optional["Ausschreibungsportal"] = None
     #: Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)
     webseite: Optional[str] = None

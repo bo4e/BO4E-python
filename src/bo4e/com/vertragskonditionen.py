@@ -4,12 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
 from .com import COM
-from .menge import Menge
-from .zeitspanne import Zeitspanne
+
+if TYPE_CHECKING:
+
+    from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
 
@@ -32,11 +34,11 @@ class Vertragskonditionen(COM):
     beschreibung: Optional[str] = None
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
     anzahl_abschlaege: Optional[Decimal] = None
-    #: Über diese Zeitspanne läuft der Vertrag
-    vertragslaufzeit: Optional[Zeitspanne] = None
+    #: Über diesen Zeitraum läuft der Vertrag
+    vertragslaufzeit: Optional["Zeitraum"] = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Optional[Menge] = None
+    kuendigungsfrist: Optional["Zeitraum"] = None
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Optional[Menge] = None
+    vertragsverlaengerung: Optional["Zeitraum"] = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Optional[Menge] = None
+    abschlagszyklus: Optional["Zeitraum"] = None
