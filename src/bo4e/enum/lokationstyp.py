@@ -10,5 +10,5 @@ class Lokationstyp(StrEnum):
     MALO = "MALO"  #: Marktlokation
     MELO = "MELO"  #: Messlokation
     NELO = "NELO"  #: Netzlokation
+    SR = "SR"  #: Steuerbare Ressource
     TR = "TR"  #: Technische Ressource
-    SR = "SR" #: Steuerbare Ressource
