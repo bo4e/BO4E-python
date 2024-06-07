@@ -1,5 +1,3 @@
-from datetime import datetime, timezone
-
 import pytest
 
 from bo4e import Preisgarantie, Preisgarantietyp, Zeitspanne
@@ -11,14 +9,8 @@ class TestPreisgarantie:
         "preisgarantie",
         [
             pytest.param(
-                Preisgarantie(
-                    preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
-                    zeitliche_gueltigkeit=Zeitspanne(
-                        start=datetime(2020, 1, 1, tzinfo=timezone.utc),
-                        ende=datetime(2020, 4, 1, tzinfo=timezone.utc),
-                    ),
-                ),
-            ),
+                Preisgarantie(preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS, zeitliche_gueltigkeit=Zeitspanne()),
+            )
         ],
     )
     def test_preisgarantie_required_attributes(self, preisgarantie: Preisgarantie) -> None:

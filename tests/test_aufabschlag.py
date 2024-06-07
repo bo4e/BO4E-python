@@ -16,7 +16,7 @@ class TestAufAbschlag:
                     auf_abschlagsziel=AufAbschlagsziel.GESAMTPREIS,
                     einheit=Waehrungseinheit.EUR,
                     website="foo.bar",
-                    gueltigkeitsZeitspanne=Zeitspanne(),
+                    gueltigkeitszeitraum=Zeitspanne(),
                     staffeln=[Preisstaffel()],
                 ),
                 id="all attributes at first level",

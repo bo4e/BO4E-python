@@ -15,7 +15,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.preisposition import Preisposition
-    from ..com.zeitraum import Zeitraum
+    from ..com.zeitspanne import Zeitspanne
     from ..enum.preisstatus import Preisstatus
     from ..enum.sparte import Sparte
     from .marktteilnehmer import Marktteilnehmer
@@ -47,8 +47,8 @@ class Preisblatt(Geschaeftsobjekt):
     sparte: Optional["Sparte"] = None
     #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
     preisstatus: Optional["Preisstatus"] = None
-    #: Der Zeitraum für den der Preis festgelegt ist
-    gueltigkeit: Optional["Zeitraum"] = None
+    #: Die Zeitspanne, für die der Preis festgelegt ist
+    gueltigkeit: Optional["Zeitspanne"] = None
     #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
     preispositionen: Optional[list["Preisposition"]] = None
     #: Der Netzbetreiber, der die Preise veröffentlicht hat

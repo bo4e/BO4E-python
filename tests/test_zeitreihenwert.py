@@ -1,4 +1,3 @@
-from datetime import datetime, timezone
 from decimal import Decimal
 
 import pytest
@@ -13,9 +12,7 @@ class TestZeitreihenwert:
         [
             pytest.param(
                 Zeitreihenwert(
-                    zeitspanne=Zeitspanne(
-                        start=datetime(2013, 5, 1, tzinfo=timezone.utc), ende=datetime(2022, 1, 28, tzinfo=timezone.utc)
-                    ),
+                    zeitspanne=Zeitspanne(),
                     wert=Decimal(2.5),
                     status=Messwertstatus.ABGELESEN,
                     statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL,

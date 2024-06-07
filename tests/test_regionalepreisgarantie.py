@@ -1,5 +1,3 @@
-from datetime import datetime, timezone
-
 import pytest
 
 from bo4e import (
@@ -21,10 +19,7 @@ class TestRegionalePreisgarantie:
             pytest.param(
                 RegionalePreisgarantie(
                     preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
-                    zeitliche_gueltigkeit=Zeitspanne(
-                        start=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
-                        ende=datetime(2021, 7, 30, tzinfo=timezone.utc),
-                    ),
+                    zeitliche_gueltigkeit=Zeitspanne(),
                     regionale_gueltigkeit=RegionaleGueltigkeit(
                         gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,
                         kriteriums_werte=[KriteriumWert(kriterium=Tarifregionskriterium.POSTLEITZAHL, wert="01069")],

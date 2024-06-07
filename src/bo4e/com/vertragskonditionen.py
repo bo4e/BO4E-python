@@ -11,7 +11,7 @@ from .com import COM
 
 if TYPE_CHECKING:
 
-    from .zeitraum import Zeitraum
+    from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods
 
@@ -35,10 +35,11 @@ class Vertragskonditionen(COM):
     #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
     anzahl_abschlaege: Optional[Decimal] = None
     #: Über diesen Zeitraum läuft der Vertrag
-    vertragslaufzeit: Optional["Zeitraum"] = None
+    vertragslaufzeit: Optional["Zeitspanne"] = None
     #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
-    kuendigungsfrist: Optional["Zeitraum"] = None
+    kuendigungsfrist: Optional["Zeitspanne"] = None
     #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
-    vertragsverlaengerung: Optional["Zeitraum"] = None
+    vertragsverlaengerung: Optional["Zeitspanne"] = None
     #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
-    abschlagszyklus: Optional["Zeitraum"] = None
+    abschlagszyklus: Optional["Zeitspanne"] = None
+    #: Todo: auch hier passt ja Zeitspanne nicht wirklich, Zeitraum auch nicht, vielleicht Menge? tbd

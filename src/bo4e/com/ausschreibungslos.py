@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from ..enum.vertragsform import Vertragsform
     from .ausschreibungsdetail import Ausschreibungsdetail
     from .menge import Menge
-    from .zeitraum import Zeitraum
+    from .zeitspanne import Zeitspanne
 
 
 @postprocess_docstring
@@ -55,7 +55,7 @@ class Ausschreibungslos(COM):
     lieferstellen: Optional[list["Ausschreibungsdetail"]] = None
 
     #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Optional["Zeitraum"] = None
+    lieferzeitraum: Optional["Zeitspanne"] = None
 
     #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
@@ -66,13 +66,14 @@ class Ausschreibungslos(COM):
     #: Maximalmenge Toleranzband (kWh, %)
     wunsch_maximalmenge: Optional["Menge"] = None
 
-    wiederholungsintervall: Optional["Zeitraum"] = None
+    wiederholungsintervall: Optional["Zeitspanne"] = None
     """
     In welchem Intervall die Angebotsabgabe wiederholt werden darf.
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
+    #: Was bedeutet das hier genau? Wär das dann eher eine Menge?
 
     #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
-    wunsch_kuendingungsfrist: Optional["Zeitraum"] = None
+    wunsch_kuendingungsfrist: Optional["Zeitspanne"] = None
     #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
-    wunsch_zahlungsziel: Optional["Zeitraum"] = None
+    wunsch_zahlungsziel: Optional["Zeitspanne"] = None

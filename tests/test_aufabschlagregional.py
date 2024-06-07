@@ -31,7 +31,7 @@ class TestAufAbschlagRegional:
                     zusatzprodukte=["Asterix", "Obelix"],
                     voraussetzungen=["Petterson", "Findus"],
                     tarifnamensaenderungen="foobar",
-                    gueltigkeitsZeitspanne=Zeitspanne(),
+                    gueltigkeitszeitraum=Zeitspanne(),
                     energiemixaenderung=Energiemix(),
                     vertagskonditionsaenderung=Vertragskonditionen(),
                     garantieaenderung=Preisgarantie(),
