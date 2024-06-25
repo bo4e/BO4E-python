@@ -17,7 +17,7 @@ if TYPE_CHECKING:
     from .regionalepreisstaffel import RegionalePreisstaffel
     from .tarifeinschraenkung import Tarifeinschraenkung
     from .vertragskonditionen import Vertragskonditionen
-    from .zeitraum import Zeitraum
+    from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
@@ -71,7 +71,7 @@ class RegionalerAufAbschlag(COM):
     tarifnamensaenderungen: Optional[str] = None
 
     #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
-    gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    gueltigkeitszeitraum: Optional["Zeitspanne"] = None
 
     energiemixaenderung: Optional["Energiemix"] = None
     """

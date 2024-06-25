@@ -96,4 +96,3 @@ Andere nennenswerte BO4E Implementierungen
 * `PHP <https://github.com/conuti-gmbh/bo4e-php/>`_ (und `Schemas <https://github.com/conuti-gmbh/bo4e-schema>`_)
 
 .. _`BO4E website`: https://www.bo4e.de/dokumentation
-.. _`Contribution Guide`: CONTRIBUTING.md

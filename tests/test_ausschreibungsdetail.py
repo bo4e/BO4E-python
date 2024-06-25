@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Adresse, Ausschreibungsdetail, Menge, Netzebene, Zaehlertyp, Zeitraum
+from bo4e import Adresse, Ausschreibungsdetail, Menge, Netzebene, Zaehlertyp, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -14,7 +14,7 @@ class TestAusschreibungsdetail:
                     netzebene_lieferung=Netzebene.MSP,
                     netzebene_messung=Netzebene.NSP,
                     marktlokationsadresse=Adresse(),
-                    lieferzeitraum=Zeitraum(),
+                    lieferzeitraum=Zeitspanne(),
                     netzbetreiber="Stromnetz Hamburg GmbH",
                     kunde="Dei Mudder ihr Kunde",
                     zaehlernummer="1YSK4234092304",
