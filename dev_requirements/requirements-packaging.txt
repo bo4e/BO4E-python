@@ -6,7 +6,7 @@
 #    pip-compile-multi
 #
 build==1.2.1
-    # via -r dev_requirements/requirements-packaging.in
+    # via -r requirements-packaging.in
 certifi==2024.2.2
     # via requests
 cffi==1.16.0
@@ -70,8 +70,8 @@ rich==13.7.1
 secretstorage==3.3.3
     # via keyring
 twine==5.1.1
-    # via -r dev_requirements/requirements-packaging.in
-urllib3==2.2.1
+    # via -r requirements-packaging.in
+urllib3==2.2.2
     # via
     #   requests
     #   twine
