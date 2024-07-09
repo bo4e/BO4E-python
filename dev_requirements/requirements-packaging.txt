@@ -75,5 +75,5 @@ urllib3==2.2.1
     # via
     #   requests
     #   twine
-zipp==3.18.1
+zipp==3.19.1
     # via importlib-metadata
