@@ -115,8 +115,6 @@
     <span class="c1"># https://regex101.com/r/aJrvol/1</span>
     <span class="n">regex_comment_inline</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;</span><span class="si">{field_name}</span><span class="s2">:[^:]*#: ?(?P&lt;comment&gt;[^\n]*)\n&quot;</span>
     <span class="c1"># https://regex101.com/r/0PaUmw/1</span>
-    <span class="n">regex_comment_below</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;</span><span class="si">{field_name}</span><span class="s2">:[^:]*\n(?P&lt;indent&gt; +)</span><span class="se">\&quot;</span><span class="si">{3}</span><span class="s2">(?P&lt;comment&gt;(?:</span><span class="se">\&quot;</span><span class="s2">{0,2}[^</span><span class="se">\&quot;</span><span class="s2">])*)</span><span class="se">\&quot;</span><span class="si">{3}</span><span class="s2">&quot;</span>
-    <span class="c1"># https://regex101.com/r/9HhOlD/1</span>
 
     <span class="k">for</span> <span class="n">field_name</span><span class="p">,</span> <span class="n">field_info</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="n">model_fields</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">field_info</span><span class="o">.</span><span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
@@ -131,11 +129,7 @@
         <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">field_info</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;comment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
             <span class="k">continue</span>
-        <span class="c1"># search for (multi line) comments below the field</span>
-        <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">regex_comment_below</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{field_name}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">field_name</span><span class="p">),</span> <span class="n">fields_code</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">match</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">field_info</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;comment&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span> <span class="o">+</span> <span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="s2">&quot;indent&quot;</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-            <span class="k">continue</span>
+        <span class="c1"># (multi line) comments below the field aka docstrings are now handled by pydantic</span>
         <span class="c1"># Try to find the comment in the bases</span>
         <span class="n">description</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">base</span> <span class="ow">in</span> <span class="bp">cls</span><span class="o">.</span><span class="vm">__bases__</span><span class="p">:</span>
