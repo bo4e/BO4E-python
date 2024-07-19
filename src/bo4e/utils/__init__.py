@@ -28,8 +28,6 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
     # https://regex101.com/r/aJrvol/1
     regex_comment_inline = r"{field_name}:[^:]*#: ?(?P<comment>[^\n]*)\n"
     # https://regex101.com/r/0PaUmw/1
-    regex_comment_below = r"{field_name}:[^:]*\n(?P<indent> +)\"{3}(?P<comment>(?:\"{0,2}[^\"])*)\"{3}"
-    # https://regex101.com/r/9HhOlD/1
 
     for field_name, field_info in cls.model_fields.items():
         if field_info.description is not None:
@@ -44,11 +42,7 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
         if match is not None:
             field_info.description = match.group("comment").strip()
             continue
-        # search for (multi line) comments below the field
-        match = re.search(regex_comment_below.replace("{field_name}", field_name), fields_code)
-        if match is not None:
-            field_info.description = match.group("comment").strip().replace("\n" + match.group("indent"), "\n")
-            continue
+        # (multi line) comments below the field aka docstrings are now handled by pydantic
         # Try to find the comment in the bases
         description = None
         for base in cls.__bases__:
