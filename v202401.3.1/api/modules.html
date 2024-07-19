@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e &mdash; bo4e v202401.3.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=7a5158f1"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="bo4e package" href="bo4e.html" />
+    <link rel="prev" title="Fundamentals" href="../fundamentals.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            bo4e
+              <img src="../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.3.1
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Data Model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bo4e.html">bo4e package</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">bo4e</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/api/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bo4e">
+<h1>bo4e<a class="headerlink" href="#bo4e" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="bo4e.html">bo4e package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="bo4e.html#subpackages">Subpackages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bo4e.bo.html">bo4e.bo package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.angebot">bo4e.bo.angebot module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.ausschreibung">bo4e.bo.ausschreibung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.buendelvertrag">bo4e.bo.buendelvertrag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.energiemenge">bo4e.bo.energiemenge module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.fremdkosten">bo4e.bo.fremdkosten module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.geraet">bo4e.bo.geraet module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.geschaeftsobjekt">bo4e.bo.geschaeftsobjekt module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.geschaeftspartner">bo4e.bo.geschaeftspartner module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.kosten">bo4e.bo.kosten module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.lastgang">bo4e.bo.lastgang module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.lokationszuordnung">bo4e.bo.lokationszuordnung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.marktlokation">bo4e.bo.marktlokation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.marktteilnehmer">bo4e.bo.marktteilnehmer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.messlokation">bo4e.bo.messlokation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.netzlokation">bo4e.bo.netzlokation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.person">bo4e.bo.person module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.preisblatt">bo4e.bo.preisblatt module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.preisblattdienstleistung">bo4e.bo.preisblattdienstleistung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.preisblatthardware">bo4e.bo.preisblatthardware module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.preisblattkonzessionsabgabe">bo4e.bo.preisblattkonzessionsabgabe module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.preisblattmessung">bo4e.bo.preisblattmessung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.preisblattnetznutzung">bo4e.bo.preisblattnetznutzung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.rechnung">bo4e.bo.rechnung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.region">bo4e.bo.region module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.regionaltarif">bo4e.bo.regionaltarif module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.standorteigenschaften">bo4e.bo.standorteigenschaften module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.steuerbareressource">bo4e.bo.steuerbareressource module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.tarif">bo4e.bo.tarif module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.tarifinfo">bo4e.bo.tarifinfo module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.tarifkosten">bo4e.bo.tarifkosten module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.tarifpreisblatt">bo4e.bo.tarifpreisblatt module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.technischeressource">bo4e.bo.technischeressource module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.vertrag">bo4e.bo.vertrag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.zaehler">bo4e.bo.zaehler module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo.zeitreihe">bo4e.bo.zeitreihe module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.bo.html#module-bo4e.bo">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bo4e.com.html">bo4e.com package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.adresse">bo4e.com.adresse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.angebotsposition">bo4e.com.angebotsposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.angebotsteil">bo4e.com.angebotsteil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.angebotsvariante">bo4e.com.angebotsvariante module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.aufabschlag">bo4e.com.aufabschlag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.aufabschlagproort">bo4e.com.aufabschlagproort module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.aufabschlagregional">bo4e.com.aufabschlagregional module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.aufabschlagstaffelproort">bo4e.com.aufabschlagstaffelproort module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.ausschreibungsdetail">bo4e.com.ausschreibungsdetail module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.ausschreibungslos">bo4e.com.ausschreibungslos module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.betrag">bo4e.com.betrag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.com">bo4e.com.com module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.dienstleistung">bo4e.com.dienstleistung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.energieherkunft">bo4e.com.energieherkunft module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.energiemix">bo4e.com.energiemix module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.fremdkostenblock">bo4e.com.fremdkostenblock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.fremdkostenposition">bo4e.com.fremdkostenposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.geokoordinaten">bo4e.com.geokoordinaten module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.katasteradresse">bo4e.com.katasteradresse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.konfigurationsprodukt">bo4e.com.konfigurationsprodukt module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.kontaktweg">bo4e.com.kontaktweg module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.konzessionsabgabe">bo4e.com.konzessionsabgabe module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.kostenblock">bo4e.com.kostenblock module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.kostenposition">bo4e.com.kostenposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.kriteriumwert">bo4e.com.kriteriumwert module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.marktgebietinfo">bo4e.com.marktgebietinfo module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.menge">bo4e.com.menge module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.positionsaufabschlag">bo4e.com.positionsaufabschlag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.preis">bo4e.com.preis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.preisgarantie">bo4e.com.preisgarantie module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.preisposition">bo4e.com.preisposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.preisstaffel">bo4e.com.preisstaffel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.rechnungsposition">bo4e.com.rechnungsposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.regionalegueltigkeit">bo4e.com.regionalegueltigkeit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.regionalepreisgarantie">bo4e.com.regionalepreisgarantie module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.regionalepreisstaffel">bo4e.com.regionalepreisstaffel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.regionaleraufabschlag">bo4e.com.regionaleraufabschlag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.regionaletarifpreisposition">bo4e.com.regionaletarifpreisposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.regionskriterium">bo4e.com.regionskriterium module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.sigmoidparameter">bo4e.com.sigmoidparameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.standorteigenschaftengas">bo4e.com.standorteigenschaftengas module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.standorteigenschaftenstrom">bo4e.com.standorteigenschaftenstrom module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.steuerbetrag">bo4e.com.steuerbetrag module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.tarifberechnungsparameter">bo4e.com.tarifberechnungsparameter module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.tarifeinschraenkung">bo4e.com.tarifeinschraenkung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.tarifpreis">bo4e.com.tarifpreis module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.tarifpreisposition">bo4e.com.tarifpreisposition module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.tarifpreispositionproort">bo4e.com.tarifpreispositionproort module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.tarifpreisstaffelproort">bo4e.com.tarifpreisstaffelproort module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.unterschrift">bo4e.com.unterschrift module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.verbrauch">bo4e.com.verbrauch module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.vertragskonditionen">bo4e.com.vertragskonditionen module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.vertragsteil">bo4e.com.vertragsteil module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.verwendungszweckpromarktrolle">bo4e.com.verwendungszweckpromarktrolle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.zaehlwerk">bo4e.com.zaehlwerk module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.zaehlzeitregister">bo4e.com.zaehlzeitregister module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.zeitraum">bo4e.com.zeitraum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.zeitreihenwert">bo4e.com.zeitreihenwert module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.zeitspanne">bo4e.com.zeitspanne module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com.zustaendigkeit">bo4e.com.zustaendigkeit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.com.html#module-bo4e.com">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bo4e.enum.html">bo4e.enum package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#submodules">Submodules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.abgabeart">bo4e.enum.abgabeart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.angebotsstatus">bo4e.enum.angebotsstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.anrede">bo4e.enum.anrede module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.arithmetische_operation">bo4e.enum.arithmetische_operation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.artikelid">bo4e.enum.artikelid module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.aufabschlagstyp">bo4e.enum.aufabschlagstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.aufabschlagsziel">bo4e.enum.aufabschlagsziel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.ausschreibungsportal">bo4e.enum.ausschreibungsportal module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.ausschreibungsstatus">bo4e.enum.ausschreibungsstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.ausschreibungstyp">bo4e.enum.ausschreibungstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.bdewartikelnummer">bo4e.enum.bdewartikelnummer module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.befestigungsart">bo4e.enum.befestigungsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.bemessungsgroesse">bo4e.enum.bemessungsgroesse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.bilanzierungsmethode">bo4e.enum.bilanzierungsmethode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.dienstleistungstyp">bo4e.enum.dienstleistungstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.emobilitaetsart">bo4e.enum.emobilitaetsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.energierichtung">bo4e.enum.energierichtung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.erzeugungsart">bo4e.enum.erzeugungsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.gasqualitaet">bo4e.enum.gasqualitaet module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.gebiettyp">bo4e.enum.gebiettyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.geraeteklasse">bo4e.enum.geraeteklasse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.geraetetyp">bo4e.enum.geraetetyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.geschaeftspartnerrolle">bo4e.enum.geschaeftspartnerrolle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.gueltigkeitstyp">bo4e.enum.gueltigkeitstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.kalkulationsmethode">bo4e.enum.kalkulationsmethode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.kontaktart">bo4e.enum.kontaktart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.kostenklasse">bo4e.enum.kostenklasse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.kundengruppe">bo4e.enum.kundengruppe module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.kundengruppeka">bo4e.enum.kundengruppeka module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.kundentyp">bo4e.enum.kundentyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.landescode">bo4e.enum.landescode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.leistungstyp">bo4e.enum.leistungstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.lokationstyp">bo4e.enum.lokationstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.marktrolle">bo4e.enum.marktrolle module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.medium">bo4e.enum.medium module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.mengeneinheit">bo4e.enum.mengeneinheit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.mengenoperator">bo4e.enum.mengenoperator module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.messart">bo4e.enum.messart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.messgroesse">bo4e.enum.messgroesse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.messpreistyp">bo4e.enum.messpreistyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.messwerterfassung">bo4e.enum.messwerterfassung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.messwertstatus">bo4e.enum.messwertstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.messwertstatuszusatz">bo4e.enum.messwertstatuszusatz module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.netzebene">bo4e.enum.netzebene module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.netznutzungrechnungsart">bo4e.enum.netznutzungrechnungsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.netznutzungrechnungstyp">bo4e.enum.netznutzungrechnungstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.oekolabel">bo4e.enum.oekolabel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.oekozertifikat">bo4e.enum.oekozertifikat module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.organisationstyp">bo4e.enum.organisationstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.preisgarantietyp">bo4e.enum.preisgarantietyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.preismodell">bo4e.enum.preismodell module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.preisstatus">bo4e.enum.preisstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.preistyp">bo4e.enum.preistyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.rechnungslegung">bo4e.enum.rechnungslegung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.rechnungsstatus">bo4e.enum.rechnungsstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.rechnungstyp">bo4e.enum.rechnungstyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.regionskriteriumtyp">bo4e.enum.regionskriteriumtyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.registeranzahl">bo4e.enum.registeranzahl module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.rollencodetyp">bo4e.enum.rollencodetyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.sparte">bo4e.enum.sparte module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.speicherart">bo4e.enum.speicherart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.steuerkanalleistungsbeschreibung">bo4e.enum.steuerkanalleistungsbeschreibung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.steuerkennzeichen">bo4e.enum.steuerkennzeichen module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.strenum">bo4e.enum.strenum module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.tarifkalkulationsmethode">bo4e.enum.tarifkalkulationsmethode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.tarifmerkmal">bo4e.enum.tarifmerkmal module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.tarifregionskriterium">bo4e.enum.tarifregionskriterium module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.tariftyp">bo4e.enum.tariftyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.tarifzeit">bo4e.enum.tarifzeit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.technischeressourcenutzung">bo4e.enum.technischeressourcenutzung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.technischeressourceverbrauchsart">bo4e.enum.technischeressourceverbrauchsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.themengebiet">bo4e.enum.themengebiet module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.titel">bo4e.enum.titel module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.typ">bo4e.enum.typ module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.verbrauchsart">bo4e.enum.verbrauchsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.vertragsart">bo4e.enum.vertragsart module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.vertragsform">bo4e.enum.vertragsform module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.vertragsstatus">bo4e.enum.vertragsstatus module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.verwendungszweck">bo4e.enum.verwendungszweck module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.voraussetzungen">bo4e.enum.voraussetzungen module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.waehrungscode">bo4e.enum.waehrungscode module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.waehrungseinheit">bo4e.enum.waehrungseinheit module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.waermenutzung">bo4e.enum.waermenutzung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.wertermittlungsverfahren">bo4e.enum.wertermittlungsverfahren module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.zaehlerauspraegung">bo4e.enum.zaehlerauspraegung module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.zaehlergroesse">bo4e.enum.zaehlergroesse module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.zaehlertyp">bo4e.enum.zaehlertyp module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum.zaehlertypspezifikation">bo4e.enum.zaehlertypspezifikation module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.enum.html#module-bo4e.enum">Module contents</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="bo4e.utils.html">bo4e.utils package</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.utils.html#module-bo4e.utils">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bo4e.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bo4e.html#module-bo4e.version">bo4e.version module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bo4e.html#module-bo4e.zusatzattribut">bo4e.zusatzattribut module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="bo4e.html#bo4e.zusatzattribut.ZusatzAttribut"><code class="docutils literal notranslate"><span class="pre">ZusatzAttribut</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.html#bo4e.zusatzattribut.ZusatzAttribut.model_computed_fields"><code class="docutils literal notranslate"><span class="pre">ZusatzAttribut.model_computed_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.html#bo4e.zusatzattribut.ZusatzAttribut.model_config"><code class="docutils literal notranslate"><span class="pre">ZusatzAttribut.model_config</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.html#bo4e.zusatzattribut.ZusatzAttribut.model_fields"><code class="docutils literal notranslate"><span class="pre">ZusatzAttribut.model_fields</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.html#bo4e.zusatzattribut.ZusatzAttribut.name"><code class="docutils literal notranslate"><span class="pre">ZusatzAttribut.name</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="bo4e.html#bo4e.zusatzattribut.ZusatzAttribut.wert"><code class="docutils literal notranslate"><span class="pre">ZusatzAttribut.wert</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bo4e.html#module-bo4e">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../fundamentals.html" class="btn btn-neutral float-left" title="Fundamentals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bo4e.html" class="btn btn-neutral float-right" title="bo4e package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
