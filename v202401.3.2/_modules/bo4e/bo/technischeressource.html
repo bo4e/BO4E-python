@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.bo.technischeressource &mdash; bo4e v202401.3.2 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=4da9d29b"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.3.2
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.bo.technischeressource</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.bo.technischeressource</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Contains technische Ressource class</span>
+<span class="sd">and corresponding marshmallow schema for de-/serialization</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
+
+<span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
+<span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
+<span class="kn">from</span> <span class="nn">.geschaeftsobjekt</span> <span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">..bo.lokationszuordnung</span> <span class="kn">import</span> <span class="n">Lokationszuordnung</span>
+    <span class="kn">from</span> <span class="nn">..com.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
+    <span class="kn">from</span> <span class="nn">..enum.emobilitaetsart</span> <span class="kn">import</span> <span class="n">EMobilitaetsart</span>
+    <span class="kn">from</span> <span class="nn">..enum.erzeugungsart</span> <span class="kn">import</span> <span class="n">Erzeugungsart</span>
+    <span class="kn">from</span> <span class="nn">..enum.speicherart</span> <span class="kn">import</span> <span class="n">Speicherart</span>
+    <span class="kn">from</span> <span class="nn">..enum.technischeressourcenutzung</span> <span class="kn">import</span> <span class="n">TechnischeRessourceNutzung</span>
+    <span class="kn">from</span> <span class="nn">..enum.technischeressourceverbrauchsart</span> <span class="kn">import</span> <span class="n">TechnischeRessourceVerbrauchsart</span>
+    <span class="kn">from</span> <span class="nn">..enum.waermenutzung</span> <span class="kn">import</span> <span class="n">Waermenutzung</span>
+
+<span class="c1"># pylint: disable=too-many-instance-attributes, too-few-public-methods</span>
+
+
+<div class="viewcode-block" id="TechnischeRessource">
+<a class="viewcode-back" href="../../../api/bo4e.bo.html#bo4e.bo.technischeressource.TechnischeRessource">[docs]</a>
+<span class="nd">@postprocess_docstring</span>
+<span class="k">class</span> <span class="nc">TechnischeRessource</span><span class="p">(</span><span class="n">Geschaeftsobjekt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Object containing information about a technische Ressource</span>
+
+<span class="sd">    .. raw:: html</span>
+
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/bo/TechnischeRessource.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+
+<span class="sd">    .. HINT::</span>
+<span class="sd">        `TechnischeRessource JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/TechnischeRessource.json&gt;`_</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">TECHNISCHERESSOURCE</span>
+
+    <span class="c1">#: Identifikationsnummer einer technischen Ressource</span>
+    <span class="n">technische_ressource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Vorgelagerte Messlokation ID</span>
+    <span class="n">vorgelagerte_messlokation_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Referenz auf die der technischen Ressource zugeordneten Marktlokation</span>
+    <span class="n">zugeordnete_marktlokation_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Referenz auf die der technischen Ressource zugeordneten Steuerbaren Ressource</span>
+    <span class="n">zugeordnete_steuerbare_ressource_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Nennleistung (Aufnahme)</span>
+    <span class="n">nennleistungaufnahme</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Nennleistung (Abgabe)</span>
+    <span class="n">nennleistungabgabe</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Speicherkapazität</span>
+    <span class="n">speicherkapazitaet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Art und Nutzung der technischen Ressource</span>
+    <span class="n">technische_ressource_nutzung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;TechnischeRessourceNutzung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Verbrauchsart der technischen Ressource</span>
+    <span class="n">technische_ressource_verbrauchsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;TechnischeRessourceVerbrauchsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Wärmenutzung</span>
+    <span class="n">waermenutzung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Waermenutzung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Art der E-Mobilität</span>
+    <span class="n">emobilitaetsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;EMobilitaetsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Art der Erzeugung der Energie</span>
+    <span class="n">erzeugungsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Erzeugungsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Art des Speichers</span>
+    <span class="n">speicherart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Speicherart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben</span>
+    <span class="n">lokationszuordnungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Lokationszuordnung&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1">#: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.</span>
+    <span class="n">lokationsbuendel_objektcode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
