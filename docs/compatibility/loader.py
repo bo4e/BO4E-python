@@ -23,7 +23,7 @@ def load_schema_file(path: Path) -> SchemaRootType:
     """
     Load a schema file and return the parsed schema
     """
-    return TypeAdapter(SchemaRootType).validate_json(path.read_text("utf-8"))  # type: ignore[return-value]
+    return TypeAdapter(SchemaRootType).validate_json(path.read_text("utf-8"))
     # mypy has problems to infer the Union type here.
 
 
