@@ -31,6 +31,7 @@ def add_comments_to_description(cls: type[T]) -> type[T]:
 
     for field_name, field_info in cls.model_fields.items():
         if field_info.description is not None:
+            field_info.description = field_info.description.strip()
             continue
         # search for (single line) comments above the field
         match = re.search(regex_comment_above.format(field_name=field_name), fields_code)
