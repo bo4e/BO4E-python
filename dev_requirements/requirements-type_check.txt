@@ -7,7 +7,7 @@
 #
 iniconfig==2.0.0
     # via pytest
-mypy==1.11.0
+mypy==1.11.1
     # via -r dev_requirements/requirements-type_check.in
 mypy-extensions==1.0.0
     # via mypy
