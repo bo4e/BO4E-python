@@ -43,9 +43,9 @@ class Verbrauch(COM):
     #: Gibt die Einheit zum jeweiligen Wert an
     einheit: Optional["Mengeneinheit"] = None
 
-    #: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird
+    #: Inklusiver Beginn der Zeitspanne, für den der Verbrauch angegeben wird
     startdatum: Optional[pydantic.AwareDatetime] = None
-    #: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird
+    #: Exklusives Ende der Zeitspanne, für den der Verbrauch angegeben wird
     enddatum: Optional[pydantic.AwareDatetime] = None
     #: Messwertstatus includes the plausibility of the value
     messwertstatus: Optional["Messwertstatus"] = None

@@ -99,7 +99,6 @@ __all__ = [
     "VerwendungszweckProMarktrolle",
     "Zaehlwerk",
     "Zaehlzeitregister",
-    "Zeitraum",
     "Zeitreihenwert",
     "Zeitspanne",
     "Zustaendigkeit",
@@ -293,7 +292,6 @@ from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
-from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
 from .com.zeitspanne import Zeitspanne
 from .com.zustaendigkeit import Zustaendigkeit

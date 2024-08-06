@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Betrag, Fremdkosten, Fremdkostenblock, Zeitraum
+from bo4e import Betrag, Fremdkosten, Fremdkostenblock, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -10,7 +10,7 @@ class TestFremdkosten:
         [
             pytest.param(
                 Fremdkosten(
-                    gueltigkeit=Zeitraum(),
+                    gueltigkeit=Zeitspanne(),
                     summe_kosten=Betrag(),
                     kostenbloecke=[Fremdkostenblock()],
                 ),

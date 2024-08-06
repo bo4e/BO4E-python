@@ -21,7 +21,7 @@ if TYPE_CHECKING:
 @postprocess_docstring
 class Zeitreihenwert(COM):
     """
-    Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
+    Abbildung eines Zeitreihenwertes bestehend aus Zeitspanne, Wert und Statusinformationen.
 
     .. raw:: html
 

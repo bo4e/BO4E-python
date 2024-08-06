@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from ..com.betrag import Betrag
     from ..com.rechnungsposition import Rechnungsposition
     from ..com.steuerbetrag import Steuerbetrag
-    from ..com.zeitraum import Zeitraum
+    from ..com.zeitspanne import Zeitspanne
     from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
     from ..enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
     from ..enum.rechnungsstatus import Rechnungsstatus
@@ -57,8 +57,8 @@ class Rechnung(Geschaeftsobjekt):
     faelligkeitsdatum: Optional[pydantic.AwareDatetime] = None
     #: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung
     rechnungstyp: Optional["Rechnungstyp"] = None
-    #: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung
-    rechnungsperiode: Optional["Zeitraum"] = None
+    #: Die Zeitspanne der zugrunde liegenden Lieferung zur Rechnung
+    rechnungsperiode: Optional["Zeitspanne"] = None
     #: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer
     rechnungsersteller: Optional["Geschaeftspartner"] = None
     #: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer

@@ -7,7 +7,7 @@ from bo4e import (
     Preisposition,
     Preisstatus,
     Sparte,
-    Zeitraum,
+    Zeitspanne,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -22,7 +22,7 @@ class TestPreisblatt:
                     sparte=Sparte.STROM,
                     preisstatus=Preisstatus.ENDGUELTIG,
                     preispositionen=[Preisposition()],
-                    gueltigkeit=Zeitraum(),
+                    gueltigkeit=Zeitspanne(),
                     herausgeber=Marktteilnehmer(),
                     kundengruppe_k_a=KundengruppeKA.G_SONDERKUNDE,
                 )
