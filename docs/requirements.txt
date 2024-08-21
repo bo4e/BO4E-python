@@ -10,7 +10,7 @@ annotated-types==0.5.0
     # via pydantic
 babel==2.15.0
     # via sphinx
-bo4e-schema-tool==0.0.7
+bo4e-schema-tool==0.0.9
     # via -r requirements.in
 certifi==2024.7.4
     # via requests
@@ -50,11 +50,11 @@ packaging==24.0
     # via sphinx
 pycparser==2.21
     # via cffi
-pydantic==2.4.2
+pydantic==2.8.2
     # via
     #   -r requirements.in
     #   bo4e-schema-tool
-pydantic-core==2.10.1
+pydantic-core==2.20.1
     # via pydantic
 pygithub==2.2.0
     # via bo4e-schema-tool
@@ -74,7 +74,7 @@ requests==2.32.3
     #   sphinx
 snowballstemmer==2.2.0
     # via sphinx
-sphinx==7.4.5
+sphinx==7.4.7
     # via
     #   -r requirements.in
     #   sphinx-rtd-theme
