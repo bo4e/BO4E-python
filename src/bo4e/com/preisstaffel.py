@@ -38,3 +38,6 @@ class Preisstaffel(COM):
 
     #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter
     sigmoidparameter: Optional["Sigmoidparameter"] = None
+
+    #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
+    artikel_id: Optional[str] = None
