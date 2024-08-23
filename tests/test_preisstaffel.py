@@ -18,7 +18,7 @@ class TestPreisstaffel:
                     staffelgrenze_von=Decimal(12.5),
                     staffelgrenze_bis=Decimal(25.0),
                     sigmoidparameter=Sigmoidparameter(),
-                    artikel_id="4-5-6"
+                    artikel_id="4-5-6",
                 ),
                 id="all attributes",
             ),
@@ -44,7 +44,7 @@ class TestPreisstaffel:
                 staffelgrenze_von=Decimal(12.5),
                 staffelgrenze_bis=Decimal(25.0),
                 sigmoidparameter=not_a_sigmoid_parameter,
-                artikel_id="4-5-6"
+                artikel_id="4-5-6",
             )
 
         assert "1 validation error" in str(excinfo.value)
