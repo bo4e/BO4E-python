@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from .. import Bankverbindung
+from ..com.bankverbindung import Bankverbindung
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
