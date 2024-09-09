@@ -4,19 +4,10 @@ Contains Bankverbindung class and corresponding marshmallow schema for de-/seria
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Optional
+from typing import Optional
 
 from ..utils import postprocess_docstring
 from .com import COM
-
-if TYPE_CHECKING:
-    from ..enum.preismodell import Preismodell
-    from ..enum.rechnungslegung import Rechnungslegung
-    from ..enum.sparte import Sparte
-    from ..enum.vertragsform import Vertragsform
-    from .ausschreibungsdetail import Ausschreibungsdetail
-    from .menge import Menge
-    from .zeitraum import Zeitraum
 
 
 @postprocess_docstring
@@ -34,9 +25,14 @@ class Bankverbindung(COM):
     """
 
     iban: Optional[str] = None
+    # International Bank Account Number = IBAN for example: DE07 1234 1234 1234 1234 12
 
     kontoinhaber: Optional[str] = None
+    # individual or entity in whose name a bank account is registered and who has legal rights over it
 
     bankkennung: Optional[str] = None
+    # A unique code, such as a BIC (Bank Identifier Code) or SWIFT code, that identifies a specific bank in
+    # international transactions (e.g., BIC: DEUTDEFF for Deutsche Bank)
 
     bankname: Optional[str] = None
+    # name of the bank e.g. Deutsche Bank
