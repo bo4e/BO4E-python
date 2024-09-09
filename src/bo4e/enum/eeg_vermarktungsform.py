@@ -8,11 +8,14 @@ class EEGVermarktungsform(StrEnum):
     Diese Enum repräsentiert die Vermarktungsformen nach dem EEG.
     """
 
-    AUSFALLVERGUETUNG = "AUSFALLVERGUETUNG"  #: Ausfallvergütung
+    AUSFALLVERGUETUNG = "AUSFALLVERGUETUNG"
     # Ausfallvergütung für den Fall, dass andere Vermarktungsmethoden nicht verfügbar sind
-    MARKTPRAEMIE = "MARKTPRAEMIE"  #: Marktprämie
+
+    MARKTPRAEMIE = "MARKTPRAEMIE"
     # Marktprämie für die geförderte Direktvermarktung
-    SONSTIGE = "SONSTIGE"  #: Sonstige
+
+    SONSTIGE = "SONSTIGE"
     # Sonstige Vermarktungsformen ohne gesetzliche Vergütung
-    KWKG_VERGUETUNG = "KWKG_VERGUETUNG"  #: KWKG-Vergütung
+
+    KWKG_VERGUETUNG = "KWKG_VERGUETUNG"
     # Vergütung nach dem Kraft-Wärme-Kopplungsgesetz (KWKG)
