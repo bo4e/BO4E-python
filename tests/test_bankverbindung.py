@@ -10,10 +10,10 @@ class TestBankverbindung:
         [
             pytest.param(
                 Bankverbindung(
-                    iban="foo-ban",
+                    iban="DE07123412341234123412",
                     kontoinhaber="Jürgen W.",
-                    bankkennung="1234Geiz5678",
-                    bankname="Geiz&Geiziger",
+                    bankkennung="DEUTDEFF",
+                    bankname="Deutsche Bank",
                 ),
                 id="maximal attributes",
             ),
