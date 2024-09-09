@@ -25,14 +25,14 @@ class Bankverbindung(COM):
     """
 
     iban: Optional[str] = None
-    # International Bank Account Number = IBAN for example: DE07 1234 1234 1234 1234 12
+    #: International Bank Account Number = IBAN z.B.: DE07 1234 1234 1234 1234 12
 
     kontoinhaber: Optional[str] = None
-    # individual or entity in whose name a bank account is registered and who has legal rights over it
+    #: Juristische Person welche das Konto hält
 
     bankkennung: Optional[str] = None
-    # A unique code, such as a BIC (Bank Identifier Code) or SWIFT code, that identifies a specific bank in
-    # international transactions (e.g., BIC: DEUTDEFF for Deutsche Bank)
+    #: Ein eindeutiger Code, wie z.B. BIC (Bank Identifier Code) oder SWIFT-Code, der eine bestimmte Bank bei
+    #: internationalen Transaktionen identifiziert (z.B. BIC: DEUTDEFF für die Deutsche Bank)."
 
     bankname: Optional[str] = None
-    # name of the bank e.g. Deutsche Bank
+    #: Name der bank z.B. Deutsche Bank
