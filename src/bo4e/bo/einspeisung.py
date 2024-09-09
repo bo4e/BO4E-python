@@ -6,14 +6,10 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 # pylint: disable=no-name-in-module
 from typing import TYPE_CHECKING, Annotated, Optional
 
-import pydantic
-from pydantic import Field
-
 from ..enum.eeg_vermarktungsform import EEGVermarktungsform
 from ..enum.fernsteuerbarkeit_status import FernsteuerbarkeitStatus
 from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
 from ..enum.landescode import Landescode
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -34,6 +30,8 @@ class Einspeisung(Geschaeftsobjekt):
     """
 
     MarktlokationsId: Optional[str] = None
+
+    TranchenId: Optional[str] = None
 
     Verguetungsempfaenger: Optional[Geschaeftspartnerrolle] = None
 
