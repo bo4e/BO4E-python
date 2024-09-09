@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
+from .. import Bankverbindung
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
@@ -78,6 +79,10 @@ class Geschaeftspartner(Geschaeftsobjekt):
     #: Internetseite des Marktpartners
     website: Optional[str] = None
     #: Adresse des Geschäftspartners
+    bankverbindung: Optional[Bankverbindung] = None
+    #: Bankverbindung des Geschäftspartners
+    steuernummer: Optional[str] = None
+    #: Steuernummer des Geschäftspartners
     adresse: Optional["Adresse"] = None
     #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
     #: not clear what is the best solution here - circular import marktteilnehmer?
