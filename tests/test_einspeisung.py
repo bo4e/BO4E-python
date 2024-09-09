@@ -14,7 +14,7 @@ class TestEinspeisung:
             pytest.param(
                 Einspeisung(
                     marktlokations_id="teststring",
-                    tranchen_id="teststring",
+                    tranche_id="teststring",
                     verguetungsempfaenger=Geschaeftspartnerrolle.LIEFERANT,
                     eeg_vermarktungsform=EEGVermarktungsform.KWKG_VERGUETUNG,
                     landescode=Landescode.DE,  # type:ignore[attr-defined]

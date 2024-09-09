@@ -1,5 +1,5 @@
 """
-Contains Buendelvertrag class and corresponding marshmallow schema for de-/serialization
+Contains Einspeisung class and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-few-public-methods
@@ -30,7 +30,7 @@ class Einspeisung(Geschaeftsobjekt):
 
     marktlokations_id: Optional[str] = None
 
-    tranchen_id: Optional[str] = None
+    tranche_id: Optional[str] = None
 
     verguetungsempfaenger: Optional[Geschaeftspartnerrolle] = None
 

@@ -12,7 +12,7 @@ class EEGVermarktungsform(StrEnum):
     # Ausfallvergütung für den Fall, dass andere Vermarktungsmethoden nicht verfügbar sind
     MARKTPRAEMIE = "MARKTPRAEMIE"  #: Marktprämie
     # Marktprämie für die geförderte Direktvermarktung
-    SONSTIGES = "SONSTIGES"  #: Sonstiges
+    SONSTIGE = "SONSTIGE"  #: Sonstige
     # Sonstige Vermarktungsformen ohne gesetzliche Vergütung
     KWKG_VERGUETUNG = "KWKG_VERGUETUNG"  #: KWKG-Vergütung
     # Vergütung nach dem Kraft-Wärme-Kopplungsgesetz (KWKG)
