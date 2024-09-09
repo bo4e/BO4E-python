@@ -29,14 +29,14 @@ class Einspeisung(Geschaeftsobjekt):
 
     """
 
-    MarktlokationsId: Optional[str] = None
+    marktlokations_id: Optional[str] = None
 
-    TranchenId: Optional[str] = None
+    tranchen_id: Optional[str] = None
 
-    Verguetungsempfaenger: Optional[Geschaeftspartnerrolle] = None
+    verguetungsempfaenger: Optional[Geschaeftspartnerrolle] = None
 
-    EEGVermarktungsform: Optional[EEGVermarktungsform] = None
+    eeg_vermarktungsform: Optional[EEGVermarktungsform] = None
 
-    Landescode: Optional[Landescode] = None
+    landescode: Optional[Landescode] = None
 
-    FernsteuerbarkeitStatus: Optional[FernsteuerbarkeitStatus] = None
+    fernsteuerbarkeit_status: Optional[FernsteuerbarkeitStatus] = None
