@@ -12,6 +12,7 @@ __all__ = [
     "Angebot",
     "Ausschreibung",
     "Buendelvertrag",
+    "Einspeisung",
     "Energiemenge",
     "Fremdkosten",
     "Geraet",
@@ -193,6 +194,9 @@ __all__ = [
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
     "ZusatzAttribut",
+    "Profilart",
+    "EEGVermarktungsform",
+    "FernsteuerbarkeitStatus",
     "__version__",
     "__gh_version__",
 ]
@@ -203,6 +207,7 @@ from pydantic import BaseModel as _PydanticBaseModel
 from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
 from .bo.buendelvertrag import Buendelvertrag
+from .bo.einspeisung import Einspeisung
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
 from .bo.geraet import Geraet
@@ -314,9 +319,11 @@ from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
 from .enum.dienstleistungstyp import Dienstleistungstyp
+from .enum.eeg_vermarktungsform import EEGVermarktungsform
 from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
 from .enum.erzeugungsart import Erzeugungsart
+from .enum.fernsteuerbarkeit_status import FernsteuerbarkeitStatus
 from .enum.gasqualitaet import Gasqualitaet
 from .enum.gebiettyp import Gebiettyp
 from .enum.geraeteklasse import Geraeteklasse
@@ -352,6 +359,7 @@ from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
+from .enum.profilart import Profilart
 from .enum.rechnungslegung import Rechnungslegung
 from .enum.rechnungsstatus import Rechnungsstatus
 from .enum.rechnungstyp import Rechnungstyp

@@ -4,7 +4,7 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import Optional
 
 from ..enum.eeg_vermarktungsform import EEGVermarktungsform
 from ..enum.fernsteuerbarkeit_status import FernsteuerbarkeitStatus
@@ -17,15 +17,14 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 @postprocess_docstring
 class Einspeisung(Geschaeftsobjekt):
     """
-    Abbildung eines Bündelvertrags.
-    Es handelt sich hierbei um eine Liste von Einzelverträgen, die in einem Vertragsobjekt gebündelt sind.
+    Abbildung der Einspeisung.
 
     .. raw:: html
 
-        <object data="../_static/images/bo4e/bo/Buendelvertrag.svg" type="image/svg+xml"></object>
+        <object data="../_static/images/bo4e/bo/Einspeisung.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Buendelvertrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Buendelvertrag.json>`_
+        `Einspeisung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Einspeisung.json>`_
 
     """
 

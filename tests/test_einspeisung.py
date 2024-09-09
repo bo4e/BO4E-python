@@ -1,10 +1,9 @@
 import pytest
 
-from build.lib.bo4e.enum.landescode import Landescode
-from src.bo4e import Geschaeftspartnerrolle
-from src.bo4e.bo.einspeisung import Einspeisung
-from src.bo4e.enum.eeg_vermarktungsform import EEGVermarktungsform
-from src.bo4e.enum.fernsteuerbarkeit_status import FernsteuerbarkeitStatus
+from bo4e import Geschaeftspartnerrolle, Landescode
+from bo4e.bo.einspeisung import Einspeisung
+from bo4e.enum.eeg_vermarktungsform import EEGVermarktungsform
+from bo4e.enum.fernsteuerbarkeit_status import FernsteuerbarkeitStatus
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -18,7 +17,7 @@ class TestEinspeisung:
                     tranchen_id="teststring",
                     verguetungsempfaenger=Geschaeftspartnerrolle.LIEFERANT,
                     eeg_vermarktungsform=EEGVermarktungsform.KWKG_VERGUETUNG,
-                    landescode=Landescode.DE,
+                    landescode=Landescode.DE,  # type:ignore[attr-defined]
                     fernsteuerbarkeit_status=FernsteuerbarkeitStatus.NICHT_FERNSTEUERBAR,
                 ),
                 id="all attributes at first level",
