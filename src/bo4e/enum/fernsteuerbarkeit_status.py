@@ -8,7 +8,7 @@ class FernsteuerbarkeitStatus(StrEnum):
     Enum zur Abbildung des Status der Fernsteuerbarkeit
 
     Marktlokation ist technisch fernsteuerbar. Der NB bestätigt mit der Anmeldung einer erzeugenden Marktlokation zur
-    Direktvermarktung, dass die Marktlokation mit einer Fernsteuerung ausgestattet, aber dem NB keine Information
+    Direktvermarktung, dass die Marktlokation mit einer Fernsteuerung ausgestattet ist, aber dem NB keine Information
     darüber vorliegt, dass der LF die Marktlokation fernsteuern kann. Die Voraussetzung zur Zahlung der
     Managementprämie für fernsteuerbare Marktlokation ist nicht gegeben.
     """
