@@ -3,6 +3,7 @@ import pytest
 from bo4e import (
     Adresse,
     Anrede,
+    Bankverbindung,
     Geschaeftspartner,
     Geschaeftspartnerrolle,
     Kontaktweg,
@@ -27,6 +28,12 @@ class TestGeschaeftspartner:
                     vorname="Hans",
                     nachname="Müller-Schmidt",
                     organisationstyp=Organisationstyp.UNTERNEHMEN,
+                    bankverbindung=Bankverbindung(
+                        iban="DE07123412341285723412",
+                        kontoinhaber="Hans Müller-Schmidt",
+                        bankkennung="DEUTDEFF",
+                        bankname="Deutsche Bank",
+                    ),
                     handelsregisternummer="HRB 254466",
                     amtsgericht="Amtsgericht München",
                     kontaktwege=[Kontaktweg()],
@@ -52,6 +59,12 @@ class TestGeschaeftspartner:
                     kontaktwege=[Kontaktweg()],
                     umsatzsteuer_id="AT12345",
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
+                    bankverbindung=Bankverbindung(
+                        iban="DE07123412341234123412",
+                        kontoinhaber="Jürgen W.",
+                        bankkennung="DEUTDEFF",
+                        bankname="Deutsche Bank",
+                    ),
                     adresse=Adresse(
                         postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
                     ),
