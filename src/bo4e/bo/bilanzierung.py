@@ -1,6 +1,7 @@
 """
 Contains class Bilanzierung
 """
+
 from datetime import datetime
 from decimal import Decimal
 from typing import Annotated, Optional
@@ -17,6 +18,7 @@ from bo4e.enum.prognosegrundlage import Prognosegrundlage
 from bo4e.enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
 from bo4e.enum.zeitreihentyp import Zeitreihentyp
 
+from ..enum.abwicklungsmodell import Abwicklungsmodell
 from ..enum.typ import Typ
 
 
@@ -78,3 +80,4 @@ class Bilanzierung(Geschaeftsobjekt):
 
     true=Wahlrecht beim Lieferanten vorhanden
     """
+    abwicklungsmodell: Optional[Abwicklungsmodell] = None  #: Abwicklungsmodell

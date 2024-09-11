@@ -9,6 +9,7 @@ The BO4E version can be queried using `bo4e.__version__`.
 """
 
 __all__ = [
+    "Abwicklungsmodell",
     "Angebot",
     "Ausschreibung",
     "Bilanzierung",
@@ -314,6 +315,7 @@ from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
 from .enum.abgabeart import AbgabeArt
+from .enum.abwicklungsmodell import Abwicklungsmodell
 from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
