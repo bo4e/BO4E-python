@@ -177,6 +177,7 @@ __all__ = [
     "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
+    "Erreichbarkeit",
     "Typ",
     "Verbrauchsart",
     "Vertragsart",
@@ -252,6 +253,7 @@ from .com.com import COM
 from .com.dienstleistung import Dienstleistung
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
+from .com.erreichbarkeit import Erreichbarkeit
 from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
