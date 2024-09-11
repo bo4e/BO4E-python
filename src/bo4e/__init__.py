@@ -194,7 +194,6 @@ __all__ = [
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
     "ZusatzAttribut",
-    "Profilart",
     "EEGVermarktungsform",
     "FernsteuerbarkeitStatus",
     "__version__",
@@ -359,7 +358,6 @@ from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
-from .enum.profilart import Profilart
 from .enum.rechnungslegung import Rechnungslegung
 from .enum.rechnungsstatus import Rechnungsstatus
 from .enum.rechnungstyp import Rechnungstyp
