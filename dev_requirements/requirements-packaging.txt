@@ -5,7 +5,7 @@
 #
 #    pip-compile-multi
 #
-build==1.2.1
+build==1.2.2
     # via -r requirements-packaging.in
 certifi==2024.7.4
     # via requests
