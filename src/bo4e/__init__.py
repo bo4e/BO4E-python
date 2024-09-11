@@ -193,6 +193,7 @@ __all__ = [
     "Zaehlergroesse",
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
+    "Zeitfenster",
     "ZusatzAttribut",
     "__version__",
     "__gh_version__",
@@ -295,6 +296,7 @@ from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
+from .com.zeitfenster import Zeitfenster
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
 from .com.zeitspanne import Zeitspanne
