@@ -20,9 +20,11 @@ __all__ = [
     "Geschaeftspartner",
     "Kosten",
     "Lastgang",
+    "Lokationszuordnung",
     "Marktlokation",
     "Marktteilnehmer",
     "Messlokation",
+    "Netzlokation",
     "Person",
     "Preisblatt",
     "PreisblattDienstleistung",
@@ -34,10 +36,12 @@ __all__ = [
     "Region",
     "Regionaltarif",
     "Standorteigenschaften",
+    "SteuerbareRessource",
     "Tarif",
     "Tarifinfo",
     "Tarifkosten",
     "Tarifpreisblatt",
+    "TechnischeRessource",
     "Vertrag",
     "Zaehler",
     "Zeitreihe",
@@ -68,7 +72,6 @@ __all__ = [
     "Lastprofil",
     "MarktgebietInfo",
     "Menge",
-    "Messlokationszuordnung",
     "PositionsAufAbschlag",
     "Preis",
     "Preisgarantie",
@@ -119,6 +122,7 @@ __all__ = [
     "Bemessungsgroesse",
     "Bilanzierungsmethode",
     "Dienstleistungstyp",
+    "EMobilitaetsart",
     "Energierichtung",
     "Erzeugungsart",
     "Fallgruppenzuordnung",
@@ -129,6 +133,7 @@ __all__ = [
     "Geschaeftspartnerrolle",
     "Gueltigkeitstyp",
     "Kalkulationsmethode",
+    "Konfigurationsprodukt",
     "Kontaktart",
     "Kostenklasse",
     "Kundengruppe",
@@ -144,6 +149,7 @@ __all__ = [
     "Messart",
     "Messgroesse",
     "Messpreistyp",
+    "Messwerterfassung",
     "Messwertstatus",
     "Messwertstatuszusatz",
     "Netzebene",
@@ -167,6 +173,8 @@ __all__ = [
     "Registeranzahl",
     "Rollencodetyp",
     "Sparte",
+    "Speicherart",
+    "SteuerkanalLeistungsbeschreibung",
     "Steuerkennzeichen",
     "StrEnum",
     "Tarifkalkulationsmethode",
@@ -174,6 +182,8 @@ __all__ = [
     "Tarifregionskriterium",
     "Tariftyp",
     "Tarifzeit",
+    "TechnischeRessourceNutzung",
+    "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
     "Typ",
@@ -198,6 +208,8 @@ __all__ = [
     "__gh_version__",
 ]
 
+from pydantic import BaseModel as _PydanticBaseModel
+
 # Import BOs
 from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
@@ -210,9 +222,11 @@ from .bo.geschaeftsobjekt import Geschaeftsobjekt
 from .bo.geschaeftspartner import Geschaeftspartner
 from .bo.kosten import Kosten
 from .bo.lastgang import Lastgang
+from .bo.lokationszuordnung import Lokationszuordnung
 from .bo.marktlokation import Marktlokation
 from .bo.marktteilnehmer import Marktteilnehmer
 from .bo.messlokation import Messlokation
+from .bo.netzlokation import Netzlokation
 from .bo.person import Person
 from .bo.preisblatt import Preisblatt
 from .bo.preisblattdienstleistung import PreisblattDienstleistung
@@ -224,10 +238,12 @@ from .bo.rechnung import Rechnung
 from .bo.region import Region
 from .bo.regionaltarif import Regionaltarif
 from .bo.standorteigenschaften import Standorteigenschaften
+from .bo.steuerbareressource import SteuerbareRessource
 from .bo.tarif import Tarif
 from .bo.tarifinfo import Tarifinfo
 from .bo.tarifkosten import Tarifkosten
 from .bo.tarifpreisblatt import Tarifpreisblatt
+from .bo.technischeressource import TechnischeRessource
 from .bo.vertrag import Vertrag
 from .bo.zaehler import Zaehler
 from .bo.zeitreihe import Zeitreihe
@@ -252,6 +268,7 @@ from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
 from .com.katasteradresse import Katasteradresse
+from .com.konfigurationsprodukt import Konfigurationsprodukt
 from .com.kontaktweg import Kontaktweg
 from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
@@ -260,7 +277,6 @@ from .com.kriteriumwert import KriteriumWert
 from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
-from .com.messlokationszuordnung import Messlokationszuordnung
 from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
@@ -313,6 +329,7 @@ from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
 from .enum.dienstleistungstyp import Dienstleistungstyp
+from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
 from .enum.erzeugungsart import Erzeugungsart
 from .enum.fallgruppenzuordnung import Fallgruppenzuordnung
@@ -338,6 +355,7 @@ from .enum.mengenoperator import Mengenoperator
 from .enum.messart import Messart
 from .enum.messgroesse import Messgroesse
 from .enum.messpreistyp import Messpreistyp
+from .enum.messwerterfassung import Messwerterfassung
 from .enum.messwertstatus import Messwertstatus
 from .enum.messwertstatuszusatz import Messwertstatuszusatz
 from .enum.netzebene import Netzebene
@@ -361,6 +379,8 @@ from .enum.regionskriteriumtyp import Regionskriteriumtyp
 from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
+from .enum.speicherart import Speicherart
+from .enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
 from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
@@ -368,6 +388,8 @@ from .enum.tarifmerkmal import Tarifmerkmal
 from .enum.tarifregionskriterium import Tarifregionskriterium
 from .enum.tariftyp import Tariftyp
 from .enum.tarifzeit import Tarifzeit
+from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
+from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
 from .enum.typ import Typ
@@ -389,3 +411,10 @@ from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
 from .enum.zeitreihentyp import Zeitreihentyp
 from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut
+
+# Resolve all ForwardReferences. This design prevents circular import errors.
+for cls_name in __all__:
+    cls = globals().get(cls_name, None)
+    if cls is None or not isinstance(cls, type) or not issubclass(cls, _PydanticBaseModel):
+        continue
+    cls.model_rebuild(force=True)

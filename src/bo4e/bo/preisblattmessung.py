@@ -2,18 +2,21 @@
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..bo.geraet import Geraet
-from ..bo.zaehler import Zaehler
-from ..enum.bilanzierungsmethode import Bilanzierungsmethode
-from ..enum.dienstleistungstyp import Dienstleistungstyp
-from ..enum.netzebene import Netzebene
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
+
+if TYPE_CHECKING:
+    from ..bo.geraet import Geraet
+    from ..bo.zaehler import Zaehler
+    from ..enum.bilanzierungsmethode import Bilanzierungsmethode
+    from ..enum.dienstleistungstyp import Dienstleistungstyp
+    from ..enum.netzebene import Netzebene
+
 
 # pylint: disable=too-few-public-methods
 
@@ -32,18 +35,18 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PREISBLATTMESSUNG
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTMESSUNG
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
-    bilanzierungsmethode: Optional[Bilanzierungsmethode] = None
+    bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
-    messebene: Optional[Netzebene] = None
+    messebene: Optional["Netzebene"] = None
 
     #: Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
-    zaehler: Optional[Zaehler] = None
+    zaehler: Optional["Zaehler"] = None
 
     #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
-    inklusive_dienstleistungen: Optional[list[Dienstleistungstyp]] = None
+    inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None
 
     #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
-    inklusive_geraete: Optional[list[Geraet]] = None
+    inklusive_geraete: Optional[list["Geraet"]] = None

@@ -32,9 +32,9 @@ class COM(BaseModel):
 
     """
 
-    version: Annotated[
-        Optional[str], Field(alias="_version")
-    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    version: Annotated[Optional[str], Field(alias="_version")] = (
+        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    )
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
@@ -44,7 +44,7 @@ class COM(BaseModel):
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
-    zusatz_attribute: Optional[list[ZusatzAttribut]] = None
+    zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
 
     # pylint: disable=duplicate-code
     model_config = ConfigDict(
@@ -55,6 +55,7 @@ class COM(BaseModel):
         # an annotated version of Decimal, but you would have to use it everywhere in the pydantic models.
         # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
         json_encoders={Decimal: str},
+        use_attribute_docstrings=True,
     )
     """
     basic configuration for pydantic's behaviour

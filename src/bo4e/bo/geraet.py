@@ -3,15 +3,18 @@ Contains Geraet class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Optional
 
 from pydantic import Field
 
-from ..enum.geraeteklasse import Geraeteklasse
-from ..enum.geraetetyp import Geraetetyp
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..enum.geraeteklasse import Geraeteklasse
+    from ..enum.geraetetyp import Geraetetyp
+
 
 # pylint: disable=too-few-public-methods
 
@@ -30,13 +33,13 @@ class Geraet(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.GERAET
+    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GERAET
 
     #: Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird.
     geraetenummer: Optional[str] = None
     #: Bezeichnung des Geräts
     bezeichnung: Optional[str] = None
     #: Die übergreifende Klasse eines Geräts, beispielsweise Wandler
-    geraeteklasse: Optional[Geraeteklasse] = None
+    geraeteklasse: Optional["Geraeteklasse"] = None
     #: Der speziellere Typ eines Gerätes, beispielsweise Stromwandler
-    geraetetyp: Optional[Geraetetyp] = None
+    geraetetyp: Optional["Geraetetyp"] = None

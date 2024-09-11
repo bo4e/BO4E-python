@@ -28,5 +28,5 @@ class ZusatzAttribut(BaseModel):
 
     """
 
-    name: Optional[str]  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
-    wert: Any  #: Wert der externen Referenz (z.B. "123456"; "4711")
+    name: Optional[str] = None  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
+    wert: Any = None  #: Wert der externen Referenz (z.B. "123456"; "4711")

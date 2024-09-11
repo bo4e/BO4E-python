@@ -74,7 +74,7 @@ Bei Fragen oder Anregungen, bitte `einfach ein Issue in diesem Repo aufmachen <h
 Code Beiträge
 =============
 Änderungsvorschläge (sowohl an das Datenmodell als auch an die Implementierung in Python) können direkt als Code in Form von Pull Requests eingereicht werden.
-Details dazu finden sich im `Contribution Guide`_.
+Details dazu finden sich im `Contribution Guide <https://bo4e.github.io/BO4E-python/latest/contributing_guide.html>`_.
 
 Nutzung als Python Library
 ==========================
@@ -96,4 +96,3 @@ Andere nennenswerte BO4E Implementierungen
 * `PHP <https://github.com/conuti-gmbh/bo4e-php/>`_ (und `Schemas <https://github.com/conuti-gmbh/bo4e-schema>`_)
 
 .. _`BO4E website`: https://www.bo4e.de/dokumentation
-.. _`Contribution Guide`: CONTRIBUTING.md

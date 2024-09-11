@@ -3,11 +3,14 @@ Contains Zustaendigkeit class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.themengebiet import Themengebiet
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.themengebiet import Themengebiet
+
 
 # pylint: disable=too-few-public-methods
 
@@ -26,7 +29,7 @@ class Zustaendigkeit(COM):
 
     """
 
-    themengebiet: Optional[Themengebiet] = None
+    themengebiet: Optional["Themengebiet"] = None
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners bzw. der Person angegeben werden
     """

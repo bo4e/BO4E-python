@@ -3,11 +3,14 @@ Contains Kontaktweg class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.kontaktart import Kontaktart
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.kontaktart import Kontaktart
+
 
 # pylint: disable=too-few-public-methods
 
@@ -27,7 +30,7 @@ class Kontaktweg(COM):
     """
 
     #: Gibt die Kontaktart des Kontaktes an.
-    kontaktart: Optional[Kontaktart] = None
+    kontaktart: Optional["Kontaktart"] = None
     #: Spezifikation, beispielsweise "Durchwahl", "Sammelnummer" etc.
     beschreibung: Optional[str] = None
     #: Die Nummer oder E-Mail-Adresse.

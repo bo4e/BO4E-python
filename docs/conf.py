@@ -241,10 +241,10 @@ autodoc_default_options = {"ignore-module-all": True}
 # html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-# html_show_sphinx = True
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-# html_show_copyright = True
+html_show_copyright = False
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
@@ -321,6 +321,7 @@ uml.compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_st
 print(f"Compiled uml files into svg using kroki.")
 
 # Create compatibility matrix
-compatibility_matrix_output_file = Path(__file__).parent / "compatibility_matrix.csv"
+compatibility_matrix_output_file = Path(__file__).parent / "_static/tables/compatibility_matrix.csv"
 gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN")
 create_tables_for_doc(compatibility_matrix_output_file, release, last_n_versions=0, gh_token=gh_token)
+print(f"Created compatibility matrix at static folder {compatibility_matrix_output_file}")

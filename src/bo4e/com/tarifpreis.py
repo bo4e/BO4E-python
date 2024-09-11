@@ -3,11 +3,14 @@ Contains Tarifpreis class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.preistyp import Preistyp
 from ..utils import postprocess_docstring
 from .preis import Preis
+
+if TYPE_CHECKING:
+    from ..enum.preistyp import Preistyp
+
 
 # pylint: disable=too-few-public-methods
 
@@ -27,7 +30,7 @@ class Tarifpreis(Preis):
     """
 
     #:  Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Optional[Preistyp] = None
+    preistyp: Optional["Preistyp"] = None
 
     #:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler".
     beschreibung: Optional[str] = None
