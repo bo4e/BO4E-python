@@ -1,6 +1,7 @@
 """
 Contains Enums for Zeitreihentyp.
 """
+
 from bo4e.enum.strenum import StrEnum
 
 

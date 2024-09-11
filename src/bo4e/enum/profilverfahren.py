@@ -1,6 +1,7 @@
 """
 Contains Enums for Profilverfahren.
 """
+
 from bo4e.enum.strenum import StrEnum
 
 

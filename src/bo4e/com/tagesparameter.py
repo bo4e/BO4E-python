@@ -2,7 +2,6 @@
 Contains tagesparameter class
 """
 
-
 from typing import Optional
 
 from bo4e.com.com import COM

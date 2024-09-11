@@ -1,6 +1,7 @@
 """
 Contains Enums for Wahlrechtsprognosgrundlage.
 """
+
 from bo4e.enum.strenum import StrEnum
 
 

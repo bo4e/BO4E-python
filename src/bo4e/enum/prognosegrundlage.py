@@ -1,6 +1,7 @@
 """
 Contains Enums for Prognosegrundlage.
 """
+
 from bo4e.enum.strenum import StrEnum
 
 
