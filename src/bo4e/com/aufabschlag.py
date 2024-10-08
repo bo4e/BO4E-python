@@ -13,7 +13,7 @@ if TYPE_CHECKING:
     from ..enum.aufabschlagsziel import AufAbschlagsziel
     from ..enum.waehrungseinheit import Waehrungseinheit
     from .preisstaffel import Preisstaffel
-    from .zeitraum import Zeitraum
+    from .zeitspanne import Zeitspanne
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -49,5 +49,5 @@ class AufAbschlag(COM):
     (Nur im Falle absoluter Aufschlagstypen). """
     #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
     website: Optional[str] = None
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
-    gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    #: Zeitspanne, in der die Vereinbarung gültig ist.
+    gueltigkeitszeitraum: Optional["Zeitspanne"] = None

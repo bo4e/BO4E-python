@@ -9,7 +9,7 @@ from bo4e import (
     Ausschreibungsstatus,
     Ausschreibungstyp,
     Geschaeftspartner,
-    Zeitraum,
+    Zeitspanne,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -27,8 +27,8 @@ class TestAusschreibung:
                     ausschreibungportal=Ausschreibungsportal.BMWI,
                     webseite="https://meineausschreibungswebsite.inv/",
                     veroeffentlichungszeitpunkt=datetime(2022, 1, 1, 0, 0, 0, tzinfo=timezone.utc),
-                    abgabefrist=Zeitraum(),
-                    bindefrist=Zeitraum(),
+                    abgabefrist=Zeitspanne(),
+                    bindefrist=Zeitspanne(),
                     ausschreibender=Geschaeftspartner(),
                     lose=[Ausschreibungslos()],
                 ),

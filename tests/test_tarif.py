@@ -17,7 +17,7 @@ from bo4e import (
     TarifpreispositionProOrt,
     Tariftyp,
     Vertragskonditionen,
-    Zeitraum,
+    Zeitspanne,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -45,7 +45,7 @@ class TestTarif:
                     website="https://foo.inv",
                     bemerkung="super billig aber auch super dreckig",
                     vertragskonditionen=Vertragskonditionen(),
-                    zeitliche_gueltigkeit=Zeitraum(),
+                    zeitliche_gueltigkeit=Zeitspanne(),
                     energiemix=Energiemix(),
                     anbieter=Marktteilnehmer(),
                 ),

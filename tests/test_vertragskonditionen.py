@@ -1,9 +1,9 @@
-from datetime import datetime, timezone
+from datetime import date
 from decimal import Decimal
 
 import pytest
 
-from bo4e import Mengeneinheit, Vertragskonditionen, Zeitraum
+from bo4e import Vertragskonditionen, Zeitspanne
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -15,13 +15,13 @@ class TestVertragskonditionen:
                 Vertragskonditionen(
                     beschreibung="Foobar",
                     anzahl_abschlaege=Decimal(3),
-                    vertragslaufzeit=Zeitraum(
-                        startdatum=datetime(2012, 9, 21, tzinfo=timezone.utc),
-                        enddatum=datetime(2013, 10, 11, tzinfo=timezone.utc),
+                    vertragslaufzeit=Zeitspanne(
+                        startdatum=date(2012, 9, 21),
+                        enddatum=date(2013, 10, 11),
                     ),
-                    kuendigungsfrist=Zeitraum(einheit=Mengeneinheit.WOCHE, dauer=Decimal(3)),
-                    vertragsverlaengerung=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(14)),
-                    abschlagszyklus=Zeitraum(einheit=Mengeneinheit.TAG, dauer=Decimal(5)),
+                    kuendigungsfrist=Zeitspanne(),
+                    vertragsverlaengerung=Zeitspanne(),
+                    abschlagszyklus=Zeitspanne(),
                 ),
             ),
             pytest.param(
