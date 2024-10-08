@@ -5,7 +5,7 @@
 #
 #    pip-compile-multi
 #
-black==24.8.0
+black==24.10.0
     # via -r dev_requirements/requirements-formatting.in
 click==8.1.7
     # via black
