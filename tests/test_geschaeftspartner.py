@@ -1,3 +1,5 @@
+from datetime import time, timezone
+
 import pytest
 
 from bo4e import (
@@ -11,6 +13,8 @@ from bo4e import (
     Person,
     Titel,
 )
+from bo4e.com.erreichbarkeit import Erreichbarkeit
+from bo4e.com.zeitfenster import Zeitfenster
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -54,6 +58,20 @@ class TestGeschaeftspartner:
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                     adresse=Adresse(
                         postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
+                    ),
+                    erreichbarkeit=Erreichbarkeit(
+                        montag_erreichbarkeit=Zeitfenster(
+                            startzeit=time(14, 00, tzinfo=timezone.utc), endzeit=time(17, 00, tzinfo=timezone.utc)
+                        ),
+                        mittwoch_erreichbarkeit=Zeitfenster(
+                            startzeit=time(6, 00, tzinfo=timezone.utc), endzeit=time(12, 00, tzinfo=timezone.utc)
+                        ),
+                        freitag_erreichbarkeit=Zeitfenster(
+                            startzeit=time(5, 00, tzinfo=timezone.utc), endzeit=time(22, 00, tzinfo=timezone.utc)
+                        ),
+                        mittagspause=Zeitfenster(
+                            startzeit=time(12, 00, tzinfo=timezone.utc), endzeit=time(13, 00, tzinfo=timezone.utc)
+                        ),
                     ),
                 ),
                 id="Landescode!=DE, DE is default",
