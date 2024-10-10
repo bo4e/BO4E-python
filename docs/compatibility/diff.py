@@ -3,15 +3,16 @@ Contains the logic to detect the different changes between two BO4E versions.
 """
 
 import itertools
+import logging
 import re
 from pathlib import Path
 from typing import Iterable, Sequence
 
 from bost.schema import AllOf, AnyOf, Array, Object, Reference, SchemaRootType, SchemaType, StrEnum, String, TypeBase
-from pydantic.v1.schema import schema
 
 from . import change_schemas, loader
-from .versioning import logger
+
+logger = logging.getLogger(__name__)
 
 REGEX_IGNORE_VERSION = re.compile(r"v\d+\.\d+\.\d+(-rc\d+)?")
 
