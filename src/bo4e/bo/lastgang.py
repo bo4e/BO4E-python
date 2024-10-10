@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import Field, constr
+from pydantic import Field
 
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring

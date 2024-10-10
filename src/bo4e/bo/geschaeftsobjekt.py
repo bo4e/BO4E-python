@@ -1,6 +1,6 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Optional
 
 from humps.main import camelize
 
@@ -10,7 +10,6 @@ from pydantic import BaseModel, ConfigDict, Field
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
