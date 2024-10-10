@@ -2,7 +2,7 @@
 Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -37,7 +37,7 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIFPREISBLATT
+    typ: Annotated[Literal[Typ.TARIFPREISBLATT], Field(alias="_typ")] = Typ.TARIFPREISBLATT
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None

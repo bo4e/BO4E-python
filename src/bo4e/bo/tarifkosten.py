@@ -3,7 +3,7 @@ Contains Tarifkosten class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -32,7 +32,7 @@ class Tarifkosten(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIFKOSTEN
+    typ: Annotated[Literal[Typ.TARIFKOSTEN], Field(alias="_typ")] = Typ.TARIFKOSTEN
     kosten: Optional["Kosten"] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

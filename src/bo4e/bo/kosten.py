@@ -2,7 +2,7 @@
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -36,7 +36,7 @@ class Kosten(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.KOSTEN
+    typ: Annotated[Literal[Typ.KOSTEN], Field(alias="_typ")] = Typ.KOSTEN
     #: Klasse der Kosten, beispielsweise Fremdkosten
     kostenklasse: Optional["Kostenklasse"] = None
     #: Für diesen Zeitraum wurden die Kosten ermittelt

@@ -4,7 +4,7 @@ Contains Buendelvertrag class and corresponding marshmallow schema for de-/seria
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -38,7 +38,7 @@ class Buendelvertrag(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.BUENDELVERTRAG
+    typ: Annotated[Literal[Typ.BUENDELVERTRAG], Field(alias="_typ")] = Typ.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
     #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag

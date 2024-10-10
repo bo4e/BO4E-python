@@ -2,7 +2,7 @@
 Contains Tarif class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -37,7 +37,7 @@ class Tarif(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIF
+    typ: Annotated[Literal[Typ.TARIF], Field(alias="_typ")] = Typ.TARIF
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen

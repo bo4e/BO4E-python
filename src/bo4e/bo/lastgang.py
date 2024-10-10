@@ -3,7 +3,7 @@ Contains Lastgang class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -40,7 +40,7 @@ class Lastgang(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.LASTGANG
+    typ: Annotated[Literal[Typ.LASTGANG], Field(alias="_typ")] = Typ.LASTGANG
     #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
     sparte: Optional["Sparte"] = None
     #: Definition der gemessenen Größe anhand ihrer Einheit
@@ -54,5 +54,5 @@ class Lastgang(Geschaeftsobjekt):
     #: Versionsnummer des Lastgangs
     version: Optional[str] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: Optional[constr(strict=True)] = None  # type: ignore[valid-type]
+    obis_kennzahl: Optional[str] = None  # type: ignore[valid-type]
     zeit_intervall_laenge: Optional["Menge"]
