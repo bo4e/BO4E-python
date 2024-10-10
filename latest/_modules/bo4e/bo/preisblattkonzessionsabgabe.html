@@ -87,7 +87,7 @@
 <span class="sd">Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
 
@@ -118,7 +118,9 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Typ&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">PREISBLATTKONZESSIONSABGABE</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">PREISBLATTKONZESSIONSABGABE</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">Typ</span><span class="o">.</span><span class="n">PREISBLATTKONZESSIONSABGABE</span>  <span class="c1"># type: ignore[assignment]</span>
+    <span class="p">)</span>
     <span class="c1"># required attributes (additional to those of Preisblatt)</span>
     <span class="c1">#: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist</span>
     <span class="n">kundengruppe_k_a</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;KundengruppeKA&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>

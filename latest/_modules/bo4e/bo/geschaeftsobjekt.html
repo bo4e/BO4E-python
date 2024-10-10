@@ -95,7 +95,6 @@
 <span class="kn">from</span> <span class="nn">bo4e.version</span> <span class="kn">import</span> <span class="n">__version__</span>
 <span class="kn">from</span> <span class="nn">bo4e.zusatzattribut</span> <span class="kn">import</span> <span class="n">ZusatzAttribut</span>
 
-<span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
@@ -104,7 +103,7 @@
 <div class="viewcode-block" id="Geschaeftsobjekt">
 <a class="viewcode-back" href="../../../api/bo4e.bo.html#bo4e.bo.geschaeftsobjekt.Geschaeftsobjekt">[docs]</a>
 <span class="nd">@postprocess_docstring</span>
-<span class="k">class</span> <span class="nc">Geschaeftsobjekt</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Geschaeftsobjekt</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>  <span class="c1"># pragma: no cover</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.</span>
 <span class="sd">    Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.</span>
@@ -122,9 +121,6 @@
     <span class="n">version</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_version&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
         <span class="n">__version__</span>  <span class="c1">#: Version der BO-Struktur aka &quot;fachliche Versionierung&quot;</span>
     <span class="p">)</span>
-    <span class="c1"># src/_bo4e_python_version.py</span>
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Typ&quot;</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">GESCHAEFTSOBJEKT</span>  <span class="c1">#: Der Typ des Geschäftsobjektes</span>
-    <span class="c1"># bo_typ is used as discriminator f.e. for databases or deserialization</span>
 
     <span class="n">zusatz_attribute</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;ZusatzAttribut&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="c1"># zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information</span>
