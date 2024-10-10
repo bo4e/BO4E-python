@@ -16,7 +16,7 @@ from ..utils import postprocess_docstring
 
 
 @postprocess_docstring
-class Geschaeftsobjekt(BaseModel):
+class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
     Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
