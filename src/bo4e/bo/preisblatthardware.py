@@ -34,7 +34,9 @@ class PreisblattHardware(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[Typ.PREISBLATTHARDWARE], Field(alias="_typ")] = Typ.PREISBLATTHARDWARE
+    typ: Annotated[Literal[Typ.PREISBLATTHARDWARE], Field(alias="_typ")] = (
+        Typ.PREISBLATTHARDWARE  # type: ignore[assignment]
+    )
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None

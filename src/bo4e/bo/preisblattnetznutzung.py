@@ -33,7 +33,9 @@ class PreisblattNetznutzung(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[Typ.PREISBLATTNETZNUTZUNG], Field(alias="_typ")] = Typ.PREISBLATTNETZNUTZUNG
+    typ: Annotated[Literal[Typ.PREISBLATTNETZNUTZUNG], Field(alias="_typ")] = (
+        Typ.PREISBLATTNETZNUTZUNG  # type: ignore[assignment]
+    )
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None

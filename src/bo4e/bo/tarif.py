@@ -37,7 +37,7 @@ class Tarif(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[Typ.TARIF], Field(alias="_typ")] = Typ.TARIF
+    typ: Annotated[Literal[Typ.TARIF], Field(alias="_typ")] = Typ.TARIF  # type: ignore[assignment]
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen

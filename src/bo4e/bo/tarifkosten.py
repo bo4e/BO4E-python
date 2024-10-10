@@ -32,7 +32,7 @@ class Tarifkosten(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[Typ.TARIFKOSTEN], Field(alias="_typ")] = Typ.TARIFKOSTEN
+    typ: Annotated[Literal[Typ.TARIFKOSTEN], Field(alias="_typ")] = Typ.TARIFKOSTEN  # type: ignore[assignment]
     kosten: Optional["Kosten"] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

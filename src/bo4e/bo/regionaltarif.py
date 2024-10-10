@@ -35,7 +35,7 @@ class Regionaltarif(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[Typ.REGIONALTARIF], Field(alias="_typ")] = Typ.REGIONALTARIF
+    typ: Annotated[Literal[Typ.REGIONALTARIF], Field(alias="_typ")] = Typ.REGIONALTARIF  # type: ignore[assignment]
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
     #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen

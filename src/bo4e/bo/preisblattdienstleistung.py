@@ -33,7 +33,9 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[Typ.PREISBLATTDIENSTLEISTUNG], Field(alias="_typ")] = Typ.PREISBLATTDIENSTLEISTUNG
+    typ: Annotated[Literal[Typ.PREISBLATTDIENSTLEISTUNG], Field(alias="_typ")] = (
+        Typ.PREISBLATTDIENSTLEISTUNG  # type: ignore[assignment]
+    )
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None

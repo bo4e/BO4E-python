@@ -35,11 +35,6 @@ class Geschaeftsobjekt(BaseModel):
     version: Annotated[Optional[str], Field(alias="_version")] = (
         __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
     )
-    # src/_bo4e_python_version.py
-    typ: Annotated[Literal[Typ.GESCHAEFTSOBJEKT], Field(alias="_typ")] = (
-        Typ.GESCHAEFTSOBJEKT
-    )  #: Der Typ des Geschäftsobjektes
-    # bo_typ is used as discriminator f.e. for databases or deserialization
 
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information

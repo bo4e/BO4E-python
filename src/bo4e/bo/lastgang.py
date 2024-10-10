@@ -54,5 +54,5 @@ class Lastgang(Geschaeftsobjekt):
     #: Versionsnummer des Lastgangs
     version: Optional[str] = None
     #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: Optional[str] = None  # type: ignore[valid-type]
+    obis_kennzahl: Optional[str] = None
     zeit_intervall_laenge: Optional["Menge"]

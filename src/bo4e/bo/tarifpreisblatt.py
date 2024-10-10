@@ -37,7 +37,7 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[Typ.TARIFPREISBLATT], Field(alias="_typ")] = Typ.TARIFPREISBLATT
+    typ: Annotated[Literal[Typ.TARIFPREISBLATT], Field(alias="_typ")] = Typ.TARIFPREISBLATT  # type: ignore[assignment]
     # required attributes (additional to those of Tarifinfo)
     #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
