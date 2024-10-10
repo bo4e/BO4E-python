@@ -7,7 +7,7 @@ from decimal import Decimal
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -46,7 +46,7 @@ class Zaehler(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ZAEHLER
+    typ: Annotated[Literal[Typ.ZAEHLER], Field(alias="_typ")] = Typ.ZAEHLER
     zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
     sparte: Optional["Sparte"] = None  #: Strom oder Gas
     zaehlerauspraegung: Optional["Zaehlerauspraegung"] = None  #: Spezifikation die Richtung des Zählers betreffend

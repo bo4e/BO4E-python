@@ -11,7 +11,7 @@ from pydantic import BaseModel
 from ..version import __gh_version__
 
 T = TypeVar("T", bound=BaseModel)
-REGEX_CLASS_START = re.compile(r"class \w+\(.*\):\s+\"{3}(?:(?:\"{0,2}[^\"])*)\"{3}\n")
+REGEX_CLASS_START = re.compile(r"class \w+\(.*\):(?:\s*#[^\n]*)?\n\s+\"{3}(?:\"{0,2}[^\"])*\"{3}\n")
 # https://regex101.com/r/dQPi06/1
 
 

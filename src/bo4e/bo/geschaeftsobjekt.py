@@ -10,14 +10,13 @@ from pydantic import BaseModel, ConfigDict, Field
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
 
 
 @postprocess_docstring
-class Geschaeftsobjekt(BaseModel):
+class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
     Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
@@ -35,9 +34,6 @@ class Geschaeftsobjekt(BaseModel):
     version: Annotated[Optional[str], Field(alias="_version")] = (
         __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
     )
-    # src/_bo4e_python_version.py
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
-    # bo_typ is used as discriminator f.e. for databases or deserialization
 
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information

@@ -4,7 +4,7 @@ Contains Angebot class and corresponding marshmallow schema for de-/serializatio
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -38,7 +38,7 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ANGEBOT
+    typ: Annotated[Literal[Typ.ANGEBOT], Field(alias="_typ")] = Typ.ANGEBOT
     #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None
     #: Erstellungsdatum des Angebots

@@ -17,6 +17,7 @@ class ChangeType(StrEnum):
     FIELD_REMOVED = "field_removed"
     FIELD_DEFAULT_CHANGED = "field_default_changed"
     FIELD_DESCRIPTION_CHANGED = "field_description_changed"
+    FIELD_TITLE_CHANGED = "field_title_changed"
     # field type change types
     FIELD_CARDINALITY_CHANGED = "field_cardinality_changed"
     FIELD_REFERENCE_CHANGED = "field_reference_changed"

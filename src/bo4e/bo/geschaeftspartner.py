@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
+    typ: Annotated[Literal[Typ.GESCHAEFTSPARTNER], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
     #: Mögliche Anrede der Person
     anrede: Optional["Anrede"] = None
     individuelle_anrede: Optional[str] = None
