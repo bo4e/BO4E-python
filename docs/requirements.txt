@@ -44,7 +44,7 @@ markupsafe==2.1.3
     # via jinja2
 more-itertools==10.2.0
     # via bo4e-schema-tool
-networkx==3.4
+networkx==3.4.1
     # via -r docs/requirements.in
 packaging==24.0
     # via sphinx
