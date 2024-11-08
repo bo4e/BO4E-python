@@ -37,10 +37,10 @@ dynamic = ["readme", "version"]
 
 [project.optional-dependencies]
 coverage = [
-    "coverage==7.6.1"
+    "coverage==7.6.4"
 ]
 formatting = [
-    "black==24.8.0",
+    "black==24.10.0",
     "isort==5.13.2"
 ]
 json_schema = [
@@ -62,10 +62,10 @@ tests = [
     "pytest-datafiles==3.0.0"
 ]
 type_check = [
-    "mypy==1.11.2",
+    "mypy==1.13.0",
     "networkx-stubs==0.0.1",
     "pytest==8.3.3",
-    "types-requests==2.32.0.20240914"
+    "types-requests==2.32.0.20241016"
 ]
 
 [project.urls]
