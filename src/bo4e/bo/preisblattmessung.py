@@ -2,7 +2,7 @@
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -35,7 +35,9 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTMESSUNG
+    typ: Annotated[Literal[Typ.PREISBLATTMESSUNG], Field(alias="_typ")] = (
+        Typ.PREISBLATTMESSUNG  # type: ignore[assignment]
+    )
     # required attributes (additional to those of Preisblatt)
     #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None

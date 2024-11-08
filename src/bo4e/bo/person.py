@@ -3,7 +3,7 @@ Contains Person class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -37,7 +37,7 @@ class Person(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PERSON
+    typ: Annotated[Literal[Typ.PERSON], Field(alias="_typ")] = Typ.PERSON
     #: Mögliche Anrede der Person
     anrede: Optional["Anrede"] = None
     individuelle_anrede: Optional[str] = None

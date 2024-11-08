@@ -11,7 +11,7 @@ annotated-types==0.5.0
 babel==2.15.0
     # via sphinx
 bo4e-schema-tool==0.0.9
-    # via -r requirements.in
+    # via -r docs/requirements.in
 certifi==2024.7.4
     # via requests
 cffi==1.16.0
@@ -22,7 +22,7 @@ charset-normalizer==2.1.0
     # via requests
 click==8.1.7
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   bo4e-schema-tool
 cryptography==43.0.1
     # via pyjwt
@@ -37,22 +37,22 @@ idna==3.7
 imagesize==1.4.1
     # via sphinx
 iso3166==2.1.1
-    # via -r requirements.in
+    # via -r docs/requirements.in
 jinja2==3.1.4
     # via sphinx
 markupsafe==2.1.3
     # via jinja2
 more-itertools==10.2.0
     # via bo4e-schema-tool
-networkx==3.3
-    # via -r requirements.in
+networkx==3.4.2
+    # via -r docs/requirements.in
 packaging==24.0
     # via sphinx
 pycparser==2.21
     # via cffi
 pydantic==2.8.2
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   bo4e-schema-tool
 pydantic-core==2.20.1
     # via pydantic
@@ -61,14 +61,14 @@ pygithub==2.2.0
 pygments==2.18.0
     # via sphinx
 pyhumps==3.8.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 pyjwt[crypto]==2.8.0
     # via pygithub
 pynacl==1.5.0
     # via pygithub
 requests==2.32.3
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   bo4e-schema-tool
     #   pygithub
     #   sphinx
@@ -76,7 +76,7 @@ snowballstemmer==2.2.0
     # via sphinx
 sphinx==7.4.7
     # via
-    #   -r requirements.in
+    #   -r docs/requirements.in
     #   sphinx-rtd-theme
     #   sphinxcontrib-applehelp
     #   sphinxcontrib-devhelp
@@ -85,7 +85,7 @@ sphinx==7.4.7
     #   sphinxcontrib-qthelp
     #   sphinxcontrib-serializinghtml
 sphinx-rtd-theme==2.0.0
-    # via -r requirements.in
+    # via -r docs/requirements.in
 sphinxcontrib-applehelp==1.0.7
     # via sphinx
 sphinxcontrib-devhelp==1.0.5
@@ -100,8 +100,8 @@ sphinxcontrib-qthelp==1.0.6
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.9
     # via sphinx
-typeguard==4.3.0
-    # via -r requirements.in
+typeguard==4.4.1
+    # via -r docs/requirements.in
 typing-extensions==4.11.0
     # via
     #   pydantic
