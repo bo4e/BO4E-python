@@ -6,7 +6,7 @@
 #
 alabaster==0.7.16
     # via sphinx
-annotated-types==0.5.0
+annotated-types==0.7.0
     # via pydantic
 babel==2.15.0
     # via sphinx
@@ -50,11 +50,11 @@ packaging==24.0
     # via sphinx
 pycparser==2.21
     # via cffi
-pydantic==2.8.2
+pydantic==2.10.3
     # via
     #   -r docs/requirements.in
     #   bo4e-schema-tool
-pydantic-core==2.20.1
+pydantic-core==2.27.1
     # via pydantic
 pygithub==2.2.0
     # via bo4e-schema-tool
@@ -102,7 +102,7 @@ sphinxcontrib-serializinghtml==1.1.9
     # via sphinx
 typeguard==4.4.1
     # via -r docs/requirements.in
-typing-extensions==4.11.0
+typing-extensions==4.12.2
     # via
     #   pydantic
     #   pydantic-core
