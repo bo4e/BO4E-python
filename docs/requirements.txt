@@ -20,7 +20,7 @@ cffi==1.16.0
     #   pynacl
 charset-normalizer==2.1.0
     # via requests
-click==8.1.7
+click==8.1.8
     # via
     #   -r docs/requirements.in
     #   bo4e-schema-tool

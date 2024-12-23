@@ -5,7 +5,5 @@
 #
 #    pip-compile-multi
 #
-click==8.1.7
-    # via -r dev_requirements\requirements-json_schemas.in
-colorama==0.4.6
-    # via click
+click==8.1.8
+    # via -r dev_requirements/requirements-json_schemas.in

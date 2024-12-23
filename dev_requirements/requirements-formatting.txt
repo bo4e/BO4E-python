@@ -7,7 +7,7 @@
 #
 black==24.10.0
     # via -r dev_requirements/requirements-formatting.in
-click==8.1.7
+click==8.1.8
     # via black
 isort==5.13.2
     # via -r dev_requirements/requirements-formatting.in
