@@ -193,6 +193,7 @@ __all__ = [
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
     "ZusatzAttribut",
+    "Bankverbindung",
     "__version__",
     "__gh_version__",
 ]
@@ -247,6 +248,7 @@ from .com.aufabschlagregional import AufAbschlagRegional
 from .com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com.ausschreibungsdetail import Ausschreibungsdetail
 from .com.ausschreibungslos import Ausschreibungslos
+from .com.bankverbindung import Bankverbindung
 from .com.betrag import Betrag
 from .com.com import COM
 from .com.dienstleistung import Dienstleistung
