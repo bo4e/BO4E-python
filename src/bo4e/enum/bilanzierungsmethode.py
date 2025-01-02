@@ -12,3 +12,4 @@ class Bilanzierungsmethode(StrEnum):
     TLP_GEMEINSAM = "TLP_GEMEINSAM"  #: TLP gemeinsame Messung
     TLP_GETRENNT = "TLP_GETRENNT"  #: TLP getrennte Messung
     PAUSCHAL = "PAUSCHAL"  #: Pauschale Betrachtung (Band)
+    IMS = "IMS"  #: Intelligentes Messsystem
