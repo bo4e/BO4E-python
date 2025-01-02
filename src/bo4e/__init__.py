@@ -177,6 +177,7 @@ __all__ = [
     "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
+    "Erreichbarkeit",
     "Typ",
     "Verbrauchsart",
     "Vertragsart",
@@ -192,6 +193,7 @@ __all__ = [
     "Zaehlergroesse",
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
+    "Zeitfenster",
     "ZusatzAttribut",
     "__version__",
     "__gh_version__",
@@ -252,6 +254,7 @@ from .com.com import COM
 from .com.dienstleistung import Dienstleistung
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
+from .com.erreichbarkeit import Erreichbarkeit
 from .com.fremdkostenblock import Fremdkostenblock
 from .com.fremdkostenposition import Fremdkostenposition
 from .com.geokoordinaten import Geokoordinaten
@@ -293,6 +296,7 @@ from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
+from .com.zeitfenster import Zeitfenster
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
 from .com.zeitspanne import Zeitspanne
