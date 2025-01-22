@@ -6,7 +6,7 @@
 #    pip-compile-multi
 #
 build==1.2.2.post1
-    # via -r requirements-packaging.in
+    # via -r dev_requirements/requirements-packaging.in
 certifi==2024.7.4
     # via requests
 cffi==1.16.0
@@ -17,6 +17,8 @@ cryptography==43.0.1
     # via secretstorage
 docutils==0.21.1
     # via readme-renderer
+id==1.5.0
+    # via twine
 idna==3.7
     # via requests
 jaraco-classes==3.4.0
@@ -45,8 +47,6 @@ packaging==24.0
     # via
     #   build
     #   twine
-pkginfo==1.10.0
-    # via twine
 pycparser==2.22
     # via cffi
 pygments==2.17.2
@@ -59,6 +59,7 @@ readme-renderer==43.0
     # via twine
 requests==2.32.3
     # via
+    #   id
     #   requests-toolbelt
     #   twine
 requests-toolbelt==1.0.0
@@ -69,8 +70,8 @@ rich==13.7.1
     # via twine
 secretstorage==3.3.3
     # via keyring
-twine==6.0.1
-    # via -r requirements-packaging.in
+twine==6.1.0
+    # via -r dev_requirements/requirements-packaging.in
 urllib3==2.2.2
     # via
     #   requests
