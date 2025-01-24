@@ -48,14 +48,14 @@ class Marktlokation(Geschaeftsobjekt):
 
     typ: Annotated[Literal[Typ.MARKTLOKATION], Field(alias="_typ")] = Typ.MARKTLOKATION
 
-    #: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.
     marktlokations_id: Optional[str] = None
-    #: Sparte der Marktlokation, z.B. Gas oder Strom
+    """Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird."""
     sparte: Optional["Sparte"] = None
-    #: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird
+    """Sparte der Marktlokation, z.B. Gas oder Strom"""
     energierichtung: Optional["Energierichtung"] = None
-    #: Die Bilanzierungsmethode, RLM oder SLP
+    """Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird"""
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
+    """Die Bilanzierungsmethode, RLM oder SLP"""
     netzebene: Optional["Netzebene"] = None
     """
     Netzebene, in der der Bezug der Energie erfolgt.
@@ -63,28 +63,28 @@ class Marktlokation(Geschaeftsobjekt):
     Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.
     """
 
-    #: Verbrauchsart der Marktlokation.
     verbrauchsart: Optional["Verbrauchsart"] = None
-    #: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt
+    """Verbrauchsart der Marktlokation."""
     ist_unterbrechbar: Optional[bool] = None
-    #: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.
+    """Gibt an, ob es sich um eine unterbrechbare Belieferung handelt"""
     netzbetreibercodenr: Optional[str] = None
-    #: Typ des Netzgebietes, z.B. Verteilnetz
+    """Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist."""
     gebietstyp: Optional["Gebiettyp"] = None
-    #: Die ID des Gebietes in der ene't-Datenbank
-    netzgebietsnr: Optional[str] = None  # todo: rename to "id" (see 2021-12-15 update)
-    #: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes
+    """Typ des Netzgebietes, z.B. Verteilnetz"""
+    netzgebietsnr: Optional[str] = None
+    """Die ID des Gebietes in der ene't-Datenbank"""  # todo: rename to "id" (see 2021-12-15 update)
     bilanzierungsgebiet: Optional[str] = None
-    #: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist
+    """Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes"""
     grundversorgercodenr: Optional[str] = None
-    #: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes
+    """Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist"""
     gasqualitaet: Optional["Gasqualitaet"] = None
-    #: Geschäftspartner, dem diese Marktlokation gehört
+    """Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes"""
     endkunde: Optional["Geschaeftspartner"] = None
+    """Geschäftspartner, dem diese Marktlokation gehört"""
 
     # only one of the following three optional attributes can be set
-    #: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt
     lokationsadresse: Optional["Adresse"] = None
+    """Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt"""
     geoadresse: Optional["Geokoordinaten"] = None
     """
     Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden
@@ -97,17 +97,17 @@ class Marktlokation(Geschaeftsobjekt):
     """
 
     kundengruppen: Optional[list["Kundentyp"]] = None
-    #: Kundengruppen der Marktlokation
+    """Kundengruppen der Marktlokation"""
 
-    regelzone: Optional[str] = (
-        None  #: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/
-    )
-    marktgebiet: Optional[str] = None  #: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list
+    regelzone: Optional[str] = None
+    """für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/"""
+    marktgebiet: Optional[str] = None
+    """für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list"""
     zaehlwerke: Optional[list["Zaehlwerk"]] = None
     verbrauchsmengen: Optional[list["Verbrauch"]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
 
-    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
-    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
     lokationsbuendel_objektcode: Optional[str] = None
+    """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

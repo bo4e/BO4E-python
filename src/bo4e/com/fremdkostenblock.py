@@ -30,8 +30,8 @@ class Fremdkostenblock(COM):
 
     """
 
-    #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
+    """Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc."""
 
     kostenpositionen: Optional[list["Fremdkostenposition"]] = None
     """
@@ -40,6 +40,6 @@ class Fremdkostenblock(COM):
     5,8200 ct/kWh, 213,01 €
     """
 
-    #: Die Summe aller Kostenpositionen dieses Blocks
     summe_kostenblock: Optional["Betrag"] = None
+    """Die Summe aller Kostenpositionen dieses Blocks"""
     # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324

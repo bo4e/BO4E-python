@@ -31,39 +31,39 @@ class Ausschreibungsdetail(COM):
 
     """
 
-    #: Identifikation einer ausgeschriebenen Marktlokation
     marktlokations_id: Optional[str] = None
-    #: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung
+    """Identifikation einer ausgeschriebenen Marktlokation"""
     netzebene_lieferung: Optional[str] = None
-    #: In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung
+    """In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung"""
     netzebene_messung: Optional[str] = None
-    #: Die Adresse an der die Marktlokation sich befindet
+    """In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung"""
     marktlokationsadresse: Optional["Adresse"] = None
-    #: Angefragter Zeitraum für die ausgeschriebene Belieferung
+    """Die Adresse an der die Marktlokation sich befindet"""
     lieferzeitraum: Optional["Zeitraum"] = None
+    """Angefragter Zeitraum für die ausgeschriebene Belieferung"""
 
-    #: Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'
     netzbetreiber: Optional[str] = None
-    #: Bezeichnung des Kunden, der die Marktlokation nutzt
+    """Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'"""
     kunde: Optional[str] = None
-    #: Die Bezeichnung des Zählers an der Marktlokation
+    """Bezeichnung des Kunden, der die Marktlokation nutzt"""
     zaehlernummer: Optional[str] = None
-    #: Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'
+    """Die Bezeichnung des Zählers an der Marktlokation"""
     marktlokationsbezeichnung: Optional[str] = None
+    """Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'"""
 
-    #: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung
     zaehlertechnik: Optional["Zaehlertyp"] = None
+    """Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung"""
     ist_lastgang_vorhanden: Optional[bool] = None
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden
     """
 
-    #: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation
     prognose_jahresarbeit: Optional["Menge"] = None
-    #: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation
+    """Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation"""
     prognose_arbeit_lieferzeitraum: Optional["Menge"] = None
-    #: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation
+    """Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation"""
     prognose_leistung: Optional["Menge"] = None
-    #: Die (evtl. abweichende) Rechnungsadresse
+    """Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation"""
     rechnungsadresse: Optional["Adresse"] = None
+    """Die (evtl. abweichende) Rechnungsadresse"""

@@ -33,7 +33,7 @@ class Energieherkunft(COM):
 
     """
 
-    #: Art der Erzeugung der Energie.
     erzeugungsart: Optional["Erzeugungsart"] = None
-    #: Prozentualer Anteil der jeweiligen Erzeugungsart.
+    """Art der Erzeugung der Energie."""
     anteil_prozent: Optional[Decimal] = None
+    """Prozentualer Anteil der jeweiligen Erzeugungsart."""

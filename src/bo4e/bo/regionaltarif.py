@@ -23,8 +23,8 @@ if TYPE_CHECKING:
 
 
 class Regionaltarif(Tarifinfo):
-    #: Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen.
     """
+    Abbildung eines Tarifs mit regionaler Zuordnung von Preisen und Auf- und Abschlägen.
 
     .. raw:: html
 
@@ -36,16 +36,16 @@ class Regionaltarif(Tarifinfo):
     """
 
     typ: Annotated[Literal[Typ.REGIONALTARIF], Field(alias="_typ")] = Typ.REGIONALTARIF  # type: ignore[assignment]
-    #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
-    #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
+    """Gibt an, wann der Preis zuletzt angepasst wurde"""
     berechnungsparameter: Optional["Tarifberechnungsparameter"] = None
-    #: Die festgelegten Preise mit regionaler Eingrenzung, z.B. für Arbeitspreis, Grundpreis etc.
+    """Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen"""
     tarifpreise: Optional[list["RegionaleTarifpreisposition"]] = None
+    """Die festgelegten Preise mit regionaler Eingrenzung, z.B. für Arbeitspreis, Grundpreis etc."""
 
-    #: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung
     tarif_auf_abschlaege: Optional[list["RegionalerAufAbschlag"]] = None
-    #: Festlegung von Garantien für bestimmte Preisanteile
+    """Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung"""
     preisgarantien: Optional[list["RegionalePreisgarantie"]] = None
-    #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
+    """Festlegung von Garantien für bestimmte Preisanteile"""
     tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None
+    """Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann"""

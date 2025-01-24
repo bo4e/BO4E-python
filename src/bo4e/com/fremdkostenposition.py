@@ -25,15 +25,15 @@ class Fremdkostenposition(Kostenposition):
     """
 
     # optional attributes (additional to those from Kostenposition)
-    #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
     marktpartnername: Optional[str] = None
+    """Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt"""
 
-    #: Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt
     marktpartnercode: Optional[str] = None
+    """Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt"""
 
-    #: EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT
     gebietcode_eic: Optional[str] = None
+    """EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT"""
     # todo: see issue https://github.com/Hochfrequenz/BO4E-python/issues/147 for EIC validation
 
-    #: Link zum veröffentlichten Preisblatt
     link_preisblatt: Optional[str] = None
+    """Link zum veröffentlichten Preisblatt"""

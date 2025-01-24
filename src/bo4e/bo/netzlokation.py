@@ -39,25 +39,25 @@ class Netzlokation(Geschaeftsobjekt):
 
     typ: Annotated[Literal[Typ.NETZLOKATION], Field(alias="_typ")] = Typ.NETZLOKATION
 
-    #: Identifikationsnummer einer Netzlokation, an der Energie entweder verbraucht, oder erzeugt wird
     netzlokations_id: Optional[str] = None
-    #: Sparte der Netzlokation, z.B. Gas oder Strom.
+    """Identifikationsnummer einer Netzlokation, an der Energie entweder verbraucht, oder erzeugt wird"""
     sparte: Optional["Sparte"] = None
-    #: Netzanschlussleistungsmenge der Netzlokation
+    """Sparte der Netzlokation, z.B. Gas oder Strom."""
     netzanschlussleistung: Optional["Menge"] = None
-    #: Codenummer des grundzuständigen Messstellenbetreibers, der für diese Netzlokation zuständig ist.
+    """Netzanschlussleistungsmenge der Netzlokation"""
     grundzustaendiger_msb_codenr: Optional[str] = None
-    #: Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann.
+    """Codenummer des grundzuständigen Messstellenbetreibers, der für diese Netzlokation zuständig ist."""
     steuerkanal: Optional[bool] = None
-    #: Die OBIS-Kennzahl für die Netzlokation
+    """Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann."""
     obiskennzahl: Optional[str] = None
-    #: Verwendungungszweck der Werte Netzlokation
+    """Die OBIS-Kennzahl für die Netzlokation"""
     verwendungszweck: Optional["VerwendungszweckProMarktrolle"] = None
-    #: Produkt-Daten der Netzlokation
+    """Verwendungungszweck der Werte Netzlokation"""
     konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
-    #: Eigenschaft des Messstellenbetreibers an der Lokation
+    """Produkt-Daten der Netzlokation"""
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
-    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
+    """Eigenschaft des Messstellenbetreibers an der Lokation"""
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
-    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
     lokationsbuendel_objektcode: Optional[str] = None
+    """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

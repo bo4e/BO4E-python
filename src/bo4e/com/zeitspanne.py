@@ -27,5 +27,7 @@ class Zeitspanne(COM):
 
     """
 
-    start: Optional[pydantic.AwareDatetime] = None  #: inklusiver Beginn
-    ende: Optional[pydantic.AwareDatetime] = None  #: exklusives Ende
+    start: Optional[pydantic.AwareDatetime] = None
+    """inklusiver Beginn"""
+    ende: Optional[pydantic.AwareDatetime] = None
+    """exklusives Ende"""

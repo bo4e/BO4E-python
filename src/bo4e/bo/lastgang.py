@@ -41,18 +41,18 @@ class Lastgang(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[Typ.LASTGANG], Field(alias="_typ")] = Typ.LASTGANG
-    #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
     sparte: Optional["Sparte"] = None
-    #: Definition der gemessenen Größe anhand ihrer Einheit
+    """Angabe, ob es sich um einen Gas- oder Stromlastgang handelt"""
     messgroesse: Optional["Mengeneinheit"] = None
+    """Definition der gemessenen Größe anhand ihrer Einheit"""
     #:Marktlokation, zu der der Lastgang gehört
     marktlokation: Optional["Marktlokation"] = None
     #:Marktlokation, zu der der Lastgang gehört
     messlokation: Optional["Messlokation"] = None
-    #: Die im Lastgang enthaltenen Messwerte
     werte: Optional[list["Zeitreihenwert"]] = None
-    #: Versionsnummer des Lastgangs
+    """Die im Lastgang enthaltenen Messwerte"""
     version: Optional[str] = None
-    #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
+    """Versionsnummer des Lastgangs"""
     obis_kennzahl: Optional[str] = None
+    """Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'"""
     zeit_intervall_laenge: Optional["Menge"]

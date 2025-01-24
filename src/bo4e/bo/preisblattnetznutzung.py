@@ -37,10 +37,10 @@ class PreisblattNetznutzung(Preisblatt):
         Typ.PREISBLATTNETZNUTZUNG  # type: ignore[assignment]
     )
     # required attributes (additional to those of Preisblatt)
-    #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
-    #: Die Preise gelten für Marktlokationen in der angebebenen Netzebene
+    """Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode"""
     netzebene: Optional["Netzebene"] = None
+    """Die Preise gelten für Marktlokationen in der angebebenen Netzebene"""
     kundengruppe: Optional["Kundengruppe"] = None
 
     # there are no optional attributes (additionally to those of Preisblatt)

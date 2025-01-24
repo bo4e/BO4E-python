@@ -31,9 +31,10 @@ class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     """
 
     # required attributes
-    version: Annotated[Optional[str], Field(alias="_version")] = (
-        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
-    )
+    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    """
+    Version der BO-Struktur aka "fachliche Versionierung"
+    """
 
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
@@ -46,8 +47,8 @@ class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
-    #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
     # pylint: disable=duplicate-code
+    # basic configuration for pydantic's behaviour
     model_config = ConfigDict(
         alias_generator=camelize,
         populate_by_name=True,
@@ -57,6 +58,3 @@ class Geschaeftsobjekt(BaseModel):  # pragma: no cover
         # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
         json_encoders={Decimal: str},
     )
-    """
-    basic configuration for pydantic's behaviour
-    """

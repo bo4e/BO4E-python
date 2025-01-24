@@ -33,11 +33,11 @@ class Region(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[Typ.REGION], Field(alias="_typ")] = Typ.REGION
-    #: Bezeichnung der Region
     bezeichnung: Optional[str] = None
+    """Bezeichnung der Region"""
 
-    #: Positivliste der Kriterien zur Definition der Region
     positiv_liste: Optional[list["Regionskriterium"]] = None
+    """Positivliste der Kriterien zur Definition der Region"""
 
-    #: Negativliste der Kriterien zur Definition der Region
     negativ_liste: Optional[list["Regionskriterium"]] = None
+    """Negativliste der Kriterien zur Definition der Region"""

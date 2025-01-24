@@ -41,15 +41,15 @@ class Preisblatt(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[Typ.PREISBLATT], Field(alias="_typ")] = Typ.PREISBLATT
-    #: Eine Bezeichnung für das Preisblatt
     bezeichnung: Optional[str] = None
-    #: Preisblatt gilt für angegebene Sparte
+    """Eine Bezeichnung für das Preisblatt"""
     sparte: Optional["Sparte"] = None
-    #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
+    """Preisblatt gilt für angegebene Sparte"""
     preisstatus: Optional["Preisstatus"] = None
-    #: Der Zeitraum für den der Preis festgelegt ist
+    """Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt"""
     gueltigkeit: Optional["Zeitraum"] = None
-    #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
+    """Der Zeitraum für den der Preis festgelegt ist"""
     preispositionen: Optional[list["Preisposition"]] = None
-    #: Der Netzbetreiber, der die Preise veröffentlicht hat
+    """Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc"""
     herausgeber: Optional["Marktteilnehmer"] = None
+    """Der Netzbetreiber, der die Preise veröffentlicht hat"""
