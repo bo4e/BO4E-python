@@ -7,6 +7,9 @@ class Vertragsform(StrEnum):
     Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen.
     """
 
-    ONLINE = "ONLINE"  #: Online
-    DIREKT = "DIREKT"  #: Direkt
-    FAX = "FAX"  #: Auftragsfax
+    ONLINE = "ONLINE"
+    """Online"""
+    DIREKT = "DIREKT"
+    """Direkt"""
+    FAX = "FAX"
+    """Auftragsfax"""
