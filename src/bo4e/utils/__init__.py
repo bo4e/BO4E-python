@@ -75,5 +75,5 @@ def postprocess_docstring(cls: type[T]) -> type[T]:
     """
     if cls.__doc__ is not None:
         cls.__doc__ = cls.__doc__.format(__gh_version__=__gh_version__)
-    add_comments_to_description(cls)
+    # add_comments_to_description(cls)
     return cls
