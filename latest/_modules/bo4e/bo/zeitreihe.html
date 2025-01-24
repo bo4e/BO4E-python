@@ -124,25 +124,25 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">ZEITREIHE</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">ZEITREIHE</span>
-    <span class="c1">#: Bezeichnung für die Zeitreihe</span>
     <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung für die Zeitreihe&quot;&quot;&quot;</span>
     <span class="n">messgroesse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messgroesse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)&quot;&quot;&quot;</span>
     <span class="n">messart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)&quot;&quot;&quot;</span>
     <span class="n">medium</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Medium&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)&quot;&quot;&quot;</span>
     <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Hier liegen jeweils die Werte</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist&quot;&quot;&quot;</span>
     <span class="n">werte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zeitreihenwert&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hier liegen jeweils die Werte&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Beschreibt die Verwendung der Zeitreihe</span>
     <span class="n">beschreibung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Version der Zeitreihe</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Beschreibt die Verwendung der Zeitreihe&quot;&quot;&quot;</span>
     <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung</span>
-    <span class="n">wertherkunft</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Wertermittlungsverfahren&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Version der Zeitreihe&quot;&quot;&quot;</span>
+    <span class="n">wertherkunft</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Wertermittlungsverfahren&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

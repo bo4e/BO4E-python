@@ -125,23 +125,23 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">TARIF</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">TARIF</span>  <span class="c1"># type: ignore[assignment]</span>
-    <span class="c1">#: Gibt an, wann der Preis zuletzt angepasst wurde</span>
     <span class="n">preisstand</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, wann der Preis zuletzt angepasst wurde&quot;&quot;&quot;</span>
     <span class="n">berechnungsparameter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifberechnungsparameter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen&quot;&quot;&quot;</span>
     <span class="n">tarifpreise</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;TarifpreispositionProOrt&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die festgelegten Preise mit regionaler Eingrenzung z.B. für Arbeitspreis, Grundpreis etc.&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung</span>
     <span class="n">tarif_auf_abschlaege</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;AufAbschlagRegional&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auf- und Abschläge auf die Preise oder Kosten mit regionaler Eingrenzung&quot;&quot;&quot;</span>
     <span class="c1"># todo: fix inconsistency: RegionalerAufAbschlag vs. AufAbschlagRegional</span>
     <span class="c1"># https://github.com/Hochfrequenz/BO4E-python/issues/345</span>
 
-    <span class="c1">#: Preisgarantie für diesen Tarif</span>
     <span class="n">preisgarantie</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preisgarantie&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preisgarantie für diesen Tarif&quot;&quot;&quot;</span>
     <span class="c1"># todo: fix inconsistency with regionaltarif https://github.com/Hochfrequenz/BO4E-python/issues/346</span>
-    <span class="c1">#: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann</span>
-    <span class="n">tarifeinschraenkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifeinschraenkung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">tarifeinschraenkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifeinschraenkung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

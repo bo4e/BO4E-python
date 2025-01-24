@@ -129,34 +129,34 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">TARIFINFO</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">TARIFINFO</span>
-    <span class="c1">#: Name des Tarifs</span>
     <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Name des Marktpartners, der den Tarif anbietet</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Name des Tarifs&quot;&quot;&quot;</span>
     <span class="n">anbietername</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Strom oder Gas, etc.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Name des Marktpartners, der den Tarif anbietet&quot;&quot;&quot;</span>
     <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kundentypen für den der Tarif gilt, z.B. Privatkunden</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Strom oder Gas, etc.&quot;&quot;&quot;</span>
     <span class="n">kundentypen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Kundentyp&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kundentypen für den der Tarif gilt, z.B. Privatkunden&quot;&quot;&quot;</span>
     <span class="n">registeranzahl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Registeranzahl&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Art des Tarifes, z.B. Eintarif oder Mehrtarif&quot;&quot;&quot;</span>
     <span class="n">tariftyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tariftyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif&quot;&quot;&quot;</span>
     <span class="n">tarifmerkmale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Tarifmerkmal&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse&quot;&quot;&quot;</span>
     <span class="n">anbieter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Marktteilnehmer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Internetseite auf dem der Tarif zu finden ist</span>
     <span class="n">website</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Freitext</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internetseite auf dem der Tarif zu finden ist&quot;&quot;&quot;</span>
     <span class="n">bemerkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Freitext&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Angabe, in welchem Zeitraum der Tarif gültig ist</span>
     <span class="n">zeitliche_gueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Energiemix, der für diesen Tarif gilt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Angabe, in welchem Zeitraum der Tarif gültig ist&quot;&quot;&quot;</span>
     <span class="n">energiemix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Energiemix&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Mindestlaufzeiten und Kündigungsfristen zusammengefasst</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Energiemix, der für diesen Tarif gilt&quot;&quot;&quot;</span>
     <span class="n">vertragskonditionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Vertragskonditionen&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mindestlaufzeiten und Kündigungsfristen zusammengefasst&quot;&quot;&quot;</span>
     <span class="n">anwendung_von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird,</span>

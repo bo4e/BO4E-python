@@ -118,42 +118,42 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Identifikation einer ausgeschriebenen Marktlokation</span>
     <span class="n">marktlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identifikation einer ausgeschriebenen Marktlokation&quot;&quot;&quot;</span>
     <span class="n">netzebene_lieferung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung&quot;&quot;&quot;</span>
     <span class="n">netzebene_messung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Adresse an der die Marktlokation sich befindet</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung&quot;&quot;&quot;</span>
     <span class="n">marktlokationsadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Angefragter Zeitraum für die ausgeschriebene Belieferung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Adresse an der die Marktlokation sich befindet&quot;&quot;&quot;</span>
     <span class="n">lieferzeitraum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Angefragter Zeitraum für die ausgeschriebene Belieferung&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Bezeichnung des zuständigen Netzbetreibers, z.B. &#39;Stromnetz Hamburg GmbH&#39;</span>
     <span class="n">netzbetreiber</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Bezeichnung des Kunden, der die Marktlokation nutzt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung des zuständigen Netzbetreibers, z.B. &#39;Stromnetz Hamburg GmbH&#39;&quot;&quot;&quot;</span>
     <span class="n">kunde</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Bezeichnung des Zählers an der Marktlokation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung des Kunden, der die Marktlokation nutzt&quot;&quot;&quot;</span>
     <span class="n">zaehlernummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Bezeichnung für die Lokation, z.B. &#39;Zentraler Einkauf, Hamburg&#39;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Bezeichnung des Zählers an der Marktlokation&quot;&quot;&quot;</span>
     <span class="n">marktlokationsbezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung für die Lokation, z.B. &#39;Zentraler Einkauf, Hamburg&#39;&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung</span>
     <span class="n">zaehlertechnik</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zaehlertyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung&quot;&quot;&quot;</span>
     <span class="n">ist_lastgang_vorhanden</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.</span>
 <span class="sd">    Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation</span>
     <span class="n">prognose_jahresarbeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prognosewert für die Jahresarbeit der ausgeschriebenen Lokation&quot;&quot;&quot;</span>
     <span class="n">prognose_arbeit_lieferzeitraum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ein Prognosewert für die Arbeit innerhalb des angefragten Lieferzeitraums der ausgeschriebenen Lokation&quot;&quot;&quot;</span>
     <span class="n">prognose_leistung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die (evtl. abweichende) Rechnungsadresse</span>
-    <span class="n">rechnungsadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prognosewert für die abgenommene maximale Leistung der ausgeschriebenen Lokation&quot;&quot;&quot;</span>
+    <span class="n">rechnungsadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die (evtl. abweichende) Rechnungsadresse&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

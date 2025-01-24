@@ -127,19 +127,19 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">GESCHAEFTSPARTNER</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">GESCHAEFTSPARTNER</span>
-    <span class="c1">#: Mögliche Anrede der Person</span>
     <span class="n">anrede</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Anrede&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mögliche Anrede der Person&quot;&quot;&quot;</span>
     <span class="n">individuelle_anrede</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.</span>
 <span class="sd">    Beispiel: &quot;Vereinsgemeinschaft&quot;, &quot;Pfarrer&quot;, &quot;Hochwürdigster Herr Abt&quot;.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Möglicher Titel der Person</span>
     <span class="n">titel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Titel&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Vorname der Person</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Möglicher Titel der Person&quot;&quot;&quot;</span>
     <span class="n">vorname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Nachname (Familienname) der Person</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vorname der Person&quot;&quot;&quot;</span>
     <span class="n">nachname</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nachname (Familienname) der Person&quot;&quot;&quot;</span>
 
     <span class="n">ansprechpartner</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Person&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">organisationstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Organisationstyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -150,26 +150,30 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Name der Firma, wenn Gewerbe oder andere Organisation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Kontaktwege des Geschäftspartners</span>
     <span class="n">kontaktwege</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Kontaktweg&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kontaktwege des Geschäftspartners&quot;&quot;&quot;</span>
     <span class="n">geschaeftspartnerrollen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartnerrolle&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Handelsregisternummer des Geschäftspartners</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)&quot;&quot;&quot;</span>
     <span class="n">handelsregisternummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Handelsregisternummer des Geschäftspartners&quot;&quot;&quot;</span>
     <span class="n">amtsgericht</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Steuer-ID des Geschäftspartners; Beispiel: &quot;DE 813281825&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat&quot;&quot;&quot;</span>
     <span class="n">umsatzsteuer_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. &quot;DE 47116789&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Die Steuer-ID des Geschäftspartners; Beispiel: &quot;DE 813281825&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">glaeubiger_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Internetseite des Marktpartners</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. &quot;DE 47116789&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">website</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Adresse des Geschäftspartners</span>
-    <span class="n">adresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internetseite des Marktpartners&quot;&quot;&quot;</span>
+    <span class="n">adresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adresse des Geschäftspartners&quot;&quot;&quot;</span></div>
 
-    <span class="c1">#: Todo: Add optional connection to marktteilnehmer as discussed in workshop</span>
-    <span class="c1">#: not clear what is the best solution here - circular import marktteilnehmer?</span>
-    <span class="c1">#: discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let&#39;s figure out a solution somehow.</span>
+    <span class="c1"># Todo: Add optional connection to marktteilnehmer as discussed in workshop</span>
+    <span class="c1"># not clear what is the best solution here - circular import marktteilnehmer?</span>
+    <span class="c1"># discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let&#39;s figure out a solution somehow.</span>
 </pre></div>
 
            </div>

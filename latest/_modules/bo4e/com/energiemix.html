@@ -120,31 +120,31 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Eindeutige Nummer zur Identifizierung des Energiemixes</span>
     <span class="n">energiemixnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Strom oder Gas etc.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eindeutige Nummer zur Identifizierung des Energiemixes&quot;&quot;&quot;</span>
     <span class="n">energieart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Bezeichnung des Energiemix</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Strom oder Gas etc.&quot;&quot;&quot;</span>
     <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Jahr, für das der Energiemix gilt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung des Energiemix&quot;&quot;&quot;</span>
     <span class="n">gueltigkeitsjahr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Anteile der jeweiligen Erzeugungsart</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jahr, für das der Energiemix gilt&quot;&quot;&quot;</span>
     <span class="n">anteil</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Energieherkunft&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Anteile der jeweiligen Erzeugungsart&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Bemerkung zum Energiemix</span>
     <span class="n">bemerkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Höhe des erzeugten CO2-Ausstosses in g/kWh</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bemerkung zum Energiemix&quot;&quot;&quot;</span>
     <span class="n">co2_emission</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Höhe des erzeugten Atommülls in g/kWh</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Höhe des erzeugten CO2-Ausstosses in g/kWh&quot;&quot;&quot;</span>
     <span class="n">atommuell</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Zertifikate für den Energiemix</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Höhe des erzeugten Atommülls in g/kWh&quot;&quot;&quot;</span>
     <span class="n">oekozertifikate</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Oekozertifikat&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Ökolabel für den Energiemix</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zertifikate für den Energiemix&quot;&quot;&quot;</span>
     <span class="n">oekolabel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Oekolabel&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ökolabel für den Energiemix&quot;&quot;&quot;</span>
     <span class="n">ist_in_oeko_top_ten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Internetseite, auf der die Strommixdaten veröffentlicht sind</span>
-    <span class="n">website</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichen, ob der Versorger zu den Öko Top Ten gehört&quot;&quot;&quot;</span>
+    <span class="n">website</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internetseite, auf der die Strommixdaten veröffentlicht sind&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

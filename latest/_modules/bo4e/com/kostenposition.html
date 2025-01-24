@@ -119,27 +119,27 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt.</span>
     <span class="n">positionstitel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt.&quot;&quot;&quot;</span>
 
     <span class="n">betrag_kostenposition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Der errechnete Gesamtbetrag der Position als Ergebnis der Berechnung &lt;Menge * Einzelpreis&gt; oder</span>
 <span class="sd">    &lt;Einzelpreis / (Anzahl Tage Jahr) * zeitmenge&gt;&quot;&quot;&quot;</span>
     <span class="c1"># todo: validate above calculation, see https://github.com/Hochfrequenz/BO4E-python/issues/282</span>
 
-    <span class="c1">#: Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT</span>
     <span class="n">artikelbezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.</span>
     <span class="n">einzelpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.&quot;&quot;&quot;</span>
 
-    <span class="c1">#: inklusiver von-Zeitpunkt der Kostenzeitscheibe</span>
     <span class="n">von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: exklusiver bis-Zeitpunkt der Kostenzeitscheibe</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;inklusiver von-Zeitpunkt der Kostenzeitscheibe&quot;&quot;&quot;</span>
     <span class="n">bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;exklusiver bis-Zeitpunkt der Kostenzeitscheibe&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh</span>
     <span class="n">menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh&quot;&quot;&quot;</span>
 
     <span class="n">zeitmenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -147,8 +147,8 @@
 <span class="sd">    wurden. Z.B. 138 Tage.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Detaillierung des Artikels (optional). Beispiel: &#39;Drehstromzähler&#39;</span>
-    <span class="n">artikeldetail</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">artikeldetail</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Detaillierung des Artikels (optional). Beispiel: &#39;Drehstromzähler&#39;&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

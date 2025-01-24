@@ -121,23 +121,21 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Fortlaufende Nummer für die Rechnungsposition</span>
     <span class="n">positionsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fortlaufende Nummer für die Rechnungsposition&quot;&quot;&quot;</span>
 
-    <span class="n">lieferung_von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="kc">None</span>  <span class="c1">#: Start der Lieferung für die abgerechnete Leistung (inklusiv)</span>
-    <span class="p">)</span>
-    <span class="n">lieferung_bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="kc">None</span>  <span class="c1">#: Ende der Lieferung für die abgerechnete Leistung (exklusiv)</span>
-    <span class="p">)</span>
+    <span class="n">lieferung_von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Start der Lieferung für die abgerechnete Leistung (inklusiv)&quot;&quot;&quot;</span>
+    <span class="n">lieferung_bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ende der Lieferung für die abgerechnete Leistung (exklusiv)&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Bezeichung für die abgerechnete Position</span>
     <span class="n">positionstext</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichung für die abgerechnete Position&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Die abgerechnete Menge mit Einheit</span>
     <span class="n">positions_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Preis für eine Einheit der energetischen Menge</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die abgerechnete Menge mit Einheit&quot;&quot;&quot;</span>
     <span class="n">einzelpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Preis für eine Einheit der energetischen Menge&quot;&quot;&quot;</span>
 
     <span class="n">teilsumme_netto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -147,16 +145,16 @@
     <span class="c1"># the cross check in general doesn&#39;t work because Betrag and Preis use different enums to describe the currency</span>
     <span class="c1"># see https://github.com/Hochfrequenz/BO4E-python/issues/126</span>
 
-    <span class="c1">#: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag</span>
     <span class="n">teilsumme_steuer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Steuerbetrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit</span>
     <span class="n">zeiteinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW</span>
     <span class="n">artikelnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;BDEWArtikelnummer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Marktlokation, die zu dieser Position gehört</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW&quot;&quot;&quot;</span>
     <span class="n">lokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Marktlokation, die zu dieser Position gehört&quot;&quot;&quot;</span>
 
     <span class="n">zeitbezogene_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -164,11 +162,11 @@
 <span class="sd">    Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage.</span>
 <span class="sd">    Basierend darauf wird der Preis aufgeteilt.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Nettobetrag für den Rabatt dieser Position</span>
     <span class="n">teilrabatt_netto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nettobetrag für den Rabatt dieser Position&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst</span>
-    <span class="n">artikel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">artikel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

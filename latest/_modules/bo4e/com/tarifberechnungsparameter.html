@@ -124,10 +124,10 @@
 
     <span class="c1"># there are no required attributes</span>
 
-    <span class="c1">#: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind</span>
     <span class="n">berechnungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifkalkulationsmethode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: True, falls der Messpreis im Grundpreis (GP) enthalten ist</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind&quot;&quot;&quot;</span>
     <span class="n">ist_messpreis_in_grundpreis_enthalten</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;True, falls der Messpreis im Grundpreis (GP) enthalten ist&quot;&quot;&quot;</span>
 
     <span class="n">ist_messpreis_zu_beruecksichtigen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -135,25 +135,25 @@
 <span class="sd">    berücksichtigt wird</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Typ des Messpreises</span>
     <span class="n">messpreistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messpreistyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Typ des Messpreises&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Im Preis bereits eingeschlossene Leistung (für Gas)</span>
     <span class="n">kw_inklusive</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Im Preis bereits eingeschlossene Leistung (für Gas)&quot;&quot;&quot;</span>
     <span class="c1"># todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327</span>
 
-    <span class="c1">#: Intervall, indem die über &quot;kwInklusive&quot; hinaus abgenommene Leistung kostenpflichtig wird (z.B. je 5 kW 20 EURO)</span>
     <span class="n">kw_weitere_mengen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Intervall, indem die über &quot;kwInklusive&quot; hinaus abgenommene Leistung kostenpflichtig wird (z.B. je 5 kW 20 EURO)&quot;&quot;&quot;</span>
     <span class="c1"># todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327</span>
 
-    <span class="c1">#: Höchstpreis für den Durchschnitts-Arbeitspreis NT</span>
     <span class="n">hoechstpreis_n_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Höchstpreis für den Durchschnitts-Arbeitspreis HT</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Höchstpreis für den Durchschnitts-Arbeitspreis NT&quot;&quot;&quot;</span>
     <span class="n">hoechstpreis_h_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Mindestpreis für den Durchschnitts-Arbeitspreis</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Höchstpreis für den Durchschnitts-Arbeitspreis HT&quot;&quot;&quot;</span>
     <span class="n">mindestpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise</span>
-    <span class="n">zusatzpreise</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Tarifpreis&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mindestpreis für den Durchschnitts-Arbeitspreis&quot;&quot;&quot;</span>
+    <span class="n">zusatzpreise</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Tarifpreis&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

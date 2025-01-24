@@ -136,59 +136,59 @@
 <span class="sd">    Kennzeichnung, ob es sich um eine Stornorechnung handelt;</span>
 <span class="sd">    im Falle &quot;true&quot; findet sich im Attribut &quot;originalrechnungsnummer&quot; die Nummer der Originalrechnung.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Eine im Verwendungskontext eindeutige Nummer für die Rechnung</span>
     <span class="n">rechnungsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Ausstellungsdatum der Rechnung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine im Verwendungskontext eindeutige Nummer für die Rechnung&quot;&quot;&quot;</span>
     <span class="n">rechnungsdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Zu diesem Datum ist die Zahlung fällig</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ausstellungsdatum der Rechnung&quot;&quot;&quot;</span>
     <span class="n">faelligkeitsdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zu diesem Datum ist die Zahlung fällig&quot;&quot;&quot;</span>
     <span class="n">rechnungstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Rechnungstyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung&quot;&quot;&quot;</span>
     <span class="n">rechnungsperiode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung&quot;&quot;&quot;</span>
     <span class="n">rechnungsersteller</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer&quot;&quot;&quot;</span>
     <span class="n">rechnungsempfaenger</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Summe der Nettobeträge der Rechnungsteile</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer&quot;&quot;&quot;</span>
     <span class="n">gesamtnetto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Summe der Steuerbeträge der Rechnungsteile</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Summe der Nettobeträge der Rechnungsteile&quot;&quot;&quot;</span>
     <span class="n">gesamtsteuer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Summe aus Netto- und Steuerbetrag</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Summe der Steuerbeträge der Rechnungsteile&quot;&quot;&quot;</span>
     <span class="n">gesamtbrutto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Summe aus Netto- und Steuerbetrag&quot;&quot;&quot;</span>
     <span class="n">zu_zahlen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Rechnungspositionen</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt&quot;&quot;&quot;</span>
     <span class="n">rechnungspositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Rechnungsposition&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Bezeichnung für die vorliegende Rechnung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Rechnungspositionen&quot;&quot;&quot;</span>
     <span class="n">rechnungstitel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung für die vorliegende Rechnung&quot;&quot;&quot;</span>
     <span class="n">rechnungsstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Rechnungsstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes&quot;&quot;&quot;</span>
     <span class="n">original_rechnungsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung&quot;&quot;&quot;</span>
     <span class="n">vorausgezahlt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gesamtrabatt auf den Bruttobetrag</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert&quot;&quot;&quot;</span>
     <span class="n">rabatt_brutto</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Betrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gesamtrabatt auf den Bruttobetrag&quot;&quot;&quot;</span>
     <span class="n">steuerbetraege</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Steuerbetrag&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;</span>
 <span class="sd">    die Summe dieser Beträge ergibt den Wert für gesamtsteuer.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist</span>
     <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist&quot;&quot;&quot;</span>
     <span class="n">netznutzungrechnungsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;NetznutzungRechnungsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt&quot;&quot;&quot;</span>
     <span class="n">netznutzungrechnungstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;NetznutzungRechnungstyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt&quot;&quot;&quot;</span>
     <span class="n">ist_original</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)&quot;&quot;&quot;</span>
     <span class="n">ist_simuliert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Marktlokation, auf die sich die Rechnung bezieht</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt&quot;&quot;&quot;</span>
     <span class="n">marktlokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Marktlokation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Messlokation, auf die sich die Rechnung bezieht</span>
-    <span class="n">messlokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messlokation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Marktlokation, auf die sich die Rechnung bezieht&quot;&quot;&quot;</span>
+    <span class="n">messlokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messlokation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Messlokation, auf die sich die Rechnung bezieht&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

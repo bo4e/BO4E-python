@@ -121,21 +121,21 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt</span>
     <span class="n">wertermittlungsverfahren</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Wertermittlungsverfahren&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. &#39;1-0:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt&quot;&quot;&quot;</span>
     <span class="n">obis_kennzahl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gibt den absoluten Wert der Menge an</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. &#39;1-0:&quot;&quot;&quot;</span>
     <span class="n">wert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gibt die Einheit zum jeweiligen Wert an</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt den absoluten Wert der Menge an&quot;&quot;&quot;</span>
     <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt die Einheit zum jeweiligen Wert an&quot;&quot;&quot;</span>
 
-    <span class="c1">#: Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird</span>
     <span class="n">startdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird&quot;&quot;&quot;</span>
     <span class="n">enddatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Messwertstatus includes the plausibility of the value</span>
-    <span class="n">messwertstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messwertstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird&quot;&quot;&quot;</span>
+    <span class="n">messwertstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messwertstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Messwertstatus includes the plausibility of the value&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

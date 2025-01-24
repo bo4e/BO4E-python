@@ -119,9 +119,10 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">version</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_version&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">__version__</span>  <span class="c1">#: Version der BO-Struktur aka &quot;fachliche Versionierung&quot;</span>
-    <span class="p">)</span>
+    <span class="n">version</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_version&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">__version__</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Version der COM-Struktur aka &quot;fachliche Versionierung&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="c1"># Python internal: The field is not named &#39;_id&#39; because leading underscores are not allowed in pydantic field names.</span>
     <span class="c1"># NameError: Fields must not use names with leading underscores; e.g., use &#39;id&#39; instead of &#39;_id&#39;.</span>
@@ -134,6 +135,7 @@
     <span class="n">zusatz_attribute</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;ZusatzAttribut&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1"># pylint: disable=duplicate-code</span>
+    <span class="c1"># basic configuration for pydantic&#39;s behaviour</span>
     <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span>
         <span class="n">alias_generator</span><span class="o">=</span><span class="n">camelize</span><span class="p">,</span>
         <span class="n">populate_by_name</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
@@ -143,15 +145,12 @@
         <span class="c1"># See this issue for more info: https://github.com/pydantic/pydantic/issues/6375</span>
         <span class="n">json_encoders</span><span class="o">=</span><span class="p">{</span><span class="n">Decimal</span><span class="p">:</span> <span class="nb">str</span><span class="p">},</span>
         <span class="n">use_attribute_docstrings</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="p">)</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    basic configuration for pydantic&#39;s behaviour</span>
-<span class="sd">    &quot;&quot;&quot;</span></div>
+    <span class="p">)</span></div>
 
 
 
 <span class="c1"># pylint: disable=invalid-name</span>
-<span class="c1">#: Any type derived from COM including those that do not directly inherit from COM</span>
+<span class="c1"># Any type derived from COM including those that do not directly inherit from COM</span>
 <span class="n">TCom</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;TCom&quot;</span><span class="p">,</span> <span class="n">bound</span><span class="o">=</span><span class="n">Type</span><span class="p">[</span><span class="n">COM</span><span class="p">])</span>
 
 

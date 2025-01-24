@@ -94,41 +94,70 @@
 <span class="k">class</span> <span class="nc">Leistungstyp</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; &quot;&quot;&quot;</span>
 
-    <span class="n">ARBEITSPREIS_WIRKARBEIT</span> <span class="o">=</span> <span class="s2">&quot;ARBEITSPREIS_WIRKARBEIT&quot;</span>  <span class="c1">#: Arbeitspreis zur Abrechnung der Wirkarbeit</span>
-    <span class="n">LEISTUNGSPREIS_WIRKLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;LEISTUNGSPREIS_WIRKLEISTUNG&quot;</span>  <span class="c1">#: Leistungspreis zur Abrechnung der Wirkleistung</span>
-    <span class="c1">#: Arbeitspreis zur Abrechnung der Blindarbeit induktiv</span>
+    <span class="n">ARBEITSPREIS_WIRKARBEIT</span> <span class="o">=</span> <span class="s2">&quot;ARBEITSPREIS_WIRKARBEIT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arbeitspreis zur Abrechnung der Wirkarbeit&quot;&quot;&quot;</span>
+    <span class="n">LEISTUNGSPREIS_WIRKLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;LEISTUNGSPREIS_WIRKLEISTUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leistungspreis zur Abrechnung der Wirkleistung&quot;&quot;&quot;</span>
     <span class="n">ARBEITSPREIS_BLINDARBEIT_IND</span> <span class="o">=</span> <span class="s2">&quot;ARBEITSPREIS_BLINDARBEIT_IND&quot;</span>
-    <span class="c1">#: Arbeitspreis zur Abrechnung der Blindarbeit kapazitiv</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arbeitspreis zur Abrechnung der Blindarbeit induktiv&quot;&quot;&quot;</span>
     <span class="n">ARBEITSPREIS_BLINDARBEIT_KAP</span> <span class="o">=</span> <span class="s2">&quot;ARBEITSPREIS_BLINDARBEIT_KAP&quot;</span>
-    <span class="n">GRUNDPREIS</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS&quot;</span>  <span class="c1">#: Grundpreis (pro Zeiteinheit)</span>
-    <span class="n">GRUNDPREIS_ARBEIT</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS_ARBEIT&quot;</span>  <span class="c1">#: Grundpreis, der auf die Arbeit berechnet wird (bei RLM)</span>
-    <span class="n">GRUNDPREIS_LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS_LEISTUNG&quot;</span>  <span class="c1">#: Grundpreis, der auf die Leistung berechnet wird (bei RLM)</span>
-    <span class="n">MEHRMINDERMENGE</span> <span class="o">=</span> <span class="s2">&quot;MEHRMINDERMENGE&quot;</span>  <span class="c1">#: Mehr- oder Mindermenge</span>
-    <span class="n">MESSSTELLENBETRIEB</span> <span class="o">=</span> <span class="s2">&quot;MESSSTELLENBETRIEB&quot;</span>  <span class="c1">#: Preis pro Zeiteinheit</span>
-    <span class="n">MESSDIENSTLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;MESSDIENSTLEISTUNG&quot;</span>  <span class="c1">#: Preis pro Zeiteinheit</span>
-    <span class="c1">#: MDL inklusive der Messung (ab 2017), Preis pro Zeiteinheit</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Arbeitspreis zur Abrechnung der Blindarbeit kapazitiv&quot;&quot;&quot;</span>
+    <span class="n">GRUNDPREIS</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Grundpreis (pro Zeiteinheit)&quot;&quot;&quot;</span>
+    <span class="n">GRUNDPREIS_ARBEIT</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS_ARBEIT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Grundpreis, der auf die Arbeit berechnet wird (bei RLM)&quot;&quot;&quot;</span>
+    <span class="n">GRUNDPREIS_LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;GRUNDPREIS_LEISTUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Grundpreis, der auf die Leistung berechnet wird (bei RLM)&quot;&quot;&quot;</span>
+    <span class="n">MEHRMINDERMENGE</span> <span class="o">=</span> <span class="s2">&quot;MEHRMINDERMENGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mehr- oder Mindermenge&quot;&quot;&quot;</span>
+    <span class="n">MESSSTELLENBETRIEB</span> <span class="o">=</span> <span class="s2">&quot;MESSSTELLENBETRIEB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preis pro Zeiteinheit&quot;&quot;&quot;</span>
+    <span class="n">MESSDIENSTLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;MESSDIENSTLEISTUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preis pro Zeiteinheit&quot;&quot;&quot;</span>
     <span class="n">MESSDIENSTLEISTUNG_INKL_MESSUNG</span> <span class="o">=</span> <span class="s2">&quot;MESSDIENSTLEISTUNG_INKL_MESSUNG&quot;</span>
-    <span class="n">ABRECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;ABRECHNUNG&quot;</span>  <span class="c1">#: Preis pro Zeiteinheit</span>
-    <span class="n">KONZESSIONS_ABGABE</span> <span class="o">=</span> <span class="s2">&quot;KONZESSIONS_ABGABE&quot;</span>  <span class="c1">#: Konzessionsabgabe</span>
-    <span class="n">KWK_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;KWK_UMLAGE&quot;</span>  <span class="c1">#: KWK-Umlage</span>
-    <span class="n">OFFSHORE_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;OFFSHORE_UMLAGE&quot;</span>  <span class="c1">#: Offshore-Haftungsumlage</span>
-    <span class="n">ABLAV_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;ABLAV_UMLAGE&quot;</span>  <span class="c1">#: Umlage für abschaltbare Lasten</span>
-    <span class="n">SONDERKUNDEN_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;SONDERKUNDEN_UMLAGE&quot;</span>  <span class="c1">#: §19 StromNEV Umlage</span>
-    <span class="n">REGELENERGIE_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;REGELENERGIE_UMLAGE&quot;</span>  <span class="c1">#: Regelenergieumlage</span>
-    <span class="n">BILANZIERUNG_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;BILANZIERUNG_UMLAGE&quot;</span>  <span class="c1">#: Bilanzierungsumlage</span>
-    <span class="n">AUSLESUNG_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_ZUSAETZLICH&quot;</span>  <span class="c1">#: Zusätzliche Auslesung (pro Vorgang)</span>
-    <span class="n">ABLESUNG_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_ZUSAETZLICH&quot;</span>  <span class="c1">#: Zusätzliche Ablesung (pro Vorgang)</span>
-    <span class="n">ABRECHNUNG_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;ABRECHNUNG_ZUSAETZLICH&quot;</span>  <span class="c1">#: Zusätzliche Abresung (pro Vorgang)</span>
-    <span class="n">SPERRUNG</span> <span class="o">=</span> <span class="s2">&quot;SPERRUNG&quot;</span>  <span class="c1">#: Sperrung einer Abnahmestelle</span>
-    <span class="n">ENTSPERRUNG</span> <span class="o">=</span> <span class="s2">&quot;ENTSPERRUNG&quot;</span>  <span class="c1">#: Entsperrung einer Abnahmestelle</span>
-    <span class="n">MAHNKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;MAHNKOSTEN&quot;</span>  <span class="c1">#: Mahnkosten</span>
-    <span class="n">INKASSOKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;INKASSOKOSTEN&quot;</span>  <span class="c1">#: Inkassokosten</span>
-    <span class="n">EEG_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;EEG_UMLAGE&quot;</span>  <span class="c1">#: EEG-Umlage</span>
-    <span class="n">ENERGIESTEUER</span> <span class="o">=</span> <span class="s2">&quot;ENERGIESTEUER&quot;</span>  <span class="c1">#: Strom- oder Erdgassteuer</span>
-    <span class="n">NETZPREIS</span> <span class="o">=</span> <span class="s2">&quot;NETZPREIS&quot;</span>  <span class="c1">#: Netzpreis</span>
-    <span class="n">MESSPREIS</span> <span class="o">=</span> <span class="s2">&quot;MESSPREIS&quot;</span>  <span class="c1">#: Messpreis</span>
-    <span class="n">SONSTIGER_PREIS</span> <span class="o">=</span> <span class="s2">&quot;SONSTIGER_PREIS&quot;</span>  <span class="c1">#: Sonstiger_Preis</span>
-    <span class="n">DIENSTLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;DIENSTLEISTUNG&quot;</span>  <span class="c1">#: Dienstleistung</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;MDL inklusive der Messung (ab 2017), Preis pro Zeiteinheit&quot;&quot;&quot;</span>
+    <span class="n">ABRECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;ABRECHNUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preis pro Zeiteinheit&quot;&quot;&quot;</span>
+    <span class="n">KONZESSIONS_ABGABE</span> <span class="o">=</span> <span class="s2">&quot;KONZESSIONS_ABGABE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Konzessionsabgabe&quot;&quot;&quot;</span>
+    <span class="n">KWK_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;KWK_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;KWK-Umlage&quot;&quot;&quot;</span>
+    <span class="n">OFFSHORE_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;OFFSHORE_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Offshore-Haftungsumlage&quot;&quot;&quot;</span>
+    <span class="n">ABLAV_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;ABLAV_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Umlage für abschaltbare Lasten&quot;&quot;&quot;</span>
+    <span class="n">SONDERKUNDEN_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;SONDERKUNDEN_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;§19 StromNEV Umlage&quot;&quot;&quot;</span>
+    <span class="n">REGELENERGIE_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;REGELENERGIE_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Regelenergieumlage&quot;&quot;&quot;</span>
+    <span class="n">BILANZIERUNG_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;BILANZIERUNG_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bilanzierungsumlage&quot;&quot;&quot;</span>
+    <span class="n">AUSLESUNG_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;AUSLESUNG_ZUSAETZLICH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zusätzliche Auslesung (pro Vorgang)&quot;&quot;&quot;</span>
+    <span class="n">ABLESUNG_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;ABLESUNG_ZUSAETZLICH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zusätzliche Ablesung (pro Vorgang)&quot;&quot;&quot;</span>
+    <span class="n">ABRECHNUNG_ZUSAETZLICH</span> <span class="o">=</span> <span class="s2">&quot;ABRECHNUNG_ZUSAETZLICH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zusätzliche Abresung (pro Vorgang)&quot;&quot;&quot;</span>
+    <span class="n">SPERRUNG</span> <span class="o">=</span> <span class="s2">&quot;SPERRUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sperrung einer Abnahmestelle&quot;&quot;&quot;</span>
+    <span class="n">ENTSPERRUNG</span> <span class="o">=</span> <span class="s2">&quot;ENTSPERRUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Entsperrung einer Abnahmestelle&quot;&quot;&quot;</span>
+    <span class="n">MAHNKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;MAHNKOSTEN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mahnkosten&quot;&quot;&quot;</span>
+    <span class="n">INKASSOKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;INKASSOKOSTEN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inkassokosten&quot;&quot;&quot;</span>
+    <span class="n">EEG_UMLAGE</span> <span class="o">=</span> <span class="s2">&quot;EEG_UMLAGE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;EEG-Umlage&quot;&quot;&quot;</span>
+    <span class="n">ENERGIESTEUER</span> <span class="o">=</span> <span class="s2">&quot;ENERGIESTEUER&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Strom- oder Erdgassteuer&quot;&quot;&quot;</span>
+    <span class="n">NETZPREIS</span> <span class="o">=</span> <span class="s2">&quot;NETZPREIS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Netzpreis&quot;&quot;&quot;</span>
+    <span class="n">MESSPREIS</span> <span class="o">=</span> <span class="s2">&quot;MESSPREIS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Messpreis&quot;&quot;&quot;</span>
+    <span class="n">SONSTIGER_PREIS</span> <span class="o">=</span> <span class="s2">&quot;SONSTIGER_PREIS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sonstiger_Preis&quot;&quot;&quot;</span>
+    <span class="n">DIENSTLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;DIENSTLEISTUNG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dienstleistung&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

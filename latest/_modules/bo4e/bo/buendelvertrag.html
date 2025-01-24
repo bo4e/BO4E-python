@@ -128,35 +128,39 @@
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">BUENDELVERTRAG</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">BUENDELVERTRAG</span>
 
     <span class="c1"># pylint: disable=duplicate-code</span>
-    <span class="c1">#: Eine im Verwendungskontext eindeutige Nummer für den Vertrag</span>
     <span class="n">vertragsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine im Verwendungskontext eindeutige Nummer für den Vertrag&quot;&quot;&quot;</span>
     <span class="n">vertragsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Vertragsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gibt den Status des Vertrages an</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag&quot;&quot;&quot;</span>
     <span class="n">vertragsstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Vertragsstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Unterscheidungsmöglichkeiten für die Sparte</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt den Status des Vertrages an&quot;&quot;&quot;</span>
     <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gibt an, wann der Vertrag beginnt (inklusiv)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unterscheidungsmöglichkeiten für die Sparte&quot;&quot;&quot;</span>
     <span class="n">vertragsbeginn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, wann der Vertrag beginnt (inklusiv)&quot;&quot;&quot;</span>
     <span class="n">vertragsende</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der &quot;erstgenannte&quot; Vertragspartner. In der Regel der Aussteller des Vertrags.</span>
-    <span class="c1">#: Beispiel: &quot;Vertrag zwischen Vertagspartner 1 ...&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)&quot;&quot;&quot;</span>
     <span class="n">vertragspartner1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der &quot;zweitgenannte&quot; Vertragspartner. In der Regel der Empfänger des Vertrags.</span>
-    <span class="c1">#: Beispiel &quot;Vertrag zwischen Vertagspartner 1 und Vertragspartner 2&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Der &quot;erstgenannte&quot; Vertragspartner. In der Regel der Aussteller des Vertrags.</span>
+<span class="sd">    Beispiel: &quot;Vertrag zwischen Vertagspartner 1 ...&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">vertragspartner2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Der &quot;zweitgenannte&quot; Vertragspartner. In der Regel der Empfänger des Vertrags.</span>
+<span class="sd">    Beispiel &quot;Vertrag zwischen Vertagspartner 1 und Vertragspartner 2&quot;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Die Liste mit den Einzelverträgen zu den Abnahmestellen</span>
     <span class="n">einzelvertraege</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Vertrag&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Festlegungen zu Laufzeiten und Kündigungsfristen</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Liste mit den Einzelverträgen zu den Abnahmestellen&quot;&quot;&quot;</span>
     <span class="n">vertragskonditionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Vertragskonditionen&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Unterzeichner des Vertragspartners1</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Festlegungen zu Laufzeiten und Kündigungsfristen&quot;&quot;&quot;</span>
     <span class="n">unterzeichnervp1</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Unterschrift&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Unterzeichner des Vertragspartners2</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unterzeichner des Vertragspartners1&quot;&quot;&quot;</span>
     <span class="n">unterzeichnervp2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Unterschrift&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Beschreibung zum Vertrag</span>
-    <span class="n">beschreibung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unterzeichner des Vertragspartners2&quot;&quot;&quot;</span>
+    <span class="n">beschreibung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Beschreibung zum Vertrag&quot;&quot;&quot;</span></div>
 
 </pre></div>
 

@@ -124,35 +124,35 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Das Modell, das der Preisbildung zugrunde liegt</span>
     <span class="n">berechnungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Kalkulationsmethode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung</span>
-    <span class="n">leistungstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Leistungstyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#</span>
-    <span class="c1">#: Bezeichnung für die in der Position abgebildete Leistungserbringung</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Das Modell, das der Preisbildung zugrunde liegt&quot;&quot;&quot;</span>
+    <span class="n">leistungstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Leistungstyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standardisierte Bezeichnung für die abgerechnete Leistungserbringung&quot;&quot;&quot;</span>  <span class="c1">#</span>
     <span class="n">leistungsbezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung für die in der Position abgebildete Leistungserbringung&quot;&quot;&quot;</span>
     <span class="n">preiseinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Waehrungseinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €&quot;&quot;&quot;</span>
     <span class="n">bezugsgroesse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Preisstaffeln, die zu dieser Preisposition gehören</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück&quot;&quot;&quot;</span>
     <span class="n">preisstaffeln</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Preisstaffel&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preisstaffeln, die zu dieser Preisposition gehören&quot;&quot;&quot;</span>
 
     <span class="n">zeitbasis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Die Zeit(dauer) auf die sich der Preis bezieht.</span>
 <span class="sd">    Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Festlegung, für welche Tarifzeit der Preis hier festgelegt ist</span>
     <span class="n">tarifzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifzeit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Festlegung, für welche Tarifzeit der Preis hier festgelegt ist&quot;&quot;&quot;</span>
     <span class="n">bdew_artikelnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;BDEWArtikelnummer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Eine vom BDEW standardisierte Bezeichnug für die abgerechnete Leistungserbringung;</span>
 <span class="sd">    Diese Artikelnummer wird auch im Rechnungsteil der INVOIC verwendet.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1">#: Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden</span>
     <span class="n">zonungsgroesse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Bemessungsgroesse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden&quot;&quot;&quot;</span>
     <span class="n">freimenge_blindarbeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt&quot;&quot;&quot;</span>
     <span class="n">freimenge_leistungsfaktor</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als</span>

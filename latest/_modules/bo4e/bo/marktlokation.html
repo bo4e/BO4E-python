@@ -135,14 +135,14 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">Typ</span><span class="o">.</span><span class="n">MARKTLOKATION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">MARKTLOKATION</span>
 
-    <span class="c1">#: Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.</span>
     <span class="n">marktlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Sparte der Marktlokation, z.B. Gas oder Strom</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird.&quot;&quot;&quot;</span>
     <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sparte der Marktlokation, z.B. Gas oder Strom&quot;&quot;&quot;</span>
     <span class="n">energierichtung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Energierichtung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Bilanzierungsmethode, RLM oder SLP</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichnung, ob Energie eingespeist oder entnommen (ausgespeist) wird&quot;&quot;&quot;</span>
     <span class="n">bilanzierungsmethode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Bilanzierungsmethode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Bilanzierungsmethode, RLM oder SLP&quot;&quot;&quot;</span>
     <span class="n">netzebene</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Netzebene&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Netzebene, in der der Bezug der Energie erfolgt.</span>
@@ -150,28 +150,28 @@
 <span class="sd">    Beispiel Strom: Niederspannung Beispiel Gas: Niederdruck.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="c1">#: Verbrauchsart der Marktlokation.</span>
     <span class="n">verbrauchsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Verbrauchsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Gibt an, ob es sich um eine unterbrechbare Belieferung handelt</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verbrauchsart der Marktlokation.&quot;&quot;&quot;</span>
     <span class="n">ist_unterbrechbar</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, ob es sich um eine unterbrechbare Belieferung handelt&quot;&quot;&quot;</span>
     <span class="n">netzbetreibercodenr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Typ des Netzgebietes, z.B. Verteilnetz</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.&quot;&quot;&quot;</span>
     <span class="n">gebietstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Gebiettyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die ID des Gebietes in der ene&#39;t-Datenbank</span>
-    <span class="n">netzgebietsnr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># todo: rename to &quot;id&quot; (see 2021-12-15 update)</span>
-    <span class="c1">#: Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Typ des Netzgebietes, z.B. Verteilnetz&quot;&quot;&quot;</span>
+    <span class="n">netzgebietsnr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die ID des Gebietes in der ene&#39;t-Datenbank&quot;&quot;&quot;</span>  <span class="c1"># todo: rename to &quot;id&quot; (see 2021-12-15 update)</span>
     <span class="n">bilanzierungsgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes&quot;&quot;&quot;</span>
     <span class="n">grundversorgercodenr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist&quot;&quot;&quot;</span>
     <span class="n">gasqualitaet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Gasqualitaet&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Geschäftspartner, dem diese Marktlokation gehört</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes&quot;&quot;&quot;</span>
     <span class="n">endkunde</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geschaeftspartner&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Geschäftspartner, dem diese Marktlokation gehört&quot;&quot;&quot;</span>
 
     <span class="c1"># only one of the following three optional attributes can be set</span>
-    <span class="c1">#: Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt</span>
     <span class="n">lokationsadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Adresse&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Adresse, an der die Energie-Lieferung oder -Einspeisung erfolgt&quot;&quot;&quot;</span>
     <span class="n">geoadresse</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Geokoordinaten&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Alternativ zu einer postalischen Adresse kann hier ein Ort mittels Geokoordinaten angegeben werden</span>
@@ -184,20 +184,20 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">kundengruppen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Kundentyp&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Kundengruppen der Marktlokation</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kundengruppen der Marktlokation&quot;&quot;&quot;</span>
 
-    <span class="n">regelzone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="kc">None</span>  <span class="c1">#: für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/</span>
-    <span class="p">)</span>
-    <span class="n">marktgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list</span>
+    <span class="n">regelzone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/&quot;&quot;&quot;</span>
+    <span class="n">marktgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list&quot;&quot;&quot;</span>
     <span class="n">zaehlwerke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehlwerk&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">verbrauchsmengen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Verbrauch&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">zaehlwerke_der_beteiligten_marktrolle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehlwerk&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
-    <span class="c1">#: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben</span>
     <span class="n">lokationszuordnungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Lokationszuordnung&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="c1">#: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.</span>
-    <span class="n">lokationsbuendel_objektcode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben&quot;&quot;&quot;</span>
+    <span class="n">lokationsbuendel_objektcode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.&quot;&quot;&quot;</span></div>
 
 </pre></div>
 
