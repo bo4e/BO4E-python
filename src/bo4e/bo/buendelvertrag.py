@@ -41,32 +41,36 @@ class Buendelvertrag(Geschaeftsobjekt):
     typ: Annotated[Literal[Typ.BUENDELVERTRAG], Field(alias="_typ")] = Typ.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
-    #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: Optional[str] = None
-    #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag
+    """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""
     vertragsart: Optional["Vertragsart"] = None
-    #: Gibt den Status des Vertrages an
+    """Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag"""
     vertragsstatus: Optional["Vertragsstatus"] = None
-    #: Unterscheidungsmöglichkeiten für die Sparte
+    """Gibt den Status des Vertrages an"""
     sparte: Optional["Sparte"] = None
-    #: Gibt an, wann der Vertrag beginnt (inklusiv)
+    """Unterscheidungsmöglichkeiten für die Sparte"""
     vertragsbeginn: Optional[pydantic.AwareDatetime] = None
-    #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
+    """Gibt an, wann der Vertrag beginnt (inklusiv)"""
     vertragsende: Optional[pydantic.AwareDatetime] = None
-    #: Der "erstgenannte" Vertragspartner. In der Regel der Aussteller des Vertrags.
-    #: Beispiel: "Vertrag zwischen Vertagspartner 1 ..."
+    """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     vertragspartner1: Optional["Geschaeftspartner"] = None
-    #: Der "zweitgenannte" Vertragspartner. In der Regel der Empfänger des Vertrags.
-    #: Beispiel "Vertrag zwischen Vertagspartner 1 und Vertragspartner 2"
+    """
+    Der "erstgenannte" Vertragspartner. In der Regel der Aussteller des Vertrags.
+    Beispiel: "Vertrag zwischen Vertagspartner 1 ..."
+    """
     vertragspartner2: Optional["Geschaeftspartner"] = None
+    """
+    Der "zweitgenannte" Vertragspartner. In der Regel der Empfänger des Vertrags.
+    Beispiel "Vertrag zwischen Vertagspartner 1 und Vertragspartner 2"
+    """
 
-    #: Die Liste mit den Einzelverträgen zu den Abnahmestellen
     einzelvertraege: Optional[list["Vertrag"]] = None
-    #: Festlegungen zu Laufzeiten und Kündigungsfristen
+    """Die Liste mit den Einzelverträgen zu den Abnahmestellen"""
     vertragskonditionen: Optional[list["Vertragskonditionen"]] = None
-    #: Unterzeichner des Vertragspartners1
+    """Festlegungen zu Laufzeiten und Kündigungsfristen"""
     unterzeichnervp1: Optional[list["Unterschrift"]] = None
-    #: Unterzeichner des Vertragspartners2
+    """Unterzeichner des Vertragspartners1"""
     unterzeichnervp2: Optional[list["Unterschrift"]] = None
-    #: Beschreibung zum Vertrag
+    """Unterzeichner des Vertragspartners2"""
     beschreibung: Optional[str] = None
+    """Beschreibung zum Vertrag"""

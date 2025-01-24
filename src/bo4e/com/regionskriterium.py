@@ -29,12 +29,10 @@ class Regionskriterium(COM):
 
     """
 
-    gueltigkeitstyp: Optional["Gueltigkeitstyp"] = (
-        None  #: Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt.
-    )
-    regionskriteriumtyp: Optional["Regionskriteriumtyp"] = (
-        None  #: Hier wird das Kriterium selbst angegeben, z.B. Bundesland.
-    )
+    gueltigkeitstyp: Optional["Gueltigkeitstyp"] = None
+    """Hier wird festgelegt, ob es sich um ein einschließendes oder ausschließendes Kriterium handelt."""
+    regionskriteriumtyp: Optional["Regionskriteriumtyp"] = None
+    """Hier wird das Kriterium selbst angegeben, z.B. Bundesland."""
     wert: Optional[str] = None
     """
     Der Wert, den das Kriterium annehmen kann, z.B. NRW.

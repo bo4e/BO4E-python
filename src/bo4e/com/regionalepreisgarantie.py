@@ -28,5 +28,5 @@ class RegionalePreisgarantie(Preisgarantie):
 
     """
 
-    #: Regionale Eingrenzung der Preisgarantie.
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
+    """Regionale Eingrenzung der Preisgarantie."""

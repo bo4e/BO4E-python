@@ -7,7 +7,11 @@ class Medium(StrEnum):
     Gibt ein physikalisches Medium an.
     """
 
-    STROM = "STROM"  #: STROM
-    GAS = "GAS"  #: GAS
-    WASSER = "WASSER"  #: WASSER
-    DAMPF = "DAMPF"  #: DAMPF
+    STROM = "STROM"
+    """STROM"""
+    GAS = "GAS"
+    """GAS"""
+    WASSER = "WASSER"
+    """WASSER"""
+    DAMPF = "DAMPF"
+    """DAMPF"""

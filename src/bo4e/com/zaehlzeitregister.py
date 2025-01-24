@@ -26,6 +26,9 @@ class Zaehlzeitregister(COM):
 
     """
 
-    zaehlzeit_definition: Optional[str] = None  #: Zählzeitdefinition
-    zaehlzeit_register: Optional[str] = None  #: Zählzeitregister
-    ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit
+    zaehlzeit_definition: Optional[str] = None
+    """Zählzeitdefinition"""
+    zaehlzeit_register: Optional[str] = None
+    """Zählzeitregister"""
+    ist_schwachlastfaehig: Optional[bool] = None
+    """Schwachlastfaehigkeit"""

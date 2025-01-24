@@ -7,5 +7,7 @@ class Preismodell(StrEnum):
     Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung.
     """
 
-    FESTPREIS = "FESTPREIS"  #: FESTPREIS
-    TRANCHE = "TRANCHE"  #: TRANCHE
+    FESTPREIS = "FESTPREIS"
+    """FESTPREIS"""
+    TRANCHE = "TRANCHE"
+    """TRANCHE"""

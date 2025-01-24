@@ -8,5 +8,7 @@ class Energierichtung(StrEnum):
     Spezifiziert die Energierichtung einer Markt- und/oder Messlokation
     """
 
-    AUSSP = "AUSSP"  #: Ausspeisung
-    EINSP = "EINSP"  #: Einspeisung
+    AUSSP = "AUSSP"
+    """Ausspeisung"""
+    EINSP = "EINSP"
+    """Einspeisung"""

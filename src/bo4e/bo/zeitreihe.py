@@ -37,22 +37,22 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[Typ.ZEITREIHE], Field(alias="_typ")] = Typ.ZEITREIHE
-    #: Bezeichnung für die Zeitreihe
     bezeichnung: Optional[str] = None
-    #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
+    """Bezeichnung für die Zeitreihe"""
     messgroesse: Optional["Messgroesse"] = None
-    #: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
+    """Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)"""
     messart: Optional["Messart"] = None
-    #: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
+    """Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)"""
     medium: Optional["Medium"] = None
-    #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
+    """Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)"""
     einheit: Optional["Mengeneinheit"] = None
-    #: Hier liegen jeweils die Werte
+    """Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist"""
     werte: Optional[list["Zeitreihenwert"]] = None
+    """Hier liegen jeweils die Werte"""
 
-    #: Beschreibt die Verwendung der Zeitreihe
     beschreibung: Optional[str] = None
-    #: Version der Zeitreihe
+    """Beschreibt die Verwendung der Zeitreihe"""
     version: Optional[str] = None
-    #: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
+    """Version der Zeitreihe"""
     wertherkunft: Optional["Wertermittlungsverfahren"] = None
+    """Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung"""
