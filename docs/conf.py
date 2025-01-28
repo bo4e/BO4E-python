@@ -82,6 +82,18 @@ extensions = [
     "sphinx_rtd_theme",
 ]
 
+
+# Custom processor to filter out Pydantic internal attributes
+def skip_pydantic_internals(app, what, name, obj, skip, options):
+    if name in ("model_fields", "model_config"):
+        return True
+    return skip
+
+
+def setup(app):
+    app.connect("autodoc-skip-member", skip_pydantic_internals)
+
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]
 
