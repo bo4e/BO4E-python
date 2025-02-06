@@ -83,8 +83,11 @@ extensions = [
 ]
 
 
-# Custom processor to filter out Pydantic internal attributes
 def skip_pydantic_internals(app, what, name, obj, skip, options):
+    """
+    This processor is used to filter out Pydantic internal attributes from the
+    documentation.
+    """
     if name in ("model_fields", "model_config"):
         return True
     return skip
