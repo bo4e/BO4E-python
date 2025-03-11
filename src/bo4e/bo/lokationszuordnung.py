@@ -35,19 +35,19 @@ class Lokationszuordnung(Geschaeftsobjekt):
 
     typ: Annotated[Literal[Typ.LOKATIONSZUORDNUNG], Field(alias="_typ")] = Typ.LOKATIONSZUORDNUNG
 
-    #: Liste mit referenzierten Marktlokationen
     marktlokationen: Optional[list["Marktlokation"]] = None
-    #: Liste mit referenzierten Messlokationen
+    """Liste mit referenzierten Marktlokationen"""
     messlokationen: Optional[list["Messlokation"]] = None
-    #: Liste mit referenzierten Netzlokationen
+    """Liste mit referenzierten Messlokationen"""
     netzlokationen: Optional[list["Netzlokation"]] = None
-    #: Liste mit referenzierten technischen Ressourcen
+    """Liste mit referenzierten Netzlokationen"""
     technische_ressourcen: Optional[list["TechnischeRessource"]] = None
-    #: Liste mit referenzierten steuerbaren Ressourcen
+    """Liste mit referenzierten technischen Ressourcen"""
     steuerbare_ressourcen: Optional[list["SteuerbareRessource"]] = None
-    #: Zeitspanne der Gültigkeit
+    """Liste mit referenzierten steuerbaren Ressourcen"""
     gueltigkeit: Optional["Zeitspanne"] = None
-    #: Verknüpfungsrichtung z.B. Malo-Melo [TODO: Eventuell anderer Datentyp]
+    """Zeitspanne der Gültigkeit"""
     zuordnungstyp: Optional[str] = None
-    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (zu finden unter "Codeliste der Lokationsbündelstrukturen" auf https://www.edi-energy.de/index.php?id=38)
+    """Verknüpfungsrichtung z.B. Malo-Melo [TODO: Eventuell anderer Datentyp]"""
     lokationsbuendelcode: Optional[str] = None
+    """Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (zu finden unter "Codeliste der Lokationsbündelstrukturen" auf https://www.edi-energy.de/index.php?id=38)"""

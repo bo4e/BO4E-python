@@ -32,12 +32,12 @@ class Zeitreihenwert(COM):
 
     """
 
-    zeitspanne: Optional["Zeitspanne"] = None  #: Zeitespanne für das Messintervall
-
-    wert: Optional[Decimal] = None  #: Der in der Zeitspanne gültige Wert.
-
-    #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
+    zeitspanne: Optional["Zeitspanne"] = None
+    """Zeitespanne für das Messintervall"""
+    wert: Optional[Decimal] = None
+    """Der in der Zeitspanne gültige Wert."""
     status: Optional["Messwertstatus"] = None
+    """Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen."""
 
-    #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
     statuszusatz: Optional["Messwertstatuszusatz"] = None
+    """Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert."""

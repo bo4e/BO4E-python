@@ -35,7 +35,7 @@ class PreisblattKonzessionsabgabe(Preisblatt):
         Typ.PREISBLATTKONZESSIONSABGABE  # type: ignore[assignment]
     )
     # required attributes (additional to those of Preisblatt)
-    #: Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist
     kundengruppe_k_a: Optional["KundengruppeKA"] = None
+    """Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist"""
 
     # there are no optional attributes (additionally to those of Preisblatt)

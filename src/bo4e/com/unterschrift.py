@@ -27,8 +27,10 @@ class Unterschrift(COM):
 
     """
 
-    #: Name des Unterschreibers
     name: Optional[str] = None
+    """Name des Unterschreibers"""
 
-    ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
-    datum: Optional[pydantic.AwareDatetime] = None  #: Datum der Unterschrift
+    ort: Optional[str] = None
+    """Ort, an dem die Unterschrift geleistet wird"""
+    datum: Optional[pydantic.AwareDatetime] = None
+    """Datum der Unterschrift"""

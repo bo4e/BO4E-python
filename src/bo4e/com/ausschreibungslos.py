@@ -33,38 +33,38 @@ class Ausschreibungslos(COM):
 
     """
 
-    #: Laufende Nummer des Loses
     losnummer: Optional[str] = None
-    #: Bezeichnung der Ausschreibung
+    """Laufende Nummer des Loses"""
     bezeichnung: Optional[str] = None
-    #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
+    """Bezeichnung der Ausschreibung"""
     preismodell: Optional["Preismodell"] = None
+    """Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung"""
 
-    #: Unterscheidungsmöglichkeiten für die Sparte
     energieart: Optional["Sparte"] = None
-    #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
+    """Unterscheidungsmöglichkeiten für die Sparte"""
     wunsch_rechnungslegung: Optional["Rechnungslegung"] = None
-    #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
+    """Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen"""
     wunsch_vertragsform: Optional["Vertragsform"] = None
-    #: Name des Lizenzpartners
+    """Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen"""
     betreut_durch: Optional[str] = None
-    #: Anzahl der Lieferstellen in dieser Ausschreibung
+    """Name des Lizenzpartners"""
     anzahl_lieferstellen: Optional[int] = None
+    """Anzahl der Lieferstellen in dieser Ausschreibung"""
 
-    #: Die ausgeschriebenen Lieferstellen
     lieferstellen: Optional[list["Ausschreibungsdetail"]] = None
+    """Die ausgeschriebenen Lieferstellen"""
 
-    #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
     lieferzeitraum: Optional["Zeitraum"] = None
+    """Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen"""
 
-    #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
-    #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an
+    """Bemerkung des Kunden zum Los"""
     gesamt_menge: Optional["Menge"] = None
-    #: Mindesmenge Toleranzband (kWh, %)
+    """Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an"""
     wunsch_mindestmenge: Optional["Menge"] = None
-    #: Maximalmenge Toleranzband (kWh, %)
+    """Mindesmenge Toleranzband (kWh, %)"""
     wunsch_maximalmenge: Optional["Menge"] = None
+    """Maximalmenge Toleranzband (kWh, %)"""
 
     wiederholungsintervall: Optional["Zeitraum"] = None
     """
@@ -72,7 +72,7 @@ class Ausschreibungslos(COM):
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
 
-    #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
     wunsch_kuendingungsfrist: Optional["Zeitraum"] = None
-    #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
+    """Kundenwunsch zur Kündigungsfrist in der Ausschreibung"""
     wunsch_zahlungsziel: Optional["Zeitraum"] = None
+    """Kundenwunsch zum Zahlungsziel in der Ausschreibung"""

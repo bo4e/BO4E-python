@@ -7,6 +7,9 @@ class Mengenoperator(StrEnum):
     Angabe, wie eine Menge in Bezug auf einen Wert zu bilden ist.
     """
 
-    KLEINER_ALS = "KLEINER_ALS"  #: KLEINER_ALS
-    GROESSER_ALS = "GROESSER_ALS"  #: GROESSER_ALS
-    GLEICH = "GLEICH"  #: GLEICH
+    KLEINER_ALS = "KLEINER_ALS"
+    """KLEINER_ALS"""
+    GROESSER_ALS = "GROESSER_ALS"
+    """GROESSER_ALS"""
+    GLEICH = "GLEICH"
+    """GLEICH"""

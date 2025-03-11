@@ -8,5 +8,7 @@ class Zaehlerauspraegung(StrEnum):
     Gibt an, ob es sich um einen Einrichtungs- oder Zweirichtungszähler handelt.
     """
 
-    EINRICHTUNGSZAEHLER = "EINRICHTUNGSZAEHLER"  #: Einrichtungszaehler
-    ZWEIRICHTUNGSZAEHLER = "ZWEIRICHTUNGSZAEHLER"  #: Zweirichtungszaehler
+    EINRICHTUNGSZAEHLER = "EINRICHTUNGSZAEHLER"
+    """Einrichtungszaehler"""
+    ZWEIRICHTUNGSZAEHLER = "ZWEIRICHTUNGSZAEHLER"
+    """Zweirichtungszaehler"""

@@ -29,10 +29,10 @@ class Tarifeinschraenkung(COM):
 
     """
 
-    #: Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können
     zusatzprodukte: Optional[list[str]] = None
-    #: Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann
+    """Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können"""
     voraussetzungen: Optional[list["Voraussetzungen"]] = None
+    """Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann"""
     einschraenkungzaehler: Optional[list["Geraet"]] = None
     """ Liste der Zähler/Geräte, die erforderlich sind, damit dieser Tarif zur Anwendung gelangen kann.
     (Falls keine Zähler angegeben sind, ist der Tarif nicht an das Vorhandensein bestimmter Zähler gebunden.) """

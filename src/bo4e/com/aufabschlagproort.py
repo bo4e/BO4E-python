@@ -32,11 +32,11 @@ class AufAbschlagProOrt(COM):
 
     """
 
-    #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
     postleitzahl: Optional[str] = None
-    #: Der Ort für den der Aufschlag gilt.
+    """Die Postleitzahl des Ortes für den der Aufschlag gilt."""
     ort: Optional[str] = None
-    #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
+    """Der Ort für den der Aufschlag gilt."""
     netznr: Optional[str] = None
-    #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
+    """Die ene't-Netznummer des Netzes in dem der Aufschlag gilt."""
     staffeln: Optional[list["AufAbschlagstaffelProOrt"]] = None
+    """Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung."""

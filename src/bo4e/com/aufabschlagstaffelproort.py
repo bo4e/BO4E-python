@@ -26,9 +26,9 @@ class AufAbschlagstaffelProOrt(COM):
 
     """
 
-    #: Der Wert für den Auf- oder Abschlag.
     wert: Optional[Decimal] = None
-    #: Unterer Wert, ab dem die Staffel gilt.
+    """Der Wert für den Auf- oder Abschlag."""
     staffelgrenze_von: Optional[Decimal] = None
-    #: Oberer Wert, bis zu dem die Staffel gilt.
+    """Unterer Wert, ab dem die Staffel gilt."""
     staffelgrenze_bis: Optional[Decimal] = None
+    """Oberer Wert, bis zu dem die Staffel gilt."""

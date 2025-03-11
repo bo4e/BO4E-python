@@ -8,6 +8,9 @@ class Registeranzahl(StrEnum):
     Die Registeranzahl wird verwendet zur Charakterisierung von Zählern und daraus resultierenden Tarifen.
     """
 
-    EINTARIF = "EINTARIF"  #: Eintarif
-    ZWEITARIF = "ZWEITARIF"  #: Zweitarif
-    MEHRTARIF = "MEHRTARIF"  #: Mehrtarif
+    EINTARIF = "EINTARIF"
+    """Eintarif"""
+    ZWEITARIF = "ZWEITARIF"
+    """Zweitarif"""
+    MEHRTARIF = "MEHRTARIF"
+    """Mehrtarif"""

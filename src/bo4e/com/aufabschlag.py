@@ -33,21 +33,21 @@ class AufAbschlag(COM):
 
     """
 
-    #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
-    #: Werte für die gestaffelten Auf/Abschläge.
+    """Bezeichnung des Auf-/Abschlags"""
     staffeln: Optional[list["Preisstaffel"]] = None
+    """Werte für die gestaffelten Auf/Abschläge."""
 
-    #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
-    #: Typ des Aufabschlages (z.B. absolut oder prozentual).
+    """Beschreibung zum Auf-/Abschlag"""
     auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
-    #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
+    """Typ des Aufabschlages (z.B. absolut oder prozentual)."""
     auf_abschlagsziel: Optional["AufAbschlagsziel"] = None
+    """Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.."""
     einheit: Optional["Waehrungseinheit"] = None
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
     website: Optional[str] = None
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
+    """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind."""
     gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind."""

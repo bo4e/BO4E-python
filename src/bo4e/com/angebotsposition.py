@@ -35,15 +35,15 @@ class Angebotsposition(COM):
 
     """
 
-    #: Bezeichnung der jeweiligen Position des Angebotsteils
     positionsbezeichnung: Optional[str] = None
-    #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
+    """Bezeichnung der jeweiligen Position des Angebotsteils"""
     positionspreis: Optional["Preis"] = None
+    """Preis pro Einheit/Stückpreis des angebotenen Artikels."""
 
-    #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
     positionsmenge: Optional["Menge"] = None
-    #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
+    """Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition"""
     positionskosten: Optional["Betrag"] = None
+    """Kosten (positionspreis * positionsmenge) für diese Angebotsposition"""
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126

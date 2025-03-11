@@ -42,34 +42,34 @@ class Tarifinfo(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[Typ.TARIFINFO], Field(alias="_typ")] = Typ.TARIFINFO
-    #: Name des Tarifs
     bezeichnung: Optional[str] = None
-    #: Der Name des Marktpartners, der den Tarif anbietet
+    """Name des Tarifs"""
     anbietername: Optional[str] = None
-    #: Strom oder Gas, etc.
+    """Der Name des Marktpartners, der den Tarif anbietet"""
     sparte: Optional["Sparte"] = None
-    #: Kundentypen für den der Tarif gilt, z.B. Privatkunden
+    """Strom oder Gas, etc."""
     kundentypen: Optional[list["Kundentyp"]] = None
-    #: Die Art des Tarifes, z.B. Eintarif oder Mehrtarif
+    """Kundentypen für den der Tarif gilt, z.B. Privatkunden"""
     registeranzahl: Optional["Registeranzahl"] = None
-    #: Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif
+    """Die Art des Tarifes, z.B. Eintarif oder Mehrtarif"""
     tariftyp: Optional["Tariftyp"] = None
-    #: Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse
+    """Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif"""
     tarifmerkmale: Optional[list["Tarifmerkmal"]] = None
-    #: Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet
+    """Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse"""
     anbieter: Optional["Marktteilnehmer"] = None
+    """Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet"""
 
-    #: Internetseite auf dem der Tarif zu finden ist
     website: Optional[str] = None
-    #: Freitext
+    """Internetseite auf dem der Tarif zu finden ist"""
     bemerkung: Optional[str] = None
+    """Freitext"""
 
-    #: Angabe, in welchem Zeitraum der Tarif gültig ist
     zeitliche_gueltigkeit: Optional["Zeitraum"] = None
-    #: Der Energiemix, der für diesen Tarif gilt
+    """Angabe, in welchem Zeitraum der Tarif gültig ist"""
     energiemix: Optional["Energiemix"] = None
-    #: Mindestlaufzeiten und Kündigungsfristen zusammengefasst
+    """Der Energiemix, der für diesen Tarif gilt"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
+    """Mindestlaufzeiten und Kündigungsfristen zusammengefasst"""
     anwendung_von: Optional[pydantic.AwareDatetime] = None
     """
     Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird,

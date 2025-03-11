@@ -37,35 +37,35 @@ class Preisposition(COM):
 
     """
 
-    #: Das Modell, das der Preisbildung zugrunde liegt
     berechnungsmethode: Optional["Kalkulationsmethode"] = None
-    #: Standardisierte Bezeichnung für die abgerechnete Leistungserbringung
-    leistungstyp: Optional["Leistungstyp"] = None  #
-    #: Bezeichnung für die in der Position abgebildete Leistungserbringung
+    """Das Modell, das der Preisbildung zugrunde liegt"""
+    leistungstyp: Optional["Leistungstyp"] = None
+    """Standardisierte Bezeichnung für die abgerechnete Leistungserbringung"""  #
     leistungsbezeichnung: Optional[str] = None
-    #: Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €
+    """Bezeichnung für die in der Position abgebildete Leistungserbringung"""
     preiseinheit: Optional["Waehrungseinheit"] = None
-    #: Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück
+    """Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €"""
     bezugsgroesse: Optional["Mengeneinheit"] = None
-    #: Preisstaffeln, die zu dieser Preisposition gehören
+    """Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück"""
     preisstaffeln: Optional[list["Preisstaffel"]] = None
+    """Preisstaffeln, die zu dieser Preisposition gehören"""
 
     zeitbasis: Optional["Mengeneinheit"] = None
     """
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird
     """
-    #: Festlegung, für welche Tarifzeit der Preis hier festgelegt ist
     tarifzeit: Optional["Tarifzeit"] = None
+    """Festlegung, für welche Tarifzeit der Preis hier festgelegt ist"""
     bdew_artikelnummer: Optional["BDEWArtikelnummer"] = None
     """
     Eine vom BDEW standardisierte Bezeichnug für die abgerechnete Leistungserbringung;
     Diese Artikelnummer wird auch im Rechnungsteil der INVOIC verwendet.
     """
-    #: Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden
     zonungsgroesse: Optional["Bemessungsgroesse"] = None
-    #: Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt
+    """Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden"""
     freimenge_blindarbeit: Optional[Decimal] = None
+    """Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt"""
     freimenge_leistungsfaktor: Optional[Decimal] = None
     """
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als

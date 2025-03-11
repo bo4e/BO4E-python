@@ -7,6 +7,9 @@ class Waermenutzung(StrEnum):
     Wärmenutzung Marktlokation
     """
 
-    SPEICHERHEIZUNG = "SPEICHERHEIZUNG"  #: Speicherheizung
-    WAERMEPUMPE = "WAERMEPUMPE"  #: Wärmepumpe
-    DIREKTHEIZUNG = "DIREKTHEIZUNG"  #: Direktheizung
+    SPEICHERHEIZUNG = "SPEICHERHEIZUNG"
+    """Speicherheizung"""
+    WAERMEPUMPE = "WAERMEPUMPE"
+    """Wärmepumpe"""
+    DIREKTHEIZUNG = "DIREKTHEIZUNG"
+    """Direktheizung"""

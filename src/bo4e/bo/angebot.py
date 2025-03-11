@@ -39,27 +39,31 @@ class Angebot(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[Typ.ANGEBOT], Field(alias="_typ")] = Typ.ANGEBOT
-    #: Eindeutige Nummer des Angebotes
     angebotsnummer: Optional[str] = None
-    #: Erstellungsdatum des Angebots
+    """Eindeutige Nummer des Angebotes"""
     angebotsdatum: Optional[pydantic.AwareDatetime] = None
-    #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
+    """Erstellungsdatum des Angebots"""
     sparte: Optional["Sparte"] = None
-    #: Ersteller des Angebots
+    """Sparte, für die das Angebot abgegeben wird (Strom/Gas)"""
     angebotsgeber: Optional["Geschaeftspartner"] = None
-    #: Empfänger des Angebots
+    """Ersteller des Angebots"""
     angebotsnehmer: Optional["Geschaeftspartner"] = None
+    """Empfänger des Angebots"""
 
     varianten: Optional[list["Angebotsvariante"]] = None
-    """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
-    Ein Angebot besteht mindestens aus einer Variante."""
+    """
+    Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
+    Ein Angebot besteht mindestens aus einer Variante.
+    """
 
     anfragereferenz: Optional[str] = None
-    """	Referenz auf eine Anfrage oder Ausschreibung;
-    Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""
-    #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
+    """
+    Referenz auf eine Anfrage oder Ausschreibung;
+    Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen.
+    """
     bindefrist: Optional[pydantic.AwareDatetime] = None
-    #: Person, die als Angebotsnehmer das Angebot angenommen hat
+    """Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot"""
     unterzeichner_angebotsnehmer: Optional["Person"] = None
-    #: Person, die als Angebotsgeber das Angebots ausgestellt hat
+    """Person, die als Angebotsnehmer das Angebot angenommen hat"""
     unterzeichner_angebotsgeber: Optional["Person"] = None
+    """Person, die als Angebotsgeber das Angebots ausgestellt hat"""
