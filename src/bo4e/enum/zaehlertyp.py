@@ -32,3 +32,5 @@ class Zaehlertyp(StrEnum):
     """Elektronischer Zähler"""
     WIRBELGASZAEHLER = "WIRBELGASZAEHLER"
     """Wirbelgaszähler"""
+    WASSERZAEHLER = "WASSERZAEHLER"
+    """Wasserzähler"""
