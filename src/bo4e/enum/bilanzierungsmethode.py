@@ -19,4 +19,3 @@ class Bilanzierungsmethode(StrEnum):
     """Pauschale Betrachtung (Band)"""
     IMS = "IMS"
     """Intelligentes Messsystem"""
-
