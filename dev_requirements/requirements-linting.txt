@@ -5,7 +5,7 @@
 #
 #    pip-compile-multi
 #
-astroid==3.3.8
+astroid==3.3.9
     # via pylint
 dill==0.3.8
     # via pylint
@@ -16,6 +16,5 @@ mccabe==0.7.0
 platformdirs==4.2.0
     # via pylint
 pylint==3.3.4
-    # via -r requirements-linting.in
 tomlkit==0.12.4
     # via pylint
