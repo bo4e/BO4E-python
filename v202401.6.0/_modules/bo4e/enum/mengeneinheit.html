@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.mengeneinheit &mdash; bo4e v202401.6.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=b3d8b994"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.6.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Data Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.mengeneinheit</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.mengeneinheit</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint:disable=missing-module-docstring</span>
+
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="Mengeneinheit">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.mengeneinheit.Mengeneinheit">[docs]</a>
+<span class="k">class</span> <span class="nc">Mengeneinheit</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">W</span> <span class="o">=</span> <span class="s2">&quot;W&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Watt&quot;&quot;&quot;</span>
+    <span class="n">WH</span> <span class="o">=</span> <span class="s2">&quot;WH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Wattstunde&quot;&quot;&quot;</span>
+    <span class="n">KW</span> <span class="o">=</span> <span class="s2">&quot;KW&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kilowatt&quot;&quot;&quot;</span>
+    <span class="n">KWH</span> <span class="o">=</span> <span class="s2">&quot;KWH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kilowattstunde&quot;&quot;&quot;</span>
+    <span class="n">KVARH</span> <span class="o">=</span> <span class="s2">&quot;KVARH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kilovarstunde&quot;&quot;&quot;</span>
+    <span class="n">MW</span> <span class="o">=</span> <span class="s2">&quot;MW&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Megawatt&quot;&quot;&quot;</span>
+    <span class="n">MWH</span> <span class="o">=</span> <span class="s2">&quot;MWH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Megawattstunde&quot;&quot;&quot;</span>
+    <span class="n">STUECK</span> <span class="o">=</span> <span class="s2">&quot;STUECK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stückzahl&quot;&quot;&quot;</span>
+    <span class="n">KUBIKMETER</span> <span class="o">=</span> <span class="s2">&quot;KUBIKMETER&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kubikmeter (Gas)&quot;&quot;&quot;</span>
+    <span class="n">SEKUNDE</span> <span class="o">=</span> <span class="s2">&quot;SEKUNDE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sekunde&quot;&quot;&quot;</span>
+    <span class="n">MINUTE</span> <span class="o">=</span> <span class="s2">&quot;MINUTE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Minute&quot;&quot;&quot;</span>
+    <span class="n">STUNDE</span> <span class="o">=</span> <span class="s2">&quot;STUNDE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Stunde&quot;&quot;&quot;</span>
+    <span class="n">VIERTEL_STUNDE</span> <span class="o">=</span> <span class="s2">&quot;VIERTEL_STUNDE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Viertelstunde&quot;&quot;&quot;</span>
+    <span class="n">TAG</span> <span class="o">=</span> <span class="s2">&quot;TAG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tag&quot;&quot;&quot;</span>
+    <span class="n">WOCHE</span> <span class="o">=</span> <span class="s2">&quot;WOCHE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Woche&quot;&quot;&quot;</span>
+    <span class="n">MONAT</span> <span class="o">=</span> <span class="s2">&quot;MONAT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Monat&quot;&quot;&quot;</span>
+    <span class="n">QUARTAL</span> <span class="o">=</span> <span class="s2">&quot;QUARTAL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Quartal&quot;&quot;&quot;</span>
+    <span class="n">HALBJAHR</span> <span class="o">=</span> <span class="s2">&quot;HALBJAHR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Halbjahr&quot;&quot;&quot;</span>
+    <span class="n">JAHR</span> <span class="o">=</span> <span class="s2">&quot;JAHR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jahr&quot;&quot;&quot;</span>
+    <span class="n">PROZENT</span> <span class="o">=</span> <span class="s2">&quot;PROZENT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Prozent&quot;&quot;&quot;</span>
+    <span class="n">KVAR</span> <span class="o">=</span> <span class="s2">&quot;KVAR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kilovar&quot;&quot;&quot;</span>
+    <span class="n">KWHK</span> <span class="o">=</span> <span class="s2">&quot;KWHK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kilowattstunde pro Kelvin&quot;&quot;&quot;</span>
+    <span class="n">VAR</span> <span class="o">=</span> <span class="s2">&quot;VAR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Var&quot;&quot;&quot;</span>
+    <span class="n">VARH</span> <span class="o">=</span> <span class="s2">&quot;VARH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Varstunde&quot;&quot;&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
