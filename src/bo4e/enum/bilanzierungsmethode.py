@@ -17,3 +17,5 @@ class Bilanzierungsmethode(StrEnum):
     """TLP getrennte Messung"""
     PAUSCHAL = "PAUSCHAL"
     """Pauschale Betrachtung (Band)"""
+    IMS = "IMS"
+    """Intelligentes Messsystem"""
