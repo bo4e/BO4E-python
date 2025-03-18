@@ -11,6 +11,7 @@ The BO4E version can be queried using `bo4e.__version__`.
 __all__ = [
     "Angebot",
     "Ausschreibung",
+    "Avis",
     "Buendelvertrag",
     "Energiemenge",
     "Fremdkosten",
@@ -44,6 +45,8 @@ __all__ = [
     "Vertrag",
     "Zaehler",
     "Zeitreihe",
+    "Abweichung",
+    "Abweichungsposition",
     "Adresse",
     "Angebotsposition",
     "Angebotsteil",
@@ -54,6 +57,7 @@ __all__ = [
     "AufAbschlagstaffelProOrt",
     "Ausschreibungsdetail",
     "Ausschreibungslos",
+    "Avisposition",
     "Betrag",
     "COM",
     "Dienstleistung",
@@ -82,6 +86,7 @@ __all__ = [
     "RegionalerAufAbschlag",
     "RegionaleTarifpreisposition",
     "Regionskriterium",
+    "Rueckmeldungsposition",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -104,6 +109,7 @@ __all__ = [
     "Zeitspanne",
     "Zustaendigkeit",
     "AbgabeArt",
+    "Abweichungsgrund",
     "Angebotsstatus",
     "Anrede",
     "ArithmetischeOperation",
@@ -113,6 +119,7 @@ __all__ = [
     "Ausschreibungsportal",
     "Ausschreibungsstatus",
     "Ausschreibungstyp",
+    "AvisTyp",
     "BDEWArtikelnummer",
     "Befestigungsart",
     "Bemessungsgroesse",
@@ -202,6 +209,7 @@ from pydantic import BaseModel as _PydanticBaseModel
 # Import BOs
 from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
+from .bo.avis import Avis
 from .bo.buendelvertrag import Buendelvertrag
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
@@ -237,6 +245,8 @@ from .bo.zaehler import Zaehler
 from .bo.zeitreihe import Zeitreihe
 
 # Import COMs
+from .com.abweichung import Abweichung
+from .com.abweichungsposition import Abweichungsposition
 from .com.adresse import Adresse
 from .com.angebotsposition import Angebotsposition
 from .com.angebotsteil import Angebotsteil
@@ -247,6 +257,7 @@ from .com.aufabschlagregional import AufAbschlagRegional
 from .com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com.ausschreibungsdetail import Ausschreibungsdetail
 from .com.ausschreibungslos import Ausschreibungslos
+from .com.avisposition import Avisposition
 from .com.betrag import Betrag
 from .com.com import COM
 from .com.dienstleistung import Dienstleistung
@@ -276,6 +287,7 @@ from .com.regionalepreisstaffel import RegionalePreisstaffel
 from .com.regionaleraufabschlag import RegionalerAufAbschlag
 from .com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from .com.regionskriterium import Regionskriterium
+from .com.rueckmeldungsposition import Rueckmeldungsposition
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
@@ -300,6 +312,7 @@ from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
 from .enum.abgabeart import AbgabeArt
+from .enum.abweichungsgrund import Abweichungsgrund
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
 from .enum.arithmetische_operation import ArithmetischeOperation
@@ -309,6 +322,7 @@ from .enum.aufabschlagsziel import AufAbschlagsziel
 from .enum.ausschreibungsportal import Ausschreibungsportal
 from .enum.ausschreibungsstatus import Ausschreibungsstatus
 from .enum.ausschreibungstyp import Ausschreibungstyp
+from .enum.avistyp import AvisTyp
 from .enum.bdewartikelnummer import BDEWArtikelnummer
 from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
