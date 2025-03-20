@@ -1,8 +1,8 @@
 """
-Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization
+Contains RegionalePreisstaffel and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
 
 from pydantic import Field
 
@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 @postprocess_docstring
 class RegionalePreisstaffel(Preisstaffel):
     """
-    Abbildung einer Preisstaffel mit regionaler Abgrenzung
+    Mit dieser Komponente können Staffelpreise abgebildet werden, die sich auf eine Region beziehen.
 
     .. raw:: html
 
@@ -30,7 +30,14 @@ class RegionalePreisstaffel(Preisstaffel):
 
     """
 
-    typ: Annotated[Literal[ComTyp.REGIONALEPREISSTAFFEL], Field(alias="_typ")] = ComTyp.REGIONALEPREISSTAFFEL
+    typ: Annotated[Union[Literal[ComTyp.PREISSTAFFEL], Literal[ComTyp.REGIONALEPREISSTAFFEL]], Field(alias="_typ")] = (
+        ComTyp.REGIONALEPREISSTAFFEL
+    )
 
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
     """Regionale Eingrenzung der Preisstaffel"""
+
+    postleitzahl: Optional[str] = None
+    """Postleitzahl der Region"""
+    ort: Optional[str] = None
+    """Ort der Region"""

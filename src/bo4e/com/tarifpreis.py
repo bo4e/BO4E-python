@@ -3,7 +3,7 @@ Contains Tarifpreis class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
 
 from pydantic import Field
 
@@ -32,7 +32,7 @@ class Tarifpreis(Preis):
 
     """
 
-    typ: Annotated[Literal[ComTyp.TARIFPREIS], Field(alias="_typ")] = ComTyp.TARIFPREIS
+    typ: Annotated[Union[Literal[ComTyp.PREIS], Literal[ComTyp.TARIFPREIS]], Field(alias="_typ")] = ComTyp.TARIFPREIS
 
     preistyp: Optional["Preistyp"] = None
     """ Angabe des Preistypes (z.B. Grundpreis)"""

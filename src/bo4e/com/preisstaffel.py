@@ -3,7 +3,7 @@ Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
 
 from pydantic import Field
 
@@ -32,7 +32,9 @@ class Preisstaffel(COM):
 
     """
 
-    typ: Annotated[Literal[ComTyp.PREISSTAFFEL], Field(alias="_typ")] = ComTyp.PREISSTAFFEL
+    typ: Annotated[Union[Literal[ComTyp.PREISSTAFFEL], Literal[ComTyp.REGIONALEPREISSTAFFEL]], Field(alias="_typ")] = (
+        ComTyp.PREISSTAFFEL
+    )
 
     einheitspreis: Optional[Decimal] = None
     """Preis pro abgerechneter Mengeneinheit"""

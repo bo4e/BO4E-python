@@ -4,7 +4,7 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
 
 from pydantic import Field
 
@@ -35,7 +35,8 @@ class Preis(COM):
 
     """
 
-    typ: Annotated[Literal[ComTyp.PREIS], Field(alias="_typ")] = ComTyp.PREIS
+    typ: Annotated[Union[Literal[ComTyp.PREIS], Literal[ComTyp.TARIFPREIS]], Field(alias="_typ")] = ComTyp.PREIS
+
     wert: Optional[Decimal] = None
     """Gibt die nominale Höhe des Preises an."""
     einheit: Optional["Waehrungseinheit"] = None

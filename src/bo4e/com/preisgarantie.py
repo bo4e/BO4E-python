@@ -3,7 +3,7 @@ Contains Preisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
 
 from pydantic import Field
 
@@ -32,7 +32,9 @@ class Preisgarantie(COM):
 
     """
 
-    typ: Annotated[Literal[ComTyp.PREISGARANTIE], Field(alias="_typ")] = ComTyp.PREISGARANTIE
+    typ: Annotated[
+        Union[Literal[ComTyp.PREISGARANTIE], Literal[ComTyp.REGIONALEPREISGARANTIE]], Field(alias="_typ")
+    ] = ComTyp.PREISGARANTIE
 
     preisgarantietyp: Optional["Preisgarantietyp"] = None
     """Festlegung, auf welche Preisbestandteile die Garantie gewährt wird."""

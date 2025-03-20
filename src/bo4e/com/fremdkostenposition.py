@@ -2,7 +2,7 @@
 Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal, Optional, Union
 
 from pydantic import Field
 
@@ -27,7 +27,9 @@ class Fremdkostenposition(Kostenposition):
 
     """
 
-    typ: Annotated[Literal[ComTyp.FREMDKOSTENPOSITION], Field(alias="_typ")] = ComTyp.FREMDKOSTENPOSITION
+    typ: Annotated[Union[Literal[ComTyp.KOSTENPOSITION], Literal[ComTyp.FREMDKOSTENPOSITION]], Field(alias="_typ")] = (
+        ComTyp.FREMDKOSTENPOSITION
+    )
 
     # optional attributes (additional to those from Kostenposition)
     marktpartnername: Optional[str] = None
