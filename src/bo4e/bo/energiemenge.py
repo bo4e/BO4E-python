@@ -37,7 +37,6 @@ class Energiemenge(Geschaeftsobjekt):
     typ: Annotated[Literal[Typ.ENERGIEMENGE], Field(alias="_typ")] = Typ.ENERGIEMENGE
     lokations_id: Optional[str] = None
     """Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"""
-    # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp
     lokationstyp: Optional["Lokationstyp"] = None
     """Gibt an, ob es sich um eine Markt- oder Messlokation handelt"""
 
