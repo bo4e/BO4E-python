@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ_bo import TypBo
+from ..enum.botyp import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
