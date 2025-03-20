@@ -3,11 +3,15 @@ Contains StandorteigenschaftenStrom class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from bo4e.com.com import COM
+from typing import Optional
+
+from ..utils import postprocess_docstring
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class StandorteigenschaftenStrom(COM):
     """
     Standorteigenschaften der Sparte Strom
@@ -17,18 +21,17 @@ class StandorteigenschaftenStrom(COM):
         <object data="../_static/images/bo4e/com/StandorteigenschaftenStrom.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/StandorteigenschaftenStrom.json>`_
+        `StandorteigenschaftenStrom JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/StandorteigenschaftenStrom.json>`_
 
     """
 
-    # required attributes
-    #: Die EIC-Nummer des Bilanzierungsgebietes
-    bilanzierungsgebiet_eic: str
+    bilanzierungsgebiet_eic: Optional[str] = None
+    """Die EIC-Nummer des Bilanzierungsgebietes"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147
 
-    #: Der Name der Regelzone
-    regelzone: str
+    regelzone: Optional[str] = None
+    """Der Name der Regelzone"""
 
-    #: De EIC-Nummer der Regelzone
-    regelzone_eic: str
+    regelzone_eic: Optional[str] = None
+    """De EIC-Nummer der Regelzone"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147

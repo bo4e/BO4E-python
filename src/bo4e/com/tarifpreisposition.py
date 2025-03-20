@@ -5,17 +5,19 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Optional
 
-from annotated_types import Len
+from ..utils import postprocess_docstring
+from .com import COM
 
-from bo4e.com.com import COM
-from bo4e.com.preisstaffel import Preisstaffel
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.preistyp import Preistyp
+    from ..enum.waehrungseinheit import Waehrungseinheit
+    from .preisstaffel import Preisstaffel
 
 
+@postprocess_docstring
 class Tarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden.
@@ -25,20 +27,18 @@ class Tarifpreisposition(COM):
         <object data="../_static/images/bo4e/com/Tarifpreisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifpreisposition.json>`_
+        `Tarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifpreisposition.json>`_
 
     """
 
-    # required attributes
-    #: Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Preistyp
-    #: Einheit des Preises (z.B. EURO)
-    einheit: Waehrungseinheit
-    #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
-    bezugseinheit: Mengeneinheit
-    #: Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Annotated[list[Preisstaffel], Len(1)]
+    preistyp: Optional["Preistyp"] = None
+    """Angabe des Preistypes (z.B. Grundpreis)"""
+    einheit: Optional["Waehrungseinheit"] = None
+    """Einheit des Preises (z.B. EURO)"""
+    bezugseinheit: Optional["Mengeneinheit"] = None
+    """Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr"""
+    preisstaffeln: Optional[list["Preisstaffel"]] = None
+    """Hier sind die Staffeln mit ihren Preisenangaben definiert"""
 
-    # optional attributes
-    #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Optional[Mengeneinheit] = None
+    mengeneinheitstaffel: Optional["Mengeneinheit"] = None
+    """Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)"""

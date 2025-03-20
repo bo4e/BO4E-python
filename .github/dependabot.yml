@@ -19,3 +19,5 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    ignore:
+      - dependency-name: "sphinx-notes/pages"

@@ -8,17 +8,29 @@ class Marktrolle(StrEnum):
     Diese Rollen kann ein Marktteilnehmer einnehmen.
     """
 
-    NB = "NB"  #: Verteilnetzbetreiber
-    LF = "LF"  #: Lieferant
-    MSB = "MSB"  #: Messstellenbetreiber
-    DL = "DL"  #: Dienstleister
-    BKV = "BKV"  #: Bilanzkreisverantwortlicher,
-    BKO = "BKO"  #: Bilanzkoordinator / Marktgebietsverantwortlicher
-    UENB = "UENB"  #: Übertragungsnetzbetreiber
-    KUNDE_SELBST_NN = "KUNDE_SELBST_NN"  #: Kunden, die Netznutzungsentgelte selbst zahlen
-    MGV = "MGV"  #: Marktgebietsverantwortlicher
-    EIV = "EIV"  #: Einsatzverantwortlicher
-    RB = "RB"  #: Registerbetreiber
-    KUNDE = "KUNDE"  #: Endkunde
-    INTERESSENT = "INTERESSENT"  #: Interessent
-    BTR = "BTR"  #: Betreiber einer technischen Ressource
+    BTR = "BTR"
+    """Betreiber einer technischen Ressource"""
+    BIKO = "BIKO"
+    """Bilanzkoordinator / Marktgebietsverantwortlicher"""
+    BKV = "BKV"
+    """Bilanzkreisverantwortlicher"""
+    DP = "DP"
+    """Data Provider"""
+    EIV = "EIV"
+    """Einsatzverantwortlicher"""
+    ESA = "ESA"
+    """Energieserviceanbieter des Anschlussnutzers"""
+    KN = "KN"
+    """ Kapazitätsnutzer"""
+    LF = "LF"
+    """Lieferant"""
+    MGV = "MGV"
+    """Marktgebietsverantwortlicher"""
+    MSB = "MSB"
+    """Messstellenbetreiber"""
+    NB = "NB"
+    """Netzbetreiber"""
+    RB = "RB"
+    """Registerbetreiber"""
+    UENB = "UENB"
+    """Übertragungsnetzbetreiber"""

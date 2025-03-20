@@ -3,11 +3,15 @@ Contains Marktgebietinfo class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from bo4e.com.com import COM
+from typing import Optional
+
+from ..utils import postprocess_docstring
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class MarktgebietInfo(COM):
     """
     Informationen zum Marktgebiet im Gas.
@@ -17,10 +21,11 @@ class MarktgebietInfo(COM):
         <object data="../_static/images/bo4e/com/MarktgebietInfo.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/MarktgebietInfo.json>`_
+        `MarktgebietInfo JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/MarktgebietInfo.json>`_
 
     """
 
-    # required attributes
-    marktgebiet: str  #: Der Name des Marktgebietes
-    marktgebietcode: str  #: Die standardisierte Codenummer des Marktgebietes
+    marktgebiet: Optional[str] = None
+    """Der Name des Marktgebietes"""
+    marktgebietcode: Optional[str] = None
+    """Die standardisierte Codenummer des Marktgebietes"""

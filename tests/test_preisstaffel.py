@@ -1,60 +1,34 @@
 from decimal import Decimal
-from typing import Any, Dict
+from typing import Any
 
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.preisstaffel import Preisstaffel
+from bo4e import Preisstaffel, Sigmoidparameter
 from tests.serialization_helper import assert_serialization_roundtrip
-from tests.test_sigmoidparameter import example_sigmoidparameter
-
-example_preisstaffel = Preisstaffel(
-    einheitspreis=Decimal(40.0), staffelgrenze_von=Decimal(12.5), staffelgrenze_bis=Decimal(25.0)
-)
 
 
 class TestPreisstaffel:
     @pytest.mark.parametrize(
-        "preisstaffel, expected_json_dict",
+        "preisstaffel",
         [
             pytest.param(
                 Preisstaffel(
                     einheitspreis=Decimal(40.0),
                     staffelgrenze_von=Decimal(12.5),
                     staffelgrenze_bis=Decimal(25.0),
-                    sigmoidparameter=example_sigmoidparameter,
+                    sigmoidparameter=Sigmoidparameter(),
+                    artikel_id="4-5-6",
                 ),
-                {
-                    "einheitspreis": Decimal("40"),
-                    "sigmoidparameter": {"A": Decimal("1"), "B": Decimal("2"), "C": Decimal("3"), "D": Decimal("4")},
-                    "staffelgrenzeVon": Decimal("12.5"),
-                    "staffelgrenzeBis": Decimal("25"),
-                },
                 id="all attributes",
-            ),
-            pytest.param(
-                example_preisstaffel,
-                {
-                    "einheitspreis": Decimal("40"),
-                    "staffelgrenzeVon": Decimal("12.5"),
-                    "staffelgrenzeBis": Decimal("25"),
-                    "sigmoidparameter": None,
-                },
-                id="only required params",
             ),
         ],
     )
-    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel, expected_json_dict: Dict[str, Any]) -> None:
+    def test_serialization_roundtrip(self, preisstaffel: Preisstaffel) -> None:
         """
         Test de-/serialisation of Preisstaffel.
         """
-        assert_serialization_roundtrip(preisstaffel, expected_json_dict)
-
-    def test_missing_required_attribute(self) -> None:
-        with pytest.raises(ValidationError) as excinfo:
-            _ = Preisstaffel()  # type: ignore[call-arg]
-
-        assert "3 validation errors" in str(excinfo.value)
+        assert_serialization_roundtrip(preisstaffel)
 
     @pytest.mark.parametrize(
         "not_a_sigmoid_parameter",
@@ -70,6 +44,7 @@ class TestPreisstaffel:
                 staffelgrenze_von=Decimal(12.5),
                 staffelgrenze_bis=Decimal(25.0),
                 sigmoidparameter=not_a_sigmoid_parameter,
+                artikel_id="4-5-6",
             )
 
         assert "1 validation error" in str(excinfo.value)

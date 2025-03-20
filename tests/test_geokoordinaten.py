@@ -3,26 +3,25 @@ from decimal import Decimal
 import pytest
 from pydantic import ValidationError
 
-from bo4e.com.geokoordinaten import Geokoordinaten
+from bo4e import Geokoordinaten
+from tests.serialization_helper import assert_serialization_roundtrip
 
 
 class TestGeokoordinaten:
-    def test_serialization(self) -> None:
-        geo = Geokoordinaten(
-            breitengrad=Decimal(52.52149200439453),
-            laengengrad=Decimal(13.404866218566895),
-        )
-
-        json_string = geo.model_dump_json(by_alias=True)
-
-        assert "breitengrad" in json_string
-        assert str(geo.breitengrad) in json_string
-
-        deserialized_geo: Geokoordinaten = Geokoordinaten.model_validate_json(json_string)
-
-        assert isinstance(deserialized_geo.breitengrad, Decimal)
-        assert isinstance(deserialized_geo.laengengrad, Decimal)
-        assert geo.breitengrad == deserialized_geo.breitengrad
+    @pytest.mark.parametrize(
+        "geokoordinaten",
+        [
+            pytest.param(
+                Geokoordinaten(
+                    breitengrad=Decimal(52.52149200439453),
+                    laengengrad=Decimal(13.404866218566895),
+                ),
+                id="all attributes at first level",
+            ),
+        ],
+    )
+    def test_serialization_roundtrip(self, geokoordinaten: Geokoordinaten) -> None:
+        assert_serialization_roundtrip(geokoordinaten)
 
     def test_wrong_datatype(self) -> None:
         with pytest.raises(ValidationError) as excinfo:

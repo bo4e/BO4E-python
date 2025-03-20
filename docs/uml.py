@@ -4,6 +4,7 @@ Currently, the only supported parser is for Plantuml. The generated `.puml` file
 `compile_files_kroki(...)`.
 It is designed to work together with `pydantic` and only is tested in this project so far.
 """
+
 import importlib
 import inspect
 import json
@@ -78,11 +79,8 @@ being inherited by all classes in this project. Therefore, their namespace start
 #: Define shorthand for Cardinality type since none of the values have to be provided.
 Cardinality = tuple[str, str]
 
-#: Define the link base URI used in svg links
-LINK_URI_BASE = "https://bo4e-python.readthedocs.io/en/latest"
-
-# link domain to test links only local.
-# LINK_URI_BASE = f"file:///{Path.cwd().parent}/.tox/docs/tmp/html"
+#: Define the link base URI used in svg links. Will be overridden by conf.py.
+LINK_URI_BASE = f"file:///{Path(__file__).parents[1]}/.tox/docs/tmp/html"
 
 
 class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
@@ -113,12 +111,14 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         super().add_node(
             node,
             cls=cls,
-            fields={
-                field_name: {"model_field": model_field, "card": None}
-                for field_name, model_field in cls.model_fields.items()
-            }
-            if hasattr(cls, "model_fields")
-            else {},
+            fields=(
+                {
+                    field_name: {"model_field": model_field, "card": None}
+                    for field_name, model_field in cls.model_fields.items()
+                }
+                if hasattr(cls, "model_fields")
+                else {}
+            ),
         )
 
     def add_extension(self, node1: str, node2: str) -> None:
@@ -129,7 +129,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         super().add_edge(node1, node2, type="extension")
         list(map(self.nodes[node1]["fields"].__delitem__, self.nodes[node2]["fields"].keys()))
 
-    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-arguments, too-many-positional-arguments
     def add_association(
         self,
         node1: str,
@@ -273,7 +273,7 @@ class PlantUMLNetwork(_UMLNetworkABC):
 
         return cls_str
 
-    # pylint: disable=too-many-arguments, too-many-locals
+    # pylint: disable=too-many-arguments, too-many-locals, too-many-positional-arguments
     def _edge_to_str(
         self, node1: str, node2: str, index: int, detailed: bool = True, root_node: Optional[str] = None, **kwargs: Any
     ) -> str:
@@ -565,12 +565,15 @@ def _recursive_add_class(
     # ------------------------------------------------------------------------------------------------------------------
 
 
-def compile_files_kroki(input_dir: Path, output_dir: Path) -> None:
+def compile_files_kroki(input_dir: Path, output_dir: Path, locally_hosted: bool = False) -> None:
     """
     Compiles all plantuml files inside `input_dir` (recursive) to svg's in `output_dir` with the same subpath as in
     `input_dir`. Files are compiled using web service of [kroki](https://kroki.io)
     """
-    url = "https://kroki.io"
+    if locally_hosted:
+        url = "http://localhost:8000"
+    else:
+        url = "https://kroki.io"
     for root, _, files in os.walk(input_dir):
         for file in files:
             with open(os.path.join(root, file), "r", encoding="utf-8") as uml_file:

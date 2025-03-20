@@ -2,14 +2,18 @@
 Contains Tarifberechnungsparameter class
 and corresponding marshmallow schema for de-/serialization
 """
-from decimal import Decimal
-from typing import List, Optional
 
-from bo4e.com.com import COM
-from bo4e.com.preis import Preis
-from bo4e.com.tarifpreis import Tarifpreis
-from bo4e.enum.messpreistyp import Messpreistyp
-from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+from decimal import Decimal
+from typing import TYPE_CHECKING, Optional
+
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.messpreistyp import Messpreistyp
+    from ..enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
+    from .preis import Preis
+    from .tarifpreis import Tarifpreis
 
 # yes. there is no description in the official docs.
 # https://github.com/Hochfrequenz/BO4E-python/issues/328
@@ -17,48 +21,49 @@ from bo4e.enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 # pylint: disable=too-few-public-methods, empty-docstring, too-many-instance-attributes
 
 
+@postprocess_docstring
 class Tarifberechnungsparameter(COM):
     """
     In dieser Komponente sind die Berechnungsparameter für die Ermittlung der Tarifkosten zusammengefasst.
+
     .. raw:: html
 
         <object data="../_static/images/bo4e/com/Tarifberechnungsparameter.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Tarifberechnungsparameter.json>`_
+        `Tarifberechnungsparameter JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifberechnungsparameter.json>`_
 
     """
 
     # there are no required attributes
-    # optional attributes
 
-    #: Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind
-    berechnungsmethode: Optional[Tarifkalkulationsmethode] = None
-    #: True, falls der Messpreis im Grundpreis (GP) enthalten ist
-    messpreis_in_gp_enthalten: Optional[bool] = None
+    berechnungsmethode: Optional["Tarifkalkulationsmethode"] = None
+    """Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind"""
+    ist_messpreis_in_grundpreis_enthalten: Optional[bool] = None
+    """True, falls der Messpreis im Grundpreis (GP) enthalten ist"""
 
-    messpreis_beruecksichtigen: Optional[bool] = None
+    ist_messpreis_zu_beruecksichtigen: Optional[bool] = None
     """
     True, falls bei der Bildung des Durchschnittspreises für die Höchst- und Mindestpreisbetrachtung der Messpreis mit
     berücksichtigt wird
     """
 
-    #: Typ des Messpreises
-    messpreistyp: Optional[Messpreistyp] = None
+    messpreistyp: Optional["Messpreistyp"] = None
+    """Typ des Messpreises"""
 
-    #: Im Preis bereits eingeschlossene Leistung (für Gas)
     kw_inklusive: Optional[Decimal] = None
+    """Im Preis bereits eingeschlossene Leistung (für Gas)"""
     # todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327
 
-    #: Intervall, indem die über "kwInklusive" hinaus abgenommene Leistung kostenpflichtig wird (z.B. je 5 kW 20 EURO)
     kw_weitere_mengen: Optional[Decimal] = None
+    """Intervall, indem die über "kwInklusive" hinaus abgenommene Leistung kostenpflichtig wird (z.B. je 5 kW 20 EURO)"""
     # todo: type decimal is most likely wrong: https://github.com/Hochfrequenz/BO4E-python/issues/327
 
-    #: Höchstpreis für den Durchschnitts-Arbeitspreis NT
-    hoechstpreis_n_t: Optional[Preis] = None
-    #: Höchstpreis für den Durchschnitts-Arbeitspreis HT
-    hoechstpreis_h_t: Optional[Preis] = None
-    #: Mindestpreis für den Durchschnitts-Arbeitspreis
-    mindestpreis: Optional[Preis] = None
-    #: Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise
-    zusatzpreise: Optional[List[Tarifpreis]] = None
+    hoechstpreis_n_t: Optional["Preis"] = None
+    """Höchstpreis für den Durchschnitts-Arbeitspreis NT"""
+    hoechstpreis_h_t: Optional["Preis"] = None
+    """Höchstpreis für den Durchschnitts-Arbeitspreis HT"""
+    mindestpreis: Optional["Preis"] = None
+    """Mindestpreis für den Durchschnitts-Arbeitspreis"""
+    zusatzpreise: Optional[list["Tarifpreis"]] = None
+    """Liste mit zusätzlichen Preisen, beispielsweise Messpreise und/oder Leistungspreise"""

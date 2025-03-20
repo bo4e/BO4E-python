@@ -2,22 +2,32 @@
 Contains Geschaeftspartner class
 and corresponding marshmallow schema for de-/serialization
 """
-# pylint: disable=too-many-instance-attributes, too-few-public-methods
-from typing import List, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.adresse import Adresse
-from bo4e.enum.anrede import Anrede
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from bo4e.enum.kontaktart import Kontaktart
+# pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
+
+from pydantic import Field
+
+from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.adresse import Adresse
+    from ..com.kontaktweg import Kontaktweg
+    from ..enum.anrede import Anrede
+    from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
+    from ..enum.organisationstyp import Organisationstyp
+    from ..enum.titel import Titel
+    from .person import Person
 
 
+@postprocess_docstring
 class Geschaeftspartner(Geschaeftsobjekt):
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
     Sowohl Unternehmen, als auch Privatpersonen können Geschäftspartner sein.
-    Hinweis: Marktteilnehmer haben ein eigenes BO, welches sich von diesem BO ableitet.
+    Hinweis: "Marktteilnehmer" haben ein eigenes BO, welches sich von diesem BO ableitet.
     Hier sollte daher keine Zuordnung zu Marktrollen erfolgen.
 
     .. raw:: html
@@ -25,59 +35,54 @@ class Geschaeftspartner(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Geschaeftspartner.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftspartner.json>`_
+        `Geschaeftspartner JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Geschaeftspartner.json>`_
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSPARTNER
-    name1: str
+    typ: Annotated[Literal[Typ.GESCHAEFTSPARTNER], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
+    anrede: Optional["Anrede"] = None
+    """Mögliche Anrede der Person"""
+    individuelle_anrede: Optional[str] = None
     """
-    Erster Teil des Namens.
-    Hier kann der Firmenname oder bei Privatpersonen beispielsweise der Nachname dagestellt werden.
-    Beispiele: Yellow Strom GmbH oder Hagen
+    Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
+    Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
-    # todo: replace name1/2/3 with something more readable. no one wants to deal with that. maybe serialize as name1/2/3
-    # but resolve to readable python fields under the hood
+    titel: Optional["Titel"] = None
+    """Möglicher Titel der Person"""
+    vorname: Optional[str] = None
+    """Vorname der Person"""
+    nachname: Optional[str] = None
+    """Nachname (Familienname) der Person"""
 
-    gewerbekennzeichnung: bool
+    ansprechpartner: Optional[list["Person"]] = None
+    organisationstyp: Optional["Organisationstyp"] = None
     """
-    Kennzeichnung ob es sich um einen Gewerbe/Unternehmen (gewerbeKennzeichnung = true)
-    oder eine Privatperson handelt. (gewerbeKennzeichnung = false)
+    Kennzeichnung ob es sich um ein Gewerbe/Unternehmen, eine Privatperson oder eine andere Art von Organisation handelt.
     """
-    #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
-    geschaeftspartnerrolle: List[Geschaeftspartnerrolle]
-    # todo: rename to plural
-
-    # optional attributes
-    #: Die Anrede für den GePa, Z.B. "Herr"
-    anrede: Optional[Anrede] = None
-    name2: Optional[str] = None
+    organisationsname: Optional[str] = None
     """
-    Zweiter Teil des Namens.
-    Hier kann der eine Erweiterung zum Firmennamen oder bei Privatpersonen beispielsweise der Vorname dagestellt werden.
-    Beispiele: Bereich Süd oder Nina
+    Name der Firma, wenn Gewerbe oder andere Organisation.
     """
-
-    name3: Optional[str] = None
-    """
-    Dritter Teil des Namens.
-    Hier können weitere Ergänzungen zum Firmennamen oder bei Privatpersonen Zusätze zum Namen dagestellt werden.
-    Beispiele: und Afrika oder Sängerin
-    """
-    #: Handelsregisternummer des Geschäftspartners
-    hrnummer: Optional[str] = None
-    #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
+    kontaktwege: Optional[list["Kontaktweg"]] = None
+    """Kontaktwege des Geschäftspartners"""
+    geschaeftspartnerrollen: Optional[list["Geschaeftspartnerrolle"]] = None
+    """Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)"""
+    handelsregisternummer: Optional[str] = None
+    """Handelsregisternummer des Geschäftspartners"""
     amtsgericht: Optional[str] = None
-    #: Bevorzugte Kontaktwege des Geschäftspartners
-    kontaktweg: Optional[List[Kontaktart]] = []
-    #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
+    """Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat"""
     umsatzsteuer_id: Optional[str] = None
-    #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
+    """
+    Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
+    """
     glaeubiger_id: Optional[str] = None
-    #: E-Mail-Adresse des Ansprechpartners. Z.B. "info@hochfrequenz.de"
-    e_mail_adresse: Optional[str] = None
-    #: Internetseite des Marktpartners
+    """
+    Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
+    """
     website: Optional[str] = None
-    #: Adressen der Geschäftspartner, an denen sich der Hauptsitz befindet
-    partneradresse: Optional[Adresse] = None  # todo: is it plural or not? the docs are bad
+    """Internetseite des Marktpartners"""
+    adresse: Optional["Adresse"] = None
+    """Adresse des Geschäftspartners"""
+    # Todo: Add optional connection to marktteilnehmer as discussed in workshop
+    # not clear what is the best solution here - circular import marktteilnehmer?
+    # discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let's figure out a solution somehow.

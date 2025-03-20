@@ -2,15 +2,24 @@
 Contains Energieherkunft class
 and corresponding marshmallow schema for de-/serialization
 """
-# pylint: disable=no-name-in-module
-from pydantic import condecimal
 
-from bo4e.com.com import COM
-from bo4e.enum.erzeugungsart import Erzeugungsart
+from decimal import Decimal
+from typing import TYPE_CHECKING, Optional
+
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.erzeugungsart import Erzeugungsart
+
+
+# pylint: disable=no-name-in-module
+
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Energieherkunft(COM):
     """
     Abbildung einer Energieherkunft
@@ -20,12 +29,11 @@ class Energieherkunft(COM):
         <object data="../_static/images/bo4e/com/Energieherkunft.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Energieherkunft.json>`_
+        `Energieherkunft JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Energieherkunft.json>`_
 
     """
 
-    # required attributes
-    #: Art der Erzeugung der Energie.
-    erzeugungsart: Erzeugungsart
-    #: Prozentualer Anteil der jeweiligen Erzeugungsart.
-    anteil_prozent: condecimal(gt=0, lt=100)  # type: ignore[valid-type]
+    erzeugungsart: Optional["Erzeugungsart"] = None
+    """Art der Erzeugung der Energie."""
+    anteil_prozent: Optional[Decimal] = None
+    """Prozentualer Anteil der jeweiligen Erzeugungsart."""

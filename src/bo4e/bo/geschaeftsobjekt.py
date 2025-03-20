@@ -1,19 +1,22 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import List, Optional
+from typing import Annotated, Optional
 
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
-from bo4e.com.externereferenz import ExterneReferenz
-from bo4e.enum.botyp import BoTyp
+from bo4e.version import __version__
+from bo4e.zusatzattribut import ZusatzAttribut
+
+from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
 
 
-class Geschaeftsobjekt(BaseModel):
+@postprocess_docstring
+class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
     Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
@@ -23,20 +26,29 @@ class Geschaeftsobjekt(BaseModel):
         <object data="../_static/images/bo4e/bo/Geschaeftsobjekt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Geschaeftsobjekt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Geschaeftsobjekt.json>`_
+        `Geschaeftsobjekt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Geschaeftsobjekt.json>`_
 
     """
 
     # required attributes
-    versionstruktur: str = "2"  #: Version der BO-Struktur aka "fachliche Versionierung"
-    bo_typ: BoTyp = BoTyp.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
-    # bo_typ is used as discriminator f.e. for databases or deserialization
+    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    """
+    Version der BO-Struktur aka "fachliche Versionierung"
+    """
 
-    # optional attributes
-    externe_referenzen: Optional[List[ExterneReferenz]] = []
+    zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
+    # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
 
-    #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
+    # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
+    # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
+    id: Annotated[Optional[str], Field(alias="_id")] = None
+    """
+    Eine generische ID, die für eigene Zwecke genutzt werden kann.
+    Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
+    """
+
     # pylint: disable=duplicate-code
+    # basic configuration for pydantic's behaviour
     model_config = ConfigDict(
         alias_generator=camelize,
         populate_by_name=True,
@@ -45,7 +57,5 @@ class Geschaeftsobjekt(BaseModel):
         # an annotated version of Decimal, but you would have to use it everywhere in the pydantic models.
         # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
         json_encoders={Decimal: str},
+        use_attribute_docstrings=True,
     )
-    """
-    basic configuration for pydantic's behaviour
-    """

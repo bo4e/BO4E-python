@@ -4,17 +4,19 @@ Contains RegionaleTarifpreisposition class and corresponding marshmallow schema 
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Optional
 
-from annotated_types import Len
+from ..utils import postprocess_docstring
+from .com import COM
 
-from bo4e.com.com import COM
-from bo4e.com.regionalepreisstaffel import RegionalePreisstaffel
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.preistyp import Preistyp
-from bo4e.enum.waehrungseinheit import Waehrungseinheit
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.preistyp import Preistyp
+    from ..enum.waehrungseinheit import Waehrungseinheit
+    from .regionalepreisstaffel import RegionalePreisstaffel
 
 
+@postprocess_docstring
 class RegionaleTarifpreisposition(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet
@@ -25,20 +27,18 @@ class RegionaleTarifpreisposition(COM):
         <object data="../_static/images/bo4e/com/RegionaleTarifpreisposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/RegionaleTarifpreisposition.json>`_
+        `RegionaleTarifpreisposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/RegionaleTarifpreisposition.json>`_
 
     """
 
-    # required attributes
-    #: Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Preistyp
-    #: Einheit des Preises (z.B. EURO)
-    einheit: Waehrungseinheit
-    #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
-    bezugseinheit: Mengeneinheit
-    #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
-    preisstaffeln: Annotated[list[RegionalePreisstaffel], Len(1)]
+    preistyp: Optional["Preistyp"] = None
+    """Angabe des Preistypes (z.B. Grundpreis)"""
+    einheit: Optional["Waehrungseinheit"] = None
+    """Einheit des Preises (z.B. EURO)"""
+    bezugseinheit: Optional["Mengeneinheit"] = None
+    """Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr"""
+    preisstaffeln: Optional[list["RegionalePreisstaffel"]] = None
+    """Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert"""
 
-    # optional attributes
-    #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
-    mengeneinheitstaffel: Optional[Mengeneinheit] = None
+    mengeneinheitstaffel: Optional["Mengeneinheit"] = None
+    """Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)"""

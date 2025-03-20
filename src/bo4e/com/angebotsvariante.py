@@ -1,21 +1,24 @@
 """
 Contains Angebotsvariante and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Optional
 
-from annotated_types import Len
+import pydantic
 
-from bo4e.com.angebotsteil import Angebotsteil
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.enum.angebotsstatus import Angebotsstatus
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.angebotsstatus import Angebotsstatus
+    from .angebotsteil import Angebotsteil
+    from .betrag import Betrag
+    from .menge import Menge
 
 
+@postprocess_docstring
 class Angebotsvariante(COM):
     """
     Führt die verschiedenen Ausprägungen der Angebotsberechnung auf
@@ -25,30 +28,28 @@ class Angebotsvariante(COM):
         <object data="../_static/images/bo4e/com/Angebotsvariante.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Angebotsvariante.json>`_
+        `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Angebotsvariante.json>`_
 
     """
 
-    # required attributes
-    #: Gibt den Status eines Angebotes an.
-    angebotsstatus: Angebotsstatus
+    angebotsstatus: Optional["Angebotsstatus"] = None
+    """Gibt den Status eines Angebotes an."""
 
-    #: Datum der Erstellung der Angebotsvariante
-    erstellungsdatum: datetime
+    erstellungsdatum: Optional[pydantic.AwareDatetime] = None
+    """Datum der Erstellung der Angebotsvariante"""
 
-    #: Bis zu diesem Zeitpunkt gilt die Angebotsvariante
-    bindefrist: datetime
+    bindefrist: Optional[pydantic.AwareDatetime] = None
+    """Bis zu diesem Zeitpunkt gilt die Angebotsvariante"""
 
-    teile: Annotated[list[Angebotsteil], Len(1)]
+    teile: Optional[list["Angebotsteil"]] = None
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.
     Eine Variante besteht mindestens aus einem Angebotsteil.
     """
 
-    # optional attributes
-    #: Aufsummierte Wirkarbeitsmenge aller Angebotsteile
-    gesamtmenge: Optional[Menge] = None
+    gesamtmenge: Optional["Menge"] = None
+    """Aufsummierte Wirkarbeitsmenge aller Angebotsteile"""
     # todo: write a validator for this: https://github.com/Hochfrequenz/BO4E-python/issues/320
-    #: Aufsummierte Kosten aller Angebotsteile
-    gesamtkosten: Optional[Betrag] = None
+    gesamtkosten: Optional["Betrag"] = None
+    """Aufsummierte Kosten aller Angebotsteile"""

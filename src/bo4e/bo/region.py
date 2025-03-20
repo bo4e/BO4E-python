@@ -1,18 +1,24 @@
 """
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, List, Optional
 
-from annotated_types import Len
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.regionskriterium import Regionskriterium
-from bo4e.enum.botyp import BoTyp
+from pydantic import Field
+
+from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.regionskriterium import Regionskriterium
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class Region(Geschaeftsobjekt):
     """
     Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben
@@ -22,18 +28,16 @@ class Region(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Region.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Region.json>`_
+        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Region.json>`_
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.REGION
-    #: Bezeichnung der Region
-    bezeichnung: str
+    typ: Annotated[Literal[Typ.REGION], Field(alias="_typ")] = Typ.REGION
+    bezeichnung: Optional[str] = None
+    """Bezeichnung der Region"""
 
-    #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: Annotated[list[Regionskriterium], Len(1)]
+    positiv_liste: Optional[list["Regionskriterium"]] = None
+    """Positivliste der Kriterien zur Definition der Region"""
 
-    # optional attributes
-    #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: Optional[List[Regionskriterium]] = None
+    negativ_liste: Optional[list["Regionskriterium"]] = None
+    """Negativliste der Kriterien zur Definition der Region"""

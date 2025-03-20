@@ -4,20 +4,22 @@ Contains Ausschreibungslos class and corresponding marshmallow schema for de-/se
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Optional
 
-from annotated_types import Len
+from ..utils import postprocess_docstring
+from .com import COM
 
-from bo4e.com.ausschreibungsdetail import Ausschreibungsdetail
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.preismodell import Preismodell
-from bo4e.enum.rechnungslegung import Rechnungslegung
-from bo4e.enum.sparte import Sparte
-from bo4e.enum.vertragsform import Vertragsform
+if TYPE_CHECKING:
+    from ..enum.preismodell import Preismodell
+    from ..enum.rechnungslegung import Rechnungslegung
+    from ..enum.sparte import Sparte
+    from ..enum.vertragsform import Vertragsform
+    from .ausschreibungsdetail import Ausschreibungsdetail
+    from .menge import Menge
+    from .zeitraum import Zeitraum
 
 
+@postprocess_docstring
 class Ausschreibungslos(COM):
     """
     Eine Komponente zur Abbildung einzelner Lose einer Ausschreibung
@@ -27,52 +29,50 @@ class Ausschreibungslos(COM):
         <object data="../_static/images/bo4e/com/Ausschreibungslos.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Ausschreibungslos.json>`_
+        `Ausschreibungslos JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Ausschreibungslos.json>`_
 
     """
 
-    # required attributes
-    #: Laufende Nummer des Loses
-    losnummer: str
-    #: Bezeichnung der Ausschreibung
-    bezeichnung: str
-    #: Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung
-    preismodell: Preismodell
+    losnummer: Optional[str] = None
+    """Laufende Nummer des Loses"""
+    bezeichnung: Optional[str] = None
+    """Bezeichnung der Ausschreibung"""
+    preismodell: Optional["Preismodell"] = None
+    """Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung"""
 
-    #: Unterscheidungsmöglichkeiten für die Sparte
-    energieart: Sparte
-    #: Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen
-    wunsch_rechnungslegung: Rechnungslegung
-    #: Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen
-    wunsch_vertragsform: Vertragsform
-    #: Name des Lizenzpartners
-    betreut_durch: str
-    #: Anzahl der Lieferstellen in dieser Ausschreibung
-    anzahl_lieferstellen: int
+    energieart: Optional["Sparte"] = None
+    """Unterscheidungsmöglichkeiten für die Sparte"""
+    wunsch_rechnungslegung: Optional["Rechnungslegung"] = None
+    """Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen"""
+    wunsch_vertragsform: Optional["Vertragsform"] = None
+    """Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen"""
+    betreut_durch: Optional[str] = None
+    """Name des Lizenzpartners"""
+    anzahl_lieferstellen: Optional[int] = None
+    """Anzahl der Lieferstellen in dieser Ausschreibung"""
 
-    #: Die ausgeschriebenen Lieferstellen
-    lieferstellen: Annotated[list[Ausschreibungsdetail], Len(1)]
+    lieferstellen: Optional[list["Ausschreibungsdetail"]] = None
+    """Die ausgeschriebenen Lieferstellen"""
 
-    #: Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen
-    lieferzeitraum: Zeitraum
+    lieferzeitraum: Optional["Zeitraum"] = None
+    """Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen"""
 
-    # optional attributes
-    #: Bemerkung des Kunden zum Los
     bemerkung: Optional[str] = None
-    #: Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an
-    gesamt_menge: Optional[Menge] = None
-    #: Mindesmenge Toleranzband (kWh, %)
-    wunsch_mindestmenge: Optional[Menge] = None
-    #: Maximalmenge Toleranzband (kWh, %)
-    wunsch_maximalmenge: Optional[Menge] = None
+    """Bemerkung des Kunden zum Los"""
+    gesamt_menge: Optional["Menge"] = None
+    """Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an"""
+    wunsch_mindestmenge: Optional["Menge"] = None
+    """Mindesmenge Toleranzband (kWh, %)"""
+    wunsch_maximalmenge: Optional["Menge"] = None
+    """Maximalmenge Toleranzband (kWh, %)"""
 
-    wiederholungsintervall: Optional[Zeitraum] = None
+    wiederholungsintervall: Optional["Zeitraum"] = None
     """
     In welchem Intervall die Angebotsabgabe wiederholt werden darf.
     Angabe nur gesetzt für die 2. Phase bei öffentlich-rechtlichen Ausschreibungen
     """
 
-    #: Kundenwunsch zur Kündigungsfrist in der Ausschreibung
-    wunsch_kuendingungsfrist: Optional[Zeitraum] = None
-    #: Kundenwunsch zum Zahlungsziel in der Ausschreibung
-    wunsch_zahlungsziel: Optional[Zeitraum] = None
+    wunsch_kuendingungsfrist: Optional["Zeitraum"] = None
+    """Kundenwunsch zur Kündigungsfrist in der Ausschreibung"""
+    wunsch_zahlungsziel: Optional["Zeitraum"] = None
+    """Kundenwunsch zum Zahlungsziel in der Ausschreibung"""

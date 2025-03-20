@@ -1,24 +1,25 @@
 """
 Contains Rechnungsposition class and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
+import pydantic
 
-from bo4e.com.betrag import Betrag
-from bo4e.com.com import COM
-from bo4e.com.menge import Menge
-from bo4e.com.preis import Preis
-from bo4e.com.steuerbetrag import Steuerbetrag
-from bo4e.enum.bdewartikelnummer import BDEWArtikelnummer
-from bo4e.enum.zeiteinheit import Zeiteinheit
-from bo4e.validators import check_bis_is_later_than_von
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.bdewartikelnummer import BDEWArtikelnummer
+    from ..enum.mengeneinheit import Mengeneinheit
+    from .betrag import Betrag
+    from .menge import Menge
+    from .preis import Preis
+    from .steuerbetrag import Steuerbetrag
 
 
+@postprocess_docstring
 class Rechnungsposition(COM):
     """
     Über Rechnungspositionen werden Rechnungen strukturiert.
@@ -29,27 +30,27 @@ class Rechnungsposition(COM):
         <object data="../_static/images/bo4e/com/Rechnungsposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Rechnungsposition.json>`_
+        `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Rechnungsposition.json>`_
 
     """
 
-    # required attributes
-    #: Fortlaufende Nummer für die Rechnungsposition
-    positionsnummer: int
+    positionsnummer: Optional[int] = None
+    """Fortlaufende Nummer für die Rechnungsposition"""
 
-    lieferung_von: datetime  #: Start der Lieferung für die abgerechnete Leistung (inklusiv)
-    lieferung_bis: datetime  #: Ende der Lieferung für die abgerechnete Leistung (exklusiv)
-    _bis_check = field_validator("lieferung_bis")(check_bis_is_later_than_von)
+    lieferung_von: Optional[pydantic.AwareDatetime] = None
+    """Start der Lieferung für die abgerechnete Leistung (inklusiv)"""
+    lieferung_bis: Optional[pydantic.AwareDatetime] = None
+    """Ende der Lieferung für die abgerechnete Leistung (exklusiv)"""
 
-    #: Bezeichung für die abgerechnete Position
-    positionstext: str
+    positionstext: Optional[str] = None
+    """Bezeichung für die abgerechnete Position"""
 
-    #: Die abgerechnete Menge mit Einheit
-    positions_menge: Menge
-    #: Der Preis für eine Einheit der energetischen Menge
-    einzelpreis: Preis
+    positions_menge: Optional["Menge"] = None
+    """Die abgerechnete Menge mit Einheit"""
+    einzelpreis: Optional["Preis"] = None
+    """Der Preis für eine Einheit der energetischen Menge"""
 
-    teilsumme_netto: Betrag
+    teilsumme_netto: Optional["Betrag"] = None
     """
     Das Ergebnis der Multiplikation aus einzelpreis * positionsMenge * (Faktor aus zeitbezogeneMenge).
     Z.B. 12,60€ * 120 kW * 3/12 (für 3 Monate).
@@ -57,35 +58,25 @@ class Rechnungsposition(COM):
     # the cross check in general doesn't work because Betrag and Preis use different enums to describe the currency
     # see https://github.com/Hochfrequenz/BO4E-python/issues/126
 
-    #: Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag
-    teilsumme_steuer: Steuerbetrag
+    teilsumme_steuer: Optional["Steuerbetrag"] = None
+    """Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag"""
 
-    # optional attributes
-    #: Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit
-    zeiteinheit: Optional[Zeiteinheit] = None
+    zeiteinheit: Optional["Mengeneinheit"] = None
+    """Falls sich der Preis auf eine Zeit bezieht, steht hier die Einheit"""
 
-    #: Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW
-    artikelnummer: Optional[BDEWArtikelnummer] = None
-    #: Marktlokation, die zu dieser Position gehört
+    artikelnummer: Optional["BDEWArtikelnummer"] = None
+    """Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW"""
     lokations_id: Optional[str] = None
+    """Marktlokation, die zu dieser Position gehört"""
 
-    zeitbezogene_menge: Optional[Menge] = None
+    zeitbezogene_menge: Optional["Menge"] = None
     """
     Eine auf die Zeiteinheit bezogene Untermenge.
     Z.B. bei einem Jahrespreis, 3 Monate oder 146 Tage.
     Basierend darauf wird der Preis aufgeteilt.
     """
-    #: Nettobetrag für den Rabatt dieser Position
-    teilrabatt_netto: Optional[Betrag] = None
+    teilrabatt_netto: Optional["Betrag"] = None
+    """Nettobetrag für den Rabatt dieser Position"""
 
-    #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
     artikel_id: Optional[str] = None
-
-    @staticmethod
-    def _get_inclusive_start(values: ValidationInfo) -> datetime:
-        """return the inclusive start (used in the validator)"""
-        return values.data["lieferung_von"]
-
-    # def _get_exclusive_end(self) -> datetime:
-    #     """return the exclusive end (used in the validator)"""
-    #     return self.lieferung_bis
+    """Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst"""

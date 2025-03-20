@@ -4,12 +4,15 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import Optional
 
-from bo4e.com.com import COM
+from ..utils import postprocess_docstring
+from .com import COM
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class AufAbschlagstaffelProOrt(COM):
     """
     Gibt den Wert eines Auf- oder Abschlags und dessen Staffelgrenzen an
@@ -19,14 +22,13 @@ class AufAbschlagstaffelProOrt(COM):
         <object data="../_static/images/bo4e/com/AufAbschlagstaffelProOrt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/AufAbschlagstaffelProOrt.json>`_
+        `AufAbschlagstaffelProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/AufAbschlagstaffelProOrt.json>`_
 
     """
 
-    # required attributes
-    #: Der Wert für den Auf- oder Abschlag.
-    wert: Decimal
-    #: Unterer Wert, ab dem die Staffel gilt.
-    staffelgrenze_von: Decimal
-    #: Oberer Wert, bis zu dem die Staffel gilt.
-    staffelgrenze_bis: Decimal
+    wert: Optional[Decimal] = None
+    """Der Wert für den Auf- oder Abschlag."""
+    staffelgrenze_von: Optional[Decimal] = None
+    """Unterer Wert, ab dem die Staffel gilt."""
+    staffelgrenze_bis: Optional[Decimal] = None
+    """Oberer Wert, bis zu dem die Staffel gilt."""

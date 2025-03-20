@@ -2,18 +2,24 @@
 Contains Zeitreihenwert class
 and corresponding marshmallow schema for de-/serialization
 """
-from datetime import datetime
 
-from pydantic import field_validator
-from pydantic_core.core_schema import ValidationInfo
+from decimal import Decimal
+from typing import TYPE_CHECKING, Optional
 
-from bo4e.com.zeitreihenwertkompakt import Zeitreihenwertkompakt
-from bo4e.validators import check_bis_is_later_than_von
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..com.zeitspanne import Zeitspanne
+    from ..enum.messwertstatus import Messwertstatus
+    from ..enum.messwertstatuszusatz import Messwertstatuszusatz
+
 
 # pylint: disable=too-few-public-methods
 
 
-class Zeitreihenwert(Zeitreihenwertkompakt):
+@postprocess_docstring
+class Zeitreihenwert(COM):
     """
     Abbildung eines Zeitreihenwertes bestehend aus Zeitraum, Wert und Statusinformationen.
 
@@ -22,20 +28,16 @@ class Zeitreihenwert(Zeitreihenwertkompakt):
         <object data="../_static/images/bo4e/com/Zeitreihenwert.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitreihenwert.json>`_
+        `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitreihenwert.json>`_
 
     """
 
-    # required attributes
-    datum_uhrzeit_von: datetime  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall begonnen wurde (inklusiv)
-    datum_uhrzeit_bis: datetime  #: Datum Uhrzeit mit Auflösung Sekunden an dem das Messintervall endet (exklusiv)
-    _bis_check = field_validator("datum_uhrzeit_bis")(check_bis_is_later_than_von)
+    zeitspanne: Optional["Zeitspanne"] = None
+    """Zeitespanne für das Messintervall"""
+    wert: Optional[Decimal] = None
+    """Der in der Zeitspanne gültige Wert."""
+    status: Optional["Messwertstatus"] = None
+    """Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen."""
 
-    @staticmethod
-    def _get_inclusive_start(values: ValidationInfo) -> datetime:
-        """return the inclusive start (used in the validator)"""
-        return values.data["datum_uhrzeit_von"]
-
-    # def _get_exclusive_end(self) -> datetime:
-    #     """return the exclusive end (used in the validator)"""
-    #     return self.datum_uhrzeit_bis
+    statuszusatz: Optional["Messwertstatuszusatz"] = None
+    """Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert."""

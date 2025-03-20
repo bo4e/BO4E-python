@@ -1,9 +1,64 @@
 [build-system]
-requires = ["setuptools>=41.0", "wheel", "setuptools_scm[toml]>=3.4"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.8.0", "hatch-vcs", "hatch-fancy-pypi-readme"]
+build-backend = "hatchling.build"
+
+[project]
+name = "bo4e"
+description = "Python Library that implements the BO4E Standard."
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+  { name = "Kevin Krechan", email = "kevin.krechan@hochfrequenz.de" },
+  { name = "Leon Haffmans", email = "leon.haffmans@hochfrequenz.de" },
+  { name = "Annika Schlögl", email = "annika.schloegl@hochfrequenz.de" },
+  { name = "Franziska Vesely", email = "franziska.vesely@hochfrequenz.de" },
+  { name = "Konstantin Klein", email = "konstantin.klein@hochfrequenz.de" },
+]
+keywords = ["bo4e", "bdew", "edi@energy"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+# This list must be in synq with the ./requirements.in file!
+dependencies = ["iso3166", "pydantic>=2.0.0", "pyhumps"]
+dynamic = ["readme", "version"]
+
+[project.urls]
+Changelog = "https://github.com/bo4e/bo4e-python/releases"
+Homepage = "https://github.com/bo4e/bo4e-python"
+Documentation = "https://bo4e-python.readthedocs.io/en/latest/"
+
+[tool.hatch.metadata.hooks.fancy-pypi-readme]
+content-type = "text/x-rst"
+fragments = [{ path = "README.rst" }]
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/_bo4e_python_version.py"
+template = '''
+version = "{version}"
+'''
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/unittests"]
+
+[tool.hatch.build.targets.wheel]
+only-include = ["src"]
+sources = ["src"]
 
 [tool.black]
 line-length = 120
+target_version = ["py38", "py39", "py310", "py311", "py312"]
 
 [tool.setuptools_scm]
 
@@ -19,9 +74,7 @@ line_length = 120
 profile = "black"
 
 [tool.mypy]
-plugins = [
-  "pydantic.mypy"
-]
+plugins = ["pydantic.mypy"]
 follow_imports = "silent"
 warn_redundant_casts = true
 warn_unused_ignores = true
@@ -35,3 +88,9 @@ init_forbid_extra = true
 init_typed = true
 warn_required_dynamic_aliases = true
 warn_untyped_fields = true
+
+[tool.coverage.report]
+exclude_also = [
+    # This covers both typing.TYPE_CHECKING and plain TYPE_CHECKING, with any amount of whitespace
+    "if\\s+(typing\\.)?TYPE_CHECKING:"
+]

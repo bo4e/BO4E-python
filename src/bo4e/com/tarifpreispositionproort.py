@@ -2,18 +2,21 @@
 Contains TarifpreispositionProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated
 
-from annotated_types import Len
-from pydantic import Field
+from typing import TYPE_CHECKING, Optional
 
-from bo4e.com.com import COM
-from bo4e.com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+
+    from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
 
 
+@postprocess_docstring
 class TarifpreispositionProOrt(COM):
     """
     Mit dieser Komponente können Tarifpreise verschiedener Typen abgebildet werden
@@ -23,17 +26,16 @@ class TarifpreispositionProOrt(COM):
         <object data="../_static/images/bo4e/com/TarifpreispositionProOrt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/TarifpreispositionProOrt.json>`_
+        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/TarifpreispositionProOrt.json>`_
 
     """
 
-    # required attributes
-    #: Postleitzahl des Ortes für den der Preis gilt
-    postleitzahl: Annotated[str, Field(strict=True, pattern=r"^\d{5}$")]
-    #: Ort für den der Preis gilt
-    ort: str
-    #: ene't-Netznummer des Netzes in dem der Preis gilt
-    netznr: str
+    postleitzahl: Optional[str] = None
+    """Postleitzahl des Ortes für den der Preis gilt"""
+    ort: Optional[str] = None
+    """Ort für den der Preis gilt"""
+    netznr: Optional[str] = None
+    """ene't-Netznummer des Netzes in dem der Preis gilt"""
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Annotated[list[TarifpreisstaffelProOrt], Len(1)]
+    preisstaffeln: Optional[list["TarifpreisstaffelProOrt"]] = None
     # there are no optional attributes

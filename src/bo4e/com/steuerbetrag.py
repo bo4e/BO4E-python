@@ -4,14 +4,20 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
+from typing import TYPE_CHECKING, Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.steuerkennzeichen import Steuerkennzeichen
-from bo4e.enum.waehrungscode import Waehrungscode
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.steuerkennzeichen import Steuerkennzeichen
+    from ..enum.waehrungscode import Waehrungscode
+
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Steuerbetrag(COM):
     """
     Abbildung eines Steuerbetrages.
@@ -21,16 +27,15 @@ class Steuerbetrag(COM):
         <object data="../_static/images/bo4e/com/Steuerbetrag.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Steuerbetrag.json>`_
+        `Steuerbetrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Steuerbetrag.json>`_
 
     """
 
-    # required attributes
-    #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
-    steuerkennzeichen: Steuerkennzeichen
-    #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
-    basiswert: Decimal
-    #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
-    steuerwert: Decimal
-    #: Währung. Z.B. Euro.
-    waehrung: Waehrungscode
+    steuerkennzeichen: Optional["Steuerkennzeichen"] = None
+    """Kennzeichnung des Steuersatzes, bzw. Verfahrens."""
+    basiswert: Optional[Decimal] = None
+    """Nettobetrag für den die Steuer berechnet wurde. Z.B. 100"""
+    steuerwert: Optional[Decimal] = None
+    """Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)"""
+    waehrung: Optional["Waehrungscode"] = None
+    """Währung. Z.B. Euro."""

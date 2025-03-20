@@ -7,5 +7,7 @@ class Preisstatus(StrEnum):
     Statusinformation für Preise
     """
 
-    VORLAEUFIG = "VORLAEUFIG"  #: vorläufig
-    ENDGUELTIG = "ENDGUELTIG"  #: endgültig
+    VORLAEUFIG = "VORLAEUFIG"
+    """vorläufig"""
+    ENDGUELTIG = "ENDGUELTIG"
+    """endgültig"""

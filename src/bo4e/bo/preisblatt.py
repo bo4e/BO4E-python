@@ -5,19 +5,23 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-from annotated_types import Len
+from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.bo.marktteilnehmer import Marktteilnehmer
-from bo4e.com.preisposition import Preisposition
-from bo4e.com.zeitraum import Zeitraum
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.preisstatus import Preisstatus
-from bo4e.enum.sparte import Sparte
+from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.preisposition import Preisposition
+    from ..com.zeitraum import Zeitraum
+    from ..enum.preisstatus import Preisstatus
+    from ..enum.sparte import Sparte
+    from .marktteilnehmer import Marktteilnehmer
 
 
+@postprocess_docstring
 class Preisblatt(Geschaeftsobjekt):
     """
     Das allgemeine Modell zur Abbildung von Preisen;
@@ -32,22 +36,20 @@ class Preisblatt(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Preisblatt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Preisblatt.json>`_
+        `Preisblatt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Preisblatt.json>`_
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.PREISBLATT
-    #: Eine Bezeichnung für das Preisblatt
-    bezeichnung: str
-    #: Preisblatt gilt für angegebene Sparte
-    sparte: Sparte
-    #: Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt
-    preisstatus: Preisstatus
-    #: Der Zeitraum für den der Preis festgelegt ist
-    gueltigkeit: Zeitraum
-    #: Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc
-    preispositionen: Annotated[list[Preisposition], Len(1)]
-    # optional attributes
-    #: Der Netzbetreiber, der die Preise veröffentlicht hat
-    herausgeber: Optional[Marktteilnehmer] = None
+    typ: Annotated[Literal[Typ.PREISBLATT], Field(alias="_typ")] = Typ.PREISBLATT
+    bezeichnung: Optional[str] = None
+    """Eine Bezeichnung für das Preisblatt"""
+    sparte: Optional["Sparte"] = None
+    """Preisblatt gilt für angegebene Sparte"""
+    preisstatus: Optional["Preisstatus"] = None
+    """Merkmal, das anzeigt, ob es sich um vorläufige oder endgültige Preise handelt"""
+    gueltigkeit: Optional["Zeitraum"] = None
+    """Der Zeitraum für den der Preis festgelegt ist"""
+    preispositionen: Optional[list["Preisposition"]] = None
+    """Die einzelnen Positionen, die mit dem Preisblatt abgerechnet werden können. Z.B. Arbeitspreis, Grundpreis etc"""
+    herausgeber: Optional["Marktteilnehmer"] = None
+    """Der Netzbetreiber, der die Preise veröffentlicht hat"""

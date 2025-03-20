@@ -4,20 +4,24 @@ Contains Zeitreihe class and corresponding marshmallow schema for de-/serializat
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-from annotated_types import Len
+from pydantic import Field
 
-from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
-from bo4e.com.zeitreihenwert import Zeitreihenwert
-from bo4e.enum.botyp import BoTyp
-from bo4e.enum.medium import Medium
-from bo4e.enum.mengeneinheit import Mengeneinheit
-from bo4e.enum.messart import Messart
-from bo4e.enum.messgroesse import Messgroesse
-from bo4e.enum.wertermittlungsverfahren import Wertermittlungsverfahren
+from ..enum.typ import Typ
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.zeitreihenwert import Zeitreihenwert
+    from ..enum.medium import Medium
+    from ..enum.mengeneinheit import Mengeneinheit
+    from ..enum.messart import Messart
+    from ..enum.messgroesse import Messgroesse
+    from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 
 
+@postprocess_docstring
 class Zeitreihe(Geschaeftsobjekt):
     """
     Abbildung einer allgemeinen Zeitreihe mit einem Wertvektor.
@@ -28,29 +32,27 @@ class Zeitreihe(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Zeitreihe.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/bo/Zeitreihe.json>`_
+        `Zeitreihe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Zeitreihe.json>`_
 
     """
 
-    # required attributes
-    bo_typ: BoTyp = BoTyp.ZEITREIHE
-    #: Bezeichnung für die Zeitreihe
-    bezeichnung: str
-    #: Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)
-    messgroesse: Messgroesse
-    #: Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)
-    messart: Messart
-    #: Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)
-    medium: Medium
-    #: Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist
-    einheit: Mengeneinheit
-    #: Hier liegen jeweils die Werte
-    werte: Annotated[list[Zeitreihenwert], Len(1)]
+    typ: Annotated[Literal[Typ.ZEITREIHE], Field(alias="_typ")] = Typ.ZEITREIHE
+    bezeichnung: Optional[str] = None
+    """Bezeichnung für die Zeitreihe"""
+    messgroesse: Optional["Messgroesse"] = None
+    """Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)"""
+    messart: Optional["Messart"] = None
+    """Beschreibt die Art der Messung (z.B. aktueller Wert, mittlerer Wert, maximaler Wert)"""
+    medium: Optional["Medium"] = None
+    """Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)"""
+    einheit: Optional["Mengeneinheit"] = None
+    """Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist"""
+    werte: Optional[list["Zeitreihenwert"]] = None
+    """Hier liegen jeweils die Werte"""
 
-    # optional attributes
-    #: Beschreibt die Verwendung der Zeitreihe
     beschreibung: Optional[str] = None
-    #: Version der Zeitreihe
+    """Beschreibt die Verwendung der Zeitreihe"""
     version: Optional[str] = None
-    #: Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung
-    wertherkunft: Optional[Wertermittlungsverfahren] = None
+    """Version der Zeitreihe"""
+    wertherkunft: Optional["Wertermittlungsverfahren"] = None
+    """Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung"""

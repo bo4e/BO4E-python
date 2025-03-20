@@ -3,17 +3,22 @@ Contains Zeitraum class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from bo4e.com.com import COM
-from bo4e.enum.zeiteinheit import Zeiteinheit
-from bo4e.validators import combinations_of_fields
+import pydantic
+
+from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+
 
 # pylint: disable=too-few-public-methods
 
 
+@postprocess_docstring
 class Zeitraum(COM):
     """
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
@@ -27,40 +32,13 @@ class Zeitraum(COM):
         <object data="../_static/images/bo4e/com/Zeitraum.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-python/main/json_schemas/com/Zeitraum.json>`_
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
 
     """
 
-    # optional attributes
-    einheit: Optional[Zeiteinheit] = None
+    einheit: Optional["Mengeneinheit"] = None
     dauer: Optional[Decimal] = None
-    startdatum: Optional[datetime] = None
-    enddatum: Optional[datetime] = None
-    startzeitpunkt: Optional[datetime] = None
-    endzeitpunkt: Optional[datetime] = None
-
-    _time_range_possibilities = combinations_of_fields(
-        "einheit",
-        "dauer",
-        "startdatum",
-        "enddatum",
-        "startzeitpunkt",
-        "endzeitpunkt",
-        valid_combinations={
-            (1, 1, 0, 0, 0, 0),
-            (0, 0, 1, 1, 0, 0),
-            (0, 0, 0, 0, 1, 1),
-        },
-        custom_error_message="""
-        Please choose from one of the three possibilities to specify the timerange:
-        - einheit and dauer
-        - startdatum and enddatum
-        - startzeitpunkt and endzeitpunkt
-        """,
-    )
-    """
-    Validator that ensures that exactly one of the three possibilities to specify the timerange is chosen.
-        - einheit and dauer
-        - startdatum and enddatum
-        - startzeitpunkt and endzeitpunkt
-    """
+    startdatum: Optional[pydantic.AwareDatetime] = None
+    enddatum: Optional[pydantic.AwareDatetime] = None
+    startzeitpunkt: Optional[pydantic.AwareDatetime] = None
+    endzeitpunkt: Optional[pydantic.AwareDatetime] = None
