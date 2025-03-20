@@ -3,7 +3,7 @@ Contains technische Ressource class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -38,35 +38,35 @@ class TechnischeRessource(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.TECHNISCHERESSOURCE
+    typ: Annotated[Literal[Typ.TECHNISCHERESSOURCE], Field(alias="_typ")] = Typ.TECHNISCHERESSOURCE
 
-    #: Identifikationsnummer einer technischen Ressource
     technische_ressource_id: Optional[str] = None
-    #: Vorgelagerte Messlokation ID
+    """Identifikationsnummer einer technischen Ressource"""
     vorgelagerte_messlokation_id: Optional[str] = None
-    #: Referenz auf die der technischen Ressource zugeordneten Marktlokation
+    """Vorgelagerte Messlokation ID"""
     zugeordnete_marktlokation_id: Optional[str] = None
-    #: Referenz auf die der technischen Ressource zugeordneten Steuerbaren Ressource
+    """Referenz auf die der technischen Ressource zugeordneten Marktlokation"""
     zugeordnete_steuerbare_ressource_id: Optional[str] = None
-    #: Nennleistung (Aufnahme)
+    """Referenz auf die der technischen Ressource zugeordneten Steuerbaren Ressource"""
     nennleistungaufnahme: Optional["Menge"] = None
-    #: Nennleistung (Abgabe)
+    """Nennleistung (Aufnahme)"""
     nennleistungabgabe: Optional["Menge"] = None
-    #: Speicherkapazität
+    """Nennleistung (Abgabe)"""
     speicherkapazitaet: Optional["Menge"] = None
-    #: Art und Nutzung der technischen Ressource
+    """Speicherkapazität"""
     technische_ressource_nutzung: Optional["TechnischeRessourceNutzung"] = None
-    #: Verbrauchsart der technischen Ressource
+    """Art und Nutzung der technischen Ressource"""
     technische_ressource_verbrauchsart: Optional["TechnischeRessourceVerbrauchsart"] = None
-    #: Wärmenutzung
+    """Verbrauchsart der technischen Ressource"""
     waermenutzung: Optional["Waermenutzung"] = None
-    #: Art der E-Mobilität
+    """Wärmenutzung"""
     emobilitaetsart: Optional["EMobilitaetsart"] = None
-    #: Art der Erzeugung der Energie
+    """Art der E-Mobilität"""
     erzeugungsart: Optional["Erzeugungsart"] = None
-    #: Art des Speichers
+    """Art der Erzeugung der Energie"""
     speicherart: Optional["Speicherart"] = None
-    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
+    """Art des Speichers"""
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
-    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
     lokationsbuendel_objektcode: Optional[str] = None
+    """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

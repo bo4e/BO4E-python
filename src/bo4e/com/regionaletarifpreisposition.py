@@ -31,14 +31,14 @@ class RegionaleTarifpreisposition(COM):
 
     """
 
-    #: Angabe des Preistypes (z.B. Grundpreis)
     preistyp: Optional["Preistyp"] = None
-    #: Einheit des Preises (z.B. EURO)
+    """Angabe des Preistypes (z.B. Grundpreis)"""
     einheit: Optional["Waehrungseinheit"] = None
-    #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
+    """Einheit des Preises (z.B. EURO)"""
     bezugseinheit: Optional["Mengeneinheit"] = None
-    #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
+    """Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr"""
     preisstaffeln: Optional[list["RegionalePreisstaffel"]] = None
+    """Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert"""
 
-    #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
     mengeneinheitstaffel: Optional["Mengeneinheit"] = None
+    """Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)"""

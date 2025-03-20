@@ -42,29 +42,29 @@ class AufAbschlagRegional(COM):
     """
 
     # required attributess
-    #: Bezeichnung des Auf-/Abschlags
     bezeichnung: Optional[str] = None
-    #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
+    """Bezeichnung des Auf-/Abschlags"""
     betraege: Optional[list["AufAbschlagProOrt"]] = None
+    """Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung"""
 
-    #: Beschreibung zum Auf-/Abschlag
     beschreibung: Optional[str] = None
+    """Beschreibung zum Auf-/Abschlag"""
     #:Typ des Aufabschlages (z.B. absolut oder prozentual)
     auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
-    #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
     auf_abschlagsziel: Optional["AufAbschlagsziel"] = None
-    #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct.
+    """Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc."""
     einheit: Optional["Waehrungseinheit"] = None
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
+    """Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct."""
     website: Optional[str] = None
-    #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
+    """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind"""
     zusatzprodukte: Optional[list[str]] = None
-    #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
+    """Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind"""
     voraussetzungen: Optional[list[str]] = None
-    #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten.
+    """Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann"""
     tarifnamensaenderungen: Optional[str] = None
-    #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
+    """Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten."""
     gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    """Zeitraum, in dem der Abschlag zur Anwendung kommen kann"""
     energiemixaenderung: Optional["Energiemix"] = None
     """ Der Energiemix kann sich durch einen AufAbschlag ändern (z.B. zwei Cent Aufschlag für Ökostrom:
     Sollte dies der Fall sein, wird hier die neue Zusammensetzung des Energiemix angegeben."""

@@ -3,7 +3,7 @@ Contains steuerbare Ressource class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -34,19 +34,19 @@ class SteuerbareRessource(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.STEUERBARERESSOURCE
+    typ: Annotated[Literal[Typ.STEUERBARERESSOURCE], Field(alias="_typ")] = Typ.STEUERBARERESSOURCE
 
-    #: Id der steuerbaren Ressource
     steuerbare_ressource_id: Optional[str] = None
-    #: Leistungsbeschreibung des Steuerkanals
+    """Id der steuerbaren Ressource"""
     steuerkanal_leistungsbeschreibung: Optional["SteuerkanalLeistungsbeschreibung"] = None
-    #: Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist.
+    """Leistungsbeschreibung des Steuerkanals"""
     zugeordnete_msb_codenummer: Optional[str] = None
-    #: Produkt-Daten der Steuerbaren Ressource
+    """Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist."""
     konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
-    #: Eigenschaft des Messstellenbetreibers an der Lokation
+    """Produkt-Daten der Steuerbaren Ressource"""
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
-    #: Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben
+    """Eigenschaft des Messstellenbetreibers an der Lokation"""
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
-    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
     lokationsbuendel_objektcode: Optional[str] = None
+    """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

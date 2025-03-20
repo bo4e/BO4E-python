@@ -5,7 +5,7 @@ and corresponding marshmallow schema for de-/serialization
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -32,9 +32,9 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
-    #: Eigenschaften zur Sparte Strom
+    typ: Annotated[Literal[Typ.STANDORTEIGENSCHAFTEN], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
     eigenschaften_strom: Optional[list["StandorteigenschaftenStrom"]] = None
+    """Eigenschaften zur Sparte Strom"""
 
-    #: Eigenschaften zur Sparte Gas
     eigenschaften_gas: Optional["StandorteigenschaftenGas"] = None
+    """Eigenschaften zur Sparte Gas"""

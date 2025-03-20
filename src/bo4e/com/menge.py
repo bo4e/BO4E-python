@@ -30,7 +30,7 @@ class Menge(COM):
 
     """
 
-    #: Gibt den absoluten Wert der Menge an
     wert: Optional[Decimal] = None
-    #: Gibt die Einheit zum jeweiligen Wert an
+    """Gibt den absoluten Wert der Menge an"""
     einheit: Optional["Mengeneinheit"] = None
+    """Gibt die Einheit zum jeweiligen Wert an"""

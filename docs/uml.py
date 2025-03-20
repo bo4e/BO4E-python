@@ -129,7 +129,7 @@ class _UMLNetworkABC(nx.MultiDiGraph, metaclass=ABCMeta):
         super().add_edge(node1, node2, type="extension")
         list(map(self.nodes[node1]["fields"].__delitem__, self.nodes[node2]["fields"].keys()))
 
-    # pylint: disable=too-many-arguments
+    # pylint: disable=too-many-arguments, too-many-positional-arguments
     def add_association(
         self,
         node1: str,
@@ -273,7 +273,7 @@ class PlantUMLNetwork(_UMLNetworkABC):
 
         return cls_str
 
-    # pylint: disable=too-many-arguments, too-many-locals
+    # pylint: disable=too-many-arguments, too-many-locals, too-many-positional-arguments
     def _edge_to_str(
         self, node1: str, node2: str, index: int, detailed: bool = True, root_node: Optional[str] = None, **kwargs: Any
     ) -> str:

@@ -4,7 +4,7 @@ Contains Ausschreibung class and corresponding marshmallow schema for de-/serial
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -36,17 +36,17 @@ class Ausschreibung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
-    #: Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer
+    typ: Annotated[Literal[Typ.AUSSCHREIBUNG], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
     ausschreibungsnummer: Optional[str] = None
-    #: Aufzählung für die Typisierung von Ausschreibungen
+    """Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer"""
     ausschreibungstyp: Optional["Ausschreibungstyp"] = None
-    #: Bezeichnungen für die Ausschreibungsphasen
+    """Aufzählung für die Typisierung von Ausschreibungen"""
     ausschreibungsstatus: Optional["Ausschreibungsstatus"] = None
-    #: Kennzeichen, ob die Ausschreibung kostenpflichtig ist
+    """Bezeichnungen für die Ausschreibungsphasen"""
     ist_kostenpflichtig: Optional[bool] = None
-    #: Gibt den Veröffentlichungszeitpunkt der Ausschreibung an
+    """Kennzeichen, ob die Ausschreibung kostenpflichtig ist"""
     veroeffentlichungszeitpunkt: Optional[pydantic.AwareDatetime] = None
+    """Gibt den Veröffentlichungszeitpunkt der Ausschreibung an"""
     ausschreibender: Optional["Geschaeftspartner"] = None
     """
     Mit diesem Objekt können Geschäftspartner übertragen werden.
@@ -62,10 +62,10 @@ class Ausschreibung(Geschaeftsobjekt):
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
-    #: Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt
     lose: Optional[list["Ausschreibungslos"]] = None
+    """Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt"""
 
-    #: Aufzählung der unterstützten Ausschreibungsportale
     ausschreibungportal: Optional["Ausschreibungsportal"] = None
-    #: Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)
+    """Aufzählung der unterstützten Ausschreibungsportale"""
     webseite: Optional[str] = None
+    """Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)"""

@@ -3,7 +3,7 @@ Contains Energiemenge class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -34,12 +34,12 @@ class Energiemenge(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ENERGIEMENGE
-    #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
+    typ: Annotated[Literal[Typ.ENERGIEMENGE], Field(alias="_typ")] = Typ.ENERGIEMENGE
     lokations_id: Optional[str] = None
-    #: Gibt an, ob es sich um eine Markt- oder Messlokation handelt
+    """Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"""
     lokationstyp: Optional["Lokationstyp"] = None
+    """Gibt an, ob es sich um eine Markt- oder Messlokation handelt"""
 
-    #: Gibt den Verbrauch in einer Zeiteinheit an
     energieverbrauch: Optional[list["Verbrauch"]] = None
+    """Gibt den Verbrauch in einer Zeiteinheit an"""
     # there are no optional attributes

@@ -30,12 +30,12 @@ class TarifpreispositionProOrt(COM):
 
     """
 
-    #: Postleitzahl des Ortes für den der Preis gilt
     postleitzahl: Optional[str] = None
-    #: Ort für den der Preis gilt
+    """Postleitzahl des Ortes für den der Preis gilt"""
     ort: Optional[str] = None
-    #: ene't-Netznummer des Netzes in dem der Preis gilt
+    """Ort für den der Preis gilt"""
     netznr: Optional[str] = None
+    """ene't-Netznummer des Netzes in dem der Preis gilt"""
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
     preisstaffeln: Optional[list["TarifpreisstaffelProOrt"]] = None
     # there are no optional attributes

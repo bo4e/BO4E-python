@@ -10,14 +10,13 @@ from pydantic import BaseModel, ConfigDict, Field
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
-from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
 
 
 @postprocess_docstring
-class Geschaeftsobjekt(BaseModel):
+class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     """
     Das BO Geschäftsobjekt ist der Master für alle Geschäftsobjekte.
     Alle Attribute, die hier in diesem BO enthalten sind, werden an alle BOs vererbt.
@@ -32,12 +31,10 @@ class Geschaeftsobjekt(BaseModel):
     """
 
     # required attributes
-    version: Annotated[Optional[str], Field(alias="_version")] = (
-        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
-    )
-    # src/_bo4e_python_version.py
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GESCHAEFTSOBJEKT  #: Der Typ des Geschäftsobjektes
-    # bo_typ is used as discriminator f.e. for databases or deserialization
+    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    """
+    Version der BO-Struktur aka "fachliche Versionierung"
+    """
 
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
@@ -50,8 +47,8 @@ class Geschaeftsobjekt(BaseModel):
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
-    #: Hier können IDs anderer Systeme hinterlegt werden (z.B. eine SAP-GP-Nummer oder eine GUID)
     # pylint: disable=duplicate-code
+    # basic configuration for pydantic's behaviour
     model_config = ConfigDict(
         alias_generator=camelize,
         populate_by_name=True,
@@ -60,7 +57,5 @@ class Geschaeftsobjekt(BaseModel):
         # an annotated version of Decimal, but you would have to use it everywhere in the pydantic models.
         # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
         json_encoders={Decimal: str},
+        use_attribute_docstrings=True,
     )
-    """
-    basic configuration for pydantic's behaviour
-    """

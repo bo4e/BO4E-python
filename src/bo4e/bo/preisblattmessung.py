@@ -2,7 +2,7 @@
 Contains PreisblattMessung class and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -35,18 +35,20 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTMESSUNG
+    typ: Annotated[Literal[Typ.PREISBLATTMESSUNG], Field(alias="_typ")] = (
+        Typ.PREISBLATTMESSUNG  # type: ignore[assignment]
+    )
     # required attributes (additional to those of Preisblatt)
-    #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
-    #: Die Preise gelten für Messlokationen in der angebebenen Netzebene
+    """Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode"""
     messebene: Optional["Netzebene"] = None
+    """Die Preise gelten für Messlokationen in der angebebenen Netzebene"""
 
-    #: Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler
     zaehler: Optional["Zaehler"] = None
+    """Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler"""
 
-    #: Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung
     inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None
+    """Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung"""
 
-    #: Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler
     inklusive_geraete: Optional[list["Geraet"]] = None
+    """Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler"""

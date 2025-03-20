@@ -7,7 +7,7 @@ from decimal import Decimal
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -46,24 +46,35 @@ class Zaehler(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ZAEHLER
-    zaehlernummer: Optional[str] = None  #: Nummerierung des Zählers,vergeben durch den Messstellenbetreiber
-    sparte: Optional["Sparte"] = None  #: Strom oder Gas
-    zaehlerauspraegung: Optional["Zaehlerauspraegung"] = None  #: Spezifikation die Richtung des Zählers betreffend
-    zaehlertyp: Optional["Zaehlertyp"] = None  #: Typisierung des Zählers
+    typ: Annotated[Literal[Typ.ZAEHLER], Field(alias="_typ")] = Typ.ZAEHLER
+    zaehlernummer: Optional[str] = None
+    """Nummerierung des Zählers,vergeben durch den Messstellenbetreiber"""
+    sparte: Optional["Sparte"] = None
+    """Strom oder Gas"""
+    zaehlerauspraegung: Optional["Zaehlerauspraegung"] = None
+    """Spezifikation die Richtung des Zählers betreffend"""
+    zaehlertyp: Optional["Zaehlertyp"] = None
+    """Typisierung des Zählers"""
     zaehlwerke: Optional[list["Zaehlwerk"]] = None
-    registeranzahl: Optional["Registeranzahl"] = None  #: Spezifikation bezüglich unterstützter Tarif
-    zaehlerkonstante: Optional[Decimal] = None  #: Zählerkonstante auf dem Zähler
-    eichung_bis: Optional[pydantic.AwareDatetime] = None  #: Bis zu diesem Datum (exklusiv) ist der Zähler geeicht.
-    letzte_eichung: Optional[pydantic.AwareDatetime] = (
-        None  #: Zu diesem Datum fand die letzte Eichprüfung des Zählers statt.
-    )
-    zaehlerhersteller: Optional["Geschaeftspartner"] = None  #: Der Hersteller des Zählers
-    ist_fernschaltbar: Optional[bool] = None  #: Fernschaltung
-    messwerterfassung: Optional["Messwerterfassung"] = None  #: Messwerterfassung des Zählers
-    zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None  #: Besondere Spezifikation des Zählers
-    befestigungsart: Optional["Befestigungsart"] = None  #: Befestigungsart
-    zaehlergroesse: Optional["Zaehlergroesse"] = None  #: Größe des Zählers
-    geraete: Optional[list["Geraet"]] = (
-        None  #: Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway
-    )
+    registeranzahl: Optional["Registeranzahl"] = None
+    """Spezifikation bezüglich unterstützter Tarif"""
+    zaehlerkonstante: Optional[Decimal] = None
+    """Zählerkonstante auf dem Zähler"""
+    eichung_bis: Optional[pydantic.AwareDatetime] = None
+    """Bis zu diesem Datum (exklusiv) ist der Zähler geeicht."""
+    letzte_eichung: Optional[pydantic.AwareDatetime] = None
+    """Zu diesem Datum fand die letzte Eichprüfung des Zählers statt."""
+    zaehlerhersteller: Optional["Geschaeftspartner"] = None
+    """Der Hersteller des Zählers"""
+    ist_fernschaltbar: Optional[bool] = None
+    """Fernschaltung"""
+    messwerterfassung: Optional["Messwerterfassung"] = None
+    """Messwerterfassung des Zählers"""
+    zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None
+    """Besondere Spezifikation des Zählers"""
+    befestigungsart: Optional["Befestigungsart"] = None
+    """Befestigungsart"""
+    zaehlergroesse: Optional["Zaehlergroesse"] = None
+    """Größe des Zählers"""
+    geraete: Optional[list["Geraet"]] = None
+    """Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway"""

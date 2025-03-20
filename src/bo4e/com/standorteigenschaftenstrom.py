@@ -25,13 +25,13 @@ class StandorteigenschaftenStrom(COM):
 
     """
 
-    #: Die EIC-Nummer des Bilanzierungsgebietes
     bilanzierungsgebiet_eic: Optional[str] = None
+    """Die EIC-Nummer des Bilanzierungsgebietes"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147
 
-    #: Der Name der Regelzone
     regelzone: Optional[str] = None
+    """Der Name der Regelzone"""
 
-    #: De EIC-Nummer der Regelzone
     regelzone_eic: Optional[str] = None
+    """De EIC-Nummer der Regelzone"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147

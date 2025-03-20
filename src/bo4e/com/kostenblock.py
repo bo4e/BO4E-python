@@ -29,11 +29,11 @@ class Kostenblock(COM):
 
     """
 
-    #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
+    """Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc."""
 
-    #: Die Summe aller Kostenpositionen dieses Blocks
     summe_kostenblock: Optional["Betrag"] = None
+    """Die Summe aller Kostenpositionen dieses Blocks"""
 
     kostenpositionen: Optional[list["Kostenposition"]] = None
     """

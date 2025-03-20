@@ -3,7 +3,7 @@ Contains Vertrag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
@@ -42,20 +42,20 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.VERTRAG
+    typ: Annotated[Literal[Typ.VERTRAG], Field(alias="_typ")] = Typ.VERTRAG
     # pylint: disable=duplicate-code
-    #: Eine im Verwendungskontext eindeutige Nummer für den Vertrag
     vertragsnummer: Optional[str] = None
-    #: Hier ist festgelegt, um welche Art von Vertrag es sich handelt.
+    """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""
     vertragsart: Optional["Vertragsart"] = None
-    #: Gibt den Status des Vertrags an
+    """Hier ist festgelegt, um welche Art von Vertrag es sich handelt."""
     vertragsstatus: Optional["Vertragsstatus"] = None
-    #: Unterscheidungsmöglichkeiten für die Sparte
+    """Gibt den Status des Vertrags an"""
     sparte: Optional["Sparte"] = None
-    #: Gibt an, wann der Vertrag beginnt (inklusiv)
+    """Unterscheidungsmöglichkeiten für die Sparte"""
     vertragsbeginn: Optional[pydantic.AwareDatetime] = None
-    #: Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)
+    """Gibt an, wann der Vertrag beginnt (inklusiv)"""
     vertragsende: Optional[pydantic.AwareDatetime] = None
+    """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     # todo: add von/bis validator
     vertragspartner1: Optional["Geschaeftspartner"] = None
     """
@@ -75,11 +75,11 @@ class Vertrag(Geschaeftsobjekt):
     (Markt- oder Messlokation) festzulegen.
     """
 
-    #: Beschreibung zum Vertrag
     beschreibung: Optional[str] = None
-    #: Festlegungen zu Laufzeiten und Kündigungsfristen
+    """Beschreibung zum Vertrag"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
-    #: Unterzeichner des Vertragspartners 1
+    """Festlegungen zu Laufzeiten und Kündigungsfristen"""
     unterzeichnervp1: Optional[list["Unterschrift"]] = None
-    #: Unterzeichner des Vertragspartners 2
+    """Unterzeichner des Vertragspartners 1"""
     unterzeichnervp2: Optional[list["Unterschrift"]] = None
+    """Unterzeichner des Vertragspartners 2"""

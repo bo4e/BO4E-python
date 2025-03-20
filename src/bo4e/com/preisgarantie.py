@@ -29,12 +29,12 @@ class Preisgarantie(COM):
 
     """
 
-    #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
     preisgarantietyp: Optional["Preisgarantietyp"] = None
+    """Festlegung, auf welche Preisbestandteile die Garantie gewährt wird."""
     zeitliche_gueltigkeit: Optional["Zeitraum"] = None
     """ Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum
     oder als Laufzeit in Monaten. """
 
     # optionale attributes
-    #: Freitext zur Beschreibung der Preisgarantie.
     beschreibung: Optional[str] = None
+    """Freitext zur Beschreibung der Preisgarantie."""

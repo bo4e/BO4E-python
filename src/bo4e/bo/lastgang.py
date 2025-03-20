@@ -3,11 +3,11 @@ Contains Lastgang class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from pydantic import Field, constr
+from pydantic import Field
 
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
@@ -40,19 +40,19 @@ class Lastgang(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.LASTGANG
-    #: Angabe, ob es sich um einen Gas- oder Stromlastgang handelt
+    typ: Annotated[Literal[Typ.LASTGANG], Field(alias="_typ")] = Typ.LASTGANG
     sparte: Optional["Sparte"] = None
-    #: Definition der gemessenen Größe anhand ihrer Einheit
+    """Angabe, ob es sich um einen Gas- oder Stromlastgang handelt"""
     messgroesse: Optional["Mengeneinheit"] = None
+    """Definition der gemessenen Größe anhand ihrer Einheit"""
     #:Marktlokation, zu der der Lastgang gehört
     marktlokation: Optional["Marktlokation"] = None
     #:Marktlokation, zu der der Lastgang gehört
     messlokation: Optional["Messlokation"] = None
-    #: Die im Lastgang enthaltenen Messwerte
     werte: Optional[list["Zeitreihenwert"]] = None
-    #: Versionsnummer des Lastgangs
+    """Die im Lastgang enthaltenen Messwerte"""
     version: Optional[str] = None
-    #: Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'
-    obis_kennzahl: Optional[constr(strict=True)] = None  # type: ignore[valid-type]
+    """Versionsnummer des Lastgangs"""
+    obis_kennzahl: Optional[str] = None
+    """Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'"""
     zeit_intervall_laenge: Optional["Menge"]

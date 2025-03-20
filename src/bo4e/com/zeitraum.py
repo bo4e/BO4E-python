@@ -3,10 +3,8 @@ Contains Zeitraum class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from decimal import Decimal
+from datetime import date, time
 from typing import TYPE_CHECKING, Optional
-
-import pydantic
 
 from ..utils import postprocess_docstring
 from .com import COM
@@ -16,8 +14,6 @@ if TYPE_CHECKING:
 
 
 # pylint: disable=too-few-public-methods
-
-
 @postprocess_docstring
 class Zeitraum(COM):
     """
@@ -36,9 +32,13 @@ class Zeitraum(COM):
 
     """
 
-    einheit: Optional["Mengeneinheit"] = None
-    dauer: Optional[Decimal] = None
-    startdatum: Optional[pydantic.AwareDatetime] = None
-    enddatum: Optional[pydantic.AwareDatetime] = None
-    startzeitpunkt: Optional[pydantic.AwareDatetime] = None
-    endzeitpunkt: Optional[pydantic.AwareDatetime] = None
+    startdatum: Optional[date] = None
+    """Startdatum, inklusiv"""
+    enddatum: Optional[date] = None
+    """Enddatum, inklusiv"""
+    startuhrzeit: Optional[time] = None
+    """Startuhrzeit, inklusiv mit Zeitzone"""
+    enduhrzeit: Optional[time] = None
+    """Enduhrzeit, exklusiv mit Zeitzone"""
+    dauer: Optional[str] = None
+    """Dauer in ISO 8601 , example: 'P1DT30H4S', siehe https://datatracker.ietf.org/doc/html/rfc3339 """

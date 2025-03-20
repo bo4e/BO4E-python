@@ -25,5 +25,7 @@ class MarktgebietInfo(COM):
 
     """
 
-    marktgebiet: Optional[str] = None  #: Der Name des Marktgebietes
-    marktgebietcode: Optional[str] = None  #: Die standardisierte Codenummer des Marktgebietes
+    marktgebiet: Optional[str] = None
+    """Der Name des Marktgebietes"""
+    marktgebietcode: Optional[str] = None
+    """Die standardisierte Codenummer des Marktgebietes"""

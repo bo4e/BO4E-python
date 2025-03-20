@@ -105,7 +105,6 @@ __all__ = [
     "Zaehlzeitregister",
     "Zeitraum",
     "Zeitreihenwert",
-    "Zeitspanne",
     "Zustaendigkeit",
     "AbgabeArt",
     "Aggregationsverantwortung",
@@ -310,7 +309,6 @@ from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
-from .com.zeitspanne import Zeitspanne
 from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums

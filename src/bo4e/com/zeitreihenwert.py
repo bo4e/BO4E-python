@@ -10,14 +10,12 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..com.zeitspanne import Zeitspanne
+    from ..com.zeitraum import Zeitraum
     from ..enum.messwertstatus import Messwertstatus
     from ..enum.messwertstatuszusatz import Messwertstatuszusatz
 
 
 # pylint: disable=too-few-public-methods
-
-
 @postprocess_docstring
 class Zeitreihenwert(COM):
     """
@@ -32,12 +30,11 @@ class Zeitreihenwert(COM):
 
     """
 
-    zeitspanne: Optional["Zeitspanne"] = None  #: Zeitespanne für das Messintervall
-
-    wert: Optional[Decimal] = None  #: Der in der Zeitspanne gültige Wert.
-
-    #: Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen.
+    zeitraum: Optional["Zeitraum"] = None
+    """Zeitraum für das Messintervall"""
+    wert: Optional[Decimal] = None
+    """Der in dem Zeitraum gültige Wert."""
     status: Optional["Messwertstatus"] = None
-
-    #: Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert.
+    """Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen."""
     statuszusatz: Optional["Messwertstatuszusatz"] = None
+    """Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert."""
