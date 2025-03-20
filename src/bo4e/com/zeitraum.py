@@ -41,4 +41,11 @@ class Zeitraum(COM):
     enduhrzeit: Optional[time] = None
     """Enduhrzeit, exklusiv mit Zeitzone"""
     dauer: Optional[str] = None
-    """Dauer in ISO 8601 , example: 'P1DT30H4S', siehe https://datatracker.ietf.org/doc/html/rfc3339 """
+    """
+    Dauer in ISO 8601 Format.
+
+    Example:
+        'P1DT30H4S'
+
+    See `RFC 3339 <https://datatracker.ietf.org/doc/html/rfc3339>`_
+    """
