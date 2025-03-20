@@ -1,6 +1,5 @@
 """
 Contains Zaehler class
-
 """
 
 from decimal import Decimal

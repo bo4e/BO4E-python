@@ -1,6 +1,5 @@
 """
 Contains Preis class
-
 """
 
 from decimal import Decimal

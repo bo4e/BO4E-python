@@ -1,6 +1,5 @@
 """
 Contains Kontaktweg class
-
 """
 
 from typing import TYPE_CHECKING, Optional

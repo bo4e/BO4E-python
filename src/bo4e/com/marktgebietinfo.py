@@ -1,6 +1,5 @@
 """
 Contains Marktgebietinfo class
-
 """
 
 from typing import Optional

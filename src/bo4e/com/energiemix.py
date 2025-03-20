@@ -1,6 +1,5 @@
 """
 Contains Energiemix class
-
 """
 
 from decimal import Decimal

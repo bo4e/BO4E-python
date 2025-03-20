@@ -1,6 +1,5 @@
 """
 Contains Zeitreihenwert class
-
 """
 
 from decimal import Decimal

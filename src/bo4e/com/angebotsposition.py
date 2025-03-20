@@ -1,6 +1,5 @@
 """
 Contains Angebotsposition class
-
 """
 
 from typing import TYPE_CHECKING, Optional

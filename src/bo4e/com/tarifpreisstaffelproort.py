@@ -1,6 +1,5 @@
 """
 Contains TarifpreisstaffelProOrt class
-
 """
 
 from decimal import Decimal

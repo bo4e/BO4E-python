@@ -1,6 +1,5 @@
 """
 Contains Fremdkostenblock class
-
 """
 
 from typing import TYPE_CHECKING, Optional

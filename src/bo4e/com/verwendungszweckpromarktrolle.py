@@ -1,6 +1,5 @@
 """
 Contains Verwendungszweck class
-
 """
 
 from typing import TYPE_CHECKING, Optional

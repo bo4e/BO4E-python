@@ -1,6 +1,5 @@
 """
 Contains StandorteigenschaftenGas class
-
 """
 
 from typing import TYPE_CHECKING, Optional

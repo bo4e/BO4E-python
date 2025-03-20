@@ -1,6 +1,5 @@
 """
 Contains AufAbschlagstaffelProOrt class
-
 """
 
 from decimal import Decimal

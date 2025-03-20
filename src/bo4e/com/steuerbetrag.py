@@ -1,6 +1,5 @@
 """
 Contains Steuerbetrag class
-
 """
 
 from decimal import Decimal

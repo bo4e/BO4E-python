@@ -1,6 +1,5 @@
 """
 Contains KriteriumWert class
-
 """
 
 # pylint: disable=too-few-public-methods

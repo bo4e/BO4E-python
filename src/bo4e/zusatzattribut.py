@@ -1,6 +1,5 @@
 """
 Contains ExterenzeReferenz class
-
 """
 
 from typing import Any, Optional

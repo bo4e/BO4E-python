@@ -1,6 +1,5 @@
 """
 Contains Energieherkunft class
-
 """
 
 from decimal import Decimal

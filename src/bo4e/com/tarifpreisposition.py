@@ -1,6 +1,5 @@
 """
 Contains Tarifpreisposition class
-
 """
 
 # pylint: disable=too-few-public-methods

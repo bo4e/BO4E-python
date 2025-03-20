@@ -1,6 +1,5 @@
 """
 Contains Betrag class
-
 """
 
 from decimal import Decimal

@@ -1,6 +1,5 @@
 """
 Contains Person class
-
 """
 
 from datetime import date

@@ -1,6 +1,5 @@
 """
 Contains Zeitraum class
-
 """
 
 from datetime import date, time

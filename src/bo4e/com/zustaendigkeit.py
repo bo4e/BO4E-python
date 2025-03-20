@@ -1,6 +1,5 @@
 """
 Contains Zustaendigkeit class
-
 """
 
 from typing import TYPE_CHECKING, Optional

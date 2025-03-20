@@ -1,6 +1,5 @@
 """
 Contains Geschaeftspartner class
-
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code

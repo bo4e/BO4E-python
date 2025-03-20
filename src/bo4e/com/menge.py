@@ -1,6 +1,5 @@
 """
 Contains Menge class
-
 """
 
 from decimal import Decimal

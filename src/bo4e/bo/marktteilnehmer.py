@@ -1,6 +1,5 @@
 """
 Contains Marktteilnehmer class
-
 """
 
 # pylint: disable=too-few-public-methods

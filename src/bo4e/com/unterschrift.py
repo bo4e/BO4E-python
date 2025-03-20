@@ -1,6 +1,5 @@
 """
 Contains Unterschrift class
-
 """
 
 from typing import Optional

@@ -1,6 +1,5 @@
 """
 Contains Zaehlwerk class
-
 """
 
 from decimal import Decimal

@@ -1,6 +1,5 @@
 """
 Contains Katasteradresse class
-
 """
 
 from typing import Optional

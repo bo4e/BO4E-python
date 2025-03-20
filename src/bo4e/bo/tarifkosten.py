@@ -1,6 +1,5 @@
 """
 Contains Tarifkosten class
-
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional

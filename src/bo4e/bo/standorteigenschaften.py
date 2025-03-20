@@ -1,6 +1,5 @@
 """
 Contains Standorteigenschaften class
-
 """
 
 # pylint: disable=too-few-public-methods

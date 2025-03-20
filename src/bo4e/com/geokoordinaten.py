@@ -1,6 +1,5 @@
 """
 Contains Geokoordinaten class
-
 """
 
 from decimal import Decimal

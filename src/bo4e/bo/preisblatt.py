@@ -1,6 +1,5 @@
 """
 Contains Preisblatt class
-
 """
 
 # pylint: disable=too-few-public-methods

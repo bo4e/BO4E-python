@@ -1,6 +1,5 @@
 """
 Contains Tarifberechnungsparameter class
-
 """
 
 from decimal import Decimal

@@ -1,6 +1,5 @@
 """
 Contains StandorteigenschaftenStrom class
-
 """
 
 from typing import Optional

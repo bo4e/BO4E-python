@@ -1,6 +1,5 @@
 """
 Contains Vertragskonditionen class
-
 """
 
 from decimal import Decimal
