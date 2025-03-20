@@ -10,7 +10,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..com.zeitspanne import Zeitspanne
+    from ..com.zeitraum import Zeitraum
     from ..enum.messwertstatus import Messwertstatus
     from ..enum.messwertstatuszusatz import Messwertstatuszusatz
 
@@ -32,7 +32,7 @@ class Zeitreihenwert(COM):
 
     """
 
-    zeitspanne: Optional["Zeitspanne"] = None
+    zeitspanne: Optional["Zeitraum"] = None  # TODO: rename to zeitraum?
     """Zeitespanne für das Messintervall"""
     wert: Optional[Decimal] = None
     """Der in der Zeitspanne gültige Wert."""

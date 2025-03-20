@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from ..bo.netzlokation import Netzlokation
     from ..bo.steuerbareressource import SteuerbareRessource
     from ..bo.technischeressource import TechnischeRessource
-    from ..com.zeitspanne import Zeitspanne
+    from ..com.zeitraum import Zeitraum
 
 
 @postprocess_docstring
@@ -45,8 +45,8 @@ class Lokationszuordnung(Geschaeftsobjekt):
     """Liste mit referenzierten technischen Ressourcen"""
     steuerbare_ressourcen: Optional[list["SteuerbareRessource"]] = None
     """Liste mit referenzierten steuerbaren Ressourcen"""
-    gueltigkeit: Optional["Zeitspanne"] = None
-    """Zeitspanne der Gültigkeit"""
+    gueltigkeit: Optional["Zeitraum"] = None
+    """Zeitraum der Gültigkeit"""
     zuordnungstyp: Optional[str] = None
     """Verknüpfungsrichtung z.B. Malo-Melo [TODO: Eventuell anderer Datentyp]"""
     lokationsbuendelcode: Optional[str] = None
