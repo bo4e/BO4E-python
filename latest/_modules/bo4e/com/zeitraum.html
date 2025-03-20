@@ -123,15 +123,38 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">startdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Startdatum, inklusiv&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Startdatum des betrachteten Zeitraums ist **inklusiv**.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &#39;2025-01-01&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">enddatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enddatum, inklusiv&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enddatum des betrachteten Zeitraums ist **inklusiv**.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &#39;2025-01-01&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">startuhrzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">time</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Startuhrzeit, inklusiv mit Zeitzone&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Startuhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **inklusiv**.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &#39;18:00:00+01:00&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">enduhrzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">time</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enduhrzeit, exklusiv mit Zeitzone&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enduhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **exklusiv**.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &#39;19:00:00+01:00&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">dauer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dauer in ISO 8601 , example: &#39;P1DT30H4S&#39;, siehe https://datatracker.ietf.org/doc/html/rfc3339 &quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Dauer in ISO 8601 Format.</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">        &#39;P1DT30H4S&#39;</span>
+
+<span class="sd">    See `RFC 3339 &lt;https://datatracker.ietf.org/doc/html/rfc3339&gt;`_</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 </pre></div>
 
