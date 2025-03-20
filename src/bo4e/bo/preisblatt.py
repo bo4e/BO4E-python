@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -40,7 +40,7 @@ class Preisblatt(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.PREISBLATT], Field(alias="_typ")] = TypBo.PREISBLATT
+    typ: Annotated[Literal[BoTyp.PREISBLATT], Field(alias="_typ")] = BoTyp.PREISBLATT
     bezeichnung: Optional[str] = None
     """Eine Bezeichnung für das Preisblatt"""
     sparte: Optional["Sparte"] = None

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -32,7 +32,7 @@ class Region(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.REGION], Field(alias="_typ")] = TypBo.REGION
+    typ: Annotated[Literal[BoTyp.REGION], Field(alias="_typ")] = BoTyp.REGION
     bezeichnung: Optional[str] = None
     """Bezeichnung der Region"""
 

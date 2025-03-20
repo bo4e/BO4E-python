@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -43,7 +43,7 @@ class Rechnung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.RECHNUNG], Field(alias="_typ")] = TypBo.RECHNUNG
+    typ: Annotated[Literal[BoTyp.RECHNUNG], Field(alias="_typ")] = BoTyp.RECHNUNG
     ist_storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;

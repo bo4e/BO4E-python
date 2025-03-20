@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -34,7 +34,7 @@ class Energiemenge(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.ENERGIEMENGE], Field(alias="_typ")] = TypBo.ENERGIEMENGE
+    typ: Annotated[Literal[BoTyp.ENERGIEMENGE], Field(alias="_typ")] = BoTyp.ENERGIEMENGE
     lokations_id: Optional[str] = None
     """Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"""
     # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp

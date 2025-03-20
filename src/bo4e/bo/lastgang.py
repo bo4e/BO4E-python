@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 # pylint: disable=no-name-in-module
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -40,7 +40,7 @@ class Lastgang(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.LASTGANG], Field(alias="_typ")] = TypBo.LASTGANG
+    typ: Annotated[Literal[BoTyp.LASTGANG], Field(alias="_typ")] = BoTyp.LASTGANG
     sparte: Optional["Sparte"] = None
     """Angabe, ob es sich um einen Gas- oder Stromlastgang handelt"""
     messgroesse: Optional["Mengeneinheit"] = None

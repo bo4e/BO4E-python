@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -39,7 +39,7 @@ class Messlokation(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.MESSLOKATION], Field(alias="_typ")] = TypBo.MESSLOKATION
+    typ: Annotated[Literal[BoTyp.MESSLOKATION], Field(alias="_typ")] = BoTyp.MESSLOKATION
 
     messlokations_id: Optional[str] = None
     """Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung"""

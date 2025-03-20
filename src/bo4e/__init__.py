@@ -176,7 +176,7 @@ __all__ = [
     "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
-    "TypBo",
+    "BoTyp",
     "TypCom",
     "Verbrauchsart",
     "Vertragsart",
@@ -312,7 +312,7 @@ from .enum.bdewartikelnummer import BDEWArtikelnummer
 from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
-from .enum.botyp import TypBo
+from .enum.botyp import BoTyp
 from .enum.dienstleistungstyp import Dienstleistungstyp
 from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung

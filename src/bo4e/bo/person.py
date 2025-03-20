@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -37,7 +37,7 @@ class Person(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.PERSON], Field(alias="_typ")] = TypBo.PERSON
+    typ: Annotated[Literal[BoTyp.PERSON], Field(alias="_typ")] = BoTyp.PERSON
     anrede: Optional["Anrede"] = None
     """Mögliche Anrede der Person"""
     individuelle_anrede: Optional[str] = None

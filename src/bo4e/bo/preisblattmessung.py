@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
@@ -35,8 +35,8 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[TypBo.PREISBLATTMESSUNG], Field(alias="_typ")] = (
-        TypBo.PREISBLATTMESSUNG  # type: ignore[assignment]
+    typ: Annotated[Literal[BoTyp.PREISBLATTMESSUNG], Field(alias="_typ")] = (
+        BoTyp.PREISBLATTMESSUNG  # type: ignore[assignment]
     )
     # required attributes (additional to those of Preisblatt)
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None

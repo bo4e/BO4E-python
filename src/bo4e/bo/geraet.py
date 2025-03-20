@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -33,7 +33,7 @@ class Geraet(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.GERAET], Field(alias="_typ")] = TypBo.GERAET
+    typ: Annotated[Literal[BoTyp.GERAET], Field(alias="_typ")] = BoTyp.GERAET
 
     geraetenummer: Optional[str] = None
     """Die auf dem Gerät aufgedruckte Nummer, die vom MSB vergeben wird."""

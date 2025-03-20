@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.botyp import TypBo
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -36,7 +36,7 @@ class Kosten(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[TypBo.KOSTEN], Field(alias="_typ")] = TypBo.KOSTEN
+    typ: Annotated[Literal[BoTyp.KOSTEN], Field(alias="_typ")] = BoTyp.KOSTEN
     kostenklasse: Optional["Kostenklasse"] = None
     """Klasse der Kosten, beispielsweise Fremdkosten"""
     gueltigkeit: Optional["Zeitraum"] = None
