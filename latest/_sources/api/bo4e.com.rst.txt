@@ -468,14 +468,6 @@ bo4e.com.zeitreihenwert module
    :undoc-members:
    :show-inheritance:
 
-bo4e.com.zeitspanne module
---------------------------
-
-.. automodule:: bo4e.com.zeitspanne
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.com.zustaendigkeit module
 ------------------------------
 

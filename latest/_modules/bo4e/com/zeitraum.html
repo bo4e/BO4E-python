@@ -88,10 +88,8 @@
 <span class="sd">and corresponding marshmallow schema for de-/serialization</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">decimal</span> <span class="kn">import</span> <span class="n">Decimal</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span><span class="p">,</span> <span class="n">time</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Optional</span>
-
-<span class="kn">import</span> <span class="nn">pydantic</span>
 
 <span class="kn">from</span> <span class="nn">..utils</span> <span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span> <span class="nn">.com</span> <span class="kn">import</span> <span class="n">COM</span>
@@ -101,8 +99,6 @@
 
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
-
-
 <div class="viewcode-block" id="Zeitraum">
 <a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.zeitraum.Zeitraum">[docs]</a>
 <span class="nd">@postprocess_docstring</span>
@@ -123,12 +119,16 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">dauer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">startdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">enddatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">startzeitpunkt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">endzeitpunkt</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+    <span class="n">startdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Startdatum, inklusiv&quot;&quot;&quot;</span>
+    <span class="n">enddatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">date</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enddatum, inklusiv&quot;&quot;&quot;</span>
+    <span class="n">startuhrzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">time</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Startuhrzeit, inklusiv mit Zeitzone&quot;&quot;&quot;</span>
+    <span class="n">enduhrzeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">time</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Enduhrzeit, exklusiv mit Zeitzone&quot;&quot;&quot;</span>
+    <span class="n">dauer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dauer in ISO 8601 , example: &#39;P1DT30H4S&#39;, siehe https://datatracker.ietf.org/doc/html/rfc3339 &quot;&quot;&quot;</span></div>
 
 </pre></div>
 
