@@ -14,8 +14,6 @@ if TYPE_CHECKING:
 
 
 # pylint: disable=too-few-public-methods
-
-
 @postprocess_docstring
 class Zeitraum(COM):
     """
