@@ -1,17 +1,21 @@
 """
 Contains Kosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, Optional
+
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..com.betrag import Betrag
-from ..com.kostenblock import Kostenblock
-from ..com.zeitraum import Zeitraum
-from ..enum.kostenklasse import Kostenklasse
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.betrag import Betrag
+    from ..com.kostenblock import Kostenblock
+    from ..com.zeitraum import Zeitraum
+    from ..enum.kostenklasse import Kostenklasse
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -28,17 +32,17 @@ class Kosten(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Kosten.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Kosten.json>`_
+        `Kosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Kosten.json>`_
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.KOSTEN
-    #: Klasse der Kosten, beispielsweise Fremdkosten
-    kostenklasse: Optional[Kostenklasse] = None
-    #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitraum] = None
-    #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[list[Kostenblock]] = None
+    typ: Annotated[Literal[Typ.KOSTEN], Field(alias="_typ")] = Typ.KOSTEN
+    kostenklasse: Optional["Kostenklasse"] = None
+    """Klasse der Kosten, beispielsweise Fremdkosten"""
+    gueltigkeit: Optional["Zeitraum"] = None
+    """Für diesen Zeitraum wurden die Kosten ermittelt"""
+    kostenbloecke: Optional[list["Kostenblock"]] = None
+    """In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc"""
 
-    #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[list[Betrag]] = None
+    summe_kosten: Optional[list["Betrag"]] = None
+    """Die Gesamtsumme über alle Kostenblöcke und -positionen"""

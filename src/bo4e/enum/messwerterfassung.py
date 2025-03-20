@@ -7,5 +7,7 @@ class Messwerterfassung(StrEnum):
     Die Messwerterfassung des Zählers
     """
 
-    FERNAUSLESBAR = "FERNAUSLESBAR"  #: fernauslesbare Zähler
-    MANUELL_AUSGELESENE = "MANUELL_AUSGELESENE"  #: manuell ausgelesene Zähler
+    FERNAUSLESBAR = "FERNAUSLESBAR"
+    """fernauslesbare Zähler"""
+    MANUELL_AUSGELESENE = "MANUELL_AUSGELESENE"
+    """manuell ausgelesene Zähler"""

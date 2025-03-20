@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "bo4e"
 description = "Python Library that implements the BO4E Standard."
 license = { text = "MIT" }
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 authors = [
   { name = "Kevin Krechan", email = "kevin.krechan@hochfrequenz.de" },
   { name = "Leon Haffmans", email = "leon.haffmans@hochfrequenz.de" },
@@ -22,8 +22,10 @@ classifiers = [
   "Operating System :: OS Independent",
   "Programming Language :: Python",
   "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
 ]
 # This list must be in synq with the ./requirements.in file!
 dependencies = ["iso3166", "pydantic>=2.0.0", "pyhumps"]
@@ -56,6 +58,7 @@ sources = ["src"]
 
 [tool.black]
 line-length = 120
+target_version = ["py38", "py39", "py310", "py311", "py312"]
 
 [tool.setuptools_scm]
 
@@ -85,3 +88,9 @@ init_forbid_extra = true
 init_typed = true
 warn_required_dynamic_aliases = true
 warn_untyped_fields = true
+
+[tool.coverage.report]
+exclude_also = [
+    # This covers both typing.TYPE_CHECKING and plain TYPE_CHECKING, with any amount of whitespace
+    "if\\s+(typing\\.)?TYPE_CHECKING:"
+]

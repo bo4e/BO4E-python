@@ -4,11 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.waehrungscode import Waehrungscode
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.waehrungscode import Waehrungscode
+
 
 # pylint: disable=too-few-public-methods
 
@@ -24,9 +27,11 @@ class Betrag(COM):
         <object data="../_static/images/bo4e/com/Betrag.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Betrag.json>`_
+        `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Betrag.json>`_
 
     """
 
-    wert: Optional[Decimal] = None  #: Gibt den Betrag des Preises an.
-    waehrung: Optional[Waehrungscode] = None  #: Die entsprechende Waehrung
+    wert: Optional[Decimal] = None
+    """Gibt den Betrag des Preises an."""
+    waehrung: Optional["Waehrungscode"] = None
+    """Die entsprechende Waehrung"""

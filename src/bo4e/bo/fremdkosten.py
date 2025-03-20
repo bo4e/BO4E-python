@@ -1,16 +1,20 @@
 """
 Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, Optional
+
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..com.betrag import Betrag
-from ..com.fremdkostenblock import Fremdkostenblock
-from ..com.zeitraum import Zeitraum
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.betrag import Betrag
+    from ..com.fremdkostenblock import Fremdkostenblock
+    from ..com.zeitraum import Zeitraum
+
 
 # pylint: disable=too-few-public-methods
 
@@ -27,14 +31,14 @@ class Fremdkosten(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Fremdkosten.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Fremdkosten.json>`_
+        `Fremdkosten JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Fremdkosten.json>`_
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.FREMDKOSTEN
-    #: Für diesen Zeitraum wurden die Kosten ermittelt
-    gueltigkeit: Optional[Zeitraum] = None
-    #: Die Gesamtsumme über alle Kostenblöcke und -positionen
-    summe_kosten: Optional[Betrag] = None
-    #: In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc
-    kostenbloecke: Optional[list[Fremdkostenblock]] = None
+    typ: Annotated[Literal[Typ.FREMDKOSTEN], Field(alias="_typ")] = Typ.FREMDKOSTEN
+    gueltigkeit: Optional["Zeitraum"] = None
+    """Für diesen Zeitraum wurden die Kosten ermittelt"""
+    summe_kosten: Optional["Betrag"] = None
+    """Die Gesamtsumme über alle Kostenblöcke und -positionen"""
+    kostenbloecke: Optional[list["Fremdkostenblock"]] = None
+    """In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc"""

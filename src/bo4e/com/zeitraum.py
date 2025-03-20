@@ -3,17 +3,17 @@ Contains Zeitraum class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-from decimal import Decimal
-from typing import Optional
+from datetime import date, time
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
 from .com import COM
 
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+
+
 # pylint: disable=too-few-public-methods
-
-
 @postprocess_docstring
 class Zeitraum(COM):
     """
@@ -28,13 +28,17 @@ class Zeitraum(COM):
         <object data="../_static/images/bo4e/com/Zeitraum.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
+        `Zeitraum JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitraum.json>`_
 
     """
 
-    einheit: Optional[Mengeneinheit] = None
-    dauer: Optional[Decimal] = None
-    startdatum: Optional[datetime] = None
-    enddatum: Optional[datetime] = None
-    startzeitpunkt: Optional[datetime] = None
-    endzeitpunkt: Optional[datetime] = None
+    startdatum: Optional[date] = None
+    """Startdatum, inklusiv"""
+    enddatum: Optional[date] = None
+    """Enddatum, inklusiv"""
+    startuhrzeit: Optional[time] = None
+    """Startuhrzeit, inklusiv mit Zeitzone"""
+    enduhrzeit: Optional[time] = None
+    """Enduhrzeit, exklusiv mit Zeitzone"""
+    dauer: Optional[str] = None
+    """Dauer in ISO 8601 , example: 'P1DT30H4S', siehe https://datatracker.ietf.org/doc/html/rfc3339 """

@@ -3,19 +3,22 @@ Contains Person class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-from typing import Annotated, Optional
+from datetime import date
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..com.adresse import Adresse
-from ..com.kontaktweg import Kontaktweg
-from ..com.zustaendigkeit import Zustaendigkeit
-from ..enum.anrede import Anrede
-from ..enum.titel import Titel
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.adresse import Adresse
+    from ..com.kontaktweg import Kontaktweg
+    from ..com.zustaendigkeit import Zustaendigkeit
+    from ..enum.anrede import Anrede
+    from ..enum.titel import Titel
+
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
 
@@ -30,31 +33,31 @@ class Person(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Person.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Person JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Person.json>`_
+        `Person JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Person.json>`_
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.PERSON
-    #: Mögliche Anrede der Person
-    anrede: Optional[Anrede] = None
+    typ: Annotated[Literal[Typ.PERSON], Field(alias="_typ")] = Typ.PERSON
+    anrede: Optional["Anrede"] = None
+    """Mögliche Anrede der Person"""
     individuelle_anrede: Optional[str] = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
-    #: Möglicher Titel der Person
-    titel: Optional[Titel] = None
-    #: Vorname der Person
+    titel: Optional["Titel"] = None
+    """Möglicher Titel der Person"""
     vorname: Optional[str] = None
-    #: Nachname (Familienname) der Person
+    """Vorname der Person"""
     nachname: Optional[str] = None
-    #: Kontaktwege der Person
-    kontaktwege: Optional[list[Kontaktweg]] = None
-    #: Geburtsdatum der Person
-    geburtsdatum: Optional[datetime] = None
-    #: Weitere Informationen zur Person
+    """Nachname (Familienname) der Person"""
+    kontaktwege: Optional[list["Kontaktweg"]] = None
+    """Kontaktwege der Person"""
+    geburtsdatum: Optional[date] = None
+    """Geburtsdatum der Person"""
     kommentar: Optional[str] = None
-    #: Liste der Abteilungen und Zuständigkeiten der Person
-    zustaendigkeiten: Optional[list[Zustaendigkeit]] = None
-    #: Adresse der Person, falls diese von der Adresse des Geschäftspartners abweicht
-    adresse: Optional[Adresse] = None
+    """Weitere Informationen zur Person"""
+    zustaendigkeiten: Optional[list["Zustaendigkeit"]] = None
+    """Liste der Abteilungen und Zuständigkeiten der Person"""
+    adresse: Optional["Adresse"] = None
+    """Adresse der Person, falls diese von der Adresse des Geschäftspartners abweicht"""

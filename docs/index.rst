@@ -1,11 +1,28 @@
-=============
-BO4E
-=============
+=================================
+BO4E - Business Object for Energy
+=================================
 
-This is the official documentation of **BO4E** datamodel.
+This is the official documentation of the **BO4E** data model.
 
-Cause of the fact that the datamodel is written in Python, it is also the Python documentation.
+Welcome to the BO4E (Business Object for Energy) data model!
+This model is specifically designed with the German energy market in mind.
 
+Our primary goal is to facilitate seamless information exchange between market partners.
+
+The BO4E data model provides a standardized format for data communication, making it easier for different systems to interact and understand each other.
+It's all about improving efficiency, reducing errors, and fostering a more collaborative energy market.
+
+Whether you're a utility, a grid operator, a metering point operator, or a software service provider, the BO4E data model can help streamline your data exchange processes and enhance your collaborations in the energy market.
+
+We invite you to explore the BO4E data model and discover how it can benefit your operations in the German energy market.
+
+
+Membership
+==========
+
+Companies interested in contributing to the development and maintenance of this data model can become members of this registered non-profit association.
+As a member, your company will have the opportunity to influence the development of the BO4E data model and contribute to the evolution of the German energy market.
+For more information on how to become a member, please contact us.
 
 Contents
 ========
@@ -13,14 +30,17 @@ Contents
 .. toctree::
    :maxdepth: 2
 
+   Fundamentals <fundamentals>
+   Data Model <api/modules>
+   Versioning <versioning>
+   Release Workflow <release_workflow>
+   Contributing <contributing_guide>
+   Changelog <changelog>
+   Authors <authors>
+   License <license>
    Geschäftsobjekte <api/bo4e.bo>
    Komponenten <api/bo4e.com>
    Enumerationen <api/bo4e.enum>
-   Versionierung <versioning>
-   Änderungshistorie <changelog>
-   Autoren <authors>
-   Release Workflow <release_workflow>
-   Lizenz <license>
 
 Indices and tables
 ==================

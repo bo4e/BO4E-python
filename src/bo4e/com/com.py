@@ -28,13 +28,14 @@ class COM(BaseModel):
         <object data="../_static/images/bo4e/com/COM.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/COM.json>`_
+        `COM JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/COM.json>`_
 
     """
 
-    version: Annotated[
-        Optional[str], Field(alias="_version")
-    ] = __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
+    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    """
+    Version der COM-Struktur aka "fachliche Versionierung"
+    """
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
@@ -44,9 +45,10 @@ class COM(BaseModel):
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
-    zusatz_attribute: Optional[list[ZusatzAttribut]] = None
+    zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
 
     # pylint: disable=duplicate-code
+    # basic configuration for pydantic's behaviour
     model_config = ConfigDict(
         alias_generator=camelize,
         populate_by_name=True,
@@ -55,14 +57,12 @@ class COM(BaseModel):
         # an annotated version of Decimal, but you would have to use it everywhere in the pydantic models.
         # See this issue for more info: https://github.com/pydantic/pydantic/issues/6375
         json_encoders={Decimal: str},
+        use_attribute_docstrings=True,
     )
-    """
-    basic configuration for pydantic's behaviour
-    """
 
 
 # pylint: disable=invalid-name
-#: Any type derived from COM including those that do not directly inherit from COM
+# Any type derived from COM including those that do not directly inherit from COM
 TCom = TypeVar("TCom", bound=Type[COM])
 
 

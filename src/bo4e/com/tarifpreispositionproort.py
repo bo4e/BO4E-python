@@ -2,11 +2,15 @@
 Contains TarifpreispositionProOrt class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
 from .com import COM
-from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
+
+if TYPE_CHECKING:
+
+    from .tarifpreisstaffelproort import TarifpreisstaffelProOrt
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -22,16 +26,16 @@ class TarifpreispositionProOrt(COM):
         <object data="../_static/images/bo4e/com/TarifpreispositionProOrt.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/TarifpreispositionProOrt.json>`_
+        `TarifpreispositionProOrt JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/TarifpreispositionProOrt.json>`_
 
     """
 
-    #: Postleitzahl des Ortes für den der Preis gilt
     postleitzahl: Optional[str] = None
-    #: Ort für den der Preis gilt
+    """Postleitzahl des Ortes für den der Preis gilt"""
     ort: Optional[str] = None
-    #: ene't-Netznummer des Netzes in dem der Preis gilt
+    """Ort für den der Preis gilt"""
     netznr: Optional[str] = None
+    """ene't-Netznummer des Netzes in dem der Preis gilt"""
     # Hier sind die Staffeln mit ihren Preisenangaben definiert
-    preisstaffeln: Optional[list[TarifpreisstaffelProOrt]] = None
+    preisstaffeln: Optional[list["TarifpreisstaffelProOrt"]] = None
     # there are no optional attributes

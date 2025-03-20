@@ -8,8 +8,13 @@ class Geschaeftspartnerrolle(StrEnum):
     Diese Rollen kann ein Geschäftspartner einnehmen.
     """
 
-    LIEFERANT = "LIEFERANT"  #: Lieferant
-    DIENSTLEISTER = "DIENSTLEISTER"  #: Dienstleister
-    KUNDE = "KUNDE"  #: Kunde
-    INTERESSENT = "INTERESSENT"  #: Interessent
-    MARKTPARTNER = "MARKTPARTNER"  #: Marktpartner
+    LIEFERANT = "LIEFERANT"
+    """Lieferant"""
+    DIENSTLEISTER = "DIENSTLEISTER"
+    """Dienstleister"""
+    KUNDE = "KUNDE"
+    """Kunde"""
+    INTERESSENT = "INTERESSENT"
+    """Interessent"""
+    MARKTPARTNER = "MARKTPARTNER"
+    """Marktpartner"""

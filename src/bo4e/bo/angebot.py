@@ -2,21 +2,22 @@
 Contains Angebot class and corresponding marshmallow schema for de-/serialization
 """
 
-from datetime import datetime
-
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 # pylint: disable=no-name-in-module
-from typing import Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+import pydantic
 from pydantic import Field
 
-from ..com.angebotsvariante import Angebotsvariante
-from ..enum.sparte import Sparte
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
-from .geschaeftspartner import Geschaeftspartner
-from .person import Person
+
+if TYPE_CHECKING:
+    from ..com.angebotsvariante import Angebotsvariante
+    from ..enum.sparte import Sparte
+    from .geschaeftspartner import Geschaeftspartner
+    from .person import Person
 
 
 @postprocess_docstring
@@ -32,33 +33,37 @@ class Angebot(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Angebot.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Angebot.json>`_
+        `Angebot JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Angebot.json>`_
 
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.ANGEBOT
-    #: Eindeutige Nummer des Angebotes
+    typ: Annotated[Literal[Typ.ANGEBOT], Field(alias="_typ")] = Typ.ANGEBOT
     angebotsnummer: Optional[str] = None
-    #: Erstellungsdatum des Angebots
-    angebotsdatum: Optional[datetime] = None
-    #: Sparte, für die das Angebot abgegeben wird (Strom/Gas)
-    sparte: Optional[Sparte] = None
-    #: Ersteller des Angebots
-    angebotsgeber: Optional[Geschaeftspartner] = None
-    #: Empfänger des Angebots
-    angebotsnehmer: Optional[Geschaeftspartner] = None
+    """Eindeutige Nummer des Angebotes"""
+    angebotsdatum: Optional[pydantic.AwareDatetime] = None
+    """Erstellungsdatum des Angebots"""
+    sparte: Optional["Sparte"] = None
+    """Sparte, für die das Angebot abgegeben wird (Strom/Gas)"""
+    angebotsgeber: Optional["Geschaeftspartner"] = None
+    """Ersteller des Angebots"""
+    angebotsnehmer: Optional["Geschaeftspartner"] = None
+    """Empfänger des Angebots"""
 
-    varianten: Optional[list[Angebotsvariante]] = None
-    """ Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
-    Ein Angebot besteht mindestens aus einer Variante."""
+    varianten: Optional[list["Angebotsvariante"]] = None
+    """
+    Eine oder mehrere Varianten des Angebots mit den Angebotsteilen;
+    Ein Angebot besteht mindestens aus einer Variante.
+    """
 
     anfragereferenz: Optional[str] = None
-    """	Referenz auf eine Anfrage oder Ausschreibung;
-    Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen."""
-    #: Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot
-    bindefrist: Optional[datetime] = None
-    #: Person, die als Angebotsnehmer das Angebot angenommen hat
-    unterzeichner_angebotsnehmer: Optional[Person] = None
-    #: Person, die als Angebotsgeber das Angebots ausgestellt hat
-    unterzeichner_angebotsgeber: Optional[Person] = None
+    """
+    Referenz auf eine Anfrage oder Ausschreibung;
+    Kann dem Empfänger des Angebotes bei Zuordnung des Angebotes zur Anfrage bzw. Ausschreibung helfen.
+    """
+    bindefrist: Optional[pydantic.AwareDatetime] = None
+    """Bis zu diesem Zeitpunkt (Tag/Uhrzeit) inklusive gilt das Angebot"""
+    unterzeichner_angebotsnehmer: Optional["Person"] = None
+    """Person, die als Angebotsnehmer das Angebot angenommen hat"""
+    unterzeichner_angebotsgeber: Optional["Person"] = None
+    """Person, die als Angebotsgeber das Angebots ausgestellt hat"""

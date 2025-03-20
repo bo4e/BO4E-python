@@ -1,14 +1,18 @@
 """
 Contains Region class and corresponding marshmallow schema for de-/serialization
 """
-from typing import Annotated, Optional
+
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..com.regionskriterium import Regionskriterium
 from ..enum.typ import Typ
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..com.regionskriterium import Regionskriterium
+
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
@@ -24,16 +28,16 @@ class Region(Geschaeftsobjekt):
         <object data="../_static/images/bo4e/bo/Region.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Region.json>`_
+        `Region JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Region.json>`_
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.REGION
-    #: Bezeichnung der Region
+    typ: Annotated[Literal[Typ.REGION], Field(alias="_typ")] = Typ.REGION
     bezeichnung: Optional[str] = None
+    """Bezeichnung der Region"""
 
-    #: Positivliste der Kriterien zur Definition der Region
-    positiv_liste: Optional[list[Regionskriterium]] = None
+    positiv_liste: Optional[list["Regionskriterium"]] = None
+    """Positivliste der Kriterien zur Definition der Region"""
 
-    #: Negativliste der Kriterien zur Definition der Region
-    negativ_liste: Optional[list[Regionskriterium]] = None
+    negativ_liste: Optional[list["Regionskriterium"]] = None
+    """Negativliste der Kriterien zur Definition der Region"""

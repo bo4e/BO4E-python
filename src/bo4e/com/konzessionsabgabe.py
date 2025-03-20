@@ -1,12 +1,16 @@
 """
 Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serialization
 """
-from decimal import Decimal
-from typing import Optional
 
-from ..com.com import COM
-from ..enum.abgabeart import AbgabeArt
+from decimal import Decimal
+from typing import TYPE_CHECKING, Optional
+
 from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.abgabeart import AbgabeArt
+
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -21,15 +25,15 @@ class Konzessionsabgabe(COM):
         <object data="../_static/images/bo4e/com/Konzessionsabgabe.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Konzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Konzessionsabgabe.json>`_
+        `Konzessionsabgabe JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Konzessionsabgabe.json>`_
 
     """
 
-    #: Art der Abgabe
-    satz: Optional[AbgabeArt] = None
+    satz: Optional["AbgabeArt"] = None
+    """Art der Abgabe"""
 
-    #: Konzessionsabgabe in E/kWh
     kosten: Optional[Decimal] = None
+    """Konzessionsabgabe in E/kWh"""
 
-    #: Gebührenkategorie der Konzessionsabgabe
     kategorie: Optional[str] = None
+    """Gebührenkategorie der Konzessionsabgabe"""

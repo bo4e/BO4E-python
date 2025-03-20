@@ -3,12 +3,15 @@ Contains Fremdkostenblock class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
 from .com import COM
-from .fremdkostenposition import Fremdkostenposition
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+    from .fremdkostenposition import Fremdkostenposition
 
 # pylint: disable=too-few-public-methods
 
@@ -23,20 +26,20 @@ class Fremdkostenblock(COM):
         <object data="../_static/images/bo4e/com/Fremdkostenblock.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Fremdkostenblock.json>`_
+        `Fremdkostenblock JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Fremdkostenblock.json>`_
 
     """
 
-    #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
     kostenblockbezeichnung: Optional[str] = None
+    """Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc."""
 
-    kostenpositionen: Optional[list[Fremdkostenposition]] = None
+    kostenpositionen: Optional[list["Fremdkostenposition"]] = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 2018-02-01, 2019-01-01, Arbeitspreis HT, 3.660 kWh,
     5,8200 ct/kWh, 213,01 €
     """
 
-    #: Die Summe aller Kostenpositionen dieses Blocks
-    summe_kostenblock: Optional[Betrag] = None
+    summe_kostenblock: Optional["Betrag"] = None
+    """Die Summe aller Kostenpositionen dieses Blocks"""
     # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324

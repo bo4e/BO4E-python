@@ -26,12 +26,8 @@ _logger = logging.getLogger(__name__)
 root_directory = Path(__file__).parent
 output_directory = root_directory / "json_schemas"
 
-NEW_REF_TEMPLATE = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
-)
-NEW_REF_TEMPLATE_ROOT = (
-    "https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
-)
+NEW_REF_TEMPLATE = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
+NEW_REF_TEMPLATE_ROOT = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
@@ -110,6 +106,19 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
         schema_json_dict = TypeAdapter(cls).json_schema(schema_generator=GenerateJsonSchema)
     else:
         raise ValueError(f"Class {cls} is neither a pydantic BaseModel nor an enum.")
+    if {"allOf", "$defs"} == set(schema_json_dict.keys()):
+        assert (
+            len(schema_json_dict["allOf"]) == 1
+        ), "Internal error: Assumed circular reference but structure is unexpected"
+        # This is the case for schemas containing circular references
+        reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
+        reference_match = reference_pattern.fullmatch(schema_json_dict["allOf"][0]["$ref"])
+        assert (
+            reference_match is not None
+        ), "Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
+        del schema_json_dict["allOf"]
+        schema_json_dict.update(schema_json_dict_to_merge)
     if "$defs" in schema_json_dict:
         del schema_json_dict["$defs"]
     return schema_json_dict
@@ -195,6 +204,7 @@ def replace_refs(
 )
 def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str) -> None:
     """generate json schemas for all BOs and COMs"""
+    _logger.info("Mode: %s, target version: %s", mode, target_version)
     packages = ["bo", "com", "enum"]
 
     if mode == "generate":

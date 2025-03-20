@@ -4,11 +4,14 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import TYPE_CHECKING, Optional
 
-from ..enum.mengeneinheit import Mengeneinheit
 from ..utils import postprocess_docstring
 from .com import COM
+
+if TYPE_CHECKING:
+    from ..enum.mengeneinheit import Mengeneinheit
+
 
 # pylint: disable=too-few-public-methods
 
@@ -23,11 +26,11 @@ class Menge(COM):
         <object data="../_static/images/bo4e/com/Menge.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Menge.json>`_
+        `Menge JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Menge.json>`_
 
     """
 
-    #: Gibt den absoluten Wert der Menge an
     wert: Optional[Decimal] = None
-    #: Gibt die Einheit zum jeweiligen Wert an
-    einheit: Optional[Mengeneinheit] = None
+    """Gibt den absoluten Wert der Menge an"""
+    einheit: Optional["Mengeneinheit"] = None
+    """Gibt die Einheit zum jeweiligen Wert an"""

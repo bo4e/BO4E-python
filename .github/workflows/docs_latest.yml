@@ -1,0 +1,74 @@
+name: Build documentation /latest
+
+on:
+  push:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  # If the workflow is triggered (manually, through workflow_dispatch) on another branch than the main-branch,
+  # then it will be published not under /latest but under test-XXXXXX where the X's are a 6-digit random number
+  # (starting with non-zero).
+  # You should remember to delete the generated test-XXXXXX folder on the gh-pages branch after you are done with them.
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: 🚀📄 Build and deploy documentation to GitHub Pages
+    # This setup is inspired by
+    # https://github.com/KernelTuner/kernel_tuner/blob/master/.github/workflows/docs-on-release.yml
+    runs-on: ${{ matrix.os }}
+    concurrency: build-n-publish-docs
+    strategy:
+      matrix:
+        python-version: ["3.12"]
+        os: [ubuntu-latest]
+    steps:
+      - name: Set routing name to latest
+        if: github.ref == 'refs/heads/main'
+        run: echo "REF_NAME=latest" >> "$GITHUB_ENV"
+      - name: Set routing name to test-XXXXXX
+        if: github.ref != 'refs/heads/main'
+        run: echo "REF_NAME=test-$(shuf -i 100000-999999 -n 1)" >> "$GITHUB_ENV"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install tox
+          pip install -r requirements.txt
+        # Note: The sphinx action below can only install a single requirements file.
+      - name: Build JSON Schemas
+        run: tox -e generate_json_schemas
+        env:
+          TARGET_VERSION: ${{ env.REF_NAME }}
+      - name: Build BO4E package
+        # Note: This step necessary to correctly set the version in the JSON-Schema-links
+        run: |
+          pip install -e .
+          python -c "import bo4e; print(bo4e.__gh_version__)"
+      - name: Run kroki with docker
+        run: |
+          docker compose up -d
+      - name: Build the documentation
+        uses: sphinx-notes/pages@v2
+        # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
+        # We need that in order to be able to store (and deploy) multiple versions of the documentation.
+        with:
+          requirements_path: docs/requirements.txt
+          documentation_path: docs/
+          target_path: ${{ env.REF_NAME }}
+          target_branch: gh-pages
+          sphinx_options: -W -j auto
+        env:
+          SPHINX_DOCS_RELEASE: ${{ env.REF_NAME }}
+          SPHINX_DOCS_VERSION: ${{ env.REF_NAME }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages

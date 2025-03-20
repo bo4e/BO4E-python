@@ -2,13 +2,17 @@
 Contains Angebotsposition class
 and corresponding marshmallow schema for de-/serialization
 """
-from typing import Optional
+
+from typing import TYPE_CHECKING, Optional
 
 from ..utils import postprocess_docstring
-from .betrag import Betrag
 from .com import COM
-from .menge import Menge
-from .preis import Preis
+
+if TYPE_CHECKING:
+
+    from .betrag import Betrag
+    from .menge import Menge
+    from .preis import Preis
 
 # pylint: disable=too-few-public-methods
 
@@ -27,19 +31,19 @@ class Angebotsposition(COM):
         <object data="../_static/images/bo4e/com/Angebotsposition.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Angebotsposition.json>`_
+        `Angebotsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Angebotsposition.json>`_
 
     """
 
-    #: Bezeichnung der jeweiligen Position des Angebotsteils
     positionsbezeichnung: Optional[str] = None
-    #: Preis pro Einheit/Stückpreis des angebotenen Artikels.
-    positionspreis: Optional[Preis] = None
+    """Bezeichnung der jeweiligen Position des Angebotsteils"""
+    positionspreis: Optional["Preis"] = None
+    """Preis pro Einheit/Stückpreis des angebotenen Artikels."""
 
-    #: Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition
-    positionsmenge: Optional[Menge] = None
-    #: Kosten (positionspreis * positionsmenge) für diese Angebotsposition
-    positionskosten: Optional[Betrag] = None
+    positionsmenge: Optional["Menge"] = None
+    """Menge des angebotenen Artikels (z.B. Wirkarbeit in kWh), in dieser Angebotsposition"""
+    positionskosten: Optional["Betrag"] = None
+    """Kosten (positionspreis * positionsmenge) für diese Angebotsposition"""
 
     # for a preis = menge*times validation we first need to resolve
     # https://github.com/Hochfrequenz/BO4E-python/issues/126

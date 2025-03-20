@@ -10,7 +10,7 @@ class TestMarktteilnehmer:
         [
             pytest.param(
                 Marktteilnehmer(
-                    marktrolle=Marktrolle.DL,
+                    marktrolle=Marktrolle.DP,
                     rollencodenummer="9903916000000",
                     rollencodetyp=Rollencodetyp.BDEW,
                     sparte=Sparte.STROM,
