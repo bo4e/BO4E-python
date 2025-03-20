@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.typ_bo import Typ
 from .tarifinfo import Tarifinfo
 
 if TYPE_CHECKING:

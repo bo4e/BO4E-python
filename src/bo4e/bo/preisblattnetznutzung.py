@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.typ_bo import Typ
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
