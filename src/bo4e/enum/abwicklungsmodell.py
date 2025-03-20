@@ -7,5 +7,5 @@ class Abwicklungsmodell(StrEnum):
     Art des Abwicklungsmodell (E-Mob)
     """
 
-    MODEL_1 = "MODEL_1"  #: MODEL_1
-    MODEL_2 = "MODEL_2"  #: MODEL_2
+    MODELL_1 = "MODELL_1"  #: Modell 1 "Bilanzierung an der Marktlokation"
+    MODELL_2 = "MODELL_2"  #: Modell 2 "Bilanzierung im Bilanzierungsgebiet (BG) des LPB
