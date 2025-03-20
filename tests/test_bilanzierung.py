@@ -31,7 +31,7 @@ class TestBilanzierung:
                             bezeichnung="foo",
                             profilschar="foo2",
                             verfahren=Profilverfahren.SYNTHETISCH,
-                            einspeisung=True,
+                            ist_einspeisung=True,
                             tagesparameter=Tagesparameter(
                                 klimazone="7624q",
                                 temperaturmessstelle="1234x",
