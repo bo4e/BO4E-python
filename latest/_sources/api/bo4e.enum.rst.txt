@@ -12,6 +12,22 @@ bo4e.enum.abgabeart module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.abwicklungsmodell module
+----------------------------------
+
+.. automodule:: bo4e.enum.abwicklungsmodell
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.aggregationsverantwortung module
+------------------------------------------
+
+.. automodule:: bo4e.enum.aggregationsverantwortung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.angebotsstatus module
 -------------------------------
 
@@ -144,6 +160,14 @@ bo4e.enum.erzeugungsart module
 ------------------------------
 
 .. automodule:: bo4e.enum.erzeugungsart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.fallgruppenzuordnung module
+-------------------------------------
+
+.. automodule:: bo4e.enum.fallgruppenzuordnung
    :members:
    :undoc-members:
    :show-inheritance:
@@ -428,6 +452,38 @@ bo4e.enum.preistyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.profilart module
+--------------------------
+
+.. automodule:: bo4e.enum.profilart
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.profiltyp module
+--------------------------
+
+.. automodule:: bo4e.enum.profiltyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.profilverfahren module
+--------------------------------
+
+.. automodule:: bo4e.enum.profilverfahren
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.prognosegrundlage module
+----------------------------------
+
+.. automodule:: bo4e.enum.prognosegrundlage
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.rechnungslegung module
 --------------------------------
 
@@ -668,6 +724,14 @@ bo4e.enum.waermenutzung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.wahlrechtprognosegrundlage module
+-------------------------------------------
+
+.. automodule:: bo4e.enum.wahlrechtprognosegrundlage
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.wertermittlungsverfahren module
 -----------------------------------------
 
@@ -704,6 +768,14 @@ bo4e.enum.zaehlertypspezifikation module
 ----------------------------------------
 
 .. automodule:: bo4e.enum.zaehlertypspezifikation
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.enum.zeitreihentyp module
+------------------------------
+
+.. automodule:: bo4e.enum.zeitreihentyp
    :members:
    :undoc-members:
    :show-inheritance:

@@ -20,6 +20,14 @@ bo4e.bo.ausschreibung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.bilanzierung module
+---------------------------
+
+.. automodule:: bo4e.bo.bilanzierung
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.buendelvertrag module
 -----------------------------
 

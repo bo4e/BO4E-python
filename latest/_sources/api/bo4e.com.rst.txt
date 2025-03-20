@@ -204,6 +204,14 @@ bo4e.com.kriteriumwert module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.lastprofil module
+--------------------------
+
+.. automodule:: bo4e.com.lastprofil
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.marktgebietinfo module
 -------------------------------
 
@@ -344,6 +352,14 @@ bo4e.com.steuerbetrag module
 ----------------------------
 
 .. automodule:: bo4e.com.steuerbetrag
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+bo4e.com.tagesparameter module
+------------------------------
+
+.. automodule:: bo4e.com.tagesparameter
    :members:
    :undoc-members:
    :show-inheritance:

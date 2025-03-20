@@ -2,6 +2,7 @@
 Angebot,🟢,🟢,🟢,🟢,🟢,🟢
 Ansprechpartner,\-,\-,\-,\-,\-,\-
 Ausschreibung,🟢,🟢,🟢,🟢,🟢,🟢
+Bilanzierung,\-,\-,\-,\-,\-,🟢
 Buendelvertrag,🟢,🟢,🟢,🟢,🟢,🟢
 Energiemenge,🟢,🟢,🟢,🟢,🟢,🟢
 Fremdkosten,🟢,🟢,🟢,🟢,🟢,🟢
@@ -58,6 +59,7 @@ Konzessionsabgabe,🟢,🟢,🟢,🟢,🟢,🟢
 Kostenblock,🟢,🟢,🟢,🟢,🟢,🟢
 Kostenposition,🟢,🟢,🟢,🟢,🟢,🟢
 KriteriumWert,🟢,🟢,🟢,🟢,🟢,🟢
+Lastprofil,\-,\-,\-,\-,\-,🟢
 MarktgebietInfo,🟢,🟢,🟢,🟢,🟢,🟢
 Menge,🟢,🟢,🟢,🟢,🟢,🟢
 Messlokationszuordnung,🟢,🟢,\-,\-,\-,\-
@@ -78,6 +80,7 @@ Sigmoidparameter,🟢,🟢,🟢,🟢,🟢,🟢
 StandorteigenschaftenGas,🟢,🟢,🟢,🟢,🟢,🟢
 StandorteigenschaftenStrom,🟢,🟢,🟢,🟢,🟢,🟢
 Steuerbetrag,🟢,🟢,🟢,🟢,🟢,🟢
+Tagesparameter,\-,\-,\-,\-,\-,🟢
 Tarifberechnungsparameter,🟢,🟢,🟢,🟢,🟢,🟢
 Tarifeinschraenkung,🟢,🟢,🟢,🟢,🟢,🟢
 Tarifpreis,🟢,🟢,🟢,🟢,🟢,🟢
@@ -96,6 +99,8 @@ Zeitreihenwert,🟢,🟢,🟢,🟢,🟢,🟢
 Zeitspanne,🟢,🟢,🟢,🟢,🟢,\-
 Zustaendigkeit,🟢,🟢,🟢,🟢,🟢,🟢
 AbgabeArt,🟢,🟢,🟢,🟢,🟢,🟢
+Abwicklungsmodell,\-,\-,\-,\-,\-,🟢
+Aggregationsverantwortung,\-,\-,\-,\-,\-,🟢
 Angebotsstatus,🟢,🟢,🟢,🟢,🟢,🟢
 Anrede,🟢,🟢,🟢,🟢,🟢,🟢
 ArithmetischeOperation,🟢,🟢,🟢,🟢,🟢,🟢
@@ -113,6 +118,7 @@ Dienstleistungstyp,🟢,🟢,🟢,🟢,🟢,🟢
 EMobilitaetsart,\-,\-,🟢,🟢,🟢,🟢
 Energierichtung,🟢,🟢,🟢,🟢,🟢,🟢
 Erzeugungsart,🟢,🟢,🟢,🟢,🟢,🟢
+Fallgruppenzuordnung,\-,\-,\-,\-,\-,🟢
 Gasqualitaet,🟢,🟢,🟢,🟢,🟢,🟢
 Gebiettyp,🟢,🟢,🟢,🟢,🟢,🟢
 Geraeteklasse,🟢,🟢,🟢,🟢,🟢,🟢
@@ -148,6 +154,10 @@ Preisgarantietyp,🟢,🟢,🟢,🟢,🟢,🟢
 Preismodell,🟢,🟢,🟢,🟢,🟢,🟢
 Preisstatus,🟢,🟢,🟢,🟢,🟢,🟢
 Preistyp,🟢,🟢,🟢,🟢,🟢,🟢
+Profilart,\-,\-,\-,\-,\-,🟢
+Profiltyp,\-,\-,\-,\-,\-,🟢
+Profilverfahren,\-,\-,\-,\-,\-,🟢
+Prognosegrundlage,\-,\-,\-,\-,\-,🟢
 Rechnungslegung,🟢,🟢,🟢,🟢,🟢,🟢
 Rechnungsstatus,🟢,🟢,🟢,🟢,🟢,🟢
 Rechnungstyp,🟢,🟢,🟢,🟢,🟢,🟢
@@ -178,9 +188,11 @@ Voraussetzungen,🟢,🟢,🟢,🟢,🟢,🟢
 Waehrungscode,🟢,🟢,🟢,🟢,🟢,🟢
 Waehrungseinheit,🟢,🟢,🟢,🟢,🟢,🟢
 Waermenutzung,🟢,🟢,🟢,🟢,🟢,🟢
+WahlrechtPrognosegrundlage,\-,\-,\-,\-,\-,🟢
 Wertermittlungsverfahren,🟢,🟢,🟢,🟢,🟢,🟢
 Zaehlerauspraegung,🟢,🟢,🟢,🟢,🟢,🟢
 Zaehlergroesse,🟢,🟢,🟢,🟢,🟢,🟢
 Zaehlertyp,🟢,🟢,🟢,🟢,🟢,🟢
 ZaehlertypSpezifikation,🟢,🟢,🟢,🟢,🟢,🟢
+Zeitreihentyp,\-,\-,\-,\-,\-,🟢
 ZusatzAttribut,🟢,🟢,🟢,🟢,🟢,🟢
