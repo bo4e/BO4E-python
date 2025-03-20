@@ -33,25 +33,25 @@ class Zeitraum(COM):
     """
 
     startdatum: Optional[date] = None
-    """Startdatum, inklusiv
+    """Startdatum des betrachteten Zeitraums ist **inklusiv**.
 
     Example:
         '2025-01-01'
     """
     enddatum: Optional[date] = None
-    """Enddatum, inklusiv
+    """Enddatum des betrachteten Zeitraums ist **inklusiv**.
 
     Example:
         '2025-01-01'
     """
     startuhrzeit: Optional[time] = None
-    """Startuhrzeit, inklusiv mit Zeitzone
+    """Startuhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **inklusiv**.
 
     Example:
         '18:00:00+01:00'
     """
     enduhrzeit: Optional[time] = None
-    """Enduhrzeit, exklusiv mit Zeitzone
+    """Enduhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **exklusiv**.
 
     Example:
         '19:00:00+01:00'
