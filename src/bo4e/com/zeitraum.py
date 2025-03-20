@@ -33,13 +33,23 @@ class Zeitraum(COM):
     """
 
     startdatum: Optional[date] = None
-    """Startdatum, inklusiv"""
+    """Startdatum, inklusiv
+
+    Example:
+        '2025-01-01'
+    """
     enddatum: Optional[date] = None
-    """Enddatum, inklusiv"""
-    startuhrzeit: Optional[time] = None
-    """Startuhrzeit, inklusiv mit Zeitzone"""
+    """Enddatum, inklusiv
+
+    Example:
+        '2025-01-01'
+    """
     enduhrzeit: Optional[time] = None
-    """Enduhrzeit, exklusiv mit Zeitzone"""
+    """Enduhrzeit, exklusiv mit Zeitzone
+
+    Example:
+        '19:00:00+01:00'
+    """
     dauer: Optional[str] = None
     """
     Dauer in ISO 8601 Format.
