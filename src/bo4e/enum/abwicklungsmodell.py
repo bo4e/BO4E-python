@@ -4,7 +4,7 @@ from bo4e.enum.strenum import StrEnum
 
 class Abwicklungsmodell(StrEnum):
     """
-    Art der Abwicklungsmodell (E-Mob)
+    Art des Abwicklungsmodell (E-Mob)
     """
 
     MODEL_1 = "MODEL_1"  #: MODEL_1
