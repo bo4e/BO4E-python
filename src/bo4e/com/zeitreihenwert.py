@@ -16,8 +16,6 @@ if TYPE_CHECKING:
 
 
 # pylint: disable=too-few-public-methods
-
-
 @postprocess_docstring
 class Zeitreihenwert(COM):
     """
@@ -32,12 +30,11 @@ class Zeitreihenwert(COM):
 
     """
 
-    zeitspanne: Optional["Zeitraum"] = None  # TODO: rename to zeitraum?
-    """Zeitespanne für das Messintervall"""
+    zeitraum: Optional["Zeitraum"] = None
+    """Zeitraum für das Messintervall"""
     wert: Optional[Decimal] = None
-    """Der in der Zeitspanne gültige Wert."""
+    """Der in dem Zeitraum gültige Wert."""
     status: Optional["Messwertstatus"] = None
     """Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen."""
-
     statuszusatz: Optional["Messwertstatuszusatz"] = None
     """Eine Zusatzinformation zum Status, beispielsweise ein Grund für einen fehlenden Wert."""
