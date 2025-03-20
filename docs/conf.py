@@ -88,7 +88,7 @@ def skip_pydantic_internals(app, what, name, obj, skip, options):
     This processor is used to filter out Pydantic internal attributes from the
     documentation.
     """
-    if name in ("model_fields", "model_config"):
+    if name in ("model_fields", "model_config", "model_computed_fields"):
         return True
     return skip
 
