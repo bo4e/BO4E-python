@@ -2,7 +2,7 @@
 from bo4e.enum.strenum import StrEnum
 
 
-class Typ(StrEnum):
+class TypBo(StrEnum):
     """
     Auflistung sämtlicher existierender Geschäftsobjekte.
     """
