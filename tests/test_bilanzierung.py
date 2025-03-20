@@ -55,7 +55,7 @@ class TestBilanzierung:
                     prognosegrundlage=Prognosegrundlage.WERTE,
                     details_prognosegrundlage=[Profiltyp.SLP_SEP],
                     wahlrecht_prognosegrundlage=WahlrechtPrognosegrundlage.DURCH_LF,
-                    fallgruppenzuordnung=Fallgruppenzuordnung.GABI_RLMmT,
+                    fallgruppenzuordnung=Fallgruppenzuordnung.GABI_RLM_MIT_TAGESBAND,
                     prioritaet=1,
                     grund_wahlrecht_prognosegrundlage=WahlrechtPrognosegrundlage.DURCH_LF_NICHT_GEGEBEN,
                 )
