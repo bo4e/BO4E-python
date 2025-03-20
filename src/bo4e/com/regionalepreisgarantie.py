@@ -1,6 +1,6 @@
 """
 Contains RegionalePreisgarantie class
-and corresponding marshmallow schema for de-/serialization
+
 """
 
 from typing import TYPE_CHECKING, Optional

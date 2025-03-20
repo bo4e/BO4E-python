@@ -1,5 +1,5 @@
 """
-Contains Rechnungsposition class and corresponding marshmallow schema for de-/serialization
+Contains Rechnungsposition class
 """
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes

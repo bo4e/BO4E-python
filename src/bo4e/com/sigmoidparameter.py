@@ -1,5 +1,5 @@
 """
-Contains Sigmoidparameter class and corresponding marshmallow schema for de-/serialization
+Contains Sigmoidparameter class
 """
 
 from decimal import Decimal

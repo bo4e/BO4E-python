@@ -1,5 +1,5 @@
 """
-Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
+Contains Fremdkostenposition
 """
 
 from typing import Optional

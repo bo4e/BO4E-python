@@ -1,6 +1,6 @@
 """
 Contains Tarifpreisposition class
-and corresponding marshmallow schema for de-/serialization
+
 """
 
 # pylint: disable=too-few-public-methods
