@@ -10,10 +10,9 @@ class Fallgruppenzuordnung(StrEnum):
     Fallgruppenzuordnung nach edi@energy
     """
 
-    # todo: Uppercase-Problematik klären. -> pylint
-    GABI_RLMmT = "GABI_RLMmT"  # pylint:disable=invalid-name
+    GABI_RLM_MIT_TAGESBAND = "GABI_RLM_MIT_TAGESBAND"
     """RLM mit Tagesband"""
-    GABI_RLMoT = "GABI_RLMoT"  # pylint:disable=invalid-name
+    GABI_RLM_OHNE_TAGESBAND = "GABI_RLM_OHNE_TAGESBAND"
     """RLM ohne Tagesband"""
-    GABI_RLMNEV = "GABI_RLMNEV"
+    GABI_RLM_IM_NOMINIERUNGSERSATZVERFAHREN = "GABI_RLM_IM_NOMINIERUNGSERSATZVERFAHREN"
     """RLM im Nominierungsersatzverfahren"""
