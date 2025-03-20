@@ -1,5 +1,5 @@
 """
-Contains PreisblattNetnutzung class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattNetnutzung class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional

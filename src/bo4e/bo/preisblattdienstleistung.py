@@ -1,5 +1,5 @@
 """
-Contains PreisblattDienstleistung class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattDienstleistung class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
