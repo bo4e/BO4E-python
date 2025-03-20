@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -36,7 +36,7 @@ class Ausschreibung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.AUSSCHREIBUNG], Field(alias="_typ")] = Typ.AUSSCHREIBUNG
+    typ: Annotated[Literal[TypBo.AUSSCHREIBUNG], Field(alias="_typ")] = TypBo.AUSSCHREIBUNG
     ausschreibungsnummer: Optional[str] = None
     """Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer"""
     ausschreibungstyp: Optional["Ausschreibungstyp"] = None

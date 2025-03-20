@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -42,7 +42,7 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.VERTRAG], Field(alias="_typ")] = Typ.VERTRAG
+    typ: Annotated[Literal[TypBo.VERTRAG], Field(alias="_typ")] = TypBo.VERTRAG
     # pylint: disable=duplicate-code
     vertragsnummer: Optional[str] = None
     """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""

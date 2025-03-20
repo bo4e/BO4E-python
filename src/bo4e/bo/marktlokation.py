@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -46,7 +46,7 @@ class Marktlokation(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.MARKTLOKATION], Field(alias="_typ")] = Typ.MARKTLOKATION
+    typ: Annotated[Literal[TypBo.MARKTLOKATION], Field(alias="_typ")] = TypBo.MARKTLOKATION
 
     marktlokations_id: Optional[str] = None
     """Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird."""

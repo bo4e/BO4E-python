@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
@@ -31,8 +31,8 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[Typ.PREISBLATTKONZESSIONSABGABE], Field(alias="_typ")] = (
-        Typ.PREISBLATTKONZESSIONSABGABE  # type: ignore[assignment]
+    typ: Annotated[Literal[TypBo.PREISBLATTKONZESSIONSABGABE], Field(alias="_typ")] = (
+        TypBo.PREISBLATTKONZESSIONSABGABE  # type: ignore[assignment]
     )
     # required attributes (additional to those of Preisblatt)
     kundengruppe_k_a: Optional["KundengruppeKA"] = None

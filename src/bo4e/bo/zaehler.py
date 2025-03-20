@@ -12,7 +12,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -46,7 +46,7 @@ class Zaehler(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.ZAEHLER], Field(alias="_typ")] = Typ.ZAEHLER
+    typ: Annotated[Literal[TypBo.ZAEHLER], Field(alias="_typ")] = TypBo.ZAEHLER
     zaehlernummer: Optional[str] = None
     """Nummerierung des Zählers,vergeben durch den Messstellenbetreiber"""
     sparte: Optional["Sparte"] = None

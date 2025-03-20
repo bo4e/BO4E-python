@@ -370,7 +370,7 @@ from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
 from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
-from .enum.typ_bo import Typ
+from .enum.typ_bo import TypBo
 from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform

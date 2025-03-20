@@ -10,7 +10,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -41,7 +41,7 @@ class Tarifinfo(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.TARIFINFO], Field(alias="_typ")] = Typ.TARIFINFO
+    typ: Annotated[Literal[TypBo.TARIFINFO], Field(alias="_typ")] = TypBo.TARIFINFO
     bezeichnung: Optional[str] = None
     """Name des Tarifs"""
     anbietername: Optional[str] = None

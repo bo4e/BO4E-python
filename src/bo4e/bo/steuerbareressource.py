@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -34,7 +34,7 @@ class SteuerbareRessource(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.STEUERBARERESSOURCE], Field(alias="_typ")] = Typ.STEUERBARERESSOURCE
+    typ: Annotated[Literal[TypBo.STEUERBARERESSOURCE], Field(alias="_typ")] = TypBo.STEUERBARERESSOURCE
 
     steuerbare_ressource_id: Optional[str] = None
     """Id der steuerbaren Ressource"""

@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -36,7 +36,7 @@ class Zeitreihe(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.ZEITREIHE], Field(alias="_typ")] = Typ.ZEITREIHE
+    typ: Annotated[Literal[TypBo.ZEITREIHE], Field(alias="_typ")] = TypBo.ZEITREIHE
     bezeichnung: Optional[str] = None
     """Bezeichnung für die Zeitreihe"""
     messgroesse: Optional["Messgroesse"] = None

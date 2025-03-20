@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ_bo import Typ
+from ..enum.typ_bo import TypBo
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -32,7 +32,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.STANDORTEIGENSCHAFTEN], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
+    typ: Annotated[Literal[TypBo.STANDORTEIGENSCHAFTEN], Field(alias="_typ")] = TypBo.STANDORTEIGENSCHAFTEN
     eigenschaften_strom: Optional[list["StandorteigenschaftenStrom"]] = None
     """Eigenschaften zur Sparte Strom"""
 
