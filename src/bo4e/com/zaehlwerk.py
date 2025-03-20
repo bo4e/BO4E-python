@@ -4,8 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -32,6 +35,8 @@ class Zaehlwerk(COM):
         `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlwerk.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.ZAEHLWERK], Field(alias="_typ")] = ComTyp.ZAEHLWERK
 
     zaehlwerk_id: Optional[str] = None
     """

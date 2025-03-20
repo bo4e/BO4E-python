@@ -3,8 +3,11 @@ Contains StandorteigenschaftenGas class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -30,6 +33,7 @@ class StandorteigenschaftenGas(COM):
 
     """
 
+    typ: Annotated[Literal[ComTyp.STANDORTEIGENSCHAFTENGAS], Field(alias="_typ")] = ComTyp.STANDORTEIGENSCHAFTENGAS
     netzkontonummern: Optional[list[str]] = None
     """Netzkontonummern der Gasnetze"""
     marktgebiete: Optional[list["MarktgebietInfo"]] = None

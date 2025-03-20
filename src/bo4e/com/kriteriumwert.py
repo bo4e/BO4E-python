@@ -4,8 +4,11 @@ and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-few-public-methods
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -26,6 +29,8 @@ class KriteriumWert(COM):
         `KriteriumWert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/KriteriumWert.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.KRITERIUMWERT], Field(alias="_typ")] = ComTyp.KRITERIUMWERT
 
     kriterium: Optional["Tarifregionskriterium"] = None
     """Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen"""

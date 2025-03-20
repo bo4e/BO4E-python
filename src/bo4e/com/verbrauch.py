@@ -3,10 +3,12 @@ Contains Verbrauch and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -33,6 +35,8 @@ class Verbrauch(COM):
         `Verbrauch JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verbrauch.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.VERBRAUCH], Field(alias="_typ")] = ComTyp.VERBRAUCH
 
     wertermittlungsverfahren: Optional["Wertermittlungsverfahren"] = None
     """Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt"""

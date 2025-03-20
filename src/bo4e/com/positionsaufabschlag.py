@@ -5,8 +5,11 @@ Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/seria
 from decimal import Decimal
 
 # pylint: disable=too-few-public-methods
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,6 +34,8 @@ class PositionsAufAbschlag(COM):
         `PositionsAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/PositionsAufAbschlag.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.POSITIONSAUFABSCHLAG], Field(alias="_typ")] = ComTyp.POSITIONSAUFABSCHLAG
 
     bezeichnung: Optional[str] = None
     """Bezeichnung des Auf-/Abschlags"""

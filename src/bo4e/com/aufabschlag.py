@@ -3,8 +3,11 @@ Contains AufAbschlag class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -32,6 +35,8 @@ class AufAbschlag(COM):
         `AufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/AufAbschlag.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.AUFABSCHLAG], Field(alias="_typ")] = ComTyp.AUFABSCHLAG
 
     bezeichnung: Optional[str] = None
     """Bezeichnung des Auf-/Abschlags"""
