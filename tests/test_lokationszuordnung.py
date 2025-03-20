@@ -1,5 +1,4 @@
 import pytest
-from pydantic import AwareDatetime
 
 from bo4e import (
     Lokationszuordnung,
@@ -8,7 +7,7 @@ from bo4e import (
     Netzlokation,
     SteuerbareRessource,
     TechnischeRessource,
-    Zeitspanne,
+    Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -24,7 +23,7 @@ class TestLokationszuordnung:
                     netzlokationen=[Netzlokation()],
                     technische_ressourcen=[TechnischeRessource()],
                     steuerbare_ressourcen=[SteuerbareRessource()],
-                    gueltigkeit=Zeitspanne(),
+                    gueltigkeit=Zeitraum(),
                     zuordnungstyp="Zuordnungstyp",
                     lokationsbuendelcode="9992 00000 125 6",
                 ),

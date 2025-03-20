@@ -3,9 +3,9 @@ Contains Person class
 and corresponding marshmallow schema for de-/serialization
 """
 
+from datetime import date
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-import pydantic
 from pydantic import Field
 
 from ..enum.typ import Typ
@@ -53,7 +53,7 @@ class Person(Geschaeftsobjekt):
     """Nachname (Familienname) der Person"""
     kontaktwege: Optional[list["Kontaktweg"]] = None
     """Kontaktwege der Person"""
-    geburtsdatum: Optional[pydantic.AwareDatetime] = None
+    geburtsdatum: Optional[date] = None
     """Geburtsdatum der Person"""
     kommentar: Optional[str] = None
     """Weitere Informationen zur Person"""
