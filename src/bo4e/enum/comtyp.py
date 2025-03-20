@@ -2,7 +2,7 @@
 from bo4e.enum.strenum import StrEnum
 
 
-class TypCom(StrEnum):
+class ComTyp(StrEnum):
     """
     Auflistung sämtlicher existierender Geschäftsobjekte.
     """

@@ -177,7 +177,7 @@ __all__ = [
     "Themengebiet",
     "Titel",
     "BoTyp",
-    "TypCom",
+    "ComTyp",
     "Verbrauchsart",
     "Vertragsart",
     "Vertragsform",
@@ -313,6 +313,7 @@ from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
 from .enum.botyp import BoTyp
+from .enum.comtyp import ComTyp
 from .enum.dienstleistungstyp import Dienstleistungstyp
 from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
@@ -372,7 +373,6 @@ from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
 from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
-from .enum.typ_com import TypCom
 from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
