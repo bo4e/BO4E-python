@@ -34,8 +34,8 @@ class RegionaleTarifpreisposition(COM):
 
     """
 
-    typ: Annotated[Literal[ComTyp.REGIONALERTARIFPREISPOSITION], Field(alias="_typ")] = (
-        ComTyp.REGIONALERTARIFPREISPOSITION
+    typ: Annotated[Literal[ComTyp.REGIONALETARIFPREISPOSITION], Field(alias="_typ")] = (
+        ComTyp.REGIONALETARIFPREISPOSITION
     )
 
     preistyp: Optional["Preistyp"] = None

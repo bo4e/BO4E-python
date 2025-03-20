@@ -33,7 +33,7 @@ class Zeitreihenwert(COM):
 
     """
 
-    typ: Annotated[Literal[ComTyp.ZEITREIHEWERT], Field(alias="_typ")] = ComTyp.ZEITREIHEWERT
+    typ: Annotated[Literal[ComTyp.ZEITREIHENWERT], Field(alias="_typ")] = ComTyp.ZEITREIHENWERT
 
     zeitraum: Optional["Zeitraum"] = None
     """Zeitraum für das Messintervall"""

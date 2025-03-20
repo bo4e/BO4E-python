@@ -30,7 +30,7 @@ class RegionalePreisstaffel(Preisstaffel):
 
     """
 
-    typ: Annotated[Literal[ComTyp.REGIONALERPREISSTAFFEL], Field(alias="_typ")] = ComTyp.REGIONALERPREISSTAFFEL
+    typ: Annotated[Literal[ComTyp.REGIONALEPREISSTAFFEL], Field(alias="_typ")] = ComTyp.REGIONALEPREISSTAFFEL
 
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
     """Regionale Eingrenzung der Preisstaffel"""
