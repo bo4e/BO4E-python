@@ -31,17 +31,17 @@ Contents
    :maxdepth: 2
 
    Fundamentals <fundamentals>
-   Data Model <api/modules>
+   Data Model Overview <api/modules>
+   BusinessObjects <api/bo4e.bo>
+   Components <api/bo4e.com>
+   Enumerations <api/bo4e.enum>
    Versioning <versioning>
    Release Workflow <release_workflow>
    Contributing <contributing_guide>
    Changelog <changelog>
    Authors <authors>
    License <license>
-   Geschäftsobjekte <api/bo4e.bo>
-   Komponenten <api/bo4e.com>
-   Enumerationen <api/bo4e.enum>
-
+   
 Indices and tables
 ==================
 
