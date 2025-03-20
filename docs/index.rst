@@ -41,7 +41,7 @@ Contents
    Changelog <changelog>
    Authors <authors>
    License <license>
-   
+
 Indices and tables
 ==================
 
