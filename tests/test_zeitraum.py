@@ -14,7 +14,7 @@ class TestZeitraum:
                 Zeitraum(
                     dauer="P1DT30H4S",
                 ),
-                id="P1DT30H4S",
+                id="period-P1DT30H4S",
             ),
             pytest.param(
                 Zeitraum(
@@ -42,7 +42,7 @@ class TestZeitraum:
                     startuhrzeit=time(18, 0, 0, tzinfo=timezone(timedelta(hours=1), "Europe/Berlin")),
                     enduhrzeit=time(19, 0, 0, tzinfo=timezone(timedelta(hours=1), "Europe/Berlin")),
                 ),
-                id="startuhrzeit-enduhrzeit-utc-timezone",
+                id="startuhrzeit-enduhrzeit-berlin-timezone",
             ),
         ],
     )
