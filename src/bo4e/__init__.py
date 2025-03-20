@@ -176,7 +176,8 @@ __all__ = [
     "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
-    "Typ",
+    "TypBo",
+    "TypCom",
     "Verbrauchsart",
     "Vertragsart",
     "Vertragsform",
@@ -371,6 +372,7 @@ from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchs
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
 from .enum.typ_bo import TypBo
+from .enum.typ_com import TypCom
 from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
