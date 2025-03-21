@@ -1,13 +1,12 @@
 """
 Contains Energiemenge class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -34,13 +33,12 @@ class Energiemenge(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.ENERGIEMENGE
-    #: Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört
+    typ: Annotated[Literal[BoTyp.ENERGIEMENGE], Field(alias="_typ")] = BoTyp.ENERGIEMENGE
     lokations_id: Optional[str] = None
-    # todo: add validator such that only mess- or marktlokations IDs are accepted + cross check with lokationstyp
-    #: Gibt an, ob es sich um eine Markt- oder Messlokation handelt
+    """Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"""
     lokationstyp: Optional["Lokationstyp"] = None
+    """Gibt an, ob es sich um eine Markt- oder Messlokation handelt"""
 
-    #: Gibt den Verbrauch in einer Zeiteinheit an
     energieverbrauch: Optional[list["Verbrauch"]] = None
+    """Gibt den Verbrauch in einer Zeiteinheit an"""
     # there are no optional attributes

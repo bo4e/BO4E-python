@@ -1,11 +1,13 @@
 """
 Contains TarifpreisstaffelProOrt class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -26,18 +28,20 @@ class TarifpreisstaffelProOrt(COM):
 
     """
 
+    typ: Annotated[Literal[ComTyp.TARIFPREISSTAFFELPROORT], Field(alias="_typ")] = ComTyp.TARIFPREISSTAFFELPROORT
+
     # todo: decimal doesn't make sense here imo
     # https://github.com/Hochfrequenz/BO4E-python/issues/344
 
-    #: Der Arbeitspreis in ct/kWh
     arbeitspreis: Optional[Decimal] = None
-    #: Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh
+    """Der Arbeitspreis in ct/kWh"""
     arbeitspreis_n_t: Optional[Decimal] = None
-    #: Der Grundpreis in Euro/Jahr
+    """Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh"""
     grundpreis: Optional[Decimal] = None
-    #: Unterer Wert, ab dem die Staffel gilt (inklusive)
+    """Der Grundpreis in Euro/Jahr"""
     staffelgrenze_von: Optional[Decimal] = None
-    #: Oberer Wert, bis zu dem die Staffel gilt (exklusive)
+    """Unterer Wert, ab dem die Staffel gilt (inklusive)"""
     staffelgrenze_bis: Optional[Decimal] = None
+    """Oberer Wert, bis zu dem die Staffel gilt (exklusive)"""
 
     # there are no optional attributes

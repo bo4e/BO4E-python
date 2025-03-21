@@ -1,10 +1,12 @@
 """
 Contains Fremdkostenblock class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -30,8 +32,10 @@ class Fremdkostenblock(COM):
 
     """
 
-    #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
+    typ: Annotated[Literal[ComTyp.FREMDKOSTENBLOCK], Field(alias="_typ")] = ComTyp.FREMDKOSTENBLOCK
+
     kostenblockbezeichnung: Optional[str] = None
+    """Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc."""
 
     kostenpositionen: Optional[list["Fremdkostenposition"]] = None
     """
@@ -40,6 +44,6 @@ class Fremdkostenblock(COM):
     5,8200 ct/kWh, 213,01 €
     """
 
-    #: Die Summe aller Kostenpositionen dieses Blocks
     summe_kostenblock: Optional["Betrag"] = None
+    """Die Summe aller Kostenpositionen dieses Blocks"""
     # todo: write validator fo this sum, see https://github.com/Hochfrequenz/BO4E-python/issues/324

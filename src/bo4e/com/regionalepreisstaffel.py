@@ -1,9 +1,12 @@
 """
-Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization
+Contains RegionalePreisstaffel class
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .preisstaffel import Preisstaffel
 
@@ -16,7 +19,7 @@ if TYPE_CHECKING:
 @postprocess_docstring
 class RegionalePreisstaffel(Preisstaffel):
     """
-    Abbildung einer Preisstaffel mit regionaler Abgrenzung
+    Mit dieser Komponente können Staffelpreise abgebildet werden, die sich auf eine Region beziehen.
 
     .. raw:: html
 
@@ -27,5 +30,9 @@ class RegionalePreisstaffel(Preisstaffel):
 
     """
 
-    #: Regionale Eingrenzung der Preisstaffel
+    typ: Annotated[Literal[ComTyp.REGIONALEPREISSTAFFEL], Field(alias="_typ")] = (
+        ComTyp.REGIONALEPREISSTAFFEL  # type:ignore[assignment]
+    )
+
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
+    """Regionale Eingrenzung der Preisstaffel"""

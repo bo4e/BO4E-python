@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import datetime, time
 
 import pytest
 
@@ -22,8 +22,10 @@ class TestRegionalePreisgarantie:
                 RegionalePreisgarantie(
                     preisgarantietyp=Preisgarantietyp.NUR_ENERGIEPREIS,
                     zeitliche_gueltigkeit=Zeitraum(
-                        startzeitpunkt=datetime(2011, 2, 5, 16, 43, tzinfo=timezone.utc),
-                        endzeitpunkt=datetime(2021, 7, 30, tzinfo=timezone.utc),
+                        startdatum=datetime(2011, 2, 5),
+                        startuhrzeit=time(16, 43),
+                        enddatum=datetime(2021, 7, 30),
+                        enduhrzeit=time(16, 43),
                     ),
                     regionale_gueltigkeit=RegionaleGueltigkeit(
                         gueltigkeitstyp=Gueltigkeitstyp.NUR_IN,

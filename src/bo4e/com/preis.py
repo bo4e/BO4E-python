@@ -1,11 +1,13 @@
 """
 Contains Preis class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -32,12 +34,14 @@ class Preis(COM):
 
     """
 
-    #: Gibt die nominale Höhe des Preises an.
-    wert: Optional[Decimal] = None
-    #: Währungseinheit für den Preis, z.B. Euro oder Ct.
-    einheit: Optional["Waehrungseinheit"] = None
-    #: Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh.
-    bezugswert: Optional["Mengeneinheit"] = None
+    typ: Annotated[Literal[ComTyp.PREIS], Field(alias="_typ")] = ComTyp.PREIS
 
-    #: Gibt den Status des veröffentlichten Preises an
+    wert: Optional[Decimal] = None
+    """Gibt die nominale Höhe des Preises an."""
+    einheit: Optional["Waehrungseinheit"] = None
+    """Währungseinheit für den Preis, z.B. Euro oder Ct."""
+    bezugswert: Optional["Mengeneinheit"] = None
+    """Angabe, für welche Bezugsgröße der Preis gilt. Z.B. kWh."""
+
     status: Optional["Preisstatus"] = None
+    """Gibt den Status des veröffentlichten Preises an"""

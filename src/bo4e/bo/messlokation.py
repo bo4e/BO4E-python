@@ -1,13 +1,12 @@
 """
 Contains Messlokation class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -39,23 +38,23 @@ class Messlokation(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.MESSLOKATION
+    typ: Annotated[Literal[BoTyp.MESSLOKATION], Field(alias="_typ")] = BoTyp.MESSLOKATION
 
-    #: Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung
     messlokations_id: Optional[str] = None
-    #: Sparte der Messlokation, z.B. Gas oder Strom
+    """Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung"""
     sparte: Optional["Sparte"] = None
+    """Sparte der Messlokation, z.B. Gas oder Strom"""
 
-    #: Spannungsebene der Messung
     netzebene_messung: Optional["Netzebene"] = None
-    #: Die Nummer des Messgebietes in der ene't-Datenbank
+    """Spannungsebene der Messung"""
     messgebietnr: Optional[str] = None
-    #: Liste der Geräte, die zu dieser Messstelle gehört
+    """Die Nummer des Messgebietes in der ene't-Datenbank"""
     geraete: Optional[list["Geraet"]] = None
-    #: Liste der Messdienstleistungen, die zu dieser Messstelle gehört
-    messdienstleistung: Optional[list["Dienstleistung"]] = None  # todo: rename to plural
-    #: Zähler, die zu dieser Messlokation gehören
+    """Liste der Geräte, die zu dieser Messstelle gehört"""
+    messdienstleistung: Optional[list["Dienstleistung"]] = None
+    """Liste der Messdienstleistungen, die zu dieser Messstelle gehört"""  # todo: rename to plural
     messlokationszaehler: Optional[list["Zaehler"]] = None
+    """Zähler, die zu dieser Messlokation gehören"""
 
     # only one of the following two optional codenr attributes can be set
     grundzustaendiger_msb_codenr: Optional[str] = None
@@ -85,7 +84,7 @@ class Messlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
-    #: Lokationszuordnung, um bspw. die zugehörigen Marktlokationen anzugeben
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
-    #: Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt.
+    """Lokationszuordnung, um bspw. die zugehörigen Marktlokationen anzugeben"""
     lokationsbuendel_objektcode: Optional[str] = None
+    """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

@@ -1,14 +1,13 @@
 """
 Contains Geschaeftspartner class
-and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -39,20 +38,20 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
-    #: Mögliche Anrede der Person
+    typ: Annotated[Literal[BoTyp.GESCHAEFTSPARTNER], Field(alias="_typ")] = BoTyp.GESCHAEFTSPARTNER
     anrede: Optional["Anrede"] = None
+    """Mögliche Anrede der Person"""
     individuelle_anrede: Optional[str] = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
-    #: Möglicher Titel der Person
     titel: Optional["Titel"] = None
-    #: Vorname der Person
+    """Möglicher Titel der Person"""
     vorname: Optional[str] = None
-    #: Nachname (Familienname) der Person
+    """Vorname der Person"""
     nachname: Optional[str] = None
+    """Nachname (Familienname) der Person"""
 
     ansprechpartner: Optional[list["Person"]] = None
     organisationstyp: Optional["Organisationstyp"] = None
@@ -63,22 +62,26 @@ class Geschaeftspartner(Geschaeftsobjekt):
     """
     Name der Firma, wenn Gewerbe oder andere Organisation.
     """
-    #: Kontaktwege des Geschäftspartners
     kontaktwege: Optional[list["Kontaktweg"]] = None
-    #: Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)
+    """Kontaktwege des Geschäftspartners"""
     geschaeftspartnerrollen: Optional[list["Geschaeftspartnerrolle"]] = None
-    #: Handelsregisternummer des Geschäftspartners
+    """Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)"""
     handelsregisternummer: Optional[str] = None
-    #: Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat
+    """Handelsregisternummer des Geschäftspartners"""
     amtsgericht: Optional[str] = None
-    #: Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
+    """Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat"""
     umsatzsteuer_id: Optional[str] = None
-    #: Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
+    """
+    Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
+    """
     glaeubiger_id: Optional[str] = None
-    #: Internetseite des Marktpartners
+    """
+    Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
+    """
     website: Optional[str] = None
-    #: Adresse des Geschäftspartners
+    """Internetseite des Marktpartners"""
     adresse: Optional["Adresse"] = None
-    #: Todo: Add optional connection to marktteilnehmer as discussed in workshop
-    #: not clear what is the best solution here - circular import marktteilnehmer?
-    #: discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let's figure out a solution somehow.
+    """Adresse des Geschäftspartners"""
+    # Todo: Add optional connection to marktteilnehmer as discussed in workshop
+    # not clear what is the best solution here - circular import marktteilnehmer?
+    # discussed in workshop on Feb 6 2024: yes we need the bidirectional option, let's figure out a solution somehow.

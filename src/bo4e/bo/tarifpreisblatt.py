@@ -1,13 +1,13 @@
 """
-Contains Tarifpreisblatt class and corresponding marshmallow schema for de-/serialization
+Contains Tarifpreisblatt class
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
@@ -37,18 +37,18 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.TARIFPREISBLATT
+    typ: Annotated[Literal[BoTyp.TARIFPREISBLATT], Field(alias="_typ")] = BoTyp.TARIFPREISBLATT  # type: ignore[assignment]
     # required attributes (additional to those of Tarifinfo)
-    #: Gibt an, wann der Preis zuletzt angepasst wurde
     preisstand: Optional[pydantic.AwareDatetime] = None
-    #: Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc.
+    """Gibt an, wann der Preis zuletzt angepasst wurde"""
     tarifpreise: Optional[list["Tarifpreisposition"]] = None
-    #: Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen
+    """Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc."""
     berechnungsparameter: Optional["Tarifberechnungsparameter"] = None
+    """Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen"""
 
-    #: Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann
     tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None
-    #: Festlegung von Garantien für bestimmte Preisanteile
+    """Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann"""
     preisgarantie: Optional["Preisgarantie"] = None
-    #: Auf- und Abschläge auf die Preise oder Kosten
+    """Festlegung von Garantien für bestimmte Preisanteile"""
     tarif_auf_abschlaege: Optional[list["AufAbschlag"]] = None
+    """Auf- und Abschläge auf die Preise oder Kosten"""

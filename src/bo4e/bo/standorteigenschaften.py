@@ -1,15 +1,14 @@
 """
 Contains Standorteigenschaften class
-and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -32,9 +31,9 @@ class Standorteigenschaften(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.STANDORTEIGENSCHAFTEN
-    #: Eigenschaften zur Sparte Strom
+    typ: Annotated[Literal[BoTyp.STANDORTEIGENSCHAFTEN], Field(alias="_typ")] = BoTyp.STANDORTEIGENSCHAFTEN
     eigenschaften_strom: Optional[list["StandorteigenschaftenStrom"]] = None
+    """Eigenschaften zur Sparte Strom"""
 
-    #: Eigenschaften zur Sparte Gas
     eigenschaften_gas: Optional["StandorteigenschaftenGas"] = None
+    """Eigenschaften zur Sparte Gas"""

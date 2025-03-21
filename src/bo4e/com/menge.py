@@ -1,11 +1,13 @@
 """
 Contains Menge class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -30,7 +32,9 @@ class Menge(COM):
 
     """
 
-    #: Gibt den absoluten Wert der Menge an
+    typ: Annotated[Literal[ComTyp.MENGE], Field(alias="_typ")] = ComTyp.MENGE
+
     wert: Optional[Decimal] = None
-    #: Gibt die Einheit zum jeweiligen Wert an
+    """Gibt den absoluten Wert der Menge an"""
     einheit: Optional["Mengeneinheit"] = None
+    """Gibt die Einheit zum jeweiligen Wert an"""

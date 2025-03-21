@@ -1,13 +1,13 @@
 """
 Contains Zeitraum class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from datetime import date, time
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -16,8 +16,6 @@ if TYPE_CHECKING:
 
 
 # pylint: disable=too-few-public-methods
-
-
 @postprocess_docstring
 class Zeitraum(COM):
     """
@@ -36,9 +34,38 @@ class Zeitraum(COM):
 
     """
 
-    einheit: Optional["Mengeneinheit"] = None
-    dauer: Optional[Decimal] = None
-    startdatum: Optional[pydantic.AwareDatetime] = None
-    enddatum: Optional[pydantic.AwareDatetime] = None
-    startzeitpunkt: Optional[pydantic.AwareDatetime] = None
-    endzeitpunkt: Optional[pydantic.AwareDatetime] = None
+    typ: Annotated[Literal[ComTyp.ZEITRAUM], Field(alias="_typ")] = ComTyp.ZEITRAUM
+
+    startdatum: Optional[date] = None
+    """Startdatum des betrachteten Zeitraums ist **inklusiv**.
+
+    Example:
+        '2025-01-01'
+    """
+    enddatum: Optional[date] = None
+    """Enddatum des betrachteten Zeitraums ist **inklusiv**.
+
+    Example:
+        '2025-01-01'
+    """
+    startuhrzeit: Optional[time] = None
+    """Startuhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **inklusiv**.
+
+    Example:
+        '18:00:00+01:00'
+    """
+    enduhrzeit: Optional[time] = None
+    """Enduhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **exklusiv**.
+
+    Example:
+        '19:00:00+01:00'
+    """
+    dauer: Optional[str] = None
+    """
+    Dauer in ISO 8601 Format.
+
+    Example:
+        'P1DT30H4S'
+
+    See `RFC 3339 <https://datatracker.ietf.org/doc/html/rfc3339>`_
+    """

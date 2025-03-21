@@ -1,9 +1,12 @@
 """
-Contains Fremdkostenposition and corresponding marshmallow schema for de-/serialization
+Contains Fremdkostenposition
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .kostenposition import Kostenposition
 
@@ -24,16 +27,20 @@ class Fremdkostenposition(Kostenposition):
 
     """
 
+    typ: Annotated[Literal[ComTyp.FREMDKOSTENPOSITION], Field(alias="_typ")] = (
+        ComTyp.FREMDKOSTENPOSITION  # type:ignore[assignment]
+    )
+
     # optional attributes (additional to those from Kostenposition)
-    #: Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt
     marktpartnername: Optional[str] = None
+    """Der Name des Marktpartners, der die Preise festlegt, bzw. die Kosten in Rechnung stellt"""
 
-    #: Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt
     marktpartnercode: Optional[str] = None
+    """Die Codenummer (z.B. BDEW-Codenummer) des Marktpartners, der die Preise festlegt / die Kosten in Rechnung stellt"""
 
-    #: EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT
     gebietcode_eic: Optional[str] = None
+    """EIC-Code des Regel- oder Marktgebietes eingetragen. Z.B. '10YDE-EON------1' für die Regelzone TenneT"""
     # todo: see issue https://github.com/Hochfrequenz/BO4E-python/issues/147 for EIC validation
 
-    #: Link zum veröffentlichten Preisblatt
     link_preisblatt: Optional[str] = None
+    """Link zum veröffentlichten Preisblatt"""

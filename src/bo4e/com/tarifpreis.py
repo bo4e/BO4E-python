@@ -1,10 +1,12 @@
 """
 Contains Tarifpreis class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .preis import Preis
 
@@ -29,8 +31,10 @@ class Tarifpreis(Preis):
 
     """
 
-    #:  Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Optional["Preistyp"] = None
+    typ: Annotated[Literal[ComTyp.TARIFPREIS], Field(alias="_typ")] = ComTyp.TARIFPREIS  # type:ignore[assignment]
 
-    #:  Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler".
+    preistyp: Optional["Preistyp"] = None
+    """ Angabe des Preistypes (z.B. Grundpreis)"""
+
     beschreibung: Optional[str] = None
+    """ Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler"."""

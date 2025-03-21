@@ -1,8 +1,12 @@
 """
-Contains RegionalerAufAbschlag class and corresponding marshmallow schema for de-/serialization
+Contains RegionalerAufAbschlag class
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
+
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 
 # pylint: disable=R0801
 from ..utils import postprocess_docstring
@@ -40,38 +44,40 @@ class RegionalerAufAbschlag(COM):
 
     """
 
-    #: Bezeichnung des Auf-/Abschlags
+    typ: Annotated[Literal[ComTyp.REGIONALERAUFABSCHLAG], Field(alias="_typ")] = ComTyp.REGIONALERAUFABSCHLAG
+
     bezeichnung: Optional[str] = None
+    """Bezeichnung des Auf-/Abschlags"""
 
-    #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung
     staffeln: Optional[list["RegionalePreisstaffel"]] = None
+    """Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung"""
 
-    #: Beschreibung des Auf-/Abschlags
     beschreibung: Optional[str] = None
+    """Beschreibung des Auf-/Abschlags"""
 
-    #: Typ des Aufabschlages (z.B. absolut oder prozentual)
     auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
+    """Typ des Aufabschlages (z.B. absolut oder prozentual)"""
 
-    #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.
     auf_abschlagsziel: Optional["AufAbschlagsziel"] = None
+    """Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc."""
 
-    #: Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird (nur im Falle absoluter Aufschlagstypen).
     einheit: Optional["Waehrungseinheit"] = None
+    """Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird (nur im Falle absoluter Aufschlagstypen)."""
 
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind
     website: Optional[str] = None
+    """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind"""
 
-    #: Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind
     zusatzprodukte: Optional[list[str]] = None
+    """Zusatzprodukte, die nur in Kombination mit diesem AufAbschlag erhältlich sind"""
 
-    #: Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann
     voraussetzungen: Optional[list[str]] = None
+    """Voraussetzungen, die erfüllt sein müssen, damit dieser AufAbschlag zur Anwendung kommen kann"""
 
-    #: Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten
     tarifnamensaenderungen: Optional[str] = None
+    """Durch die Anwendung des Auf/Abschlags kann eine Änderung des Tarifnamens auftreten"""
 
-    #: Zeitraum, in dem der Abschlag zur Anwendung kommen kann
     gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    """Zeitraum, in dem der Abschlag zur Anwendung kommen kann"""
 
     energiemixaenderung: Optional["Energiemix"] = None
     """

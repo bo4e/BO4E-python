@@ -8,44 +8,47 @@ license.
 The BO4E version can be queried using `bo4e.__version__`.
 """
 
-__all__ = ['AbgabeArt', 'Adresse', 'Angebot', 'Angebotsposition', 'Angebotsstatus', 'Angebotsteil', 'Angebotsvariante', 'Anrede',
- 'ArithmetischeOperation', 'ArtikelId', 'AufAbschlag', 'AufAbschlagProOrt', 'AufAbschlagRegional',
- 'AufAbschlagstaffelProOrt', 'AufAbschlagstyp', 'AufAbschlagsziel', 'Ausschreibung', 'Ausschreibungsdetail',
- 'Ausschreibungslos', 'Ausschreibungsportal', 'Ausschreibungsstatus', 'Ausschreibungstyp', 'BDEWArtikelnummer',
- 'Befestigungsart', 'Bemessungsgroesse', 'Betrag', 'Bilanzierungsmethode', 'Buendelvertrag', 'COM', 'Dienstleistung',
- 'Dienstleistungstyp', 'EMobilitaetsart', 'Energieherkunft', 'Energiemenge', 'Energiemix', 'Energierichtung',
- 'Erzeugungsart', 'Fremdkosten', 'Fremdkostenblock', 'Fremdkostenposition', 'Gasqualitaet', 'Gebiettyp',
+__all__ = ['AbgabeArt', 'Abwicklungsmodell', 'Adresse', 'Aggregationsverantwortung', 'Angebot', 'Angebotsposition',
+ 'Angebotsstatus', 'Angebotsteil', 'Angebotsvariante', 'Anrede', 'ArithmetischeOperation', 'ArtikelId', 'AufAbschlag',
+ 'AufAbschlagProOrt', 'AufAbschlagRegional', 'AufAbschlagstaffelProOrt', 'AufAbschlagstyp', 'AufAbschlagsziel',
+ 'Ausschreibung', 'Ausschreibungsdetail', 'Ausschreibungslos', 'Ausschreibungsportal', 'Ausschreibungsstatus',
+ 'Ausschreibungstyp', 'BDEWArtikelnummer', 'Befestigungsart', 'Bemessungsgroesse', 'Betrag', 'Bilanzierung',
+ 'Bilanzierungsmethode', 'BoTyp', 'Buendelvertrag', 'COM', 'ComTyp', 'Dienstleistung', 'Dienstleistungstyp',
+ 'EMobilitaetsart', 'Energieherkunft', 'Energiemenge', 'Energiemix', 'Energierichtung', 'Erzeugungsart',
+ 'Fallgruppenzuordnung', 'Fremdkosten', 'Fremdkostenblock', 'Fremdkostenposition', 'Gasqualitaet', 'Gebiettyp',
  'Geokoordinaten', 'Geraet', 'Geraeteklasse', 'Geraetetyp', 'Geschaeftsobjekt', 'Geschaeftspartner',
  'Geschaeftspartnerrolle', 'Gueltigkeitstyp', 'Kalkulationsmethode', 'Katasteradresse', 'Konfigurationsprodukt',
  'Kontaktart', 'Kontaktweg', 'Konzessionsabgabe', 'Kosten', 'Kostenblock', 'Kostenklasse', 'Kostenposition',
- 'KriteriumWert', 'Kundengruppe', 'KundengruppeKA', 'Kundentyp', 'Landescode', 'Lastgang', 'Leistungstyp',
+ 'KriteriumWert', 'Kundengruppe', 'KundengruppeKA', 'Kundentyp', 'Landescode', 'Lastgang', 'Lastprofil', 'Leistungstyp',
  'Lokationstyp', 'Lokationszuordnung', 'MarktgebietInfo', 'Marktlokation', 'Marktrolle', 'Marktteilnehmer', 'Medium',
  'Menge', 'Mengeneinheit', 'Mengenoperator', 'Messart', 'Messgroesse', 'Messlokation', 'Messpreistyp',
  'Messwerterfassung', 'Messwertstatus', 'Messwertstatuszusatz', 'Netzebene', 'Netzlokation', 'NetznutzungRechnungsart',
  'NetznutzungRechnungstyp', 'Oekolabel', 'Oekozertifikat', 'Organisationstyp', 'Person', 'PositionsAufAbschlag',
  'Preis', 'Preisblatt', 'PreisblattDienstleistung', 'PreisblattHardware', 'PreisblattKonzessionsabgabe',
  'PreisblattMessung', 'PreisblattNetznutzung', 'Preisgarantie', 'Preisgarantietyp', 'Preismodell', 'Preisposition',
- 'Preisstaffel', 'Preisstatus', 'Preistyp', 'Rechnung', 'Rechnungslegung', 'Rechnungsposition', 'Rechnungsstatus',
- 'Rechnungstyp', 'Region', 'RegionaleGueltigkeit', 'RegionalePreisgarantie', 'RegionalePreisstaffel',
- 'RegionaleTarifpreisposition', 'RegionalerAufAbschlag', 'Regionaltarif', 'Regionskriterium', 'Regionskriteriumtyp',
- 'Registeranzahl', 'Rollencodetyp', 'Sigmoidparameter', 'Sparte', 'Speicherart', 'Standorteigenschaften',
- 'StandorteigenschaftenGas', 'StandorteigenschaftenStrom', 'SteuerbareRessource', 'Steuerbetrag',
- 'SteuerkanalLeistungsbeschreibung', 'Steuerkennzeichen', 'StrEnum', 'Tarif', 'Tarifberechnungsparameter',
- 'Tarifeinschraenkung', 'Tarifinfo', 'Tarifkalkulationsmethode', 'Tarifkosten', 'Tarifmerkmal', 'Tarifpreis',
- 'Tarifpreisblatt', 'Tarifpreisposition', 'TarifpreispositionProOrt', 'TarifpreisstaffelProOrt',
- 'Tarifregionskriterium', 'Tariftyp', 'Tarifzeit', 'TechnischeRessource', 'TechnischeRessourceNutzung',
- 'TechnischeRessourceVerbrauchsart', 'Themengebiet', 'Titel', 'Typ', 'Unterschrift', 'Verbrauch', 'Verbrauchsart',
- 'Vertrag', 'Vertragsart', 'Vertragsform', 'Vertragskonditionen', 'Vertragsstatus', 'Vertragsteil', 'Verwendungszweck',
- 'VerwendungszweckProMarktrolle', 'Voraussetzungen', 'Waehrungscode', 'Waehrungseinheit', 'Waermenutzung',
- 'Wertermittlungsverfahren', 'Zaehler', 'Zaehlerauspraegung', 'Zaehlergroesse', 'Zaehlertyp', 'ZaehlertypSpezifikation',
- 'Zaehlwerk', 'Zaehlzeitregister', 'Zeitraum', 'Zeitreihe', 'Zeitreihenwert', 'Zeitspanne', 'ZusatzAttribut',
- 'Zustaendigkeit', '__gh_version__', '__version__']
+ 'Preisstaffel', 'Preisstatus', 'Preistyp', 'Profilart', 'Profiltyp', 'Profilverfahren', 'Prognosegrundlage',
+ 'Rechnung', 'Rechnungslegung', 'Rechnungsposition', 'Rechnungsstatus', 'Rechnungstyp', 'Region',
+ 'RegionaleGueltigkeit', 'RegionalePreisgarantie', 'RegionalePreisstaffel', 'RegionaleTarifpreisposition',
+ 'RegionalerAufAbschlag', 'Regionaltarif', 'Regionskriterium', 'Regionskriteriumtyp', 'Registeranzahl', 'Rollencodetyp',
+ 'Sigmoidparameter', 'Sparte', 'Speicherart', 'Standorteigenschaften', 'StandorteigenschaftenGas',
+ 'StandorteigenschaftenStrom', 'SteuerbareRessource', 'Steuerbetrag', 'SteuerkanalLeistungsbeschreibung',
+ 'Steuerkennzeichen', 'StrEnum', 'Tagesparameter', 'Tarif', 'Tarifberechnungsparameter', 'Tarifeinschraenkung',
+ 'Tarifinfo', 'Tarifkalkulationsmethode', 'Tarifkosten', 'Tarifmerkmal', 'Tarifpreis', 'Tarifpreisblatt',
+ 'Tarifpreisposition', 'TarifpreispositionProOrt', 'TarifpreisstaffelProOrt', 'Tarifregionskriterium', 'Tariftyp',
+ 'Tarifzeit', 'TechnischeRessource', 'TechnischeRessourceNutzung', 'TechnischeRessourceVerbrauchsart', 'Themengebiet',
+ 'Titel', 'Unterschrift', 'Verbrauch', 'Verbrauchsart', 'Vertrag', 'Vertragsart', 'Vertragsform', 'Vertragskonditionen',
+ 'Vertragsstatus', 'Vertragsteil', 'Verwendungszweck', 'VerwendungszweckProMarktrolle', 'Voraussetzungen',
+ 'Waehrungscode', 'Waehrungseinheit', 'Waermenutzung', 'WahlrechtPrognosegrundlage', 'Wertermittlungsverfahren',
+ 'Zaehler', 'Zaehlerauspraegung', 'Zaehlergroesse', 'Zaehlertyp', 'ZaehlertypSpezifikation', 'Zaehlwerk',
+ 'Zaehlzeitregister', 'Zeitraum', 'Zeitreihe', 'Zeitreihentyp', 'Zeitreihenwert', 'ZusatzAttribut', 'Zustaendigkeit',
+ '__gh_version__', '__version__']
 
 from pydantic import BaseModel as _PydanticBaseModel
 
 # Import BOs
 from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
+from .bo.bilanzierung import Bilanzierung
 from .bo.buendelvertrag import Buendelvertrag
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
@@ -106,6 +109,7 @@ from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition
 from .com.kriteriumwert import KriteriumWert
+from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
 from .com.positionsaufabschlag import PositionsAufAbschlag
@@ -124,6 +128,7 @@ from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from .com.steuerbetrag import Steuerbetrag
+from .com.tagesparameter import Tagesparameter
 from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
@@ -139,11 +144,12 @@ from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
-from .com.zeitspanne import Zeitspanne
 from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
 from .enum.abgabeart import AbgabeArt
+from .enum.abwicklungsmodell import Abwicklungsmodell
+from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
 from .enum.arithmetische_operation import ArithmetischeOperation
@@ -157,10 +163,13 @@ from .enum.bdewartikelnummer import BDEWArtikelnummer
 from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
+from .enum.botyp import BoTyp
+from .enum.comtyp import ComTyp
 from .enum.dienstleistungstyp import Dienstleistungstyp
 from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
 from .enum.erzeugungsart import Erzeugungsart
+from .enum.fallgruppenzuordnung import Fallgruppenzuordnung
 from .enum.gasqualitaet import Gasqualitaet
 from .enum.gebiettyp import Gebiettyp
 from .enum.geraeteklasse import Geraeteklasse
@@ -196,6 +205,10 @@ from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
+from .enum.profilart import Profilart
+from .enum.profiltyp import Profiltyp
+from .enum.profilverfahren import Profilverfahren
+from .enum.prognosegrundlage import Prognosegrundlage
 from .enum.rechnungslegung import Rechnungslegung
 from .enum.rechnungsstatus import Rechnungsstatus
 from .enum.rechnungstyp import Rechnungstyp
@@ -216,7 +229,6 @@ from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
 from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
-from .enum.typ import Typ
 from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
@@ -226,11 +238,13 @@ from .enum.voraussetzungen import Voraussetzungen
 from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
 from .enum.waermenutzung import Waermenutzung
+from .enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
 from .enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
+from .enum.zeitreihentyp import Zeitreihentyp
 from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut
 

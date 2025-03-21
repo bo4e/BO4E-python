@@ -7,5 +7,7 @@ class AufAbschlagstyp(StrEnum):
     Festlegung, ob der Auf- oder Abschlag mit relativen oder absoluten Werten erfolgt.
     """
 
-    RELATIV = "RELATIV"  #: prozentualer Auf-/Abschlag
-    ABSOLUT = "ABSOLUT"  #: Absoluter Auf-/Abschlag
+    RELATIV = "RELATIV"
+    """prozentualer Auf-/Abschlag"""
+    ABSOLUT = "ABSOLUT"
+    """Absoluter Auf-/Abschlag"""

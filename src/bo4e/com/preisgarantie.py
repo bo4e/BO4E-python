@@ -1,10 +1,12 @@
 """
 Contains Preisgarantie class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,12 +31,14 @@ class Preisgarantie(COM):
 
     """
 
-    #: Festlegung, auf welche Preisbestandteile die Garantie gewährt wird.
+    typ: Annotated[Literal[ComTyp.PREISGARANTIE], Field(alias="_typ")] = ComTyp.PREISGARANTIE
+
     preisgarantietyp: Optional["Preisgarantietyp"] = None
+    """Festlegung, auf welche Preisbestandteile die Garantie gewährt wird."""
     zeitliche_gueltigkeit: Optional["Zeitraum"] = None
     """ Zeitraum, bis zu dem die Preisgarantie gilt, z.B. bis zu einem absolutem / fixem Datum
     oder als Laufzeit in Monaten. """
 
     # optionale attributes
-    #: Freitext zur Beschreibung der Preisgarantie.
     beschreibung: Optional[str] = None
+    """Freitext zur Beschreibung der Preisgarantie."""

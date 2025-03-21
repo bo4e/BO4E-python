@@ -1,9 +1,12 @@
 """
-Contains Kostenblock and corresponding marshmallow schema for de-/serialization
+Contains Kostenblock
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,11 +32,13 @@ class Kostenblock(COM):
 
     """
 
-    #: Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc.
-    kostenblockbezeichnung: Optional[str] = None
+    typ: Annotated[Literal[ComTyp.KOSTENBLOCK], Field(alias="_typ")] = ComTyp.KOSTENBLOCK
 
-    #: Die Summe aller Kostenpositionen dieses Blocks
+    kostenblockbezeichnung: Optional[str] = None
+    """Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc."""
+
     summe_kostenblock: Optional["Betrag"] = None
+    """Die Summe aller Kostenpositionen dieses Blocks"""
 
     kostenpositionen: Optional[list["Kostenposition"]] = None
     """

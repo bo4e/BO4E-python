@@ -1,11 +1,13 @@
 """
 Contains Energiemix class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -33,28 +35,30 @@ class Energiemix(COM):
 
     """
 
-    #: Eindeutige Nummer zur Identifizierung des Energiemixes
-    energiemixnummer: Optional[int] = None
-    #: Strom oder Gas etc.
-    energieart: Optional["Sparte"] = None
-    #: Bezeichnung des Energiemix
-    bezeichnung: Optional[str] = None
-    #: Jahr, für das der Energiemix gilt
-    gueltigkeitsjahr: Optional[int] = None
-    #: Anteile der jeweiligen Erzeugungsart
-    anteil: Optional[list["Energieherkunft"]] = None
+    typ: Annotated[Literal[ComTyp.ENERGIEMIX], Field(alias="_typ")] = ComTyp.ENERGIEMIX
 
-    #: Bemerkung zum Energiemix
+    energiemixnummer: Optional[int] = None
+    """Eindeutige Nummer zur Identifizierung des Energiemixes"""
+    energieart: Optional["Sparte"] = None
+    """Strom oder Gas etc."""
+    bezeichnung: Optional[str] = None
+    """Bezeichnung des Energiemix"""
+    gueltigkeitsjahr: Optional[int] = None
+    """Jahr, für das der Energiemix gilt"""
+    anteil: Optional[list["Energieherkunft"]] = None
+    """Anteile der jeweiligen Erzeugungsart"""
+
     bemerkung: Optional[str] = None
-    #: Höhe des erzeugten CO2-Ausstosses in g/kWh
+    """Bemerkung zum Energiemix"""
     co2_emission: Optional[Decimal] = None
-    #: Höhe des erzeugten Atommülls in g/kWh
+    """Höhe des erzeugten CO2-Ausstosses in g/kWh"""
     atommuell: Optional[Decimal] = None
-    #: Zertifikate für den Energiemix
+    """Höhe des erzeugten Atommülls in g/kWh"""
     oekozertifikate: Optional[list["Oekozertifikat"]] = None
-    #: Ökolabel für den Energiemix
+    """Zertifikate für den Energiemix"""
     oekolabel: Optional[list["Oekolabel"]] = None
-    #: Kennzeichen, ob der Versorger zu den Öko Top Ten gehört
+    """Ökolabel für den Energiemix"""
     ist_in_oeko_top_ten: Optional[bool] = None
-    #: Internetseite, auf der die Strommixdaten veröffentlicht sind
+    """Kennzeichen, ob der Versorger zu den Öko Top Ten gehört"""
     website: Optional[str] = None
+    """Internetseite, auf der die Strommixdaten veröffentlicht sind"""

@@ -1,12 +1,12 @@
 """
-Contains Region class and corresponding marshmallow schema for de-/serialization
+Contains Region class
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -32,12 +32,12 @@ class Region(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.REGION
-    #: Bezeichnung der Region
+    typ: Annotated[Literal[BoTyp.REGION], Field(alias="_typ")] = BoTyp.REGION
     bezeichnung: Optional[str] = None
+    """Bezeichnung der Region"""
 
-    #: Positivliste der Kriterien zur Definition der Region
     positiv_liste: Optional[list["Regionskriterium"]] = None
+    """Positivliste der Kriterien zur Definition der Region"""
 
-    #: Negativliste der Kriterien zur Definition der Region
     negativ_liste: Optional[list["Regionskriterium"]] = None
+    """Negativliste der Kriterien zur Definition der Region"""

@@ -1,11 +1,13 @@
 """
 Contains Steuerbetrag class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,11 +33,13 @@ class Steuerbetrag(COM):
 
     """
 
-    #: Kennzeichnung des Steuersatzes, bzw. Verfahrens.
+    typ: Annotated[Literal[ComTyp.STEUERBETRAG], Field(alias="_typ")] = ComTyp.STEUERBETRAG
+
     steuerkennzeichen: Optional["Steuerkennzeichen"] = None
-    #: Nettobetrag für den die Steuer berechnet wurde. Z.B. 100
+    """Kennzeichnung des Steuersatzes, bzw. Verfahrens."""
     basiswert: Optional[Decimal] = None
-    #: Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)
+    """Nettobetrag für den die Steuer berechnet wurde. Z.B. 100"""
     steuerwert: Optional[Decimal] = None
-    #: Währung. Z.B. Euro.
+    """Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)"""
     waehrung: Optional["Waehrungscode"] = None
+    """Währung. Z.B. Euro."""

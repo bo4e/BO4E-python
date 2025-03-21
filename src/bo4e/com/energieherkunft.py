@@ -1,11 +1,13 @@
 """
 Contains Energieherkunft class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -33,7 +35,9 @@ class Energieherkunft(COM):
 
     """
 
-    #: Art der Erzeugung der Energie.
+    typ: Annotated[Literal[ComTyp.ENERGIEHERKUNFT], Field(alias="_typ")] = ComTyp.ENERGIEHERKUNFT
+
     erzeugungsart: Optional["Erzeugungsart"] = None
-    #: Prozentualer Anteil der jeweiligen Erzeugungsart.
+    """Art der Erzeugung der Energie."""
     anteil_prozent: Optional[Decimal] = None
+    """Prozentualer Anteil der jeweiligen Erzeugungsart."""

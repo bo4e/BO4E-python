@@ -1,12 +1,12 @@
 """
-Contains PreisblattDienstleistung class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattDienstleistung class
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .preisblatt import Preisblatt
 
@@ -33,15 +33,17 @@ class PreisblattDienstleistung(Preisblatt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.PREISBLATTDIENSTLEISTUNG
+    typ: Annotated[Literal[BoTyp.PREISBLATTDIENSTLEISTUNG], Field(alias="_typ")] = (
+        BoTyp.PREISBLATTDIENSTLEISTUNG  # type: ignore[assignment]
+    )
     # required attributes (additional to those of Preisblatt)
-    #: Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
-    #: Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung
+    """Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode"""
     basisdienstleistung: Optional["Dienstleistungstyp"] = None
+    """Dienstleistung, für die der Preis abgebildet wird, z.B. Sperrung/Entsperrung"""
 
-    #: Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße
     geraetedetails: Optional["Geraet"] = None
+    """Hier kann der Preis auf bestimmte Geräte eingegrenzt werden. Z.B. auf die Zählergröße"""
 
-    #: Weitere Dienstleistungen, die im Preis enthalten sind
     inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None
+    """Weitere Dienstleistungen, die im Preis enthalten sind"""

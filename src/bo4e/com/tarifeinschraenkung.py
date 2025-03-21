@@ -1,9 +1,12 @@
 """
-Contains Tarifeinschraenkung and corresponding marshmallow schema for de-/serialization
+Contains Tarifeinschraenkung
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,10 +32,12 @@ class Tarifeinschraenkung(COM):
 
     """
 
-    #: Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können
+    typ: Annotated[Literal[ComTyp.TARIFEINSCHRAENKUNG], Field(alias="_typ")] = ComTyp.TARIFEINSCHRAENKUNG
+
     zusatzprodukte: Optional[list[str]] = None
-    #: Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann
+    """Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können"""
     voraussetzungen: Optional[list["Voraussetzungen"]] = None
+    """Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann"""
     einschraenkungzaehler: Optional[list["Geraet"]] = None
     """ Liste der Zähler/Geräte, die erforderlich sind, damit dieser Tarif zur Anwendung gelangen kann.
     (Falls keine Zähler angegeben sind, ist der Tarif nicht an das Vorhandensein bestimmter Zähler gebunden.) """

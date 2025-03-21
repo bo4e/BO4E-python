@@ -1,9 +1,12 @@
 """
-Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/serialization
+Contains Zaehlzeitregister class
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -26,6 +29,11 @@ class Zaehlzeitregister(COM):
 
     """
 
-    zaehlzeit_definition: Optional[str] = None  #: Zählzeitdefinition
-    zaehlzeit_register: Optional[str] = None  #: Zählzeitregister
-    ist_schwachlastfaehig: Optional[bool] = None  #: Schwachlastfaehigkeit
+    typ: Annotated[Literal[ComTyp.ZAEHLZEITREGISTER], Field(alias="_typ")] = ComTyp.ZAEHLZEITREGISTER
+
+    zaehlzeit_definition: Optional[str] = None
+    """Zählzeitdefinition"""
+    zaehlzeit_register: Optional[str] = None
+    """Zählzeitregister"""
+    ist_schwachlastfaehig: Optional[bool] = None
+    """Schwachlastfaehigkeit"""

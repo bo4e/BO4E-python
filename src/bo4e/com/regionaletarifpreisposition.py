@@ -1,11 +1,14 @@
 """
-Contains RegionaleTarifpreisposition class and corresponding marshmallow schema for de-/serialization
+Contains RegionaleTarifpreisposition class
 """
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,14 +34,18 @@ class RegionaleTarifpreisposition(COM):
 
     """
 
-    #: Angabe des Preistypes (z.B. Grundpreis)
-    preistyp: Optional["Preistyp"] = None
-    #: Einheit des Preises (z.B. EURO)
-    einheit: Optional["Waehrungseinheit"] = None
-    #: Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr
-    bezugseinheit: Optional["Mengeneinheit"] = None
-    #: Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert
-    preisstaffeln: Optional[list["RegionalePreisstaffel"]] = None
+    typ: Annotated[Literal[ComTyp.REGIONALETARIFPREISPOSITION], Field(alias="_typ")] = (
+        ComTyp.REGIONALETARIFPREISPOSITION
+    )
 
-    #: Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)
+    preistyp: Optional["Preistyp"] = None
+    """Angabe des Preistypes (z.B. Grundpreis)"""
+    einheit: Optional["Waehrungseinheit"] = None
+    """Einheit des Preises (z.B. EURO)"""
+    bezugseinheit: Optional["Mengeneinheit"] = None
+    """Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr"""
+    preisstaffeln: Optional[list["RegionalePreisstaffel"]] = None
+    """Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert"""
+
     mengeneinheitstaffel: Optional["Mengeneinheit"] = None
+    """Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)"""

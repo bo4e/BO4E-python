@@ -1,10 +1,12 @@
 """
 Contains Kontaktweg class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,11 +31,13 @@ class Kontaktweg(COM):
 
     """
 
-    #: Gibt die Kontaktart des Kontaktes an.
+    typ: Annotated[Literal[ComTyp.KONTAKTWEG], Field(alias="_typ")] = ComTyp.KONTAKTWEG
+
     kontaktart: Optional["Kontaktart"] = None
-    #: Spezifikation, beispielsweise "Durchwahl", "Sammelnummer" etc.
+    """Gibt die Kontaktart des Kontaktes an."""
     beschreibung: Optional[str] = None
-    #: Die Nummer oder E-Mail-Adresse.
+    """Spezifikation, beispielsweise "Durchwahl", "Sammelnummer" etc."""
     kontaktwert: Optional[str] = None
-    #: Gibt an, ob es sich um den bevorzugten Kontaktweg handelt.
+    """Die Nummer oder E-Mail-Adresse."""
     ist_bevorzugter_kontaktweg: Optional[bool] = None
+    """Gibt an, ob es sich um den bevorzugten Kontaktweg handelt."""
