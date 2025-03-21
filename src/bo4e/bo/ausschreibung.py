@@ -1,5 +1,5 @@
 """
-Contains Ausschreibung class and corresponding marshmallow schema for de-/serialization
+Contains Ausschreibung class
 """
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes

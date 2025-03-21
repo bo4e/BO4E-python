@@ -1,6 +1,5 @@
 """
 Contains Geraet class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional

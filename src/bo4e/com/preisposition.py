@@ -1,5 +1,5 @@
 """
-Contains Preisposition class and corresponding marshmallow schema for de-/serialization
+Contains Preisposition class
 """
 
 from decimal import Decimal

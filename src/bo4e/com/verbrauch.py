@@ -1,5 +1,5 @@
 """
-Contains Verbrauch and corresponding marshmallow schema for de-/serialization
+Contains Verbrauch
 """
 
 from decimal import Decimal

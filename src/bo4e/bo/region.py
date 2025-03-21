@@ -1,5 +1,5 @@
 """
-Contains Region class and corresponding marshmallow schema for de-/serialization
+Contains Region class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional

@@ -1,5 +1,5 @@
 """
-Contains Regionskriterium class and corresponding marshmallow schema for de-/serialization
+Contains Regionskriterium class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
