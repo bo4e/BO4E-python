@@ -34,6 +34,6 @@ class Zaehlzeitregister(COM):
     zaehlzeit_definition: Optional[str] = None
     """Zählzeitdefinition"""
     zaehlzeit_register: Optional[str] = None
-    """ZählzeitRegister"""
+    """Zählzeitregister"""
     ist_schwachlastfaehig: Optional[bool] = None
     """Schwachlastfaehigkeit"""
