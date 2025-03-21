@@ -5,6 +5,10 @@ from bo4e.enum.strenum import StrEnum
 class ComTyp(StrEnum):
     """
     Auflistung sämtlicher existierender Komponenten.
+
+    .. HINT::
+        Die Unterscheidung zwischen Komponenten und Geschäftsobjekten ist, dass Komponenten immer in einem Geschäftsobjekt enthalten sind.
+        Komponenten sind also immer Teil von einem Geschäftsobjekt und können nicht alleine existieren.
     """
 
     ADRESSE = "ADRESSE"
