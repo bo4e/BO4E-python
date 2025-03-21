@@ -2,7 +2,7 @@
 Contains RegionalePreisstaffel and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -30,14 +30,7 @@ class RegionalePreisstaffel(Preisstaffel):
 
     """
 
-    typ: Annotated[Union[Literal[ComTyp.PREISSTAFFEL], Literal[ComTyp.REGIONALEPREISSTAFFEL]], Field(alias="_typ")] = (
-        ComTyp.REGIONALEPREISSTAFFEL
-    )
+    typ: Annotated[Literal[ComTyp.REGIONALEPREISSTAFFEL], Field(alias="_typ")] = ComTyp.REGIONALEPREISSTAFFEL
 
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
     """Regionale Eingrenzung der Preisstaffel"""
-
-    postleitzahl: Optional[str] = None
-    """Postleitzahl der Region"""
-    ort: Optional[str] = None
-    """Ort der Region"""
