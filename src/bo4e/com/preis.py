@@ -34,7 +34,7 @@ class Preis(COM):
 
     """
 
-    typ: Annotated[Union[Literal[ComTyp.PREIS], Literal[ComTyp.TARIFPREIS]], Field(alias="_typ")] = ComTyp.PREIS
+    typ: Annotated[Literal[ComTyp.PREIS], Field(alias="_typ")] = ComTyp.PREIS
 
     wert: Optional[Decimal] = None
     """Gibt die nominale Höhe des Preises an."""

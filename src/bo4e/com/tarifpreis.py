@@ -31,7 +31,7 @@ class Tarifpreis(Preis):
 
     """
 
-    typ: Annotated[Union[Literal[ComTyp.PREIS], Literal[ComTyp.TARIFPREIS]], Field(alias="_typ")] = ComTyp.TARIFPREIS
+    typ: Annotated[Literal[ComTyp.TARIFPREIS], Field(alias="_typ")] = ComTyp.TARIFPREIS  # type:ignore[assignment]
 
     preistyp: Optional["Preistyp"] = None
     """ Angabe des Preistypes (z.B. Grundpreis)"""
