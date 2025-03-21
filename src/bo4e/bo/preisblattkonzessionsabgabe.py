@@ -1,5 +1,5 @@
 """
-Contains PreisblattKonzessionsabgabe class and corresponding marshmallow schema for de-/serialization
+Contains PreisblattKonzessionsabgabe class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional

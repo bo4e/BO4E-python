@@ -1,5 +1,5 @@
 """
-Contains Kostenposition and corresponding marshmallow schema for de-/serialization
+Contains Kostenposition
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union

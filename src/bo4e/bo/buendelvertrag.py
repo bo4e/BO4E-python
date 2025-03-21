@@ -1,5 +1,5 @@
 """
-Contains Buendelvertrag class and corresponding marshmallow schema for de-/serialization
+Contains Buendelvertrag class
 """
 
 # pylint: disable=too-few-public-methods

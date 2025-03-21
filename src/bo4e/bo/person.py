@@ -1,6 +1,5 @@
 """
 Contains Person class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import date

@@ -1,5 +1,5 @@
 """
-Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/serialization
+Contains PositionsAufAbschlag
 """
 
 from decimal import Decimal
