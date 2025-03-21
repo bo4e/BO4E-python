@@ -3,7 +3,7 @@ Contains RegionalePreisgarantie class
 and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
@@ -31,9 +31,7 @@ class RegionalePreisgarantie(Preisgarantie):
 
     """
 
-    typ: Annotated[
-        Union[Literal[ComTyp.PREISGARANTIE], Literal[ComTyp.REGIONALEPREISGARANTIE]], Field(alias="_typ")
-    ] = ComTyp.REGIONALEPREISGARANTIE
+    typ: Annotated[Literal[ComTyp.REGIONALEPREISGARANTIE], Field(alias="_typ")] = ComTyp.REGIONALEPREISGARANTIE
 
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
     """Regionale Eingrenzung der Preisgarantie."""
