@@ -2,7 +2,7 @@
 Contains Tarifpreis class
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional, Union
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
