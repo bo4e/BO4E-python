@@ -2,7 +2,7 @@
 Contains Fremdkostenposition
 """
 
-from typing import Annotated, Literal, Optional, Union
+from typing import Annotated, Literal, Optional
 
 from pydantic import Field
 
