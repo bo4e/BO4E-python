@@ -90,9 +90,13 @@
 <span class="sd">Contains tagesparameter class</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">Field</span>
 
 <span class="kn">from</span> <span class="nn">bo4e.com.com</span> <span class="kn">import</span> <span class="n">COM</span>
+
+<span class="kn">from</span> <span class="nn">..enum.comtyp</span> <span class="kn">import</span> <span class="n">ComTyp</span>
 
 
 <div class="viewcode-block" id="Tagesparameter">
@@ -102,6 +106,8 @@
 <span class="sd">    Speichert Informationen zu einer tagesparameter abhängigen Messstelle. z.B. den Namen einer Klimazone oder die ID</span>
 <span class="sd">    der Wetterstation für die Temperaturmessstelle</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">TAGESPARAMETER</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">TAGESPARAMETER</span>
 
     <span class="n">klimazone</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Qualifier der Klimazone, e.g. 7624q</span>
     <span class="n">temperaturmessstelle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Qualifier der Temperaturmessstelle, e.g. 1234x</span>

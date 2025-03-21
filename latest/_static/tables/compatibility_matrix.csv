@@ -114,6 +114,8 @@ BDEWArtikelnummer,🟢,🟢,🟢,🟢,🟢,🟢
 Befestigungsart,🟢,🟢,🟢,🟢,🟢,🟢
 Bemessungsgroesse,🟢,🟢,🟢,🟢,🟢,🟢
 Bilanzierungsmethode,🟢,🟢,🟢,🟢,🟢,🟢
+BoTyp,\-,\-,\-,\-,\-,🟢
+ComTyp,\-,\-,\-,\-,\-,🟢
 Dienstleistungstyp,🟢,🟢,🟢,🟢,🟢,🟢
 EMobilitaetsart,\-,\-,🟢,🟢,🟢,🟢
 Energierichtung,🟢,🟢,🟢,🟢,🟢,🟢
@@ -178,7 +180,7 @@ TechnischeRessourceNutzung,\-,\-,🟢,🟢,🟢,🟢
 TechnischeRessourceVerbrauchsart,\-,\-,🟢,🟢,🟢,🟢
 Themengebiet,🟢,🟢,🟢,🟢,🟢,🟢
 Titel,🟢,🟢,🟢,🟢,🟢,🟢
-Typ,🟢,🟢,🟢,🟢,🟢,🟢
+Typ,🟢,🟢,🟢,🟢,🟢,\-
 Verbrauchsart,🟢,🟢,🟢,🟢,🟢,🟢
 Vertragsart,🟢,🟢,🟢,🟢,🟢,🟢
 Vertragsform,🟢,🟢,🟢,🟢,🟢,🟢

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bo4e.enum.typ &mdash; bo4e latest documentation</title>
+  <title>bo4e.enum.botyp &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=fa44fd50" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
@@ -76,7 +76,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">bo4e.enum.typ</li>
+      <li class="breadcrumb-item active">bo4e.enum.botyp</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -85,16 +85,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for bo4e.enum.typ</h1><div class="highlight"><pre>
+  <h1>Source code for bo4e.enum.botyp</h1><div class="highlight"><pre>
 <span></span><span class="c1"># pylint:disable=missing-module-docstring</span>
 <span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
 
 
-<div class="viewcode-block" id="Typ">
-<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.typ.Typ">[docs]</a>
-<span class="k">class</span> <span class="nc">Typ</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<div class="viewcode-block" id="BoTyp">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.botyp.BoTyp">[docs]</a>
+<span class="k">class</span> <span class="nc">BoTyp</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Auflistung sämtlicher existierender Geschäftsobjekte.</span>
+
+<span class="sd">    .. HINT::</span>
+<span class="sd">        Die Unterscheidung zwischen Komponenten und Geschäftsobjekten ist, dass Komponenten immer in einem Geschäftsobjekt enthalten sind.</span>
+<span class="sd">        Geschäftsobjekte können auch ohne Komponenten existieren.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">ANGEBOT</span> <span class="o">=</span> <span class="s2">&quot;ANGEBOT&quot;</span>

@@ -107,7 +107,7 @@
 <span class="kn">from</span> <span class="nn">bo4e.enum.zeitreihentyp</span> <span class="kn">import</span> <span class="n">Zeitreihentyp</span>
 
 <span class="kn">from</span> <span class="nn">..enum.abwicklungsmodell</span> <span class="kn">import</span> <span class="n">Abwicklungsmodell</span>
-<span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">Typ</span>
+<span class="kn">from</span> <span class="nn">..enum.botyp</span> <span class="kn">import</span> <span class="n">BoTyp</span>
 
 
 <div class="viewcode-block" id="Bilanzierung">
@@ -125,7 +125,7 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">Typ</span><span class="o">.</span><span class="n">BILANZIERUNG</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">BoTyp</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">BoTyp</span><span class="o">.</span><span class="n">BILANZIERUNG</span>
 
     <span class="n">marktlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#:  ID der Marktlokation</span>
     <span class="n">lastprofil</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Lastprofil</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)</span>
