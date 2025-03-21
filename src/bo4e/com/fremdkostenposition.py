@@ -27,7 +27,9 @@ class Fremdkostenposition(Kostenposition):
 
     """
 
-    typ: Annotated[Literal[ComTyp.FREMDKOSTENPOSITION], Field(alias="_typ")] = ComTyp.FREMDKOSTENPOSITION
+    typ: Annotated[Literal[ComTyp.FREMDKOSTENPOSITION], Field(alias="_typ")] = (
+        ComTyp.FREMDKOSTENPOSITION  # type:ignore[assignment]
+    )
 
     # optional attributes (additional to those from Kostenposition)
     marktpartnername: Optional[str] = None

@@ -34,9 +34,7 @@ class Kostenposition(COM):
 
     """
 
-    typ: Annotated[Union[Literal[ComTyp.KOSTENPOSITION], Literal[ComTyp.FREMDKOSTENPOSITION]], Field(alias="_typ")] = (
-        ComTyp.KOSTENPOSITION
-    )
+    typ: Annotated[Literal[ComTyp.KOSTENPOSITION], Field(alias="_typ")] = ComTyp.KOSTENPOSITION
 
     positionstitel: Optional[str] = None
     """Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt."""
