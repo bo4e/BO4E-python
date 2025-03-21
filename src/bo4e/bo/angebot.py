@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -38,7 +38,7 @@ class Angebot(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.ANGEBOT], Field(alias="_typ")] = Typ.ANGEBOT
+    typ: Annotated[Literal[BoTyp.ANGEBOT], Field(alias="_typ")] = BoTyp.ANGEBOT
     angebotsnummer: Optional[str] = None
     """Eindeutige Nummer des Angebotes"""
     angebotsdatum: Optional[pydantic.AwareDatetime] = None

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -37,7 +37,7 @@ class TechnischeRessource(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.TECHNISCHERESSOURCE], Field(alias="_typ")] = Typ.TECHNISCHERESSOURCE
+    typ: Annotated[Literal[BoTyp.TECHNISCHERESSOURCE], Field(alias="_typ")] = BoTyp.TECHNISCHERESSOURCE
 
     technische_ressource_id: Optional[str] = None
     """Identifikationsnummer einer technischen Ressource"""

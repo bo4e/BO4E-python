@@ -3,8 +3,11 @@ Contains Betrag class
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,6 +32,8 @@ class Betrag(COM):
         `Betrag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Betrag.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.BETRAG], Field(alias="_typ")] = ComTyp.BETRAG
 
     wert: Optional[Decimal] = None
     """Gibt den Betrag des Preises an."""

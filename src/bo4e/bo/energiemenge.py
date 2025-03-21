@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -33,7 +33,7 @@ class Energiemenge(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.ENERGIEMENGE], Field(alias="_typ")] = Typ.ENERGIEMENGE
+    typ: Annotated[Literal[BoTyp.ENERGIEMENGE], Field(alias="_typ")] = BoTyp.ENERGIEMENGE
     lokations_id: Optional[str] = None
     """Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"""
     lokationstyp: Optional["Lokationstyp"] = None

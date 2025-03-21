@@ -3,10 +3,12 @@ Contains Rechnungsposition class
 """
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -33,6 +35,8 @@ class Rechnungsposition(COM):
         `Rechnungsposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Rechnungsposition.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.RECHNUNGSPOSITION], Field(alias="_typ")] = ComTyp.RECHNUNGSPOSITION
 
     positionsnummer: Optional[int] = None
     """Fortlaufende Nummer für die Rechnungsposition"""

@@ -2,10 +2,12 @@
 Contains Vertragsteil class
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -30,6 +32,8 @@ class Vertragsteil(COM):
         `Vertragsteil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Vertragsteil.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.VERTRAGSTEIL], Field(alias="_typ")] = ComTyp.VERTRAGSTEIL
 
     vertragsteilbeginn: Optional[pydantic.AwareDatetime] = None
     """

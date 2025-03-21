@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
@@ -31,7 +31,7 @@ class Tarifkosten(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[Typ.TARIFKOSTEN], Field(alias="_typ")] = Typ.TARIFKOSTEN  # type: ignore[assignment]
+    typ: Annotated[Literal[BoTyp.TARIFKOSTEN], Field(alias="_typ")] = BoTyp.TARIFKOSTEN  # type: ignore[assignment]
     kosten: Optional["Kosten"] = None
     """
     Referenz (Link) zu einem Kostenobjekt, in dem die Kosten für die Anwendung

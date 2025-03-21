@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -33,7 +33,7 @@ class Marktteilnehmer(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.MARKTTEILNEHMER], Field(alias="_typ")] = Typ.MARKTTEILNEHMER
+    typ: Annotated[Literal[BoTyp.MARKTTEILNEHMER], Field(alias="_typ")] = BoTyp.MARKTTEILNEHMER
     marktrolle: Optional["Marktrolle"] = None
     """Gibt im Klartext die Bezeichnung der Marktrolle an"""
     rollencodenummer: Optional[str] = None

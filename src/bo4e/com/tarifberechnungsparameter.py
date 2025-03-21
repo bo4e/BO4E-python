@@ -3,8 +3,11 @@ Contains Tarifberechnungsparameter class
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -34,7 +37,7 @@ class Tarifberechnungsparameter(COM):
 
     """
 
-    # there are no required attributes
+    typ: Annotated[Literal[ComTyp.TARIFBERECHNUNGSPARAMETER], Field(alias="_typ")] = ComTyp.TARIFBERECHNUNGSPARAMETER
 
     berechnungsmethode: Optional["Tarifkalkulationsmethode"] = None
     """Gibt an, wie die Einzelpreise des Tarifes zu verarbeiten sind"""

@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
@@ -37,7 +37,7 @@ class Tarifpreisblatt(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[Typ.TARIFPREISBLATT], Field(alias="_typ")] = Typ.TARIFPREISBLATT  # type: ignore[assignment]
+    typ: Annotated[Literal[BoTyp.TARIFPREISBLATT], Field(alias="_typ")] = BoTyp.TARIFPREISBLATT  # type: ignore[assignment]
     # required attributes (additional to those of Tarifinfo)
     preisstand: Optional[pydantic.AwareDatetime] = None
     """Gibt an, wann der Preis zuletzt angepasst wurde"""

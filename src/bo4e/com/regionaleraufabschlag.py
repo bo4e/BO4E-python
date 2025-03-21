@@ -2,7 +2,11 @@
 Contains RegionalerAufAbschlag class
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
+
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 
 # pylint: disable=R0801
 from ..utils import postprocess_docstring
@@ -39,6 +43,8 @@ class RegionalerAufAbschlag(COM):
         `RegionalerAufAbschlag JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/RegionalerAufAbschlag.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.REGIONALERAUFABSCHLAG], Field(alias="_typ")] = ComTyp.REGIONALERAUFABSCHLAG
 
     bezeichnung: Optional[str] = None
     """Bezeichnung des Auf-/Abschlags"""

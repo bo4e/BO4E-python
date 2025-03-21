@@ -2,8 +2,11 @@
 Contains Verwendungszweck class
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -28,6 +31,10 @@ class VerwendungszweckProMarktrolle(COM):
         `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verwendungszweck.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.VERWENDUNGSZWECKPROMARKTROLLE], Field(alias="_typ")] = (
+        ComTyp.VERWENDUNGSZWECKPROMARKTROLLE
+    )
 
     marktrolle: Optional["Marktrolle"] = None
     """

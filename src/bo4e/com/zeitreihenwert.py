@@ -3,8 +3,11 @@ Contains Zeitreihenwert class
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -28,6 +31,8 @@ class Zeitreihenwert(COM):
         `Zeitreihenwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zeitreihenwert.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.ZEITREIHENWERT], Field(alias="_typ")] = ComTyp.ZEITREIHENWERT
 
     zeitraum: Optional["Zeitraum"] = None
     """Zeitraum für das Messintervall"""

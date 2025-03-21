@@ -9,7 +9,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -38,7 +38,7 @@ class Buendelvertrag(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.BUENDELVERTRAG], Field(alias="_typ")] = Typ.BUENDELVERTRAG
+    typ: Annotated[Literal[BoTyp.BUENDELVERTRAG], Field(alias="_typ")] = BoTyp.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
     vertragsnummer: Optional[str] = None

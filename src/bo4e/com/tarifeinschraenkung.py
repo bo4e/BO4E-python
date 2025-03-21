@@ -2,8 +2,11 @@
 Contains Tarifeinschraenkung
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -28,6 +31,8 @@ class Tarifeinschraenkung(COM):
         `Tarifeinschraenkung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifeinschraenkung.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.TARIFEINSCHRAENKUNG], Field(alias="_typ")] = ComTyp.TARIFEINSCHRAENKUNG
 
     zusatzprodukte: Optional[list[str]] = None
     """Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können"""

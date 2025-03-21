@@ -2,8 +2,11 @@
 Contains StandorteigenschaftenStrom class
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -24,6 +27,7 @@ class StandorteigenschaftenStrom(COM):
 
     """
 
+    typ: Annotated[Literal[ComTyp.STANDORTEIGENSCHAFTENSTROM], Field(alias="_typ")] = ComTyp.STANDORTEIGENSCHAFTENSTROM
     bilanzierungsgebiet_eic: Optional[str] = None
     """Die EIC-Nummer des Bilanzierungsgebietes"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147

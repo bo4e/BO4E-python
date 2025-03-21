@@ -2,8 +2,11 @@
 Contains Adresse class
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..enum.landescode import Landescode
 from ..utils import postprocess_docstring
 from .com import COM
@@ -24,6 +27,8 @@ class Adresse(COM):
         `Adresse JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Adresse.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.ADRESSE], Field(alias="_typ")] = ComTyp.ADRESSE
 
     postleitzahl: Optional[str] = None
     """

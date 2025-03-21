@@ -2,10 +2,13 @@
 Contains class Lastprofil
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
+
+from pydantic import Field
 
 from bo4e.com.com import COM
 from bo4e.com.tagesparameter import Tagesparameter
+from bo4e.enum.comtyp import ComTyp
 from bo4e.enum.profilart import Profilart
 from bo4e.enum.profilverfahren import Profilverfahren
 
@@ -22,6 +25,8 @@ class Lastprofil(COM):
         `Lastprofil JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/Hochfrequenz/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Lastprofil.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.LASTPROFIL], Field(alias="_typ")] = ComTyp.LASTPROFIL
 
     bezeichnung: Optional[str] = None  #: Bezeichnung des Profils, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
     profilschar: Optional[str] = (

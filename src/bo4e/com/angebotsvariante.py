@@ -4,10 +4,12 @@ Contains Angebotsvariante
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,6 +33,8 @@ class Angebotsvariante(COM):
         `Angebotsvariante JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Angebotsvariante.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.ANGEBOTSVARIANTE], Field(alias="_typ")] = ComTyp.ANGEBOTSVARIANTE
 
     angebotsstatus: Optional["Angebotsstatus"] = None
     """Gibt den Status eines Angebotes an."""

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -36,7 +36,7 @@ class Netzlokation(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.NETZLOKATION], Field(alias="_typ")] = Typ.NETZLOKATION
+    typ: Annotated[Literal[BoTyp.NETZLOKATION], Field(alias="_typ")] = BoTyp.NETZLOKATION
 
     netzlokations_id: Optional[str] = None
     """Identifikationsnummer einer Netzlokation, an der Energie entweder verbraucht, oder erzeugt wird"""

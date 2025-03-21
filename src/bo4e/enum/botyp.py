@@ -2,9 +2,13 @@
 from bo4e.enum.strenum import StrEnum
 
 
-class Typ(StrEnum):
+class BoTyp(StrEnum):
     """
     Auflistung sämtlicher existierender Geschäftsobjekte.
+
+    .. HINT::
+        Die Unterscheidung zwischen Komponenten und Geschäftsobjekten ist, dass Komponenten immer in einem Geschäftsobjekt enthalten sind.
+        Geschäftsobjekte können auch ohne Komponenten existieren.
     """
 
     ANGEBOT = "ANGEBOT"
