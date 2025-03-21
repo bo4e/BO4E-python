@@ -1,5 +1,5 @@
 """
-Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serialization
+Contains Konzessionsabgabe
 """
 
 from decimal import Decimal

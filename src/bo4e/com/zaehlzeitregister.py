@@ -1,5 +1,5 @@
 """
-Contains Zaehlzeitregister class and corresponding marshmallow schema for de-/serialization
+Contains Zaehlzeitregister class
 """
 
 from typing import Optional

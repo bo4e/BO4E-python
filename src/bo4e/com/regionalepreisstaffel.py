@@ -1,5 +1,5 @@
 """
-Contains RegionalePreisstaffel class and corresponding marshmallow schema for de-/serialization
+Contains RegionalePreisstaffel class
 """
 
 from typing import TYPE_CHECKING, Optional

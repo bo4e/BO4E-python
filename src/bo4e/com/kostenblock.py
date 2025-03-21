@@ -1,5 +1,5 @@
 """
-Contains Kostenblock and corresponding marshmallow schema for de-/serialization
+Contains Kostenblock
 """
 
 from typing import TYPE_CHECKING, Optional

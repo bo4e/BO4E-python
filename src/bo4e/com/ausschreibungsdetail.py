@@ -1,5 +1,5 @@
 """
-Contains class Ausschreibungsdetail and corresponding marshmallow schema for de-/serialization
+Contains class Ausschreibungsdetail
 """
 
 from typing import TYPE_CHECKING, Optional

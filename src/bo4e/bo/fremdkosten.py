@@ -1,5 +1,5 @@
 """
-Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
+Contains Fremdkosten class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional

@@ -1,5 +1,5 @@
 """
-Contains Angebotsvariante and corresponding marshmallow schema for de-/serialization
+Contains Angebotsvariante
 """
 
 # pylint: disable=too-few-public-methods

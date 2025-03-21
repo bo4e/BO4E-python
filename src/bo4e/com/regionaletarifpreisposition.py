@@ -1,5 +1,5 @@
 """
-Contains RegionaleTarifpreisposition class and corresponding marshmallow schema for de-/serialization
+Contains RegionaleTarifpreisposition class
 """
 
 # pylint: disable=too-few-public-methods

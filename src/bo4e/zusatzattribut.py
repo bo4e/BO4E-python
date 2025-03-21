@@ -1,6 +1,5 @@
 """
 Contains ExterenzeReferenz class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import Any, Optional

@@ -1,6 +1,5 @@
 """
 Contains Preisblatt class
-and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-few-public-methods
