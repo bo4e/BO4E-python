@@ -16,8 +16,8 @@ if TYPE_CHECKING:
     from ..com.betrag import Betrag
     from ..com.rechnungsposition import Rechnungsposition
     from ..com.steuerbetrag import Steuerbetrag
-    from ..com.zeitraum import Zeitraum
     from ..com.zahlungsinformationen import Zahlungsinformationen
+    from ..com.zeitraum import Zeitraum
     from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
     from ..enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
     from ..enum.rechnungsstatus import Rechnungsstatus
