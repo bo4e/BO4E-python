@@ -102,27 +102,25 @@ class Version(BaseModel):
             raise ValueError("Cannot compare candidate versions if one of them is not a candidate.")
         return not self.bumped_technical(other) and self.candidate > other.candidate
 
-    def __lt__(self, other: "Version") -> bool:
-        if not isinstance(other, Version):
-            return NotImplemented
-        self_int = int(f"{self.major}{self.functional}{self.technical}")
-        other_int = int(f"{other.major}{other.functional}{other.technical}")
-        return (
-            self_int < other_int
-            or self_int == other_int
-            and (self.candidate is not None and (other.candidate is None or self.candidate < other.candidate))
-        )
-
     def __eq__(self, other: object) -> bool:
+        if isinstance(other, Version):
+            return super().__eq__(other)
+        if isinstance(other, str):
+            return str(self) == other
+        return NotImplemented
+
+    def __lt__(self, other: "Version") -> bool:
+        """
+        This method asks: Is this (self) version older than the other version?
+        """
         if not isinstance(other, Version):
             return NotImplemented
-        return (
-            self.major == other.major
-            and self.functional == other.functional
-            and self.technical == other.technical
-            and self.is_candidate() == other.is_candidate()
-            and (self.candidate is None or self.candidate == other.candidate)
-        )
+        for attr in ["major", "functional", "technical"]:
+            if getattr(self, attr) != getattr(other, attr):
+                return getattr(self, attr) < getattr(other, attr)
+        if self.candidate != other.candidate:
+            return self.candidate is not None and (other.candidate is None or self.candidate < other.candidate)
+        return False  # self == other
 
     def __str__(self) -> str:
         return self.tag_name
