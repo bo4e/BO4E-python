@@ -446,3 +446,4 @@ def test_version() -> None:
     assert Version.from_string("v202401.1.2-rc3", allow_candidate=True) > Version.from_string(
         "v202401.1.2-rc1", allow_candidate=True
     )
+    assert Version.from_string("v202501.2.0") > Version.from_string("v202401.10.23")
