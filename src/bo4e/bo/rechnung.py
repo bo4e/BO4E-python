@@ -23,13 +23,13 @@ if TYPE_CHECKING:
     from ..enum.rechnungsstatus import Rechnungsstatus
     from ..enum.rechnungstyp import Rechnungstyp
     from ..enum.sparte import Sparte
-    from .geschaeftspartner import Geschaeftspartner
-    from .marktlokation import Marktlokation
-    from .messlokation import Messlokation
-    from .vertrag import Vertrag
-    from .marktteilnehmer import Marktteilnehmer
     from .energiemenge import Energiemenge
     from .fremdkosten import Fremdkosten
+    from .geschaeftspartner import Geschaeftspartner
+    from .marktlokation import Marktlokation
+    from .marktteilnehmer import Marktteilnehmer
+    from .messlokation import Messlokation
+    from .vertrag import Vertrag
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
