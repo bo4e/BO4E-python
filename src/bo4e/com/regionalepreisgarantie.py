@@ -30,7 +30,9 @@ class RegionalePreisgarantie(Preisgarantie):
 
     """
 
-    typ: Annotated[Literal[ComTyp.REGIONALEPREISGARANTIE], Field(alias="_typ")] = ComTyp.REGIONALEPREISGARANTIE
+    typ: Annotated[Literal[ComTyp.REGIONALEPREISGARANTIE], Field(alias="_typ")] = (
+        ComTyp.REGIONALEPREISGARANTIE  # type:ignore[assignment]
+    )
 
     regionale_gueltigkeit: Optional["RegionaleGueltigkeit"] = None
     """Regionale Eingrenzung der Preisgarantie."""
