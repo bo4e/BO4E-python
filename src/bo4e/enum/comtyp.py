@@ -4,7 +4,7 @@ from bo4e.enum.strenum import StrEnum
 
 class ComTyp(StrEnum):
     """
-    Auflistung sämtlicher existierender Geschäftsobjekte.
+    Auflistung sämtlicher existierender Komponenten.
     """
 
     ADRESSE = "ADRESSE"
