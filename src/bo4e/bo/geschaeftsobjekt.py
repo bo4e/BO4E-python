@@ -1,6 +1,7 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import Annotated, Optional
+from typing import Annotated, Literal, Optional
+
 
 from humps.main import camelize
 
@@ -9,6 +10,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
+from ..enum.botyp import BoTyp
 
 from ..utils import postprocess_docstring
 
@@ -36,6 +38,7 @@ class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     Version der BO-Struktur aka "fachliche Versionierung"
     """
 
+    typ: Annotated[Optional[Literal[BoTyp.GESCHAEFTSOBJEKT]], Field(alias="_typ")] = BoTyp.GESCHAEFTSOBJEKT
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
 
