@@ -15,7 +15,6 @@ from .com import COM
 if TYPE_CHECKING:
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.messwertstatus import Messwertstatus
-    from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
 
 
 # pylint: disable=too-few-public-methods
@@ -38,8 +37,6 @@ class Verbrauch(COM):
 
     typ: Annotated[Literal[ComTyp.VERBRAUCH], Field(alias="_typ")] = ComTyp.VERBRAUCH
 
-    wertermittlungsverfahren: Optional["Wertermittlungsverfahren"] = None
-    """Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt"""
     obis_kennzahl: Optional[str] = None
     """Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:"""
     wert: Optional[Decimal] = None

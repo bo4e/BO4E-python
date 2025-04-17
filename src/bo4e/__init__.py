@@ -198,7 +198,6 @@ __all__ = [
     "Waehrungscode",
     "Waehrungseinheit",
     "Waermenutzung",
-    "Wertermittlungsverfahren",
     "Zaehlerauspraegung",
     "Zaehlergroesse",
     "Zaehlertyp",
@@ -405,7 +404,6 @@ from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
 from .enum.waermenutzung import Waermenutzung
 from .enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
-from .enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
