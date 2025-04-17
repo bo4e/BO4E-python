@@ -52,7 +52,7 @@ jobs:
       - name: Check version tag
         run: |
           python -m docs.compatibility.versioning --gh-version ${{ github.ref_name }} \
-          --gh-token ${{ secrets.GITHUB_TOKEN }} --major-bump-disallowed
+          --gh-token ${{ secrets.GITHUB_TOKEN }}
   json_schemas:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
