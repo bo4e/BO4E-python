@@ -1,12 +1,11 @@
-from typing import Optional, List, Annotated, TYPE_CHECKING, Literal
+from typing import Optional, List, Annotated, Literal
 from pydantic import Field
 
 from .. import COM, ComTyp
 from ..utils import postprocess_docstring
 
-if TYPE_CHECKING:
-    from ..com.zeitraum import Zeitraum
-    from ..com.tarifzeit import Tarifzeit
+from ..com.zeitraum import Zeitraum
+from ..com.tarifzeit import Tarifzeit
 
 
 @postprocess_docstring
@@ -14,7 +13,8 @@ class TarifzeitenZeitscheibe(COM):
     """
     Eine Zeitscheibe innerhalb der Tarifzeiten mit zugehöriger Gültigkeit und Tarifzeitabschnitten.
     """
-    typ: Annotated[Optional[Literal[ComTyp.TARIFZEITENZEITSCHEIBE]], Field(alias="_typ")] = ComTyp.TARIFZEITENZEITSCHEIBE
+    typ: Annotated[
+        Optional[Literal[ComTyp.TARIFZEITENZEITSCHEIBE]], Field(alias="_typ")] = ComTyp.TARIFZEITENZEITSCHEIBE
     """Typ dieser Zeitscheibe - Default 'TARIFZEITENZEITSCHEIBE'"""
 
     gueltigkeit: Optional[Zeitraum] = None

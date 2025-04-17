@@ -9,9 +9,8 @@ from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
-if TYPE_CHECKING:
-    from ..bo.marktteilnehmer import Marktteilnehmer
-    from ..com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
+from ..bo.marktteilnehmer import Marktteilnehmer
+from ..com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
 
 
 @postprocess_docstring

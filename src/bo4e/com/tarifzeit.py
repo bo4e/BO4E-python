@@ -3,10 +3,10 @@ from pydantic import Field
 
 from .. import COM, ComTyp
 from ..utils import postprocess_docstring
+from ..enum.tarifstufen import Tarifstufen
 
 if TYPE_CHECKING:
     from ..com.zeitraum import Zeitraum
-    from ..enum.tarifstufen import Tarifstufen
 
 
 @postprocess_docstring
