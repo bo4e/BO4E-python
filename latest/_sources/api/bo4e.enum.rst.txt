@@ -740,14 +740,6 @@ bo4e.enum.wahlrechtprognosegrundlage module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.wertermittlungsverfahren module
------------------------------------------
-
-.. automodule:: bo4e.enum.wertermittlungsverfahren
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.enum.zaehlerauspraegung module
 -----------------------------------
 

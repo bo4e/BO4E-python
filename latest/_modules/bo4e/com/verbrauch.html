@@ -103,7 +103,6 @@
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
     <span class="kn">from</span> <span class="nn">..enum.messwertstatus</span> <span class="kn">import</span> <span class="n">Messwertstatus</span>
-    <span class="kn">from</span> <span class="nn">..enum.wertermittlungsverfahren</span> <span class="kn">import</span> <span class="n">Wertermittlungsverfahren</span>
 
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
@@ -128,8 +127,6 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">VERBRAUCH</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">VERBRAUCH</span>
 
-    <span class="n">wertermittlungsverfahren</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Wertermittlungsverfahren&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, ob es sich um eine PROGNOSE oder eine MESSUNG handelt&quot;&quot;&quot;</span>
     <span class="n">obis_kennzahl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. &#39;1-0:&quot;&quot;&quot;</span>
     <span class="n">wert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>

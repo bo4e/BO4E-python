@@ -106,7 +106,7 @@
     <span class="kn">from</span> <span class="nn">..enum.mengeneinheit</span> <span class="kn">import</span> <span class="n">Mengeneinheit</span>
     <span class="kn">from</span> <span class="nn">..enum.messart</span> <span class="kn">import</span> <span class="n">Messart</span>
     <span class="kn">from</span> <span class="nn">..enum.messgroesse</span> <span class="kn">import</span> <span class="n">Messgroesse</span>
-    <span class="kn">from</span> <span class="nn">..enum.wertermittlungsverfahren</span> <span class="kn">import</span> <span class="n">Wertermittlungsverfahren</span>
+    <span class="kn">from</span> <span class="nn">..enum.messwertstatus</span> <span class="kn">import</span> <span class="n">Messwertstatus</span>
 
 
 <div class="viewcode-block" id="Zeitreihe">
@@ -144,8 +144,8 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Beschreibt die Verwendung der Zeitreihe&quot;&quot;&quot;</span>
     <span class="n">version</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Version der Zeitreihe&quot;&quot;&quot;</span>
-    <span class="n">wertherkunft</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Wertermittlungsverfahren&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung&quot;&quot;&quot;</span></div>
+    <span class="n">wertherkunft</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messwertstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichnung, wie die Werte entstanden sind, z.B. ABGELESEN oder PROGNOSEWERT&quot;&quot;&quot;</span></div>
 
 </pre></div>
 
