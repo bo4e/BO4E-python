@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Contribute Code &mdash; bo4e v202401.7.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+    <link rel="shortcut icon" href="_static/bo4e-python-favicon.png"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=c20df3cd"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="BO4E Data Model Release Workflow" href="release_workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            bo4e
+              <img src="_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="version">
+                v202401.7.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">Data Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.bo.html">BusinessObjects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.com.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.enum.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#technical-setup-in-your-ide">Technical Setup in your IDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#coding-style-and-guidelines">Coding Style and Guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-rules">General Rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-define-an-enum">How to Define an ENUM?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-define-coms-or-bos">How to Define COMs or BOs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unittests">Unittests</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#pull-request">Pull Request</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#release-workflow">Release Workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">How to Contribute Code</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/contributing_guide.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="how-to-contribute-code">
+<h1>How to Contribute Code<a class="headerlink" href="#how-to-contribute-code" title="Link to this heading"></a></h1>
+<p>This document describes how the BO4E Python implementation is written and what to watch out for.</p>
+<section id="technical-setup-in-your-ide">
+<h2>Technical Setup in your IDE<a class="headerlink" href="#technical-setup-in-your-ide" title="Link to this heading"></a></h2>
+<p>We’re using tox. Please follow the instructions in our <a class="reference external" href="https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine">Python Template Repository</a>. Feel free to open an issue if you run into any kind of problems.</p>
+</section>
+<section id="coding-style-and-guidelines">
+<h2>Coding Style and Guidelines<a class="headerlink" href="#coding-style-and-guidelines" title="Link to this heading"></a></h2>
+<section id="general-rules">
+<h3>General Rules<a class="headerlink" href="#general-rules" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>We use (and enforce in the CI):
+- black for formatting
+- pylint for linting
+- mypy for static type checking
+- pytest for unittests
+- Sphinx and Plantuml (and kroki web service) for documentation</p></li>
+<li><p>Technical Documentation is in English; For example: “Don’t use the builtin validator here because …”</p></li>
+<li><p>But data model docstrings are in German; For example: “Ist das Ende nicht gesetzt, so ist der Zeitraum als offen zu verstehen.”</p></li>
+<li><p>Docstrings should not be trivial/useless
+- Bad: “Energiemenge ist eine Klasse zur Abbildung von Energiemengen.” ❌ (no shit Sherlock)
+- Good: “Eine Energiemenge ordnet einer <code class="xref py py-class docutils literal notranslate"><span class="pre">Marktlokation</span></code> oder <code class="xref py py-class docutils literal notranslate"><span class="pre">Messlokation</span></code>, die über die <cite>lokations_id</cite> referenziert werden, einen oder mehrere Energieverbräuche zu.” ✔</p></li>
+<li><p>Only sentences have a full stop at the end.</p></li>
+<li><p>We use <code class="docutils literal notranslate"><span class="pre">snake_case</span></code> internally but serialize as <code class="docutils literal notranslate"><span class="pre">camelCase</span></code> by overriding the <code class="docutils literal notranslate"><span class="pre">data_key</span></code> property of the schema fields.</p></li>
+</ul>
+</section>
+<section id="how-to-define-an-enum">
+<h3>How to Define an ENUM?<a class="headerlink" href="#how-to-define-an-enum" title="Link to this heading"></a></h3>
+<p>All Enums inherit from <code class="docutils literal notranslate"><span class="pre">bo4e.enum.StrEnum</span></code>. The latter is just a usual Enum with a <code class="docutils literal notranslate"><span class="pre">str</span></code> mixin (see <a class="reference external" href="https://docs.python.org/3/library/enum.html?highlight=strenum#others">the official docs</a> for details). This allows us to precisely define how an enum value will be serialized. All enum values have UPPER_CASE names.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># pylint:disable=missing-module-docstring</span>
+
+<span class="kn">from</span> <span class="nn">bo4e.enum.strenum</span> <span class="kn">import</span> <span class="n">StrEnum</span>
+
+<span class="k">class</span> <span class="nc">MyBo4eEnum</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hier sollte ein deutscher Text stehen, der Sinn und Zweck des Enums beschreibt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">FOO</span> <span class="o">=</span> <span class="s2">&quot;FOO&quot;</span> <span class="c1">#: FOO ist, wenn der Himmel blau ist</span>
+    <span class="n">BAR</span> <span class="o">=</span> <span class="s2">&quot;BAR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Der Docstring für BAR kann auch hier drunter stehen, wenn er besonders lang ist und mehr sagen will,</span>
+<span class="sd">    als dass BAR für die grüne Wiese steht. Denn manchmal braucht es mehr als hundert Zeichen.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">EIGENSCHAFT_0815</span> <span class="o">=</span> <span class="s2">&quot;0815&quot;</span> <span class="c1">#: manchmal heißen eigenschaften anders (EIGENSCHAFT_0815) als sie serialisiert werden (&quot;0815&quot;)</span>
+    <span class="c1"># this typically happens for annoying enum values that contains &quot;-&quot; or start with digits</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-define-coms-or-bos">
+<h3>How to Define COMs or BOs<a class="headerlink" href="#how-to-define-coms-or-bos" title="Link to this heading"></a></h3>
+<p>All COMponents inherit from <code class="docutils literal notranslate"><span class="pre">bo4e.com.com.COM</span></code>. All Business Objects inherit from <code class="docutils literal notranslate"><span class="pre">bo4e.bo.geschaeftsobjekt.Geschaeftsobjekt</span></code>.</p>
+<p>For data validation and de/serialization we use <a class="reference external" href="https://pydantic-docs.helpmanual.io/">pydantic</a>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Give the module a docstring to describe what it contains</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">pydantic</span> <span class="kn">import</span> <span class="n">validator</span>
+
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
+
+<span class="kn">from</span> <span class="nn">..bo.geschaeftsobjekt</span> <span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
+<span class="kn">from</span> <span class="nn">..com.menge</span> <span class="kn">import</span> <span class="n">Menge</span>
+<span class="kn">from</span> <span class="nn">..enum.typ</span> <span class="kn">import</span> <span class="n">BoTyp</span>
+
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="k">class</span> <span class="nc">MeinBo</span><span class="p">(</span><span class="n">Geschaeftsobjekt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    MeinBo ist ein ganz besonderes Business Objekt.</span>
+<span class="sd">    Es kommt nur bei meinem Strom-Lieferanten zum Einsatz und beschreibt dort all die tollen Eigenschaften, die mein Verbrauchsverhalten hat.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Typ</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">TypBo</span><span class="o">.</span><span class="n">MEINBO</span>
+
+    <span class="c1">#: Der Lieferbeginn beschreibt den Zeitpunkt ab dem (inklusiv) mich ein Versorger seinen Kunden nennen darf</span>
+    <span class="n">lieferbeginn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="n">anzahl_freudenspruenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Anzahl Freudensprünge beschreibt, wie oft der CEO des Stromkonzerns in die Luft gesprungen ist, als ich den Vertrag unterschrieben habe.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1">#: Menge (Elektrische Energie oder Gas oder Wärme), die ich zum Lieferbeginn umsonst erhalte</span>
+    <span class="n">freimenge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="c1"># we can help you with anything you might be missing or unable to implement.</span>
+    <span class="c1"># ToDo comments are just fine.</span>
+    <span class="c1"># You don&#39;t need to be a perfect programmer to contribute to bo4e :)</span>
+</pre></div>
+</div>
+</section>
+<section id="unittests">
+<h3>Unittests<a class="headerlink" href="#unittests" title="Link to this heading"></a></h3>
+<p>Ideally provide unittests that show:</p>
+<ul class="simple">
+<li><p>that the BO/COM can be instantiated
+- with only the required attributes
+- with all attributes</p></li>
+<li><p>can be serialized and deserialized again
+- with only the required attributes
+- with all attributes</p></li>
+</ul>
+<p>Therefore, copy one of the existing “roundtrip” tests, see f.e. <code class="docutils literal notranslate"><span class="pre">TestTarifeinschraenkung</span></code>.</p>
+</section>
+</section>
+<section id="pull-request">
+<h2>Pull Request<a class="headerlink" href="#pull-request" title="Link to this heading"></a></h2>
+<p>Open a Pull Request against the main/default branch of this repository. We’d appreciate if you allowed maintainer edits.</p>
+</section>
+<section id="release-workflow">
+<h2>Release Workflow<a class="headerlink" href="#release-workflow" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Check with tox all tests and linting: <code class="docutils literal notranslate"><span class="pre">tox</span></code></p></li>
+<li><p>Check with tox if the packaging works fine: <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">test_packaging</span></code></p></li>
+<li><p>Squash Merge all your changes you would like to have in the release into the main/default branch</p></li>
+<li><p>Check that all GitHub Actions for tests and linting do pass (should be automatically enforced for PRs against main)</p></li>
+<li><p>Go to the repositorys right sidebar and click on <a class="reference external" href="https://github.com/Hochfrequenz/BO4E-python/releases/new">Draft a new release</a></p></li>
+<li><p>Write in the <em>Tag version</em> field and in the <em>Release title</em> your new version, i.e. <code class="docutils literal notranslate"><span class="pre">v0.0.6</span></code></p></li>
+<li><p>Add a description to the release (or just autogenerate the change log which will be fine for 95% of cases)</p></li>
+<li><p>Publish the release</p></li>
+</ul>
+<p>There is a GitHub Action which gets triggered by a release event. It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the <em>setup.cfg</em> file. After checking the package with <code class="docutils literal notranslate"><span class="pre">twine</span> <span class="pre">check</span></code> it will finally upload the new package release.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="release_workflow.html" class="btn btn-neutral float-left" title="BO4E Data Model Release Workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
