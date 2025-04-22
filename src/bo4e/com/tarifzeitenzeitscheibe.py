@@ -1,3 +1,7 @@
+"""
+Contains TarifzeitenZeitscheibe class
+"""
+
 from typing import Optional, List, Annotated, Literal
 from pydantic import Field
 

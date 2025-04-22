@@ -1,3 +1,7 @@
+"""
+Contains Tarifzeit class
+"""
+
 from typing import Optional, Annotated, Literal, TYPE_CHECKING
 from pydantic import Field
 

@@ -2,7 +2,7 @@
 Contains Tarifzeiten class
 """
 
-from typing import List, Optional, Annotated, Literal, TYPE_CHECKING
+from typing import List, Optional, Annotated, Literal
 from pydantic import Field
 
 from ..enum.botyp import BoTyp
