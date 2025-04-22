@@ -2,15 +2,13 @@
 Contains Tarifzeit class
 """
 
-from typing import Optional, Annotated, Literal, TYPE_CHECKING
+from typing import Optional, Annotated, Literal
 from pydantic import Field
 
 from .. import COM, ComTyp
 from ..utils import postprocess_docstring
 from ..enum.tarifstufen import Tarifstufen
-
-if TYPE_CHECKING:
-    from ..com.zeitraum import Zeitraum
+from ..com.zeitraum import Zeitraum
 
 
 @postprocess_docstring
@@ -22,7 +20,7 @@ class Tarifzeit(COM):
     typ: Annotated[Optional[Literal[ComTyp.TARIFZEIT]], Field(alias="_typ")] = ComTyp.TARIFZEIT
     """Typ der Tarifzeit – default 'TARIFZEIT'"""
 
-    zeitraum: Optional["Zeitraum"] = None
+    zeitraum: Optional[Zeitraum] = None
     """Gültigkeitszeitraum der Tarifzeit"""
 
     tarifstufe: Optional[Tarifstufen] = None

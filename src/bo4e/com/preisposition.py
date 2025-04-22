@@ -12,6 +12,7 @@ from pydantic import Field
 from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
+from ..enum.tarifzeit import Tarifzeit
 
 if TYPE_CHECKING:
     from ..enum.bdewartikelnummer import BDEWArtikelnummer
@@ -19,7 +20,6 @@ if TYPE_CHECKING:
     from ..enum.kalkulationsmethode import Kalkulationsmethode
     from ..enum.leistungstyp import Leistungstyp
     from ..enum.mengeneinheit import Mengeneinheit
-    from ..enum.tarifzeit import Tarifzeit
     from ..enum.waehrungseinheit import Waehrungseinheit
     from .preisstaffel import Preisstaffel
 
@@ -60,7 +60,7 @@ class Preisposition(COM):
     Die Zeit(dauer) auf die sich der Preis bezieht.
     Z.B. ein Jahr für einen Leistungspreis der in €/kW/Jahr ausgegeben wird
     """
-    tarifzeit: Optional["Tarifzeit"] = None
+    tarifzeit: Optional[Tarifzeit] = None
     """Festlegung, für welche Tarifzeit der Preis hier festgelegt ist"""
     bdew_artikelnummer: Optional["BDEWArtikelnummer"] = None
     """
