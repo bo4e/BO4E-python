@@ -22,9 +22,6 @@ class Tarifzeiten(Geschaeftsobjekt):
     typ: Annotated[Optional[Literal[BoTyp.TARIFZEITEN]], Field(alias="_typ")] = BoTyp.TARIFZEITEN
     """Typ des Geschäftsobjekts – default 'TARIFZEITEN'"""
 
-    version: Optional[str] = Field(default=None, alias="_version")
-    """Optionales Versionsfeld"""
-
     marktteilnehmer: Optional["Marktteilnehmer"] = None
     """Optionaler Verweis auf den Anbieter / Marktpartner"""
 
