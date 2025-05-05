@@ -7,7 +7,6 @@ from pydantic import Field
 
 from .. import COM, ComTyp
 from ..utils import postprocess_docstring
-from ..enum.tarifstufen import Tarifstufen
 from ..com.zeitraum import Zeitraum
 
 
@@ -23,5 +22,5 @@ class Tarifzeit(COM):
     zeitraum: Optional[Zeitraum] = None
     """Gültigkeitszeitraum der Tarifzeit"""
 
-    tarifstufe: Optional[Tarifstufen] = None
+    tarifstufe: Optional[str] = None
     """Optional: Angabe der Tarifstufe, z. B. HT, NT, ST"""

@@ -2,7 +2,6 @@ import pytest
 
 from datetime import date
 from bo4e import Zeitraum
-from bo4e.enum.tarifstufen import Tarifstufen
 from bo4e.com.tarifzeit import Tarifzeit
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -17,7 +16,7 @@ class TestTarifzeit:
                         startdatum=date(2025, 1, 1),
                         enddatum=date(2025, 1, 31),
                     ),
-                    tarifstufe=Tarifstufen("HT"),
+                    tarifstufe="HT",
                 )
             )
         ]
