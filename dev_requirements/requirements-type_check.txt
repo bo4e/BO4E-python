@@ -21,7 +21,7 @@ pluggy==1.5.0
     # via pytest
 pytest==8.3.5
     # via -r requirements-type_check.in
-types-requests==2.32.0.20250328
+types-requests==2.32.0.20250515
     # via -r requirements-type_check.in
 typing-extensions==4.11.0
     # via mypy
