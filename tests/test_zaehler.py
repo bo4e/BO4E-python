@@ -24,7 +24,7 @@ class TestZaehler:
                     eichung_bis=datetime(2022, 1, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
                     zusatz_attribute=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
                     letzte_eichung=datetime(2019, 6, 30, 0, 0, 0).replace(tzinfo=timezone.utc),
-                    zaehlerstand=[Energiemenge()],
+                    zaehlerstaende=[Energiemenge()],
                 ),
             ),
         ],
