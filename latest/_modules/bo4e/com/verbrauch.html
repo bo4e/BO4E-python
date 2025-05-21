@@ -137,7 +137,10 @@
     <span class="n">startdatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Inklusiver Beginn des Zeitraumes, für den der Verbrauch angegeben wird&quot;&quot;&quot;</span>
     <span class="n">enddatum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exklusives Ende des Zeitraumes, für den der Verbrauch angegeben wird.</span>
+<span class="sd">    Ein ZeitPUNKT kann mit start==ende angegeben werden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">messwertstatus</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messwertstatus&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Messwertstatus includes the plausibility of the value&quot;&quot;&quot;</span></div>
 
