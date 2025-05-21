@@ -16,6 +16,7 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
+    from ..bo.energiemenge import Energiemenge
     from ..bo.geraet import Geraet
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.befestigungsart import Befestigungsart
@@ -77,3 +78,5 @@ class Zaehler(Geschaeftsobjekt):
     """Größe des Zählers"""
     geraete: Optional[list["Geraet"]] = None
     """Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway"""
+    zaehlerstand: Optional["Energiemenge"] = None
+    """Zählerstand des Zählers"""
