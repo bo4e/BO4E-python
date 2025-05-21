@@ -3,7 +3,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Registeranzahl, Sparte, Zaehler, Zaehlerauspraegung, Zaehlertyp, Zaehlwerk, Energiemenge
+from bo4e import Energiemenge, Registeranzahl, Sparte, Zaehler, Zaehlerauspraegung, Zaehlertyp, Zaehlwerk
 from bo4e.zusatzattribut import ZusatzAttribut
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -24,7 +24,7 @@ class TestZaehler:
                     eichung_bis=datetime(2022, 1, 1, 0, 0, 0).replace(tzinfo=timezone.utc),
                     zusatz_attribute=[ZusatzAttribut(name="zaehler im anderen system", wert="7890")],
                     letzte_eichung=datetime(2019, 6, 30, 0, 0, 0).replace(tzinfo=timezone.utc),
-                    zaehlerstand=Energiemenge(),
+                    zaehlerstand=[Energiemenge()],
                 ),
             ),
         ],

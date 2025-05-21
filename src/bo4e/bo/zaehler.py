@@ -78,5 +78,5 @@ class Zaehler(Geschaeftsobjekt):
     """Größe des Zählers"""
     geraete: Optional[list["Geraet"]] = None
     """Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway"""
-    zaehlerstand: Optional["Energiemenge"] = None
-    """Zählerstand des Zählers"""
+    zaehlerstaende: Optional[list["Energiemenge"]] = None
+    """Zählerstande des Zählers"""
