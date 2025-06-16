@@ -6,11 +6,11 @@
 #    pip-compile-multi
 #
 black==25.1.0
-    # via -r dev_requirements/requirements-formatting.in
-click==8.1.8
+    # via -r requirements-formatting.in
+click==8.2.1
     # via black
 isort==6.0.1
-    # via -r dev_requirements/requirements-formatting.in
+    # via -r requirements-formatting.in
 mypy-extensions==1.0.0
     # via black
 packaging==24.0
