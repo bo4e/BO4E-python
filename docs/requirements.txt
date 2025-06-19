@@ -108,7 +108,7 @@ typing-extensions==4.11.0
     #   pydantic-core
     #   pygithub
     #   typeguard
-urllib3==2.2.2
+urllib3==2.5.0
     # via
     #   pygithub
     #   requests
