@@ -18,7 +18,7 @@ def _parse_version_to_gh_version(version_str: str) -> str:
     Parse a version string into a GitHub version string.
     E.g. '202401.0.1-rc8+dev12asdf34' becomes 'v202401.0.1-rc8'.
     """
-    _REGEX_VERSION = re.compile(
+    _regex_version = re.compile(
         r"^(?P<major>\d{6})\."
         r"(?P<functional>\d+)\."
         r"(?P<technical>\d+)"
@@ -28,7 +28,7 @@ def _parse_version_to_gh_version(version_str: str) -> str:
         r"(?P<dirty_workdir_date_month>\d{2})"
         r"(?P<dirty_workdir_date_day>\d{2}))?)?$"
     )
-    match = _REGEX_VERSION.match(version_str)
+    match = _regex_version.match(version_str)
     if match is None:
         raise ValueError(f"Invalid version string: {version_str}")
 
