@@ -387,8 +387,11 @@ current_json_schemas = read_schemas(current_json_schemas_dir)
 update_references_all_schemas(current_json_schemas)
 schemas = [current_json_schemas, *asyncio.run(download_missing_schemas(last_versions, gh_token))]
 changes = [diff_schemas(schemas_1, schemas_2) for schemas_1, schemas_2 in pairwise(reversed(schemas))]
-for changes_obj in changes:
-    write_changes(changes_obj, changes_base_dir / f"{changes_obj.old_version}_to_{changes_obj.new_version}.json")
+
+# Comment this out if you want to write the changes to files. Helpful for debugging.
+# for changes_obj in changes:
+#     write_changes(changes_obj, changes_base_dir / f"{changes_obj.old_version}_to_{changes_obj.new_version}.json")
+
 graph = create_graph_from_changes(iter(changes))
 graph_path = get_path_through_di_path_graph(graph)
 compatibility_matrix = create_compatibility_matrix(graph, graph_path, use_emotes=True)
