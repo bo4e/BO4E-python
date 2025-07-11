@@ -51,8 +51,11 @@ jobs:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Check version tag
         run: |
-          python -m docs.compatibility.versioning --gh-version ${{ github.ref_name }} \
-          --gh-token ${{ secrets.GITHUB_TOKEN }}
+          # Get last version tag
+          LAST_VERSION=$(bo4e repo versions -qcn 1 -r ${{ github.ref_name }})
+          bo4e pull -t $LAST_VERSION -o tmp/last_schemas
+          bo4e diff schemas tmp/last_schemas json_schemas -o tmp/diff.json
+          bo4e diff version-bump tmp/diff.json -aq
   json_schemas:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
