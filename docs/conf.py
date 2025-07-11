@@ -26,8 +26,6 @@ from typing import Iterable
 from bo4e_cli.diff.diff import diff_schemas
 from bo4e_cli.diff.matrix import create_compatibility_matrix, create_graph_from_changes, get_path_through_di_path_graph
 from bo4e_cli.edit.update_refs import update_references_all_schemas
-from bo4e_cli.io.changes import write_changes
-from bo4e_cli.io.console import CONSOLE
 from bo4e_cli.io.git import get_last_n_tags
 from bo4e_cli.io.github import download_schemas
 from bo4e_cli.io.matrix import write_compatibility_matrix_csv
@@ -340,7 +338,8 @@ intersphinx_mapping = {
 
 # Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
 # See docs/uml.py for more details.
-if release != "local":
+release_version = Version.from_str(release)
+if not release_version.is_dirty():
     uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
@@ -356,7 +355,6 @@ print(f"Compiled uml files into svg using kroki.")
 compatibility_matrix_output_file = Path(__file__).parent / "_static/tables/compatibility_matrix.csv"
 gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN") or get_access_token_from_cli_if_installed()
 
-release_version = Version.from_str(release)
 compiling_from_release_workflow = not release_version.is_dirty()
 last_versions = get_last_n_tags(
     n=0,
