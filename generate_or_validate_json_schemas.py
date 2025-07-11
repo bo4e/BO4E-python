@@ -14,12 +14,14 @@ from pathlib import Path
 from typing import Any, Iterator, Literal, cast
 
 import click
+from bo4e_cli.io.version_file import create_version_file
+from bo4e_cli.models.version import Version
 from pydantic import BaseModel, TypeAdapter
 from pydantic.json_schema import GenerateJsonSchema as _GenerateJsonSchema
 from pydantic.json_schema import JsonSchemaValue
 from pydantic_core import core_schema
 
-from bo4e import ZusatzAttribut
+from bo4e import ZusatzAttribut, __gh_version__
 
 logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
@@ -148,6 +150,15 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any]) -> None:
         json_schema_file.write("\n")
 
 
+def generate_version_file(file_path: Path, version: str) -> None:
+    """
+    Generate a version file with the given version
+    """
+    with open(file_path, "w+", encoding="utf-8") as version_file:
+        version_file.write(version)
+    _logger.info("Generated version file at %s with content %s", file_path, version)
+
+
 def replace_refs(
     schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]], target_version: str
 ) -> None:
@@ -200,11 +211,12 @@ def replace_refs(
     required=False,
     type=click.STRING,
     envvar="TARGET_VERSION",
-    default="v0.0.0",
+    default=None,
 )
-def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str) -> None:
+def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str | None) -> None:
     """generate json schemas for all BOs and COMs"""
-    _logger.info("Mode: %s, target version: %s", mode, target_version)
+    version = Version.from_str(target_version or __gh_version__)
+    _logger.info("Mode: %s, target version: %s", mode, version)
     packages = ["bo", "com", "enum"]
 
     if mode == "generate":
@@ -224,7 +236,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
             file_path = output_directory / pkg / (name + ".json")
 
         schema_json_dict = get_schema_json_dict(cls)
-        replace_refs(schema_json_dict, namespace, target_version)
+        replace_refs(schema_json_dict, namespace, str(version))
 
         if mode == "validate":
             validate_schema(file_path, schema_json_dict, name)
@@ -233,6 +245,9 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
             _logger.info("Generated schema for %s", name)
         else:
             raise ValueError(f"Unknown mode '{mode}'")
+    if mode == "generate":
+        create_version_file(output_directory, version)
+        _logger.info("Generated version file at %s with version %s", output_directory / ".version", version)
 
 
 if __name__ == "__main__":
