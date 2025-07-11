@@ -6,5 +6,4 @@ requests
 Sphinx
 sphinx_rtd_theme
 typeguard
-BO4E-Schema-Tool
-click
+BO4E-CLI

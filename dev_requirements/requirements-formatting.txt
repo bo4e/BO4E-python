@@ -11,11 +11,11 @@ click==8.1.8
     # via black
 isort==6.0.1
     # via -r dev_requirements/requirements-formatting.in
-mypy-extensions==1.0.0
+mypy-extensions==1.1.0
     # via black
 packaging==24.0
     # via black
 pathspec==0.12.1
     # via black
-platformdirs==4.2.0
+platformdirs==4.3.8
     # via black

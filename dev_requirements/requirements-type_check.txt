@@ -9,7 +9,7 @@ iniconfig==2.0.0
     # via pytest
 mypy==1.16.1
     # via -r requirements-type_check.in
-mypy-extensions==1.0.0
+mypy-extensions==1.1.0
     # via mypy
 networkx==3.4.2
     # via networkx-stubs
