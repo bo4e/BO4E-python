@@ -44,8 +44,6 @@ jobs:
         # Note: The sphinx action below can only install a single requirements file.
       - name: Build JSON Schemas
         run: tox -e generate_json_schemas
-        env:
-          TARGET_VERSION: ${{ env.REF_NAME }}
       - name: Build BO4E package
         # Note: This step necessary to correctly set the version in the JSON-Schema-links
         run: |

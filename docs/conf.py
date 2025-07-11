@@ -7,6 +7,7 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
+import asyncio
 import inspect
 import os
 import shutil
@@ -14,16 +15,31 @@ import sys
 
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
+from itertools import pairwise
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 from pathlib import Path
+from typing import Iterable
+
+from bo4e_cli.diff.diff import diff_schemas
+from bo4e_cli.diff.matrix import create_compatibility_matrix, create_graph_from_changes, get_path_through_di_path_graph
+from bo4e_cli.edit.update_refs import update_references_all_schemas
+from bo4e_cli.io.changes import write_changes
+from bo4e_cli.io.console import CONSOLE
+from bo4e_cli.io.git import get_last_n_tags
+from bo4e_cli.io.github import download_schemas
+from bo4e_cli.io.matrix import write_compatibility_matrix_csv
+from bo4e_cli.io.schemas import read_schemas, write_schemas
+from bo4e_cli.models.meta import Schemas
+from bo4e_cli.models.version import Version
+from bo4e_cli.utils.github_cli import get_access_token_from_cli_if_installed
 
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
 sys.path.insert(0, os.path.join(__location__, "../docs/compatibility"))
 import uml
-from compatibility.__main__ import create_tables_for_doc
 
 # import package bo4e to clarify namespaces and prevent circular import errors
 from bo4e import *
@@ -187,11 +203,11 @@ html_theme_options = {
 # be set by the action. This is to support things like /latest or /stable.
 if "release" not in globals():
     release = os.getenv("SPHINX_DOCS_RELEASE")
-    if release is None:
+    if not release:
         from bo4e import __gh_version__ as release
 if "version" not in globals():
     version = os.getenv("SPHINX_DOCS_VERSION")
-    if version is None:
+    if not version:
         from bo4e import __version__ as version
 
 print(f"Got version = {version} from __version__")
@@ -336,7 +352,42 @@ uml.compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_st
 print(f"Compiled uml files into svg using kroki.")
 
 # Create compatibility matrix
+# CONSOLE.verbose = True
 compatibility_matrix_output_file = Path(__file__).parent / "_static/tables/compatibility_matrix.csv"
-gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN")
-create_tables_for_doc(compatibility_matrix_output_file, release, last_n_versions=0, gh_token=gh_token)
+gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN") or get_access_token_from_cli_if_installed()
+
+release_version = Version.from_str(release)
+compiling_from_release_workflow = not release_version.is_dirty()
+last_versions = get_last_n_tags(
+    n=0,
+    ref=str(release) if compiling_from_release_workflow else "HEAD",
+    exclude_candidates=True,
+    exclude_technical_bumps=True,
+)
+schemas_base_dir = Path(__file__).parents[1] / "tmp/bo4e_json_schemas"
+changes_base_dir = Path(__file__).parents[1] / "tmp/changes"
+
+
+async def download_missing_schemas(versions: Iterable[Version], gh_token: str | None = None) -> list[Schemas]:
+    schemas_list = []
+    for _version in versions:
+        schemas_dir = schemas_base_dir / str(_version)
+        if not schemas_dir.exists():
+            schemas_list.append(await download_schemas(_version, gh_token))
+            update_references_all_schemas(schemas_list[-1])
+            write_schemas(schemas_list[-1], schemas_dir)
+        else:
+            schemas_list.append(read_schemas(schemas_dir))
+    return schemas_list
+
+
+schemas = asyncio.run(download_missing_schemas(last_versions, gh_token))
+changes = [diff_schemas(schemas_1, schemas_2) for schemas_1, schemas_2 in pairwise(reversed(schemas))]
+for changes_obj in changes:
+    write_changes(changes_obj, changes_base_dir / f"{changes_obj.old_version}_to_{changes_obj.new_version}.json")
+graph = create_graph_from_changes(iter(changes))
+graph_path = get_path_through_di_path_graph(graph)
+compatibility_matrix = create_compatibility_matrix(graph, graph_path, use_emotes=True)
+write_compatibility_matrix_csv(compatibility_matrix_output_file, compatibility_matrix, graph_path)
+
 print(f"Created compatibility matrix at static folder {compatibility_matrix_output_file}")
