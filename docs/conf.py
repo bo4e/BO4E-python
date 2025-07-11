@@ -367,6 +367,7 @@ last_versions = get_last_n_tags(
 )
 schemas_base_dir = Path(__file__).parents[1] / "tmp/bo4e_json_schemas"
 changes_base_dir = Path(__file__).parents[1] / "tmp/changes"
+current_json_schemas_dir = Path(__file__).parents[1] / "json_schemas"
 
 
 async def download_missing_schemas(versions: Iterable[Version], gh_token: str | None = None) -> list[Schemas]:
@@ -382,7 +383,9 @@ async def download_missing_schemas(versions: Iterable[Version], gh_token: str | 
     return schemas_list
 
 
-schemas = asyncio.run(download_missing_schemas(last_versions, gh_token))
+current_json_schemas = read_schemas(current_json_schemas_dir)
+update_references_all_schemas(current_json_schemas)
+schemas = [current_json_schemas, *asyncio.run(download_missing_schemas(last_versions, gh_token))]
 changes = [diff_schemas(schemas_1, schemas_2) for schemas_1, schemas_2 in pairwise(reversed(schemas))]
 for changes_obj in changes:
     write_changes(changes_obj, changes_base_dir / f"{changes_obj.old_version}_to_{changes_obj.new_version}.json")
