@@ -18,7 +18,7 @@ babel==2.15.0
     # via sphinx
 black==25.1.0
     # via datamodel-code-generator
-bo4e-cli==0.0.1
+bo4e-cli==0.0.2
     # via -r .\docs\requirements.in
 certifi==2024.7.4
     # via
