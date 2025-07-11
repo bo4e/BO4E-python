@@ -363,6 +363,7 @@ last_versions = get_last_n_tags(
     ref=str(release) if compiling_from_release_workflow else "HEAD",
     exclude_candidates=True,
     exclude_technical_bumps=True,
+    token=gh_token,
 )
 schemas_base_dir = Path(__file__).parents[1] / "tmp/bo4e_json_schemas"
 changes_base_dir = Path(__file__).parents[1] / "tmp/changes"
