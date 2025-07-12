@@ -4,9 +4,9 @@
 #
 #    pip-compile '.\docs\requirements.in'
 #
-alabaster==0.7.16
+alabaster==1.0.0
     # via sphinx
-annotated-types==0.5.0
+annotated-types==0.7.0
     # via pydantic
 anyio==4.9.0
     # via httpx
@@ -14,24 +14,24 @@ argcomplete==3.6.2
     # via datamodel-code-generator
 autoflake==2.3.1
     # via bo4e-cli
-babel==2.15.0
+babel==2.17.0
     # via sphinx
 black==25.1.0
     # via datamodel-code-generator
 bo4e-cli==0.0.2
     # via -r .\docs\requirements.in
-certifi==2024.7.4
+certifi==2025.7.9
     # via
     #   httpcore
     #   httpx
     #   requests
-cffi==1.16.0
+cffi==1.17.1
     # via
     #   cryptography
     #   pynacl
-charset-normalizer==2.1.0
+charset-normalizer==3.4.2
     # via requests
-click==8.1.8
+click==8.2.1
     # via
     #   black
     #   typer
@@ -39,13 +39,13 @@ colorama==0.4.6
     # via
     #   click
     #   sphinx
-cryptography==44.0.1
+cryptography==45.0.5
     # via pyjwt
 datamodel-code-generator==0.31.2
     # via bo4e-cli
-deprecated==1.2.14
+deprecated==1.2.18
     # via pygithub
-docutils==0.20.1
+docutils==0.21.2
     # via
     #   sphinx
     #   sphinx-rtd-theme
@@ -59,7 +59,7 @@ httpcore==1.0.9
     # via httpx
 httpx==0.28.1
     # via bo4e-cli
-idna==3.7
+idna==3.10
     # via
     #   anyio
     #   httpx
@@ -78,21 +78,21 @@ jinja2==3.1.6
     #   sphinx
 markdown-it-py==3.0.0
     # via rich
-markupsafe==2.1.3
+markupsafe==3.0.2
     # via jinja2
 mdurl==0.1.2
     # via markdown-it-py
-more-itertools==10.2.0
+more-itertools==10.7.0
     # via
     #   bo4e-cli
     #   inflect
 mypy-extensions==1.1.0
     # via black
-networkx==3.4.2
+networkx==3.5
     # via
     #   -r .\docs\requirements.in
     #   bo4e-cli
-packaging==24.0
+packaging==25.0
     # via
     #   black
     #   datamodel-code-generator
@@ -101,27 +101,27 @@ pathspec==0.12.1
     # via black
 platformdirs==4.3.8
     # via black
-pycparser==2.21
+pycparser==2.22
     # via cffi
-pydantic==2.8.2
+pydantic==2.11.7
     # via
     #   -r .\docs\requirements.in
     #   bo4e-cli
     #   datamodel-code-generator
     #   sqlmodel
-pydantic-core==2.20.1
+pydantic-core==2.33.2
     # via pydantic
 pyflakes==3.4.0
     # via autoflake
-pygithub==2.2.0
+pygithub==2.6.1
     # via bo4e-cli
-pygments==2.18.0
+pygments==2.19.2
     # via
     #   rich
     #   sphinx
 pyhumps==3.8.0
     # via -r .\docs\requirements.in
-pyjwt[crypto]==2.8.0
+pyjwt[crypto]==2.10.1
     # via pygithub
 pynacl==1.5.0
     # via pygithub
@@ -134,49 +134,46 @@ requests==2.32.4
     #   sphinx
 rich==14.0.0
     # via typer
+roman-numerals-py==3.1.0
+    # via sphinx
 shellingham==1.5.4
     # via typer
 sniffio==1.3.1
     # via anyio
-snowballstemmer==2.2.0
+snowballstemmer==3.0.1
     # via sphinx
-sphinx==7.4.7
+sphinx==8.2.3
     # via
     #   -r .\docs\requirements.in
     #   sphinx-rtd-theme
-    #   sphinxcontrib-applehelp
-    #   sphinxcontrib-devhelp
-    #   sphinxcontrib-htmlhelp
     #   sphinxcontrib-jquery
-    #   sphinxcontrib-qthelp
-    #   sphinxcontrib-serializinghtml
-sphinx-rtd-theme==2.0.0
+sphinx-rtd-theme==3.0.2
     # via -r .\docs\requirements.in
-sphinxcontrib-applehelp==1.0.7
+sphinxcontrib-applehelp==2.0.0
     # via sphinx
-sphinxcontrib-devhelp==1.0.5
+sphinxcontrib-devhelp==2.0.0
     # via sphinx
-sphinxcontrib-htmlhelp==2.0.4
+sphinxcontrib-htmlhelp==2.1.0
     # via sphinx
 sphinxcontrib-jquery==4.1
     # via sphinx-rtd-theme
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
-sphinxcontrib-qthelp==1.0.6
+sphinxcontrib-qthelp==2.0.0
     # via sphinx
-sphinxcontrib-serializinghtml==1.1.9
+sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
 sqlalchemy==2.0.41
     # via sqlmodel
 sqlmodel==0.0.24
     # via bo4e-cli
-typeguard==4.4.1
+typeguard==4.4.4
     # via
     #   -r .\docs\requirements.in
     #   inflect
 typer==0.16.0
     # via bo4e-cli
-typing-extensions==4.11.0
+typing-extensions==4.14.1
     # via
     #   anyio
     #   pydantic
@@ -185,9 +182,12 @@ typing-extensions==4.11.0
     #   sqlalchemy
     #   typeguard
     #   typer
-urllib3==2.2.2
+    #   typing-inspection
+typing-inspection==0.4.1
+    # via pydantic
+urllib3==2.5.0
     # via
     #   pygithub
     #   requests
-wrapt==1.16.0
+wrapt==1.17.2
     # via deprecated
