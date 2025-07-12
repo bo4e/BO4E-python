@@ -176,7 +176,6 @@ html_theme = "sphinx_rtd_theme"
 # documentation.
 html_theme_options = {
     "logo_only": False,
-    "display_version": True,
     "prev_next_buttons_location": "bottom",
     "style_external_links": False,
     # There is still a bug which will probably get fixed soon
