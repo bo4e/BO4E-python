@@ -11,31 +11,38 @@ Compatibility
 =============
 
 The table below shows the compatibility matrix of the last BO4E versions.
-You can also download the compatibility matrix as CSV file `here <_static/tables/compatibility_matrix.csv>`_.
+You can also download the compatibility matrix as CSV file `here <_static/tables/compatibility_matrix.csv>`__.
 
-Legend:
+.. csv-table:: Diff-files for the version diffs shown in the compatibility matrix
+   :file: _static/tables/changes_table.csv
+   :header-rows: 1
 
-+------+------------------------------------------------------+
-|  🟢  | | Compatible                                         |
-|      | | No changes in the data model                       |
-+------+------------------------------------------------------+
-|  🟡  | | Compatible                                         |
-|      | | Only non-critical changes in the data model        |
-|      | | e.g. added fields, changed doc strings             |
-+------+------------------------------------------------------+
-|  🔴  | | Incompatible                                       |
-|      | | Critical changes in the data model                 |
-|      | | e.g. removed fields, changed types                 |
-+------+------------------------------------------------------+
-|  ➕  | | Compatible                                         |
-|      | | Data model was added in this version               |
-+------+------------------------------------------------------+
-|  ➖  | | Incompatible                                       |
-|      | | Data model was removed in this version             |
-+------+------------------------------------------------------+
-| \-   | | Data model not existent in this version            |
-|      | | was removed before or will be added in future      |
-+------+------------------------------------------------------+
+.. table:: Legend for compatibility matrix
+   :widths: 10 90
+
+   +------+------------------------------------------------------+
+   | Icon | Description                                          |
+   +======+======================================================+
+   | 🟢   | Compatible                                           |
+   |      | No changes in the data model                         |
+   +------+------------------------------------------------------+
+   | 🟡   | Compatible                                           |
+   |      | Only non-critical changes in the data model          |
+   |      | e.g. added fields, changed doc strings               |
+   +------+------------------------------------------------------+
+   | 🔴   | Incompatible                                         |
+   |      | Critical changes in the data model                   |
+   |      | e.g. removed fields, changed types                   |
+   +------+------------------------------------------------------+
+   | ➕   | Compatible                                           |
+   |      | Data model was added in this version                 |
+   +------+------------------------------------------------------+
+   | ➖   | Incompatible                                         |
+   |      | Data model was removed in this version               |
+   +------+------------------------------------------------------+
+   | \-   | Data model not existent in this version              |
+   |      | was removed before or will be added in future        |
+   +------+------------------------------------------------------+
 
 .. csv-table:: Compatibility matrix
    :file: _static/tables/compatibility_matrix.csv

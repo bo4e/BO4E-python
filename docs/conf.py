@@ -8,6 +8,7 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 import asyncio
+import csv
 import inspect
 import os
 import shutil
@@ -26,10 +27,12 @@ from typing import Iterable
 from bo4e_cli.diff.diff import diff_schemas
 from bo4e_cli.diff.matrix import create_compatibility_matrix, create_graph_from_changes, get_path_through_di_path_graph
 from bo4e_cli.edit.update_refs import update_references_all_schemas
+from bo4e_cli.io.changes import write_changes
 from bo4e_cli.io.git import get_last_n_tags
 from bo4e_cli.io.github import download_schemas
 from bo4e_cli.io.matrix import write_compatibility_matrix_csv
 from bo4e_cli.io.schemas import read_schemas, write_schemas
+from bo4e_cli.models.changes import Changes
 from bo4e_cli.models.meta import Schemas
 from bo4e_cli.models.version import Version
 from bo4e_cli.utils.github_cli import get_access_token_from_cli_if_installed
@@ -356,20 +359,21 @@ gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN") or get_
 
 compiling_from_release_workflow = not release_version.is_dirty()
 last_versions = get_last_n_tags(
-    n=0,
+    n=3,
     ref=str(release) if compiling_from_release_workflow else "HEAD",
     exclude_candidates=True,
     exclude_technical_bumps=True,
     token=gh_token,
 )
 schemas_base_dir = Path(__file__).parents[1] / "tmp/bo4e_json_schemas"
-changes_base_dir = Path(__file__).parents[1] / "tmp/changes"
+changes_base_dir = Path(__file__).parent / "_static/tables/changes"
 current_json_schemas_dir = Path(__file__).parents[1] / "json_schemas"
 
 
 async def download_missing_schemas(versions: Iterable[Version], gh_token: str | None = None) -> list[Schemas]:
     schemas_list = []
     for _version in versions:
+        print(f"Checking for schemas of version {_version}...")
         schemas_dir = schemas_base_dir / str(_version)
         if not schemas_dir.exists():
             schemas_list.append(await download_schemas(_version, gh_token))
@@ -385,9 +389,23 @@ update_references_all_schemas(current_json_schemas)
 schemas = [current_json_schemas, *asyncio.run(download_missing_schemas(last_versions, gh_token))]
 changes = [diff_schemas(schemas_1, schemas_2) for schemas_1, schemas_2 in pairwise(reversed(schemas))]
 
-# Comment this out if you want to write the changes to files. Helpful for debugging.
-# for changes_obj in changes:
-#     write_changes(changes_obj, changes_base_dir / f"{changes_obj.old_version}_to_{changes_obj.new_version}.json")
+
+def write_changes_table_csv(changes_iterable: Iterable[Changes], csv_file: Path) -> None:
+    with open(csv_file, "w", encoding="utf-8") as file:
+        csv_writer = csv.writer(file, delimiter=",", lineterminator="\n", escapechar="/")
+        csv_writer.writerow(("Old Version", "New Version", "Diff-file"))
+        for changes in changes_iterable:
+            changes_file = changes_base_dir / f"{changes.old_version}_to_{changes.new_version}.json"
+            write_changes(changes, changes_file)
+            changes_link_path = str(changes_file.relative_to(Path(__file__).parent).as_posix())
+            print(f"Created changes file: {changes_link_path}")
+            csv_writer.writerow(
+                (changes.old_version, changes.new_version, f"`{changes_file.name} <{changes_link_path}>`__")
+            )
+    print(f"Created changes table at {csv_file}")
+
+
+write_changes_table_csv(changes, compatibility_matrix_output_file.parent / "changes_table.csv")
 
 graph = create_graph_from_changes(iter(changes))
 graph_path = get_path_through_di_path_graph(graph)
