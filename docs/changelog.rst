@@ -4,7 +4,7 @@
 Changelog
 =========
 
-You can find the changelog on the ` GitHub Release page<https://github.com/bo4e/BO4E-python/releases>`_.
+You can find the changelog on the `GitHub Release page <https://github.com/bo4e/BO4E-python/releases>`_.
 
 =============
 Compatibility
