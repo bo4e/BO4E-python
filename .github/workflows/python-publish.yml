@@ -73,7 +73,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install tox
       - name: Build JSON Schemas
-        run: tox -e generate_json_schemas
+        run: |
+          tox -e generate_json_schemas
+          # Remove .version file as we don't want to commit it to BO4E-Schemas
+          rm json_schemas/.version
         env:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Push schemas to BO4E-Schemas repo
