@@ -1,0 +1,2180 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog &mdash; bo4e v202501.1.0-rc1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="_static/bo4e-python-favicon.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5442995f"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="authors.html" />
+    <link rel="prev" title="How to Contribute Code" href="contributing_guide.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            bo4e
+              <img src="_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">Data Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.bo.html">BusinessObjects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.com.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.enum.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Changelog</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/changelog.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="changelog">
+<span id="changes"></span><h1>Changelog<a class="headerlink" href="#changelog" title="Link to this heading"></a></h1>
+<p>You can find the changelog on the ` GitHub Release page&lt;<a class="reference external" href="https://github.com/bo4e/BO4E-python/releases">https://github.com/bo4e/BO4E-python/releases</a>&gt;`_.</p>
+</section>
+<section id="compatibility">
+<h1>Compatibility<a class="headerlink" href="#compatibility" title="Link to this heading"></a></h1>
+<p>The table below shows the compatibility matrix of the last BO4E versions.
+You can also download the compatibility matrix as CSV file <a class="reference external" href="_static/tables/compatibility_matrix.csv">here</a>.</p>
+<p>Legend:</p>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p>🟢</p></td>
+<td><div class="line-block">
+<div class="line">Compatible</div>
+<div class="line">No changes in the data model</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>🟡</p></td>
+<td><div class="line-block">
+<div class="line">Compatible</div>
+<div class="line">Only non-critical changes in the data model</div>
+<div class="line">e.g. added fields, changed doc strings</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>🔴</p></td>
+<td><div class="line-block">
+<div class="line">Incompatible</div>
+<div class="line">Critical changes in the data model</div>
+<div class="line">e.g. removed fields, changed types</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>➕</p></td>
+<td><div class="line-block">
+<div class="line">Compatible</div>
+<div class="line">Data model was added in this version</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>➖</p></td>
+<td><div class="line-block">
+<div class="line">Incompatible</div>
+<div class="line">Data model was removed in this version</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>-</p></td>
+<td><div class="line-block">
+<div class="line">Data model not existent in this version</div>
+<div class="line">was removed before or will be added in future</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id1">
+<caption><span class="caption-text">Compatibility matrix</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>v202401.0.2 ↦ v202401.1.1</p></th>
+<th class="head"><p>↦ v202401.2.1</p></th>
+<th class="head"><p>↦ v202401.4.0</p></th>
+<th class="head"><p>↦ v202401.5.0</p></th>
+<th class="head"><p>↦ v202401.6.0</p></th>
+<th class="head"><p>↦ v202401.7.0</p></th>
+<th class="head"><p>↦ v202501.0.0</p></th>
+<th class="head"><p>↦ v202501.1.0-rc1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>bo.Angebot</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Ansprechpartner</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Ausschreibung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Bilanzierung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Buendelvertrag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Energiemenge</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Fremdkosten</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Geraet</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Geschaeftspartner</p></td>
+<td><p>🔴</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Kosten</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Lastgang</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Lokationszuordnung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Marktlokation</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Marktteilnehmer</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Messlokation</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Netzlokation</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Person</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Preisblatt</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.PreisblattDienstleistung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.PreisblattHardware</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.PreisblattKonzessionsabgabe</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.PreisblattMessung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.PreisblattNetznutzung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Rechnung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Region</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Regionaltarif</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Standorteigenschaften</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.SteuerbareRessource</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Tarif</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Tarifinfo</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Tarifkosten</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Tarifpreisblatt</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.TechnischeRessource</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Vertrag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>bo.Zaehler</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>bo.Zeitreihe</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Adresse</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Angebotsposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Angebotsteil</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Angebotsvariante</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.AufAbschlag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.AufAbschlagProOrt</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.AufAbschlagRegional</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.AufAbschlagstaffelProOrt</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Ausschreibungsdetail</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Ausschreibungslos</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Betrag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Dienstleistung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Energieherkunft</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Energiemix</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Fremdkostenblock</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Fremdkostenposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Geokoordinaten</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Katasteradresse</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Konfigurationsprodukt</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Kontaktweg</p></td>
+<td><p>➕</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Konzessionsabgabe</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Kostenblock</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Kostenposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.KriteriumWert</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Lastprofil</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.MarktgebietInfo</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Menge</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Messlokationszuordnung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>com.PositionsAufAbschlag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Preis</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Preisgarantie</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Preisposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Preisstaffel</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Rechnungsposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.RegionaleGueltigkeit</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.RegionalePreisgarantie</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.RegionalePreisstaffel</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.RegionalerAufAbschlag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.RegionaleTarifpreisposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Regionskriterium</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Rufnummer</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Sigmoidparameter</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.StandorteigenschaftenGas</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.StandorteigenschaftenStrom</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Steuerbetrag</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Tagesparameter</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Tarifberechnungsparameter</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Tarifeinschraenkung</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Tarifpreis</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Tarifpreisposition</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.TarifpreispositionProOrt</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.TarifpreisstaffelProOrt</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Unterschrift</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Verbrauch</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Vertragskonditionen</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Vertragsteil</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.VerwendungszweckProMarktrolle</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Zaehlwerk</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Zaehlzeitregister</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Zeitraum</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Zeitreihenwert</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>com.Zeitspanne</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Zustaendigkeit</p></td>
+<td><p>🔴</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🔴</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.AbgabeArt</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Abwicklungsmodell</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Aggregationsverantwortung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Angebotsstatus</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Anrede</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.ArithmetischeOperation</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.ArtikelId</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.AufAbschlagstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.AufAbschlagsziel</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Ausschreibungsportal</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Ausschreibungsstatus</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Ausschreibungstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.BDEWArtikelnummer</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Befestigungsart</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Bemessungsgroesse</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Bilanzierungsmethode</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.BoTyp</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.ComTyp</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Dienstleistungstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.EMobilitaetsart</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Energierichtung</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Erzeugungsart</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Fallgruppenzuordnung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Gasqualitaet</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Gebiettyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Geraeteklasse</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Geraetetyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Geschaeftspartnerrolle</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Gueltigkeitstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Kalkulationsmethode</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Kontaktart</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Kostenklasse</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Kundengruppe</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.KundengruppeKA</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Kundentyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Landescode</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Leistungstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Lokationstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Marktrolle</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Medium</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Mengeneinheit</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Mengenoperator</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Messart</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Messgroesse</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Messpreistyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Messwerterfassung</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Messwertstatus</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Messwertstatuszusatz</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Netzebene</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.NetznutzungRechnungsart</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.NetznutzungRechnungstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Oekolabel</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Oekozertifikat</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Organisationstyp</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Preisgarantietyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Preismodell</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Preisstatus</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Preistyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Profilart</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Profiltyp</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Profilverfahren</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Prognosegrundlage</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Rechnungslegung</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Rechnungsstatus</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Rechnungstyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Regionskriteriumtyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Registeranzahl</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Rollencodetyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Rufnummernart</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Sparte</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Speicherart</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.SteuerkanalLeistungsbeschreibung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Steuerkennzeichen</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Tarifkalkulationsmethode</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Tarifmerkmal</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Tarifregionskriterium</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Tariftyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Tarifzeit</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.TechnischeRessourceNutzung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.TechnischeRessourceVerbrauchsart</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Themengebiet</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Titel</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Typ</p></td>
+<td><p>🔴</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Verbrauchsart</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Vertragsart</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Vertragsform</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Vertragsstatus</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Verwendungszweck</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Voraussetzungen</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Waehrungscode</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Waehrungseinheit</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Waermenutzung</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.WahlrechtPrognosegrundlage</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Wertermittlungsverfahren</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>➖</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Zaehlerauspraegung</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.Zaehlergroesse</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Zaehlertyp</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.ZaehlertypSpezifikation</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Zeitreihentyp</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-even"><td><p>ZusatzAttribut</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟡</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contributing_guide.html" class="btn btn-neutral float-left" title="How to Contribute Code" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="authors.html" class="btn btn-neutral float-right" title="Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

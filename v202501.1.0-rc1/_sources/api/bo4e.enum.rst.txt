@@ -1,0 +1,789 @@
+bo4e.enum package
+=================
+
+Submodules
+----------
+
+bo4e.enum.abgabeart module
+--------------------------
+
+.. automodule:: bo4e.enum.abgabeart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.abwicklungsmodell module
+----------------------------------
+
+.. automodule:: bo4e.enum.abwicklungsmodell
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.aggregationsverantwortung module
+------------------------------------------
+
+.. automodule:: bo4e.enum.aggregationsverantwortung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.angebotsstatus module
+-------------------------------
+
+.. automodule:: bo4e.enum.angebotsstatus
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.anrede module
+-----------------------
+
+.. automodule:: bo4e.enum.anrede
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.arithmetische\_operation module
+-----------------------------------------
+
+.. automodule:: bo4e.enum.arithmetische_operation
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.artikelid module
+--------------------------
+
+.. automodule:: bo4e.enum.artikelid
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.aufabschlagstyp module
+--------------------------------
+
+.. automodule:: bo4e.enum.aufabschlagstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.aufabschlagsziel module
+---------------------------------
+
+.. automodule:: bo4e.enum.aufabschlagsziel
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.ausschreibungsportal module
+-------------------------------------
+
+.. automodule:: bo4e.enum.ausschreibungsportal
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.ausschreibungsstatus module
+-------------------------------------
+
+.. automodule:: bo4e.enum.ausschreibungsstatus
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.ausschreibungstyp module
+----------------------------------
+
+.. automodule:: bo4e.enum.ausschreibungstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.bdewartikelnummer module
+----------------------------------
+
+.. automodule:: bo4e.enum.bdewartikelnummer
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.befestigungsart module
+--------------------------------
+
+.. automodule:: bo4e.enum.befestigungsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.bemessungsgroesse module
+----------------------------------
+
+.. automodule:: bo4e.enum.bemessungsgroesse
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.bilanzierungsmethode module
+-------------------------------------
+
+.. automodule:: bo4e.enum.bilanzierungsmethode
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.botyp module
+----------------------
+
+.. automodule:: bo4e.enum.botyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.comtyp module
+-----------------------
+
+.. automodule:: bo4e.enum.comtyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.dienstleistungstyp module
+-----------------------------------
+
+.. automodule:: bo4e.enum.dienstleistungstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.emobilitaetsart module
+--------------------------------
+
+.. automodule:: bo4e.enum.emobilitaetsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.energierichtung module
+--------------------------------
+
+.. automodule:: bo4e.enum.energierichtung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.erzeugungsart module
+------------------------------
+
+.. automodule:: bo4e.enum.erzeugungsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.fallgruppenzuordnung module
+-------------------------------------
+
+.. automodule:: bo4e.enum.fallgruppenzuordnung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.gasqualitaet module
+-----------------------------
+
+.. automodule:: bo4e.enum.gasqualitaet
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.gebiettyp module
+--------------------------
+
+.. automodule:: bo4e.enum.gebiettyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.geraeteklasse module
+------------------------------
+
+.. automodule:: bo4e.enum.geraeteklasse
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.geraetetyp module
+---------------------------
+
+.. automodule:: bo4e.enum.geraetetyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.geschaeftspartnerrolle module
+---------------------------------------
+
+.. automodule:: bo4e.enum.geschaeftspartnerrolle
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.gueltigkeitstyp module
+--------------------------------
+
+.. automodule:: bo4e.enum.gueltigkeitstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.kalkulationsmethode module
+------------------------------------
+
+.. automodule:: bo4e.enum.kalkulationsmethode
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.kontaktart module
+---------------------------
+
+.. automodule:: bo4e.enum.kontaktart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.kostenklasse module
+-----------------------------
+
+.. automodule:: bo4e.enum.kostenklasse
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.kundengruppe module
+-----------------------------
+
+.. automodule:: bo4e.enum.kundengruppe
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.kundengruppeka module
+-------------------------------
+
+.. automodule:: bo4e.enum.kundengruppeka
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.kundentyp module
+--------------------------
+
+.. automodule:: bo4e.enum.kundentyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.landescode module
+---------------------------
+
+.. automodule:: bo4e.enum.landescode
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.leistungstyp module
+-----------------------------
+
+.. automodule:: bo4e.enum.leistungstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.lokationstyp module
+-----------------------------
+
+.. automodule:: bo4e.enum.lokationstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.marktrolle module
+---------------------------
+
+.. automodule:: bo4e.enum.marktrolle
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.medium module
+-----------------------
+
+.. automodule:: bo4e.enum.medium
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.mengeneinheit module
+------------------------------
+
+.. automodule:: bo4e.enum.mengeneinheit
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.mengenoperator module
+-------------------------------
+
+.. automodule:: bo4e.enum.mengenoperator
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.messart module
+------------------------
+
+.. automodule:: bo4e.enum.messart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.messgroesse module
+----------------------------
+
+.. automodule:: bo4e.enum.messgroesse
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.messpreistyp module
+-----------------------------
+
+.. automodule:: bo4e.enum.messpreistyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.messwerterfassung module
+----------------------------------
+
+.. automodule:: bo4e.enum.messwerterfassung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.messwertstatus module
+-------------------------------
+
+.. automodule:: bo4e.enum.messwertstatus
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.messwertstatuszusatz module
+-------------------------------------
+
+.. automodule:: bo4e.enum.messwertstatuszusatz
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.netzebene module
+--------------------------
+
+.. automodule:: bo4e.enum.netzebene
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.netznutzungrechnungsart module
+----------------------------------------
+
+.. automodule:: bo4e.enum.netznutzungrechnungsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.netznutzungrechnungstyp module
+----------------------------------------
+
+.. automodule:: bo4e.enum.netznutzungrechnungstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.oekolabel module
+--------------------------
+
+.. automodule:: bo4e.enum.oekolabel
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.oekozertifikat module
+-------------------------------
+
+.. automodule:: bo4e.enum.oekozertifikat
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.organisationstyp module
+---------------------------------
+
+.. automodule:: bo4e.enum.organisationstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.preisgarantietyp module
+---------------------------------
+
+.. automodule:: bo4e.enum.preisgarantietyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.preismodell module
+----------------------------
+
+.. automodule:: bo4e.enum.preismodell
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.preisstatus module
+----------------------------
+
+.. automodule:: bo4e.enum.preisstatus
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.preistyp module
+-------------------------
+
+.. automodule:: bo4e.enum.preistyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.profilart module
+--------------------------
+
+.. automodule:: bo4e.enum.profilart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.profiltyp module
+--------------------------
+
+.. automodule:: bo4e.enum.profiltyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.profilverfahren module
+--------------------------------
+
+.. automodule:: bo4e.enum.profilverfahren
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.prognosegrundlage module
+----------------------------------
+
+.. automodule:: bo4e.enum.prognosegrundlage
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.rechnungslegung module
+--------------------------------
+
+.. automodule:: bo4e.enum.rechnungslegung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.rechnungsstatus module
+--------------------------------
+
+.. automodule:: bo4e.enum.rechnungsstatus
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.rechnungstyp module
+-----------------------------
+
+.. automodule:: bo4e.enum.rechnungstyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.regionskriteriumtyp module
+------------------------------------
+
+.. automodule:: bo4e.enum.regionskriteriumtyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.registeranzahl module
+-------------------------------
+
+.. automodule:: bo4e.enum.registeranzahl
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.rollencodetyp module
+------------------------------
+
+.. automodule:: bo4e.enum.rollencodetyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.sparte module
+-----------------------
+
+.. automodule:: bo4e.enum.sparte
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.speicherart module
+----------------------------
+
+.. automodule:: bo4e.enum.speicherart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.steuerkanalleistungsbeschreibung module
+-------------------------------------------------
+
+.. automodule:: bo4e.enum.steuerkanalleistungsbeschreibung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.steuerkennzeichen module
+----------------------------------
+
+.. automodule:: bo4e.enum.steuerkennzeichen
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.strenum module
+------------------------
+
+.. automodule:: bo4e.enum.strenum
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.tarifkalkulationsmethode module
+-----------------------------------------
+
+.. automodule:: bo4e.enum.tarifkalkulationsmethode
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.tarifmerkmal module
+-----------------------------
+
+.. automodule:: bo4e.enum.tarifmerkmal
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.tarifregionskriterium module
+--------------------------------------
+
+.. automodule:: bo4e.enum.tarifregionskriterium
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.tariftyp module
+-------------------------
+
+.. automodule:: bo4e.enum.tariftyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.tarifzeit module
+--------------------------
+
+.. automodule:: bo4e.enum.tarifzeit
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.technischeressourcenutzung module
+-------------------------------------------
+
+.. automodule:: bo4e.enum.technischeressourcenutzung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.technischeressourceverbrauchsart module
+-------------------------------------------------
+
+.. automodule:: bo4e.enum.technischeressourceverbrauchsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.themengebiet module
+-----------------------------
+
+.. automodule:: bo4e.enum.themengebiet
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.titel module
+----------------------
+
+.. automodule:: bo4e.enum.titel
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.verbrauchsart module
+------------------------------
+
+.. automodule:: bo4e.enum.verbrauchsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.vertragsart module
+----------------------------
+
+.. automodule:: bo4e.enum.vertragsart
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.vertragsform module
+-----------------------------
+
+.. automodule:: bo4e.enum.vertragsform
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.vertragsstatus module
+-------------------------------
+
+.. automodule:: bo4e.enum.vertragsstatus
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.verwendungszweck module
+---------------------------------
+
+.. automodule:: bo4e.enum.verwendungszweck
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.voraussetzungen module
+--------------------------------
+
+.. automodule:: bo4e.enum.voraussetzungen
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.waehrungscode module
+------------------------------
+
+.. automodule:: bo4e.enum.waehrungscode
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.waehrungseinheit module
+---------------------------------
+
+.. automodule:: bo4e.enum.waehrungseinheit
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.waermenutzung module
+------------------------------
+
+.. automodule:: bo4e.enum.waermenutzung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.wahlrechtprognosegrundlage module
+-------------------------------------------
+
+.. automodule:: bo4e.enum.wahlrechtprognosegrundlage
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.zaehlerauspraegung module
+-----------------------------------
+
+.. automodule:: bo4e.enum.zaehlerauspraegung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.zaehlergroesse module
+-------------------------------
+
+.. automodule:: bo4e.enum.zaehlergroesse
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.zaehlertyp module
+---------------------------
+
+.. automodule:: bo4e.enum.zaehlertyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.zaehlertypspezifikation module
+----------------------------------------
+
+.. automodule:: bo4e.enum.zaehlertypspezifikation
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.zeitreihentyp module
+------------------------------
+
+.. automodule:: bo4e.enum.zeitreihentyp
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+Module contents
+---------------
+
+.. automodule:: bo4e.enum
+   :members:
+   :show-inheritance:
+   :undoc-members:
