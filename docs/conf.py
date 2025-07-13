@@ -405,11 +405,10 @@ def write_changes_table_csv(changes_iterable: Iterable[Changes], csv_file: Path)
     print(f"Created changes table at {csv_file}")
 
 
-write_changes_table_csv(changes, compatibility_matrix_output_file.parent / "changes_table.csv")
-
 graph = create_graph_from_changes(iter(changes))
 graph_path = get_path_through_di_path_graph(graph)
 compatibility_matrix = create_compatibility_matrix(graph, graph_path, use_emotes=True)
 write_compatibility_matrix_csv(compatibility_matrix_output_file, compatibility_matrix, graph_path)
+write_changes_table_csv(changes, compatibility_matrix_output_file.parent / "changes_table.csv")
 
 print(f"Created compatibility matrix at static folder {compatibility_matrix_output_file}")
