@@ -8,9 +8,9 @@ colorama==0.4.6
     # via pytest
 iniconfig==2.1.0
     # via pytest
-mypy==1.16.1
-    # via -r .\dev_requirements\requirements-type_check.in
-mypy-extensions==1.1.0
+mypy==1.17.0
+    # via -r requirements-type_check.in
+mypy-extensions==1.0.0
     # via mypy
 networkx==3.5
     # via networkx-stubs
