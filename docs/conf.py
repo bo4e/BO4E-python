@@ -37,6 +37,8 @@ from bo4e_cli.models.meta import Schemas
 from bo4e_cli.models.version import Version
 from bo4e_cli.utils.github_cli import get_access_token_from_cli_if_installed
 
+from bo4e import __gh_version__, __version__
+
 sys.path.insert(0, os.path.join(__location__, "../src"))
 sys.path.insert(0, os.path.join(__location__, "../docs"))
 sys.path.insert(0, os.path.join(__location__, "../docs/compatibility"))
@@ -204,11 +206,11 @@ html_theme_options = {
 if "release" not in globals():
     release = os.getenv("SPHINX_DOCS_RELEASE")
     if not release:
-        from bo4e import __gh_version__ as release
+        release = __gh_version__
 if "version" not in globals():
     version = os.getenv("SPHINX_DOCS_VERSION")
     if not version:
-        from bo4e import __version__ as version
+        version = __version__
 
 print(f"Got version = {version} from __version__")
 print(f"Got release = {release} from __gh_version__")
@@ -340,9 +342,9 @@ intersphinx_mapping = {
 
 # Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
 # See docs/uml.py for more details.
-release_version = Version.from_str(release)
+release_version = Version.from_str(__gh_version__)
 if not release_version.is_dirty():
-    uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
+    uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{__gh_version__}"
 _exec_plantuml = Path(__location__) / "plantuml.jar"
 _network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
 print(_network)
@@ -360,7 +362,7 @@ gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN") or get_
 compiling_from_release_workflow = not release_version.is_dirty()
 last_versions = get_last_n_tags(
     n=3,
-    ref=str(release) if compiling_from_release_workflow else "HEAD",
+    ref=str(release_version) if compiling_from_release_workflow else "HEAD",
     exclude_candidates=True,
     exclude_technical_bumps=True,
     token=gh_token,
