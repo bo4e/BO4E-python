@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.waehrungscode &mdash; bo4e test-779176 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=b9d053d9"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Data Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.bo.html">BusinessObjects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.com.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.enum.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.waehrungscode</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.waehrungscode</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint: disable=missing-module-docstring</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bo4e.enum.strenum</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="Waehrungscode">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Waehrungscode</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Aufzählung der Währungscodes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">AED</span> <span class="o">=</span> <span class="s2">&quot;AED&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;UAE Dirham&quot;&quot;&quot;</span>
+    <span class="n">AFN</span> <span class="o">=</span> <span class="s2">&quot;AFN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Afghani&quot;&quot;&quot;</span>
+    <span class="n">ALL</span> <span class="o">=</span> <span class="s2">&quot;ALL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lek&quot;&quot;&quot;</span>
+    <span class="n">AMD</span> <span class="o">=</span> <span class="s2">&quot;AMD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Armenian Dram&quot;&quot;&quot;</span>
+    <span class="n">ANG</span> <span class="o">=</span> <span class="s2">&quot;ANG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Netherlands Antillean Guilder&quot;&quot;&quot;</span>
+    <span class="n">AOA</span> <span class="o">=</span> <span class="s2">&quot;AOA&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kwanza&quot;&quot;&quot;</span>
+    <span class="n">ARS</span> <span class="o">=</span> <span class="s2">&quot;ARS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Argentine Peso&quot;&quot;&quot;</span>
+    <span class="n">AUD</span> <span class="o">=</span> <span class="s2">&quot;AUD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Australian Dollar&quot;&quot;&quot;</span>
+    <span class="n">AWG</span> <span class="o">=</span> <span class="s2">&quot;AWG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Aruban Florin&quot;&quot;&quot;</span>
+    <span class="n">AZN</span> <span class="o">=</span> <span class="s2">&quot;AZN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Azerbaijanian Manat&quot;&quot;&quot;</span>
+    <span class="n">BAM</span> <span class="o">=</span> <span class="s2">&quot;BAM&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convertible Mark&quot;&quot;&quot;</span>
+    <span class="n">BBD</span> <span class="o">=</span> <span class="s2">&quot;BBD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Barbados Dollar&quot;&quot;&quot;</span>
+    <span class="n">BDT</span> <span class="o">=</span> <span class="s2">&quot;BDT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Taka&quot;&quot;&quot;</span>
+    <span class="n">BGN</span> <span class="o">=</span> <span class="s2">&quot;BGN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bulgarian Lev&quot;&quot;&quot;</span>
+    <span class="n">BHD</span> <span class="o">=</span> <span class="s2">&quot;BHD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bahraini Dinar&quot;&quot;&quot;</span>
+    <span class="n">BIF</span> <span class="o">=</span> <span class="s2">&quot;BIF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Burundi Franc&quot;&quot;&quot;</span>
+    <span class="n">BMD</span> <span class="o">=</span> <span class="s2">&quot;BMD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bermudian Dollar&quot;&quot;&quot;</span>
+    <span class="n">BND</span> <span class="o">=</span> <span class="s2">&quot;BND&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Brunei Dollar&quot;&quot;&quot;</span>
+    <span class="n">BOB</span> <span class="o">=</span> <span class="s2">&quot;BOB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Boliviano&quot;&quot;&quot;</span>
+    <span class="n">BOV</span> <span class="o">=</span> <span class="s2">&quot;BOV&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mvdol&quot;&quot;&quot;</span>
+    <span class="n">BRL</span> <span class="o">=</span> <span class="s2">&quot;BRL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Brazilian Real&quot;&quot;&quot;</span>
+    <span class="n">BSD</span> <span class="o">=</span> <span class="s2">&quot;BSD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bahamian Dollar&quot;&quot;&quot;</span>
+    <span class="n">BTN</span> <span class="o">=</span> <span class="s2">&quot;BTN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ngultrum&quot;&quot;&quot;</span>
+    <span class="n">BWP</span> <span class="o">=</span> <span class="s2">&quot;BWP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pula&quot;&quot;&quot;</span>
+    <span class="n">BYN</span> <span class="o">=</span> <span class="s2">&quot;BYN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Belarusian Ruble&quot;&quot;&quot;</span>
+    <span class="n">BYR</span> <span class="o">=</span> <span class="s2">&quot;BYR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Belarusian Ruble&quot;&quot;&quot;</span>
+    <span class="n">BZD</span> <span class="o">=</span> <span class="s2">&quot;BZD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Belize Dollar&quot;&quot;&quot;</span>
+    <span class="n">CAD</span> <span class="o">=</span> <span class="s2">&quot;CAD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Canadian Dollar&quot;&quot;&quot;</span>
+    <span class="n">CDF</span> <span class="o">=</span> <span class="s2">&quot;CDF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Congolese Franc&quot;&quot;&quot;</span>
+    <span class="n">CHE</span> <span class="o">=</span> <span class="s2">&quot;CHE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;WIR Euro&quot;&quot;&quot;</span>
+    <span class="n">CHF</span> <span class="o">=</span> <span class="s2">&quot;CHF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Swiss Franc&quot;&quot;&quot;</span>
+    <span class="n">CHW</span> <span class="o">=</span> <span class="s2">&quot;CHW&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;WIR Franc&quot;&quot;&quot;</span>
+    <span class="n">CLF</span> <span class="o">=</span> <span class="s2">&quot;CLF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unidad de Fomento&quot;&quot;&quot;</span>
+    <span class="n">CLP</span> <span class="o">=</span> <span class="s2">&quot;CLP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Chilean Peso&quot;&quot;&quot;</span>
+    <span class="n">CNY</span> <span class="o">=</span> <span class="s2">&quot;CNY&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yuan Renminbi&quot;&quot;&quot;</span>
+    <span class="n">COP</span> <span class="o">=</span> <span class="s2">&quot;COP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Colombian Peso&quot;&quot;&quot;</span>
+    <span class="n">COU</span> <span class="o">=</span> <span class="s2">&quot;COU&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unidad de Valor Real&quot;&quot;&quot;</span>
+    <span class="n">CRC</span> <span class="o">=</span> <span class="s2">&quot;CRC&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Costa Rican Colon&quot;&quot;&quot;</span>
+    <span class="n">CUC</span> <span class="o">=</span> <span class="s2">&quot;CUC&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Peso Convertible&quot;&quot;&quot;</span>
+    <span class="n">CUP</span> <span class="o">=</span> <span class="s2">&quot;CUP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cuban Peso&quot;&quot;&quot;</span>
+    <span class="n">CVE</span> <span class="o">=</span> <span class="s2">&quot;CVE&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cape Verde Escudo&quot;&quot;&quot;</span>
+    <span class="n">CZK</span> <span class="o">=</span> <span class="s2">&quot;CZK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Czech Koruna&quot;&quot;&quot;</span>
+    <span class="n">DJF</span> <span class="o">=</span> <span class="s2">&quot;DJF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Djibouti Franc&quot;&quot;&quot;</span>
+    <span class="n">DKK</span> <span class="o">=</span> <span class="s2">&quot;DKK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Danish Krone&quot;&quot;&quot;</span>
+    <span class="n">DOP</span> <span class="o">=</span> <span class="s2">&quot;DOP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dominican Peso&quot;&quot;&quot;</span>
+    <span class="n">DZD</span> <span class="o">=</span> <span class="s2">&quot;DZD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Algerian Dinar&quot;&quot;&quot;</span>
+    <span class="n">EGP</span> <span class="o">=</span> <span class="s2">&quot;EGP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Egyptian Pound&quot;&quot;&quot;</span>
+    <span class="n">ERN</span> <span class="o">=</span> <span class="s2">&quot;ERN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nakfa&quot;&quot;&quot;</span>
+    <span class="n">ETB</span> <span class="o">=</span> <span class="s2">&quot;ETB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ethiopian Birr&quot;&quot;&quot;</span>
+    <span class="n">EUR</span> <span class="o">=</span> <span class="s2">&quot;EUR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Euro&quot;&quot;&quot;</span>
+    <span class="n">FJD</span> <span class="o">=</span> <span class="s2">&quot;FJD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fiji Dollar&quot;&quot;&quot;</span>
+    <span class="n">FKP</span> <span class="o">=</span> <span class="s2">&quot;FKP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Falkland Islands Pound&quot;&quot;&quot;</span>
+    <span class="n">GBP</span> <span class="o">=</span> <span class="s2">&quot;GBP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pound Sterling&quot;&quot;&quot;</span>
+    <span class="n">GEL</span> <span class="o">=</span> <span class="s2">&quot;GEL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lari&quot;&quot;&quot;</span>
+    <span class="n">GHS</span> <span class="o">=</span> <span class="s2">&quot;GHS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ghana Cedi&quot;&quot;&quot;</span>
+    <span class="n">GIP</span> <span class="o">=</span> <span class="s2">&quot;GIP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibraltar Pound&quot;&quot;&quot;</span>
+    <span class="n">GMD</span> <span class="o">=</span> <span class="s2">&quot;GMD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dalasi&quot;&quot;&quot;</span>
+    <span class="n">GNF</span> <span class="o">=</span> <span class="s2">&quot;GNF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Guinea Franc&quot;&quot;&quot;</span>
+    <span class="n">GTQ</span> <span class="o">=</span> <span class="s2">&quot;GTQ&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Quetzal&quot;&quot;&quot;</span>
+    <span class="n">GYD</span> <span class="o">=</span> <span class="s2">&quot;GYD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Guyana Dollar&quot;&quot;&quot;</span>
+    <span class="n">HKD</span> <span class="o">=</span> <span class="s2">&quot;HKD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hong Kong Dollar&quot;&quot;&quot;</span>
+    <span class="n">HNL</span> <span class="o">=</span> <span class="s2">&quot;HNL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lempira&quot;&quot;&quot;</span>
+    <span class="n">HRK</span> <span class="o">=</span> <span class="s2">&quot;HRK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Croatian Kuna&quot;&quot;&quot;</span>
+    <span class="n">HTG</span> <span class="o">=</span> <span class="s2">&quot;HTG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gourde&quot;&quot;&quot;</span>
+    <span class="n">HUF</span> <span class="o">=</span> <span class="s2">&quot;HUF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Forint&quot;&quot;&quot;</span>
+    <span class="n">IDR</span> <span class="o">=</span> <span class="s2">&quot;IDR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rupiah&quot;&quot;&quot;</span>
+    <span class="n">ILS</span> <span class="o">=</span> <span class="s2">&quot;ILS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;New Israeli Sheqel&quot;&quot;&quot;</span>
+    <span class="n">INR</span> <span class="o">=</span> <span class="s2">&quot;INR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Indian Rupee&quot;&quot;&quot;</span>
+    <span class="n">IQD</span> <span class="o">=</span> <span class="s2">&quot;IQD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iraqi Dinar&quot;&quot;&quot;</span>
+    <span class="n">IRR</span> <span class="o">=</span> <span class="s2">&quot;IRR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iranian Rial&quot;&quot;&quot;</span>
+    <span class="n">ISK</span> <span class="o">=</span> <span class="s2">&quot;ISK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Iceland Krona&quot;&quot;&quot;</span>
+    <span class="n">JMD</span> <span class="o">=</span> <span class="s2">&quot;JMD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jamaican Dollar&quot;&quot;&quot;</span>
+    <span class="n">JOD</span> <span class="o">=</span> <span class="s2">&quot;JOD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Jordanian Dinar&quot;&quot;&quot;</span>
+    <span class="n">JPY</span> <span class="o">=</span> <span class="s2">&quot;JPY&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yen&quot;&quot;&quot;</span>
+    <span class="n">KES</span> <span class="o">=</span> <span class="s2">&quot;KES&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kenyan Shilling&quot;&quot;&quot;</span>
+    <span class="n">KGS</span> <span class="o">=</span> <span class="s2">&quot;KGS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Som&quot;&quot;&quot;</span>
+    <span class="n">KHR</span> <span class="o">=</span> <span class="s2">&quot;KHR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Riel&quot;&quot;&quot;</span>
+    <span class="n">KMF</span> <span class="o">=</span> <span class="s2">&quot;KMF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Comoro Franc&quot;&quot;&quot;</span>
+    <span class="n">KPW</span> <span class="o">=</span> <span class="s2">&quot;KPW&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;North Korean Won&quot;&quot;&quot;</span>
+    <span class="n">KRW</span> <span class="o">=</span> <span class="s2">&quot;KRW&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Won&quot;&quot;&quot;</span>
+    <span class="n">KWD</span> <span class="o">=</span> <span class="s2">&quot;KWD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kuwaiti Dinar&quot;&quot;&quot;</span>
+    <span class="n">KYD</span> <span class="o">=</span> <span class="s2">&quot;KYD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cayman Islands Dollar&quot;&quot;&quot;</span>
+    <span class="n">KZT</span> <span class="o">=</span> <span class="s2">&quot;KZT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tenge&quot;&quot;&quot;</span>
+    <span class="n">LAK</span> <span class="o">=</span> <span class="s2">&quot;LAK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kip&quot;&quot;&quot;</span>
+    <span class="n">LBP</span> <span class="o">=</span> <span class="s2">&quot;LBP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lebanese Pound&quot;&quot;&quot;</span>
+    <span class="n">LKR</span> <span class="o">=</span> <span class="s2">&quot;LKR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sri Lanka Rupee&quot;&quot;&quot;</span>
+    <span class="n">LRD</span> <span class="o">=</span> <span class="s2">&quot;LRD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Liberian Dollar&quot;&quot;&quot;</span>
+    <span class="n">LSL</span> <span class="o">=</span> <span class="s2">&quot;LSL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Loti&quot;&quot;&quot;</span>
+    <span class="n">LTL</span> <span class="o">=</span> <span class="s2">&quot;LTL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lithuanian Litas&quot;&quot;&quot;</span>
+    <span class="n">LYD</span> <span class="o">=</span> <span class="s2">&quot;LYD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Libyan Dinar&quot;&quot;&quot;</span>
+    <span class="n">MAD</span> <span class="o">=</span> <span class="s2">&quot;MAD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Moroccan Dirham&quot;&quot;&quot;</span>
+    <span class="n">MDL</span> <span class="o">=</span> <span class="s2">&quot;MDL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Moldovan Leu&quot;&quot;&quot;</span>
+    <span class="n">MGA</span> <span class="o">=</span> <span class="s2">&quot;MGA&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Malagasy Ariary&quot;&quot;&quot;</span>
+    <span class="n">MKD</span> <span class="o">=</span> <span class="s2">&quot;MKD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Denar&quot;&quot;&quot;</span>
+    <span class="n">MMK</span> <span class="o">=</span> <span class="s2">&quot;MMK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kyat&quot;&quot;&quot;</span>
+    <span class="n">MNT</span> <span class="o">=</span> <span class="s2">&quot;MNT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tugrik&quot;&quot;&quot;</span>
+    <span class="n">MOP</span> <span class="o">=</span> <span class="s2">&quot;MOP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pataca&quot;&quot;&quot;</span>
+    <span class="n">MRO</span> <span class="o">=</span> <span class="s2">&quot;MRO&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ouguiya&quot;&quot;&quot;</span>
+    <span class="n">MUR</span> <span class="o">=</span> <span class="s2">&quot;MUR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mauritius Rupee&quot;&quot;&quot;</span>
+    <span class="n">MVR</span> <span class="o">=</span> <span class="s2">&quot;MVR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rufiyaa&quot;&quot;&quot;</span>
+    <span class="n">MWK</span> <span class="o">=</span> <span class="s2">&quot;MWK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kwacha&quot;&quot;&quot;</span>
+    <span class="n">MXN</span> <span class="o">=</span> <span class="s2">&quot;MXN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mexican Peso&quot;&quot;&quot;</span>
+    <span class="n">MXV</span> <span class="o">=</span> <span class="s2">&quot;MXV&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mexican Unidad de Inversion (UDI)&quot;&quot;&quot;</span>
+    <span class="n">MYR</span> <span class="o">=</span> <span class="s2">&quot;MYR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Malaysian Ringgit&quot;&quot;&quot;</span>
+    <span class="n">MZN</span> <span class="o">=</span> <span class="s2">&quot;MZN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mozambique Metical&quot;&quot;&quot;</span>
+    <span class="n">NAD</span> <span class="o">=</span> <span class="s2">&quot;NAD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Namibia Dollar&quot;&quot;&quot;</span>
+    <span class="n">NGN</span> <span class="o">=</span> <span class="s2">&quot;NGN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Naira&quot;&quot;&quot;</span>
+    <span class="n">NIO</span> <span class="o">=</span> <span class="s2">&quot;NIO&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Cordoba Oro&quot;&quot;&quot;</span>
+    <span class="n">NOK</span> <span class="o">=</span> <span class="s2">&quot;NOK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Norwegian Krone&quot;&quot;&quot;</span>
+    <span class="n">NPR</span> <span class="o">=</span> <span class="s2">&quot;NPR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nepalese Rupee&quot;&quot;&quot;</span>
+    <span class="n">NZD</span> <span class="o">=</span> <span class="s2">&quot;NZD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;New Zealand Dollar&quot;&quot;&quot;</span>
+    <span class="n">OMR</span> <span class="o">=</span> <span class="s2">&quot;OMR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rial Omani&quot;&quot;&quot;</span>
+    <span class="n">PAB</span> <span class="o">=</span> <span class="s2">&quot;PAB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Balboa&quot;&quot;&quot;</span>
+    <span class="n">PEN</span> <span class="o">=</span> <span class="s2">&quot;PEN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Nuevo Sol&quot;&quot;&quot;</span>
+    <span class="n">PGK</span> <span class="o">=</span> <span class="s2">&quot;PGK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Kina&quot;&quot;&quot;</span>
+    <span class="n">PHP</span> <span class="o">=</span> <span class="s2">&quot;PHP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Philippine Peso&quot;&quot;&quot;</span>
+    <span class="n">PKR</span> <span class="o">=</span> <span class="s2">&quot;PKR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pakistan Rupee&quot;&quot;&quot;</span>
+    <span class="n">PLN</span> <span class="o">=</span> <span class="s2">&quot;PLN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zloty&quot;&quot;&quot;</span>
+    <span class="n">PYG</span> <span class="o">=</span> <span class="s2">&quot;PYG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Guarani&quot;&quot;&quot;</span>
+    <span class="n">QAR</span> <span class="o">=</span> <span class="s2">&quot;QAR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Qatari Rial&quot;&quot;&quot;</span>
+    <span class="n">RON</span> <span class="o">=</span> <span class="s2">&quot;RON&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;New Romanian Leu&quot;&quot;&quot;</span>
+    <span class="n">RSD</span> <span class="o">=</span> <span class="s2">&quot;RSD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Serbian Dinar&quot;&quot;&quot;</span>
+    <span class="n">RUB</span> <span class="o">=</span> <span class="s2">&quot;RUB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Russian Ruble&quot;&quot;&quot;</span>
+    <span class="n">RUR</span> <span class="o">=</span> <span class="s2">&quot;RUR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Russian Ruble&quot;&quot;&quot;</span>
+    <span class="n">RWF</span> <span class="o">=</span> <span class="s2">&quot;RWF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rwanda Franc&quot;&quot;&quot;</span>
+    <span class="n">SAR</span> <span class="o">=</span> <span class="s2">&quot;SAR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Saudi Riyal&quot;&quot;&quot;</span>
+    <span class="n">SBD</span> <span class="o">=</span> <span class="s2">&quot;SBD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Solomon Islands Dollar&quot;&quot;&quot;</span>
+    <span class="n">SCR</span> <span class="o">=</span> <span class="s2">&quot;SCR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Seychelles Rupee&quot;&quot;&quot;</span>
+    <span class="n">SDG</span> <span class="o">=</span> <span class="s2">&quot;SDG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sudanese Pound&quot;&quot;&quot;</span>
+    <span class="n">SEK</span> <span class="o">=</span> <span class="s2">&quot;SEK&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Swedish Krona&quot;&quot;&quot;</span>
+    <span class="n">SGD</span> <span class="o">=</span> <span class="s2">&quot;SGD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Singapore Dollar&quot;&quot;&quot;</span>
+    <span class="n">SHP</span> <span class="o">=</span> <span class="s2">&quot;SHP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Saint Helena Pound&quot;&quot;&quot;</span>
+    <span class="n">SLL</span> <span class="o">=</span> <span class="s2">&quot;SLL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Leone&quot;&quot;&quot;</span>
+    <span class="n">SOS</span> <span class="o">=</span> <span class="s2">&quot;SOS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Somali Shilling&quot;&quot;&quot;</span>
+    <span class="n">SRD</span> <span class="o">=</span> <span class="s2">&quot;SRD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Surinam Dollar&quot;&quot;&quot;</span>
+    <span class="n">SSP</span> <span class="o">=</span> <span class="s2">&quot;SSP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;South Sudanese Pound&quot;&quot;&quot;</span>
+    <span class="n">STD</span> <span class="o">=</span> <span class="s2">&quot;STD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dobra&quot;&quot;&quot;</span>
+    <span class="n">SVC</span> <span class="o">=</span> <span class="s2">&quot;SVC&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;El Salvador Colon&quot;&quot;&quot;</span>
+    <span class="n">SYP</span> <span class="o">=</span> <span class="s2">&quot;SYP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Syrian Pound&quot;&quot;&quot;</span>
+    <span class="n">SZL</span> <span class="o">=</span> <span class="s2">&quot;SZL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Lilangeni&quot;&quot;&quot;</span>
+    <span class="n">THB</span> <span class="o">=</span> <span class="s2">&quot;THB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Baht&quot;&quot;&quot;</span>
+    <span class="n">TJS</span> <span class="o">=</span> <span class="s2">&quot;TJS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Somoni&quot;&quot;&quot;</span>
+    <span class="n">TMT</span> <span class="o">=</span> <span class="s2">&quot;TMT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turkmenistan New Manat&quot;&quot;&quot;</span>
+    <span class="n">TND</span> <span class="o">=</span> <span class="s2">&quot;TND&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tunisian Dinar&quot;&quot;&quot;</span>
+    <span class="n">TOP</span> <span class="o">=</span> <span class="s2">&quot;TOP&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Paʻanga&quot;&quot;&quot;</span>
+    <span class="n">TRY</span> <span class="o">=</span> <span class="s2">&quot;TRY&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Turkish Lira&quot;&quot;&quot;</span>
+    <span class="n">TTD</span> <span class="o">=</span> <span class="s2">&quot;TTD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trinidad and Tobago Dollar&quot;&quot;&quot;</span>
+    <span class="n">TWD</span> <span class="o">=</span> <span class="s2">&quot;TWD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;New Taiwan Dollar&quot;&quot;&quot;</span>
+    <span class="n">TZS</span> <span class="o">=</span> <span class="s2">&quot;TZS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tanzanian Shilling&quot;&quot;&quot;</span>
+    <span class="n">UAH</span> <span class="o">=</span> <span class="s2">&quot;UAH&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hryvnia&quot;&quot;&quot;</span>
+    <span class="n">UGX</span> <span class="o">=</span> <span class="s2">&quot;UGX&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uganda Shilling&quot;&quot;&quot;</span>
+    <span class="n">USD</span> <span class="o">=</span> <span class="s2">&quot;USD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;US Dollar&quot;&quot;&quot;</span>
+    <span class="n">USN</span> <span class="o">=</span> <span class="s2">&quot;USN&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;US Dollar (Next day)&quot;&quot;&quot;</span>
+    <span class="n">USS</span> <span class="o">=</span> <span class="s2">&quot;USS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;US Dollar (Same day)&quot;&quot;&quot;</span>
+    <span class="n">UYI</span> <span class="o">=</span> <span class="s2">&quot;UYI&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uruguay Peso en Unidades Indexadas (URUIURUI)&quot;&quot;&quot;</span>
+    <span class="n">UYU</span> <span class="o">=</span> <span class="s2">&quot;UYU&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Peso Uruguayo&quot;&quot;&quot;</span>
+    <span class="n">UZS</span> <span class="o">=</span> <span class="s2">&quot;UZS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Uzbekistan Sum&quot;&quot;&quot;</span>
+    <span class="n">VEF</span> <span class="o">=</span> <span class="s2">&quot;VEF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bolivar&quot;&quot;&quot;</span>
+    <span class="n">VND</span> <span class="o">=</span> <span class="s2">&quot;VND&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dong&quot;&quot;&quot;</span>
+    <span class="n">VUV</span> <span class="o">=</span> <span class="s2">&quot;VUV&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vatu&quot;&quot;&quot;</span>
+    <span class="n">WST</span> <span class="o">=</span> <span class="s2">&quot;WST&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Tala&quot;&quot;&quot;</span>
+    <span class="n">XAF</span> <span class="o">=</span> <span class="s2">&quot;XAF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CFA Franc BEAC&quot;&quot;&quot;</span>
+    <span class="n">XAG</span> <span class="o">=</span> <span class="s2">&quot;XAG&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Silver&quot;&quot;&quot;</span>
+    <span class="n">XAU</span> <span class="o">=</span> <span class="s2">&quot;XAU&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gold&quot;&quot;&quot;</span>
+    <span class="n">XBA</span> <span class="o">=</span> <span class="s2">&quot;XBA&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bond Markets Unit European Composite Unit (EURCO)&quot;&quot;&quot;</span>
+    <span class="n">XBB</span> <span class="o">=</span> <span class="s2">&quot;XBB&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bond Markets Unit European Monetary Unit (E.M.U.-6)&quot;&quot;&quot;</span>
+    <span class="n">XBC</span> <span class="o">=</span> <span class="s2">&quot;XBC&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bond Markets Unit European Unit of Account 9 (E.U.A.-9)&quot;&quot;&quot;</span>
+    <span class="n">XBD</span> <span class="o">=</span> <span class="s2">&quot;XBD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Bond Markets Unit European Unit of Account 17 (E.U.A.-17)&quot;&quot;&quot;</span>
+    <span class="n">XCD</span> <span class="o">=</span> <span class="s2">&quot;XCD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;East Caribbean Dollar&quot;&quot;&quot;</span>
+    <span class="n">XDR</span> <span class="o">=</span> <span class="s2">&quot;XDR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;SDR (Special Drawing Right)&quot;&quot;&quot;</span>
+    <span class="n">XOF</span> <span class="o">=</span> <span class="s2">&quot;XOF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CFA Franc BCEAO&quot;&quot;&quot;</span>
+    <span class="n">XPD</span> <span class="o">=</span> <span class="s2">&quot;XPD&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Palladium&quot;&quot;&quot;</span>
+    <span class="n">XPF</span> <span class="o">=</span> <span class="s2">&quot;XPF&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;CFP Franc&quot;&quot;&quot;</span>
+    <span class="n">XPT</span> <span class="o">=</span> <span class="s2">&quot;XPT&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Platinum&quot;&quot;&quot;</span>
+    <span class="n">XSU</span> <span class="o">=</span> <span class="s2">&quot;XSU&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Sucre&quot;&quot;&quot;</span>
+    <span class="n">XTS</span> <span class="o">=</span> <span class="s2">&quot;XTS&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Codes specifically reserved for testing purposes&quot;&quot;&quot;</span>
+    <span class="n">XUA</span> <span class="o">=</span> <span class="s2">&quot;XUA&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;ADB Unit of Account&quot;&quot;&quot;</span>
+    <span class="n">XXX</span> <span class="o">=</span> <span class="s2">&quot;XXX&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The codes assigned for transactions where no currency ist involved&quot;&quot;&quot;</span>
+    <span class="n">YER</span> <span class="o">=</span> <span class="s2">&quot;YER&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Yemeni Rial&quot;&quot;&quot;</span>
+    <span class="n">ZAR</span> <span class="o">=</span> <span class="s2">&quot;ZAR&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Rand&quot;&quot;&quot;</span>
+    <span class="n">ZMW</span> <span class="o">=</span> <span class="s2">&quot;ZMW&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zambian Kwacha&quot;&quot;&quot;</span>
+    <span class="n">ZWL</span> <span class="o">=</span> <span class="s2">&quot;ZWL&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Zimbabwe Dollar&quot;&quot;&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

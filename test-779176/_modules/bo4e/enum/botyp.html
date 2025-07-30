@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.enum.botyp &mdash; bo4e test-779176 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=b9d053d9"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            bo4e
+              <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Data Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.bo.html">BusinessObjects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.com.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.enum.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.enum.botyp</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.enum.botyp</h1><div class="highlight"><pre>
+<span></span><span class="c1"># pylint:disable=missing-module-docstring</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bo4e.enum.strenum</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrEnum</span>
+
+
+<div class="viewcode-block" id="BoTyp">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.botyp.BoTyp">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BoTyp</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Auflistung sämtlicher existierender Geschäftsobjekte.</span>
+
+<span class="sd">    .. HINT::</span>
+<span class="sd">        Die Unterscheidung zwischen Komponenten und Geschäftsobjekten ist, dass Komponenten immer in einem Geschäftsobjekt enthalten sind.</span>
+<span class="sd">        Geschäftsobjekte können auch ohne Komponenten existieren.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ANGEBOT</span> <span class="o">=</span> <span class="s2">&quot;ANGEBOT&quot;</span>
+    <span class="n">AUSSCHREIBUNG</span> <span class="o">=</span> <span class="s2">&quot;AUSSCHREIBUNG&quot;</span>
+    <span class="n">BILANZIERUNG</span> <span class="o">=</span> <span class="s2">&quot;BILANZIERUNG&quot;</span>
+    <span class="n">BUENDELVERTRAG</span> <span class="o">=</span> <span class="s2">&quot;BUENDELVERTRAG&quot;</span>
+    <span class="n">ENERGIEMENGE</span> <span class="o">=</span> <span class="s2">&quot;ENERGIEMENGE&quot;</span>
+    <span class="n">FREMDKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;FREMDKOSTEN&quot;</span>
+    <span class="n">GERAET</span> <span class="o">=</span> <span class="s2">&quot;GERAET&quot;</span>
+    <span class="c1"># It is practical to use the BoTyp Enum as discriminator in the database.</span>
+    <span class="c1"># Therefore, we added one additional entry for GESCHAEFTSOBJEKT</span>
+    <span class="c1"># This is not defined by the documentation!</span>
+    <span class="n">GESCHAEFTSOBJEKT</span> <span class="o">=</span> <span class="s2">&quot;GESCHAEFTSOBJEKT&quot;</span>
+    <span class="n">GESCHAEFTSPARTNER</span> <span class="o">=</span> <span class="s2">&quot;GESCHAEFTSPARTNER&quot;</span>
+    <span class="n">KOSTEN</span> <span class="o">=</span> <span class="s2">&quot;KOSTEN&quot;</span>
+    <span class="n">LASTGANG</span> <span class="o">=</span> <span class="s2">&quot;LASTGANG&quot;</span>
+    <span class="n">MARKTLOKATION</span> <span class="o">=</span> <span class="s2">&quot;MARKTLOKATION&quot;</span>
+    <span class="n">MESSLOKATION</span> <span class="o">=</span> <span class="s2">&quot;MESSLOKATION&quot;</span>
+    <span class="n">NETZLOKATION</span> <span class="o">=</span> <span class="s2">&quot;NETZLOKATION&quot;</span>
+    <span class="n">MARKTTEILNEHMER</span> <span class="o">=</span> <span class="s2">&quot;MARKTTEILNEHMER&quot;</span>
+    <span class="n">NETZNUTZUNGSRECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;NETZNUTZUNGSRECHNUNG&quot;</span>
+    <span class="n">TECHNISCHERESSOURCE</span> <span class="o">=</span> <span class="s2">&quot;TECHNISCHERESSOURCE&quot;</span>
+    <span class="n">STEUERBARERESSOURCE</span> <span class="o">=</span> <span class="s2">&quot;STEUERBARERESSOURCE&quot;</span>
+    <span class="n">PERSON</span> <span class="o">=</span> <span class="s2">&quot;PERSON&quot;</span>
+    <span class="n">PREISBLATT</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATT&quot;</span>
+    <span class="n">PREISBLATTDIENSTLEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATTDIENSTLEISTUNG&quot;</span>
+    <span class="n">PREISBLATTHARDWARE</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATTHARDWARE&quot;</span>
+    <span class="n">PREISBLATTKONZESSIONSABGABE</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATTKONZESSIONSABGABE&quot;</span>
+    <span class="n">PREISBLATTMESSUNG</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATTMESSUNG&quot;</span>
+    <span class="n">PREISBLATTNETZNUTZUNG</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATTNETZNUTZUNG&quot;</span>
+    <span class="n">PREISBLATTUMLAGEN</span> <span class="o">=</span> <span class="s2">&quot;PREISBLATTUMLAGEN&quot;</span>
+    <span class="n">RECHNUNG</span> <span class="o">=</span> <span class="s2">&quot;RECHNUNG&quot;</span>
+    <span class="n">REGION</span> <span class="o">=</span> <span class="s2">&quot;REGION&quot;</span>
+    <span class="n">REGIONALTARIF</span> <span class="o">=</span> <span class="s2">&quot;REGIONALTARIF&quot;</span>
+    <span class="n">STANDORTEIGENSCHAFTEN</span> <span class="o">=</span> <span class="s2">&quot;STANDORTEIGENSCHAFTEN&quot;</span>
+    <span class="n">TARIF</span> <span class="o">=</span> <span class="s2">&quot;TARIF&quot;</span>
+    <span class="n">TARIFINFO</span> <span class="o">=</span> <span class="s2">&quot;TARIFINFO&quot;</span>
+    <span class="n">TARIFKOSTEN</span> <span class="o">=</span> <span class="s2">&quot;TARIFKOSTEN&quot;</span>
+    <span class="n">TARIFPREISBLATT</span> <span class="o">=</span> <span class="s2">&quot;TARIFPREISBLATT&quot;</span>
+    <span class="n">VERTRAG</span> <span class="o">=</span> <span class="s2">&quot;VERTRAG&quot;</span>
+    <span class="n">ZAEHLER</span> <span class="o">=</span> <span class="s2">&quot;ZAEHLER&quot;</span>
+    <span class="n">ZEITREIHE</span> <span class="o">=</span> <span class="s2">&quot;ZEITREIHE&quot;</span>
+    <span class="n">LOKATIONSZUORDNUNG</span> <span class="o">=</span> <span class="s2">&quot;LOKATIONSZUORDNUNG&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

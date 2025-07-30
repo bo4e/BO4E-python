@@ -1,0 +1,188 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BO4E Data Model Release Workflow &mdash; bo4e test-779176 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+    <link rel="shortcut icon" href="_static/bo4e-python-favicon.png"/>
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=b9d053d9"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to Contribute Code" href="contributing_guide.html" />
+    <link rel="prev" title="BO4E Versioning" href="versioning.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            bo4e
+              <img src="_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/modules.html">Data Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.bo.html">BusinessObjects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.com.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api/bo4e.enum.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="versioning.html">Versioning</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Release Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#step-by-step-guide">Step-by-Step Guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#python-package-implementation">1. Python Package Implementation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#release-and-schema-generation">2. Release and Schema Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-customization-bo4e-schema-tool">3. Optional Customization (BO4E-Schema-Tool)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-generation-bo4e-python-generator">4. Code Generation (BO4E-Python-Generator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ready-to-use">5. Ready to Use</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#visualization-of-the-release-workflow">Visualization of the release workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BO4E Data Model Release Workflow</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/release_workflow.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bo4e-data-model-release-workflow">
+<h1>BO4E Data Model Release Workflow<a class="headerlink" href="#bo4e-data-model-release-workflow" title="Link to this heading"></a></h1>
+<p>Welcome to the BO4E Data Model release process!
+This guide provides a straightforward explanation of how we release new versions of our data model, making it easier for you to integrate and use them in your preferred programming language.</p>
+<section id="step-by-step-guide">
+<h2>Step-by-Step Guide<a class="headerlink" href="#step-by-step-guide" title="Link to this heading"></a></h2>
+<section id="python-package-implementation">
+<h3>1. Python Package Implementation<a class="headerlink" href="#python-package-implementation" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Starting Point:</strong> The journey begins with the implementation of the <a class="reference external" href="https://github.com/bo4e/BO4E-python/">BO4E data model as a Python package</a>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="release-and-schema-generation">
+<h3>2. Release and Schema Generation<a class="headerlink" href="#release-and-schema-generation" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Automatic Generation:</strong> Upon releasing a new version of this Python package, a GitHub action automatically triggers.</p></li>
+<li><p><strong>JSON Schemas Creation:</strong> This action generates JSON schemas, which are essential blueprints of the data model.</p></li>
+<li><p><strong>Storage:</strong> These schemas are then stored in a dedicated repository, known as the <a class="reference external" href="https://github.com/bo4e/BO4E-Schemas">BO4E-Schemas Repository</a>.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="optional-customization-bo4e-schema-tool">
+<h3>3. Optional Customization (BO4E-Schema-Tool)<a class="headerlink" href="#optional-customization-bo4e-schema-tool" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Flexibility in Data Fields:</strong> Initially, the JSON schemas contain only optional fields.</p></li>
+<li><p><strong>Setting Required Fields:</strong> If you need to designate certain fields as mandatory, you can use the <a class="reference external" href="https://github.com/bo4e/BO4E-Schema-Tool">BO4E-Schema-Tool Repository</a>.</p></li>
+<li><p><strong>Tool Functionality:</strong> This repository houses a command-line interface (CLI) tool that assists in updating the JSON schema files to define required fields.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="code-generation-bo4e-python-generator">
+<h3>4. Code Generation (BO4E-Python-Generator)<a class="headerlink" href="#code-generation-bo4e-python-generator" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Finalizing JSON Schemas:</strong> Once you have the final version of the JSON schema files, it’s time to generate code.</p></li>
+<li><p><strong>Pydantic Classes Creation:</strong> Utilize tools like the <a class="reference external" href="https://github.com/bo4e/BO4E-Python-Generator">BO4E-Python-Generator</a>, another CLI tool, to create Pydantic classes from the JSON schemas.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="ready-to-use">
+<h3>5. Ready to Use<a class="headerlink" href="#ready-to-use" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>Integration:</strong> With these steps complete, the BO4E data model is now ready for use in your favorite programming language.</p></li>
+<li><p><strong>Seamless Application:</strong> Implement the data model seamlessly in your projects and enjoy the efficiency it brings to your workflow.</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This workflow ensures that the BO4E data model remains flexible, adaptable, and easy to integrate into various programming environments.</p>
+</div>
+</section>
+</section>
+<section id="visualization-of-the-release-workflow">
+<h2>Visualization of the release workflow<a class="headerlink" href="#visualization-of-the-release-workflow" title="Link to this heading"></a></h2>
+<img alt="_images/bo4e-release-workflow.png" src="_images/bo4e-release-workflow.png" />
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="versioning.html" class="btn btn-neutral float-left" title="BO4E Versioning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="contributing_guide.html" class="btn btn-neutral float-right" title="How to Contribute Code" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
