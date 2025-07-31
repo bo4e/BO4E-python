@@ -20,29 +20,27 @@ You can also download the compatibility matrix as CSV file `here <_static/tables
 .. table:: Legend for compatibility matrix
    :widths: 10 90
 
-   +------+------------------------------------------------------+
-   | Icon | Description                                          |
-   +======+======================================================+
-   | 🟢   | Compatible                                           |
-   |      | No changes in the data model                         |
-   +------+------------------------------------------------------+
-   | 🟡   | Compatible                                           |
-   |      | Only non-critical changes in the data model          |
-   |      | e.g. added fields, changed doc strings               |
-   +------+------------------------------------------------------+
-   | 🔴   | Incompatible                                         |
-   |      | Critical changes in the data model                   |
-   |      | e.g. removed fields, changed types                   |
-   +------+------------------------------------------------------+
-   | ➕   | Compatible                                           |
-   |      | Data model was added in this version                 |
-   +------+------------------------------------------------------+
-   | ➖   | Incompatible                                         |
-   |      | Data model was removed in this version               |
-   +------+------------------------------------------------------+
-   | \-   | Data model not existent in this version              |
-   |      | was removed before or will be added in future        |
-   +------+------------------------------------------------------+
+   +------+---------------------------------------------------------------------------------------------------+
+   | Icon | Description                                                                                       |
+   +======+===================================================================================================+
+   | 🟢   | | Compatible                                                                                      |
+   |      | | No changes in the data model                                                                    |
+   +------+---------------------------------------------------------------------------------------------------+
+   | 🟡   | | Compatible                                                                                      |
+   |      | | Only non\-critical changes in the data model e.g. added fields, changed doc strings             |
+   +------+---------------------------------------------------------------------------------------------------+
+   | 🔴   | | Incompatible                                                                                    |
+   |      | | Critical changes in the data model e.g. removed fields, changed types                           |
+   +------+---------------------------------------------------------------------------------------------------+
+   | ➕   | | Compatible                                                                                      |
+   |      | | Data model was added in this version                                                            |
+   +------+---------------------------------------------------------------------------------------------------+
+   | ➖   | | Incompatible                                                                                    |
+   |      | | Data model was removed in this version                                                          |
+   +------+---------------------------------------------------------------------------------------------------+
+   | \-   | Data model non\-existent in this version                 m                                        |
+   |      | was removed before or will be added in future                                                     |
+   +------+---------------------------------------------------------------------------------------------------+
 
 .. csv-table:: Compatibility matrix
    :file: _static/tables/compatibility_matrix.csv
