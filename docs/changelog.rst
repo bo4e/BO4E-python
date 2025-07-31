@@ -23,23 +23,23 @@ You can also download the compatibility matrix as CSV file `here <_static/tables
    +------+---------------------------------------------------------------------------------------------------+
    | Icon | Description                                                                                       |
    +======+===================================================================================================+
-   | 🟢   | | Compatible                                                                                      |
+   | 🟢   | | :main-color:`Compatible`                                                                        |
    |      | | No changes in the data model                                                                    |
    +------+---------------------------------------------------------------------------------------------------+
-   | 🟡   | | Compatible                                                                                      |
+   | 🟡   | | :main-color:`Compatible`                                                                        |
    |      | | Only non\-critical changes in the data model e.g. added fields, changed doc strings             |
    +------+---------------------------------------------------------------------------------------------------+
-   | 🔴   | | Incompatible                                                                                    |
+   | 🔴   | | :error-color:`Incompatible`                                                                     |
    |      | | Critical changes in the data model e.g. removed fields, changed types                           |
    +------+---------------------------------------------------------------------------------------------------+
-   | ➕   | | Compatible                                                                                      |
+   | ➕   | | :main-color:`Compatible`                                                                        |
    |      | | Data model was added in this version                                                            |
    +------+---------------------------------------------------------------------------------------------------+
-   | ➖   | | Incompatible                                                                                    |
+   | ➖   | | :error-color:`Incompatible`                                                                     |
    |      | | Data model was removed in this version                                                          |
    +------+---------------------------------------------------------------------------------------------------+
-   | \-   | Data model non\-existent in this version                 m                                        |
-   |      | was removed before or will be added in future                                                     |
+   | \-   | | Non\-existent                                                                                   |
+   |      | | Doesn't exist in this version i.e. it was removed before or will be added in future             |
    +------+---------------------------------------------------------------------------------------------------+
 
 .. csv-table:: Compatibility matrix
