@@ -29,7 +29,7 @@ jobs:
       - name: Set routing name to test-XXXXXX
         if: github.ref != 'refs/heads/main'
         run: echo "REF_NAME=test-$(shuf -i 100000-999999 -n 1)" >> "$GITHUB_ENV"
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Checkout
