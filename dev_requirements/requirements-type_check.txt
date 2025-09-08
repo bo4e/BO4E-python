@@ -22,7 +22,7 @@ pluggy==1.6.0
     # via pytest
 pygments==2.19.2
     # via pytest
-pytest==8.4.1
+pytest==8.4.2
     # via -r requirements-type_check.in
 types-requests==2.32.4.20250611
     # via -r requirements-type_check.in
