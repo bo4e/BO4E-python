@@ -15,15 +15,20 @@ if TYPE_CHECKING:
     from ..com.betrag import Betrag
     from ..com.rechnungsposition import Rechnungsposition
     from ..com.steuerbetrag import Steuerbetrag
+    from ..com.zahlungsinformationen import Zahlungsinformationen
     from ..com.zeitraum import Zeitraum
     from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
     from ..enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
     from ..enum.rechnungsstatus import Rechnungsstatus
     from ..enum.rechnungstyp import Rechnungstyp
     from ..enum.sparte import Sparte
+    from .energiemenge import Energiemenge
+    from .fremdkosten import Fremdkosten
     from .geschaeftspartner import Geschaeftspartner
     from .marktlokation import Marktlokation
+    from .marktteilnehmer import Marktteilnehmer
     from .messlokation import Messlokation
+    from .vertrag import Vertrag
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 
@@ -101,3 +106,27 @@ class Rechnung(Geschaeftsobjekt):
     """Marktlokation, auf die sich die Rechnung bezieht"""
     messlokation: Optional["Messlokation"] = None
     """Messlokation, auf die sich die Rechnung bezieht"""
+    teilrechnungen: Optional[list["Rechnung"]]
+    """Rechnungen, die durch diese Rechnung zusammengefasst werden"""
+    zahlungsinformationen: Optional["Zahlungsinformationen"]
+    """Informationen wie eine Rechnung bezahlt werden soll"""
+    vertrag: Optional["Vertrag"]
+    """enthält Informationen über den der Rechnung zugrundeliegenden Vertrag für Rechnungen nach EnWG § 40"""
+    messstellenbetreiber: Optional["Marktteilnehmer"]
+    """der Messtellenbetreiber an der Lieferstelle, relevant für Rechnungen gemäß EnWG § 40"""
+    netzbetreiber: Optional["Marktteilnehmer"]
+    """der Netzbetreiber an der Lieferstelle, relevant für Rechnungen gemäß EnWG § 40"""
+    anfangszaehlerstand: Optional["Energiemenge"]
+    """Für Verbrauchsbasierte Rechnungen der Zählerstand zur Beginn des abgerechneten Zeitraums, Pflicht für Rechnungen gemäß EnWG § 40"""
+    endzaehlerstand: Optional["Energiemenge"]
+    """Für Verbrauchsbasierte Rechnungen der Zählerstand zum Ende des abgerechneten Zeitraums, Pflicht für Rechnungen gemäß EnWG § 40"""
+    aktuellerverbrauch: Optional["Energiemenge"]
+    """Verbrauch des abgerechneten Zeitraums, Pflicht für Rechnungen gemäß EnWG § 40"""
+    jahresverbrauch: Optional["Energiemenge"]
+    """ggf. auf einen Vergleichszeitraum hochgerechneter Verbrauch des abgerechneten Zeitraums zu Vergleichszwecken mit dem Vorjahr, gemäß EnWG § 40"""
+    vorjahresverbrauch: Optional["Energiemenge"]
+    """ggf. auf einen Vergleichszeitraum hochgerechneter Verbrauch des vorherigen Jahres zu Vergleichszwecken mit dem aktuellen Jahr, gemäß EnWG § 40"""
+    fremdkosten: Optional["Fremdkosten"]
+    """Zur Ausweisung der in die Kalkulation eingeflossenen Preise gemäß EnWG § 40"""
+    referenzverbrauch: Optional[list["Energiemenge"]]
+    """Verbräuche von Referenzkundengruppen gemäß EnWG § 40"""
