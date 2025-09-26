@@ -80,7 +80,7 @@ jobs:
         env:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Push schemas to BO4E-Schemas repo
-        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        uses: cpina/github-action-push-to-another-repository@v1.7.3
         env:
           API_TOKEN_GITHUB: ${{ secrets.BO4E_PYTHON_GENERATE_SCHEMAS }} # this token expires on 2024-10-09
           # token with repo scope
