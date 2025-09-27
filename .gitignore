@@ -166,8 +166,8 @@ Temporary Items
 # This directory rebuilds on 'tox -e docs' therefore not needed in repo
 docs/api
 docs/plantuml.jar
-docs/_static
-docs/compatibility_matrix.csv
+docs/_static/images
+docs/_static/tables
 
 # version number for bo4e-python; gets auto-generated during the command
 # python -m build
