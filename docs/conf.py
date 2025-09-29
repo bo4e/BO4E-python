@@ -196,6 +196,16 @@ html_theme_options = {
     "titles_only": False,
 }
 
+html_css_files = [
+    "css/override.css",
+    "css/colors.css",
+]
+rst_prolog = """
+.. role:: main-color
+.. role:: sub-color
+.. role:: error-color
+"""
+
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
 
