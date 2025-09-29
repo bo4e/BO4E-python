@@ -9,6 +9,8 @@
   <title>Changelog &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/css/override.css?v=54ea1ca9" />
+      <link rel="stylesheet" type="text/css" href="_static/css/colors.css?v=9164046b" />
 
   
     <link rel="shortcut icon" href="_static/bo4e-python-favicon.png"/>
@@ -109,8 +111,8 @@ You can also download the compatibility matrix as CSV file <a class="reference e
 <td><p><a class="reference external" href="_static//tables//changes//v202401.7.0_to_v202501.0.0.json">v202401.7.0_to_v202501.0.0.json</a></p></td>
 </tr>
 <tr class="row-even"><td><p>v202501.0.0</p></td>
-<td><p>v202501.0.0+g64af9038d</p></td>
-<td><p><a class="reference external" href="_static//tables//changes//v202501.0.0_to_v202501.0.0+g64af9038d.json">v202501.0.0_to_v202501.0.0+g64af9038d.json</a></p></td>
+<td><p>v202501.0.0+g5aa0922f3</p></td>
+<td><p><a class="reference external" href="_static//tables//changes//v202501.0.0_to_v202501.0.0+g5aa0922f3.json">v202501.0.0_to_v202501.0.0+g5aa0922f3.json</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -127,30 +129,46 @@ You can also download the compatibility matrix as CSV file <a class="reference e
 </thead>
 <tbody>
 <tr class="row-even"><td><p>🟢</p></td>
-<td><p>Compatible
-No changes in the data model</p></td>
+<td><div class="line-block">
+<div class="line"><span class="main-color">Compatible</span></div>
+<div class="line">No changes in the data model</div>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><p>🟡</p></td>
-<td><p>Compatible
-Only non-critical changes in the data model
-e.g. added fields, changed doc strings</p></td>
+<td><div class="line-block">
+<div class="line"><span class="main-color">Compatible</span></div>
+<div class="line">Only non-critical changes in the data model e.g. added fields, changed doc strings</div>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td><p>🔴</p></td>
-<td><p>Incompatible
-Critical changes in the data model
-e.g. removed fields, changed types</p></td>
+<td><div class="line-block">
+<div class="line"><span class="error-color">Incompatible</span></div>
+<div class="line">Critical changes in the data model e.g. removed fields, changed types</div>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><p>➕</p></td>
-<td><p>Compatible
-Data model was added in this version</p></td>
+<td><div class="line-block">
+<div class="line"><span class="main-color">Compatible</span></div>
+<div class="line">Data model was added in this version</div>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td><p>➖</p></td>
-<td><p>Incompatible
-Data model was removed in this version</p></td>
+<td><div class="line-block">
+<div class="line"><span class="error-color">Incompatible</span></div>
+<div class="line">Data model was removed in this version</div>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><p>-</p></td>
-<td><p>Data model not existent in this version
-was removed before or will be added in future</p></td>
+<td><div class="line-block">
+<div class="line">Non-existent</div>
+<div class="line">Doesn’t exist in this version i.e. it was removed before or will be added in future</div>
+</div>
+</td>
 </tr>
 </tbody>
 </table>
@@ -160,7 +178,7 @@ was removed before or will be added in future</p></td>
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>v202401.6.0 ↦ v202401.7.0</p></th>
 <th class="head"><p>↦ v202501.0.0</p></th>
-<th class="head"><p>↦ v202501.0.0+g64af9038d</p></th>
+<th class="head"><p>↦ v202501.0.0+g5aa0922f3</p></th>
 </tr>
 </thead>
 <tbody>
