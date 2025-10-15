@@ -204,6 +204,7 @@ __all__ = [
     "ZaehlertypSpezifikation",
     "Zeitreihentyp",
     "ZusatzAttribut",
+    "Zahlungsinformationen",
     "__version__",
     "__gh_version__",
 ]
@@ -307,6 +308,7 @@ from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
+from .com.zahlungsinformationen import Zahlungsinformationen
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
 from .com.zustaendigkeit import Zustaendigkeit
