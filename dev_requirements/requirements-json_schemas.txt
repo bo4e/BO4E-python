@@ -15,7 +15,7 @@ autoflake==2.3.1
 black==25.1.0
     # via datamodel-code-generator
 bo4e-cli==0.0.3
-    # via -r .\dev_requirements\requirements-json_schemas.in
+    # via -r requirements-json_schemas.in
 certifi==2025.7.9
     # via
     #   httpcore
@@ -29,11 +29,9 @@ charset-normalizer==3.4.2
     # via requests
 click==8.2.1
     # via
-    #   -r .\dev_requirements\requirements-json_schemas.in
+    #   -r requirements-json_schemas.in
     #   black
     #   typer
-colorama==0.4.6
-    # via click
 cryptography==45.0.5
     # via pyjwt
 datamodel-code-generator==0.31.2
@@ -57,7 +55,7 @@ idna==3.10
     #   requests
 inflect==7.5.0
     # via datamodel-code-generator
-isort==6.0.1
+isort==6.1.0
     # via datamodel-code-generator
 jinja2==3.1.6
     # via datamodel-code-generator
