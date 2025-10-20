@@ -8,7 +8,7 @@ astroid==3.3.10
     # via pylint
 dill==0.4.0
     # via pylint
-isort==6.0.1
+isort==6.1.0
     # via pylint
 mccabe==0.7.0
     # via pylint
