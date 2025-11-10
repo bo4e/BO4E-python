@@ -55,5 +55,5 @@ class Regionsoperation(COM):
     """(inklusiv)"""
     radius_in_km: Optional[Decimal] = None
     """(inklusiv)"""
-    regionskriterium: Optional[Regionskriterium] = None
+    regionskriterium: Optional["Regionskriterium"] = None
     """(ehemals Regionskriteriumtyp)]"""

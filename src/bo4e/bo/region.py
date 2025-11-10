@@ -44,7 +44,7 @@ class Region(Geschaeftsobjekt):
     beschreibung: Optional[str] = None
     """Beschreibung der Region"""
 
-    regionsoperationen: Optional[list[Regionsoperation]] = None
+    regionsoperationen: Optional[list["Regionsoperation"]] = None
     """
     Eine (unsortierte) Liste von Regionsoperationen.
     Die Sortierung wird durch das Feld `prioritaet` im COM `Regionsoperation` festgelegt.
