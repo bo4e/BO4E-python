@@ -11,7 +11,7 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
-    from ..com.regionskriterium import Regionskriterium
+    from ..com.regionsoperation import Regionsoperation
 
 
 # pylint: disable=too-few-public-methods
@@ -21,7 +21,13 @@ if TYPE_CHECKING:
 @postprocess_docstring
 class Region(Geschaeftsobjekt):
     """
-    Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben
+    Modellierung einer Region als Liste von Regionsoperationen.
+
+    Die Reihenfolge der Regionsoperationen ist relevant,
+    wird aber nicht zwingend durch die Sortierung innerhalb der Liste definiert. Die Sortierung der Regionsoperationen
+    wird durch das Feld `prioritaet` im COM `Regionsoperation` explizit festgelegt, um technischen Problemen bei
+    spezifischen Umsetzungen vorzubeugen und Klarheit zu schaffen.
+    Bei einer Implementierung sollte darauf geachtet werden, dass sich "prioritaeten" nicht doppeln können.
 
     .. raw:: html
 
@@ -35,9 +41,11 @@ class Region(Geschaeftsobjekt):
     typ: Annotated[Literal[BoTyp.REGION], Field(alias="_typ")] = BoTyp.REGION
     bezeichnung: Optional[str] = None
     """Bezeichnung der Region"""
+    beschreibung: Optional[str] = None
+    """Beschreibung der Region"""
 
-    positiv_liste: Optional[list["Regionskriterium"]] = None
-    """Positivliste der Kriterien zur Definition der Region"""
-
-    negativ_liste: Optional[list["Regionskriterium"]] = None
-    """Negativliste der Kriterien zur Definition der Region"""
+    regionsoperationen: Optional[list[Regionsoperation]] = None
+    """
+    Eine (unsortierte) Liste von Regionsoperationen.
+    Die Sortierung wird durch das Feld `prioritaet` im COM `Regionsoperation` festgelegt.
+    """
