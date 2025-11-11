@@ -149,6 +149,7 @@ __all__ = [
     "Messart",
     "Messgroesse",
     "Messpreistyp",
+    "Messwert",
     "Messwerterfassung",
     "Messwertstatus",
     "Messwertstatuszusatz",
@@ -277,6 +278,7 @@ from .com.kriteriumwert import KriteriumWert
 from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
+from .com.messwert import Messwert
 from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
