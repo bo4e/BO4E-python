@@ -98,6 +98,7 @@
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.konzessionsabgabe</span><span class="w"> </span><span class="kn">import</span> <span class="n">Konzessionsabgabe</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.messwert</span><span class="w"> </span><span class="kn">import</span> <span class="n">Messwert</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.verwendungszweckpromarktrolle</span><span class="w"> </span><span class="kn">import</span> <span class="n">VerwendungszweckProMarktrolle</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.zaehlzeitregister</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zaehlzeitregister</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.energierichtung</span><span class="w"> </span><span class="kn">import</span> <span class="n">Energierichtung</span>
@@ -168,7 +169,9 @@
     <span class="n">anzahlAblesungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl Ablesungen pro Jahr&quot;&quot;&quot;</span>
     <span class="n">zaehlzeitregister</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zaehlzeitregister&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Erweiterte Definition der Zählzeit in Bezug auf ein Register&quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Erweiterte Definition der Zählzeit in Bezug auf ein Register&quot;&quot;&quot;</span>
+    <span class="n">messwerte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Messwert&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gemessene Werte des Zählwerks&quot;&quot;&quot;</span></div>
 
 </pre></div>
 
