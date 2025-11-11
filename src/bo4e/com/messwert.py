@@ -21,6 +21,14 @@ if TYPE_CHECKING:
 class Messwert(COM):
     """
     Abbildung eines Messwertes mit Stati, Zeitpunkt und Wert.
+
+    .. raw:: html
+
+        <object data="../_static/images/bo4e/com/Messwert.svg" type="image/svg+xml"></object>
+
+    .. HINT::
+        `Messwert JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Messwert.json>`_
+
     """
 
     typ: Annotated[Literal[ComTyp.MESSWERT], Field(alias="_typ")] = ComTyp.MESSWERT
