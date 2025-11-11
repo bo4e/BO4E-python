@@ -1,10 +1,12 @@
 """
 Contains Adresse class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..enum.landescode import Landescode
 from ..utils import postprocess_docstring
 from .com import COM
@@ -26,22 +28,38 @@ class Adresse(COM):
 
     """
 
-    #: Die Postleitzahl; z.B: "41836"
-    postleitzahl: Optional[str] = None
-    #: Bezeichnung der Stadt; z.B. "Hückelhoven"
-    ort: Optional[str] = None
+    typ: Annotated[Literal[ComTyp.ADRESSE], Field(alias="_typ")] = ComTyp.ADRESSE
 
-    #: Bezeichnung des Ortsteils; z.B. "Mitte"
+    postleitzahl: Optional[str] = None
+    """
+    Die Postleitzahl; z.B: "41836"
+    """
+    ort: Optional[str] = None
+    """
+    Bezeichnung der Stadt; z.B. "Hückelhoven"
+    """
+
     ortsteil: Optional[str] = None
-    #: Bezeichnung der Straße; z.B. "Weserstraße"
+    """
+    Bezeichnung des Ortsteils; z.B. "Mitte"
+    """
     strasse: Optional[str] = None
-    #: Hausnummer inkl. Zusatz; z.B. "3", "4a"
+    """
+    Bezeichnung der Straße; z.B. "Weserstraße"
+    """
     hausnummer: Optional[str] = None
-    #: Im Falle einer Postfachadresse das Postfach; Damit werden Straße und Hausnummer nicht berücksichtigt
+    """
+    Hausnummer inkl. Zusatz; z.B. "3", "4a"
+    """
     postfach: Optional[str] = None
-    #: Zusatzhinweis zum Auffinden der Adresse, z.B. "3. Stock linke Wohnung"
+    """Im Falle einer Postfachadresse das Postfach; Damit werden Straße und Hausnummer nicht berücksichtigt"""
     adresszusatz: Optional[str] = None
-    #: Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
+    """
+    Zusatzhinweis zum Auffinden der Adresse, z.B. "3. Stock linke Wohnung"
+    """
     co_ergaenzung: Optional[str] = None
-    #: Offizieller ISO-Landescode
+    """
+    Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
+    """
     landescode: Optional["Landescode"] = Landescode.DE  # type:ignore
+    """Offizieller ISO-Landescode"""

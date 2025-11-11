@@ -1,10 +1,13 @@
 """
-Contains Sigmoidparameter class and corresponding marshmallow schema for de-/serialization
+Contains Sigmoidparameter class
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -26,7 +29,13 @@ class Sigmoidparameter(COM):
 
     """
 
-    A: Optional[Decimal] = None  #: Briefmarke Ortsverteilnetz (EUR/kWh)
-    B: Optional[Decimal] = None  #: Wendepunkt für die bepreiste Menge (kW)
-    C: Optional[Decimal] = None  #: Exponent (einheitenlos)
-    D: Optional[Decimal] = None  #: Briefmarke Transportnetz (EUR/kWh)
+    typ: Annotated[Literal[ComTyp.SIGMOIDPARAMETER], Field(alias="_typ")] = ComTyp.SIGMOIDPARAMETER
+
+    A: Optional[Decimal] = None
+    """Briefmarke Ortsverteilnetz (EUR/kWh)"""
+    B: Optional[Decimal] = None
+    """Wendepunkt für die bepreiste Menge (kW)"""
+    C: Optional[Decimal] = None
+    """Exponent (einheitenlos)"""
+    D: Optional[Decimal] = None
+    """Briefmarke Transportnetz (EUR/kWh)"""

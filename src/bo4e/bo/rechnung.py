@@ -1,14 +1,13 @@
 """
 Contains Rechnung class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -43,62 +42,62 @@ class Rechnung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional["Typ"], Field(alias="_typ")] = Typ.RECHNUNG
+    typ: Annotated[Literal[BoTyp.RECHNUNG], Field(alias="_typ")] = BoTyp.RECHNUNG
     ist_storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;
     im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
     """
-    #: Eine im Verwendungskontext eindeutige Nummer für die Rechnung
     rechnungsnummer: Optional[str] = None
-    #: Ausstellungsdatum der Rechnung
+    """Eine im Verwendungskontext eindeutige Nummer für die Rechnung"""
     rechnungsdatum: Optional[pydantic.AwareDatetime] = None
-    #: Zu diesem Datum ist die Zahlung fällig
+    """Ausstellungsdatum der Rechnung"""
     faelligkeitsdatum: Optional[pydantic.AwareDatetime] = None
-    #: Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung
+    """Zu diesem Datum ist die Zahlung fällig"""
     rechnungstyp: Optional["Rechnungstyp"] = None
-    #: Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung
+    """Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung"""
     rechnungsperiode: Optional["Zeitraum"] = None
-    #: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer
+    """Der Zeitraum der zugrunde liegenden Lieferung zur Rechnung"""
     rechnungsersteller: Optional["Geschaeftspartner"] = None
-    #: Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer
+    """Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer"""
     rechnungsempfaenger: Optional["Geschaeftspartner"] = None
-    #: Die Summe der Nettobeträge der Rechnungsteile
+    """Der Aussteller der Rechnung, die Rollencodenummer kennt man über den im Geschäftspartner verlinkten Marktteilnehmer"""
     gesamtnetto: Optional["Betrag"] = None
-    #: Die Summe der Steuerbeträge der Rechnungsteile
+    """Die Summe der Nettobeträge der Rechnungsteile"""
     gesamtsteuer: Optional["Betrag"] = None
-    #: Die Summe aus Netto- und Steuerbetrag
+    """Die Summe der Steuerbeträge der Rechnungsteile"""
     gesamtbrutto: Optional["Betrag"] = None
-    #: Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt
+    """Die Summe aus Netto- und Steuerbetrag"""
     zu_zahlen: Optional["Betrag"] = None
-    #: Die Rechnungspositionen
+    """Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt"""
     rechnungspositionen: Optional[list["Rechnungsposition"]] = None
-    #: Bezeichnung für die vorliegende Rechnung
+    """Die Rechnungspositionen"""
     rechnungstitel: Optional[str] = None
-    #: Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes
+    """Bezeichnung für die vorliegende Rechnung"""
     rechnungsstatus: Optional["Rechnungsstatus"] = None
-    #: Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung
+    """Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes"""
     original_rechnungsnummer: Optional[str] = None
-    #: Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert
+    """Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung"""
     vorausgezahlt: Optional["Betrag"] = None
-    #: Gesamtrabatt auf den Bruttobetrag
+    """Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert"""
     rabatt_brutto: Optional["Betrag"] = None
+    """Gesamtrabatt auf den Bruttobetrag"""
     steuerbetraege: Optional[list["Steuerbetrag"]] = None
     """
     Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
     die Summe dieser Beträge ergibt den Wert für gesamtsteuer.
     """
-    #: Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist
     sparte: Optional["Sparte"] = None
-    #: Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt
+    """Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist"""
     netznutzungrechnungsart: Optional["NetznutzungRechnungsart"] = None
-    #: Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt
+    """Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt"""
     netznutzungrechnungstyp: Optional["NetznutzungRechnungstyp"] = None
-    #: Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)
+    """Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt"""
     ist_original: Optional[bool] = None
-    #: Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt
+    """Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)"""
     ist_simuliert: Optional[bool] = None
-    #: Marktlokation, auf die sich die Rechnung bezieht
+    """Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt"""
     marktlokation: Optional["Marktlokation"] = None
-    #: Messlokation, auf die sich die Rechnung bezieht
+    """Marktlokation, auf die sich die Rechnung bezieht"""
     messlokation: Optional["Messlokation"] = None
+    """Messlokation, auf die sich die Rechnung bezieht"""

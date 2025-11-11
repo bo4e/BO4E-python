@@ -1,11 +1,13 @@
 """
 Contains Betrag class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,5 +33,9 @@ class Betrag(COM):
 
     """
 
-    wert: Optional[Decimal] = None  #: Gibt den Betrag des Preises an.
-    waehrung: Optional["Waehrungscode"] = None  #: Die entsprechende Waehrung
+    typ: Annotated[Literal[ComTyp.BETRAG], Field(alias="_typ")] = ComTyp.BETRAG
+
+    wert: Optional[Decimal] = None
+    """Gibt den Betrag des Preises an."""
+    waehrung: Optional["Waehrungscode"] = None
+    """Die entsprechende Waehrung"""

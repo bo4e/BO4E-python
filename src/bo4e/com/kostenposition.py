@@ -1,11 +1,13 @@
 """
-Contains Kostenposition and corresponding marshmallow schema for de-/serialization
+Contains Kostenposition
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -32,27 +34,29 @@ class Kostenposition(COM):
 
     """
 
-    #: Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt.
+    typ: Annotated[Literal[ComTyp.KOSTENPOSITION], Field(alias="_typ")] = ComTyp.KOSTENPOSITION
+
     positionstitel: Optional[str] = None
+    """Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt."""
 
     betrag_kostenposition: Optional["Betrag"] = None
     """Der errechnete Gesamtbetrag der Position als Ergebnis der Berechnung <Menge * Einzelpreis> oder
     <Einzelpreis / (Anzahl Tage Jahr) * zeitmenge>"""
     # todo: validate above calculation, see https://github.com/Hochfrequenz/BO4E-python/issues/282
 
-    #: Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT
     artikelbezeichnung: Optional[str] = None
+    """Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT"""
 
-    #: Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr.
     einzelpreis: Optional["Preis"] = None
+    """Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr."""
 
-    #: inklusiver von-Zeitpunkt der Kostenzeitscheibe
     von: Optional[pydantic.AwareDatetime] = None
-    #: exklusiver bis-Zeitpunkt der Kostenzeitscheibe
+    """inklusiver von-Zeitpunkt der Kostenzeitscheibe"""
     bis: Optional[pydantic.AwareDatetime] = None
+    """exklusiver bis-Zeitpunkt der Kostenzeitscheibe"""
 
-    #: Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh
     menge: Optional["Menge"] = None
+    """Die Menge, die in die Kostenberechnung eingeflossen ist. Beispiel: 3.660 kWh"""
 
     zeitmenge: Optional["Menge"] = None
     """
@@ -60,5 +64,5 @@ class Kostenposition(COM):
     wurden. Z.B. 138 Tage.
     """
 
-    #: Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'
     artikeldetail: Optional[str] = None
+    """Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'"""

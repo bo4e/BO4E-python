@@ -8,6 +8,9 @@ class Titel(StrEnum):
     Übersicht möglicher Titel, z.B. eines Geschäftspartners.
     """
 
-    DR = "DR"  #: Doktor*In
-    PROF = "PROF"  #: Professor*In
-    PROF_DR = "PROF_DR"  #: Professor*In Dr.
+    DR = "DR"
+    """Doktor*In"""
+    PROF = "PROF"
+    """Professor*In"""
+    PROF_DR = "PROF_DR"
+    """Professor*In Dr."""

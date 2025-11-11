@@ -1,10 +1,12 @@
 """
 Contains RegionaleGueltigkeit class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -30,9 +32,9 @@ class RegionaleGueltigkeit(COM):
 
     """
 
-    gueltigkeitstyp: Optional["Gueltigkeitstyp"] = (
-        None  #: Unterscheidung ob Positivliste oder Negativliste übertragen wird
-    )
-    kriteriums_werte: Optional[list["KriteriumWert"]] = (
-        None  #: Hier stehen die Kriterien, die die regionale Gültigkeit festlegen
-    )
+    typ: Annotated[Literal[ComTyp.REGIONALEGUELTIGKEIT], Field(alias="_typ")] = ComTyp.REGIONALEGUELTIGKEIT
+
+    gueltigkeitstyp: Optional["Gueltigkeitstyp"] = None
+    """Unterscheidung ob Positivliste oder Negativliste übertragen wird"""
+    kriteriums_werte: Optional[list["KriteriumWert"]] = None
+    """Hier stehen die Kriterien, die die regionale Gültigkeit festlegen"""

@@ -1,10 +1,12 @@
 """
 Contains Zustaendigkeit class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,10 +31,13 @@ class Zustaendigkeit(COM):
 
     """
 
+    typ: Annotated[Literal[ComTyp.ZUSTAENDIGKEIT], Field(alias="_typ")] = ComTyp.ZUSTAENDIGKEIT
     themengebiet: Optional["Themengebiet"] = None
     """
     Hier kann eine thematische Zuordnung des Ansprechpartners bzw. der Person angegeben werden
     """
 
-    position: Optional[str] = None  #: Berufliche Rolle des Ansprechpartners/ der Person
-    abteilung: Optional[str] = None  #: Abteilung, in der der Ansprechpartner/ die Person tätig ist
+    position: Optional[str] = None
+    """Berufliche Rolle des Ansprechpartners/ der Person"""
+    abteilung: Optional[str] = None
+    """Abteilung, in der der Ansprechpartner/ die Person tätig ist"""

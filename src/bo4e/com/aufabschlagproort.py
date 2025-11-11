@@ -1,10 +1,12 @@
 """
 Contains AufAbschlagProOrt class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -32,11 +34,13 @@ class AufAbschlagProOrt(COM):
 
     """
 
-    #: Die Postleitzahl des Ortes für den der Aufschlag gilt.
+    typ: Annotated[Literal[ComTyp.AUFABSCHLAGPROORT], Field(alias="_typ")] = ComTyp.AUFABSCHLAGPROORT
+
     postleitzahl: Optional[str] = None
-    #: Der Ort für den der Aufschlag gilt.
+    """Die Postleitzahl des Ortes für den der Aufschlag gilt."""
     ort: Optional[str] = None
-    #: Die ene't-Netznummer des Netzes in dem der Aufschlag gilt.
+    """Der Ort für den der Aufschlag gilt."""
     netznr: Optional[str] = None
-    #: Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung.
+    """Die ene't-Netznummer des Netzes in dem der Aufschlag gilt."""
     staffeln: Optional[list["AufAbschlagstaffelProOrt"]] = None
+    """Werte für die gestaffelten Auf/Abschläge mit regionaler Eingrenzung."""

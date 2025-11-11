@@ -1,10 +1,12 @@
 """
 Contains Marktgebietinfo class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -25,5 +27,9 @@ class MarktgebietInfo(COM):
 
     """
 
-    marktgebiet: Optional[str] = None  #: Der Name des Marktgebietes
-    marktgebietcode: Optional[str] = None  #: Die standardisierte Codenummer des Marktgebietes
+    typ: Annotated[Literal[ComTyp.MARKTGEBIETINFO], Field(alias="_typ")] = ComTyp.MARKTGEBIETINFO
+
+    marktgebiet: Optional[str] = None
+    """Der Name des Marktgebietes"""
+    marktgebietcode: Optional[str] = None
+    """Die standardisierte Codenummer des Marktgebietes"""

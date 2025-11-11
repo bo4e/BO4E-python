@@ -16,9 +16,9 @@ jobs:
         python-version: ["3.12"]
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install tox
@@ -33,11 +33,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install dependencies
@@ -51,8 +51,11 @@ jobs:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Check version tag
         run: |
-          python -m docs.compatibility.versioning --gh-version ${{ github.ref_name }} \
-          --gh-token ${{ secrets.GITHUB_TOKEN }} --major-bump-disallowed
+          # Get last version tag
+          LAST_VERSION=$(bo4e repo versions -qcn 1 -r ${{ github.ref_name }})
+          bo4e pull -t $LAST_VERSION -o tmp/last_schemas
+          bo4e diff schemas tmp/last_schemas json_schemas -o tmp/diff.json
+          bo4e diff version-bump tmp/diff.json -aq
   json_schemas:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
@@ -60,9 +63,9 @@ jobs:
     concurrency: build-n-publish-json-schemas
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install tox
@@ -70,11 +73,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install tox
       - name: Build JSON Schemas
-        run: tox -e generate_json_schemas
+        run: |
+          tox -e generate_json_schemas
+          # Remove .version file as we don't want to commit it to BO4E-Schemas
+          rm json_schemas/.version
         env:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Push schemas to BO4E-Schemas repo
-        uses: cpina/github-action-push-to-another-repository@v1.7.2
+        uses: cpina/github-action-push-to-another-repository@v1.7.3
         env:
           API_TOKEN_GITHUB: ${{ secrets.BO4E_PYTHON_GENERATE_SCHEMAS }} # this token expires on 2024-10-09
           # token with repo scope
@@ -107,11 +113,11 @@ jobs:
     needs: [tests, check_version_tag]
     concurrency: build-n-publish-docs
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.12"
       - name: Install dependencies
@@ -177,9 +183,9 @@ jobs:
     needs: [tests, json_schemas, docs]
     concurrency: build-n-publish-distributions
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.10.x"
       - name: Install dependencies

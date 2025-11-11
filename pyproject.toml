@@ -43,6 +43,15 @@ fragments = [{ path = "README.rst" }]
 [tool.hatch.version]
 source = "vcs"
 
+[tool.hatch.version.raw-options]
+# version_scheme = "no-guess-dev"
+version_scheme = "only-version"
+local_scheme = "node-and-date"
+# See https://setuptools-scm.readthedocs.io/en/latest/extending/#version-number-construction
+# for details of how the version number is constructed.
+# Note that the BO4E CLI which is used in the CI expects the version to be in the format how it currently is.
+# If you which to change the version format, you will also have to change the CLI code.
+
 [tool.hatch.build.hooks.vcs]
 version-file = "src/_bo4e_python_version.py"
 template = '''

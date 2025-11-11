@@ -1,10 +1,13 @@
 """
-Contains Preisstaffel and corresponding marshmallow schema for de-/serialization
+Contains Preisstaffel
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,15 +32,17 @@ class Preisstaffel(COM):
 
     """
 
-    #: Preis pro abgerechneter Mengeneinheit
+    typ: Annotated[Literal[ComTyp.PREISSTAFFEL], Field(alias="_typ")] = ComTyp.PREISSTAFFEL
+
     einheitspreis: Optional[Decimal] = None
-    #: Inklusiver unterer Wert, ab dem die Staffel gilt
+    """Preis pro abgerechneter Mengeneinheit"""
     staffelgrenze_von: Optional[Decimal] = None
-    #: Exklusiver oberer Wert, bis zu dem die Staffel gilt
+    """Inklusiver unterer Wert, ab dem die Staffel gilt"""
     staffelgrenze_bis: Optional[Decimal] = None
+    """Exklusiver oberer Wert, bis zu dem die Staffel gilt"""
 
-    #: Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter
     sigmoidparameter: Optional["Sigmoidparameter"] = None
+    """Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter"""
 
-    #: Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst
     artikel_id: Optional[str] = None
+    """Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst"""

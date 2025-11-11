@@ -29,11 +29,11 @@ jobs:
       - name: Set routing name to test-XXXXXX
         if: github.ref != 'refs/heads/main'
         run: echo "REF_NAME=test-$(shuf -i 100000-999999 -n 1)" >> "$GITHUB_ENV"
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
       - name: Install dependencies
@@ -44,8 +44,6 @@ jobs:
         # Note: The sphinx action below can only install a single requirements file.
       - name: Build JSON Schemas
         run: tox -e generate_json_schemas
-        env:
-          TARGET_VERSION: ${{ env.REF_NAME }}
       - name: Build BO4E package
         # Note: This step necessary to correctly set the version in the JSON-Schema-links
         run: |

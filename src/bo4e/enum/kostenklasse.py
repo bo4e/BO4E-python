@@ -8,8 +8,13 @@ class Kostenklasse(StrEnum):
     In der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.
     """
 
-    FREMDKOSTEN = "FREMDKOSTEN"  #: Fremdkosten
-    BESCHAFFUNG = "BESCHAFFUNG"  #: Beschaffung
-    SELBSTKOSTEN = "SELBSTKOSTEN"  #: Selbstkosten
-    MARGEN = "MARGEN"  #: Margen
-    ENERGIEVERSORGUNGSKOSTEN = "ENERGIEVERSORGUNGSKOSTEN"  #: Energieversorgungskosten
+    FREMDKOSTEN = "FREMDKOSTEN"
+    """Fremdkosten"""
+    BESCHAFFUNG = "BESCHAFFUNG"
+    """Beschaffung"""
+    SELBSTKOSTEN = "SELBSTKOSTEN"
+    """Selbstkosten"""
+    MARGEN = "MARGEN"
+    """Margen"""
+    ENERGIEVERSORGUNGSKOSTEN = "ENERGIEVERSORGUNGSKOSTEN"
+    """Energieversorgungskosten"""

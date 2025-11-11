@@ -7,8 +7,13 @@ class Rechnungsstatus(StrEnum):
     Abbildung verschiedener Zustände, die im Rahmen der Rechnungsbearbeitung durchlaufen werden.
     """
 
-    UNGEPRUEFT = "UNGEPRUEFT"  #: Die Rechnung wurde erstellt bzw ist eingegangen, wurde aber noch nicht geprüft.
-    GEPRUEFT_OK = "GEPRUEFT_OK"  #: Die Rechnung wurde geprüft und als korrekt befunden.
-    GEPRUEFT_FEHLERHAFT = "GEPRUEFT_FEHLERHAFT"  #: Bei der Prüfung der Rechnung hat sich herausgestellt, dass die Rechnung Fehler aufweist.
-    GEBUCHT = "GEBUCHT"  #: Die Buchhaltung hat die Rechnung aufgenommen und berücksichtigt.
-    BEZAHLT = "BEZAHLT"  #: Die Rechnung wurde beglichen.
+    UNGEPRUEFT = "UNGEPRUEFT"
+    """Die Rechnung wurde erstellt bzw ist eingegangen, wurde aber noch nicht geprüft."""
+    GEPRUEFT_OK = "GEPRUEFT_OK"
+    """Die Rechnung wurde geprüft und als korrekt befunden."""
+    GEPRUEFT_FEHLERHAFT = "GEPRUEFT_FEHLERHAFT"
+    """Bei der Prüfung der Rechnung hat sich herausgestellt, dass die Rechnung Fehler aufweist."""
+    GEBUCHT = "GEBUCHT"
+    """Die Buchhaltung hat die Rechnung aufgenommen und berücksichtigt."""
+    BEZAHLT = "BEZAHLT"
+    """Die Rechnung wurde beglichen."""

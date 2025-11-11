@@ -1,10 +1,13 @@
 """
-Contains Konzessionsabgabe and corresponding marshmallow schema for de-/serialization
+Contains Konzessionsabgabe
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -29,11 +32,13 @@ class Konzessionsabgabe(COM):
 
     """
 
-    #: Art der Abgabe
+    typ: Annotated[Literal[ComTyp.KONZESSIONSABGABE], Field(alias="_typ")] = ComTyp.KONZESSIONSABGABE
+
     satz: Optional["AbgabeArt"] = None
+    """Art der Abgabe"""
 
-    #: Konzessionsabgabe in E/kWh
     kosten: Optional[Decimal] = None
+    """Konzessionsabgabe in E/kWh"""
 
-    #: Gebührenkategorie der Konzessionsabgabe
     kategorie: Optional[str] = None
+    """Gebührenkategorie der Konzessionsabgabe"""

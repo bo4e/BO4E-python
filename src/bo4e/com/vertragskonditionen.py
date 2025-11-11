@@ -1,11 +1,13 @@
 """
 Contains Vertragskonditionen class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -30,15 +32,19 @@ class Vertragskonditionen(COM):
 
     """
 
-    #: Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
+    typ: Annotated[Literal[ComTyp.VERTRAGSKONDITIONEN], Field(alias="_typ")] = ComTyp.VERTRAGSKONDITIONEN
+
     beschreibung: Optional[str] = None
-    #: Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12
+    """
+    Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
+    """
     anzahl_abschlaege: Optional[Decimal] = None
-    #: Über diesen Zeitraum läuft der Vertrag
+    """Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12"""
     vertragslaufzeit: Optional["Zeitraum"] = None
-    #: Innerhalb dieser Frist kann der Vertrag gekündigt werden
+    """Über diesen Zeitraum läuft der Vertrag"""
     kuendigungsfrist: Optional["Zeitraum"] = None
-    #: Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit
+    """Innerhalb dieser Frist kann der Vertrag gekündigt werden"""
     vertragsverlaengerung: Optional["Zeitraum"] = None
-    #: In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden.
+    """Falls der Vertrag nicht gekündigt wird, verlängert er sich automatisch um die hier angegebene Zeit"""
     abschlagszyklus: Optional["Zeitraum"] = None
+    """In diesen Zyklen werden Abschläge gestellt. Alternativ kann auch die Anzahl in den Konditionen angeben werden."""

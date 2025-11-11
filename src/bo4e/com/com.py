@@ -32,9 +32,10 @@ class COM(BaseModel):
 
     """
 
-    version: Annotated[Optional[str], Field(alias="_version")] = (
-        __version__  #: Version der BO-Struktur aka "fachliche Versionierung"
-    )
+    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    """
+    Version der COM-Struktur aka "fachliche Versionierung"
+    """
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
@@ -47,6 +48,7 @@ class COM(BaseModel):
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
 
     # pylint: disable=duplicate-code
+    # basic configuration for pydantic's behaviour
     model_config = ConfigDict(
         alias_generator=camelize,
         populate_by_name=True,
@@ -57,13 +59,10 @@ class COM(BaseModel):
         json_encoders={Decimal: str},
         use_attribute_docstrings=True,
     )
-    """
-    basic configuration for pydantic's behaviour
-    """
 
 
 # pylint: disable=invalid-name
-#: Any type derived from COM including those that do not directly inherit from COM
+# Any type derived from COM including those that do not directly inherit from COM
 TCom = TypeVar("TCom", bound=Type[COM])
 
 

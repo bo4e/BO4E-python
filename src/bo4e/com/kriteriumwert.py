@@ -1,11 +1,13 @@
 """
 Contains KriteriumWert class
-and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-few-public-methods
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -27,7 +29,9 @@ class KriteriumWert(COM):
 
     """
 
-    #: Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen
+    typ: Annotated[Literal[ComTyp.KRITERIUMWERT], Field(alias="_typ")] = ComTyp.KRITERIUMWERT
+
     kriterium: Optional["Tarifregionskriterium"] = None
-    #: Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl.
+    """Hier steht, für welches Kriterium der Wert gilt. Z.B. Postleitzahlen"""
     wert: Optional[str] = None
+    """Ein Wert, passend zum Kriterium. Z.B. eine Postleitzahl."""

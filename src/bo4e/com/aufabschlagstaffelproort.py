@@ -1,11 +1,13 @@
 """
 Contains AufAbschlagstaffelProOrt class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -26,9 +28,11 @@ class AufAbschlagstaffelProOrt(COM):
 
     """
 
-    #: Der Wert für den Auf- oder Abschlag.
+    typ: Annotated[Literal[ComTyp.AUFABSCHLAGSTAFFELPROORT], Field(alias="_typ")] = ComTyp.AUFABSCHLAGSTAFFELPROORT
+
     wert: Optional[Decimal] = None
-    #: Unterer Wert, ab dem die Staffel gilt.
+    """Der Wert für den Auf- oder Abschlag."""
     staffelgrenze_von: Optional[Decimal] = None
-    #: Oberer Wert, bis zu dem die Staffel gilt.
+    """Unterer Wert, ab dem die Staffel gilt."""
     staffelgrenze_bis: Optional[Decimal] = None
+    """Oberer Wert, bis zu dem die Staffel gilt."""

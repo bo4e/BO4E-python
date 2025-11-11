@@ -1,10 +1,12 @@
 """
 Contains AufAbschlag class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -33,21 +35,23 @@ class AufAbschlag(COM):
 
     """
 
-    #: Bezeichnung des Auf-/Abschlags
-    bezeichnung: Optional[str] = None
-    #: Werte für die gestaffelten Auf/Abschläge.
-    staffeln: Optional[list["Preisstaffel"]] = None
+    typ: Annotated[Literal[ComTyp.AUFABSCHLAG], Field(alias="_typ")] = ComTyp.AUFABSCHLAG
 
-    #: Beschreibung zum Auf-/Abschlag
+    bezeichnung: Optional[str] = None
+    """Bezeichnung des Auf-/Abschlags"""
+    staffeln: Optional[list["Preisstaffel"]] = None
+    """Werte für die gestaffelten Auf/Abschläge."""
+
     beschreibung: Optional[str] = None
-    #: Typ des Aufabschlages (z.B. absolut oder prozentual).
+    """Beschreibung zum Auf-/Abschlag"""
     auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
-    #: Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc..
+    """Typ des Aufabschlages (z.B. absolut oder prozentual)."""
     auf_abschlagsziel: Optional["AufAbschlagsziel"] = None
+    """Diesem Preis oder den Kosten ist der Auf/Abschlag zugeordnet. Z.B. Arbeitspreis, Gesamtpreis etc.."""
     einheit: Optional["Waehrungseinheit"] = None
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
     website: Optional[str] = None
-    #: Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind.
+    """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind."""
     gueltigkeitszeitraum: Optional["Zeitraum"] = None
+    """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind."""

@@ -1,12 +1,15 @@
 """
-Contains PositionsAufAbschlag and corresponding marshmallow schema for de-/serialization
+Contains PositionsAufAbschlag
 """
 
 from decimal import Decimal
 
 # pylint: disable=too-few-public-methods
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -32,13 +35,15 @@ class PositionsAufAbschlag(COM):
 
     """
 
-    #: Bezeichnung des Auf-/Abschlags
+    typ: Annotated[Literal[ComTyp.POSITIONSAUFABSCHLAG], Field(alias="_typ")] = ComTyp.POSITIONSAUFABSCHLAG
+
     bezeichnung: Optional[str] = None
-    #: Beschreibung zum Auf-/Abschlag
+    """Bezeichnung des Auf-/Abschlags"""
     beschreibung: Optional[str] = None
-    #: Typ des AufAbschlages
+    """Beschreibung zum Auf-/Abschlag"""
     auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
-    #: Höhe des Auf-/Abschlages
+    """Typ des AufAbschlages"""
     auf_abschlagswert: Optional[Decimal] = None
-    #: Einheit, in der der Auf-/Abschlag angegeben ist (z.B. ct/kWh).
+    """Höhe des Auf-/Abschlages"""
     auf_abschlagswaehrung: Optional["Waehrungseinheit"] = None
+    """Einheit, in der der Auf-/Abschlag angegeben ist (z.B. ct/kWh)."""

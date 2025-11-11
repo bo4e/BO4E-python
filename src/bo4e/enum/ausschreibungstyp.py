@@ -7,6 +7,9 @@ class Ausschreibungstyp(StrEnum):
     Aufzählung für die Typisierung von Ausschreibungen.
     """
 
-    PRIVATRECHTLICH = "PRIVATRECHTLICH"  #: privat-rechtlich
-    OEFFENTLICHRECHTLICH = "OEFFENTLICHRECHTLICH"  #: öffentlich-rechtlich
-    EUROPAWEIT = "EUROPAWEIT"  #: europaweit
+    PRIVATRECHTLICH = "PRIVATRECHTLICH"
+    """privat-rechtlich"""
+    OEFFENTLICHRECHTLICH = "OEFFENTLICHRECHTLICH"
+    """öffentlich-rechtlich"""
+    EUROPAWEIT = "EUROPAWEIT"
+    """europaweit"""

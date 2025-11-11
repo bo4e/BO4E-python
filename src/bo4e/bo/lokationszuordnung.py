@@ -2,11 +2,11 @@
 Contains Lokationszuordnung class
 """
 
-from typing import TYPE_CHECKING, Annotated, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -16,7 +16,7 @@ if TYPE_CHECKING:
     from ..bo.netzlokation import Netzlokation
     from ..bo.steuerbareressource import SteuerbareRessource
     from ..bo.technischeressource import TechnischeRessource
-    from ..com.zeitspanne import Zeitspanne
+    from ..com.zeitraum import Zeitraum
 
 
 @postprocess_docstring
@@ -33,21 +33,21 @@ class Lokationszuordnung(Geschaeftsobjekt):
         `Lokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Lokationszuordnung.json>`_
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.LOKATIONSZUORDNUNG
+    typ: Annotated[Literal[BoTyp.LOKATIONSZUORDNUNG], Field(alias="_typ")] = BoTyp.LOKATIONSZUORDNUNG
 
-    #: Liste mit referenzierten Marktlokationen
     marktlokationen: Optional[list["Marktlokation"]] = None
-    #: Liste mit referenzierten Messlokationen
+    """Liste mit referenzierten Marktlokationen"""
     messlokationen: Optional[list["Messlokation"]] = None
-    #: Liste mit referenzierten Netzlokationen
+    """Liste mit referenzierten Messlokationen"""
     netzlokationen: Optional[list["Netzlokation"]] = None
-    #: Liste mit referenzierten technischen Ressourcen
+    """Liste mit referenzierten Netzlokationen"""
     technische_ressourcen: Optional[list["TechnischeRessource"]] = None
-    #: Liste mit referenzierten steuerbaren Ressourcen
+    """Liste mit referenzierten technischen Ressourcen"""
     steuerbare_ressourcen: Optional[list["SteuerbareRessource"]] = None
-    #: Zeitspanne der Gültigkeit
-    gueltigkeit: Optional["Zeitspanne"] = None
-    #: Verknüpfungsrichtung z.B. Malo-Melo [TODO: Eventuell anderer Datentyp]
+    """Liste mit referenzierten steuerbaren Ressourcen"""
+    gueltigkeit: Optional["Zeitraum"] = None
+    """Zeitraum der Gültigkeit"""
     zuordnungstyp: Optional[str] = None
-    #: Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (zu finden unter "Codeliste der Lokationsbündelstrukturen" auf https://www.edi-energy.de/index.php?id=38)
+    """Verknüpfungsrichtung z.B. Malo-Melo [TODO: Eventuell anderer Datentyp]"""
     lokationsbuendelcode: Optional[str] = None
+    """Code, der angibt wie die Lokationsbündelstruktur zusammengesetzt ist (zu finden unter "Codeliste der Lokationsbündelstrukturen" auf https://www.edi-energy.de/index.php?id=38)"""

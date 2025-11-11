@@ -1,12 +1,13 @@
 """
 Contains Unterschrift class
-and corresponding marshmallow schema for de-/serialization
 """
 
-from typing import Optional
+from typing import Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -27,8 +28,12 @@ class Unterschrift(COM):
 
     """
 
-    #: Name des Unterschreibers
-    name: Optional[str] = None
+    typ: Annotated[Literal[ComTyp.UNTERSCHRIFT], Field(alias="_typ")] = ComTyp.UNTERSCHRIFT
 
-    ort: Optional[str] = None  #: Ort, an dem die Unterschrift geleistet wird
-    datum: Optional[pydantic.AwareDatetime] = None  #: Datum der Unterschrift
+    name: Optional[str] = None
+    """Name des Unterschreibers"""
+
+    ort: Optional[str] = None
+    """Ort, an dem die Unterschrift geleistet wird"""
+    datum: Optional[pydantic.AwareDatetime] = None
+    """Datum der Unterschrift"""
