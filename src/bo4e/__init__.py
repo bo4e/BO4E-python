@@ -149,7 +149,6 @@ __all__ = [
     "Messart",
     "Messgroesse",
     "Messpreistyp",
-    "Messwerterfassung",
     "Messwertstatus",
     "Messwertstatuszusatz",
     "Netzebene",
@@ -357,7 +356,6 @@ from .enum.mengenoperator import Mengenoperator
 from .enum.messart import Messart
 from .enum.messgroesse import Messgroesse
 from .enum.messpreistyp import Messpreistyp
-from .enum.messwerterfassung import Messwerterfassung
 from .enum.messwertstatus import Messwertstatus
 from .enum.messwertstatuszusatz import Messwertstatuszusatz
 from .enum.netzebene import Netzebene
