@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..enum.messwertstatus import Messwertstatus
     from ..enum.messwertstatuszusatz import Messwertstatuszusatz
 
+
 @postprocess_docstring
 class Messwert(COM):
     """
