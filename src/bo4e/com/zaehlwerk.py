@@ -12,6 +12,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
+    from ..com.messwert import Messwert
     from ..com.konzessionsabgabe import Konzessionsabgabe
     from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
     from ..com.zaehlzeitregister import Zaehlzeitregister
@@ -82,3 +83,5 @@ class Zaehlwerk(COM):
     """Anzahl Ablesungen pro Jahr"""
     zaehlzeitregister: Optional["Zaehlzeitregister"] = None
     """Erweiterte Definition der Zählzeit in Bezug auf ein Register"""
+    messwerte: Optional[list["Messwert"]] = None
+    """Gemessene Werte des Zählwerks"""
