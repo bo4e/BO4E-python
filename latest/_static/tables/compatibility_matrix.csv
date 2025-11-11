@@ -1,4 +1,4 @@
-,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+g7b47c8326
+,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+gcd9cb333d
 bo.Angebot,🟢,🟢,🔴
 bo.Ausschreibung,🟢,🟢,🔴
 bo.Bilanzierung,➕,🟢,🟡
@@ -61,6 +61,7 @@ com.KriteriumWert,🟡,🟢,🔴
 com.Lastprofil,➕,🟢,🔴
 com.MarktgebietInfo,🟡,🟢,🔴
 com.Menge,🟡,🟢,🔴
+com.Messwert,\-,\-,➕
 com.PositionsAufAbschlag,🟡,🟢,🔴
 com.Preis,🟡,🟢,🔴
 com.Preisgarantie,🟡,🟢,🔴
@@ -112,7 +113,7 @@ enum.Befestigungsart,🟢,🟢,🟢
 enum.Bemessungsgroesse,🟢,🟢,🟢
 enum.Bilanzierungsmethode,🟢,🟢,🟢
 enum.BoTyp,➕,🟢,🟢
-enum.ComTyp,➕,🟢,🟢
+enum.ComTyp,➕,🟢,🟡
 enum.Dienstleistungstyp,🟢,🟢,🟢
 enum.EMobilitaetsart,🟢,🟢,🟢
 enum.Energierichtung,🟢,🟢,🟢

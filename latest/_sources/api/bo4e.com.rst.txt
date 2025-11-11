@@ -228,6 +228,14 @@ bo4e.com.menge module
    :show-inheritance:
    :undoc-members:
 
+bo4e.com.messwert module
+------------------------
+
+.. automodule:: bo4e.com.messwert
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 bo4e.com.positionsaufabschlag module
 ------------------------------------
 
