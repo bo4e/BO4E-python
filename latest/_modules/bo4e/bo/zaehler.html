@@ -104,7 +104,6 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">..bo.geraet</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geraet</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.zaehlwerk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zaehlwerk</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.befestigungsart</span><span class="w"> </span><span class="kn">import</span> <span class="n">Befestigungsart</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.messwerterfassung</span><span class="w"> </span><span class="kn">import</span> <span class="n">Messwerterfassung</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.registeranzahl</span><span class="w"> </span><span class="kn">import</span> <span class="n">Registeranzahl</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.sparte</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sparte</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.zaehlerauspraegung</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zaehlerauspraegung</span>
@@ -154,8 +153,8 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Hersteller des Zählers&quot;&quot;&quot;</span>
     <span class="n">ist_fernschaltbar</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fernschaltung&quot;&quot;&quot;</span>
-    <span class="n">messwerterfassung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Messwerterfassung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Messwerterfassung des Zählers&quot;&quot;&quot;</span>
+    <span class="n">ist_fernauslesbar</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Fernauslesung&quot;&quot;&quot;</span>
     <span class="n">zaehlertypSpezifikation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;ZaehlertypSpezifikation&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Besondere Spezifikation des Zählers&quot;&quot;&quot;</span>
     <span class="n">befestigungsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Befestigungsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>

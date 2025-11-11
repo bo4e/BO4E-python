@@ -364,14 +364,6 @@ bo4e.enum.messpreistyp module
    :show-inheritance:
    :undoc-members:
 
-bo4e.enum.messwerterfassung module
-----------------------------------
-
-.. automodule:: bo4e.enum.messwerterfassung
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 bo4e.enum.messwertstatus module
 -------------------------------
 

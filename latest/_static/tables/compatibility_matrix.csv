@@ -1,4 +1,4 @@
-,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+gcd9cb333d
+,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+g9b0da057d
 bo.Angebot,🟢,🟢,🔴
 bo.Ausschreibung,🟢,🟢,🔴
 bo.Bilanzierung,➕,🟢,🟡
@@ -141,7 +141,7 @@ enum.Mengenoperator,🟢,🟢,🟢
 enum.Messart,🟢,🟢,🟢
 enum.Messgroesse,🟢,🟢,🟢
 enum.Messpreistyp,🟢,🟢,🟢
-enum.Messwerterfassung,🟢,🟢,🟢
+enum.Messwerterfassung,🟢,🟢,➖
 enum.Messwertstatus,🟢,🟢,🟢
 enum.Messwertstatuszusatz,🟢,🟢,🟢
 enum.Netzebene,🟢,🟢,🟢
