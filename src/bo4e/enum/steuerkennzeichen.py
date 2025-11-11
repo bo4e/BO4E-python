@@ -15,6 +15,8 @@ class Steuerkennzeichen(StrEnum):
     """Umsatzsteuer 16%"""
     UST_7 = "UST_7"
     """Umsatzsteuer 7%"""
+    UST_SONDER = "UST_SONDER"
+    """Abweichender Umsatzsteuersatz"""
     VST_0 = "VST_0"
     """Keine Vorsteuer, bzw. nicht steuerbar."""
     VST_19 = "VST_19"
