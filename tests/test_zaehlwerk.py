@@ -2,7 +2,17 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Energierichtung, Mengeneinheit, Messwert, Konzessionsabgabe, Verbrauchsart, Verwendungszweck, Waermenutzung, Zaehlwerk, Zaehlzeitregister
+from bo4e import (
+    Energierichtung,
+    Mengeneinheit,
+    Messwert,
+    Konzessionsabgabe,
+    Verbrauchsart,
+    Verwendungszweck,
+    Waermenutzung,
+    Zaehlwerk,
+    Zaehlzeitregister,
+)
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
