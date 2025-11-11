@@ -1,4 +1,4 @@
-,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+gb8cbd220d
+,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+gfbaef5da5
 bo.Angebot,🟢,🟢,🔴
 bo.Ausschreibung,🟢,🟢,🔴
 bo.Bilanzierung,➕,🟢,🟡
@@ -167,7 +167,7 @@ enum.Rollencodetyp,🟢,🟢,🟢
 enum.Sparte,🟢,🟢,🟢
 enum.Speicherart,🟢,🟢,🟢
 enum.SteuerkanalLeistungsbeschreibung,🟢,🟢,🟢
-enum.Steuerkennzeichen,🟢,🟢,🟢
+enum.Steuerkennzeichen,🟢,🟢,🟡
 enum.Tarifkalkulationsmethode,🟢,🟢,🟢
 enum.Tarifmerkmal,🟢,🟢,🟢
 enum.Tarifregionskriterium,🟢,🟢,🟢
