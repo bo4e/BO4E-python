@@ -4,9 +4,9 @@ import pytest
 
 from bo4e import (
     Energierichtung,
+    Konzessionsabgabe,
     Mengeneinheit,
     Messwert,
-    Konzessionsabgabe,
     Verbrauchsart,
     VerwendungszweckProMarktrolle,
     Waermenutzung,

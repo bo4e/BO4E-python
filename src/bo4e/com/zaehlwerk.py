@@ -12,8 +12,8 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..com.messwert import Messwert
     from ..com.konzessionsabgabe import Konzessionsabgabe
+    from ..com.messwert import Messwert
     from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
     from ..com.zaehlzeitregister import Zaehlzeitregister
     from ..enum.energierichtung import Energierichtung
