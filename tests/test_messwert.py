@@ -2,7 +2,7 @@ from datetime import datetime, timezone
 
 import pytest
 
-from bo4e import Messwert, Menge, Messwertstatus, Messwertstatuszusatz
+from bo4e import Menge, Messwert, Messwertstatus, Messwertstatuszusatz
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
