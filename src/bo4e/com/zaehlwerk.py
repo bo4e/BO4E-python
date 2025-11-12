@@ -65,8 +65,6 @@ class Zaehlwerk(COM):
     """Verwendungungszweck der Werte Marktlokation"""
     verbrauchsart: Optional["Verbrauchsart"] = None
     """Stromverbrauchsart/Verbrauchsart Marktlokation"""
-    ist_unterbrechbar: Optional[bool] = None
-    """Unterbrechbarkeit Marktlokation"""
     waermenutzung: Optional["Waermenutzung"] = None
     """Wärmenutzung Marktlokation"""
     konzessionsabgabe: Optional["Konzessionsabgabe"] = None
