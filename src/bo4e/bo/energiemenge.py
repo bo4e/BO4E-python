@@ -12,7 +12,6 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.menge import Menge
-    from ..com.verbrauch import Verbrauch
     from ..com.zeitraum import Zeitraum
 
 
