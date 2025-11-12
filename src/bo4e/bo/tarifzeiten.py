@@ -2,15 +2,15 @@
 Contains Tarifzeiten class
 """
 
-from typing import List, Optional, Annotated, Literal
-from pydantic import Field
+from typing import Annotated, List, Literal, Optional
 
-from ..enum.botyp import BoTyp
-from ..utils import postprocess_docstring
-from .geschaeftsobjekt import Geschaeftsobjekt
+from pydantic import Field
 
 from ..bo.marktteilnehmer import Marktteilnehmer
 from ..com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
+from ..enum.botyp import BoTyp
+from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 
 @postprocess_docstring

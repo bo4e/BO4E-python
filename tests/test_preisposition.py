@@ -2,8 +2,6 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e.enum.tarifzeit import Tarifzeit
-
 from bo4e import (
     BDEWArtikelnummer,
     Bemessungsgroesse,
@@ -14,6 +12,7 @@ from bo4e import (
     Preisstaffel,
     Waehrungseinheit,
 )
+from bo4e.enum.tarifzeit import Tarifzeit
 from tests.serialization_helper import assert_serialization_roundtrip
 
 class TestPreisposition:

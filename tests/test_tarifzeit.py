@@ -1,6 +1,7 @@
+from datetime import date
+
 import pytest
 
-from datetime import date
 from bo4e import Zeitraum
 from bo4e.com.tarifzeit import Tarifzeit
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -19,7 +20,7 @@ class TestTarifzeit:
                     tarifstufe="HT",
                 )
             )
-        ]
+        ],
     )
     def test_serialization_roundtrip(self, tarifzeit: Tarifzeit) -> None:
         """

@@ -16,22 +16,26 @@ class TestTarifzeiten:
             pytest.param(
                 Tarifzeiten(
                     marktteilnehmer=Marktteilnehmer(),
-                    zeitscheiben=[TarifzeitenZeitscheibe(
-                        gueltigkeit=Zeitraum(
-                            startdatum=date(2025, 1, 1),
-                            enddatum=date(2025, 1, 31),
-                        ),
-                        tarifzeiten=[Tarifzeit(
-                            zeitraum=Zeitraum(
+                    zeitscheiben=[
+                        TarifzeitenZeitscheibe(
+                            gueltigkeit=Zeitraum(
                                 startdatum=date(2025, 1, 1),
                                 enddatum=date(2025, 1, 31),
                             ),
-                            tarifstufe="HT",
-                        )])]
+                            tarifzeiten=[
+                                Tarifzeit(
+                                    zeitraum=Zeitraum(
+                                        startdatum=date(2025, 1, 1),
+                                        enddatum=date(2025, 1, 31),
+                                    ),
+                                    tarifstufe="HT",
+                                )
+                            ],
+                        )
+                    ],
                 )
             )
-
-        ]
+        ],
     )
     def test_serialization_roundtrip(self, tarifzeiten: Tarifzeiten) -> None:
         """

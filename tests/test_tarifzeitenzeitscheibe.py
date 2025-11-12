@@ -29,7 +29,7 @@ class TestTarifzeitenZeitscheibe:
                     ],
                 )
             )
-        ]
+        ],
     )
     def test_serialization_roundtrip(self, zeitscheibe: TarifzeitenZeitscheibe) -> None:
         """

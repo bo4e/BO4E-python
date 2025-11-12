@@ -10,9 +10,9 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 from pydantic import Field
 
 from ..enum.comtyp import ComTyp
+from ..enum.tarifzeit import Tarifzeit
 from ..utils import postprocess_docstring
 from .com import COM
-from ..enum.tarifzeit import Tarifzeit
 
 if TYPE_CHECKING:
     from ..enum.bdewartikelnummer import BDEWArtikelnummer

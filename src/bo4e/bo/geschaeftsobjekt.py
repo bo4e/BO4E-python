@@ -10,8 +10,8 @@ from pydantic import BaseModel, ConfigDict, Field
 
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
-from ..enum.botyp import BoTyp
 
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods

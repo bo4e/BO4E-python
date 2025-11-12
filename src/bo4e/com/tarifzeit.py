@@ -2,12 +2,12 @@
 Contains Tarifzeit class
 """
 
-from typing import Optional, Annotated, Literal
+from typing import Annotated, Literal, Optional
 from pydantic import Field
 
 from .. import COM, ComTyp
-from ..utils import postprocess_docstring
 from ..com.zeitraum import Zeitraum
+from ..utils import postprocess_docstring
 
 
 @postprocess_docstring
