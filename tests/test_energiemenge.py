@@ -1,7 +1,6 @@
 import pytest
 
 from bo4e import Energiemenge, Menge, Zeitraum
-
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
