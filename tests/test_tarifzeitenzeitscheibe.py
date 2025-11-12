@@ -21,8 +21,8 @@ class TestTarifzeitenZeitscheibe:
             ),
         ],
     )
-    def test_serialization_roundtrip(self, zeitscheibe: TarifzeitenZeitscheibe) -> None:
+    def test_serialization_roundtrip(self, tarifzeitenzeitscheibe: TarifzeitenZeitscheibe) -> None:
         """
         Test de-/serialisation of TarifzeitenZeitscheibe.
         """
-        assert_serialization_roundtrip(zeitscheibe)
+        assert_serialization_roundtrip(tarifzeitenzeitscheibe)
