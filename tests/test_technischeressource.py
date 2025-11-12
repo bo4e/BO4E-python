@@ -37,6 +37,8 @@ class TestTechnischeRessource:
                     speicherart=Speicherart.WASSERSTOFFSPEICHER,
                     lokationsbuendel_objektcode="9992 00000 125 6",
                     lokationszuordnungen=[Lokationszuordnung()],
+                    ist_fernschaltbar=True,
+                    ist_unterbrechbar=True,
                 ),
             ),
         ],

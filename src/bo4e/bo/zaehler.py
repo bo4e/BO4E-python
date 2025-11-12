@@ -64,8 +64,6 @@ class Zaehler(Geschaeftsobjekt):
     """Zu diesem Datum fand die letzte Eichprüfung des Zählers statt."""
     zaehlerhersteller: Optional["Geschaeftspartner"] = None
     """Der Hersteller des Zählers"""
-    ist_fernschaltbar: Optional[bool] = None
-    """Fernschaltung"""
     ist_fernauslesbar: Optional[bool] = None
     """Fernauslesung"""
     zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None
