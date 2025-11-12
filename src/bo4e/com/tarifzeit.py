@@ -3,6 +3,7 @@ Contains Tarifzeit class
 """
 
 from typing import Annotated, Literal, Optional
+
 from pydantic import Field
 
 from .. import COM, ComTyp

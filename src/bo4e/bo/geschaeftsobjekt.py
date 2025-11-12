@@ -2,7 +2,6 @@
 from decimal import Decimal
 from typing import Annotated, Optional
 
-
 from humps.main import camelize
 
 # pylint: disable=no-name-in-module

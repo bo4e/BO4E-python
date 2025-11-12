@@ -17,6 +17,7 @@ class TarifzeitenZeitscheibe(COM):
     """
     Eine Zeitscheibe innerhalb der Tarifzeiten mit zugehöriger Gültigkeit und Tarifzeitabschnitten.
     """
+
     typ: Annotated[Optional[Literal[ComTyp.TARIFZEITENZEITSCHEIBE]], Field(alias="_typ")] = (
         ComTyp.TARIFZEITENZEITSCHEIBE
     )

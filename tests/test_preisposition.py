@@ -15,6 +15,7 @@ from bo4e import (
 from bo4e.enum.tarifzeit import Tarifzeit
 from tests.serialization_helper import assert_serialization_roundtrip
 
+
 class TestPreisposition:
     @pytest.mark.parametrize(
         "preisposition",
