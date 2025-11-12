@@ -2,9 +2,7 @@ from datetime import date
 
 import pytest
 
-from bo4e import Zeitraum
-from bo4e.com.tarifzeit import Tarifzeit
-from bo4e.com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
+from bo4e import Tarifzeit, TarifzeitenZeitscheibe, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
