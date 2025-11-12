@@ -37,6 +37,8 @@ class Steuerbetrag(COM):
 
     steuerkennzeichen: Optional["Steuerkennzeichen"] = None
     """Kennzeichnung des Steuersatzes, bzw. Verfahrens."""
+    sondersteuersatz: Optional[Decimal] = None
+    """Angabe des Steuersatzes in %, sofern steuerkennzeichen = UST_SONDER"""
     basiswert: Optional[Decimal] = None
     """Nettobetrag für den die Steuer berechnet wurde. Z.B. 100"""
     steuerwert: Optional[Decimal] = None

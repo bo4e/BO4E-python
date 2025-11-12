@@ -13,6 +13,7 @@ class TestSteuerbetrag:
             pytest.param(
                 Steuerbetrag(
                     steuerkennzeichen=Steuerkennzeichen.UST_7,
+                    sondersteuersatz=Decimal(7),
                     basiswert=Decimal(100),
                     steuerwert=Decimal(19),
                     waehrung=Waehrungscode.EUR,
