@@ -1,4 +1,4 @@
-,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+gfbaef5da5
+,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+g3357850c5
 bo.Angebot,🟢,🟢,🔴
 bo.Ausschreibung,🟢,🟢,🔴
 bo.Bilanzierung,➕,🟢,🟡
@@ -102,7 +102,7 @@ enum.Aggregationsverantwortung,➕,🟢,🟢
 enum.Angebotsstatus,🟢,🟢,🟢
 enum.Anrede,🟢,🟢,🟢
 enum.ArithmetischeOperation,🟢,🟢,🟢
-enum.ArtikelId,🟢,🟢,🟢
+enum.ArtikelId,🟢,🟢,➖
 enum.AufAbschlagstyp,🟢,🟢,🟢
 enum.AufAbschlagsziel,🟢,🟢,🟢
 enum.Ausschreibungsportal,🟢,🟢,🟢
