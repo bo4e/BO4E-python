@@ -19,7 +19,6 @@ if TYPE_CHECKING:
     from ..bo.geraet import Geraet
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.befestigungsart import Befestigungsart
-    from ..enum.messwerterfassung import Messwerterfassung
     from ..enum.registeranzahl import Registeranzahl
     from ..enum.sparte import Sparte
     from ..enum.zaehlerauspraegung import Zaehlerauspraegung
@@ -67,8 +66,8 @@ class Zaehler(Geschaeftsobjekt):
     """Der Hersteller des Zählers"""
     ist_fernschaltbar: Optional[bool] = None
     """Fernschaltung"""
-    messwerterfassung: Optional["Messwerterfassung"] = None
-    """Messwerterfassung des Zählers"""
+    ist_fernauslesbar: Optional[bool] = None
+    """Fernauslesung"""
     zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None
     """Besondere Spezifikation des Zählers"""
     befestigungsart: Optional["Befestigungsart"] = None

@@ -73,6 +73,7 @@ __all__ = [
     "Lastprofil",
     "MarktgebietInfo",
     "Menge",
+    "Messwert",
     "PositionsAufAbschlag",
     "Preis",
     "Preisgarantie",
@@ -111,7 +112,6 @@ __all__ = [
     "Angebotsstatus",
     "Anrede",
     "ArithmetischeOperation",
-    "ArtikelId",
     "AufAbschlagstyp",
     "AufAbschlagsziel",
     "Ausschreibungsportal",
@@ -149,7 +149,6 @@ __all__ = [
     "Messart",
     "Messgroesse",
     "Messpreistyp",
-    "Messwerterfassung",
     "Messwertstatus",
     "Messwertstatuszusatz",
     "Netzebene",
@@ -277,6 +276,7 @@ from .com.kriteriumwert import KriteriumWert
 from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
+from .com.messwert import Messwert
 from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
@@ -318,7 +318,6 @@ from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
 from .enum.arithmetische_operation import ArithmetischeOperation
-from .enum.artikelid import ArtikelId
 from .enum.aufabschlagstyp import AufAbschlagstyp
 from .enum.aufabschlagsziel import AufAbschlagsziel
 from .enum.ausschreibungsportal import Ausschreibungsportal
@@ -357,7 +356,6 @@ from .enum.mengenoperator import Mengenoperator
 from .enum.messart import Messart
 from .enum.messgroesse import Messgroesse
 from .enum.messpreistyp import Messpreistyp
-from .enum.messwerterfassung import Messwerterfassung
 from .enum.messwertstatus import Messwertstatus
 from .enum.messwertstatuszusatz import Messwertstatuszusatz
 from .enum.netzebene import Netzebene
