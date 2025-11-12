@@ -2,15 +2,17 @@
 Contains Tarifzeiten class
 """
 
-from typing import Annotated, List, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..bo.marktteilnehmer import Marktteilnehmer
-from ..com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
 from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
+
+if TYPE_CHECKING:
+    from ..bo.marktteilnehmer import Marktteilnehmer
+    from ..com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
 
 
 @postprocess_docstring
@@ -25,5 +27,5 @@ class Tarifzeiten(Geschaeftsobjekt):
     marktteilnehmer: Optional["Marktteilnehmer"] = None
     """Optionaler Verweis auf den Anbieter / Marktpartner"""
 
-    zeitscheiben: Optional[List["TarifzeitenZeitscheibe"]] = None
+    zeitscheiben: Optional[list["TarifzeitenZeitscheibe"]] = None
     """Liste von Zeitabschnitten, die tarifliche Regelungen enthalten"""

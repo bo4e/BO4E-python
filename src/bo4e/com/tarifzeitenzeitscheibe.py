@@ -2,14 +2,17 @@
 Contains TarifzeitenZeitscheibe class
 """
 
-from typing import Annotated, List, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from .. import COM, ComTyp
-from ..com.tarifzeit import Tarifzeit
-from ..com.zeitraum import Zeitraum
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
+from .com import COM
+
+if TYPE_CHECKING:
+    from ..com.tarifzeit import Tarifzeit
+    from ..com.zeitraum import Zeitraum
 
 
 @postprocess_docstring
@@ -26,5 +29,5 @@ class TarifzeitenZeitscheibe(COM):
     gueltigkeit: Optional["Zeitraum"] = None
     """Zeitraum, in dem diese Zeitscheibe gültig ist"""
 
-    tarifzeiten: Optional[List["Tarifzeit"]] = None
+    tarifzeiten: Optional[list["Tarifzeit"]] = None
     """Liste von Tarifzeiten, z. B. NT, HT oder weitere Zeitmodelle"""
