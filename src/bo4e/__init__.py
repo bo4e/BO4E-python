@@ -112,7 +112,6 @@ __all__ = [
     "Angebotsstatus",
     "Anrede",
     "ArithmetischeOperation",
-    "ArtikelId",
     "AufAbschlagstyp",
     "AufAbschlagsziel",
     "Ausschreibungsportal",
@@ -319,7 +318,6 @@ from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
 from .enum.arithmetische_operation import ArithmetischeOperation
-from .enum.artikelid import ArtikelId
 from .enum.aufabschlagstyp import AufAbschlagstyp
 from .enum.aufabschlagsziel import AufAbschlagsziel
 from .enum.ausschreibungsportal import Ausschreibungsportal
