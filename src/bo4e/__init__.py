@@ -304,8 +304,8 @@ from .com.tarifpreis import Tarifpreis
 from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreispositionproort import TarifpreispositionProOrt
 from .com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
-from .com.tarifzeitstufe import Tarifzeitstufe
 from .com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
+from .com.tarifzeitstufe import Tarifzeitstufe
 from .com.unterschrift import Unterschrift
 from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
