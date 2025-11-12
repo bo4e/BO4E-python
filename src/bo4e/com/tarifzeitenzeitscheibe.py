@@ -11,7 +11,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..com.tarifzeit import Tarifzeit
+    from ..com.tarifzeitstufe import Tarifzeitstufe
     from ..com.zeitraum import Zeitraum
 
 
@@ -29,5 +29,5 @@ class TarifzeitenZeitscheibe(COM):
     gueltigkeit: Optional["Zeitraum"] = None
     """Zeitraum, in dem diese Zeitscheibe gültig ist"""
 
-    tarifzeiten: Optional[list["Tarifzeit"]] = None
-    """Liste von Tarifzeiten, z. B. NT, HT oder weitere Zeitmodelle"""
+    tarifzeiten: Optional[list["Tarifzeitstufe"]] = None
+    """Liste von Tarifzeitenstufen, z. B. NT, HT oder weitere Zeitmodelle"""

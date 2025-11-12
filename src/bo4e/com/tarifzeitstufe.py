@@ -1,5 +1,5 @@
 """
-Contains Tarifzeit class
+Contains Tarifzeitstufe class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
@@ -15,16 +15,16 @@ if TYPE_CHECKING:
 
 
 @postprocess_docstring
-class Tarifzeit(COM):
+class Tarifzeitstufe(COM):
     """
-    Tarifzeit mit Zuordnung zu einem Zeitraum und einer optionalen Tarifstufe.
+    Tarifzeitstufe mit Zuordnung zu einem Zeitraum und einer optionalen Tarifstufe.
     """
 
-    typ: Annotated[Optional[Literal[ComTyp.TARIFZEIT]], Field(alias="_typ")] = ComTyp.TARIFZEIT
-    """Typ der Tarifzeit – default 'TARIFZEIT'"""
+    typ: Annotated[Optional[Literal[ComTyp.TARIFZEITSTUFE]], Field(alias="_typ")] = ComTyp.TARIFZEITSTUFE
+    """Typ der Tarifzeitstufe – default 'TARIFZEITSTUFE'"""
 
     zeitraum: Optional["Zeitraum"] = None
-    """Gültigkeitszeitraum der Tarifzeit"""
+    """Gültigkeitszeitraum der Tarifzeitstufe"""
 
     tarifstufe: Optional[str] = None
     """Optional: Angabe der Tarifstufe, z. B. HT, NT, ST"""
