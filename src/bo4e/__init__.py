@@ -42,6 +42,7 @@ __all__ = [
     "Tarifinfo",
     "Tarifkosten",
     "Tarifpreisblatt",
+    "Tarifzeiten",
     "TechnischeRessource",
     "Vertrag",
     "Zaehler",
@@ -97,6 +98,8 @@ __all__ = [
     "Tarifpreisposition",
     "TarifpreispositionProOrt",
     "TarifpreisstaffelProOrt",
+    "TarifzeitenZeitscheibe",
+    "Tarifzeitstufe",
     "Unterschrift",
     "Verbrauch",
     "Vertragskonditionen",
@@ -242,6 +245,7 @@ from .bo.tarif import Tarif
 from .bo.tarifinfo import Tarifinfo
 from .bo.tarifkosten import Tarifkosten
 from .bo.tarifpreisblatt import Tarifpreisblatt
+from .bo.tarifzeiten import Tarifzeiten
 from .bo.technischeressource import TechnischeRessource
 from .bo.vertrag import Vertrag
 from .bo.zaehler import Zaehler
@@ -300,6 +304,8 @@ from .com.tarifpreis import Tarifpreis
 from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreispositionproort import TarifpreispositionProOrt
 from .com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
+from .com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
+from .com.tarifzeitstufe import Tarifzeitstufe
 from .com.unterschrift import Unterschrift
 from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
