@@ -20,7 +20,7 @@ class Tarifzeit(COM):
     typ: Annotated[Optional[Literal[ComTyp.TARIFZEIT]], Field(alias="_typ")] = ComTyp.TARIFZEIT
     """Typ der Tarifzeit – default 'TARIFZEIT'"""
 
-    zeitraum: Optional[Zeitraum] = None
+    zeitraum: Optional["Zeitraum"] = None
     """Gültigkeitszeitraum der Tarifzeit"""
 
     tarifstufe: Optional[str] = None

@@ -13,12 +13,10 @@ class TestTarifzeit:
         [
             pytest.param(
                 Tarifzeit(
-                    zeitraum=Zeitraum(
-                        startdatum=date(2025, 1, 1),
-                        enddatum=date(2025, 1, 31),
-                    ),
+                    zeitraum=Zeitraum(),
                     tarifstufe="HT",
-                )
+                ),
+                id="all attributes at first level",
             )
         ],
     )

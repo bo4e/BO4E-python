@@ -10,25 +10,15 @@ from tests.serialization_helper import assert_serialization_roundtrip
 
 class TestTarifzeitenZeitscheibe:
     @pytest.mark.parametrize(
-        "zeitscheibe",
+        "tarifzeitenzeitscheibe",
         [
             pytest.param(
                 TarifzeitenZeitscheibe(
-                    gueltigkeit=Zeitraum(
-                        startdatum=date(2025, 1, 1),
-                        enddatum=date(2025, 1, 31),
-                    ),
-                    tarifzeiten=[
-                        Tarifzeit(
-                            zeitraum=Zeitraum(
-                                startdatum=date(2025, 1, 1),
-                                enddatum=date(2025, 1, 31),
-                            ),
-                            tarifstufe="HT",
-                        )
-                    ],
-                )
-            )
+                    gueltigkeit=Zeitraum(),
+                    tarifzeiten=[Tarifzeit()],
+                ),
+                id="all attributes at first level",
+            ),
         ],
     )
     def test_serialization_roundtrip(self, zeitscheibe: TarifzeitenZeitscheibe) -> None:

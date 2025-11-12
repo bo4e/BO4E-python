@@ -2,9 +2,8 @@ from datetime import date
 
 import pytest
 
-from bo4e import Marktteilnehmer, Zeitraum
+from bo4e import Marktteilnehmer
 from bo4e.bo.tarifzeiten import Tarifzeiten
-from bo4e.com.tarifzeit import Tarifzeit
 from bo4e.com.tarifzeitenzeitscheibe import TarifzeitenZeitscheibe
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -16,25 +15,10 @@ class TestTarifzeiten:
             pytest.param(
                 Tarifzeiten(
                     marktteilnehmer=Marktteilnehmer(),
-                    zeitscheiben=[
-                        TarifzeitenZeitscheibe(
-                            gueltigkeit=Zeitraum(
-                                startdatum=date(2025, 1, 1),
-                                enddatum=date(2025, 1, 31),
-                            ),
-                            tarifzeiten=[
-                                Tarifzeit(
-                                    zeitraum=Zeitraum(
-                                        startdatum=date(2025, 1, 1),
-                                        enddatum=date(2025, 1, 31),
-                                    ),
-                                    tarifstufe="HT",
-                                )
-                            ],
-                        )
-                    ],
-                )
-            )
+                    zeitscheiben=[TarifzeitenZeitscheibe()],
+                ),
+                id="all attributes at first level",
+            ),
         ],
     )
     def test_serialization_roundtrip(self, tarifzeiten: Tarifzeiten) -> None:

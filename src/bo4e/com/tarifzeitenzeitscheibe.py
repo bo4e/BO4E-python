@@ -23,8 +23,8 @@ class TarifzeitenZeitscheibe(COM):
     )
     """Typ dieser Zeitscheibe - Default 'TARIFZEITENZEITSCHEIBE'"""
 
-    gueltigkeit: Optional[Zeitraum] = None
+    gueltigkeit: Optional["Zeitraum"] = None
     """Zeitraum, in dem diese Zeitscheibe gültig ist"""
 
-    tarifzeiten: Optional[List[Tarifzeit]] = None
+    tarifzeiten: Optional[List["Tarifzeit"]] = None
     """Liste von Tarifzeiten, z. B. NT, HT oder weitere Zeitmodelle"""
