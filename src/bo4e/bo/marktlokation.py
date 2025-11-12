@@ -12,10 +12,10 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
+    from ..bo.energiemenge import Energiemenge
     from ..com.adresse import Adresse
     from ..com.geokoordinaten import Geokoordinaten
     from ..com.katasteradresse import Katasteradresse
-    from ..com.verbrauch import Verbrauch
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.bilanzierungsmethode import Bilanzierungsmethode
     from ..enum.energierichtung import Energierichtung
@@ -103,7 +103,7 @@ class Marktlokation(Geschaeftsobjekt):
     marktgebiet: Optional[str] = None
     """für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list"""
     zaehlwerke: Optional[list["Zaehlwerk"]] = None
-    verbrauchsmengen: Optional[list["Verbrauch"]] = None
+    verbrauchsmengen: Optional[list["Energiemenge"]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
 
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None

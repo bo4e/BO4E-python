@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Energiemenge, Lokationstyp, Verbrauch
+from bo4e import Energiemenge, Menge, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -10,9 +10,10 @@ class TestEnergiemenge:
         [
             pytest.param(
                 Energiemenge(
-                    lokations_id="DE0123456789012345678901234567890",
-                    lokationstyp=Lokationstyp.MELO,
-                    energieverbrauch=[Verbrauch()],
+                    obis_kennzahl="1-0:1.8.1",
+                    beschreibung="Eine Beschreibung",
+                    zeitraum=Zeitraum(),
+                    menge=Menge(),
                 ),
                 id="all attributes at first level",
             ),
