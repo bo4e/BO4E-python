@@ -10,7 +10,6 @@ from pydantic import BaseModel, ConfigDict, Field
 from bo4e.version import __version__
 from bo4e.zusatzattribut import ZusatzAttribut
 
-from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 
 # pylint: disable=too-few-public-methods
@@ -37,7 +36,6 @@ class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     Version der BO-Struktur aka "fachliche Versionierung"
     """
 
-    typ: Annotated[Optional[BoTyp], Field(alias="_typ")] = BoTyp.GESCHAEFTSOBJEKT
     zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
 
