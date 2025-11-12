@@ -11,8 +11,9 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
+    from ..com.menge import Menge
     from ..com.verbrauch import Verbrauch
-    from ..enum.lokationstyp import Lokationstyp
+    from ..com.zeitraum import Zeitraum
 
 
 # pylint: disable=too-few-public-methods
@@ -34,11 +35,11 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.ENERGIEMENGE], Field(alias="_typ")] = BoTyp.ENERGIEMENGE
-    lokations_id: Optional[str] = None
-    """Eindeutige Nummer der Marktlokation bzw. der Messlokation, zu der die Energiemenge gehört"""
-    lokationstyp: Optional["Lokationstyp"] = None
-    """Gibt an, ob es sich um eine Markt- oder Messlokation handelt"""
-
-    energieverbrauch: Optional[list["Verbrauch"]] = None
-    """Gibt den Verbrauch in einer Zeiteinheit an"""
-    # there are no optional attributes
+    obis_kennzahl: Optional[str] = None
+    """Die OBIS-Kennzahl der Energiemenge"""
+    beschreibung: Optional[str] = None
+    """Ergänzende Beschreibung zur Energiemenge"""
+    zeitraum: Optional["Zeitraum"] = None
+    """Zeitraum, in dem die Energiemenge angefallen ist/gemessen wurde"""
+    menge: Optional["Menge"] = None
+    """Die angefallene/gemessene Menge"""
