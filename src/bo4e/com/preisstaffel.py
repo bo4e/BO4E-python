@@ -34,15 +34,26 @@ class Preisstaffel(COM):
 
     typ: Annotated[Literal[ComTyp.PREISSTAFFEL], Field(alias="_typ")] = ComTyp.PREISSTAFFEL
 
-    einheitspreis: Optional[Decimal] = None
-    """Preis pro abgerechneter Mengeneinheit"""
+    bezeichnung: Optional[str] = None
+    """Eine (beliebige) Bezeichnung für die Preisstaffel."""
+    preis: Optional[Decimal] = None
+    """Preis pro abgerechneter Mengeneinheit. Die Mengeneinheit wird durch das übergeordnete Objekt angegeben."""
     staffelgrenze_von: Optional[Decimal] = None
-    """Inklusiver unterer Wert, ab dem die Staffel gilt"""
+    """
+    Inklusiver unterer Wert, ab dem die Staffel gilt (inklusiv).
+    Grenzen werden bspw. wie folgt angegeben: `0 - 1000, 1001 - 2000, etc.`
+    Werte zwischen den Grenzen (z.B. `1000,6`) rutschen in die obere Zone / Staffel.
+    """
     staffelgrenze_bis: Optional[Decimal] = None
-    """Exklusiver oberer Wert, bis zu dem die Staffel gilt"""
-
+    """
+    Exklusiver oberer Wert, bis zu dem die Staffel gilt (inklusiv).
+    Grenzen werden bspw. wie folgt angegeben: `0 - 1000, 1001 - 2000, etc.`
+    Werte zwischen den Grenzen (z.B. `1000,6`) rutschen in die obere Zone / Staffel.
+    """
     sigmoidparameter: Optional["Sigmoidparameter"] = None
     """Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter"""
-
     artikel_id: Optional[str] = None
-    """Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst"""
+    """
+    Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst.
+    TODO: Kann das Feld weg?
+    """
