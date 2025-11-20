@@ -3,6 +3,7 @@ import pytest
 from bo4e import (
     Adresse,
     Bilanzierungsmethode,
+    Energiemenge,
     Energierichtung,
     Geschaeftspartner,
     Kundentyp,
@@ -29,6 +30,7 @@ class TestMaLo:
                     netzebene=Netzebene.NSP,
                     endkunde=Geschaeftspartner(),
                     kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
+                    verbrauchsmengen=[Energiemenge()],
                     lokationsbuendel_objektcode="9992 00000 125 6",
                     lokationszuordnungen=[Lokationszuordnung()],
                 )
