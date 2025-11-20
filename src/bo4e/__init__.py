@@ -14,6 +14,7 @@ __all__ = [
     "Ausschreibung",
     "Bilanzierung",
     "Buendelvertrag",
+    "Einspeisung",
     "Energiemenge",
     "Fremdkosten",
     "Geraet",
@@ -203,6 +204,8 @@ __all__ = [
     "ZaehlertypSpezifikation",
     "Zeitreihentyp",
     "ZusatzAttribut",
+    "EEGVermarktungsform",
+    "FernsteuerbarkeitStatus",
     "__version__",
     "__gh_version__",
 ]
@@ -214,6 +217,7 @@ from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
 from .bo.bilanzierung import Bilanzierung
 from .bo.buendelvertrag import Buendelvertrag
+from .bo.einspeisung import Einspeisung
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
 from .bo.geraet import Geraet
@@ -330,10 +334,12 @@ from .enum.bilanzierungsmethode import Bilanzierungsmethode
 from .enum.botyp import BoTyp
 from .enum.comtyp import ComTyp
 from .enum.dienstleistungstyp import Dienstleistungstyp
+from .enum.eeg_vermarktungsform import EEGVermarktungsform
 from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
 from .enum.erzeugungsart import Erzeugungsart
 from .enum.fallgruppenzuordnung import Fallgruppenzuordnung
+from .enum.fernsteuerbarkeit_status import FernsteuerbarkeitStatus
 from .enum.gasqualitaet import Gasqualitaet
 from .enum.gebiettyp import Gebiettyp
 from .enum.geraeteklasse import Geraeteklasse
