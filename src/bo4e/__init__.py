@@ -50,7 +50,6 @@ __all__ = [
     "Angebotsteil",
     "Angebotsvariante",
     "AufAbschlag",
-    "AufAbschlagProOrt",
     "AufAbschlagstaffelProOrt",
     "Ausschreibungsdetail",
     "Ausschreibungslos",
@@ -239,7 +238,6 @@ from .com.angebotsposition import Angebotsposition
 from .com.angebotsteil import Angebotsteil
 from .com.angebotsvariante import Angebotsvariante
 from .com.aufabschlag import AufAbschlag
-from .com.aufabschlagproort import AufAbschlagProOrt
 from .com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com.ausschreibungsdetail import Ausschreibungsdetail
 from .com.ausschreibungslos import Ausschreibungslos
