@@ -35,7 +35,6 @@ __all__ = [
     "PreisblattNetznutzung",
     "Rechnung",
     "Region",
-    "Regionaltarif",
     "Standorteigenschaften",
     "SteuerbareRessource",
     "Tarif",
@@ -232,7 +231,6 @@ from .bo.preisblattmessung import PreisblattMessung
 from .bo.preisblattnetznutzung import PreisblattNetznutzung
 from .bo.rechnung import Rechnung
 from .bo.region import Region
-from .bo.regionaltarif import Regionaltarif
 from .bo.standorteigenschaften import Standorteigenschaften
 from .bo.steuerbareressource import SteuerbareRessource
 from .bo.tarif import Tarif
