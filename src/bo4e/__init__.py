@@ -168,7 +168,6 @@ __all__ = [
     "StrEnum",
     "Tarifkalkulationsmethode",
     "Tarifmerkmal",
-    "Tarifregionskriterium",
     "Tariftyp",
     "Tarifzeit",
     "TechnischeRessourceNutzung",
@@ -365,7 +364,6 @@ from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from .enum.tarifmerkmal import Tarifmerkmal
-from .enum.tarifregionskriterium import Tarifregionskriterium
 from .enum.tariftyp import Tariftyp
 from .enum.tarifzeit import Tarifzeit
 from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
