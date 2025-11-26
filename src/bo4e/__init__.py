@@ -94,7 +94,6 @@ __all__ = [
     "Tarifeinschraenkung",
     "Tarifpreis",
     "Tarifpreisposition",
-    "TarifpreisstaffelProOrt",
     "Unterschrift",
     "Verbrauch",
     "Vertragskonditionen",
@@ -295,7 +294,6 @@ from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
 from .com.tarifpreisposition import Tarifpreisposition
-from .com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
 from .com.unterschrift import Unterschrift
 from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
