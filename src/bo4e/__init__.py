@@ -69,7 +69,6 @@ __all__ = [
     "MarktgebietInfo",
     "Menge",
     "Messwert",
-    "PositionsAufAbschlag",
     "Preis",
     "Preisgarantie",
     "Preisposition",
@@ -257,7 +256,6 @@ from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
 from .com.messwert import Messwert
-from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
 from .com.preisposition import Preisposition
