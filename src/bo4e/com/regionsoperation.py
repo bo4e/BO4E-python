@@ -39,7 +39,7 @@ class Regionsoperation(COM):
 
     typ: Annotated[Literal[ComTyp.REGIONSOPERATION], Field(alias="_typ")] = ComTyp.REGIONSOPERATION
 
-    regionsoperator: Optional[Operator] = None
+    regionsoperator: Optional["Operator"] = None
     prioritaet: Optional[int] = None
     """
     Priorität dieser Regionsoperation. Theoretisch sind Listen in JSON sortiert, jedoch ist eine solche Sortierung
