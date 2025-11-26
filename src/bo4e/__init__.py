@@ -44,6 +44,7 @@ __all__ = [
     "TechnischeRessource",
     "Vertrag",
     "Zaehler",
+    "Zaehlzeitdefinition",
     "Zeitreihe",
     "Adresse",
     "Angebotsposition",
@@ -55,6 +56,8 @@ __all__ = [
     "Betrag",
     "COM",
     "Dienstleistung",
+    "DynamischePreisposition",
+    "EinheitsPreisposition",
     "Energieherkunft",
     "Energiemix",
     "Fremdkostenblock",
@@ -66,6 +69,7 @@ __all__ = [
     "Kostenblock",
     "Kostenposition",
     "Lastprofil",
+    "LastvariablePreisposition",
     "MarktgebietInfo",
     "Menge",
     "Messwert",
@@ -74,6 +78,10 @@ __all__ = [
     "Preisposition",
     "Preisstaffel",
     "Rechnungsposition",
+    "Regionsoperation",
+    "Regionspreis",
+    "Regionszeitscheibe",
+    "RelativePreisposition",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -83,6 +91,8 @@ __all__ = [
     "Tarifeinschraenkung",
     "Tarifpreis",
     "Tarifpreisposition",
+    "Tarifpreiszeitscheibe",
+    "Umschaltzeit",
     "Unterschrift",
     "Verbrauch",
     "Vertragskonditionen",
@@ -92,6 +102,7 @@ __all__ = [
     "Zaehlzeitregister",
     "Zeitraum",
     "Zeitreihenwert",
+    "ZeitvariablePreisposition",
     "Zustaendigkeit",
     "AbgabeArt",
     "Aggregationsverantwortung",
@@ -144,6 +155,7 @@ __all__ = [
     "Organisationstyp",
     "Preisgarantietyp",
     "Preismodell",
+    "Preisreferenz",
     "Preisstatus",
     "Preistyp",
     "Profilart",
@@ -181,6 +193,7 @@ __all__ = [
     "Waehrungscode",
     "Waehrungseinheit",
     "Waermenutzung",
+    "Wiederholungstyp",
     "Zaehlerauspraegung",
     "Zaehlergroesse",
     "Zaehlertyp",
@@ -228,6 +241,7 @@ from .bo.tarifpreisblatt import Tarifpreisblatt
 from .bo.technischeressource import TechnischeRessource
 from .bo.vertrag import Vertrag
 from .bo.zaehler import Zaehler
+from .bo.zaehlzeitdefinition import Zaehlzeitdefinition
 from .bo.zeitreihe import Zeitreihe
 
 # Import COMs
@@ -241,6 +255,8 @@ from .com.ausschreibungslos import Ausschreibungslos
 from .com.betrag import Betrag
 from .com.com import COM
 from .com.dienstleistung import Dienstleistung
+from .com.dynamischepreisposition import DynamischePreisposition
+from .com.einheitspreisposition import EinheitsPreisposition
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
 from .com.fremdkostenblock import Fremdkostenblock
@@ -253,6 +269,7 @@ from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition
 from .com.lastprofil import Lastprofil
+from .com.lastvariablepreisposition import LastvariablePreisposition
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
 from .com.messwert import Messwert
@@ -261,6 +278,10 @@ from .com.preisgarantie import Preisgarantie
 from .com.preisposition import Preisposition
 from .com.preisstaffel import Preisstaffel
 from .com.rechnungsposition import Rechnungsposition
+from .com.regionsoperation import Regionsoperation
+from .com.regionspreis import Regionspreis
+from .com.regionszeitscheibe import Regionszeitscheibe
+from .com.relativepreisposition import RelativePreisposition
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
@@ -270,6 +291,8 @@ from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
 from .com.tarifpreisposition import Tarifpreisposition
+from .com.tarifpreiszeitscheibe import Tarifpreiszeitscheibe
+from .com.umschaltzeit import Umschaltzeit
 from .com.unterschrift import Unterschrift
 from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
@@ -279,6 +302,7 @@ from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
+from .com.zeitvariablepreisposition import ZeitvariablePreisposition
 from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
@@ -335,6 +359,7 @@ from .enum.operator import Operator
 from .enum.organisationstyp import Organisationstyp
 from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
+from .enum.preisreferenz import Preisreferenz
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
 from .enum.profilart import Profilart
@@ -370,6 +395,7 @@ from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
 from .enum.waermenutzung import Waermenutzung
 from .enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
+from .enum.wiederholungstyp import Wiederholungstyp
 from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
