@@ -85,7 +85,6 @@ __all__ = [
     "RegionalePreisstaffel",
     "RegionalerAufAbschlag",
     "RegionaleTarifpreisposition",
-    "Regionskriterium",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -111,7 +110,6 @@ __all__ = [
     "Aggregationsverantwortung",
     "Angebotsstatus",
     "Anrede",
-    "ArithmetischeOperation",
     "AufAbschlagstyp",
     "AufAbschlagsziel",
     "Ausschreibungsportal",
@@ -156,6 +154,7 @@ __all__ = [
     "NetznutzungRechnungstyp",
     "Oekolabel",
     "Oekozertifikat",
+    "Operator",
     "Organisationstyp",
     "Preisgarantietyp",
     "Preismodell",
@@ -168,7 +167,7 @@ __all__ = [
     "Rechnungslegung",
     "Rechnungsstatus",
     "Rechnungstyp",
-    "Regionskriteriumtyp",
+    "Regionskriterium",
     "Registeranzahl",
     "Rollencodetyp",
     "Sparte",
@@ -288,7 +287,6 @@ from .com.regionalepreisgarantie import RegionalePreisgarantie
 from .com.regionalepreisstaffel import RegionalePreisstaffel
 from .com.regionaleraufabschlag import RegionalerAufAbschlag
 from .com.regionaletarifpreisposition import RegionaleTarifpreisposition
-from .com.regionskriterium import Regionskriterium
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
@@ -317,7 +315,6 @@ from .enum.abwicklungsmodell import Abwicklungsmodell
 from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
-from .enum.arithmetische_operation import ArithmetischeOperation
 from .enum.aufabschlagstyp import AufAbschlagstyp
 from .enum.aufabschlagsziel import AufAbschlagsziel
 from .enum.ausschreibungsportal import Ausschreibungsportal
@@ -363,6 +360,7 @@ from .enum.netznutzungrechnungsart import NetznutzungRechnungsart
 from .enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from .enum.oekolabel import Oekolabel
 from .enum.oekozertifikat import Oekozertifikat
+from .enum.operator import Operator
 from .enum.organisationstyp import Organisationstyp
 from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
@@ -375,7 +373,7 @@ from .enum.prognosegrundlage import Prognosegrundlage
 from .enum.rechnungslegung import Rechnungslegung
 from .enum.rechnungsstatus import Rechnungsstatus
 from .enum.rechnungstyp import Rechnungstyp
-from .enum.regionskriteriumtyp import Regionskriteriumtyp
+from .enum.regionskriterium import Regionskriterium
 from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
