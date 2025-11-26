@@ -68,7 +68,6 @@ __all__ = [
     "Konzessionsabgabe",
     "Kostenblock",
     "Kostenposition",
-    "KriteriumWert",
     "Lastprofil",
     "MarktgebietInfo",
     "Menge",
@@ -262,7 +261,6 @@ from .com.kontaktweg import Kontaktweg
 from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition
-from .com.kriteriumwert import KriteriumWert
 from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
