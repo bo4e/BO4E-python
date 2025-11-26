@@ -81,7 +81,6 @@ __all__ = [
     "Rechnungsposition",
     "RegionaleGueltigkeit",
     "RegionalePreisstaffel",
-    "RegionaleTarifpreisposition",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -278,7 +277,6 @@ from .com.preisstaffel import Preisstaffel
 from .com.rechnungsposition import Rechnungsposition
 from .com.regionalegueltigkeit import RegionaleGueltigkeit
 from .com.regionalepreisstaffel import RegionalePreisstaffel
-from .com.regionaletarifpreisposition import RegionaleTarifpreisposition
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
