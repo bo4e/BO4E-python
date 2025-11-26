@@ -120,7 +120,6 @@ __all__ = [
     "Geraeteklasse",
     "Geraetetyp",
     "Geschaeftspartnerrolle",
-    "Gueltigkeitstyp",
     "Kalkulationsmethode",
     "Konfigurationsprodukt",
     "Kontaktart",
@@ -317,7 +316,6 @@ from .enum.gebiettyp import Gebiettyp
 from .enum.geraeteklasse import Geraeteklasse
 from .enum.geraetetyp import Geraetetyp
 from .enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from .enum.gueltigkeitstyp import Gueltigkeitstyp
 from .enum.kalkulationsmethode import Kalkulationsmethode
 from .enum.kontaktart import Kontaktart
 from .enum.kostenklasse import Kostenklasse
