@@ -57,8 +57,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#step-by-step-guide">Step-by-Step Guide</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#python-package-implementation">1. Python Package Implementation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#release-and-schema-generation">2. Release and Schema Generation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#optional-customization-bo4e-schema-tool">3. Optional Customization (BO4E-Schema-Tool)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#code-generation-bo4e-python-generator">4. Code Generation (BO4E-Python-Generator)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#optional-customization-bo4e-cli">3. Optional Customization (BO4E-CLI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-generation-bo4e-cli">4. Code Generation (BO4E-CLI)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ready-to-use">5. Ready to Use</a></li>
 </ul>
 </li>
@@ -120,22 +120,22 @@ This guide provides a straightforward explanation of how we release new versions
 </ul>
 </div></blockquote>
 </section>
-<section id="optional-customization-bo4e-schema-tool">
-<h3>3. Optional Customization (BO4E-Schema-Tool)<a class="headerlink" href="#optional-customization-bo4e-schema-tool" title="Link to this heading"></a></h3>
+<section id="optional-customization-bo4e-cli">
+<h3>3. Optional Customization (BO4E-CLI)<a class="headerlink" href="#optional-customization-bo4e-cli" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Flexibility in Data Fields:</strong> Initially, the JSON schemas contain only optional fields.</p></li>
-<li><p><strong>Setting Required Fields:</strong> If you need to designate certain fields as mandatory, you can use the <a class="reference external" href="https://github.com/bo4e/BO4E-Schema-Tool">BO4E-Schema-Tool Repository</a>.</p></li>
-<li><p><strong>Tool Functionality:</strong> This repository houses a command-line interface (CLI) tool that assists in updating the JSON schema files to define required fields.</p></li>
+<li><p><strong>Setting Required Fields:</strong> If you need to designate certain fields as mandatory, you can use the <a class="reference external" href="https://github.com/bo4e/BO4E-CLI?tab=readme-ov-file#bo4e-edit">BO4E-CLI</a>.</p></li>
+<li><p><strong>More flexibility for your use-case:</strong> Besides the required fields, the BO4E-CLI can do a lot more non-critical customization. I.e. the edits are only additive.</p></li>
 </ul>
 </div></blockquote>
 </section>
-<section id="code-generation-bo4e-python-generator">
-<h3>4. Code Generation (BO4E-Python-Generator)<a class="headerlink" href="#code-generation-bo4e-python-generator" title="Link to this heading"></a></h3>
+<section id="code-generation-bo4e-cli">
+<h3>4. Code Generation (BO4E-CLI)<a class="headerlink" href="#code-generation-bo4e-cli" title="Link to this heading"></a></h3>
 <blockquote>
 <div><ul class="simple">
 <li><p><strong>Finalizing JSON Schemas:</strong> Once you have the final version of the JSON schema files, it’s time to generate code.</p></li>
-<li><p><strong>Pydantic Classes Creation:</strong> Utilize tools like the <a class="reference external" href="https://github.com/bo4e/BO4E-Python-Generator">BO4E-Python-Generator</a>, another CLI tool, to create Pydantic classes from the JSON schemas.</p></li>
+<li><p><strong>Pydantic Classes Creation:</strong> Use the same <a class="reference external" href="https://github.com/bo4e/BO4E-CLI?tab=readme-ov-file#bo4e-generate">BO4E-CLI</a> to create Pydantic classes from the JSON schemas.</p></li>
 </ul>
 </div></blockquote>
 </section>
