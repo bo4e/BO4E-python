@@ -8,12 +8,12 @@ such that it can be implemented in most programming languages.
 
 * The data model is generally not object oriented. The reference implementation (BO4E-Python) uses inheritance
   to save some code but the generated JSON schemas do not contain any information about inheritance as it is not
-  supported by the official JSON schema structure. As a result, ...
+  supported by the official JSON schema structure. As a result, the following constraints apply:
 
-  * ... you can only differentiate BOs and COMs by using the enums `BoTyp` and `ComTyp`. They are not directly
+  * You can only differentiate BOs and COMs by using the enums `BoTyp` and `ComTyp`. They are not directly
     referenced from the data model but are rolled out to support developers if they need to differentiate the
     types.
-  * ... there will be some redundancy in terms of field definitions.
+  * There will be some redundancy in terms of field definitions.
 
 * In general, BOs won't be referenced by COMs but it's not prohibited. In fact, there are some cases in which a COM
   references a BO. Keep that in mind when designing a package structure e.g. to prevent circular import errors.
