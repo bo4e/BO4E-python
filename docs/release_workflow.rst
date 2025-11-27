@@ -18,16 +18,16 @@ Step-by-Step Guide
    * **JSON Schemas Creation:** This action generates JSON schemas, which are essential blueprints of the data model.
    * **Storage:** These schemas are then stored in a dedicated repository, known as the `BO4E-Schemas Repository <https://github.com/bo4e/BO4E-Schemas>`_.
 
-3. Optional Customization (BO4E-Schema-Tool)
+3. Optional Customization (BO4E-CLI)
 --------------------------------------------
    * **Flexibility in Data Fields:** Initially, the JSON schemas contain only optional fields.
-   * **Setting Required Fields:** If you need to designate certain fields as mandatory, you can use the `BO4E-Schema-Tool Repository <https://github.com/bo4e/BO4E-Schema-Tool>`_.
-   * **Tool Functionality:** This repository houses a command-line interface (CLI) tool that assists in updating the JSON schema files to define required fields.
+   * **Setting Required Fields:** If you need to designate certain fields as mandatory, you can use the `BO4E-CLI <https://github.com/bo4e/BO4E-CLI?tab=readme-ov-file#bo4e-edit>`_.
+   * **More flexibility for your use-case:** Besides the required fields, the BO4E-CLI can do a lot more non-critical customization. I.e. the edits are only additive.
 
-4. Code Generation (BO4E-Python-Generator)
+4. Code Generation (BO4E-CLI)
 ------------------------------------------
    * **Finalizing JSON Schemas:** Once you have the final version of the JSON schema files, it's time to generate code.
-   * **Pydantic Classes Creation:** Utilize tools like the `BO4E-Python-Generator <https://github.com/bo4e/BO4E-Python-Generator>`_, another CLI tool, to create Pydantic classes from the JSON schemas.
+   * **Pydantic Classes Creation:** Use the same `BO4E-CLI <https://github.com/bo4e/BO4E-CLI?tab=readme-ov-file#bo4e-generate>`_ to create Pydantic classes from the JSON schemas.
 
 5. Ready to Use
 ---------------
