@@ -2,7 +2,7 @@
 from bo4e.enum.strenum import StrEnum
 
 
-class Regionskriteriumtyp(StrEnum):
+class Regionskriterium(StrEnum):
     """
     Klassifizierung der Kriterien für eine regionale Eingrenzung.
     """
@@ -67,7 +67,7 @@ class Regionskriteriumtyp(StrEnum):
     """Einwohnerzahl Gemeinde"""
     EINWOHNERZAHL_ORT = "EINWOHNERZAHL_ORT"
     """Einwohnerzahl Ort"""
-    KM_UMKREIS = "KM_UMKREIS"
+    PLZ_KM_UMKREIS = "PLZ_KM_UMKREIS"
     """km Umkreis"""
     BUNDESWEIT = "BUNDESWEIT"
     """Bundesweite Betrachtung"""

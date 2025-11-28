@@ -35,7 +35,6 @@ __all__ = [
     "PreisblattNetznutzung",
     "Rechnung",
     "Region",
-    "Regionaltarif",
     "Standorteigenschaften",
     "SteuerbareRessource",
     "Tarif",
@@ -45,20 +44,20 @@ __all__ = [
     "TechnischeRessource",
     "Vertrag",
     "Zaehler",
+    "Zaehlzeitdefinition",
     "Zeitreihe",
     "Adresse",
     "Angebotsposition",
     "Angebotsteil",
     "Angebotsvariante",
     "AufAbschlag",
-    "AufAbschlagProOrt",
-    "AufAbschlagRegional",
-    "AufAbschlagstaffelProOrt",
     "Ausschreibungsdetail",
     "Ausschreibungslos",
     "Betrag",
     "COM",
     "Dienstleistung",
+    "DynamischePreisposition",
+    "EinheitsPreisposition",
     "Energieherkunft",
     "Energiemix",
     "Fremdkostenblock",
@@ -69,23 +68,20 @@ __all__ = [
     "Konzessionsabgabe",
     "Kostenblock",
     "Kostenposition",
-    "KriteriumWert",
     "Lastprofil",
+    "LastvariablePreisposition",
     "MarktgebietInfo",
     "Menge",
     "Messwert",
-    "PositionsAufAbschlag",
     "Preis",
     "Preisgarantie",
     "Preisposition",
     "Preisstaffel",
     "Rechnungsposition",
-    "RegionaleGueltigkeit",
-    "RegionalePreisgarantie",
-    "RegionalePreisstaffel",
-    "RegionalerAufAbschlag",
-    "RegionaleTarifpreisposition",
-    "Regionskriterium",
+    "Regionsoperation",
+    "Regionspreis",
+    "Regionszeitscheibe",
+    "RelativePreisposition",
     "Sigmoidparameter",
     "StandorteigenschaftenGas",
     "StandorteigenschaftenStrom",
@@ -95,8 +91,8 @@ __all__ = [
     "Tarifeinschraenkung",
     "Tarifpreis",
     "Tarifpreisposition",
-    "TarifpreispositionProOrt",
-    "TarifpreisstaffelProOrt",
+    "Tarifpreiszeitscheibe",
+    "Umschaltzeit",
     "Unterschrift",
     "Verbrauch",
     "Vertragskonditionen",
@@ -106,12 +102,12 @@ __all__ = [
     "Zaehlzeitregister",
     "Zeitraum",
     "Zeitreihenwert",
+    "ZeitvariablePreisposition",
     "Zustaendigkeit",
     "AbgabeArt",
     "Aggregationsverantwortung",
     "Angebotsstatus",
     "Anrede",
-    "ArithmetischeOperation",
     "AufAbschlagstyp",
     "AufAbschlagsziel",
     "Ausschreibungsportal",
@@ -131,7 +127,6 @@ __all__ = [
     "Geraeteklasse",
     "Geraetetyp",
     "Geschaeftspartnerrolle",
-    "Gueltigkeitstyp",
     "Kalkulationsmethode",
     "Konfigurationsprodukt",
     "Kontaktart",
@@ -156,9 +151,11 @@ __all__ = [
     "NetznutzungRechnungstyp",
     "Oekolabel",
     "Oekozertifikat",
+    "Operator",
     "Organisationstyp",
     "Preisgarantietyp",
     "Preismodell",
+    "Preisreferenz",
     "Preisstatus",
     "Preistyp",
     "Profilart",
@@ -168,7 +165,7 @@ __all__ = [
     "Rechnungslegung",
     "Rechnungsstatus",
     "Rechnungstyp",
-    "Regionskriteriumtyp",
+    "Regionskriterium",
     "Registeranzahl",
     "Rollencodetyp",
     "Sparte",
@@ -178,7 +175,6 @@ __all__ = [
     "StrEnum",
     "Tarifkalkulationsmethode",
     "Tarifmerkmal",
-    "Tarifregionskriterium",
     "Tariftyp",
     "Tarifzeit",
     "TechnischeRessourceNutzung",
@@ -197,6 +193,7 @@ __all__ = [
     "Waehrungscode",
     "Waehrungseinheit",
     "Waermenutzung",
+    "Wiederholungstyp",
     "Zaehlerauspraegung",
     "Zaehlergroesse",
     "Zaehlertyp",
@@ -235,7 +232,6 @@ from .bo.preisblattmessung import PreisblattMessung
 from .bo.preisblattnetznutzung import PreisblattNetznutzung
 from .bo.rechnung import Rechnung
 from .bo.region import Region
-from .bo.regionaltarif import Regionaltarif
 from .bo.standorteigenschaften import Standorteigenschaften
 from .bo.steuerbareressource import SteuerbareRessource
 from .bo.tarif import Tarif
@@ -245,6 +241,7 @@ from .bo.tarifpreisblatt import Tarifpreisblatt
 from .bo.technischeressource import TechnischeRessource
 from .bo.vertrag import Vertrag
 from .bo.zaehler import Zaehler
+from .bo.zaehlzeitdefinition import Zaehlzeitdefinition
 from .bo.zeitreihe import Zeitreihe
 
 # Import COMs
@@ -253,14 +250,13 @@ from .com.angebotsposition import Angebotsposition
 from .com.angebotsteil import Angebotsteil
 from .com.angebotsvariante import Angebotsvariante
 from .com.aufabschlag import AufAbschlag
-from .com.aufabschlagproort import AufAbschlagProOrt
-from .com.aufabschlagregional import AufAbschlagRegional
-from .com.aufabschlagstaffelproort import AufAbschlagstaffelProOrt
 from .com.ausschreibungsdetail import Ausschreibungsdetail
 from .com.ausschreibungslos import Ausschreibungslos
 from .com.betrag import Betrag
 from .com.com import COM
 from .com.dienstleistung import Dienstleistung
+from .com.dynamischepreisposition import DynamischePreisposition
+from .com.einheitspreisposition import EinheitsPreisposition
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
 from .com.fremdkostenblock import Fremdkostenblock
@@ -272,23 +268,20 @@ from .com.kontaktweg import Kontaktweg
 from .com.konzessionsabgabe import Konzessionsabgabe
 from .com.kostenblock import Kostenblock
 from .com.kostenposition import Kostenposition
-from .com.kriteriumwert import KriteriumWert
 from .com.lastprofil import Lastprofil
+from .com.lastvariablepreisposition import LastvariablePreisposition
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
 from .com.messwert import Messwert
-from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
 from .com.preisposition import Preisposition
 from .com.preisstaffel import Preisstaffel
 from .com.rechnungsposition import Rechnungsposition
-from .com.regionalegueltigkeit import RegionaleGueltigkeit
-from .com.regionalepreisgarantie import RegionalePreisgarantie
-from .com.regionalepreisstaffel import RegionalePreisstaffel
-from .com.regionaleraufabschlag import RegionalerAufAbschlag
-from .com.regionaletarifpreisposition import RegionaleTarifpreisposition
-from .com.regionskriterium import Regionskriterium
+from .com.regionsoperation import Regionsoperation
+from .com.regionspreis import Regionspreis
+from .com.regionszeitscheibe import Regionszeitscheibe
+from .com.relativepreisposition import RelativePreisposition
 from .com.sigmoidparameter import Sigmoidparameter
 from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
@@ -298,8 +291,8 @@ from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
 from .com.tarifpreisposition import Tarifpreisposition
-from .com.tarifpreispositionproort import TarifpreispositionProOrt
-from .com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
+from .com.tarifpreiszeitscheibe import Tarifpreiszeitscheibe
+from .com.umschaltzeit import Umschaltzeit
 from .com.unterschrift import Unterschrift
 from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
@@ -309,6 +302,7 @@ from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
+from .com.zeitvariablepreisposition import ZeitvariablePreisposition
 from .com.zustaendigkeit import Zustaendigkeit
 
 # Import Enums
@@ -317,7 +311,6 @@ from .enum.abwicklungsmodell import Abwicklungsmodell
 from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
-from .enum.arithmetische_operation import ArithmetischeOperation
 from .enum.aufabschlagstyp import AufAbschlagstyp
 from .enum.aufabschlagsziel import AufAbschlagsziel
 from .enum.ausschreibungsportal import Ausschreibungsportal
@@ -339,7 +332,6 @@ from .enum.gebiettyp import Gebiettyp
 from .enum.geraeteklasse import Geraeteklasse
 from .enum.geraetetyp import Geraetetyp
 from .enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
-from .enum.gueltigkeitstyp import Gueltigkeitstyp
 from .enum.kalkulationsmethode import Kalkulationsmethode
 from .enum.kontaktart import Kontaktart
 from .enum.kostenklasse import Kostenklasse
@@ -363,9 +355,11 @@ from .enum.netznutzungrechnungsart import NetznutzungRechnungsart
 from .enum.netznutzungrechnungstyp import NetznutzungRechnungstyp
 from .enum.oekolabel import Oekolabel
 from .enum.oekozertifikat import Oekozertifikat
+from .enum.operator import Operator
 from .enum.organisationstyp import Organisationstyp
 from .enum.preisgarantietyp import Preisgarantietyp
 from .enum.preismodell import Preismodell
+from .enum.preisreferenz import Preisreferenz
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
 from .enum.profilart import Profilart
@@ -375,7 +369,7 @@ from .enum.prognosegrundlage import Prognosegrundlage
 from .enum.rechnungslegung import Rechnungslegung
 from .enum.rechnungsstatus import Rechnungsstatus
 from .enum.rechnungstyp import Rechnungstyp
-from .enum.regionskriteriumtyp import Regionskriteriumtyp
+from .enum.regionskriterium import Regionskriterium
 from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
@@ -385,7 +379,6 @@ from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from .enum.tarifmerkmal import Tarifmerkmal
-from .enum.tarifregionskriterium import Tarifregionskriterium
 from .enum.tariftyp import Tariftyp
 from .enum.tarifzeit import Tarifzeit
 from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
@@ -402,6 +395,7 @@ from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
 from .enum.waermenutzung import Waermenutzung
 from .enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
+from .enum.wiederholungstyp import Wiederholungstyp
 from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp

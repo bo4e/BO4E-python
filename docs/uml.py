@@ -14,6 +14,7 @@ import re
 import shlex
 import subprocess
 from abc import ABCMeta, abstractmethod
+from copy import copy
 from pathlib import Path
 from types import NoneType
 from typing import Any, Dict, List, Optional, Tuple, Type, Union, cast, get_args
@@ -594,3 +595,16 @@ def compile_files_plantuml(input_dir: Path, output_dir: Path, executable: Path) 
     """
     command = f'java -jar "{executable}" "{input_dir}" -svg -o "{output_dir}"'
     subprocess.call(shlex.split(command))
+
+
+def get_unconnected_coms_and_enums(graph: _UMLNetworkABC) -> set[str]:
+    """
+    Detects all COMs and ENUMs which are not reachable from any BO inside the `graph`.
+    """
+    all_nodes = set(graph.nodes)
+    all_bos = set(filter(lambda modl_namespace: modl_namespace.startswith("bo4e.bo"), all_nodes))
+    connected_nodes = copy(all_bos)
+    for bo in all_bos:
+        connected_nodes |= set(nx.descendants(graph, bo))
+
+    return all_nodes - connected_nodes
