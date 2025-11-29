@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>License &mdash; bo4e latest documentation</title>
+  <title>Technical restrictions &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/css/override.css?v=54ea1ca9" />
@@ -22,7 +22,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="Contributing" href="authors.html" /> 
+    <link rel="next" title="bo4e" href="api/modules.html" />
+    <link rel="prev" title="Fundamentals" href="fundamentals.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,7 +48,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="fundamentals.html">Fundamentals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="restrictions.html">Technical restrictions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Technical restrictions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/modules.html">Data Model Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/bo4e.bo.html">BusinessObjects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api/bo4e.com.html">Components</a></li>
@@ -58,7 +59,7 @@
 <li class="toctree-l1"><a class="reference internal" href="changelog.html#compatibility">Compatibility</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributing_guide.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="authors.html">Authors</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 
         </div>
@@ -75,9 +76,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">License</li>
+      <li class="breadcrumb-item active">Technical restrictions</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="_sources/license.rst.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/restrictions.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,31 +86,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="license">
-<span id="id1"></span><h1>License<a class="headerlink" href="#license" title="Link to this heading"></a></h1>
-<p>MIT License</p>
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the “Software”), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:</p>
-<p>The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.</p>
-<p>THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.</p>
+  <section id="technical-restrictions">
+<h1>Technical restrictions<a class="headerlink" href="#technical-restrictions" title="Link to this heading"></a></h1>
+<p>There are some technical restrictions throughout the BO4E data models which are important if you want to use it.
+There are several reasons for these but mostly due to compatibility reasons as we want to design the data model
+such that it can be implemented in most programming languages.</p>
+<ul class="simple">
+<li><p>The data model is generally not object oriented. The reference implementation (BO4E-Python) uses inheritance
+to save some code but the generated JSON schemas do not contain any information about inheritance as it is not
+supported by the official JSON schema structure. As a result, the following constraints apply:</p>
+<ul>
+<li><p>You can only differentiate BOs and COMs by using the enums <cite>BoTyp</cite> and <cite>ComTyp</cite>. They are not directly
+referenced from the data model but are rolled out to support developers if they need to differentiate the
+types.</p></li>
+<li><p>There will be some redundancy in terms of field definitions.</p></li>
+</ul>
+</li>
+<li><p>In general, BOs won’t be referenced by COMs but it’s not prohibited. In fact, there are some cases in which a COM
+references a BO. Keep that in mind when designing a package structure e.g. to prevent circular import errors.</p></li>
+<li><p>There are no circular references. This means, when drawing a reference graph of BO4E there will be no loops.</p>
+<ul>
+<li><p>As a result, we cannot directly support <cite>n x m</cite>-relationships as they would require a back-reference.
+If you’re designing a database structure you have to manually add these relationship tables where needed.</p></li>
+</ul>
+</li>
+<li><p>We won’t use a <cite>Union</cite>-type which is represented in JSON schemas as <cite>anyOf</cite> except for a nullable type. I.e.
+the type can never be a union of two or more types which are not <cite>null</cite>.</p></li>
+</ul>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="authors.html" class="btn btn-neutral float-left" title="Contributing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="fundamentals.html" class="btn btn-neutral float-left" title="Fundamentals" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="api/modules.html" class="btn btn-neutral float-right" title="bo4e" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
