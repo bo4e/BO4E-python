@@ -9,6 +9,9 @@ from typing import Any, Dict, Optional, TypeVar
 from dictdiffer import diff  # type:ignore[import-not-found]
 from pydantic import BaseModel
 
+from bo4e.bo.geschaeftsobjekt import Geschaeftsobjekt
+from bo4e.com.com import COM
+
 T = TypeVar("T", bound=BaseModel)
 
 
@@ -34,7 +37,20 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
                 _remove_version_recursive_iter(v)
 
     _remove_version_recursive_iter(actual_json_dict)
-    # TODO: serializable_object.dict()
+
+    # Check typ property for bo and com classes
+    # the default value must be the corresponding enum value of the enum classes BoTyp or ComTyp
+    if isinstance(serializable_object, (Geschaeftsobjekt, COM)):
+        assert hasattr(
+            serializable_object, "typ"
+        ), f"Missing 'typ' attribute in {serializable_object.__class__.__name__}"
+        assert serializable_object.typ is not None
+
+        assert serializable_object.typ.value.lower() == serializable_object.__class__.__name__.lower(), (
+            f"typ value '{serializable_object.typ.value}' does not match class name "
+            f"'{serializable_object.__class__.__name__}'"
+        )
+
     if expected_json_dict is not None:
         assert all([(k in json_string) for k in expected_json_dict.keys()])
         assert actual_json_dict == expected_json_dict, (

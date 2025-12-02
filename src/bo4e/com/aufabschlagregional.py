@@ -1,9 +1,12 @@
 """
-Contains AufAbschlagRegional and corresponding marshmallow schema for de-/serialization
+Contains AufAbschlagRegional
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 
 # pylint: disable=R0801
@@ -41,6 +44,7 @@ class AufAbschlagRegional(COM):
 
     """
 
+    typ: Annotated[Literal[ComTyp.AUFABSCHLAGREGIONAL], Field(alias="_typ")] = ComTyp.AUFABSCHLAGREGIONAL
     # required attributess
     bezeichnung: Optional[str] = None
     """Bezeichnung des Auf-/Abschlags"""

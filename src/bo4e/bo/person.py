@@ -1,6 +1,5 @@
 """
 Contains Person class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from datetime import date
@@ -8,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -37,7 +36,7 @@ class Person(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.PERSON], Field(alias="_typ")] = Typ.PERSON
+    typ: Annotated[Literal[BoTyp.PERSON], Field(alias="_typ")] = BoTyp.PERSON
     anrede: Optional["Anrede"] = None
     """Mögliche Anrede der Person"""
     individuelle_anrede: Optional[str] = None

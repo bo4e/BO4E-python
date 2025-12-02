@@ -1,6 +1,5 @@
 """
 Contains Rechnung class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
@@ -8,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -48,7 +47,7 @@ class Rechnung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.RECHNUNG], Field(alias="_typ")] = Typ.RECHNUNG
+    typ: Annotated[Literal[BoTyp.RECHNUNG], Field(alias="_typ")] = BoTyp.RECHNUNG
     ist_storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;

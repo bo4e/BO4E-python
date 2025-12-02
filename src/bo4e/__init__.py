@@ -73,6 +73,7 @@ __all__ = [
     "Lastprofil",
     "MarktgebietInfo",
     "Menge",
+    "Messwert",
     "PositionsAufAbschlag",
     "Preis",
     "Preisgarantie",
@@ -97,7 +98,6 @@ __all__ = [
     "TarifpreispositionProOrt",
     "TarifpreisstaffelProOrt",
     "Unterschrift",
-    "Verbrauch",
     "Vertragskonditionen",
     "Vertragsteil",
     "VerwendungszweckProMarktrolle",
@@ -111,7 +111,6 @@ __all__ = [
     "Angebotsstatus",
     "Anrede",
     "ArithmetischeOperation",
-    "ArtikelId",
     "AufAbschlagstyp",
     "AufAbschlagsziel",
     "Ausschreibungsportal",
@@ -149,7 +148,6 @@ __all__ = [
     "Messart",
     "Messgroesse",
     "Messpreistyp",
-    "Messwerterfassung",
     "Messwertstatus",
     "Messwertstatuszusatz",
     "Netzebene",
@@ -186,7 +184,8 @@ __all__ = [
     "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
     "Titel",
-    "Typ",
+    "BoTyp",
+    "ComTyp",
     "Verbrauchsart",
     "Vertragsart",
     "Vertragsform",
@@ -197,7 +196,6 @@ __all__ = [
     "Waehrungscode",
     "Waehrungseinheit",
     "Waermenutzung",
-    "Wertermittlungsverfahren",
     "Zaehlerauspraegung",
     "Zaehlergroesse",
     "Zaehlertyp",
@@ -278,6 +276,7 @@ from .com.kriteriumwert import KriteriumWert
 from .com.lastprofil import Lastprofil
 from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
+from .com.messwert import Messwert
 from .com.positionsaufabschlag import PositionsAufAbschlag
 from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
@@ -302,7 +301,6 @@ from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreispositionproort import TarifpreispositionProOrt
 from .com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
 from .com.unterschrift import Unterschrift
-from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
@@ -320,7 +318,6 @@ from .enum.aggregationsverantwortung import Aggregationsverantwortung
 from .enum.angebotsstatus import Angebotsstatus
 from .enum.anrede import Anrede
 from .enum.arithmetische_operation import ArithmetischeOperation
-from .enum.artikelid import ArtikelId
 from .enum.aufabschlagstyp import AufAbschlagstyp
 from .enum.aufabschlagsziel import AufAbschlagsziel
 from .enum.ausschreibungsportal import Ausschreibungsportal
@@ -330,6 +327,8 @@ from .enum.bdewartikelnummer import BDEWArtikelnummer
 from .enum.befestigungsart import Befestigungsart
 from .enum.bemessungsgroesse import Bemessungsgroesse
 from .enum.bilanzierungsmethode import Bilanzierungsmethode
+from .enum.botyp import BoTyp
+from .enum.comtyp import ComTyp
 from .enum.dienstleistungstyp import Dienstleistungstyp
 from .enum.emobilitaetsart import EMobilitaetsart
 from .enum.energierichtung import Energierichtung
@@ -357,7 +356,6 @@ from .enum.mengenoperator import Mengenoperator
 from .enum.messart import Messart
 from .enum.messgroesse import Messgroesse
 from .enum.messpreistyp import Messpreistyp
-from .enum.messwerterfassung import Messwerterfassung
 from .enum.messwertstatus import Messwertstatus
 from .enum.messwertstatuszusatz import Messwertstatuszusatz
 from .enum.netzebene import Netzebene
@@ -394,7 +392,6 @@ from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
 from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
 from .enum.titel import Titel
-from .enum.typ import Typ
 from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
@@ -405,7 +402,6 @@ from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
 from .enum.waermenutzung import Waermenutzung
 from .enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
-from .enum.wertermittlungsverfahren import Wertermittlungsverfahren
 from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp

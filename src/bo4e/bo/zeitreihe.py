@@ -1,5 +1,5 @@
 """
-Contains Zeitreihe class and corresponding marshmallow schema for de-/serialization
+Contains Zeitreihe class
 """
 
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
@@ -8,7 +8,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.messart import Messart
     from ..enum.messgroesse import Messgroesse
-    from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+    from ..enum.messwertstatus import Messwertstatus
 
 
 @postprocess_docstring
@@ -36,7 +36,7 @@ class Zeitreihe(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.ZEITREIHE], Field(alias="_typ")] = Typ.ZEITREIHE
+    typ: Annotated[Literal[BoTyp.ZEITREIHE], Field(alias="_typ")] = BoTyp.ZEITREIHE
     bezeichnung: Optional[str] = None
     """Bezeichnung für die Zeitreihe"""
     messgroesse: Optional["Messgroesse"] = None
@@ -54,5 +54,5 @@ class Zeitreihe(Geschaeftsobjekt):
     """Beschreibt die Verwendung der Zeitreihe"""
     version: Optional[str] = None
     """Version der Zeitreihe"""
-    wertherkunft: Optional["Wertermittlungsverfahren"] = None
-    """Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung"""
+    wertherkunft: Optional["Messwertstatus"] = None
+    """Kennzeichnung, wie die Werte entstanden sind, z.B. ABGELESEN oder PROGNOSEWERT"""

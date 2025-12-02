@@ -83,7 +83,7 @@ For data validation and de/serialization we use `pydantic <https://pydantic-docs
        Es kommt nur bei meinem Strom-Lieferanten zum Einsatz und beschreibt dort all die tollen Eigenschaften, die mein Verbrauchsverhalten hat.
        """
 
-       typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.MEINBO
+       typ: Annotated[Optional[Typ], Field(alias="_typ")] = TypBo.MEINBO
 
        #: Der Lieferbeginn beschreibt den Zeitpunkt ab dem (inklusiv) mich ein Versorger seinen Kunden nennen darf
        lieferbeginn: Optional[datetime] = None

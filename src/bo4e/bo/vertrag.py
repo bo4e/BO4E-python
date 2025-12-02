@@ -1,6 +1,5 @@
 """
 Contains Vertrag class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
@@ -8,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -42,7 +41,7 @@ class Vertrag(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.VERTRAG], Field(alias="_typ")] = Typ.VERTRAG
+    typ: Annotated[Literal[BoTyp.VERTRAG], Field(alias="_typ")] = BoTyp.VERTRAG
     # pylint: disable=duplicate-code
     vertragsnummer: Optional[str] = None
     """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""

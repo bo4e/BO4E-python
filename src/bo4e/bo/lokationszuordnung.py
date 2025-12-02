@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -33,7 +33,7 @@ class Lokationszuordnung(Geschaeftsobjekt):
         `Lokationszuordnung JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Lokationszuordnung.json>`_
     """
 
-    typ: Annotated[Literal[Typ.LOKATIONSZUORDNUNG], Field(alias="_typ")] = Typ.LOKATIONSZUORDNUNG
+    typ: Annotated[Literal[BoTyp.LOKATIONSZUORDNUNG], Field(alias="_typ")] = BoTyp.LOKATIONSZUORDNUNG
 
     marktlokationen: Optional[list["Marktlokation"]] = None
     """Liste mit referenzierten Marktlokationen"""

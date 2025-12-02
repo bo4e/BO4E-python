@@ -19,7 +19,7 @@ from bo4e.enum.wahlrechtprognosegrundlage import WahlrechtPrognosegrundlage
 from bo4e.enum.zeitreihentyp import Zeitreihentyp
 
 from ..enum.abwicklungsmodell import Abwicklungsmodell
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 
 
 class Bilanzierung(Geschaeftsobjekt):
@@ -35,7 +35,7 @@ class Bilanzierung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[Typ], Field(alias="_typ")] = Typ.BILANZIERUNG
+    typ: Annotated[Optional[BoTyp], Field(alias="_typ")] = BoTyp.BILANZIERUNG
 
     marktlokations_id: Optional[str] = None  #:  ID der Marktlokation
     lastprofil: Optional[list[Lastprofil]] = None  #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)

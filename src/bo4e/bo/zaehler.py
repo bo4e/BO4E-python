@@ -1,6 +1,5 @@
 """
 Contains Zaehler class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
@@ -12,7 +11,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 import pydantic
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -20,7 +19,6 @@ if TYPE_CHECKING:
     from ..bo.geraet import Geraet
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.befestigungsart import Befestigungsart
-    from ..enum.messwerterfassung import Messwerterfassung
     from ..enum.registeranzahl import Registeranzahl
     from ..enum.sparte import Sparte
     from ..enum.zaehlerauspraegung import Zaehlerauspraegung
@@ -46,7 +44,7 @@ class Zaehler(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.ZAEHLER], Field(alias="_typ")] = Typ.ZAEHLER
+    typ: Annotated[Literal[BoTyp.ZAEHLER], Field(alias="_typ")] = BoTyp.ZAEHLER
     zaehlernummer: Optional[str] = None
     """Nummerierung des Zählers,vergeben durch den Messstellenbetreiber"""
     sparte: Optional["Sparte"] = None
@@ -68,8 +66,8 @@ class Zaehler(Geschaeftsobjekt):
     """Der Hersteller des Zählers"""
     ist_fernschaltbar: Optional[bool] = None
     """Fernschaltung"""
-    messwerterfassung: Optional["Messwerterfassung"] = None
-    """Messwerterfassung des Zählers"""
+    ist_fernauslesbar: Optional[bool] = None
+    """Fernauslesung"""
     zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None
     """Besondere Spezifikation des Zählers"""
     befestigungsart: Optional["Befestigungsart"] = None

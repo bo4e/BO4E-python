@@ -1,11 +1,13 @@
 """
-Contains Kostenposition and corresponding marshmallow schema for de-/serialization
+Contains Kostenposition
 """
 
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 import pydantic
+from pydantic import Field
 
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
@@ -31,6 +33,8 @@ class Kostenposition(COM):
         `Kostenposition JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Kostenposition.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.KOSTENPOSITION], Field(alias="_typ")] = ComTyp.KOSTENPOSITION
 
     positionstitel: Optional[str] = None
     """Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt."""

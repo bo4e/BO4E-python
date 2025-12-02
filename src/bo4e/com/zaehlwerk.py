@@ -1,16 +1,19 @@
 """
 Contains Zaehlwerk class
-and corresponding marshmallow schema for de-/serialization
 """
 
 from decimal import Decimal
-from typing import TYPE_CHECKING, Optional
+from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
+from pydantic import Field
+
+from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
     from ..com.konzessionsabgabe import Konzessionsabgabe
+    from ..com.messwert import Messwert
     from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
     from ..com.zaehlzeitregister import Zaehlzeitregister
     from ..enum.energierichtung import Energierichtung
@@ -32,6 +35,8 @@ class Zaehlwerk(COM):
         `Zaehlwerk JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Zaehlwerk.json>`_
 
     """
+
+    typ: Annotated[Literal[ComTyp.ZAEHLWERK], Field(alias="_typ")] = ComTyp.ZAEHLWERK
 
     zaehlwerk_id: Optional[str] = None
     """
@@ -78,3 +83,5 @@ class Zaehlwerk(COM):
     """Anzahl Ablesungen pro Jahr"""
     zaehlzeitregister: Optional["Zaehlzeitregister"] = None
     """Erweiterte Definition der Zählzeit in Bezug auf ein Register"""
+    messwerte: Optional[list["Messwert"]] = None
+    """Gemessene Werte des Zählwerks"""

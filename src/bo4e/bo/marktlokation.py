@@ -1,6 +1,5 @@
 """
 Contains Marktlokation class
-and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods
@@ -8,15 +7,15 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
+    from ..bo.energiemenge import Energiemenge
     from ..com.adresse import Adresse
     from ..com.geokoordinaten import Geokoordinaten
     from ..com.katasteradresse import Katasteradresse
-    from ..com.verbrauch import Verbrauch
     from ..com.zaehlwerk import Zaehlwerk
     from ..enum.bilanzierungsmethode import Bilanzierungsmethode
     from ..enum.energierichtung import Energierichtung
@@ -46,7 +45,7 @@ class Marktlokation(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.MARKTLOKATION], Field(alias="_typ")] = Typ.MARKTLOKATION
+    typ: Annotated[Literal[BoTyp.MARKTLOKATION], Field(alias="_typ")] = BoTyp.MARKTLOKATION
 
     marktlokations_id: Optional[str] = None
     """Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird."""
@@ -104,7 +103,7 @@ class Marktlokation(Geschaeftsobjekt):
     marktgebiet: Optional[str] = None
     """für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list"""
     zaehlwerke: Optional[list["Zaehlwerk"]] = None
-    verbrauchsmengen: Optional[list["Verbrauch"]] = None
+    verbrauchsmengen: Optional[list["Energiemenge"]] = None
     zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
 
     lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None

@@ -1,12 +1,12 @@
 """
-Contains Fremdkosten class and corresponding marshmallow schema for de-/serialization
+Contains Fremdkosten class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -35,7 +35,7 @@ class Fremdkosten(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.FREMDKOSTEN], Field(alias="_typ")] = Typ.FREMDKOSTEN
+    typ: Annotated[Literal[BoTyp.FREMDKOSTEN], Field(alias="_typ")] = BoTyp.FREMDKOSTEN
     gueltigkeit: Optional["Zeitraum"] = None
     """Für diesen Zeitraum wurden die Kosten ermittelt"""
     summe_kosten: Optional["Betrag"] = None

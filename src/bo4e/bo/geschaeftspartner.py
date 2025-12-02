@@ -1,6 +1,5 @@
 """
 Contains Geschaeftspartner class
-and corresponding marshmallow schema for de-/serialization
 """
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
@@ -8,7 +7,7 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from ..enum.typ import Typ
+from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
@@ -39,7 +38,7 @@ class Geschaeftspartner(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[Typ.GESCHAEFTSPARTNER], Field(alias="_typ")] = Typ.GESCHAEFTSPARTNER
+    typ: Annotated[Literal[BoTyp.GESCHAEFTSPARTNER], Field(alias="_typ")] = BoTyp.GESCHAEFTSPARTNER
     anrede: Optional["Anrede"] = None
     """Mögliche Anrede der Person"""
     individuelle_anrede: Optional[str] = None
