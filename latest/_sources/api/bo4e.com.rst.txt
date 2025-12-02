@@ -428,14 +428,6 @@ bo4e.com.unterschrift module
    :show-inheritance:
    :undoc-members:
 
-bo4e.com.verbrauch module
--------------------------
-
-.. automodule:: bo4e.com.verbrauch
-   :members:
-   :show-inheritance:
-   :undoc-members:
-
 bo4e.com.vertragskonditionen module
 -----------------------------------
 

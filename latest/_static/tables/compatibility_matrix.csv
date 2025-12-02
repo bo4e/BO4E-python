@@ -1,4 +1,4 @@
-,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+g7436b49d8
+,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+g245ac3b0a
 bo.Angebot,🟢,🟢,🔴
 bo.Ausschreibung,🟢,🟢,🔴
 bo.Bilanzierung,➕,🟢,🟡
@@ -86,7 +86,7 @@ com.Tarifpreisposition,🟡,🟢,🔴
 com.TarifpreispositionProOrt,🟡,🟢,🔴
 com.TarifpreisstaffelProOrt,🟡,🟢,🔴
 com.Unterschrift,🟡,🟢,🔴
-com.Verbrauch,🔴,🟢,🔴
+com.Verbrauch,🔴,🟢,➖
 com.Vertragskonditionen,🟡,🟢,🔴
 com.Vertragsteil,🟡,🟢,🔴
 com.VerwendungszweckProMarktrolle,🟡,🟢,🔴
@@ -113,7 +113,7 @@ enum.Befestigungsart,🟢,🟢,🟢
 enum.Bemessungsgroesse,🟢,🟢,🟢
 enum.Bilanzierungsmethode,🟢,🟢,🟢
 enum.BoTyp,➕,🟢,🟢
-enum.ComTyp,➕,🟢,🟡
+enum.ComTyp,➕,🟢,🔴
 enum.Dienstleistungstyp,🟢,🟢,🟢
 enum.EMobilitaetsart,🟢,🟢,🟢
 enum.Energierichtung,🟢,🟢,🟢

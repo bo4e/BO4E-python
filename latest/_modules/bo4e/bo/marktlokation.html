@@ -98,10 +98,10 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.geschaeftsobjekt</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..bo.energiemenge</span><span class="w"> </span><span class="kn">import</span> <span class="n">Energiemenge</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.adresse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Adresse</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.geokoordinaten</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geokoordinaten</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.katasteradresse</span><span class="w"> </span><span class="kn">import</span> <span class="n">Katasteradresse</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.verbrauch</span><span class="w"> </span><span class="kn">import</span> <span class="n">Verbrauch</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..com.zaehlwerk</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zaehlwerk</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.bilanzierungsmethode</span><span class="w"> </span><span class="kn">import</span> <span class="n">Bilanzierungsmethode</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.energierichtung</span><span class="w"> </span><span class="kn">import</span> <span class="n">Energierichtung</span>
@@ -191,7 +191,7 @@
     <span class="n">marktgebiet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list&quot;&quot;&quot;</span>
     <span class="n">zaehlwerke</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehlwerk&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">verbrauchsmengen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Verbrauch&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">verbrauchsmengen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Energiemenge&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">zaehlwerke_der_beteiligten_marktrolle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Zaehlwerk&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="n">lokationszuordnungen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Lokationszuordnung&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
