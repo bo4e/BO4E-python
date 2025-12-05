@@ -174,8 +174,8 @@ __all__ = [
     "Rollencodetyp",
     "Sparte",
     "Speicherart",
+    "Steuerart",
     "SteuerkanalLeistungsbeschreibung",
-    "Steuerkennzeichen",
     "StrEnum",
     "Tarifkalkulationsmethode",
     "Tarifmerkmal",
@@ -382,8 +382,8 @@ from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
 from .enum.speicherart import Speicherart
+from .enum.steuerart import Steuerart
 from .enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
-from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from .enum.tarifmerkmal import Tarifmerkmal
