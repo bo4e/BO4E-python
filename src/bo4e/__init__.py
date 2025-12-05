@@ -101,6 +101,7 @@ __all__ = [
     "Vertragskonditionen",
     "Vertragsteil",
     "VerwendungszweckProMarktrolle",
+    "Vorauszahlung",
     "Zaehlwerk",
     "Zaehlzeitregister",
     "Zahlungsinformation",
@@ -304,6 +305,7 @@ from .com.unterschrift import Unterschrift
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
+from .com.vorauszahlung import Vorauszahlung
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
 from .com.zahlungsinformation import Zahlungsinformation

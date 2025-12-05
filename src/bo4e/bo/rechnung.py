@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from ..com.betrag import Betrag
     from ..com.rechnungsposition import Rechnungsposition
     from ..com.steuerbetrag import Steuerbetrag
+    from ..com.vorauszahlung import Vorauszahlung
     from ..com.zahlungsinformation import Zahlungsinformation
     from ..com.zeitraum import Zeitraum
     from ..enum.netznutzungrechnungsart import NetznutzungRechnungsart
@@ -79,36 +80,35 @@ class Rechnung(Geschaeftsobjekt):
     zaehler: Optional[list["Zaehler"]] = None
     zukuenftiger_abschlag: Optional["Betrag"] = None
     kaeuferreferenz: Optional[str] = None
-    #!
 
     rechnungspositionen: Optional[list["Rechnungsposition"]] = None
     """Die Rechnungspositionen"""
-    rechnungstitel: Optional[str] = None  #!
+    rechnungstitel: Optional[str] = None
     """Bezeichnung für die vorliegende Rechnung"""
     rechnungsstatus: Optional["Rechnungsstatus"] = None
     """Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes"""
     original_rechnungsnummer: Optional[str] = None
     """Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung"""
-    vorausgezahlt: Optional["Betrag"] = None  #!
+    vorauszahlungen: Optional[list["Vorauszahlung"]] = None
     """Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert"""
     rabatt_netto: Optional["Betrag"] = None
     """Gesamtrabatt auf den Nettobetrag"""
-    steuerbetraege: Optional[list["Steuerbetrag"]] = None  #!
+    steuerbetraege: Optional[list["Steuerbetrag"]] = None
     """
     Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
     die Summe dieser Beträge ergibt den Wert für gesamtsteuer.
     """
-    sparte: Optional["Sparte"] = None  #!
+    sparte: Optional["Sparte"] = None
     """Sparte (Strom, Gas ...) für die die Rechnung ausgestellt ist"""
     netznutzungrechnungsart: Optional["NetznutzungRechnungsart"] = None
     """Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt"""
     netznutzungrechnungstyp: Optional["NetznutzungRechnungstyp"] = None
     """Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt"""
-    ist_original: Optional[bool] = None  #!
+    ist_original: Optional[bool] = None
     """Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)"""
-    ist_simuliert: Optional[bool] = None  #!
+    ist_simuliert: Optional[bool] = None
     """Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt"""
-    ist_storno: Optional[bool] = None  #!
+    ist_storno: Optional[bool] = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;
     im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
