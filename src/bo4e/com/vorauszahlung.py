@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 @postprocess_docstring
 class Vorauszahlung(COM):
     """
-    Dient zur Identifizierung des Verwendungszwecks der Marktrolle an der Marktlokation, der die Werte zu übermitteln sind.
+    Dient zur Identifizierung eines vorausgezahlten Betrags.
 
     .. raw:: html
 
