@@ -31,14 +31,15 @@ Contents
    :maxdepth: 2
 
    Fundamentals <fundamentals>
+   Technical restrictions <restrictions>
    Data Model Overview <api/modules>
    BusinessObjects <api/bo4e.bo>
    Components <api/bo4e.com>
    Enumerations <api/bo4e.enum>
    Versioning <versioning>
    Release Workflow <release_workflow>
-   Contributing <contributing_guide>
    Changelog <changelog>
+   Contributing <contributing_guide>
    Authors <authors>
    License <license>
 

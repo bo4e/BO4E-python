@@ -1,5 +1,5 @@
 """
-Contains Verwendungszweck class
+Contains VerwendungszweckProMarktrolle class
 """
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
@@ -25,10 +25,10 @@ class VerwendungszweckProMarktrolle(COM):
 
     .. raw:: html
 
-        <object data="../_static/images/bo4e/com/Verwendungszweck.svg" type="image/svg+xml"></object>
+        <object data="../_static/images/bo4e/com/VerwendungszweckProMarktrolle.svg" type="image/svg+xml"></object>
 
     .. HINT::
-        `Verwendungszweck JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Verwendungszweck.json>`_
+        `VerwendungszweckProMarktrolle JSON Schema <https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/VerwendungszweckProMarktrolle.json>`_
 
     """
 

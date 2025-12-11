@@ -98,7 +98,6 @@ __all__ = [
     "TarifpreispositionProOrt",
     "TarifpreisstaffelProOrt",
     "Unterschrift",
-    "Verbrauch",
     "Vertragskonditionen",
     "Vertragsteil",
     "VerwendungszweckProMarktrolle",
@@ -301,7 +300,6 @@ from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreispositionproort import TarifpreispositionProOrt
 from .com.tarifpreisstaffelproort import TarifpreisstaffelProOrt
 from .com.unterschrift import Unterschrift
-from .com.verbrauch import Verbrauch
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
