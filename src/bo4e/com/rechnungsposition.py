@@ -5,7 +5,6 @@ Contains Rechnungsposition class
 # pylint: disable=too-few-public-methods, too-many-instance-attributes
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-import pydantic
 from pydantic import Field
 
 from ..enum.comtyp import ComTyp

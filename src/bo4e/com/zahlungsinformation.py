@@ -2,7 +2,6 @@
 Contains Zahlungsinformation class
 """
 
-from decimal import Decimal
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
