@@ -26,7 +26,6 @@ class TestMaLo:
                     lokationsadresse=Adresse(),
                     energierichtung=Energierichtung.EINSP,
                     bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
-                    ist_unterbrechbar=True,  # optional attribute
                     netzebene=Netzebene.NSP,
                     endkunde=Geschaeftspartner(),
                     kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
