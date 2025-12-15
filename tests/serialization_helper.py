@@ -38,7 +38,7 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
             for v in value:
                 _remove_version_recursive_iter(v)
 
-    def _clear_pydantic_fields_set(object: T) -> None:
+    def _clear_pydantic_fields_set(object: BaseModel) -> None:
         object.model_fields_set.clear()
         for field_name in object.model_fields:
             field_value = getattr(object, field_name)
