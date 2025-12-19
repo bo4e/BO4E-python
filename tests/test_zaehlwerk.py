@@ -31,7 +31,6 @@ class TestZaehlwerk:
                     ist_schwachlastfaehig=True,
                     verwendungszwecke=[VerwendungszweckProMarktrolle()],
                     verbrauchsart=Verbrauchsart.W,
-                    ist_unterbrechbar=True,
                     waermenutzung=Waermenutzung.WAERMEPUMPE,
                     konzessionsabgabe=Konzessionsabgabe(),
                     ist_steuerbefreit=True,
