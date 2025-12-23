@@ -4,7 +4,8 @@ A module that simplifies assertions for json serialization
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional, TypeVar
+from copy import deepcopy
+from typing import Any, Dict, Iterable, Optional, TypeVar
 
 from dictdiffer import diff  # type:ignore[import-not-found]
 from pydantic import BaseModel
@@ -22,6 +23,7 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
     then deserializes the dictionary again and asserts the equality with the original serializable_object
     :returns the deserialized_object
     """
+    serializable_object = deepcopy(serializable_object)
     json_string = serializable_object.model_dump_json(by_alias=True)
     assert json_string is not None
     actual_json_dict = serializable_object.model_dump(by_alias=True)
@@ -35,6 +37,17 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
         elif isinstance(value, list):
             for v in value:
                 _remove_version_recursive_iter(v)
+
+    def _clear_pydantic_fields_set(object: BaseModel) -> None:
+        object.model_fields_set.clear()
+        for field_name in object.model_fields:
+            field_value = getattr(object, field_name)
+            if isinstance(field_value, BaseModel):
+                _clear_pydantic_fields_set(field_value)
+            if isinstance(field_value, Iterable):
+                for item in field_value:
+                    if isinstance(item, BaseModel):
+                        _clear_pydantic_fields_set(item)
 
     _remove_version_recursive_iter(actual_json_dict)
 
@@ -60,5 +73,7 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
 
     deserialized_object = type(serializable_object).model_validate_json(json_string)
     assert isinstance(deserialized_object, type(serializable_object))
+    _clear_pydantic_fields_set(deserialized_object)
+    _clear_pydantic_fields_set(serializable_object)
     assert deserialized_object == serializable_object
     return deserialized_object

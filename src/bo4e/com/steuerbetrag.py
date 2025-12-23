@@ -12,7 +12,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..enum.steuerkennzeichen import Steuerkennzeichen
+    from ..enum.steuerart import Steuerart
     from ..enum.waehrungscode import Waehrungscode
 
 
@@ -35,13 +35,13 @@ class Steuerbetrag(COM):
 
     typ: Annotated[Literal[ComTyp.STEUERBETRAG], Field(alias="_typ")] = ComTyp.STEUERBETRAG
 
-    steuerkennzeichen: Optional["Steuerkennzeichen"] = None
-    """Kennzeichnung des Steuersatzes, bzw. Verfahrens."""
-    sondersteuersatz: Optional[Decimal] = None
-    """Angabe des Steuersatzes in %, sofern steuerkennzeichen = UST_SONDER"""
+    steuerart: Optional["Steuerart"] = None
+    """Kennzeichnung der Steuerart, bzw. Verfahrens."""
+    steuersatz: Optional[Decimal] = None
+    """Angabe des Steuersatzes in %"""
     basiswert: Optional[Decimal] = None
     """Nettobetrag für den die Steuer berechnet wurde. Z.B. 100"""
     steuerwert: Optional[Decimal] = None
     """Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)"""
-    waehrung: Optional["Waehrungscode"] = None
+    waehrungscode: Optional["Waehrungscode"] = None
     """Währung. Z.B. Euro."""

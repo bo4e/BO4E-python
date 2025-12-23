@@ -101,8 +101,10 @@ __all__ = [
     "Vertragskonditionen",
     "Vertragsteil",
     "VerwendungszweckProMarktrolle",
+    "Vorauszahlung",
     "Zaehlwerk",
     "Zaehlzeitregister",
+    "Zahlungsinformation",
     "Zeitraum",
     "Zeitreihenwert",
     "Zustaendigkeit",
@@ -172,8 +174,8 @@ __all__ = [
     "Rollencodetyp",
     "Sparte",
     "Speicherart",
+    "Steuerart",
     "SteuerkanalLeistungsbeschreibung",
-    "Steuerkennzeichen",
     "StrEnum",
     "Tarifkalkulationsmethode",
     "Tarifmerkmal",
@@ -200,6 +202,7 @@ __all__ = [
     "Zaehlergroesse",
     "Zaehlertyp",
     "ZaehlertypSpezifikation",
+    "Zahlungsart",
     "Zeitreihentyp",
     "ZusatzAttribut",
     "__version__",
@@ -303,8 +306,10 @@ from .com.unterschrift import Unterschrift
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
+from .com.vorauszahlung import Vorauszahlung
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
+from .com.zahlungsinformation import Zahlungsinformation
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
 from .com.zustaendigkeit import Zustaendigkeit
@@ -378,8 +383,8 @@ from .enum.registeranzahl import Registeranzahl
 from .enum.rollencodetyp import Rollencodetyp
 from .enum.sparte import Sparte
 from .enum.speicherart import Speicherart
+from .enum.steuerart import Steuerart
 from .enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
-from .enum.steuerkennzeichen import Steuerkennzeichen
 from .enum.strenum import StrEnum
 from .enum.tarifkalkulationsmethode import Tarifkalkulationsmethode
 from .enum.tarifmerkmal import Tarifmerkmal
@@ -404,6 +409,7 @@ from .enum.zaehlerauspraegung import Zaehlerauspraegung
 from .enum.zaehlergroesse import Zaehlergroesse
 from .enum.zaehlertyp import Zaehlertyp
 from .enum.zaehlertypspezifikation import ZaehlertypSpezifikation
+from .enum.zahlungsart import Zahlungsart
 from .enum.zeitreihentyp import Zeitreihentyp
 from .version import __gh_version__, __version__
 from .zusatzattribut import ZusatzAttribut
