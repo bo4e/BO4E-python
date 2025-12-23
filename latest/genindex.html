@@ -217,6 +217,8 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.vertragsstatus.Vertragsstatus.AKTIV">AKTIV (bo4e.enum.vertragsstatus.Vertragsstatus attribute)</a>
 </li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.aktueller_verbrauch">aktueller_verbrauch (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.messart.Messart.AKTUELLERWERT">AKTUELLERWERT (bo4e.enum.messart.Messart attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.AL">AL (bo4e.enum.landescode.Landescode attribute)</a>
@@ -250,6 +252,8 @@
       <li><a href="api/bo4e.bo.html#bo4e.bo.tarifinfo.Tarifinfo.anbieter">anbieter (bo4e.bo.tarifinfo.Tarifinfo attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.tarifinfo.Tarifinfo.anbietername">anbietername (bo4e.bo.tarifinfo.Tarifinfo attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.anfangszaehlerstand">anfangszaehlerstand (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.angebotsteil.Angebotsteil.anfrage_subreferenz">anfrage_subreferenz (bo4e.com.angebotsteil.Angebotsteil attribute)</a>
 </li>
@@ -323,10 +327,10 @@
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.ausschreibungslos.Ausschreibungslos.anzahl_lieferstellen">anzahl_lieferstellen (bo4e.com.ausschreibungslos.Ausschreibungslos attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.zaehlwerk.Zaehlwerk.anzahlAblesungen">anzahlAblesungen (bo4e.com.zaehlwerk.Zaehlwerk attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.com.html#bo4e.com.zaehlwerk.Zaehlwerk.anzahlAblesungen">anzahlAblesungen (bo4e.com.zaehlwerk.Zaehlwerk attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.AO">AO (bo4e.enum.landescode.Landescode attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.AOA">AOA (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
@@ -661,11 +665,15 @@
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.aufabschlagregional.AufAbschlagRegional.betraege">betraege (bo4e.com.aufabschlagregional.AufAbschlagRegional attribute)</a>
 </li>
+      <li><a href="api/bo4e.com.html#bo4e.com.vorauszahlung.Vorauszahlung.betrag">betrag (bo4e.com.vorauszahlung.Vorauszahlung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.BETRAG">BETRAG (bo4e.enum.comtyp.ComTyp attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.betrag.Betrag">Betrag (class in bo4e.com.betrag)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.kostenposition.Kostenposition.betrag_kostenposition">betrag_kostenposition (bo4e.com.kostenposition.Kostenposition attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.betreff">betreff (bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.ausschreibungslos.Ausschreibungslos.betreut_durch">betreut_durch (bo4e.com.ausschreibungslos.Ausschreibungslos attribute)</a>
 </li>
@@ -726,6 +734,8 @@
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.BHD">BHD (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.BI">BI (bo4e.enum.landescode.Landescode attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.bic">bic (bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.BIF">BIF (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
 </li>
@@ -1342,8 +1352,6 @@
         <li><a href="api/bo4e.com.html#module-bo4e.com.preisstaffel">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     bo4e.com.rechnungsposition
 
@@ -1351,6 +1359,8 @@
         <li><a href="api/bo4e.com.html#module-bo4e.com.rechnungsposition">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     bo4e.com.regionalegueltigkeit
 
@@ -1499,6 +1509,13 @@
 </li>
       </ul></li>
       <li>
+    bo4e.com.vorauszahlung
+
+      <ul>
+        <li><a href="api/bo4e.com.html#module-bo4e.com.vorauszahlung">module</a>
+</li>
+      </ul></li>
+      <li>
     bo4e.com.zaehlwerk
 
       <ul>
@@ -1510,6 +1527,13 @@
 
       <ul>
         <li><a href="api/bo4e.com.html#module-bo4e.com.zaehlzeitregister">module</a>
+</li>
+      </ul></li>
+      <li>
+    bo4e.com.zahlungsinformation
+
+      <ul>
+        <li><a href="api/bo4e.com.html#module-bo4e.com.zahlungsinformation">module</a>
 </li>
       </ul></li>
       <li>
@@ -2017,17 +2041,17 @@
 </li>
       </ul></li>
       <li>
+    bo4e.enum.steuerart
+
+      <ul>
+        <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerart">module</a>
+</li>
+      </ul></li>
+      <li>
     bo4e.enum.steuerkanalleistungsbeschreibung
 
       <ul>
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerkanalleistungsbeschreibung">module</a>
-</li>
-      </ul></li>
-      <li>
-    bo4e.enum.steuerkennzeichen
-
-      <ul>
-        <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerkennzeichen">module</a>
 </li>
       </ul></li>
       <li>
@@ -2196,6 +2220,13 @@
 
       <ul>
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.zaehlertypspezifikation">module</a>
+</li>
+      </ul></li>
+      <li>
+    bo4e.enum.zahlungsart
+
+      <ul>
+        <li><a href="api/bo4e.enum.html#module-bo4e.enum.zahlungsart">module</a>
 </li>
       </ul></li>
       <li>
@@ -2413,7 +2444,11 @@
       <li><a href="api/bo4e.enum.html#bo4e.enum.geraetetyp.Geraetetyp.DATENLOGGER">DATENLOGGER (bo4e.enum.geraetetyp.Geraetetyp attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.unterschrift.Unterschrift.datum">datum (bo4e.com.unterschrift.Unterschrift attribute)</a>
+
+      <ul>
+        <li><a href="api/bo4e.com.html#bo4e.com.vorauszahlung.Vorauszahlung.datum">(bo4e.com.vorauszahlung.Vorauszahlung attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/bo4e.com.html#bo4e.com.zeitraum.Zeitraum.dauer">dauer (bo4e.com.zeitraum.Zeitraum attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.DE">DE (bo4e.enum.landescode.Landescode attribute)</a>
@@ -2436,10 +2471,10 @@
       </ul></li>
       <li><a href="api/bo4e.com.html#bo4e.com.dienstleistung.Dienstleistung">Dienstleistung (class in bo4e.com.dienstleistung)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.dienstleistung.Dienstleistung.dienstleistungstyp">dienstleistungstyp (bo4e.com.dienstleistung.Dienstleistung attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.com.html#bo4e.com.dienstleistung.Dienstleistung.dienstleistungstyp">dienstleistungstyp (bo4e.com.dienstleistung.Dienstleistung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.dienstleistungstyp.Dienstleistungstyp">Dienstleistungstyp (class in bo4e.enum.dienstleistungstyp)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.vertragsform.Vertragsform.DIREKT">DIREKT (bo4e.enum.vertragsform.Vertragsform attribute)</a>
@@ -2622,13 +2657,15 @@
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.marktlokation.Marktlokation.endkunde">endkunde (bo4e.bo.marktlokation.Marktlokation attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.verwendungszweck.Verwendungszweck.ENDKUNDENABRECHNUNG">ENDKUNDENABRECHNUNG (bo4e.enum.verwendungszweck.Verwendungszweck attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.rechnungstyp.Rechnungstyp.ENDKUNDENRECHNUNG">ENDKUNDENRECHNUNG (bo4e.enum.rechnungstyp.Rechnungstyp attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.zeitraum.Zeitraum.enduhrzeit">enduhrzeit (bo4e.com.zeitraum.Zeitraum attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.endzaehlerstand">endzaehlerstand (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.ausschreibungsportal.Ausschreibungsportal.ENERGIE_AGENTUR">ENERGIE_AGENTUR (bo4e.enum.ausschreibungsportal.Ausschreibungsportal attribute)</a>
 </li>
@@ -2802,10 +2839,10 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.FK">FK (bo4e.enum.landescode.Landescode attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.FKP">FKP (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.com.html#bo4e.com.katasteradresse.Katasteradresse.flurstueck">flurstueck (bo4e.com.katasteradresse.Katasteradresse attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.FM">FM (bo4e.enum.landescode.Landescode attribute)</a>
@@ -2827,6 +2864,8 @@
       <li><a href="api/bo4e.com.html#bo4e.com.preisposition.Preisposition.freimenge_blindarbeit">freimenge_blindarbeit (bo4e.com.preisposition.Preisposition attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.preisposition.Preisposition.freimenge_leistungsfaktor">freimenge_leistungsfaktor (bo4e.com.preisposition.Preisposition attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.fremdkosten">fremdkosten (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.botyp.BoTyp.FREMDKOSTEN">FREMDKOSTEN (bo4e.enum.botyp.BoTyp attribute)</a>
 
@@ -3033,6 +3072,8 @@
       <li><a href="api/bo4e.com.html#bo4e.com.angebotsteil.Angebotsteil.gesamtmengeangebotsteil">gesamtmengeangebotsteil (bo4e.com.angebotsteil.Angebotsteil attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.gesamtnetto">gesamtnetto (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.gesamtpreis">gesamtpreis (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.aufabschlagsziel.AufAbschlagsziel.GESAMTPREIS">GESAMTPREIS (bo4e.enum.aufabschlagsziel.AufAbschlagsziel attribute)</a>
 </li>
@@ -3278,6 +3319,8 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.iban">iban (bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
+</li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.geschaeftsobjekt.Geschaeftsobjekt.id">id (bo4e.bo.geschaeftsobjekt.Geschaeftsobjekt attribute)</a>
 
       <ul>
@@ -3344,10 +3387,10 @@
       </ul></li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.zaehlertyp.Zaehlertyp.INTELLIGENTES_MESSSYSTEM">INTELLIGENTES_MESSSYSTEM (bo4e.enum.zaehlertyp.Zaehlertyp attribute)</a>
 </li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.geraetetyp.Geraetetyp.INTELLIGENTES_MESSYSTEM">INTELLIGENTES_MESSYSTEM (bo4e.enum.geraetetyp.Geraetetyp attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.geraetetyp.Geraetetyp.INTELLIGENTES_MESSYSTEM">INTELLIGENTES_MESSYSTEM (bo4e.enum.geraetetyp.Geraetetyp attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.geschaeftspartnerrolle.Geschaeftspartnerrolle.INTERESSENT">INTERESSENT (bo4e.enum.geschaeftspartnerrolle.Geschaeftspartnerrolle attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.themengebiet.Themengebiet.INVOIC">INVOIC (bo4e.enum.themengebiet.Themengebiet attribute)</a>
@@ -3414,6 +3457,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.mengeneinheit.Mengeneinheit.JAHR">JAHR (bo4e.enum.mengeneinheit.Mengeneinheit attribute)</a>
 </li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.jahresverbrauch">jahresverbrauch (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.bilanzierung.Bilanzierung.jahresverbrauchsprognose">jahresverbrauchsprognose (bo4e.bo.bilanzierung.Bilanzierung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.JE">JE (bo4e.enum.landescode.Landescode attribute)</a>
@@ -3438,6 +3483,8 @@
 <h2 id="K">K</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.kaeuferreferenz">kaeuferreferenz (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.kalkulationsmethode.Kalkulationsmethode">Kalkulationsmethode (class in bo4e.enum.kalkulationsmethode)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.themengebiet.Themengebiet.KAPAZITAETSMANAGEMENT">KAPAZITAETSMANAGEMENT (bo4e.enum.themengebiet.Themengebiet attribute)</a>
@@ -3554,20 +3601,22 @@
       </ul></li>
       <li><a href="api/bo4e.com.html#bo4e.com.kontaktweg.Kontaktweg.kontaktwert">kontaktwert (bo4e.com.kontaktweg.Kontaktweg attribute)</a>
 </li>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.kontoinhaber">kontoinhaber (bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.angebotsstatus.Angebotsstatus.KONZEPTION">KONZEPTION (bo4e.enum.angebotsstatus.Angebotsstatus attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.leistungstyp.Leistungstyp.KONZESSIONS_ABGABE">KONZESSIONS_ABGABE (bo4e.enum.leistungstyp.Leistungstyp attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.zaehlwerk.Zaehlwerk.konzessionsabgabe">konzessionsabgabe (bo4e.com.zaehlwerk.Zaehlwerk attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.bdewartikelnummer.BDEWArtikelnummer.KONZESSIONSABGABE">KONZESSIONSABGABE (bo4e.enum.bdewartikelnummer.BDEWArtikelnummer attribute)</a>
 
       <ul>
         <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.KONZESSIONSABGABE">(bo4e.enum.comtyp.ComTyp attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.com.html#bo4e.com.konzessionsabgabe.Konzessionsabgabe">Konzessionsabgabe (class in bo4e.com.konzessionsabgabe)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.tarifkosten.Tarifkosten.kosten">kosten (bo4e.bo.tarifkosten.Tarifkosten attribute)</a>
@@ -3786,17 +3835,15 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.themengebiet.Themengebiet.LIEFERANTENWECHSEL">LIEFERANTENWECHSEL (bo4e.enum.themengebiet.Themengebiet attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.ausschreibungslos.Ausschreibungslos.lieferstellen">lieferstellen (bo4e.com.ausschreibungslos.Ausschreibungslos attribute)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.com.html#bo4e.com.ausschreibungslos.Ausschreibungslos.lieferstellen">lieferstellen (bo4e.com.ausschreibungslos.Ausschreibungslos attribute)</a>
+</li>
       <li><a href="api/bo4e.com.html#bo4e.com.angebotsteil.Angebotsteil.lieferstellenangebotsteil">lieferstellenangebotsteil (bo4e.com.angebotsteil.Angebotsteil attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.lieferung_bis">lieferung_bis (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
-</li>
-      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.lieferung_von">lieferung_von (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
-</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.voraussetzungen.Voraussetzungen.LIEFERUNGSBESCHRAENKUNG_GASART">LIEFERUNGSBESCHRAENKUNG_GASART (bo4e.enum.voraussetzungen.Voraussetzungen attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.lieferungszeitraum">lieferungszeitraum (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.angebotsteil.Angebotsteil.lieferzeitraum">lieferzeitraum (bo4e.com.angebotsteil.Angebotsteil attribute)</a>
 
@@ -3813,8 +3860,6 @@
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.LKR">LKR (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.vertragsteil.Vertragsteil.lokation">lokation (bo4e.com.vertragsteil.Vertragsteil attribute)</a>
-</li>
-      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.lokations_id">lokations_id (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.marktlokation.Marktlokation.lokationsadresse">lokationsadresse (bo4e.bo.marktlokation.Marktlokation attribute)</a>
 </li>
@@ -4122,6 +4167,8 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.messpreistyp.Messpreistyp">Messpreistyp (class in bo4e.enum.messpreistyp)</a>
 </li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.messstellenbetreiber">messstellenbetreiber (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.leistungstyp.Leistungstyp.MESSSTELLENBETRIEB">MESSSTELLENBETRIEB (bo4e.enum.leistungstyp.Leistungstyp attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.rechnungstyp.Rechnungstyp.MESSSTELLENBETRIEBSRECHNUNG">MESSSTELLENBETRIEBSRECHNUNG (bo4e.enum.rechnungstyp.Rechnungstyp attribute)</a>
@@ -4408,9 +4455,13 @@
 </li>
         <li><a href="api/bo4e.com.html#module-bo4e.com.verwendungszweckpromarktrolle">bo4e.com.verwendungszweckpromarktrolle</a>
 </li>
+        <li><a href="api/bo4e.com.html#module-bo4e.com.vorauszahlung">bo4e.com.vorauszahlung</a>
+</li>
         <li><a href="api/bo4e.com.html#module-bo4e.com.zaehlwerk">bo4e.com.zaehlwerk</a>
 </li>
         <li><a href="api/bo4e.com.html#module-bo4e.com.zaehlzeitregister">bo4e.com.zaehlzeitregister</a>
+</li>
+        <li><a href="api/bo4e.com.html#module-bo4e.com.zahlungsinformation">bo4e.com.zahlungsinformation</a>
 </li>
         <li><a href="api/bo4e.com.html#module-bo4e.com.zeitraum">bo4e.com.zeitraum</a>
 </li>
@@ -4556,9 +4607,9 @@
 </li>
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.speicherart">bo4e.enum.speicherart</a>
 </li>
-        <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerkanalleistungsbeschreibung">bo4e.enum.steuerkanalleistungsbeschreibung</a>
+        <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerart">bo4e.enum.steuerart</a>
 </li>
-        <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerkennzeichen">bo4e.enum.steuerkennzeichen</a>
+        <li><a href="api/bo4e.enum.html#module-bo4e.enum.steuerkanalleistungsbeschreibung">bo4e.enum.steuerkanalleistungsbeschreibung</a>
 </li>
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.strenum">bo4e.enum.strenum</a>
 </li>
@@ -4607,6 +4658,8 @@
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.zaehlertyp">bo4e.enum.zaehlertyp</a>
 </li>
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.zaehlertypspezifikation">bo4e.enum.zaehlertypspezifikation</a>
+</li>
+        <li><a href="api/bo4e.enum.html#module-bo4e.enum.zahlungsart">bo4e.enum.zahlungsart</a>
 </li>
         <li><a href="api/bo4e.enum.html#module-bo4e.enum.zeitreihentyp">bo4e.enum.zeitreihentyp</a>
 </li>
@@ -4755,8 +4808,12 @@
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.netzlokation.Netzlokation.netzanschlussleistung">netzanschlussleistung (bo4e.bo.netzlokation.Netzlokation attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.ausschreibungsdetail.Ausschreibungsdetail.netzbetreiber">netzbetreiber (bo4e.com.ausschreibungsdetail.Ausschreibungsdetail attribute)</a>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.netzbetreiber">netzbetreiber (bo4e.bo.rechnung.Rechnung attribute)</a>
+
+      <ul>
+        <li><a href="api/bo4e.com.html#bo4e.com.ausschreibungsdetail.Ausschreibungsdetail.netzbetreiber">(bo4e.com.ausschreibungsdetail.Ausschreibungsdetail attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.regionskriteriumtyp.Regionskriteriumtyp.NETZBETREIBER_NAME_GAS">NETZBETREIBER_NAME_GAS (bo4e.enum.regionskriteriumtyp.Regionskriteriumtyp attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.regionskriteriumtyp.Regionskriteriumtyp.NETZBETREIBER_NAME_STROM">NETZBETREIBER_NAME_STROM (bo4e.enum.regionskriteriumtyp.Regionskriteriumtyp attribute)</a>
@@ -5255,11 +5312,11 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.rabatt_brutto">rabatt_brutto (bo4e.bo.rechnung.Rechnung attribute)</a>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.rabatt_netto">rabatt_netto (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.marktrolle.Marktrolle.RB">RB (bo4e.enum.marktrolle.Marktrolle attribute)</a>
 </li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.RCV">RCV (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerart.Steuerart.RCV">RCV (bo4e.enum.steuerart.Steuerart attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.RE">RE (bo4e.enum.landescode.Landescode attribute)</a>
 </li>
@@ -5301,6 +5358,10 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.oekozertifikat.Oekozertifikat.RECS">RECS (bo4e.enum.oekozertifikat.Oekozertifikat attribute)</a>
 </li>
+      <li><a href="api/bo4e.com.html#bo4e.com.vorauszahlung.Vorauszahlung.referenz">referenz (bo4e.com.vorauszahlung.Vorauszahlung attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.referenzverbraeuche">referenzverbraeuche (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.bdewartikelnummer.BDEWArtikelnummer.REGELENERGIE_ARBEIT">REGELENERGIE_ARBEIT (bo4e.enum.bdewartikelnummer.BDEWArtikelnummer attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.bdewartikelnummer.BDEWArtikelnummer.REGELENERGIE_LEISTUNG">REGELENERGIE_LEISTUNG (bo4e.enum.bdewartikelnummer.BDEWArtikelnummer attribute)</a>
@@ -5341,10 +5402,10 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.REGIONALEPREISGARANTIE">REGIONALEPREISGARANTIE (bo4e.enum.comtyp.ComTyp attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.regionalepreisgarantie.RegionalePreisgarantie">RegionalePreisgarantie (class in bo4e.com.regionalepreisgarantie)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.com.html#bo4e.com.regionalepreisgarantie.RegionalePreisgarantie">RegionalePreisgarantie (class in bo4e.com.regionalepreisgarantie)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.REGIONALEPREISSTAFFEL">REGIONALEPREISSTAFFEL (bo4e.enum.comtyp.ComTyp attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.regionalepreisstaffel.RegionalePreisstaffel">RegionalePreisstaffel (class in bo4e.com.regionalepreisstaffel)</a>
@@ -5488,6 +5549,10 @@
       <li><a href="api/bo4e.enum.html#bo4e.enum.netznutzungrechnungsart.NetznutzungRechnungsart.SELBSTAUSGESTELLT">SELBSTAUSGESTELLT (bo4e.enum.netznutzungrechnungsart.NetznutzungRechnungsart attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.kostenklasse.Kostenklasse.SELBSTKOSTEN">SELBSTKOSTEN (bo4e.enum.kostenklasse.Kostenklasse attribute)</a>
+</li>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.zahlungsart.Zahlungsart.SEPA_LASTSCHRIFT">SEPA_LASTSCHRIFT (bo4e.enum.zahlungsart.Zahlungsart attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.sepa_referenz">sepa_referenz (bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.zeitreihentyp.Zeitreihentyp.SES">SES (bo4e.enum.zeitreihentyp.Zeitreihentyp attribute)</a>
 </li>
@@ -5637,8 +5702,6 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.leistungstyp.Leistungstyp.SONDERKUNDEN_UMLAGE">SONDERKUNDEN_UMLAGE (bo4e.enum.leistungstyp.Leistungstyp attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.sondersteuersatz">sondersteuersatz (bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
-</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.tariftyp.Tariftyp.SONDERTARIF">SONDERTARIF (bo4e.enum.tariftyp.Tariftyp attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.erzeugungsart.Erzeugungsart.SONSTIGE">SONSTIGE (bo4e.enum.erzeugungsart.Erzeugungsart attribute)</a>
@@ -5655,10 +5718,10 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.leistungstyp.Leistungstyp.SONSTIGER_PREIS">SONSTIGER_PREIS (bo4e.enum.leistungstyp.Leistungstyp attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.geraetetyp.Geraetetyp.SONSTIGES_GERAET">SONSTIGES_GERAET (bo4e.enum.geraetetyp.Geraetetyp attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.SOS">SOS (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.messgroesse.Messgroesse.SPANNUNG">SPANNUNG (bo4e.enum.messgroesse.Messgroesse attribute)</a>
@@ -5793,6 +5856,10 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.befestigungsart.Befestigungsart.STECKTECHNIK">STECKTECHNIK (bo4e.enum.befestigungsart.Befestigungsart attribute)</a>
 </li>
+      <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.steuerart">steuerart (bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
+</li>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerart.Steuerart">Steuerart (class in bo4e.enum.steuerart)</a>
+</li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.steuerbareressource.SteuerbareRessource.steuerbare_ressource_id">steuerbare_ressource_id (bo4e.bo.steuerbareressource.SteuerbareRessource attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.lokationszuordnung.Lokationszuordnung.steuerbare_ressourcen">steuerbare_ressourcen (bo4e.bo.lokationszuordnung.Lokationszuordnung attribute)</a>
@@ -5802,6 +5869,8 @@
       <li><a href="api/bo4e.bo.html#bo4e.bo.steuerbareressource.SteuerbareRessource">SteuerbareRessource (class in bo4e.bo.steuerbareressource)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.steuerbetraege">steuerbetraege (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.steuerbetrag">steuerbetrag (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.STEUERBETRAG">STEUERBETRAG (bo4e.enum.comtyp.ComTyp attribute)</a>
 </li>
@@ -5821,9 +5890,7 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkanalleistungsbeschreibung.SteuerkanalLeistungsbeschreibung">SteuerkanalLeistungsbeschreibung (class in bo4e.enum.steuerkanalleistungsbeschreibung)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.steuerkennzeichen">steuerkennzeichen (bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen">Steuerkennzeichen (class in bo4e.enum.steuerkennzeichen)</a>
+      <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.steuersatz">steuersatz (bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.steuerwert">steuerwert (bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
 </li>
@@ -6031,11 +6098,7 @@
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.angebotsvariante.Angebotsvariante.teile">teile (bo4e.com.angebotsvariante.Angebotsvariante attribute)</a>
 </li>
-      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.teilrabatt_netto">teilrabatt_netto (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
-</li>
-      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.teilsumme_netto">teilsumme_netto (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
-</li>
-      <li><a href="api/bo4e.com.html#bo4e.com.rechnungsposition.Rechnungsposition.teilsumme_steuer">teilsumme_steuer (bo4e.com.rechnungsposition.Rechnungsposition attribute)</a>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.teilrechnungen">teilrechnungen (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.kontaktart.Kontaktart.TELEFON">TELEFON (bo4e.enum.kontaktart.Kontaktart attribute)</a>
 </li>
@@ -6135,12 +6198,12 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.oekozertifikat.Oekozertifikat.TUEV_NORD">TUEV_NORD (bo4e.enum.oekozertifikat.Oekozertifikat attribute)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.oekozertifikat.Oekozertifikat.TUEV_RHEINLAND">TUEV_RHEINLAND (bo4e.enum.oekozertifikat.Oekozertifikat attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.oekozertifikat.Oekozertifikat.TUEV_SUED">TUEV_SUED (bo4e.enum.oekozertifikat.Oekozertifikat attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.oekozertifikat.Oekozertifikat.TUEV_SUED_EE01">TUEV_SUED_EE01 (bo4e.enum.oekozertifikat.Oekozertifikat attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.oekozertifikat.Oekozertifikat.TUEV_SUED_EE02">TUEV_SUED_EE02 (bo4e.enum.oekozertifikat.Oekozertifikat attribute)</a>
@@ -6340,9 +6403,13 @@
 </li>
         <li><a href="api/bo4e.com.html#bo4e.com.verwendungszweckpromarktrolle.VerwendungszweckProMarktrolle.typ">(bo4e.com.verwendungszweckpromarktrolle.VerwendungszweckProMarktrolle attribute)</a>
 </li>
+        <li><a href="api/bo4e.com.html#bo4e.com.vorauszahlung.Vorauszahlung.typ">(bo4e.com.vorauszahlung.Vorauszahlung attribute)</a>
+</li>
         <li><a href="api/bo4e.com.html#bo4e.com.zaehlwerk.Zaehlwerk.typ">(bo4e.com.zaehlwerk.Zaehlwerk attribute)</a>
 </li>
         <li><a href="api/bo4e.com.html#bo4e.com.zaehlzeitregister.Zaehlzeitregister.typ">(bo4e.com.zaehlzeitregister.Zaehlzeitregister attribute)</a>
+</li>
+        <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.typ">(bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
 </li>
         <li><a href="api/bo4e.com.html#bo4e.com.zeitraum.Zeitraum.typ">(bo4e.com.zeitraum.Zeitraum attribute)</a>
 </li>
@@ -6374,6 +6441,8 @@
       <li><a href="api/bo4e.enum.html#bo4e.enum.vertragsstatus.Vertragsstatus.UEBERMITTELT">UEBERMITTELT (bo4e.enum.vertragsstatus.Vertragsstatus attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.verwendungszweck.Verwendungszweck.UEBERMITTLUNG_AN_DAS_HKNR">UEBERMITTLUNG_AN_DAS_HKNR (bo4e.enum.verwendungszweck.Verwendungszweck attribute)</a>
+</li>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.zahlungsart.Zahlungsart.UEBERWEISUNG">UEBERWEISUNG (bo4e.enum.zahlungsart.Zahlungsart attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.aggregationsverantwortung.Aggregationsverantwortung.UENB">UENB (bo4e.enum.aggregationsverantwortung.Aggregationsverantwortung attribute)</a>
 
@@ -6407,12 +6476,12 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.organisationstyp.Organisationstyp.UNTERNEHMEN">UNTERNEHMEN (bo4e.enum.organisationstyp.Organisationstyp attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.UNTERSCHRIFT">UNTERSCHRIFT (bo4e.enum.comtyp.ComTyp attribute)</a>
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.unterschrift.Unterschrift">Unterschrift (class in bo4e.com.unterschrift)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="api/bo4e.bo.html#bo4e.bo.angebot.Angebot.unterzeichner_angebotsgeber">unterzeichner_angebotsgeber (bo4e.bo.angebot.Angebot attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.angebot.Angebot.unterzeichner_angebotsnehmer">unterzeichner_angebotsnehmer (bo4e.bo.angebot.Angebot attribute)</a>
@@ -6439,15 +6508,7 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.USS">USS (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
 </li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.UST_0">UST_0 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.UST_16">UST_16 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.UST_19">UST_19 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.UST_7">UST_7 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.UST_SONDER">UST_SONDER (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerart.Steuerart.UST">UST (bo4e.enum.steuerart.Steuerart attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.themengebiet.Themengebiet.UTILMD">UTILMD (bo4e.enum.themengebiet.Themengebiet attribute)</a>
 </li>
@@ -6544,6 +6605,8 @@
 </li>
       </ul></li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.gebiettyp.Gebiettyp.VERTEILNETZ">VERTEILNETZ (bo4e.enum.gebiettyp.Gebiettyp attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.vertrag">vertrag (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.botyp.BoTyp.VERTRAG">VERTRAG (bo4e.enum.botyp.BoTyp attribute)</a>
 </li>
@@ -6663,8 +6726,6 @@
       </ul></li>
       <li><a href="api/bo4e.com.html#bo4e.com.kostenposition.Kostenposition.von">von (bo4e.com.kostenposition.Kostenposition attribute)</a>
 </li>
-      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.vorausgezahlt">vorausgezahlt (bo4e.bo.rechnung.Rechnung attribute)</a>
-</li>
       <li><a href="api/bo4e.com.html#bo4e.com.aufabschlagregional.AufAbschlagRegional.voraussetzungen">voraussetzungen (bo4e.com.aufabschlagregional.AufAbschlagRegional attribute)</a>
 
       <ul>
@@ -6675,9 +6736,17 @@
       </ul></li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.voraussetzungen.Voraussetzungen">Voraussetzungen (class in bo4e.enum.voraussetzungen)</a>
 </li>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.VORAUSZAHLUNG">VORAUSZAHLUNG (bo4e.enum.comtyp.ComTyp attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.vorauszahlung.Vorauszahlung">Vorauszahlung (class in bo4e.com.vorauszahlung)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.vorauszahlungen">vorauszahlungen (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.technischeressource.TechnischeRessource.vorgelagerte_messlokation_id">vorgelagerte_messlokation_id (bo4e.bo.technischeressource.TechnischeRessource attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.voraussetzungen.Voraussetzungen.VORGESCHRIEBENE_ZUSATZANLAGE">VORGESCHRIEBENE_ZUSATZANLAGE (bo4e.enum.voraussetzungen.Voraussetzungen attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.vorjahresverbrauch">vorjahresverbrauch (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.rechnungslegung.Rechnungslegung.VORKASSE">VORKASSE (bo4e.enum.rechnungslegung.Rechnungslegung attribute)</a>
 
@@ -6701,13 +6770,7 @@
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.kalkulationsmethode.Kalkulationsmethode.VORZONEN_GP">VORZONEN_GP (bo4e.enum.kalkulationsmethode.Kalkulationsmethode attribute)</a>
 </li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.VST_0">VST_0 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.VST_16">VST_16 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.VST_19">VST_19 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
-</li>
-      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerkennzeichen.Steuerkennzeichen.VST_7">VST_7 (bo4e.enum.steuerkennzeichen.Steuerkennzeichen attribute)</a>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.steuerart.Steuerart.VST">VST (bo4e.enum.steuerart.Steuerart attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.landescode.Landescode.VU">VU (bo4e.enum.landescode.Landescode attribute)</a>
 </li>
@@ -6726,11 +6789,9 @@
 </li>
       </ul></li>
       <li><a href="api/bo4e.com.html#bo4e.com.betrag.Betrag.waehrung">waehrung (bo4e.com.betrag.Betrag attribute)</a>
-
-      <ul>
-        <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.waehrung">(bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
 </li>
-      </ul></li>
+      <li><a href="api/bo4e.com.html#bo4e.com.steuerbetrag.Steuerbetrag.waehrungscode">waehrungscode (bo4e.com.steuerbetrag.Steuerbetrag attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode">Waehrungscode (class in bo4e.enum.waehrungscode)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungseinheit.Waehrungseinheit">Waehrungseinheit (class in bo4e.enum.waehrungseinheit)</a>
@@ -7014,7 +7075,11 @@
 </li>
       </ul></li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.preisblattmessung.PreisblattMessung.zaehler">zaehler (bo4e.bo.preisblattmessung.PreisblattMessung attribute)</a>
+
+      <ul>
+        <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.zaehler">(bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
+      </ul></li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.botyp.BoTyp.ZAEHLER">ZAEHLER (bo4e.enum.botyp.BoTyp attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.zaehler.Zaehler">Zaehler (class in bo4e.bo.zaehler)</a>
@@ -7075,8 +7140,18 @@
 </li>
       <li><a href="api/bo4e.com.html#bo4e.com.zaehlzeitregister.Zaehlzeitregister">Zaehlzeitregister (class in bo4e.com.zaehlzeitregister)</a>
 </li>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation.zahlungsart">zahlungsart (bo4e.com.zahlungsinformation.Zahlungsinformation attribute)</a>
+</li>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.zahlungsart.Zahlungsart">Zahlungsart (class in bo4e.enum.zahlungsart)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="api/bo4e.enum.html#bo4e.enum.comtyp.ComTyp.ZAHLUNGSINFORMATION">ZAHLUNGSINFORMATION (bo4e.enum.comtyp.ComTyp attribute)</a>
+</li>
+      <li><a href="api/bo4e.com.html#bo4e.com.zahlungsinformation.Zahlungsinformation">Zahlungsinformation (class in bo4e.com.zahlungsinformation)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.zahlungsinformationen">zahlungsinformationen (bo4e.bo.rechnung.Rechnung attribute)</a>
+</li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.themengebiet.Themengebiet.ZAHLUNGSVERKEHR">ZAHLUNGSVERKEHR (bo4e.enum.themengebiet.Themengebiet attribute)</a>
 </li>
       <li><a href="api/bo4e.enum.html#bo4e.enum.waehrungscode.Waehrungscode.ZAR">ZAR (bo4e.enum.waehrungscode.Waehrungscode attribute)</a>
@@ -7156,6 +7231,8 @@
       <li><a href="api/bo4e.bo.html#bo4e.bo.steuerbareressource.SteuerbareRessource.zugeordnete_msb_codenummer">zugeordnete_msb_codenummer (bo4e.bo.steuerbareressource.SteuerbareRessource attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.technischeressource.TechnischeRessource.zugeordnete_steuerbare_ressource_id">zugeordnete_steuerbare_ressource_id (bo4e.bo.technischeressource.TechnischeRessource attribute)</a>
+</li>
+      <li><a href="api/bo4e.bo.html#bo4e.bo.rechnung.Rechnung.zukuenftiger_abschlag">zukuenftiger_abschlag (bo4e.bo.rechnung.Rechnung attribute)</a>
 </li>
       <li><a href="api/bo4e.bo.html#bo4e.bo.lokationszuordnung.Lokationszuordnung.zuordnungstyp">zuordnungstyp (bo4e.bo.lokationszuordnung.Lokationszuordnung attribute)</a>
 </li>

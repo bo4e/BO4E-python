@@ -112,8 +112,8 @@ You can also download the compatibility matrix as CSV file <a class="reference e
 <td><p><a class="reference external" href="_static//tables//changes//v202401.7.0_to_v202501.0.0.json">v202401.7.0_to_v202501.0.0.json</a></p></td>
 </tr>
 <tr class="row-even"><td><p>v202501.0.0</p></td>
-<td><p>v202501.0.0+g5a3185351</p></td>
-<td><p><a class="reference external" href="_static//tables//changes//v202501.0.0_to_v202501.0.0+g5a3185351.json">v202501.0.0_to_v202501.0.0+g5a3185351.json</a></p></td>
+<td><p>v202501.0.0+gc3c78750c</p></td>
+<td><p><a class="reference external" href="_static//tables//changes//v202501.0.0_to_v202501.0.0+gc3c78750c.json">v202501.0.0_to_v202501.0.0+gc3c78750c.json</a></p></td>
 </tr>
 </tbody>
 </table>
@@ -179,7 +179,7 @@ You can also download the compatibility matrix as CSV file <a class="reference e
 <tr class="row-odd"><th class="head"></th>
 <th class="head"><p>v202401.6.0 ↦ v202401.7.0</p></th>
 <th class="head"><p>↦ v202501.0.0</p></th>
-<th class="head"><p>↦ v202501.0.0+g5a3185351</p></th>
+<th class="head"><p>↦ v202501.0.0+gc3c78750c</p></th>
 </tr>
 </thead>
 <tbody>
@@ -638,15 +638,25 @@ You can also download the compatibility matrix as CSV file <a class="reference e
 <td><p>🟢</p></td>
 <td><p>🔴</p></td>
 </tr>
-<tr class="row-odd"><td><p>com.Zaehlwerk</p></td>
+<tr class="row-odd"><td><p>com.Vorauszahlung</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Zaehlwerk</p></td>
 <td><p>🟡</p></td>
 <td><p>🟢</p></td>
 <td><p>🔴</p></td>
 </tr>
-<tr class="row-even"><td><p>com.Zaehlzeitregister</p></td>
+<tr class="row-odd"><td><p>com.Zaehlzeitregister</p></td>
 <td><p>🟡</p></td>
 <td><p>🟢</p></td>
 <td><p>🔴</p></td>
+</tr>
+<tr class="row-even"><td><p>com.Zahlungsinformation</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
 </tr>
 <tr class="row-odd"><td><p>com.Zeitraum</p></td>
 <td><p>🔴</p></td>
@@ -1018,140 +1028,150 @@ You can also download the compatibility matrix as CSV file <a class="reference e
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.SteuerkanalLeistungsbeschreibung</p></td>
+<tr class="row-odd"><td><p>enum.Steuerart</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
+</tr>
+<tr class="row-even"><td><p>enum.SteuerkanalLeistungsbeschreibung</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Steuerkennzeichen</p></td>
+<tr class="row-odd"><td><p>enum.Steuerkennzeichen</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
-<td><p>🟡</p></td>
+<td><p>➖</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Tarifkalkulationsmethode</p></td>
-<td><p>🟢</p></td>
-<td><p>🟢</p></td>
-<td><p>🟢</p></td>
-</tr>
-<tr class="row-even"><td><p>enum.Tarifmerkmal</p></td>
+<tr class="row-even"><td><p>enum.Tarifkalkulationsmethode</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Tarifregionskriterium</p></td>
+<tr class="row-odd"><td><p>enum.Tarifmerkmal</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Tariftyp</p></td>
+<tr class="row-even"><td><p>enum.Tarifregionskriterium</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Tarifzeit</p></td>
+<tr class="row-odd"><td><p>enum.Tariftyp</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.TechnischeRessourceNutzung</p></td>
+<tr class="row-even"><td><p>enum.Tarifzeit</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.TechnischeRessourceVerbrauchsart</p></td>
+<tr class="row-odd"><td><p>enum.TechnischeRessourceNutzung</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Themengebiet</p></td>
+<tr class="row-even"><td><p>enum.TechnischeRessourceVerbrauchsart</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Titel</p></td>
+<tr class="row-odd"><td><p>enum.Themengebiet</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Typ</p></td>
+<tr class="row-even"><td><p>enum.Titel</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+<td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Typ</p></td>
 <td><p>➖</p></td>
 <td><p>-</p></td>
 <td><p>-</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Verbrauchsart</p></td>
+<tr class="row-even"><td><p>enum.Verbrauchsart</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Vertragsart</p></td>
+<tr class="row-odd"><td><p>enum.Vertragsart</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Vertragsform</p></td>
+<tr class="row-even"><td><p>enum.Vertragsform</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Vertragsstatus</p></td>
+<tr class="row-odd"><td><p>enum.Vertragsstatus</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Verwendungszweck</p></td>
+<tr class="row-even"><td><p>enum.Verwendungszweck</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Voraussetzungen</p></td>
+<tr class="row-odd"><td><p>enum.Voraussetzungen</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Waehrungscode</p></td>
+<tr class="row-even"><td><p>enum.Waehrungscode</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Waehrungseinheit</p></td>
+<tr class="row-odd"><td><p>enum.Waehrungseinheit</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Waermenutzung</p></td>
+<tr class="row-even"><td><p>enum.Waermenutzung</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.WahlrechtPrognosegrundlage</p></td>
+<tr class="row-odd"><td><p>enum.WahlrechtPrognosegrundlage</p></td>
 <td><p>➕</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Wertermittlungsverfahren</p></td>
+<tr class="row-even"><td><p>enum.Wertermittlungsverfahren</p></td>
 <td><p>➖</p></td>
 <td><p>-</p></td>
 <td><p>-</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Zaehlerauspraegung</p></td>
+<tr class="row-odd"><td><p>enum.Zaehlerauspraegung</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.Zaehlergroesse</p></td>
+<tr class="row-even"><td><p>enum.Zaehlergroesse</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-even"><td><p>enum.Zaehlertyp</p></td>
+<tr class="row-odd"><td><p>enum.Zaehlertyp</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 </tr>
-<tr class="row-odd"><td><p>enum.ZaehlertypSpezifikation</p></td>
+<tr class="row-even"><td><p>enum.ZaehlertypSpezifikation</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
 <td><p>🟢</p></td>
+</tr>
+<tr class="row-odd"><td><p>enum.Zahlungsart</p></td>
+<td><p>-</p></td>
+<td><p>-</p></td>
+<td><p>➕</p></td>
 </tr>
 <tr class="row-even"><td><p>enum.Zeitreihentyp</p></td>
 <td><p>➕</p></td>

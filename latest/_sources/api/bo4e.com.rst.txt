@@ -452,6 +452,14 @@ bo4e.com.verwendungszweckpromarktrolle module
    :show-inheritance:
    :undoc-members:
 
+bo4e.com.vorauszahlung module
+-----------------------------
+
+.. automodule:: bo4e.com.vorauszahlung
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
 bo4e.com.zaehlwerk module
 -------------------------
 
@@ -464,6 +472,14 @@ bo4e.com.zaehlzeitregister module
 ---------------------------------
 
 .. automodule:: bo4e.com.zaehlzeitregister
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.com.zahlungsinformation module
+-----------------------------------
+
+.. automodule:: bo4e.com.zahlungsinformation
    :members:
    :show-inheritance:
    :undoc-members:

@@ -548,18 +548,18 @@ bo4e.enum.speicherart module
    :show-inheritance:
    :undoc-members:
 
-bo4e.enum.steuerkanalleistungsbeschreibung module
--------------------------------------------------
+bo4e.enum.steuerart module
+--------------------------
 
-.. automodule:: bo4e.enum.steuerkanalleistungsbeschreibung
+.. automodule:: bo4e.enum.steuerart
    :members:
    :show-inheritance:
    :undoc-members:
 
-bo4e.enum.steuerkennzeichen module
-----------------------------------
+bo4e.enum.steuerkanalleistungsbeschreibung module
+-------------------------------------------------
 
-.. automodule:: bo4e.enum.steuerkennzeichen
+.. automodule:: bo4e.enum.steuerkanalleistungsbeschreibung
    :members:
    :show-inheritance:
    :undoc-members:
@@ -752,6 +752,14 @@ bo4e.enum.zaehlertypspezifikation module
 ----------------------------------------
 
 .. automodule:: bo4e.enum.zaehlertypspezifikation
+   :members:
+   :show-inheritance:
+   :undoc-members:
+
+bo4e.enum.zahlungsart module
+----------------------------
+
+.. automodule:: bo4e.enum.zahlungsart
    :members:
    :show-inheritance:
    :undoc-members:

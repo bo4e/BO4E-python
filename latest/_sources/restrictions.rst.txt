@@ -17,7 +17,10 @@ such that it can be implemented in most programming languages.
 
 * In general, BOs won't be referenced by COMs but it's not prohibited. In fact, there are some cases in which a COM
   references a BO. Keep that in mind when designing a package structure e.g. to prevent circular import errors.
-* There are no circular references. This means, when drawing a reference graph of BO4E there will be no loops.
+* There are no circular references **except for** self references. A model can reference itself in the same class.
+  This means, when drawing a reference graph of BO4E there will be no loops except for "tiny" loops corresponding
+  to self references. E.g. `BO Rechnung` can have a field `teilrechnungen` of type `list[BO Rechnung]`.
+  But it cannot reference another model which references back to `BO Rechnung`.
 
   * As a result, we cannot directly support `n x m`-relationships as they would require a back-reference.
     If you're designing a database structure you have to manually add these relationship tables where needed.

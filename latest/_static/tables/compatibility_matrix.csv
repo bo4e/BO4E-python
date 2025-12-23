@@ -1,4 +1,4 @@
-,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+g5a3185351
+,v202401.6.0 ↦ v202401.7.0,↦ v202501.0.0,↦ v202501.0.0+gc3c78750c
 bo.Angebot,🟢,🟢,🔴
 bo.Ausschreibung,🟢,🟢,🔴
 bo.Bilanzierung,➕,🟢,🟡
@@ -90,8 +90,10 @@ com.Verbrauch,🔴,🟢,➖
 com.Vertragskonditionen,🟡,🟢,🔴
 com.Vertragsteil,🟡,🟢,🔴
 com.VerwendungszweckProMarktrolle,🟡,🟢,🔴
+com.Vorauszahlung,\-,\-,➕
 com.Zaehlwerk,🟡,🟢,🔴
 com.Zaehlzeitregister,🟡,🟢,🔴
+com.Zahlungsinformation,\-,\-,➕
 com.Zeitraum,🔴,🟢,🔴
 com.Zeitreihenwert,🔴,🟢,🔴
 com.Zeitspanne,➖,\-,\-
@@ -166,8 +168,9 @@ enum.Registeranzahl,🟢,🟢,🟢
 enum.Rollencodetyp,🟢,🟢,🟢
 enum.Sparte,🟢,🟢,🟢
 enum.Speicherart,🟢,🟢,🟢
+enum.Steuerart,\-,\-,➕
 enum.SteuerkanalLeistungsbeschreibung,🟢,🟢,🟢
-enum.Steuerkennzeichen,🟢,🟢,🟡
+enum.Steuerkennzeichen,🟢,🟢,➖
 enum.Tarifkalkulationsmethode,🟢,🟢,🟢
 enum.Tarifmerkmal,🟢,🟢,🟢
 enum.Tarifregionskriterium,🟢,🟢,🟢
@@ -193,5 +196,6 @@ enum.Zaehlerauspraegung,🟢,🟢,🟢
 enum.Zaehlergroesse,🟢,🟢,🟢
 enum.Zaehlertyp,🟢,🟢,🟢
 enum.ZaehlertypSpezifikation,🟢,🟢,🟢
+enum.Zahlungsart,\-,\-,➕
 enum.Zeitreihentyp,➕,🟢,🟢
 ZusatzAttribut,🟢,🟢,🟢

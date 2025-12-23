@@ -104,7 +104,10 @@ types.</p></li>
 </li>
 <li><p>In general, BOs won’t be referenced by COMs but it’s not prohibited. In fact, there are some cases in which a COM
 references a BO. Keep that in mind when designing a package structure e.g. to prevent circular import errors.</p></li>
-<li><p>There are no circular references. This means, when drawing a reference graph of BO4E there will be no loops.</p>
+<li><p>There are no circular references <strong>except for</strong> self references. A model can reference itself in the same class.
+This means, when drawing a reference graph of BO4E there will be no loops except for “tiny” loops corresponding
+to self references. E.g. <cite>BO Rechnung</cite> can have a field <cite>teilrechnungen</cite> of type <cite>list[BO Rechnung]</cite>.
+But it cannot reference another model which references back to <cite>BO Rechnung</cite>.</p>
 <ul>
 <li><p>As a result, we cannot directly support <cite>n x m</cite>-relationships as they would require a back-reference.
 If you’re designing a database structure you have to manually add these relationship tables where needed.</p></li>
