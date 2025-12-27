@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from ..com.preisgarantie import Preisgarantie
     from ..com.regionspreis import Regionspreis
     from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
+    from ..com.tarifeinschraenkung import Tarifeinschraenkung
     from ..com.vertragskonditionen import Vertragskonditionen
     from ..com.zeitraum import Zeitraum
     from ..enum.kundentyp import Kundentyp
@@ -109,3 +110,5 @@ class Tarif(Tarifinfo):
     """Preisgarantie für diesen Tarif"""
     berechnungsparameter: Optional["Tarifberechnungsparameter"]
     """Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen"""
+    tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None
+    """Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann"""
