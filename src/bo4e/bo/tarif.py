@@ -88,8 +88,6 @@ class Tarif(Tarifinfo):
     """Der Zeitraum, in dem eine Belieferung (für diesen Tarif) möglich ist."""
     vertragskonditionen: Optional["Vertragskonditionen"]
     """Vertragskonditionen für diesen Tarif."""
-    vertriebskanal: Optional[str] = None
-    """TODO: Create a COM for this."""
     website: Optional[str]
     """Internetseite, auf der der Tarif veröffentlicht ist."""
     energiemix: Optional[list["Energiemix"]]
