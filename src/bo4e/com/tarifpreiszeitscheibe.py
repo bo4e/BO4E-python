@@ -60,5 +60,3 @@ class Tarifpreiszeitscheibe(COM):
     Die ID hat hierbei kein vorgegebenes Format und hat auch keine fachliche Bedeutung. Es handelt sich hierbei
     um eine rein technische Lösung, um einen Querverweis zu modellieren.
     """
-    dynamischer_tarif_quelle: Optional[str] = None
-    """Gibt die Bezugsquelle für den dynamischen Tarif an. TODO: Brauchen wir das hier überhaupt noch???"""

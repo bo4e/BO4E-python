@@ -13,7 +13,6 @@ from .tarifinfo import Tarifinfo
 
 if TYPE_CHECKING:
     from ..bo.marktteilnehmer import Marktteilnehmer
-    from ..com.dynamischepreisposition import DynamischePreisposition
     from ..com.energiemix import Energiemix
     from ..com.preisgarantie import Preisgarantie
     from ..com.regionspreis import Regionspreis
@@ -70,10 +69,10 @@ class Tarif(Tarifinfo):
     Ausschließlich die `COM DynamischePreisposition` wird unter einem anderen Feld namens `dynamischePreisposition`
     angegeben.
     """
-    dynamische_preisposition: Optional["DynamischePreisposition"] = None
+    dynamische_preisposition_quelle: Optional[str] = None
     """
+    Gibt die Bezugsquelle (z.B. Börsenindex) für den dynamischen Tarif an.
     Dieses Feld muss genau dann gesetzt werden, wenn es sich bei diesem Tarif um einen dynamischen Tarif handelt.
-    Die dynamische Preisposition enthält im wesentlichen eine Referenz zum entsprechenden Börsenindex.
     """
 
     bezeichnung: Optional[str] = None

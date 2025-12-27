@@ -56,7 +56,6 @@ __all__ = [
     "Betrag",
     "COM",
     "Dienstleistung",
-    "DynamischePreisposition",
     "EinheitsPreisposition",
     "Energieherkunft",
     "Energiemix",
@@ -257,7 +256,6 @@ from .com.ausschreibungslos import Ausschreibungslos
 from .com.betrag import Betrag
 from .com.com import COM
 from .com.dienstleistung import Dienstleistung
-from .com.dynamischepreisposition import DynamischePreisposition
 from .com.einheitspreisposition import EinheitsPreisposition
 from .com.energieherkunft import Energieherkunft
 from .com.energiemix import Energiemix
