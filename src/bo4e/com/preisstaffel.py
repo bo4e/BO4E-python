@@ -55,5 +55,4 @@ class Preisstaffel(COM):
     artikel_id: Optional[str] = None
     """
     Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst.
-    TODO: Kann das Feld weg?
     """
