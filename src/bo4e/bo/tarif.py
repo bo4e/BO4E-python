@@ -91,7 +91,7 @@ class Tarif(Tarifinfo):
     website: Optional[str]
     """Internetseite, auf der der Tarif veröffentlicht ist."""
     energiemix: Optional[list["Energiemix"]]
-    """TODO: Write meaningful doc-string"""
+    """Der Energiemix mit einem Eintrag pro Gültigkeitsjahr (siehe `Energiemix.gueltigkeitsjahr`)."""
     kundentypen: Optional[list["Kundentyp"]]
     """Eine Liste an Kundentypen, für die dieser Tarif vorgesehen ist."""
     tariftyp: Optional["Tariftyp"]
