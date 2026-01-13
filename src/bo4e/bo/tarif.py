@@ -4,7 +4,6 @@ Contains Tarif class
 
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
-import pydantic
 from pydantic import Field
 
 from ..enum.botyp import BoTyp
