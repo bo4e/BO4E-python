@@ -14,7 +14,7 @@ class TestPreisstaffel:
         [
             pytest.param(
                 Preisstaffel(
-                    einheitspreis=Decimal(40.0),
+                    preis=Decimal(40.0),
                     staffelgrenze_von=Decimal(12.5),
                     staffelgrenze_bis=Decimal(25.0),
                     sigmoidparameter=Sigmoidparameter(),
