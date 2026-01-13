@@ -36,7 +36,7 @@ class Regionszeitscheibe(COM):
     typ: Annotated[Literal[ComTyp.REGIONSZEITSCHEIBE], Field(alias="_typ")] = ComTyp.REGIONSZEITSCHEIBE
 
     region: Optional["Region"] = None
-    """Die Region wird durch das Feld `zeitscheibengueltigkeit ` mit einer Zeitscheibe versehen."""
+    """Die Region wird durch das Feld `zeitscheibengueltigkeit` mit einer Zeitscheibe versehen."""
     zeitscheibengueltigkeit: Optional["Zeitraum"] = None
     """
     Versieht die Region mit einer Zeitscheibe. Der Start- und Endzeitpunkt sollte durch das Objekt ermittelbar sein.
