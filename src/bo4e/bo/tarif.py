@@ -61,7 +61,7 @@ class Tarif(Tarifinfo):
 
     """
 
-    typ: Annotated[Literal[BoTyp.TARIF], Field(alias="_typ")] = BoTyp.TARIF
+    typ: Annotated[Literal[BoTyp.TARIF], Field(alias="_typ")] = BoTyp.TARIF  # type:ignore[assignment]
 
     regionspreise: Optional[list["Regionspreis"]] = None
     """
@@ -90,7 +90,7 @@ class Tarif(Tarifinfo):
     """Vertragskonditionen für diesen Tarif."""
     website: Optional[str]
     """Internetseite, auf der der Tarif veröffentlicht ist."""
-    energiemix: Optional[list["Energiemix"]]
+    energiemix: Optional[list["Energiemix"]]  # type:ignore[assignment]
     """Der Energiemix mit einem Eintrag pro Gültigkeitsjahr (siehe `Energiemix.gueltigkeitsjahr`)."""
     kundentypen: Optional[list["Kundentyp"]]
     """Eine Liste an Kundentypen, für die dieser Tarif vorgesehen ist."""
