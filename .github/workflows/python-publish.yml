@@ -36,24 +36,24 @@ jobs:
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-      - name: Set up Python ${{ matrix.python-version }}
+      - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: "3.12"
-      - name: Install dependencies
+      - name: Install dependencies for schema generation
         run: |
           python -m pip install --upgrade pip
-          pip install tox
-          pip install -r requirements.txt -r docs/requirements.txt
+          pip install -e . -r dev_requirements/requirements-json_schemas.txt
       - name: Build JSON Schemas
-        run: tox -e generate_json_schemas
+        run: python generate_or_validate_json_schemas.py --mode generate
         env:
           TARGET_VERSION: ${{ github.ref_name }}
-      - name: Check version tag
+      - name: Install bo4e CLI
+        uses: ./.github/actions/setup-bo4e
+      - name: Verify version bump
         run: |
-          # Get last version tag
           LAST_VERSION=$(bo4e repo versions -qcn 1 -r ${{ github.ref_name }})
-          bo4e pull -t $LAST_VERSION -o tmp/last_schemas
+          bo4e pull -t "$LAST_VERSION" -o tmp/last_schemas
           bo4e diff schemas tmp/last_schemas json_schemas -o tmp/diff.json
           bo4e diff version-bump tmp/diff.json -aq
   json_schemas:
@@ -138,6 +138,12 @@ jobs:
       - name: Run kroki with docker
         run: |
           docker compose up -d
+      - name: Install bo4e CLI
+        uses: ./.github/actions/setup-bo4e
+      - name: Generate documentation assets
+        run: bash scripts/generate_docs_assets.sh
+        env:
+          BO4E_DOCS_REF: ${{ github.ref_name }}
       - name: Build the documentation
         uses: sphinx-notes/pages@v2
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
