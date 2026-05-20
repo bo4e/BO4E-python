@@ -2,3 +2,6 @@
 pytest
 pytest-datafiles
 dictdiffer
+# Needed because tests/test_version_helper.py imports
+# generate_or_validate_json_schemas (which is a click CLI).
+click
