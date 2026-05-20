@@ -1,0 +1,43 @@
+name: Setup bo4e CLI
+description: Download a pinned release of the bo4e CLI binary and put it on PATH.
+
+inputs:
+  version:
+    description: bo4e CLI release tag to install (e.g. v1.1.1).
+    required: false
+    default: v1.1.1
+
+runs:
+  using: composite
+  steps:
+    - name: Resolve runner asset
+      id: asset
+      shell: bash
+      run: |
+        case "${RUNNER_OS}-${RUNNER_ARCH}" in
+          Linux-X64)   asset=bo4e-cli-x86_64-unknown-linux-gnu.tar.xz ;;
+          macOS-X64)   asset=bo4e-cli-x86_64-apple-darwin.tar.xz ;;
+          macOS-ARM64) asset=bo4e-cli-aarch64-apple-darwin.tar.xz ;;
+          Windows-X64) asset=bo4e-cli-x86_64-pc-windows-msvc.zip ;;
+          *) echo "Unsupported runner ${RUNNER_OS}-${RUNNER_ARCH}" >&2; exit 1 ;;
+        esac
+        echo "name=${asset}" >> "$GITHUB_OUTPUT"
+
+    - name: Download bo4e ${{ inputs.version }}
+      shell: bash
+      run: |
+        set -euo pipefail
+        url="https://github.com/bo4e/BO4E-CLI/releases/download/${{ inputs.version }}/${{ steps.asset.outputs.name }}"
+        dest="${RUNNER_TEMP}/bo4e"
+        mkdir -p "${dest}"
+        echo "Downloading ${url}"
+        curl --fail --silent --show-error --location --output "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" "${url}"
+        case "${{ steps.asset.outputs.name }}" in
+          *.tar.xz) tar -xJf "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" --strip-components=1 -C "${dest}" ;;
+          *.zip)    unzip -q  "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" -d "${dest}" ;;
+        esac
+        echo "${dest}" >> "$GITHUB_PATH"
+
+    - name: Verify install
+      shell: bash
+      run: bo4e --version
