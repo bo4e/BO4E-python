@@ -27,43 +27,63 @@ KROKI_URL="${KROKI_URL:-http://localhost:8000}"
 # Resolve a Python interpreter that has the bo4e package importable.
 # Priority:
 #   1. $VIRTUAL_ENV/{bin,Scripts}/python  — set by tox / venv-activated shells.
-#      Preferred because on Windows git-bash, the venv's python may not shadow a
-#      system python on PATH, so a plain `python` lookup picks the wrong one.
-#   2. $PYTHON                            — explicit override.
+#   2. $PYTHON                            — explicit override (tox passes {envpython}).
 #   3. python / python3 on PATH          — has bo4e importable.
 #   4. uv run python3                     — last-resort fallback for standalone runs.
 # Sets the global PYTHON_ARGS array so callers can do: "${PYTHON_ARGS[@]}" -c ...
 PYTHON_ARGS=()
+_attempts=()   # accumulate "<candidate>: <result>" lines for the failure message
+_try() {
+    # Args: <label> <command...>
+    local label="$1"; shift
+    if "$@" -c "import bo4e" 2>/tmp/_bo4e_pyerr.log; then
+        PYTHON_ARGS=("$@")
+        echo "[python] using ${label}: $*"
+        return 0
+    fi
+    local err
+    err="$(tr '\n' ' ' < /tmp/_bo4e_pyerr.log 2>/dev/null | head -c 200)"
+    _attempts+=("${label} ($*): ${err:-<exec failed>}")
+    return 1
+}
 _find_python() {
     if [ -n "${VIRTUAL_ENV:-}" ]; then
         for p in "${VIRTUAL_ENV}/bin/python" "${VIRTUAL_ENV}/Scripts/python.exe"; do
-            if [ -x "${p}" ] && "${p}" -c "import bo4e" 2>/dev/null; then
-                PYTHON_ARGS=("${p}")
-                echo "[python] using venv: ${p}"
-                return
+            if [ -x "${p}" ]; then
+                _try "VIRTUAL_ENV" "${p}" && return
+            else
+                _attempts+=("VIRTUAL_ENV (${p}): not executable / not found")
             fi
         done
+    else
+        _attempts+=("VIRTUAL_ENV: not set")
     fi
-    if [ -n "${PYTHON:-}" ] && "${PYTHON}" -c "import bo4e" 2>/dev/null; then
-        PYTHON_ARGS=("${PYTHON}")
-        echo "[python] using \$PYTHON: ${PYTHON}"
-        return
+    if [ -n "${PYTHON:-}" ]; then
+        _try "\$PYTHON" "${PYTHON}" && return
+    else
+        _attempts+=("\$PYTHON: not set")
     fi
     for cand in python python3; do
-        if "${cand}" -c "import bo4e" 2>/dev/null; then
-            PYTHON_ARGS=("${cand}")
-            echo "[python] using PATH: ${cand}"
-            return
+        if command -v "${cand}" >/dev/null 2>&1; then
+            _try "PATH" "${cand}" && return
+        else
+            _attempts+=("PATH (${cand}): not on PATH")
         fi
     done
-    if command -v uv >/dev/null 2>&1 && uv run python3 -c "import bo4e" 2>/dev/null; then
-        PYTHON_ARGS=(uv run python3)
-        echo "[python] using: uv run python3"
-        return
+    if command -v uv >/dev/null 2>&1; then
+        _try "uv run" uv run python3 && return
+    else
+        _attempts+=("uv run python3: uv not on PATH")
     fi
-    echo "ERROR: no Python interpreter with 'bo4e' found." >&2
-    echo "       Tried: \$VIRTUAL_ENV/{bin,Scripts}/python, \$PYTHON, python, python3, uv run python3." >&2
-    echo "       Either install bo4e (pip install -e .) into the current env, or set \$PYTHON." >&2
+    {
+        echo "ERROR: no Python interpreter with 'bo4e' found."
+        echo "Attempts:"
+        for a in "${_attempts[@]}"; do echo "  - ${a}"; done
+        echo "Environment:"
+        echo "  PATH=${PATH}"
+        echo "  VIRTUAL_ENV=${VIRTUAL_ENV:-<unset>}"
+        echo "  PYTHON=${PYTHON:-<unset>}"
+    } >&2
     exit 1
 }
 _find_python
