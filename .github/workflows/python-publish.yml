@@ -141,7 +141,7 @@ jobs:
       - name: Install bo4e CLI
         uses: ./.github/actions/setup-bo4e
       - name: Generate documentation assets
-        run: bash scripts/generate_docs_assets.sh
+        run: python scripts/generate_docs_assets.py
         env:
           BO4E_DOCS_REF: ${{ github.ref_name }}
           BO4E_DOCS_LABEL: ${{ github.ref_name }}
