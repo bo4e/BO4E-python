@@ -144,6 +144,7 @@ jobs:
         run: bash scripts/generate_docs_assets.sh
         env:
           BO4E_DOCS_REF: ${{ github.ref_name }}
+          BO4E_DOCS_LABEL: ${{ github.ref_name }}
       - name: Build the documentation
         uses: sphinx-notes/pages@v2
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.

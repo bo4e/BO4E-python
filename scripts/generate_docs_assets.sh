@@ -78,12 +78,28 @@ _version_str() {
 #############################################
 
 GH_VERSION="$("${PYTHON_ARGS[@]}" -c 'import bo4e; print(bo4e.__gh_version__)')"
-if printf '%s' "${GH_VERSION}" | grep -Eq '\+g[0-9a-f]+|\.d[0-9]{8}'; then
-    LINK_TEMPLATE="file://${REPO_ROOT}/.tox/docs/tmp/html/api/{module}.html"
+
+# DOCS_LABEL is the user-facing label for the current json_schemas/ source. It
+# appears in SVG cross-link URLs, in the matrix's "current" column header, and
+# in changes_table.csv / diff filenames. Workflows that deploy under a stable
+# routing path override this so artefacts match the deploy URL:
+#   - docs_latest.yml  -> "latest" (or "test-XXXXXX" for workflow_dispatch)
+#   - python-publish.yml -> the release tag (e.g. "v202501.0.0")
+# Locally, it defaults to __gh_version__ which produces a dirty version string
+# and triggers the file:// link template below.
+DOCS_LABEL="${BO4E_DOCS_LABEL:-$GH_VERSION}"
+
+# Link template:
+# - If BO4E_DOCS_LABEL is set (any deploy context) → online docs URL with that label.
+# - Else if __gh_version__ is clean (release-tag local checkout) → online URL with tag.
+# - Else (dirty local build) → file:// link into the local sphinx output.
+if [ -n "${BO4E_DOCS_LABEL:-}" ] || ! printf '%s' "${GH_VERSION}" | grep -Eq '\+g[0-9a-f]+|\.d[0-9]{8}'; then
+    LINK_TEMPLATE="https://bo4e.github.io/BO4E-python/${DOCS_LABEL}/api/{module}.html"
 else
-    LINK_TEMPLATE="https://bo4e.github.io/BO4E-python/${GH_VERSION}/api/{module}.html"
+    LINK_TEMPLATE="file://${REPO_ROOT}/.tox/docs/tmp/html/api/{module}.html"
 fi
-echo "[graph] link template: ${LINK_TEMPLATE}"
+echo "[graph] docs label:     ${DOCS_LABEL}"
+echo "[graph] link template:  ${LINK_TEMPLATE}"
 
 bo4e graph extract -i json_schemas -o "${TMP}/graph.json"
 
@@ -144,7 +160,13 @@ for i in $(seq 0 $((${#chain[@]} - 2))); do
     raw="${TMP}/diff/.raw_${i}.json"
     bo4e diff schemas "${old}" "${new}" -o "${raw}"
     old_ver="$(_version_str "${raw}" '.oldSchemas.version')"
-    new_ver="$(_version_str "${raw}" '.newSchemas.version')"
+    if [ "$i" -eq 0 ] && [ -n "${BO4E_DOCS_LABEL:-}" ]; then
+        # Deploy contexts (latest, test-XXXXXX, release tag) override the
+        # current-tree label so artefact filenames and CSV cells match.
+        new_ver="${BO4E_DOCS_LABEL}"
+    else
+        new_ver="$(_version_str "${raw}" '.newSchemas.version')"
+    fi
     final="${TMP}/diff/${old_ver}_to_${new_ver}.json"
     mv "${raw}" "${final}"
     diff_files+=("${final}")
@@ -171,15 +193,32 @@ bo4e diff matrix \
     "${stripped_diff_files[@]}"
 echo "[diff] wrote ${TABLES_OUT}/compatibility_matrix.csv"
 
+# Relabel the last column header of the matrix when a docs label was provided.
+# bo4e diff matrix v1.1.1 builds column headers from the diff JSON's structured
+# version field, which we can't override at generation time. The data rows are
+# untouched; only the first line's last "↦ <version>" segment is replaced.
+if [ -n "${BO4E_DOCS_LABEL:-}" ]; then
+    awk -v lbl="${BO4E_DOCS_LABEL}" \
+        'NR==1 { sub(/↦ [^,↦]*$/, "↦ " lbl) } { print }' \
+        "${TABLES_OUT}/compatibility_matrix.csv" > "${TMP}/cm.csv" \
+        && mv "${TMP}/cm.csv" "${TABLES_OUT}/compatibility_matrix.csv"
+    echo "[diff] relabelled matrix last column to: ${DOCS_LABEL}"
+fi
+
 # Copy the per-pair diff JSONs into _static and emit changes_table.csv.
 # Version strings live at .oldSchemas.version / .newSchemas.version in the diff JSON.
 
 rm -f "${CHANGES_OUT}"/*.json 2>/dev/null || true
 {
     echo "Old Version,New Version,Diff-file"
-    for f in "${diff_files[@]}"; do
+    for i in "${!diff_files[@]}"; do
+        f="${diff_files[$i]}"
         old="$(_version_str "${f}" '.oldSchemas.version')"
-        new="$(_version_str "${f}" '.newSchemas.version')"
+        if [ "$i" -eq 0 ] && [ -n "${BO4E_DOCS_LABEL:-}" ]; then
+            new="${BO4E_DOCS_LABEL}"
+        else
+            new="$(_version_str "${f}" '.newSchemas.version')"
+        fi
         name="$(basename "${f}")"
         cp "${f}" "${CHANGES_OUT}/${name}"
         printf '%s,%s,`%s <%s>`__\n' \
