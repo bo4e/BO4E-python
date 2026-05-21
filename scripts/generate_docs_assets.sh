@@ -25,27 +25,45 @@ SCHEMAS_CACHE="tmp/bo4e_json_schemas"          # local-dev cache
 KROKI_URL="${KROKI_URL:-http://localhost:8000}"
 
 # Resolve a Python interpreter that has the bo4e package importable.
-# Priority: explicit $PYTHON env var > python/python3 on PATH that has bo4e >
-#           uv run python3 (project venv fallback for standalone runs).
+# Priority:
+#   1. $VIRTUAL_ENV/{bin,Scripts}/python  — set by tox / venv-activated shells.
+#      Preferred because on Windows git-bash, the venv's python may not shadow a
+#      system python on PATH, so a plain `python` lookup picks the wrong one.
+#   2. $PYTHON                            — explicit override.
+#   3. python / python3 on PATH          — has bo4e importable.
+#   4. uv run python3                     — last-resort fallback for standalone runs.
 # Sets the global PYTHON_ARGS array so callers can do: "${PYTHON_ARGS[@]}" -c ...
 PYTHON_ARGS=()
 _find_python() {
-    for cand in "${PYTHON:-}" python python3; do
-        [ -z "${cand}" ] && continue
+    if [ -n "${VIRTUAL_ENV:-}" ]; then
+        for p in "${VIRTUAL_ENV}/bin/python" "${VIRTUAL_ENV}/Scripts/python.exe"; do
+            if [ -x "${p}" ] && "${p}" -c "import bo4e" 2>/dev/null; then
+                PYTHON_ARGS=("${p}")
+                echo "[python] using venv: ${p}"
+                return
+            fi
+        done
+    fi
+    if [ -n "${PYTHON:-}" ] && "${PYTHON}" -c "import bo4e" 2>/dev/null; then
+        PYTHON_ARGS=("${PYTHON}")
+        echo "[python] using \$PYTHON: ${PYTHON}"
+        return
+    fi
+    for cand in python python3; do
         if "${cand}" -c "import bo4e" 2>/dev/null; then
             PYTHON_ARGS=("${cand}")
-            echo "[python] using: ${cand}"
+            echo "[python] using PATH: ${cand}"
             return
         fi
     done
-    if command -v uv >/dev/null 2>&1; then
-        if uv run python3 -c "import bo4e" 2>/dev/null; then
-            PYTHON_ARGS=(uv run python3)
-            echo "[python] using: uv run python3"
-            return
-        fi
+    if command -v uv >/dev/null 2>&1 && uv run python3 -c "import bo4e" 2>/dev/null; then
+        PYTHON_ARGS=(uv run python3)
+        echo "[python] using: uv run python3"
+        return
     fi
-    echo "ERROR: no Python interpreter with 'bo4e' found. Set PYTHON= or run inside the tox/uv env." >&2
+    echo "ERROR: no Python interpreter with 'bo4e' found." >&2
+    echo "       Tried: \$VIRTUAL_ENV/{bin,Scripts}/python, \$PYTHON, python, python3, uv run python3." >&2
+    echo "       Either install bo4e (pip install -e .) into the current env, or set \$PYTHON." >&2
     exit 1
 }
 _find_python
