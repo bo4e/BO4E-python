@@ -4,5 +4,5 @@
 #
 #    pip-compile --output-file=dev_requirements/requirements-json_schemas.txt dev_requirements/requirements-json_schemas.in
 #
-click==8.2.1
+click==8.4.0
     # via -r dev_requirements/requirements-json_schemas.in
