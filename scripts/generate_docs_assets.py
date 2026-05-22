@@ -1,6 +1,6 @@
 """Generate documentation assets that Sphinx consumes:
 
-- ``docs/_static/images/uml/<pkg>/<Class>.svg``  (per-class diagrams)
+- ``docs/_static/images/bo4e/<pkg>/<Class>.svg``  (per-class diagrams)
 - ``docs/_static/tables/compatibility_matrix.csv``
 - ``docs/_static/tables/changes_table.csv``
 - ``docs/_static/tables/changes/<old>_to_<new>.json``
@@ -57,7 +57,7 @@ sys.stdout.reconfigure(line_buffering=True)  # type: ignore[union-attr]
 REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_SCHEMAS_DIR = REPO_ROOT / "json_schemas"
 SCHEMAS_CACHE = REPO_ROOT / "tmp/bo4e_json_schemas"
-IMG_OUT = REPO_ROOT / "docs/_static/images/uml"
+IMG_OUT = REPO_ROOT / "docs/_static/images/bo4e"
 TABLES_OUT = REPO_ROOT / "docs/_static/tables"
 CHANGES_OUT = TABLES_OUT / "changes"
 
@@ -77,6 +77,12 @@ if not os.environ.get("GITHUB_ACCESS_TOKEN") and os.environ.get("GITHUB_TOKEN"):
 _DIRTY_RE = re.compile(r"\+g[0-9a-f]+|\.d[0-9]{8}")
 # Last "↦ <version>" segment on the matrix header line.
 _MATRIX_LAST_COL_RE = re.compile(r"↦ [^,↦]*$")
+# Mirrors bo4e-cli v1.1.1's is_valid_github_token regex
+# (crates/bo4e-cli/src/io/github.rs). Used to diagnose token format issues
+# before invoking the CLI.
+_BO4E_TOKEN_RE = re.compile(
+    r"^(gh[pousr]_[A-Za-z0-9_]{36,251}" r"|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59}" r"|v[0-9]\.[0-9a-f]{40})$"
+)
 
 
 def _format_cmd(args: tuple[str | os.PathLike[str], ...]) -> str:
@@ -387,13 +393,20 @@ def main() -> int:
         return 1
 
     # Diagnostics — useful when CI fails surprisingly. Never print the token
-    # value, only whether one was supplied.
+    # value. The length and prefix are not unique to any single secret and
+    # therefore aren't masked by GitHub Actions' log scrubber.
+    def _describe(env_name: str) -> str:
+        value = os.environ.get(env_name, "")
+        if not value:
+            return f"{env_name}=unset"
+        prefix = value[:4]
+        bo4e_valid = bool(_BO4E_TOKEN_RE.match(value))
+        return f"{env_name}=set (len={len(value)}, prefix={prefix!r}, " f"bo4e-regex-valid={bo4e_valid})"
+
+    print(f"[auth] {_describe('GITHUB_ACCESS_TOKEN')}")
+    print(f"[auth] {_describe('GITHUB_TOKEN')}")
     has_access_token = bool(os.environ.get("GITHUB_ACCESS_TOKEN"))
     has_github_token = bool(os.environ.get("GITHUB_TOKEN"))
-    print(
-        f"[auth] GITHUB_ACCESS_TOKEN={'set' if has_access_token else 'unset'}, "
-        f"GITHUB_TOKEN={'set' if has_github_token else 'unset'}"
-    )
     if not has_access_token and not has_github_token:
         print(
             "[auth] WARNING: no GitHub token in env. bo4e pull will fall back "
