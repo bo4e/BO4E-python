@@ -31,6 +31,11 @@ jobs:
   check_version_tag:
     name: Check if the version tag is correct
     runs-on: ubuntu-latest
+    env:
+      # bo4e CLI only reads GITHUB_ACCESS_TOKEN, not GITHUB_TOKEN. Without
+      # this, anonymous API calls hit GitHub's 60 req/hr rate limit and
+      # `bo4e repo versions` / `bo4e pull` fail mid-job.
+      GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v6
@@ -112,6 +117,11 @@ jobs:
     runs-on: ubuntu-latest
     needs: [tests, check_version_tag]
     concurrency: build-n-publish-docs
+    env:
+      # bo4e CLI only reads GITHUB_ACCESS_TOKEN, not GITHUB_TOKEN. Required so
+      # the documentation asset script (bo4e repo versions, bo4e pull) doesn't
+      # hit GitHub's 60 req/hr anonymous rate limit.
+      GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v6
         with:

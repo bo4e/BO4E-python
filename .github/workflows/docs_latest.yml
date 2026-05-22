@@ -22,6 +22,11 @@ jobs:
       matrix:
         python-version: ["3.12"]
         os: [ubuntu-latest]
+    env:
+      # bo4e CLI only reads GITHUB_ACCESS_TOKEN, not GITHUB_TOKEN. Required so
+      # the documentation asset script (bo4e repo versions, bo4e pull) doesn't
+      # hit GitHub's 60 req/hr anonymous rate limit.
+      GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Set routing name to latest
         if: github.ref == 'refs/heads/main'
