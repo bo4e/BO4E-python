@@ -46,6 +46,13 @@ from pathlib import Path
 
 import bo4e
 
+# Make our own prints line-buffered so they interleave naturally with the
+# inherited stdout from bo4e subprocesses. Without this, tox sees a non-TTY
+# stdout and Python fully buffers print() calls, making the log appear out
+# of order against the subprocesses (which write to the same handle but
+# without Python's buffer).
+sys.stdout.reconfigure(line_buffering=True)  # type: ignore[union-attr]
+
 REPO_ROOT = Path(__file__).resolve().parent.parent
 JSON_SCHEMAS_DIR = REPO_ROOT / "json_schemas"
 SCHEMAS_CACHE = REPO_ROOT / "tmp/bo4e_json_schemas"
@@ -63,14 +70,38 @@ _DIRTY_RE = re.compile(r"\+g[0-9a-f]+|\.d[0-9]{8}")
 _MATRIX_LAST_COL_RE = re.compile(r"↦ [^,↦]*$")
 
 
+def _format_cmd(args: tuple[str | os.PathLike[str], ...]) -> str:
+    """Render a command for log output. Strings only — no real shell quoting needed."""
+    return " ".join(str(a) for a in args)
+
+
 def run(*args: str | os.PathLike[str]) -> None:
-    """Run a subprocess and abort the script on failure."""
+    """Run a subprocess (inherits stdout/stderr) and abort on failure."""
+    print(f"$ {_format_cmd(args)}")
     subprocess.run([str(a) for a in args], check=True)
 
 
 def run_stdout(*args: str | os.PathLike[str]) -> str:
-    """Run a subprocess and return its stdout as a string."""
-    return subprocess.run([str(a) for a in args], check=True, capture_output=True, text=True).stdout
+    """Run a subprocess; stream stdout live and return it for parsing.
+
+    Unlike ``subprocess.run(capture_output=True)`` — which buffers everything in
+    memory and only returns once the process exits — this reads stdout line by
+    line, mirrors each line to our own stdout so the user sees progress as it
+    happens, and accumulates the captured text for callers that need to parse it.
+    stderr is inherited (also live).
+    """
+    print(f"$ {_format_cmd(args)}")
+    cmd = [str(a) for a in args]
+    with subprocess.Popen(cmd, stdout=subprocess.PIPE, text=True) as proc:
+        assert proc.stdout is not None
+        chunks: list[str] = []
+        for line in proc.stdout:
+            sys.stdout.write(line)
+            chunks.append(line)
+        retcode = proc.wait()
+    if retcode != 0:
+        raise subprocess.CalledProcessError(retcode, cmd)
+    return "".join(chunks)
 
 
 def version_str(version_obj: dict) -> str:
@@ -284,6 +315,7 @@ def main() -> int:
         d.mkdir(parents=True, exist_ok=True)
 
     tmp = Path(tempfile.mkdtemp(prefix="bo4e-docs-"))
+    print(f"[setup] temp dir: {tmp}")
     try:
         render_diagrams(link_template, tmp)
 
@@ -296,6 +328,7 @@ def main() -> int:
         emit_changes_table(diff_files)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+        print(f"[cleanup] removed temp dir: {tmp}")
 
     return 0
 
