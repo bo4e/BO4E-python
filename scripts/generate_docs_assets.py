@@ -242,9 +242,18 @@ def render_diagrams(link_template: str, tmp: Path) -> None:
         link_template,
     )
 
-    puml_files = sorted(uml_dir.rglob("*.puml"))
+    # Enums show up as small unhelpful diagrams (no fields, no relations).
+    # We still let bo4e graph emit them as .puml above — the CLI doesn't
+    # offer a per-package filter at single-class generation time — but
+    # don't bother rendering them to SVG.
+    all_puml = sorted(uml_dir.rglob("*.puml"))
+    puml_files = [p for p in all_puml if p.relative_to(uml_dir).parts[0] != "enum"]
+    skipped = len(all_puml) - len(puml_files)
     total = len(puml_files)
-    print(f"[kroki] rendering {total} diagrams via {KROKI_URL} " f"(pool size = {KROKI_CONCURRENCY})")
+    print(
+        f"[kroki] rendering {total} diagrams via {KROKI_URL} "
+        f"(pool size = {KROKI_CONCURRENCY}, skipped {skipped} enum puml files)"
+    )
     # Pre-create the per-package output directories on the main thread so
     # workers don't race to mkdir the same path.
     pairs: list[tuple[Path, Path]] = []
