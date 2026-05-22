@@ -75,10 +75,73 @@ def _format_cmd(args: tuple[str | os.PathLike[str], ...]) -> str:
     return " ".join(str(a) for a in args)
 
 
+def _run_with_pty(cmd: list[str]) -> int:
+    """Run cmd attached to a pseudo-TTY and stream its output. POSIX only.
+
+    A real PTY makes TUI-style subprocess output (indicatif-style progress
+    bars from bo4e pull, for example) render normally — without it, the
+    subprocess detects a non-TTY stdout and falls back to silence during the
+    long-running download phase. Returns the subprocess exit code.
+    """
+    import fcntl
+    import pty
+    import select
+    import struct
+    import termios
+
+    master, slave = pty.openpty()
+    try:
+        size = shutil.get_terminal_size((24, 80))
+        fcntl.ioctl(slave, termios.TIOCSWINSZ, struct.pack("HHHH", size.lines, size.columns, 0, 0))
+    except (OSError, ValueError):
+        pass
+
+    proc = subprocess.Popen(cmd, stdin=slave, stdout=slave, stderr=slave, close_fds=True)
+    os.close(slave)
+    try:
+        while True:
+            try:
+                ready, _, _ = select.select([master], [], [], 0.1)
+            except (OSError, ValueError):
+                break
+            if master in ready:
+                try:
+                    data = os.read(master, 4096)
+                except OSError:
+                    break
+                if not data:
+                    break
+                sys.stdout.buffer.write(data)
+                sys.stdout.buffer.flush()
+            elif proc.poll() is not None:
+                break
+        return proc.wait()
+    finally:
+        os.close(master)
+
+
 def run(*args: str | os.PathLike[str]) -> None:
-    """Run a subprocess (inherits stdout/stderr) and abort on failure."""
+    """Run a subprocess with live output and abort on failure.
+
+    On POSIX we attach a pseudo-TTY so progress-bar output (e.g. bo4e pull's
+    download progress) renders. On Windows we fall back to plain
+    stdout/stderr inheritance — Python's stdlib has no portable PTY, so TUI
+    output that requires isatty() won't render there.
+    """
     print(f"$ {_format_cmd(args)}")
-    subprocess.run([str(a) for a in args], check=True)
+    cmd = [str(a) for a in args]
+    if sys.platform != "win32":
+        try:
+            retcode = _run_with_pty(cmd)
+        except OSError:
+            # PTY allocation failed (containerised env without /dev/ptmx, etc.).
+            # Fall back to plain inheritance.
+            subprocess.run(cmd, check=True)
+            return
+    else:
+        retcode = subprocess.run(cmd).returncode
+    if retcode != 0:
+        raise subprocess.CalledProcessError(retcode, cmd)
 
 
 def run_stdout(*args: str | os.PathLike[str]) -> str:
@@ -164,10 +227,14 @@ def render_diagrams(link_template: str, tmp: Path) -> None:
         link_template,
     )
 
-    for puml in uml_dir.rglob("*.puml"):
+    puml_files = sorted(uml_dir.rglob("*.puml"))
+    total = len(puml_files)
+    print(f"[kroki] rendering {total} diagrams via {KROKI_URL}")
+    for i, puml in enumerate(puml_files, 1):
         rel = puml.relative_to(uml_dir)
         svg = IMG_OUT / rel.with_suffix(".svg")
         svg.parent.mkdir(parents=True, exist_ok=True)
+        print(f"[kroki] ({i}/{total}) {rel.with_suffix('.svg')}")
         kroki_render(puml, svg)
     print(f"[graph] wrote SVGs to {IMG_OUT.relative_to(REPO_ROOT)}/")
 
@@ -183,10 +250,11 @@ def populate_schema_cache(tags: list[str]) -> None:
     for tag in tags:
         cache_dir = SCHEMAS_CACHE / tag
         if cache_dir.is_dir():
-            print(f"[diff] cache hit  {tag}")
+            print(f"[pull] cache hit  {tag}")
         else:
-            print(f"[diff] pulling   {tag}")
+            print(f"[pull] fetching   {tag}")
             run("bo4e", "pull", "-t", tag, "-o", cache_dir)
+            print(f"[pull] done       {tag}")
 
 
 def generate_pairwise_diffs(tags: list[str], tmp: Path) -> list[Path]:
