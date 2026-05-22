@@ -1,0 +1,5 @@
+
+.rst-content table .line-block:last-child {
+    /* Remove the margin-bottom from the line-blocks inside tables. Example in changelog.rst. */
+    margin-bottom: 0;
+}

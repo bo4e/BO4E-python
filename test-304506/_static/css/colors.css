@@ -1,0 +1,18 @@
+
+:root {
+  /* These colors should stay consistent with the colors used in the CLI:
+     https://github.com/bo4e/BO4E-CLI/blob/main/src/bo4e_cli/io/console/style.py#L238 */
+  --main-color: #8cc04d;
+  --sub-color: #617d8b;
+  --error-color: #e35b3a;
+}
+
+.main-color {
+  color: var(--main-color);
+}
+.sub-color {
+  color: var(--sub-color);
+}
+.error-color {
+  color: var(--error-color);
+}
