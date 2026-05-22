@@ -392,7 +392,12 @@ def emit_changes_table(diff_files: list[Path]) -> None:
                 new_ver = version_str(data["newSchemas"]["version"])
             name = df.name
             shutil.copyfile(df, CHANGES_OUT / name)
-            writer.writerow([old_ver, new_ver, f"`{name} <changes/{name}>`__"])
+            # The link target is resolved by Sphinx relative to the document
+            # that includes the CSV (docs/changelog.rst), NOT to the CSV file
+            # itself. So the path needs the full docs-relative prefix
+            # `_static/tables/changes/<name>`, not `changes/<name>`.
+            link = f"_static/tables/changes/{name}"
+            writer.writerow([old_ver, new_ver, f"`{name} <{link}>`__"])
     print(f"[diff] wrote {changes_table.relative_to(REPO_ROOT)}")
 
 
