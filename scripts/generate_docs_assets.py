@@ -42,6 +42,7 @@ import subprocess
 import sys
 import tempfile
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import bo4e
@@ -62,6 +63,7 @@ CHANGES_OUT = TABLES_OUT / "changes"
 
 REF = os.environ.get("BO4E_DOCS_REF", "HEAD")
 KROKI_URL = os.environ.get("KROKI_URL", "http://localhost:8000")
+KROKI_CONCURRENCY = int(os.environ.get("KROKI_CONCURRENCY", "8"))
 DOCS_LABEL_OVERRIDE = os.environ.get("BO4E_DOCS_LABEL")
 
 # Mirrors bo4e-cli's REGEX_DIRTY_VERSION dirty-tail.
@@ -229,13 +231,23 @@ def render_diagrams(link_template: str, tmp: Path) -> None:
 
     puml_files = sorted(uml_dir.rglob("*.puml"))
     total = len(puml_files)
-    print(f"[kroki] rendering {total} diagrams via {KROKI_URL}")
-    for i, puml in enumerate(puml_files, 1):
+    print(f"[kroki] rendering {total} diagrams via {KROKI_URL} " f"(pool size = {KROKI_CONCURRENCY})")
+    # Pre-create the per-package output directories on the main thread so
+    # workers don't race to mkdir the same path.
+    pairs: list[tuple[Path, Path]] = []
+    for puml in puml_files:
         rel = puml.relative_to(uml_dir)
         svg = IMG_OUT / rel.with_suffix(".svg")
         svg.parent.mkdir(parents=True, exist_ok=True)
-        print(f"[kroki] ({i}/{total}) {rel.with_suffix('.svg')}")
-        kroki_render(puml, svg)
+        pairs.append((puml, svg))
+
+    completed = 0
+    with ThreadPoolExecutor(max_workers=KROKI_CONCURRENCY) as pool:
+        futures = {pool.submit(kroki_render, puml, svg): svg.relative_to(IMG_OUT) for puml, svg in pairs}
+        for future in as_completed(futures):
+            future.result()  # re-raises on failure; cancels remaining via with-exit
+            completed += 1
+            print(f"[kroki] ({completed}/{total}) {futures[future]}")
     print(f"[graph] wrote SVGs to {IMG_OUT.relative_to(REPO_ROOT)}/")
 
 
