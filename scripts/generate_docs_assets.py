@@ -66,6 +66,13 @@ KROKI_URL = os.environ.get("KROKI_URL", "http://localhost:8000")
 KROKI_CONCURRENCY = int(os.environ.get("KROKI_CONCURRENCY", "8"))
 DOCS_LABEL_OVERRIDE = os.environ.get("BO4E_DOCS_LABEL")
 
+# bo4e CLI reads only GITHUB_ACCESS_TOKEN. GitHub Actions auto-injects
+# GITHUB_TOKEN. Alias one to the other so the workflow doesn't have to set
+# both. Without authentication, bo4e pull burns through GitHub's 60 req/hr
+# anonymous limit within a single pull (192 schema files).
+if not os.environ.get("GITHUB_ACCESS_TOKEN") and os.environ.get("GITHUB_TOKEN"):
+    os.environ["GITHUB_ACCESS_TOKEN"] = os.environ["GITHUB_TOKEN"]
+
 # Mirrors bo4e-cli's REGEX_DIRTY_VERSION dirty-tail.
 _DIRTY_RE = re.compile(r"\+g[0-9a-f]+|\.d[0-9]{8}")
 # Last "↦ <version>" segment on the matrix header line.
@@ -378,6 +385,22 @@ def main() -> int:
     if not shutil.which("bo4e"):
         sys.stderr.write("ERROR: 'bo4e' not on PATH. Install via setup-bo4e action or your package manager.\n")
         return 1
+
+    # Diagnostics — useful when CI fails surprisingly. Never print the token
+    # value, only whether one was supplied.
+    has_access_token = bool(os.environ.get("GITHUB_ACCESS_TOKEN"))
+    has_github_token = bool(os.environ.get("GITHUB_TOKEN"))
+    print(
+        f"[auth] GITHUB_ACCESS_TOKEN={'set' if has_access_token else 'unset'}, "
+        f"GITHUB_TOKEN={'set' if has_github_token else 'unset'}"
+    )
+    if not has_access_token and not has_github_token:
+        print(
+            "[auth] WARNING: no GitHub token in env. bo4e pull will fall back "
+            "to anonymous requests and likely hit GitHub's 60 req/hr rate "
+            "limit on the 192-schema fetch.",
+            file=sys.stderr,
+        )
 
     gh_version = bo4e.__gh_version__
     is_dirty = bool(_DIRTY_RE.search(gh_version))
