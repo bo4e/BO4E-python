@@ -9,13 +9,12 @@ import logging
 import pkgutil
 import re
 import sys
+from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from typing import Any, Iterator, Literal, cast
 
 import click
-from bo4e_cli.io.version_file import create_version_file
-from bo4e_cli.models.version import Version
 from pydantic import BaseModel, TypeAdapter
 from pydantic.json_schema import GenerateJsonSchema as _GenerateJsonSchema
 from pydantic.json_schema import JsonSchemaValue
@@ -31,6 +30,57 @@ output_directory = root_directory / "json_schemas"
 NEW_REF_TEMPLATE = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
 NEW_REF_TEMPLATE_ROOT = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
+
+_VERSION_RE = re.compile(
+    r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)"
+    r"(?:-rc(?P<candidate>\d*))?"
+    r"(?:\+g(?P<commit>\w+))?"
+    r"(?:\.d(?P<date>\d{8}))?$"
+)
+
+
+@dataclass(frozen=True)
+class Version:
+    """Minimal bo4e version representation.
+
+    Mirrors the dirty-version regex from bo4e-cli's
+    `crates/bo4e-schemas/src/models/version.rs` so this script can parse
+    `__gh_version__` and the `TARGET_VERSION` env var without depending on
+    the `bo4e-cli` Python package.
+    """
+
+    major: int
+    functional: int
+    technical: int
+    candidate: int | None = None
+    commit: str | None = None
+    date: str | None = None
+
+    @classmethod
+    def from_str(cls, s: str) -> "Version":
+        """Parse a version string in format vMAJOR.FUNCTIONAL.TECHNICAL[...]."""
+        m = _VERSION_RE.match(s)
+        if m is None:
+            raise ValueError(f"Invalid version: {s}")
+        return cls(
+            major=int(m["major"]),
+            functional=int(m["functional"]),
+            technical=int(m["technical"]),
+            candidate=int(m["candidate"]) if m["candidate"] else None,
+            commit=m["commit"],
+            date=m["date"],
+        )
+
+    def __str__(self) -> str:
+        base = f"v{self.major:06d}.{self.functional}.{self.technical}"
+        if self.candidate is not None:
+            base += f"-rc{self.candidate}"
+        if self.commit:
+            base += f"+g{self.commit}"
+        if self.date:
+            base += f".d{self.date}"
+        return base
+
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
 
@@ -161,15 +211,6 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any]) -> None:
         json_schema_file.write("\n")
 
 
-def generate_version_file(file_path: Path, version: str) -> None:
-    """
-    Generate a version file with the given version
-    """
-    with open(file_path, "w+", encoding="utf-8") as version_file:
-        version_file.write(version)
-    _logger.info("Generated version file at %s with content %s", file_path, version)
-
-
 def replace_refs(
     schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]], target_version: str
 ) -> None:
@@ -257,7 +298,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
         else:
             raise ValueError(f"Unknown mode '{mode}'")
     if mode == "generate":
-        create_version_file(output_directory, version)
+        (output_directory / ".version").write_text(str(version), encoding="utf-8")
         _logger.info("Generated version file at %s with version %s", output_directory / ".version", version)
 
 

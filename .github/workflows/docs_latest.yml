@@ -22,6 +22,11 @@ jobs:
       matrix:
         python-version: ["3.12"]
         os: [ubuntu-latest]
+    env:
+      # bo4e CLI only reads GITHUB_ACCESS_TOKEN, not GITHUB_TOKEN. Required so
+      # the documentation asset script (bo4e repo versions, bo4e pull) doesn't
+      # hit GitHub's 60 req/hr anonymous rate limit.
+      GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Set routing name to latest
         if: github.ref == 'refs/heads/main'
@@ -52,6 +57,12 @@ jobs:
       - name: Run kroki with docker
         run: |
           docker compose up -d
+      - name: Install bo4e CLI
+        uses: ./.github/actions/setup-bo4e
+      - name: Generate documentation assets
+        run: python scripts/generate_docs_assets.py
+        env:
+          BO4E_DOCS_LABEL: ${{ env.REF_NAME }}
       - name: Build the documentation
         uses: sphinx-notes/pages@v2
         # Note: This action has a newer version (v3 atm), but it doesn't has the feature to specify the target path.
