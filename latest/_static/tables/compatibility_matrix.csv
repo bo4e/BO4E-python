@@ -61,7 +61,7 @@ com.KriteriumWert,🟡,🟢,🔴
 com.Lastprofil,➕,🟢,🔴
 com.MarktgebietInfo,🟡,🟢,🔴
 com.Menge,🟡,🟢,🔴
-com.Messwert,-,-,➕
+com.Messwert,∅,∅,➕
 com.PositionsAufAbschlag,🟡,🟢,🔴
 com.Preis,🟡,🟢,🔴
 com.Preisgarantie,🟡,🟢,🔴
@@ -90,13 +90,13 @@ com.Verbrauch,🔴,🟢,➖
 com.Vertragskonditionen,🟡,🟢,🔴
 com.Vertragsteil,🟡,🟢,🔴
 com.VerwendungszweckProMarktrolle,🟡,🟢,🔴
-com.Vorauszahlung,-,-,➕
+com.Vorauszahlung,∅,∅,➕
 com.Zaehlwerk,🟡,🟢,🔴
 com.Zaehlzeitregister,🟡,🟢,🔴
-com.Zahlungsinformation,-,-,➕
+com.Zahlungsinformation,∅,∅,➕
 com.Zeitraum,🔴,🟢,🔴
 com.Zeitreihenwert,🔴,🟢,🔴
-com.Zeitspanne,➖,-,-
+com.Zeitspanne,➖,∅,∅
 com.Zustaendigkeit,🟡,🟢,🔴
 enum.AbgabeArt,🟢,🟢,🟢
 enum.Abwicklungsmodell,➕,🟢,🟢
@@ -168,7 +168,7 @@ enum.Registeranzahl,🟢,🟢,🟢
 enum.Rollencodetyp,🟢,🟢,🟢
 enum.Sparte,🟢,🟢,🟢
 enum.Speicherart,🟢,🟢,🟢
-enum.Steuerart,-,-,➕
+enum.Steuerart,∅,∅,➕
 enum.SteuerkanalLeistungsbeschreibung,🟢,🟢,🟢
 enum.Steuerkennzeichen,🟢,🟢,➖
 enum.Tarifkalkulationsmethode,🟢,🟢,🟢
@@ -180,7 +180,7 @@ enum.TechnischeRessourceNutzung,🟢,🟢,🟢
 enum.TechnischeRessourceVerbrauchsart,🟢,🟢,🟢
 enum.Themengebiet,🟢,🟢,🟢
 enum.Titel,🟢,🟢,🟢
-enum.Typ,➖,-,-
+enum.Typ,➖,∅,∅
 enum.Verbrauchsart,🟢,🟢,🟢
 enum.Vertragsart,🟢,🟢,🟢
 enum.Vertragsform,🟢,🟢,🟢
@@ -191,11 +191,11 @@ enum.Waehrungscode,🟢,🟢,🟢
 enum.Waehrungseinheit,🟢,🟢,🟢
 enum.Waermenutzung,🟢,🟢,🟢
 enum.WahlrechtPrognosegrundlage,➕,🟢,🟢
-enum.Wertermittlungsverfahren,➖,-,-
+enum.Wertermittlungsverfahren,➖,∅,∅
 enum.Zaehlerauspraegung,🟢,🟢,🟢
 enum.Zaehlergroesse,🟢,🟢,🟢
 enum.Zaehlertyp,🟢,🟢,🟢
 enum.ZaehlertypSpezifikation,🟢,🟢,🟢
-enum.Zahlungsart,-,-,➕
+enum.Zahlungsart,∅,∅,➕
 enum.Zeitreihentyp,➕,🟢,🟢
 ZusatzAttribut,🟢,🟢,🟡
