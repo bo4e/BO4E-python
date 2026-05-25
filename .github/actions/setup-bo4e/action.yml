@@ -3,7 +3,7 @@ description: Download a pinned release of the bo4e CLI binary and put it on PATH
 
 inputs:
   version:
-    description: bo4e CLI release tag to install (e.g. v1.2.1).
+    description: bo4e CLI release tag to install.
     required: false
     default: v1.2.1
 
