@@ -38,7 +38,7 @@ You can also download the compatibility matrix as CSV file `here <_static/tables
    | ➖   | | :error-color:`Incompatible`                                                                     |
    |      | | Data model was removed in this version                                                          |
    +------+---------------------------------------------------------------------------------------------------+
-   | \-   | | Non\-existent                                                                                   |
+   | ∅    | | Non\-existent                                                                                   |
    |      | | Doesn't exist in this version i.e. it was removed before or will be added in future             |
    +------+---------------------------------------------------------------------------------------------------+
 
