@@ -296,14 +296,14 @@ from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreiszeitscheibe import Tarifpreiszeitscheibe
 from .com.umschaltzeit import Umschaltzeit
 from .com.unterschrift import Unterschrift
-from .com.zaehlzeitsaison import Zaehlzeitsaison
-from .com.zaehlzeittagtyp import Zaehlzeittagtyp
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
 from .com.vorauszahlung import Vorauszahlung
 from .com.zaehlwerk import Zaehlwerk
 from .com.zaehlzeitregister import Zaehlzeitregister
+from .com.zaehlzeitsaison import Zaehlzeitsaison
+from .com.zaehlzeittagtyp import Zaehlzeittagtyp
 from .com.zahlungsinformation import Zahlungsinformation
 from .com.zeitraum import Zeitraum
 from .com.zeitreihenwert import Zeitreihenwert
