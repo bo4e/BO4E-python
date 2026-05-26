@@ -44,3 +44,9 @@ class ZeitvariablePreisposition(COM):
     preis: Optional["Preis"] = None
     """Der Preis für diese Position."""
     zaehlzeitdefinition: Optional["Zaehlzeitdefinition"] = None
+    """Die Zählzeitdefinition, deren Schaltschema bestimmt, wann diese Preisposition gilt."""
+    zaehlzeitregister: Optional[str] = None
+    """Der freie Register-Code (z.B. "HT", "NT", "ST", "SuperHT") innerhalb der referenzierten
+    `zaehlzeitdefinition`, auf den sich diese Preisposition bezieht. Der Code sollte als
+    `registercode` in mindestens einer `Umschaltzeit` der referenzierten Zählzeitdefinition
+    vorkommen."""

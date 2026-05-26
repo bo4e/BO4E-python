@@ -4,7 +4,13 @@ from bo4e.enum.strenum import StrEnum
 
 class Wiederholungstyp(StrEnum):
     """
-    Gibt an zu welchen Tagen etwas wiederholt werden soll.
+    Klassifiziert einen Tagtyp, an dem ein wiederkehrendes Schaltschema (z.B. die Umschaltzeiten einer
+    `Zaehlzeitdefinition`) gilt. Die Werte teilen sich in drei Gruppen auf:
+
+    * `TAEGLICH` – gilt an jedem Tag des Jahres.
+    * Gruppenbezeichnungen (`WERKTAGS`, `WOCHENENDE`, `FEIERTAGS`) – fassen mehrere Wochentage zusammen.
+      Was als Feiertag zählt, wird durch den Feiertagskalender der `Zaehlzeitdefinition` bestimmt.
+    * Einzelne Wochentage (`MONTAGS` … `SONNTAGS`).
     """
 
     TAEGLICH = "TAEGLICH"
@@ -15,7 +21,7 @@ class Wiederholungstyp(StrEnum):
     MONTAGS = "MONTAGS"
     DIENSTAGS = "DIENSTAGS"
     MITTWOCHS = "MITTWOCHS"
-    DONNERTAGS = "DONNERTAGS"
+    DONNERSTAGS = "DONNERSTAGS"
     FREITAGS = "FREITAGS"
     SAMSTAGS = "SAMSTAGS"
     SONNTAGS = "SONNTAGS"

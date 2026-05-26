@@ -92,6 +92,8 @@ __all__ = [
     "Tarifpreisposition",
     "Tarifpreiszeitscheibe",
     "Umschaltzeit",
+    "Zaehlzeitsaison",
+    "Zaehlzeittagtyp",
     "Unterschrift",
     "Vertragskonditionen",
     "Vertragsteil",
@@ -294,6 +296,8 @@ from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreiszeitscheibe import Tarifpreiszeitscheibe
 from .com.umschaltzeit import Umschaltzeit
 from .com.unterschrift import Unterschrift
+from .com.zaehlzeitsaison import Zaehlzeitsaison
+from .com.zaehlzeittagtyp import Zaehlzeittagtyp
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
