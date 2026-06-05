@@ -5,7 +5,7 @@ inputs:
   version:
     description: bo4e CLI release tag to install.
     required: false
-    default: v1.2.2
+    default: v1.2.3
 
 runs:
   using: composite

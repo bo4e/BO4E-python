@@ -81,7 +81,7 @@ _MATRIX_LAST_COL_RE = re.compile(r"↦ [^,↦]*$")
 # (crates/bo4e-cli/src/io/github.rs). Used to diagnose token format issues
 # before invoking the CLI.
 _BO4E_TOKEN_RE = re.compile(
-    r"^(gh[pousr]_[A-Za-z0-9_]{36,}|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59}|v[0-9]\.[0-9a-f]{40})$"
+    r"^(gh[pousr]_[A-Za-z0-9_.\-]{36,}|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59}|v[0-9]\.[0-9a-f]{40})$"
 )
 
 
