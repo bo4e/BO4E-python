@@ -6,7 +6,39 @@ This document describes how the BO4E Python implementation is written and what t
 Technical Setup in your IDE
 ---------------------------
 
-We're using tox. Please follow the instructions in our `Python Template Repository <https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine>`_. Feel free to open an issue if you run into any kind of problems.
+Dev dependencies live in ``pyproject.toml`` under ``[dependency-groups]`` (PEP 735) and are pinned by ``uv.lock``. We use `uv <https://docs.astral.sh/uv/>`_ as the package manager and `tox-uv <https://github.com/tox-dev/tox-uv>`_ to plug uv into the existing ``tox`` environments.
+
+1. Install ``uv`` once on your machine — see `the upstream installation guide <https://docs.astral.sh/uv/getting-started/installation/>`_. On macOS/Linux:
+
+   .. code-block:: shell
+
+      curl -LsSf https://astral.sh/uv/install.sh | sh
+
+2. Clone the repo and let ``uv`` materialise the full developer environment from ``uv.lock``:
+
+   .. code-block:: shell
+
+      git clone https://github.com/bo4e/BO4E-python.git
+      cd BO4E-python
+      uv sync --group dev
+      uv run pre-commit install
+
+   The ``dev`` group is a meta-group that pulls in every other group (``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``docs``, ``json_schemas``, ``packaging``) plus ``pre-commit`` and ``pip-tools``.
+
+3. Run individual checks via tox. ``tox-uv`` is pulled in automatically by the ``[tox] requires`` block in ``tox.ini``, so each ``tox -e …`` invocation provisions its env with ``uv`` instead of pip:
+
+   .. code-block:: shell
+
+      uv run tox -e tests
+      uv run tox -e linting
+      uv run tox -e type_check
+      uv run tox -e docs
+
+If you prefer not to use ``uv run`` as a prefix, activate the venv ``uv`` created with ``source .venv/bin/activate`` (or the platform equivalent) and call ``tox`` directly.
+
+**Adding a new dev dependency.** Edit the relevant group in ``[dependency-groups]`` in ``pyproject.toml``, then run ``uv lock`` to refresh the lock file and commit both. Don't edit ``uv.lock`` by hand. Don't reintroduce ``dev_requirements/`` — that directory is intentionally gone, replaced by the single source of truth above.
+
+Open an issue if you run into any kind of problems with the setup.
 
 Coding Style and Guidelines
 ---------------------------
