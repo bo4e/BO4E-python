@@ -32,9 +32,9 @@ markupsafe==3.0.2
     # via jinja2
 packaging==25.0
     # via sphinx
-pydantic==2.11.7
+pydantic==2.13.4
     # via -r docs/requirements.in
-pydantic-core==2.33.2
+pydantic-core==2.46.4
     # via pydantic
 pygments==2.19.2
     # via sphinx
@@ -74,7 +74,7 @@ typing-extensions==4.14.1
     #   pydantic
     #   pydantic-core
     #   typing-inspection
-typing-inspection==0.4.1
+typing-inspection==0.4.2
     # via pydantic
 urllib3==2.5.0
     # via requests
