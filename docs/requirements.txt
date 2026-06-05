@@ -4,7 +4,7 @@
 #
 #    pip-compile --output-file=docs/requirements.txt docs/requirements.in
 #
-alabaster==1.0.0
+alabaster==0.7.16
     # via sphinx
 annotated-types==0.7.0
     # via pydantic
@@ -21,6 +21,8 @@ docutils==0.21.2
 idna==3.10
     # via requests
 imagesize==1.4.1
+    # via sphinx
+importlib-metadata==8.7.1
     # via sphinx
 iso3166==2.1.1
     # via -r docs/requirements.in
@@ -42,16 +44,14 @@ requests==2.32.4
     # via
     #   -r docs/requirements.in
     #   sphinx
-roman-numerals-py==3.1.0
-    # via sphinx
 snowballstemmer==3.0.1
     # via sphinx
-sphinx==8.2.3
+sphinx==7.4.7
     # via
     #   -r docs/requirements.in
     #   sphinx-rtd-theme
     #   sphinxcontrib-jquery
-sphinx-rtd-theme==3.0.2
+sphinx-rtd-theme==3.1.0
     # via -r docs/requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
@@ -67,6 +67,8 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
+tomli==2.4.1
+    # via sphinx
 typing-extensions==4.14.1
     # via
     #   pydantic
@@ -76,3 +78,5 @@ typing-inspection==0.4.1
     # via pydantic
 urllib3==2.5.0
     # via requests
+zipp==3.23.1
+    # via importlib-metadata
