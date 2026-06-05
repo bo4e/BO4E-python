@@ -103,7 +103,34 @@
 <p>This document describes how the BO4E Python implementation is written and what to watch out for.</p>
 <section id="technical-setup-in-your-ide">
 <h2>Technical Setup in your IDE<a class="headerlink" href="#technical-setup-in-your-ide" title="Link to this heading"></a></h2>
-<p>We’re using tox. Please follow the instructions in our <a class="reference external" href="https://github.com/Hochfrequenz/python_template_repository#how-to-use-this-repository-on-your-machine">Python Template Repository</a>. Feel free to open an issue if you run into any kind of problems.</p>
+<p>Dev dependencies live in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code> under <code class="docutils literal notranslate"><span class="pre">[dependency-groups]</span></code> (PEP 735) and are pinned by <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code>. We use <a class="reference external" href="https://docs.astral.sh/uv/">uv</a> as the package manager and <a class="reference external" href="https://github.com/tox-dev/tox-uv">tox-uv</a> to plug uv into the existing <code class="docutils literal notranslate"><span class="pre">tox</span></code> environments.</p>
+<ol class="arabic">
+<li><p>Install <code class="docutils literal notranslate"><span class="pre">uv</span></code> once on your machine — see <a class="reference external" href="https://docs.astral.sh/uv/getting-started/installation/">the upstream installation guide</a>. On macOS/Linux:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</pre></div>
+</div>
+</li>
+<li><p>Clone the repo and let <code class="docutils literal notranslate"><span class="pre">uv</span></code> materialise the full developer environment from <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code>:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/bo4e/BO4E-python.git
+<span class="nb">cd</span><span class="w"> </span>BO4E-python
+uv<span class="w"> </span>sync<span class="w"> </span>--group<span class="w"> </span>dev
+uv<span class="w"> </span>run<span class="w"> </span>pre-commit<span class="w"> </span>install
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">dev</span></code> group is a meta-group that pulls in every other group (<code class="docutils literal notranslate"><span class="pre">tests</span></code>, <code class="docutils literal notranslate"><span class="pre">coverage</span></code>, <code class="docutils literal notranslate"><span class="pre">type_check</span></code>, <code class="docutils literal notranslate"><span class="pre">linting</span></code>, <code class="docutils literal notranslate"><span class="pre">formatting</span></code>, <code class="docutils literal notranslate"><span class="pre">docs</span></code>, <code class="docutils literal notranslate"><span class="pre">json_schemas</span></code>, <code class="docutils literal notranslate"><span class="pre">packaging</span></code>) plus <code class="docutils literal notranslate"><span class="pre">pre-commit</span></code> and <code class="docutils literal notranslate"><span class="pre">pip-tools</span></code>.</p>
+</li>
+<li><p>Run individual checks via tox. <code class="docutils literal notranslate"><span class="pre">tox-uv</span></code> is pulled in automatically by the <code class="docutils literal notranslate"><span class="pre">[tox]</span> <span class="pre">requires</span></code> block in <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code>, so each <code class="docutils literal notranslate"><span class="pre">tox</span> <span class="pre">-e</span> <span class="pre">…</span></code> invocation provisions its env with <code class="docutils literal notranslate"><span class="pre">uv</span></code> instead of pip:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>uv<span class="w"> </span>run<span class="w"> </span>tox<span class="w"> </span>-e<span class="w"> </span>tests
+uv<span class="w"> </span>run<span class="w"> </span>tox<span class="w"> </span>-e<span class="w"> </span>linting
+uv<span class="w"> </span>run<span class="w"> </span>tox<span class="w"> </span>-e<span class="w"> </span>type_check
+uv<span class="w"> </span>run<span class="w"> </span>tox<span class="w"> </span>-e<span class="w"> </span>docs
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If you prefer not to use <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">run</span></code> as a prefix, activate the venv <code class="docutils literal notranslate"><span class="pre">uv</span></code> created with <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">.venv/bin/activate</span></code> (or the platform equivalent) and call <code class="docutils literal notranslate"><span class="pre">tox</span></code> directly.</p>
+<p><strong>Adding a new dev dependency.</strong> Edit the relevant group in <code class="docutils literal notranslate"><span class="pre">[dependency-groups]</span></code> in <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>, then run <code class="docutils literal notranslate"><span class="pre">uv</span> <span class="pre">lock</span></code> to refresh the lock file and commit both. Don’t edit <code class="docutils literal notranslate"><span class="pre">uv.lock</span></code> by hand. Don’t reintroduce <code class="docutils literal notranslate"><span class="pre">dev_requirements/</span></code> — that directory is intentionally gone, replaced by the single source of truth above.</p>
+<p>Open an issue if you run into any kind of problems with the setup.</p>
 </section>
 <section id="coding-style-and-guidelines">
 <h2>Coding Style and Guidelines<a class="headerlink" href="#coding-style-and-guidelines" title="Link to this heading"></a></h2>
