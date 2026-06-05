@@ -81,7 +81,7 @@ _MATRIX_LAST_COL_RE = re.compile(r"↦ [^,↦]*$")
 # (crates/bo4e-cli/src/io/github.rs). Used to diagnose token format issues
 # before invoking the CLI.
 _BO4E_TOKEN_RE = re.compile(
-    r"^(gh[pousr]_[A-Za-z0-9_]{36,251}" r"|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59}" r"|v[0-9]\.[0-9a-f]{40})$"
+    r"^(gh[pousr]_[A-Za-z0-9_.\-]{36,}|github_pat_[a-zA-Z0-9]{22}_[a-zA-Z0-9]{59}|v[0-9]\.[0-9a-f]{40})$"
 )
 
 
@@ -408,14 +408,27 @@ def main() -> int:
 
     # Diagnostics — useful when CI fails surprisingly. Never print the token
     # value. The length and prefix are not unique to any single secret and
-    # therefore aren't masked by GitHub Actions' log scrubber.
+    # therefore aren't masked by GitHub Actions' log scrubber. The
+    # body-anagram (sorted characters after the 4-char prefix) reveals the
+    # character multiset without leaking position; with it we can tell
+    # whether GitHub is now issuing tokens that include characters outside
+    # the bo4e-cli regex's [A-Za-z0-9_] body charset (e.g. '-', '+', '/',
+    # '=', '.'), which would explain the regex rejecting a length-valid
+    # token.
+    def _body_anagram(token: str) -> str:
+        return "".join(sorted(token[4:]))
+
     def _describe(env_name: str) -> str:
         value = os.environ.get(env_name, "")
         if not value:
             return f"{env_name}=unset"
         prefix = value[:4]
         bo4e_valid = bool(_BO4E_TOKEN_RE.match(value))
-        return f"{env_name}=set (len={len(value)}, prefix={prefix!r}, " f"bo4e-regex-valid={bo4e_valid})"
+        return (
+            f"{env_name}=set (len={len(value)}, prefix={prefix!r}, "
+            f"bo4e-regex-valid={bo4e_valid}, "
+            f"body-anagram={_body_anagram(value)!r})"
+        )
 
     print(f"[auth] {_describe('GITHUB_ACCESS_TOKEN')}")
     print(f"[auth] {_describe('GITHUB_TOKEN')}")
