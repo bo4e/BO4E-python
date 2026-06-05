@@ -57,7 +57,10 @@ type_check = [
     {include-group = "json_schemas"},
 ]
 linting = [
-    "pylint",
+    # Pylint 4 dropped `suggestion-mode` from .pylintrc and tightened
+    # naming-style enforcement (rejects PARSABLE_CLASS_TYPE). The cap keeps
+    # the old behavior; bumping it is a separate migration.
+    "pylint<4",
     {include-group = "docs"},
     {include-group = "json_schemas"},
 ]
