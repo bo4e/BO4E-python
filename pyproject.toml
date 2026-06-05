@@ -31,6 +31,68 @@ classifiers = [
 dependencies = ["iso3166", "pydantic>=2.0.0", "pyhumps"]
 dynamic = ["readme", "version"]
 
+# PEP 735 dependency groups — replace what used to live under
+# dev_requirements/. tox-uv (see tox.ini) reads these directly; uv reads
+# them via `uv sync --group <name>`. Includes propagate transitively, so
+# the `dev` group pulls in everything a contributor needs locally.
+[dependency-groups]
+tests = [
+    "pytest",
+    "pytest-datafiles",
+    "dictdiffer",
+    # tests/test_version_helper.py imports generate_or_validate_json_schemas,
+    # which is a click CLI.
+    "click",
+]
+coverage = [
+    {include-group = "tests"},
+    "coverage",
+]
+type_check = [
+    "mypy",
+    "types-requests",
+    "networkx-stubs",
+    "pytest",
+    {include-group = "docs"},
+    {include-group = "json_schemas"},
+]
+linting = [
+    "pylint",
+    {include-group = "docs"},
+    {include-group = "json_schemas"},
+]
+formatting = [
+    "black",
+    "isort",
+]
+packaging = [
+    "build",
+    "twine",
+]
+json_schemas = [
+    "click",
+]
+docs = [
+    # Sphinx + theme + requests are docs-only; runtime deps come from
+    # [project.dependencies] via uv.lock. docs/requirements.in/txt is
+    # retained because sphinx-notes/pages@v2 in docs_latest.yml needs a
+    # standalone requirements file at a known path.
+    "requests",
+    "Sphinx",
+    "sphinx_rtd_theme",
+    {include-group = "json_schemas"},
+]
+dev = [
+    {include-group = "tests"},
+    {include-group = "coverage"},
+    {include-group = "type_check"},
+    {include-group = "linting"},
+    {include-group = "formatting"},
+    {include-group = "docs"},
+    "pre-commit",
+    "pip-tools",
+]
+
 [project.urls]
 Changelog = "https://github.com/bo4e/bo4e-python/releases"
 Homepage = "https://github.com/bo4e/bo4e-python"

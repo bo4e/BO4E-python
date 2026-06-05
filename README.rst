@@ -76,6 +76,27 @@ Code Beiträge
 Änderungsvorschläge (sowohl an das Datenmodell als auch an die Implementierung in Python) können direkt als Code in Form von Pull Requests eingereicht werden.
 Details dazu finden sich im `Contribution Guide <https://bo4e.github.io/BO4E-python/latest/contributing_guide.html>`_.
 
+Entwicklungs-Setup
+==================
+Die Entwicklungs-Abhängigkeiten sind in ``pyproject.toml`` unter ``[dependency-groups]`` (PEP 735) zentral gepflegt und über ``uv.lock`` gepinnt. ``uv`` (https://docs.astral.sh/uv/) wird als Paket-Manager verwendet, ``tox-uv`` integriert ihn in die bestehenden ``tox``-Umgebungen.
+
+.. code-block:: shell
+
+       # uv installieren (einmalig), siehe https://docs.astral.sh/uv/getting-started/installation/
+       curl -LsSf https://astral.sh/uv/install.sh | sh
+
+       # Repo klonen und volles Entwickler-Setup installieren
+       git clone https://github.com/bo4e/BO4E-python.git
+       cd BO4E-python
+       uv sync --group dev
+
+       # Einzelne tox-Umgebung ausführen (tox + tox-uv werden via uv installiert)
+       uv run tox -e tests
+       uv run tox -e linting
+       uv run tox -e docs
+
+Die verfügbaren Gruppen sind: ``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``packaging``, ``json_schemas``, ``docs`` und ``dev`` (Sammel-Gruppe, enthält alle anderen plus ``pre-commit``).
+
 Nutzung als Python Library
 ==========================
 In Python kann diese Library als Paket installiert werden:
