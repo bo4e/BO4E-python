@@ -16,7 +16,7 @@ jobs:
         python-version: ["3.12"]
         os: [ubuntu-latest]
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6
         with:
@@ -36,7 +36,7 @@ jobs:
       GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Set up Python
@@ -66,7 +66,7 @@ jobs:
     concurrency: build-n-publish-json-schemas
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v6
         with:
@@ -119,7 +119,7 @@ jobs:
       # hit GitHub's 60 req/hr anonymous rate limit.
       GITHUB_ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
       - name: Set up Python
@@ -195,7 +195,7 @@ jobs:
     needs: [tests, json_schemas, docs]
     concurrency: build-n-publish-distributions
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
