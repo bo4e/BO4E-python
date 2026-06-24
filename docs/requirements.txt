@@ -38,7 +38,7 @@ pygments==2.19.2
     # via sphinx
 pyhumps==3.8.0
     # via -r docs/requirements.in
-requests==2.32.5
+requests==2.34.2
     # via
     #   -r docs/requirements.in
     #   sphinx
