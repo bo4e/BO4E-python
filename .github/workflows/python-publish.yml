@@ -58,7 +58,7 @@ jobs:
           LAST_VERSION=$(bo4e repo versions -qcn 1 -r ${{ github.ref_name }})
           bo4e pull -t "$LAST_VERSION" -o tmp/last_schemas
           bo4e diff schemas tmp/last_schemas json_schemas -o tmp/diff.json
-          bo4e diff version-bump tmp/diff.json -aq
+          bo4e diff version-bump tmp/diff.json -q
   json_schemas:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
