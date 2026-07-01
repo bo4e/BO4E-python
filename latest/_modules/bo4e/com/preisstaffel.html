@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bo4e.com.preisstaffel &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
 
@@ -122,18 +122,28 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">PREISSTAFFEL</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">PREISSTAFFEL</span>
 
-    <span class="n">einheitspreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preis pro abgerechneter Mengeneinheit&quot;&quot;&quot;</span>
+    <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine (beliebige) Bezeichnung für die Preisstaffel.&quot;&quot;&quot;</span>
+    <span class="n">preis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preis pro abgerechneter Mengeneinheit. Die Mengeneinheit wird durch das übergeordnete Objekt angegeben.&quot;&quot;&quot;</span>
     <span class="n">staffelgrenze_von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Inklusiver unterer Wert, ab dem die Staffel gilt&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Inklusiver unterer Wert, ab dem die Staffel gilt (inklusiv).</span>
+<span class="sd">    Grenzen werden bspw. wie folgt angegeben: `0 - 1000, 1001 - 2000, etc.`</span>
+<span class="sd">    Werte zwischen den Grenzen (z.B. `1000,6`) rutschen in die obere Zone / Staffel.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">staffelgrenze_bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Exklusiver oberer Wert, bis zu dem die Staffel gilt&quot;&quot;&quot;</span>
-
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Exklusiver oberer Wert, bis zu dem die Staffel gilt (inklusiv).</span>
+<span class="sd">    Grenzen werden bspw. wie folgt angegeben: `0 - 1000, 1001 - 2000, etc.`</span>
+<span class="sd">    Werte zwischen den Grenzen (z.B. `1000,6`) rutschen in die obere Zone / Staffel.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">sigmoidparameter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sigmoidparameter&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter&quot;&quot;&quot;</span>
-
     <span class="n">artikel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst&quot;&quot;&quot;</span></div>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 </pre></div>
 

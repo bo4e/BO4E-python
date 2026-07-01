@@ -5,9 +5,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bo4e.com.regionaletarifpreisposition &mdash; bo4e latest documentation</title>
+  <title>bo4e.com.tarifpreiszeitscheibe &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
 
@@ -74,7 +74,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">bo4e.com.regionaletarifpreisposition</li>
+      <li class="breadcrumb-item active">bo4e.com.tarifpreiszeitscheibe</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -83,9 +83,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for bo4e.com.regionaletarifpreisposition</h1><div class="highlight"><pre>
+  <h1>Source code for bo4e.com.tarifpreiszeitscheibe</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Contains RegionaleTarifpreisposition class</span>
+<span class="sd">Contains Tarifpreiszeitscheibe class</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
@@ -99,44 +99,55 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.com</span><span class="w"> </span><span class="kn">import</span> <span class="n">COM</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.mengeneinheit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Mengeneinheit</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.preistyp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Preistyp</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.waehrungseinheit</span><span class="w"> </span><span class="kn">import</span> <span class="n">Waehrungseinheit</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">.regionalepreisstaffel</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegionalePreisstaffel</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.einheitspreisposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">EinheitsPreisposition</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.lastvariablepreisposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">LastvariablePreisposition</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.relativepreisposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">RelativePreisposition</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.zeitraum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zeitraum</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.zeitvariablepreisposition</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZeitvariablePreisposition</span>
 
 
-<div class="viewcode-block" id="RegionaleTarifpreisposition">
-<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.regionaletarifpreisposition.RegionaleTarifpreisposition">[docs]</a>
+<div class="viewcode-block" id="Tarifpreiszeitscheibe">
+<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.tarifpreiszeitscheibe.Tarifpreiszeitscheibe">[docs]</a>
 <span class="nd">@postprocess_docstring</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">RegionaleTarifpreisposition</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tarifpreiszeitscheibe</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Mit dieser Komponente können Tarifpreise verschiedener Typen im Zusammenhang mit regionalen Gültigkeiten abgebildet</span>
-<span class="sd">    werden.</span>
+<span class="sd">    Mit dieser Komponente kann ein aus verschiedenen Preispositionen zusammengesetzter Tarifpreis zeitaufgelöst</span>
+<span class="sd">    dargestellt werden.</span>
 
 <span class="sd">    .. raw:: html</span>
 
-<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/RegionaleTarifpreisposition.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/Tarifpreiszeitscheibe.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
 
 <span class="sd">    .. HINT::</span>
-<span class="sd">        `RegionaleTarifpreisposition JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/RegionaleTarifpreisposition.json&gt;`_</span>
+<span class="sd">        `Tarifpreiszeitscheibe JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Tarifpreiszeitscheibe.json&gt;`_</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">REGIONALETARIFPREISPOSITION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">ComTyp</span><span class="o">.</span><span class="n">REGIONALETARIFPREISPOSITION</span>
-    <span class="p">)</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">TARIFPREISZEITSCHEIBE</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">TARIFPREISZEITSCHEIBE</span>
 
-    <span class="n">preistyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preistyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Angabe des Preistypes (z.B. Grundpreis)&quot;&quot;&quot;</span>
-    <span class="n">einheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Waehrungseinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Einheit des Preises (z.B. EURO)&quot;&quot;&quot;</span>
-    <span class="n">bezugseinheit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr&quot;&quot;&quot;</span>
-    <span class="n">preisstaffeln</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;RegionalePreisstaffel&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Hier sind die Staffeln mit ihren Preisangaben und regionalen Gültigkeiten definiert&quot;&quot;&quot;</span>
+    <span class="n">zeitscheibengueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an für welchen Zeitraum dieser zusammengesetzte Tarifpreis gültig ist.&quot;&quot;&quot;</span>
+    <span class="n">einheits_preispositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;EinheitsPreisposition&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine Liste von Einheits-Preispositionen.&quot;&quot;&quot;</span>
+    <span class="n">zeitvariable_preispositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;ZeitvariablePreisposition&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eine Liste von zeitvariablen Preispositionen.</span>
+<span class="sd">    Dies können z.B. Preispositionen mit Zählzeitdefinitionen sein, um ein klassisches HT/NT Modell abzubilden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">lastvariable_preispositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;LastvariablePreisposition&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eine Liste von lastvariablen Preispositionen.</span>
+<span class="sd">    Diese Preispositionen sind vorgesehen, um bspw. ein Staffel- oder Zonenmodell abzubilden.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">relative_preispositionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;RelativePreisposition&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eine Liste von relativen Preispositionen.</span>
+<span class="sd">    Diese Preispositionen modellieren prozentuale Modifikationen auf bestehende Preispositionen.</span>
 
-    <span class="n">mengeneinheitstaffel</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Mengeneinheit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt an, nach welcher Menge die vorgenannte Einschränkung erfolgt (z.B. Jahresstromverbrauch in kWh)&quot;&quot;&quot;</span></div>
+<span class="sd">    Dazu wird über ein Feld in `RelativePreisposition` auf die `_id` einer anderen Preispositionen verwiesen.</span>
+<span class="sd">    Die ID hat hierbei kein vorgegebenes Format und hat auch keine fachliche Bedeutung. Es handelt sich hierbei</span>
+<span class="sd">    um eine rein technische Lösung, um einen Querverweis zu modellieren.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 </pre></div>
 

@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bo4e.bo.region &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
 
@@ -97,7 +97,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.geschaeftsobjekt</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geschaeftsobjekt</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.regionskriterium</span><span class="w"> </span><span class="kn">import</span> <span class="n">Regionskriterium</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.regionsoperation</span><span class="w"> </span><span class="kn">import</span> <span class="n">Regionsoperation</span>
 
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
@@ -109,7 +109,13 @@
 <span class="nd">@postprocess_docstring</span>
 <span class="k">class</span><span class="w"> </span><span class="nc">Region</span><span class="p">(</span><span class="n">Geschaeftsobjekt</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Modellierung einer Region als Menge von Kriterien, die eine Region beschreiben</span>
+<span class="sd">    Modellierung einer Region als Liste von Regionsoperationen.</span>
+
+<span class="sd">    Die Reihenfolge der Regionsoperationen ist relevant,</span>
+<span class="sd">    wird aber nicht zwingend durch die Sortierung innerhalb der Liste definiert. Die Sortierung der Regionsoperationen</span>
+<span class="sd">    wird durch das Feld `prioritaet` im COM `Regionsoperation` explizit festgelegt, um technischen Problemen bei</span>
+<span class="sd">    spezifischen Umsetzungen vorzubeugen und Klarheit zu schaffen.</span>
+<span class="sd">    Bei einer Implementierung sollte darauf geachtet werden, dass sich &quot;prioritaeten&quot; nicht doppeln können.</span>
 
 <span class="sd">    .. raw:: html</span>
 
@@ -123,12 +129,14 @@
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">BoTyp</span><span class="o">.</span><span class="n">REGION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">BoTyp</span><span class="o">.</span><span class="n">REGION</span>
     <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung der Region&quot;&quot;&quot;</span>
+    <span class="n">beschreibung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Beschreibung der Region&quot;&quot;&quot;</span>
 
-    <span class="n">positiv_liste</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Regionskriterium&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Positivliste der Kriterien zur Definition der Region&quot;&quot;&quot;</span>
-
-    <span class="n">negativ_liste</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Regionskriterium&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Negativliste der Kriterien zur Definition der Region&quot;&quot;&quot;</span></div>
+    <span class="n">regionsoperationen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Regionsoperation&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Eine (unsortierte) Liste von Regionsoperationen.</span>
+<span class="sd">    Die Sortierung wird durch das Feld `prioritaet` im COM `Regionsoperation` festgelegt.</span>
+<span class="sd">    &quot;&quot;&quot;</span></div>
 
 </pre></div>
 

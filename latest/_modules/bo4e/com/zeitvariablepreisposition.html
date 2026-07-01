@@ -5,9 +5,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bo4e.com.tarifpreisstaffelproort &mdash; bo4e latest documentation</title>
+  <title>bo4e.com.zeitvariablepreisposition &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
 
@@ -74,7 +74,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">bo4e.com.tarifpreisstaffelproort</li>
+      <li class="breadcrumb-item active">bo4e.com.zeitvariablepreisposition</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -83,13 +83,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for bo4e.com.tarifpreisstaffelproort</h1><div class="highlight"><pre>
+  <h1>Source code for bo4e.com.zeitvariablepreisposition</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Contains TarifpreisstaffelProOrt class</span>
+<span class="sd">Contains ZeitvariablePreisposition class</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="c1"># pylint: disable=no-name-in-module</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
 
@@ -97,43 +98,47 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">postprocess_docstring</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">.com</span><span class="w"> </span><span class="kn">import</span> <span class="n">COM</span>
 
-<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..bo.zaehlzeitdefinition</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zaehlzeitdefinition</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.preisreferenz</span><span class="w"> </span><span class="kn">import</span> <span class="n">Preisreferenz</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.preis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Preis</span>
 
 
-<div class="viewcode-block" id="TarifpreisstaffelProOrt">
-<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.tarifpreisstaffelproort.TarifpreisstaffelProOrt">[docs]</a>
+<div class="viewcode-block" id="ZeitvariablePreisposition">
+<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.zeitvariablepreisposition.ZeitvariablePreisposition">[docs]</a>
 <span class="nd">@postprocess_docstring</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">TarifpreisstaffelProOrt</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">ZeitvariablePreisposition</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Gibt die Staffelgrenzen der jeweiligen Preise an</span>
+<span class="sd">    Modelliert eine zeitvariable Preisposition.</span>
 
 <span class="sd">    .. raw:: html</span>
 
-<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/TarifpreisstaffelProOrt.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/ZeitvariablePreisposition.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
 
 <span class="sd">    .. HINT::</span>
-<span class="sd">        `TarifpreisstaffelProOrt JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/TarifpreisstaffelProOrt.json&gt;`_</span>
+<span class="sd">        `ZeitvariablePreisposition JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/ZeitvariablePreisposition.json&gt;`_</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">TARIFPREISSTAFFELPROORT</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">TARIFPREISSTAFFELPROORT</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">ZEITVARIABLEPREISPOSITION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">ZEITVARIABLEPREISPOSITION</span>
 
-    <span class="c1"># todo: decimal doesn&#39;t make sense here imo</span>
-    <span class="c1"># https://github.com/Hochfrequenz/BO4E-python/issues/344</span>
+    <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine (beliebige) Bezeichnung für die Preisposition.&quot;&quot;&quot;</span>
+    <span class="n">preisreferenz</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preisreferenz&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Die Referenz worauf sich der Preis bezieht.</span>
+<span class="sd">    Die explizite Einheit wird durch das Feld `bezugswert` im `COM Preis` angegeben.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preis&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Preis für diese Position.&quot;&quot;&quot;</span>
+    <span class="n">zaehlzeitdefinition</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zaehlzeitdefinition&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Zählzeitdefinition, deren Schaltschema bestimmt, wann diese Preisposition gilt.&quot;&quot;&quot;</span>
+    <span class="n">zaehlzeitregister</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der freie Register-Code (z.B. &quot;HT&quot;, &quot;NT&quot;, &quot;ST&quot;, &quot;SuperHT&quot;) innerhalb der referenzierten</span>
+<span class="sd">    `zaehlzeitdefinition`, auf den sich diese Preisposition bezieht. Der Code sollte als</span>
+<span class="sd">    `registercode` in mindestens einer `Umschaltzeit` der referenzierten Zählzeitdefinition</span>
+<span class="sd">    vorkommen.&quot;&quot;&quot;</span></div>
 
-    <span class="n">arbeitspreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Arbeitspreis in ct/kWh&quot;&quot;&quot;</span>
-    <span class="n">arbeitspreis_n_t</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Arbeitspreis für Verbräuche in der Niedertarifzeit in ct/kWh&quot;&quot;&quot;</span>
-    <span class="n">grundpreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Grundpreis in Euro/Jahr&quot;&quot;&quot;</span>
-    <span class="n">staffelgrenze_von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Unterer Wert, ab dem die Staffel gilt (inklusive)&quot;&quot;&quot;</span>
-    <span class="n">staffelgrenze_bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Oberer Wert, bis zu dem die Staffel gilt (exklusive)&quot;&quot;&quot;</span></div>
-
-
-    <span class="c1"># there are no optional attributes</span>
 </pre></div>
 
            </div>

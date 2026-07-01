@@ -5,9 +5,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bo4e.enum.gueltigkeitstyp &mdash; bo4e latest documentation</title>
+  <title>bo4e.enum.preisreferenz &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
 
@@ -74,7 +74,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">bo4e.enum.gueltigkeitstyp</li>
+      <li class="breadcrumb-item active">bo4e.enum.preisreferenz</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -83,24 +83,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for bo4e.enum.gueltigkeitstyp</h1><div class="highlight"><pre>
+  <h1>Source code for bo4e.enum.preisreferenz</h1><div class="highlight"><pre>
 <span></span><span class="c1"># pylint: disable=missing-module-docstring</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bo4e.enum.strenum</span><span class="w"> </span><span class="kn">import</span> <span class="n">StrEnum</span>
 
 
-<div class="viewcode-block" id="Gueltigkeitstyp">
-<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.gueltigkeitstyp.Gueltigkeitstyp">[docs]</a>
-<span class="k">class</span><span class="w"> </span><span class="nc">Gueltigkeitstyp</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
+<div class="viewcode-block" id="Preisreferenz">
+<a class="viewcode-back" href="../../../api/bo4e.enum.html#bo4e.enum.preisreferenz.Preisreferenz">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Preisreferenz</span><span class="p">(</span><span class="n">StrEnum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Übersicht der verschiedenen Gültigkeiten zur Umsetzung von Positiv- bzw. Negativlisten.</span>
+<span class="sd">    Referenz worauf sich eine Preisposition bezieht.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">NUR_IN</span> <span class="o">=</span> <span class="s2">&quot;NUR_IN&quot;</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ein so eingeschränktes Merkmal gilt nur mit den angebenen Werten&quot;&quot;&quot;</span>
-    <span class="n">NICHT_IN</span> <span class="o">=</span> <span class="s2">&quot;NICHT_IN&quot;</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Ein so eingeschränktes Merkmal gilt nicht mit den angebenen Werten&quot;&quot;&quot;</span>
-    <span class="n">NUR_IN_KOMBINATION_MIT</span> <span class="o">=</span> <span class="s2">&quot;NUR_IN_KOMBINATION_MIT&quot;</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Kriterien mit diesem Gültigkeitstyp werden miteinander kombiniert&quot;&quot;&quot;</span></div>
+    <span class="n">ENERGIEMENGE</span> <span class="o">=</span> <span class="s2">&quot;ENERGIEMENGE&quot;</span>
+    <span class="n">LEISTUNG</span> <span class="o">=</span> <span class="s2">&quot;LEISTUNG&quot;</span>
+    <span class="n">ZEITRAUM</span> <span class="o">=</span> <span class="s2">&quot;ZEITRAUM&quot;</span>
+    <span class="n">ANZAHL</span> <span class="o">=</span> <span class="s2">&quot;ANZAHL&quot;</span>
+    <span class="n">PAUSCHAL</span> <span class="o">=</span> <span class="s2">&quot;PAUSCHAL&quot;</span></div>
 
 </pre></div>
 

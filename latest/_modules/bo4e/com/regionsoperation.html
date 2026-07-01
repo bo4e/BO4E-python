@@ -5,9 +5,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>bo4e.com.regionalepreisgarantie &mdash; bo4e latest documentation</title>
+  <title>bo4e.com.regionsoperation &mdash; bo4e latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
 
@@ -74,7 +74,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
-      <li class="breadcrumb-item active">bo4e.com.regionalepreisgarantie</li>
+      <li class="breadcrumb-item active">bo4e.com.regionsoperation</li>
       <li class="wy-breadcrumbs-aside">
       </li>
   </ul>
@@ -83,47 +83,68 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <h1>Source code for bo4e.com.regionalepreisgarantie</h1><div class="highlight"><pre>
+  <h1>Source code for bo4e.com.regionsoperation</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Contains RegionalePreisgarantie class</span>
+<span class="sd">Contains Regionskriterium class</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
+<span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.comtyp</span><span class="w"> </span><span class="kn">import</span> <span class="n">ComTyp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">postprocess_docstring</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">.preisgarantie</span><span class="w"> </span><span class="kn">import</span> <span class="n">Preisgarantie</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.com</span><span class="w"> </span><span class="kn">import</span> <span class="n">COM</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-    <span class="kn">from</span><span class="w"> </span><span class="nn">.regionalegueltigkeit</span><span class="w"> </span><span class="kn">import</span> <span class="n">RegionaleGueltigkeit</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.operator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Operator</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.regionskriterium</span><span class="w"> </span><span class="kn">import</span> <span class="n">Regionskriterium</span>
+
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 
 
-<div class="viewcode-block" id="RegionalePreisgarantie">
-<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.regionalepreisgarantie.RegionalePreisgarantie">[docs]</a>
+<div class="viewcode-block" id="Regionsoperation">
+<a class="viewcode-back" href="../../../api/bo4e.com.html#bo4e.com.regionsoperation.Regionsoperation">[docs]</a>
 <span class="nd">@postprocess_docstring</span>
-<span class="k">class</span><span class="w"> </span><span class="nc">RegionalePreisgarantie</span><span class="p">(</span><span class="n">Preisgarantie</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Regionsoperation</span><span class="p">(</span><span class="n">COM</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Abbildung einer Preisgarantie mit regionaler Abgrenzung</span>
+<span class="sd">    Komponente zur Abbildung einer Regionsoperation.</span>
+
+<span class="sd">    In Kombination mit anderen Regionsoperationen kann eine Region definiert werden. Eine Regionsoperation ermöglicht</span>
+<span class="sd">    die Definition einer Region in eingeschränkter Form. Durch den Operator können mehrere &quot;einfache&quot; Regionsoperationen</span>
+<span class="sd">    miteinander kombiniert werden, um eine komplexere Region zu definieren.</span>
 
 <span class="sd">    .. raw:: html</span>
 
-<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/RegionalePreisgarantie.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/com/Regionsoperation.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
 
 <span class="sd">    .. HINT::</span>
-<span class="sd">        `RegionalePreisgarantie JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/RegionalePreisgarantie.json&gt;`_</span>
+<span class="sd">        `Regionsoperation JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/com/Regionsoperation.json&gt;`_</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">REGIONALEPREISGARANTIE</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="p">(</span>
-        <span class="n">ComTyp</span><span class="o">.</span><span class="n">REGIONALEPREISGARANTIE</span>  <span class="c1"># type:ignore[assignment]</span>
-    <span class="p">)</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">REGIONSOPERATION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">REGIONSOPERATION</span>
 
-    <span class="n">regionale_gueltigkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;RegionaleGueltigkeit&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Regionale Eingrenzung der Preisgarantie.&quot;&quot;&quot;</span></div>
+    <span class="n">regionsoperator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Operator&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">prioritaet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Priorität dieser Regionsoperation. Theoretisch sind Listen in JSON sortiert, jedoch ist eine solche Sortierung</span>
+<span class="sd">    eventuell implementierungsbedingt fehleranfällig. Daher nutzen wir dieses Feld. angefangen bei 1 (höchste Priorität) und aufsteigend</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(auch IDs und PLZ möglich)&quot;&quot;&quot;</span>
+    <span class="n">bezeichnung2</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(TODO: bessere Benamung! geht vor allem um Postort: PLZ &amp; Ort als Schnittmenge)&quot;&quot;&quot;</span>
+    <span class="n">wert_von</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(inklusiv)&quot;&quot;&quot;</span>
+    <span class="n">wert_bis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(inklusiv)&quot;&quot;&quot;</span>
+    <span class="n">radius_in_km</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(inklusiv)&quot;&quot;&quot;</span>
+    <span class="n">regionskriterium</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Regionskriterium&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;(ehemals Regionskriteriumtyp)]&quot;&quot;&quot;</span></div>
 
 </pre></div>
 
