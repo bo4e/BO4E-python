@@ -446,15 +446,17 @@ def main() -> int:
     is_dirty = bool(_DIRTY_RE.search(gh_version))
     docs_label = DOCS_LABEL_OVERRIDE or gh_version
 
-    # Sphinx groups modules into per-package API pages (`bo4e.<pkg>.html`) and
-    # anchors each class at `bo4e.<pkg>.<module-file>.<Class>`, where the module
-    # file is the class name lowercased (BO4E convention). `{class.lower}`
-    # (bo4e-cli >= v1.2.4) produces that segment. The older `{module}`
-    # placeholder expands to the schema-derived `com.Angebotsteil`, which points
-    # at a non-existent `api/com.Angebotsteil.html` (404). The `{pkg}` /
-    # `{class}` placeholders are expanded per-node by the CLI; only `{docs_label}`
-    # and the local path are interpolated here.
-    anchor = "bo4e.{pkg}.html#bo4e.{pkg}.{class.lower}.{class}"
+    # Sphinx documents each class on its Python-package page under a module
+    # anchor: `<namespace>.html#module-<namespace>.<module-file>`, where the
+    # module file is the class name lowercased (BO4E convention). `{namespace}`
+    # (bo4e-cli >= v1.2.4) is `bo4e` + the module's parent package -- `bo4e.com`
+    # for a nested schema, plain `bo4e` for a root-level one like ZusatzAttribut
+    # -- so one template covers both (the old `{module}` placeholder expanded to
+    # the schema-derived `com.Angebotsteil`, pointing at a non-existent
+    # `api/com.Angebotsteil.html`, a 404). `{namespace}` / `{class}` are expanded
+    # per-node by the CLI; only `{docs_label}` and the local path are
+    # interpolated here.
+    anchor = "{namespace}.html#module-{namespace}.{class.lower}"
     if DOCS_LABEL_OVERRIDE or not is_dirty:
         link_template = f"https://bo4e.github.io/BO4E-python/{docs_label}/api/{anchor}"
     else:
