@@ -1,0 +1,45 @@
+{% extends "!layout.html" %}
+
+{#-
+  sphinx-rtd-theme 3.1.0 removed the always-on sidebar version string. Earlier
+  releases (<= 3.0.2) rendered `<div class="version">{{ version }}</div>` under
+  the project name via the `display_version` option; 3.1.0 replaced it with a
+  version switcher that only renders on Read the Docs hosting (the
+  `READTHEDOCS or DEBUG` gate). These docs are deployed to GitHub Pages, where
+  that gate is never true, so the version disappeared entirely.
+
+  We override the theme's `sidebartitle` block to restore the classic version
+  div. The rest of the block mirrors sphinx-rtd-theme 3.1.0's `layout.html`
+  (pinned in docs/requirements.txt) so the logo, RTD switcher and search box
+  keep working. `version` is set in conf.py (SPHINX_DOCS_VERSION or the package
+  version).
+-#}
+{%- block sidebartitle %}
+
+  {%- set _logo_url = logo_url|default(pathto('_static/' + (logo or ""), 1)) %}
+  {%- set _root_doc = root_doc|default(master_doc) %}
+  <a href="{{ pathto(_root_doc) }}"{% if not theme_logo_only %} class="icon icon-home"{% endif %}>
+    {% if not theme_logo_only %}{{ project }}{% endif %}
+    {%- if logo or logo_url %}
+      <img src="{{ _logo_url }}" class="logo" alt="{{ _('Logo') }}"/>
+    {%- endif %}
+  </a>
+
+  {%- if version %}
+    <div class="version">
+      {{ version }}
+    </div>
+  {%- endif %}
+
+  {%- if READTHEDOCS or DEBUG %}
+    {%- if theme_version_selector or theme_language_selector %}
+      <div class="switch-menus">
+        <div class="version-switch"></div>
+        <div class="language-switch"></div>
+      </div>
+    {%- endif %}
+  {%- endif %}
+
+  {%- include "searchbox.html" %}
+
+{%- endblock %}

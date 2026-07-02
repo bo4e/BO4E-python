@@ -5,7 +5,9 @@ inputs:
   version:
     description: bo4e CLI release tag to install.
     required: false
-    default: v1.2.3
+    # v1.2.4 is the first release with the `{class.lower}` link-template
+    # accessor that the docs asset script relies on for correct API-doc anchors.
+    default: v1.2.4
 
 runs:
   using: composite

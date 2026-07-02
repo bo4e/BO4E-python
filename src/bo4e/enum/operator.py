@@ -2,9 +2,9 @@
 from bo4e.enum.strenum import StrEnum
 
 
-class ArithmetischeOperation(StrEnum):
+class Operator(StrEnum):
     """
-    Mit dieser Aufzählung können arithmetische Operationen festgelegt werden.
+    Mit dieser Aufzählung können Operationen festgelegt werden.
     """
 
     ADDITION = "ADDITION"
