@@ -138,11 +138,9 @@ __all__ = [
     "Kundentyp",
     "Landescode",
     "Leistungstyp",
-    "Lokationstyp",
     "Marktrolle",
     "Medium",
     "Mengeneinheit",
-    "Mengenoperator",
     "Messart",
     "Messgroesse",
     "Messpreistyp",
@@ -345,11 +343,9 @@ from .enum.kundengruppeka import KundengruppeKA
 from .enum.kundentyp import Kundentyp
 from .enum.landescode import Landescode
 from .enum.leistungstyp import Leistungstyp
-from .enum.lokationstyp import Lokationstyp
 from .enum.marktrolle import Marktrolle
 from .enum.medium import Medium
 from .enum.mengeneinheit import Mengeneinheit
-from .enum.mengenoperator import Mengenoperator
 from .enum.messart import Messart
 from .enum.messgroesse import Messgroesse
 from .enum.messpreistyp import Messpreistyp
