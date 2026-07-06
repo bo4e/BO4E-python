@@ -31,5 +31,15 @@ class Messgroesse(StrEnum):
     """Gradtagszahlen"""
     VOLUMENSTROM = "VOLUMENSTROM"
     """Volumenstrom"""
-    PREISE = "PREISE"
-    """Preise"""
+    PHASENWINKEL = "PHASENWINKEL"
+    """
+    Phasenwinkel
+    Diese Größe kann genutzt werden, um bspw. Messdaten aus COSEM/SML-Quellen zu modellieren.
+    """
+    LEISTUNGSFAKTOR = "LEISTUNGSFAKTOR"
+    """
+    Leistungsfaktor
+    Diese Größe kann genutzt werden, um bspw. Messdaten aus COSEM/SML-Quellen zu modellieren.
+    """
+    FREQUENZ = "FREQUENZ"
+    """Frequenz"""

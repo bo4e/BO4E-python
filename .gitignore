@@ -169,6 +169,9 @@ docs/plantuml.jar
 docs/_static/images
 docs/_static/tables
 
+# Local-only design/spec notes (kept out of the repo)
+docs/superpowers/
+
 # version number for bo4e-python; gets auto-generated during the command
 # python -m build
 src/_bo4e_python_version.py

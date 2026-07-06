@@ -1,22 +1,34 @@
 from datetime import datetime, timezone
+from decimal import Decimal
 
 import pytest
 
 from bo4e import (
-    AufAbschlagRegional,
+    EinheitsPreisposition,
     Energiemix,
     Kundentyp,
     Marktteilnehmer,
+    Mengeneinheit,
+    Operator,
+    Preis,
     Preisgarantie,
+    Preisreferenz,
+    Region,
+    Regionskriterium,
+    Regionsoperation,
+    Regionspreis,
+    Regionszeitscheibe,
     Registeranzahl,
+    RelativePreisposition,
     Sparte,
     Tarif,
     Tarifberechnungsparameter,
     Tarifeinschraenkung,
     Tarifmerkmal,
-    TarifpreispositionProOrt,
+    Tarifpreiszeitscheibe,
     Tariftyp,
     Vertragskonditionen,
+    Waehrungseinheit,
     Zeitraum,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
@@ -28,10 +40,7 @@ class TestTarif:
         [
             pytest.param(
                 Tarif(
-                    preisstand=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                     berechnungsparameter=Tarifberechnungsparameter(),
-                    tarif_auf_abschlaege=[AufAbschlagRegional()],
-                    tarifpreise=[TarifpreispositionProOrt()],
                     preisgarantie=Preisgarantie(),
                     tarifeinschraenkung=Tarifeinschraenkung(),
                     # below are the attributes of tarifinfo
@@ -46,8 +55,52 @@ class TestTarif:
                     bemerkung="super billig aber auch super dreckig",
                     vertragskonditionen=Vertragskonditionen(),
                     zeitliche_gueltigkeit=Zeitraum(),
-                    energiemix=Energiemix(),
+                    energiemix=[Energiemix()],
                     anbieter=Marktteilnehmer(),
+                    regionspreise=[
+                        Regionspreis(
+                            regionszeitscheiben=[
+                                Regionszeitscheibe(
+                                    zeitscheibengueltigkeit=Zeitraum(startdatum=datetime(2020, 1, 1)),
+                                    region=Region(
+                                        bezeichnung="Deutschland",
+                                        regionsoperationen=[
+                                            Regionsoperation(
+                                                regionsoperator=Operator.ADDITION,
+                                                prioritaet=0,
+                                                bezeichnung="Deutschland",
+                                                regionskriterium=Regionskriterium.BUNDESWEIT,
+                                            )
+                                        ],
+                                    ),
+                                ),
+                            ],
+                            tarifpreiszeitscheiben=[
+                                Tarifpreiszeitscheibe(
+                                    zeitscheibengueltigkeit=Zeitraum(startdatum=datetime(2020, 1, 1)),
+                                    einheits_preispositionen=[
+                                        EinheitsPreisposition(
+                                            id="12345",
+                                            bezeichnung="Arbeitspreis",
+                                            preisreferenz=Preisreferenz.ENERGIEMENGE,
+                                            preis=Preis(
+                                                wert=Decimal("30"),
+                                                einheit=Waehrungseinheit.CT,
+                                                bezugswert=Mengeneinheit.KWH,
+                                            ),
+                                        )
+                                    ],
+                                    relative_preispositionen=[
+                                        RelativePreisposition(
+                                            bezeichnung="5% Rabatt auf Arbeitspreis",
+                                            id_referenz="12345",
+                                            wert=Decimal("0.95"),
+                                        )
+                                    ],
+                                )
+                            ],
+                        )
+                    ],
                 ),
                 id="all attributes",
             ),
