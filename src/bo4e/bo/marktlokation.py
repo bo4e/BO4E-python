@@ -27,6 +27,7 @@ if TYPE_CHECKING:
     from ..enum.verbrauchsart import Verbrauchsart
     from .geschaeftspartner import Geschaeftspartner
     from .lokationszuordnung import Lokationszuordnung
+    from .marktteilnehmer import Marktteilnehmer
 
 # pylint: disable=no-name-in-module
 
@@ -64,8 +65,8 @@ class Marktlokation(Geschaeftsobjekt):
 
     verbrauchsart: Optional["Verbrauchsart"] = None
     """Verbrauchsart der Marktlokation."""
-    netzbetreibercodenr: Optional[str] = None
-    """Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist."""
+    netzbetreiber: Optional["Marktteilnehmer"] = None
+    """Der Netzbetreiber, an dessen Netz diese Marktlokation angeschlossen ist."""
     gebietstyp: Optional["Gebiettyp"] = None
     """Typ des Netzgebietes, z.B. Verteilnetz"""
     netzgebietsnr: Optional[str] = None

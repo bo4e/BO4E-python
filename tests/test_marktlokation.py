@@ -9,6 +9,7 @@ from bo4e import (
     Kundentyp,
     Lokationszuordnung,
     Marktlokation,
+    Marktteilnehmer,
     Netzebene,
     Sparte,
 )
@@ -27,6 +28,7 @@ class TestMaLo:
                     energierichtung=Energierichtung.EINSP,
                     bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
                     netzebene=Netzebene.NSP,
+                    netzbetreiber=Marktteilnehmer(),
                     endkunde=Geschaeftspartner(),
                     kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
                     verbrauchsmengen=[Energiemenge()],
