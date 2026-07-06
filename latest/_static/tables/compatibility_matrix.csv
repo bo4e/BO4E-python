@@ -146,11 +146,11 @@ enum.KundengruppeKA,🟢,🟢,🟢
 enum.Kundentyp,🟢,🟢,🟢
 enum.Landescode,🟢,🟢,🟢
 enum.Leistungstyp,🟢,🟢,🟢
-enum.Lokationstyp,🟢,🟢,🟢
+enum.Lokationstyp,🟢,🟢,➖
 enum.Marktrolle,🟢,🟢,🟢
 enum.Medium,🟢,🟢,🟢
 enum.Mengeneinheit,🟢,🟢,🟡
-enum.Mengenoperator,🟢,🟢,🟢
+enum.Mengenoperator,🟢,🟢,➖
 enum.Messart,🟢,🟢,🟢
 enum.Messgroesse,🟢,🟢,🔴
 enum.Messpreistyp,🟢,🟢,🟢

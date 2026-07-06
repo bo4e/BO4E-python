@@ -276,14 +276,6 @@ bo4e.enum.leistungstyp module
    :undoc-members:
    :show-inheritance:
 
-bo4e.enum.lokationstyp module
------------------------------
-
-.. automodule:: bo4e.enum.lokationstyp
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 bo4e.enum.marktrolle module
 ---------------------------
 
@@ -304,14 +296,6 @@ bo4e.enum.mengeneinheit module
 ------------------------------
 
 .. automodule:: bo4e.enum.mengeneinheit
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.enum.mengenoperator module
--------------------------------
-
-.. automodule:: bo4e.enum.mengenoperator
    :members:
    :undoc-members:
    :show-inheritance:
