@@ -1025,7 +1025,9 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#module-bo4e.enum.mengeneinheit">bo4e.enum.mengeneinheit module</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit.DIMENSIONSLOS"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit.DIMENSIONSLOS</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit.HALBJAHR"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit.HALBJAHR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit.HZ"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit.HZ</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit.JAHR"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit.JAHR</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit.KUBIKMETER"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit.KUBIKMETER</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.mengeneinheit.Mengeneinheit.KVAR"><code class="docutils literal notranslate"><span class="pre">Mengeneinheit.KVAR</span></code></a></li>
@@ -1076,10 +1078,12 @@
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.BLINDLEISTUNG"><code class="docutils literal notranslate"><span class="pre">Messgroesse.BLINDLEISTUNG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.BRENNWERT"><code class="docutils literal notranslate"><span class="pre">Messgroesse.BRENNWERT</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.DRUCK"><code class="docutils literal notranslate"><span class="pre">Messgroesse.DRUCK</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.FREQUENZ"><code class="docutils literal notranslate"><span class="pre">Messgroesse.FREQUENZ</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.GRADTZAGSZAHLEN"><code class="docutils literal notranslate"><span class="pre">Messgroesse.GRADTZAGSZAHLEN</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.LASTGANG"><code class="docutils literal notranslate"><span class="pre">Messgroesse.LASTGANG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.LASTPROFIL"><code class="docutils literal notranslate"><span class="pre">Messgroesse.LASTPROFIL</span></code></a></li>
-<li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.PREISE"><code class="docutils literal notranslate"><span class="pre">Messgroesse.PREISE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.LEISTUNGSFAKTOR"><code class="docutils literal notranslate"><span class="pre">Messgroesse.LEISTUNGSFAKTOR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.PHASENWINKEL"><code class="docutils literal notranslate"><span class="pre">Messgroesse.PHASENWINKEL</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.SPANNUNG"><code class="docutils literal notranslate"><span class="pre">Messgroesse.SPANNUNG</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.STROM"><code class="docutils literal notranslate"><span class="pre">Messgroesse.STROM</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#bo4e.enum.messgroesse.Messgroesse.TEMPERATUR"><code class="docutils literal notranslate"><span class="pre">Messgroesse.TEMPERATUR</span></code></a></li>
@@ -6696,9 +6700,21 @@ In der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.<
 <dd><p>Bases: <a class="reference internal" href="#bo4e.enum.strenum.StrEnum" title="bo4e.enum.strenum.StrEnum"><code class="xref py py-class docutils literal notranslate"><span class="pre">StrEnum</span></code></a></p>
 <p>Einheit: Messgrößen, die per Messung oder Vorgabe ermittelt werden können.</p>
 <dl class="py attribute">
+<dt class="sig sig-object py" id="bo4e.enum.mengeneinheit.Mengeneinheit.DIMENSIONSLOS">
+<span class="sig-name descname"><span class="pre">DIMENSIONSLOS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'DIMENSIONSLOS'</span></em><a class="headerlink" href="#bo4e.enum.mengeneinheit.Mengeneinheit.DIMENSIONSLOS" title="Link to this definition"></a></dt>
+<dd><p>Eine Größe ohne Einheit</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="bo4e.enum.mengeneinheit.Mengeneinheit.HALBJAHR">
 <span class="sig-name descname"><span class="pre">HALBJAHR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HALBJAHR'</span></em><a class="headerlink" href="#bo4e.enum.mengeneinheit.Mengeneinheit.HALBJAHR" title="Link to this definition"></a></dt>
 <dd><p>Halbjahr</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bo4e.enum.mengeneinheit.Mengeneinheit.HZ">
+<span class="sig-name descname"><span class="pre">HZ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'HZ'</span></em><a class="headerlink" href="#bo4e.enum.mengeneinheit.Mengeneinheit.HZ" title="Link to this definition"></a></dt>
+<dd><p>Hertz</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -6924,6 +6940,12 @@ In der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.<
 </dd></dl>
 
 <dl class="py attribute">
+<dt class="sig sig-object py" id="bo4e.enum.messgroesse.Messgroesse.FREQUENZ">
+<span class="sig-name descname"><span class="pre">FREQUENZ</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'FREQUENZ'</span></em><a class="headerlink" href="#bo4e.enum.messgroesse.Messgroesse.FREQUENZ" title="Link to this definition"></a></dt>
+<dd><p>Frequenz</p>
+</dd></dl>
+
+<dl class="py attribute">
 <dt class="sig sig-object py" id="bo4e.enum.messgroesse.Messgroesse.GRADTZAGSZAHLEN">
 <span class="sig-name descname"><span class="pre">GRADTZAGSZAHLEN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'GRADTZAGSZAHLEN'</span></em><a class="headerlink" href="#bo4e.enum.messgroesse.Messgroesse.GRADTZAGSZAHLEN" title="Link to this definition"></a></dt>
 <dd><p>Gradtagszahlen</p>
@@ -6942,9 +6964,17 @@ In der Regel werden die Gesamtkosten einer Kostenklasse in einer App berechnet.<
 </dd></dl>
 
 <dl class="py attribute">
-<dt class="sig sig-object py" id="bo4e.enum.messgroesse.Messgroesse.PREISE">
-<span class="sig-name descname"><span class="pre">PREISE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PREISE'</span></em><a class="headerlink" href="#bo4e.enum.messgroesse.Messgroesse.PREISE" title="Link to this definition"></a></dt>
-<dd><p>Preise</p>
+<dt class="sig sig-object py" id="bo4e.enum.messgroesse.Messgroesse.LEISTUNGSFAKTOR">
+<span class="sig-name descname"><span class="pre">LEISTUNGSFAKTOR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'LEISTUNGSFAKTOR'</span></em><a class="headerlink" href="#bo4e.enum.messgroesse.Messgroesse.LEISTUNGSFAKTOR" title="Link to this definition"></a></dt>
+<dd><p>Leistungsfaktor
+Diese Größe kann genutzt werden, um bspw. Messdaten aus COSEM/SML-Quellen zu modellieren.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bo4e.enum.messgroesse.Messgroesse.PHASENWINKEL">
+<span class="sig-name descname"><span class="pre">PHASENWINKEL</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'PHASENWINKEL'</span></em><a class="headerlink" href="#bo4e.enum.messgroesse.Messgroesse.PHASENWINKEL" title="Link to this definition"></a></dt>
+<dd><p>Phasenwinkel
+Diese Größe kann genutzt werden, um bspw. Messdaten aus COSEM/SML-Quellen zu modellieren.</p>
 </dd></dl>
 
 <dl class="py attribute">
