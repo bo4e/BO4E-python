@@ -8,7 +8,6 @@ from bo4e import (
     Geschaeftspartner,
     Marktlokation,
     Menge,
-    Mengeneinheit,
     Messlokation,
     NetznutzungRechnungsart,
     NetznutzungRechnungstyp,
@@ -18,8 +17,9 @@ from bo4e import (
     Rechnungsstatus,
     Rechnungstyp,
     Sparte,
+    Steuerart,
     Steuerbetrag,
-    Steuerkennzeichen,
+    Vorauszahlung,
     Waehrungscode,
     Zeitraum,
 )
@@ -46,27 +46,30 @@ class TestRechnung:
                     gesamtnetto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtsteuer=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     gesamtbrutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    vorausgezahlt=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
-                    rabatt_brutto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
+                    vorauszahlungen=[Vorauszahlung(betrag=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR))],
+                    rabatt_netto=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     zu_zahlen=Betrag(wert=Decimal(12.5), waehrung=Waehrungscode.EUR),
                     steuerbetraege=[
                         Steuerbetrag(
-                            steuerkennzeichen=Steuerkennzeichen.UST_19,
+                            steuerart=Steuerart.UST,
+                            steuersatz=Decimal(19),
                             basiswert=Decimal(20.25),
-                            waehrung=Waehrungscode.EUR,
+                            waehrungscode=Waehrungscode.EUR,
                             steuerwert=Decimal(10.5),
                         )
                     ],
                     rechnungspositionen=[
                         Rechnungsposition(
                             positionsnummer=1,
-                            lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
-                            lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
+                            lieferungszeitraum=Zeitraum(
+                                startdatum=datetime(2021, 3, 15, tzinfo=timezone.utc),
+                                enddatum=datetime(2022, 3, 15, tzinfo=timezone.utc),
+                            ),
                             positionstext="Besonders wertvolle Rechnungsposition",
                             positions_menge=Menge(),
                             einzelpreis=Preis(),
-                            teilsumme_netto=Betrag(),
-                            teilsumme_steuer=Steuerbetrag(),
+                            gesamtpreis=Betrag(),
+                            steuerbetrag=Steuerbetrag(),
                         )
                     ],
                     sparte=Sparte.STROM,
@@ -101,13 +104,15 @@ class TestRechnung:
                     rechnungspositionen=[
                         Rechnungsposition(
                             positionsnummer=1,
-                            lieferung_von=datetime(2021, 3, 15, tzinfo=timezone.utc),
-                            lieferung_bis=datetime(2022, 3, 15, tzinfo=timezone.utc),
+                            lieferungszeitraum=Zeitraum(
+                                startdatum=datetime(2021, 3, 15, tzinfo=timezone.utc),
+                                enddatum=datetime(2022, 3, 15, tzinfo=timezone.utc),
+                            ),
                             positionstext="Besonders wertvolle Rechnungsposition",
                             positions_menge=Menge(),
                             einzelpreis=Preis(),
-                            teilsumme_netto=Betrag(),
-                            teilsumme_steuer=Steuerbetrag(),
+                            gesamtpreis=Betrag(),
+                            steuerbetrag=Steuerbetrag(),
                         )
                     ],
                     sparte=Sparte.STROM,

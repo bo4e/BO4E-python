@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Steuerbetrag, Steuerkennzeichen, Waehrungscode
+from bo4e import Steuerart, Steuerbetrag, Waehrungscode
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -12,10 +12,11 @@ class TestSteuerbetrag:
         [
             pytest.param(
                 Steuerbetrag(
-                    steuerkennzeichen=Steuerkennzeichen.UST_7,
+                    steuerart=Steuerart.UST,
+                    steuersatz=Decimal(7),
                     basiswert=Decimal(100),
                     steuerwert=Decimal(19),
-                    waehrung=Waehrungscode.EUR,
+                    waehrungscode=Waehrungscode.EUR,
                 ),
             ),
         ],

@@ -13,6 +13,7 @@ from .com import COM
 
 if TYPE_CHECKING:
     from ..com.konzessionsabgabe import Konzessionsabgabe
+    from ..com.messwert import Messwert
     from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
     from ..com.zaehlzeitregister import Zaehlzeitregister
     from ..enum.energierichtung import Energierichtung
@@ -64,8 +65,6 @@ class Zaehlwerk(COM):
     """Verwendungungszweck der Werte Marktlokation"""
     verbrauchsart: Optional["Verbrauchsart"] = None
     """Stromverbrauchsart/Verbrauchsart Marktlokation"""
-    ist_unterbrechbar: Optional[bool] = None
-    """Unterbrechbarkeit Marktlokation"""
     waermenutzung: Optional["Waermenutzung"] = None
     """Wärmenutzung Marktlokation"""
     konzessionsabgabe: Optional["Konzessionsabgabe"] = None
@@ -82,3 +81,5 @@ class Zaehlwerk(COM):
     """Anzahl Ablesungen pro Jahr"""
     zaehlzeitregister: Optional["Zaehlzeitregister"] = None
     """Erweiterte Definition der Zählzeit in Bezug auf ein Register"""
+    messwerte: Optional[list["Messwert"]] = None
+    """Gemessene Werte des Zählwerks"""

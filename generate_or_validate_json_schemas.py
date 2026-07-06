@@ -9,6 +9,7 @@ import logging
 import pkgutil
 import re
 import sys
+from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
 from typing import Any, Iterator, Literal, cast
@@ -19,7 +20,7 @@ from pydantic.json_schema import GenerateJsonSchema as _GenerateJsonSchema
 from pydantic.json_schema import JsonSchemaValue
 from pydantic_core import core_schema
 
-from bo4e import ZusatzAttribut
+from bo4e import ZusatzAttribut, __gh_version__
 
 logging.basicConfig(level=logging.INFO, stream=sys.stdout)
 _logger = logging.getLogger(__name__)
@@ -29,6 +30,57 @@ output_directory = root_directory / "json_schemas"
 NEW_REF_TEMPLATE = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{pkg}/{model}.json"
 NEW_REF_TEMPLATE_ROOT = "https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{version}/src/bo4e_schemas/{model}.json"
 OLD_REF_TEMPLATE = re.compile(r"^#/\$defs/(?P<model>\w+)$")
+
+_VERSION_RE = re.compile(
+    r"^v(?P<major>\d{6})\.(?P<functional>\d+)\.(?P<technical>\d+)"
+    r"(?:-rc(?P<candidate>\d*))?"
+    r"(?:\+g(?P<commit>\w+))?"
+    r"(?:\.d(?P<date>\d{8}))?$"
+)
+
+
+@dataclass(frozen=True)
+class Version:
+    """Minimal bo4e version representation.
+
+    Mirrors the dirty-version regex from bo4e-cli's
+    `crates/bo4e-schemas/src/models/version.rs` so this script can parse
+    `__gh_version__` and the `TARGET_VERSION` env var without depending on
+    the `bo4e-cli` Python package.
+    """
+
+    major: int
+    functional: int
+    technical: int
+    candidate: int | None = None
+    commit: str | None = None
+    date: str | None = None
+
+    @classmethod
+    def from_str(cls, s: str) -> "Version":
+        """Parse a version string in format vMAJOR.FUNCTIONAL.TECHNICAL[...]."""
+        m = _VERSION_RE.match(s)
+        if m is None:
+            raise ValueError(f"Invalid version: {s}")
+        return cls(
+            major=int(m["major"]),
+            functional=int(m["functional"]),
+            technical=int(m["technical"]),
+            candidate=int(m["candidate"]) if m["candidate"] else None,
+            commit=m["commit"],
+            date=m["date"],
+        )
+
+    def __str__(self) -> str:
+        base = f"v{self.major:06d}.{self.functional}.{self.technical}"
+        if self.candidate is not None:
+            base += f"-rc{self.candidate}"
+        if self.commit:
+            base += f"+g{self.commit}"
+        if self.date:
+            base += f".d{self.date}"
+        return base
+
 
 PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
 
@@ -115,9 +167,20 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
         reference_match = reference_pattern.fullmatch(schema_json_dict["allOf"][0]["$ref"])
         assert (
             reference_match is not None
-        ), "Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        ), f"Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
         schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
         del schema_json_dict["allOf"]
+        schema_json_dict.update(schema_json_dict_to_merge)
+    if {"$ref", "$defs"} == set(schema_json_dict.keys()):
+        # The newer version of pydantic sometimes generates a schema with only a $ref and a $defs key where the $ref
+        # field points to the actual schema definition in the $defs field.
+        reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
+        reference_match = reference_pattern.fullmatch(schema_json_dict["$ref"])
+        assert (
+            reference_match is not None
+        ), f"Internal Error: Reference string has unexpected format: {schema_json_dict['$ref']}"
+        schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
+        del schema_json_dict["$ref"]
         schema_json_dict.update(schema_json_dict_to_merge)
     if "$defs" in schema_json_dict:
         del schema_json_dict["$defs"]
@@ -200,11 +263,12 @@ def replace_refs(
     required=False,
     type=click.STRING,
     envvar="TARGET_VERSION",
-    default="v0.0.0",
+    default=None,
 )
-def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str) -> None:
+def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], target_version: str | None) -> None:
     """generate json schemas for all BOs and COMs"""
-    _logger.info("Mode: %s, target version: %s", mode, target_version)
+    version = Version.from_str(target_version or __gh_version__)
+    _logger.info("Mode: %s, target version: %s", mode, version)
     packages = ["bo", "com", "enum"]
 
     if mode == "generate":
@@ -224,7 +288,7 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
             file_path = output_directory / pkg / (name + ".json")
 
         schema_json_dict = get_schema_json_dict(cls)
-        replace_refs(schema_json_dict, namespace, target_version)
+        replace_refs(schema_json_dict, namespace, str(version))
 
         if mode == "validate":
             validate_schema(file_path, schema_json_dict, name)
@@ -233,6 +297,9 @@ def generate_or_validate_json_schemas(mode: Literal["validate", "generate"], tar
             _logger.info("Generated schema for %s", name)
         else:
             raise ValueError(f"Unknown mode '{mode}'")
+    if mode == "generate":
+        (output_directory / ".version").write_text(str(version), encoding="utf-8")
+        _logger.info("Generated version file at %s with version %s", output_directory / ".version", version)
 
 
 if __name__ == "__main__":

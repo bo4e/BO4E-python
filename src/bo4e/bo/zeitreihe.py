@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from ..enum.mengeneinheit import Mengeneinheit
     from ..enum.messart import Messart
     from ..enum.messgroesse import Messgroesse
-    from ..enum.wertermittlungsverfahren import Wertermittlungsverfahren
+    from ..enum.messwertstatus import Messwertstatus
 
 
 @postprocess_docstring
@@ -54,5 +54,5 @@ class Zeitreihe(Geschaeftsobjekt):
     """Beschreibt die Verwendung der Zeitreihe"""
     version: Optional[str] = None
     """Version der Zeitreihe"""
-    wertherkunft: Optional["Wertermittlungsverfahren"] = None
-    """Kennzeichnung, wie die Werte entstanden sind, z.B. durch Messung"""
+    wertherkunft: Optional["Messwertstatus"] = None
+    """Kennzeichnung, wie die Werte entstanden sind, z.B. ABGELESEN oder PROGNOSEWERT"""

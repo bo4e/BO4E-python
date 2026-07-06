@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Medium, Mengeneinheit, Messart, Messgroesse, Wertermittlungsverfahren, Zeitreihe
+from bo4e import Medium, Mengeneinheit, Messart, Messgroesse, Messwertstatus, Zeitreihe
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -17,7 +17,7 @@ class TestZeitreihe:
                     messart=Messart.MAXIMALWERT,
                     medium=Medium.STROM,
                     einheit=Mengeneinheit.KVARH,
-                    wertherkunft=Wertermittlungsverfahren.MESSUNG,
+                    wertherkunft=Messwertstatus.ABGELESEN,
                     werte=[],
                 )
             ),

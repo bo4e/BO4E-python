@@ -1,10 +1,6 @@
 iso3166
-networkx
 pydantic
 pyhumps
 requests
 Sphinx
 sphinx_rtd_theme
-typeguard
-BO4E-Schema-Tool
-click

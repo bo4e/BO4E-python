@@ -12,18 +12,11 @@ import os
 import shutil
 import sys
 
+from bo4e import __gh_version__, __version__
+
 __location__ = os.path.join(os.getcwd(), os.path.dirname(inspect.getfile(inspect.currentframe())))
 
-# If extensions (or modules to document with autodoc) are in another directory,
-# add these directories to sys.path here. If the directory is relative to the
-# documentation root, use os.path.abspath to make it absolute, like shown here.
-from pathlib import Path
-
 sys.path.insert(0, os.path.join(__location__, "../src"))
-sys.path.insert(0, os.path.join(__location__, "../docs"))
-sys.path.insert(0, os.path.join(__location__, "../docs/compatibility"))
-import uml
-from compatibility.__main__ import create_tables_for_doc
 
 # import package bo4e to clarify namespaces and prevent circular import errors
 from bo4e import *
@@ -162,7 +155,6 @@ html_theme = "sphinx_rtd_theme"
 # documentation.
 html_theme_options = {
     "logo_only": False,
-    "display_version": True,
     "prev_next_buttons_location": "bottom",
     "style_external_links": False,
     # There is still a bug which will probably get fixed soon
@@ -178,6 +170,16 @@ html_theme_options = {
     "titles_only": False,
 }
 
+html_css_files = [
+    "css/override.css",
+    "css/colors.css",
+]
+rst_prolog = """
+.. role:: main-color
+.. role:: sub-color
+.. role:: error-color
+"""
+
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
 
@@ -187,12 +189,12 @@ html_theme_options = {
 # be set by the action. This is to support things like /latest or /stable.
 if "release" not in globals():
     release = os.getenv("SPHINX_DOCS_RELEASE")
-    if release is None:
-        from bo4e import __gh_version__ as release
+    if not release:
+        release = __gh_version__
 if "version" not in globals():
     version = os.getenv("SPHINX_DOCS_VERSION")
-    if version is None:
-        from bo4e import __version__ as version
+    if not version:
+        version = __version__
 
 print(f"Got version = {version} from __version__")
 print(f"Got release = {release} from __gh_version__")
@@ -321,22 +323,3 @@ intersphinx_mapping = {
     "sphinx": ("http://www.sphinx-doc.org/en/stable", None),
     "python": ("https://docs.python.org/" + python_version, None),
 }
-
-# Create UML diagrams in plantuml format. Compile these into svg files into the _static folder.
-# See docs/uml.py for more details.
-if release != "local":
-    uml.LINK_URI_BASE = f"https://bo4e.github.io/BO4E-python/{release}"
-_exec_plantuml = Path(__location__) / "plantuml.jar"
-_network, _namespaces_to_parse = uml.build_network(Path(module_dir), uml.PlantUMLNetwork)
-print(_network)
-uml.write_class_umls(_network, _namespaces_to_parse, Path(output_dir) / "uml")
-print("Created uml files.")
-
-uml.compile_files_kroki(Path(output_dir) / "uml", Path(output_dir).parent / "_static" / "images", locally_hosted=True)
-print(f"Compiled uml files into svg using kroki.")
-
-# Create compatibility matrix
-compatibility_matrix_output_file = Path(__file__).parent / "_static/tables/compatibility_matrix.csv"
-gh_token = os.getenv("GITHUB_ACCESS_TOKEN") or os.getenv("GITHUB_TOKEN")
-create_tables_for_doc(compatibility_matrix_output_file, release, last_n_versions=0, gh_token=gh_token)
-print(f"Created compatibility matrix at static folder {compatibility_matrix_output_file}")

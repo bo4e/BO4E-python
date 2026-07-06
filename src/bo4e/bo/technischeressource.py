@@ -69,3 +69,7 @@ class TechnischeRessource(Geschaeftsobjekt):
     """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
     lokationsbuendel_objektcode: Optional[str] = None
     """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""
+    ist_fernschaltbar: Optional[bool] = None
+    """Fernschaltbarkeit"""
+    ist_unterbrechbar: Optional[bool] = None
+    """Unterbrechbarkeit"""
