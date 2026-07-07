@@ -163,6 +163,7 @@ __all__ = [
     "Profilart",
     "Profiltyp",
     "Profilverfahren",
+    "Produkttyp",
     "Prognosegrundlage",
     "Rechnungslegung",
     "Rechnungsstatus",
@@ -367,6 +368,7 @@ from .enum.preismodell import Preismodell
 from .enum.preisreferenz import Preisreferenz
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
+from .enum.produkttyp import Produkttyp
 from .enum.profilart import Profilart
 from .enum.profiltyp import Profiltyp
 from .enum.profilverfahren import Profilverfahren
