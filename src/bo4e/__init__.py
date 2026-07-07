@@ -33,6 +33,7 @@ __all__ = [
     "PreisblattKonzessionsabgabe",
     "PreisblattMessung",
     "PreisblattNetznutzung",
+    "Produkt",
     "Rechnung",
     "Region",
     "Standorteigenschaften",
@@ -160,10 +161,10 @@ __all__ = [
     "Preisreferenz",
     "Preisstatus",
     "Preistyp",
+    "Produkttyp",
     "Profilart",
     "Profiltyp",
     "Profilverfahren",
-    "Produkttyp",
     "Prognosegrundlage",
     "Rechnungslegung",
     "Rechnungsstatus",
@@ -234,6 +235,7 @@ from .bo.preisblatthardware import PreisblattHardware
 from .bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe
 from .bo.preisblattmessung import PreisblattMessung
 from .bo.preisblattnetznutzung import PreisblattNetznutzung
+from .bo.produkt import Produkt
 from .bo.rechnung import Rechnung
 from .bo.region import Region
 from .bo.standorteigenschaften import Standorteigenschaften
