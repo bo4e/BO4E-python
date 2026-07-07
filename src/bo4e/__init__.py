@@ -238,7 +238,6 @@ from .bo.rechnung import Rechnung
 from .bo.region import Region
 from .bo.standorteigenschaften import Standorteigenschaften
 from .bo.steuerbareressource import SteuerbareRessource
-from .bo.tarif import Tarif
 from .bo.tarifinfo import Tarifinfo
 from .bo.tarifkosten import Tarifkosten
 from .bo.tarifpreisblatt import Tarifpreisblatt
@@ -290,6 +289,7 @@ from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from .com.steuerbetrag import Steuerbetrag
 from .com.tagesparameter import Tagesparameter
+from .com.tarif import Tarif
 from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
