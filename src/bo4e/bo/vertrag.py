@@ -12,13 +12,13 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
-    from ..com.unterschrift import Unterschrift
     from ..com.vertragskonditionen import Vertragskonditionen
     from ..com.vertragsteil import Vertragsteil
     from ..enum.sparte import Sparte
     from ..enum.vertragsart import Vertragsart
     from ..enum.vertragsstatus import Vertragsstatus
     from .geschaeftspartner import Geschaeftspartner
+    from .produkt import Produkt
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
@@ -56,17 +56,15 @@ class Vertrag(Geschaeftsobjekt):
     vertragsende: Optional[pydantic.AwareDatetime] = None
     """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     # todo: add von/bis validator
-    vertragspartner1: Optional["Geschaeftspartner"] = None
+    vertragsaussteller: Optional["Geschaeftspartner"] = None
     """
-    Der "erstgenannte" Vertragspartner.
-    In der Regel der Aussteller des Vertrags.
-    Beispiel: "Vertrag zwischen Vertragspartner 1 ..."
+    Der Aussteller des Vertrags (in der Regel der "erstgenannte" Vertragspartner).
+    Beispiel: "Vertrag zwischen Vertragsaussteller ..."
     """
-    vertragspartner2: Optional["Geschaeftspartner"] = None
+    vertragsempfaenger: Optional["Geschaeftspartner"] = None
     """
-    Der "zweitgenannte" Vertragspartner.
-    In der Regel der Empfänger des Vertrags.
-    Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
+    Der Empfänger des Vertrags (in der Regel der "zweitgenannte" Vertragspartner).
+    Beispiel "Vertrag zwischen Vertragsaussteller und Vertragsempfänger".
     """
     vertragsteile: Optional[list["Vertragsteil"]] = None
     """
@@ -78,7 +76,12 @@ class Vertrag(Geschaeftsobjekt):
     """Beschreibung zum Vertrag"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
     """Festlegungen zu Laufzeiten und Kündigungsfristen"""
-    unterzeichnervp1: Optional[list["Unterschrift"]] = None
-    """Unterzeichner des Vertragspartners 1"""
-    unterzeichnervp2: Optional[list["Unterschrift"]] = None
-    """Unterzeichner des Vertragspartners 2"""
+    vertragsabschluss_datum: Optional[pydantic.AwareDatetime] = None
+    """
+    Datum, an dem der Vertrag geschlossen (angenommen und unterschrieben) wurde.
+    Ersetzt die zuvor separat gepflegten Unterschriften.
+    """
+    kuendigungsgrund: Optional[str] = None
+    """Grund für die Kündigung des Vertrags"""
+    produkt: Optional["Produkt"] = None
+    """Das dem Vertrag zugrundeliegende Produkt"""
