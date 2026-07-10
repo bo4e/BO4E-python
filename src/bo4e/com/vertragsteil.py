@@ -23,7 +23,7 @@ if TYPE_CHECKING:
 class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,
-    eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.
+    eine vertragliche Leistung in Bezug zu einer Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.) festzulegen.
 
     .. raw:: html
 

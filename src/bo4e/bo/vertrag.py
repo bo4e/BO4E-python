@@ -68,8 +68,8 @@ class Vertrag(Geschaeftsobjekt):
     """
     vertragsteile: Optional[list["Vertragsteil"]] = None
     """
-    Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
-    (Markt- oder Messlokation) festzulegen.
+    Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer
+    Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.) festzulegen.
     """
 
     beschreibung: Optional[str] = None
@@ -79,7 +79,6 @@ class Vertrag(Geschaeftsobjekt):
     vertragsabschluss_datum: Optional[pydantic.AwareDatetime] = None
     """
     Datum, an dem der Vertrag geschlossen (angenommen und unterschrieben) wurde.
-    Ersetzt die zuvor separat gepflegten Unterschriften.
     """
     kuendigungsgrund: Optional[str] = None
     """Grund für die Kündigung des Vertrags"""
