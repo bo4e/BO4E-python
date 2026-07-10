@@ -13,6 +13,7 @@ from .com import COM
 
 if TYPE_CHECKING:
 
+    from ..bo.lokationszuordnung import Lokationszuordnung
     from .menge import Menge
 
 # pylint: disable=too-few-public-methods
@@ -44,10 +45,10 @@ class Vertragsteil(COM):
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
-    lokation: Optional[str] = None
+    lokationszuordnung: Optional["Lokationszuordnung"] = None
     """
-    Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
-    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
+    Die Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.), die zu diesem Vertragsteil gehört.
+    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet.
     """
     vertraglich_fixierte_menge: Optional["Menge"] = None
     """
