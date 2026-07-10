@@ -13,7 +13,6 @@ __all__ = [
     "Angebot",
     "Ausschreibung",
     "Bilanzierung",
-    "Buendelvertrag",
     "Energiemenge",
     "Fremdkosten",
     "Geraet",
@@ -95,7 +94,6 @@ __all__ = [
     "Umschaltzeit",
     "Zaehlzeitsaison",
     "Zaehlzeittagtyp",
-    "Unterschrift",
     "Vertragskonditionen",
     "Vertragsteil",
     "VerwendungszweckProMarktrolle",
@@ -215,7 +213,6 @@ from pydantic import BaseModel as _PydanticBaseModel
 from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
 from .bo.bilanzierung import Bilanzierung
-from .bo.buendelvertrag import Buendelvertrag
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
 from .bo.geraet import Geraet
@@ -298,7 +295,6 @@ from .com.tarifpreis import Tarifpreis
 from .com.tarifpreisposition import Tarifpreisposition
 from .com.tarifpreiszeitscheibe import Tarifpreiszeitscheibe
 from .com.umschaltzeit import Umschaltzeit
-from .com.unterschrift import Unterschrift
 from .com.vertragskonditionen import Vertragskonditionen
 from .com.vertragsteil import Vertragsteil
 from .com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle

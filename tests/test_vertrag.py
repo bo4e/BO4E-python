@@ -11,7 +11,6 @@ from bo4e import (
     Person,
     Sparte,
     Titel,
-    Unterschrift,
     Vertrag,
     Vertragsart,
     Vertragskonditionen,
@@ -33,7 +32,7 @@ class TestVertrag:
                     sparte=Sparte.STROM,
                     vertragsbeginn=datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc),
                     vertragsende=datetime(2021, 6, 5, 16, 30, tzinfo=timezone.utc),
-                    vertragspartner1=Geschaeftspartner(
+                    vertragsaussteller=Geschaeftspartner(
                         ansprechpartner=[Person(), Person()],
                         anrede=Anrede.EHELEUTE,
                         individuelle_anrede="Künstler",
@@ -47,7 +46,7 @@ class TestVertrag:
                         website="bo4e.de",
                         geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                     ),
-                    vertragspartner2=Geschaeftspartner(
+                    vertragsempfaenger=Geschaeftspartner(
                         ansprechpartner=[Person(), Person()],
                         organisationstyp=Organisationstyp.UNTERNEHMEN,
                         organisationsname="Hochfrequenz",
@@ -65,8 +64,8 @@ class TestVertrag:
                     ],
                     beschreibung="Hello Vertrag",
                     vertragskonditionen=Vertragskonditionen(beschreibung="Beschreibung"),
-                    unterzeichnervp1=[Unterschrift(name="Foo")],
-                    unterzeichnervp2=[Unterschrift(name="Bar"), Unterschrift(name="Dr.No")],
+                    vertragsabschluss_datum=datetime(2021, 4, 30, 13, 45, tzinfo=timezone.utc),
+                    kuendigungsgrund="Umzug",
                 ),
             ),
         ],
