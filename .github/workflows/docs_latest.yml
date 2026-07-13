@@ -11,6 +11,9 @@ on:
   # You should remember to delete the generated test-XXXXXX folder on the gh-pages branch after you are done with them.
   workflow_dispatch:
 
+env:
+  UV_SYSTEM_PYTHON: 1
+
 jobs:
   build:
     name: 🚀📄 Build and deploy documentation to GitHub Pages
@@ -34,24 +37,31 @@ jobs:
       - name: Set routing name to test-XXXXXX
         if: github.ref != 'refs/heads/main'
         run: echo "REF_NAME=test-$(shuf -i 100000-999999 -n 1)" >> "$GITHUB_ENV"
-      - uses: actions/setup-python@v6
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          # Install a specific version of uv.
+          version: "0.11.28"
+          enable-cache: true
       - name: Checkout
         uses: actions/checkout@v7
         with:
           fetch-depth: 0 # otherwise, you will fail to push refs to dest repo
       - name: Install dependencies
         run: |
-          pip install tox tox-uv
-          pip install -r requirements.txt
+          uv pip install tox tox-uv
+          uv pip install -r requirements.txt
         # Note: The sphinx action below can only install a single requirements file.
       - name: Build JSON Schemas
-        run: tox -e generate_json_schemas
+        run: uv run tox -e generate_json_schemas
       - name: Build BO4E package
         # Note: This step necessary to correctly set the version in the JSON-Schema-links
         run: |
-          pip install -e .
+          uv pip install -e .
           python -c "import bo4e; print(bo4e.__gh_version__)"
       - name: Run kroki with docker
         run: |

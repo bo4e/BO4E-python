@@ -1,5 +1,9 @@
 name: "Test Doc Creation (Sphinx)"
 on: [push]
+
+env:
+  UV_SYSTEM_PYTHON: 1
+
 jobs:
   docbuild:
     name: Check Docs
@@ -21,13 +25,19 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
+        with:
+          # Install a specific version of uv.
+          version: "0.11.28"
+          enable-cache: true
       - name: Run kroki with docker
         run: |
           docker compose up -d
       - name: Install bo4e CLI
         uses: ./.github/actions/setup-bo4e
       - name: Install dependencies
-        run: pip install tox tox-uv
+        run: uv pip install tox tox-uv
       - name: Check Docs
         run: |
-          tox -e docs
+          uv run tox -e docs
