@@ -20,14 +20,16 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v7
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
           enable-cache: true
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
       - name: Install tox
         run: uv pip install tox tox-uv
       - name: Run the Tests
@@ -42,14 +44,16 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v7
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
           enable-cache: true
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
       - name: Install tox
         run: uv pip install tox tox-uv
       - name: Build JSON Schemas
@@ -100,14 +104,16 @@ jobs:
       matrix:
         python-version: ["3.12"]
     steps:
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
           enable-cache: true
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
       - name: Download JSON Schemas artifact
         uses: actions/download-artifact@v8
         with:
@@ -162,14 +168,16 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
           enable-cache: true
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           uv pip install tox tox-uv
@@ -244,14 +252,16 @@ jobs:
     concurrency: build-n-publish-distributions
     steps:
       - uses: actions/checkout@v7
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
           enable-cache: true
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
       - name: Build wheel and source distributions
         run: uv build
       - name: Publish distribution 📦 to PyPI

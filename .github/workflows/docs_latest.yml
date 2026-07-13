@@ -37,14 +37,16 @@ jobs:
       - name: Set routing name to test-XXXXXX
         if: github.ref != 'refs/heads/main'
         run: echo "REF_NAME=test-$(shuf -i 100000-999999 -n 1)" >> "$GITHUB_ENV"
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@08807647e7069bb48b6ef5acd8ec9567f424441b # v8.1.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
           enable-cache: true
-      - name: Set up Python ${{ matrix.python-version }}
-        run: uv python install ${{ matrix.python-version }}
       - name: Checkout
         uses: actions/checkout@v7
         with:
