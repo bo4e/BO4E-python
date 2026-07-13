@@ -1,6 +1,6 @@
 name: "Check code format with pre-commit"
 
-on: [push, pull_request]
+on: [push]
 jobs:
   formatting:
     runs-on: ubuntu-latest
