@@ -56,3 +56,7 @@ class Mengeneinheit(StrEnum):
     """Var"""
     VARH = "VARH"
     """Varstunde"""
+    HZ = "HZ"
+    """Hertz"""
+    DIMENSIONSLOS = "DIMENSIONSLOS"
+    """Eine Größe ohne Einheit"""

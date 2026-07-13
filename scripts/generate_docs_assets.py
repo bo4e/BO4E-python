@@ -446,10 +446,21 @@ def main() -> int:
     is_dirty = bool(_DIRTY_RE.search(gh_version))
     docs_label = DOCS_LABEL_OVERRIDE or gh_version
 
+    # Sphinx documents each class on its Python-package page under a module
+    # anchor: `<namespace>.html#module-<namespace>.<module-file>`, where the
+    # module file is the class name lowercased (BO4E convention). `{namespace}`
+    # (bo4e-cli >= v1.2.4) is `bo4e` + the module's parent package -- `bo4e.com`
+    # for a nested schema, plain `bo4e` for a root-level one like ZusatzAttribut
+    # -- so one template covers both (the old `{module}` placeholder expanded to
+    # the schema-derived `com.Angebotsteil`, pointing at a non-existent
+    # `api/com.Angebotsteil.html`, a 404). `{namespace}` / `{class}` are expanded
+    # per-node by the CLI; only `{docs_label}` and the local path are
+    # interpolated here.
+    anchor = "{namespace}.html#module-{namespace}.{class.lower}"
     if DOCS_LABEL_OVERRIDE or not is_dirty:
-        link_template = f"https://bo4e.github.io/BO4E-python/{docs_label}/api/{{module}}.html"
+        link_template = f"https://bo4e.github.io/BO4E-python/{docs_label}/api/{anchor}"
     else:
-        link_template = f"file://{REPO_ROOT.as_posix()}/.tox/docs/tmp/html/api/{{module}}.html"
+        link_template = f"file://{REPO_ROOT.as_posix()}/.tox/docs/tmp/html/api/{anchor}"
 
     print(f"[graph] docs label:    {docs_label}")
     print(f"[graph] link template: {link_template}")
