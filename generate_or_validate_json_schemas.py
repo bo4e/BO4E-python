@@ -82,7 +82,7 @@ class Version:
         return base
 
 
-PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
+ParsableClassType = type[BaseModel] | type[Enum]
 
 
 class GenerateJsonSchema(_GenerateJsonSchema):
@@ -127,7 +127,7 @@ def get_classes(modl_name: str) -> list[tuple[str, type]]:
     return inspect.getmembers(modl, lambda member: inspect.isclass(member) and member.__module__ == modl_name)
 
 
-def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]]:
+def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, ParsableClassType]]:
     """
     Builds a dictionary with the classnames as keys and their module as tuples in the values. E.g.:
     {
@@ -144,7 +144,7 @@ def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLA
             cls_list = get_classes(modl_name)
             for name, cls in cls_list:
                 if not name.startswith("_") and name != "StrEnum":
-                    namespace[name] = (pkg, model, cast(PARSABLE_CLASS_TYPE, cls))
+                    namespace[name] = (pkg, model, cast(ParsableClassType, cls))
     return namespace
 
 
@@ -212,7 +212,7 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any]) -> None:
 
 
 def replace_refs(
-    schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]], target_version: str
+    schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, ParsableClassType]], target_version: str
 ) -> None:
     """
     Replace the definition of a class with an online reference to the definition
