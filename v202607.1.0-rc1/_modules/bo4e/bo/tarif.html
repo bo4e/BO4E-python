@@ -1,0 +1,229 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bo4e.bo.tarif &mdash; bo4e v202607.1.0-rc1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/override.css?v=54ea1ca9" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/colors.css?v=9164046b" />
+
+  
+    <link rel="shortcut icon" href="../../../_static/bo4e-python-favicon.png"/>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=f4dcf90f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search"  style="background: white" >
+  <a href="../../../index.html" class="icon icon-home">
+    bo4e
+      <img src="../../../_static/bo4e-python-logo.png" class="logo" alt="Logo"/>
+  </a>
+    <div class="version">
+      v202607.1.0-rc1
+    </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../fundamentals.html">Fundamentals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../restrictions.html">Technical restrictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/modules.html">Data Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.bo.html">BusinessObjects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.com.html">Components</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api/bo4e.enum.html">Enumerations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../versioning.html">Versioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../release_workflow.html">Release Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../changelog.html#compatibility">Compatibility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing_guide.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../authors.html">Authors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu"  style="background: white" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">bo4e</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bo4e.bo.tarif</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bo4e.bo.tarif</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Contains Tarif class</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">..enum.botyp</span><span class="w"> </span><span class="kn">import</span> <span class="n">BoTyp</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">postprocess_docstring</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.tarifinfo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tarifinfo</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..bo.marktteilnehmer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Marktteilnehmer</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.energiemix</span><span class="w"> </span><span class="kn">import</span> <span class="n">Energiemix</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.preisgarantie</span><span class="w"> </span><span class="kn">import</span> <span class="n">Preisgarantie</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.regionspreis</span><span class="w"> </span><span class="kn">import</span> <span class="n">Regionspreis</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.tarifberechnungsparameter</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tarifberechnungsparameter</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.tarifeinschraenkung</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tarifeinschraenkung</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.vertragskonditionen</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vertragskonditionen</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..com.zeitraum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Zeitraum</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.kundentyp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Kundentyp</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.registeranzahl</span><span class="w"> </span><span class="kn">import</span> <span class="n">Registeranzahl</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.sparte</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sparte</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.tarifmerkmal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tarifmerkmal</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.tariftyp</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tariftyp</span>
+
+
+<span class="c1"># pylint: disable=too-few-public-methods</span>
+<span class="c1"># pylint: disable=no-name-in-module</span>
+
+
+<div class="viewcode-block" id="Tarif">
+<a class="viewcode-back" href="../../../api/bo4e.bo.html#bo4e.bo.tarif.Tarif">[docs]</a>
+<span class="nd">@postprocess_docstring</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Tarif</span><span class="p">(</span><span class="n">Tarifinfo</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Abbildung eines Tarifs.</span>
+
+<span class="sd">    Der Tarifpreis kann regionsaufgelöst und unter Angabe von Zeitscheiben angegeben werden. So kann bspw. derselbe</span>
+<span class="sd">    Tarif je nach Region andere Preise aufweisen. Es können auch Tarifpreise abgebildet werden, die sich ab einem</span>
+<span class="sd">    bestimmten Zeitpunkt auf andere Regionen ausweiten, da die Regionen ebenfalls mit Zeitscheiben versehen sind.</span>
+
+<span class="sd">    Ein Tarifpreis setzt sich dabei aus mehreren Preispositionen zusammen. So können z.B. auch mit</span>
+<span class="sd">    `COM RelativePreisposition` prozentuale Auf- und Abschläge auf andere Preispositionen definiert werden.</span>
+<span class="sd">    Alle Preispositionen hängen unter `COM Tarifpreiszeitscheibe` mit einer Ausnahme.</span>
+
+<span class="sd">    Möchten Sie einen dynamischen Tarif modellieren, so gibt es das `COM DynamischePreisposition`. Da diese</span>
+<span class="sd">    Preisposition weder orts- noch zeitabhängig ist, hängt diese direkt unter dem `BO Tarif`. Eine zeitabhängige</span>
+<span class="sd">    Änderung einer dynamischen Tarifpreisposition ist unsinnig, da es sich (unserer Ansicht nach) dann um einen</span>
+<span class="sd">    völlig neuen Tarif handelt. Davon unabhängig können (und müssen) natürlich weiterhin zusätzlich alle anderen</span>
+<span class="sd">    Preispositionen orts- und zeitabhängig angegeben werden.</span>
+
+<span class="sd">    &gt; Hinweis: Das Vorhandensein einer `COM DynamischePreisposition` dient gleichzeitig auch als &quot;Flag&quot; dafür, ob</span>
+<span class="sd">    &gt; es sich bei diesem Tarif um einen dynamischen handelt.</span>
+
+<span class="sd">    .. raw:: html</span>
+
+<span class="sd">        &lt;object data=&quot;../_static/images/bo4e/bo/Tarif.svg&quot; type=&quot;image/svg+xml&quot;&gt;&lt;/object&gt;</span>
+
+<span class="sd">    .. HINT::</span>
+<span class="sd">        `Tarif JSON Schema &lt;https://json-schema.app/view/%23?url=https://raw.githubusercontent.com/BO4E/BO4E-Schemas/{__gh_version__}/src/bo4e_schemas/bo/Tarif.json&gt;`_</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">BoTyp</span><span class="o">.</span><span class="n">TARIF</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">BoTyp</span><span class="o">.</span><span class="n">TARIF</span>  <span class="c1"># type:ignore[assignment]</span>
+
+    <span class="n">regionspreise</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Regionspreis&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Enthält alle regions- und zeitaufgelösten Tarifpreise.</span>
+<span class="sd">    Ausschließlich die `COM DynamischePreisposition` wird unter einem anderen Feld namens `dynamischePreisposition`</span>
+<span class="sd">    angegeben.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">dynamische_preisposition_quelle</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Gibt die Bezugsquelle (z.B. Börsenindex) für den dynamischen Tarif an.</span>
+<span class="sd">    Dieses Feld muss genau dann gesetzt werden, wenn es sich bei diesem Tarif um einen dynamischen Tarif handelt.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine (beliebige) Bezeichnung für den Tarif.&quot;&quot;&quot;</span>
+    <span class="n">beschreibung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine (beliebige) Beschreibung für den Tarif.&quot;&quot;&quot;</span>
+    <span class="n">anbieter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Marktteilnehmer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Marktteilnehmer, der diesen Tarif anbietet, angeboten hat oder anbieten wird.&quot;&quot;&quot;</span>
+
+    <span class="n">zeitraum_vermarktung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Zeitraum, in dem der Tarif beim Anbieter vertraglich abschließbar ist.&quot;&quot;&quot;</span>
+    <span class="n">zeitraum_belieferbarkeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Zeitraum, in dem eine Belieferung (für diesen Tarif) möglich ist.&quot;&quot;&quot;</span>
+    <span class="n">vertragskonditionen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Vertragskonditionen&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Vertragskonditionen für diesen Tarif.&quot;&quot;&quot;</span>
+    <span class="n">website</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Internetseite, auf der der Tarif veröffentlicht ist.&quot;&quot;&quot;</span>
+    <span class="n">energiemix</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Energiemix&quot;</span><span class="p">]]</span>  <span class="c1"># type:ignore[assignment]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Energiemix mit einem Eintrag pro Gültigkeitsjahr (siehe `Energiemix.gueltigkeitsjahr`).&quot;&quot;&quot;</span>
+    <span class="n">kundentypen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Kundentyp&quot;</span><span class="p">]]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine Liste an Kundentypen, für die dieser Tarif vorgesehen ist.&quot;&quot;&quot;</span>
+    <span class="n">tariftyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tariftyp&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Tariftyp. Bsp.: Grundversorgung, Ersatzversorgung, etc.&quot;&quot;&quot;</span>
+    <span class="n">tarifmerkmale</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Tarifmerkmal&quot;</span><span class="p">]]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine Liste von Produktmerkmalen im Zusammenhang mit diesem Tarif.&quot;&quot;&quot;</span>
+    <span class="n">sparte</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Sparte&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Strom / Gas&quot;&quot;&quot;</span>
+    <span class="n">registeranzahl</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Registeranzahl&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hinweis zu den Registern bzw. Zählwerken.</span>
+<span class="sd">    Bspw. benötigt ein HT-/NT-Tarif auch eine entsprechende Registeranzahl.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">preisgarantie</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preisgarantie&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Preisgarantie für diesen Tarif&quot;&quot;&quot;</span>
+    <span class="n">berechnungsparameter</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifberechnungsparameter&quot;</span><span class="p">]</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen&quot;&quot;&quot;</span>
+    <span class="n">tarifeinschraenkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Tarifeinschraenkung&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann&quot;&quot;&quot;</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
