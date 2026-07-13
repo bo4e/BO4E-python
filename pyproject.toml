@@ -6,7 +6,7 @@ build-backend = "hatchling.build"
 name = "bo4e"
 description = "Python Library that implements the BO4E Standard."
 license = { text = "MIT" }
-requires-python = ">=3.9"
+requires-python = ">=3.10"
 authors = [
   { name = "Kevin Krechan", email = "kevin.krechan@hochfrequenz.de" },
   { name = "Leon Haffmans", email = "leon.haffmans@hochfrequenz.de" },
@@ -66,7 +66,7 @@ linting = [
 ]
 formatting = [
     "black",
-    "isort",
+    "isort>=9.0.0b1",
 ]
 packaging = [
     "build",
@@ -95,6 +95,9 @@ dev = [
     "pre-commit",
     "pip-tools",
 ]
+
+[tool.uv]
+override-dependencies = ["isort>=9.0.0b1"]
 
 [project.urls]
 Changelog = "https://github.com/bo4e/bo4e-python/releases"
@@ -146,6 +149,7 @@ max-line-length = 120
 [tool.isort]
 line_length = 120
 profile = "black"
+sort_reexports = true
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]
