@@ -96,6 +96,9 @@ dev = [
     "pip-tools",
 ]
 
+[tool.uv]
+override-dependencies = ["isort>=9.0.0b1"]
+
 [project.urls]
 Changelog = "https://github.com/bo4e/bo4e-python/releases"
 Homepage = "https://github.com/bo4e/bo4e-python"
