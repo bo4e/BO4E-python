@@ -1,6 +1,6 @@
 name: "Packaging Test"
 
-on: [pull_request]
+on: [push]
 jobs:
   check_packaging:
     runs-on: ${{ matrix.os }}
