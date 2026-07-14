@@ -1,4 +1,4 @@
 Old Version,New Version,Diff-file
-v202607.0.0,latest,`v202607.0.0_to_latest.json <_static/tables/changes/v202607.0.0_to_latest.json>`__
+v202607.1.0,latest,`v202607.1.0_to_latest.json <_static/tables/changes/v202607.1.0_to_latest.json>`__
+v202607.0.0,v202607.1.0,`v202607.0.0_to_v202607.1.0.json <_static/tables/changes/v202607.0.0_to_v202607.1.0.json>`__
 v202601.0.0,v202607.0.0,`v202601.0.0_to_v202607.0.0.json <_static/tables/changes/v202601.0.0_to_v202607.0.0.json>`__
-v202501.0.0,v202601.0.0,`v202501.0.0_to_v202601.0.0.json <_static/tables/changes/v202501.0.0_to_v202601.0.0.json>`__
