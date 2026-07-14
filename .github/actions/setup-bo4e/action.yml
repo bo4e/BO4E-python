@@ -7,7 +7,7 @@ inputs:
     required: false
     # v1.2.4 is the first release with the `{class.lower}` link-template
     # accessor that the docs asset script relies on for correct API-doc anchors.
-    default: v1.2.5
+    default: v1.3.0
 
 runs:
   using: composite
