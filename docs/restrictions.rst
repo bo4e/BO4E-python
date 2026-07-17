@@ -25,5 +25,12 @@ such that it can be implemented in most programming languages.
   * As a result, we cannot directly support `n x m`-relationships as they would require a back-reference.
     If you're designing a database structure you have to manually add these relationship tables where needed.
 
+* There may be cross-references inside a concrete model instance. If you represent a BO and all it's nested
+  sub-objects inside a graph, the graph may have nodes with more than one incoming edge (i.e. a sub-object may
+  be referenced by more than one parent object). This of course may require some tricks when designing a JSON based
+  API since JSON is a tree structure and does not support cross-references by design. The canonical way would be
+  to use the `_id` field of an object to enable a deserializer to map two occurrences in the JSON with the same
+  `_id` to the same object instance.
+
 * We won't use a `Union`-type which is represented in JSON schemas as `anyOf` except for a nullable type. I.e.
   the type can never be a union of two or more types which are not `null`.
