@@ -1,6 +1,10 @@
 name: Tests
 
-on: [push,pull_request]
+on: [push]
+
+env:
+  UV_SYSTEM_PYTHON: 1
+
 jobs:
   tests:
     runs-on: ${{ matrix.os }}
@@ -16,8 +20,14 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@11f9893b081a58869d3b5fccaea48c9e9e46f990 # v8.3.2
+        with:
+          # Install a specific version of uv.
+          version: "0.11.28"
+          enable-cache: true
       - name: Install tox
-        run: pip install tox tox-uv
+        run: uv pip install tox tox-uv
       - name: Test with tox
         run: |
-          tox -e tests
+          uv run tox -e tests
