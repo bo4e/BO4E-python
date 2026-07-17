@@ -1,5 +1,6 @@
-import pytest
 from _decimal import Decimal
+
+import pytest
 
 from bo4e import (
     Adresse,

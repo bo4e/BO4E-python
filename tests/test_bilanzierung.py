@@ -1,7 +1,7 @@
+from _decimal import Decimal
 from datetime import datetime, timezone
 
 import pytest
-from _decimal import Decimal
 
 from bo4e.bo.bilanzierung import Bilanzierung
 from bo4e.com.lastprofil import Lastprofil
