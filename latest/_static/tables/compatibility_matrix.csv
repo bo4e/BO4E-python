@@ -160,7 +160,7 @@ enum.Rechnungstyp,🟢,🟢,🟢
 enum.Regionskriterium,🟢,🟢,🟢
 enum.Registeranzahl,🟢,🟢,🟢
 enum.Rollencodetyp,🟢,🟢,🟢
-enum.Sparte,🟢,🟢,🟢
+enum.Sparte,🟢,🟢,🔴
 enum.Speicherart,🟢,🟢,🟢
 enum.Steuerart,🟢,🟢,🟢
 enum.SteuerkanalLeistungsbeschreibung,🟢,🟢,🟢
