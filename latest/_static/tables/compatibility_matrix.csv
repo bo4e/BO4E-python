@@ -10,7 +10,7 @@ bo.Geschaeftspartner,🟢,🟢,🟢
 bo.Kosten,🟢,🟢,🟢
 bo.Lastgang,🟢,🟢,🟢
 bo.Lokationszuordnung,🟢,🟢,🟢
-bo.Marktlokation,🟢,🟢,🟢
+bo.Marktlokation,🟢,🟢,🔴
 bo.Marktteilnehmer,🟢,🟢,🟢
 bo.Messlokation,🟢,🟢,🟢
 bo.Netzlokation,🟢,🟢,🟢

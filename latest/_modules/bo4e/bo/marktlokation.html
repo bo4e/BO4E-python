@@ -113,6 +113,7 @@
     <span class="kn">from</span><span class="w"> </span><span class="nn">..enum.verbrauchsart</span><span class="w"> </span><span class="kn">import</span> <span class="n">Verbrauchsart</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">.geschaeftspartner</span><span class="w"> </span><span class="kn">import</span> <span class="n">Geschaeftspartner</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">.lokationszuordnung</span><span class="w"> </span><span class="kn">import</span> <span class="n">Lokationszuordnung</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.marktteilnehmer</span><span class="w"> </span><span class="kn">import</span> <span class="n">Marktteilnehmer</span>
 
 <span class="c1"># pylint: disable=no-name-in-module</span>
 
@@ -152,8 +153,8 @@
 
     <span class="n">verbrauchsart</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Verbrauchsart&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Verbrauchsart der Marktlokation.&quot;&quot;&quot;</span>
-    <span class="n">netzbetreibercodenr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Codenummer des Netzbetreibers, an dessen Netz diese Marktlokation angeschlossen ist.&quot;&quot;&quot;</span>
+    <span class="n">netzbetreiber</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Marktteilnehmer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Der Netzbetreiber, an dessen Netz diese Marktlokation angeschlossen ist.&quot;&quot;&quot;</span>
     <span class="n">gebietstyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Gebiettyp&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Typ des Netzgebietes, z.B. Verteilnetz&quot;&quot;&quot;</span>
     <span class="n">netzgebietsnr</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
