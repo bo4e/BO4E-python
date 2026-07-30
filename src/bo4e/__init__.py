@@ -117,6 +117,8 @@ __all__ = [
     "Preisstaffel",
     "Preisstatus",
     "Preistyp",
+    "Produkt",
+    "Produkttyp",
     "Profilart",
     "Profiltyp",
     "Profilverfahren",
@@ -231,11 +233,11 @@ from .bo.preisblatthardware import PreisblattHardware
 from .bo.preisblattkonzessionsabgabe import PreisblattKonzessionsabgabe
 from .bo.preisblattmessung import PreisblattMessung
 from .bo.preisblattnetznutzung import PreisblattNetznutzung
+from .bo.produkt import Produkt
 from .bo.rechnung import Rechnung
 from .bo.region import Region
 from .bo.standorteigenschaften import Standorteigenschaften
 from .bo.steuerbareressource import SteuerbareRessource
-from .bo.tarif import Tarif
 from .bo.tarifinfo import Tarifinfo
 from .bo.tarifkosten import Tarifkosten
 from .bo.tarifpreisblatt import Tarifpreisblatt
@@ -287,6 +289,7 @@ from .com.standorteigenschaftengas import StandorteigenschaftenGas
 from .com.standorteigenschaftenstrom import StandorteigenschaftenStrom
 from .com.steuerbetrag import Steuerbetrag
 from .com.tagesparameter import Tagesparameter
+from .com.tarif import Tarif
 from .com.tarifberechnungsparameter import Tarifberechnungsparameter
 from .com.tarifeinschraenkung import Tarifeinschraenkung
 from .com.tarifpreis import Tarifpreis
@@ -363,6 +366,7 @@ from .enum.preismodell import Preismodell
 from .enum.preisreferenz import Preisreferenz
 from .enum.preisstatus import Preisstatus
 from .enum.preistyp import Preistyp
+from .enum.produkttyp import Produkttyp
 from .enum.profilart import Profilart
 from .enum.profiltyp import Profiltyp
 from .enum.profilverfahren import Profilverfahren
