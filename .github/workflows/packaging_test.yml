@@ -2,9 +2,6 @@ name: "Packaging Test"
 
 on: [push]
 
-env:
-  UV_SYSTEM_PYTHON: 1
-
 jobs:
   check_packaging:
     runs-on: ${{ matrix.os }}
@@ -14,18 +11,14 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
-      - name: Install dependencies
-        run: uv pip install tox tox-uv
-      - name: Run Packaging Test
-        run: |
-          uv run tox -e test_packaging
+      - name: Build the package
+        run: uv build
+      - name: Check the built distributions
+        run: uv publish --dry-run

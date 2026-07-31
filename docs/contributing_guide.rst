@@ -6,7 +6,7 @@ This document describes how the BO4E Python implementation is written and what t
 Technical Setup in your IDE
 ---------------------------
 
-Dev dependencies live in ``pyproject.toml`` under ``[dependency-groups]`` (PEP 735) and are pinned by ``uv.lock``. We use `uv <https://docs.astral.sh/uv/>`_ as the package manager and `tox-uv <https://github.com/tox-dev/tox-uv>`_ to plug uv into the existing ``tox`` environments.
+Dev dependencies live in ``pyproject.toml`` under ``[dependency-groups]`` (PEP 735) and are pinned by ``uv.lock``. We use `uv <https://docs.astral.sh/uv/>`_ as the package manager and task runner — no tox, no separate venv activation needed.
 
 1. Install ``uv`` once on your machine — see `the upstream installation guide <https://docs.astral.sh/uv/getting-started/installation/>`_. On macOS/Linux:
 
@@ -23,18 +23,16 @@ Dev dependencies live in ``pyproject.toml`` under ``[dependency-groups]`` (PEP 7
       uv sync --group dev
       uv run pre-commit install
 
-   The ``dev`` group is a meta-group that pulls in every other group (``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``docs``, ``json_schemas``, ``packaging``) plus ``pre-commit`` and ``pip-tools``.
+   The ``dev`` group is a meta-group that pulls in every other group (``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``docs``, ``json_schemas``) plus ``pre-commit``.
 
-3. Run individual checks via tox. ``tox-uv`` is pulled in automatically by the ``[tox] requires`` block in ``tox.ini``, so each ``tox -e …`` invocation provisions its env with ``uv`` instead of pip:
+3. Run individual checks with ``uv run --group <group> <tool>``, the same way CI does:
 
    .. code-block:: shell
 
-      uv run tox -e tests
-      uv run tox -e linting
-      uv run tox -e type_check
-      uv run tox -e docs
-
-If you prefer not to use ``uv run`` as a prefix, activate the venv ``uv`` created with ``source .venv/bin/activate`` (or the platform equivalent) and call ``tox`` directly.
+      uv run --group tests pytest
+      uv run --group linting pylint src/bo4e
+      uv run --group type_check mypy --show-error-codes src/bo4e
+      cd docs && uv run --group docs make html
 
 **Adding a new dev dependency.** Edit the relevant group in ``[dependency-groups]`` in ``pyproject.toml``, then run ``uv lock`` to refresh the lock file and commit both. Don't edit ``uv.lock`` by hand. Don't reintroduce ``dev_requirements/`` — that directory is intentionally gone, replaced by the single source of truth above.
 
@@ -154,8 +152,8 @@ Open a Pull Request against the main/default branch of this repository. We'd app
 Release Workflow
 ----------------
 
-- Check with tox all tests and linting: ``tox``
-- Check with tox if the packaging works fine: ``tox -e test_packaging``
+- Check all tests and linting: ``uv run --group tests pytest`` and ``uv run --group linting pylint src/bo4e``
+- Check that the packaging works fine: ``uv build``
 - Squash Merge all your changes you would like to have in the release into the main/default branch
 - Check that all GitHub Actions for tests and linting do pass (should be automatically enforced for PRs against main)
 - Go to the repositorys right sidebar and click on `Draft a new release <https://github.com/Hochfrequenz/BO4E-python/releases/new>`_
@@ -163,4 +161,4 @@ Release Workflow
 - Add a description to the release (or just autogenerate the change log which will be fine for 95% of cases)
 - Publish the release
 
-There is a GitHub Action which gets triggered by a release event. It will run all default tests with tox. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file. After checking the package with ``twine check`` it will finally upload the new package release.
+There is a GitHub Action which gets triggered by a release event. It will run all default tests. If they pass, it will take the tag title to replace the version information in the *setup.cfg* file. It will then build the package with ``uv build`` and upload it with ``uv publish``.
