@@ -1,9 +1,6 @@
 name: "Linting"
 on: [push]
 
-env:
-  UV_SYSTEM_PYTHON: 1
-
 jobs:
   linting:
     name: Python Code Quality and Lint
@@ -15,18 +12,26 @@ jobs:
         linter-env: ["linting", "type_check", "dev"]
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
-      - name: Install dependencies
-        run: uv pip install tox tox-uv
-      - name: Run ${{ matrix.linter-env }}
+      - name: Sync dependencies
+        run: uv sync --group ${{ matrix.linter-env }}
+      - name: Run linting
+        if: matrix.linter-env == 'linting'
         run: |
-          uv run tox -e ${{ matrix.linter-env }}
+          uv run pylint src/bo4e
+          uv run pylint generate_or_validate_json_schemas.py
+      - name: Run type_check
+        if: matrix.linter-env == 'type_check'
+        run: |
+          uv run mypy --show-error-codes src/bo4e
+          uv run mypy --show-error-codes tests
+          uv run mypy --show-error-codes generate_or_validate_json_schemas.py
+      - name: Run dev
+        if: matrix.linter-env == 'dev'
+        run: uv run pre-commit install

@@ -78,7 +78,7 @@ Details dazu finden sich im `Contribution Guide <https://bo4e.github.io/BO4E-pyt
 
 Entwicklungs-Setup
 ==================
-Die Entwicklungs-Abhängigkeiten sind in ``pyproject.toml`` unter ``[dependency-groups]`` (PEP 735) zentral gepflegt und über ``uv.lock`` gepinnt. ``uv`` (https://docs.astral.sh/uv/) wird als Paket-Manager verwendet, ``tox-uv`` integriert ihn in die bestehenden ``tox``-Umgebungen.
+Die Entwicklungs-Abhängigkeiten sind in ``pyproject.toml`` unter ``[dependency-groups]`` (PEP 735) zentral gepflegt und über ``uv.lock`` gepinnt. ``uv`` (https://docs.astral.sh/uv/) wird als Paket-Manager verwendet.
 
 .. code-block:: shell
 
@@ -90,12 +90,12 @@ Die Entwicklungs-Abhängigkeiten sind in ``pyproject.toml`` unter ``[dependency-
        cd BO4E-python
        uv sync --group dev
 
-       # Einzelne tox-Umgebung ausführen (tox + tox-uv werden via uv installiert)
-       uv run tox -e tests
-       uv run tox -e linting
-       uv run tox -e docs
+       # Einzelne Prüfung ausführen
+       uv run --group tests pytest
+       uv run --group linting pylint src/bo4e
+       cd docs && uv run --group docs make html
 
-Die verfügbaren Gruppen sind: ``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``packaging``, ``json_schemas``, ``docs`` und ``dev`` (Sammel-Gruppe, enthält alle anderen plus ``pre-commit``).
+Die verfügbaren Gruppen sind: ``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``json_schemas``, ``docs`` und ``dev`` (Sammel-Gruppe, enthält alle anderen plus ``pre-commit``).
 
 Nutzung als Python Library
 ==========================

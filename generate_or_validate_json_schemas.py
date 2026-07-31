@@ -1,5 +1,5 @@
 """
-This script is run in the tox 'json_schemas' environment.
+This script is run with the 'json_schemas' dependency group (`uv run --group json_schemas ...`).
 """
 
 import importlib
@@ -196,7 +196,7 @@ def validate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
 
     if schema_json_dict != existing_schema:
         raise ValueError(f"Schema for {name} has changed. Please run this script with mode 'generate'.")
-        # or call tox -e generate_json_schemas
+        # or call: uv run --group json_schemas python generate_or_validate_json_schemas.py --mode generate
     _logger.debug("Schema for %s is consistent", name)
 
 

@@ -27,14 +27,13 @@ classifiers = [
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
 ]
-# This list must be in synq with the ./requirements.in file!
 dependencies = ["iso3166", "pydantic>=2.0.0", "pyhumps"]
 dynamic = ["readme", "version"]
 
 # PEP 735 dependency groups — replace what used to live under
-# dev_requirements/. tox-uv (see tox.ini) reads these directly; uv reads
-# them via `uv sync --group <name>`. Includes propagate transitively, so
-# the `dev` group pulls in everything a contributor needs locally.
+# dev_requirements/. `uv run --group <name> <tool>` runs a given group's
+# checks the same way CI does. Includes propagate transitively, so the
+# `dev` group pulls in everything a contributor needs locally.
 [dependency-groups]
 tests = [
     "pytest",
@@ -68,10 +67,6 @@ formatting = [
     "black",
     "isort>=9.0.0b1",
 ]
-packaging = [
-    "build",
-    "twine",
-]
 json_schemas = [
     "click",
 ]
@@ -93,11 +88,14 @@ dev = [
     {include-group = "formatting"},
     {include-group = "docs"},
     "pre-commit",
-    "pip-tools",
 ]
 
 [tool.uv]
 override-dependencies = ["isort>=9.0.0b1"]
+# Without this, a bare `uv sync`/`uv run` auto-installs the group literally
+# named `dev`, so CI's per-group jobs (linting, type_check, ...) would
+# silently also pull in everything else.
+default-groups = []
 
 [project.urls]
 Changelog = "https://github.com/bo4e/bo4e-python/releases"

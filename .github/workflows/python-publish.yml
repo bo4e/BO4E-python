@@ -7,9 +7,6 @@ on:
   release:
     types: [created, edited]
 
-env:
-  UV_SYSTEM_PYTHON: 1
-
 jobs:
   tests:
     if: startsWith(github.ref, 'refs/tags/v')
@@ -20,21 +17,17 @@ jobs:
         os: [ubuntu-latest]
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
-      - name: Install tox
-        run: uv pip install tox tox-uv
+      - name: Sync dependencies
+        run: uv sync --group tests
       - name: Run the Tests
-        run: |
-          uv run tox -e tests
+        run: uv run pytest
   json_schemas_artifact:
     name: Generate JSON-Schemas
     runs-on: ubuntu-latest
@@ -44,21 +37,17 @@ jobs:
     steps:
       - name: Check out Git repository
         uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
-      - name: Install tox
-        run: uv pip install tox tox-uv
+      - name: Sync dependencies
+        run: uv sync --group json_schemas
       - name: Build JSON Schemas
-        run: |
-          uv run tox -e generate_json_schemas
+        run: uv run python generate_or_validate_json_schemas.py --mode generate
         env:
           TARGET_VERSION: ${{ github.ref_name }}
       - name: Upload JSON Schemas as artifact
@@ -106,15 +95,12 @@ jobs:
         python-version: ["3.12"]
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
       - name: Download JSON Schemas artifact
         uses: actions/download-artifact@v8
@@ -145,7 +131,7 @@ jobs:
       # response from the API.
       - name: Install dependencies for creating release
         run: |
-          uv pip install requests click
+          uv pip install --system requests click
       - name: Tag and release the new version in BO4E-Schemas
         run: python bo4e_schemas_create_release.py
         env:
@@ -170,38 +156,31 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0  # otherwise, you will fail to push refs to dest repo
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
-      - name: Install dependencies
-        run: |
-          uv pip install tox tox-uv
-          uv pip install -r requirements.txt
-        # Note: The sphinx action below can only install a single requirements file.
+      - name: Sync dependencies
+        run: uv sync --group docs
       - name: Download JSON Schemas artifact
         uses: actions/download-artifact@v8
         with:
           name: json-schemas
           path: json_schemas/
-      - name: Build BO4E package
-        # Note: This step necessary to correctly set the version in the JSON-Schema-links
-        run: |
-          uv pip install -e .
-          python -c "import bo4e; print(bo4e.__gh_version__)"
+      - name: Verify BO4E package version
+        # Note: this relies on the fetch-depth: 0 checkout above so hatch-vcs
+        # can derive the version from git tags, which feeds the JSON-Schema links.
+        run: uv run python -c "import bo4e; print(bo4e.__gh_version__)"
       - name: Run kroki with docker
         run: |
           docker compose up -d
       - name: Install bo4e CLI
         uses: ./.github/actions/setup-bo4e
       - name: Generate documentation assets
-        run: python scripts/generate_docs_assets.py
+        run: uv run python scripts/generate_docs_assets.py
         env:
           BO4E_DOCS_REF: ${{ github.ref_name }}
           BO4E_DOCS_LABEL: ${{ github.ref_name }}
@@ -254,15 +233,12 @@ jobs:
     concurrency: build-n-publish-distributions
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
       - name: Build wheel and source distributions
         run: uv build

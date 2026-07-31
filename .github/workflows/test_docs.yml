@@ -1,9 +1,6 @@
 name: "Test Doc Creation (Sphinx)"
 on: [push]
 
-env:
-  UV_SYSTEM_PYTHON: 1
-
 jobs:
   docbuild:
     name: Check Docs
@@ -21,23 +18,25 @@ jobs:
       - uses: actions/checkout@v7
         with:
           fetch-depth: 0
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v7
-        with:
-          python-version: ${{ matrix.python-version }}
       - name: Install uv
         uses: astral-sh/setup-uv@c771a70e6277c0a99b617c7a806ffedaca235ff9 # v9.0.0
         with:
           # Install a specific version of uv.
           version: "0.11.28"
+          python-version: ${{ matrix.python-version }}
           enable-cache: true
       - name: Run kroki with docker
         run: |
           docker compose up -d
       - name: Install bo4e CLI
         uses: ./.github/actions/setup-bo4e
-      - name: Install dependencies
-        run: uv pip install tox tox-uv
-      - name: Check Docs
-        run: |
-          uv run tox -e docs
+      - name: Sync dependencies
+        run: uv sync --group docs
+      - name: Build JSON Schemas
+        run: uv run python generate_or_validate_json_schemas.py --mode generate
+      - name: Generate documentation assets
+        run: uv run python scripts/generate_docs_assets.py
+      - name: Build the documentation
+        run: uv run sphinx-build -T -W -b html -d /tmp/bo4e-docs-doctrees docs /tmp/bo4e-docs-html
+      - name: Check README doctest
+        run: uv run python -m doctest README.rst
