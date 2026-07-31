@@ -6,7 +6,7 @@ from datetime import time
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -31,7 +31,7 @@ class Umschaltzeit(COM):
 
     typ: Annotated[Literal[ComTyp.UMSCHALTZEIT], Field(alias="_typ")] = ComTyp.UMSCHALTZEIT
 
-    umschaltzeit: Optional[time] = None
+    umschaltzeit: time | None = None
     """Definiert den Zeitpunkt ab dem auf das Register geschaltet wird, das im Feld `registercode` spezifiziert ist."""
-    registercode: Optional[str] = None
+    registercode: str | None = None
     """Ein Code, der ein Register spezifiziert. Typischerweise eine 3-stellige Zeichenkette."""

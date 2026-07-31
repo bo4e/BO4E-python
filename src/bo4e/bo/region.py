@@ -2,7 +2,7 @@
 Contains Region class
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal
 
 from pydantic import Field
 
@@ -39,12 +39,12 @@ class Region(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.REGION], Field(alias="_typ")] = BoTyp.REGION
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung der Region"""
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Beschreibung der Region"""
 
-    regionsoperationen: Optional[list["Regionsoperation"]] = None
+    regionsoperationen: list["Regionsoperation"] | None = None
     """
     Eine (unsortierte) Liste von Regionsoperationen.
     Die Sortierung wird durch das Feld `prioritaet` im COM `Regionsoperation` festgelegt.

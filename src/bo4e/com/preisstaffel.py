@@ -12,7 +12,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .sigmoidparameter import Sigmoidparameter
 
 # pylint: disable=too-few-public-methods
@@ -34,17 +33,17 @@ class Preisstaffel(COM):
 
     typ: Annotated[Literal[ComTyp.PREISSTAFFEL], Field(alias="_typ")] = ComTyp.PREISSTAFFEL
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für die Preisstaffel."""
-    preis: Optional[Decimal] = None
+    preis: Decimal | None = None
     """Preis pro abgerechneter Mengeneinheit. Die Mengeneinheit wird durch das übergeordnete Objekt angegeben."""
-    staffelgrenze_von: Optional[Decimal] = None
+    staffelgrenze_von: Decimal | None = None
     """
     Inklusiver unterer Wert, ab dem die Staffel gilt (inklusiv).
     Grenzen werden bspw. wie folgt angegeben: `0 - 1000, 1001 - 2000, etc.`
     Werte zwischen den Grenzen (z.B. `1000,6`) rutschen in die obere Zone / Staffel.
     """
-    staffelgrenze_bis: Optional[Decimal] = None
+    staffelgrenze_bis: Decimal | None = None
     """
     Exklusiver oberer Wert, bis zu dem die Staffel gilt (inklusiv).
     Grenzen werden bspw. wie folgt angegeben: `0 - 1000, 1001 - 2000, etc.`
@@ -52,7 +51,7 @@ class Preisstaffel(COM):
     """
     sigmoidparameter: Optional["Sigmoidparameter"] = None
     """Parameter zur Berechnung des Preises anhand der Jahresmenge und weiterer netzbezogener Parameter"""
-    artikel_id: Optional[str] = None
+    artikel_id: str | None = None
     """
     Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst.
     """

@@ -37,7 +37,7 @@ class Zeitreihe(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.ZEITREIHE], Field(alias="_typ")] = BoTyp.ZEITREIHE
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung für die Zeitreihe"""
     messgroesse: Optional["Messgroesse"] = None
     """Beschreibt, was gemessen wurde (z.B. Strom, Spannung, Wirkleistung, Scheinleistung)"""
@@ -47,12 +47,12 @@ class Zeitreihe(Geschaeftsobjekt):
     """Medium, das gemessen wurde (z.B. Wasser, Dampf, Strom, Gas)"""
     einheit: Optional["Mengeneinheit"] = None
     """Alle Werte in der Tabelle haben die Einheit, die hier angegeben ist"""
-    werte: Optional[list["Zeitreihenwert"]] = None
+    werte: list["Zeitreihenwert"] | None = None
     """Hier liegen jeweils die Werte"""
 
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Beschreibt die Verwendung der Zeitreihe"""
-    version: Optional[str] = None
+    version: str | None = None
     """Version der Zeitreihe"""
     wertherkunft: Optional["Messwertstatus"] = None
     """Kennzeichnung, wie die Werte entstanden sind, z.B. ABGELESEN oder PROGNOSEWERT"""

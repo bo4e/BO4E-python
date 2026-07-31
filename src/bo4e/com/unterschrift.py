@@ -2,7 +2,7 @@
 Contains Unterschrift class
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 import pydantic
 from pydantic import Field
@@ -30,10 +30,10 @@ class Unterschrift(COM):
 
     typ: Annotated[Literal[ComTyp.UNTERSCHRIFT], Field(alias="_typ")] = ComTyp.UNTERSCHRIFT
 
-    name: Optional[str] = None
+    name: str | None = None
     """Name des Unterschreibers"""
 
-    ort: Optional[str] = None
+    ort: str | None = None
     """Ort, an dem die Unterschrift geleistet wird"""
-    datum: Optional[pydantic.AwareDatetime] = None
+    datum: pydantic.AwareDatetime | None = None
     """Datum der Unterschrift"""

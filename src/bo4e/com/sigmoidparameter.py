@@ -3,7 +3,7 @@ Contains Sigmoidparameter class
 """
 
 from decimal import Decimal
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -31,11 +31,11 @@ class Sigmoidparameter(COM):
 
     typ: Annotated[Literal[ComTyp.SIGMOIDPARAMETER], Field(alias="_typ")] = ComTyp.SIGMOIDPARAMETER
 
-    A: Optional[Decimal] = None
+    A: Decimal | None = None
     """Briefmarke Ortsverteilnetz (EUR/kWh)"""
-    B: Optional[Decimal] = None
+    B: Decimal | None = None
     """Wendepunkt für die bepreiste Menge (kW)"""
-    C: Optional[Decimal] = None
+    C: Decimal | None = None
     """Exponent (einheitenlos)"""
-    D: Optional[Decimal] = None
+    D: Decimal | None = None
     """Briefmarke Transportnetz (EUR/kWh)"""

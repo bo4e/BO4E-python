@@ -4,7 +4,7 @@ Contains Regionspreis class
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal
 
 from pydantic import Field
 
@@ -34,12 +34,12 @@ class Regionspreis(COM):
 
     typ: Annotated[Literal[ComTyp.REGIONSPREIS], Field(alias="_typ")] = ComTyp.REGIONSPREIS
 
-    regionszeitscheiben: Optional[list["Regionszeitscheibe"]] = None
+    regionszeitscheiben: list["Regionszeitscheibe"] | None = None
     """
     Eine Liste von mit Zeitscheiben versehenen Regionen.
     Die Zeitscheiben sollten sich nicht überschneiden.
     """
-    tarifpreiszeitscheiben: Optional[list["Tarifpreiszeitscheibe"]] = None
+    tarifpreiszeitscheiben: list["Tarifpreiszeitscheibe"] | None = None
     """
     Eine Liste von mit Zeitscheiben versehenen Tarifpreisen.
     Die Zeitscheiben sollten sich nicht überschneiden.

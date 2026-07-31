@@ -33,7 +33,7 @@ class Konfigurationsprodukt(COM):
 
     typ: Annotated[Literal[ComTyp.KONFIGURATIONSPRODUKT], Field(alias="_typ")] = ComTyp.KONFIGURATIONSPRODUKT
 
-    produktcode: Optional[str] = None
-    leistungskurvendefinition: Optional[str] = None
-    schaltzeitdefinition: Optional[str] = None
+    produktcode: str | None = None
+    leistungskurvendefinition: str | None = None
+    schaltzeitdefinition: str | None = None
     marktpartner: Optional["Marktteilnehmer"] = None

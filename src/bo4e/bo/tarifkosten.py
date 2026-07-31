@@ -11,7 +11,6 @@ from ..utils import postprocess_docstring
 from .tarifinfo import Tarifinfo
 
 if TYPE_CHECKING:
-
     from .kosten import Kosten
 
 # pylint: disable=too-few-public-methods

@@ -36,7 +36,7 @@ class LastvariablePreisposition(COM):
 
     typ: Annotated[Literal[ComTyp.LASTVARIABLEPREISPOSITION], Field(alias="_typ")] = ComTyp.LASTVARIABLEPREISPOSITION
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für die Preisposition."""
     preisreferenz: Optional["Preisreferenz"] = None
     """
@@ -51,5 +51,5 @@ class LastvariablePreisposition(COM):
     """Die Einheit, in denen die Staffelgrenzen in den Preisstaffeln angegeben sind."""
     tarifkalkulationsmethode: Optional["Tarifkalkulationsmethode"] = None
     """Das Modell, das der Preisbildung zugrunde liegt"""
-    preisstaffeln: Optional[list["Preisstaffel"]] = None
+    preisstaffeln: list["Preisstaffel"] | None = None
     """Preisstaffeln, die zu dieser Preisposition gehören"""

@@ -23,14 +23,14 @@ Dev dependencies live in ``pyproject.toml`` under ``[dependency-groups]`` (PEP 7
       uv sync --group dev
       uv run pre-commit install
 
-   The ``dev`` group is a meta-group that pulls in every other group (``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``docs``, ``json_schemas``) plus ``pre-commit``.
+   The ``dev`` group is a meta-group that pulls in every other group (``tests``, ``coverage``, ``type_check``, ``linting``, ``docs``, ``json_schemas``) plus ``pre-commit``.
 
 3. Run individual checks with ``uv run --group <group> <tool>``, the same way CI does:
 
    .. code-block:: shell
 
       uv run --group tests pytest
-      uv run --group linting pylint src/bo4e
+      uv run --group linting ruff check src/bo4e
       uv run --group type_check mypy --show-error-codes src/bo4e
       cd docs && uv run --group docs make html
 
@@ -46,8 +46,7 @@ General Rules
 ^^^^^^^^^^^^^
 
 - We use (and enforce in the CI):
-  - black for formatting
-  - pylint for linting
+  - ruff for formatting and linting
   - mypy for static type checking
   - pytest for unittests
   - Sphinx and Plantuml (and kroki web service) for documentation
@@ -65,8 +64,6 @@ How to Define an ENUM?
 All Enums inherit from ``bo4e.enum.StrEnum``. The latter is just a usual Enum with a ``str`` mixin (see `the official docs <https://docs.python.org/3/library/enum.html?highlight=strenum#others>`_ for details). This allows us to precisely define how an enum value will be serialized. All enum values have UPPER_CASE names.
 
 .. code-block:: python
-
-   # pylint:disable=missing-module-docstring
 
    from bo4e.enum.strenum import StrEnum
 
@@ -106,7 +103,6 @@ For data validation and de/serialization we use `pydantic <https://pydantic-docs
    from ..com.menge import Menge
    from ..enum.typ import BoTyp
 
-   # pylint: disable=too-few-public-methods
    class MeinBo(Geschaeftsobjekt):
        """
        MeinBo ist ein ganz besonderes Business Objekt.
@@ -152,7 +148,7 @@ Open a Pull Request against the main/default branch of this repository. We'd app
 Release Workflow
 ----------------
 
-- Check all tests and linting: ``uv run --group tests pytest`` and ``uv run --group linting pylint src/bo4e``
+- Check all tests and linting: ``uv run --group tests pytest`` and ``uv run --group linting ruff check src/bo4e``
 - Check that the packaging works fine: ``uv build``
 - Squash Merge all your changes you would like to have in the release into the main/default branch
 - Check that all GitHub Actions for tests and linting do pass (should be automatically enforced for PRs against main)

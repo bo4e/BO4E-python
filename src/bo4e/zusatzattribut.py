@@ -2,7 +2,7 @@
 Contains ExterenzeReferenz class
 """
 
-from typing import Any, Optional
+from typing import Any
 
 from pydantic import BaseModel
 
@@ -27,5 +27,5 @@ class ZusatzAttribut(BaseModel):
 
     """
 
-    name: Optional[str] = None  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
+    name: str | None = None  #: Bezeichnung der externen Referenz (z.B. "microservice xyz" oder "SAP CRM GP-Nummer")
     wert: Any = None  #: Wert der externen Referenz (z.B. "123456"; "4711")

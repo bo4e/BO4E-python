@@ -54,9 +54,9 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
     # Check typ property for bo and com classes
     # the default value must be the corresponding enum value of the enum classes BoTyp or ComTyp
     if isinstance(serializable_object, (Geschaeftsobjekt, COM)):
-        assert hasattr(
-            serializable_object, "typ"
-        ), f"Missing 'typ' attribute in {serializable_object.__class__.__name__}"
+        assert hasattr(serializable_object, "typ"), (
+            f"Missing 'typ' attribute in {serializable_object.__class__.__name__}"
+        )
         assert serializable_object.typ is not None
 
         assert serializable_object.typ.value.lower() == serializable_object.__class__.__name__.lower(), (
@@ -67,7 +67,7 @@ def assert_serialization_roundtrip(serializable_object: T, expected_json_dict: O
     if expected_json_dict is not None:
         assert all([(k in json_string) for k in expected_json_dict.keys()])
         assert actual_json_dict == expected_json_dict, (
-            f"actual_json_dict != expected_json_dict\n\t" f"diff = {list(diff(expected_json_dict, actual_json_dict))}"
+            f"actual_json_dict != expected_json_dict\n\tdiff = {list(diff(expected_json_dict, actual_json_dict))}"
         )
         # this (diff(...)) contains the difference between two dicts -> just for easier debugging
 

@@ -12,7 +12,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .betrag import Betrag
     from .menge import Menge
     from .preis import Preis
@@ -36,7 +35,7 @@ class Kostenposition(COM):
 
     typ: Annotated[Literal[ComTyp.KOSTENPOSITION], Field(alias="_typ")] = ComTyp.KOSTENPOSITION
 
-    positionstitel: Optional[str] = None
+    positionstitel: str | None = None
     """Ein Titel für die Zeile. Hier kann z.B. der Netzbetreiber eingetragen werden, wenn es sich um Netzkosten handelt."""
 
     betrag_kostenposition: Optional["Betrag"] = None
@@ -44,15 +43,15 @@ class Kostenposition(COM):
     <Einzelpreis / (Anzahl Tage Jahr) * zeitmenge>"""
     # todo: validate above calculation, see https://github.com/Hochfrequenz/BO4E-python/issues/282
 
-    artikelbezeichnung: Optional[str] = None
+    artikelbezeichnung: str | None = None
     """Bezeichnung für den Artikel für den die Kosten ermittelt wurden. Beispiel: Arbeitspreis HT"""
 
     einzelpreis: Optional["Preis"] = None
     """Der Preis für eine Einheit. Beispiele: 5,8200 ct/kWh oder 55 €/Jahr."""
 
-    von: Optional[pydantic.AwareDatetime] = None
+    von: pydantic.AwareDatetime | None = None
     """inklusiver von-Zeitpunkt der Kostenzeitscheibe"""
-    bis: Optional[pydantic.AwareDatetime] = None
+    bis: pydantic.AwareDatetime | None = None
     """exklusiver bis-Zeitpunkt der Kostenzeitscheibe"""
 
     menge: Optional["Menge"] = None
@@ -64,5 +63,5 @@ class Kostenposition(COM):
     wurden. Z.B. 138 Tage.
     """
 
-    artikeldetail: Optional[str] = None
+    artikeldetail: str | None = None
     """Detaillierung des Artikels (optional). Beispiel: 'Drehstromzähler'"""

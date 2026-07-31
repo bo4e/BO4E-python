@@ -48,10 +48,10 @@ class Lastgang(Geschaeftsobjekt):
     marktlokation: Optional["Marktlokation"] = None
     #:Marktlokation, zu der der Lastgang gehört
     messlokation: Optional["Messlokation"] = None
-    werte: Optional[list["Zeitreihenwert"]] = None
+    werte: list["Zeitreihenwert"] | None = None
     """Die im Lastgang enthaltenen Messwerte"""
-    version: Optional[str] = None
+    version: str | None = None
     """Versionsnummer des Lastgangs"""
-    obis_kennzahl: Optional[str] = None
+    obis_kennzahl: str | None = None
     """Die OBIS-Kennzahl für den Wert, die festlegt, welche Größe mit dem Stand gemeldet wird, z.B. '1-0:1.8.1'"""
     zeit_intervall_laenge: Optional["Menge"]

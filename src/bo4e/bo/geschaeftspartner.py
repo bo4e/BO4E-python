@@ -41,44 +41,44 @@ class Geschaeftspartner(Geschaeftsobjekt):
     typ: Annotated[Literal[BoTyp.GESCHAEFTSPARTNER], Field(alias="_typ")] = BoTyp.GESCHAEFTSPARTNER
     anrede: Optional["Anrede"] = None
     """Mögliche Anrede der Person"""
-    individuelle_anrede: Optional[str] = None
+    individuelle_anrede: str | None = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
     titel: Optional["Titel"] = None
     """Möglicher Titel der Person"""
-    vorname: Optional[str] = None
+    vorname: str | None = None
     """Vorname der Person"""
-    nachname: Optional[str] = None
+    nachname: str | None = None
     """Nachname (Familienname) der Person"""
 
-    ansprechpartner: Optional[list["Person"]] = None
+    ansprechpartner: list["Person"] | None = None
     organisationstyp: Optional["Organisationstyp"] = None
     """
     Kennzeichnung ob es sich um ein Gewerbe/Unternehmen, eine Privatperson oder eine andere Art von Organisation handelt.
     """
-    organisationsname: Optional[str] = None
+    organisationsname: str | None = None
     """
     Name der Firma, wenn Gewerbe oder andere Organisation.
     """
-    kontaktwege: Optional[list["Kontaktweg"]] = None
+    kontaktwege: list["Kontaktweg"] | None = None
     """Kontaktwege des Geschäftspartners"""
-    geschaeftspartnerrollen: Optional[list["Geschaeftspartnerrolle"]] = None
+    geschaeftspartnerrollen: list["Geschaeftspartnerrolle"] | None = None
     """Rollen, die die Geschäftspartner inne haben (z.B. Interessent, Kunde)"""
-    handelsregisternummer: Optional[str] = None
+    handelsregisternummer: str | None = None
     """Handelsregisternummer des Geschäftspartners"""
-    amtsgericht: Optional[str] = None
+    amtsgericht: str | None = None
     """Amtsgericht bzw Handelsregistergericht, das die Handelsregisternummer herausgegeben hat"""
-    umsatzsteuer_id: Optional[str] = None
+    umsatzsteuer_id: str | None = None
     """
     Die Steuer-ID des Geschäftspartners; Beispiel: "DE 813281825"
     """
-    glaeubiger_id: Optional[str] = None
+    glaeubiger_id: str | None = None
     """
     Die Gläubiger-ID welche im Zahlungsverkehr verwendet wird; Z.B. "DE 47116789"
     """
-    website: Optional[str] = None
+    website: str | None = None
     """Internetseite des Marktpartners"""
     adresse: Optional["Adresse"] = None
     """Adresse des Geschäftspartners"""

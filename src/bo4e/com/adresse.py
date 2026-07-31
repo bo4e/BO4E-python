@@ -30,34 +30,34 @@ class Adresse(COM):
 
     typ: Annotated[Literal[ComTyp.ADRESSE], Field(alias="_typ")] = ComTyp.ADRESSE
 
-    postleitzahl: Optional[str] = None
+    postleitzahl: str | None = None
     """
     Die Postleitzahl; z.B: "41836"
     """
-    ort: Optional[str] = None
+    ort: str | None = None
     """
     Bezeichnung der Stadt; z.B. "Hückelhoven"
     """
 
-    ortsteil: Optional[str] = None
+    ortsteil: str | None = None
     """
     Bezeichnung des Ortsteils; z.B. "Mitte"
     """
-    strasse: Optional[str] = None
+    strasse: str | None = None
     """
     Bezeichnung der Straße; z.B. "Weserstraße"
     """
-    hausnummer: Optional[str] = None
+    hausnummer: str | None = None
     """
     Hausnummer inkl. Zusatz; z.B. "3", "4a"
     """
-    postfach: Optional[str] = None
+    postfach: str | None = None
     """Im Falle einer Postfachadresse das Postfach; Damit werden Straße und Hausnummer nicht berücksichtigt"""
-    adresszusatz: Optional[str] = None
+    adresszusatz: str | None = None
     """
     Zusatzhinweis zum Auffinden der Adresse, z.B. "3. Stock linke Wohnung"
     """
-    co_ergaenzung: Optional[str] = None
+    co_ergaenzung: str | None = None
     """
     Im Falle einer c/o-Adresse steht in diesem Attribut die Anrede. Z.B. "c/o Veronica Hauptmieterin"
     """

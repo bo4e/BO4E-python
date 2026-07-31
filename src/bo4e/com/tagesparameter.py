@@ -2,7 +2,7 @@
 Contains tagesparameter class
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -19,7 +19,7 @@ class Tagesparameter(COM):
 
     typ: Annotated[Literal[ComTyp.TAGESPARAMETER], Field(alias="_typ")] = ComTyp.TAGESPARAMETER
 
-    klimazone: Optional[str] = None  #: Qualifier der Klimazone, e.g. 7624q
-    temperaturmessstelle: Optional[str] = None  #: Qualifier der Temperaturmessstelle, e.g. 1234x
-    dienstanbieter: Optional[str] = None  #: Dienstanbieter (bei Temperaturmessstellen), e.g. ZT1
-    herausgeber: Optional[str] = None  #: Herausgeber des Lastprofil-Codes, e.g. BDEW
+    klimazone: str | None = None  #: Qualifier der Klimazone, e.g. 7624q
+    temperaturmessstelle: str | None = None  #: Qualifier der Temperaturmessstelle, e.g. 1234x
+    dienstanbieter: str | None = None  #: Dienstanbieter (bei Temperaturmessstellen), e.g. ZT1
+    herausgeber: str | None = None  #: Herausgeber des Lastprofil-Codes, e.g. BDEW

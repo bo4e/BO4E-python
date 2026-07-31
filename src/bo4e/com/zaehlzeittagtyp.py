@@ -43,5 +43,5 @@ class Zaehlzeittagtyp(COM):
 
     tagtyp: Optional["Wiederholungstyp"] = None
     """An welchen Tagen das Schaltschema dieses Tagtyps gilt (z.B. `WERKTAGS`, `MONTAGS`, `FEIERTAGS`)."""
-    umschaltzeiten: Optional[list["Umschaltzeit"]] = None
+    umschaltzeiten: list["Umschaltzeit"] | None = None
     """Die Umschaltzeiten dieses Tagtyps. Sortiert ergibt sich daraus das Schaltschema für einen Tag."""

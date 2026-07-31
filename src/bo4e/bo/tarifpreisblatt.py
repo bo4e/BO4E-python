@@ -39,9 +39,9 @@ class Tarifpreisblatt(Tarifinfo):
 
     typ: Annotated[Literal[BoTyp.TARIFPREISBLATT], Field(alias="_typ")] = BoTyp.TARIFPREISBLATT  # type: ignore[assignment]
     # required attributes (additional to those of Tarifinfo)
-    preisstand: Optional[pydantic.AwareDatetime] = None
+    preisstand: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Preis zuletzt angepasst wurde"""
-    tarifpreise: Optional[list["Tarifpreisposition"]] = None
+    tarifpreise: list["Tarifpreisposition"] | None = None
     """Die festgelegten Preise, z.B. für Arbeitspreis, Grundpreis etc."""
     berechnungsparameter: Optional["Tarifberechnungsparameter"] = None
     """Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen"""
@@ -50,5 +50,5 @@ class Tarifpreisblatt(Tarifinfo):
     """Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann"""
     preisgarantie: Optional["Preisgarantie"] = None
     """Festlegung von Garantien für bestimmte Preisanteile"""
-    tarif_auf_abschlaege: Optional[list["AufAbschlag"]] = None
+    tarif_auf_abschlaege: list["AufAbschlag"] | None = None
     """Auf- und Abschläge auf die Preise oder Kosten"""

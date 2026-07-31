@@ -24,8 +24,8 @@ jobs:
       - name: Run linting
         if: matrix.linter-env == 'linting'
         run: |
-          uv run pylint src/bo4e
-          uv run pylint generate_or_validate_json_schemas.py
+          uv run ruff check src/bo4e
+          uv run ruff check generate_or_validate_json_schemas.py
       - name: Run type_check
         if: matrix.linter-env == 'type_check'
         run: |

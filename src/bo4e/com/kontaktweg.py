@@ -35,9 +35,9 @@ class Kontaktweg(COM):
 
     kontaktart: Optional["Kontaktart"] = None
     """Gibt die Kontaktart des Kontaktes an."""
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Spezifikation, beispielsweise "Durchwahl", "Sammelnummer" etc."""
-    kontaktwert: Optional[str] = None
+    kontaktwert: str | None = None
     """Die Nummer oder E-Mail-Adresse."""
-    ist_bevorzugter_kontaktweg: Optional[bool] = None
+    ist_bevorzugter_kontaktweg: bool | None = None
     """Gibt an, ob es sich um den bevorzugten Kontaktweg handelt."""

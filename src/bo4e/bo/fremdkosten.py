@@ -40,5 +40,5 @@ class Fremdkosten(Geschaeftsobjekt):
     """Für diesen Zeitraum wurden die Kosten ermittelt"""
     summe_kosten: Optional["Betrag"] = None
     """Die Gesamtsumme über alle Kostenblöcke und -positionen"""
-    kostenbloecke: Optional[list["Fremdkostenblock"]] = None
+    kostenbloecke: list["Fremdkostenblock"] | None = None
     """In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc"""

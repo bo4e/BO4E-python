@@ -9,10 +9,11 @@ import logging
 import pkgutil
 import re
 import sys
+from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Any, Iterator, Literal, cast
+from typing import Any, Literal, cast
 
 import click
 from pydantic import BaseModel, TypeAdapter
@@ -159,15 +160,15 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
     else:
         raise ValueError(f"Class {cls} is neither a pydantic BaseModel nor an enum.")
     if {"allOf", "$defs"} == set(schema_json_dict.keys()):
-        assert (
-            len(schema_json_dict["allOf"]) == 1
-        ), "Internal error: Assumed circular reference but structure is unexpected"
+        assert len(schema_json_dict["allOf"]) == 1, (
+            "Internal error: Assumed circular reference but structure is unexpected"
+        )
         # This is the case for schemas containing circular references
         reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
         reference_match = reference_pattern.fullmatch(schema_json_dict["allOf"][0]["$ref"])
-        assert (
-            reference_match is not None
-        ), f"Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        assert reference_match is not None, (
+            f"Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        )
         schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
         del schema_json_dict["allOf"]
         schema_json_dict.update(schema_json_dict_to_merge)
@@ -176,9 +177,9 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
         # field points to the actual schema definition in the $defs field.
         reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
         reference_match = reference_pattern.fullmatch(schema_json_dict["$ref"])
-        assert (
-            reference_match is not None
-        ), f"Internal Error: Reference string has unexpected format: {schema_json_dict['$ref']}"
+        assert reference_match is not None, (
+            f"Internal Error: Reference string has unexpected format: {schema_json_dict['$ref']}"
+        )
         schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
         del schema_json_dict["$ref"]
         schema_json_dict.update(schema_json_dict_to_merge)
@@ -191,7 +192,7 @@ def validate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
     """
     Validate the schema for a class
     """
-    with open(file_path, "r", encoding="utf-8") as json_schema_file:
+    with open(file_path, encoding="utf-8") as json_schema_file:
         existing_schema = json.load(json_schema_file)
 
     if schema_json_dict != existing_schema:

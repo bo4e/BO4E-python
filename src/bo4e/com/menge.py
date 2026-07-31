@@ -34,7 +34,7 @@ class Menge(COM):
 
     typ: Annotated[Literal[ComTyp.MENGE], Field(alias="_typ")] = ComTyp.MENGE
 
-    wert: Optional[Decimal] = None
+    wert: Decimal | None = None
     """Gibt den absoluten Wert der Menge an"""
     einheit: Optional["Mengeneinheit"] = None
     """Gibt die Einheit zum jeweiligen Wert an"""

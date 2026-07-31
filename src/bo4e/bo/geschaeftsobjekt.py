@@ -1,6 +1,6 @@
 # pylint: disable=missing-module-docstring
 from decimal import Decimal
-from typing import Annotated, Optional
+from typing import Annotated
 
 from humps.main import camelize
 
@@ -31,17 +31,17 @@ class Geschaeftsobjekt(BaseModel):  # pragma: no cover
     """
 
     # required attributes
-    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    version: Annotated[str | None, Field(alias="_version")] = __version__
     """
     Version der BO-Struktur aka "fachliche Versionierung"
     """
 
-    zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
+    zusatz_attribute: list["ZusatzAttribut"] | None = None
     # zusatz_attribute is a list of ZusatzAttribut objects which are used to store additional information
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
-    id: Annotated[Optional[str], Field(alias="_id")] = None
+    id: Annotated[str | None, Field(alias="_id")] = None
     """
     Eine generische ID, die für eigene Zwecke genutzt werden kann.
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.

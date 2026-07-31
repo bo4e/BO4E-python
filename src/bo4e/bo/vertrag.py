@@ -43,7 +43,7 @@ class Vertrag(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.VERTRAG], Field(alias="_typ")] = BoTyp.VERTRAG
     # pylint: disable=duplicate-code
-    vertragsnummer: Optional[str] = None
+    vertragsnummer: str | None = None
     """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""
     vertragsart: Optional["Vertragsart"] = None
     """Hier ist festgelegt, um welche Art von Vertrag es sich handelt."""
@@ -51,9 +51,9 @@ class Vertrag(Geschaeftsobjekt):
     """Gibt den Status des Vertrags an"""
     sparte: Optional["Sparte"] = None
     """Unterscheidungsmöglichkeiten für die Sparte"""
-    vertragsbeginn: Optional[pydantic.AwareDatetime] = None
+    vertragsbeginn: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag beginnt (inklusiv)"""
-    vertragsende: Optional[pydantic.AwareDatetime] = None
+    vertragsende: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     # todo: add von/bis validator
     vertragspartner1: Optional["Geschaeftspartner"] = None
@@ -68,17 +68,17 @@ class Vertrag(Geschaeftsobjekt):
     In der Regel der Empfänger des Vertrags.
     Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
     """
-    vertragsteile: Optional[list["Vertragsteil"]] = None
+    vertragsteile: list["Vertragsteil"] | None = None
     """
     Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
     (Markt- oder Messlokation) festzulegen.
     """
 
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Beschreibung zum Vertrag"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
     """Festlegungen zu Laufzeiten und Kündigungsfristen"""
-    unterzeichnervp1: Optional[list["Unterschrift"]] = None
+    unterzeichnervp1: list["Unterschrift"] | None = None
     """Unterzeichner des Vertragspartners 1"""
-    unterzeichnervp2: Optional[list["Unterschrift"]] = None
+    unterzeichnervp2: list["Unterschrift"] | None = None
     """Unterzeichner des Vertragspartners 2"""

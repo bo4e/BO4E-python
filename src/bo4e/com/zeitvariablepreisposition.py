@@ -34,7 +34,7 @@ class ZeitvariablePreisposition(COM):
 
     typ: Annotated[Literal[ComTyp.ZEITVARIABLEPREISPOSITION], Field(alias="_typ")] = ComTyp.ZEITVARIABLEPREISPOSITION
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für die Preisposition."""
     preisreferenz: Optional["Preisreferenz"] = None
     """
@@ -45,7 +45,7 @@ class ZeitvariablePreisposition(COM):
     """Der Preis für diese Position."""
     zaehlzeitdefinition: Optional["Zaehlzeitdefinition"] = None
     """Die Zählzeitdefinition, deren Schaltschema bestimmt, wann diese Preisposition gilt."""
-    zaehlzeitregister: Optional[str] = None
+    zaehlzeitregister: str | None = None
     """Der freie Register-Code (z.B. "HT", "NT", "ST", "SuperHT") innerhalb der referenzierten
     `zaehlzeitdefinition`, auf den sich diese Preisposition bezieht. Der Code sollte als
     `registercode` in mindestens einer `Umschaltzeit` der referenzierten Zählzeitdefinition

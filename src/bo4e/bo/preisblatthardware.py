@@ -34,9 +34,7 @@ class PreisblattHardware(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[BoTyp.PREISBLATTHARDWARE], Field(alias="_typ")] = (
-        BoTyp.PREISBLATTHARDWARE  # type: ignore[assignment]
-    )
+    typ: Annotated[Literal[BoTyp.PREISBLATTHARDWARE], Field(alias="_typ")] = BoTyp.PREISBLATTHARDWARE  # type: ignore[assignment]
     # required attributes (additional to those of Preisblatt)
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     """Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode"""
@@ -46,8 +44,8 @@ class PreisblattHardware(Preisblatt):
     basisgeraet: Optional["Geraet"] = None
     """Der Preis betriftt das hier angegebene Gerät, z.B. ein Tarifschaltgerät"""
 
-    inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None
+    inklusive_dienstleistungen: list["Dienstleistungstyp"] | None = None
     """Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung"""
 
-    inklusive_geraete: Optional[list["Geraet"]] = None
+    inklusive_geraete: list["Geraet"] | None = None
     """Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler"""
