@@ -3,16 +3,13 @@ Contains Zeitraum class
 """
 
 from datetime import date, time
-from typing import TYPE_CHECKING, Annotated, Literal
+from typing import Annotated, Literal
 
 from pydantic import Field
 
 from ..enum.comtyp import ComTyp
 from ..utils import postprocess_docstring
 from .com import COM
-
-if TYPE_CHECKING:
-    pass
 
 
 # pylint: disable=too-few-public-methods
