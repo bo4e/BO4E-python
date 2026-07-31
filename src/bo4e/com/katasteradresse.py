@@ -2,7 +2,7 @@
 Contains Katasteradresse class
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -29,5 +29,5 @@ class Katasteradresse(COM):
 
     typ: Annotated[Literal[ComTyp.KATASTERADRESSE], Field(alias="_typ")] = ComTyp.KATASTERADRESSE
 
-    gemarkung_flur: Optional[str] = None
-    flurstueck: Optional[str] = None
+    gemarkung_flur: str | None = None
+    flurstueck: str | None = None

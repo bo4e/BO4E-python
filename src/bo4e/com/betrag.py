@@ -35,7 +35,7 @@ class Betrag(COM):
 
     typ: Annotated[Literal[ComTyp.BETRAG], Field(alias="_typ")] = ComTyp.BETRAG
 
-    wert: Optional[Decimal] = None
+    wert: Decimal | None = None
     """Gibt den Betrag des Preises an."""
     waehrung: Optional["Waehrungscode"] = None
     """Die entsprechende Waehrung"""

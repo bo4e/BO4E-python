@@ -4,7 +4,7 @@ Contains class Bilanzierung
 
 from datetime import datetime
 from decimal import Decimal
-from typing import Annotated, Optional
+from typing import Annotated
 
 from pydantic import Field
 
@@ -35,17 +35,17 @@ class Bilanzierung(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Optional[BoTyp], Field(alias="_typ")] = BoTyp.BILANZIERUNG
+    typ: Annotated[BoTyp | None, Field(alias="_typ")] = BoTyp.BILANZIERUNG
 
-    marktlokations_id: Optional[str] = None  #:  ID der Marktlokation
-    lastprofil: Optional[list[Lastprofil]] = None  #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
-    bilanzierungsbeginn: Optional[datetime] = None  #: Inklusiver Start der Bilanzierung
-    bilanzierungsende: Optional[datetime] = None  #: Exklusives Ende der Bilanzierung
-    bilanzkreis: Optional[str] = None  #: Bilanzkreis
-    jahresverbrauchsprognose: Optional[Menge] = None  #: Jahresverbrauchsprognose
-    temperatur_arbeit: Optional[Menge] = None  #: Temperatur Arbeit
-    kundenwert: Optional[Menge] = None  #: Kundenwert
-    verbrauchsaufteilung: Optional[Decimal] = None
+    marktlokations_id: str | None = None  #:  ID der Marktlokation
+    lastprofil: list[Lastprofil] | None = None  #: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)
+    bilanzierungsbeginn: datetime | None = None  #: Inklusiver Start der Bilanzierung
+    bilanzierungsende: datetime | None = None  #: Exklusives Ende der Bilanzierung
+    bilanzkreis: str | None = None  #: Bilanzkreis
+    jahresverbrauchsprognose: Menge | None = None  #: Jahresverbrauchsprognose
+    temperatur_arbeit: Menge | None = None  #: Temperatur Arbeit
+    kundenwert: Menge | None = None  #: Kundenwert
+    verbrauchsaufteilung: Decimal | None = None
     """
     Verbrauchsaufteilung in % zwischen SLP und TLP-Profil.
 
@@ -56,26 +56,26 @@ class Bilanzierung(Geschaeftsobjekt):
     3. [Gemessene Energiemenge der OBIS "nicht Schwachlast"] + [zu verlagernde Energiemenge]
     = [Ermittelte Energiemenge für nicht Schwachlast]
     """
-    zeitreihentyp: Optional[Zeitreihentyp] = None  #: Zeitreihentyp (SLS, TLS, etc.)
-    aggregationsverantwortung: Optional[Aggregationsverantwortung] = None  #: Aggregationsverantwortung
-    prognosegrundlage: Optional[Prognosegrundlage] = None  #: Prognosegrundlage
-    details_prognosegrundlage: Optional[list[Profiltyp]] = None
+    zeitreihentyp: Zeitreihentyp | None = None  #: Zeitreihentyp (SLS, TLS, etc.)
+    aggregationsverantwortung: Aggregationsverantwortung | None = None  #: Aggregationsverantwortung
+    prognosegrundlage: Prognosegrundlage | None = None  #: Prognosegrundlage
+    details_prognosegrundlage: list[Profiltyp] | None = None
     """
     Prognosegrundlage.
 
     Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben,
     so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.
     """
-    wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
+    wahlrecht_prognosegrundlage: WahlrechtPrognosegrundlage | None = None
     """
     Wahlrecht der Prognosegrundlage.
     """
-    fallgruppenzuordnung: Optional[Fallgruppenzuordnung] = None  #: Fallgruppenzuordnung (für gas RLM)
-    prioritaet: Optional[int] = None  #: Priorität des Bilanzkreises (für Gas)
-    grund_wahlrecht_prognosegrundlage: Optional[WahlrechtPrognosegrundlage] = None
+    fallgruppenzuordnung: Fallgruppenzuordnung | None = None  #: Fallgruppenzuordnung (für gas RLM)
+    prioritaet: int | None = None  #: Priorität des Bilanzkreises (für Gas)
+    grund_wahlrecht_prognosegrundlage: WahlrechtPrognosegrundlage | None = None
     """
     Grund Wahlrecht der Prognosegrundlage.
 
     true=Wahlrecht beim Lieferanten vorhanden
     """
-    abwicklungsmodell: Optional[Abwicklungsmodell] = None  #: Abwicklungsmodell
+    abwicklungsmodell: Abwicklungsmodell | None = None  #: Abwicklungsmodell

@@ -2,7 +2,7 @@
 Contains Zaehlzeitregister class
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -31,9 +31,9 @@ class Zaehlzeitregister(COM):
 
     typ: Annotated[Literal[ComTyp.ZAEHLZEITREGISTER], Field(alias="_typ")] = ComTyp.ZAEHLZEITREGISTER
 
-    zaehlzeit_definition: Optional[str] = None
+    zaehlzeit_definition: str | None = None
     """Zählzeitdefinition"""
-    zaehlzeit_register: Optional[str] = None
+    zaehlzeit_register: str | None = None
     """Zählzeitregister"""
-    ist_schwachlastfaehig: Optional[bool] = None
+    ist_schwachlastfaehig: bool | None = None
     """Schwachlastfaehigkeit"""

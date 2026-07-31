@@ -35,5 +35,5 @@ class Dienstleistung(COM):
 
     dienstleistungstyp: Optional["Dienstleistungstyp"] = None
     """Kennzeichnung der Dienstleistung"""
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung der Dienstleistung"""

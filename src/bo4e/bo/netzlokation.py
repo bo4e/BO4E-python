@@ -38,25 +38,25 @@ class Netzlokation(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.NETZLOKATION], Field(alias="_typ")] = BoTyp.NETZLOKATION
 
-    netzlokations_id: Optional[str] = None
+    netzlokations_id: str | None = None
     """Identifikationsnummer einer Netzlokation, an der Energie entweder verbraucht, oder erzeugt wird"""
     sparte: Optional["Sparte"] = None
     """Sparte der Netzlokation, z.B. Gas oder Strom."""
     netzanschlussleistung: Optional["Menge"] = None
     """Netzanschlussleistungsmenge der Netzlokation"""
-    grundzustaendiger_msb_codenr: Optional[str] = None
+    grundzustaendiger_msb_codenr: str | None = None
     """Codenummer des grundzuständigen Messstellenbetreibers, der für diese Netzlokation zuständig ist."""
-    steuerkanal: Optional[bool] = None
+    steuerkanal: bool | None = None
     """Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann."""
-    obiskennzahl: Optional[str] = None
+    obiskennzahl: str | None = None
     """Die OBIS-Kennzahl für die Netzlokation"""
     verwendungszweck: Optional["VerwendungszweckProMarktrolle"] = None
     """Verwendungungszweck der Werte Netzlokation"""
-    konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
+    konfigurationsprodukte: list["Konfigurationsprodukt"] | None = None
     """Produkt-Daten der Netzlokation"""
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
     """Eigenschaft des Messstellenbetreibers an der Lokation"""
-    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    lokationszuordnungen: list["Lokationszuordnung"] | None = None
     """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
-    lokationsbuendel_objektcode: Optional[str] = None
+    lokationsbuendel_objektcode: str | None = None
     """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

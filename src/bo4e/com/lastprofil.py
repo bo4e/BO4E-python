@@ -2,7 +2,7 @@
 Contains class Lastprofil
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -28,12 +28,10 @@ class Lastprofil(COM):
 
     typ: Annotated[Literal[ComTyp.LASTPROFIL], Field(alias="_typ")] = ComTyp.LASTPROFIL
 
-    bezeichnung: Optional[str] = None  #: Bezeichnung des Profils, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
-    profilschar: Optional[str] = (
-        None  #: Bezeichnung der Profilschar, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
-    )
-    verfahren: Optional[Profilverfahren] = None  #: Verfahren des Profils (analytisch oder synthetisch)
-    ist_einspeisung: Optional[bool] = None  #: Einspeiseprofil: True/False
-    tagesparameter: Optional[Tagesparameter] = None  #: Klimazone / Temperaturmessstelle
-    profilart: Optional[Profilart] = None  #: Profilart des Lastprofils, e.g. ART_STANDARDLASTPROFIL
-    herausgeber: Optional[str] = None  #: Herausgeber des Lastprofil-Codes, e.g. BDEW
+    bezeichnung: str | None = None  #: Bezeichnung des Profils, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
+    profilschar: str | None = None  #: Bezeichnung der Profilschar, durch DVGW bzw. den Netzbetreiber vergeben (z.B. H0)
+    verfahren: Profilverfahren | None = None  #: Verfahren des Profils (analytisch oder synthetisch)
+    ist_einspeisung: bool | None = None  #: Einspeiseprofil: True/False
+    tagesparameter: Tagesparameter | None = None  #: Klimazone / Temperaturmessstelle
+    profilart: Profilart | None = None  #: Profilart des Lastprofils, e.g. ART_STANDARDLASTPROFIL
+    herausgeber: str | None = None  #: Herausgeber des Lastprofil-Codes, e.g. BDEW

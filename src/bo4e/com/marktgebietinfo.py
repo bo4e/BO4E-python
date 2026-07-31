@@ -2,7 +2,7 @@
 Contains Marktgebietinfo class
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -29,7 +29,7 @@ class MarktgebietInfo(COM):
 
     typ: Annotated[Literal[ComTyp.MARKTGEBIETINFO], Field(alias="_typ")] = ComTyp.MARKTGEBIETINFO
 
-    marktgebiet: Optional[str] = None
+    marktgebiet: str | None = None
     """Der Name des Marktgebietes"""
-    marktgebietcode: Optional[str] = None
+    marktgebietcode: str | None = None
     """Die standardisierte Codenummer des Marktgebietes"""

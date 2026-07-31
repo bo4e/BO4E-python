@@ -45,14 +45,14 @@ class Preisposition(COM):
     berechnungsmethode: Optional["Kalkulationsmethode"] = None
     """Das Modell, das der Preisbildung zugrunde liegt"""
     leistungstyp: Optional["Leistungstyp"] = None
-    """Standardisierte Bezeichnung für die abgerechnete Leistungserbringung"""  #
-    leistungsbezeichnung: Optional[str] = None
+    """Standardisierte Bezeichnung für die abgerechnete Leistungserbringung"""
+    leistungsbezeichnung: str | None = None
     """Bezeichnung für die in der Position abgebildete Leistungserbringung"""
     preiseinheit: Optional["Waehrungseinheit"] = None
     """Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €"""
     bezugsgroesse: Optional["Mengeneinheit"] = None
     """Hier wird festgelegt, auf welche Bezugsgrösse sich der Preis bezieht, z.B. kWh oder Stück"""
-    preisstaffeln: Optional[list["Preisstaffel"]] = None
+    preisstaffeln: list["Preisstaffel"] | None = None
     """Preisstaffeln, die zu dieser Preisposition gehören"""
 
     zeitbasis: Optional["Mengeneinheit"] = None
@@ -69,14 +69,14 @@ class Preisposition(COM):
     """
     zonungsgroesse: Optional["Bemessungsgroesse"] = None
     """Mit der Menge der hier angegebenen Größe wird die Staffelung/Zonung durchgeführt. Z.B. Vollbenutzungsstunden"""
-    freimenge_blindarbeit: Optional[Decimal] = None
+    freimenge_blindarbeit: Decimal | None = None
     """Der Anteil der Menge der Blindarbeit in Prozent von der Wirkarbeit, für die keine Abrechnung erfolgt"""
-    freimenge_leistungsfaktor: Optional[Decimal] = None
+    freimenge_leistungsfaktor: Decimal | None = None
     """
     Der cos phi (Verhältnis Wirkleistung/Scheinleistung) aus dem die Freimenge für die Blindarbeit berechnet wird als
     tan phi (Verhältnis Blindleistung/Wirkleistung)
     """
-    gruppenartikel_id: Optional[str] = None
+    gruppenartikel_id: str | None = None
     """
     Übergeordnete Gruppen-ID, die sich ggf. auf die Artikel-ID in der Preisstaffel bezieht
     """

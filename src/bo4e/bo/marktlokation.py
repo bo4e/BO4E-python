@@ -48,7 +48,7 @@ class Marktlokation(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.MARKTLOKATION], Field(alias="_typ")] = BoTyp.MARKTLOKATION
 
-    marktlokations_id: Optional[str] = None
+    marktlokations_id: str | None = None
     """Identifikationsnummer einer Marktlokation, an der Energie entweder verbraucht, oder erzeugt wird."""
     sparte: Optional["Sparte"] = None
     """Sparte der Marktlokation, z.B. Gas oder Strom"""
@@ -69,11 +69,11 @@ class Marktlokation(Geschaeftsobjekt):
     """Der Netzbetreiber, an dessen Netz diese Marktlokation angeschlossen ist."""
     gebietstyp: Optional["Gebiettyp"] = None
     """Typ des Netzgebietes, z.B. Verteilnetz"""
-    netzgebietsnr: Optional[str] = None
+    netzgebietsnr: str | None = None
     """Die ID des Gebietes in der ene't-Datenbank"""  # todo: rename to "id" (see 2021-12-15 update)
-    bilanzierungsgebiet: Optional[str] = None
+    bilanzierungsgebiet: str | None = None
     """Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes"""
-    grundversorgercodenr: Optional[str] = None
+    grundversorgercodenr: str | None = None
     """Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist"""
     gasqualitaet: Optional["Gasqualitaet"] = None
     """Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes"""
@@ -94,18 +94,18 @@ class Marktlokation(Geschaeftsobjekt):
     Flurstück erfolgen.
     """
 
-    kundengruppen: Optional[list["Kundentyp"]] = None
+    kundengruppen: list["Kundentyp"] | None = None
     """Kundengruppen der Marktlokation"""
 
-    regelzone: Optional[str] = None
+    regelzone: str | None = None
     """für Strom. Code vom EIC, https://www.entsoe.eu/data/energy-identification-codes-eic/eic-approved-codes/"""
-    marktgebiet: Optional[str] = None
+    marktgebiet: str | None = None
     """für Gas. Code vom EIC, https://www.entsog.eu/data/data-portal/codes-list"""
-    zaehlwerke: Optional[list["Zaehlwerk"]] = None
-    verbrauchsmengen: Optional[list["Energiemenge"]] = None
-    zaehlwerke_der_beteiligten_marktrolle: Optional[list["Zaehlwerk"]] = None
+    zaehlwerke: list["Zaehlwerk"] | None = None
+    verbrauchsmengen: list["Energiemenge"] | None = None
+    zaehlwerke_der_beteiligten_marktrolle: list["Zaehlwerk"] | None = None
 
-    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    lokationszuordnungen: list["Lokationszuordnung"] | None = None
     """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
-    lokationsbuendel_objektcode: Optional[str] = None
+    lokationsbuendel_objektcode: str | None = None
     """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

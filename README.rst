@@ -13,8 +13,8 @@ BO4E
 .. |license| image:: https://img.shields.io/badge/License-MIT-blue.svg
 .. _license: https://github.com/Hochfrequenz/BO4E-python/blob/main/LICENSE.rst
 
-.. |code style| image:: https://img.shields.io/badge/code%20style-black-000000.svg
-.. _`code style`: https://github.com/psf/black
+.. |code style| image:: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+.. _`code style`: https://github.com/astral-sh/ruff
 
 .. |PyPI pyversions| image:: https://img.shields.io/pypi/pyversions/bo4e.svg
 .. _`PyPI pyversions`: https://pypi.python.org/pypi/bo4e/
@@ -92,10 +92,10 @@ Die Entwicklungs-Abhängigkeiten sind in ``pyproject.toml`` unter ``[dependency-
 
        # Einzelne Prüfung ausführen
        uv run --group tests pytest
-       uv run --group linting pylint src/bo4e
+       uv run --group linting ruff check src/bo4e
        cd docs && uv run --group docs make html
 
-Die verfügbaren Gruppen sind: ``tests``, ``coverage``, ``type_check``, ``linting``, ``formatting``, ``json_schemas``, ``docs`` und ``dev`` (Sammel-Gruppe, enthält alle anderen plus ``pre-commit``).
+Die verfügbaren Gruppen sind: ``tests``, ``coverage``, ``type_check``, ``linting``, ``json_schemas``, ``docs`` und ``dev`` (Sammel-Gruppe, enthält alle anderen plus ``pre-commit``).
 
 Nutzung als Python Library
 ==========================

@@ -12,7 +12,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .zeitraum import Zeitraum
 
 # pylint: disable=too-few-public-methods
@@ -34,11 +33,11 @@ class Vertragskonditionen(COM):
 
     typ: Annotated[Literal[ComTyp.VERTRAGSKONDITIONEN], Field(alias="_typ")] = ComTyp.VERTRAGSKONDITIONEN
 
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """
     Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
     """
-    anzahl_abschlaege: Optional[Decimal] = None
+    anzahl_abschlaege: Decimal | None = None
     """Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12"""
     vertragslaufzeit: Optional["Zeitraum"] = None
     """Über diesen Zeitraum läuft der Vertrag"""

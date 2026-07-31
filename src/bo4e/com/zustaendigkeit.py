@@ -37,7 +37,7 @@ class Zustaendigkeit(COM):
     Hier kann eine thematische Zuordnung des Ansprechpartners bzw. der Person angegeben werden
     """
 
-    position: Optional[str] = None
+    position: str | None = None
     """Berufliche Rolle des Ansprechpartners/ der Person"""
-    abteilung: Optional[str] = None
+    abteilung: str | None = None
     """Abteilung, in der der Ansprechpartner/ die Person tätig ist"""

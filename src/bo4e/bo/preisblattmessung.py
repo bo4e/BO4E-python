@@ -35,9 +35,7 @@ class PreisblattMessung(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[BoTyp.PREISBLATTMESSUNG], Field(alias="_typ")] = (
-        BoTyp.PREISBLATTMESSUNG  # type: ignore[assignment]
-    )
+    typ: Annotated[Literal[BoTyp.PREISBLATTMESSUNG], Field(alias="_typ")] = BoTyp.PREISBLATTMESSUNG  # type: ignore[assignment]
     # required attributes (additional to those of Preisblatt)
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     """Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode"""
@@ -47,8 +45,8 @@ class PreisblattMessung(Preisblatt):
     zaehler: Optional["Zaehler"] = None
     """Der Preis betrifft den hier angegebenen Zähler, z.B. einen Drehstromzähler"""
 
-    inklusive_dienstleistungen: Optional[list["Dienstleistungstyp"]] = None
+    inklusive_dienstleistungen: list["Dienstleistungstyp"] | None = None
     """Im Preis sind die hier angegebenen Dienstleistungen enthalten, z.B. Jährliche Ablesung"""
 
-    inklusive_geraete: Optional[list["Geraet"]] = None
+    inklusive_geraete: list["Geraet"] | None = None
     """Im Preis sind die hier angegebenen Geräte mit enthalten, z.B. ein Wandler"""

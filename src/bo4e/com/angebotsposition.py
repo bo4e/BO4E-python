@@ -11,7 +11,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .betrag import Betrag
     from .menge import Menge
     from .preis import Preis
@@ -39,7 +38,7 @@ class Angebotsposition(COM):
 
     typ: Annotated[Literal[ComTyp.ANGEBOTSPOSITION], Field(alias="_typ")] = ComTyp.ANGEBOTSPOSITION
 
-    positionsbezeichnung: Optional[str] = None
+    positionsbezeichnung: str | None = None
     """Bezeichnung der jeweiligen Position des Angebotsteils"""
     positionspreis: Optional["Preis"] = None
     """Preis pro Einheit/Stückpreis des angebotenen Artikels."""

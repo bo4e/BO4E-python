@@ -40,7 +40,7 @@ class VerwendungszweckProMarktrolle(COM):
     """
     Marktrolle, für die die Daten relevant sind
     """
-    Zwecke: Optional[list["Verwendungszweck"]] = None
+    Zwecke: list["Verwendungszweck"] | None = None
     """
     Verwendungszwecke
     """

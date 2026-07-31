@@ -41,7 +41,7 @@ class Tarifpreisposition(COM):
     """Einheit des Preises (z.B. EURO)"""
     bezugseinheit: Optional["Mengeneinheit"] = None
     """Größe, auf die sich die Einheit bezieht, beispielsweise kWh, Jahr"""
-    preisstaffeln: Optional[list["Preisstaffel"]] = None
+    preisstaffeln: list["Preisstaffel"] | None = None
     """Hier sind die Staffeln mit ihren Preisenangaben definiert"""
 
     mengeneinheitstaffel: Optional["Mengeneinheit"] = None

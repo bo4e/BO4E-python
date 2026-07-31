@@ -40,29 +40,29 @@ class Messlokation(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.MESSLOKATION], Field(alias="_typ")] = BoTyp.MESSLOKATION
 
-    messlokations_id: Optional[str] = None
+    messlokations_id: str | None = None
     """Die Messlokations-Identifikation; Das ist die frühere Zählpunktbezeichnung"""
     sparte: Optional["Sparte"] = None
     """Sparte der Messlokation, z.B. Gas oder Strom"""
 
     netzebene_messung: Optional["Netzebene"] = None
     """Spannungsebene der Messung"""
-    messgebietnr: Optional[str] = None
+    messgebietnr: str | None = None
     """Die Nummer des Messgebietes in der ene't-Datenbank"""
-    geraete: Optional[list["Geraet"]] = None
+    geraete: list["Geraet"] | None = None
     """Liste der Geräte, die zu dieser Messstelle gehört"""
-    messdienstleistung: Optional[list["Dienstleistung"]] = None
+    messdienstleistung: list["Dienstleistung"] | None = None
     """Liste der Messdienstleistungen, die zu dieser Messstelle gehört"""  # todo: rename to plural
-    messlokationszaehler: Optional[list["Zaehler"]] = None
+    messlokationszaehler: list["Zaehler"] | None = None
     """Zähler, die zu dieser Messlokation gehören"""
 
     # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr: Optional[str] = None
+    grundzustaendiger_msb_codenr: str | None = None
     """
     Codenummer des grundzuständigen Messstellenbetreibers, der für diese Messlokation zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
-    grundzustaendiger_msbim_codenr: Optional[str] = None
+    grundzustaendiger_msbim_codenr: str | None = None
     """
     Codenummer des grundzuständigen Messstellenbetreibers für intelligente Messsysteme, der für diese Messlokation
     zuständig ist.
@@ -84,7 +84,7 @@ class Messlokation(Geschaeftsobjekt):
     Alternativ zu einer postalischen Adresse und Geokoordinaten kann hier eine Ortsangabe mittels Gemarkung und
     Flurstück erfolgen.
     """
-    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    lokationszuordnungen: list["Lokationszuordnung"] | None = None
     """Lokationszuordnung, um bspw. die zugehörigen Marktlokationen anzugeben"""
-    lokationsbuendel_objektcode: Optional[str] = None
+    lokationsbuendel_objektcode: str | None = None
     """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

@@ -33,9 +33,7 @@ class PreisblattNetznutzung(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[BoTyp.PREISBLATTNETZNUTZUNG], Field(alias="_typ")] = (
-        BoTyp.PREISBLATTNETZNUTZUNG  # type: ignore[assignment]
-    )
+    typ: Annotated[Literal[BoTyp.PREISBLATTNETZNUTZUNG], Field(alias="_typ")] = BoTyp.PREISBLATTNETZNUTZUNG  # type: ignore[assignment]
     # required attributes (additional to those of Preisblatt)
     bilanzierungsmethode: Optional["Bilanzierungsmethode"] = None
     """Die Preise gelten für Marktlokationen der angebebenen Bilanzierungsmethode"""

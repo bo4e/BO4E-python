@@ -3,7 +3,7 @@ Contains Zeitraum class
 """
 
 from datetime import date, time
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal
 
 from pydantic import Field
 
@@ -12,7 +12,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..enum.mengeneinheit import Mengeneinheit
+    pass
 
 
 # pylint: disable=too-few-public-methods
@@ -36,31 +36,31 @@ class Zeitraum(COM):
 
     typ: Annotated[Literal[ComTyp.ZEITRAUM], Field(alias="_typ")] = ComTyp.ZEITRAUM
 
-    startdatum: Optional[date] = None
+    startdatum: date | None = None
     """Startdatum des betrachteten Zeitraums ist **inklusiv**.
 
     Example:
         '2025-01-01'
     """
-    enddatum: Optional[date] = None
+    enddatum: date | None = None
     """Enddatum des betrachteten Zeitraums ist **inklusiv**.
 
     Example:
         '2025-01-01'
     """
-    startuhrzeit: Optional[time] = None
+    startuhrzeit: time | None = None
     """Startuhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **inklusiv**.
 
     Example:
         '18:00:00+01:00'
     """
-    enduhrzeit: Optional[time] = None
+    enduhrzeit: time | None = None
     """Enduhrzeit mit Zeitzone. Die angegebene Uhrzeit ist im betrachteten Zeitraum **exklusiv**.
 
     Example:
         '19:00:00+01:00'
     """
-    dauer: Optional[str] = None
+    dauer: str | None = None
     """
     Dauer in ISO 8601 Format.
 

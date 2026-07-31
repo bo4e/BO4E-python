@@ -37,7 +37,7 @@ class Messwert(COM):
     """Gibt den Status des Messwerts an."""
     messwertstatuszusatz: Optional["Messwertstatuszusatz"] = None
     """Gibt den Status Zusatz des Messwerts an."""
-    zeitpunkt: Optional[pydantic.AwareDatetime] = None
+    zeitpunkt: pydantic.AwareDatetime | None = None
     """Gibt den Zeitpunkt des Messwerts an."""
     wert: Optional["Menge"] = None
     """Gibt die gemessene Menge an."""

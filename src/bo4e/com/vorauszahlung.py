@@ -34,5 +34,5 @@ class Vorauszahlung(COM):
     typ: Annotated[Literal[ComTyp.VORAUSZAHLUNG], Field(alias="_typ")] = ComTyp.VORAUSZAHLUNG
 
     betrag: Optional["Betrag"] = None
-    datum: Optional[AwareDatetime] = None
-    referenz: Optional[str] = None
+    datum: AwareDatetime | None = None
+    referenz: str | None = None

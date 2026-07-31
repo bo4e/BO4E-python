@@ -37,12 +37,12 @@ class AufAbschlag(COM):
 
     typ: Annotated[Literal[ComTyp.AUFABSCHLAG], Field(alias="_typ")] = ComTyp.AUFABSCHLAG
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung des Auf-/Abschlags"""
-    staffeln: Optional[list["Preisstaffel"]] = None
+    staffeln: list["Preisstaffel"] | None = None
     """Werte für die gestaffelten Auf/Abschläge."""
 
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Beschreibung zum Auf-/Abschlag"""
     auf_abschlagstyp: Optional["AufAbschlagstyp"] = None
     """Typ des Aufabschlages (z.B. absolut oder prozentual)."""
@@ -51,7 +51,7 @@ class AufAbschlag(COM):
     einheit: Optional["Waehrungseinheit"] = None
     """ Gibt an in welcher Währungseinheit der Auf/Abschlag berechnet wird. Euro oder Ct..
     (Nur im Falle absoluter Aufschlagstypen). """
-    website: Optional[str] = None
+    website: str | None = None
     """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind."""
     gueltigkeitszeitraum: Optional["Zeitraum"] = None
     """Internetseite, auf der die Informationen zum Auf-/Abschlag veröffentlicht sind."""

@@ -38,30 +38,30 @@ class Zaehlwerk(COM):
 
     typ: Annotated[Literal[ComTyp.ZAEHLWERK], Field(alias="_typ")] = ComTyp.ZAEHLWERK
 
-    zaehlwerk_id: Optional[str] = None
+    zaehlwerk_id: str | None = None
     """
     Identifikation des Zählwerks (Registers) innerhalb des Zählers.
     Oftmals eine laufende Nummer hinter der Zählernummer. Z.B. 47110815_1
     """
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Zusätzliche Bezeichnung, z.B. Zählwerk_Wirkarbeit."""
     richtung: Optional["Energierichtung"] = None
     """Die Energierichtung, Einspeisung oder Ausspeisung."""
-    obis_kennzahl: Optional[str] = None
+    obis_kennzahl: str | None = None
     """
     Die OBIS-Kennzahl für das Zählwerk, die festlegt, welche auf die gemessene Größe mit dem Stand gemeldet wird.
     Nur Zählwerkstände mit dieser OBIS-Kennzahl werden an diesem Zählwerk registriert.
     """
-    wandlerfaktor: Optional[Decimal] = None
+    wandlerfaktor: Decimal | None = None
     """
     Mit diesem Faktor wird eine Zählerstandsdifferenz multipliziert, um zum eigentlichen Verbrauch im Zeitraum
     zu kommen.
     """
     einheit: Optional["Mengeneinheit"] = None
     """Die Einheit der gemessenen Größe, z.B. kWh"""
-    ist_schwachlastfaehig: Optional[bool] = None
+    ist_schwachlastfaehig: bool | None = None
     """Schwachlastfaehigkeit"""
-    verwendungszwecke: Optional[list["VerwendungszweckProMarktrolle"]] = None
+    verwendungszwecke: list["VerwendungszweckProMarktrolle"] | None = None
     """Verwendungungszweck der Werte Marktlokation"""
     verbrauchsart: Optional["Verbrauchsart"] = None
     """Stromverbrauchsart/Verbrauchsart Marktlokation"""
@@ -69,17 +69,17 @@ class Zaehlwerk(COM):
     """Wärmenutzung Marktlokation"""
     konzessionsabgabe: Optional["Konzessionsabgabe"] = None
     """Konzessionsabgabe"""
-    ist_steuerbefreit: Optional[bool] = None
+    ist_steuerbefreit: bool | None = None
     """Steuerbefreiung"""
-    vorkommastelle: Optional[int] = None
+    vorkommastelle: int | None = None
     """Anzahl der Vorkommastellen"""
-    nachkommastelle: Optional[int] = None
+    nachkommastelle: int | None = None
     """Anzahl der Nachkommastellen"""
-    ist_abrechnungsrelevant: Optional[bool] = None
+    ist_abrechnungsrelevant: bool | None = None
     """Abrechnungsrelevant"""
-    anzahlAblesungen: Optional[int] = None
+    anzahlAblesungen: int | None = None  # noqa: N815 (pre-existing public field name)
     """Anzahl Ablesungen pro Jahr"""
     zaehlzeitregister: Optional["Zaehlzeitregister"] = None
     """Erweiterte Definition der Zählzeit in Bezug auf ein Register"""
-    messwerte: Optional[list["Messwert"]] = None
+    messwerte: list["Messwert"] | None = None
     """Gemessene Werte des Zählwerks"""

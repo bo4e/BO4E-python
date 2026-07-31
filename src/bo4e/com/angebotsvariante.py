@@ -39,13 +39,13 @@ class Angebotsvariante(COM):
     angebotsstatus: Optional["Angebotsstatus"] = None
     """Gibt den Status eines Angebotes an."""
 
-    erstellungsdatum: Optional[pydantic.AwareDatetime] = None
+    erstellungsdatum: pydantic.AwareDatetime | None = None
     """Datum der Erstellung der Angebotsvariante"""
 
-    bindefrist: Optional[pydantic.AwareDatetime] = None
+    bindefrist: pydantic.AwareDatetime | None = None
     """Bis zu diesem Zeitpunkt gilt die Angebotsvariante"""
 
-    teile: Optional[list["Angebotsteil"]] = None
+    teile: list["Angebotsteil"] | None = None
     """
     Angebotsteile werden im einfachsten Fall für eine Marktlokation oder Lieferstellenadresse erzeugt.
     Hier werden die Mengen und Gesamtkosten aller Angebotspositionen zusammengefasst.

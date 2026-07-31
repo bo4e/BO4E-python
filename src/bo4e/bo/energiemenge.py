@@ -34,9 +34,9 @@ class Energiemenge(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.ENERGIEMENGE], Field(alias="_typ")] = BoTyp.ENERGIEMENGE
-    obis_kennzahl: Optional[str] = None
+    obis_kennzahl: str | None = None
     """Die OBIS-Kennzahl der Energiemenge"""
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Ergänzende Beschreibung zur Energiemenge"""
     zeitraum: Optional["Zeitraum"] = None
     """Zeitraum, in dem die Energiemenge angefallen ist/gemessen wurde"""

@@ -63,21 +63,21 @@ class Tarif(Tarifinfo):
 
     typ: Annotated[Literal[BoTyp.TARIF], Field(alias="_typ")] = BoTyp.TARIF  # type:ignore[assignment]
 
-    regionspreise: Optional[list["Regionspreis"]] = None
+    regionspreise: list["Regionspreis"] | None = None
     """
     Enthält alle regions- und zeitaufgelösten Tarifpreise.
     Ausschließlich die `COM DynamischePreisposition` wird unter einem anderen Feld namens `dynamischePreisposition`
     angegeben.
     """
-    dynamische_preisposition_quelle: Optional[str] = None
+    dynamische_preisposition_quelle: str | None = None
     """
     Gibt die Bezugsquelle (z.B. Börsenindex) für den dynamischen Tarif an.
     Dieses Feld muss genau dann gesetzt werden, wenn es sich bei diesem Tarif um einen dynamischen Tarif handelt.
     """
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für den Tarif."""
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Eine (beliebige) Beschreibung für den Tarif."""
     anbieter: Optional["Marktteilnehmer"] = None
     """Der Marktteilnehmer, der diesen Tarif anbietet, angeboten hat oder anbieten wird."""
@@ -88,15 +88,15 @@ class Tarif(Tarifinfo):
     """Der Zeitraum, in dem eine Belieferung (für diesen Tarif) möglich ist."""
     vertragskonditionen: Optional["Vertragskonditionen"]
     """Vertragskonditionen für diesen Tarif."""
-    website: Optional[str]
+    website: str | None
     """Internetseite, auf der der Tarif veröffentlicht ist."""
-    energiemix: Optional[list["Energiemix"]]  # type:ignore[assignment]
+    energiemix: list["Energiemix"] | None  # type:ignore[assignment]
     """Der Energiemix mit einem Eintrag pro Gültigkeitsjahr (siehe `Energiemix.gueltigkeitsjahr`)."""
-    kundentypen: Optional[list["Kundentyp"]]
+    kundentypen: list["Kundentyp"] | None
     """Eine Liste an Kundentypen, für die dieser Tarif vorgesehen ist."""
     tariftyp: Optional["Tariftyp"]
     """Der Tariftyp. Bsp.: Grundversorgung, Ersatzversorgung, etc."""
-    tarifmerkmale: Optional[list["Tarifmerkmal"]]
+    tarifmerkmale: list["Tarifmerkmal"] | None
     """Eine Liste von Produktmerkmalen im Zusammenhang mit diesem Tarif."""
     sparte: Optional["Sparte"]
     """Strom / Gas"""

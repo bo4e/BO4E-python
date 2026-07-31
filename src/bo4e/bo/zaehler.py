@@ -45,7 +45,7 @@ class Zaehler(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.ZAEHLER], Field(alias="_typ")] = BoTyp.ZAEHLER
-    zaehlernummer: Optional[str] = None
+    zaehlernummer: str | None = None
     """Nummerierung des Zählers,vergeben durch den Messstellenbetreiber"""
     sparte: Optional["Sparte"] = None
     """Strom oder Gas"""
@@ -53,24 +53,24 @@ class Zaehler(Geschaeftsobjekt):
     """Spezifikation die Richtung des Zählers betreffend"""
     zaehlertyp: Optional["Zaehlertyp"] = None
     """Typisierung des Zählers"""
-    zaehlwerke: Optional[list["Zaehlwerk"]] = None
+    zaehlwerke: list["Zaehlwerk"] | None = None
     registeranzahl: Optional["Registeranzahl"] = None
     """Spezifikation bezüglich unterstützter Tarif"""
-    zaehlerkonstante: Optional[Decimal] = None
+    zaehlerkonstante: Decimal | None = None
     """Zählerkonstante auf dem Zähler"""
-    eichung_bis: Optional[pydantic.AwareDatetime] = None
+    eichung_bis: pydantic.AwareDatetime | None = None
     """Bis zu diesem Datum (exklusiv) ist der Zähler geeicht."""
-    letzte_eichung: Optional[pydantic.AwareDatetime] = None
+    letzte_eichung: pydantic.AwareDatetime | None = None
     """Zu diesem Datum fand die letzte Eichprüfung des Zählers statt."""
     zaehlerhersteller: Optional["Geschaeftspartner"] = None
     """Der Hersteller des Zählers"""
-    ist_fernauslesbar: Optional[bool] = None
+    ist_fernauslesbar: bool | None = None
     """Fernauslesung"""
-    zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None
+    zaehlertypSpezifikation: Optional["ZaehlertypSpezifikation"] = None  # noqa: N815 (pre-existing public field name)
     """Besondere Spezifikation des Zählers"""
     befestigungsart: Optional["Befestigungsart"] = None
     """Befestigungsart"""
     zaehlergroesse: Optional["Zaehlergroesse"] = None
     """Größe des Zählers"""
-    geraete: Optional[list["Geraet"]] = None
+    geraete: list["Geraet"] | None = None
     """Liste der Geräte, die zu diesem Zähler gehören, bspw. Smartmeter-Gateway"""

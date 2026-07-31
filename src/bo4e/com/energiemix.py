@@ -37,28 +37,28 @@ class Energiemix(COM):
 
     typ: Annotated[Literal[ComTyp.ENERGIEMIX], Field(alias="_typ")] = ComTyp.ENERGIEMIX
 
-    energiemixnummer: Optional[int] = None
+    energiemixnummer: int | None = None
     """Eindeutige Nummer zur Identifizierung des Energiemixes"""
     energieart: Optional["Sparte"] = None
     """Strom oder Gas etc."""
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung des Energiemix"""
-    gueltigkeitsjahr: Optional[int] = None
+    gueltigkeitsjahr: int | None = None
     """Jahr, für das der Energiemix gilt"""
-    anteil: Optional[list["Energieherkunft"]] = None
+    anteil: list["Energieherkunft"] | None = None
     """Anteile der jeweiligen Erzeugungsart"""
 
-    bemerkung: Optional[str] = None
+    bemerkung: str | None = None
     """Bemerkung zum Energiemix"""
-    co2_emission: Optional[Decimal] = None
+    co2_emission: Decimal | None = None
     """Höhe des erzeugten CO2-Ausstosses in g/kWh"""
-    atommuell: Optional[Decimal] = None
+    atommuell: Decimal | None = None
     """Höhe des erzeugten Atommülls in g/kWh"""
-    oekozertifikate: Optional[list["Oekozertifikat"]] = None
+    oekozertifikate: list["Oekozertifikat"] | None = None
     """Zertifikate für den Energiemix"""
-    oekolabel: Optional[list["Oekolabel"]] = None
+    oekolabel: list["Oekolabel"] | None = None
     """Ökolabel für den Energiemix"""
-    ist_in_oeko_top_ten: Optional[bool] = None
+    ist_in_oeko_top_ten: bool | None = None
     """Kennzeichen, ob der Versorger zu den Öko Top Ten gehört"""
-    website: Optional[str] = None
+    website: str | None = None
     """Internetseite, auf der die Strommixdaten veröffentlicht sind"""

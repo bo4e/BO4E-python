@@ -37,15 +37,15 @@ class Ausschreibung(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.AUSSCHREIBUNG], Field(alias="_typ")] = BoTyp.AUSSCHREIBUNG
-    ausschreibungsnummer: Optional[str] = None
+    ausschreibungsnummer: str | None = None
     """Vom Herausgeber der Ausschreibung vergebene eindeutige Nummer"""
     ausschreibungstyp: Optional["Ausschreibungstyp"] = None
     """Aufzählung für die Typisierung von Ausschreibungen"""
     ausschreibungsstatus: Optional["Ausschreibungsstatus"] = None
     """Bezeichnungen für die Ausschreibungsphasen"""
-    ist_kostenpflichtig: Optional[bool] = None
+    ist_kostenpflichtig: bool | None = None
     """Kennzeichen, ob die Ausschreibung kostenpflichtig ist"""
-    veroeffentlichungszeitpunkt: Optional[pydantic.AwareDatetime] = None
+    veroeffentlichungszeitpunkt: pydantic.AwareDatetime | None = None
     """Gibt den Veröffentlichungszeitpunkt der Ausschreibung an"""
     ausschreibender: Optional["Geschaeftspartner"] = None
     """
@@ -62,10 +62,10 @@ class Ausschreibung(Geschaeftsobjekt):
     Diese Komponente wird zur Abbildung von Zeiträumen in Form von Dauern oder der Angabe von Start und Ende verwendet.
     Es muss daher entweder eine Dauer oder ein Zeitraum in Form von Start und Ende angegeben sein
     """
-    lose: Optional[list["Ausschreibungslos"]] = None
+    lose: list["Ausschreibungslos"] | None = None
     """Die einzelnen Lose, aus denen sich die Ausschreibung zusammensetzt"""
 
     ausschreibungportal: Optional["Ausschreibungsportal"] = None
     """Aufzählung der unterstützten Ausschreibungsportale"""
-    webseite: Optional[str] = None
+    webseite: str | None = None
     """Internetseite, auf der die Ausschreibung veröffentlicht wurde (falls vorhanden)"""
