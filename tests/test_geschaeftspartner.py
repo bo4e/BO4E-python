@@ -9,7 +9,6 @@ from bo4e import (
     Landescode,
     Organisationstyp,
     Person,
-    Titel,
 )
 from tests.serialization_helper import assert_serialization_roundtrip
 
@@ -23,7 +22,7 @@ class TestGeschaeftspartner:
                     ansprechpartner=[Person(), Person()],
                     anrede=Anrede.EHELEUTE,
                     individuelle_anrede="Künstler",
-                    titel=Titel.PROF_DR,
+                    titel="Prof. Dr.",
                     vorname="Hans",
                     nachname="Müller-Schmidt",
                     organisationstyp=Organisationstyp.UNTERNEHMEN,
@@ -43,7 +42,7 @@ class TestGeschaeftspartner:
                     ansprechpartner=[Person(), Person()],
                     anrede=Anrede.EHELEUTE,
                     individuelle_anrede="Künstler",
-                    titel=Titel.PROF_DR,
+                    titel="Prof. Dr.",
                     vorname="Hans",
                     nachname="Müller-Schmidt",
                     organisationstyp=Organisationstyp.UNTERNEHMEN,

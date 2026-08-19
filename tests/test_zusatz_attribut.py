@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from bo4e import Anrede, Organisationstyp, Titel
+from bo4e import Anrede, Organisationstyp
 from bo4e.bo.geschaeftspartner import Geschaeftspartner
 from bo4e.bo.person import Person
 from bo4e.com.adresse import Adresse
@@ -25,7 +25,7 @@ class TestZusatzAttribut:
                     ansprechpartner=[Person(), Person()],
                     anrede=Anrede.EHELEUTE,
                     individuelle_anrede="Künstler",
-                    titel=Titel.PROF_DR,
+                    titel="Prof. Dr.",
                     vorname="Hans",
                     nachname="Müller-Schmidt",
                     organisationstyp=Organisationstyp.PRIVATPERSON,

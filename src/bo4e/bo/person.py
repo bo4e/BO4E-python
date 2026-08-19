@@ -16,7 +16,6 @@ if TYPE_CHECKING:
     from ..com.kontaktweg import Kontaktweg
     from ..com.zustaendigkeit import Zustaendigkeit
     from ..enum.anrede import Anrede
-    from ..enum.titel import Titel
 
 
 # pylint: disable=too-many-instance-attributes, too-few-public-methods, disable=duplicate-code
@@ -44,8 +43,8 @@ class Person(Geschaeftsobjekt):
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
-    titel: Optional["Titel"] = None
-    """Möglicher Titel der Person"""
+    titel: str | None = None
+    """Möglicher Titel der Person, z.B. "Dr." oder "Prof. Dr."."""
     vorname: str | None = None
     """Vorname der Person"""
     nachname: str | None = None
