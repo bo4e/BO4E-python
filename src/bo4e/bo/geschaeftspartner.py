@@ -17,7 +17,6 @@ if TYPE_CHECKING:
     from ..enum.anrede import Anrede
     from ..enum.geschaeftspartnerrolle import Geschaeftspartnerrolle
     from ..enum.organisationstyp import Organisationstyp
-    from ..enum.titel import Titel
     from .person import Person
 
 
@@ -46,8 +45,8 @@ class Geschaeftspartner(Geschaeftsobjekt):
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
-    titel: Optional["Titel"] = None
-    """Möglicher Titel der Person"""
+    titel: str | None = None
+    """Möglicher Titel der Person, z.B. "Dr." oder "Prof. Dr."."""
     vorname: str | None = None
     """Vorname der Person"""
     nachname: str | None = None
