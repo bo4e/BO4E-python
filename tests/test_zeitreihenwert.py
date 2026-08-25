@@ -16,7 +16,7 @@ class TestZeitreihenwert:
                     zeitraum=Zeitraum(startdatum=datetime(2013, 5, 1), enddatum=datetime(2022, 1, 28)),
                     wert=Decimal(2.5),
                     status=Messwertstatus.ABGELESEN,
-                    statuszusatz=Messwertstatuszusatz.Z78_GERAETEWECHSEL,
+                    statuszusatz=Messwertstatuszusatz.GERAETEWECHSEL,
                 ),
             ),
         ],
