@@ -39,24 +39,24 @@ class Person(Geschaeftsobjekt):
     typ: Annotated[Literal[BoTyp.PERSON], Field(alias="_typ")] = BoTyp.PERSON
     anrede: Optional["Anrede"] = None
     """Mögliche Anrede der Person"""
-    individuelle_anrede: Optional[str] = None
+    individuelle_anrede: str | None = None
     """
     Im Falle einer nicht standardisierten Anrede kann hier eine frei definierbare Anrede vorgegeben werden.
     Beispiel: "Vereinsgemeinschaft", "Pfarrer", "Hochwürdigster Herr Abt".
     """
     titel: Optional["Titel"] = None
     """Möglicher Titel der Person"""
-    vorname: Optional[str] = None
+    vorname: str | None = None
     """Vorname der Person"""
-    nachname: Optional[str] = None
+    nachname: str | None = None
     """Nachname (Familienname) der Person"""
-    kontaktwege: Optional[list["Kontaktweg"]] = None
+    kontaktwege: list["Kontaktweg"] | None = None
     """Kontaktwege der Person"""
-    geburtsdatum: Optional[date] = None
+    geburtsdatum: date | None = None
     """Geburtsdatum der Person"""
-    kommentar: Optional[str] = None
+    kommentar: str | None = None
     """Weitere Informationen zur Person"""
-    zustaendigkeiten: Optional[list["Zustaendigkeit"]] = None
+    zustaendigkeiten: list["Zustaendigkeit"] | None = None
     """Liste der Abteilungen und Zuständigkeiten der Person"""
     adresse: Optional["Adresse"] = None
     """Adresse der Person, falls diese von der Adresse des Geschäftspartners abweicht"""

@@ -3,7 +3,7 @@ Contains base class for all components
 """
 
 from decimal import Decimal
-from typing import Annotated, Optional, Type, TypeVar
+from typing import Annotated, TypeVar
 
 from humps.main import camelize
 
@@ -32,20 +32,20 @@ class COM(BaseModel):
 
     """
 
-    version: Annotated[Optional[str], Field(alias="_version")] = __version__
+    version: Annotated[str | None, Field(alias="_version")] = __version__
     """
     Version der COM-Struktur aka "fachliche Versionierung"
     """
 
     # Python internal: The field is not named '_id' because leading underscores are not allowed in pydantic field names.
     # NameError: Fields must not use names with leading underscores; e.g., use 'id' instead of '_id'.
-    id: Annotated[Optional[str], Field(alias="_id")] = None
+    id: Annotated[str | None, Field(alias="_id")] = None
     """
     Eine generische ID, die für eigene Zwecke genutzt werden kann.
     Z.B. könnten hier UUIDs aus einer Datenbank stehen oder URLs zu einem Backend-System.
     """
 
-    zusatz_attribute: Optional[list["ZusatzAttribut"]] = None
+    zusatz_attribute: list["ZusatzAttribut"] | None = None
 
     # pylint: disable=duplicate-code
     # basic configuration for pydantic's behaviour
@@ -63,7 +63,7 @@ class COM(BaseModel):
 
 # pylint: disable=invalid-name
 # Any type derived from COM including those that do not directly inherit from COM
-TCom = TypeVar("TCom", bound=Type[COM])
+TCom = TypeVar("TCom", bound=type[COM])
 
 
 # todo: find out if this way of typing is correct

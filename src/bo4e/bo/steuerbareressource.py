@@ -35,17 +35,17 @@ class SteuerbareRessource(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.STEUERBARERESSOURCE], Field(alias="_typ")] = BoTyp.STEUERBARERESSOURCE
 
-    steuerbare_ressource_id: Optional[str] = None
+    steuerbare_ressource_id: str | None = None
     """Id der steuerbaren Ressource"""
     steuerkanal_leistungsbeschreibung: Optional["SteuerkanalLeistungsbeschreibung"] = None
     """Leistungsbeschreibung des Steuerkanals"""
-    zugeordnete_msb_codenummer: Optional[str] = None
+    zugeordnete_msb_codenummer: str | None = None
     """Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist."""
-    konfigurationsprodukte: Optional[list["Konfigurationsprodukt"]] = None
+    konfigurationsprodukte: list["Konfigurationsprodukt"] | None = None
     """Produkt-Daten der Steuerbaren Ressource"""
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
     """Eigenschaft des Messstellenbetreibers an der Lokation"""
-    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    lokationszuordnungen: list["Lokationszuordnung"] | None = None
     """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
-    lokationsbuendel_objektcode: Optional[str] = None
+    lokationsbuendel_objektcode: str | None = None
     """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""

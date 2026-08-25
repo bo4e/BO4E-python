@@ -36,5 +36,5 @@ class Tarifpreis(Preis):
     preistyp: Optional["Preistyp"] = None
     """ Angabe des Preistypes (z.B. Grundpreis)"""
 
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """ Beschreibung des Preises. Hier können z.B. Preisdetails angegeben sein, beispielsweise "Drehstromzähler"."""

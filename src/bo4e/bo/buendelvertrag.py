@@ -41,7 +41,7 @@ class Buendelvertrag(Geschaeftsobjekt):
     typ: Annotated[Literal[BoTyp.BUENDELVERTRAG], Field(alias="_typ")] = BoTyp.BUENDELVERTRAG
 
     # pylint: disable=duplicate-code
-    vertragsnummer: Optional[str] = None
+    vertragsnummer: str | None = None
     """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""
     vertragsart: Optional["Vertragsart"] = None
     """Hier ist festgelegt, um welche Art von Vertrag es sich handelt. Z.B. Netznutzungvertrag"""
@@ -49,9 +49,9 @@ class Buendelvertrag(Geschaeftsobjekt):
     """Gibt den Status des Vertrages an"""
     sparte: Optional["Sparte"] = None
     """Unterscheidungsmöglichkeiten für die Sparte"""
-    vertragsbeginn: Optional[pydantic.AwareDatetime] = None
+    vertragsbeginn: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag beginnt (inklusiv)"""
-    vertragsende: Optional[pydantic.AwareDatetime] = None
+    vertragsende: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     vertragspartner1: Optional["Geschaeftspartner"] = None
     """
@@ -64,13 +64,13 @@ class Buendelvertrag(Geschaeftsobjekt):
     Beispiel "Vertrag zwischen Vertagspartner 1 und Vertragspartner 2"
     """
 
-    einzelvertraege: Optional[list["Vertrag"]] = None
+    einzelvertraege: list["Vertrag"] | None = None
     """Die Liste mit den Einzelverträgen zu den Abnahmestellen"""
-    vertragskonditionen: Optional[list["Vertragskonditionen"]] = None
+    vertragskonditionen: list["Vertragskonditionen"] | None = None
     """Festlegungen zu Laufzeiten und Kündigungsfristen"""
-    unterzeichnervp1: Optional[list["Unterschrift"]] = None
+    unterzeichnervp1: list["Unterschrift"] | None = None
     """Unterzeichner des Vertragspartners1"""
-    unterzeichnervp2: Optional[list["Unterschrift"]] = None
+    unterzeichnervp2: list["Unterschrift"] | None = None
     """Unterzeichner des Vertragspartners2"""
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Beschreibung zum Vertrag"""

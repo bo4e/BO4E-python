@@ -53,7 +53,11 @@ class TestGeschaeftspartner:
                     umsatzsteuer_id="AT12345",
                     geschaeftspartnerrollen=[Geschaeftspartnerrolle.DIENSTLEISTER],
                     adresse=Adresse(
-                        postleitzahl="1014", ort="Wien 1", strasse="Ballhausplatz", hausnummer="2", landescode=Landescode.AT  # type: ignore[attr-defined]
+                        postleitzahl="1014",
+                        ort="Wien 1",
+                        strasse="Ballhausplatz",
+                        hausnummer="2",
+                        landescode=Landescode.AT,  # type: ignore[attr-defined]
                     ),
                 ),
                 id="Landescode!=DE, DE is default",

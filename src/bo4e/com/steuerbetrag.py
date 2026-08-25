@@ -37,11 +37,11 @@ class Steuerbetrag(COM):
 
     steuerart: Optional["Steuerart"] = None
     """Kennzeichnung der Steuerart, bzw. Verfahrens."""
-    steuersatz: Optional[Decimal] = None
+    steuersatz: Decimal | None = None
     """Angabe des Steuersatzes in %"""
-    basiswert: Optional[Decimal] = None
+    basiswert: Decimal | None = None
     """Nettobetrag für den die Steuer berechnet wurde. Z.B. 100"""
-    steuerwert: Optional[Decimal] = None
+    steuerwert: Decimal | None = None
     """Aus dem Basiswert berechnete Steuer. Z.B. 19 (bei UST_19)"""
     waehrungscode: Optional["Waehrungscode"] = None
     """Währung. Z.B. Euro."""

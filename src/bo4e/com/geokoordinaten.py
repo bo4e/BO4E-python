@@ -3,7 +3,7 @@ Contains Geokoordinaten class
 """
 
 from decimal import Decimal
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -30,5 +30,5 @@ class Geokoordinaten(COM):
 
     typ: Annotated[Literal[ComTyp.GEOKOORDINATEN], Field(alias="_typ")] = ComTyp.GEOKOORDINATEN
 
-    breitengrad: Optional[Decimal] = None
-    laengengrad: Optional[Decimal] = None
+    breitengrad: Decimal | None = None
+    laengengrad: Decimal | None = None

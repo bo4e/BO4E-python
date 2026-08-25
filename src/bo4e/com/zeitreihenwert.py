@@ -36,7 +36,7 @@ class Zeitreihenwert(COM):
 
     zeitraum: Optional["Zeitraum"] = None
     """Zeitraum für das Messintervall"""
-    wert: Optional[Decimal] = None
+    wert: Decimal | None = None
     """Der in dem Zeitraum gültige Wert."""
     status: Optional["Messwertstatus"] = None
     """Der Status gibt an, wie der Wert zu interpretieren ist, z.B. in Berechnungen."""

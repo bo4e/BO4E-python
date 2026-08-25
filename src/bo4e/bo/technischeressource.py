@@ -39,13 +39,13 @@ class TechnischeRessource(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.TECHNISCHERESSOURCE], Field(alias="_typ")] = BoTyp.TECHNISCHERESSOURCE
 
-    technische_ressource_id: Optional[str] = None
+    technische_ressource_id: str | None = None
     """Identifikationsnummer einer technischen Ressource"""
-    vorgelagerte_messlokation_id: Optional[str] = None
+    vorgelagerte_messlokation_id: str | None = None
     """Vorgelagerte Messlokation ID"""
-    zugeordnete_marktlokation_id: Optional[str] = None
+    zugeordnete_marktlokation_id: str | None = None
     """Referenz auf die der technischen Ressource zugeordneten Marktlokation"""
-    zugeordnete_steuerbare_ressource_id: Optional[str] = None
+    zugeordnete_steuerbare_ressource_id: str | None = None
     """Referenz auf die der technischen Ressource zugeordneten Steuerbaren Ressource"""
     nennleistungaufnahme: Optional["Menge"] = None
     """Nennleistung (Aufnahme)"""
@@ -65,11 +65,11 @@ class TechnischeRessource(Geschaeftsobjekt):
     """Art der Erzeugung der Energie"""
     speicherart: Optional["Speicherart"] = None
     """Art des Speichers"""
-    lokationszuordnungen: Optional[list["Lokationszuordnung"]] = None
+    lokationszuordnungen: list["Lokationszuordnung"] | None = None
     """Lokationszuordnung, um bspw. die zugehörigen Messlokationen anzugeben"""
-    lokationsbuendel_objektcode: Optional[str] = None
+    lokationsbuendel_objektcode: str | None = None
     """Lokationsbuendel Code, der die Funktion dieses BOs an der Lokationsbuendelstruktur beschreibt."""
-    ist_fernschaltbar: Optional[bool] = None
+    ist_fernschaltbar: bool | None = None
     """Fernschaltbarkeit"""
-    ist_unterbrechbar: Optional[bool] = None
+    ist_unterbrechbar: bool | None = None
     """Unterbrechbarkeit"""

@@ -55,12 +55,12 @@ class Zaehlzeitdefinition(Geschaeftsobjekt):
     oder Lieferant). Identifiziert zusammen mit einer fachlichen Gültigkeit, welche Definition zu welchem
     Zeitpunkt gilt."""
 
-    feiertagskalender: Optional[str] = None
+    feiertagskalender: str | None = None
     """Bezeichnung des Feiertagskalenders, nach dem `FEIERTAGS`-Tagtypen aufgelöst werden (z.B. "BDEW",
     landes- oder gemeindespezifische Kalender). Frei wählbare Zeichenkette, deren Bedeutung zwischen
     den Marktpartnern abgestimmt sein muss."""
-    saisonprofil: Optional[str] = None
+    saisonprofil: str | None = None
     """Bezeichnung des Saisonprofils, das die Datumsgrenzen der in `saisons` referenzierten Saisons
     festlegt (z.B. "Sommer/Winter")."""
-    saisons: Optional[list["Zaehlzeitsaison"]] = None
+    saisons: list["Zaehlzeitsaison"] | None = None
     """Die Schaltschemata, gruppiert nach Saison."""

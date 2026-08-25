@@ -36,13 +36,13 @@ class Marktteilnehmer(Geschaeftsobjekt):
     typ: Annotated[Literal[BoTyp.MARKTTEILNEHMER], Field(alias="_typ")] = BoTyp.MARKTTEILNEHMER
     marktrolle: Optional["Marktrolle"] = None
     """Gibt im Klartext die Bezeichnung der Marktrolle an"""
-    rollencodenummer: Optional[str] = None
+    rollencodenummer: str | None = None
     """Gibt die Codenummer der Marktrolle an"""
     rollencodetyp: Optional["Rollencodetyp"] = None
     """Gibt den Typ des Codes an"""
     sparte: Optional["Sparte"] = None
     """Sparte des Marktteilnehmers, z.B. Gas oder Strom"""
-    makoadresse: Optional[list[str]] = None
+    makoadresse: list[str] | None = None
     """Die 1:1-Kommunikationsadresse des Marktteilnehmers. Diese wird in der Marktkommunikation verwendet. Konkret kann dies eine eMail-Adresse oder ein AS4-Endpunkt sein."""
     geschaeftspartner: Optional["Geschaeftspartner"] = None
     """Der zu diesem Marktteilnehmer gehörende Geschäftspartner"""

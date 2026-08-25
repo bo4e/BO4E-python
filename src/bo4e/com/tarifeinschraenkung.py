@@ -2,7 +2,7 @@
 Contains Tarifeinschraenkung
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal
 
 from pydantic import Field
 
@@ -34,13 +34,13 @@ class Tarifeinschraenkung(COM):
 
     typ: Annotated[Literal[ComTyp.TARIFEINSCHRAENKUNG], Field(alias="_typ")] = ComTyp.TARIFEINSCHRAENKUNG
 
-    zusatzprodukte: Optional[list[str]] = None
+    zusatzprodukte: list[str] | None = None
     """Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können"""
-    voraussetzungen: Optional[list["Voraussetzungen"]] = None
+    voraussetzungen: list["Voraussetzungen"] | None = None
     """Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann"""
-    einschraenkungzaehler: Optional[list["Geraet"]] = None
+    einschraenkungzaehler: list["Geraet"] | None = None
     """ Liste der Zähler/Geräte, die erforderlich sind, damit dieser Tarif zur Anwendung gelangen kann.
     (Falls keine Zähler angegeben sind, ist der Tarif nicht an das Vorhandensein bestimmter Zähler gebunden.) """
-    einschraenkungleistung: Optional[list["Menge"]] = None
+    einschraenkungleistung: list["Menge"] | None = None
     """ Die vereinbarte Leistung, die (näherungsweise) abgenommen wird.
     Insbesondere Gastarife können daran gebunden sein, dass die Leistung einer vereinbarten Höhe entspricht. """

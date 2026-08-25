@@ -12,7 +12,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .menge import Menge
 
 # pylint: disable=too-few-public-methods
@@ -35,16 +34,16 @@ class Vertragsteil(COM):
 
     typ: Annotated[Literal[ComTyp.VERTRAGSTEIL], Field(alias="_typ")] = ComTyp.VERTRAGSTEIL
 
-    vertragsteilbeginn: Optional[pydantic.AwareDatetime] = None
+    vertragsteilbeginn: pydantic.AwareDatetime | None = None
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: Optional[pydantic.AwareDatetime] = None
+    vertragsteilende: pydantic.AwareDatetime | None = None
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
-    lokation: Optional[str] = None
+    lokation: str | None = None
     """
     Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
     Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet

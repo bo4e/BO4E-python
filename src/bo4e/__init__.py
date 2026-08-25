@@ -9,6 +9,7 @@ The BO4E version can be queried using `bo4e.__version__`.
 """
 
 __all__ = [
+    "COM",
     "AbgabeArt",
     "Abwicklungsmodell",
     "Adresse",
@@ -36,7 +37,6 @@ __all__ = [
     "Bilanzierungsmethode",
     "BoTyp",
     "Buendelvertrag",
-    "COM",
     "ComTyp",
     "Dienstleistung",
     "Dienstleistungstyp",

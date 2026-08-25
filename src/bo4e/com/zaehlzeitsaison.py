@@ -4,7 +4,7 @@ Contains Zaehlzeitsaison class
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal
 
 from pydantic import Field
 
@@ -37,10 +37,10 @@ class Zaehlzeitsaison(COM):
 
     typ: Annotated[Literal[ComTyp.ZAEHLZEITSAISON], Field(alias="_typ")] = ComTyp.ZAEHLZEITSAISON
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung der Saison (z.B. "Sommer", "Winter"). Muss zu einem Saisonabschnitt des in der
     übergeordneten `Zaehlzeitdefinition` referenzierten `saisonprofil` passen. Leer, wenn keine
     Saisonunterscheidung getroffen wird."""
-    tagtypen: Optional[list["Zaehlzeittagtyp"]] = None
+    tagtypen: list["Zaehlzeittagtyp"] | None = None
     """Die Schaltschemata für die unterschiedlichen Tagtypen (z.B. Werktag, Wochenende, Feiertag)
     innerhalb dieser Saison."""
