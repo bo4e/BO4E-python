@@ -13,6 +13,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
     from ..bo.lokationszuordnung import Lokationszuordnung
+    from ..bo.marktteilnehmer import Marktteilnehmer
     from ..com.adresse import Adresse
     from ..com.dienstleistung import Dienstleistung
     from ..com.geokoordinaten import Geokoordinaten
@@ -56,15 +57,15 @@ class Messlokation(Geschaeftsobjekt):
     messlokationszaehler: list["Zaehler"] | None = None
     """Zähler, die zu dieser Messlokation gehören"""
 
-    # only one of the following two optional codenr attributes can be set
-    grundzustaendiger_msb_codenr: str | None = None
+    # only one of the following two optional MSB attributes can be set
+    grundzustaendiger_msb: Optional["Marktteilnehmer"] = None
     """
-    Codenummer des grundzuständigen Messstellenbetreibers, der für diese Messlokation zuständig ist.
+    Der grundzuständige Messstellenbetreiber, der für diese Messlokation zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """
-    grundzustaendiger_msbim_codenr: str | None = None
+    grundzustaendiger_msbim: Optional["Marktteilnehmer"] = None
     """
-    Codenummer des grundzuständigen Messstellenbetreibers für intelligente Messsysteme, der für diese Messlokation
+    Der grundzuständige Messstellenbetreiber für intelligente Messsysteme, der für diese Messlokation
     zuständig ist.
     (Dieser ist immer dann Messstellenbetreiber, wenn kein anderer MSB die Einrichtungen an der Messlokation betreibt.)
     """

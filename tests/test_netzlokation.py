@@ -4,6 +4,7 @@ from bo4e import (
     Konfigurationsprodukt,
     Lokationszuordnung,
     Marktrolle,
+    Marktteilnehmer,
     Menge,
     Netzlokation,
     Sparte,
@@ -22,7 +23,7 @@ class TestNetzlokation:
                     netzlokations_id="3784658734657",
                     sparte=Sparte.GAS,
                     netzanschlussleistung=Menge(),
-                    grundzustaendiger_msb_codenr="1829371872392",
+                    grundzustaendiger_msb=Marktteilnehmer(),
                     steuerkanal=False,
                     obiskennzahl="82376487236",
                     verwendungszweck=VerwendungszweckProMarktrolle(

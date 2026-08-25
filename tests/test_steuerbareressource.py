@@ -1,6 +1,6 @@
 import pytest
 
-from bo4e import Marktrolle, SteuerbareRessource
+from bo4e import Marktrolle, Marktteilnehmer, SteuerbareRessource
 from bo4e.bo.lokationszuordnung import Lokationszuordnung
 from bo4e.com.konfigurationsprodukt import Konfigurationsprodukt
 from bo4e.enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
@@ -15,7 +15,7 @@ class TestSteuerbareRessource:
                 SteuerbareRessource(
                     steuerbare_ressource_id="3784658734657",
                     steuerkanal_leistungsbeschreibung=SteuerkanalLeistungsbeschreibung.AN_AUS,
-                    zugeordnete_msb_codenummer="1829371872392",
+                    zugeordneter_msb=Marktteilnehmer(),
                     konfigurationsprodukte=[Konfigurationsprodukt()],
                     eigenschaft_msb_lokation=Marktrolle.LF,
                     lokationsbuendel_objektcode="9992 00000 125 6",

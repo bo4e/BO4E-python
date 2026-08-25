@@ -12,6 +12,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.lokationszuordnung import Lokationszuordnung
+    from ..bo.marktteilnehmer import Marktteilnehmer
     from ..com.konfigurationsprodukt import Konfigurationsprodukt
     from ..com.menge import Menge
     from ..com.verwendungszweckpromarktrolle import VerwendungszweckProMarktrolle
@@ -44,8 +45,8 @@ class Netzlokation(Geschaeftsobjekt):
     """Sparte der Netzlokation, z.B. Gas oder Strom."""
     netzanschlussleistung: Optional["Menge"] = None
     """Netzanschlussleistungsmenge der Netzlokation"""
-    grundzustaendiger_msb_codenr: str | None = None
-    """Codenummer des grundzuständigen Messstellenbetreibers, der für diese Netzlokation zuständig ist."""
+    grundzustaendiger_msb: Optional["Marktteilnehmer"] = None
+    """Der grundzuständige Messstellenbetreiber, der für diese Netzlokation zuständig ist."""
     steuerkanal: bool | None = None
     """Ob ein Steuerkanal der Netzlokation zugeordnet ist und somit die Netzlokation gesteuert werden kann."""
     obiskennzahl: str | None = None
