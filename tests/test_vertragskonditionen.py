@@ -1,6 +1,3 @@
-from datetime import datetime, timezone
-from decimal import Decimal
-
 import pytest
 
 from bo4e import Mengeneinheit, Vertragskonditionen, Zeitraum
@@ -14,11 +11,7 @@ class TestVertragskonditionen:
             pytest.param(
                 Vertragskonditionen(
                     beschreibung="Foobar",
-                    anzahl_abschlaege=Decimal(3),
-                    vertragslaufzeit=Zeitraum(
-                        startdatum=datetime(2012, 9, 21, tzinfo=timezone.utc),
-                        enddatum=datetime(2013, 10, 11, tzinfo=timezone.utc),
-                    ),
+                    anzahl_abschlaege=3,
                     kuendigungsfrist=Zeitraum(dauer="P3W"),
                     vertragsverlaengerung=Zeitraum(dauer="P14D"),
                     abschlagszyklus=Zeitraum(dauer="P5D"),

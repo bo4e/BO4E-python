@@ -12,6 +12,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
+    from ..bo.lokationszuordnung import Lokationszuordnung
     from .menge import Menge
 
 # pylint: disable=too-few-public-methods
@@ -21,7 +22,7 @@ if TYPE_CHECKING:
 class Vertragsteil(COM):
     """
     Abbildung für einen Vertragsteil. Der Vertragsteil wird dazu verwendet,
-    eine vertragliche Leistung in Bezug zu einer Lokation (Markt- oder Messlokation) festzulegen.
+    eine vertragliche Leistung in Bezug zu einer Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.) festzulegen.
 
     .. raw:: html
 
@@ -43,10 +44,10 @@ class Vertragsteil(COM):
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """
 
-    lokation: str | None = None
+    lokationszuordnung: Optional["Lokationszuordnung"] = None
     """
-    Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.
-    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet
+    Die Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.), die zu diesem Vertragsteil gehört.
+    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet.
     """
     vertraglich_fixierte_menge: Optional["Menge"] = None
     """

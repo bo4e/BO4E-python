@@ -12,13 +12,13 @@ from ..utils import postprocess_docstring
 from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
-    from ..com.unterschrift import Unterschrift
     from ..com.vertragskonditionen import Vertragskonditionen
     from ..com.vertragsteil import Vertragsteil
     from ..enum.sparte import Sparte
     from ..enum.vertragsart import Vertragsart
     from ..enum.vertragsstatus import Vertragsstatus
     from .geschaeftspartner import Geschaeftspartner
+    from .produkt import Produkt
 
 # pylint: disable=unused-argument
 # pylint: disable=no-name-in-module
@@ -56,29 +56,31 @@ class Vertrag(Geschaeftsobjekt):
     vertragsende: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     # todo: add von/bis validator
-    vertragspartner1: Optional["Geschaeftspartner"] = None
+    vertragsaussteller: Optional["Geschaeftspartner"] = None
     """
-    Der "erstgenannte" Vertragspartner.
-    In der Regel der Aussteller des Vertrags.
-    Beispiel: "Vertrag zwischen Vertragspartner 1 ..."
+    Der Aussteller des Vertrags (in der Regel der "erstgenannte" Vertragspartner).
+    Beispiel: "Vertrag zwischen Vertragsaussteller ..."
     """
-    vertragspartner2: Optional["Geschaeftspartner"] = None
+    vertragsempfaenger: Optional["Geschaeftspartner"] = None
     """
-    Der "zweitgenannte" Vertragspartner.
-    In der Regel der Empfänger des Vertrags.
-    Beispiel "Vertrag zwischen Vertragspartner 1 und Vertragspartner 2".
+    Der Empfänger des Vertrags (in der Regel der "zweitgenannte" Vertragspartner).
+    Beispiel "Vertrag zwischen Vertragsaussteller und Vertragsempfänger".
     """
     vertragsteile: list["Vertragsteil"] | None = None
     """
-    Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer Lokation
-    (Markt- oder Messlokation) festzulegen.
+    Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer
+    Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.) festzulegen.
     """
 
     beschreibung: str | None = None
     """Beschreibung zum Vertrag"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
     """Festlegungen zu Laufzeiten und Kündigungsfristen"""
-    unterzeichnervp1: list["Unterschrift"] | None = None
-    """Unterzeichner des Vertragspartners 1"""
-    unterzeichnervp2: list["Unterschrift"] | None = None
-    """Unterzeichner des Vertragspartners 2"""
+    vertragsabschluss_datum: pydantic.AwareDatetime | None = None
+    """
+    Datum, an dem der Vertrag geschlossen (angenommen und unterschrieben) wurde.
+    """
+    kuendigungsgrund: str | None = None
+    """Grund für die Kündigung des Vertrags"""
+    produkt: Optional["Produkt"] = None
+    """Das dem Vertrag zugrundeliegende Produkt"""
