@@ -50,22 +50,22 @@ class Tarif(COM):
 
     typ: Annotated[Literal[ComTyp.TARIF], Field(alias="_typ")] = ComTyp.TARIF
 
-    regionspreise: Optional[list["Regionspreis"]] = None
+    regionspreise: list["Regionspreis"] | None = None
     """
     Enthält alle regions- und zeitaufgelösten Tarifpreise.
     Ausschließlich die `COM DynamischePreisposition` wird unter einem anderen Feld namens `dynamischePreisposition`
     angegeben.
     """
-    dynamische_preisposition_quelle: Optional[str] = None
+    dynamische_preisposition_quelle: str | None = None
     """
     Gibt die Bezugsquelle (z.B. Börsenindex) für den dynamischen Tarif an.
     Dieses Feld muss genau dann gesetzt werden, wenn es sich bei diesem Tarif um einen dynamischen Tarif handelt.
     """
-    energiemix: Optional[list["Energiemix"]] = None
+    energiemix: list["Energiemix"] | None = None
     """Der Energiemix mit einem Eintrag pro Gültigkeitsjahr (siehe `Energiemix.gueltigkeitsjahr`)."""
     tariftyp: Optional["Tariftyp"] = None
     """Der Tariftyp. Bsp.: Grundversorgung, Ersatzversorgung, etc."""
-    tarifmerkmale: Optional[list["Tarifmerkmal"]] = None
+    tarifmerkmale: list["Tarifmerkmal"] | None = None
     """Eine Liste von Produktmerkmalen im Zusammenhang mit diesem Tarif."""
     registeranzahl: Optional["Registeranzahl"] = None
     """

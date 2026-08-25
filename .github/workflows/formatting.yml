@@ -1,10 +1,10 @@
 name: "Check code format with pre-commit"
 
-on: [push, pull_request]
+on: [push]
 jobs:
   formatting:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-python@v6
+      - uses: actions/setup-python@v7
       - uses: pre-commit/action@v3.0.1

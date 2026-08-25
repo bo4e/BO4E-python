@@ -1,5 +1,5 @@
 """
-This script is run in the tox 'json_schemas' environment.
+This script is run with the 'json_schemas' dependency group (`uv run --group json_schemas ...`).
 """
 
 import importlib
@@ -9,10 +9,11 @@ import logging
 import pkgutil
 import re
 import sys
+from collections.abc import Iterator
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
-from typing import Any, Iterator, Literal, cast
+from typing import Any, Literal, cast
 
 import click
 from pydantic import BaseModel, TypeAdapter
@@ -82,7 +83,7 @@ class Version:
         return base
 
 
-PARSABLE_CLASS_TYPE = type[BaseModel] | type[Enum]
+ParsableClassType = type[BaseModel] | type[Enum]
 
 
 class GenerateJsonSchema(_GenerateJsonSchema):
@@ -127,7 +128,7 @@ def get_classes(modl_name: str) -> list[tuple[str, type]]:
     return inspect.getmembers(modl, lambda member: inspect.isclass(member) and member.__module__ == modl_name)
 
 
-def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]]:
+def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, ParsableClassType]]:
     """
     Builds a dictionary with the classnames as keys and their module as tuples in the values. E.g.:
     {
@@ -144,7 +145,7 @@ def get_namespace(packages: list[str]) -> dict[str, tuple[str, str, PARSABLE_CLA
             cls_list = get_classes(modl_name)
             for name, cls in cls_list:
                 if not name.startswith("_") and name != "StrEnum":
-                    namespace[name] = (pkg, model, cast(PARSABLE_CLASS_TYPE, cls))
+                    namespace[name] = (pkg, model, cast(ParsableClassType, cls))
     return namespace
 
 
@@ -159,15 +160,15 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
     else:
         raise ValueError(f"Class {cls} is neither a pydantic BaseModel nor an enum.")
     if {"allOf", "$defs"} == set(schema_json_dict.keys()):
-        assert (
-            len(schema_json_dict["allOf"]) == 1
-        ), "Internal error: Assumed circular reference but structure is unexpected"
+        assert len(schema_json_dict["allOf"]) == 1, (
+            "Internal error: Assumed circular reference but structure is unexpected"
+        )
         # This is the case for schemas containing circular references
         reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
         reference_match = reference_pattern.fullmatch(schema_json_dict["allOf"][0]["$ref"])
-        assert (
-            reference_match is not None
-        ), f"Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        assert reference_match is not None, (
+            f"Internal Error: Reference string has unexpected format: {schema_json_dict['allOf'][0]['$ref']}"
+        )
         schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
         del schema_json_dict["allOf"]
         schema_json_dict.update(schema_json_dict_to_merge)
@@ -176,9 +177,9 @@ def get_schema_json_dict(cls: Any) -> dict[str, Any]:
         # field points to the actual schema definition in the $defs field.
         reference_pattern = re.compile(r"^#/\$defs/(?P<cls_name>\w+)$")
         reference_match = reference_pattern.fullmatch(schema_json_dict["$ref"])
-        assert (
-            reference_match is not None
-        ), f"Internal Error: Reference string has unexpected format: {schema_json_dict['$ref']}"
+        assert reference_match is not None, (
+            f"Internal Error: Reference string has unexpected format: {schema_json_dict['$ref']}"
+        )
         schema_json_dict_to_merge = schema_json_dict["$defs"][reference_match.group("cls_name")]
         del schema_json_dict["$ref"]
         schema_json_dict.update(schema_json_dict_to_merge)
@@ -191,12 +192,12 @@ def validate_schema(file_path: Path, schema_json_dict: dict[str, Any], name: str
     """
     Validate the schema for a class
     """
-    with open(file_path, "r", encoding="utf-8") as json_schema_file:
+    with open(file_path, encoding="utf-8") as json_schema_file:
         existing_schema = json.load(json_schema_file)
 
     if schema_json_dict != existing_schema:
         raise ValueError(f"Schema for {name} has changed. Please run this script with mode 'generate'.")
-        # or call tox -e generate_json_schemas
+        # or call: uv run --group json_schemas python generate_or_validate_json_schemas.py --mode generate
     _logger.debug("Schema for %s is consistent", name)
 
 
@@ -212,7 +213,7 @@ def generate_schema(file_path: Path, schema_json_dict: dict[str, Any]) -> None:
 
 
 def replace_refs(
-    schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, PARSABLE_CLASS_TYPE]], target_version: str
+    schema_json_dict: dict[str, Any], namespace: dict[str, tuple[str, str, ParsableClassType]], target_version: str
 ) -> None:
     """
     Replace the definition of a class with an online reference to the definition

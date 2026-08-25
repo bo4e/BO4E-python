@@ -2,7 +2,7 @@
 Contains StandorteigenschaftenStrom class
 """
 
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -28,13 +28,13 @@ class StandorteigenschaftenStrom(COM):
     """
 
     typ: Annotated[Literal[ComTyp.STANDORTEIGENSCHAFTENSTROM], Field(alias="_typ")] = ComTyp.STANDORTEIGENSCHAFTENSTROM
-    bilanzierungsgebiet_eic: Optional[str] = None
+    bilanzierungsgebiet_eic: str | None = None
     """Die EIC-Nummer des Bilanzierungsgebietes"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147
 
-    regelzone: Optional[str] = None
+    regelzone: str | None = None
     """Der Name der Regelzone"""
 
-    regelzone_eic: Optional[str] = None
+    regelzone_eic: str | None = None
     """De EIC-Nummer der Regelzone"""
     # todo: use EIC validation: https://github.com/Hochfrequenz/BO4E-python/issues/147

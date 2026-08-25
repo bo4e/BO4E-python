@@ -41,26 +41,26 @@ class Tarifinfo(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.TARIFINFO], Field(alias="_typ")] = BoTyp.TARIFINFO
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Name des Tarifs"""
-    anbietername: Optional[str] = None
+    anbietername: str | None = None
     """Der Name des Marktpartners, der den Tarif anbietet"""
     sparte: Optional["Sparte"] = None
     """Strom oder Gas, etc."""
-    kundentypen: Optional[list["Kundentyp"]] = None
+    kundentypen: list["Kundentyp"] | None = None
     """Kundentypen für den der Tarif gilt, z.B. Privatkunden"""
     registeranzahl: Optional["Registeranzahl"] = None
     """Die Art des Tarifes, z.B. Eintarif oder Mehrtarif"""
     tariftyp: Optional["Tariftyp"] = None
     """Hinweis auf den Tariftyp, z.B. Grundversorgung oder Sondertarif"""
-    tarifmerkmale: Optional[list["Tarifmerkmal"]] = None
+    tarifmerkmale: list["Tarifmerkmal"] | None = None
     """Weitere Merkmale des Tarifs, z.B. Festpreis oder Vorkasse"""
     anbieter: Optional["Marktteilnehmer"] = None
     """Der Marktteilnehmer (Lieferant), der diesen Tarif anbietet"""
 
-    website: Optional[str] = None
+    website: str | None = None
     """Internetseite auf dem der Tarif zu finden ist"""
-    bemerkung: Optional[str] = None
+    bemerkung: str | None = None
     """Freitext"""
 
     zeitliche_gueltigkeit: Optional["Zeitraum"] = None
@@ -69,7 +69,7 @@ class Tarifinfo(Geschaeftsobjekt):
     """Der Energiemix, der für diesen Tarif gilt"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
     """Mindestlaufzeiten und Kündigungsfristen zusammengefasst"""
-    anwendung_von: Optional[pydantic.AwareDatetime] = None
+    anwendung_von: pydantic.AwareDatetime | None = None
     """
     Angabe des inklusiven Zeitpunkts, ab dem der Tarif bzw. der Preis angewendet und abgerechnet wird,
     z.B. "2021-07-20T18:31:48Z"

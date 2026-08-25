@@ -40,5 +40,5 @@ class Preisgarantie(COM):
     oder als Laufzeit in Monaten. """
 
     # optionale attributes
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Freitext zur Beschreibung der Preisgarantie."""

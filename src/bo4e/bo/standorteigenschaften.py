@@ -32,7 +32,7 @@ class Standorteigenschaften(Geschaeftsobjekt):
     """
 
     typ: Annotated[Literal[BoTyp.STANDORTEIGENSCHAFTEN], Field(alias="_typ")] = BoTyp.STANDORTEIGENSCHAFTEN
-    eigenschaften_strom: Optional[list["StandorteigenschaftenStrom"]] = None
+    eigenschaften_strom: list["StandorteigenschaftenStrom"] | None = None
     """Eigenschaften zur Sparte Strom"""
 
     eigenschaften_gas: Optional["StandorteigenschaftenGas"] = None

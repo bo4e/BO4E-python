@@ -5,10 +5,7 @@
 
 version: 2
 updates:
-  # Runtime + PEP 735 dependency groups now live together in pyproject.toml,
-  # so a single pip entry on "/" covers both runtime (requirements.txt /
-  # pyproject [project.dependencies]) and dev groups.
-  - package-ecosystem: "pip" # See documentation for possible values
+  - package-ecosystem: "uv" # See documentation for possible values
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"

@@ -36,29 +36,29 @@ class Ausschreibungsdetail(COM):
 
     typ: Annotated[Literal[ComTyp.AUSSCHREIBUNGSDETAIL], Field(alias="_typ")] = ComTyp.AUSSCHREIBUNGSDETAIL
 
-    marktlokations_id: Optional[str] = None
+    marktlokations_id: str | None = None
     """Identifikation einer ausgeschriebenen Marktlokation"""
-    netzebene_lieferung: Optional[str] = None
+    netzebene_lieferung: str | None = None
     """In der angegebenen Netzebene wird die Marktlokation versorgt, z.B. MSP für Mittelspannung"""
-    netzebene_messung: Optional[str] = None
+    netzebene_messung: str | None = None
     """In der angegebenen Netzebene wird die Lokation gemessen, z.B. NSP für Niederspannung"""
     marktlokationsadresse: Optional["Adresse"] = None
     """Die Adresse an der die Marktlokation sich befindet"""
     lieferzeitraum: Optional["Zeitraum"] = None
     """Angefragter Zeitraum für die ausgeschriebene Belieferung"""
 
-    netzbetreiber: Optional[str] = None
+    netzbetreiber: str | None = None
     """Bezeichnung des zuständigen Netzbetreibers, z.B. 'Stromnetz Hamburg GmbH'"""
-    kunde: Optional[str] = None
+    kunde: str | None = None
     """Bezeichnung des Kunden, der die Marktlokation nutzt"""
-    zaehlernummer: Optional[str] = None
+    zaehlernummer: str | None = None
     """Die Bezeichnung des Zählers an der Marktlokation"""
-    marktlokationsbezeichnung: Optional[str] = None
+    marktlokationsbezeichnung: str | None = None
     """Bezeichnung für die Lokation, z.B. 'Zentraler Einkauf, Hamburg'"""
 
     zaehlertechnik: Optional["Zaehlertyp"] = None
     """Spezifikation, um welche Zählertechnik es sich im vorliegenden Fall handelt, z.B. Leistungsmessung"""
-    ist_lastgang_vorhanden: Optional[bool] = None
+    ist_lastgang_vorhanden: bool | None = None
     """
     Zeigt an, ob es zu der Marktlokation einen Lastgang gibt.
     Falls ja, kann dieser abgerufen werden und daraus die Verbrauchswerte ermittelt werden

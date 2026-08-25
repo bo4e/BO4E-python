@@ -41,8 +41,8 @@ class Kosten(Geschaeftsobjekt):
     """Klasse der Kosten, beispielsweise Fremdkosten"""
     gueltigkeit: Optional["Zeitraum"] = None
     """Für diesen Zeitraum wurden die Kosten ermittelt"""
-    kostenbloecke: Optional[list["Kostenblock"]] = None
+    kostenbloecke: list["Kostenblock"] | None = None
     """In Kostenblöcken werden Kostenpositionen zusammengefasst. Beispiele: Netzkosten, Umlagen, Steuern etc"""
 
-    summe_kosten: Optional[list["Betrag"]] = None
+    summe_kosten: list["Betrag"] | None = None
     """Die Gesamtsumme über alle Kostenblöcke und -positionen"""

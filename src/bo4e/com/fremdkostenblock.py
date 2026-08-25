@@ -11,7 +11,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .betrag import Betrag
     from .fremdkostenposition import Fremdkostenposition
 
@@ -34,10 +33,10 @@ class Fremdkostenblock(COM):
 
     typ: Annotated[Literal[ComTyp.FREMDKOSTENBLOCK], Field(alias="_typ")] = ComTyp.FREMDKOSTENBLOCK
 
-    kostenblockbezeichnung: Optional[str] = None
+    kostenblockbezeichnung: str | None = None
     """Bezeichnung für einen Kostenblock. Z.B. Netzkosten, Messkosten, Umlagen, etc."""
 
-    kostenpositionen: Optional[list["Fremdkostenposition"]] = None
+    kostenpositionen: list["Fremdkostenposition"] | None = None
     """
     Hier sind die Details zu einer Kostenposition aufgeführt. Z.B.:
     Alliander Netz Heinsberg GmbH, 2018-02-01, 2019-01-01, Arbeitspreis HT, 3.660 kWh,

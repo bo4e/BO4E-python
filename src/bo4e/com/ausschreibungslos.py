@@ -38,9 +38,9 @@ class Ausschreibungslos(COM):
 
     typ: Annotated[Literal[ComTyp.AUSSCHREIBUNGSLOS], Field(alias="_typ")] = ComTyp.AUSSCHREIBUNGSLOS
 
-    losnummer: Optional[str] = None
+    losnummer: str | None = None
     """Laufende Nummer des Loses"""
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Bezeichnung der Ausschreibung"""
     preismodell: Optional["Preismodell"] = None
     """Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung"""
@@ -51,18 +51,18 @@ class Ausschreibungslos(COM):
     """Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen"""
     wunsch_vertragsform: Optional["Vertragsform"] = None
     """Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen"""
-    betreut_durch: Optional[str] = None
+    betreut_durch: str | None = None
     """Name des Lizenzpartners"""
-    anzahl_lieferstellen: Optional[int] = None
+    anzahl_lieferstellen: int | None = None
     """Anzahl der Lieferstellen in dieser Ausschreibung"""
 
-    lieferstellen: Optional[list["Ausschreibungsdetail"]] = None
+    lieferstellen: list["Ausschreibungsdetail"] | None = None
     """Die ausgeschriebenen Lieferstellen"""
 
     lieferzeitraum: Optional["Zeitraum"] = None
     """Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen"""
 
-    bemerkung: Optional[str] = None
+    bemerkung: str | None = None
     """Bemerkung des Kunden zum Los"""
     gesamt_menge: Optional["Menge"] = None
     """Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an"""

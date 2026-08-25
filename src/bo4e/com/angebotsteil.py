@@ -41,12 +41,12 @@ class Angebotsteil(COM):
 
     typ: Annotated[Literal[ComTyp.ANGEBOTSTEIL], Field(alias="_typ")] = ComTyp.ANGEBOTSTEIL
 
-    positionen: Optional[list["Angebotsposition"]] = None
+    positionen: list["Angebotsposition"] | None = None
     """Einzelne Positionen, die zu diesem Angebotsteil gehören"""
 
-    anfrage_subreferenz: Optional[str] = None
+    anfrage_subreferenz: str | None = None
     """Identifizierung eines Subkapitels einer Anfrage, beispielsweise das Los einer Ausschreibung"""
-    lieferstellenangebotsteil: Optional[list["Marktlokation"]] = None
+    lieferstellenangebotsteil: list["Marktlokation"] | None = None
     """
     Marktlokationen, für die dieses Angebotsteil gilt, falls vorhanden.
     Durch die Marktlokation ist auch die Lieferadresse festgelegt

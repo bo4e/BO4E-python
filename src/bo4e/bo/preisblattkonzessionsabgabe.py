@@ -31,9 +31,7 @@ class PreisblattKonzessionsabgabe(Preisblatt):
 
     """
 
-    typ: Annotated[Literal[BoTyp.PREISBLATTKONZESSIONSABGABE], Field(alias="_typ")] = (
-        BoTyp.PREISBLATTKONZESSIONSABGABE  # type: ignore[assignment]
-    )
+    typ: Annotated[Literal[BoTyp.PREISBLATTKONZESSIONSABGABE], Field(alias="_typ")] = BoTyp.PREISBLATTKONZESSIONSABGABE  # type: ignore[assignment]
     # required attributes (additional to those of Preisblatt)
     kundengruppe_k_a: Optional["KundengruppeKA"] = None
     """Kundegruppe anhand derer die Höhe der Konzessionabgabe festgelegt ist"""

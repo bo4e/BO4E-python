@@ -9,8 +9,9 @@ Prereqs:
     - ``bo4e`` binary on PATH (see ``.github/actions/setup-bo4e`` for CI).
     - kroki reachable at ``$KROKI_URL`` (default ``http://localhost:8000``;
       see ``docker-compose.yml``).
-    - ``json_schemas/`` populated for the current version (``tox -e
-      generate_json_schemas`` first; ``tox -e docs`` does this).
+    - ``json_schemas/`` populated for the current version
+      (``uv run --group json_schemas python generate_or_validate_json_schemas.py
+      --mode generate`` first).
 
 Caching: pulled schemas land in ``tmp/bo4e_json_schemas/<tag>/``. The
 script skips ``bo4e pull`` when that directory already exists — for the
@@ -48,10 +49,10 @@ from pathlib import Path
 import bo4e
 
 # Make our own prints line-buffered so they interleave naturally with the
-# inherited stdout from bo4e subprocesses. Without this, tox sees a non-TTY
-# stdout and Python fully buffers print() calls, making the log appear out
-# of order against the subprocesses (which write to the same handle but
-# without Python's buffer).
+# inherited stdout from bo4e subprocesses. Without this, a non-TTY stdout
+# (e.g. in CI) makes Python fully buffer print() calls, causing the log to
+# appear out of order against the subprocesses (which write to the same
+# handle but without Python's buffer).
 sys.stdout.reconfigure(line_buffering=True)  # type: ignore[union-attr]
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -460,7 +461,7 @@ def main() -> int:
     if DOCS_LABEL_OVERRIDE or not is_dirty:
         link_template = f"https://bo4e.github.io/BO4E-python/{docs_label}/api/{anchor}"
     else:
-        link_template = f"file://{REPO_ROOT.as_posix()}/.tox/docs/tmp/html/api/{anchor}"
+        link_template = f"file://{REPO_ROOT.as_posix()}/build/sphinx/html/api/{anchor}"
 
     print(f"[graph] docs label:    {docs_label}")
     print(f"[graph] link template: {link_template}")

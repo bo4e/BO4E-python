@@ -6,7 +6,7 @@ from decimal import Decimal
 
 # pylint: disable=too-few-public-methods
 # pylint: disable=no-name-in-module
-from typing import Annotated, Literal, Optional
+from typing import Annotated, Literal
 
 from pydantic import Field
 
@@ -31,9 +31,9 @@ class RelativePreisposition(COM):
 
     typ: Annotated[Literal[ComTyp.RELATIVEPREISPOSITION], Field(alias="_typ")] = ComTyp.RELATIVEPREISPOSITION
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für die Preisposition."""
-    id_referenz: Optional[str] = None
+    id_referenz: str | None = None
     """
     Referenziert auf eine andere Preisposition.
     Die Referenz bezieht sich auf das technische Feld `_id`, da es sich hier um eine technische Lösung handelt
@@ -41,7 +41,7 @@ class RelativePreisposition(COM):
     Das `_id` Feld der unterschiedlichen Preispositionen muss innerhalb einer `Tarifpreiszeitscheibe`
     entsprechend unique sein.
     """
-    wert: Optional[Decimal] = None
+    wert: Decimal | None = None
     """
     Der Modifikator in Prozent, der auf den Preis der referenzierten Preisposition angewendet wird.
     Der Wert wird multiplikativ angewendet. D.h. wenn bspw. ein Rabatt von 20% angewendet werden soll, muss der Wert

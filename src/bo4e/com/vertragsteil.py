@@ -12,7 +12,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from ..bo.lokationszuordnung import Lokationszuordnung
     from .menge import Menge
 
@@ -36,11 +35,11 @@ class Vertragsteil(COM):
 
     typ: Annotated[Literal[ComTyp.VERTRAGSTEIL], Field(alias="_typ")] = ComTyp.VERTRAGSTEIL
 
-    vertragsteilbeginn: Optional[pydantic.AwareDatetime] = None
+    vertragsteilbeginn: pydantic.AwareDatetime | None = None
     """
     Start der Gültigkeit des Vertragsteils (inklusiv)
     """
-    vertragsteilende: Optional[pydantic.AwareDatetime] = None
+    vertragsteilende: pydantic.AwareDatetime | None = None
     """
     Ende der Gültigkeit des Vertragsteils (exklusiv)
     """

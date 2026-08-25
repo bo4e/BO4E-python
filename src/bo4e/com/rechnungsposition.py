@@ -38,13 +38,13 @@ class Rechnungsposition(COM):
 
     typ: Annotated[Literal[ComTyp.RECHNUNGSPOSITION], Field(alias="_typ")] = ComTyp.RECHNUNGSPOSITION
 
-    positionsnummer: Optional[int] = None
+    positionsnummer: int | None = None
     """Fortlaufende Nummer für die Rechnungsposition"""
 
     lieferungszeitraum: Optional["Zeitraum"] = None
     """Zeitraum der Lieferung für die abgerechnete Leistung"""
 
-    positionstext: Optional[str] = None
+    positionstext: str | None = None
     """Bezeichung für die abgerechnete Position"""
 
     positions_menge: Optional["Menge"] = None
@@ -62,7 +62,7 @@ class Rechnungsposition(COM):
 
     artikelnummer: Optional["BDEWArtikelnummer"] = None
     """Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW"""
-    artikel_id: Optional[str] = None
+    artikel_id: str | None = None
     """Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst"""
     steuerbetrag: Optional["Steuerbetrag"] = None
     """Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag"""

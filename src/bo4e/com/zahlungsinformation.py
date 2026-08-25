@@ -32,13 +32,13 @@ class Zahlungsinformation(COM):
 
     zahlungsart: Optional["Zahlungsart"] = None
     """Die Zahlungsart dieser Zahlungsinformation"""
-    iban: Optional[str] = None
+    iban: str | None = None
     """Eine IBAN-Nummer"""
-    bic: Optional[str] = None
+    bic: str | None = None
     """Eine BIC-Nummer"""
-    kontoinhaber: Optional[str] = None
+    kontoinhaber: str | None = None
     """Der Name des Kontoinhabers"""
-    betreff: Optional[str] = None
+    betreff: str | None = None
     """Eine konstante Betreffzeile für Überweisungen"""
-    sepa_referenz: Optional[str] = None
+    sepa_referenz: str | None = None
     """Eine SEPA-Referenz"""

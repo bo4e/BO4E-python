@@ -51,11 +51,11 @@ class Rechnung(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.RECHNUNG], Field(alias="_typ")] = BoTyp.RECHNUNG
 
-    rechnungsnummer: Optional[str] = None
+    rechnungsnummer: str | None = None
     """Eine im Verwendungskontext eindeutige Nummer für die Rechnung"""
-    rechnungsdatum: Optional[pydantic.AwareDatetime] = None
+    rechnungsdatum: pydantic.AwareDatetime | None = None
     """Ausstellungsdatum der Rechnung"""
-    faelligkeitsdatum: Optional[pydantic.AwareDatetime] = None
+    faelligkeitsdatum: pydantic.AwareDatetime | None = None
     """Zu diesem Datum ist die Zahlung fällig"""
     rechnungstyp: Optional["Rechnungstyp"] = None
     """Ein kontextbezogender Rechnungstyp, z.B. Netznutzungsrechnung"""
@@ -77,23 +77,23 @@ class Rechnung(Geschaeftsobjekt):
     """Die Summe aus Netto- und Steuerbetrag"""
     zu_zahlen: Optional["Betrag"] = None
     """Der zu zahlende Betrag, der sich aus (gesamtbrutto - vorausbezahlt - rabattBrutto) ergibt"""
-    zaehler: Optional[list["Zaehler"]] = None
+    zaehler: list["Zaehler"] | None = None
     zukuenftiger_abschlag: Optional["Betrag"] = None
-    kaeuferreferenz: Optional[str] = None
+    kaeuferreferenz: str | None = None
 
-    rechnungspositionen: Optional[list["Rechnungsposition"]] = None
+    rechnungspositionen: list["Rechnungsposition"] | None = None
     """Die Rechnungspositionen"""
-    rechnungstitel: Optional[str] = None
+    rechnungstitel: str | None = None
     """Bezeichnung für die vorliegende Rechnung"""
     rechnungsstatus: Optional["Rechnungsstatus"] = None
     """Status der Rechnung zur Kennzeichnung des Bearbeitungsstandes"""
-    original_rechnungsnummer: Optional[str] = None
+    original_rechnungsnummer: str | None = None
     """Im Falle einer Stornorechnung (storno = true) steht hier die Rechnungsnummer der stornierten Rechnung"""
-    vorauszahlungen: Optional[list["Vorauszahlung"]] = None
+    vorauszahlungen: list["Vorauszahlung"] | None = None
     """Die Summe evtl. vorausgezahlter Beträge, z.B. Abschläge. Angabe als Bruttowert"""
     rabatt_netto: Optional["Betrag"] = None
     """Gesamtrabatt auf den Nettobetrag"""
-    steuerbetraege: Optional[list["Steuerbetrag"]] = None
+    steuerbetraege: list["Steuerbetrag"] | None = None
     """
     Eine Liste mit Steuerbeträgen pro Steuerkennzeichen/Steuersatz;
     die Summe dieser Beträge ergibt den Wert für gesamtsteuer.
@@ -104,11 +104,11 @@ class Rechnung(Geschaeftsobjekt):
     """Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt"""
     netznutzungrechnungstyp: Optional["NetznutzungRechnungstyp"] = None
     """Aus der INVOIC entnommen, befüllt wenn es sich um eine Netznutzungsrechnung handelt"""
-    ist_original: Optional[bool] = None
+    ist_original: bool | None = None
     """Kennzeichen, ob es sich um ein Original (true) oder eine Kopie handelt (false)"""
-    ist_simuliert: Optional[bool] = None
+    ist_simuliert: bool | None = None
     """Kennzeichen, ob es sich um eine simulierte Rechnung, z.B. zur Rechnungsprüfung handelt"""
-    ist_storno: Optional[bool] = None
+    ist_storno: bool | None = None
     """
     Kennzeichnung, ob es sich um eine Stornorechnung handelt;
     im Falle "true" findet sich im Attribut "originalrechnungsnummer" die Nummer der Originalrechnung.
@@ -117,9 +117,9 @@ class Rechnung(Geschaeftsobjekt):
     """Marktlokation, auf die sich die Rechnung bezieht"""
     messlokation: Optional["Messlokation"] = None
     """Messlokation, auf die sich die Rechnung bezieht"""
-    teilrechnungen: Optional[list["Rechnung"]] = None
+    teilrechnungen: list["Rechnung"] | None = None
     """Rechnungen, die durch diese Rechnung zusammengefasst werden"""
-    zahlungsinformationen: Optional[list["Zahlungsinformation"]] = None
+    zahlungsinformationen: list["Zahlungsinformation"] | None = None
     """Informationen wie eine Rechnung bezahlt werden soll"""
     vertrag: Optional["Vertrag"] = None
     """enthält Informationen über den der Rechnung zugrundeliegenden Vertrag für Rechnungen nach EnWG § 40"""
@@ -139,5 +139,5 @@ class Rechnung(Geschaeftsobjekt):
     """ggf. auf einen Vergleichszeitraum hochgerechneter Verbrauch des vorherigen Jahres zu Vergleichszwecken mit dem aktuellen Jahr, gemäß EnWG § 40"""
     fremdkosten: Optional["Fremdkosten"] = None
     """Zur Ausweisung der in die Kalkulation eingeflossenen Preise gemäß EnWG § 40"""
-    referenzverbraeuche: Optional[list["Energiemenge"]] = None
+    referenzverbraeuche: list["Energiemenge"] | None = None
     """Verbräuche von Referenzkundengruppen gemäß EnWG § 40"""

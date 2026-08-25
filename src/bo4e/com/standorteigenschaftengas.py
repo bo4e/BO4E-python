@@ -2,7 +2,7 @@
 Contains StandorteigenschaftenGas class
 """
 
-from typing import TYPE_CHECKING, Annotated, Literal, Optional
+from typing import TYPE_CHECKING, Annotated, Literal
 
 from pydantic import Field
 
@@ -11,7 +11,6 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-
     from .marktgebietinfo import MarktgebietInfo
 
 # pylint: disable=too-few-public-methods
@@ -33,7 +32,7 @@ class StandorteigenschaftenGas(COM):
     """
 
     typ: Annotated[Literal[ComTyp.STANDORTEIGENSCHAFTENGAS], Field(alias="_typ")] = ComTyp.STANDORTEIGENSCHAFTENGAS
-    netzkontonummern: Optional[list[str]] = None
+    netzkontonummern: list[str] | None = None
     """Netzkontonummern der Gasnetze"""
-    marktgebiete: Optional[list["MarktgebietInfo"]] = None
+    marktgebiete: list["MarktgebietInfo"] | None = None
     """Die Informationen zu Marktgebieten in dem Netz."""

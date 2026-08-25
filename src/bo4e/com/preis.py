@@ -36,7 +36,7 @@ class Preis(COM):
 
     typ: Annotated[Literal[ComTyp.PREIS], Field(alias="_typ")] = ComTyp.PREIS
 
-    wert: Optional[Decimal] = None
+    wert: Decimal | None = None
     """Gibt die nominale Höhe des Preises an."""
     einheit: Optional["Waehrungseinheit"] = None
     """Währungseinheit für den Preis, z.B. Euro oder Ct."""

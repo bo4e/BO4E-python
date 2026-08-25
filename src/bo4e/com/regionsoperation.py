@@ -40,20 +40,20 @@ class Regionsoperation(COM):
     typ: Annotated[Literal[ComTyp.REGIONSOPERATION], Field(alias="_typ")] = ComTyp.REGIONSOPERATION
 
     regionsoperator: Optional["Operator"] = None
-    prioritaet: Optional[int] = None
+    prioritaet: int | None = None
     """
     Priorität dieser Regionsoperation. Theoretisch sind Listen in JSON sortiert, jedoch ist eine solche Sortierung
     eventuell implementierungsbedingt fehleranfällig. Daher nutzen wir dieses Feld. angefangen bei 1 (höchste Priorität) und aufsteigend
     """
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """(auch IDs und PLZ möglich)"""
-    bezeichnung2: Optional[str] = None
+    bezeichnung2: str | None = None
     """(TODO: bessere Benamung! geht vor allem um Postort: PLZ & Ort als Schnittmenge)"""
-    wert_von: Optional[str] = None
+    wert_von: str | None = None
     """(inklusiv)"""
-    wert_bis: Optional[str] = None
+    wert_bis: str | None = None
     """(inklusiv)"""
-    radius_in_km: Optional[Decimal] = None
+    radius_in_km: Decimal | None = None
     """(inklusiv)"""
     regionskriterium: Optional["Regionskriterium"] = None
     """(ehemals Regionskriteriumtyp)]"""

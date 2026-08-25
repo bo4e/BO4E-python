@@ -39,19 +39,19 @@ class Tarifpreiszeitscheibe(COM):
 
     zeitscheibengueltigkeit: Optional["Zeitraum"] = None
     """Gibt an für welchen Zeitraum dieser zusammengesetzte Tarifpreis gültig ist."""
-    einheits_preispositionen: Optional[list["EinheitsPreisposition"]] = None
+    einheits_preispositionen: list["EinheitsPreisposition"] | None = None
     """Eine Liste von Einheits-Preispositionen."""
-    zeitvariable_preispositionen: Optional[list["ZeitvariablePreisposition"]] = None
+    zeitvariable_preispositionen: list["ZeitvariablePreisposition"] | None = None
     """
     Eine Liste von zeitvariablen Preispositionen.
     Dies können z.B. Preispositionen mit Zählzeitdefinitionen sein, um ein klassisches HT/NT Modell abzubilden.
     """
-    lastvariable_preispositionen: Optional[list["LastvariablePreisposition"]] = None
+    lastvariable_preispositionen: list["LastvariablePreisposition"] | None = None
     """
     Eine Liste von lastvariablen Preispositionen.
     Diese Preispositionen sind vorgesehen, um bspw. ein Staffel- oder Zonenmodell abzubilden.
     """
-    relative_preispositionen: Optional[list["RelativePreisposition"]] = None
+    relative_preispositionen: list["RelativePreisposition"] | None = None
     """
     Eine Liste von relativen Preispositionen.
     Diese Preispositionen modellieren prozentuale Modifikationen auf bestehende Preispositionen.

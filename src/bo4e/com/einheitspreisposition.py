@@ -36,7 +36,7 @@ class EinheitsPreisposition(COM):
 
     typ: Annotated[Literal[ComTyp.EINHEITSPREISPOSITION], Field(alias="_typ")] = ComTyp.EINHEITSPREISPOSITION
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für die Preisposition."""
     preisreferenz: Optional["Preisreferenz"] = None
     """

@@ -43,7 +43,7 @@ class Vertrag(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.VERTRAG], Field(alias="_typ")] = BoTyp.VERTRAG
     # pylint: disable=duplicate-code
-    vertragsnummer: Optional[str] = None
+    vertragsnummer: str | None = None
     """Eine im Verwendungskontext eindeutige Nummer für den Vertrag"""
     vertragsart: Optional["Vertragsart"] = None
     """Hier ist festgelegt, um welche Art von Vertrag es sich handelt."""
@@ -51,9 +51,9 @@ class Vertrag(Geschaeftsobjekt):
     """Gibt den Status des Vertrags an"""
     sparte: Optional["Sparte"] = None
     """Unterscheidungsmöglichkeiten für die Sparte"""
-    vertragsbeginn: Optional[pydantic.AwareDatetime] = None
+    vertragsbeginn: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag beginnt (inklusiv)"""
-    vertragsende: Optional[pydantic.AwareDatetime] = None
+    vertragsende: pydantic.AwareDatetime | None = None
     """Gibt an, wann der Vertrag (voraussichtlich) endet oder beendet wurde (exklusiv)"""
     # todo: add von/bis validator
     vertragsaussteller: Optional["Geschaeftspartner"] = None
@@ -66,21 +66,21 @@ class Vertrag(Geschaeftsobjekt):
     Der Empfänger des Vertrags (in der Regel der "zweitgenannte" Vertragspartner).
     Beispiel "Vertrag zwischen Vertragsaussteller und Vertragsempfänger".
     """
-    vertragsteile: Optional[list["Vertragsteil"]] = None
+    vertragsteile: list["Vertragsteil"] | None = None
     """
     Der Vertragsteil wird dazu verwendet, eine vertragliche Leistung in Bezug zu einer
     Lokationszuordnung (Markt-, Mess-, Netzlokationen etc.) festzulegen.
     """
 
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Beschreibung zum Vertrag"""
     vertragskonditionen: Optional["Vertragskonditionen"] = None
     """Festlegungen zu Laufzeiten und Kündigungsfristen"""
-    vertragsabschluss_datum: Optional[pydantic.AwareDatetime] = None
+    vertragsabschluss_datum: pydantic.AwareDatetime | None = None
     """
     Datum, an dem der Vertrag geschlossen (angenommen und unterschrieben) wurde.
     """
-    kuendigungsgrund: Optional[str] = None
+    kuendigungsgrund: str | None = None
     """Grund für die Kündigung des Vertrags"""
     produkt: Optional["Produkt"] = None
     """Das dem Vertrag zugrundeliegende Produkt"""
