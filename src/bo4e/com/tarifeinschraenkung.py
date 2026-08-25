@@ -12,7 +12,6 @@ from .com import COM
 
 if TYPE_CHECKING:
     from ..bo.geraet import Geraet
-    from ..enum.voraussetzungen import Voraussetzungen
     from .menge import Menge
 
 # pylint: disable=too-few-public-methods
@@ -36,8 +35,6 @@ class Tarifeinschraenkung(COM):
 
     zusatzprodukte: list[str] | None = None
     """Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können"""
-    voraussetzungen: list["Voraussetzungen"] | None = None
-    """Voraussetzungen, die erfüllt sein müssen, damit dieser Tarif zur Anwendung kommen kann"""
     einschraenkungzaehler: list["Geraet"] | None = None
     """ Liste der Zähler/Geräte, die erforderlich sind, damit dieser Tarif zur Anwendung gelangen kann.
     (Falls keine Zähler angegeben sind, ist der Tarif nicht an das Vorhandensein bestimmter Zähler gebunden.) """
