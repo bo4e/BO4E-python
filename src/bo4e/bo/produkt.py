@@ -42,9 +42,9 @@ class Produkt(Geschaeftsobjekt):
 
     typ: Annotated[Literal[BoTyp.PRODUKT], Field(alias="_typ")] = BoTyp.PRODUKT
 
-    bezeichnung: Optional[str] = None
+    bezeichnung: str | None = None
     """Eine (beliebige) Bezeichnung für das Produkt."""
-    beschreibung: Optional[str] = None
+    beschreibung: str | None = None
     """Eine (beliebige) Beschreibung für das Produkt."""
     produkttyp: Optional["Produkttyp"] = None
     """Die Art des Produkts, z.B. Tarifprodukt."""
@@ -64,7 +64,7 @@ class Produkt(Geschaeftsobjekt):
     Die Redundanz zu den Vertragskonditionen am Vertrag ist gewollt: die Konditionen
     des Produkts können bei der Vertragsausgestaltung überschrieben werden.
     """
-    website: Optional[str] = None
+    website: str | None = None
     """Internetseite, auf der das Produkt veröffentlicht ist."""
-    kundentypen: Optional[list["Kundentyp"]] = None
+    kundentypen: list["Kundentyp"] | None = None
     """Eine Liste an Kundentypen, für die dieses Produkt vorgesehen ist."""
