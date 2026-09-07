@@ -22,7 +22,7 @@ idna==3.15
     # via requests
 imagesize==1.4.1
     # via sphinx
-iso3166==2.1.1
+iso3166==3.0.0
     # via -r docs/requirements.in
 jinja2==3.1.6
     # via sphinx

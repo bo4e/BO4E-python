@@ -570,11 +570,11 @@ wheels = [
 
 [[package]]
 name = "iso3166"
-version = "2.1.1"
+version = "3.0.0"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/5c/11/b5023c736a185a88ebd0d38646af6f4d1b4c9b91f2ca84e08e5d2bc7ac3c/iso3166-2.1.1.tar.gz", hash = "sha256:fcd551b8dda66b44e9f9e6d6bbbee3a1145a22447c0a556e5d0fb1ad1e491719", size = 12807, upload-time = "2022-07-12T04:07:57.294Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/47/e7/4997ca315143cf3dc54ec116070c108b621677fa80083a499b50643237c4/iso3166-3.0.0.tar.gz", hash = "sha256:e567b55d169211d4d499c73307350da15df5d38248e60bae559609570c42ef55", size = 10295, upload-time = "2026-09-03T02:54:43.795Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/08/d0/bf18725b8d47f37858ff801f8e4d40c6982730a899725bdb6ded62199954/iso3166-2.1.1-py3-none-any.whl", hash = "sha256:263660b36f8471c42acd1ff673d28a3715edbce7d24b1550d0cf010f6816c47f", size = 9829, upload-time = "2022-07-12T04:07:55.54Z" },
+    { url = "https://files.pythonhosted.org/packages/72/99/8e10f81806db750ee6acf11c980207c45feddd36066cb708328e5c5aceea/iso3166-3.0.0-py3-none-any.whl", hash = "sha256:990b1e6a433ffd89d67da8ca16f40a2af107aba1660b255a38dbd36ad221090b", size = 8949, upload-time = "2026-09-03T02:54:42.854Z" },
 ]
 
 [[package]]
