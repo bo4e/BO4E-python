@@ -40,6 +40,7 @@ __all__ = [
     "ComTyp",
     "Dienstleistung",
     "Dienstleistungstyp",
+    "DynamischePreiszeitreihe",
     "EMobilitaetsart",
     "EinheitsPreisposition",
     "Energieherkunft",
@@ -214,6 +215,7 @@ from .bo.angebot import Angebot
 from .bo.ausschreibung import Ausschreibung
 from .bo.bilanzierung import Bilanzierung
 from .bo.buendelvertrag import Buendelvertrag
+from .bo.dynamischepreiszeitreihe import DynamischePreiszeitreihe
 from .bo.energiemenge import Energiemenge
 from .bo.fremdkosten import Fremdkosten
 from .bo.geraet import Geraet
