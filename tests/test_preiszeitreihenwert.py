@@ -6,7 +6,6 @@ from bo4e import (
     Preiszeitreihenwert,
     Zeitraum
 )
-from com import zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
