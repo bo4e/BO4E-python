@@ -1,11 +1,6 @@
 import pytest
 
-from bo4e import (
-    Menge,
-    Preis,
-    Preiszeitreihenwert,
-    Zeitraum
-)
+from bo4e import Menge, Preis, Preiszeitreihenwert, Zeitraum
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
