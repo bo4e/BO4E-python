@@ -11,9 +11,9 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from .zeitraum import Zeitraum
-    from .preis import Preis
     from .menge import Menge
+    from .preis import Preis
+    from .zeitraum import Zeitraum
 
 
 @postprocess_docstring
