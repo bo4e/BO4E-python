@@ -115,6 +115,7 @@ __all__ = [
     "Preisposition",
     "Preisreferenz",
     "Preisstaffel",
+    "Preiszeitreihenwert",
     "Preisstatus",
     "Preistyp",
     "Profilart",
@@ -277,6 +278,7 @@ from .com.preis import Preis
 from .com.preisgarantie import Preisgarantie
 from .com.preisposition import Preisposition
 from .com.preisstaffel import Preisstaffel
+from .com.preiszeitreihenwert import Preiszeitreihenwert
 from .com.rechnungsposition import Rechnungsposition
 from .com.regionsoperation import Regionsoperation
 from .com.regionspreis import Regionspreis
