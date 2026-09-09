@@ -11,9 +11,9 @@ from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
 
 if TYPE_CHECKING:
+    from ..com.preiszeitreihe import Preiszeitreihe
     from .marktlokation import Marktlokation
     from .zaehler import Zaehler
-    from ..com.preiszeitreihe import Preiszeitreihe
 
 
 @postprocess_docstring
