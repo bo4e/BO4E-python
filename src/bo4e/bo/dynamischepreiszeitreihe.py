@@ -30,7 +30,7 @@ class DynamischePreiszeitreihe(Geschaeftsobjekt):
 
     """
 
-    typ: Annotated[Literal[BoTyp.DYNAMISCHE_PREISZEITREIHE], Field(alias="_typ")] = BoTyp.DYNAMISCHE_PREISZEITREIHE
+    typ: Annotated[Literal[BoTyp.DYNAMISCHEPREISZEITREIHE], Field(alias="_typ")] = BoTyp.DYNAMISCHEPREISZEITREIHE
 
     marktlokation: Optional["Marktlokation"] = None
     """Marktlokation der dynamischen Preiszeitreihe"""
