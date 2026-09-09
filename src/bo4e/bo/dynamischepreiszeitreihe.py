@@ -6,10 +6,9 @@ from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
 
-from bo4e import Geschaeftsobjekt
-
 from ..enum.botyp import BoTyp
 from ..utils import postprocess_docstring
+from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..com.preiszeitreihe import Preiszeitreihe
