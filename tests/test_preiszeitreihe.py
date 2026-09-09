@@ -13,7 +13,7 @@ class TestPreiszeitreihe:
                     preiszeitreihe_id="1-2-3",
                     bezeichnung="Bezeichnung",
                     preistyp=Preistyp.GESAMTPREIS_BRUTTO,
-                    preiszeitreihenwerte=[Preiszeitreihenwert()],
+                    werte=[Preiszeitreihenwert()],
                 )
             ),
         ],
