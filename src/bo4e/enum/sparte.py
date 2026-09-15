@@ -12,4 +12,3 @@ class Sparte(StrEnum):
     GAS = "GAS"
     FERNWAERME = "FERNWAERME"
     NAHWAERME = "NAHWAERME"
-    STROM_UND_GAS = "STROM_UND_GAS"
