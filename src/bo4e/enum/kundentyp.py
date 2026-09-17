@@ -37,3 +37,5 @@ class Kundentyp(StrEnum):
     """Unterbrechbare Verbrauchseinrichtungen"""
     WAERMEPUMPE = "WAERMEPUMPE"
     """Wärmepumpen"""
+    INDUSTRIE = "INDUSTRIE"
+    """Großkunden / Kunden, die viel Energie verbrauchen"""
