@@ -30,9 +30,9 @@ markupsafe==3.0.2
     # via jinja2
 packaging==25.0
     # via sphinx
-pydantic==2.13.5
+pydantic==2.14.0
     # via -r docs/requirements.in
-pydantic-core==2.46.5
+pydantic-core==2.50.0
     # via pydantic
 pygments==2.20.0
     # via sphinx
@@ -67,12 +67,12 @@ sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
 tomli==2.4.1
     # via sphinx
-typing-extensions==4.14.1
+typing-extensions==4.16.0
     # via
     #   pydantic
     #   pydantic-core
     #   typing-inspection
-typing-inspection==0.4.2
+typing-inspection==0.4.4
     # via pydantic
 urllib3==2.8.0
     # via requests
