@@ -12,6 +12,7 @@ from .geschaeftsobjekt import Geschaeftsobjekt
 
 if TYPE_CHECKING:
     from ..bo.lokationszuordnung import Lokationszuordnung
+    from ..bo.marktteilnehmer import Marktteilnehmer
     from ..com.konfigurationsprodukt import Konfigurationsprodukt
     from ..enum.marktrolle import Marktrolle
     from ..enum.steuerkanalleistungsbeschreibung import SteuerkanalLeistungsbeschreibung
@@ -39,8 +40,8 @@ class SteuerbareRessource(Geschaeftsobjekt):
     """Id der steuerbaren Ressource"""
     steuerkanal_leistungsbeschreibung: Optional["SteuerkanalLeistungsbeschreibung"] = None
     """Leistungsbeschreibung des Steuerkanals"""
-    zugeordnete_msb_codenummer: str | None = None
-    """Angabe des Messstellenbetreibers, der der Steuerbaren Ressource zugeordnet ist."""
+    zugeordneter_msb: Optional["Marktteilnehmer"] = None
+    """Der Messstellenbetreiber, der der Steuerbaren Ressource zugeordnet ist."""
     konfigurationsprodukte: list["Konfigurationsprodukt"] | None = None
     """Produkt-Daten der Steuerbaren Ressource"""
     eigenschaft_msb_lokation: Optional["Marktrolle"] = None
