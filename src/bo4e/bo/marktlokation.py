@@ -73,8 +73,8 @@ class Marktlokation(Geschaeftsobjekt):
     """Die ID des Gebietes in der ene't-Datenbank"""  # todo: rename to "id" (see 2021-12-15 update)
     bilanzierungsgebiet: str | None = None
     """Bilanzierungsgebiet, dem das Netzgebiet zugeordnet ist - im Falle eines Strom Netzes"""
-    grundversorgercodenr: str | None = None
-    """Codenummer des Grundversorgers, der für diese Marktlokation zuständig ist"""
+    grundversorger: Optional["Marktteilnehmer"] = None
+    """Der Grundversorger, der für diese Marktlokation zuständig ist"""
     gasqualitaet: Optional["Gasqualitaet"] = None
     """Die Gasqualität in diesem Netzgebiet. H-Gas oder L-Gas. Im Falle eines Gas-Netzes"""
     endkunde: Optional["Geschaeftspartner"] = None
