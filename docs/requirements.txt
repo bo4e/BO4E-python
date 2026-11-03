@@ -30,9 +30,9 @@ markupsafe==3.0.2
     # via jinja2
 packaging==25.0
     # via sphinx
-pydantic==2.14.1
+pydantic==2.14.2
     # via -r docs/requirements.in
-pydantic-core==2.50.1
+pydantic-core==2.50.2
     # via pydantic
 pygments==2.20.0
     # via sphinx
