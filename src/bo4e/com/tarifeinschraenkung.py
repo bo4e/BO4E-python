@@ -11,7 +11,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
-    from ..bo.geraet import Geraet
+    from ..enum.zaehlertyp import Zaehlertyp
     from .menge import Menge
 
 # pylint: disable=too-few-public-methods
@@ -35,9 +35,7 @@ class Tarifeinschraenkung(COM):
 
     zusatzprodukte: list[str] | None = None
     """Weitere Produkte, die gemeinsam mit diesem Tarif bestellt werden können"""
-    einschraenkungzaehler: list["Geraet"] | None = None
-    """ Liste der Zähler/Geräte, die erforderlich sind, damit dieser Tarif zur Anwendung gelangen kann.
-    (Falls keine Zähler angegeben sind, ist der Tarif nicht an das Vorhandensein bestimmter Zähler gebunden.) """
+    einschraenkungzaehler: list["Zaehlertyp"] | None = None
     einschraenkungleistung: list["Menge"] | None = None
     """ Die vereinbarte Leistung, die (näherungsweise) abgenommen wird.
     Insbesondere Gastarife können daran gebunden sein, dass die Leistung einer vereinbarten Höhe entspricht. """
