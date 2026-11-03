@@ -2,7 +2,7 @@ from decimal import Decimal
 
 import pytest
 
-from bo4e import Menge, Mengeneinheit, Tarifeinschraenkung, Voraussetzungen, Zaehlertyp
+from bo4e import Menge, Mengeneinheit, Tarifeinschraenkung, Zaehlertyp
 from tests.serialization_helper import assert_serialization_roundtrip
 
 
@@ -13,7 +13,6 @@ class TestTarifeinschraenkung:
             pytest.param(
                 Tarifeinschraenkung(
                     zusatzprodukte=["foo", "bar"],
-                    voraussetzungen=[Voraussetzungen.ALTVERTRAG, Voraussetzungen.DIREKTVERTRIEB],
                     einschraenkungzaehler=[
                         Zaehlertyp.DREHSTROMZAEHLER,
                         Zaehlertyp.INTELLIGENTES_MESSSYSTEM,
