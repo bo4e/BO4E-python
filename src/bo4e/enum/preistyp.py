@@ -27,3 +27,5 @@ class Preistyp(StrEnum):
     """Entgelt für MSB (Entgelt für Einbau, Betrieb und Wartung der Messtechnik)"""
     PROVISION = "PROVISION"
     """Provision"""
+    GESAMTPREIS_BRUTTO = "GESAMTPREIS_BRUTTO"
+    """Brutto Gesamtpreis"""
