@@ -13,7 +13,7 @@ class TestMesswert:
             pytest.param(
                 Messwert(
                     messwertstatus=Messwertstatus.ABGELESEN,
-                    messwertstatuszusatz=Messwertstatuszusatz.Z84_LEERSTAND,
+                    messwertstatuszusatz=Messwertstatuszusatz.LEERSTAND,
                     zeitpunkt=datetime(2022, 2, 1, 0, 0, 0, tzinfo=timezone.utc),
                     wert=Menge(),
                 ),
