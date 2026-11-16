@@ -177,7 +177,6 @@ __all__ = [
     "Vertragsteil",
     "Verwendungszweck",
     "VerwendungszweckProMarktrolle",
-    "Voraussetzungen",
     "Vorauszahlung",
     "Waehrungscode",
     "Waehrungseinheit",
@@ -395,7 +394,6 @@ from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
 from .enum.vertragsstatus import Vertragsstatus
 from .enum.verwendungszweck import Verwendungszweck
-from .enum.voraussetzungen import Voraussetzungen
 from .enum.waehrungscode import Waehrungscode
 from .enum.waehrungseinheit import Waehrungseinheit
 from .enum.waermenutzung import Waermenutzung

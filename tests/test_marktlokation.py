@@ -29,6 +29,7 @@ class TestMaLo:
                     bilanzierungsmethode=Bilanzierungsmethode.PAUSCHAL,
                     netzebene=Netzebene.NSP,
                     netzbetreiber=Marktteilnehmer(),
+                    grundversorger=Marktteilnehmer(),
                     endkunde=Geschaeftspartner(),
                     kundengruppen=[Kundentyp.GEWERBE, Kundentyp.PRIVAT],
                     verbrauchsmengen=[Energiemenge()],
