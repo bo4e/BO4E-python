@@ -4,10 +4,9 @@ from decimal import Decimal
 import pytest
 
 from bo4e import (
+    ComTyp,
     EinheitsPreisposition,
     Energiemix,
-    Kundentyp,
-    Marktteilnehmer,
     Mengeneinheit,
     Operator,
     Preis,
@@ -20,14 +19,12 @@ from bo4e import (
     Regionszeitscheibe,
     Registeranzahl,
     RelativePreisposition,
-    Sparte,
     Tarif,
     Tarifberechnungsparameter,
     Tarifeinschraenkung,
     Tarifmerkmal,
     Tarifpreiszeitscheibe,
     Tariftyp,
-    Vertragskonditionen,
     Waehrungseinheit,
     Zeitraum,
 )
@@ -43,20 +40,10 @@ class TestTarif:
                     berechnungsparameter=Tarifberechnungsparameter(),
                     preisgarantie=Preisgarantie(),
                     tarifeinschraenkung=Tarifeinschraenkung(),
-                    # below are the attributes of tarifinfo
-                    bezeichnung="foo",
-                    anbietername="der beste stromanbieter",
-                    sparte=Sparte.STROM,
-                    kundentypen=[Kundentyp.PRIVAT, Kundentyp.GEWERBE],
                     registeranzahl=Registeranzahl.MEHRTARIF,
                     tariftyp=Tariftyp.GRUND_ERSATZVERSORGUNG,
                     tarifmerkmale=[Tarifmerkmal.HEIZSTROM],
-                    website="https://foo.inv",
-                    bemerkung="super billig aber auch super dreckig",
-                    vertragskonditionen=Vertragskonditionen(),
-                    zeitliche_gueltigkeit=Zeitraum(),
                     energiemix=[Energiemix()],
-                    anbieter=Marktteilnehmer(),
                     regionspreise=[
                         Regionspreis(
                             regionszeitscheiben=[
@@ -111,3 +98,7 @@ class TestTarif:
         Test de-/serialisation
         """
         assert_serialization_roundtrip(tarif)
+
+    def test_tarif_typ(self) -> None:
+        tarif = Tarif()
+        assert tarif.typ == ComTyp.TARIF
