@@ -165,7 +165,6 @@ __all__ = [
     "TechnischeRessourceNutzung",
     "TechnischeRessourceVerbrauchsart",
     "Themengebiet",
-    "Titel",
     "Umschaltzeit",
     "Unterschrift",
     "Verbrauchsart",
@@ -388,7 +387,6 @@ from .enum.tarifzeit import Tarifzeit
 from .enum.technischeressourcenutzung import TechnischeRessourceNutzung
 from .enum.technischeressourceverbrauchsart import TechnischeRessourceVerbrauchsart
 from .enum.themengebiet import Themengebiet
-from .enum.titel import Titel
 from .enum.verbrauchsart import Verbrauchsart
 from .enum.vertragsart import Vertragsart
 from .enum.vertragsform import Vertragsform
