@@ -98,7 +98,6 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.com</span><span class="w"> </span><span class="kn">import</span> <span class="n">COM</span>
 
 <span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
-
     <span class="kn">from</span><span class="w"> </span><span class="nn">.menge</span><span class="w"> </span><span class="kn">import</span> <span class="n">Menge</span>
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
@@ -123,16 +122,16 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">VERTRAGSTEIL</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">VERTRAGSTEIL</span>
 
-    <span class="n">vertragsteilbeginn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">vertragsteilbeginn</span><span class="p">:</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Start der Gültigkeit des Vertragsteils (inklusiv)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">vertragsteilende</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">vertragsteilende</span><span class="p">:</span> <span class="n">pydantic</span><span class="o">.</span><span class="n">AwareDatetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Ende der Gültigkeit des Vertragsteils (exklusiv)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">lokation</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">lokation</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Der Identifier für diejenigen Markt- oder Messlokation, die zu diesem Vertragsteil gehören.</span>
 <span class="sd">    Verträge für mehrere Lokationen werden mit mehreren Vertragsteilen abgebildet</span>

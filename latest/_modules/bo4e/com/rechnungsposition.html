@@ -126,13 +126,13 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">RECHNUNGSPOSITION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">RECHNUNGSPOSITION</span>
 
-    <span class="n">positionsnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">positionsnummer</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fortlaufende Nummer für die Rechnungsposition&quot;&quot;&quot;</span>
 
     <span class="n">lieferungszeitraum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Zeitraum der Lieferung für die abgerechnete Leistung&quot;&quot;&quot;</span>
 
-    <span class="n">positionstext</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">positionstext</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichung für die abgerechnete Position&quot;&quot;&quot;</span>
 
     <span class="n">positions_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
@@ -150,7 +150,7 @@
 
     <span class="n">artikelnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;BDEWArtikelnummer&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Kennzeichnung der Rechnungsposition mit der Standard-Artikelnummer des BDEW&quot;&quot;&quot;</span>
-    <span class="n">artikel_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">artikel_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst&quot;&quot;&quot;</span>
     <span class="n">steuerbetrag</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Steuerbetrag&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Auf die Position entfallende Steuer, bestehend aus Steuersatz und Betrag&quot;&quot;&quot;</span>

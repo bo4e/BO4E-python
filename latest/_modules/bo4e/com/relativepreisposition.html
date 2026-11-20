@@ -92,7 +92,7 @@
 
 <span class="c1"># pylint: disable=too-few-public-methods</span>
 <span class="c1"># pylint: disable=no-name-in-module</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Literal</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
 
@@ -119,9 +119,9 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">RELATIVEPREISPOSITION</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">RELATIVEPREISPOSITION</span>
 
-    <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">bezeichnung</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Eine (beliebige) Bezeichnung für die Preisposition.&quot;&quot;&quot;</span>
-    <span class="n">id_referenz</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">id_referenz</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Referenziert auf eine andere Preisposition.</span>
 <span class="sd">    Die Referenz bezieht sich auf das technische Feld `_id`, da es sich hier um eine technische Lösung handelt</span>
@@ -129,7 +129,7 @@
 <span class="sd">    Das `_id` Feld der unterschiedlichen Preispositionen muss innerhalb einer `Tarifpreiszeitscheibe`</span>
 <span class="sd">    entsprechend unique sein.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">wert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">wert</span><span class="p">:</span> <span class="n">Decimal</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Der Modifikator in Prozent, der auf den Preis der referenzierten Preisposition angewendet wird.</span>
 <span class="sd">    Der Wert wird multiplikativ angewendet. D.h. wenn bspw. ein Rabatt von 20% angewendet werden soll, muss der Wert</span>

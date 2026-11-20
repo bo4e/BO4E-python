@@ -12,8 +12,8 @@ bo.Lastgang,🟢,🟢,🟢
 bo.Lokationszuordnung,🟢,🟢,🟢
 bo.Marktlokation,🟢,🟢,🔴
 bo.Marktteilnehmer,🟢,🟢,🟢
-bo.Messlokation,🟢,🟢,🟢
-bo.Netzlokation,🟢,🟢,🟢
+bo.Messlokation,🟢,🟢,🔴
+bo.Netzlokation,🟢,🟢,🔴
 bo.Person,🟢,🟢,🟢
 bo.Preisblatt,🟢,🟢,🟢
 bo.PreisblattDienstleistung,🟢,🟢,🟢
@@ -21,11 +21,12 @@ bo.PreisblattHardware,🟢,🟢,🟢
 bo.PreisblattKonzessionsabgabe,🟢,🟢,🟢
 bo.PreisblattMessung,🟢,🟢,🟢
 bo.PreisblattNetznutzung,🟢,🟢,🟢
+bo.Produkt,∅,∅,➕
 bo.Rechnung,🟢,🟢,🟢
 bo.Region,🟢,🟢,🟢
 bo.Standorteigenschaften,🟢,🟢,🟢
-bo.SteuerbareRessource,🟢,🟢,🟢
-bo.Tarif,🟢,🟢,🟢
+bo.SteuerbareRessource,🟢,🟢,🔴
+bo.Tarif,🟢,🟢,➖
 bo.Tarifinfo,🟢,🟢,🟢
 bo.Tarifkosten,🟢,🟢,🟢
 bo.Tarifpreisblatt,🟢,🟢,🟢
@@ -74,8 +75,9 @@ com.StandorteigenschaftenGas,🟢,🟢,🟢
 com.StandorteigenschaftenStrom,🟢,🟢,🟢
 com.Steuerbetrag,🟢,🟢,🟢
 com.Tagesparameter,🟢,🟢,🟢
+com.Tarif,∅,∅,➕
 com.Tarifberechnungsparameter,🟢,🟢,🟢
-com.Tarifeinschraenkung,🟢,🟢,🟢
+com.Tarifeinschraenkung,🟢,🟢,🔴
 com.Tarifpreis,🟢,🟢,🟢
 com.Tarifpreisposition,🟢,🟢,🟢
 com.Tarifpreiszeitscheibe,🟢,🟢,🟢
@@ -108,8 +110,8 @@ enum.BDEWArtikelnummer,🟢,🟢,🟢
 enum.Befestigungsart,🟢,🟢,🟢
 enum.Bemessungsgroesse,🟢,🟢,🟢
 enum.Bilanzierungsmethode,🟢,🟢,🟢
-enum.BoTyp,🟢,🟢,🟢
-enum.ComTyp,🟢,🟢,🟢
+enum.BoTyp,🟢,🟢,🔴
+enum.ComTyp,🟢,🟢,🟡
 enum.Dienstleistungstyp,🟢,🟢,🟢
 enum.EMobilitaetsart,🟢,🟢,🟢
 enum.Energierichtung,🟢,🟢,🟢
@@ -125,7 +127,7 @@ enum.Kontaktart,🟢,🟢,🟢
 enum.Kostenklasse,🟢,🟢,🟢
 enum.Kundengruppe,🟢,🟢,🟢
 enum.KundengruppeKA,🟢,🟢,🟢
-enum.Kundentyp,🟢,🟢,🟢
+enum.Kundentyp,🟢,🟢,🟡
 enum.Landescode,🟢,🟢,🟢
 enum.Leistungstyp,🟢,🟢,🟢
 enum.Lokationstyp,🟢,➖,∅
@@ -150,6 +152,7 @@ enum.Preismodell,🟢,🟢,🟢
 enum.Preisreferenz,🟢,🟢,🟢
 enum.Preisstatus,🟢,🟢,🟢
 enum.Preistyp,🟢,🟢,🟢
+enum.Produkttyp,∅,∅,➕
 enum.Profilart,🟢,🟢,🟢
 enum.Profiltyp,🟢,🟢,🟢
 enum.Profilverfahren,🟢,🟢,🟢
@@ -177,7 +180,7 @@ enum.Vertragsart,🟢,🟢,🟢
 enum.Vertragsform,🟢,🟢,🟢
 enum.Vertragsstatus,🟢,🟢,🟢
 enum.Verwendungszweck,🟢,🟢,🟢
-enum.Voraussetzungen,🟢,🟢,🟢
+enum.Voraussetzungen,🟢,🟢,➖
 enum.Waehrungscode,🟢,🟢,🟢
 enum.Waehrungseinheit,🟢,🟢,🟢
 enum.Waermenutzung,🟢,🟢,🟢

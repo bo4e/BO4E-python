@@ -90,7 +90,7 @@
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">decimal</span><span class="w"> </span><span class="kn">import</span> <span class="n">Decimal</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span><span class="p">,</span> <span class="n">Optional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Annotated</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Field</span>
 
@@ -123,17 +123,17 @@
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">BoTyp</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">BoTyp</span><span class="o">.</span><span class="n">BILANZIERUNG</span>
+    <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">BoTyp</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">BoTyp</span><span class="o">.</span><span class="n">BILANZIERUNG</span>
 
-    <span class="n">marktlokations_id</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#:  ID der Marktlokation</span>
-    <span class="n">lastprofil</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Lastprofil</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)</span>
-    <span class="n">bilanzierungsbeginn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Inklusiver Start der Bilanzierung</span>
-    <span class="n">bilanzierungsende</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">datetime</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Exklusives Ende der Bilanzierung</span>
-    <span class="n">bilanzkreis</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Bilanzkreis</span>
-    <span class="n">jahresverbrauchsprognose</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Jahresverbrauchsprognose</span>
-    <span class="n">temperatur_arbeit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Temperatur Arbeit</span>
-    <span class="n">kundenwert</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Menge</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Kundenwert</span>
-    <span class="n">verbrauchsaufteilung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Decimal</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">marktlokations_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#:  ID der Marktlokation</span>
+    <span class="n">lastprofil</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Lastprofil</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Eine Liste der verwendeten Lastprofile (SLP, SLP/TLP, ALP etc.)</span>
+    <span class="n">bilanzierungsbeginn</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Inklusiver Start der Bilanzierung</span>
+    <span class="n">bilanzierungsende</span><span class="p">:</span> <span class="n">datetime</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Exklusives Ende der Bilanzierung</span>
+    <span class="n">bilanzkreis</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Bilanzkreis</span>
+    <span class="n">jahresverbrauchsprognose</span><span class="p">:</span> <span class="n">Menge</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Jahresverbrauchsprognose</span>
+    <span class="n">temperatur_arbeit</span><span class="p">:</span> <span class="n">Menge</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Temperatur Arbeit</span>
+    <span class="n">kundenwert</span><span class="p">:</span> <span class="n">Menge</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Kundenwert</span>
+    <span class="n">verbrauchsaufteilung</span><span class="p">:</span> <span class="n">Decimal</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Verbrauchsaufteilung in % zwischen SLP und TLP-Profil.</span>
 
@@ -144,29 +144,29 @@
 <span class="sd">    3. [Gemessene Energiemenge der OBIS &quot;nicht Schwachlast&quot;] + [zu verlagernde Energiemenge]</span>
 <span class="sd">    = [Ermittelte Energiemenge für nicht Schwachlast]</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">zeitreihentyp</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Zeitreihentyp</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Zeitreihentyp (SLS, TLS, etc.)</span>
-    <span class="n">aggregationsverantwortung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Aggregationsverantwortung</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Aggregationsverantwortung</span>
-    <span class="n">prognosegrundlage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Prognosegrundlage</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Prognosegrundlage</span>
-    <span class="n">details_prognosegrundlage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="n">Profiltyp</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">zeitreihentyp</span><span class="p">:</span> <span class="n">Zeitreihentyp</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Zeitreihentyp (SLS, TLS, etc.)</span>
+    <span class="n">aggregationsverantwortung</span><span class="p">:</span> <span class="n">Aggregationsverantwortung</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Aggregationsverantwortung</span>
+    <span class="n">prognosegrundlage</span><span class="p">:</span> <span class="n">Prognosegrundlage</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Prognosegrundlage</span>
+    <span class="n">details_prognosegrundlage</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Profiltyp</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Prognosegrundlage.</span>
 
 <span class="sd">    Besteht der Bedarf ein tagesparameteräbhängiges Lastprofil mit gemeinsamer Messung anzugeben,</span>
 <span class="sd">    so ist dies über die 2 -malige Wiederholung des CAV Segments mit der Angabe der Codes E02 und E14 möglich.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">wahlrecht_prognosegrundlage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WahlrechtPrognosegrundlage</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">wahlrecht_prognosegrundlage</span><span class="p">:</span> <span class="n">WahlrechtPrognosegrundlage</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Wahlrecht der Prognosegrundlage.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fallgruppenzuordnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Fallgruppenzuordnung</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Fallgruppenzuordnung (für gas RLM)</span>
-    <span class="n">prioritaet</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Priorität des Bilanzkreises (für Gas)</span>
-    <span class="n">grund_wahlrecht_prognosegrundlage</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">WahlrechtPrognosegrundlage</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">fallgruppenzuordnung</span><span class="p">:</span> <span class="n">Fallgruppenzuordnung</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Fallgruppenzuordnung (für gas RLM)</span>
+    <span class="n">prioritaet</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Priorität des Bilanzkreises (für Gas)</span>
+    <span class="n">grund_wahlrecht_prognosegrundlage</span><span class="p">:</span> <span class="n">WahlrechtPrognosegrundlage</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Grund Wahlrecht der Prognosegrundlage.</span>
 
 <span class="sd">    true=Wahlrecht beim Lieferanten vorhanden</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">abwicklungsmodell</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Abwicklungsmodell</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Abwicklungsmodell</span></div>
+    <span class="n">abwicklungsmodell</span><span class="p">:</span> <span class="n">Abwicklungsmodell</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1">#: Abwicklungsmodell</span></div>
 
 </pre></div>
 

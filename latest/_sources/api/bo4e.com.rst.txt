@@ -332,6 +332,14 @@ bo4e.com.tagesparameter module
    :undoc-members:
    :show-inheritance:
 
+bo4e.com.tarif module
+---------------------
+
+.. automodule:: bo4e.com.tarif
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.com.tarifberechnungsparameter module
 -----------------------------------------
 

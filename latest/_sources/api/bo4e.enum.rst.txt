@@ -436,6 +436,14 @@ bo4e.enum.preistyp module
    :undoc-members:
    :show-inheritance:
 
+bo4e.enum.produkttyp module
+---------------------------
+
+.. automodule:: bo4e.enum.produkttyp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.enum.profilart module
 --------------------------
 
@@ -656,14 +664,6 @@ bo4e.enum.verwendungszweck module
 ---------------------------------
 
 .. automodule:: bo4e.enum.verwendungszweck
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.enum.voraussetzungen module
---------------------------------
-
-.. automodule:: bo4e.enum.voraussetzungen
    :members:
    :undoc-members:
    :show-inheritance:

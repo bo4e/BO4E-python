@@ -126,9 +126,9 @@
 
     <span class="n">typ</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="n">ComTyp</span><span class="o">.</span><span class="n">AUSSCHREIBUNGSLOS</span><span class="p">],</span> <span class="n">Field</span><span class="p">(</span><span class="n">alias</span><span class="o">=</span><span class="s2">&quot;_typ&quot;</span><span class="p">)]</span> <span class="o">=</span> <span class="n">ComTyp</span><span class="o">.</span><span class="n">AUSSCHREIBUNGSLOS</span>
 
-    <span class="n">losnummer</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">losnummer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Laufende Nummer des Loses&quot;&quot;&quot;</span>
-    <span class="n">bezeichnung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">bezeichnung</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung der Ausschreibung&quot;&quot;&quot;</span>
     <span class="n">preismodell</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Preismodell&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bezeichnung der Preismodelle in Ausschreibungen für die Energielieferung&quot;&quot;&quot;</span>
@@ -139,18 +139,18 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Aufzählung der Möglichkeiten zur Rechnungslegung in Ausschreibungen&quot;&quot;&quot;</span>
     <span class="n">wunsch_vertragsform</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Vertragsform&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Aufzählung der Möglichkeiten zu Vertragsformen in Ausschreibungen&quot;&quot;&quot;</span>
-    <span class="n">betreut_durch</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">betreut_durch</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Name des Lizenzpartners&quot;&quot;&quot;</span>
-    <span class="n">anzahl_lieferstellen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">anzahl_lieferstellen</span><span class="p">:</span> <span class="nb">int</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Anzahl der Lieferstellen in dieser Ausschreibung&quot;&quot;&quot;</span>
 
-    <span class="n">lieferstellen</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Ausschreibungsdetail&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">lieferstellen</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="s2">&quot;Ausschreibungsdetail&quot;</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Die ausgeschriebenen Lieferstellen&quot;&quot;&quot;</span>
 
     <span class="n">lieferzeitraum</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Zeitraum&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Zeitraum, für den die in diesem Los enthaltenen Lieferstellen beliefert werden sollen&quot;&quot;&quot;</span>
 
-    <span class="n">bemerkung</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">bemerkung</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Bemerkung des Kunden zum Los&quot;&quot;&quot;</span>
     <span class="n">gesamt_menge</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="s2">&quot;Menge&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gibt den Gesamtjahresverbrauch (z.B. in kWh) aller in diesem Los enthaltenen Lieferstellen an&quot;&quot;&quot;</span>

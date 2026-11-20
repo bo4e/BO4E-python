@@ -188,6 +188,14 @@ bo4e.bo.preisblattnetznutzung module
    :undoc-members:
    :show-inheritance:
 
+bo4e.bo.produkt module
+----------------------
+
+.. automodule:: bo4e.bo.produkt
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 bo4e.bo.rechnung module
 -----------------------
 
@@ -216,14 +224,6 @@ bo4e.bo.steuerbareressource module
 ----------------------------------
 
 .. automodule:: bo4e.bo.steuerbareressource
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-bo4e.bo.tarif module
---------------------
-
-.. automodule:: bo4e.bo.tarif
    :members:
    :undoc-members:
    :show-inheritance:
