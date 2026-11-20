@@ -33,7 +33,13 @@ runs:
         dest="${RUNNER_TEMP}/bo4e"
         mkdir -p "${dest}"
         echo "Downloading ${url}"
-        curl --fail --silent --show-error --location --output "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" "${url}"
+        # --retry-all-errors is required on top of --retry: a bare --retry
+        # ignores connection-level failures, and the observed flake was
+        # "curl: (35) Recv failure: Connection reset by peer" against
+        # objects.githubusercontent.com, which failed the whole docs job.
+        curl --fail --silent --show-error --location \
+          --retry 3 --retry-delay 2 --retry-all-errors \
+          --output "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" "${url}"
         case "${{ steps.asset.outputs.name }}" in
           *.tar.xz) tar -xJf "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" --strip-components=1 -C "${dest}" ;;
           *.zip)    unzip -q  "${RUNNER_TEMP}/${{ steps.asset.outputs.name }}" -d "${dest}" ;;
