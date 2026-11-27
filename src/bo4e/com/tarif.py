@@ -12,6 +12,7 @@ from .com import COM
 
 if TYPE_CHECKING:
     from ..com.energiemix import Energiemix
+    from ..com.preisbestandteil import Preisbestandteil
     from ..com.preisgarantie import Preisgarantie
     from ..com.regionspreis import Regionspreis
     from ..com.tarifberechnungsparameter import Tarifberechnungsparameter
@@ -78,3 +79,7 @@ class Tarif(COM):
     """Für die Berechnung der Kosten sind die hier abgebildeten Parameter heranzuziehen"""
     tarifeinschraenkung: Optional["Tarifeinschraenkung"] = None
     """Die Bedingungen und Einschränkungen unter denen ein Tarif angewendet werden kann"""
+    preisbestandteile: list["Preisbestandteil"] | None = None
+    """
+    Liste der Preisbestandteile, die im Preis enthalten sind und die allgemein gelten (nicht nur in einer bestimmten Preisstaffel).
+    """

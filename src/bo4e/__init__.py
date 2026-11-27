@@ -103,6 +103,7 @@ __all__ = [
     "Organisationstyp",
     "Person",
     "Preis",
+    "Preisbestandteil",
     "Preisblatt",
     "PreisblattDienstleistung",
     "PreisblattHardware",
@@ -275,6 +276,7 @@ from .com.marktgebietinfo import MarktgebietInfo
 from .com.menge import Menge
 from .com.messwert import Messwert
 from .com.preis import Preis
+from .com.preisbestandteil import Preisbestandteil
 from .com.preisgarantie import Preisgarantie
 from .com.preisposition import Preisposition
 from .com.preisstaffel import Preisstaffel

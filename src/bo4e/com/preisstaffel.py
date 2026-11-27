@@ -12,6 +12,7 @@ from ..utils import postprocess_docstring
 from .com import COM
 
 if TYPE_CHECKING:
+    from .preisbestandteil import Preisbestandteil
     from .sigmoidparameter import Sigmoidparameter
 
 # pylint: disable=too-few-public-methods
@@ -54,4 +55,8 @@ class Preisstaffel(COM):
     artikel_id: str | None = None
     """
     Standardisierte vom BDEW herausgegebene Liste, welche im Strommarkt die BDEW-Artikelnummer ablöst.
+    """
+    preisbestandteile: list["Preisbestandteil"] | None = None
+    """
+    Liste der Preisbestandteile, die im Preis enthalten sind und die genau in diese Preisstaffel fallen.
     """

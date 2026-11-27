@@ -46,7 +46,7 @@ class Preisposition(COM):
     """Das Modell, das der Preisbildung zugrunde liegt"""
     leistungstyp: Optional["Leistungstyp"] = None
     """Standardisierte Bezeichnung für die abgerechnete Leistungserbringung"""
-    leistungsbezeichnung: str | None = None
+    bezeichnung: str | None = None
     """Bezeichnung für die in der Position abgebildete Leistungserbringung"""
     preiseinheit: Optional["Waehrungseinheit"] = None
     """Festlegung, mit welcher Preiseinheit abgerechnet wird, z.B. Ct. oder €"""

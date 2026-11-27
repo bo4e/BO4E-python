@@ -24,11 +24,11 @@ class TestPreisposition:
                 Preisposition(
                     berechnungsmethode=Kalkulationsmethode.AP_TRANSPORT_ODER_VERTEILNETZ,
                     leistungstyp=Leistungstyp.SONSTIGER_PREIS,
-                    leistungsbezeichnung="Foo",
+                    bezeichnung="Foo",
                     preiseinheit=Waehrungseinheit.EUR,
                     bezugsgroesse=Mengeneinheit.KVARH,
                     zeitbasis=Mengeneinheit.HALBJAHR,
-                    tarifzeit=Tarifzeit.TZ_HT,
+                    tarifzeit=Tarifzeit.HT,
                     bdew_artikelnummer=BDEWArtikelnummer.AUSGLEICHSENERGIE_UNTERDECKUNG,
                     zonungsgroesse=Bemessungsgroesse.BENUTZUNGSDAUER,
                     freimenge_blindarbeit=Decimal(50),  # %
