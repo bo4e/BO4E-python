@@ -2,7 +2,6 @@
 Contains Vertragskonditionen class
 """
 
-from decimal import Decimal
 from typing import TYPE_CHECKING, Annotated, Literal, Optional
 
 from pydantic import Field
@@ -37,10 +36,8 @@ class Vertragskonditionen(COM):
     """
     Freitext zur Beschreibung der Konditionen, z.B. "Standardkonditionen Gas"
     """
-    anzahl_abschlaege: Decimal | None = None
+    anzahl_abschlaege: int | None = None
     """Anzahl der vereinbarten Abschläge pro Jahr, z.B. 12"""
-    vertragslaufzeit: Optional["Zeitraum"] = None
-    """Über diesen Zeitraum läuft der Vertrag"""
     kuendigungsfrist: Optional["Zeitraum"] = None
     """Innerhalb dieser Frist kann der Vertrag gekündigt werden"""
     vertragsverlaengerung: Optional["Zeitraum"] = None
