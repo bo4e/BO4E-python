@@ -10,6 +10,7 @@ from bo4e import (
     Mengeneinheit,
     Operator,
     Preis,
+    Preisbestandteil,
     Preisgarantie,
     Preisreferenz,
     Region,
@@ -88,6 +89,7 @@ class TestTarif:
                             ],
                         )
                     ],
+                    preisbestandteile=[Preisbestandteil()],
                 ),
                 id="all attributes",
             ),
